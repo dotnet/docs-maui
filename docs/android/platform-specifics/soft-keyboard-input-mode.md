@@ -27,6 +27,13 @@ App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindo
 
 The `Application.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method specifies that this platform-specific will only run on Android. The `Application.UseWindowSoftInputModeAdjust` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific` namespace, is used to set the soft keyboard input area operating mode, with the `WindowSoftInputModeAdjust` enumeration providing two values: `Pan` and `Resize`. The `Pan` value uses the [`AdjustPan`](xref:Android.Views.SoftInput.AdjustPan) adjustment option, which doesn't resize the window when an input control has focus. Instead, the contents of the window are panned so that the current focus isn't obscured by the soft keyboard. The `Resize` value uses the [`AdjustResize`](xref:Android.Views.SoftInput.AdjustResize) adjustment option, which resizes the window when an input control has focus, to make room for the soft keyboard.
 
+This platform-specific can also be set on a <xref:Microsoft.Maui.Controls.Window>. This enables you to define a different soft keyboard input area operating mode on each `Window` that you open:
+
+```csharp
+Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.Application.SetWindowSoftInputModeAdjust
+    (this.Window, WindowSoftInputModeAdjust.Resize);
+```
+
 The result is that the soft keyboard input area operating mode can be set when an input control has focus:
 
 :::image type="content" source="media/soft-keyboard-input-mode/pan-resize.png" alt-text="Soft Keyboard Operating Mode Platform-Specific.":::

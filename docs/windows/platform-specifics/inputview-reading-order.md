@@ -6,7 +6,7 @@ ms.date: 04/06/2022
 
 # InputView reading order on Windows
 
-This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific enables the reading order (left-to-right or right-to-left) of bidirectional text in `Entry`, `Editor`, and `Label` objects to be detected dynamically. It's consumed in XAML by setting the `InputView.DetectReadingOrderFromContent` (for `Entry` and `Editor` objects) or `Label.DetectReadingOrderFromContent` attached property to a `boolean` value:
+This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific enables the reading order (left-to-right or right-to-left) of bidirectional text in <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, and <xref:Microsoft.Maui.Controls.Label> objects to be detected dynamically. It's consumed in XAML by setting the `InputView.DetectReadingOrderFromContent` (for <xref:Microsoft.Maui.Controls.Entry> and <xref:Microsoft.Maui.Controls.Editor> objects) or `Label.DetectReadingOrderFromContent` attached property to a `boolean` value:
 
 ```xaml
 <ContentPage ...
@@ -33,7 +33,7 @@ The `Editor.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>` method sp
 editor.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().SetDetectReadingOrderFromContent(!editor.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().GetDetectReadingOrderFromContent());
 ```
 
-The result is that `Entry`, `Editor`, and `Label` objects can have the reading order of their content detected dynamically:
+The result is that <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, and <xref:Microsoft.Maui.Controls.Label> objects can have the reading order of their content detected dynamically:
 
 :::image type="content" source="media/inputview-reading-order/editor-readingorder.png" alt-text="InputView detecting reading order from content platform-specific.":::
 

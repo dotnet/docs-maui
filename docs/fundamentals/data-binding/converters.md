@@ -10,11 +10,11 @@ ms.date: 01/19/2022
 
 .NET Multi-platform App UI (.NET MAUI) data bindings usually transfer data from a source property to a target property, and in some cases from the target property to the source property. This transfer is straightforward when the source and target properties are of the same type, or when one type can be converted to the other type through an implicit conversion. When that is not the case, a type conversion must take place.
 
-In the [String formatting](string-formatting.md) article, you saw how you can use the `StringFormat` property of a data binding to convert any type into a string. For other types of conversions, you need to write some specialized code in a class that implements the `IValueConverter` interface. Classes that implement `IValueConverter` are called *value converters*, but they are also often referred to as *binding converters* or *binding value converters*.
+In the [String formatting](string-formatting.md) article, you saw how you can use the `StringFormat` property of a data binding to convert any type into a string. For other types of conversions, you need to write some specialized code in a class that implements the <xref:Microsoft.Maui.Controls.IValueConverter> interface. Classes that implement <xref:Microsoft.Maui.Controls.IValueConverter> are called *value converters*, but they are also often referred to as *binding converters* or *binding value converters*.
 
 ## Binding value converters
 
-Suppose you want to define a data binding where the source property is of type `int` but the target property is a `bool`. You want this data binding to produce a `false` value when the integer source is equal to 0, and `true` otherwise. This can be achieved with a class that implements the `IValueConverter` interface:
+Suppose you want to define a data binding where the source property is of type `int` but the target property is a `bool`. You want this data binding to produce a `false` value when the integer source is equal to 0, and `true` otherwise. This can be achieved with a class that implements the <xref:Microsoft.Maui.Controls.IValueConverter> interface:
 
 ```csharp
 public class IntToBoolConverter : IValueConverter
@@ -77,9 +77,9 @@ The following example demonstrates how to use this value converter in a data bin
 </ContentPage>
 ```
 
-In this example, the `IntToBoolConverter` is instantiated in the page's resource dictionary. It's then referenced with a `StaticResource` markup extension to set the `Converter` property in two data bindings. It is very common to share data converters among multiple data bindings on the page. If a value converter is used in multiple pages of your application, you can instantiate it in the application-level resource dictionary.
+In this example, the `IntToBoolConverter` is instantiated in the page's resource dictionary. It's then referenced with a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension to set the `Converter` property in two data bindings. It is very common to share data converters among multiple data bindings on the page. If a value converter is used in multiple pages of your application, you can instantiate it in the application-level resource dictionary.
 
-This example demonstrates a common need when a `Button` performs an operation based on text that the user types into an `Entry` view. The `Text` property of each `Entry` is initialized to an empty string, because the `Text` property is `null` by default, and the data binding will not work in that case. If nothing has been typed into the `Entry`, the `Button` should be disabled. Each `Button` contains a data binding on its `IsEnabled` property. The data-binding source is the `Length` property of the `Text` property of the corresponding `Entry`. If that `Length` property is not 0, the value converter returns `true` and the `Button` is enabled:
+This example demonstrates a common need when a <xref:Microsoft.Maui.Controls.Button> performs an operation based on text that the user types into an <xref:Microsoft.Maui.Controls.Entry> view. The `Text` property of each <xref:Microsoft.Maui.Controls.Entry> is initialized to an empty string, because the `Text` property is `null` by default, and the data binding will not work in that case. If nothing has been typed into the <xref:Microsoft.Maui.Controls.Entry>, the <xref:Microsoft.Maui.Controls.Button> should be disabled. Each <xref:Microsoft.Maui.Controls.Button> contains a data binding on its `IsEnabled` property. The data-binding source is the `Length` property of the `Text` property of the corresponding <xref:Microsoft.Maui.Controls.Entry>. If that `Length` property is not 0, the value converter returns `true` and the <xref:Microsoft.Maui.Controls.Button> is enabled:
 
 :::image type="content" source="media/converters/enablebuttons.png" alt-text="Enable buttons.":::
 
@@ -114,7 +114,7 @@ public class BoolToObjectConverter<T> : IValueConverter
 }
 ```
 
-The following example demonstrates how this converter can be used to display the value of a `Switch` view. Although it's common to instantiate value converters as resources in a resource dictionary, this example demonstrates an alternative. Here, each value converter is instantiated between `Binding.Converter` property-element tags. The `x:TypeArguments` indicates the generic argument, and `TrueObject` and `FalseObject` are both set to objects of that type:
+The following example demonstrates how this converter can be used to display the value of a <xref:Microsoft.Maui.Controls.Switch> view. Although it's common to instantiate value converters as resources in a resource dictionary, this example demonstrates an alternative. Here, each value converter is instantiated between `Binding.Converter` property-element tags. The `x:TypeArguments` indicates the generic argument, and `TrueObject` and `FalseObject` are both set to objects of that type:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -216,7 +216,7 @@ The following example demonstrates how this converter can be used to display the
 </ContentPage>
 ```
 
-In this example, in the last of the three `Switch` and `Label` pairs, the generic argument is set to a `Style`, and entire `Style` objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for `Label` set in the resource dictionary, so the properties in that style are explicitly assigned to the `Label`. Toggling the `Switch` causes the corresponding `Label` to reflect the change:
+In this example, in the last of the three <xref:Microsoft.Maui.Controls.Switch> and <xref:Microsoft.Maui.Controls.Label> pairs, the generic argument is set to a <xref:Microsoft.Maui.Controls.Style>, and entire <xref:Microsoft.Maui.Controls.Style> objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for <xref:Microsoft.Maui.Controls.Label> set in the resource dictionary, so the properties in that style are explicitly assigned to the <xref:Microsoft.Maui.Controls.Label>. Toggling the <xref:Microsoft.Maui.Controls.Switch> causes the corresponding <xref:Microsoft.Maui.Controls.Label> to reflect the change:
 
 :::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
 
@@ -227,7 +227,7 @@ In this example, in the last of the three `Switch` and `Label` pairs, the generi
 
 The `Binding` class defines a `ConverterParameter` property, and the `Binding` markup extension also defines a `ConverterParameter` property. If this property is set, then the value is passed to the `Convert` and `ConvertBack` methods as the `parameter` argument. Even if the instance of the value converter is shared among several data bindings, the `ConverterParameter` can be different to perform different conversions.
 
-The use of the `ConverterParameter` property can be demonstrated with a color-selection program. The following example shows the `RgbColorViewModel`, which has three properties of type `float` named `Red`, `Green`, and `Blue` that it uses to construct a `Color` value:
+The use of the `ConverterParameter` property can be demonstrated with a color-selection program. The following example shows the `RgbColorViewModel`, which has three properties of type `float` named `Red`, `Green`, and `Blue` that it uses to construct a <xref:Microsoft.Maui.Graphics.Color> value:
 
 ```csharp
 public class RgbColorViewModel : INotifyPropertyChanged

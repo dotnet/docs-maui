@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # Cell background color on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific sets the default background color of `Cell` instances. It's consumed in XAML by setting the `Cell.DefaultBackgroundColor` bindable property to a `Color`:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific sets the default background color of <xref:Microsoft.Maui.Controls.Cell> instances. It's consumed in XAML by setting the `Cell.DefaultBackgroundColor` bindable property to a <xref:Microsoft.Maui.Graphics.Color>:
 
 ```xaml
 <ContentPage ...
@@ -40,8 +40,8 @@ ViewCell viewCell = new ViewCell { View = ... };
 viewCell.On<iOS>().SetDefaultBackgroundColor(Colors.Teal);
 ```
 
-The `ListView.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Cell.SetDefaultBackgroundColor` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, sets the cell background color to a specified `Color`. In addition, the `Cell.DefaultBackgroundColor` method can be used to retrieve the current cell background color.
+The `ListView.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Cell.SetDefaultBackgroundColor` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, sets the cell background color to a specified <xref:Microsoft.Maui.Graphics.Color>. In addition, the `Cell.DefaultBackgroundColor` method can be used to retrieve the current cell background color.
 
-The result is that the background color in a `Cell` can be set to a specific `Color`:
+The result is that the background color in a <xref:Microsoft.Maui.Controls.Cell> can be set to a specific <xref:Microsoft.Maui.Graphics.Color>:
 
 :::image type="content" source="media/cell-background-color/group-header-cell-color.png" alt-text="Screenshot of the Teal group header cells, on iOS.":::

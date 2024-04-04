@@ -6,20 +6,15 @@ ms.date: 12/06/2021
 
 # VerticalStackLayout
 
-The .NET Multi-platform App UI (.NET MAUI) `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. In addition, a `VerticalStackLayout` can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.VerticalStackLayout> organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. In addition, a <xref:Microsoft.Maui.Controls.VerticalStackLayout> can be used as a parent layout that contains other child layouts.
 
-The `VerticalStackLayout` defines the following properties:
+The <xref:Microsoft.Maui.Controls.VerticalStackLayout> defines the following properties:
 
 - `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
-This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings and styled.
+This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings and styled.
 
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
-
-The following XAML shows how to create a `VerticalStackLayout` that contains different child views:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> that contains different child views:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -50,7 +45,7 @@ The following XAML shows how to create a `VerticalStackLayout` that contains dif
 </ContentPage>
 ```
 
-This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` objects. By default, there is no space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects. By default, there is no space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/basic.png" alt-text="VerticalStackLayout displaying different child views screenshot.":::
 
@@ -59,7 +54,7 @@ This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` 
 
 ## Space between child views
 
-The spacing between child views in a `VerticalStackLayout` can be changed by setting the `Spacing` property to a `double` value:
+The spacing between child views in a <xref:Microsoft.Maui.Controls.VerticalStackLayout> can be changed by setting the `Spacing` property to a `double` value:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -91,7 +86,7 @@ The spacing between child views in a `VerticalStackLayout` can be changed by set
 </ContentPage>
 ```
 
-This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` objects that have ten device-independent units of space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects that have ten device-independent units of space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/spacing.png" alt-text="VerticalStackLayout displaying different child views with spacing screenshot.":::
 
@@ -100,14 +95,14 @@ This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` 
 
 ## Position and size child views
 
-The size and position of child views within a `VerticalStackLayout` depends upon the values of the child views' `HeightRequest` and `WidthRequest` properties, and the values of their `HorizontalOptions` properties. In a `VerticalStackLayout`, child views expand to fill the available width when their size isn't explicitly set.
+The size and position of child views within a <xref:Microsoft.Maui.Controls.VerticalStackLayout> depends upon the values of the child views' <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties, and the values of their `HorizontalOptions` properties. In a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, child views expand to fill the available width when their size isn't explicitly set.
 
-The `HorizontalOptions` properties of a `VerticalStackLayout`, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
+The `HorizontalOptions` properties of a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
 
 > [!TIP]
-> Don't set the `HorizontalOptions` property of a `VerticalStackLayout` unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing this property has a cost and consumes memory, even when setting it back to its default value.
+> Don't set the `HorizontalOptions` property of a <xref:Microsoft.Maui.Controls.VerticalStackLayout> unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing this property has a cost and consumes memory, even when setting it back to its default value.
 
-The following XAML example sets alignment preferences on each child view in the `VerticalStackLayout`:
+The following XAML example sets alignment preferences on each child view in the <xref:Microsoft.Maui.Controls.VerticalStackLayout>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -131,16 +126,16 @@ The following XAML example sets alignment preferences on each child view in the 
 </ContentPage>
 ```
 
-In this example, alignment preferences are set on the `Label` objects to control their position within the `VerticalStackLayout`. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the `Label` objects within the parent `VerticalStackLayout`:
+In this example, alignment preferences are set on the <xref:Microsoft.Maui.Controls.Label> objects to control their position within the <xref:Microsoft.Maui.Controls.VerticalStackLayout>. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the <xref:Microsoft.Maui.Controls.Label> objects within the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout>:
 
 :::image type="content" source="media/verticalstacklayout/alignment.png" alt-text="VerticalStackLayout displaying aligned child views screenshot.":::
 
-A `VerticalStackLayout` only respects the alignment preferences on child views that are in the opposite direction to the orientation of the layout. Therefore, the `Label` child views within the `VerticalStackLayout` set their `HorizontalOptions` properties to one of the alignment fields:
+A <xref:Microsoft.Maui.Controls.VerticalStackLayout> only respects the alignment preferences on child views that are in the opposite direction to the orientation of the layout. Therefore, the <xref:Microsoft.Maui.Controls.Label> child views within the <xref:Microsoft.Maui.Controls.VerticalStackLayout> set their `HorizontalOptions` properties to one of the alignment fields:
 
-- `Start`, which positions the `Label` on the left-hand side of the `VerticalStackLayout`.
-- `Center`, which centers the `Label` in the `VerticalStackLayout`.
-- `End`, which positions the `Label` on the right-hand side of the `VerticalStackLayout`.
-- `Fill`, which ensures that the `Label` fills the width of the `VerticalStackLayout`.
+- `Start`, which positions the <xref:Microsoft.Maui.Controls.Label> on the left-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `Center`, which centers the <xref:Microsoft.Maui.Controls.Label> in the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `End`, which positions the <xref:Microsoft.Maui.Controls.Label> on the right-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `Fill`, which ensures that the <xref:Microsoft.Maui.Controls.Label> fills the width of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
 
 <!--
 For more information about alignment, see [Layout Options in .NET MAUI](layout-options.md).
@@ -148,9 +143,9 @@ For more information about alignment, see [Layout Options in .NET MAUI](layout-o
 
 ## Nest VerticalStackLayout objects
 
-A `VerticalStackLayout` can be used as a parent layout that contains other nested child layouts.
+A <xref:Microsoft.Maui.Controls.VerticalStackLayout> can be used as a parent layout that contains other nested child layouts.
 
-The following XAML shows an example of nesting `HorizontalStackLayout` objects in a `VerticalStackLayout`:
+The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects in a <xref:Microsoft.Maui.Controls.VerticalStackLayout>:
 
 ```xaml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
@@ -193,9 +188,9 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
 </ContentPage>
 ```
 
-In this example, the parent `VerticalStackLayout` contains nested `HorizontalStackLayout` objects inside `Frame` objects:
+In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside <xref:Microsoft.Maui.Controls.Frame> objects:
 
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout). -->
+> The deeper you nest layout objects the more layout calculations will be performed, which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).

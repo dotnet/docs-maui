@@ -8,14 +8,14 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that can be used to provide user feedback when there's no data to display:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that can be used to provide user feedback when there's no data to display:
 
 - `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
-- `EmptyViewTemplate`, of type `DataTemplate`, the template to use to format the specified `EmptyView`. The default value is `null`.
+- `EmptyViewTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template to use to format the specified `EmptyView`. The default value is `null`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
-The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a `CollectionView` yields no data, and displaying user feedback while data is being retrieved from a web service.
+The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a <xref:Microsoft.Maui.Controls.CollectionView> yields no data, and displaying user feedback while data is being retrieved from a web service.
 
 > [!NOTE]
 > The `EmptyView` property can be set to a view that includes interactive content if required.
@@ -50,12 +50,13 @@ The result is that, because the data bound collection is `null`, the string set 
 The `EmptyView` property can be set to a view, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. This can be a single view, or a view that contains multiple child views. The following XAML example shows the `EmptyView` property set to a view that contains multiple child views:
 
 ```xaml
-<StackLayout Margin="20">
+<Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
                SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
-    <CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView ItemsSource="{Binding Monkeys}"
+                    Grid.Row="1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 ...
@@ -80,7 +81,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
             </ContentView>
         </CollectionView.EmptyView>
     </CollectionView>
-</StackLayout>
+</Grid>
 ```
 
 In this example, what looks like a redundant has been added as the root element of the `EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
@@ -103,21 +104,22 @@ CollectionView collectionView = new CollectionView
 collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 ```
 
-When the `SearchBar` executes the `FilterCommand`, the collection displayed by the `CollectionView` is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the `StackLayout` set as the `EmptyView` property value is displayed:
+When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.StackLayout> set as the `EmptyView` property value is displayed:
 
 :::image type="content" source="media/emptyview/filter-multiple-views.png" alt-text="Screenshot of a CollectionView vertical list with a custom empty view.":::
 
 ## Display a templated custom type when data is unavailable
 
-The `EmptyView` property can be set to a custom type, whose template is displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `EmptyViewTemplate` property can be set to a `DataTemplate` that defines the appearance of the `EmptyView`. The following XAML shows an example of this scenario:
+The `EmptyView` property can be set to a custom type, whose template is displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `EmptyViewTemplate` property can be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of the `EmptyView`. The following XAML shows an example of this scenario:
 
 ```xaml
-<StackLayout Margin="20">
+<Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
                SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
-    <CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView ItemsSource="{Binding Monkeys}"
+                    Grid.Row="1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 ...
@@ -137,7 +139,7 @@ The `EmptyView` property can be set to a custom type, whose template is displaye
             </DataTemplate>
         </CollectionView.EmptyViewTemplate>
     </CollectionView>
-</StackLayout>
+</Grid>
 ```
 
 The equivalent C# code is:
@@ -154,7 +156,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-The `FilterData` type defines a `Filter` property, and a corresponding `BindableProperty`:
+The `FilterData` type defines a `Filter` property, and a corresponding <xref:Microsoft.Maui.Controls.BindableProperty>:
 
 ```csharp
 public class FilterData : BindableObject
@@ -169,7 +171,7 @@ public class FilterData : BindableObject
 }
 ```
 
-The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the `SearchBar` executes the `FilterCommand`, the collection displayed by the `CollectionView` is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the `Label` defined in the `DataTemplate`, that's set as the `EmptyViewTemplate` property value, is displayed:
+The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.Label> defined in the <xref:Microsoft.Maui.Controls.DataTemplate>, that's set as the `EmptyViewTemplate` property value, is displayed:
 
 :::image type="content" source="media/emptyview/emptyviewtemplate.png" alt-text="Screenshot of a CollectionView vertical list with an empty view template.":::
 
@@ -178,7 +180,7 @@ The `EmptyView` property is set to a `FilterData` object, and the `Filter` prope
 
 ## Choose an EmptyView at runtime
 
-Views that will be displayed as an `EmptyView` when data is unavailable, can be defined as `ContentView` objects in a `ResourceDictionary`. The `EmptyView` property can then be set to a specific `ContentView`, based on some business logic, at runtime. The following XAML shows an example of this scenario:
+Views that will be displayed as an `EmptyView` when data is unavailable, can be defined as <xref:Microsoft.Maui.Controls.ContentView> objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The `EmptyView` property can then be set to a specific <xref:Microsoft.Maui.Controls.ContentView>, based on some business logic, at runtime. The following XAML shows an example of this scenario:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -213,7 +215,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
         </ContentView>
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
+    <Grid Margin="20" RowDefinitions="Auto,*">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
@@ -223,18 +225,19 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
             <Switch Toggled="OnEmptyViewSwitchToggled" />
         </StackLayout>
         <CollectionView x:Name="collectionView"
-                        ItemsSource="{Binding Monkeys}">
+                        ItemsSource="{Binding Monkeys}"
+                        Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     ...
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
-This XAML defines two `ContentView` objects in the page-level `ResourceDictionary`, with the `Switch` object controlling which `ContentView` object will be set as the `EmptyView` property value. When the `Switch` is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
+This XAML defines two <xref:Microsoft.Maui.Controls.ContentView> objects in the page-level <xref:Microsoft.Maui.Controls.ResourceDictionary>, with the <xref:Microsoft.Maui.Controls.Switch> object controlling which <xref:Microsoft.Maui.Controls.ContentView> object will be set as the `EmptyView` property value. When the <xref:Microsoft.Maui.Controls.Switch> is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
 
 ```csharp
 void ToggleEmptyView(bool isToggled)
@@ -243,7 +246,7 @@ void ToggleEmptyView(bool isToggled)
 }
 ```
 
-The `ToggleEmptyView` method sets the `EmptyView` property of the `collectionView` object to one of the two `ContentView` objects stored in the `ResourceDictionary`, based on the value of the `Switch.IsToggled` property. When the `SearchBar` executes the `FilterCommand`, the collection displayed by the `CollectionView` is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the `ContentView` object set as the `EmptyView` property is displayed:
+The `ToggleEmptyView` method sets the `EmptyView` property of the <xref:Microsoft.Maui.Controls.CollectionView> object to one of the two <xref:Microsoft.Maui.Controls.ContentView> objects stored in the <xref:Microsoft.Maui.Controls.ResourceDictionary>, based on the value of the `Switch.IsToggled` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.ContentView> object set as the `EmptyView` property is displayed:
 
 :::image type="content" source="media/emptyview/swap.png" alt-text="Screenshot of a CollectionView vertical list with swapped empty views.":::
 
@@ -251,7 +254,7 @@ For more information about resource dictionaries, see [Resource dictionaries](~/
 
 ## Choose an EmptyViewTemplate at runtime
 
-The appearance of the `EmptyView` can be chosen at runtime, based on its value, by setting the `CollectionView.EmptyViewTemplate` property to a `DataTemplateSelector` object:
+The appearance of the `EmptyView` can be chosen at runtime, based on its value, by setting the `CollectionView.EmptyViewTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...
@@ -270,15 +273,16 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
                                                  OtherTemplate="{StaticResource BasicTemplate}" />
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
+    <Grid Margin="20" RowDefinitions="Auto,*">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                    Placeholder="Filter" />
         <CollectionView ItemsSource="{Binding Monkeys}"
                         EmptyView="{Binding Source={x:Reference searchBar}, Path=Text}"
-                        EmptyViewTemplate="{StaticResource SearchSelector}" />
-    </StackLayout>
+                        EmptyViewTemplate="{StaticResource SearchSelector}"
+                        Grid.Row="1" />
+    </Grid>
 </ContentPage>
 ```
 
@@ -296,7 +300,7 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 
 The `EmptyView` property is set to the `SearchBar.Text` property, and the `EmptyViewTemplate` property is set to a `SearchTermDataTemplateSelector` object.
 
-When the `SearchBar` executes the `FilterCommand`, the collection displayed by the `CollectionView` is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the `DataTemplate` chosen by the `SearchTermDataTemplateSelector` object is set as the `EmptyViewTemplate` property and displayed.
+When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.DataTemplate> chosen by the `SearchTermDataTemplateSelector` object is set as the `EmptyViewTemplate` property and displayed.
 
 The following example shows the `SearchTermDataTemplateSelector` class:
 
@@ -314,7 +318,7 @@ public class SearchTermDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user:
+The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user:
 
 :::image type="content" source="media/emptyview/datatemplateselector.png" alt-text="Screenshot of a CollectionView runtime empty view template selection.":::
 

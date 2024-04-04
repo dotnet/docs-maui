@@ -34,5 +34,16 @@ The following XAML shows examples of setting the attribute:
 <Label x:Name="publicLabel" x:FieldModifier="Public" />
 ```
 
+::: moniker range="=net-maui-7.0"
+
 > [!IMPORTANT]
 > The `x:FieldModifier` attribute cannot be used to specify the access level of a .NET MAUI XAML class.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+> [!IMPORTANT]
+> The `x:FieldModifier` attribute cannot be used to specify the access level of a .NET MAUI XAML class. For information about specifying the access level of a .NET MAUI XAML class, see [Class modifiers](class-modifiers.md).
+
+::: moniker-end

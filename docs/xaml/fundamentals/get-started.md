@@ -16,7 +16,7 @@ A new .NET MAUI app contains three XAML files, and their associated code-behind 
 
 :::image type="content" source="media/get-started/new-solution.png" alt-text="Screenshot of the structure of a new .NET MAUI app.":::
 
-The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from `Shell`. Most other classes with XAML files contribute to a class that derives from `ContentPage`, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
+The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from <xref:Microsoft.Maui.Controls.Shell>. Most other classes with XAML files contribute to a class that derives from <xref:Microsoft.Maui.Controls.ContentPage>, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
 
 The *MainPage.xaml* file has the following structure:
 
@@ -30,9 +30,9 @@ The *MainPage.xaml* file has the following structure:
 
 The two XML namespace (`xmlns`) declarations refer to URIs on microsoft.com. However, there's no content at these URIs, and they basically function as version identifiers.
 
-The first XML namespace declaration means that tags defined within the XAML file with no prefix refer to classes in .NET MAUI, for example `ContentPage`. The second namespace declaration defines a prefix of `x`. This is used for several elements and attributes that are intrinsic to XAML itself and which are supported by other implementations of XAML. However, these elements and attributes are slightly different depending on the year embedded in the URI. .NET MAUI supports the 2009 XAML specification.
+The first XML namespace declaration means that tags defined within the XAML file with no prefix refer to classes in .NET MAUI, for example <xref:Microsoft.Maui.Controls.ContentPage>. The second namespace declaration defines a prefix of `x`. This is used for several elements and attributes that are intrinsic to XAML itself and which are supported by other implementations of XAML. However, these elements and attributes are slightly different depending on the year embedded in the URI. .NET MAUI supports the [2009 XAML specification](/dotnet/desktop/xaml-services/xaml-2009-language-features).
 
-At the end of the first tag, the `x` prefix is used for an attribute named `Class`. Because the use of this `x` prefix is virtually universal for the XAML namespace, XAML attributes such as `Class` are almost always referred to as `x:Class`. The `x:Class` attribute specifies a fully qualified .NET class name: the `MainPage` class in the `MyMauiApp` namespace. This means that this XAML file defines a new class named `MainPage` in the `MyMauiApp` namespace that derives from `ContentPage` (the tag in which the `x:Class` attribute appears).
+At the end of the first tag, the `x` prefix is used for an attribute named `Class`. Because the use of this `x` prefix is virtually universal for the XAML namespace, XAML attributes such as `Class` are almost always referred to as `x:Class`. The `x:Class` attribute specifies a fully qualified .NET class name: the `MainPage` class in the `MyMauiApp` namespace. This means that this XAML file defines a new class named `MainPage` in the `MyMauiApp` namespace that derives from <xref:Microsoft.Maui.Controls.ContentPage> (the tag in which the `x:Class` attribute appears).
 
 The `x:Class` attribute can only appear in the root element of a XAML file to define a derived C# class. This is the only new class defined in the XAML file. Everything else that appears in a XAML file is instead simply instantiated from existing classes and initialized.
 
@@ -50,7 +50,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-The `MainPage` class derives from `ContentPage`, and is a partial class definition.
+The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a [partial class](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) definition.
 
 When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
 
@@ -61,9 +61,9 @@ At runtime, code in the `MauiProgram` class bootstraps the app and executes the 
 
 ## Set page content
 
-A `ContentPage` should contain a single child, that can be a view or a layout with child views. The child of the `ContentPage` is automatically set as the value of the `ContentPage.Content` property.
+A <xref:Microsoft.Maui.Controls.ContentPage> should contain a single child, that can be a view or a layout with child views. The child of the <xref:Microsoft.Maui.Controls.ContentPage> is automatically set as the value of the `ContentPage.Content` property.
 
-The following example shows a `ContentPage` containing a `Label`:
+The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,20 +80,20 @@ The following example shows a `ContentPage` containing a `Label`:
 </ContentPage>
 ```
 
-From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as `ContentPage` or `Label`) appears in the XAML file as an XML element. Properties of that class—including `Title` on `ContentPage` and seven properties of `Label` usually appear as XML attributes.
+From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
 
 Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type `TextAlignment`, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
 
 For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
 
 - `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
-- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the `Colors` structure or hexadecimal RGB values, with or without an alpha channel.
+- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
 
 ## Page navigation
 
 When you run a .NET MAUI app, the `MainPage` is typically displayed. To see a different page you can either set that as the new startup page in the *AppShell.xaml* file, or navigate to the new page from `MainPage`.
 
-To implement navigation, in the *MainPage.xaml.cs* constructor, you can create a simple `Button` and use the event handler to navigate to `HelloXamlPage`:
+To implement navigation, in the *MainPage.xaml.cs* constructor, you can create a simple <xref:Microsoft.Maui.Controls.Button> and use the event handler to navigate to `HelloXamlPage`:
 
 ```csharp
 public MainPage()
@@ -127,7 +127,7 @@ You can navigate back to `MainPage` using the navigation bar that appears on eac
 
 ## XAML and code interactions
 
-The child of most `ContentPage` derivatives is a layout, such as a `StackLayout` or a `Grid`, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
+The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a layout, such as a <xref:Microsoft.Maui.Controls.StackLayout> or a <xref:Microsoft.Maui.Controls.Grid>, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -151,9 +151,9 @@ This XAML file is syntactically complete, and produces the following UI:
 
 :::image type="content" source="media/get-started/xamlpluscode1.png" alt-text="Screenshot of multiple controls on a page.":::
 
-However, while you can interact with the `Slider` and `Button`, the UI isn't updated. The `Slider` should cause the `Label` to display the current value, and the `Button` should do something.
+However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button>, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the <xref:Microsoft.Maui.Controls.Button> should do something.
 
-Displaying a `Slider` value using a `Label` can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the `Button` click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the `Slider` and the `Clicked` event of the `Button`:
+Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a <xref:Microsoft.Maui.Controls.Label> can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the <xref:Microsoft.Maui.Controls.Button> click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button>:
 
 ```csharp
 namespace XamlSamples
@@ -179,7 +179,7 @@ namespace XamlSamples
 }
 ```
 
-Back in the XAML file, the `Slider` and `Button` tags need to include attributes for the `ValueChanged` and `Clicked` events that reference these handlers:
+Back in the XAML file, the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button> tags need to include attributes for the `ValueChanged` and `Clicked` events that reference these handlers:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -202,9 +202,9 @@ Back in the XAML file, the `Slider` and `Button` tags need to include attributes
 </ContentPage>
 ```
 
-Notice that assigning a handler to an event has the same syntax as assigning a value to a property. In addition, for the `ValueChanged` event handler of the `Slider` to use the `Label` to display the current value, the handler needs to reference that object from code. Therefore, the `Label` needs a name, which is specified with the `x:Name` attribute. The `x` prefix of the `x:Name` attribute indicates that this attribute is intrinsic to XAML. The name you assign to the `x:Name` attribute has the same rules as C# variable names. For example, it must begin with a letter or underscore and contain no embedded spaces.
+Notice that assigning a handler to an event has the same syntax as assigning a value to a property. In addition, for the `ValueChanged` event handler of the <xref:Microsoft.Maui.Controls.Slider> to use the <xref:Microsoft.Maui.Controls.Label> to display the current value, the handler needs to reference that object from code. Therefore, the <xref:Microsoft.Maui.Controls.Label> needs a name, which is specified with the `x:Name` attribute. The `x` prefix of the `x:Name` attribute indicates that this attribute is intrinsic to XAML. The name you assign to the `x:Name` attribute has the same rules as C# variable names. For example, it must begin with a letter or underscore and contain no embedded spaces.
 
-The `ValueChanged` event handler can now set the `Label` to display the new `Slider` value, which is available from the event arguments:
+The `ValueChanged` event handler can now set the <xref:Microsoft.Maui.Controls.Label> to display the new <xref:Microsoft.Maui.Controls.Slider> value, which is available from the event arguments:
 
 ```csharp
 void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
@@ -213,7 +213,7 @@ void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
 }
 ```
 
-Alternatively, the handler could obtain the `Slider` object that is generating this event from the `sender` argument and obtain the `Value` property from that:
+Alternatively, the handler could obtain the <xref:Microsoft.Maui.Controls.Slider> object that is generating this event from the `sender` argument and obtain the `Value` property from that:
 
 ```csharp
 void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
@@ -222,11 +222,11 @@ void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
 }
 ```
 
-The result is that any manipulation of the `Slider` causes its value to be displayed in the `Label`:
+The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider> causes its value to be displayed in the <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/get-started/xamlpluscode2.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
 
-In the example above the `Button` simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a `Button` and then access its properties:
+In the example above the <xref:Microsoft.Maui.Controls.Button> simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a <xref:Microsoft.Maui.Controls.Button> and then access its properties:
 
 ```csharp
 async void OnButtonClicked(object sender, EventArgs args)
@@ -236,7 +236,7 @@ async void OnButtonClicked(object sender, EventArgs args)
 }
 ```
 
-The `OnButtonClicked` method is defined as `async` because the `DisplayAlert` method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the `Button` firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+The `OnButtonClicked` method is defined as `async` because the <xref:Microsoft.Maui.Controls.Page.DisplayAlert%2A> method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
 
 ## Next steps
 

@@ -33,11 +33,11 @@ public class StoragePage : ContentPage
         var customFileType = new FilePickerFileType(
                         new Dictionary<DevicePlatform, IEnumerable<string>>
                         {
-                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
-                            { DevicePlatform.Android, new[] { "application/comics" } },
-                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } },
+                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // UTType values
+                            { DevicePlatform.Android, new[] { "application/comics" } }, // MIME type
+                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } }, // file extension
                             { DevicePlatform.Tizen, new[] { "*/*" } },
-                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
+                            { DevicePlatform.MacCatalyst, new[] { "cbr", "cbz" } }, // UTType values
                         });
 
         PickOptions options = new()
@@ -91,11 +91,11 @@ public class StoragePage : ContentPage
         var customFileType = new FilePickerFileType(
                         new Dictionary<DevicePlatform, IEnumerable<string>>
                         {
-                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
-                            { DevicePlatform.Android, new[] { "application/comics" } },
-                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } },
+                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // UTType values
+                            { DevicePlatform.Android, new[] { "application/comics" } }, // MIME type
+                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } }, // file extension
                             { DevicePlatform.Tizen, new[] { "*/*" } },
-                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
+                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // UTType values
                         });
 
         PickOptions options = new()
@@ -126,7 +126,6 @@ public class StoragePage : ContentPage
     }
     //</filesys_readtxtfile>
 
-    //<filesys_toupper>
     public async Task ConvertFileToUpperCase(string sourceFile, string targetFileName)
     {
         // Read the source file
@@ -146,7 +145,21 @@ public class StoragePage : ContentPage
 
         await streamWriter.WriteAsync(content);
     }
-    //</filesys_toupper>
+
+    //<filesys_copyfile>
+    public async Task CopyFileToAppDataDirectory(string filename)
+    {
+        // Open the source file
+        using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync(filename);
+
+        // Create an output filename
+        string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
+
+        // Copy the file to the AppDataDirectory
+        using FileStream outputStream = File.Create(targetFile);
+        await inputStream.CopyToAsync(outputStream);
+    }
+    //</filesys_copyfile>
 
     public void PreferencesSet()
     {
@@ -162,21 +175,21 @@ public class StoragePage : ContentPage
         //</prefs_set>
 
         //<prefs_defaults>
-        string firstName = Preferences.Get("first_name", "Unknown");
-        int age = Preferences.Get("age", -1);
-        bool hasPets = Preferences.Get("has_pets", false);
+        string firstName = Preferences.Default.Get("first_name", "Unknown");
+        int age = Preferences.Default.Get("age", -1);
+        bool hasPets = Preferences.Default.Get("has_pets", false);
         //</prefs_defaults>
 
         //<prefs_containskey>
-        bool hasKey = Preferences.ContainsKey("my_key");
+        bool hasKey = Preferences.Default.ContainsKey("my_key");
         //</prefs_containskey>
 
         //<prefs_remove>
-        Preferences.Remove("first_name");
+        Preferences.Default.Remove("first_name");
         //</prefs_remove>
 
         //<prefs_clear>
-        Preferences.Clear();
+        Preferences.Default.Clear();
         //</prefs_clear>
     }
 

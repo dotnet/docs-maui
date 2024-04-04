@@ -8,40 +8,35 @@ ms.date: 01/13/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-scrollview)
 
-The .NET Multi-platform App UI (.NET MAUI) `ScrollView` is a view that's capable of scrolling its content. By default, `ScrollView` scrolls its content vertically. A `ScrollView` can only have a single child, although this can be other layouts.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ScrollView> is a view that's capable of scrolling its content. By default, <xref:Microsoft.Maui.Controls.ScrollView> scrolls its content vertically. A <xref:Microsoft.Maui.Controls.ScrollView> can only have a single child, although this can be other layouts.
 
-`ScrollView` defines the following properties:
+<xref:Microsoft.Maui.Controls.ScrollView> defines the following properties:
 
-- `Content`, of type `View`, represents the content to display in the `ScrollView`.
+- `Content`, of type <xref:Microsoft.Maui.Controls.View>, represents the content to display in the <xref:Microsoft.Maui.Controls.ScrollView>.
 - `ContentSize`, of type `Size`, represents the size of the content. This is a read-only property.
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, represents when the horizontal scroll bar is visible.
-- `Orientation`, of type `ScrollOrientation`, represents the scrolling direction of the `ScrollView`. The default value of this property is `Vertical`.
+- `Orientation`, of type `ScrollOrientation`, represents the scrolling direction of the <xref:Microsoft.Maui.Controls.ScrollView>. The default value of this property is `Vertical`.
 - `ScrollX`, of type `double`, indicates the current X scroll position. The default value of this read-only property is 0.
 - `ScrollY`, of type `double`, indicates the current Y scroll position. The default value of this read-only property is 0.
 - `VerticalScrollBarVisibility`,  of type `ScrollBarVisibility`, represents when the vertical scroll bar is visible.
 
-These properties are backed by `BindableProperty` objects, with the exception of the `Content` property, which means that they can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, with the exception of the `Content` property, which means that they can be targets of data bindings and styled.
 
-The `Content` property is the `ContentProperty` of the `ScrollView` class, and therefore does not need to be explicitly set from XAML.
+The `Content` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.ScrollView> class, and therefore does not need to be explicitly set from XAML.
 
 > [!WARNING]
-> `ScrollView` objects should not be nested. In addition, `ScrollView` objects should not be nested with other controls that provide scrolling, such as `CollectionView`, `ListView`, and `WebView`.
-
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
+> <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested. In addition, <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested with other controls that provide scrolling, such as <xref:Microsoft.Maui.Controls.CollectionView>, <xref:Microsoft.Maui.Controls.ListView>, and <xref:Microsoft.Maui.Controls.WebView>.
 
 ## ScrollView as a root layout
 
-A `ScrollView` can only have a single child, which can be other layouts. It's therefore common for a `ScrollView` to be the root layout on a page. To scroll its child content, `ScrollView` computes the difference between the height of its content and its own height. That difference is the amount that the `ScrollView` can scroll its content.
+A <xref:Microsoft.Maui.Controls.ScrollView> can only have a single child, which can be other layouts. It's therefore common for a <xref:Microsoft.Maui.Controls.ScrollView> to be the root layout on a page. To scroll its child content, <xref:Microsoft.Maui.Controls.ScrollView> computes the difference between the height of its content and its own height. That difference is the amount that the <xref:Microsoft.Maui.Controls.ScrollView> can scroll its content.
 
-A `StackLayout` will often be the child of a `ScrollView`. In this scenario, the `ScrollView` causes the `StackLayout` to be as tall as the sum of the heights of its children. Then the `ScrollView` can determine the amount that its content can be scrolled. For more information about the `StackLayout`, see [StackLayout](~/user-interface/layouts/stacklayout.md).
+A <xref:Microsoft.Maui.Controls.StackLayout> will often be the child of a <xref:Microsoft.Maui.Controls.ScrollView>. In this scenario, the <xref:Microsoft.Maui.Controls.ScrollView> causes the <xref:Microsoft.Maui.Controls.StackLayout> to be as tall as the sum of the heights of its children. Then the <xref:Microsoft.Maui.Controls.ScrollView> can determine the amount that its content can be scrolled. For more information about the <xref:Microsoft.Maui.Controls.StackLayout>, see [StackLayout](~/user-interface/layouts/stacklayout.md).
 
 > [!CAUTION]
-> In a vertical `ScrollView`, avoid setting the `VerticalOptions` property to `Start`, `Center`, or `End`. Doing so tells the `ScrollView` to be only as tall as it needs to be, which could be zero. While .NET MAUI protects against this eventuality, it's best to avoid code that suggests something you don't want to happen.
+> In a vertical <xref:Microsoft.Maui.Controls.ScrollView>, avoid setting the `VerticalOptions` property to `Start`, `Center`, or `End`. Doing so tells the <xref:Microsoft.Maui.Controls.ScrollView> to be only as tall as it needs to be, which could be zero. While .NET MAUI protects against this eventuality, it's best to avoid code that suggests something you don't want to happen.
 
-The following XAML example has a `ScrollView` as a root layout on a page:
+The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a root layout on a page:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -70,7 +65,7 @@ The following XAML example has a `ScrollView` as a root layout on a page:
 
 ```
 
-In this example, the `ScrollView` has its content set to a `StackLayout` that uses a bindable layout to display the `Color` fields defined by .NET MAUI. By default, a `ScrollView` scrolls vertically, which reveals more content:
+In this example, the <xref:Microsoft.Maui.Controls.ScrollView> has its content set to a <xref:Microsoft.Maui.Controls.StackLayout> that uses a bindable layout to display the `Colors` fields defined by .NET MAUI. By default, a <xref:Microsoft.Maui.Controls.ScrollView> scrolls vertically, which reveals more content:
 
 :::image type="content" source="media/scrollview/root-layout.png" alt-text="Screenshot of a root ScrollView layout.":::
 
@@ -128,11 +123,11 @@ For more information about bindable layouts, see [BindableLayout](~/user-interfa
 
 ## ScrollView as a child layout
 
-A `ScrollView` can be a child layout to a different parent layout.
+A <xref:Microsoft.Maui.Controls.ScrollView> can be a child layout to a different parent layout.
 
-A `ScrollView` will often be the child of a `Grid`. A `ScrollView` requires a specific height to compute the difference between the height of its content and its own height, with the difference being the amount that the `ScrollView` can scroll its content. When a `ScrollView` is the child of a `Grid`, it doesn't receive a specific height. The `Grid` wants the `ScrollView` to be as short as possible, which is either the height of the `ScrollView` contents or zero. To handle this scenario, the `RowDefinition` of the `Grid` row that contains the `ScrollView` should be set to `*`. This will cause the `Grid` to give the `ScrollView` all the extra space not required by the other children, and the `ScrollView` will then have a specific height.
+A <xref:Microsoft.Maui.Controls.ScrollView> will often be the child of a <xref:Microsoft.Maui.Controls.Grid>. A <xref:Microsoft.Maui.Controls.ScrollView> requires a specific height to compute the difference between the height of its content and its own height, with the difference being the amount that the <xref:Microsoft.Maui.Controls.ScrollView> can scroll its content. When a <xref:Microsoft.Maui.Controls.ScrollView> is the child of a <xref:Microsoft.Maui.Controls.Grid>, it doesn't receive a specific height. The <xref:Microsoft.Maui.Controls.Grid> wants the <xref:Microsoft.Maui.Controls.ScrollView> to be as short as possible, which is either the height of the <xref:Microsoft.Maui.Controls.ScrollView> contents or zero. To handle this scenario, the `RowDefinition` of the <xref:Microsoft.Maui.Controls.Grid> row that contains the <xref:Microsoft.Maui.Controls.ScrollView> should be set to `*`. This will cause the <xref:Microsoft.Maui.Controls.Grid> to give the <xref:Microsoft.Maui.Controls.ScrollView> all the extra space not required by the other children, and the <xref:Microsoft.Maui.Controls.ScrollView> will then have a specific height.
 
-The following XAML example has a `ScrollView` as a child layout to a `Grid`:
+The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a child layout to a <xref:Microsoft.Maui.Controls.Grid>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -161,7 +156,7 @@ The following XAML example has a `ScrollView` as a child layout to a `Grid`:
 </ContentPage>
 ```
 
-In this example, the root layout is a `Grid` that has a `Label`, `ScrollView`, and `Button` as its children. The `ScrollView` has a `StackLayout` as its content, with the `StackLayout` containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
+In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.ScrollView>, and <xref:Microsoft.Maui.Controls.Button> as its children. The <xref:Microsoft.Maui.Controls.ScrollView> has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple <xref:Microsoft.Maui.Controls.Label> objects. This arrangement ensures that the first <xref:Microsoft.Maui.Controls.Label> is always on-screen, while text displayed by the other <xref:Microsoft.Maui.Controls.Label> objects can be scrolled:
 
 :::image type="content" source="media/scrollview/child-layout.png" alt-text="Screenshot of a child ScrollView layout.":::
 
@@ -208,24 +203,24 @@ public class BlackCatPage : ContentPage
 
 ## Orientation
 
-`ScrollView` has an `Orientation` property, which represents the scrolling direction of the `ScrollView`. This property is of type `ScrollOrientation`, which defines the following members:
+<xref:Microsoft.Maui.Controls.ScrollView> has an `Orientation` property, which represents the scrolling direction of the <xref:Microsoft.Maui.Controls.ScrollView>. This property is of type `ScrollOrientation`, which defines the following members:
 
-- `Vertical` indicates that the `ScrollView` will scroll vertically. This member is the default value of the `Orientation` property.
-- `Horizontal` indicates that the `ScrollView` will scroll horizontally.
-- `Both` indicates that the `ScrollView` will scroll horizontally and vertically.
-- `Neither` indicates that the `ScrollView` won't scroll.
+- `Vertical` indicates that the <xref:Microsoft.Maui.Controls.ScrollView> will scroll vertically. This member is the default value of the `Orientation` property.
+- `Horizontal` indicates that the <xref:Microsoft.Maui.Controls.ScrollView> will scroll horizontally.
+- `Both` indicates that the <xref:Microsoft.Maui.Controls.ScrollView> will scroll horizontally and vertically.
+- `Neither` indicates that the <xref:Microsoft.Maui.Controls.ScrollView> won't scroll.
 
 > [!TIP]
 > Scrolling can be disabled by setting the `Orientation` property to `Neither`.
 
 ## Detect scrolling
 
-`ScrollView` defines a `Scrolled` event that's raised to indicate that scrolling occurred. The `ScrolledEventArgs` object that accompanies the `Scrolled` event has `ScrollX` and `ScrollY` properties, both of type `double`.
+<xref:Microsoft.Maui.Controls.ScrollView> defines a `Scrolled` event that's raised to indicate that scrolling occurred. The `ScrolledEventArgs` object that accompanies the `Scrolled` event has `ScrollX` and `ScrollY` properties, both of type `double`.
 
 > [!IMPORTANT]
-> The `ScrolledEventArgs.ScrollX` and `ScrolledEventArgs.ScrollY` properties can have negative values, due to the bounce effect that occurs when scrolling back to the start of a `ScrollView`.
+> The `ScrolledEventArgs.ScrollX` and `ScrolledEventArgs.ScrollY` properties can have negative values, due to the bounce effect that occurs when scrolling back to the start of a <xref:Microsoft.Maui.Controls.ScrollView>.
 
-The following XAML example shows a `ScrollView` that sets an event handler for the `Scrolled` event:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.ScrollView> that sets an event handler for the `Scrolled` event:
 
 ```xaml
 <ScrollView Scrolled="OnScrollViewScrolled">
@@ -256,41 +251,41 @@ In this example, the `OnScrollViewScrolled` event handler outputs the values of 
 
 ## Scroll programmatically
 
-`ScrollView` defines two `ScrollToAsync` methods, that asynchronously scroll the `ScrollView`. One of the overloads scrolls to a specified position in the `ScrollView`, while the other scrolls a specified element into view. Both overloads have an additional argument that can be used to indicate whether to animate the scroll.
+<xref:Microsoft.Maui.Controls.ScrollView> defines two `ScrollToAsync` methods, that asynchronously scroll the <xref:Microsoft.Maui.Controls.ScrollView>. One of the overloads scrolls to a specified position in the <xref:Microsoft.Maui.Controls.ScrollView>, while the other scrolls a specified element into view. Both overloads have an additional argument that can be used to indicate whether to animate the scroll.
 
 > [!IMPORTANT]
 > The `ScrollToAsync` methods will not result in scrolling when the `ScrollView.Orientation` property is set to `Neither`.
 
 ### Scroll a position into view
 
-A position within a `ScrollView` can be scrolled to with the `ScrollToAsync` method that accepts `double` `x` and `y` arguments. Given a vertical `ScrollView` object named `scrollView`, the following example shows how to scroll to 150 device-independent units from the top of the `ScrollView`:
+A position within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled to with the `ScrollToAsync` method that accepts `double` `x` and `y` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> object named `scrollView`, the following example shows how to scroll to 150 device-independent units from the top of the <xref:Microsoft.Maui.Controls.ScrollView>:
 
 ```csharp
 await scrollView.ScrollToAsync(0, 150, true);
 ```
 
-The third argument to the `ScrollToAsync` is the `animated` argument, which determines whether a scrolling animation is displayed when programmatically scrolling a `ScrollView`.
+The third argument to the `ScrollToAsync` is the `animated` argument, which determines whether a scrolling animation is displayed when programmatically scrolling a <xref:Microsoft.Maui.Controls.ScrollView>.
 
 ### Scroll an element into view
 
-An element within a `ScrollView` can be scrolled into view with the `ScrollToAsync` method that accepts `Element` and `ScrollToPosition` arguments. Given a vertical `ScrollView` named `scrollView`, and a `Label` named `label`, the following example shows how to scroll an element into view:
+An element within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled into view with the `ScrollToAsync` method that accepts <xref:Microsoft.Maui.Controls.Element> and `ScrollToPosition` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> named `scrollView`, and a <xref:Microsoft.Maui.Controls.Label> named `label`, the following example shows how to scroll an element into view:
 
 ```csharp
 await scrollView.ScrollToAsync(label, ScrollToPosition.End, true);
 ```
 
-The third argument to the `ScrollToAsync` is the `animated` argument, which determines whether a scrolling animation is displayed when programmatically scrolling a `ScrollView`.
+The third argument to the `ScrollToAsync` is the `animated` argument, which determines whether a scrolling animation is displayed when programmatically scrolling a <xref:Microsoft.Maui.Controls.ScrollView>.
 
 When scrolling an element into view, the exact position of the element after the scroll has completed can be set with the second argument, `position`, of the `ScrollToAsync` method. This argument accepts a `ScrollToPosition` enumeration member:
 
-- `MakeVisible` indicates that the element should be scrolled until it's visible in the `ScrollView`.
-- `Start` indicates that the element should be scrolled to the start of the `ScrollView`.
-- `Center` indicates that the element should be scrolled to the center of the `ScrollView`.
-- `End` indicates that the element should be scrolled to the end of the `ScrollView`.
+- `MakeVisible` indicates that the element should be scrolled until it's visible in the <xref:Microsoft.Maui.Controls.ScrollView>.
+- `Start` indicates that the element should be scrolled to the start of the <xref:Microsoft.Maui.Controls.ScrollView>.
+- `Center` indicates that the element should be scrolled to the center of the <xref:Microsoft.Maui.Controls.ScrollView>.
+- `End` indicates that the element should be scrolled to the end of the <xref:Microsoft.Maui.Controls.ScrollView>.
 
 ## Scroll bar visibility
 
-`ScrollView` defines `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties, which are backed by bindable properties. These properties get or set a `ScrollBarVisibility` enumeration value that represents whether the horizontal, or vertical, scroll bar is visible. The `ScrollBarVisibility` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.ScrollView> defines `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties, which are backed by bindable properties. These properties get or set a `ScrollBarVisibility` enumeration value that represents whether the horizontal, or vertical, scroll bar is visible. The `ScrollBarVisibility` enumeration defines the following members:
 
 - `Default` indicates the default scroll bar behavior for the platform, and is the default value of the `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties.
 - `Always` indicates that scroll bars will be visible, even when the content fits in the view.

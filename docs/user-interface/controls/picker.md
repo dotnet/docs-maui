@@ -6,47 +6,48 @@ ms.date: 02/11/2022
 
 # Picker
 
-The .NET Multi-platform App UI (.NET MAUI) `Picker` displays a short list of items, from which the user can select an item.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker> displays a short list of items, from which the user can select an item.
 
-`Picker` defines the following properties:
+<xref:Microsoft.Maui.Controls.Picker> defines the following properties:
 
-- `CharacterSpacing`, of type `double`, is the spacing between characters of the item displayed by the `Picker`.
+- `CharacterSpacing`, of type `double`, is the spacing between characters of the item displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 - `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
 - `FontAutoScalingEnabled`, of type `bool`, which determines whether the text respects scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
-- `HorizontalTextAlignment`, of type `TextAlignment`, is the horizontal alignment of the text displayed by the `Picker`.
+- `HorizontalTextAlignment`, of type `TextAlignment`, is the horizontal alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
-- `TextColor` of type `Color`, the color used to display the text.
+- `ItemDisplayBinding`, of type <xref:Microsoft.Maui.Controls.BindingBase>, selects the property that will be displayed for each object in the list of items, if the `ItemSource` is a complex object. For more information, see [Populate a Picker with data using data binding](#populate-a-picker-with-data-using-data-binding).
+- `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
-- `TitleColor` of type `Color`, the color used to display the `Title` text.
-- `VerticalTextAlignment`, of type `TextAlignment`, is the vertical alignment of the text displayed by the `Picker`.
+- `TitleColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the `Title` text.
+- `VerticalTextAlignment`, of type `TextAlignment`, is the vertical alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 
-All of the properties are backed by `BindableProperty` objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
+All of the properties, with the exception of `ItemDisplayBinding`, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
 
-A `Picker` doesn't show any data when it's first displayed. Instead, the value of its `Title` property is shown as a placeholder, as shown in the following iOS screenshot:
+A <xref:Microsoft.Maui.Controls.Picker> doesn't show any data when it's first displayed. Instead, the value of its `Title` property is shown as a placeholder, as shown in the following iOS screenshot:
 
 :::image type="content" source="media/picker/picker-initial.png" alt-text="Screenshot of initial Picker display.":::
 
-When the `Picker` gains focus, its data is displayed and the user can select an item:
+When the <xref:Microsoft.Maui.Controls.Picker> gains focus, its data is displayed and the user can select an item:
 
 :::image type="content" source="media/picker/picker-selection.png" alt-text="Screenshot of selecting an item in a Picker.":::
 
-The `Picker` fires a `SelectedIndexChanged` event when the user selects an item. Following selection, the selected item is displayed by the `Picker`:
+The <xref:Microsoft.Maui.Controls.Picker> fires a `SelectedIndexChanged` event when the user selects an item. Following selection, the selected item is displayed by the <xref:Microsoft.Maui.Controls.Picker>:
 
 :::image type="content" source="media/picker/picker-after-selection.png" alt-text="Screenshot of Picker after selection.":::
 
-There are two techniques for populating a `Picker` with data:
+There are two techniques for populating a <xref:Microsoft.Maui.Controls.Picker> with data:
 
-- Setting the `ItemsSource` property to the data to be displayed. This is the recommended technique for adding data to a `Picker`. For more information, see [Set the ItemsSource property](#set-the-itemssource-property).
+- Setting the `ItemsSource` property to the data to be displayed. This is the recommended technique for adding data to a <xref:Microsoft.Maui.Controls.Picker>. For more information, see [Set the ItemsSource property](#set-the-itemssource-property).
 - Adding the data to be displayed to the `Items` collection. For more information, see [Add data to the Items collection](#add-data-to-the-items-collection).
 
 ## Set the ItemsSource property
 
-A `Picker` can be populated with data by setting its `ItemsSource` property to an `IList` collection. Each item in the collection must be of, or derived from, type `object`. Items can be added in XAML by initializing the `ItemsSource` property from an array of items:
+A <xref:Microsoft.Maui.Controls.Picker> can be populated with data by setting its `ItemsSource` property to an `IList` collection. Each item in the collection must be of, or derived from, type `object`. Items can be added in XAML by initializing the `ItemsSource` property from an array of items:
 
 ```xaml
 <Picker x:Name="picker"
@@ -86,14 +87,12 @@ picker.ItemsSource = monkeyList;
 
 ### Respond to item selection
 
-A `Picker` supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list, and the `SelectedItem` property is updated to the `object` representing the selected item. The `SelectedIndex` property is a zero-based number indicating the item the user selected. If no item is selected, which is the case when the `Picker` is first created and initialized, `SelectedIndex` will be -1.
+A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list, and the `SelectedItem` property is updated to the `object` representing the selected item. The `SelectedIndex` property is a zero-based number indicating the item the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a `Picker` can be customized on iOS with a platform-specific. For more information, see [Controlling Picker item selection](~/platform-integration/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
-The following XAML example shows how to retrieve the `SelectedItem` property value from the `Picker`:
+The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
 
 ```xaml
 <Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" />
@@ -124,11 +123,11 @@ void OnPickerSelectedIndexChanged(object sender, EventArgs e)
 In this example, the event handler obtains the `SelectedIndex` property value, and uses the value to retrieve the selected item from the `ItemsSource` collection. This is functionally equivalent to retrieving the selected item from the `SelectedItem` property. Each item in the `ItemsSource` collection is of type `object`, and so must be cast to a `string` for display.
 
 > [!NOTE]
-> A `Picker` can be initialized to display a specific item by setting the `SelectedIndex` or `SelectedItem` properties. However, these properties must be set after initializing the `ItemsSource` collection.
+> A <xref:Microsoft.Maui.Controls.Picker> can be initialized to display a specific item by setting the `SelectedIndex` or `SelectedItem` properties. However, these properties must be set after initializing the `ItemsSource` collection.
 
 ### Populate a Picker with data using data binding
 
-A `Picker` can be also populated with data by using data binding to bind its `ItemsSource` property to an `IList` collection. In XAML this is achieved with the `Binding` markup extension:
+A <xref:Microsoft.Maui.Controls.Picker> can be also populated with data by using data binding to bind its `ItemsSource` property to an `IList` collection. In XAML this is achieved with the `Binding` markup extension:
 
 ```xaml
 <Picker Title="Select a monkey"
@@ -156,7 +155,7 @@ public class Monkey
 }
 ```
 
-When binding to a list of objects, the `Picker` must be told which property to display from each object. This is achieved by setting the `ItemDisplayBinding` property to the required property from each object. In the code examples above, the `Picker` is set to display each `Monkey.Name` property value.
+When binding to a list of objects, the <xref:Microsoft.Maui.Controls.Picker> must be told which property to display from each object. This is achieved by setting the `ItemDisplayBinding` property to the required property from each object. In the code examples above, the <xref:Microsoft.Maui.Controls.Picker> is set to display each `Monkey.Name` property value.
 
 #### Respond to item selection
 
@@ -194,14 +193,14 @@ Label detailsLabel = new Label();
 detailsLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Details");
 ```
 
-The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the `Picker`, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by `Label` and `Image` views.
+The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Image> views.
 
 > [!NOTE]
 > The `SelectedItem` and `SelectedIndex` properties both support two-way bindings by default.
 
 ## Add data to the Items collection
 
-An alternative process for populating a `Picker` with data is to add the data to be displayed to the read-only `Items` collection, which is of type `IList<string>`. Each item in the collection must be of type `string`. Items can be added in XAML by initializing the `Items` property with a list of `x:String` items:
+An alternative process for populating a <xref:Microsoft.Maui.Controls.Picker> with data is to add the data to be displayed to the read-only `Items` collection, which is of type `IList<string>`. Each item in the collection must be of type `string`. Items can be added in XAML by initializing the `Items` property with a list of `x:String` items:
 
 ```xaml
 <Picker Title="Select a monkey">
@@ -234,12 +233,10 @@ In addition to adding data using the `Items.Add` method, data can also be insert
 
 ### Respond to item selection
 
-A `Picker` supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, and the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list. The `SelectedIndex` property is a zero-based number indicating the item that the user selected. If no item is selected, which is the case when the `Picker` is first created and initialized, `SelectedIndex` will be -1.
+A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, and the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list. The `SelectedIndex` property is a zero-based number indicating the item that the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a `Picker` can be customized on iOS with a platform-specific. For more information, see [Controlling Picker Item Selection](~/xamarin-forms/platform/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
 The following code example shows the `OnPickerSelectedIndexChanged` event handler method, which is executed when the `SelectedIndexChanged` event fires:
 
@@ -256,7 +253,7 @@ void OnPickerSelectedIndexChanged(object sender, EventArgs e)
 }
 ```
 
-This method obtains the `SelectedIndex` property value, and uses the value to retrieve the selected item from the `Items` collection. Because each item in the `Items` collection is a `string`, they can be displayed by a `Label` without requiring a cast.
+This method obtains the `SelectedIndex` property value, and uses the value to retrieve the selected item from the `Items` collection. Because each item in the `Items` collection is a `string`, they can be displayed by a <xref:Microsoft.Maui.Controls.Label> without requiring a cast.
 
 > [!NOTE]
-> A `Picker` can be initialized to display a specific item by setting the `SelectedIndex` property. However, the `SelectedIndex` property must be set after initializing the `Items` collection.
+> A <xref:Microsoft.Maui.Controls.Picker> can be initialized to display a specific item by setting the `SelectedIndex` property. However, the `SelectedIndex` property must be set after initializing the `Items` collection.

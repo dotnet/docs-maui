@@ -17,7 +17,7 @@ ms.date: 05/17/2022
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
-.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects in .NET 6.
+.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects.
 
 ## Resource files
 
@@ -42,7 +42,7 @@ Resource files should typically be placed in the _Resources_ folder of your .NET
 > [!NOTE]
 > XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, only XAML resource dictionaries will typically be placed in the _Resources_ folder of the app project.
 
-When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file, with the exception of CSS files. The following screenshot shows a typical *Resources* folder containing child-folders for each resource type:
+When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project file, with the exception of CSS files. The following screenshot shows a typical *Resources* folder containing child-folders for each resource type:
 
 :::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
@@ -84,7 +84,7 @@ An app icon can be added to your app project by dragging an image into the _Reso
 <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 ```
 
-At build time, the app icon can be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
+At build time, the app icon will be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
 For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
 
@@ -140,13 +140,13 @@ Raw assets can then be consumed by controls, as required:
 <WebView Source="index.html" />
 ```
 
-At build time, raw assets are copied to your app package.
+At build time, raw assets are copied to your app package. For information about disabling asset packaging, see [Disable asset file packaging](~/troubleshooting.md#disable-asset-file-packaging).
 
 ### CSS files
 
 .NET MAUI apps can be partially styled with Cascading Style Sheet (CSS) files. CSS files can be added to your app project by dragging them into any folder of your project, and setting their build action to `MauiCss` in the **Properties** window.
 
-CSS files must be loaded by the `StyleSheet` class before being added to a `ResourceDictionary`:
+CSS files must be loaded by the `StyleSheet` class before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```xaml
 <Application ...>
@@ -160,7 +160,7 @@ For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
 
 ## App manifest
 
-Each platform uses its own native app manifest file to specify information such as the app title, ID, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file (.csproj).
+Each platform uses its own native app manifest file to specify information such as the app title, ID, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file.
 
 To specify the shared app manifest data for a project, open the shortcut menu for the project in **Solution Explorer**, and then choose **Properties**. The app title, ID, and version can then be specified in **MAUI Shared > General**:
 
@@ -174,7 +174,7 @@ A .NET MAUI app project contains a *Platforms* folder, with each child folder re
 
 :::image type="content" source="media/single-project/platform-folders.png" alt-text="Platform folders screenshot.":::
 
-The folders for each platform contain platform-specific resources, and code and that starts the app on each platform:
+The folders for each platform contain platform-specific resources, and code that starts the app on each platform:
 
 :::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
 
@@ -235,4 +235,4 @@ public class App : Application
 }
 ```
 
-In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed `Shell` class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).

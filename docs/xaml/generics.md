@@ -124,7 +124,7 @@ A single object type argument can be specified as a prefixed string argument usi
 </ContentPage>
 ```
 
-In this example, `GenericsDemo.Models` is defined as the `models` XAML namespace, and `System.Collections.Generic` is defined as the `scg` XAML namespace. The `CollectionView.ItemsSource` property is set to a `List<T>` that's instantiated with a `Monkey` type argument. The `List<Monkey>` collection is initialized with multiple `Monkey` items, and a `DataTemplate` that defines the appearance of each `Monkey` object is set as the `ItemTemplate` of the `CollectionView`.
+In this example, `GenericsDemo.Models` is defined as the `models` XAML namespace, and `System.Collections.Generic` is defined as the `scg` XAML namespace. The `CollectionView.ItemsSource` property is set to a `List<T>` that's instantiated with a `Monkey` type argument. The `List<Monkey>` collection is initialized with multiple `Monkey` items, and a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each `Monkey` object is set as the `ItemTemplate` of the <xref:Microsoft.Maui.Controls.CollectionView>.
 
 ## Multiple type arguments
 
@@ -193,4 +193,4 @@ Multiple type arguments can be specified as prefixed string arguments, delimited
 </ContentPage    
 ```
 
-In this example, `GenericsDemo.Models` is defined as the `models` XAML namespace, and `System.Collections.Generic` is defined as the `scg` XAML namespace. The `CollectionView.ItemsSource` property is set to a `List<T>` that's instantiated with a `KeyValuePair<TKey, TValue>` constraint, with the inner constraint type arguments `string` and `Monkey`. The `List<KeyValuePair<string,Monkey>>` collection is initialized with multiple `KeyValuePair` items, using the non-default `KeyValuePair` constructor, and a `DataTemplate` that defines the appearance of each `Monkey` object is set as the `ItemTemplate` of the `CollectionView`. For information on passing arguments to a non-default constructor, see [Pass constructor arguments](pass-arguments.md#pass-constructor-arguments).
+In this example, `GenericsDemo.Models` is defined as the `models` XAML namespace, and `System.Collections.Generic` is defined as the `scg` XAML namespace. The `CollectionView.ItemsSource` property is set to a `List<T>` that's instantiated with a `KeyValuePair<TKey, TValue>` constraint, with the inner constraint type arguments `string` and `Monkey`. The `List<KeyValuePair<string,Monkey>>` collection is initialized with multiple `KeyValuePair` items, using the non-default `KeyValuePair` constructor, and a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each `Monkey` object is set as the `ItemTemplate` of the <xref:Microsoft.Maui.Controls.CollectionView>. For information on passing arguments to a non-default constructor, see [Pass constructor arguments](pass-arguments.md#pass-constructor-arguments).

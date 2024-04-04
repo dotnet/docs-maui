@@ -44,15 +44,15 @@ public partial class DataPage : ContentPage
 
     private async void ShareButton_Clicked(object sender, EventArgs e)
     {
-        await ShareText("Hello, welcome to the show.", Share.Default);
+        await ShareText("Hello, welcome to the show.");
         await ShareUri("http://www.microsoft.com", Share.Default);
-        await ShareFile(Share.Default);
-        await ShareMultipleFiles(Share.Default);
+        await ShareFile();
+        await ShareMultipleFiles();
     }
     //<share_text_uri>
-    public async Task ShareText(string text, IShare share)
+    public async Task ShareText(string text)
     {
-        await share.RequestAsync(new ShareTextRequest
+        await Share.Default.RequestAsync(new ShareTextRequest
         {
             Text = text,
             Title = "Share Text"
@@ -70,14 +70,14 @@ public partial class DataPage : ContentPage
     //</share_text_uri>
 
     //<share_file>
-    public async Task ShareFile(IShare share)
+    public async Task ShareFile()
     {
         string fn = "Attachment.txt";
         string file = Path.Combine(FileSystem.CacheDirectory, fn);
 
         File.WriteAllText(file, "Hello World");
 
-        await share.RequestAsync(new ShareFileRequest
+        await Share.Default.RequestAsync(new ShareFileRequest
         {
             Title = "Share text file",
             File = new ShareFile(file)
@@ -86,7 +86,7 @@ public partial class DataPage : ContentPage
     //</share_file>
 
     //<share_file_multiple>
-    public async Task ShareMultipleFiles(IShare share)
+    public async Task ShareMultipleFiles()
     {
         string file1 = Path.Combine(FileSystem.CacheDirectory, "Attachment1.txt");
         string file2 = Path.Combine(FileSystem.CacheDirectory, "Attachment2.txt");
@@ -94,7 +94,7 @@ public partial class DataPage : ContentPage
         File.WriteAllText(file1, "Content 1");
         File.WriteAllText(file2, "Content 2");
 
-        await share.RequestAsync(new ShareMultipleFilesRequest
+        await Share.Default.RequestAsync(new ShareMultipleFilesRequest
         {
             Title = "Share multiple files",
             Files = new List<ShareFile> { new ShareFile(file1), new ShareFile(file2) }

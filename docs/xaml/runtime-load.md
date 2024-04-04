@@ -6,8 +6,6 @@ ms.date: 01/26/2022
 
 # Load XAML at runtime
 
-<!-- Sample link goes here -->
-
 When a .NET Multi-platform App UI (.NET MAUI) XAML class is constructed, a `LoadFromXaml` method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
 
 ```csharp
@@ -48,12 +46,12 @@ Button navigationButton = new Button().LoadFromXaml(navigationButtonXAML);
 stackLayout.Add(navigationButton);
 ```
 
-In this example, a `Button` instance is created, with its `Text` property value being set from the XAML defined in the `string`. The `Button` is then added to a `StackLayout` that has been defined in the XAML for the page.
+In this example, a <xref:Microsoft.Maui.Controls.Button> instance is created, with its `Text` property value being set from the XAML defined in the `string`. The <xref:Microsoft.Maui.Controls.Button> is then added to a <xref:Microsoft.Maui.Controls.StackLayout> that has been defined in the XAML for the page.
 
 > [!NOTE]
 > The `LoadFromXaml` extension methods allow a generic type argument to be specified. However, it's rarely necessary to specify the type argument, as it will be inferred from the type of the instance it's operating on.
 
-The `LoadFromXaml` method can be used to inflate any XAML, with the following example inflating a `ContentPage` and then navigating to it:
+The `LoadFromXaml` method can be used to inflate any XAML, with the following example inflating a <xref:Microsoft.Maui.Controls.ContentPage> and then navigating to it:
 
 ```csharp
 // See the sample for the full XAML string
@@ -76,4 +74,4 @@ Label monkeyLabel = page.FindByName<Label>("monkeyName");
 monkeyLabel.Text = "Seated Monkey";
 ```
 
-In this example, the XAML for a `ContentPage` is inflated. This XAML includes a `Label` named `monkeyName`, which is retrieved using the `FindByName` method, before its `Text` property is set.
+In this example, the XAML for a <xref:Microsoft.Maui.Controls.ContentPage> is inflated. This XAML includes a <xref:Microsoft.Maui.Controls.Label> named `monkeyName`, which is retrieved using the `FindByName` method, before its `Text` property is set.

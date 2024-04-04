@@ -1,29 +1,29 @@
 ---
 title: "Device Display Information"
-description: "Learn how to use the .NET MAUI DeviceDisplay class in the Microsoft.Maui.Devices namespace, which provides screen metrics for the device on which the app is running."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IDeviceDisplay interface in the Microsoft.Maui.Devices namespace, which provides screen metrics for the device on which the app is running."
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Device display information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stays awake while the app is running.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `DeviceDisplay` class is available in the `Microsoft.Maui.Devices` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IDeviceDisplay> interface to read information about the device's screen metrics. This interface can be used to request the screen stays awake while the app is running.
+
+The default implementation of the `IDeviceDisplay` interface is available through the <xref:Microsoft.Maui.Devices.DeviceDisplay.Current?displayProperty=nameWithType> property. Both the `IDeviceDisplay` interface and `DeviceDisplay` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Main display info
 
-Information about your device's screen is accessed by the default implementation of the `IDeviceDisplay` interface, which is available by accessing the `Microsoft.Maui.Devices.DeviceDisplay.Current` property.
-
-The `IDeviceDisplay.MainDisplayInfo` property returns information about the screen and orientation. The following code example uses the `Loaded` event of a page to read information about the current screen:
+The <xref:Microsoft.Maui.Devices.IDeviceDisplay.MainDisplayInfo> property returns information about the screen and orientation. The following code example uses the <xref:Microsoft.Maui.Controls.VisualElement.Loaded> event of a page to read information about the current screen:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="main_display":::
 
-The `IDeviceDisplay` interface also provides the `MainDisplayInfoChanged` event that is raised when any screen metric changes, such as when the device orientation changes from `DisplayOrientation.Landscape` to `DisplayOrientation.Portrait`.
+The <xref:Microsoft.Maui.Devices.IDeviceDisplay> interface also provides the <xref:Microsoft.Maui.Devices.IDeviceDisplay.MainDisplayInfoChanged> event that is raised when any screen metric changes, such as when the device orientation changes from <xref:Microsoft.Maui.Devices.DisplayOrientation.Landscape?displayProperty=nameWithType> to <xref:Microsoft.Maui.Devices.DisplayOrientation.Portrait?displayProperty=nameWithType>.
 
 ## Keep the screen on
 
-You can also prevent the device from locking or the screen turning off by setting the `IDeviceDisplay.KeepScreenOn` property to `true`. The following code example toggles the screen lock whenever the switch control is pressed:
+You can also prevent the device from locking or the screen turning off by setting the <xref:Microsoft.Maui.Devices.IDeviceDisplay.KeepScreenOn> property to `true`. The following code example toggles the screen lock whenever the switch control is pressed:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="always_on":::
 
@@ -36,9 +36,9 @@ This section describes the platform-specific differences with the device display
 
 No platform differences.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
-- Accessing `DeviceDisplay` must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
+- Accessing <xref:Microsoft.Maui.Devices.DeviceDisplay.Current?displayProperty=nameWithType> must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
 
 # [Windows](#tab/windows)
 

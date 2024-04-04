@@ -1,21 +1,19 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 05/13/2022
+ms.date: 09/29/2022
 ---
 
 # Border
 
-<!-- Sample link, if any, goes here -->
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border> is a container control that draws a border, background, or both, around another control. A <xref:Microsoft.Maui.Controls.Border> can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
-The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that draws a border, background, or both, around another control. A `Border` can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
+<xref:Microsoft.Maui.Controls.Border> defines the following properties:
 
-`Border` defines the following properties:
-
-- `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
+- `Content`, of type `IView`, represents the content to display in the border. This property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
-- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
-- `Stroke`, of type `Brush`, indicates the brush used to paint the border.
+- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. It's default value is <xref:Microsoft.Maui.Controls.Shapes.Rectangle>. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
+- `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
 - `StrokeDashOffset`, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
@@ -23,18 +21,18 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 - `StrokeLineJoin`, of type `PenLineJoin`, specifies the type of join that is used at the vertices of the stroke shape. The default value of this property is `PenLineJoin.Miter`.
 - `StrokeMiterLimit`, of type `double`, specifies the limit on the ratio of the miter length to half the stroke thickness. The default value of this property is 10.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as `Line` are unsupported.
+> When creating a border using a shape, such as a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> or <xref:Microsoft.Maui.Controls.Shapes.Polygon>, only closed shapes should be used. Therefore, open shapes such as <xref:Microsoft.Maui.Controls.Shapes.Line> are unsupported.
 
 For more information about the properties that control the shape and stroke of the border, see [Shapes](~/user-interface/controls/shapes/index.md).
 
 ## Create a Border
 
-To draw a border, create a `Border` object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
+To draw a border, create a <xref:Microsoft.Maui.Controls.Border> object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
 
-The following XAML example shows how to draw a border around a `Label`:
+The following XAML example shows how to draw a border around a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Border Stroke="#C49B33"
@@ -96,11 +94,11 @@ Border border = new Border
 };
 ```
 
-In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a `RoundRectangle` object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
+In this example, a border with rounded top-left and bottom-right corners is drawn around a <xref:Microsoft.Maui.Controls.Label>. The border shape is defined as a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
-Because the `Stroke` property is of type `Brush`, borders can also be drawn using gradients:
+Because the `Stroke` property is of type <xref:Microsoft.Maui.Controls.Brush>, borders can also be drawn using gradients:
 
 ```xaml
 <Border StrokeThickness="4"
@@ -159,7 +157,7 @@ Border gradientBorder = new Border
 };
 ```
 
-In this example, a border that uses a linear gradient is drawn around a `Label`:
+In this example, a border that uses a linear gradient is drawn around a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/border/linear-gradient-border.png" alt-text="Linear gradient border around a Label screenshot.":::
 

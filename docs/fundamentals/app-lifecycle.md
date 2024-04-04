@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 12/13/2021
+ms.date: 10/13/2022
 ---
 
 # App lifecycle
@@ -42,7 +42,9 @@ These cross-platform events map to different platform events, and the following 
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
 
-In addition to these events, the `Window` class also has the following overridable methods:
+In addition, the `Window` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
+
+In addition to these events, the `Window` class also has the following overridable lifecycle methods:
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
 - `OnActivated`, which is invoked when the `Activated` event is raised.
@@ -50,6 +52,7 @@ In addition to these events, the `Window` class also has the following overridab
 - `OnStopped`, which is invoked when the `Stopped` event is raised.
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
+- `OnBackgrounding`, which is invoked when the `Backgrounding` event is raised.
 
 To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
 
@@ -106,7 +109,7 @@ namespace MyMauiApp
 The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance.
 
 > [!WARNING]
-> An `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a `Page` argument.
+> An `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a <xref:Microsoft.Maui.Controls.Page> argument.
 
 ## Platform lifecycle events
 
@@ -164,15 +167,16 @@ namespace PlatformLifecycleDemo
                 {
 #if ANDROID
                     events.AddAndroid(android => android
-                        .OnActivityResult((activity, requestCode, resultCode, data) => LogEvent("OnActivityResult", requestCode.ToString()))
-                        .OnStart((activity) => LogEvent("OnStart"))
-                        .OnCreate((activity, bundle) => LogEvent("OnCreate"))
-                        .OnBackPressed((activity) => LogEvent("OnBackPressed"))
-                        .OnStop((activity) => LogEvent("OnStop")));
+                        .OnActivityResult((activity, requestCode, resultCode, data) => LogEvent(nameof(AndroidLifecycle.OnActivityResult), requestCode.ToString()))
+                        .OnStart((activity) => LogEvent(nameof(AndroidLifecycle.OnStart)))
+                        .OnCreate((activity, bundle) => LogEvent(nameof(AndroidLifecycle.OnCreate)))
+                        .OnBackPressed((activity) => LogEvent(nameof(AndroidLifecycle.OnBackPressed)) && false)
+                        .OnStop((activity) => LogEvent(nameof(AndroidLifecycle.OnStop))));
 #endif
-                    static void LogEvent(string eventName, string type = null)
+                    static bool LogEvent(string eventName, string type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                        return true;
                     }
                 });
 
@@ -188,8 +192,11 @@ For more information about the Android app lifecycle, see [Understand the Activi
 
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
 
+::: moniker range="=net-maui-7.0"
+
 | Delegate | Arguments | Description |
 | -- | -- | -- |
+| `ApplicationSignificantTimeChange` | `UIKit.UIApplication` | Invoked when a significant time change occurs, such as midnight, carrier-changed time, or the start or stop of daylight savings. |
 | `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
 | `DidEnterBackground` | `UIKit.UIApplication` | Invoked when the app has entered the background. |
 | `FinishedLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app has launched. |
@@ -197,12 +204,62 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OnResignActivation` | `UIKit.UIApplication` | Invoked when the app is about to enter the background, be suspended, or when the user receives an interruption such as a phone call or text. |
 | `OpenUrl` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app should open a specified URL. |
 | `PerformActionForShortcutItem` | `UIKit.UIApplication`, `UIKit.UIApplicationShortcutItem`, `UIKit.UIOperationHandler` | Invoked when a Home screen quick action is initiated. |
+| `SceneContinueUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to handle the specified Handoff-related activity. |
+| `SceneDidDisconnect` | `UIKit.UIScene` | Invoked when a scene is removed from the app. |
+| `SceneDidEnterBackground` | `UIKit.UIScene` | Invoked when a scene is running in the background and isn't onscreen. |
+| `SceneDidFailToContinueUserActivity` | `UIKit.UIScene`, `string`, `Foundation.NSError` | Invoked to inform the user that the activity couldn't be completed. |
+| `SceneDidUpdateUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked when the specified activity is updated. |
+| `SceneOnActivated` | `UIKit.UIScene` | Invoked when the scene becomes active and able to respond to user events. |
+| `SceneOnResignActivation` | `UIKit.UIScene` | Invoked when the scene is about to resign the active state and stop responding to user events. |
+| `SceneOpenUrl` | `UIKit.UIScene`, `Foundation.NSSet<UIKit.UIOpenUrlContext>` | Invoked when a scene asks to open one or more URLs. |
+| `SceneRestoreInteractionState` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to restore the activity state. |
+| `SceneWillConnect` | `UIKit.UIScene`, `UIKit.UISceneSession`, `UIKit.UISceneConnectionOptions` | Invoked when a scene is added to the app. |
+| `SceneWillContinueUserActivity` | `UIKit.UIScene`, `string` | Invoked to prepare to receive Handoff-related data. |
+| `SceneWillEnterForeground` | `UIKit.UIScene` | Invoked when a scene is about to run in the foreground and become visible to the user. |
 | `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+| `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
 
 > [!IMPORTANT]
-> Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
+> Each delegate has a corresponding identically named extension method that can be called to register a handler for the delegate.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+| Delegate | Arguments | Description |
+| -- | -- | -- |
+| `ApplicationSignificantTimeChange` | `UIKit.UIApplication` | Invoked when a significant time change occurs, such as midnight, carrier-changed time, or the start or stop of daylight savings. |
+| `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
+| `DidEnterBackground` | `UIKit.UIApplication` | Invoked when the app has entered the background. |
+| `FinishedLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app has launched. |
+| `OnActivated` | `UIKit.UIApplication` | Invoked when the app is launched and every time the app returns to the foreground. |
+| `OnResignActivation` | `UIKit.UIApplication` | Invoked when the app is about to enter the background, be suspended, or when the user receives an interruption such as a phone call or text. |
+| `OpenUrl` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app should open a specified URL. |
+| `PerformActionForShortcutItem` | `UIKit.UIApplication`, `UIKit.UIApplicationShortcutItem`, `UIKit.UIOperationHandler` | Invoked when a Home screen quick action is initiated. |
+| `PerformFetch` | `UIKit.UIApplication`, `Action<UIBackgroundFetchResult>` | Invoked to tell the app that it can begin a fetch operation if it has data to download. |
+| `SceneContinueUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to handle the specified Handoff-related activity. |
+| `SceneDidDisconnect` | `UIKit.UIScene` | Invoked when a scene is removed from the app. |
+| `SceneDidEnterBackground` | `UIKit.UIScene` | Invoked when a scene is running in the background and isn't onscreen. |
+| `SceneDidFailToContinueUserActivity` | `UIKit.UIScene`, `string`, `Foundation.NSError` | Invoked to inform the user that the activity couldn't be completed. |
+| `SceneDidUpdateUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked when the specified activity is updated. |
+| `SceneOnActivated` | `UIKit.UIScene` | Invoked when the scene becomes active and able to respond to user events. |
+| `SceneOnResignActivation` | `UIKit.UIScene` | Invoked when the scene is about to resign the active state and stop responding to user events. |
+| `SceneOpenUrl` | `UIKit.UIScene`, `Foundation.NSSet<UIKit.UIOpenUrlContext>` | Invoked when a scene asks to open one or more URLs. |
+| `SceneRestoreInteractionState` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to restore the activity state. |
+| `SceneWillConnect` | `UIKit.UIScene`, `UIKit.UISceneSession`, `UIKit.UISceneConnectionOptions` | Invoked when a scene is added to the app. |
+| `SceneWillContinueUserActivity` | `UIKit.UIScene`, `string` | Invoked to prepare to receive Handoff-related data. |
+| `SceneWillEnterForeground` | `UIKit.UIScene` | Invoked when a scene is about to run in the foreground and become visible to the user. |
+| `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
+| `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
+| `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+| `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
+
+> [!IMPORTANT]
+> Each delegate, with the exception of `PerformFetch`, has a corresponding identically named extension method that can be called to register a handler for the delegate.
+
+::: moniker-end
 
 To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
 
@@ -222,14 +279,15 @@ namespace PlatformLifecycleDemo
                 {
 #if IOS
                     events.AddiOS(ios => ios
-                        .OnActivated((app) => LogEvent("OnActivated"))
-                        .OnResignActivation((app) => LogEvent("OnResignActivation"))
-                        .DidEnterBackground((app) => LogEvent("DidEnterBackground"))
-                        .WillTerminate((app) => LogEvent("WillTerminate")));
+                        .OnActivated((app) => LogEvent(nameof(iOSLifecycle.OnActivated)))
+                        .OnResignActivation((app) => LogEvent(nameof(iOSLifecycle.OnResignActivation)))
+                        .DidEnterBackground((app) => LogEvent(nameof(iOSLifecycle.DidEnterBackground)))
+                        .WillTerminate((app) => LogEvent(nameof(iOSLifecycle.WillTerminate))));
 #endif
-                    static void LogEvent(string eventName, string type = null)
+                    static bool LogEvent(string eventName, string type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                        return true;
                     }
                 });
 
@@ -279,23 +337,24 @@ namespace PlatformLifecycleDemo
                 .ConfigureLifecycleEvents(events =>
                 {
 #if WINDOWS
-                   events.AddWindows(windows => windows
-                          .OnActivated((window, args) => LogEvent("OnActivated"))
-                          .OnClosed((window, args) => LogEvent("OnClosed"))
-                          .OnLaunched((window, args) => LogEvent("OnLaunched"))
-                          .OnLaunching((window, args) => LogEvent("OnLaunching"))
-                          .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
-                          .OnPlatformMessage((window, args) =>
-                          {
-                              if (args.MessageId == Convert.ToUInt32("0x02E0"))
-                              {
-                                  // DPI has changed
-                              }
-                          }));
+                    events.AddWindows(windows => windows
+                           .OnActivated((window, args) => LogEvent(nameof(WindowsLifecycle.OnActivated)))
+                           .OnClosed((window, args) => LogEvent(nameof(WindowsLifecycle.OnClosed)))
+                           .OnLaunched((window, args) => LogEvent(nameof(WindowsLifecycle.OnLaunched)))
+                           .OnLaunching((window, args) => LogEvent(nameof(WindowsLifecycle.OnLaunching)))
+                           .OnVisibilityChanged((window, args) => LogEvent(nameof(WindowsLifecycle.OnVisibilityChanged)))
+                           .OnPlatformMessage((window, args) =>
+                           {
+                               if (args.MessageId == Convert.ToUInt32("031A", 16))
+                               {
+                                   // System theme has changed
+                               }
+                           }));
 #endif
-                    static void LogEvent(string eventName, string type = null)
+                    static bool LogEvent(string eventName, string type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                        return true;
                     }
                 });
 
@@ -422,9 +481,10 @@ The WinUI 3 <xref:Microsoft.UI.Xaml.Window.SizeChanged?displayProperty=nameWithT
 
                         events.AddEvent(nameof(Microsoft.UI.Xaml.Window.SizeChanged), () => LogEvent("Window SizeChanged"));
     #endif
-                        static void LogEvent(string eventName, string type = null)
+                        static bool LogEvent(string eventName, string type = null)
                         {
                             System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                            return true;
                         }
                     });
 

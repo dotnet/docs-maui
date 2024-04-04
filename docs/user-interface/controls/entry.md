@@ -1,14 +1,16 @@
 ---
 title: "Entry"
 description: "The .NET MAUI Entry allows you to enter and edit a single line of text."
-ms.date: 03/03/2022
+ms.date: 10/19/2023
 ---
 
 # Entry
 
-The .NET Multi-platform App UI (.NET MAUI) `Entry` allows you to enter and edit a single line of text. In addition, the `Entry` can be used as a password field.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> allows you to enter and edit a single line of text. In addition, the <xref:Microsoft.Maui.Controls.Entry> can be used as a password field.
 
-`Entry` defines the following properties:
+<xref:Microsoft.Maui.Controls.Entry> defines the following properties:
+
+::: moniker range="=net-maui-7.0"
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
@@ -17,63 +19,106 @@ The .NET Multi-platform App UI (.NET MAUI) `Entry` allows you to enter and edit 
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type `Color`, defines the color of the placeholder text.
-- `ReturnCommand`, of type `ICommand`, defines the command to be executed when the return key is pressed.
+- `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
 - `SelectionLength`, of type `int`, represents the length of selected text within the entry.
-- `Text`, of type `string`, defines the text entered into the entry.
-- `TextColor`, of type `Color`, defines the color of the entered text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+::: moniker-end
 
-In addition, `Entry` defines a `Completed` event, which is raised when the user finalizes text in the `Entry` with the return key.
+::: moniker range=">=net-maui-8.0"
 
-`Entry` derives from the `InputView` class, from which it inherits the following properties:
+- `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
+- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
+- `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
+- `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
+- `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
+- `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
+- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
 
+::: moniker-end
+
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
+
+In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Entry> with the return key.
+
+<xref:Microsoft.Maui.Controls.Entry> derives from the `InputView` class, from which it inherits the following properties:
+
+::: moniker range="=net-maui-7.0"
+
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+::: moniker-end
 
-In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the `Entry` changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+::: moniker range=">=net-maui-8.0"
 
-For information about specifying fonts on an `Entry`, see [Fonts](~/user-interface/fonts.md).
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
+- `FontAttributes`, of type `FontAttributes`, determines text style.
+- `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
+- `FontFamily`, of type `string`, defines the font family.
+- `FontSize`, of type `double`, defines the font size.
+- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
+- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
+- `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
+- `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `SelectionLength`, of type `int`, represents the length of selected text within the control.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
+- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
+
+::: moniker-end
+
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
+
+In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+
+For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Entry>, see [Fonts](~/user-interface/fonts.md).
 
 ## Create an Entry
 
-The following example shows how to create an `Entry`:
+The following example shows how to create an <xref:Microsoft.Maui.Controls.Entry>:
 
 ```xaml
 <Entry x:Name="entry"
        Placeholder="Enter text"
-       TextChanged="OnTextChanged"
-       Completed="OnTextCompleted" />
+       TextChanged="OnEntryTextChanged"
+       Completed="OnEntryCompleted" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 Entry entry = new Entry { Placeholder = "Enter text" };
-entry.TextChanged += OnTextChanged;
-entry.Completed += OnTextCompleted;
+entry.TextChanged += OnEntryTextChanged;
+entry.Completed += OnEntryCompleted;
 ```
 
-The following screenshot shows the resulting `Entry` on Android:
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Entry> on Android:
 
 :::image type="content" source="media/entry/entry.png" alt-text="Screenshot of a basic Entry on Android.":::
 
+[!INCLUDE [Keyboard autoscroll manager](includes/keyboardautomanagerscroll.md)]
+
 Entered text can be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that the text has changed or been completed.
 
-The `TextChanged` event is raised when the text in the `Entry` changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
+The `TextChanged` event is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
 
 ```csharp
 void OnEntryTextChanged(object sender, TextChangedEventArgs e)
@@ -93,35 +138,35 @@ void OnEntryCompleted(object sender, EventArgs e)
 }
 ```
 
-After the `Completed` event fires, any `ICommand` specified by the `ReturnCommand` property is executed, with the `object` specified by the `ReturnCommandParameter` property being passed to the `ReturnCommand`.
+After the `Completed` event fires, any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed, with the `object` specified by the `ReturnCommandParameter` property being passed to the `ReturnCommand`.
 
 > [!NOTE]
-> The `VisualElement` class, which is in the `Entry` inheritance hierarchy, also has `Focused` and `Unfocused` events.
+> The <xref:Microsoft.Maui.Controls.VisualElement> class, which is in the <xref:Microsoft.Maui.Controls.Entry> inheritance hierarchy, also has `Focused` and `Unfocused` events.
 
 ## Set character spacing
 
-Character spacing can be applied to an `Entry` by setting the `CharacterSpacing` property to a `double` value:
+Character spacing can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting the `CharacterSpacing` property to a `double` value:
 
 ```xaml
 <Entry ...
        CharacterSpacing="10" />
 ```
 
-The result is that characters in the text displayed by the `Entry` are spaced `CharacterSpacing` device-independent units apart.
+The result is that characters in the text displayed by the <xref:Microsoft.Maui.Controls.Entry> are spaced `CharacterSpacing` device-independent units apart.
 
 > [!NOTE]
 > The `CharacterSpacing` property value is applied to the text displayed by the `Text` and `Placeholder` properties.
 
 ## Limit input length
 
-The `MaxLength` property can be used to limit the input length that's permitted for the `Entry`. This property should be set to a positive integer:
+The `MaxLength` property can be used to limit the input length that's permitted for the <xref:Microsoft.Maui.Controls.Entry>. This property should be set to a positive integer:
 
 ```xaml
 <Entry ...
        MaxLength="10" />
 ```
 
-A `MaxLength` property value of 0 indicates that no input will be allowed, and a value of `int.MaxValue`, which is the default value for an `Entry`, indicates that there is no effective limit on the number of characters that may be entered.
+A `MaxLength` property value of 0 indicates that no input will be allowed, and a value of `int.MaxValue`, which is the default value for an <xref:Microsoft.Maui.Controls.Entry>, indicates that there is no effective limit on the number of characters that may be entered.
 
 ## Set the cursor position and text selection length
 
@@ -132,9 +177,9 @@ The `CursorPosition` property can be used to return or set the position at which
        CursorPosition="5" />
 ```
 
-The default value of the `CursorPosition` property is 0, which indicates that text will be inserted at the start of the `Entry`.
+The default value of the `CursorPosition` property is 0, which indicates that text will be inserted at the start of the <xref:Microsoft.Maui.Controls.Entry>.
 
-In addition, the `SelectionLength` property can be used to return or set the length of text selection within the `Entry`:
+In addition, the `SelectionLength` property can be used to return or set the length of text selection within the <xref:Microsoft.Maui.Controls.Entry>:
 
 ```xaml
 <Entry Text="Cursor position and selection length set"
@@ -146,10 +191,10 @@ The default value of the `SelectionLength` property is 0, which indicates that n
 
 ## Display a clear button
 
-The `ClearButtonVisibility` property can be used to control whether an `Entry` displays a clear button, which enables the user to clear the text. This property should be set to a `ClearButtonVisibility` enumeration member:
+The `ClearButtonVisibility` property can be used to control whether an <xref:Microsoft.Maui.Controls.Entry> displays a clear button, which enables the user to clear the text. This property should be set to a `ClearButtonVisibility` enumeration member:
 
 - `Never` indicates that a clear button will never be displayed. This is the default value for the `ClearButtonVisibility` property.
-- `WhileEditing` indicates that a clear button will be displayed in the `Entry`, while it has focus and text.
+- `WhileEditing` indicates that a clear button will be displayed in the <xref:Microsoft.Maui.Controls.Entry>, while it has focus and text.
 
 The following example shows setting the property:
 
@@ -158,13 +203,13 @@ The following example shows setting the property:
        ClearButtonVisibility="WhileEditing" />
 ```
 
-The following screenshot shows an `Entry` on Android with the clear button enabled:
+The following screenshot shows an <xref:Microsoft.Maui.Controls.Entry> on Android with the clear button enabled:
 
 :::image type="content" source="media/entry/entry-clearbutton.png" alt-text="Screenshot of a basic Entry with a clear buttonon Android.":::
 
 ## Transform text
 
-An `Entry` can transform the casing of its text, stored in the `Text` property, by setting the `TextTransform` property to a value of the `TextTransform` enumeration. This enumeration has four values:
+An <xref:Microsoft.Maui.Controls.Entry> can transform the casing of its text, stored in the `Text` property, by setting the `TextTransform` property to a value of the `TextTransform` enumeration. This enumeration has four values:
 
 - `None` indicates that the text won't be transformed.
 - `Default` indicates that the default behavior for the platform will be used. This is the default value of the `TextTransform` property.
@@ -180,19 +225,19 @@ The following example shows transforming text to uppercase:
 
 ## Obscure text entry
 
-`Entry` provides the `IsPassword` property which visually obscures entered text when it's set to `true`:
+<xref:Microsoft.Maui.Controls.Entry> provides the `IsPassword` property which visually obscures entered text when it's set to `true`:
 
 ```xaml
 <Entry IsPassword="true" />
 ```
 
-The following screenshot shows an `Entry` whose input has been obscured:
+The following screenshot shows an <xref:Microsoft.Maui.Controls.Entry> whose input has been obscured:
 
 :::image type="content" source="media/entry/entry-password.png" alt-text="Screenshot of a basic Entry with IsPassword set to true.":::
 
 ## Customize the keyboard
 
-The virtual keyboard that's presented when users interact with an `Entry` can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
+The soft input keyboard that's presented when users interact with an <xref:Microsoft.Maui.Controls.Entry> can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
 
 - `Chat` – used for texting and places where emoji are useful.
 - `Default` – the default keyboard.
@@ -243,7 +288,7 @@ entry.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.Capit
 
 ### Customize the return key
 
-The appearance of the return key on the virtual keyboard, which is displayed when an `Entry` has focus, can be customized by setting the `ReturnType` property to a value of the `ReturnType` enumeration:
+The appearance of the return key on the soft input keyboard, which is displayed when an <xref:Microsoft.Maui.Controls.Entry> has focus, can be customized by setting the `ReturnType` property to a value of the `ReturnType` enumeration:
 
 - `Default` – indicates that no specific return key is required and that the platform default will be used.
 - `Done` – indicates a "Done" return key.
@@ -261,7 +306,20 @@ The following XAML example shows how to set the return key:
 > [!NOTE]
 > The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is a icon-based button.
 
-When the <kbd>Return</kbd> key is pressed, the `Completed` event is raised and any `ICommand` specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the `ICommand` as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
+When the <kbd>Return</kbd> key is pressed, the `Completed` event fires and any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the <xref:System.Windows.Input.ICommand> as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
+
+::: moniker range=">=net-maui-8.0"
+
+[!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
+
+The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Entry> named `entry`, if it's currently showing:
+
+```csharp
+if (entry.IsSoftInputShowing())
+    await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+```
+
+::: moniker-end
 
 ## Enable and disable spell checking
 
@@ -291,7 +349,7 @@ However, for some text entry scenarios, such as entering a username, text predic
 
 ## Prevent text entry
 
-Users can be prevented from modifying the text in an `Entry` by setting the `IsReadOnly` property to `true`:
+Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Controls.Entry> by setting the `IsReadOnly` property to `true`:
 
 ```xaml
 <Entry Text="User input won't be accepted."
@@ -299,4 +357,4 @@ Users can be prevented from modifying the text in an `Entry` by setting the `IsR
 ```
 
 > [!NOTE]
-> The `IsReadonly` property does not alter the visual appearance of an `Entry`, unlike the `IsEnabled` property that also changes the visual appearance of the `Entry` to gray.
+> The `IsReadonly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Entry>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Entry> to gray.

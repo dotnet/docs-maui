@@ -8,7 +8,7 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-.NET Multi-platform App UI (.NET MAUI) Shell includes integrated search functionality that's provided by the `SearchHandler` class. Search capability can be added to a page by setting the `Shell.SearchHandler` attached property to a subclassed `SearchHandler` object. This results in a search box being added at the top of the page:
+.NET Multi-platform App UI (.NET MAUI) Shell includes integrated search functionality that's provided by the <xref:Microsoft.Maui.Controls.SearchHandler> class. Search capability can be added to a page by setting the `Shell.SearchHandler` attached property to a subclassed <xref:Microsoft.Maui.Controls.SearchHandler> object. This results in a search box being added at the top of the page:
 
 :::image type="content" source="media/search/searchhandler.png" alt-text="Screenshot of a Shell SearchHandler.":::
 
@@ -20,7 +20,7 @@ Then, when a result is selected from the search suggestions area, the `OnItemSel
 
 ## Create a SearchHandler
 
-Search functionality can be added to a Shell app by subclassing the `SearchHandler` class, and overriding the `OnQueryChanged` and `OnItemSelected` methods:
+Search functionality can be added to a Shell app by subclassing the <xref:Microsoft.Maui.Controls.SearchHandler> class, and overriding the `OnQueryChanged` and `OnItemSelected` methods:
 
 ```csharp
 public class AnimalSearchHandler : SearchHandler
@@ -68,11 +68,11 @@ The `OnQueryChanged` override has two arguments: `oldValue`, which contains the 
 When a search result is selected by the user, the `OnItemSelected` override is executed and the `SelectedItem` property is set. In this example, the method navigates to another page that displays data about the selected `Animal`. For more information about navigation, see [Shell navigation](navigation.md).
 
 > [!NOTE]
-> Additional `SearchHandler` properties can be set to control the search box appearance.
+> Additional <xref:Microsoft.Maui.Controls.SearchHandler> properties can be set to control the search box appearance.
 
 ## Consume a SearchHandler
 
-The subclassed `SearchHandler` can be consumed by setting the `Shell.SearchHandler` attached property to an object of the subclassed type, on the consuming page:
+The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by setting the `Shell.SearchHandler` attached property to an object of the subclassed type, on the consuming page:
 
 ```xaml
 <ContentPage ...
@@ -113,7 +113,7 @@ When a search result is selected, the `MonkeyDetailPage` is navigated to, and a 
 
 ## Define search results item appearance
 
-In addition to displaying `string` data in the search results, the appearance of each search result item can be defined by setting the `SearchHandler.ItemTemplate` property to a `DataTemplate`:
+In addition to displaying `string` data in the search results, the appearance of each search result item can be defined by setting the `SearchHandler.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ContentPage ...
@@ -141,7 +141,7 @@ In addition to displaying `string` data in the search results, the appearance of
 </ContentPage>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the suggestions area. In this example, layout within the `DataTemplate` is managed by a `Grid`. The `Grid` contains an `Image` object, and a `Label` object, that both bind to properties of each `Monkey` object.
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the suggestions area. In this example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
 
 The following screenshot shows the result of templating each item in the suggestions area:
 
@@ -151,7 +151,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Search box visibility
 
-By default, when a `SearchHandler` is added at the top of a page, the search box is visible and fully expanded. However, this behavior can be changed by setting the `SearchHandler.SearchBoxVisibility` property to one of the `SearchBoxVisibility` enumeration members:
+By default, when a <xref:Microsoft.Maui.Controls.SearchHandler> is added at the top of a page, the search box is visible and fully expanded. However, this behavior can be changed by setting the `SearchHandler.SearchBoxVisibility` property to one of the `SearchBoxVisibility` enumeration members:
 
 - `Hidden` – the search box is not visible or accessible.
 - `Collapsible` – the search box is hidden until the user performs an action to reveal it. On iOS the search box is revealed by vertically bouncing the page content, and on Android the search box is revealed by tapping the question mark icon.
@@ -179,11 +179,11 @@ Tapping in a search box invokes the onscreen keyboard, with the search box gaini
 
 When a search box has input focus, tapping elsewhere on the screen dismisses the onscreen keyboard, and the search box loses input focus. This can also be achieved programmatically by calling the `Unfocus` method. When a search box loses focus, the `Unfocused` event is fired and the overridable `OnUnfocus` method is called.
 
-The focus state of a search box can be retrieved through the `IsFocused` property, which returns `true` if a `SearchHandler` currently has input focus.
+The focus state of a search box can be retrieved through the `IsFocused` property, which returns `true` if a <xref:Microsoft.Maui.Controls.SearchHandler> currently has input focus.
 
 ## SearchHandler keyboard
 
-The keyboard that's presented when users interact with a `SearchHandler` can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
+The keyboard that's presented when users interact with a <xref:Microsoft.Maui.Controls.SearchHandler> can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
 
 - `Chat` – used for texting and places where emoji are useful.
 - `Default` – the default keyboard.

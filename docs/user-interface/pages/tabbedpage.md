@@ -8,34 +8,36 @@ ms.date: 03/15/2022
 
 :::image type="content" source="media/tabbedpage/pages.png" alt-text=".NET MAUI TabbedPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `TabbedPage` maintains a collection of children of type `Page`, only one of which is fully visible at a time. Each child is identified by a series of tabs across the top or bottom of the page. Typically, each child will be a `ContentPage` and when its tab is selected the page content is displayed.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TabbedPage> maintains a collection of children of type <xref:Microsoft.Maui.Controls.Page>, only one of which is fully visible at a time. Each child is identified by a series of tabs across the top or bottom of the page. Typically, each child will be a <xref:Microsoft.Maui.Controls.ContentPage> and when its tab is selected the page content is displayed.
 
-`TabbedPage` defines the following properties:
+<xref:Microsoft.Maui.Controls.TabbedPage> defines the following properties:
 
-- `BarBackground`, of type `Brush`, defines the background of the tab bar.
-- `BarBackgroundColor`, of type `Color`, defines the background color of the tab bar.
-- `BarTextColor`, of type `Color`, represents the color of the text on the tab bar.
-- `SelectedTabColor`, of type `Color`, indicates the color of a tab when it's selected.
-- `UnselectedTabColor`, of type `Color`, represents the color of a tab when it's unselected.
+- `BarBackground`, of type <xref:Microsoft.Maui.Controls.Brush>, defines the background of the tab bar.
+- `BarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the background color of the tab bar.
+- `BarTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the text on the tab bar.
+- `SelectedTabColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of a tab when it's selected.
+- `UnselectedTabColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of a tab when it's unselected.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In a `TabbedPage`, each `Page` object is created when the `TabbedPage` is constructed. This can lead to a poor user experience, particularly if the `TabbedPage` is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+The title of a tab is defined by the <xref:Microsoft.Maui.Controls.Page.Title?displayProperty=nameWithType> property of the child page, and the tab icon is defined by the <xref:Microsoft.Maui.Controls.Page.IconImageSource?displayProperty=nameWithType> property of the child page.
+
+In a <xref:Microsoft.Maui.Controls.TabbedPage>, each <xref:Microsoft.Maui.Controls.Page> object is created when the <xref:Microsoft.Maui.Controls.TabbedPage> is constructed. This can lead to a poor user experience, particularly if the <xref:Microsoft.Maui.Controls.TabbedPage> is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 > [!WARNING]
-> `TabbedPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `TabbedPage` in a Shell app.
+> <xref:Microsoft.Maui.Controls.TabbedPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.TabbedPage> in a Shell app.
 
 ## Create a TabbedPage
 
-Two approaches can be used to create a `TabbedPage`:
+Two approaches can be used to create a <xref:Microsoft.Maui.Controls.TabbedPage>:
 
-- Populate the `TabbedPage` with a collection of child `Page` objects, such as a collection of `ContentPage` objects. For more information, see [Populate a TabbedPage with a Page collection](#populate-a-tabbedpage-with-a-page-collection).
-- Assign a collection to the `ItemsSource` property and assign a `DataTemplate` to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
+- Populate the <xref:Microsoft.Maui.Controls.TabbedPage> with a collection of child <xref:Microsoft.Maui.Controls.Page> objects, such as a collection of <xref:Microsoft.Maui.Controls.ContentPage> objects. For more information, see [Populate a TabbedPage with a Page collection](#populate-a-tabbedpage-with-a-page-collection).
+- Assign a collection to the `ItemsSource` property and assign a <xref:Microsoft.Maui.Controls.DataTemplate> to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
 
 > [!IMPORTANT]
-> A `TabbedPage` should only be populated with `NavigationPage` and `ContentPage` objects.
+> A <xref:Microsoft.Maui.Controls.TabbedPage> should only be populated with <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.ContentPage> objects.
 
-Regardless of the approach taken, the location of the tab bar in a `TabbedPage` is platform-dependent:
+Regardless of the approach taken, the location of the tab bar in a <xref:Microsoft.Maui.Controls.TabbedPage> is platform-dependent:
 
 - On iOS, the list of tabs appears at the bottom of the screen, and the page content is above. Each tab consists of a title and an icon. In portrait orientation, tab bar icons appear above tab titles. In landscape orientation, icons and titles appear side by side. In addition, a regular or compact tab bar may be displayed, depending on the device and orientation. If there are more than five tabs, a **More** tab will appear, which can be used to access the additional tabs.
 - On Android, the list of tabs appears at the top of the screen, and the page content is below. Each tab consists of a title and an icon. However, the tabs can be moved to the bottom of the screen with a platform-specific. If there are more than five tabs, and the tab list is at the bottom of the screen, a *More* tab will appear that can be used to access the additional tabs. For information about moving the tabs to the bottom of the screen, see [TabbedPage toolbar placement on Android](~/android/platform-specifics/tabbedpage-toolbar-placement.md).
@@ -43,7 +45,7 @@ Regardless of the approach taken, the location of the tab bar in a `TabbedPage` 
 
 ### Populate a TabbedPage with a Page collection
 
-A `TabbedPage` can be populated with a collection of child `Page` objects, which will typically be `ContentPage` objects. This is achieved by adding `ContentPage` objects as children of the `TabbedPage`:
+A <xref:Microsoft.Maui.Controls.TabbedPage> can be populated with a collection of child <xref:Microsoft.Maui.Controls.Page> objects, which will typically be <xref:Microsoft.Maui.Controls.ContentPage> objects. This is achieved by adding <xref:Microsoft.Maui.Controls.ContentPage> objects as children of the <xref:Microsoft.Maui.Controls.TabbedPage>:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -56,9 +58,9 @@ A `TabbedPage` can be populated with a collection of child `Page` objects, which
 </TabbedPage>
 ```
 
-`Page` objects that are added as child elements of `TabbedPage` are added to the `Children` collection. The `Children` property of the `MultiPage<T>` class, from which `TabbedPage` derives, is the `ContentProperty` of `MultiPage<T>`. Therefore, in XAML it's not necessary to explicitly assign the `Page` objects to the `Children` property.
+<xref:Microsoft.Maui.Controls.Page> objects that are added as child elements of <xref:Microsoft.Maui.Controls.TabbedPage> are added to the `Children` collection. The `Children` property of the `MultiPage<T>` class, from which <xref:Microsoft.Maui.Controls.TabbedPage> derives, is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of `MultiPage<T>`. Therefore, in XAML it's not necessary to explicitly assign the <xref:Microsoft.Maui.Controls.Page> objects to the `Children` property.
 
-The following screenshot shows the appearance of the resulting tab bar on the `TabbedPage`:
+The following screenshot shows the appearance of the resulting tab bar on the <xref:Microsoft.Maui.Controls.TabbedPage>:
 
 :::image type="content" source="media/tabbedpage/tabbar.png" alt-text=".NET MAUI tab bar on a TabbedPage.":::
 
@@ -66,9 +68,9 @@ The page content for a tab appears when the tab is selected.
 
 ### Populate a TabbedPage with a DataTemplate
 
-`TabbedPage` inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate `TabbedPage` children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a `DataTemplate` with a page type as the root element.
+<xref:Microsoft.Maui.Controls.TabbedPage> inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate <xref:Microsoft.Maui.Controls.TabbedPage> children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate> with a page type as the root element.
 
-The following example shows generating `TabbedPage` children dynamically:
+The following example shows generating <xref:Microsoft.Maui.Controls.TabbedPage> children dynamically:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -104,13 +106,13 @@ The following example shows generating `TabbedPage` children dynamically:
 </TabbedPage>
 ```
 
-In this example, each tab consists of a `ContentPage` object that uses `Image` and `Label` objects to display data for the tab:
+In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPage> object that uses <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> objects to display data for the tab:
 
 :::image type="content" source="media/tabbedpage/tabbedpage.png" alt-text="Screenshot of a .NET MAUI TabbedPage.":::
 
 ## Navigate within a tab
 
-Navigation can be performed within a tab, provided that the `ContentPage` object is wrapped in a `NavigationPage` object:
+Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui.Controls.ContentPage> object is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage> object:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -127,15 +129,15 @@ Navigation can be performed within a tab, provided that the `ContentPage` object
 </TabbedPage>
 ```
 
-In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a `ContentPage` object, and the second child is a `NavigationPage` object containing a `ContentPage` object.
+In this example, the <xref:Microsoft.Maui.Controls.TabbedPage> is populated with two <xref:Microsoft.Maui.Controls.Page> objects. The first child is a <xref:Microsoft.Maui.Controls.ContentPage> object, and the second child is a <xref:Microsoft.Maui.Controls.NavigationPage> object containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-When a `ContentPage` is wrapped in a `NavigationPage`, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the `ContentPage` object:
+When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage>, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```csharp
 await Navigation.PushAsync(new UpcomingAppointmentsPage());
 ```
 
-For more information about performing navigation using the `NavigationPage` class, see [NavigationPage](navigationpage.md).
+For more information about performing navigation using the <xref:Microsoft.Maui.Controls.NavigationPage> class, see [NavigationPage](navigationpage.md).
 
 > [!WARNING]
-> While a `NavigationPage` can be placed in a  `TabbedPage`, it's not recommended to place a `TabbedPage` into a `NavigationPage`.
+> While a <xref:Microsoft.Maui.Controls.NavigationPage> can be placed in a  <xref:Microsoft.Maui.Controls.TabbedPage>, it's not recommended to place a <xref:Microsoft.Maui.Controls.TabbedPage> into a <xref:Microsoft.Maui.Controls.NavigationPage>.

@@ -3,9 +3,21 @@ items:
   href: index.yml
   expanded: true
   items:
-  - name: July 2022
-    href: dotnet-docs-maui-2022-07-01.md
-  - name: June 2022
-    href: dotnet-docs-maui-2022-06-01.md
-  - name: May 2022
-    href: dotnet-docs-maui-2022-05-01.md
+  - name: Product releases
+    expanded: true
+    items:
+    - name: .NET 9
+      href: dotnet-9.md
+    - name: .NET 8
+      href: dotnet-8.md
+    - name: .NET 7
+      href: dotnet-7.md
+  - name: Docs updates
+    expanded: true
+    items:
+    - name: March 2024
+      href: dotnet-docs-maui-mod0.md
+    - name: February 2024
+      href: dotnet-docs-maui-mod2.md
+    - name: January 2024
+      href: dotnet-docs-maui-mod1.md

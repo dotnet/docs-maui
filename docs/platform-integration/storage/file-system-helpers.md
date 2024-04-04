@@ -1,15 +1,17 @@
 ---
 title: "File system helpers"
-description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Storage namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 07/14/2022
+description: "Learn how to use the .NET MAUI IFileSystem interface in the Microsoft.Maui.Storage namespace. This interface contains helper methods that access the application's cache and data directories, and helps open files in the app package."
+ms.date: 06/20/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
 # File system helpers
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package. The `IFileSystem` interface is exposed through the `FileSystem.Current` property.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `FileSystem` and `IFileSystem` types are available in the `Microsoft.Maui.Storage` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package.
+
+The default implementation of the `IFileSystem` interface is available through the `FileSystem.Current` property. Both the `IFileSystem` interface and `FileSystem` class are contained in the `Microsoft.Maui.Storage` namespace.
 
 ## Using file system helpers
 
@@ -33,11 +35,11 @@ To open a file that is bundled into the app package, use the `OpenAppPackageFile
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
 
-### Writing from a bundled file to the app data folder
+### Copy a bundled file to the app data folder
 
-You can't modify an app's bundled file. But you can read it first, then write it back to the [cache directory](#cache-directory) or [app data directory](#app-data-directory). The following example uses `OpenAppPackageFileAsync` to read a bundled file, alters it, and then writes it to the app data folder:
+You can't modify an app's bundled file. But you can copy a bundled file to the [cache directory](#cache-directory) or [app data directory](#app-data-directory). The following example uses `OpenAppPackageFileAsync` to copy a bundled file to the app data folder:
 
-:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_toupper":::
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_copyfile":::
 
 ## Platform differences
 
@@ -47,15 +49,17 @@ This section describes the platform-specific differences with the file system he
 # [Android](#tab/android)
 
 - `FileSystem.CacheDirectory`\
-Returns the [CacheDir](https://developer.android.com/reference/android/content/Context.html#getCacheDir) of the current context.
+Returns the [CacheDir](https://developer.android.com/reference/android/content/Context.html#getCacheDir()) of the current context.
 
 - `FileSystem.AppDataDirectory`\
-Returns the [FilesDir](https://developer.android.com/reference/android/content/Context.html#getFilesDir) of the current context, which are backed up using [Auto Backup](https://developer.android.com/guide/topics/data/autobackup.html) starting on API 23 and above.
+Returns the [FilesDir](https://developer.android.com/reference/android/content/Context.html#getFilesDir()) of the current context, which are backed up using [Auto Backup](https://developer.android.com/guide/topics/data/autobackup.html) starting on API 23 and above.
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
 
-# [iOS\macOS](#tab/ios)
+  The `FileSystem.OpenPackageFileAsync` method can't get the length of the stream on Android by accessing the `Result.Length` property. Instead, you have to read the whole stream and count how many bytes there are to get the size of the asset.
+
+# [iOS/Mac Catalyst](#tab/macios)
 
 - `FileSystem.CacheDirectory`\
 Returns the [Library/Caches](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) directory.
@@ -64,7 +68,7 @@ Returns the [Library/Caches](https://developer.apple.com/library/content/documen
 Returns the [Library](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) directory that is backed up by iTunes and iCloud.
 
   > [!IMPORTANT]
-  > In the iOS Simulator, the Application ID (which is part of the directory name) changes on every build so you have to retrieve the correct ID each time you build your application for the Simulator.
+  > The Application ID, which is part of the directory name, changes on every build so you have to retrieve the correct ID each time you build your app for a Simulator or device.
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.

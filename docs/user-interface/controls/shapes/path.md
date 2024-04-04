@@ -8,23 +8,23 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) `Path` class derives from the `Shape` class, and can be used to draw curves and complex shapes. These curves and shapes are often described using `Geometry` objects. For information on the properties that the `Path` class inherits from the `Shape` class, see [Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Path> class derives from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, and can be used to draw curves and complex shapes. These curves and shapes are often described using <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Path> class inherits from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, see [Shapes](index.md).
 
-`Path` defines the following properties:
+<xref:Microsoft.Maui.Controls.Shapes.Path> defines the following properties:
 
-- `Data`, of type `Geometry`, which specifies the shape to be drawn.
-- `RenderTransform`, of type `Transform`, which represents the transform that is applied to the geometry of a path prior to it being drawn.
+- <xref:Microsoft.Maui.Controls.Shapes.Path.Data>, of type <xref:Microsoft.Maui.Controls.Shapes.Geometry>, which specifies the shape to be drawn.
+- <xref:Microsoft.Maui.Controls.Shapes.Path.RenderTransform>, of type <xref:Microsoft.Maui.Controls.Shapes.Transform>, which represents the transform that is applied to the geometry of a path prior to it being drawn.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For more information about transforms, see [Path Transforms](path-transforms.md).
 
 ## Create a Path
 
-To draw a path, create a `Path` object and set its `Data` property. There are two techniques for setting the `Data` property:
+To draw a path, create a <xref:Microsoft.Maui.Controls.Shapes.Path> object and set its <xref:Microsoft.Maui.Controls.Shapes.Path.Data> property. There are two techniques for setting the <xref:Microsoft.Maui.Controls.Shapes.Path.Data> property:
 
-- You can set a string value for `Data` in XAML, using path markup syntax. With this approach, the `Path.Data` value is consuming a serialization format for graphics. Typically, you don't edit this string value by hand after it's created. Instead, you use design tools to manipulate the data, and export it as a string fragment that's consumable by the `Data` property.
-- You can set the `Data` property to a `Geometry` object. This can be a specific `Geometry` object, or a `GeometryGroup` which acts as a container that can combine multiple geometry objects into a single object.
+- You can set a string value for <xref:Microsoft.Maui.Controls.Shapes.Path.Data> in XAML, using path markup syntax. With this approach, the `Path.Data` value is consuming a serialization format for graphics. Typically, you don't edit this string value by hand after it's created. Instead, you use design tools to manipulate the data, and export it as a string fragment that's consumable by the <xref:Microsoft.Maui.Controls.Shapes.Path.Data> property.
+- You can set the <xref:Microsoft.Maui.Controls.Shapes.Path.Data> property to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object. This can be a specific <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, or a <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> which acts as a container that can combine multiple geometry objects into a single object.
 
 ### Create a Path with path markup syntax
 
@@ -37,7 +37,7 @@ The following XAML example shows how to draw a triangle using path markup syntax
       HorizontalOptions="Start" />
 ```
 
-The `Data` string begins with the move command, indicated by `M`, which establishes an absolute start point for the path. `L` is the line command, which creates a straight line from the start point to the specified end point. `Z` is the close command, which creates a line that connects the current point to the starting point. The result is a triangle:
+The <xref:Microsoft.Maui.Controls.Shapes.Path.Data> string begins with the move command, indicated by `M`, which establishes an absolute start point for the path. `L` is the line command, which creates a straight line from the start point to the specified end point. `Z` is the close command, which creates a line that connects the current point to the starting point. The result is a triangle:
 
 :::image type="content" source="media/path/triangle.png" alt-text="Path triangle.":::
 
@@ -45,11 +45,11 @@ For more information about path markup syntax, see [Path markup syntax](path-mar
 
 ### Create a Path with Geometry objects
 
-Curves and shapes can be described using `Geometry` objects, which are used to set the `Path` object's `Data` property. There are a variety of `Geometry` objects to choose from. The `EllipseGeometry`, `LineGeometry`, and `RectangleGeometry` classes describe relatively simple shapes. To create more complex shapes or create curves, use a `PathGeometry`.
+Curves and shapes can be described using <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects, which are used to set the <xref:Microsoft.Maui.Controls.Shapes.Path> object's <xref:Microsoft.Maui.Controls.Shapes.Path.Data> property. There are a variety of <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects to choose from. The <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry>, <xref:Microsoft.Maui.Controls.Shapes.LineGeometry>, and <xref:Microsoft.Maui.Controls.Shapes.RectangleGeometry> classes describe relatively simple shapes. To create more complex shapes or create curves, use a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry>.
 
-`PathGeometry` objects are comprised of one or more `PathFigure` objects. Each `PathFigure` object represents a different shape. Each `PathFigure` object is itself comprised of one or more `PathSegment` objects, each representing a connection portion of the shape. Segment types include the following the `LineSegment`, `BezierSegment`, and `ArcSegment` classes.
+<xref:Microsoft.Maui.Controls.Shapes.PathGeometry> objects are comprised of one or more <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects. Each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> object represents a different shape. Each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> object is itself comprised of one or more <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects, each representing a connection portion of the shape. Segment types include the following the <xref:Microsoft.Maui.Controls.Shapes.LineSegment>, <xref:Microsoft.Maui.Controls.Shapes.BezierSegment>, and <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> classes.
 
-The following XAML example shows how to draw a triangle using a `PathGeometry` object:
+The following XAML example shows how to draw a triangle using a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> object:
 
 ```xaml
 <Path Stroke="Black"

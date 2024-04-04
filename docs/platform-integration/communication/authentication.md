@@ -1,15 +1,17 @@
 ---
 title: "Web Authenticator"
-description: "Learn how to use the .NET MAUI WebAuthenticator class, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IWebAuthenticator interface, which lets you start browser-based authentication flows, which listen for a callback to the app."
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 
 # Web authenticator
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the `IWebAuthenticator` interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app. The `IWebAuthenticator` interface is exposed through the `WebAuthenticator.Default` property.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `WebAuthenticator` and `IWebAuthenticator` types are available in the `Microsoft.Maui.Authentication` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the <xref:Microsoft.Maui.Authentication.IWebAuthenticator> interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app.
+
+The default implementation of the `IWebAuthenticator` interface is available through the <xref:Microsoft.Maui.Authentication.WebAuthenticator.Default?displayProperty=nameWithType> property. Both the `IWebAuthenticator` interface and `WebAuthenticator` class are contained in the `Microsoft.Maui.Authentication` namespace.
 
 ## Overview
 
@@ -18,7 +20,7 @@ Many apps require adding user authentication, and this often means enabling your
 > [!TIP]
 > [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) provides an excellent turn-key solution to adding authentication to your app.
 
-If you're interested in using your own web service for authentication, it's possible to use `WebAuthenticator` to implement the client-side functionality.
+If you're interested in using your own web service for authentication, it's possible to use <xref:Microsoft.Maui.Authentication.WebAuthenticator> to implement the client-side functionality.
 
 ## Why use a server back end
 
@@ -31,18 +33,18 @@ The best practice here's to use a web backend as a middle layer between your mob
 
 ## Get started
 
-To access the `WebAuthenticator` functionality the following platform-specific setup is required.
+To access the <xref:Microsoft.Maui.Authentication.WebAuthenticator> functionality the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Android requires an **Intent Filter** setup to handle your callback URI. This is accomplished by inheriting from the `WebAuthenticatorCallbackActivity` class:
+Android requires an **Intent Filter** setup to handle your callback URI. This is accomplished by inheriting from the <xref:Xamarin.Essentials.WebAuthenticatorCallbackActivity> class:
 
 :::code language="csharp" source="../snippets/shared_1/Platforms/Android/WebAuthActivity.cs":::
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes in the `manifest` node:
 
 ```xml
 <queries>
@@ -52,7 +54,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
@@ -75,7 +77,7 @@ Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ and _Platf
 # [Windows](#tab/windows)
 
 > [!CAUTION]
-> At the moment, `WebAuthenticator` isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+> At the moment, <xref:Microsoft.Maui.Authentication.WebAuthenticator> isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
 
 For WinUI 3, you'll need to declare your callback URI protocol in your _Package.appxmanifest_ file:
 
@@ -97,12 +99,12 @@ For WinUI 3, you'll need to declare your callback URI protocol in your _Package.
 
 ## Using WebAuthenticator
 
-The API consists mainly of a single method, `AuthenticateAsync`, which takes two parameters:
+The API consists mainly of a single method, <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A>, which takes two parameters:
 
 01. The URL used to start the web browser flow.
 01. The URI the flow is expected to ultimately call back to, that is registered to your app.
 
-The result is a `WebAuthenticatorResult`, which includes any query parameters parsed from the callback URI:
+The result is a `<xref:Microsoft.Maui.Authentication.WebAuthenticatorResult>, which includes any query parameters parsed from the callback URI:
 
 ```csharp
 try
@@ -121,15 +123,15 @@ catch (TaskCanceledException e)
 }
 ```
 
-The `WebAuthenticator` API takes care of launching the url in the browser and waiting until the callback is received:
+The <xref:Microsoft.Maui.Authentication.WebAuthenticator> API takes care of launching the url in the browser and waiting until the callback is received:
 
 :::image type="content" source="media/authentication/web-authenticator.png" alt-text="Typical web authentication flow.":::
 
-If the user cancels the flow at any point, a `TaskCanceledException` is thrown.
+If the user cancels the flow at any point, a <xref:System.Threading.Tasks.TaskCanceledException> is thrown.
 
 ### Private authentication session
 
-iOS 13 introduced an ephemeral web browser API for developers to launch the authentication session as private. This enables developers to request that no shared cookies or browsing data is available between authentication sessions and will be a fresh login session each time. This is available through the `WebAuthenticatorOptions` parameter passed to the `AuthenticateAsync` method:
+iOS 13 introduced an ephemeral web browser API for developers to launch the authentication session as private. This enables developers to request that no shared cookies or browsing data is available between authentication sessions and will be a fresh login session each time. This is available through the <xref:Microsoft.Maui.Authentication.WebAuthenticatorOptions> parameter passed to the <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method:
 
 ```csharp
 try
@@ -160,9 +162,9 @@ This section describes the platform-specific differences with the web authentica
 <!-- markdownlint-disable MD024 -->
 ### [Android](#tab/android)
 
-**Custom Tabs** are used whenever available, otherwise an **Intent** is started for the URL.
+**Custom Tabs** are used whenever available, otherwise the system browser is used as a fallback.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Depending on the iOS version, the behavior is slightly different:
 
@@ -178,7 +180,7 @@ Depending on the iOS version, the behavior is slightly different:
 # [Windows](#tab/windows)
 
 > [!CAUTION]
-> At the moment, `WebAuthenticator` isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+> At the moment, <xref:Microsoft.Maui.Authentication.WebAuthenticator> isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
 
 On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the system browser is used.
 
@@ -188,9 +190,18 @@ On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the s
 
 ## Apple Sign In
 
-According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, first you'll need to configure your app to use Apple Sign In. <!-- TODO link to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md). -->
+According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your Apple app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, you'll need to add the sign in with Apple entitlement to your app. This entitlement is defined using the `com.apple.developer.applesignin` key, of type `Array` of `String`:
 
-For iOS 13 and higher, call the `AppleSignInAuthenticator.AuthenticateAsync()` method. This will use automatically the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, you can write your shared code to use the correct API at runtime:
+```xml
+<key>com.apple.developer.applesignin</key>
+<array>
+  <string>Default</string>
+</array>
+```
+
+For more information, see [Sign in with Apple Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_applesignin) on developer.apple.com.
+
+For iOS 13 and higher, call the <xref:Microsoft.Maui.Authentication.AppleSignInAuthenticator.AuthenticateAsync%2A?displayProperty=nameWithType> method. This uses the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, you can write your shared code to use the correct API at runtime:
 
 ```csharp
 var scheme = "..."; // Apple, Microsoft, Google, Facebook, etc.
@@ -231,10 +242,10 @@ authToken += result?.AccessToken ?? result?.IdToken;
 
 ## ASP.NET core server back end
 
-It's possible to use the `WebAuthenticator` API with any web back-end service. To use it with an ASP.NET core app, configure the web app with the following steps:
+It's possible to use the <xref:Microsoft.Maui.Authentication.WebAuthenticator> API with any web back-end service. To use it with an ASP.NET core app, configure the web app with the following steps:
 
 01. Set up your [external social authentication providers](/aspnet/core/security/authentication/social/?tabs=visual-studio) in an ASP.NET Core web app.
-01. Set the **Default Authentication Scheme** to `CookieAuthenticationDefaults.AuthenticationScheme` in your `.AddAuthentication()` call.
+01. Set the **Default Authentication Scheme** to <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme?displayProperty=nameWithType> in your `.AddAuthentication()` call.
 01. Use `.AddCookie()` in your _Startup.cs_ `.AddAuthentication()` call.
 01. All providers must be configured with `.SaveTokens = true;`.
 

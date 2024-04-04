@@ -6,7 +6,7 @@ ms.date: 04/06/2022
 
 # SearchBar spell check on Windows
 
-This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific enables a `SearchBar` to interact with the spell check engine. It's consumed in XAML by setting the `SearchBar.IsSpellCheckEnabled` attached property to a `boolean` value:
+This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific enables a <xref:Microsoft.Maui.Controls.SearchBar> to interact with the spell check engine. It's consumed in XAML by setting the `SearchBar.IsSpellCheckEnabled` attached property to a `boolean` value:
 
 ```xaml
 <ContentPage ...
@@ -33,9 +33,9 @@ The `SearchBar.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>` method
 searchBar.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().SetIsSpellCheckEnabled(!searchBar.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().GetIsSpellCheckEnabled());
 ```
 
-The result is that text entered into the `SearchBar` can be spell checked, with incorrect spellings being indicated to the user:
+The result is that text entered into the <xref:Microsoft.Maui.Controls.SearchBar> can be spell checked, with incorrect spellings being indicated to the user:
 
 :::image type="content" source="media/searchbar-spell-check/searchbar-spellcheck.png" alt-text="SearchBar spell check platform-specific.":::
 
 > [!NOTE]
-> The `SearchBar` class in the `Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific` namespace also has `EnableSpellCheck` and `DisableSpellCheck` methods that can be used to enable and disable the spell checker on the `SearchBar`, respectively.
+> The <xref:Microsoft.Maui.Controls.SearchBar> class in the `Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific` namespace also has `EnableSpellCheck` and `DisableSpellCheck` methods that can be used to enable and disable the spell checker on the <xref:Microsoft.Maui.Controls.SearchBar>, respectively.

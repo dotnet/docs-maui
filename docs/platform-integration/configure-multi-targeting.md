@@ -22,31 +22,31 @@ A standard multi-targeting pattern is to include the platform as an extension in
 
 ```xml
 <!-- Android -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
-  <Compile Remove="**\**\*.Android.cs" />
-  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+  <Compile Remove="**\*.Android.cs" />
+  <None Include="**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Both iOS and Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MaciOS.cs" />
-  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <Compile Remove="**\*.MaciOS.cs" />
+  <None Include="**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
-  <Compile Remove="**\**\*.iOS.cs" />
-  <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
+  <Compile Remove="**\*.iOS.cs" />
+  <None Include="**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MacCatalyst.cs" />
-  <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <Compile Remove="**\*.MacCatalyst.cs" />
+  <None Include="**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
@@ -69,31 +69,31 @@ Another standard multi-targeting pattern is to include the platform as a folder 
 
 ```xml
 <!-- Android -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
   <Compile Remove="**\Android\**\*.cs" />
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Both iOS and Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
   <Compile Remove="**\MaciOS\**\*.cs" />
   <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
   <Compile Remove="**\iOS\**\*.cs" />
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
   <Compile Remove="**\MacCatalyst\**\*.cs" />
   <None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\Windows\**\*.cs" />
   <None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
@@ -116,39 +116,39 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 
 ```xml
 <!-- Android -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
-  <Compile Remove="**\**\*.Android.cs" />
-  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+  <Compile Remove="**\*.Android.cs" />
+  <None Include="**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\Android\**\*.cs" />
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
 <!-- Both iOS and Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MaciOS.cs" />
-  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <Compile Remove="**\*.MaciOS.cs" />
+  <None Include="**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\MaciOS\**\*.cs" />
   <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true>
-  <Compile Remove="**\**\*.iOS.cs" />
-  <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
+  <Compile Remove="**\*.iOS.cs" />
+  <None Include="**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\iOS\**\*.cs" />
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
 <!-- Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MacCatalyst.cs" />
-  <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <Compile Remove="**\*.MacCatalyst.cs" />
+  <None Include="**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\MacCatalyst\**\*.cs" />
   <None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\Windows\**\*.cs" />

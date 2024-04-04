@@ -8,45 +8,45 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) `Geometry` class, and the classes that derive from it, enable you to describe the geometry of a 2D shape. `Geometry` objects can be simple, such as rectangles and circles, or composite, created from two or more geometry objects. In addition, more complex geometries can be created that include arcs and curves.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Geometry> class, and the classes that derive from it, enable you to describe the geometry of a 2D shape. <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects can be simple, such as rectangles and circles, or composite, created from two or more geometry objects. In addition, more complex geometries can be created that include arcs and curves.
 
-The `Geometry` class is the parent class for several classes that define different categories of geometries:
+The <xref:Microsoft.Maui.Controls.Shapes.Geometry> class is the parent class for several classes that define different categories of geometries:
 
-- `EllipseGeometry`, which represents the geometry of an ellipse or circle.
-- `GeometryGroup`, which represents a container that can combine multiple geometry objects into a single object.
-- `LineGeometry`, which represents the geometry of a line.
-- `PathGeometry`, which represents the geometry of a complex shape that can be composed of arcs, curves, ellipses, lines, and rectangles.
-- `RectangleGeometry`, which represents the geometry of a rectangle or square.
+- <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry>, which represents the geometry of an ellipse or circle.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>, which represents a container that can combine multiple geometry objects into a single object.
+- <xref:Microsoft.Maui.Controls.Shapes.LineGeometry>, which represents the geometry of a line.
+- <xref:Microsoft.Maui.Controls.Shapes.PathGeometry>, which represents the geometry of a complex shape that can be composed of arcs, curves, ellipses, lines, and rectangles.
+- <xref:Microsoft.Maui.Controls.Shapes.RectangleGeometry>, which represents the geometry of a rectangle or square.
 
 > [!NOTE]
-> There's also a `RoundedRectangleGeometry` class that derives from the `GeometryGroup` class. For more information, see [RoundRectangleGeometry](#roundrectanglegeometry).
+> There's also a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry> class that derives from the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class. For more information, see [RoundRectangleGeometry](#roundrectanglegeometry).
 
-The `Geometry` and `Shape` classes seem similar, in that they both describe 2D shapes, but have an important difference. The `Geometry` class derives from the `BindableObject` class, while the `Shape` class derives from the `View` class. Therefore, `Shape` objects can render themselves and participate in the layout system, while `Geometry` objects cannot. While `Shape` objects are more readily usable than `Geometry` objects, `Geometry` objects are more versatile. While a `Shape` object is used to render 2D graphics, a `Geometry` object can be used to define the geometric region for 2D graphics, and define a region for clipping.
+The <xref:Microsoft.Maui.Controls.Shapes.Geometry> and <xref:Microsoft.Maui.Controls.Shapes.Shape> classes seem similar, in that they both describe 2D shapes, but have an important difference. The <xref:Microsoft.Maui.Controls.Shapes.Geometry> class derives from the <xref:Microsoft.Maui.Controls.BindableObject> class, while the <xref:Microsoft.Maui.Controls.Shapes.Shape> class derives from the <xref:Microsoft.Maui.Controls.View> class. Therefore, <xref:Microsoft.Maui.Controls.Shapes.Shape> objects can render themselves and participate in the layout system, while <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects cannot. While <xref:Microsoft.Maui.Controls.Shapes.Shape> objects are more readily usable than <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects, <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects are more versatile. While a <xref:Microsoft.Maui.Controls.Shapes.Shape> object is used to render 2D graphics, a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object can be used to define the geometric region for 2D graphics, and define a region for clipping.
 
-The following classes have properties that can be set to `Geometry` objects:
+The following classes have properties that can be set to <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects:
 
-- The `Path` class uses a `Geometry` to describe its contents. You can render a `Geometry` by setting the `Path.Data` property to a `Geometry` object, and setting the `Path` object's `Fill` and `Stroke` properties.
-- The `VisualElement` class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
+- The <xref:Microsoft.Maui.Controls.Shapes.Path> class uses a <xref:Microsoft.Maui.Controls.Shapes.Geometry> to describe its contents. You can render a <xref:Microsoft.Maui.Controls.Shapes.Geometry> by setting the `Path.Data` property to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, and setting the <xref:Microsoft.Maui.Controls.Shapes.Path> object's <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> and <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> properties.
+- The <xref:Microsoft.Maui.Controls.VisualElement> class has a <xref:Microsoft.Maui.Controls.VisualElement.Clip> property, of type <xref:Microsoft.Maui.Controls.Shapes.Geometry>, that defines the outline of the contents of an element. When the <xref:Microsoft.Maui.Controls.VisualElement.Clip> property is set to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, only the area that is within the region of the <xref:Microsoft.Maui.Controls.Shapes.Geometry> will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
 
-The classes that derive from the `Geometry` class can be grouped into three categories: simple geometries, path geometries, and composite geometries.
+The classes that derive from the <xref:Microsoft.Maui.Controls.Shapes.Geometry> class can be grouped into three categories: simple geometries, path geometries, and composite geometries.
 
 ## Simple geometries
 
-The simple geometry classes are `EllipseGeometry`, `LineGeometry`, and `RectangleGeometry`. They are used to create basic geometric shapes, such as circles, lines, and rectangles. These same shapes, as well as more complex shapes, can be created using a `PathGeometry` or by combining geometry objects together, but these classes provide a simpler approach for producing these basic geometric shapes.
+The simple geometry classes are <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry>, <xref:Microsoft.Maui.Controls.Shapes.LineGeometry>, and <xref:Microsoft.Maui.Controls.Shapes.RectangleGeometry>. They are used to create basic geometric shapes, such as circles, lines, and rectangles. These same shapes, as well as more complex shapes, can be created using a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> or by combining geometry objects together, but these classes provide a simpler approach for producing these basic geometric shapes.
 
 ### EllipseGeometry
 
 An ellipse geometry represents the geometry or an ellipse or circle, and is defined by a center point, an x-radius, and a y-radius.
 
-The `EllipseGeometry` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> class defines the following properties:
 
-- `Center`, of type `Point`, which represents the center point of the geometry.
-- `RadiusX`, of type `double`, which represents the x-radius value of the geometry. The default value of this property is 0.0.
-- `RadiusY`, of type `double`, which represents the y-radius value of the geometry. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.Center>, of type `Point`, which represents the center point of the geometry.
+- <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.RadiusX>, of type `double`, which represents the x-radius value of the geometry. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.RadiusY>, of type `double`, which represents the y-radius value of the geometry. The default value of this property is 0.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The following example shows how to create and render an `EllipseGeometry` in a `Path` object:
+The following example shows how to create and render an <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"
@@ -59,7 +59,7 @@ The following example shows how to create and render an `EllipseGeometry` in a `
 </Path>
 ```
 
-In this example, the center of the `EllipseGeometry` is set to (50,50) and the x-radius and y-radius are both set to 50. This creates a red circle with a diameter of 100 device-independent units, whose interior is painted blue:
+In this example, the center of the <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> is set to (50,50) and the x-radius and y-radius are both set to 50. This creates a red circle with a diameter of 100 device-independent units, whose interior is painted blue:
 
 :::image type="content" source="media/geometry/ellipse.png" alt-text="EllipseGeometry.":::
 
@@ -67,14 +67,14 @@ In this example, the center of the `EllipseGeometry` is set to (50,50) and the x
 
 A line geometry represents the geometry of a line, and is defined by specifying the start point of the line and the end point.
 
-The `LineGeometry` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> class defines the following properties:
 
-- `StartPoint`, of type `Point`, which represents the start point of the line.
-- `EndPoint`, of type `Point`, which represents the end point of the line.
+- <xref:Microsoft.Maui.Controls.Shapes.LineGeometry.StartPoint>, of type `Point`, which represents the start point of the line.
+- <xref:Microsoft.Maui.Controls.Shapes.LineGeometry.EndPoint>, of type `Point`, which represents the end point of the line.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The following example shows how to create and render a `LineGeometry` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -85,20 +85,20 @@ The following example shows how to create and render a `LineGeometry` in a `Path
 </Path>
 ```
 
-In this example, a `LineGeometry` is drawn from (10,20) to (100,130):
+In this example, a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> is drawn from (10,20) to (100,130):
 
 :::image type="content" source="media/geometry/line.png" alt-text="LineGeometry.":::
 
 > [!NOTE]
-> Setting the `Fill` property of a `Path` that renders a `LineGeometry` will have no effect, because a line has no interior.
+> Setting the <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> property of a <xref:Microsoft.Maui.Controls.Shapes.Path> that renders a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> will have no effect, because a line has no interior.
 
 ### RectangleGeometry
 
 A rectangle geometry represents the geometry of a rectangle or square, and is defined with a `Rect` structure that specifies its relative position and its height and width.
 
-The `RectangleGeometry` class defines the `Rect` property, of type `Rect`, which represents the dimensions of the rectangle. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.Shapes.RectangleGeometry> class defines the `Rect` property, of type `Rect`, which represents the dimensions of the rectangle. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
-The following example shows how to create and render a `RectangleGeometry` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.RectangleGeometry> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"
@@ -117,31 +117,31 @@ The position and dimensions of the rectangle are defined by a `Rect` structure. 
 
 A path geometry describes a complex shape that can be composed of arcs, curves, ellipses, lines, and rectangles.
 
-The `PathGeometry` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> class defines the following properties:
 
-- `Figures`, of type `PathFigureCollection`, which represents the collection of `PathFigure` objects that describe the path's contents.
-- `FillRule`, of type `FillRule`, which determines how the intersecting areas contained in the geometry are combined. The default value of this property is `FillRule.EvenOdd`.
+- <xref:Microsoft.Maui.Controls.Shapes.PathGeometry.Figures>, of type <xref:Microsoft.Maui.Controls.Shapes.PathFigureCollection>, which represents the collection of <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects that describe the path's contents.
+- <xref:Microsoft.Maui.Controls.Shapes.PathGeometry.FillRule>, of type <xref:Microsoft.Maui.Controls.Shapes.FillRule>, which determines how the intersecting areas contained in the geometry are combined. The default value of this property is `FillRule.EvenOdd`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-For more information about the `FillRule` enumeration, see [.NET MAUI Shapes: Fill rules](fillrules.md).
+For more information about the <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration, see [.NET MAUI Shapes: Fill rules](fillrules.md).
 
 > [!NOTE]
-> The `Figures` property is the `ContentProperty` of the `PathGeometry` class, and so does not need to be explicitly set from XAML.
+> The <xref:Microsoft.Maui.Controls.Shapes.PathGeometry.Figures> property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> class, and so does not need to be explicitly set from XAML.
 
-A `PathGeometry` is made up of a collection of `PathFigure` objects, with each `PathFigure` describing a shape in the geometry. Each `PathFigure` is itself comprised of one or more `PathSegment` objects, each of which describes a segment of the shape. There are many types of segments:
+A <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> is made up of a collection of <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects, with each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> describing a shape in the geometry. Each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> is itself comprised of one or more <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects, each of which describes a segment of the shape. There are many types of segments:
 
-- `ArcSegment`, which creates an elliptical arc between two points.
-- `BezierSegment`, which creates a cubic Bezier curve between two points.
-- `LineSegment`, which creates a line between two points.
-- `PolyBezierSegment`, which creates a series of cubic Bezier curves.
-- `PolyLineSegment`, which creates a series of lines.
-- `PolyQuadraticBezierSegment`, which creates a series of quadratic Bezier curves.
-- `QuadraticBezierSegment`, which creates a quadratic Bezier curve.
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment>, which creates an elliptical arc between two points.
+- <xref:Microsoft.Maui.Controls.Shapes.BezierSegment>, which creates a cubic Bezier curve between two points.
+- <xref:Microsoft.Maui.Controls.Shapes.LineSegment>, which creates a line between two points.
+- <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment>, which creates a series of cubic Bezier curves.
+- <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment>, which creates a series of lines.
+- <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment>, which creates a series of quadratic Bezier curves.
+- <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment>, which creates a quadratic Bezier curve.
 
-All the above classes derive from the abstract `PathSegment` class.
+All the above classes derive from the abstract <xref:Microsoft.Maui.Controls.Shapes.PathSegment> class.
 
-The segments within a `PathFigure` are combined into a single geometric shape with the end point of each segment being the start point of the next segment. The `StartPoint` property of a `PathFigure` specifies the point from which the first segment is drawn. Each subsequent segment starts at the end point of the previous segment. For example, a vertical line from `10,50` to `10,150` can be defined by setting the `StartPoint` property to `10,50` and creating a `LineSegment` with a `Point` property setting of `10,150`:
+The segments within a <xref:Microsoft.Maui.Controls.Shapes.PathFigure> are combined into a single geometric shape with the end point of each segment being the start point of the next segment. The <xref:Microsoft.Maui.Controls.Shapes.PathFigure.StartPoint> property of a <xref:Microsoft.Maui.Controls.Shapes.PathFigure> specifies the point from which the first segment is drawn. Each subsequent segment starts at the end point of the previous segment. For example, a vertical line from `10,50` to `10,150` can be defined by setting the <xref:Microsoft.Maui.Controls.Shapes.PathFigure.StartPoint> property to `10,50` and creating a <xref:Microsoft.Maui.Controls.Shapes.LineSegment> with a `Point` property setting of `10,150`:
 
 ```xaml
 <Path Stroke="Black">
@@ -163,31 +163,31 @@ The segments within a `PathFigure` are combined into a single geometric shape wi
 </Path>
 ```
 
-More complex geometries can be created by using a combination of `PathSegment` objects, and by using multiple `PathFigure` objects within a `PathGeometry`.
+More complex geometries can be created by using a combination of <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects, and by using multiple <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects within a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry>.
 
 ### Create an ArcSegment
 
-An `ArcSegment` creates an elliptical arc between two points. An elliptical arc is defined by its start and end points, x- and y-radius, x-axis rotation factor, a value indicating whether the arc should be greater than 180 degrees, and a value describing the direction in which the arc is drawn.
+An <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> creates an elliptical arc between two points. An elliptical arc is defined by its start and end points, x- and y-radius, x-axis rotation factor, a value indicating whether the arc should be greater than 180 degrees, and a value describing the direction in which the arc is drawn.
 
-The `ArcSegment` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> class defines the following properties:
 
-- `Point`, of type `Point`, which represents the endpoint of the elliptical arc. The default value of this property is (0,0).
-- `Size`, of type `Size`, which represents the x- and y-radius of the arc. The default value of this property is (0,0).
-- `RotationAngle`, of type `double`, which represents the amount in degrees by which the ellipse is rotated around the x-axis. The default value of this property is 0.
-- `SweepDirection`, of type `SweepDirection`, which specifies the direction in which the arc is drawn. The default value of this property is `SweepDirection.CounterClockwise`.
-- `IsLargeArc`, of type `bool`, which indicates whether the arc should be greater than 180 degrees. The default value of this property is `false`.
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment.Point>, of type `Point`, which represents the endpoint of the elliptical arc. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment.Size>, of type `Size`, which represents the x- and y-radius of the arc. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment.RotationAngle>, of type `double`, which represents the amount in degrees by which the ellipse is rotated around the x-axis. The default value of this property is 0.
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment.SweepDirection>, of type <xref:Microsoft.Maui.Controls.SweepDirection>, which specifies the direction in which the arc is drawn. The default value of this property is `SweepDirection.CounterClockwise`.
+- <xref:Microsoft.Maui.Controls.Shapes.ArcSegment.IsLargeArc>, of type `bool`, which indicates whether the arc should be greater than 180 degrees. The default value of this property is `false`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The `ArcSegment` class does not contain a property for the starting point of the arc. It only defines the end point of the arc it represents. The start point of the arc is the current point of the `PathFigure` to which the `ArcSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> class does not contain a property for the starting point of the arc. It only defines the end point of the arc it represents. The start point of the arc is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> is added.
 
-The `SweepDirection` enumeration defines the following members:
+The <xref:Microsoft.Maui.Controls.SweepDirection> enumeration defines the following members:
 
-- `CounterClockwise`, which specifies that arcs are drawn in a clockwise direction.
-- `Clockwise`, which specifies that arcs are drawn in a counter clockwise direction.
+- <xref:Microsoft.Maui.Controls.SweepDirection.CounterClockwise>, which specifies that arcs are drawn in a counter clockwise direction.
+- <xref:Microsoft.Maui.Controls.SweepDirection.Clockwise>, which specifies that arcs are drawn in a clockwise direction.
 
-The following example shows how to create and render an `ArcSegment` in a `Path` object:
+The following example shows how to create and render an <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -217,22 +217,22 @@ In this example, an elliptical arc is drawn from (10,10) to (200,100).
 
 ### Create a BezierSegment
 
-A `BezierSegment` creates a cubic Bezier curve between two points. A cubic Bezier curve is defined by four points: a start point, an end point, and two control points.
+A <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> creates a cubic Bezier curve between two points. A cubic Bezier curve is defined by four points: a start point, an end point, and two control points.
 
-The `BezierSegment` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> class defines the following properties:
 
-- `Point1`, of type `Point`, which represents the first control point of the curve. The default value of this property is (0,0).
-- `Point2`, of type `Point`, which represents the second control point of the curve. The default value of this property is (0,0).
-- `Point3`, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.BezierSegment.Point1>, of type `Point`, which represents the first control point of the curve. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.BezierSegment.Point2>, of type `Point`, which represents the second control point of the curve. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.BezierSegment.Point3>, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The `BezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `BezierSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> is added.
 
 The two control points of a cubic Bezier curve behave like magnets, attracting portions of what would otherwise be a straight line toward themselves and producing a curve. The first control point affects the start portion of the curve. The second control point affects the end portion of the curve. The curve doesn't necessarily pass through either of the control points. Instead, each control point moves its portion of the line toward itself, but not through itself.
 
-The following example shows how to create and render a `BezierSegment` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -262,14 +262,14 @@ In this example, a cubic Bezier curve is drawn from (10,10) to (300,10). The cur
 
 ### Create a LineSegment
 
-A `LineSegment` creates a line between two points.
+A <xref:Microsoft.Maui.Controls.Shapes.LineSegment> creates a line between two points.
 
-The `LineSegment` class defines the `Point` property, of type `Point`, which represents the end point of the line segment. The default value of this property is (0,0), and it's backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.Shapes.LineSegment> class defines the `Point` property, of type `Point`, which represents the end point of the line segment. The default value of this property is (0,0), and it's backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The `LineSegment` class does not contain a property for the starting point of the line. It only defines the end point. The start point of the line is the current point of the `PathFigure` to which the `LineSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.LineSegment> class does not contain a property for the starting point of the line. It only defines the end point. The start point of the line is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.LineSegment> is added.
 
-The following example shows how to create and render `LineSegment` objects in a `Path` object:
+The following example shows how to create and render <xref:Microsoft.Maui.Controls.Shapes.LineSegment> objects in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black"      
@@ -295,20 +295,20 @@ The following example shows how to create and render `LineSegment` objects in a 
 </Path>
 ```
 
-In this example, a line segment is drawn from (10,100) to (100,100), and from (100,100) to (100,50). In addition, the `PathFigure` is closed because its `IsClosed` property is set to `true`. This results in a triangle being drawn:
+In this example, a line segment is drawn from (10,100) to (100,100), and from (100,100) to (100,50). In addition, the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> is closed because its `IsClosed` property is set to `true`. This results in a triangle being drawn:
 
 :::image type="content" source="media/geometry/linesegments.png" alt-text="Line graphic shows a triangle.":::
 
 ### Create a PolyBezierSegment
 
-A `PolyBezierSegment` creates one or more cubic Bezier curves.
+A <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> creates one or more cubic Bezier curves.
 
-The `PolyBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> class defines the `Points` property, of type <xref:Microsoft.Maui.Controls.PointCollection>, which represents the points that define the <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment>. A <xref:Microsoft.Maui.Controls.PointCollection> is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The `PolyBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyBezierSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> is added.
 
-The following example shows how to create and render a `PolyBezierSegment` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -330,20 +330,20 @@ The following example shows how to create and render a `PolyBezierSegment` in a 
 </Path>
 ```
 
-In this example, the `PolyBezierSegment` specifies two cubic Bezier curves. The first curve is from (10,10) to (150,100) with a control point of (0,0), and another control point of (100,0). The second curve is from (150,100) to (300,10) with a control point of (150,0) and another control point of (200,0):
+In this example, the <xref:Microsoft.Maui.Controls.Shapes.PolyBezierSegment> specifies two cubic Bezier curves. The first curve is from (10,10) to (150,100) with a control point of (0,0), and another control point of (100,0). The second curve is from (150,100) to (300,10) with a control point of (150,0) and another control point of (200,0):
 
 :::image type="content" source="media/geometry/polybeziersegment.png" alt-text="Line graphic shows two connected Bezier curves.":::
 
 ### Create a PolyLineSegment
 
-A `PolyLineSegment` creates one or more line segments.
+A <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> creates one or more line segments.
 
-The `PolyLineSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyLineSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> class defines the `Points` property, of type <xref:Microsoft.Maui.Controls.PointCollection>, which represents the points that define the <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment>. A <xref:Microsoft.Maui.Controls.PointCollection> is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The `PolyLineSegment` class does not contain a property for the starting point of the line. The start point of the line is the current point of the `PathFigure` to which the `PolyLineSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> class does not contain a property for the starting point of the line. The start point of the line is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> is added.
 
-The following example shows how to create and render a `PolyLineSegment` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -361,20 +361,20 @@ The following example shows how to create and render a `PolyLineSegment` in a `P
 </Path>
 ```
 
-In this example, the `PolyLineSegment` specifies two lines. The first line is from (10,10) to (50,10), and the second line is from (50,10) to (50,50):
+In this example, the <xref:Microsoft.Maui.Controls.Shapes.PolyLineSegment> specifies two lines. The first line is from (10,10) to (50,10), and the second line is from (50,10) to (50,50):
 
 :::image type="content" source="media/geometry/polylinesegment.png" alt-text="Line graphic shows two lines at a right angle.":::
 
 ### Create a PolyQuadraticBezierSegment
 
-A `PolyQuadraticBezierSegment` creates one or more quadratic Bezier curves.
+A <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> creates one or more quadratic Bezier curves.
 
-The `PolyQuadraticBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyQuadraticBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> class defines the `Points` property, of type <xref:Microsoft.Maui.Controls.PointCollection>, which represents the points that define the <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment>. A <xref:Microsoft.Maui.Controls.PointCollection> is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The `PolyQuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyQuadraticBezierSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> is added.
 
-The following example shows to create and render a `PolyQuadraticBezierSegment` in a `Path` object:
+The following example shows to create and render a <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -396,25 +396,25 @@ The following example shows to create and render a `PolyQuadraticBezierSegment` 
 </Path>
 ```
 
-In this example, the `PolyQuadraticBezierSegment` specifies two Bezier curves. The first curve is from (10,10) to (150,50) with a control point at (100,100). The second curve is from (100,100) to (15,200) with a control point at (0,100):
+In this example, the <xref:Microsoft.Maui.Controls.Shapes.PolyQuadraticBezierSegment> specifies two Bezier curves. The first curve is from (10,10) to (150,50) with a control point at (100,100). The second curve is from (100,100) to (15,200) with a control point at (0,100):
 
 :::image type="content" source="media/geometry/polyquadraticbeziersegment.png" alt-text="Line graphic shows two connected overlapping Bezier curves.":::
 
 ### Create a QuadraticBezierSegment
 
-A `QuadraticBezierSegment` creates a quadratic Bezier curve between two points.
+A <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment> creates a quadratic Bezier curve between two points.
 
-The `QuadraticBezierSegment` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment> class defines the following properties:
 
-- `Point1`, of type `Point`, which represents the control point of the curve. The default value of this property is (0,0).
-- `Point2`, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment.Point1>, of type `Point`, which represents the control point of the curve. The default value of this property is (0,0).
+- <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment.Point2>, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The `QuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `QuadraticBezierSegment` is added.
+> The <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment> class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the <xref:Microsoft.Maui.Controls.Shapes.PathFigure> to which the <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment> is added.
 
-The following example shows how to create and render a `QuadraticBezierSegment` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.QuadraticBezierSegment> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -443,7 +443,7 @@ In this example, a quadratic Bezier curve is drawn from (10,10) to (300,10). The
 
 ### Create complex geometries
 
-More complex geometries can be created by using a combination of `PathSegment` objects. The following example creates a shape using a `BezierSegment`, a `LineSegment`, and an `ArcSegment`:
+More complex geometries can be created by using a combination of <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects. The following example creates a shape using a <xref:Microsoft.Maui.Controls.Shapes.BezierSegment>, a <xref:Microsoft.Maui.Controls.Shapes.LineSegment>, and an <xref:Microsoft.Maui.Controls.Shapes.ArcSegment>:
 
 ```xaml
 <Path Stroke="Black">
@@ -469,9 +469,9 @@ More complex geometries can be created by using a combination of `PathSegment` o
 </Path>
 ```
 
-In this example, a `BezierSegment` is first defined using four points. The example then adds a `LineSegment`, which is drawn between the end point of the `BezierSegment` to the point specified by the `LineSegment`. Finally, an `ArcSegment` is drawn from the end point of the `LineSegment` to the point specified by the `ArcSegment`.
+In this example, a <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> is first defined using four points. The example then adds a <xref:Microsoft.Maui.Controls.Shapes.LineSegment>, which is drawn between the end point of the <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> to the point specified by the <xref:Microsoft.Maui.Controls.Shapes.LineSegment>. Finally, an <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> is drawn from the end point of the <xref:Microsoft.Maui.Controls.Shapes.LineSegment> to the point specified by the <xref:Microsoft.Maui.Controls.Shapes.ArcSegment>.
 
-Even more complex geometries can be created by using multiple `PathFigure` objects within a `PathGeometry`. The following example creates a `PathGeometry` from seven `PathFigure` objects, some of which contain multiple `PathSegment` objects:
+Even more complex geometries can be created by using multiple <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects within a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry>. The following example creates a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> from seven <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects, some of which contain multiple <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects:
 
 ```xaml
 <Path Stroke="Red"
@@ -523,27 +523,27 @@ Even more complex geometries can be created by using multiple `PathFigure` objec
 </Path>
 ```
 
-In this example, the word "Hello" is drawn using a combination of `LineSegment` and `BezierSegment` objects, along with a single `ArcSegment` object:
+In this example, the word "Hello" is drawn using a combination of <xref:Microsoft.Maui.Controls.Shapes.LineSegment> and <xref:Microsoft.Maui.Controls.Shapes.BezierSegment> objects, along with a single <xref:Microsoft.Maui.Controls.Shapes.ArcSegment> object:
 
 :::image type="content" source="media/geometry/multiple-pathfigures.png" alt-text="Multiple PathFigure objects.":::
 
 ## Composite geometries
 
-Composite geometry objects can be created using a `GeometryGroup`. The `GeometryGroup` class creates a composite geometry from one or more `Geometry` objects. Any number of `Geometry` objects can be added to a `GeometryGroup`.
+Composite geometry objects can be created using a <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>. The <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class creates a composite geometry from one or more <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects. Any number of <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects can be added to a <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>.
 
-The `GeometryGroup` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class defines the following properties:
 
-- `Children`, of type `GeometryCollection`, which species the objects that define the `GeomtryGroup`. A `GeometryCollection` is an `ObservableCollection` of `Geometry` objects.
-- `FillRule`, of type `FillRule`, which specifies how the intersecting areas in the `GeometryGroup` are combined. The default value of this property is `FillRule.EvenOdd`.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup.Children>, of type <xref:Microsoft.Maui.Controls.Shapes.GeometryCollection>, which specifies the objects that define the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>. A <xref:Microsoft.Maui.Controls.Shapes.GeometryCollection> is an `ObservableCollection` of <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup.FillRule>, of type <xref:Microsoft.Maui.Controls.Shapes.FillRule>, which specifies how the intersecting areas in the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> are combined. The default value of this property is `FillRule.EvenOdd`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The `Children` property is the `ContentProperty` of the `GeometryGroup` class, and so does not need to be explicitly set from XAML.
+> The `Children` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class, and so does not need to be explicitly set from XAML.
 
-For more information about the `FillRule` enumeration, see [Fill rules](fillrules.md).
+For more information about the <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration, see [Fill rules](fillrules.md).
 
-To draw a composite geometry, set the required `Geometry` objects as the children of a `GeometryGroup`, and display them with a `Path` object. The following XAML shows an example of this:
+To draw a composite geometry, set the required <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects as the children of a <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>, and display them with a <xref:Microsoft.Maui.Controls.Shapes.Path> object. The following XAML shows an example of this:
 
 ```xaml
 <Path Stroke="Green"
@@ -568,7 +568,7 @@ To draw a composite geometry, set the required `Geometry` objects as the childre
 </Path>
 ```
 
-In this example, four `EllipseGeometry` objects with identical x-radius and y-radius coordinates, but with different center coordinates, are combined. This creates four overlapping circles, whose interiors are filled orange due to the default `EvenOdd` fill rule:
+In this example, four <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> objects with identical x-radius and y-radius coordinates, but with different center coordinates, are combined. This creates four overlapping circles, whose interiors are filled orange due to the default <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> fill rule:
 
 :::image type="content" source="media/geometry/geometrygroup.png" alt-text="Line graphic shows four overlapping circles with regions filled.":::
 
@@ -576,17 +576,17 @@ In this example, four `EllipseGeometry` objects with identical x-radius and y-ra
 
 A round rectangle geometry represents the geometry of a rectangle, or square, with rounded corners, and is defined by a corner radius and a `Rect` structure that specifies its relative position and its height and width.
 
-The `RoundRectangleGeometry` class, which derives from the `GeometryGroup` class, defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry> class, which derives from the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class, defines the following properties:
 
-- `CornerRadius`, of type `CornerRadius`, which is the corner radius of the geometry.
-- `Rect`, of type `Rect`, which represents the dimensions of the rectangle.
+- <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry.CornerRadius>, of type `CornerRadius`, which is the corner radius of the geometry.
+- <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry.Rect>, of type `Rect`, which represents the dimensions of the rectangle.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The fill rule used by the `RoundRectangleGeometry` is `FillRule.Nonzero`. For more information about fill rules, see [Fill rules](fillrules.md).
+> The fill rule used by the <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry> is `FillRule.Nonzero`. For more information about fill rules, see [Fill rules](fillrules.md).
 
-The following example shows how to create and render a `RoundRectangleGeometry` in a `Path` object:
+The following example shows how to create and render a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangleGeometry> in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"
@@ -602,9 +602,9 @@ The position and dimensions of the rectangle are defined by a `Rect` structure. 
 
 ## Clip with a Geometry
 
-The `VisualElement` class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible.
+The <xref:Microsoft.Maui.Controls.VisualElement> class has a <xref:Microsoft.Maui.Controls.VisualElement.Clip> property, of type <xref:Microsoft.Maui.Controls.Shapes.Geometry>, that defines the outline of the contents of an element. When the <xref:Microsoft.Maui.Controls.VisualElement.Clip> property is set to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, only the area that is within the region of the <xref:Microsoft.Maui.Controls.Shapes.Geometry> will be visible.
 
-The following example shows how to use a `Geometry` object as the clip region for an `Image`:
+The following example shows how to use a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object as the clip region for an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkeyface.png">
@@ -616,18 +616,18 @@ The following example shows how to use a `Geometry` object as the clip region fo
 </Image>
 ```
 
-In this example, an `EllipseGeometry` with `RadiusX` and `RadiusY` values of 100, and a `Center` value of (180,180) is set to the `Clip` property of an `Image`. Only the part of the image that is within the area of the ellipse will be displayed:
+In this example, an <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> with <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.RadiusX> and <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.RadiusY> values of 100, and a <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry.Center> value of (180,180) is set to the <xref:Microsoft.Maui.Controls.VisualElement.Clip> property of an <xref:Microsoft.Maui.Controls.Image>. Only the part of the image that is within the area of the ellipse will be displayed:
 
 :::image type="content" source="media/geometry/clip-ellipsegeometry.png" alt-text="Clip an Image with an EllipseGeometry.":::
 
 > [!NOTE]
-> Simple geometries, path geometries, and composite geometries can all be used to clip `VisualElement` objects.
+> Simple geometries, path geometries, and composite geometries can all be used to clip <xref:Microsoft.Maui.Controls.VisualElement> objects.
 
 ## Other features
 
-The `GeometryHelper` class provides the following helper methods:
+The <xref:Microsoft.Maui.Controls.Shapes.GeometryHelper> class provides the following helper methods:
 
-- `FlattenGeometry`, which flattens a `Geometry` into a `PathGeometry`.
-- `FlattenCubicBezier`, which flattens a cubic Bezier curve into a `List<Point>` collection.
-- `FlattenQuadraticBezier`, which flattens a quadratic Bezier curve into a `List<Point>` collection.
-- `FlattenArc`, which flattens an elliptical arc into a `List<Point>` collection.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryHelper.FlattenGeometry%2A>, which flattens a <xref:Microsoft.Maui.Controls.Shapes.Geometry> into a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry>.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryHelper.FlattenCubicBezier%2A>, which flattens a cubic Bezier curve into a `List<Point>` collection.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryHelper.FlattenQuadraticBezier%2A>, which flattens a quadratic Bezier curve into a `List<Point>` collection.
+- <xref:Microsoft.Maui.Controls.Shapes.GeometryHelper.FlattenArc%2A>, which flattens an elliptical arc into a `List<Point>` collection.

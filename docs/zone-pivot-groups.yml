@@ -2,7 +2,7 @@
 groups:
 - id: devices-deployment
   title: Devices
-  prompt: Choose your deployment device
+  prompt: Choose your platform
   pivots:
     - id: devices-android
       title: Android

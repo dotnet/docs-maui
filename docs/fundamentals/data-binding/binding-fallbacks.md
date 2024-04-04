@@ -24,9 +24,9 @@ The following example demonstrates setting the `FallbackValue` property:
        ... />   
 ```
 
-The binding on the `Label` defines a `FallbackValue` value (delimited by single-quote characters) that will be set on the target if the binding source can't be resolved. Therefore, the value defined by the `FallbackValue` property will be displayed if the `Population` property doesn't exist on the bound object.
+The binding on the <xref:Microsoft.Maui.Controls.Label> defines a `FallbackValue` value (delimited by single-quote characters) that will be set on the target if the binding source can't be resolved. Therefore, the value defined by the `FallbackValue` property will be displayed if the `Population` property doesn't exist on the bound object.
 
-Rather than defining `FallbackValue` property values inline, it's recommended to define them as resources in a `ResourceDictionary`. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
+Rather than defining `FallbackValue` property values inline, it's recommended to define them as resources in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
 
 ```xaml
 <Label Text="{Binding Population, FallbackValue={StaticResource populationUnknown}}"
@@ -40,7 +40,7 @@ When the `FallbackValue` property isn't set in a binding expression and the bind
 
 :::image type="content" source="media/binding-fallbacks/bindingunavailable-detail.png" alt-text="FallbackValue Binding.":::
 
-Therefore, in this example the `Label` displays "Population size unknown" because the bound object lacks a `Population` property.
+Therefore, in this example the <xref:Microsoft.Maui.Controls.Label> displays "Population size unknown" because the bound object lacks a `Population` property.
 
 > [!IMPORTANT]
 > A defined value converter is not executed in a binding expression when the `FallbackValue` property is set.
@@ -71,9 +71,9 @@ The following example demonstrates setting the `TargetNullValue` property:
 </ListView>
 ```
 
-The bindings on the `Image` and `Label` both define `TargetNullValue` values (delimited by single-quote characters) that will be applied if the binding path returns `null`. Therefore, the values defined by the `TargetNullValue` properties will be displayed for any objects in the collection where the `ImageUrl` and `Location` properties are not defined.
+The bindings on the <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> both define `TargetNullValue` values (delimited by single-quote characters) that will be applied if the binding path returns `null`. Therefore, the values defined by the `TargetNullValue` properties will be displayed for any objects in the collection where the `ImageUrl` and `Location` properties are not defined.
 
-Rather than defining `TargetNullValue` property values inline, it's recommended to define them as resources in a `ResourceDictionary`. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
+Rather than defining `TargetNullValue` property values inline, it's recommended to define them as resources in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
 
 ```xaml
 <Image Source="{Binding ImageUrl, TargetNullValue={StaticResource fallbackImageUrl}}"
@@ -89,7 +89,7 @@ When the `TargetNullValue` property isn't set in a binding expression, a source 
 
 :::image type="content" source="media/binding-fallbacks/bindingunavailable.png" alt-text="TargetNullValue Binding.":::
 
-Therefore, in this example the `Image` and `Label` objects display their `TargetNullValue` when their source objects are `null`.
+Therefore, in this example the <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> objects display their `TargetNullValue` when their source objects are `null`.
 
 > [!IMPORTANT]
 > String formatting is not applied in a binding expression when the `TargetNullValue` property is set.

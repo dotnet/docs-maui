@@ -21,7 +21,7 @@ Path markup syntax is composed of an optional `FillRule` value, and one or more 
 
 In this syntax:
 
-- *fillRule* is an optional `FillRule` that specifies whether the geometry should use the `EvenOdd` or `Nonzero` fill rule. `F0` is used to specify the `EvenOdd` fill rule, while `F1` is used to specify the `Nonzero` fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
+- *fillRule* is an optional <xref:Microsoft.Maui.Controls.Shapes.FillRule> that specifies whether the geometry should use the <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> or <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule. `F0` is used to specify the <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> fill rule, while `F1` is used to specify the <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
 - *figureDescription* represents a figure composed of a move command, draw commands, and an optional close command. A move command specifies the start point of the figure. Draw commands describe the figure's contents, and the optional close command closes the figure.
 
 In the example above, the path markup syntax specifies a start point using the move command (`M`), a series of straight lines using the line command (`L`), and closes the path with the close command (`Z`).
@@ -31,7 +31,7 @@ In path markup syntax, spaces are not required before or after commands. In addi
 > [!TIP]
 > Path markup syntax is compatible with Scalable Vector Graphics (SVG) image path definitions, and so it can be useful for porting graphics from SVG format.
 
-While path markup syntax is intended for consumption in XAML, it can be converted to a `Geometry` object in code by invoking the `ConvertFromInvariantString` method in the `PathGeometryConverter` class:
+While path markup syntax is intended for consumption in XAML, it can be converted to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object in code by invoking the `ConvertFromInvariantString` method in the <xref:Microsoft.Maui.Controls.Shapes.PathGeometryConverter> class:
 
 ```csharp
 Geometry pathData = (Geometry)new PathGeometryConverter().ConvertFromInvariantString("M13.908992,16.207977 L32.000049,16.207977 32.000049,31.999985 13.908992,30.109983Z");
@@ -68,7 +68,7 @@ In this syntax, *endPoint* is a `Point` that represents the end point of the lin
 
 `L 20,30` and `L 20 30` are examples of valid line commands.
 
-For information about creating a straight line as a `PathGeometry` object, see [Create a LineSegment](geometries.md#create-a-linesegment).
+For information about creating a straight line as a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> object, see [Create a LineSegment](geometries.md#create-a-linesegment).
 
 ### Horizontal line command
 
@@ -100,11 +100,11 @@ In this syntax:
 
 `A 150,150 0 1,0 150,-150` is an example of a valid elliptical arc command.
 
-For information about creating an elliptical arc as a `PathGeometry` object, see [Create an ArcSegment](geometries.md#create-an-arcsegment).
+For information about creating an elliptical arc as a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> object, see [Create an ArcSegment](geometries.md#create-an-arcsegment).
 
 ### Cubic Bezier curve command
 
-The cubic Bezier curve command creates a cubic Bezier curve between the current point and the specified end point by using the two specified control point. The syntax for this command is: `C` *controlPoint1* *controlPoint2* *endPoint* or `c` *controlPoint1* *controlPoint2* *endPoint*.
+The cubic Bezier curve command creates a cubic Bezier curve between the current point and the specified end point by using the two specified control points. The syntax for this command is: `C` *controlPoint1* *controlPoint2* *endPoint* or `c` *controlPoint1* *controlPoint2* *endPoint*.
 
 In this syntax:
 
@@ -114,7 +114,7 @@ In this syntax:
 
 `C 100,200 200,400 300,200` is an example of a valid cubic Bezier curve command.
 
-For information about creating a cubic Bezier curve as a `PathGeometry` object, see [Create a BezierSegment](geometries.md#create-a-beziersegment).
+For information about creating a cubic Bezier curve as a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> object, see [Create a BezierSegment](geometries.md#create-a-beziersegment).
 
 ### Quadratic Bezier curve command
 
@@ -127,7 +127,7 @@ In this syntax:
 
 `Q 100,200 300,200` is an example of a valid quadratic Bezier curve command.
 
-For information about creating a quadratic Bezier curve as a `PathGeometry` object, see [Create a QuadraticBezierSegment](geometries.md#create-a-quadraticbeziersegment).
+For information about creating a quadratic Bezier curve as a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> object, see [Create a QuadraticBezierSegment](geometries.md#create-a-quadraticbeziersegment).
 
 ### Smooth cubic Bezier curve command
 
@@ -163,7 +163,7 @@ The syntax for the close command is: `Z` or `z`.
 Instead of a standard numerical value, you can also use the following case-sensitive special values:
 
 - `Infinity` represents `double.PositiveInfinity`.
-- `-Infinity`represents `double.NegativeInfinity`.
+- `-Infinity` represents `double.NegativeInfinity`.
 - `NaN` represents `double.NaN`.
 
 In addition, you may also use case-insensitive scientific notation. Therefore, `+1.e17` is a valid value.

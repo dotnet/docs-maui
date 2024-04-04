@@ -1,20 +1,40 @@
 ---
 title: "Inspect the visual tree of a .NET MAUI app"
 description: "Learn how to examine a visual tree of the UI elements in your running .NET MAUI app."
-ms.date: 06/23/2022
+ms.date: 10/25/2022
 ---
 
 # Inspect the visual tree of a .NET MAUI app
 
 .NET Multi-platform App UI (.NET MAUI) Live Visual Tree is a Visual Studio feature that provides a tree view of the UI elements in your running .NET MAUI app.
 
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
+
 When your .NET MAUI app is running in debug configuration, with the debugger attached, the Live Visual Tree window can be opened by selecting **Debug > Windows > Live Visual Tree** from the Visual Studio menu bar:
 
-:::image type="content" source="media/live-visual-tree/live-visual-tree.png" alt-text="Screenshot of the Live Visual Tree window.":::
+:::image type="content" source="media/live-visual-tree/live-visual-tree.png" alt-text="Screenshot of the Live Visual Tree window in Visual Studio.":::
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
+When your .NET MAUI app is running in debug configuration, with the debugger attached, the Live Visual Tree window can be opened by selecting **View > Debug Windows > Live Visual Tree** from the Visual Studio for Mac menu bar:
+
+:::image type="content" source="media/live-visual-tree/live-visual-tree-vsmac.png" alt-text="Screenshot of the Live Visual Tree window in Visual Studio for Mac.":::
+
+---
 
 Provided that Hot Reload is enabled, the **Live Visual Tree** window will display the hierarchy of your app's UI elements regardless of whether the app's UI is built using XAML or C#. However, you will have to disable Just My XAML to display the hierarchy of your app's UI elements for UIs built using C#.
 
 ## Just My XAML
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
 
 The view of the UI elements is simplified by default using a feature called Just My XAML. Clicking the **Show Just My XAML** button disables the feature and shows all UI elements in the visual tree:
 
@@ -22,11 +42,23 @@ The view of the UI elements is simplified by default using a feature called Just
 
 Just My XAML can be permanently disabled by selecting **Debug > Options > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that **Enable Just My XAML in Live Visual Tree** is disabled:
 
-:::image type="content" source="media/live-visual-tree/just-my-xaml-disabled.png" alt-text="Screenshot of Just My XAML button disabled in the Live Visual Tree window.":::
+:::image type="content" source="media/live-visual-tree/just-my-xaml-disabled.png" alt-text="Screenshot of Just My XAML button disabled in the Live Visual Tree window in Visual Studio.":::
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
+The view of the UI elements can be simplified using a feature called Just My XAML. Clicking the **Show Just My XAML** button enables the feature and shows just the UI elements from your XAML in the visual tree:
+
+:::image type="content" source="media/live-visual-tree/just-my-xaml-vsmac.png" alt-text="Screenshot of all UI elements in the Live Visual Tree window in Visual Studio for Mac.":::
+
+---
 
 ## Find a UI element
 
-The structure of a XAML UI has a lot of elements that you may not be interested in, and if you don't have a full understanding of the app's source code you might have a difficult time navigating the visual tree to find the UI element that you're looking for. Therefore, the **Live Visual Tree** window has multiple approaches that let you use the app's UI to help you find the element you want to examine:
+The structure of a XAML UI has a lot of elements that you may not be interested in, and if you don't have a full understanding of the app's source code you might have a difficult time navigating the visual tree to find the UI element that you're looking for. Therefore, on Windows the **Live Visual Tree** window has multiple approaches that let you use the app's UI to help you find the element you want to examine:
 
 - **Select element in the running application**. You can enable this mode by clicking the **Select Element in the Running Application** button in the **Live Visual Tree** toolbar:
 

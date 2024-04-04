@@ -10,15 +10,15 @@ ms.date: 01/11/2022
 
 A .NET Multi-platform App UI (.NET MAUI) brush enables you to paint an area, such as the background of a control, using different approaches.
 
-The `Brush` class is an abstract class that paints an area with its output. Classes that derive from `Brush` describe different ways of painting an area. The following list describes the different brush types available in .NET MAUI:
+The <xref:Microsoft.Maui.Controls.Brush> class is an abstract class that paints an area with its output. Classes that derive from <xref:Microsoft.Maui.Controls.Brush> describe different ways of painting an area. The following list describes the different brush types available in .NET MAUI:
 
-- `SolidColorBrush`, which paints an area with a solid color. For more information, see [Solid color brushes](solidcolor.md).
-- `LinearGradientBrush`, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
-- `RadialGradientBrush`, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
+- <xref:Microsoft.Maui.Controls.SolidColorBrush>, which paints an area with a solid color. For more information, see [Solid color brushes](solidcolor.md).
+- <xref:Microsoft.Maui.Controls.LinearGradientBrush>, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
+- <xref:Microsoft.Maui.Controls.RadialGradientBrush>, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
-Instances of these brush types can be assigned to the `Stroke` and `Fill` properties of a `Shape`, the `Stoke` property of a `Border`, the `Brush` property of a `Shadow`, and the `Background` property of a `VisualElement`.
+Instances of these brush types can be assigned to the `Stroke` and `Fill` properties of a <xref:Microsoft.Maui.Controls.Shapes.Shape>, the `Stroke` property of a <xref:Microsoft.Maui.Controls.Border>, the `Brush` property of a `Shadow`, and the `Background` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
 
 > [!NOTE]
 > The `VisualElement.Background` property enables brushes to be used as the background in any control.
 
-The `Brush` class also has an `IsNullOrEmpty` method that returns a `bool` that represents whether the brush is defined or not.
+The <xref:Microsoft.Maui.Controls.Brush> class also has an `IsNullOrEmpty` method that returns a `bool` that represents whether the brush is defined or not.

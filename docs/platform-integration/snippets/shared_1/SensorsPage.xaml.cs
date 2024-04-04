@@ -15,25 +15,25 @@ public partial class SensorsPage : ContentPage
     #region Accelerometer
     private void AccelSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleAccelerometer(Accelerometer.Default);
+        ToggleAccelerometer();
     }
 
     //<toggle_accelerometer>
-    public void ToggleAccelerometer(IAccelerometer accelerometer)
+    public void ToggleAccelerometer()
     {
-        if (accelerometer.IsSupported)
+        if (Accelerometer.Default.IsSupported)
         {
-            if (!accelerometer.IsMonitoring)
+            if (!Accelerometer.Default.IsMonitoring)
             {
                 // Turn on accelerometer
-                accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
-                accelerometer.Start(SensorSpeed.UI);
+                Accelerometer.Default.ReadingChanged += Accelerometer_ReadingChanged;
+                Accelerometer.Default.Start(SensorSpeed.UI);
             }
             else
             {
                 // Turn off accelerometer
-                accelerometer.Stop();
-                accelerometer.ReadingChanged -= Accelerometer_ReadingChanged;
+                Accelerometer.Default.Stop();
+                Accelerometer.Default.ReadingChanged -= Accelerometer_ReadingChanged;
             }
         }    
     }
@@ -50,25 +50,25 @@ public partial class SensorsPage : ContentPage
     #region Barometer
     private void BarometerSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleBarometer(Barometer.Default);
+        ToggleBarometer();
     }
 
     //<toggle_barometer>
-    public void ToggleBarometer(IBarometer barometer)
+    public void ToggleBarometer()
     {
-        if (barometer.IsSupported)
+        if (Barometer.Default.IsSupported)
         {
-            if (!barometer.IsMonitoring)
+            if (!Barometer.Default.IsMonitoring)
             {
-                // Turn on accelerometer
-                barometer.ReadingChanged += Barometer_ReadingChanged;
-                barometer.Start(SensorSpeed.UI);
+                // Turn on barometer
+                Barometer.Default.ReadingChanged += Barometer_ReadingChanged;
+                Barometer.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off accelerometer
-                barometer.Stop();
-                barometer.ReadingChanged -= Barometer_ReadingChanged;
+                // Turn off barometer
+                Barometer.Default.Stop();
+                Barometer.Default.ReadingChanged -= Barometer_ReadingChanged;
             }
         }
     }
@@ -85,25 +85,25 @@ public partial class SensorsPage : ContentPage
     #region Compass
     private void CompassSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleCompass(Compass.Default);
+        ToggleCompass();
     }
 
     //<toggle_compass>
-    private void ToggleCompass(ICompass compass)
+    private void ToggleCompass()
     {
-        if (compass.IsSupported)
+        if (Compass.Default.IsSupported)
         {
-            if (!compass.IsMonitoring)
+            if (!Compass.Default.IsMonitoring)
             {
                 // Turn on compass
-                compass.ReadingChanged += Compass_ReadingChanged;
-                compass.Start(SensorSpeed.UI);
+                Compass.Default.ReadingChanged += Compass_ReadingChanged;
+                Compass.Default.Start(SensorSpeed.UI);
             }
             else
             {
                 // Turn off compass
-                compass.Stop();
-                compass.ReadingChanged -= Compass_ReadingChanged;
+                Compass.Default.Stop();
+                Compass.Default.ReadingChanged -= Compass_ReadingChanged;
             }
         }
     }
@@ -120,25 +120,25 @@ public partial class SensorsPage : ContentPage
     #region Gyroscope
     private void GyroscopeSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleGyroscope(Gyroscope.Default);
+        ToggleGyroscope();
     }
 
     //<toggle_gyroscope>
-    private void ToggleGyroscope(IGyroscope gyroscope)
+    private void ToggleGyroscope()
     {
-        if (gyroscope.IsSupported)
+        if (Gyroscope.Default.IsSupported)
         {
-            if (!gyroscope.IsMonitoring)
+            if (!Gyroscope.Default.IsMonitoring)
             {
-                // Turn on compass
-                gyroscope.ReadingChanged += Gyroscope_ReadingChanged;
-                gyroscope.Start(SensorSpeed.UI);
+                // Turn on gyroscope
+                Gyroscope.Default.ReadingChanged += Gyroscope_ReadingChanged;
+                Gyroscope.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
-                gyroscope.Stop();
-                gyroscope.ReadingChanged -= Gyroscope_ReadingChanged;
+                // Turn off gyroscope
+                Gyroscope.Default.Stop();
+                Gyroscope.Default.ReadingChanged -= Gyroscope_ReadingChanged;
             }
         }
     }
@@ -155,25 +155,25 @@ public partial class SensorsPage : ContentPage
     #region Magnetometer
     private void MagnetometerSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleMagnetometer(Magnetometer.Default);
+        ToggleMagnetometer();
     }
 
     //<toggle_magnetometer>
-    private void ToggleMagnetometer(IMagnetometer magnetometer)
+    private void ToggleMagnetometer()
     {
-        if (magnetometer.IsSupported)
+        if (Magnetometer.Default.IsSupported)
         {
-            if (!magnetometer.IsMonitoring)
+            if (!Magnetometer.Default.IsMonitoring)
             {
-                // Turn on compass
-                magnetometer.ReadingChanged += Magnetometer_ReadingChanged;
-                magnetometer.Start(SensorSpeed.UI);
+                // Turn on magnetometer
+                Magnetometer.Default.ReadingChanged += Magnetometer_ReadingChanged;
+                Magnetometer.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
-                magnetometer.Stop();
-                magnetometer.ReadingChanged -= Magnetometer_ReadingChanged;
+                // Turn off magnetometer
+                Magnetometer.Default.Stop();
+                Magnetometer.Default.ReadingChanged -= Magnetometer_ReadingChanged;
             }
         }
     }
@@ -190,25 +190,25 @@ public partial class SensorsPage : ContentPage
     #region Orientation
     private void OrientationSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleOrientation(OrientationSensor.Default);
+        ToggleOrientation();
     }
 
     //<toggle_orientation>
-    private void ToggleOrientation(IOrientationSensor orientation)
+    private void ToggleOrientation()
     {
-        if (orientation.IsSupported)
+        if (OrientationSensor.Default.IsSupported)
         {
-            if (!orientation.IsMonitoring)
+            if (!OrientationSensor.Default.IsMonitoring)
             {
-                // Turn on compass
-                orientation.ReadingChanged += Orientation_ReadingChanged;
-                orientation.Start(SensorSpeed.UI);
+                // Turn on orientation
+                OrientationSensor.Default.ReadingChanged += Orientation_ReadingChanged;
+                OrientationSensor.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
-                orientation.Stop();
-                orientation.ReadingChanged -= Orientation_ReadingChanged;
+                // Turn off orientation
+                OrientationSensor.Default.Stop();
+                OrientationSensor.Default.ReadingChanged -= Orientation_ReadingChanged;
             }
         }
     }
@@ -225,25 +225,25 @@ public partial class SensorsPage : ContentPage
     #region Shake
     private void ShakeSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        ToggleShake(Accelerometer.Default);
+        ToggleShake();
     }
 
     //<toggle_shake>
-    private void ToggleShake(IAccelerometer accelerometer)
+    private void ToggleShake()
     {
-        if (accelerometer.IsSupported)
+        if (Accelerometer.Default.IsSupported)
         {
-            if (!accelerometer.IsMonitoring)
+            if (!Accelerometer.Default.IsMonitoring)
             {
-                // Turn on compass
-                accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
-                accelerometer.Start(SensorSpeed.Game);
+                // Turn on accelerometer
+                Accelerometer.Default.ShakeDetected += Accelerometer_ShakeDetected;
+                Accelerometer.Default.Start(SensorSpeed.Game);
             }
             else
             {
-                // Turn off compass
-                accelerometer.Stop();
-                accelerometer.ShakeDetected -= Accelerometer_ShakeDetected;
+                // Turn off accelerometer
+                Accelerometer.Default.Stop();
+                Accelerometer.Default.ShakeDetected -= Accelerometer_ShakeDetected;
             }
         }
     }

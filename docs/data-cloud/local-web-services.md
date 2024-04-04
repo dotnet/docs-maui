@@ -1,7 +1,7 @@
 ---
 title: "Connect to local web services from Android emulators and iOS simulators"
 description: "Learn how a .NET MAUI app running in the Android emulator or iOS simulator can consume a ASP.NET Core web service running locally."
-ms.date: 06/22/2022
+ms.date: 10/21/2022
 ---
 
 # Connect to local web services from Android emulators and iOS simulators
@@ -45,7 +45,7 @@ For more information about the `DeviceInfo` class, see [Device information](~/pl
 
 In addition, to run your app on Android you must add the required network security configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network security configuration](#android-network-security-configuration) and [iOS ATS configuration](#ios-ats-configuration).
 
-You must ensure also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
+You must also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
 
 ```json
 {
@@ -80,6 +80,9 @@ To enable clear-text local traffic on Android you must create a network security
   </domain-config>
 </network-security-config>
 ```
+
+> [!NOTE]
+> Ensure that the build action of the *network_security_config.xml* file is set to **AndroidResource**.
 
 Then, configure the **networkSecurityConfig** property on the **application** node in the *Platforms\Android\AndroidManifest.xml* file in your .NET MAUI app project:
 
@@ -165,7 +168,7 @@ public class HttpsClientHandlerService
     public HttpMessageHandler GetPlatformMessageHandler()
     {
 #if ANDROID
-        var handler = new CustomAndroidMessageHandler();
+        var handler = new Xamarin.Android.Net.AndroidMessageHandler();
         handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
         {
             if (cert != null && cert.Issuer.Equals("CN=localhost"))
@@ -184,22 +187,7 @@ public class HttpsClientHandlerService
 #endif
     }
 
-#if ANDROID
-    internal sealed class CustomAndroidMessageHandler : Xamarin.Android.Net.AndroidMessageHandler
-    {
-        protected override Javax.Net.Ssl.IHostnameVerifier GetSSLHostnameVerifier(Javax.Net.Ssl.HttpsURLConnection connection)
-            => new CustomHostnameVerifier();
-
-        private sealed class CustomHostnameVerifier : Java.Lang.Object, Javax.Net.Ssl.IHostnameVerifier
-        {
-            public bool Verify(string hostname, Javax.Net.Ssl.ISSLSession session)
-            {
-                return Javax.Net.Ssl.HttpsURLConnection.DefaultHostnameVerifier.Verify(hostname, session) ||
-                    hostname == "10.0.2.2" && session.PeerPrincipal?.Name == "CN=localhost";
-            }
-        }
-    }
-#elif IOS
+#if IOS
     public bool IsHttpsLocalhost(NSUrlSessionHandler sender, string url, Security.SecTrust trust)
     {
         if (url.StartsWith("https://localhost"))
@@ -210,7 +198,7 @@ public class HttpsClientHandlerService
 }
 ```
 
-On Android, the `GetPlatformMessageHandler` method returns a `CustomAndroidMessageHandler` object that derives from `AndroidMessageHandler`. The `GetPlatformMessageHandler` method sets the `ServerCertificateCustomValidationCallback` property on a `CustomAndroidMessageHandler` object to a callback that ignores the result of the certificate security check for the local HTTPS development certificate.
+On Android, the `GetPlatformMessageHandler` method returns an `AndroidMessageHandler` object. The `GetPlatformMessageHandler` method sets the `ServerCertificateCustomValidationCallback` property on the `AndroidMessageHandler` object to a callback that ignores the result of the certificate security check for the local HTTPS development certificate.
 
 On iOS, the `GetPlatformMessageHandler` method returns a `NSUrlSessionHandler` object that sets its `TrustOverrideForUrl` property to a delegate named `IsHttpsLocalHost` that matches the signature of the `NSUrlSessionHandler.NSUrlSessionHandlerTrustOverrideForUrlCallback` delegate. The `IsHttpsLocalHost` delegate returns `true` when the URL starts with `https://localhost`.
 
@@ -218,8 +206,8 @@ The resulting `HttpClientHandler` object can then be passed as an argument to th
 
 ```csharp
 #if DEBUG
-            HttpMessageHandler handler = new HttpsClientHandlerService();
-            HTTPClient client = new HttpClient(handler.GetPlatformMessageHandler());
+            HttpsClientHandlerService handler = new HttpsClientHandlerService();
+            HttpClient client = new HttpClient(handler.GetPlatformMessageHandler());
 #else
             client = new HttpClient();
 #endif

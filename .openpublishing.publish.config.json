@@ -6,7 +6,9 @@
       "build_output_subfolder": "docs-maui-public",
       "locale": "en-us",
       "monikers": [],
-      "moniker_ranges": [],
+      "moniker_ranges": [
+        ">=net-maui-7.0"
+      ],
       "open_to_public_contributors": true,
       "xref_query_tags": [
         "/dotnet",

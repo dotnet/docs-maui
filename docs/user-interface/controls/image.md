@@ -1,37 +1,37 @@
 ---
 title: "Image"
-description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream."
-ms.date: 03/04/2022
+description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, or a stream."
+ms.date: 04/18/2023
 ---
 
 # Image
 
-The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> displays an image that can be loaded from a local file, a URI, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
 
-`Image` defines the following properties:
+<xref:Microsoft.Maui.Controls.Image> defines the following properties:
 
 - `Aspect`, of type `Aspect`, defines the scaling mode of the image.
 - `IsAnimationPlaying`, of type `bool`, determines whether an animated GIF is playing or stopped. The default value of this property is `false`.
 - `IsLoading`, of type `bool`, indicates the loading status of the image. The default value of this property is `false`.
 - `IsOpaque`, of type `bool`, indicates whether the rendering engine may treat the image as opaque while rendering it. The default value of this property is `false`.
-- `Source`, of type `ImageSource`, specifies the source of the image.
+- `Source`, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies the source of the image.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 > [!NOTE]
-> Font icons can be displayed by an `Image` by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+> Font icons can be displayed by an <xref:Microsoft.Maui.Controls.Image> by specifying the font icon data as a <xref:Microsoft.Maui.Controls.FontImageSource> object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
-The `ImageSource` class defines the following methods that can be used to load an image from different sources:
+The <xref:Microsoft.Maui.Controls.ImageSource> class defines the following methods that can be used to load an image from different sources:
 
 - `FromFile` returns a `FileImageSource` that reads an image from a local file.
 - `FromUri` returns an `UriImageSource` that downloads and reads an image from a specified URI.
-- `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly.
 - `FromStream` returns a `StreamImageSource` that reads an image from a stream that supplies image data.
+<!-- - `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly. -->
 
-In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from resources or streams in XAML through custom markup extensions.
+In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from streams in XAML through custom markup extensions.
 
 > [!IMPORTANT]
-> Images will be displayed at their full resolution unless the size of the `Image` is constrained by its layout, or the `HeightRequest` or `WidthRequest` property of the `Image` is specified.
+> Images will be displayed at their full resolution unless the size of the <xref:Microsoft.Maui.Controls.Image> is constrained by its layout, or the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> or <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property of the <xref:Microsoft.Maui.Controls.Image> is specified.
 
 For information about adding app icons and a splash screen to your app, see [App icons](~/user-interface/images/app-icons.md) and [Splash screen](~/user-interface/images/splashscreen.md).
 
@@ -98,7 +98,7 @@ The `UriImageSource` class defines the following properties:
 - `CacheValidity`, of type `TimeSpan`, specifies how long the image will be stored locally for. The default value of this property is 1 day.
 - `CachingEnabled`, of type `bool`, defines whether image caching is enabled. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 To set a specific cache period, set the `Source` property to an `UriImageSource` object that sets its `CacheValidity` property:
 
@@ -106,7 +106,7 @@ To set a specific cache period, set the `Source` property to an `UriImageSource`
 <Image>
     <Image.Source>
         <UriImageSource Uri="https://aka.ms/campus.jpg"
-                        CacheValidity="10:00:00.0" />
+                        CacheValidity="10:00:00:00" />
     </Image.Source>
 </Image>
 ```
@@ -123,6 +123,8 @@ image.Source = new UriImageSource
 ```
 
 In this example, the caching period is set to 10 days.
+
+<!-- Commented out because we don't want users to use MauiImage rather than this
 
 ## Load an embedded image
 
@@ -148,10 +150,8 @@ Image image = new Image
 };
 ```
 
-<!--
 > [!NOTE]
 > To support displaying embedded images in release mode on Windows, it's necessary to use the overload of `ImageSource.FromResource` that specifies the source assembly in which to search for the image.
--->
 
 ### Load an embedded image in XAML
 
@@ -203,7 +203,7 @@ The markup extension can be consumed in XAML to load an embedded image:
 </ContentPage>
 ```
 
-For more information about XAML markup extensions, see [Create XAML markup extensions](~/xaml/markup-extensions/create.md).
+For more information about XAML markup extensions, see [Create XAML markup extensions](~/xaml/markup-extensions/create.md). -->
 
 ## Load an image from a stream
 
@@ -215,6 +215,44 @@ Image image = new Image
     Source = ImageSource.FromStream(() => stream)
 };
 ```
+
+::: moniker range=">=net-maui-8.0"
+
+> [!IMPORTANT]
+> Image caching is disabled on Android when loading an image from a stream with the [`ImageSource.FromStream`](xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A) method. This is due to the lack of data from which to create a reasonable cache key.
+
+::: moniker-end
+
+## Load a font icon
+
+The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension enables you to display a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. It provides the same functionality as the <xref:Microsoft.Maui.Controls.FontImageSource> class, but with a more concise representation.
+
+The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
+
+- `FontFamily` of type `string`, the font family to which the font icon belongs.
+- `Glyph` of type `string`, the unicode character value of the font icon.
+- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
+- `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
+
+> [!NOTE]
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class to be abbreviated as `FontImage`.
+
+The `Glyph` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
+
+The following XAML example shows how to use the [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension:
+
+```xaml
+<Image BackgroundColor="#D1D1D1"
+       Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
+```
+
+In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
+
+:::image type="content" source="media/image/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
+
+While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
+
+For information about displaying font icons by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 ## Load animated GIFs
 

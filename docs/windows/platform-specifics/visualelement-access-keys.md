@@ -10,7 +10,7 @@ Access keys are keyboard shortcuts that improve the usability and accessibility 
 
 Access key tips are floating badges displayed next to controls that include access keys. Each access key tip contains the alphanumeric keys that activate the associated control. When a user presses the Alt key, the access key tips are displayed.
 
-This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific is used to specify an access key for a `VisualElement`. It's consumed in XAML by setting the `VisualElement.AccessKey` attached property to an alphanumeric value, and by optionally setting the `VisualElement.AccessKeyPlacement` attached property to a value of the `AccessKeyPlacement` enumeration, the `VisualElement.AccessKeyHorizontalOffset` attached property to a `double`, and the `VisualElement.AccessKeyVerticalOffset` attached property to a `double`:
+This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific is used to specify an access key for a <xref:Microsoft.Maui.Controls.VisualElement>. It's consumed in XAML by setting the `VisualElement.AccessKey` attached property to an alphanumeric value, and by optionally setting the `VisualElement.AccessKeyPlacement` attached property to a value of the `AccessKeyPlacement` enumeration, the `VisualElement.AccessKeyHorizontalOffset` attached property to a `double`, and the `VisualElement.AccessKeyVerticalOffset` attached property to a `double`:
 
 ```xaml
 <TabbedPage ...
@@ -61,14 +61,14 @@ button4.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>()
 ...
 ```
 
-The `VisualElement.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>` method specifies that this platform-specific will only run on Windows. The `VisualElement.SetAccessKey` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific` namespace, is used to set the access key value for the `VisualElement`. The `VisualElement.SetAccessKeyPlacement` method, optionally specifies the position to use for displaying the access key tip, with the `AccessKeyPlacement` enumeration providing the following possible values:
+The `VisualElement.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>` method specifies that this platform-specific will only run on Windows. The `VisualElement.SetAccessKey` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific` namespace, is used to set the access key value for the <xref:Microsoft.Maui.Controls.VisualElement>. The `VisualElement.SetAccessKeyPlacement` method, optionally specifies the position to use for displaying the access key tip, with the `AccessKeyPlacement` enumeration providing the following possible values:
 
 - `Auto` – indicates that the access key tip placement will be determined by the operating system.
-- `Top` – indicates that the access key tip will appear above the top edge of the `VisualElement`.
-- `Bottom` – indicates that the access key tip will appear below the lower edge of the `VisualElement`.
-- `Right` – indicates that the access key tip will appear to the right of the right edge of the `VisualElement`.
-- `Left` – indicates that the access key tip will appear to the left of the left edge of the `VisualElement`.
-- `Center` – indicates that the access key tip will appear overlaid on the center of the `VisualElement`.
+- `Top` – indicates that the access key tip will appear above the top edge of the <xref:Microsoft.Maui.Controls.VisualElement>.
+- `Bottom` – indicates that the access key tip will appear below the lower edge of the <xref:Microsoft.Maui.Controls.VisualElement>.
+- `Right` – indicates that the access key tip will appear to the right of the right edge of the <xref:Microsoft.Maui.Controls.VisualElement>.
+- `Left` – indicates that the access key tip will appear to the left of the left edge of the <xref:Microsoft.Maui.Controls.VisualElement>.
+- `Center` – indicates that the access key tip will appear overlaid on the center of the <xref:Microsoft.Maui.Controls.VisualElement>.
 
 > [!NOTE]
 > Typically, the `Auto` key tip placement is sufficient, which includes support for adaptive user interfaces.
@@ -80,11 +80,11 @@ The `VisualElement.SetAccessKeyHorizontalOffset` and `VisualElement.SetAccessKey
 
 In addition, the `GetAccessKey`, `GetAccessKeyPlacement`, `GetAccessKeyHorizontalOffset`, and `GetAccessKeyVerticalOffset` methods can be used to retrieve an access key value and it's location.
 
-The result is that access key tips can be displayed next to any `VisualElement` instances that define access keys, by pressing the Alt key:
+The result is that access key tips can be displayed next to any <xref:Microsoft.Maui.Controls.VisualElement> instances that define access keys, by pressing the Alt key:
 
 :::image type="content" source="media/visualelement-access-keys/visualelement-accesskeys.png " alt-text="VisualElement access keys platform-specific.":::
 
-When a user activates an access key, by pressing the Alt key followed by the access key, the default action for the `VisualElement` will be executed. For example, when a user activates the access key on a `Switch`, the `Switch` is toggled. When a user activates the access key on an `Entry`, the `Entry` gains focus. When a user activates the access key on a `Button`, the event handler for the `Clicked` event is executed.
+When a user activates an access key, by pressing the Alt key followed by the access key, the default action for the <xref:Microsoft.Maui.Controls.VisualElement> will be executed. For example, when a user activates the access key on a <xref:Microsoft.Maui.Controls.Switch>, the <xref:Microsoft.Maui.Controls.Switch> is toggled. When a user activates the access key on an <xref:Microsoft.Maui.Controls.Entry>, the <xref:Microsoft.Maui.Controls.Entry> gains focus. When a user activates the access key on a <xref:Microsoft.Maui.Controls.Button>, the event handler for the `Clicked` event is executed.
 
 <!-- > [!WARNING]
 > By default, when a modal dialog is displayed any access keys that are defined on the page behind the dialog can still be activated. However, custom logic can be written to disable access keys in this scenario. This can be achieved by handling the `Dispatcher.AcceleratorKeyActivated` event in the `MainPage` class of your UWP project, and in the event handler setting the `Handled` property of the event arguments to `true` when a modal dialog is displayed. -->

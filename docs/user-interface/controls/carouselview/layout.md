@@ -8,34 +8,34 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following properties that control layout:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties that control layout:
 
 - `ItemsLayout`, of type `LinearItemsLayout`, specifies the layout to be used.
 - `PeekAreaInsets`, of type `Thickness`, specifies how much to make adjacent items partially visible by.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
-By default, a `CarouselView` will display its items in a horizontal orientation. A single item will be displayed on screen, with swipe gestures resulting in forwards and backwards navigation through the collection of items. However, a vertical orientation is also possible. This is because the `ItemsLayout` property is of type `LinearItemsLayout`, which inherits from the `ItemsLayout` class. The `ItemsLayout` class defines the following properties:
+By default, a <xref:Microsoft.Maui.Controls.CarouselView> will display its items in a horizontal orientation. A single item will be displayed on screen, with swipe gestures resulting in forwards and backwards navigation through the collection of items. However, a vertical orientation is also possible. This is because the `ItemsLayout` property is of type `LinearItemsLayout`, which inherits from the `ItemsLayout` class. The `ItemsLayout` class defines the following properties:
 
-- `Orientation`, of type `ItemsLayoutOrientation`, specifies the direction in which the `CarouselView` expands as items are added.
+- `Orientation`, of type `ItemsLayoutOrientation`, specifies the direction in which the <xref:Microsoft.Maui.Controls.CarouselView> expands as items are added.
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CarouselView](scrolling.md) guide.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CarouselView](scrolling.md) guide.
 
 The `ItemsLayoutOrientation` enumeration defines the following members:
 
-- `Vertical` indicates that the `CarouselView` will expand vertically as items are added.
-- `Horizontal` indicates that the `CarouselView` will expand horizontally as items are added.
+- `Vertical` indicates that the <xref:Microsoft.Maui.Controls.CarouselView> will expand vertically as items are added.
+- `Horizontal` indicates that the <xref:Microsoft.Maui.Controls.CarouselView> will expand horizontally as items are added.
 
 The `LinearItemsLayout` class inherits from the `ItemsLayout` class, and defines an `ItemSpacing` property, of type `double`, that represents the empty space around each item. The default value of this property is 0, and its value must always be greater than or equal to 0. The `LinearItemsLayout` class also defines static `Vertical` and `Horizontal` members. These members can be used to create vertical or horizontal lists, respectively. Alternatively, a `LinearItemsLayout` object can be created, specifying an `ItemsLayoutOrientation` enumeration member as an argument.
 
 > [!NOTE]
-> `CarouselView` uses the native layout engines to perform layout.
+> <xref:Microsoft.Maui.Controls.CarouselView> uses the native layout engines to perform layout.
 
 ## Horizontal layout
 
-By default, `CarouselView` will display its items horizontally. Therefore, it's not necessary to set the `ItemsLayout` property to use this layout:
+By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items horizontally. Therefore, it's not necessary to set the `ItemsLayout` property to use this layout:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
@@ -100,7 +100,7 @@ This results in a layout that grows horizontally as new items are added.
 
 ## Vertical layout
 
-`CarouselView` can display its items vertically by setting the `ItemsLayout` property to a `LinearItemsLayout` object, specifying the `Vertical` `ItemsLayoutOrientation` enumeration member as the `Orientation` property value:
+<xref:Microsoft.Maui.Controls.CarouselView> can display its items vertically by setting the `ItemsLayout` property to a `LinearItemsLayout` object, specifying the `Vertical` `ItemsLayoutOrientation` enumeration member as the `Orientation` property value:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
@@ -157,7 +157,7 @@ This results in a layout that grows vertically as new items are added.
 
 ## Partially visible adjacent items
 
-By default, `CarouselView` displays full items at once. However, this behavior can be changed by setting the `PeekAreaInsets` property to a `Thickness` value that specifies how much to make adjacent items partially visible by. This can be useful to indicate to users that there are additional items to view. The following XAML shows an example of setting this property:
+By default, <xref:Microsoft.Maui.Controls.CarouselView> displays full items at once. However, this behavior can be changed by setting the `PeekAreaInsets` property to a `Thickness` value that specifies how much to make adjacent items partially visible by. This can be useful to indicate to users that there are additional items to view. The following XAML shows an example of setting this property:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}"
@@ -182,9 +182,9 @@ The result is that adjacent items are partially exposed on screen:
 
 ## Item spacing
 
-By default, there is no space between each item in a `CarouselView`. This behavior can be changed by setting the `ItemSpacing` property on the items layout used by the `CarouselView`.
+By default, there is no space between each item in a <xref:Microsoft.Maui.Controls.CarouselView>. This behavior can be changed by setting the `ItemSpacing` property on the items layout used by the <xref:Microsoft.Maui.Controls.CarouselView>.
 
-When a `CarouselView` sets its `ItemsLayout` property to a `LinearItemsLayout` object, the `LinearItemsLayout.ItemSpacing` property can be set to a `double` value that represents the space between items:
+When a <xref:Microsoft.Maui.Controls.CarouselView> sets its `ItemsLayout` property to a `LinearItemsLayout` object, the `LinearItemsLayout.ItemSpacing` property can be set to a `double` value that represents the space between items:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
@@ -216,7 +216,7 @@ This code results in a vertical layout that has a spacing of 20 between items.
 
 ## Dynamic resizing of items
 
-Items in a `CarouselView` can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the `HeightRequest` and `WidthRequest` properties of an `Image` object, and the `HeightRequest` property of its parent `Frame`:
+Items in a <xref:Microsoft.Maui.Controls.CarouselView> can be dynamically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object, and the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property of its parent <xref:Microsoft.Maui.Controls.Frame>:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)
@@ -228,13 +228,13 @@ void OnImageTapped(object sender, EventArgs e)
 }
 ```
 
-The `OnImageTapped` event handler is executed in response to an `Image` object being tapped, and changes the dimensions of the image (and its parent `Frame`, so that it's more easily viewed:
+The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Frame>, so that it's more easily viewed:
 
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
 
 ## Right-to-left layout
 
-`CarouselView` can layout its content in a right-to-left flow direction by setting its `FlowDirection` property to `RightToLeft`. However, the `FlowDirection` property should ideally be set on a page or root layout, which causes all the elements within the page, or root layout, to respond to the flow direction:
+<xref:Microsoft.Maui.Controls.CarouselView> can layout its content in a right-to-left flow direction by setting its `FlowDirection` property to `RightToLeft`. However, the `FlowDirection` property should ideally be set on a page or root layout, which causes all the elements within the page, or root layout, to respond to the flow direction:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -248,6 +248,6 @@ The `OnImageTapped` event handler is executed in response to an `Image` object b
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CarouselView` inherits the `FlowDirection` property value from the `ContentPage`.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the <xref:Microsoft.Maui.Controls.CarouselView> inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
 
-<!-- For more information about flow direction, see [Right-to-left localization](~/fundamentals/localization/right-to-left.md). -->
+For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).

@@ -6,27 +6,25 @@ ms.date: 12/13/2021
 
 # Shadow
 
-<!-- Sample link, if any, goes here -->
-
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
+The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
 
 - `Radius`, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.
 - `Opacity`, of type `float`, indicates the opacity of the shadow. The default value of this property is 1.
-- `Brush`, of type `Brush`, represents the brush used to colorize the shadow.
+- `Brush`, of type <xref:Microsoft.Maui.Controls.Brush>, represents the brush used to colorize the shadow.
 - `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> The `Brush` property only currently supports a `SolidColorBrush`.
+> The `Brush` property only currently supports a <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 ## Create a Shadow
 
 To add a shadow to a control, set the control's `Shadow` property to a `Shadow` object whose properties define its appearance.
 
-The following XAML example shows how to add a shadow to an `Image`:
+The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="dotnet_bot.png"
@@ -48,7 +46,7 @@ In this example, a black shadow is painted around the outline of the image, with
 Shadows can also be added to clipped objects, as shown in the following example:
 
 ```xaml
-<Image Source=https://aka.ms/campus.jpg
+<Image Source="https://aka.ms/campus.jpg"
        Aspect="AspectFill"
        HeightRequest="220"
        WidthRequest="220"
@@ -66,7 +64,7 @@ Shadows can also be added to clipped objects, as shown in the following example:
 </Image>
 ```
 
-In this example, a black shadow is painted around the outline of the `EllipseGeometry` that clips the image:
+In this example, a black shadow is painted around the outline of the <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> that clips the image:
 
 :::image type="content" source="media/shadow/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
@@ -76,7 +74,7 @@ For more information about clipping an element, see [Clip with a Geometry](~/use
 
 ## Create a Shadow gradient
 
-The color of a shadow is defined using a `Brush`. Therefore, gradient shadows can also be added to controls:
+The color of a shadow is defined using a <xref:Microsoft.Maui.Controls.Brush>. Therefore, gradient shadows can also be added to controls:
 
 ```xaml
 <RoundRectangle HeightRequest="200"

@@ -14,7 +14,7 @@ The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) She
 
 ## Flyout items
 
-One or more flyout items can be added to the flyout, and each flyout item is represented by a `FlyoutItem` object. Each `FlyoutItem` object should be a child of the subclassed `Shell` object. Flyout items appear at the top of the flyout when a flyout header isn't present.
+One or more flyout items can be added to the flyout, and each flyout item is represented by a <xref:Microsoft.Maui.Controls.FlyoutItem> object. Each <xref:Microsoft.Maui.Controls.FlyoutItem> object should be a child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object. Flyout items appear at the top of the flyout when a flyout header isn't present.
 
 The following example creates a flyout containing two flyout items:
 
@@ -39,16 +39,16 @@ The following example creates a flyout containing two flyout items:
 </Shell>
 ```
 
-The `FlyoutItem.Title` property, of type `string`, defines the title of the flyout item. The `FlyoutItem.Icon` property, of type `ImageSource`, defines the icon of the flyout item:
+The `FlyoutItem.Title` property, of type `string`, defines the title of the flyout item. The `FlyoutItem.Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon of the flyout item:
 
 :::image type="content" source="media/flyout/two-page-app-flyout.png" alt-text="Screenshot of a Shell two page app with flyout items.":::
 
-In this example, each `ShellContent` object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
+In this example, each <xref:Microsoft.Maui.Controls.ShellContent> object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a `ContentPage` object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the `FlyoutItem` and `Tab` objects from the previous example:
+Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain <xref:Microsoft.Maui.Controls.Tab> objects, which can only ever contain <xref:Microsoft.Maui.Controls.ShellContent> objects. These implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.FlyoutItem> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -65,19 +65,19 @@ Shell has implicit conversion operators that enable the Shell visual hierarchy t
 </Shell>
 ```
 
-This implicit conversion automatically wraps each `ShellContent` object in `Tab` objects, which are wrapped in `FlyoutItem` objects.
+This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in <xref:Microsoft.Maui.Controls.Tab> objects, which are wrapped in <xref:Microsoft.Maui.Controls.FlyoutItem> objects.
 
 > [!NOTE]
-> All `FlyoutItem` objects in a subclassed `Shell` object are automatically added to the `Shell.FlyoutItems` collection, which defines the list of items that will be shown in the flyout.
+> All <xref:Microsoft.Maui.Controls.FlyoutItem> objects in a subclassed <xref:Microsoft.Maui.Controls.Shell> object are automatically added to the `Shell.FlyoutItems` collection, which defines the list of items that will be shown in the flyout.
 
 ### Flyout display options
 
-The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a `FlyoutDisplayOptions` enumeration member:
+The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> enumeration member:
 
-- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the `FlyoutDisplayOptions` property.
+- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
 - `AsMultipleItems`, indicates that the item and its direct children will be visible in the flyout as a group of items.
 
-A flyout item for each `Tab` object within a `FlyoutItem` can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
+A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:Microsoft.Maui.Controls.FlyoutItem> can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -114,10 +114,10 @@ A flyout item for each `Tab` object within a `FlyoutItem` can be displayed by se
 </Shell>
 ```
 
-In this example, flyout items are created for the `Tab` object that's a child of the `FlyoutItem` object, and the `ShellContent` objects that are children of the `FlyoutItem` object. This occurs because each `ShellContent` object that's a child of the `FlyoutItem` object is automatically wrapped in a `Tab` object. In addition, a flyout item is created for the final `ShellContent` object, which is automatically wrapped in a `Tab` object, and then in a `FlyoutItem` object.
+In this example, flyout items are created for the <xref:Microsoft.Maui.Controls.Tab> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object, and the <xref:Microsoft.Maui.Controls.ShellContent> objects that are children of the <xref:Microsoft.Maui.Controls.FlyoutItem> object. This occurs because each <xref:Microsoft.Maui.Controls.ShellContent> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object. In addition, a flyout item is created for the final <xref:Microsoft.Maui.Controls.ShellContent> object, which is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object, and then in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 
 > [!NOTE]
-> Tabs are displayed when a `FlyoutItem` contains more than one `ShellContent` object.
+> Tabs are displayed when a <xref:Microsoft.Maui.Controls.FlyoutItem> contains more than one <xref:Microsoft.Maui.Controls.ShellContent> object.
 
 This results in the following flyout items:
 
@@ -125,7 +125,7 @@ This results in the following flyout items:
 
 ### Define FlyoutItem appearance
 
-The appearance of each `FlyoutItem` can be customized by setting the `Shell.ItemTemplate` attached property to a `DataTemplate`:
+The appearance of each <xref:Microsoft.Maui.Controls.FlyoutItem> can be customized by setting the `Shell.ItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <Shell ...>
@@ -146,20 +146,20 @@ The appearance of each `FlyoutItem` can be customized by setting the `Shell.Item
 </Shell>
 ```
 
-This example displays the title of each `FlyoutItem` object in italics:
+This example displays the title of each <xref:Microsoft.Maui.Controls.FlyoutItem> object in italics:
 
 :::image type="content" source="media/flyout/flyoutitem-templated.png" alt-text="Screenshot of templated FlyoutItem objects.":::
 
-Because `Shell.ItemTemplate` is an attached property, different templates can be attached to specific `FlyoutItem` objects.
+Because `Shell.ItemTemplate` is an attached property, different templates can be attached to specific <xref:Microsoft.Maui.Controls.FlyoutItem> objects.
 
 > [!NOTE]
 > Shell provides the `Title` and `FlyoutIcon` properties to the `BindingContext` of the `ItemTemplate`.
 
-In addition, Shell includes three style classes, which are automatically applied to `FlyoutItem` objects. For more information, see [Style FlyoutItem and MenuItem objects](#style-flyoutitem-and-menuitem-objects).
+In addition, Shell includes three style classes, which are automatically applied to <xref:Microsoft.Maui.Controls.FlyoutItem> objects. For more information, see [Style FlyoutItem and MenuItem objects](#style-flyoutitem-and-menuitem-objects).
 
 ### Default template for FlyoutItems
 
-The default `DataTemplate` used for each `FlyoutItem` is shown below:
+The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Microsoft.Maui.Controls.FlyoutItem> is shown below:
 
 ```xaml
 <DataTemplate x:Key="FlyoutTemplate">
@@ -171,9 +171,11 @@ The default `DataTemplate` used for each `FlyoutItem` is shown below:
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal">
-                          <Setter Property="BackgroundColor"
-                                  Value="Transparent" />                    
-                    </VisualState>
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                    Value="Transparent" />
+                        </VisualState.Setters>
+                    </VisualState>          
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
                             <Setter Property="BackgroundColor"
@@ -241,10 +243,10 @@ The default `DataTemplate` used for each `FlyoutItem` is shown below:
 
 This template can be used for as a basis for making alterations to the existing flyout layout, and also shows the visual states that are implemented for flyout items.
 
-In addition, the `Grid`, `Image`, and `Label` elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
+In addition, the <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.Label> elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
 
 > [!NOTE]
-> The same template can also be used for `MenuItem` objects.
+> The same template can also be used for  <xref:Microsoft.Maui.Controls.MenuItem> objects.
 
 ### Replace flyout content
 
@@ -270,12 +272,12 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
 </Shell>
 ```
 
-In this example, the flyout content is replaced with a `CollectionView` that displays the title of each item in the `FlyoutItems` collection.
+In this example, the flyout content is replaced with a <xref:Microsoft.Maui.Controls.CollectionView> that displays the title of each item in the `FlyoutItems` collection.
 
 > [!NOTE]
-> The `FlyoutItems` property, in the `Shell` class, is a read-only collection of flyout items.
+> The `FlyoutItems` property, in the <xref:Microsoft.Maui.Controls.Shell> class, is a read-only collection of flyout items.
 
-Alternatively, flyout content can be defined by setting the `Shell.FlyoutContentTemplate` bindable property to a `DataTemplate`:
+Alternatively, flyout content can be defined by setting the `Shell.FlyoutContentTemplate` bindable property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <Shell ...
@@ -304,11 +306,11 @@ Alternatively, flyout content can be defined by setting the `Shell.FlyoutContent
 
 ## Menu items
 
-Menu items can be optionally added to the flyout, and each menu item is represented by a `MenuItem` object. The position of `MenuItem` objects on the flyout is dependent upon their declaration order in the Shell visual hierarchy. Therefore, any `MenuItem` objects declared before `FlyoutItem` objects will appear before the `FlyoutItem` objects in the flyout, and any `MenuItem` objects declared after `FlyoutItem` objects will appear after the `FlyoutItem` objects in the flyout.
+Menu items can be optionally added to the flyout, and each menu item is represented by a  <xref:Microsoft.Maui.Controls.MenuItem> object. The position of  <xref:Microsoft.Maui.Controls.MenuItem> objects on the flyout is dependent upon their declaration order in the Shell visual hierarchy. Therefore, any  <xref:Microsoft.Maui.Controls.MenuItem> objects declared before <xref:Microsoft.Maui.Controls.FlyoutItem> objects will appear before the <xref:Microsoft.Maui.Controls.FlyoutItem> objects in the flyout, and any  <xref:Microsoft.Maui.Controls.MenuItem> objects declared after <xref:Microsoft.Maui.Controls.FlyoutItem> objects will appear after the <xref:Microsoft.Maui.Controls.FlyoutItem> objects in the flyout.
 
-The `MenuItem` class has a `Clicked` event, and a `Command` property. Therefore, `MenuItem` objects enable scenarios that execute an action in response to the `MenuItem` being tapped.
+The  <xref:Microsoft.Maui.Controls.MenuItem> class has a `Clicked` event, and a `Command` property. Therefore,  <xref:Microsoft.Maui.Controls.MenuItem> objects enable scenarios that execute an action in response to the  <xref:Microsoft.Maui.Controls.MenuItem> being tapped.
 
-`MenuItem` objects can be added to the flyout as shown in the following example:
+ <xref:Microsoft.Maui.Controls.MenuItem> objects can be added to the flyout as shown in the following example:
 
 ```xaml
 <Shell ...>
@@ -316,22 +318,22 @@ The `MenuItem` class has a `Clicked` event, and a `Command` property. Therefore,
     <MenuItem Text="Help"
               IconImageSource="help.png"
               Command="{Binding HelpCommand}"
-              CommandParameter="https://docs.microsoft.com/dotnet/maui/fundamentals/shell" />    
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />    
 </Shell>
 ```
 
-This example adds a `MenuItem` object to the flyout, beneath all the flyout items:
+This example adds a  <xref:Microsoft.Maui.Controls.MenuItem> object to the flyout, beneath all the flyout items:
 
 :::image type="content" source="media/flyout/flyout.png" alt-text="Screenshot of flyout containing a MenuItem object.":::
 
-The `MenuItem` object executes an `ICommand` named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
+The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Windows.Input.ICommand> named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
 
 > [!NOTE]
-> The `BindingContext` of each `MenuItem` is inherited from the subclassed `Shell` object.
+> The `BindingContext` of each  <xref:Microsoft.Maui.Controls.MenuItem> is inherited from the subclassed <xref:Microsoft.Maui.Controls.Shell> object.
 
 ### Define MenuItem appearance
 
-The appearance of each `MenuItem` can be customized by setting the `Shell.MenuItemTemplate` attached property to a `DataTemplate`:
+The appearance of each  <xref:Microsoft.Maui.Controls.MenuItem> can be customized by setting the `Shell.MenuItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <Shell ...>
@@ -352,24 +354,24 @@ The appearance of each `MenuItem` can be customized by setting the `Shell.MenuIt
     <MenuItem Text="Help"
               IconImageSource="help.png"
               Command="{Binding HelpCommand}"
-              CommandParameter="https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />  
+              CommandParameter="https://learn.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />  
 </Shell>
 ```
 
-This example attaches the `DataTemplate` to each `MenuItem` object, displaying the title of the `MenuItem` object in italics:
+This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each  <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics:
 
 :::image type="content" source="media/flyout/menuitem-templated.png" alt-text="Screenshot of templated MenuItem objects.":::
 
-Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific `MenuItem` objects.
+Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific  <xref:Microsoft.Maui.Controls.MenuItem> objects.
 
 > [!NOTE]
 > Shell provides the `Text` and `IconImageSource` properties to the `BindingContext` of the `MenuItemTemplate`. You can also use `Title` in place of `Text` and `Icon` in place of `IconImageSource` which will let you reuse the same template for menu items and flyout items.
 
-The default template for `FlyoutItem` objects can also be used for `MenuItem` objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
+The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for  <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
 
 ## Style FlyoutItem and MenuItem objects
 
-Shell includes three style classes, which are automatically applied to `FlyoutItem` and `MenuItem` objects. The style class names are `FlyoutItemLabelStyle`, `FlyoutItemImageStyle`, and `FlyoutItemLayoutStyle`.
+Shell includes three style classes, which are automatically applied to <xref:Microsoft.Maui.Controls.FlyoutItem> and  <xref:Microsoft.Maui.Controls.MenuItem> objects. The style class names are `FlyoutItemLabelStyle`, `FlyoutItemImageStyle`, and `FlyoutItemLayoutStyle`.
 
 The following XAML shows an example of defining styles for these style classes:
 
@@ -396,9 +398,9 @@ The following XAML shows an example of defining styles for these style classes:
 </Style>
 ```
 
-These styles will automatically be applied to `FlyoutItem` and `MenuItem` objects, without having to set their `StyleClass` properties to the style class names.
+These styles will automatically be applied to <xref:Microsoft.Maui.Controls.FlyoutItem> and  <xref:Microsoft.Maui.Controls.MenuItem> objects, without having to set their `StyleClass` properties to the style class names.
 
-In addition, custom style classes can be defined and applied to `FlyoutItem` and `MenuItem` objects. For more information about style classes, see [Style classes](~/user-interface/styles/xaml.md#style-classes).
+In addition, custom style classes can be defined and applied to <xref:Microsoft.Maui.Controls.FlyoutItem> and  <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information about style classes, see [Style classes](~/user-interface/styles/xaml.md#style-classes).
 
 ## Flyout header
 
@@ -436,7 +438,7 @@ This results in the following flyout header:
 
 :::image type="content" source="media/flyout/flyout-header.png" alt-text="Screenshot of the flyout header.":::
 
-Alternatively, the flyout header appearance can be defined by setting the `Shell.FlyoutHeaderTemplate` bindable property to a `DataTemplate`:
+Alternatively, the flyout header appearance can be defined by setting the `Shell.FlyoutHeaderTemplate` bindable property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <Shell ...>
@@ -512,7 +514,7 @@ This results in the following flyout footer:
 
 :::image type="content" source="media/flyout/flyout-footer.png" alt-text="Screenshot of the flyout footer.":::
 
-Alternatively, the flyout footer appearance can be defined by setting the `Shell.FlyoutFooterTemplate` property to a `DataTemplate`:
+Alternatively, the flyout footer appearance can be defined by setting the `Shell.FlyoutFooterTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <Shell ...>
@@ -550,7 +552,7 @@ This enables scenarios such as expanding the flyout across the entire screen, or
 
 ## Flyout icon
 
-By default, Shell apps have a hamburger icon which, when pressed, opens the flyout. This icon can be changed by setting the `Shell.FlyoutIcon` bindable property, of type `ImageSource`, to an appropriate icon:
+By default, Shell apps have a hamburger icon which, when pressed, opens the flyout. This icon can be changed by setting the `Shell.FlyoutIcon` bindable property, of type <xref:Microsoft.Maui.Controls.ImageSource>, to an appropriate icon:
 
 ```xaml
 <Shell ...
@@ -573,7 +575,7 @@ The background color of the flyout can be set with the `Shell.FlyoutBackgroundCo
 > [!NOTE]
 > The `Shell.FlyoutBackgroundColor` can also be set from a Cascading Style Sheet (CSS). For more information, see [.NET MAUI Shell specific properties](~/user-interface/styles/css.md#net-maui-shell-specific-properties).
 
-Alternatively, the background of the flyout can be specified by setting the `Shell.FlyoutBackground` bindable property to a `Brush`:
+Alternatively, the background of the flyout can be specified by setting the `Shell.FlyoutBackground` bindable property to a <xref:Microsoft.Maui.Controls.Brush>:
 
 ```xaml
 <Shell ...
@@ -582,9 +584,9 @@ Alternatively, the background of the flyout can be specified by setting the `She
 </Shell>
 ```
 
-In this example, the flyout background is painted with a light gray `SolidColorBrush`.
+In this example, the flyout background is painted with a light gray <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
-The following example shows setting the flyout background to a `LinearGradientBrush`:
+The following example shows setting the flyout background to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
 ```xaml
 <Shell ...>
@@ -607,7 +609,7 @@ For more information about brushes, see [.NET MAUI Brushes](~/user-interface/bru
 
 ## Flyout background image
 
-The flyout can have an optional background image, which appears beneath the flyout header and behind any flyout items, menu items, and the flyout footer. The background image can be specified by setting the `FlyoutBackgroundImage` bindable property, of type `ImageSource`, to a file, embedded resource, URI, or stream.
+The flyout can have an optional background image, which appears beneath the flyout header and behind any flyout items, menu items, and the flyout footer. The background image can be specified by setting the `FlyoutBackgroundImage` bindable property, of type <xref:Microsoft.Maui.Controls.ImageSource>, to a file, embedded resource, URI, or stream.
 
 The aspect ratio of the background image can be configured by setting the `FlyoutBackgroundImageAspect` bindable property, of type `Aspect`, to one of the `Aspect` enumeration members:
 
@@ -631,7 +633,7 @@ This results in a background image appearing in the flyout, below the flyout hea
 
 ## Flyout backdrop
 
-The backdrop of the flyout, which is the appearance of the flyout overlay, can be specified by setting the `Shell.FlyoutBackdrop` attached property to a `Brush`:
+The backdrop of the flyout, which is the appearance of the flyout overlay, can be specified by setting the `Shell.FlyoutBackdrop` attached property to a <xref:Microsoft.Maui.Controls.Brush>:
 
 ```xaml
 <Shell ...
@@ -640,12 +642,12 @@ The backdrop of the flyout, which is the appearance of the flyout overlay, can b
 </Shell>
 ```
 
-In this example, the flyout backdrop is painted with a silver `SolidColorBrush`.
+In this example, the flyout backdrop is painted with a silver <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 > [!IMPORTANT]
-> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on `Shell`, `FlyoutItem`, or `TabBar` objects.
+> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, or <xref:Microsoft.Maui.Controls.TabBar> objects.
 
-The following example shows setting the flyout backdrop to a `LinearGradientBrush`:
+The following example shows setting the flyout backdrop to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
 ```xaml
 <Shell ...>
@@ -684,7 +686,7 @@ The following example shows how to disable the flyout:
 ```
 
 > [!NOTE]
-> The `FlyoutBehavior` attached property can be set on `Shell`, `FlyoutItem`, `ShellContent`, and page objects, to override the default flyout behavior.
+> The `FlyoutBehavior` attached property can be set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.ShellContent>, and page objects, to override the default flyout behavior.
 
 ## Flyout vertical scroll
 
@@ -705,7 +707,7 @@ The following example shows how to disable vertical scrolling:
 
 ## FlyoutItem selection
 
-When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` property will be set to the first `FlyoutItem` object in the subclassed `Shell` object. However, the property can be set to another `FlyoutItem`, as shown in the following example:
+When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` property will be set to the first <xref:Microsoft.Maui.Controls.FlyoutItem> object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another <xref:Microsoft.Maui.Controls.FlyoutItem>, as shown in the following example:
 
 ```xaml
 <Shell ...
@@ -720,28 +722,28 @@ When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` proper
 </Shell>
 ```
 
-This example sets the `CurrentItem` property to the `ShellContent` object named `aboutItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap the `ShellContent` object in a `Tab` object, which is wrapped in a `FlyoutItem` object.
+This example sets the `CurrentItem` property to the <xref:Microsoft.Maui.Controls.ShellContent> object named `aboutItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 
-The equivalent C# code, given a `ShellContent` object named `aboutItem`, is:
+The equivalent C# code, given a <xref:Microsoft.Maui.Controls.ShellContent> object named `aboutItem`, is:
 
 ```csharp
 CurrentItem = aboutItem;
 ```
 
-In this example, the `CurrentItem` property is set in the subclassed `Shell` class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
+In this example, the `CurrentItem` property is set in the subclassed <xref:Microsoft.Maui.Controls.Shell> class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
 
 ```csharp
 Shell.Current.CurrentItem = aboutItem;
 ```
 
 > [!NOTE]
-> An app may enter a state where selecting a flyout item is not a valid operation. In such cases, the `FlyoutItem` can be disabled by setting its `IsEnabled` property to `false`. This will prevent users from being able to select the flyout item.
+> An app may enter a state where selecting a flyout item is not a valid operation. In such cases, the <xref:Microsoft.Maui.Controls.FlyoutItem> can be disabled by setting its `IsEnabled` property to `false`. This will prevent users from being able to select the flyout item.
 
 ## FlyoutItem visibility
 
 Flyout items are visible in the flyout by default. However, an item can be hidden in the flyout with the `FlyoutItemIsVisible` property, and removed from the flyout with the `IsVisible` property:
 
-- `FlyoutItemIsVisible`, of type `bool`, indicates if the item is hidden in the flyout, but is still reachable with the `GoToAsync` navigation method. The default value of this property is `true`.
+- `FlyoutItemIsVisible`, of type `bool`, indicates if the item is hidden in the flyout, but is still reachable with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> navigation method. The default value of this property is `true`.
 - `IsVisible`, of type `bool`, indicates if the item should be removed from the visual tree and therefore not appear in the flyout. Its default value is `true`.
 
 The following example shows hiding an item in the flyout:
@@ -756,7 +758,7 @@ The following example shows hiding an item in the flyout:
 ```
 
 > [!NOTE]
-> There's also a `Shell.FlyoutItemIsVisible` attached property, which can be set on `FlyoutItem`, `MenuItem`, `Tab`, and `ShellContent` objects.
+> There's also a `Shell.FlyoutItemIsVisible` attached property, which can be set on <xref:Microsoft.Maui.Controls.FlyoutItem>,  <xref:Microsoft.Maui.Controls.MenuItem>, <xref:Microsoft.Maui.Controls.Tab>, and <xref:Microsoft.Maui.Controls.ShellContent> objects.
 
 ## Open and close the flyout programmatically
 

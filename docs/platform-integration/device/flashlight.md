@@ -1,15 +1,17 @@
 ---
 title: "Flashlight"
-description: "Learn how to use the .NET MAUI Flashlight class in the Microsoft.Maui.Devices namespace. This class provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IFlashlight interface in the Microsoft.Maui.Devices namespace. This interface provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
+ms.date: 10/03/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Flashlight
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Flashlight` class. With this class, you can toggle the device's camera flash on and off, to emulate a flashlight.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `Flashlight` class is available in the `Microsoft.Maui.Devices` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IFlashlight> interface. With this interface, you can toggle the device's camera flash on and off, to emulate a flashlight.
+
+The default implementation of the `IFlashlight` interface is available through the <xref:Microsoft.Maui.Devices.Flashlight.Default?displayProperty=nameWithType> property. Both the `IFlashlight` interface and `Flashlight` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -22,7 +24,7 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
@@ -33,31 +35,27 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+  Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.FLASHLIGHT" />
   <uses-permission android:name="android.permission.CAMERA" />
   ```
 
-<!-- TODO unsupported right now
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  <!-- TODO: Check on this value
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the _AndroidManifest.xml_ file.
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the *AndroidManifest.xml* file.
 
--->
-
-By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your _AssemblyInfo.cs_ file in your Android project:
+If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following assembly attributes to the _Platforms/Android/MainApplication.cs_ file after `using` directives:
 
 ```csharp
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -70,9 +68,15 @@ No setup is required.
 
 ## Use Flashlight
 
-The flashlight is accessed through default implementation of the `IFlashlight` interface, available from the `Microsoft.Maui.Devices.Flashlight.Default` property. The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a `Switch` control:
+The flashlight can be turned on and off through the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> and <xref:Microsoft.Maui.Devices.IFlashlight.TurnOffAsync> methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
+
+::: moniker range=">=net-maui-8.0"
+
+In addition, the <xref:Microsoft.Maui.Devices.Flashlight.IsSupportedAsync%2A> method can be invoked to check if a flashlight is available on the device, prior to calling the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> method.
+
+::: moniker-end
 
 ## Platform differences
 
@@ -92,7 +96,7 @@ On newer API levels, [Torch Mode](https://developer.android.com/reference/androi
 
 A camera surface texture is created to turn on or off the `FlashMode` of the camera unit.
 
-### [iOS\macOS](#tab/ios)
+### [iOS/Mac Catalyst](#tab/macios)
 
 The `AVCaptureDevice` API is used to turn on and off the Torch and Flash mode of the device.
 

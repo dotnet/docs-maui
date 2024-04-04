@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 08/10/2022
+ms.date: 03/21/2024
 ms.topic: include
 ---
 
@@ -17,6 +17,8 @@ Before you can begin this tutorial, you must follow the [Build your first app ar
 
 :::image type="content" source="../media/project/vs-configure-project.png" alt-text="Set the name of the .NET MAUI project to Notes in Visual Studio.":::
 
+Choose the latest .NET framework when creating your project.
+
 ## Select the target device
 
 .NET MAUI apps are designed to run on multiple operating systems and devices. You'll need to select which target you want to test and debug your app with.
@@ -25,6 +27,6 @@ Set the **Debug Target** in the Visual Studio toolbar to the device you want to 
 
 :::image type="content" source="../media/project/vs-debugtarget.png" alt-text="Selecting the Android debug target for a .NET MAUI app in Visual Studio.":::
 
-01. Select the **Debug Target** dropdown button.
+01. Select the **Debug Target** drop-down button.
 01. Select the **Android Emulators** item.
 01. Select the emulator device.

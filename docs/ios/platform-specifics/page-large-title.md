@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # Large Page Titles on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific is used to display the page title as a large title on the navigation bar of a `NavigationPage`, for devices that use iOS 11 or greater. A large title is left aligned and uses a larger font, and transitions to a standard title as the user begins scrolling content, so that the screen real estate is used efficiently. However, in landscape orientation, the title will return to the center of the navigation bar to optimize content layout. It's consumed in XAML by setting the `NavigationPage.PrefersLargeTitles` attached property to a `boolean` value:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific is used to display the page title as a large title on the navigation bar of a <xref:Microsoft.Maui.Controls.NavigationPage>, for devices that use iOS 11 or greater. A large title is left aligned and uses a larger font, and transitions to a standard title as the user begins scrolling content, so that the screen real estate is used efficiently. However, in landscape orientation, the title will return to the center of the navigation bar to optimize content layout. It's consumed in XAML by setting the `NavigationPage.PrefersLargeTitles` attached property to a `boolean` value:
 
 ```xaml
 <NavigationPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -31,7 +31,7 @@ navigationPage.On<iOS>().SetPrefersLargeTitles(true);
 
 The `NavigationPage.On<iOS>` method specifies that this platform-specific will only run on iOS. The `NavigationPage.SetPrefersLargeTitle` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls whether large titles are enabled.
 
-Provided that large titles are enabled on the `NavigationPage`, all pages in the navigation stack will display large titles. This behavior can be overridden on pages by setting the `Page.LargeTitleDisplay` attached property to a value of the `LargeTitleDisplayMode` enumeration:
+Provided that large titles are enabled on the <xref:Microsoft.Maui.Controls.NavigationPage>, all pages in the navigation stack will display large titles. This behavior can be overridden on pages by setting the `Page.LargeTitleDisplay` attached property to a value of the `LargeTitleDisplayMode` enumeration:
 
 ```xaml
 <ContentPage ...
@@ -59,7 +59,7 @@ public class iOSLargeTitlePageCode : ContentPage
 }
 ```
 
-The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetLargeTitleDisplay` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls the large title behavior on the `Page`, with the `LargeTitleDisplayMode` enumeration providing three possible values:
+The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetLargeTitleDisplay` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls the large title behavior on the <xref:Microsoft.Maui.Controls.Page>, with the `LargeTitleDisplayMode` enumeration providing three possible values:
 
 - `Always` – force the navigation bar and font size to use the large format.
 - `Automatic` – use the same style (large or small) as the previous item in the navigation stack.
@@ -82,6 +82,6 @@ switch (On<iOS>().LargeTitleDisplay())
 }
 ```
 
-The result is that a specified `LargeTitleDisplayMode` is applied to the `Page`, which controls the large title behavior:
+The result is that a specified `LargeTitleDisplayMode` is applied to the <xref:Microsoft.Maui.Controls.Page>, which controls the large title behavior:
 
 :::image type="content" source="media/page-large-title/large-title.png" alt-text="Page title as a large title.":::

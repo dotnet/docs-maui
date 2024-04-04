@@ -1,15 +1,17 @@
 ---
-title: "Map"
-description: "Learn how to use the .NET MAUI Map class in the Microsoft.Maui.ApplicationModel namespace. This class enables an application to open the installed map application to a specific location or place mark."
-ms.date: 05/23/2022
+title: "Open the map app"
+description: "Learn how to use the .NET MAUI IMap interface in the Microsoft.Maui.ApplicationModel namespace. This interface enables an application to open the installed map application to a specific location or place mark."
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
-# Map
+# Open the map app
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMap` interface. This interface enables an application to open the installed map application to a specific location or place mark. A default implementation of the `IMap` interface is exposed through the `Map.Default` property.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `IMap` and `Map` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.IMap> interface. This interface enables an application to open the installed map application to a specific location or place mark.
+
+The default implementation of the `IMap` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Map.Default?displayProperty=nameWithType> property. Both the `IMap` interface and `Map` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Get started
 
@@ -18,7 +20,7 @@ To access the browser functionality, the following platform-specific setup is re
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Android uses the `geo:` Uri scheme to launch the maps application on the device. This may prompt the user to select from an existing app that supports this Uri scheme. Google Maps supports this scheme.
+Android uses the `geo:` URI scheme to launch the maps application on the device. This may prompt the user to select from an existing app that supports this URI scheme. Google Maps supports this scheme.
 
 In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes to the `manifest` node:
 
@@ -31,7 +33,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -44,7 +46,7 @@ No setup is required.
 
 ## Using the map
 
-The map functionality works by calling the `IMap.OpenAsync` method, and passing either an instance of the `Location` or `Placemark` type. The following example opens the installed map app at a specific GPS location:
+The map functionality works by calling the <xref:Microsoft.Maui.ApplicationModel.IMap.OpenAsync%2A?displayProperty=nameWithType> method, and passing either an instance of the <xref:Microsoft.Maui.Devices.Sensors.Location> or <xref:Microsoft.Maui.Devices.Sensors.Placemark> type. The following example opens the installed map app at a specific GPS location:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building":::
 
@@ -53,16 +55,16 @@ The map functionality works by calling the `IMap.OpenAsync` method, and passing 
 
 When you use a `Placemark` to open the map, more information is required. The information helps the map app search for the place you're looking for. The following information is required:
 
-- `CountryName`
-- `AdminArea`
-- `Thoroughfare`
-- `Locality`
+- <xref:Microsoft.Maui.Devices.Sensors.Placemark.CountryName>
+- <xref:Microsoft.Maui.Devices.Sensors.Placemark.AdminArea>
+- <xref:Microsoft.Maui.Devices.Sensors.Placemark.Thoroughfare>
+- <xref:Microsoft.Maui.Devices.Sensors.Placemark.Locality>
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building_placemark":::
 
 ### Testing if the map opened
 
-There's always the possibility that opening the map app failed, such as when there isn't a map app or your app doesn't have the correct permissions. For each `IMap.OpenAsync` method overload, there's a corresponding `IMap.TryOpenAsync` method, which returns a Boolean value indicating that the map app was successfully opened. The following code example uses the `TryOpenAsync` method to open the map:
+There's always the possibility that opening the map app failed, such as when there isn't a map app or your app doesn't have the correct permissions. For each <xref:Microsoft.Maui.ApplicationModel.IMap.OpenAsync%2A?displayProperty=nameWithType> method overload, there's a corresponding <xref:Microsoft.Maui.ApplicationModel.IMap.TryOpenAsync%2A?displayProperty=nameWithType> method, which returns a Boolean value indicating that the map app was successfully opened. The following code example uses the `TryOpenAsync` method to open the map:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_tryopen":::
 
@@ -74,7 +76,7 @@ As long as the `Microsoft.Maui.Devices.Sensors` namespace is imported, which a n
 
 ## Add navigation
 
-When you open the map, you can calculate a route from the device's current location to the specified location. Pass the `MapLaunchOptions` type to the `Map.OpenAsync` method, specifying the navigation mode. The following example opens the map app and specifies a driving navigation mode:
+When you open the map, you can calculate a route from the device's current location to the specified location. Pass the <xref:Microsoft.Maui.ApplicationModel.MapLaunchOptions> type to the `Map.OpenAsync` method, specifying the navigation mode. The following example opens the map app and specifies a driving navigation mode:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building_driving":::
 
@@ -87,7 +89,7 @@ This section describes the platform-specific differences with the maps API.
 
 `NavigationMode` supports Bicycling, Driving, and Walking.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 `NavigationMode` supports Driving, Transit, and Walking.
 

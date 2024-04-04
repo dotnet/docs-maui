@@ -1,9 +1,12 @@
 ---
 ms.topic: include
-ms.date: 05/23/2022
+ms.date: 02/02/2023
 ---
 
-When requesting a share or opening launcher on iPadOS, you can present it in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
+> [!IMPORTANT]
+> This section only applies to iPadOS.
+
+When requesting a share or opening launcher on iPadOS, you can present it in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the <xref:Microsoft.Maui.ApplicationModel.OpenFileRequest.PresentationSourceBounds> property:
 
 ```csharp
 await Share.RequestAsync(new ShareFileRequest
@@ -11,8 +14,8 @@ await Share.RequestAsync(new ShareFileRequest
         Title = Title,
         File = new ShareFile(file),
         PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
-                                ? new System.Drawing.Rectangle(0, 20, 0, 0)
-                                : System.Drawing.Rectangle.Empty
+                                ? new Rect(0, 20, 0, 0)
+                                : Rect.Zero
     });
 ```
 
@@ -21,21 +24,19 @@ await Launcher.OpenAsync(new OpenFileRequest
     {
         File = new ReadOnlyFile(file),
         PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
-                                ? new System.Drawing.Rectangle(0, 20, 0, 0)
-                                : System.Drawing.Rectangle.Empty
+                                ? new Rect(0, 20, 0, 0)
+                                : Rect.Zero
     });
 ```
 
-<!-- TODO: Is this stuff Apple specific? It seems generic. I know the previous section is because it references iOS, but that's done in this code -->
+Everything described here works equally for <xref:Microsoft.Maui.ApplicationModel.DataTransfer.Share> and <xref:Microsoft.Maui.ApplicationModel.Launcher>.
 
-Everything described here works equally for `Share` and `Launcher`.
-
-Here are some extension methods that help calculate the bounds of a view:
+Here is an extension method that helps calculate the bounds of a view:
 
 ```csharp
 public static class ViewHelpers
 {
-    public static Rectangle GetAbsoluteBounds(this Microsoft.Maui.Controls.View element)
+    public static Rect GetAbsoluteBounds(this Microsoft.Maui.Controls.View element)
     {
         Element looper = element;
 
@@ -54,12 +55,12 @@ public static class ViewHelpers
             }
         }
 
-        return new Rectangle(absoluteX, absoluteY, element.Width, element.Height);
+        return new Rect(absoluteX, absoluteY, element.Width, element.Height);
     }
 }
 ```
 
-This can then be used when calling `RequestAsync`:
+This can then be used when calling <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IShare.RequestAsync%2A>:
 
 ```csharp
 public Command<Microsoft.Maui.Controls.View> ShareCommand { get; } = new Command<Microsoft.Maui.Controls.View>(Share);

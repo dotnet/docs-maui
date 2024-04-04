@@ -1,0 +1,57 @@
+### YamlMime:Tutorial
+title: "Upgrade your app with MVVM concepts"
+metadata:
+  title: "Tutorial: Use the MVVM toolkit to update the Notes app"
+  description: Upgrade the Notes app from the previous tutorial with the MVVM Community Toolkit.
+  audience: Developer
+  level: Beginner
+  ms.topic: interactive-tutorial
+  ms.date: 03/21/2024
+  author: adegeo
+  ms.author: adegeo
+items:
+- durationInMinutes: 1
+  content: |
+    [!INCLUDE [](includes/intro.md)]
+
+- title: Understand MVVM
+  durationInMinutes: 3
+  content: |
+    [!INCLUDE [](includes/mvvm.md)]
+
+- title: Update the model
+  durationInMinutes: 7
+  content: |
+    [!INCLUDE [](includes/model.md)]
+
+- title: Create the About viewmodel
+  durationInMinutes: 10
+  content: |
+    [!INCLUDE [](includes/viewmodel-about.md)]
+
+- title: Create the Note viewmodel
+  durationInMinutes: 15
+  content: |
+    [!INCLUDE [](includes/viewmodel-note.md)]
+
+- title: Create the Notes viewmodel
+  durationInMinutes: 10
+  content: |
+    [!INCLUDE [](includes/viewmodel-notes.md)]
+
+- title: Fix the app behavior
+  durationInMinutes: 5
+  content: |
+    [!INCLUDE [](includes/bugs.md)]
+
+- content: |
+    Your app is now using MVVM patterns!
+
+    ## Next steps
+
+    The following links provide more information related to some of the concepts you learned in this tutorial:
+
+    - [Enterprise Application Patterns Using .NET MAUI - MVVM](/dotnet/architecture/maui/mvvm)
+    - [Data binding and MVVM](../../xaml/fundamentals/mvvm.md)
+    - [ApplyQueryAttributes - Process navigation data using a single method](../../fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method)
+    - [ObservableObject - How it works](/dotnet/communitytoolkit/mvvm/observableobject)

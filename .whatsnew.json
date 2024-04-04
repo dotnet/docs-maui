@@ -8,10 +8,10 @@
     },
     "inclusionCriteria": {
         "maxFilesChanged": 400,
-        "minAdditionsToFile": 20
+        "minAdditionsToFile": 10
     },
     "navigationOptions": {
-        "maximumNumberOfArticles": 6,
+        "maximumNumberOfArticles": 3,
         "tocParentNode": "What's new",
         "repoTocFolder": "docs/whats-new",
         "indexParentNode": "Find .NET MAUI doc updates",
@@ -27,20 +27,48 @@
             "heading": "Get started"
         },
         {
+            "names": [ "tutorials" ],
+            "heading": "Tutorials"
+        },
+        {
             "names": [ "data-cloud" ],
             "heading": "Data & cloud services"
+        },
+        {
+            "names": [ "deployment" ],
+            "heading": "Deployment"
         },
         {
             "names": [ "fundamentals" ],
             "heading": "Fundamentals"
         },
         {
-            "names": [ "android", "ios", "macos", "windows" ],
-            "heading": "Platforms"
+            "names": [ "migration" ],
+            "heading": "Migration from Xamarin.Forms"
         },
         {
             "names": [ "platform-integration" ],
             "heading": "Platform integration"
+        },
+        {
+            "names": [ "android" ],
+            "heading": "Android"
+        },
+        {
+            "names": [ "ios" ],
+            "heading": "iOS"
+        },
+        {
+            "names": [ "macios" ],
+            "heading": "iOS and Mac Catalyst"
+        },
+        {
+            "names": [ "mac-catalyst" ],
+            "heading": "Mac Catalyst"
+        },
+        {
+            "names": [ "windows" ],
+            "heading": "Windows"
         },
         {
             "names": [ "user-interface" ],

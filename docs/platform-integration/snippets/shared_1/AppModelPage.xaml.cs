@@ -116,7 +116,7 @@ public partial class AppModelPage : ContentPage
         //<navigate_tryopen>
         var location = new Location(47.645160, -122.1306032);
         var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
-        
+
         if (await Map.Default.TryOpenAsync(location, options) == false)
         {
             // Map failed to open
@@ -205,7 +205,7 @@ public partial class AppModelPage : ContentPage
         }
     }
     //</navigate_building_driving>
-    
+
     //<browser_open>
     private async void BrowserOpen_Clicked(object sender, EventArgs e)
     {
@@ -216,7 +216,7 @@ public partial class AppModelPage : ContentPage
         }
         catch (Exception ex)
         {
-            // An unexpected error occured. No browser may be installed on the device.
+            // An unexpected error occurred. No browser may be installed on the device.
         }
     }
     //</browser_open>
@@ -239,7 +239,7 @@ public partial class AppModelPage : ContentPage
         }
         catch (Exception ex)
         {
-            // An unexpected error occured. No browser may be installed on the device.
+            // An unexpected error occurred. No browser may be installed on the device.
         }
     }
     //</browser_open_custom>
@@ -465,19 +465,19 @@ public partial class AppModelPage : ContentPage
     //<version_read>
     private void ReadVersion_Clicked(object sender, EventArgs e)
     {
-        labelIsFirst.Text = VersionTracking.IsFirstLaunchEver.ToString();
-        labelCurrentVersionIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentVersion.ToString();
-        labelCurrentBuildIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentBuild.ToString();
-        labelCurrentVersion.Text = VersionTracking.CurrentVersion.ToString();
-        labelCurrentBuild.Text = VersionTracking.CurrentBuild.ToString();
-        labelFirstInstalledVer.Text = VersionTracking.FirstInstalledVersion.ToString();
-        labelFirstInstalledBuild.Text = VersionTracking.FirstInstalledBuild.ToString();
-        labelVersionHistory.Text = String.Join(',', VersionTracking.VersionHistory);
-        labelBuildHistory.Text = String.Join(',', VersionTracking.BuildHistory);
+        labelIsFirst.Text = VersionTracking.Default.IsFirstLaunchEver.ToString();
+        labelCurrentVersionIsFirst.Text = VersionTracking.Default.IsFirstLaunchForCurrentVersion.ToString();
+        labelCurrentBuildIsFirst.Text = VersionTracking.Default.IsFirstLaunchForCurrentBuild.ToString();
+        labelCurrentVersion.Text = VersionTracking.Default.CurrentVersion.ToString();
+        labelCurrentBuild.Text = VersionTracking.Default.CurrentBuild.ToString();
+        labelFirstInstalledVer.Text = VersionTracking.Default.FirstInstalledVersion.ToString();
+        labelFirstInstalledBuild.Text = VersionTracking.Default.FirstInstalledBuild.ToString();
+        labelVersionHistory.Text = String.Join(',', VersionTracking.Default.VersionHistory);
+        labelBuildHistory.Text = String.Join(',', VersionTracking.Default.BuildHistory);
 
         // These two properties may be null if this is the first version
-        labelPreviousVersion.Text = VersionTracking.PreviousVersion?.ToString() ?? "none";
-        labelPreviousBuild.Text = VersionTracking.PreviousBuild?.ToString() ?? "none";
+        labelPreviousVersion.Text = VersionTracking.Default.PreviousVersion?.ToString() ?? "none";
+        labelPreviousBuild.Text = VersionTracking.Default.PreviousBuild?.ToString() ?? "none";
     }
     //</version_read>
 

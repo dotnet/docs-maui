@@ -8,16 +8,16 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed `Shell` object should be a `TabBar` object, which represents the bottom tab bar.
+The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object should be a <xref:Microsoft.Maui.Controls.TabBar> object, which represents the bottom tab bar.
 
-A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single `ContentPage`. When more than one `ShellContent` object is present in a `Tab` object, the `ContentPage` objects are navigable by top tabs. Within a tab, you can navigate to other `ContentPage` objects that are known as detail pages.
+A <xref:Microsoft.Maui.Controls.TabBar> object can contain one or more <xref:Microsoft.Maui.Controls.Tab> objects, with each <xref:Microsoft.Maui.Controls.Tab> object representing a tab on the bottom tab bar. Each <xref:Microsoft.Maui.Controls.Tab> object can contain one or more <xref:Microsoft.Maui.Controls.ShellContent> objects, with each <xref:Microsoft.Maui.Controls.ShellContent> object displaying a single <xref:Microsoft.Maui.Controls.ContentPage>. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a tab, you can navigate to other <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages.
 
 > [!IMPORTANT]
-> The `TabBar` type disables the flyout.
+> The <xref:Microsoft.Maui.Controls.TabBar> type disables the flyout.
 
 ## Single page
 
-A single page Shell app can be created by adding a `Tab` object to a `TabBar` object. Within the `Tab` object, a `ShellContent` object should be set to a `ContentPage` object:
+A single page Shell app can be created by adding a <xref:Microsoft.Maui.Controls.Tab> object to a <xref:Microsoft.Maui.Controls.TabBar> object. Within the <xref:Microsoft.Maui.Controls.Tab> object, a <xref:Microsoft.Maui.Controls.ShellContent> object should be set to a <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -36,7 +36,7 @@ This example results in the following single page app:
 
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
 
-Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
+Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified without introducing more views into the visual tree. This simplification is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain <xref:Microsoft.Maui.Controls.Tab> objects, which can only ever contain <xref:Microsoft.Maui.Controls.ShellContent> objects. These implicit-conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -49,14 +49,14 @@ Shell has implicit-conversion operators that enable the Shell visual hierarchy t
 </Shell>
 ```
 
-This implicit conversion automatically wraps the `ShellContent` object in a `Tab` object, which is wrapped in a `TabBar` object.
+This implicit conversion automatically wraps the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.TabBar> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a `ContentPage` object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom tabs
 
-If there are multiple `Tab` objects in a single `TabBar` object, `Tab` objects are rendered as bottom tabs:
+If there are multiple <xref:Microsoft.Maui.Controls.Tab> objects in a single <xref:Microsoft.Maui.Controls.TabBar> object, <xref:Microsoft.Maui.Controls.Tab> objects are rendered as bottom tabs:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -76,15 +76,15 @@ If there are multiple `Tab` objects in a single `TabBar` object, `Tab` objects a
 </Shell>
 ```
 
-The `Title` property, of type `string`, defines the tab title. The `Icon` property, of type `ImageSource`, defines the tab icon:
+The `Title` property, of type `string`, defines the tab title. The `Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the tab icon:
 
 :::image type="content" source="media/tabs/two-page-app-bottom-tabs.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
 
-When there are more than five tabs on a `TabBar`, a **More** tab will appear, which can be used to access the other tabs:
+When there are more than five tabs on a <xref:Microsoft.Maui.Controls.TabBar>, a **More** tab appears, which can be used to access the other tabs:
 
 :::image type="content" source="media/tabs/more-tabs.png" alt-text="Screenshot of a Shell app with a More tab.":::
 
-In addition, Shell's implicit conversion operators can be used to remove the `ShellContent` and `Tab` objects from the previous example:
+In addition, Shell's implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.ShellContent> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -102,14 +102,14 @@ In addition, Shell's implicit conversion operators can be used to remove the `Sh
 </Shell>
 ```
 
-This implicit conversion automatically wraps each `ShellContent` object in a `Tab` object.
+This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a `ContentPage` object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom and top tabs
 
-When more than one `ShellContent` object is present in a `Tab` object, a top tab bar is added to the bottom tab, through which the `ContentPage` objects are navigable:
+When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, a top tab bar is added to the bottom tab, through which the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -136,7 +136,7 @@ This code results in the layout shown in the following screenshot:
 
 :::image type="content" source="media/tabs/two-page-app-top-tabs.png" alt-text="Screenshot of a Shell two page app with top and bottom tabs.":::
 
-In addition, Shell's implicit conversion operators can be used to remove the second `Tab` object from the previous example:
+In addition, Shell's implicit conversion operators can be used to remove the second <xref:Microsoft.Maui.Controls.Tab> object from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -160,19 +160,37 @@ In addition, Shell's implicit conversion operators can be used to remove the sec
 </Shell>
 ```
 
-This implicit conversion automatically wraps the third `ShellContent` object in a `Tab` object.
+This implicit conversion automatically wraps the third <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
 ## Tab appearance
 
-The `Shell` class defines the following attached properties that control the appearance of tabs:
+The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that control the appearance of tabs:
 
-- `TabBarBackgroundColor`, of type `Color`, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
-- `TabBarDisabledColor`, of type `Color`, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
-- `TabBarForegroundColor`, of type `Color`, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
-- `TabBarTitleColor`, of type `Color`, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
-- `TabBarUnselectedColor`, of type `Color`, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
+- `TabBarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
+- `TabBarDisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
+- `TabBarForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
+- `TabBarTitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value is used.
+- `TabBarUnselectedColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings, and styled.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings, and styled.
+
+::: moniker range=">=net-maui-8.0"
+
+The three properties that most influence the color of a tab are `TabBarForegroundColor`, `TabBarTitleColor`, and `TabBarUnselectedColor`:
+
+- If only the `TabBarTitleColor` property is set then its value will be used to color the title and icon of the selected tab. If `TabBarTitleColor` isn't set then the title color will match the value of the `TabBarForegroundColor` property.
+- If the `TabBarForegroundColor` property is set and the `TabBarUnselectedColor` property isn't set then the value of the `TabBarForegroundColor` property will be used to color the title and icon of the selected tab.
+- If only the `TabBarUnselectedColor` property is set then its value will be used to color the title and icon of the unselected tab.
+
+For example:
+
+- When the `TabBarTitleColor` property is set to `Green` the title and icon for the selected tab is green, and unselected tabs match system colors.
+- When the `TabBarForegroundColor` property is set to `Blue` the title and icon for the selected tab is blue, and unselected tabs match system colors.
+- When the `TabBarTitleColor` property is set to `Green` and the `TabBarForegroundColor` property is set to `Blue` the title is green and the icon is blue for the selected tab, and unselected tabs match system colors.
+- When the `TabBarTitleColor` property is set to `Green` and the `Shell.ForegroundColor` property is set to `Blue` the title is green and the icon is blue for the selected tab, and unselected tabs match system colors. This occurs because the `Shell.ForegroundColor` property value propagates to the `TabBarForegroundColor` property.
+- When the `TabBarTitleColor` property is set to `Green`, the `TabBarForegroundColor` property is set to `Blue`, and the `TabBarUnselectedColor` property is set to `Red`, the title is green and the icon is blue for the selected tab, and unselected tab titles and icons are red.
+
+::: moniker-end
 
 The following example shows a XAML style that sets different tab bar color properties:
 
@@ -191,7 +209,7 @@ In addition, tabs can also be styled using Cascading Style Sheets (CSS). For mor
 
 ## Tab selection
 
-When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` property will be set to the first `Tab` object in the subclassed `Shell` object. However, the property can be set to another `Tab`, as shown in the following example:
+When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` property is set to the first <xref:Microsoft.Maui.Controls.Tab> object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another <xref:Microsoft.Maui.Controls.Tab>, as shown in the following example:
 
 ```xaml
 <Shell ...
@@ -208,15 +226,15 @@ When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` prope
 </Shell>
 ```
 
-This example sets the `CurrentItem` property to the `ShellContent` object named `dogsItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap each `ShellContent` object in a `Tab` object.
+This example sets the `CurrentItem` property to the <xref:Microsoft.Maui.Controls.ShellContent> object named `dogsItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
-The equivalent C# code, given a `ShellContent` object named `dogsItem`, is:
+The equivalent C# code, given a <xref:Microsoft.Maui.Controls.ShellContent> object named `dogsItem`, is:
 
 ```csharp
 CurrentItem = dogsItem;
 ```
 
-In this example, the `CurrentItem` property is set in the subclassed `Shell` class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
+In this example, the `CurrentItem` property is set in the subclassed <xref:Microsoft.Maui.Controls.Shell> class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
 
 ```csharp
 Shell.Current.CurrentItem = dogsItem;
@@ -226,7 +244,7 @@ Shell.Current.CurrentItem = dogsItem;
 
 The tab bar and tabs are visible in Shell apps by default. However, the tab bar can be hidden by setting the `Shell.TabBarIsVisible` attached property to `false`.
 
-While this property can be set on a subclassed `Shell` object, it's typically set on any `ShellContent` or `ContentPage` objects that want to make the tab bar invisible:
+While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it's typically set on any <xref:Microsoft.Maui.Controls.ShellContent> or <xref:Microsoft.Maui.Controls.ContentPage> objects that want to make the tab bar invisible:
 
 ```xaml
 <TabBar>
@@ -247,7 +265,7 @@ While this property can be set on a subclassed `Shell` object, it's typically se
 
 In this example, the tab bar is hidden when the upper **Dogs** tab is selected.
 
-In addition, `Tab` objects can be hidden by setting the `IsVisible` bindable property to `false`:
+In addition, <xref:Microsoft.Maui.Controls.Tab> objects can be hidden by setting the `IsVisible` bindable property to `false`:
 
 ```xaml
 <TabBar>

@@ -35,7 +35,7 @@ Often, XAML markup extensions define properties that contribute to the return va
 
 ## Create a markup extension
 
-The following XAML markup extension demonstrates how to create your own markup extension. It allows you to construct a `Color` value using hue, saturation, and luminosity components. It defines four properties for the four components of the color, including an alpha component that is initialized to 1. The class derives from `IMarkupExtension<Color>` to indicate a `Color` return value:
+The following XAML markup extension demonstrates how to create your own markup extension. It allows you to construct a <xref:Microsoft.Maui.Graphics.Color> value using hue, saturation, and luminosity components. It defines four properties for the four components of the color, including an alpha component that is initialized to 1. The class derives from `IMarkupExtension<Color>` to indicate a <xref:Microsoft.Maui.Graphics.Color> return value:
 
 ```csharp
 public class HslColorExtension : IMarkupExtension<Color>
@@ -57,11 +57,11 @@ public class HslColorExtension : IMarkupExtension<Color>
 }
 ```
 
-Because `IMarkupExtension<T>` derives from `IMarkupExtension`, the class must contain two `ProvideValue` methods, one that returns a `Color` and another that returns an `object`, but the second method can call the first method.
+Because `IMarkupExtension<T>` derives from `IMarkupExtension`, the class must contain two `ProvideValue` methods, one that returns a <xref:Microsoft.Maui.Graphics.Color> and another that returns an `object`, but the second method can call the first method.
 
 ## Consume a markup extension
 
-The following XAML demonstrates a variety of approaches that can be used to invoke the `HslColoeExtension` to specify the color for a `BoxView`:
+The following XAML demonstrates a variety of approaches that can be used to invoke the `HslColorExtension` to specify the color for a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -108,4 +108,4 @@ By using the `IServiceProvider` argument to `ProvideValue`, XAML markup extensio
 IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
 ```
 
-The `IProvideValueTarget` interface defines two properties, `TargetObject` and `TargetProperty`. When this information is obtained in the `HslColorExtension` class, `TargetObject` is the `BoxView` and `TargetProperty` is the `Color` property of `BoxView`. This is the property on which the XAML markup extension has been set.
+The `IProvideValueTarget` interface defines two properties, `TargetObject` and `TargetProperty`. When this information is obtained in the `HslColorExtension` class, `TargetObject` is the <xref:Microsoft.Maui.Controls.BoxView> and `TargetProperty` is the `Color` property of <xref:Microsoft.Maui.Controls.BoxView>. This is the property on which the XAML markup extension has been set.

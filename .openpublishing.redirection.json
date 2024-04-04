@@ -5,16 +5,92 @@
       "redirect_url": "/dotnet/maui/user-interface/layouts/grid"
     },
     {
-      "source_path": "docs/get-started/installation.md",
-      "redirect_url": "/dotnet/maui/get-started/first-app"
-    },
-    {
       "source_path": "docs/user-interface/layouts/relativelayout.md",
       "redirect_url": "/dotnet/maui/user-interface/layouts"
     },
     {
       "source_path": "docs/fundamentals/app-startup.md",
       "redirect_url": "/dotnet/maui/fundamentals/single-project#app-entry-point"
+    },
+    {
+      "source_path": "docs/user-interface/menubar.md",
+      "redirect_url": "/dotnet/maui/user-interface/menu-bar"
+    },
+    {
+      "source_path": "docs/deployment/hot-restart.md",
+      "redirect_url": "/dotnet/maui/ios/hot-restart"
+    },
+    {
+      "source_path": "docs/ios/deployment/entitlements.md",
+      "redirect_url": "/dotnet/maui/ios/entitlements"
+    },
+    {
+      "source_path": "docs/get-started/migrate.md",
+      "redirect_url": "/dotnet/maui/migration"
+    },
+    {
+      "source_path": "docs/ios/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/ios/deployment"
+    },
+    {
+      "source_path": "docs/ios/deployment/provision.md",
+      "redirect_url": "/dotnet/maui/ios/deployment/publish-app-store"
+    },
+    {
+      "source_path": "docs/macos/cli.md",
+      "redirect_url": "/dotnet/maui/mac-catalyst/cli"
+    },
+    {
+      "source_path": "docs/macos/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/mac-catalyst/deployment"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-05-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-06-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-07-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-08-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-09-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-10-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-11-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2022-12-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2023-01-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-2023-02-01.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/android/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/android/deployment"
+    },
+    {
+      "source_path": "docs/migration/forms-projects.md",
+      "redirect_url": "/dotnet/maui/migration/multi-project-to-multi-project"
     }
   ]
 }

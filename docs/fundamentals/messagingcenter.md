@@ -12,6 +12,9 @@ Events in .NET implement the publish-subscribe pattern, and are the most simple 
 
 The .NET Multi-platform App UI (.NET MAUI) `MessagingCenter` class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references. This mechanism allows publishers and subscribers to communicate without having a reference to each other, helping to reduce dependencies between them.
 
+> [!IMPORTANT]
+> `MessagingCenter` has been deprecated in .NET 7 and replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
+
 The `MessagingCenter` class provides multicast publish-subscribe functionality. This means that there can be multiple publishers that publish a single message, and there can be multiple subscribers listening for the same message:
 
 :::image type="content" source="media/messagingcenter/messagingcenter.png" alt-text="Multicast publish-subscribe functionality." border="false":::

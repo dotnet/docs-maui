@@ -7,16 +7,18 @@
       href: supported-platforms.md
     - name: Get started
       items:
+        - name: Installation
+          href: get-started/installation.md
         - name: Build your first app
           href: get-started/first-app.md?pivots=devices-windows
         - name: Learning resources
           href: get-started/resources.md
-        - name: Migrate from Xamarin.Forms
-          href: get-started/migrate.md
         - name: Android
           items:
             - name: Emulator
               items:
+                - name: Overview
+                  href: android/emulator/index.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
                 - name: Manage and create virtual devices
@@ -25,6 +27,8 @@
                   href: android/emulator/device-properties.md
                 - name: Debug on a virtual device
                   href: android/emulator/debug-on-emulator.md
+                - name: Connect to an emulator from a Windows VM
+                  href: android/emulator/mac-with-windows-vm.md
                 - name: Troubleshoot common problems
                   href: android/emulator/troubleshooting.md
             - name: Devices
@@ -37,22 +41,70 @@
               href: ios/cli.md
             - name: Pair to Mac
               href: ios/pair-to-mac.md
-            - name: Simulators
-              items:
-              - name: Remote iOS simulator for Windows
-                href: ios/remote-simulator.md
+            - name: Remote iOS simulator for Windows
+              href: ios/remote-simulator.md
         - name: macOS
           items:
             - name: Build a Mac Catalyst app with .NET CLI
-              href: macos/cli.md
+              href: mac-catalyst/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
               href: windows/setup.md
+    - name: Migrate from Xamarin
+      items:
+        - name: Overview
+          href: migration/index.md
+        - name: Xamarin native projects
+          items:
+            - name: Upgrade Xamarin native projects
+              href: migration/native-projects.md
+            - name: Android projects
+              items:
+                - name: Android project migration
+                  href: migration/android-projects.md
+                - name: Android binding project migration
+                  href: migration/android-binding-projects.md
+            - name: Apple projects
+              items:
+                - name: Apple project migration
+                  href: migration/apple-projects.md
+                - name: iOS binding project migration
+                  href: migration/ios-binding-projects.md
+            - name: Xamarin.Essentials migration
+              href: migration/native-essentials.md
+        - name: Xamarin.Forms projects
+          items:
+            - name: Upgrade with the .NET Upgrade Assistant
+              href: migration/upgrade-assistant.md
+            - name: Upgrade manually to a multi-project app
+              href: migration/multi-project-to-multi-project.md
+            - name: Upgrade manually to a single project app
+              href: migration/multi-project-to-single-project.md
+            - name: UWP project migration
+              href: migration/uwp-projects.md
+            - name: Layout behavior changes
+              href: migration/layouts.md
+            - name: Reuse custom renderers
+              href: migration/custom-renderers.md
+            - name: Migrate custom renderers
+              href: migration/renderer-to-handler.md
+            - name: Reuse effects
+              href: migration/effects.md
+            - name: Reuse SkiaSharp code
+              href: migration/skiasharp.md
+            - name: Migrate app properties data
+              href: migration/app-properties.md
+            - name: Migrate secure storage data
+              href: migration/secure-storage.md
+            - name: Migrate version tracking data
+              href: migration/version-tracking.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
           href: tutorials/notes-app/index.yml
+        - name: Upgrade an app with MVVM principles
+          href: tutorials/notes-mvvm/index.yml
     - name: XAML
       items:
         - name: Overview
@@ -71,6 +123,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: Class modifiers
+          href: xaml/class-modifiers.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
@@ -107,46 +161,52 @@
           href: fundamentals/behaviors.md
         - name: Data binding
           items:
-              - name: Overview
-                href: fundamentals/data-binding/index.md
-              - name: Basic bindings
-                href: fundamentals/data-binding/basic-bindings.md
-              - name: Binding mode
-                href: fundamentals/data-binding/binding-mode.md
-              - name: String formatting
-                href: fundamentals/data-binding/string-formatting.md
-              - name: Binding path
-                href: fundamentals/data-binding/binding-path.md
-              - name: Binding value converters
-                href: fundamentals/data-binding/converters.md
-              - name: Relative bindings
-                href: fundamentals/data-binding/relative-bindings.md
-              - name: Binding fallbacks
-                href: fundamentals/data-binding/binding-fallbacks.md
-              - name: Multi-bindings
-                href: fundamentals/data-binding/multibinding.md
-              - name: Commanding
-                href: fundamentals/data-binding/commanding.md
-              - name: Compiled bindings
-                href: fundamentals/data-binding/compiled-bindings.md
+            - name: Overview
+              href: fundamentals/data-binding/index.md
+            - name: Basic bindings
+              href: fundamentals/data-binding/basic-bindings.md
+            - name: Binding mode
+              href: fundamentals/data-binding/binding-mode.md
+            - name: String formatting
+              href: fundamentals/data-binding/string-formatting.md
+            - name: Binding path
+              href: fundamentals/data-binding/binding-path.md
+            - name: Binding value converters
+              href: fundamentals/data-binding/converters.md
+            - name: Relative bindings
+              href: fundamentals/data-binding/relative-bindings.md
+            - name: Binding fallbacks
+              href: fundamentals/data-binding/binding-fallbacks.md
+            - name: Multi-bindings
+              href: fundamentals/data-binding/multibinding.md
+            - name: Commanding
+              href: fundamentals/data-binding/commanding.md
+            - name: Compiled bindings
+              href: fundamentals/data-binding/compiled-bindings.md
+        - name: Dependency injection
+          href: fundamentals/dependency-injection.md
         - name: Gestures
           items:
-              - name: Drag and drop
-                href: fundamentals/gestures/drag-and-drop.md
-              - name: Pan
-                href: fundamentals/gestures/pan.md
-              - name: Pinch
-                href: fundamentals/gestures/pinch.md
-              - name: Swipe
-                href: fundamentals/gestures/swipe.md
-              - name: Tap
-                href: fundamentals/gestures/tap.md
+            - name: Drag and drop
+              href: fundamentals/gestures/drag-and-drop.md
+            - name: Pan
+              href: fundamentals/gestures/pan.md
+            - name: Pinch
+              href: fundamentals/gestures/pinch.md
+            - name: Pointer
+              href: fundamentals/gestures/pointer.md
+            - name: Swipe
+              href: fundamentals/gestures/swipe.md
+            - name: Tap
+              href: fundamentals/gestures/tap.md
+        - name: Localization
+          href: fundamentals/localization.md
         - name: Properties
           items:
-              - name: Bindable properties
-                href: fundamentals/bindable-properties.md
-              - name: Attached properties
-                href: fundamentals/attached-properties.md
+            - name: Bindable properties
+              href: fundamentals/bindable-properties.md
+            - name: Attached properties
+              href: fundamentals/attached-properties.md
         - name: Publish and subscribe to messages
           href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
@@ -173,10 +233,10 @@
           href: fundamentals/single-project.md
         - name: Templates
           items:
-              - name: Control templates
-                href: fundamentals/controltemplate.md
-              - name: Data templates
-                href: fundamentals/datatemplate.md
+            - name: Control templates
+              href: fundamentals/controltemplate.md
+            - name: Data templates
+              href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
         - name: Windows
@@ -237,6 +297,8 @@
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
+                - name: Custom layouts
+                  href: user-interface/layouts/custom.md
             - name: Pages
               items:
                 - name: ContentPage
@@ -265,6 +327,8 @@
                       href: user-interface/controls/image.md
                     - name: Label
                       href: user-interface/controls/label.md
+                    - name: Map
+                      href: user-interface/controls/map.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
                     - name: Shapes
@@ -339,34 +403,34 @@
                   items:
                     - name: CarouselView
                       items:
-                          - name: Overview
-                            href: user-interface/controls/carouselview/index.md
-                          - name: Data
-                            href: user-interface/controls/carouselview/populate-data.md
-                          - name: Layout
-                            href: user-interface/controls/carouselview/layout.md
-                          - name: Interaction
-                            href: user-interface/controls/carouselview/interaction.md
-                          - name: EmptyView
-                            href: user-interface/controls/carouselview/emptyview.md
-                          - name: Scrolling
-                            href: user-interface/controls/carouselview/scrolling.md
+                        - name: Overview
+                          href: user-interface/controls/carouselview/index.md
+                        - name: Data
+                          href: user-interface/controls/carouselview/populate-data.md
+                        - name: Layout
+                          href: user-interface/controls/carouselview/layout.md
+                        - name: Interaction
+                          href: user-interface/controls/carouselview/interaction.md
+                        - name: EmptyView
+                          href: user-interface/controls/carouselview/emptyview.md
+                        - name: Scrolling
+                          href: user-interface/controls/carouselview/scrolling.md
                     - name: CollectionView
                       items:
-                          - name: Overview
-                            href: user-interface/controls/collectionview/index.md
-                          - name: Data
-                            href: user-interface/controls/collectionview/populate-data.md
-                          - name: Layout
-                            href: user-interface/controls/collectionview/layout.md
-                          - name: Selection
-                            href: user-interface/controls/collectionview/selection.md
-                          - name: EmptyView
-                            href: user-interface/controls/collectionview/emptyview.md
-                          - name: Scrolling
-                            href: user-interface/controls/collectionview/scrolling.md
-                          - name: Grouping
-                            href: user-interface/controls/collectionview/grouping.md
+                        - name: Overview
+                          href: user-interface/controls/collectionview/index.md
+                        - name: Data
+                          href: user-interface/controls/collectionview/populate-data.md
+                        - name: Layout
+                          href: user-interface/controls/collectionview/layout.md
+                        - name: Selection
+                          href: user-interface/controls/collectionview/selection.md
+                        - name: EmptyView
+                          href: user-interface/controls/collectionview/emptyview.md
+                        - name: Scrolling
+                          href: user-interface/controls/collectionview/scrolling.md
+                        - name: Grouping
+                          href: user-interface/controls/collectionview/grouping.md
                     - name: IndicatorView
                       href: user-interface/controls/indicatorview.md
                     - name: ListView
@@ -377,10 +441,16 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
-        - name: Display a menu bar
-          href: user-interface/menubar.md
+                - name: TwoPaneView
+                  href: user-interface/controls/twopaneview.md
+        - name: C# markup
+          href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Display toolbar items
+          href: user-interface/toolbaritem.md
+        - name: Display tooltips
+          href: user-interface/tooltips.md
         - name: Fonts
           href: user-interface/fonts.md
         - name: Graphics
@@ -409,6 +479,16 @@
               href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
+        - name: Menus
+          items:
+            - name: Display a context menu
+              href: user-interface/context-menu.md
+            - name: Display a menu bar
+              href: user-interface/menu-bar.md
+            - name: Display menu items
+              href: user-interface/menuitem.md
+            - name: Keyboard accelerators
+              href: user-interface/keyboard-accelerators.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -429,176 +509,275 @@
               href: user-interface/live-visual-tree.md
         - name: Visual states
           href: user-interface/visual-states.md
-    - name: Platform integration
+    - name: Platforms
       items:
-        - name: Overview
-          href: platform-integration/index.md
-        - name: Application model
+        - name: Android
           items:
-          - name: App actions
-            href: platform-integration/appmodel/app-actions.md
-          - name: App information
-            href: platform-integration/appmodel/app-information.md
-          - name: Browser
-            href: platform-integration/appmodel/open-browser.md
-          - name: Launcher
-            href: platform-integration/appmodel/launcher.md
-          - name: Main thread
-            href: platform-integration/appmodel/main-thread.md
-          - name: Maps
-            href: platform-integration/appmodel/maps.md
-          - name: Permissions
-            href: platform-integration/appmodel/permissions.md
-          - name: Version tracking
-            href: platform-integration/appmodel/version-tracking.md
-        - name: Communication
+            - name: App links
+              href: android/app-links.md
+            - name: App manifest
+              href: android/manifest.md
+            - name: Internals
+              items:
+                - name: Java and managed code interoperability
+                  href: android/internals/java-interop.md
+            - name: Linking
+              href: android/linking.md
+        - name: iOS
           items:
-          - name: Contacts
-            href: platform-integration/communication/contacts.md
-          - name: Email
-            href: platform-integration/communication/email.md
-          - name: Networking
-            href: platform-integration/communication/networking.md
-          - name: Phone dialer
-            href: platform-integration/communication/phone-dialer.md
-          - name: SMS (messaging)
-            href: platform-integration/communication/sms.md
-          - name: Web authenticator
-            href: platform-integration/communication/authentication.md
-        - name: Device features
-          items:
-          - name: Battery
-            href: platform-integration/device/battery.md
-          - name: Device display
-            href: platform-integration/device/display.md
-          - name: Device information
-            href: platform-integration/device/information.md
-          - name: Device sensors
-            href: platform-integration/device/sensors.md
-          - name: Flashlight
-            href: platform-integration/device/flashlight.md
-          - name: Geocoding
-            href: platform-integration/device/geocoding.md
-          - name: Geolocation
-            href: platform-integration/device/geolocation.md
-          - name: Haptic feedback
-            href: platform-integration/device/haptic-feedback.md
-          - name: Vibration
-            href: platform-integration/device/vibrate.md
-        - name: Media
-          items:
-          - name: Media picker
-            href: platform-integration/device-media/picker.md
-          - name: Screenshot
-            href: platform-integration/device-media/screenshot.md
-          - name: Text-to-speech
-            href: platform-integration/device-media/text-to-speech.md
-          - name: Unit converters
-            href: platform-integration/device-media/unit-converters.md
-        - name: Platform-specifics
-          items:
-            - name: Android
+            - name: Apple account management
+              href: ios/apple-account-management.md
+            - name: Apple privacy manifest
+              href: ios/privacy-manifest.md
+            - name: Code signing and provisioning
+              items:
+                - name: Capabilities
+                  href: ios/capabilities.md
+                - name: Entitlements
+                  href: ios/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
+            - name: Linking
+              href: ios/linking.md
+            - name: Mono interpreter
+              href: macios/interpreter.md
+            - name: Set up device for development
               items:
                 - name: Overview
-                  href: android/platform-specifics/index.md
-                - name: Entry input method editor options
-                  href: android/platform-specifics/entry-ime-options.md
-                - name: ListView fast scrolling
-                  href: android/platform-specifics/listview-fast-scrolling.md
-                - name: Soft keyboard input mode
-                  href: android/platform-specifics/soft-keyboard-input-mode.md
-                - name: SwipeView swipe transition mode
-                  href: android/platform-specifics/swipeview-swipetransitionmode.md
-                - name: TabbedPage page swiping
-                  href: android/platform-specifics/tabbedpage-page-swiping.md
-                - name: TabbedPage page transition animations
-                  href: android/platform-specifics/tabbedpage-transition-animations.md
-                - name: TabbedPage toolbar placement
-                  href: android/platform-specifics/tabbedpage-toolbar-placement.md
-                - name: WebView mixed content
-                  href: android/platform-specifics/webview-mixed-content.md
-                - name: WebView zoom
-                  href: android/platform-specifics/webview-zoom-controls.md
-            - name: iOS
-              items:
-                - name: Overview
-                  href: ios/platform-specifics/index.md
-                - name: Cell background color
-                  href: ios/platform-specifics/cell-background-color.md
-                - name: DatePicker item selection
-                  href: ios/platform-specifics/datepicker-selection.md
-                - name: Entry cursor color
-                  href: ios/platform-specifics/entry-cursor-color.md
-                - name: Entry font size
-                  href: ios/platform-specifics/entry-font-size.md
-                - name: FlyoutPage shadow
-                  href: ios/platform-specifics/flyoutpage-shadow.md
-                - name: Large page titles
-                  href: ios/platform-specifics/page-large-title.md
-                - name: ListView group header style
-                  href: ios/platform-specifics/listview-group-header-style.md
-                - name: ListView row animations
-                  href: ios/platform-specifics/listview-row-animations.md
-                - name: ListView separator style
-                  href: ios/platform-specifics/listview-separator-style.md
-                - name: Modal page presentation style
-                  href: ios/platform-specifics/page-presentation-style.md
-                - name: NavigationPage bar translucency
-                  href: ios/platform-specifics/navigation-bar-translucent.md
-                - name: Picker item selection
-                  href: ios/platform-specifics/picker-selection.md
-                - name: ScrollView content touches
-                  href: ios/platform-specifics/scrollview-content-touches.md
-                - name: SearchBar style
-                  href: ios/platform-specifics/searchbar-style.md
-                - name: Simultaneous pan gesture recognition
-                  href: ios/platform-specifics/application-pan-gesture.md
-                - name: Slider thumb tap
-                  href: ios/platform-specifics/slider-thumb.md
-                - name: SwipeView swipe transition mode
-                  href: ios/platform-specifics/swipeview-swipetransitionmode.md
-                - name: TabbedPage translucent tabbar
-                  href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
-                - name: TimePicker item selection
-                  href: ios/platform-specifics/timepicker-selection.md
-            - name: Windows
-              items:
-                - name: Overview
-                  href: windows/platform-specifics/index.md
-                - name: Default image directory
-                  href: windows/platform-specifics/default-image-directory.md
-                - name: InputView reading order
-                  href: windows/platform-specifics/inputview-reading-order.md
-                - name: ListView SelectionMode
-                  href: windows/platform-specifics/listview-selectionmode.md
-                - name: RefreshView pull direction
-                  href: windows/platform-specifics/refreshview-pulldirection.md
-                - name: SearchBar spell check
-                  href: windows/platform-specifics/searchbar-spell-check.md
-                - name: VisualElement access keys
-                  href: windows/platform-specifics/visualelement-access-keys.md
-        - name: Sharing
+                  href: ios/device-provisioning/index.md
+                - name: Automatic provisioning
+                  href: ios/device-provisioning/automatic-provisioning.md
+                - name: Manual provisioning
+                  href: ios/device-provisioning/manual-provisioning.md
+            - name: Universal links
+              href: macios/universal-links.md
+        - name: Mac Catalyst
           items:
-          - name: Clipboard
-            href: platform-integration/data/clipboard.md
-          - name: Share files and text
-            href: platform-integration/data/share.md
-        - name: Storage
+            - name: Code signing and provisioning
+              items:
+                - name: Capabilities
+                  href: mac-catalyst/capabilities.md
+                - name: Entitlements
+                  href: mac-catalyst/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
+            - name: Linking
+              href: mac-catalyst/linking.md
+            - name: Mono interpreter
+              href: macios/interpreter.md
+            - name: Specify the UI idiom
+              href: mac-catalyst/user-interface-idiom.md
+            - name: Universal links
+              href: macios/universal-links.md
+        - name: Platform integration
           items:
-          - name: File picker
-            href: platform-integration/storage/file-picker.md
-          - name: File system helpers
-            href: platform-integration/storage/file-system-helpers.md
-          - name: Preferences
-            href: platform-integration/storage/preferences.md
-          - name: Secure storage
-            href: platform-integration/storage/secure-storage.md
+            - name: Overview
+              href: platform-integration/index.md
+            - name: Application model
+              items:
+                - name: App actions
+                  href: platform-integration/appmodel/app-actions.md
+                - name: App information
+                  href: platform-integration/appmodel/app-information.md
+                - name: Browser
+                  href: platform-integration/appmodel/open-browser.md
+                - name: Launcher
+                  href: platform-integration/appmodel/launcher.md
+                - name: Main thread
+                  href: platform-integration/appmodel/main-thread.md
+                - name: Map
+                  href: platform-integration/appmodel/maps.md
+                - name: Permissions
+                  href: platform-integration/appmodel/permissions.md
+                - name: Version tracking
+                  href: platform-integration/appmodel/version-tracking.md
+            - name: Communication
+              items:
+                - name: Contacts
+                  href: platform-integration/communication/contacts.md
+                - name: Email
+                  href: platform-integration/communication/email.md
+                - name: Networking
+                  href: platform-integration/communication/networking.md
+                - name: Phone dialer
+                  href: platform-integration/communication/phone-dialer.md
+                - name: SMS (messaging)
+                  href: platform-integration/communication/sms.md
+                - name: Web authenticator
+                  href: platform-integration/communication/authentication.md
+            - name: Device features
+              items:
+                - name: Battery
+                  href: platform-integration/device/battery.md
+                - name: Device display
+                  href: platform-integration/device/display.md
+                - name: Device information
+                  href: platform-integration/device/information.md
+                - name: Device sensors
+                  href: platform-integration/device/sensors.md
+                  displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
+                - name: Flashlight
+                  href: platform-integration/device/flashlight.md
+                - name: Geocoding
+                  href: platform-integration/device/geocoding.md
+                - name: Geolocation
+                  href: platform-integration/device/geolocation.md
+                - name: Haptic feedback
+                  href: platform-integration/device/haptic-feedback.md
+                - name: Vibration
+                  href: platform-integration/device/vibrate.md
+            - name: Media
+              items:
+                - name: Photos and videos
+                  href: platform-integration/device-media/picker.md
+                - name: Screenshot
+                  href: platform-integration/device-media/screenshot.md
+                - name: Text-to-speech
+                  href: platform-integration/device-media/text-to-speech.md
+                - name: Unit converters
+                  href: platform-integration/device-media/unit-converters.md
+            - name: Platform-specifics
+              items:
+                - name: Android
+                  items:
+                    - name: Overview
+                      href: android/platform-specifics/index.md
+                    - name: Entry input method editor options
+                      href: android/platform-specifics/entry-ime-options.md
+                    - name: ListView fast scrolling
+                      href: android/platform-specifics/listview-fast-scrolling.md
+                    - name: Soft keyboard input mode
+                      href: android/platform-specifics/soft-keyboard-input-mode.md
+                    - name: SwipeView swipe transition mode
+                      href: android/platform-specifics/swipeview-swipetransitionmode.md
+                    - name: TabbedPage page swiping
+                      href: android/platform-specifics/tabbedpage-page-swiping.md
+                    - name: TabbedPage page transition animations
+                      href: android/platform-specifics/tabbedpage-transition-animations.md
+                    - name: TabbedPage toolbar placement
+                      href: android/platform-specifics/tabbedpage-toolbar-placement.md
+                    - name: WebView mixed content
+                      href: android/platform-specifics/webview-mixed-content.md
+                    - name: WebView zoom
+                      href: android/platform-specifics/webview-zoom-controls.md
+                - name: iOS
+                  items:
+                    - name: Overview
+                      href: ios/platform-specifics/index.md
+                    - name: Cell background color
+                      href: ios/platform-specifics/cell-background-color.md
+                    - name: DatePicker item selection
+                      href: ios/platform-specifics/datepicker-selection.md
+                    - name: Entry cursor color
+                      href: ios/platform-specifics/entry-cursor-color.md
+                    - name: Entry font size
+                      href: ios/platform-specifics/entry-font-size.md
+                    - name: FlyoutPage shadow
+                      href: ios/platform-specifics/flyoutpage-shadow.md
+                    - name: Large page titles
+                      href: ios/platform-specifics/page-large-title.md
+                    - name: ListView group header style
+                      href: ios/platform-specifics/listview-group-header-style.md
+                    - name: ListView row animations
+                      href: ios/platform-specifics/listview-row-animations.md
+                    - name: ListView separator style
+                      href: ios/platform-specifics/listview-separator-style.md
+                    - name: Modal page presentation style
+                      href: ios/platform-specifics/page-presentation-style.md
+                    - name: NavigationPage bar translucency
+                      href: ios/platform-specifics/navigation-bar-translucent.md
+                    - name: Picker item selection
+                      href: ios/platform-specifics/picker-selection.md
+                    - name: Safe area layout guide
+                      href: ios/platform-specifics/page-safe-area-layout.md
+                    - name: ScrollView content touches
+                      href: ios/platform-specifics/scrollview-content-touches.md
+                    - name: SearchBar style
+                      href: ios/platform-specifics/searchbar-style.md
+                    - name: Simultaneous pan gesture recognition
+                      href: ios/platform-specifics/application-pan-gesture.md
+                    - name: Slider thumb tap
+                      href: ios/platform-specifics/slider-thumb.md
+                    - name: SwipeView swipe transition mode
+                      href: ios/platform-specifics/swipeview-swipetransitionmode.md
+                    - name: TabbedPage translucent tabbar
+                      href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
+                    - name: TimePicker item selection
+                      href: ios/platform-specifics/timepicker-selection.md
+                - name: Windows
+                  items:
+                    - name: Overview
+                      href: windows/platform-specifics/index.md
+                    - name: Default image directory
+                      href: windows/platform-specifics/default-image-directory.md
+                    - name: InputView reading order
+                      href: windows/platform-specifics/inputview-reading-order.md
+                    - name: ListView SelectionMode
+                      href: windows/platform-specifics/listview-selectionmode.md
+                    - name: RefreshView pull direction
+                      href: windows/platform-specifics/refreshview-pulldirection.md
+                    - name: SearchBar spell check
+                      href: windows/platform-specifics/searchbar-spell-check.md
+                    - name: VisualElement access keys
+                      href: windows/platform-specifics/visualelement-access-keys.md
+            - name: Sharing
+              items:
+                - name: Clipboard
+                  href: platform-integration/data/clipboard.md
+                - name: Share files and text
+                  href: platform-integration/data/share.md
+            - name: Storage
+              items:
+                - name: File picker
+                  href: platform-integration/storage/file-picker.md
+                - name: File system helpers
+                  href: platform-integration/storage/file-system-helpers.md
+                - name: Preferences
+                  href: platform-integration/storage/preferences.md
+                - name: Secure storage
+                  href: platform-integration/storage/secure-storage.md
+            - name: Platform helpers
+              href: platform-integration/platform-helpers.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
+        - name: Customize UI appearance
+          href: platform-integration/customize-ui-appearance.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Native embedding
+          href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
+        - name: AI
+          items:
+            - name: ChatGPT
+              href: /windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: DALL-E
+              href: /windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication
+          items:
+            - name: Microsoft Authentication Library
+              href: /entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Prepare tenant
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Create a Shell app
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Sign in and sign out
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Role-based access control
+              href: /entra/external-id/customers/tutorial-mobile-maui-role-based-access-control?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Azure Mobile Apps
+          items:
+            - name: Overview
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Authentication
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Offline sync
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Graph SDK
+          href: /windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Local databases
+          href: data-cloud/database-sqlite.md
         - name: Web services
           items:
             - name: Consume a REST-based web service
@@ -609,25 +788,91 @@
       items:
         - name: Overview
           href: deployment/index.md
-        - name: Hot restart
-          href: deployment/hot-restart.md
+        - name: Improve app performance
+          href: deployment/performance.md
+        - name: iOS
+          items:
+            - name: Hot restart
+              href: ios/hot-restart.md
+            - name: Wireless deployment
+              href: ios/wireless-deployment.md
         - name: Project configuration
           href: deployment/visual-studio-properties.md
         - name: Publish
           items:
             - name: Android
-              href: android/deployment/overview.md
+              items:
+                - name: Overview
+                  href: android/deployment/index.md
+                - name: Publish for Google Play distribution
+                  href: android/deployment/publish-google-play.md
+                - name: Publish for ad-hoc distribution
+                  href: android/deployment/publish-ad-hoc.md
+                - name: Publish using the command line
+                  href: android/deployment/publish-cli.md
             - name: iOS
               items:
-                - name: Publish an iOS app
-                  href: ios/deployment/overview.md
-                - name: Provision for app store distribution
-                  href: ios/deployment/provision.md
-                - name: Entitlements and capabilities
-                  href: ios/deployment/entitlements.md
-            - name: macOS
-              href: macos/deployment/overview.md
+                - name: Overview
+                  href: ios/deployment/index.md
+                - name: Publish for app store distribution
+                  href: ios/deployment/publish-app-store.md
+                - name: Publish for in-house distribution
+                  href: ios/deployment/publish-in-house.md
+                - name: Publish for ad-hoc distribution
+                  href: ios/deployment/publish-ad-hoc.md
+                - name: Publish using the command line
+                  href: ios/deployment/publish-cli.md
+            - name: Mac Catalyst
+              items:
+                - name: Overview
+                  href: mac-catalyst/deployment/index.md
+                - name: Publish an unsigned app
+                  href: mac-catalyst/deployment/publish-unsigned.md
+                - name: Publish for app store distribution
+                  href: mac-catalyst/deployment/publish-app-store.md
+                - name: Publish outside the app store
+                  href: mac-catalyst/deployment/publish-outside-app-store.md
+                - name: Publish for ad-hoc distribution
+                  href: mac-catalyst/deployment/publish-ad-hoc.md
             - name: Windows
-              href: windows/deployment/overview.md
+              items:
+                - name: Overview
+                  href: windows/deployment/overview.md
+                - name: Publish a packaged app with the .NET CLI
+                  href: windows/deployment/publish-cli.md
+                - name: Publish an unpackaged app with the .NET CLI
+                  href: windows/deployment/publish-unpackaged-cli.md
+                - name: Publish with Visual Studio to a folder
+                  href: windows/deployment/publish-visual-studio-folder.md
+    - name: Enterprise application patterns
+      items:
+        - name: Overview
+          href: /dotnet/architecture/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Preface
+          href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Introduction
+          href: /dotnet/architecture/maui/introduction?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Model-View-ViewModel pattern
+          href: /dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Dependency injection
+          href: /dotnet/architecture/maui/dependency-injection?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Communicating between components
+          href: /dotnet/architecture/maui/communicating-between-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Navigation
+          href: /dotnet/architecture/maui/navigation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Validation
+          href: /dotnet/architecture/maui/validation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Configuration management
+          href: /dotnet/architecture/maui/configuration-management?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Containerized microservices
+          href: /dotnet/architecture/maui/micro-services?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Accessing remote data
+          href: /dotnet/architecture/maui/accessing-remote-data?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication and authorization
+          href: /dotnet/architecture/maui/authentication-and-authorization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: MVVM community toolkit features
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Unit testing
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md

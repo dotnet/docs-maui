@@ -39,7 +39,7 @@ With the exception of `x:DateTime`, the other language primitives are in the XAM
 
 Arguments can be passed to a non-default constructor using the `x:Arguments` attribute. Each constructor argument must be delimited within an XML element that represents the type of the argument.
 
-The following example demonstrates using the `x:Arguments` attribute with three different `Color` constructors:
+The following example demonstrates using the `x:Arguments` attribute with three different <xref:Microsoft.Maui.Graphics.Color> constructors:
 
 ```xaml
 <BoxView HeightRequest="150"
@@ -82,13 +82,13 @@ The following example demonstrates using the `x:Arguments` attribute with three 
 </BoxView>
 ```
 
-The number of elements within the `x:Arguments` tag, and the types of these elements, must match one of the `Color` constructors. The `Color` constructor with a single parameter requires a grayscale `float` value from 0 (black) to 1 (white). The `Color` constructor with three parameters requires `float` red, green, and blue values ranging from 0 to 1. The `Color` constructor with four parameters adds a `float` alpha channel as the fourth parameter.
+The number of elements within the `x:Arguments` tag, and the types of these elements, must match one of the <xref:Microsoft.Maui.Graphics.Color> constructors. The <xref:Microsoft.Maui.Graphics.Color> constructor with a single parameter requires a grayscale `float` value from 0 (black) to 1 (white). The <xref:Microsoft.Maui.Graphics.Color> constructor with three parameters requires `float` red, green, and blue values ranging from 0 to 1. The <xref:Microsoft.Maui.Graphics.Color> constructor with four parameters adds a `float` alpha channel as the fourth parameter.
 
 ## Call factory methods
 
 Factory methods can be called in .NET MAUI XAML by specifying the method's name using the `x:FactoryMethod` attribute, and its arguments using the `x:Arguments` attribute. A factory method is a `public static` method that returns objects or values of the same type as the class or structure that defines the methods.
 
-The `Color` structure defines a number of factory methods, and the following example demonstrates calling three of them:
+The <xref:Microsoft.Maui.Graphics.Color> class defines a number of factory methods, and the following example demonstrates calling three of them:
 
 ```xaml
 <BoxView HeightRequest="150"

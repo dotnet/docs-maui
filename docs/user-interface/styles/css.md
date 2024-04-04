@@ -84,7 +84,7 @@ There are a number of approaches that can be used to load a style sheet.
 
 ### Load a style sheet in XAML
 
-A style sheet can be loaded and parsed with the `StyleSheet` class before being added to a `ResourceDictionary`:
+A style sheet can be loaded and parsed with the `StyleSheet` class before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```xaml
 <Application ...>
@@ -99,7 +99,7 @@ The `StyleSheet.Source` property specifies the style sheet as a URI relative to 
 > [!WARNING]
 > The CSS file will fail to load if its build action is not set to **MauiCss**.
 
-Alternatively, a style sheet can be loaded and parsed with the `StyleSheet` class, before being added to a `ResourceDictionary`, by inlining it in a `CDATA` section:
+Alternatively, a style sheet can be loaded and parsed with the `StyleSheet` class, before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>, by inlining it in a `CDATA` section:
 
 ```xaml
 <ContentPage ...>
@@ -120,7 +120,7 @@ For more information about resource dictionaries, see [Resource dictionaries](~/
 
 ### Load a style sheet in C\#
 
-In C#, a style sheet can be loaded from a `StringReader` and added to a `ResourceDictionary`:
+In C#, a style sheet can be loaded from a `StringReader` and added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```csharp
 using Microsoft.Maui.Controls.StyleSheets;
@@ -166,7 +166,7 @@ stacklayout {
 }
 ```
 
-This selector identifies any `StackLayout` elements on pages that consume the style sheet, and sets their margins to a uniform thickness of 20.
+This selector identifies any <xref:Microsoft.Maui.Controls.StackLayout> elements on pages that consume the style sheet, and sets their margins to a uniform thickness of 20.
 
 > [!NOTE]
 > The `element` selector does not identify subclasses of the specified type.
@@ -181,7 +181,7 @@ Elements in the visual tree can be selected by base class with the case insensit
 }
 ```
 
-This selector identifies any `ContentPage` elements that consume the style sheet, and sets their background color to `lightgray`.
+This selector identifies any <xref:Microsoft.Maui.Controls.ContentPage> elements that consume the style sheet, and sets their background color to `lightgray`.
 
 > [!NOTE]
 > The `^base` selector is specific to .NET MAUI, and isn't part of the CSS specification.
@@ -196,7 +196,7 @@ Individual elements in the visual tree can be selected with the case sensitive `
 }
 ```
 
-This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the `ListView` whose `x:Name` attribute is set to `listView`, and will set it's background color to `lightgray`.
+This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the <xref:Microsoft.Maui.Controls.ListView> whose `x:Name` attribute is set to `listView`, and will set it's background color to `lightgray`.
 
 ```xaml
 <ContentPage ...>
@@ -228,7 +228,7 @@ Elements with a specific class attribute can be selected with the case sensitive
 }
 ```
 
-A CSS class can be assigned to a XAML element by setting the `StyleClass` property of the element to the CSS class name. Therefore, in the following example, the styles defined by the `.detailPageTitle` class are assigned to the first `Label`, while the styles defined by the `.detailPageSubtitle` class are assigned to the second `Label`.
+A CSS class can be assigned to a XAML element by setting the `StyleClass` property of the element to the CSS class name. Therefore, in the following example, the styles defined by the `.detailPageTitle` class are assigned to the first <xref:Microsoft.Maui.Controls.Label>, while the styles defined by the `.detailPageSubtitle` class are assigned to the second <xref:Microsoft.Maui.Controls.Label>.
 
 ```xaml
 <ContentPage ...>
@@ -255,7 +255,7 @@ listview image {
 }
 ```
 
-This selector identifies any `Image` elements that are children of `ListView` elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the `Image` that's a child of the `ListView`, and sets its height and width to 60.
+This selector identifies any <xref:Microsoft.Maui.Controls.Image> elements that are children of <xref:Microsoft.Maui.Controls.ListView> elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the <xref:Microsoft.Maui.Controls.Image> that's a child of the <xref:Microsoft.Maui.Controls.ListView>, and sets its height and width to 60.
 
 ```xaml
 <ContentPage ...>
@@ -294,7 +294,7 @@ stacklayout>image {
 }
 ```
 
-This selector identifies any `Image` elements that are direct children of `StackLayout` elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the `Image` that's a direct child of the `StackLayout`, and sets its height and width to 200.
+This selector identifies any <xref:Microsoft.Maui.Controls.Image> elements that are direct children of <xref:Microsoft.Maui.Controls.StackLayout> elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the <xref:Microsoft.Maui.Controls.Image> that's a direct child of the <xref:Microsoft.Maui.Controls.StackLayout>, and sets its height and width to 200.
 
 ```xaml
 <ContentPage ...>
@@ -323,13 +323,13 @@ The following CSS selectors are supported by .NET MAUI:
 |`.class`|`.header`|Selects all elements with the `StyleClass` property containing 'header'. This selector is case sensitive.|
 |`#id`|`#email`|Selects all elements with `StyleId` set to `email`. If `StyleId` is not set, fallback to `x:Name`. When using XAML, `x:Name` is preferred over `StyleId`. This selector is case sensitive.|
 |`*`|`*`|Selects all elements.|
-|`element`|`label`|Selects all elements of type `Label`, but not subclasses. This selector is case insensitive.|
-|`^base`|`^contentpage`|Selects all elements with `ContentPage` as the base class, including `ContentPage` itself. This selector is case insensitive and isn't part of the CSS specification.|
-|`element,element`|`label,button`|Selects all `Button` elements and all `Label` elements. This selector is case insensitive.|
-|`element element`|`stacklayout label`|Selects all `Label` elements inside a `StackLayout`. This selector is case insensitive.|
-|`element>element`|`stacklayout>label`|Selects all `Label` elements with `StackLayout` as a direct parent. This selector is case insensitive.|
-|`element+element`|`label+entry`|Selects all `Entry` elements directly after a `Label`. This selector is case insensitive.|
-|`element~element`|`label~entry`|Selects all `Entry` elements preceded by a `Label`. This selector is case insensitive.|
+|`element`|`label`|Selects all elements of type <xref:Microsoft.Maui.Controls.Label>, but not subclasses. This selector is case insensitive.|
+|`^base`|`^contentpage`|Selects all elements with <xref:Microsoft.Maui.Controls.ContentPage> as the base class, including <xref:Microsoft.Maui.Controls.ContentPage> itself. This selector is case insensitive and isn't part of the CSS specification.|
+|`element,element`|`label,button`|Selects all <xref:Microsoft.Maui.Controls.Button> elements and all <xref:Microsoft.Maui.Controls.Label> elements. This selector is case insensitive.|
+|`element element`|`stacklayout label`|Selects all <xref:Microsoft.Maui.Controls.Label> elements inside a <xref:Microsoft.Maui.Controls.StackLayout>. This selector is case insensitive.|
+|`element>element`|`stacklayout>label`|Selects all <xref:Microsoft.Maui.Controls.Label> elements with <xref:Microsoft.Maui.Controls.StackLayout> as a direct parent. This selector is case insensitive.|
+|`element+element`|`label+entry`|Selects all <xref:Microsoft.Maui.Controls.Entry> elements directly after a <xref:Microsoft.Maui.Controls.Label>. This selector is case insensitive.|
+|`element~element`|`label~entry`|Selects all <xref:Microsoft.Maui.Controls.Entry> elements preceded by a <xref:Microsoft.Maui.Controls.Label>. This selector is case insensitive.|
 
 Styles with matching selectors are applied consecutively, in definition order. Styles defined on a specific item are always applied last.
 
@@ -351,56 +351,56 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`align-content`|`FlexLayout`| `stretch` \| `center` \| `start` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial` |`align-content: space-between;`|
-|`align-items`|`FlexLayout`| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial` |`align-items: flex-start;`|
-|`align-self`|`VisualElement`| `auto` \| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial`|`align-self: flex-end;`|
-|`background-color`|`VisualElement`|_color_ \| `initial` |`background-color: springgreen;`|
-|`background-image`|`Page`|_string_ \| `initial` |`background-image: bg.png;`|
-|`border-color`|`Button`, `Frame`, `ImageButton`|_color_ \| `initial`|`border-color: #9acd32;`|
-|`border-radius`|`BoxView`, `Button`, `Frame`, `ImageButton`|_double_ \| `initial` |`border-radius: 10;`|
-|`border-width`|`Button`, `ImageButton`|_double_ \| `initial` |`border-width: .5;`|
-|`color`|`ActivityIndicator`, `BoxView`, `Button`, `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `ProgressBar`, `SearchBar`, `Switch`, `TimePicker`|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
-|`column-gap`|`Grid`|_double_ \| `initial`|`column-gap: 9;`|
-|`direction`|`VisualElement`|`ltr` \| `rtl` \| `inherit` \| `initial` |`direction: rtl;`|
-|`flex-direction`|`FlexLayout`| `column` \| `columnreverse` \| `row` \| `rowreverse` \| `row-reverse` \| `column-reverse` \| `initial`|`flex-direction: column-reverse;`|
-|`flex-basis`|`VisualElement`|_float_ \| `auto` \| `initial`. In addition, a percentage in the range 0% to 100% can be specified with the `%` sign.|`flex-basis: 25%;`|
-|`flex-grow`|`VisualElement`|_float_ \| `initial`|`flex-grow: 1.5;`|
-|`flex-shrink`|`VisualElement`|_float_ \| `initial`|`flex-shrink: 1;`|
-|`flex-wrap`|`VisualElement`| `nowrap` \| `wrap` \| `reverse` \| `wrap-reverse` \| `initial`|`flex-wrap: wrap-reverse;`|
-|`font-family`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
-|`font-size`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_double_ \| `initial` |`font-size: 12;`|
-|`font-style`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
-|`height`|`VisualElement`|_double_ \| `initial` |`min-height: 250;`|
-|`justify-content`|`FlexLayout`| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
-|`letter-spacing`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `SearchHandler`, `Span`, `TimePicker`|_double_ \| `initial`|`letter-spacing: 2.5;`|
-|`line-height`|`Label`, `Span`|_double_ \| `initial` |`line-height: 1.8;`|
-|`margin`|`View`|_thickness_ \| `initial` |`margin: 6 12;`|
-|`margin-left`|`View`|_thickness_ \| `initial` |`margin-left: 3;`|
-|`margin-top`|`View`|_thickness_ \| `initial` |`margin-top: 2;`|
-|`margin-right`|`View`|_thickness_ \| `initial` |`margin-right: 1;`|
-|`margin-bottom`|`View`|_thickness_ \| `initial` |`margin-bottom: 6;`|
-|`max-lines`|`Label`|_int_ \| `initial`|`max-lines: 2;`|
-|`min-height`|`VisualElement`|_double_ \| `initial` |`min-height: 50;`|
-|`min-width`|`VisualElement`|_double_ \| `initial` |`min-width: 112;`|
-|`opacity`|`VisualElement`|_double_ \| `initial` |`opacity: .3;`|
-|`order`|`VisualElement`|_int_ \| `initial`|`order: -1;`|
-|`padding`|`Button`, `ImageButton`, `Layout`, `Page`|_thickness_ \| `initial` |`padding: 6 12 12;`|
-|`padding-left`|`Button`, `ImageButton`, `Layout`, `Page`|_double_ \| `initial`|`padding-left: 3;`|
-|`padding-top`|`Button`, `ImageButton`, `Layout`, `Page`| _double_ \| `initial` |`padding-top: 4;`|
-|`padding-right`|`Button`, `ImageButton`, `Layout`, `Page`| _double_ \| `initial` |`padding-right: 2;`|
-|`padding-bottom`|`Button`, `ImageButton`, `Layout`, `Page`| _double_ \| `initial` |`padding-bottom: 6;`|
-|`position`|`FlexLayout`| `relative` \| `absolute` \| `initial`|`position: absolute;`|
-|`row-gap`|`Grid`| _double_ \| `initial`|`row-gap: 12;`|
-|`text-align`| `Entry`, `EntryCell`, `Label`, `SearchBar`|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|
-|`text-decoration`|`Label`, `Span`|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
-|`text-transform`|`Button`,`Editor`, `Entry`, `Label`, `SearchBar`, `SearchHandler`|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|
-|`transform`|`VisualElement`| `none`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `translate`, `translateX`, `translateY`, `initial` |`transform: rotate(180), scaleX(2.5);`|
-|`transform-origin`|`VisualElement`| _double_, _double_ \| `initial` |`transform-origin: 7.5, 12.5;`|
-|`vertical-align`|`Label`|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`|`vertical-align: bottom;`|
-|`visibility`|`VisualElement`|`true` \| `visible` \| `false` \| `hidden` \| `collapse` \| `initial`|`visibility: hidden;`|
-|`width`|`VisualElement`|_double_ \| `initial`|`min-width: 320;`|
+|`align-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `stretch` \| `center` \| `start` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial` |`align-content: space-between;`|
+|`align-items`|<xref:Microsoft.Maui.Controls.FlexLayout>| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial` |`align-items: flex-start;`|
+|`align-self`|<xref:Microsoft.Maui.Controls.VisualElement>| `auto` \| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial`|`align-self: flex-end;`|
+|`background-color`|<xref:Microsoft.Maui.Controls.VisualElement>|_color_ \| `initial` |`background-color: springgreen;`|
+|`background-image`|<xref:Microsoft.Maui.Controls.Page>|_string_ \| `initial` |`background-image: bg.png;`|
+|`border-color`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_color_ \| `initial`|`border-color: #9acd32;`|
+|`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-radius: 10;`|
+|`border-width`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-width: .5;`|
+|`color`|<xref:Microsoft.Maui.Controls.ActivityIndicator>, <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.ProgressBar>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.Switch>, <xref:Microsoft.Maui.Controls.TimePicker>|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
+|`column-gap`|<xref:Microsoft.Maui.Controls.Grid>|_double_ \| `initial`|`column-gap: 9;`|
+|`direction`|<xref:Microsoft.Maui.Controls.VisualElement>|`ltr` \| `rtl` \| `inherit` \| `initial` |`direction: rtl;`|
+|`flex-direction`|<xref:Microsoft.Maui.Controls.FlexLayout>| `column` \| `columnreverse` \| `row` \| `rowreverse` \| `row-reverse` \| `column-reverse` \| `initial`|`flex-direction: column-reverse;`|
+|`flex-basis`|<xref:Microsoft.Maui.Controls.VisualElement>|_float_ \| `auto` \| `initial`. In addition, a percentage in the range 0% to 100% can be specified with the `%` sign.|`flex-basis: 25%;`|
+|`flex-grow`|<xref:Microsoft.Maui.Controls.VisualElement>|_float_ \| `initial`|`flex-grow: 1.5;`|
+|`flex-shrink`|<xref:Microsoft.Maui.Controls.VisualElement>|_float_ \| `initial`|`flex-shrink: 1;`|
+|`flex-wrap`|<xref:Microsoft.Maui.Controls.VisualElement>| `nowrap` \| `wrap` \| `reverse` \| `wrap-reverse` \| `initial`|`flex-wrap: wrap-reverse;`|
+|`font-family`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|_string_ \| `initial` |`font-family: Consolas;`|
+|`font-size`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|_double_ \| `initial` |`font-size: 12;`|
+|`font-style`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|`bold` \| `italic` \| `initial` |`font-style: bold;`|
+|`height`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`height: 250;`|
+|`justify-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
+|`letter-spacing`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.SearchHandler>, <xref:Microsoft.Maui.Controls.Span>, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
+|`line-height`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|_double_ \| `initial` |`line-height: 1.8;`|
+|`margin`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin: 6 12;`|
+|`margin-left`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-left: 3;`|
+|`margin-top`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-top: 2;`|
+|`margin-right`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-right: 1;`|
+|`margin-bottom`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-bottom: 6;`|
+|`max-lines`|<xref:Microsoft.Maui.Controls.Label>|_int_ \| `initial`|`max-lines: 2;`|
+|`min-height`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`min-height: 50;`|
+|`min-width`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`min-width: 112;`|
+|`opacity`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`opacity: .3;`|
+|`order`|<xref:Microsoft.Maui.Controls.VisualElement>|_int_ \| `initial`|`order: -1;`|
+|`padding`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>|_thickness_ \| `initial` |`padding: 6 12 12;`|
+|`padding-left`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>|_double_ \| `initial`|`padding-left: 3;`|
+|`padding-top`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-top: 4;`|
+|`padding-right`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-right: 2;`|
+|`padding-bottom`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-bottom: 6;`|
+|`position`|<xref:Microsoft.Maui.Controls.FlexLayout>| `relative` \| `absolute` \| `initial`|`position: absolute;`|
+|`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
+|`text-align`| <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|
+|`text-decoration`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
+|`text-transform`|<xref:Microsoft.Maui.Controls.Button>,<xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.SearchHandler>|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|
+|`transform`|<xref:Microsoft.Maui.Controls.VisualElement>| `none`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `translate`, `translateX`, `translateY`, `initial` |`transform: rotate(180), scaleX(2.5);`|
+|`transform-origin`|<xref:Microsoft.Maui.Controls.VisualElement>| _double_, _double_ \| `initial` |`transform-origin: 7.5, 12.5;`|
+|`vertical-align`|<xref:Microsoft.Maui.Controls.Label>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`|`vertical-align: bottom;`|
+|`visibility`|<xref:Microsoft.Maui.Controls.VisualElement>|`true` \| `visible` \| `false` \| `hidden` \| `collapse` \| `initial`|`visibility: hidden;`|
+|`width`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial`|`width: 320;`|
 
-<!-- Todo: Can also set `background`, on a `VisualElement`, to a `Brush` -->
+<!-- Todo: Can also set `background`, on a <xref:Microsoft.Maui.Controls.VisualElement>, to a <xref:Microsoft.Maui.Controls.Brush> -->
 
 > [!NOTE]
 > `initial` is a valid value for all properties. It clears the value (resets to default) that was set from another style.
@@ -411,10 +411,10 @@ The following properties are unsupported:
 - Layout properties (box, or grid).
 - Shorthand properties, such as `font`, and `border`.
 
-In addition, there's no `inherit` value and so inheritance isn't supported. Therefore you can't, for example, set the `font-size` property on a layout and expect all the `Label` instances in the layout to inherit the value. The one exception is the `direction` property, which has a default value of `inherit`.
+In addition, there's no `inherit` value and so inheritance isn't supported. Therefore you can't, for example, set the `font-size` property on a layout and expect all the <xref:Microsoft.Maui.Controls.Label> instances in the layout to inherit the value. The one exception is the `direction` property, which has a default value of `inherit`.
 
 > [!IMPORTANT]
-> `Span` elements can't be targeted using CSS.
+> <xref:Microsoft.Maui.Controls.Span> elements can't be targeted using CSS.
 
 ### .NET MAUI specific properties
 
@@ -422,20 +422,20 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-bar-background-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-xf-bar-background-color: teal;`|
-|`-maui-bar-text-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-xf-bar-text-color: gray`|
-|`-maui-horizontal-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-xf-horizontal-scroll-bar-visibility: never;`|
-|`-maui-max-length`|`Entry`, `Editor`, `SearchBar`|_int_ \| `initial` |`-xf-max-length: 20;`|
-|`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-xf-max-track-color: red;`|
-|`-maui-min-track-color`|`Slider`|_color_ \| `initial` |`-xf-min-track-color: yellow;`|
-|`-maui-orientation`|`ScrollView`, `StackLayout`| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a `ScrollView`. |`-xf-orientation: horizontal;`|
-|`-maui-placeholder`|`Entry`, `Editor`, `SearchBar`|_quoted text_ \| `initial` |`-xf-placeholder: Enter name;`|
-|`-maui-placeholder-color`|`Entry`, `Editor`, `SearchBar`|_color_ \| `initial` |`-xf-placeholder-color: green;`|
-|`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-xf-spacing: 8;`|
-|`-maui-thumb-color`|`Slider`, `Switch`|_color_ \| `initial` |`-xf-thumb-color: limegreen;`|
-|`-maui-vertical-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-xf-vertical-scroll-bar-visibility: always;`|
-|`-maui-vertical-text-alignment`|`Label`| `start` \| `center` \| `end` \| `initial`|`-xf-vertical-text-alignment: end;`|
-|`-maui-visual`|`VisualElement`|_string_ \| `initial` |`-xf-visual: material;`|
+|`-maui-bar-background-color`|<xref:Microsoft.Maui.Controls.NavigationPage>, <xref:Microsoft.Maui.Controls.TabbedPage>|_color_ \| `initial` |`-maui-bar-background-color: teal;`|
+|`-maui-bar-text-color`|<xref:Microsoft.Maui.Controls.NavigationPage>, <xref:Microsoft.Maui.Controls.TabbedPage>|_color_ \| `initial` |`-maui-bar-text-color: gray`|
+|`-maui-horizontal-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-horizontal-scroll-bar-visibility: never;`|
+|`-maui-max-length`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_int_ \| `initial` |`-maui-max-length: 20;`|
+|`-maui-max-track-color`|<xref:Microsoft.Maui.Controls.Slider>|_color_ \| `initial` |`-maui-max-track-color: red;`|
+|`-maui-min-track-color`|<xref:Microsoft.Maui.Controls.Slider>|_color_ \| `initial` |`-maui-min-track-color: yellow;`|
+|`-maui-orientation`|<xref:Microsoft.Maui.Controls.ScrollView>, <xref:Microsoft.Maui.Controls.StackLayout>| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a <xref:Microsoft.Maui.Controls.ScrollView>. |`-maui-orientation: horizontal;`|
+|`-maui-placeholder`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
+|`-maui-placeholder-color`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_color_ \| `initial` |`-maui-placeholder-color: green;`|
+|`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
+|`-maui-thumb-color`|<xref:Microsoft.Maui.Controls.Slider>, <xref:Microsoft.Maui.Controls.Switch>|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
+|`-maui-vertical-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
+|`-maui-vertical-text-alignment`|<xref:Microsoft.Maui.Controls.Label>| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|
+|`-maui-visual`|<xref:Microsoft.Maui.Controls.VisualElement>|_string_ \| `initial` |`-maui-visual: material;`|
 
 ### .NET MAUI Shell specific properties
 
@@ -443,17 +443,17 @@ The following .NET MAUI Shell specific CSS properties are also supported (in the
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-xf-flyout-background: red;`|
-|`-maui-shell-background`|`Element`|_color_ \| `initial` |`-xf-shell-background: green;`|
-|`-maui-shell-disabled`|`Element`|_color_ \| `initial` |`-xf-shell-disabled: blue;`|
-|`-maui-shell-foreground`|`Element`|_color_ \| `initial` |`-xf-shell-foreground: yellow;`|
-|`-maui-shell-tabbar-background`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-background: white;`|
-|`-maui-shell-tabbar-disabled`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-disabled: black;`|
-|`-maui-shell-tabbar-foreground`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-foreground: gray;`|
-|`-maui-shell-tabbar-title`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-title: lightgray;`|
-|`-maui-shell-tabbar-unselected`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-unselected: cyan;`|
-|`-maui-shell-title`|`Element`|_color_ \| `initial` |`-xf-shell-title: teal;`|
-|`-maui-shell-unselected`|`Element`|_color_ \| `initial` |`-xf-shell-unselected: limegreen;`|
+|`-maui-flyout-background`|<xref:Microsoft.Maui.Controls.Shell>|_color_ \| `initial` |`-maui-flyout-background: red;`|
+|`-maui-shell-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-background: green;`|
+|`-maui-shell-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
+|`-maui-shell-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|
+|`-maui-shell-tabbar-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-background: white;`|
+|`-maui-shell-tabbar-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-disabled: black;`|
+|`-maui-shell-tabbar-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-foreground: gray;`|
+|`-maui-shell-tabbar-title`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-title: lightgray;`|
+|`-maui-shell-tabbar-unselected`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-unselected: cyan;`|
+|`-maui-shell-title`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-title: teal;`|
+|`-maui-shell-unselected`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-unselected: limegreen;`|
 
 ### Color
 

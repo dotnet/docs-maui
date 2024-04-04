@@ -28,8 +28,8 @@ The **Application** section describes some settings related to which platforms y
   | Setting | Default value | Description |
   | - | - | - |
   | Target the iOS platform | Checked | Specifies that this project will target the iOS platform. |
-  | Target iOS Framework | `net6.0-ios` | The [Target Framework Moniker][tfm] used to target iOS.
-  | Minimum Target iOS Framework | `14.2` | The minimum version of iOS your app targets.
+  | Target iOS Framework | `net8.0-ios` | The [Target Framework Moniker][tfm] used to target iOS. |
+  | Minimum Target iOS Framework | `14.2` | The minimum version of iOS your app targets. |
 
 - **Android Targets**
 
@@ -38,8 +38,8 @@ The **Application** section describes some settings related to which platforms y
   | Setting | Default value | Description |
   | - | - | - |
   | Target the Android platform | Checked | When checked, the .NET MAUI project will target and build an Android version of your app. Uncheck to disable the Android target. |
-  | Target Android Framework | `net6.0-android` | The [Target Framework Moniker][tfm] used to target Android.
-  | Minimum Target Android Framework | `21.0` | The minimum version of Android your app targets.
+  | Target Android Framework | `net8.0-android` | The [Target Framework Moniker][tfm] used to target Android. |
+  | Minimum Target Android Framework | `21.0` | The minimum version of Android your app targets. |
 
 - **Windows Targets**
 
@@ -48,8 +48,8 @@ The **Application** section describes some settings related to which platforms y
   | Setting | Default value | Description |
   | - | - | - |
   | Target the Windows platform | Checked | When checked, the .NET MAUI project will target and build a Windows version of your app. Uncheck to disable the Windows target. |
-  | Target Windows Framework | `net6.0-windows10.0.19041.0` | The [Target Framework Moniker][tfm] used to target Windows.
-  | Minimum Target Windows Framework | `10.0.17763.0` | The minimum version of Windows your app targets.
+  | Target Windows Framework | `net8.0-windows10.0.19041.0` | The [Target Framework Moniker][tfm] used to target Windows. |
+  | Minimum Target Windows Framework | `10.0.17763.0` | The minimum version of Windows your app targets. |
 
 ## Build
 
@@ -594,7 +594,7 @@ These settings are related to generating and signing the app bundle.
 
 - **Custom Entitlements**
 
-  The plist file to use for entitlements. For more information, see [Entitlements and capabilities](../ios/deployment/entitlements.md).
+  The plist file to use for entitlements. For more information, see [Entitlements](../ios/entitlements.md).
 
 - **Custom Resource Rules**
 

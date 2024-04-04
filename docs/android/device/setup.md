@@ -6,7 +6,7 @@ ms.date: 02/23/2022
 
 # Set up Android device for debugging
 
-While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to rapidly develop and test your app, you'll want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your computer.
+While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to rapidly develop and test your app, you'll want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your computer. For more information, see [Run apps on a hardware device](https://developer.android.com/studio/run/device) on developer.android.com.
 
 > [!IMPORTANT]
 > The steps in this article are written generically, to work on as many devices as possible. If you can't find these settings on your device, consult your device manufacturer's documentation.
@@ -51,7 +51,10 @@ It's possible to debug an android device over WiFi, without keeping the device p
 
 ### Connecting over WiFi
 
-By default, the [Android Debug Bridge](https://developer.android.com/tools/help/adb.html) (adb) is configured to communicate with an Android device via USB. It's possible to reconfigure it to use TCP/IP instead of USB. To do this, both the device and the computer must be on the same WiFi network.
+By default, the Android Debug Bridge (adb) is configured to communicate with an Android device via USB. It's possible to reconfigure it to use TCP/IP instead of USB. To do this, both the device and the computer must be on the same WiFi network.
+
+> [!NOTE]
+> The Google USB driver is required to perform `adb` debugging on Windows with Google devices. For more information, see [Get the Google USB Driver](https://developer.android.com/studio/run/win-usb) on developer.android.com. Windows drivers for all other devices are provided by the respective hardware manufacturer. For more information, see [Install OEM USB drivers](https://developer.android.com/studio/run/oem-usb) on developer.android.com.
 
 First, enable Wireless debugging on your Android device:
 
@@ -65,7 +68,7 @@ Depending on the UI your device is running, the **Wireless debugging** option ma
 
 Next, use adb to connect to your device, first through a USB connection:
 
-01. Determine the IP address of your Android device. One way to find out the IP address is to look under **Settings > Network & internet > Wi-Fi**, then tap on the WiFi network that the device is connected to, and then tap on **Advanced**. This will open a dropdown showing information about the network connection, similar to what is seen in the screenshot below:
+01. Determine the IP address of your Android device. One way to find out the IP address is to look under **Settings > Network & internet > Wi-Fi**, then tap on the WiFi network that the device is connected to, and then tap on **Advanced**. This will open a drop-down showing information about the network connection, similar to what is seen in the screenshot below:
 
     :::image type="content" source="media/setup/ip-settings-sml.png" alt-text="Android status screen with IP address." lightbox="media/setup/ip-settings.png":::
 
@@ -100,3 +103,7 @@ Next, use adb to connect to your device, first through a USB connection:
     ```command
     adb devices
     ```
+
+## Configure on-device developer options
+
+The Settings app on Android includes a screen called **Developer options** where you can configure system behaviors that help you profile and debug your app performance. For more information, see [Configure on-device developer options](https://developer.android.com/studio/debug/dev-options) on developer.android.com.

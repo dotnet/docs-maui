@@ -10,9 +10,9 @@ ms.date: 12/31/2021
 
 :::image type="content" source="media/flexlayout/layouts.png" alt-text=".NET MAUI FlexLayout." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `FlexLayout` is a layout that can arrange its children horizontally and vertically in a stack, and can also wrap its children if there are too many to fit in a single row or column. In addition, `FlexLayout` can control orientation and alignment, and adapt to different screen sizes. `FlexLayout` is based on the Cascading Style Sheets (CSS) [Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1/).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlexLayout> is a layout that can arrange its children horizontally and vertically in a stack, and can also wrap its children if there are too many to fit in a single row or column. In addition, <xref:Microsoft.Maui.Controls.FlexLayout> can control orientation and alignment, and adapt to different screen sizes. <xref:Microsoft.Maui.Controls.FlexLayout> is based on the Cascading Style Sheets (CSS) [Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1/).
 
-The `FlexLayout` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.FlexLayout> class defines the following properties:
 
 - `AlignContent`, of type `FlexAlignContent`, which determines how the layout engine will distribute space between and around children that have been laid out on multiple lines. The default value of this property is `Stretch`. For more information, see [AlignContent](#aligncontent).
 - `AlignItems`, of type `FlexAlignItems`, which indicates how the layout engine will distribute space between and around children along the cross axis. The default value of this property is `Stretch`. For more information, see [AlignItems](#alignitems).
@@ -21,21 +21,21 @@ The `FlexLayout` class defines the following properties:
 - `Position`, of type `FlexPosition`, which determines whether the position of children are relative to each other, or by using fixed values. The default value of this property is `Relative`.
 - `Wrap`, of type `FlexWrap`, which controls whether children are laid out in a single line or in multiple lines. The default value of this property is `NoWrap`. For more information, see [Wrap](#wrap).
 - `AlignSelf`, of type `FlexAlignSelf`, which is an attached property that indicates how the layout engine will distribute space between and around children for a specific child along the cross axis. The default value of this property is `Auto`. For more information, see [AlignSelf](#alignself).
-- `Basis`, of type `FlexBasis`, which is an attached property that defines the initial main axis dimension of the child. The default value of this property is `Auto`. For more information, see [Basis](#basis).
+- `Basis`, of type `FlexBasis`, which is an attached property that defines the initial main size of the child before free space is distributed according to other property values. The default value of this property is `Auto`. For more information, see [Basis](#basis).
 - `Grow`, of type `float`, which is an attached property that specifies the amount of available space the child should use on the main axis. The default value of this property is 0.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Grow](#grow).
 - `Order`, of type `int`, which is an attached property that determines whether the child should be laid out before or after other children in the container. The default value of this property is 0. For more information, see [Order](#order).
 - `Shrink`, of type `float`, which is an attached property that controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Shrink](#shrink).
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
 > [!IMPORTANT]
-> When items in a `FlexLayout` are arranged in a column, the `FlexLayout` has a vertical *main axis* and a horizontal *cross axis*. When items in a `FlexLayout` are arranged in a row, the `FlexLayout` has a horizontal *main axis* and a vertical *cross axis*.
+> When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a column, the <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical *main axis* and a horizontal *cross axis*. When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a row, the <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal *main axis* and a vertical *cross axis*.
 
-<!-- `FlexLayout` and its children can be partially styled using Cascading Style Sheets (CSS). For more information, see [Styling apps using Cascading Style Sheets (CSS)](). -->
+<xref:Microsoft.Maui.Controls.FlexLayout> and its children can be partially styled using Cascading Style Sheets (CSS). For more information, see [Styling apps using Cascading Style Sheets (CSS)](~/user-interface/styles/css.md).
 
 ## Orientation and alignment
 
-The `Direction`, `Wrap`, `JustifyContent`, `AlignItems`, `AlignContent`, and `Position` bindable properties can be set on a `FlexLayout` to control orientation and alignment of all children.
+The `Direction`, `Wrap`, `JustifyContent`, `AlignItems`, `AlignContent`, and `Position` bindable properties can be set on a <xref:Microsoft.Maui.Controls.FlexLayout> to control orientation and alignment of all children.
 
 ### Direction
 
@@ -59,7 +59,7 @@ The `Wrap` property, of type `FlexWrap`, controls whether children are laid out 
 - `Wrap`, which indicates that items are laid out in multiple lines if needed.
 - `Reverse` (or "wrap-reverse" in XAML), which indicates that items are laid out in multiple lines if needed, in reverse order.
 
-When the `Wrap` property is set to `NoWrap` and the main axis is constrained, and the main axis is not wide or tall enough to fit all the children, the `FlexLayout` attempts to make the items smaller. You can control the shrink factor of children with the `Shrink` attached bindable property.
+When the `Wrap` property is set to `NoWrap` and the main axis is constrained, and the main axis is not wide or tall enough to fit all the children, the <xref:Microsoft.Maui.Controls.FlexLayout> attempts to make the items smaller. You can control the shrink factor of children with the `Shrink` attached bindable property.
 
 When the `Wrap` property is set to `Wrap` or `WrapReverse`, the `AlignContent` property can be used to specify how the lines should be distributed.
 
@@ -114,7 +114,7 @@ When the `Position` property is set to `Absolute`, the `Left`, `Right`, `Top`, a
 
 ## Child alignment and sizing
 
-The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties can be set on children of the `FlexLayout` to control child orientation, alignment, and sizing.
+The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties can be set on children of the <xref:Microsoft.Maui.Controls.FlexLayout> to control child orientation, alignment, and sizing.
 
 ### AlignSelf
 
@@ -126,9 +126,9 @@ The `AlignSelf` property, of type `FlexAlignSelf`, indicates how the layout engi
 - `Start` (or "flex-start" in XAML), which indicates that a child should be aligned at the start.
 - `End` (or "flex-end" in XAML), which indicates that a child should be aligned at the end.
 
-For any individual child of the `FlexLayout`, this property overrides the `AlignItems` property set on the `FlexLayout`. The default setting of `Auto` means to use the `AlignItems` setting.
+For any individual child of the <xref:Microsoft.Maui.Controls.FlexLayout>, this property overrides the `AlignItems` property set on the <xref:Microsoft.Maui.Controls.FlexLayout>. The default setting of `Auto` means to use the `AlignItems` setting.
 
-In XAML, this property is set on a child without any reference to its `FlexLayout` parent:
+In XAML, this property is set on a child without any reference to its <xref:Microsoft.Maui.Controls.FlexLayout> parent:
 
 ```xaml
 <Label FlexLayout.AlignSelf="Center"
@@ -144,15 +144,15 @@ FlexLayout.SetAlignSelf(label, FlexAlignSelf.Center);
 
 ### Order
 
-The `Order` property, of type `int`, enables you to change the order that children of the `FlexLayout` are arranged. The default value of this property is 0.
+The `Order` property, of type `int`, enables you to change the order that children of the <xref:Microsoft.Maui.Controls.FlexLayout> are arranged. The default value of this property is 0.
 
-Usually, children are arranged in the order in which they are added to the `FlexLayout`. However, this order can be overridden by setting this property to a non-zero integer value on one or more children. The `FlexLayout` then arranges its children based on their `Order` property values. Children with the same `Order` property values are arranged in the order in which they are added to the `FlexLayout`.
+Usually, children are arranged in the order in which they are added to the <xref:Microsoft.Maui.Controls.FlexLayout>. However, this order can be overridden by setting this property to a non-zero integer value on one or more children. The <xref:Microsoft.Maui.Controls.FlexLayout> then arranges its children based on their `Order` property values. Children with the same `Order` property values are arranged in the order in which they are added to the <xref:Microsoft.Maui.Controls.FlexLayout>.
 
 ### Basis
 
-The `Basis` property, of type `FlexBasis`, defines the amount of space that's allocated to a child on the main axis. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns. This property is called *basis* because it specifies a size that is the basis of all subsequent layout.
+The `Basis` property, of type `FlexBasis`, defines the initial size of the child on the main axis before free space is distributed according to other property values. The value specified by this property is the size along the main axis of the parent <xref:Microsoft.Maui.Controls.FlexLayout>. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns. This property is called *basis* because it specifies a size that is the basis of all subsequent layout.
 
-The `FlexBasis` type is a structure that enables size to be specified in device-independent units, or as a percentage of the size of the `FlexLayout`. The default value of the `Basis` property is `Auto`, which means that the child's requested width or height is used.
+The `FlexBasis` type is a structure that enables size to be specified in device-independent units, or as a percentage of the size of the <xref:Microsoft.Maui.Controls.FlexLayout>. The default value of the `Basis` property is `Auto`, which means that the child's requested width or height is used.
 
 In XAML, you can use a number for a size in device-independent units:
 
@@ -186,24 +186,24 @@ The first argument to the `FlexBasis` constructor is a fractional `float` value 
 
 The `Grow` property, of type `float`, specifies the amount of available space the child should use on the main axis. The default value of this property is 0.0, and its value must be greater than or equal to 0.
 
-The `Grow` property is used when the `Wrap` property is set to `NoWrap` and a row of children has a total width less than the width of the `FlexLayout`, or a column of children has a shorter height than the `FlexLayout`. The `Grow` property indicates how to apportion the leftover space among the children. If a single child is given a positive `Grow` value, then that child takes up all the remaining space. Alternatively, the remaining space can also be allocated among two or more children.
+The `Grow` property is used when the `Wrap` property is set to `NoWrap` and a row of children has a total width less than the width of the <xref:Microsoft.Maui.Controls.FlexLayout>, or a column of children has a shorter height than the <xref:Microsoft.Maui.Controls.FlexLayout>. The `Grow` property indicates how to apportion the leftover space among the children. If a single child is given a positive `Grow` value, then that child takes up all the remaining space. Alternatively, the remaining space can also be allocated among two or more children.
 
 ### Shrink
 
 The `Shrink` property, of type `float`, controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0, and its value must be greater than or equal to 0.
 
-The `Shrink` property is used when the `Wrap` property is set to `NoWrap` and the aggregate width of a row of children is greater than the width of the `FlexLayout`, or the aggregate height of a single column of children is greater than the height of the `FlexLayout`. Normally the `FlexLayout` will display these children by constricting their sizes. The `Shrink` property can indicate which children are given priority in being displayed at their full sizes.
+The `Shrink` property is used when the `Wrap` property is set to `NoWrap` and the aggregate width of a row of children is greater than the width of the <xref:Microsoft.Maui.Controls.FlexLayout>, or the aggregate height of a single column of children is greater than the height of the <xref:Microsoft.Maui.Controls.FlexLayout>. Normally the <xref:Microsoft.Maui.Controls.FlexLayout> will display these children by constricting their sizes. The `Shrink` property can indicate which children are given priority in being displayed at their full sizes.
 
 > [!TIP]
-> The `Grow` and `Shrink` values can both be set to accommodate situations where the aggregate child sizes might sometimes be less than or sometimes greater than the size of the `FlexLayout`.
+> The `Grow` and `Shrink` values can both be set to accommodate situations where the aggregate child sizes might sometimes be less than or sometimes greater than the size of the <xref:Microsoft.Maui.Controls.FlexLayout>.
 
 ## Examples
 
-The following examples demonstrate common uses of `FlexLayout`.
+The following examples demonstrate common uses of <xref:Microsoft.Maui.Controls.FlexLayout>.
 
 ### Stack
 
-A `FlexLayout` can substitute for a `StackLayout`:
+A <xref:Microsoft.Maui.Controls.FlexLayout> can substitute for a <xref:Microsoft.Maui.Controls.StackLayout>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -223,7 +223,7 @@ A `FlexLayout` can substitute for a `StackLayout`:
 </ContentPage>
 ```
 
-In this example, the `Direction` property is set to `Column`, which causes the children of the `FlexLayout` to be arranged in a single column. The `AlignItems` property is set to `Center`, which causes each child to be horizontally centered. The `JustifyContent` property is set to `SpaceEvenly` which allocates all leftover vertical space equally between all the children, above the first child and below the last child:
+In this example, the `Direction` property is set to `Column`, which causes the children of the <xref:Microsoft.Maui.Controls.FlexLayout> to be arranged in a single column. The `AlignItems` property is set to `Center`, which causes each child to be horizontally centered. The `JustifyContent` property is set to `SpaceEvenly` which allocates all leftover vertical space equally between all the children, above the first child and below the last child:
 
 :::image type="content" source="media/flexlayout/stack.png" alt-text="Vertically oriented .NET MAUI FlexLayout.":::
 
@@ -232,7 +232,7 @@ In this example, the `Direction` property is set to `Column`, which causes the c
 
 ### Wrap items
 
-A `FlexLayout` can wrap its children to additional rows or columns:
+A <xref:Microsoft.Maui.Controls.FlexLayout> can wrap its children to additional rows or columns:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -250,19 +250,19 @@ A `FlexLayout` can wrap its children to additional rows or columns:
 </ContentPage>
 ```
 
-In this example, the `Direction` property of the `FlexLayout` is not set, so it has the default setting of `Row`, meaning that the children are arranged in rows and the main axis is horizontal. The `Wrap` property is set to `Wrap`, which causes children to wrap to the next row if there are too many children to fit on a row. The `JustifyContent` property is set to `SpaceAround` which allocates all leftover space on the main axis so that each child is surrounded by the same amount of space:
+In this example, the `Direction` property of the <xref:Microsoft.Maui.Controls.FlexLayout> is not set, so it has the default setting of `Row`, meaning that the children are arranged in rows and the main axis is horizontal. The `Wrap` property is set to `Wrap`, which causes children to wrap to the next row if there are too many children to fit on a row. The `JustifyContent` property is set to `SpaceAround` which allocates all leftover space on the main axis so that each child is surrounded by the same amount of space:
 
 :::image type="content" source="media/flexlayout/wrap.png" alt-text="Horizontally wrapping .NET MAUI FlexLayout.":::
 
-The code-behind file for this example retrieves a collection of photos and adds them to the `FlexLayout`.
+The code-behind file for this example retrieves a collection of photos and adds them to the <xref:Microsoft.Maui.Controls.FlexLayout>.
 
-In addition, the `FlexLayout` is a child of a `ScrollView`. Therefore, if there are too many rows to fit on the page, then the `ScrollView` has a default `Orientation` property of `Vertical` and allows vertical scrolling.
+In addition, the <xref:Microsoft.Maui.Controls.FlexLayout> is a child of a <xref:Microsoft.Maui.Controls.ScrollView>. Therefore, if there are too many rows to fit on the page, then the <xref:Microsoft.Maui.Controls.ScrollView> has a default `Orientation` property of `Vertical` and allows vertical scrolling.
 
 ### Page layout
 
-There is a standard layout in web design called the [*holy grail*](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) because it's a layout format that is very desirable, but often hard to realize with perfection. The layout consists of a header at the top of the page and a footer at the bottom, both extending to the full width of the page. Occupying the center of the page is the main content, but often with a columnar menu to the left of the content and supplementary information (sometimes called an *aside* area) at the right. This layout can be realized with a `FlexLayout`.
+There is a standard layout in web design called the [*holy grail*](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) because it's a layout format that is very desirable, but often hard to realize with perfection. The layout consists of a header at the top of the page and a footer at the bottom, both extending to the full width of the page. Occupying the center of the page is the main content, but often with a columnar menu to the left of the content and supplementary information (sometimes called an *aside* area) at the right. This layout can be realized with a <xref:Microsoft.Maui.Controls.FlexLayout>.
 
-The following example shows an implementation of this layout using a `FlexLayout` nested in another:
+The following example shows an implementation of this layout using a <xref:Microsoft.Maui.Controls.FlexLayout> nested in another:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -309,11 +309,11 @@ The following example shows an implementation of this layout using a `FlexLayout
 </ContentPage>
 ```
 
-The navigation and aside areas are rendered with a `BoxView` on the left and right. The first `FlexLayout` has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested `FlexLayout` has a horizontal main axis with three children arranged in a row:
+The navigation and aside areas are rendered with a <xref:Microsoft.Maui.Controls.BoxView> on the left and right. The first <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal main axis with three children arranged in a row:
 
 :::image type="content" source="media/flexlayout/holy-grail.png" alt-text="Holy grail layout with the .NET MAUI FlexLayout.":::
 
-In this example, the `Order` property is set on the first `BoxView` to a value less than its siblings to cause it to appear as the first item in the row. The `Basis` property is set on both `BoxView` objects to give them a width of 50 device-independent units. The `Grow` property is set on the nested `FlexLayout` to indicate that this `FlexLayout` should occupy all of the unused vertical space within the outer `FlexLayout`. In addition, the `Grow` property is set on the `Label` representing the content, to indicate that this content is to occupy all of the unused horizontal space within the nested `FlexLayout`.
+In this example, the `Order` property is set on the first <xref:Microsoft.Maui.Controls.BoxView> to a value less than its siblings to cause it to appear as the first item in the row. The `Basis` property is set on both <xref:Microsoft.Maui.Controls.BoxView> objects to give them a width of 50 device-independent units. The `Grow` property is set on the nested <xref:Microsoft.Maui.Controls.FlexLayout> to indicate that this <xref:Microsoft.Maui.Controls.FlexLayout> should occupy all of the unused vertical space within the outer <xref:Microsoft.Maui.Controls.FlexLayout>. In addition, the `Grow` property is set on the <xref:Microsoft.Maui.Controls.Label> representing the content, to indicate that this content is to occupy all of the unused horizontal space within the nested <xref:Microsoft.Maui.Controls.FlexLayout>.
 
 > [!NOTE]
-> There's also a `Shrink` property that you can use when the size of children exceeds the size of the `FlexLayout` but wrapping is not desired.
+> There's also a `Shrink` property that you can use when the size of children exceeds the size of the <xref:Microsoft.Maui.Controls.FlexLayout> but wrapping is not desired.

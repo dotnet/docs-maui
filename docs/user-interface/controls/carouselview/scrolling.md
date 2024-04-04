@@ -8,33 +8,33 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following scroll related properties:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following scroll related properties:
 
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, which specifies when the horizontal scroll bar is visible.
-- `IsDragging`, of type `bool`, which indicates whether the `CarouselView` is scrolling. This is a read only property, whose default value is `false`.
-- `IsScrollAnimated`, of type `bool`, which specifies whether an animation will occur when scrolling the `CarouselView`. The default value is `true`.
-- `ItemsUpdatingScrollMode`, of type `ItemsUpdatingScrollMode`, which represents the scrolling behavior of the `CarouselView` when new items are added to it.
+- `IsDragging`, of type `bool`, which indicates whether the <xref:Microsoft.Maui.Controls.CarouselView> is scrolling. This is a read only property, whose default value is `false`.
+- `IsScrollAnimated`, of type `bool`, which specifies whether an animation will occur when scrolling the <xref:Microsoft.Maui.Controls.CarouselView>. The default value is `true`.
+- `ItemsUpdatingScrollMode`, of type `ItemsUpdatingScrollMode`, which represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CarouselView> when new items are added to it.
 - `VerticalScrollBarVisibility`, of type `ScrollBarVisibility`, which specifies when the vertical scroll bar is visible.
 
-All of these properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings.
 
-`CarouselView` also defines two `ScrollTo` methods, that scroll items into view. One of the overloads scrolls the item at the specified index into view, while the other scrolls the specified item into view. Both overloads have additional arguments that can be specified to indicate the exact position of the item after the scroll has completed, and whether to animate the scroll.
+<xref:Microsoft.Maui.Controls.CarouselView> also defines two `ScrollTo` methods, that scroll items into view. One of the overloads scrolls the item at the specified index into view, while the other scrolls the specified item into view. Both overloads have additional arguments that can be specified to indicate the exact position of the item after the scroll has completed, and whether to animate the scroll.
 
-`CarouselView` defines a `ScrollToRequested` event that is fired when one of the `ScrollTo` methods is invoked. The `ScrollToRequestedEventArgs` object that accompanies the `ScrollToRequested` event has many properties, including `IsAnimated`, `Index`, `Item`, and `ScrollToPosition`. These properties are set from the arguments specified in the `ScrollTo` method calls.
+<xref:Microsoft.Maui.Controls.CarouselView> defines a `ScrollToRequested` event that is fired when one of the `ScrollTo` methods is invoked. The `ScrollToRequestedEventArgs` object that accompanies the `ScrollToRequested` event has many properties, including `IsAnimated`, `Index`, `Item`, and `ScrollToPosition`. These properties are set from the arguments specified in the `ScrollTo` method calls.
 
-In addition, `CarouselView` defines a `Scrolled` event that is fired to indicate that scrolling occurred. The `ItemsViewScrolledEventArgs` object that accompanies the `Scrolled` event has many properties. For more information, see [Detect scrolling](#detect-scrolling).
+In addition, <xref:Microsoft.Maui.Controls.CarouselView> defines a `Scrolled` event that is fired to indicate that scrolling occurred. The `ItemsViewScrolledEventArgs` object that accompanies the `Scrolled` event has many properties. For more information, see [Detect scrolling](#detect-scrolling).
 
 When a user swipes to initiate a scroll, the end position of the scroll can be controlled so that items are fully displayed. This feature is known as snapping, because items snap to position when scrolling stops. For more information, see [Snap points](#snap-points).
 
-`CarouselView` can also load data incrementally as the user scrolls. For more information, see [Load data incrementally](populate-data.md#load-data-incrementally).
+<xref:Microsoft.Maui.Controls.CarouselView> can also load data incrementally as the user scrolls. For more information, see [Load data incrementally](populate-data.md#load-data-incrementally).
 
 ## Detect scrolling
 
-The `IsDragging` property can be examined to determine whether the `CarouselView` is currently scrolling through items.
+The `IsDragging` property can be examined to determine whether the <xref:Microsoft.Maui.Controls.CarouselView> is currently scrolling through items.
 
-In addition, `CarouselView` defines a `Scrolled` event which is fired to indicate that scrolling occurred. This event should be consumed when data about the scroll is required.
+In addition, <xref:Microsoft.Maui.Controls.CarouselView> defines a `Scrolled` event which is fired to indicate that scrolling occurred. This event should be consumed when data about the scroll is required.
 
-The following XAML example shows a `CarouselView` that sets an event handler for the `Scrolled` event:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.CarouselView> that sets an event handler for the `Scrolled` event:
 
 ```xaml
 <CarouselView Scrolled="OnCollectionViewScrolled">
@@ -71,7 +71,7 @@ In this example, the `OnCarouselViewScrolled` event handler outputs the values o
 
 ## Scroll an item at an index into view
 
-One `ScrollTo` method overload scrolls the item at the specified index into view. Given a `CarouselView` object named `carouselView`, the following example shows how to scroll the item at index 6 into view:
+One `ScrollTo` method overload scrolls the item at the specified index into view. Given a <xref:Microsoft.Maui.Controls.CarouselView> object named <xref:Microsoft.Maui.Controls.CarouselView>, the following example shows how to scroll the item at index 6 into view:
 
 ```csharp
 carouselView.ScrollTo(6);
@@ -82,7 +82,7 @@ carouselView.ScrollTo(6);
 
 ## Scroll an item into view
 
-Another `ScrollTo` method overload scrolls the specified item into view. Given a `CarouselView` object named `carouselView`, the following example shows how to scroll the Proboscis Monkey item into view:
+Another `ScrollTo` method overload scrolls the specified item into view. Given a <xref:Microsoft.Maui.Controls.CarouselView> object named <xref:Microsoft.Maui.Controls.CarouselView>, the following example shows how to scroll the Proboscis Monkey item into view:
 
 ```csharp
 MonkeysViewModel viewModel = BindingContext as MonkeysViewModel;
@@ -95,7 +95,7 @@ carouselView.ScrollTo(monkey);
 
 ## Disable scroll animation
 
-A scrolling animation is displayed when moving between items in a `CarouselView`. This animation occurs both for user initiated scrolls, and for programmatic scrolls. Setting the `IsScrollAnimated` property to `false` will disable the animation for both scrolling categories.
+A scrolling animation is displayed when moving between items in a <xref:Microsoft.Maui.Controls.CarouselView>. This animation occurs both for user initiated scrolls, and for programmatic scrolls. Setting the `IsScrollAnimated` property to `false` will disable the animation for both scrolling categories.
 
 Alternatively, the `animate` argument of the `ScrollTo` method can be set to `false` to disable the scrolling animation on programmatic scrolls:
 
@@ -152,13 +152,13 @@ This example code results in the item being scrolled to the end of the view.
 
 ## Control scroll position when new items are added
 
-`CarouselView` defines a `ItemsUpdatingScrollMode` property, which is backed by a bindable property. This property gets or sets a `ItemsUpdatingScrollMode` enumeration value that represents the scrolling behavior of the `CarouselView` when new items are added to it. The `ItemsUpdatingScrollMode` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.CarouselView> defines a `ItemsUpdatingScrollMode` property, which is backed by a bindable property. This property gets or sets a `ItemsUpdatingScrollMode` enumeration value that represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CarouselView> when new items are added to it. The `ItemsUpdatingScrollMode` enumeration defines the following members:
 
 - `KeepItemsInView` keeps the first item in the list displayed when new items are added.
 - `KeepScrollOffset` ensures that the current scroll position is maintained when new items are added.
 - `KeepLastItemInView` adjusts the scroll offset to keep the last item in the list displayed when new items are added.
 
-The default value of the `ItemsUpdatingScrollMode` property is `KeepItemsInView`. Therefore, when new items are added to a `CarouselView` the first item in the list will remain displayed. To ensure that the last item in the list is displayed when new items are added, set the `ItemsUpdatingScrollMode` property to `KeepLastItemInView`:
+The default value of the `ItemsUpdatingScrollMode` property is `KeepItemsInView`. Therefore, when new items are added to a <xref:Microsoft.Maui.Controls.CarouselView> the first item in the list will remain displayed. To ensure that the last item in the list is displayed when new items are added, set the `ItemsUpdatingScrollMode` property to `KeepLastItemInView`:
 
 ```xaml
 <CarouselView ItemsUpdatingScrollMode="KeepLastItemInView">
@@ -177,7 +177,7 @@ CarouselView carouselView = new CarouselView
 
 ## Scroll bar visibility
 
-`CarouselView` defines `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties, which are backed by bindable properties. These properties get or set a `ScrollBarVisibility` enumeration value that represents when the horizontal, or vertical, scroll bar is visible. The `ScrollBarVisibility` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.CarouselView> defines `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties, which are backed by bindable properties. These properties get or set a `ScrollBarVisibility` enumeration value that represents when the horizontal, or vertical, scroll bar is visible. The `ScrollBarVisibility` enumeration defines the following members:
 
 - `Default` indicates the default scroll bar behavior for the platform, and is the default value for the `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties.
 - `Always` indicates that scroll bars will be visible, even when the content fits in the view.
@@ -190,7 +190,7 @@ When a user swipes to initiate a scroll, the end position of the scroll can be c
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 > [!NOTE]
 > When snapping occurs, it will occur in the direction that produces the least amount of motion.
@@ -203,9 +203,9 @@ The `SnapPointsType` enumeration defines the following members:
 - `Mandatory` indicates that content always snaps to the closest snap point to where scrolling would naturally stop, along the direction of inertia.
 - `MandatorySingle` indicates the same behavior as `Mandatory`, but only scrolls one item at a time.
 
-By default on a `CarouselView`, the `SnapPointsType` property is set to `SnapPointsType.MandatorySingle`, which ensures that scrolling only scrolls one item at a time.
+By default on a <xref:Microsoft.Maui.Controls.CarouselView>, the `SnapPointsType` property is set to `SnapPointsType.MandatorySingle`, which ensures that scrolling only scrolls one item at a time.
 
-The following screenshot shows a `CarouselView` with snapping turned off:
+The following screenshot shows a <xref:Microsoft.Maui.Controls.CarouselView> with snapping turned off:
 
 :::image type="content" source="media/scrolling/snappoints-none.png" alt-text="Screenshot of a CarouselView without snap points.":::
 
@@ -246,7 +246,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-When a user swipes to initiate a scroll in a horizontally scrolling `CarouselView`, the left item will be aligned with the left of the view:
+When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the left item will be aligned with the left of the view:
 
 :::image type="content" source="media/scrolling/snappoints-start.png" alt-text="Screenshot of a CarouselView with start snap points.":::
 
@@ -254,7 +254,7 @@ When a user swipes to initiate a scroll in a horizontally scrolling `CarouselVie
 
 The `SnapPointsAlignment.Center` member indicates that snap points are aligned with the center of items.
 
-By default on a `CarouselView`, the `SnapPointsAlignment` property is set to `Center`. However, for completeness, the following XAML example shows how to set this enumeration member:
+By default on a <xref:Microsoft.Maui.Controls.CarouselView>, the `SnapPointsAlignment` property is set to `Center`. However, for completeness, the following XAML example shows how to set this enumeration member:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}"
@@ -282,7 +282,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-When a user swipes to initiate a scroll in a horizontally scrolling `CarouselView`, the center item will be aligned with the center of the view:
+When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the center item will be aligned with the center of the view:
 
 :::image type="content" source="media/scrolling/snappoints-center.png" alt-text="Screenshot of a CarouselView with center snap points.":::
 
@@ -316,6 +316,6 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-When a user swipes to initiate a scroll in a horizontally scrolling `CarouselView`, the right item will be aligned with the right of the view.
+When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the right item will be aligned with the right of the view.
 
 :::image type="content" source="media/scrolling/snappoints-end.png" alt-text="Screenshot of a CarouselView with end snap points.":::

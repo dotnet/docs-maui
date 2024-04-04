@@ -8,12 +8,12 @@ ms.date: 12/16/2021
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
-.NET Multi-platform App UI (.NET MAUI) graphics provides a `WindingMode` enumeration that enables you to specify the fill algorithm to be used by the `FillPath` method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas. For more information about paths, see [Draw a path](draw.md#draw-a-path).
+.NET Multi-platform App UI (.NET MAUI) graphics provides a <xref:Microsoft.Maui.Graphics.WindingMode> enumeration that enables you to specify the fill algorithm to be used by the <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas. For more information about paths, see [Draw a path](draw.md#draw-a-path).
 
-The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
+The <xref:Microsoft.Maui.Graphics.WindingMode> enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
 
 > [!NOTE]
-> The `ClipPath` method has an overload that enables a `WindingMode` argument to be specified. By default, this argument is set to `WindingMode.NonZero`.
+> The <xref:Microsoft.Maui.Graphics.ICanvas.ClipPath%2A> method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> argument to be specified. By default, this argument is set to `WindingMode.NonZero`.
 
 ## NonZero
 
@@ -42,7 +42,7 @@ canvas.FillPath(path); // Overload automatically uses a NonZero winding mode
 canvas.DrawPath(path);
 ```
 
-In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used omits the `WindingMode` argument, and instead automatically uses the `NonZero` winding mode. This results in all the enclosed areas of the path being filled:
+In this example, the path is drawn twice. The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method is used to fill the path with blue, while the <xref:Microsoft.Maui.Graphics.ICanvas.DrawPath%2A> method outlines the path with a red stroke. The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> overload used omits the <xref:Microsoft.Maui.Graphics.WindingMode> argument, and instead automatically uses the `NonZero` winding mode. This results in all the enclosed areas of the path being filled:
 
 :::image type="content" source="media/windingmodes/nonzero.png" alt-text="Screenshot of a five-pointed star, using the non-zero winding mode.":::
 
@@ -76,6 +76,6 @@ canvas.FillPath(path, WindingMode.EvenOdd);
 canvas.DrawPath(path);
 ```
 
-In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used specifies that the `EvenOdd` winding mode is used. This mode results in the central area of the star not being filled:
+In this example, the path is drawn twice. The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method is used to fill the path with blue, while the <xref:Microsoft.Maui.Graphics.ICanvas.DrawPath%2A> method outlines the path with a red stroke. The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> overload used specifies that the `EvenOdd` winding mode is used. This mode results in the central area of the star not being filled:
 
 :::image type="content" source="media/windingmodes/evenodd.png" alt-text="Screenshot of a five-pointed star, using the even-odd winding mode.":::

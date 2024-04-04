@@ -32,7 +32,7 @@ public class iOSModalFormSheetPageCode : ContentPage
 }
 ```
 
-The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetModalPresentationStyle` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to set the modal presentation style on a `Page` by specifying one of the following `UIModalPresentationStyle` enumeration values:
+The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetModalPresentationStyle` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to set the modal presentation style on a <xref:Microsoft.Maui.Controls.Page> by specifying one of the following `UIModalPresentationStyle` enumeration values:
 
 - `FullScreen`, which sets the modal presentation style to encompass the whole screen. By default, modal pages are displayed using this presentation style.
 - `FormSheet`, which sets the modal presentation style to be centered on and smaller than the screen.
@@ -40,9 +40,9 @@ The `Page.On<iOS>` method specifies that this platform-specific will only run on
 - `OverFullScreen`, which sets the modal presentation style to cover the screen.
 - `PageSheet`, which sets the modal presentation style to cover the underlying content.
 
-In addition, the `GetModalPresentationStyle` method can be used to retrieve the current value of the `UIModalPresentationStyle` enumeration that's applied to the `Page`.
+In addition, the `GetModalPresentationStyle` method can be used to retrieve the current value of the `UIModalPresentationStyle` enumeration that's applied to the <xref:Microsoft.Maui.Controls.Page>.
 
-The result is that the modal presentation style on a `Page` can be set:
+The result is that the modal presentation style on a <xref:Microsoft.Maui.Controls.Page> can be set:
 
 :::image type="content" source="media/page-presentation-style/modal-presentation-style.png" alt-text="Modal presentation styles.":::
 

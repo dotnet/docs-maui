@@ -6,22 +6,20 @@ ms.date: 01/13/2022
 
 # ContentView
 
-<!-- Sample links goes here -->
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls.
 
-The .NET Multi-platform App UI (.NET MAUI) `ContentView` is a control that enables the creation of custom, reusable controls.
+The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
-The `ContentView` class defines a `Content` property, of type `View`, which represents the content of the `ContentView`. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
-
-The `ContentView` class derives from the `TemplatedView` class, which defines the `ControlTemplate` bindable property, of type `ControlTemplate`, which defines the appearance of the control. For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
+The <xref:Microsoft.Maui.Controls.ContentView> class derives from the `TemplatedView` class, which defines the <xref:Microsoft.Maui.Controls.ControlTemplate> bindable property, of type <xref:Microsoft.Maui.Controls.ControlTemplate>, which defines the appearance of the control. For more information about the <xref:Microsoft.Maui.Controls.ControlTemplate> property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
 
 > [!NOTE]
-> A `ContentView` can only contain a single child.
+> A <xref:Microsoft.Maui.Controls.ContentView> can only contain a single child.
 
 ## Create a custom control
 
-The `ContentView` class offers little functionality by itself but can be used to create a custom control. The process for creating a custom control is to:
+The <xref:Microsoft.Maui.Controls.ContentView> class offers little functionality by itself but can be used to create a custom control. The process for creating a custom control is to:
 
-1. Create a class that derives from the `ContentView` class.
+1. Create a class that derives from the <xref:Microsoft.Maui.Controls.ContentView> class.
 1. Define any control properties or events in the code-behind file for the custom control.
 1. Define the UI for the custom control.
 
@@ -29,22 +27,22 @@ This article demonstrates how to create a `CardView` control, which is a UI elem
 
 ### Create a ContentView-derived class
 
-A `ContentView`-derived class can be created using the ContentView item template in Visual Studio. This template creates a XAML file in which the UI for the custom control can be defined, and a code-behind file in which any control properties, events, and other logic can be defined.
+A <xref:Microsoft.Maui.Controls.ContentView>-derived class can be created using the ContentView item template in Visual Studio. This template creates a XAML file in which the UI for the custom control can be defined, and a code-behind file in which any control properties, events, and other logic can be defined.
 
 ### Define control properties
 
-Any control properties, events, and other logic should be defined in the code-behind file for the `ContentView`-derived class.
+Any control properties, events, and other logic should be defined in the code-behind file for the <xref:Microsoft.Maui.Controls.ContentView>-derived class.
 
 The `CardView` custom control defines the following properties:
 
 - `CardTitle`, of type `string`, which represents the title shown on the card.
 - `CardDescription`, of type `string`, which represents the description shown on the card.
-- `IconImageSource`, of type `ImageSource`, which represents the image shown on the card.
-- `IconBackgroundColor`, of type `Color`, which represents the background color for the image shown on the card.
-- `BorderColor`, of type `Color`, which represents the color of the card border, image border, and divider line.
-- `CardColor`, of type `Color`, which represents the background color of the card.
+- `IconImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, which represents the image shown on the card.
+- `IconBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color for the image shown on the card.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the card border, image border, and divider line.
+- `CardColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color of the card.
 
-Each property is backed by a `BindableProperty` instance.
+Each property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> instance.
 
 The following example shows the `CardTitle` bindable property in the code-behind file for the `CardView` class:
 
@@ -67,11 +65,11 @@ public partial class CardView : ContentView
 }
 ```
 
-For more information about `BindableProperty` objects, see [Bindable properties](~/fundamentals/bindable-properties.md).
+For more information about <xref:Microsoft.Maui.Controls.BindableProperty> objects, see [Bindable properties](~/fundamentals/bindable-properties.md).
 
 ### Define the UI
 
-The custom control UI can be defined in the XAML file for the `ContentView`-derived class, which uses a `ContentView` as the root element of the control:
+The custom control UI can be defined in the XAML file for the <xref:Microsoft.Maui.Controls.ContentView>-derived class, which uses a <xref:Microsoft.Maui.Controls.ContentView> as the root element of the control:
 
 ```XAML
 <ContentView ...
@@ -100,7 +98,7 @@ The custom control UI can be defined in the XAML file for the `ContentView`-deri
 </ContentView>
 ```
 
-The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+The <xref:Microsoft.Maui.Controls.ContentView> element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
 > [!NOTE]
 > The `FallbackValue` property in the `Binding` expression provides a default value in case the binding is `null`.
@@ -133,9 +131,9 @@ The following screenshot shows multiple `CardView` objects:
 
 ## Customize appearance with a ControlTemplate
 
-A custom control that derives from the `ContentView` class can define its UI using XAML or code, or may not define its UI at all. A `ControlTemplate` can be used to override the control's appearance, regardless of how that appearance is defined.
+A custom control that derives from the <xref:Microsoft.Maui.Controls.ContentView> class can define its UI using XAML or code, or may not define its UI at all. A <xref:Microsoft.Maui.Controls.ControlTemplate> can be used to override the control's appearance, regardless of how that appearance is defined.
 
-For example, a `CardView` layout might occupy too much space for some use cases. A `ControlTemplate` can be used to override the `CardView` layout to provide a more compact view, suitable for a condensed list:
+For example, a `CardView` layout might occupy too much space for some use cases. A <xref:Microsoft.Maui.Controls.ControlTemplate> can be used to override the `CardView` layout to provide a more compact view, suitable for a condensed list:
 
 ```xaml
 <ContentPage.Resources>
@@ -167,7 +165,7 @@ For example, a `CardView` layout might occupy too much space for some use cases.
 </ContentPage.Resources>
 ```
 
-Data binding in a `ControlTemplate` uses the `TemplateBinding` markup extension to specify bindings. The `ControlTemplate` property can then be set to the defined `ControlTemplate` object, by using its `x:Key` value. The following example shows the `ControlTemplate` property set on a `CardView` instance:
+Data binding in a <xref:Microsoft.Maui.Controls.ControlTemplate> uses the `TemplateBinding` markup extension to specify bindings. The <xref:Microsoft.Maui.Controls.ControlTemplate> property can then be set to the defined <xref:Microsoft.Maui.Controls.ControlTemplate> object, by using its `x:Key` value. The following example shows the <xref:Microsoft.Maui.Controls.ControlTemplate> property set on a `CardView` instance:
 
 ```xaml
 <controls:CardView ControlTemplate="{StaticResource CardViewCompressed}" />

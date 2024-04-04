@@ -8,14 +8,14 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control layout:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that control layout:
 
 - `ItemsLayout`, of type `IItemsLayout`, specifies the layout to be used.
 - `ItemSizingStrategy`, of type `ItemSizingStrategy`, specifies the item measure strategy to be used.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
-By default, a `CollectionView` will display its items in a vertical list. However, any of the following layouts can be used:
+By default, a <xref:Microsoft.Maui.Controls.CollectionView> will display its items in a vertical list. However, any of the following layouts can be used:
 
 - Vertical list – a single column list that grows vertically as new items are added.
 - Horizontal list – a single row list that grows horizontally as new items are added.
@@ -24,16 +24,16 @@ By default, a `CollectionView` will display its items in a vertical list. Howeve
 
 These layouts can be specified by setting the `ItemsLayout` property to class that derives from the `ItemsLayout` class. This class defines the following properties:
 
-- `Orientation`, of type `ItemsLayoutOrientation`, specifies the direction in which the `CollectionView` expands as items are added.
+- `Orientation`, of type `ItemsLayoutOrientation`, specifies the direction in which the <xref:Microsoft.Maui.Controls.CollectionView> expands as items are added.
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CollectionView](scrolling.md).
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CollectionView](scrolling.md).
 
 The `ItemsLayoutOrientation` enumeration defines the following members:
 
-- `Vertical` indicates that the `CollectionView` will expand vertically as items are added.
-- `Horizontal` indicates that the `CollectionView` will expand horizontally as items are added.
+- `Vertical` indicates that the <xref:Microsoft.Maui.Controls.CollectionView> will expand vertically as items are added.
+- `Horizontal` indicates that the <xref:Microsoft.Maui.Controls.CollectionView> will expand horizontally as items are added.
 
 The `LinearItemsLayout` class inherits from the `ItemsLayout` class, and defines an `ItemSpacing` property, of type `double`, that represents the empty space around each item. The default value of this property is 0, and its value must always be greater than or equal to 0. The `LinearItemsLayout` class also defines static `Vertical` and `Horizontal` members. These members can be used to create vertical or horizontal lists, respectively. Alternatively, a `LinearItemsLayout` object can be created, specifying an `ItemsLayoutOrientation` enumeration member as an argument.
 
@@ -43,14 +43,14 @@ The `GridItemsLayout` class inherits from the `ItemsLayout` class, and defines t
 - `HorizontalItemSpacing`, of type `double`, that represents the horizontal empty space around each item. The default value of this property is 0, and its value must always be greater than or equal to 0.
 - `Span`, of type `int`, that represents the number of columns or rows to display in the grid. The default value of this property is 1, and its value must always be greater than or equal to 1.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 > [!NOTE]
-> `CollectionView` uses the native layout engines to perform layout.
+> <xref:Microsoft.Maui.Controls.CollectionView> uses the native layout engines to perform layout.
 
 ## Vertical list
 
-By default, `CollectionView` will display its items in a vertical list layout. Therefore, it's not necessary to set the `ItemsLayout` property to use this layout:
+By default, <xref:Microsoft.Maui.Controls.CollectionView> will display its items in a vertical list layout. Therefore, it's not necessary to set the `ItemsLayout` property to use this layout:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -84,7 +84,7 @@ By default, `CollectionView` will display its items in a vertical list layout. T
 </CollectionView>
 ```
 
-However, for completeness, in XAML a `CollectionView` can be set to display its items in a vertical list by setting its `ItemsLayout` property to `VerticalList`:
+However, for completeness, in XAML a <xref:Microsoft.Maui.Controls.CollectionView> can be set to display its items in a vertical list by setting its `ItemsLayout` property to `VerticalList`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -118,9 +118,11 @@ This results in a single column list, which grows vertically as new items are ad
 
 :::image type="content" source="media/layout/vertical-list.png" alt-text="Screenshot of CollectionView vertical list layout.":::
 
+[!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
+
 ## Horizontal list
 
-In XAML, a `CollectionView` can display its items in a horizontal list by setting its `ItemsLayout` property to `HorizontalList`:
+In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a horizontal list by setting its `ItemsLayout` property to `HorizontalList`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -184,7 +186,7 @@ This results in a single row list, which grows horizontally as new items are add
 
 ## Vertical grid
 
-In XAML, a `CollectionView` can display its items in a vertical grid by setting its `ItemsLayout` property to `VerticalGrid`:
+In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a vertical grid by setting its `ItemsLayout` property to `VerticalGrid`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -249,7 +251,7 @@ By default, a vertical `GridItemsLayout` will display items in a single column. 
 
 ## Horizontal grid
 
-In XAML, a `CollectionView` can display its items in a horizontal grid by setting its `ItemsLayout` property to `HorizontalGrid`:
+In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a horizontal grid by setting its `ItemsLayout` property to `HorizontalGrid`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -314,16 +316,16 @@ By default, a horizontal `GridItemsLayout` will display items in a single row. H
 
 ## Headers and footers
 
-`CollectionView` can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or `DataTemplate` objects.
+<xref:Microsoft.Maui.Controls.CollectionView> can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or <xref:Microsoft.Maui.Controls.DataTemplate> objects.
 
-`CollectionView` defines the following properties for specifying the header and footer:
+<xref:Microsoft.Maui.Controls.CollectionView> defines the following properties for specifying the header and footer:
 
 - `Header`, of type `object`, specifies the string, binding, or view that will be displayed at the start of the list.
-- `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
+- `HeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Header`.
 - `Footer`, of type `object`, specifies the string, binding, or view that will be displayed at the end of the list.
-- `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
+- `FooterTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Footer`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 When a header is added to a layout that grows horizontally, from left to right, the header is displayed to the left of the list. Similarly, when a footer is added to a layout that grows horizontally, from left to right, the footer is displayed to the right of the list.
 
@@ -356,7 +358,7 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ### Display views in the header and footer
 
-The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a `StackLayout` object that contains a `Label` object:
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -402,7 +404,7 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ### Display a templated header and footer
 
-The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate` objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
+The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -457,9 +459,9 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ## Item spacing
 
-By default, there is no space between each item in a `CollectionView`. This behavior can be changed by setting properties on the items layout used by the `CollectionView`.
+By default, there is no space between each item in a <xref:Microsoft.Maui.Controls.CollectionView>. This behavior can be changed by setting properties on the items layout used by the <xref:Microsoft.Maui.Controls.CollectionView>.
 
-When a `CollectionView` sets its `ItemsLayout` property to a `LinearItemsLayout` object, the `LinearItemsLayout.ItemSpacing` property can be set to a `double` value that represents the space between items:
+When a <xref:Microsoft.Maui.Controls.CollectionView> sets its `ItemsLayout` property to a `LinearItemsLayout` object, the `LinearItemsLayout.ItemSpacing` property can be set to a `double` value that represents the space between items:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -491,7 +493,7 @@ This code results in a vertical single column list that has a spacing of 20 betw
 
 :::image type="content" source="media/layout/vertical-list-spacing.png" alt-text="Screenshot of CollectionView with item spacing.":::
 
-When a `CollectionView` sets its `ItemsLayout` property to a `GridItemsLayout` object, the `GridItemsLayout.VerticalItemSpacing` and `GridItemsLayout.HorizontalItemSpacing` properties can be set to `double` values that represent the empty space vertically and horizontally between items:
+When a <xref:Microsoft.Maui.Controls.CollectionView> sets its `ItemsLayout` property to a `GridItemsLayout` object, the `GridItemsLayout.VerticalItemSpacing` and `GridItemsLayout.HorizontalItemSpacing` properties can be set to `double` values that represent the empty space vertically and horizontally between items:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -528,7 +530,7 @@ This code results in a vertical two-column grid that has a vertical spacing of 2
 
 ## Item sizing
 
-By default, each item in a `CollectionView` is individually measured and sized, provided that the UI elements in the `DataTemplate` don't specify fixed sizes. This behavior, which can be changed, is specified by the `CollectionView.ItemSizingStrategy` property value. This property value can be set to one of the `ItemSizingStrategy` enumeration members:
+By default, each item in a <xref:Microsoft.Maui.Controls.CollectionView> is individually measured and sized, provided that the UI elements in the <xref:Microsoft.Maui.Controls.DataTemplate> don't specify fixed sizes. This behavior, which can be changed, is specified by the `CollectionView.ItemSizingStrategy` property value. This property value can be set to one of the `ItemSizingStrategy` enumeration members:
 
 - `MeasureAllItems` – each item is individually measured. This is the default value.
 - `MeasureFirstItem` – only the first item is measured, with all subsequent items being given the same size as the first item.
@@ -557,7 +559,7 @@ CollectionView collectionView = new CollectionView
 
 ## Dynamic resizing of items
 
-Items in a `CollectionView` can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the `HeightRequest` and `WidthRequest` properties of an `Image` object:
+Items in a <xref:Microsoft.Maui.Controls.CollectionView> can be dynamically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)
@@ -567,13 +569,13 @@ void OnImageTapped(object sender, EventArgs e)
 }
 ```
 
-The `OnImageTapped` event handler is executed in response to an `Image` object being tapped, and changes the dimensions of the image so that it's more easily viewed:
+The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image so that it's more easily viewed:
 
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CollectionView with dynamic item sizing.":::
 
 ## Right-to-left layout
 
-`CollectionView` can layout its content in a right-to-left flow direction by setting its `FlowDirection` property to `RightToLeft`. However, the `FlowDirection` property should ideally be set on a page or root layout, which causes all the elements within the page, or root layout, to respond to the flow direction:
+<xref:Microsoft.Maui.Controls.CollectionView> can layout its content in a right-to-left flow direction by setting its `FlowDirection` property to `RightToLeft`. However, the `FlowDirection` property should ideally be set on a page or root layout, which causes all the elements within the page, or root layout, to respond to the flow direction:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -581,16 +583,16 @@ The `OnImageTapped` event handler is executed in response to an `Image` object b
              x:Class="CollectionViewDemos.Views.VerticalListFlowDirectionPage"
              Title="Vertical list (RTL FlowDirection)"
              FlowDirection="RightToLeft">
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}">
             ...
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CollectionView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the `ContentPage`. This results in the right-to-left layout shown in the following screenshot:
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the <xref:Microsoft.Maui.Controls.CollectionView> inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.StackLayout>, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>. This results in the right-to-left layout shown in the following screenshot:
 
 :::image type="content" source="media/layout/vertical-list-rtl.png" alt-text="Screenshot of a CollectionView right-to-left vertical list layout.":::
 
-<!-- For more information about flow direction, see [Right-to-left localization](~/xamarin-forms/app-fundamentals/localization/right-to-left.md). -->
+For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).

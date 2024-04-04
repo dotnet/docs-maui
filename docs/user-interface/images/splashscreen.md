@@ -1,7 +1,7 @@
 ---
 title: "Add a splash screen to a .NET MAUI app project"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
-ms.date: 04/26/2022
+ms.date: 09/04/2023
 ---
 
 # Add a splash screen to a .NET MAUI app project
@@ -12,7 +12,10 @@ On Android and iOS, .NET Multi-platform App UI (.NET MAUI) apps can display a sp
 
 Once the app is ready for interaction, its splash screen is dismissed.
 
-In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
+> [!NOTE]
+> On Android 12+ (API 31+), the splash screen shows an icon that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
+
+In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be resized to the correct resolution for the target platform, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
 A .NET MAUI splash screen can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
@@ -32,17 +35,42 @@ A splash screen can be added to your app project by dragging an image into the *
 
 To comply with Android resource naming rules, splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
-The base size of the splash screen can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
+At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package. For information about disabling splash screen packaging, see [Disable splash screen packaging](~/troubleshooting.md#disable-splash-screen-packaging). For information about generating a blank splash screen, see [Generate a blank splash screen](~/troubleshooting.md#generate-a-blank-splash-screen).
+
+## Set the base size
+
+.NET MAUI uses your splash screen across multiple platforms and can resize it for each platform.
+
+The base size of a splash screen image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the splash screen size) from which all other sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
+
+The following diagram illustrates how base size affects an image:
+
+:::image type="content" source="media/base-size.png" alt-text="How base size affects an app icon for .NET MAUI.":::
+
+The process shown in the diagram follows these steps:
+
+- **A**: The image has dimensions of 210x260, and the base size is set to 424x520.
+- **B**: .NET MAUI scales the image to match the base size of 424x520.
+- **C**: As different target platforms require different sizes of the image, .NET MAUI scales the image from the base size to different sizes.
+
+> [!TIP]
+> Use SVG images where possible. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such as a PNG or JPG image, look blurry when upscaled.
+
+The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The following example sets the base size:
 
 ```xml
-<MauiSplashScreen Include="Resources\Splash\splashscreen.jpg" BaseSize="128,128" />
+<MauiSplashScreen Include="Resources\Splash\splashscreen.svg" BaseSize="128,128" />
 ```
 
-The value of the `BaseSize` attribute represents the baseline density of the splash screen, and is effectively the 1.0 scale factor for the splash screen from which all other density sizes are derived. This value will be used to ensure that splash screens are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based splash screen, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based splash screen, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
+At build time, the splash screen will be resized to the correct resolution for the target platform. The resulting splash screen is then added to your app package.
+
+To stop vector images being resized, set the `Resize` attribute to `false`:
 
 ```xml
 <MauiSplashScreen Include="Resources\Splash\splashscreen.svg" Resize="false" />
 ```
+
+## Add tint and background color
 
 To add a tint to your splash screen, which is useful when you have a simple image you'd like to render in a different color to the source, set the `TintColor` attribute:
 
@@ -59,15 +87,14 @@ A background color for your splash screen can also be specified:
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. This may change. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
-At build time, the splash screen can be resized to the correct resolution for the target platform and device. The resulting splash screen is then added to your app package.
+## Platform-specific configuration
 
 <!-- markdownlint-disable MD025 -->
 
 # [Android](#tab/android)
 
-On Android, the splash screen is added to your app package as **Resourcs/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
+On Android, the splash screen is added to your app package as **Resources/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
 
-<!-- Todo: P11 templates have implicit usings, so no need to include a using directive for Microsoft.Maui -->
 ```csharp
 using Android.App;
 using Android.Content.PM;
@@ -98,7 +125,7 @@ On iOS, the splash screen is added to the app package as a storyboard named `Mau
 </plist>
 ```
 
-Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a `LaunchScreen.storyboard` to your app.
+Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a *LaunchScreen.storyboard* to your app.
 
 ---
 

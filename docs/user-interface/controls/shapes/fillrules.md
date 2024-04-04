@@ -8,18 +8,18 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-Several .NET Multi-platform App UI (.NET MAUI) Shapes classes have `FillRule` properties, of type `FillRule`. These include `Polygon`, `Polyline`, and `GeometryGroup`.
+Several .NET Multi-platform App UI (.NET MAUI) Shapes classes have `FillRule` properties, of type <xref:Microsoft.Maui.Controls.Shapes.FillRule>. These include <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, and <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>.
 
-The `FillRule` enumeration defines `EvenOdd` and `Nonzero` members. Each member represents a different rule for determining whether a point is in the fill region of a shape.
+The <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration defines <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> and <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> members. Each member represents a different rule for determining whether a point is in the fill region of a shape.
 
 > [!IMPORTANT]
 > All shapes are considered closed for the purposes of fill rules.
 
 ## EvenOdd
 
-The `EvenOdd` fill rule draws a ray from the point to infinity in any direction and counts the number of segments within the shape that the ray crosses. If this number is odd, the point is inside. If this number is even, the point is outside.
+The <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> fill rule draws a ray from the point to infinity in any direction and counts the number of segments within the shape that the ray crosses. If this number is odd, the point is inside. If this number is even, the point is outside.
 
-The following XAML example creates and renders a composite shape, with the `FillRule` defaulting to `EvenOdd`:
+The following XAML example creates and renders a composite shape, with the `FillRule` defaulting to <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd>:
 
 ```xaml
 <Path Stroke="Black"
@@ -58,9 +58,9 @@ In the image above, the red circles represent points, and the lines represent ar
 
 ## Nonzero
 
-The `Nonzero` fill rule draws a ray from the point to infinity in any direction and then examines the places where a segment of the shape crosses the ray. Starting with a count of zero, the count is incremented each time a segment crosses the ray from left to right and decremented each time a segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the polygon. Otherwise, it's inside.
+The <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule draws a ray from the point to infinity in any direction and then examines the places where a segment of the shape crosses the ray. Starting with a count of zero, the count is incremented each time a segment crosses the ray from left to right and decremented each time a segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the polygon. Otherwise, it's inside.
 
-The following XAML example creates and renders a composite shape, with the `FillRule` set to `Nonzero`:
+The following XAML example creates and renders a composite shape, with the `FillRule` set to <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero>:
 
 ```xaml
 <Path Stroke="Black"
@@ -96,7 +96,7 @@ In the composite shape, notice that all rings are filled. This is because all th
 
 In the image above the red arrows represent the direction the segments are drawn, and black arrow represents an arbitrary ray running from a point in the innermost ring. Starting with a value of zero, for each segment that the ray crosses, a value of one is added because the segment crosses the ray from left to right.
 
-A more complex shape with segments running in different directions is required to better demonstrate the behavior of the `Nonzero` fill rule. The following XAML example creates a similar shape to the previous example, except that it's created with a `PathGeometry` rather than an `EllipseGeometry`:
+A more complex shape with segments running in different directions is required to better demonstrate the behavior of the <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule. The following XAML example creates a similar shape to the previous example, except that it's created with a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> rather than an <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry>:
 
 ```xaml
 <Path Stroke="Black"

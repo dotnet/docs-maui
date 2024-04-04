@@ -12,9 +12,9 @@ ms.date: 05/13/2022
 
 ## StackLayout
 
-A `StackLayout` organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. `StackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.StackLayout> organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. <xref:Microsoft.Maui.Controls.StackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a vertical `StackLayout` containing three `Label` objects:
+The following XAML shows how to create a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing three <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <StackLayout Margin="20,35,20,25">
@@ -24,9 +24,9 @@ The following XAML shows how to create a vertical `StackLayout` containing three
 </StackLayout>
 ```
 
-In a `StackLayout`, if an element's size is not explicitly set, it expands to fill the available width, or height if the `Orientation` property is set to `Horizontal`.
+In a <xref:Microsoft.Maui.Controls.StackLayout>, if an element's size is not explicitly set, it expands to fill the available width, or height if the `Orientation` property is set to `Horizontal`.
 
-A `StackLayout` is often used as a parent layout, which contains other child layouts. However, a `StackLayout` should not be used to reproduce a `Grid` layout by using a combination of `StackLayout` objects. The following code shows an example of this bad practice:
+A <xref:Microsoft.Maui.Controls.StackLayout> is often used as a parent layout, which contains other child layouts. However, a <xref:Microsoft.Maui.Controls.StackLayout> should not be used to reproduce a <xref:Microsoft.Maui.Controls.Grid> layout by using a combination of <xref:Microsoft.Maui.Controls.StackLayout> objects. The following code shows an example of this bad practice:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -54,15 +54,15 @@ A `StackLayout` is often used as a parent layout, which contains other child lay
 </ContentPage>
 ```
 
-This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved by using a `Grid`.
+This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved by using a <xref:Microsoft.Maui.Controls.Grid>.
 
 For more information, see [StackLayout](stacklayout.md).
 
 ## HorizontalStackLayout
 
-A `HorizontalStackLayout` organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. `HorizontalStackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. <xref:Microsoft.Maui.Controls.HorizontalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a `HorizontalStackLayout` containing different child views:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing different child views:
 
 ```xaml
 <HorizontalStackLayout Margin="20">
@@ -74,15 +74,15 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
 </HorizontalStackLayout>
 ```
 
-In a `HorizontalStackLayout`, if an element's size is not explicitly set, it expands to fill the available height.
+In a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, if an element's size is not explicitly set, it expands to fill the available height.
 
 For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
 ## VerticalStackLayout
 
-A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.VerticalStackLayout> organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. <xref:Microsoft.Maui.Controls.VerticalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a `VerticalStackLayout` containing three `Label` objects:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing three <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <VerticalStackLayout Margin="20,35,20,25">
@@ -92,20 +92,20 @@ The following XAML shows how to create a `VerticalStackLayout` containing three 
 </VerticalStackLayout>
 ```
 
-In a `VerticalStackLayout`, if an element's size is not explicitly set, it expands to fill the available width.
+In a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, if an element's size is not explicitly set, it expands to fill the available width.
 
 For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
 ## Grid
 
-A `Grid` is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
+A <xref:Microsoft.Maui.Controls.Grid> is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
 
-To position elements in specific `Grid` cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
+To position elements in specific <xref:Microsoft.Maui.Controls.Grid> cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
 > [!NOTE]
-> A `Grid` layout should not be confused with tables, and is not intended to present tabular data.
+> A <xref:Microsoft.Maui.Controls.Grid> layout should not be confused with tables, and is not intended to present tabular data.
 
-The following XAML shows how to create a `Grid` with two rows and two columns:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.Grid> with two rows and two columns:
 
 ```xaml
 <Grid>
@@ -132,7 +132,7 @@ The following XAML shows how to create a `Grid` with two rows and two columns:
 In this example, sizing works as follows:
 
 - Each row has an explicit height of 50 device-independent units.
-- The width of the first column is set to `Auto`, and is therefore as wide as required for its children. In this case, it's 200 device-independent units wide to accommodate the width of the first `Label`.
+- The width of the first column is set to `Auto`, and is therefore as wide as required for its children. In this case, it's 200 device-independent units wide to accommodate the width of the first <xref:Microsoft.Maui.Controls.Label>.
 
 Space can be distributed within a column or row by using auto sizing, which lets columns and rows size to fit their content. This is achieved by setting the height of a `RowDefinition`, or the width of a `ColumnDefinition`, to `Auto`. Proportional sizing can also be used to distribute available space among the rows and columns of the grid by weighted proportions. This is achieved by setting the height of a `RowDefinition`, or the width of a `ColumnDefinition`, to a value that uses the `*` operator.
 
@@ -143,9 +143,9 @@ For more information, see [Grid](grid.md).
 
 ## FlexLayout
 
-A `FlexLayout` is similar to a `StackLayout` in that it displays child elements either horizontally or vertically in a stack. However, a `FlexLayout` can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
+A <xref:Microsoft.Maui.Controls.FlexLayout> is similar to a <xref:Microsoft.Maui.Controls.StackLayout> in that it displays child elements either horizontally or vertically in a stack. However, a <xref:Microsoft.Maui.Controls.FlexLayout> can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
 
-The following XAML shows how to create a `FlexLayout` that displays its views in a single column:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.FlexLayout> that displays its views in a single column:
 
 ```xaml
 <FlexLayout Direction="Column"
@@ -159,7 +159,7 @@ The following XAML shows how to create a `FlexLayout` that displays its views in
 
 In this example, layout works as follows:
 
-- The `Direction` property is set to `Column`, which causes the children of the `FlexLayout` to be arranged in a single column of items.
+- The `Direction` property is set to `Column`, which causes the children of the <xref:Microsoft.Maui.Controls.FlexLayout> to be arranged in a single column of items.
 - The `AlignItems` property is set to `Center`, which causes each item to be horizontally centered.
 - The `JustifyContent` property is set to `SpaceEvenly`, which allocates all leftover vertical space equally between all the items, and above the first item, and below the last item.
 
@@ -167,16 +167,16 @@ For more information, see [FlexLayout](flexlayout.md).
 
 ## AbsoluteLayout
 
-An `AbsoluteLayout` is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`.
+An <xref:Microsoft.Maui.Controls.AbsoluteLayout> is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the <xref:Microsoft.Maui.Controls.AbsoluteLayout>.
 
-An `AbsoluteLayout` should be regarded as a special-purpose layout to be used only when you can impose a size on children, or when the element's size doesn't affect the positioning of other children. A standard use of this layout is to create an overlay, which covers the page with other controls, perhaps to protect the user from interacting with the normal controls on the page.
+An <xref:Microsoft.Maui.Controls.AbsoluteLayout> should be regarded as a special-purpose layout to be used only when you can impose a size on children, or when the element's size doesn't affect the positioning of other children. A standard use of this layout is to create an overlay, which covers the page with other controls, perhaps to protect the user from interacting with the normal controls on the page.
 
 > [!IMPORTANT]
-> The `HorizontalOptions` and `VerticalOptions` properties have no effect on children of an `AbsoluteLayout`.
+> The `HorizontalOptions` and `VerticalOptions` properties have no effect on children of an <xref:Microsoft.Maui.Controls.AbsoluteLayout>.
 
-Within an `AbsoluteLayout`, the `AbsoluteLayout.LayoutBounds` attached property is used to specify the horizontal position, vertical position, width and height of an element. In addition, the `AbsoluteLayout.LayoutFlags` attached property specifies how the layout bounds will be interpreted.
+Within an <xref:Microsoft.Maui.Controls.AbsoluteLayout>, the `AbsoluteLayout.LayoutBounds` attached property is used to specify the horizontal position, vertical position, width and height of an element. In addition, the `AbsoluteLayout.LayoutFlags` attached property specifies how the layout bounds will be interpreted.
 
-The following XAML shows how to arrange elements in an `AbsoluteLayout`:
+The following XAML shows how to arrange elements in an <xref:Microsoft.Maui.Controls.AbsoluteLayout>:
 
 ```xaml
 <AbsoluteLayout Margin="40">
@@ -196,9 +196,9 @@ The following XAML shows how to arrange elements in an `AbsoluteLayout`:
 
 In this example, layout works as follows:
 
-- Each `BoxView` is given an explicit size of 100x100, and is displayed in the same position, horizontally centered.
-- The red `BoxView` is rotated 30 degrees, and the green `BoxView` is rotated 60 degrees.
-- On each `BoxView`, the `AbsoluteLayout.LayoutFlags` attached property is set to `PositionProportional`, indicating that the position is proportional to the remaining space after width and height are accounted for.
+- Each <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 100x100, and is displayed in the same position, horizontally centered.
+- The red <xref:Microsoft.Maui.Controls.BoxView> is rotated 30 degrees, and the green <xref:Microsoft.Maui.Controls.BoxView> is rotated 60 degrees.
+- On each <xref:Microsoft.Maui.Controls.BoxView>, the `AbsoluteLayout.LayoutFlags` attached property is set to `PositionProportional`, indicating that the position is proportional to the remaining space after width and height are accounted for.
 
 > [!CAUTION]
 > Avoid using the `AbsoluteLayout.AutoSize` property whenever possible, as it will cause the layout engine to perform additional layout calculations.
@@ -244,10 +244,10 @@ The following XAML shows how to arrange elements in a `RelativeLayout`:
 
 In this example, layout works as follows:
 
-- The blue `BoxView` is given an explicit size of 50x50 device-independent units. It's placed in the upper left corner of the layout, which is the default position.
-- The red `BoxView` is given an explicit size of 50x50 device-independent units. It's placed in the upper right corner of the layout.
-- The gray `BoxView` is given an explicit width of 15 device-independent units, and it's height is set to be 75% of the height of its parent.
-- The green `BoxView` isn't given an explicit size. Its position is set relative to the `BoxView` named `pole`.
+- The blue <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 50x50 device-independent units. It's placed in the upper left corner of the layout, which is the default position.
+- The red <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 50x50 device-independent units. It's placed in the upper right corner of the layout.
+- The gray <xref:Microsoft.Maui.Controls.BoxView> is given an explicit width of 15 device-independent units, and it's height is set to be 75% of the height of its parent.
+- The green <xref:Microsoft.Maui.Controls.BoxView> isn't given an explicit size. Its position is set relative to the <xref:Microsoft.Maui.Controls.BoxView> named `pole`.
 
 > [!WARNING]
 > Avoid using a `RelativeLayout` whenever possible. It will result in the CPU having to perform significantly more work.
@@ -256,11 +256,11 @@ For more information, see [RelativeLayout](relativelayout.md). -->
 
 ## BindableLayout
 
-A `BindableLayout` enables any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
+A <xref:Microsoft.Maui.Controls.BindableLayout> enables any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a <xref:Microsoft.Maui.Controls.DataTemplate>.
 
-A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a `Layout`-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
+A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a <xref:Microsoft.Maui.Controls.Layout>-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>.
 
-The following XAML shows how to bind a `StackLayout` to a collection of items, and define their appearance with a `DataTemplate`:
+The following XAML shows how to bind a <xref:Microsoft.Maui.Controls.StackLayout> to a collection of items, and define their appearance with a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
@@ -280,15 +280,17 @@ Bindable layouts should only be used when the collection of items to be displaye
 
 For more information, see [BindableLayout](bindablelayout.md).
 
+## Custom layouts
+
+In .NET MAUI, the layout classes derive from the abstract <xref:Microsoft.Maui.Controls.Layout> class. This class delegates cross-platform layout and measurement to a layout manager class. Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface, which specifies that <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementations must be provided:
+
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view with its appropriate bounds. The return value is the actual size of the layout.
+
+.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own custom layout. For more information, see [Custom layouts](custom.md).
+
 ## Input transparency
 
 Each visual element has an `InputTransparent` bindable property that's used to define whether the element can receive input. Its default value is `false`, ensuring that the element can receive input. When this property is `true` on an element, the element won't receive any input. Instead, input will be passed to any elements that are visually behind the element.
 
-The `Layout` class, from which all layouts derive, has a `CascadeInputTransparent` bindable property that controls whether child elements inherit the input transparency of the layout. Its default value is `true`, ensuring that setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving any input.
-
-<!--
-## Layout performance
-
-To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
-
--->
+The <xref:Microsoft.Maui.Controls.Layout> class, from which all layouts derive, has a `CascadeInputTransparent` bindable property that controls whether child elements inherit the input transparency of the layout. Its default value is `true`, ensuring that setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving any input.

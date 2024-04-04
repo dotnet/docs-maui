@@ -24,16 +24,19 @@ Web service APIs that adhere to REST are defined using:
 
 REST-based web services typically use JSON messages to return data to the client. JSON is a text-based data-interchange format that produces compact payloads, which results in reduced bandwidth requirements when sending data. The simplicity of REST has helped make it the primary method for accessing web services in mobile apps.
 
+> [!NOTE]
+> Accessing a web service often requires asynchronous programming. For more information about asynchronous programming, see [Asynchronous programming with async and await](/dotnet/csharp/asynchronous-programming).
+
 ## Web service operations
 
 The example REST service is written using ASP.NET Core and provides the following operations:
 
 |Operation|HTTP method|Relative URI|Parameters|
 |--- |--- |--- |--- |
-|Get a list of todo items|GET|/api/todoitems/|
+|Get a list of todo items|GET|/api/todoitems/| |
 |Create a new todo item|POST|/api/todoitems/|A JSON formatted TodoItem|
 |Update a todo item|PUT|/api/todoitems/|A JSON formatted TodoItem|
-|Delete a todo item|DELETE|/api/todoitems/{id}|
+|Delete a todo item|DELETE|/api/todoitems/{id}| |
 
 The .NET MAUI app and web service uses the `TodoItem` class to model the data that is displayed and sent to the web service for storage:
 
@@ -58,7 +61,7 @@ A .NET Multi-platform App UI (.NET MAUI) app can consume a REST-based web servic
 The `HttpClient` object should be declared at the class-level so that it lives for as long as the app needs to make HTTP requests:
 
 ```csharp
-public class RestService : IRestService
+public class RestService
 {
     HttpClient _client;
     JsonSerializerOptions _serializerOptions;

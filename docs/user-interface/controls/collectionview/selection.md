@@ -8,34 +8,34 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control item selection:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that control item selection:
 
 - `SelectionMode`, of type `SelectionMode`, the selection mode.
 - `SelectedItem`, of type `object`, the selected item in the list. This property has a default binding mode of `TwoWay`, and has a `null` value when no item is selected.
 - `SelectedItems`, of type `IList<object>`, the selected items in the list. This property has a default binding mode of `OneWay`, and has a `null` value when no items are selected.
-- `SelectionChangedCommand`, of type `ICommand`, which is executed when the selected item changes.
+- `SelectionChangedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed when the selected item changes.
 - `SelectionChangedCommandParameter`, of type `object`, which is the parameter that's passed to the `SelectionChangedCommand`.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
-By default, `CollectionView` selection is disabled. However, this behavior can be changed by setting the `SelectionMode` property value to one of the `SelectionMode` enumeration members:
+By default, <xref:Microsoft.Maui.Controls.CollectionView> selection is disabled. However, this behavior can be changed by setting the `SelectionMode` property value to one of the `SelectionMode` enumeration members:
 
-- `None` – indicates that items cannot be selected. This is the default value.
+- `None` – indicates that items can't be selected. This is the default value.
 - `Single` – indicates that a single item can be selected, with the selected item being highlighted.
 - `Multiple` – indicates that multiple items can be selected, with the selected items being highlighted.
 
-`CollectionView` defines a `SelectionChanged` event that is fired when the `SelectedItem` property changes, either due to the user selecting an item from the list, or when an application sets the property. In addition, this event is also fired when the `SelectedItems` property changes. The `SelectionChangedEventArgs` object that accompanies the `SelectionChanged` event has two properties, both of type `IReadOnlyList<object>`:
+<xref:Microsoft.Maui.Controls.CollectionView> defines a `SelectionChanged` event that is fired when the `SelectedItem` property changes, either due to the user selecting an item from the list, or when an application sets the property. In addition, this event is also fired when the `SelectedItems` property changes. The `SelectionChangedEventArgs` object that accompanies the `SelectionChanged` event has two properties, both of type `IReadOnlyList<object>`:
 
 - `PreviousSelection` – the list of items that were selected, before the selection changed.
 - `CurrentSelection` – the list of items that are selected, after the selection change.
 
-In addition, `CollectionView` has a `UpdateSelectedItems` method that updates the `SelectedItems` property with a list of selected items, while only firing a single change notification.
+In addition, <xref:Microsoft.Maui.Controls.CollectionView> has a `UpdateSelectedItems` method that updates the `SelectedItems` property with a list of selected items, while only firing a single change notification.
 
 ## Single selection
 
-When the `SelectionMode` property is set to `Single`, a single item in the `CollectionView` can be selected. When an item is selected, the `SelectedItem` property will be set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`), and the `SelectionChanged` event fires.
+When the `SelectionMode` property is set to `Single`, a single item in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When an item is selected, the `SelectedItem` property is set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>), and the `SelectionChanged` event fires.
 
-The following XAML example shows a `CollectionView` that can respond to single item selection:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that can respond to single item selection:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -70,15 +70,15 @@ void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e
 > [!IMPORTANT]
 > The `SelectionChanged` event can be fired by changes that occur as a result of changing the `SelectionMode` property.
 
-The following screenshot shows single item selection in a `CollectionView`:
+The following screenshot shows single item selection in a <xref:Microsoft.Maui.Controls.CollectionView>:
 
 :::image type="content" source="media/selection/single-selection.png" alt-text="Screenshot of a CollectionView vertical list with single selection.":::
 
 ## Multiple selection
 
-When the `SelectionMode` property is set to `Multiple`, multiple items in the `CollectionView` can be selected. When items are selected, the `SelectedItems` property will be set to the selected items. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`, and the `SelectionChanged` event fires.
+When the `SelectionMode` property is set to `Multiple`, multiple items in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When items are selected, the `SelectedItems` property is set to the selected items. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>, and the `SelectionChanged` event fires.
 
-The following XAML example shows a `CollectionView` that can respond to multiple item selection:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that can respond to multiple item selection:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -113,13 +113,13 @@ void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e
 > [!IMPORTANT]
 > The `SelectionChanged` event can be fired by changes that occur as a result of changing the `SelectionMode` property.
 
-The following screenshot shows multiple item selection in a `CollectionView`:
+The following screenshot shows multiple item selection in a <xref:Microsoft.Maui.Controls.CollectionView>:
 
 :::image type="content" source="media/selection/multiple-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple selection.":::
 
-## Single pre-selection
+## Single preselection
 
-When the `SelectionMode` property is set to `Single`, a single item in the `CollectionView` can be pre-selected by setting the `SelectedItem` property to the item. The following XAML example shows a `CollectionView` that pre-selects a single item:
+When the `SelectionMode` property is set to `Single`, a single item in the <xref:Microsoft.Maui.Controls.CollectionView> can be preselected by setting the `SelectedItem` property to the item. The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that preselects a single item:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -143,7 +143,7 @@ collectionView.SetBinding(SelectableItemsView.SelectedItemProperty, "SelectedMon
 > [!NOTE]
 > The `SelectedItem` property has a default binding mode of `TwoWay`.
 
-The `SelectedItem` property data binds to the `SelectedMonkey` property of the connected view model, which is of type `Monkey`. By default, a `TwoWay` binding is used so that if the user changes the selected item, the value of the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` property is defined in the `MonkeysViewModel` class, and is set to the fourth item of the `Monkeys` collection:
+The `SelectedItem` property data binds to the `SelectedMonkey` property of the connected view model, which is of type `Monkey`. By default, a `TwoWay` binding is used so that if the user changes the selected item, the value of the `SelectedMonkey` property is set to the selected `Monkey` object. The `SelectedMonkey` property is defined in the `MonkeysViewModel` class, and is set to the fourth item of the `Monkeys` collection:
 
 ```csharp
 public class MonkeysViewModel : INotifyPropertyChanged
@@ -176,13 +176,13 @@ public class MonkeysViewModel : INotifyPropertyChanged
 }
 ```
 
-Therefore, when the `CollectionView` appears, the fourth item in the list is pre-selected:
+Therefore, when the <xref:Microsoft.Maui.Controls.CollectionView> appears, the fourth item in the list is preselected:
 
-:::image type="content" source="media/selection/single-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with single pre-selection.":::
+:::image type="content" source="media/selection/single-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with single preselection.":::
 
-## Multiple pre-selection
+## Multiple preselection
 
-When the `SelectionMode` property is set to `Multiple`, multiple items in the `CollectionView` can be pre-selected. The following XAML example shows a `CollectionView` that will enable the pre-selection of multiple items:
+When the `SelectionMode` property is set to `Multiple`, multiple items in the <xref:Microsoft.Maui.Controls.CollectionView> can be preselected. The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that enables the preselection of multiple items:
 
 ```xaml
 <CollectionView x:Name="collectionView"
@@ -244,17 +244,17 @@ namespace CollectionViewDemos.ViewModels
 }
 ```
 
-Therefore, when the `CollectionView` appears, the second, fourth, and fifth items in the list are pre-selected:
+Therefore, when the <xref:Microsoft.Maui.Controls.CollectionView> appears, the second, fourth, and fifth items in the list are preselected:
 
-:::image type="content" source="media/selection/multiple-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple pre-selection.":::
+:::image type="content" source="media/selection/multiple-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple preselection.":::
 
 ## Clear selections
 
-The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`. When either of these properties are cleared, the `SelectionChanged` event will be raised with an empty `CurrentSelection` property, and the `SelectionChangedCommand` will be executed.
+The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`. When either of these properties are cleared, the `SelectionChanged` event is raised with an empty `CurrentSelection` property, and the `SelectionChangedCommand` is executed.
 
 ## Change selected item color
 
-`CollectionView` has a `Selected` `VisualState` that can be used to initiate a visual change to the selected item in the `CollectionView`. A common use case for this `VisualState` is to change the background color of the selected item, which is shown in the following XAML example:
+<xref:Microsoft.Maui.Controls.CollectionView> has a `Selected` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the selected item in the <xref:Microsoft.Maui.Controls.CollectionView>. A common use case for this <xref:Microsoft.Maui.Controls.VisualState> is to change the background color of the selected item, which is shown in the following XAML example:
 
 ```xaml
 <ContentPage ...>
@@ -275,7 +275,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}"
                         SelectionMode="Single">
             <CollectionView.ItemTemplate>
@@ -286,14 +286,32 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
 > [!IMPORTANT]
-> The `Style` that contains the `Selected` `VisualState` must have a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
+> The <xref:Microsoft.Maui.Controls.Style> that contains the `Selected` <xref:Microsoft.Maui.Controls.VisualState> must have a `TargetType` property value that's the type of the root element of the <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the `ItemTemplate` property value.
 
-In this example, the `Style.TargetType` property value is set to `Grid` because the root element of the `ItemTemplate` is a `Grid`. The `Selected` `VisualState` specifies that when an item in the `CollectionView` is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
+The equivalent C# code for the style containing the visual state is:
+
+```csharp
+using static Microsoft.Maui.Controls.VisualStateManager;
+...
+
+Setter backgroundColorSetter = new() { Property = BackgroundColorProperty, Value = Colors.LightSkyBlue };
+VisualState stateSelected = new() { Name = CommonStates.Selected, Setters = { backgroundColorSetter } };
+VisualState stateNormal = new() { Name = CommonStates.Normal };
+VisualStateGroup visualStateGroup = new() { Name = nameof(CommonStates), States = { stateSelected, stateNormal } };
+VisualStateGroupList visualStateGroupList = new() { visualStateGroup };
+Setter vsgSetter = new() { Property = VisualStateGroupsProperty, Value = visualStateGroupList };
+Style style = new(typeof(Grid)) { Setters = { vsgSetter } };
+
+// Add the style to the resource dictionary
+Resources.Add(style);
+```
+
+In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` <xref:Microsoft.Maui.Controls.VisualState> specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item is set to `LightSkyBlue`:
 
 :::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
 
@@ -301,7 +319,7 @@ For more information about visual states, see [Visual states](~/user-interface/v
 
 ## Disable selection
 
-`CollectionView` selection is disabled by default. However, if a `CollectionView` has selection enabled, it can be disabled by setting the `SelectionMode` property to `None`:
+<xref:Microsoft.Maui.Controls.CollectionView> selection is disabled by default. However, if a <xref:Microsoft.Maui.Controls.CollectionView> has selection enabled, it can be disabled by setting the `SelectionMode` property to `None`:
 
 ```xaml
 <CollectionView ...
@@ -318,7 +336,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-When the `SelectionMode` property is set to `None`, items in the `CollectionView` cannot be selected, the `SelectedItem` property will remain `null`, and the `SelectionChanged` event will not be fired.
+When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft.Maui.Controls.CollectionView> can't be selected, the `SelectedItem` property remains `null`, and the `SelectionChanged` event isn't fired.
 
 > [!NOTE]
 > When an item has been selected and the `SelectionMode` property is changed from `Single` to `None`, the `SelectedItem` property will be set to `null` and the `SelectionChanged` event will be fired with an empty `CurrentSelection` property.

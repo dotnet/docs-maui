@@ -10,29 +10,26 @@ ms.date: 12/28/2021
 
 :::image type="content" source="media/grid/layouts.png" alt-text=".NET MAUI Grid." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `Grid` contains one row and one column. In addition, a `Grid` can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Grid>, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column. In addition, a <xref:Microsoft.Maui.Controls.Grid> can be used as a parent layout that contains other child layouts.
 
-The `Grid` should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `Grid` is intended for laying out content. For displaying tabular data, consider using a [ListView](~/user-interface/controls/listview.md) or [CollectionView](~/user-interface/controls/collectionview/index.md).
+The <xref:Microsoft.Maui.Controls.Grid> should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a <xref:Microsoft.Maui.Controls.Grid> is intended for laying out content. For displaying tabular data, consider using a [ListView](~/user-interface/controls/listview.md) or [CollectionView](~/user-interface/controls/collectionview/index.md).
 
-The `Grid` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Grid> class defines the following properties:
 
-- `Column`, of type `int`, which is an attached property that indicates the column alignment of a view within a parent `Grid`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
+- `Column`, of type `int`, which is an attached property that indicates the column alignment of a view within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
 - `ColumnDefinitions`, of type `ColumnDefinitionCollection`, is a list of `ColumnDefinition` objects that define the width of the grid columns.
 - `ColumnSpacing`, of type `double`, indicates the distance between grid columns. The default value of this property is 0.
-- `ColumnSpan`, of type `int`, which is an attached property that indicates the total number of columns that a view spans within a parent `Grid`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
-- `Row`, of type `int`, which is an attached property that indicates the row alignment of a view within a parent `Grid`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
-- `RowDefinitions`, of type `RowDefinitionCollection`, is a list of `RowDefintion` objects that define the height of the grid rows.
+- `ColumnSpan`, of type `int`, which is an attached property that indicates the total number of columns that a view spans within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
+- `Row`, of type `int`, which is an attached property that indicates the row alignment of a view within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
+- `RowDefinitions`, of type `RowDefinitionCollection`, is a list of `RowDefinition` objects that define the height of the grid rows.
 - `RowSpacing`, of type `double`, indicates the distance between grid rows. The default value of this property is 0.
-- `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent `Grid`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
+- `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
-
-<!-- > [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
 ## Rows and columns
 
-By default, a `Grid` contains one row and one column:
+By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -44,11 +41,11 @@ By default, a `Grid` contains one row and one column:
 </ContentPage>
 ```
 
-In this example, the `Grid` contains a single child `Label` that's automatically positioned in a single location:
+In this example, the <xref:Microsoft.Maui.Controls.Grid> contains a single child <xref:Microsoft.Maui.Controls.Label> that's automatically positioned in a single location:
 
 :::image type="content" source="media/grid/default.png" alt-text="Default .NET MAUI Grid layout.":::
 
-The layout behavior of a `Grid` can be defined with the `RowDefinitions` and `ColumnDefinitions` properties, which are collections of `RowDefinition` and `ColumnDefinition` objects, respectively. These collections define the row and column characteristics of a `Grid`, and should contain one `RowDefinition` object for each row in the `Grid`, and one `ColumnDefinition` object for each column in the `Grid`.
+The layout behavior of a <xref:Microsoft.Maui.Controls.Grid> can be defined with the `RowDefinitions` and `ColumnDefinitions` properties, which are collections of `RowDefinition` and `ColumnDefinition` objects, respectively. These collections define the row and column characteristics of a <xref:Microsoft.Maui.Controls.Grid>, and should contain one `RowDefinition` object for each row in the <xref:Microsoft.Maui.Controls.Grid>, and one `ColumnDefinition` object for each column in the <xref:Microsoft.Maui.Controls.Grid>.
 
 The `RowDefinition` class defines a `Height` property, of type `GridLength`, and the `ColumnDefinition` class defines a `Width` property, of type `GridLength`. The `GridLength` struct specifies a row height or a column width in terms of the `GridUnitType` enumeration, which has three members:
 
@@ -56,12 +53,12 @@ The `RowDefinition` class defines a `Height` property, of type `GridLength`, and
 - `Auto` – the row height or column width is autosized based on the cell contents (`Auto` in XAML).
 - `Star` – leftover row height or column width is allocated proportionally (a number followed by `*` in XAML).
 
-A `Grid` row with a `Height` property of `Auto` constrains the height of views in that row in the same way as a vertical `StackLayout`. Similarly, a column with a `Width` property of `Auto` works much like a horizontal `StackLayout`.
+A <xref:Microsoft.Maui.Controls.Grid> row with a `Height` property of `Auto` constrains the height of views in that row in the same way as a vertical <xref:Microsoft.Maui.Controls.StackLayout>. Similarly, a column with a `Width` property of `Auto` works much like a horizontal <xref:Microsoft.Maui.Controls.StackLayout>.
 
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.
 
-The following XAML shows how to create a `Grid` with three rows and two columns:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.Grid> with three rows and two columns:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -83,16 +80,16 @@ The following XAML shows how to create a `Grid` with three rows and two columns:
 </ContentPage>
 ```
 
-In this example, the `Grid` has an overall height that is the height of the page. The `Grid` knows that the height of the third row is 100 device-independent units. It subtracts that height from its own height, and allocates the remaining height proportionally between the first and second rows based on the number before the star. In this example, the height of the first row is twice that of the second row.
+In this example, the <xref:Microsoft.Maui.Controls.Grid> has an overall height that is the height of the page. The <xref:Microsoft.Maui.Controls.Grid> knows that the height of the third row is 100 device-independent units. It subtracts that height from its own height, and allocates the remaining height proportionally between the first and second rows based on the number before the star. In this example, the height of the first row is twice that of the second row.
 
 The two `ColumnDefinition` objects both set the `Width` to `*`, which is the same as `1*`, meaning that the width of the screen is divided equally beneath the two columns.
 
 > [!IMPORTANT]
 > The default value of the `RowDefinition.Height` property is `*`. Similarly, the default value of the `ColumnDefinition.Width` property is `*`. Therefore, it's not necessary to set these properties in cases where these defaults are acceptable.
 
-Child views can be positioned in specific `Grid` cells with the `Grid.Column` and `Grid.Row` attached properties. In addition, to make child views span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
+Child views can be positioned in specific <xref:Microsoft.Maui.Controls.Grid> cells with the `Grid.Column` and `Grid.Row` attached properties. In addition, to make child views span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
-The following XAML shows the same `Grid` definition, and also positions child views in specific `Grid` cells:
+The following XAML shows the same <xref:Microsoft.Maui.Controls.Grid> definition, and also positions child views in specific <xref:Microsoft.Maui.Controls.Grid> cells:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -146,13 +143,13 @@ The following XAML shows the same `Grid` definition, and also positions child vi
 ```
 
 > [!NOTE]
-> The `Grid.Row` and `Grid.Column` properties are both indexed from 0, and so `Grid.Row="2"` refers to the third row while `Grid.Column="1"` refers to the second column. In addition, both of these properties have a default value of 0, and so don't need to be set on child views that occupy the first row or first column of a `Grid`.
+> The `Grid.Row` and `Grid.Column` properties are both indexed from 0, and so `Grid.Row="2"` refers to the third row while `Grid.Column="1"` refers to the second column. In addition, both of these properties have a default value of 0, and so don't need to be set on child views that occupy the first row or first column of a <xref:Microsoft.Maui.Controls.Grid>.
 
-In this example, all three `Grid` rows are occupied by `BoxView` and `Label` views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the `Grid` in half. The `BoxView` in the third row spans both columns:
+In this example, all three <xref:Microsoft.Maui.Controls.Grid> rows are occupied by <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the <xref:Microsoft.Maui.Controls.Grid> in half. The <xref:Microsoft.Maui.Controls.BoxView> in the third row spans both columns:
 
 :::image type="content" source="media/grid/basic.png" alt-text="Basic .NET MAUI Grid layout.":::
 
-In addition, child views in a `Grid` can share cells. The order that the children appear in the XAML is the order that the children are placed in the `Grid`. In the previous example, the `Label` objects are only visible because they are rendered on top of the `BoxView` objects. The `Label` objects would not be visible if the `BoxView` objects were rendered on top of them.
+In addition, child views in a <xref:Microsoft.Maui.Controls.Grid> can share cells. The order that the children appear in the XAML is the order that the children are placed in the <xref:Microsoft.Maui.Controls.Grid>. In the previous example, the <xref:Microsoft.Maui.Controls.Label> objects are only visible because they are rendered on top of the <xref:Microsoft.Maui.Controls.BoxView> objects. The <xref:Microsoft.Maui.Controls.Label> objects would not be visible if the <xref:Microsoft.Maui.Controls.BoxView> objects were rendered on top of them.
 
 The equivalent C# code is:
 
@@ -232,7 +229,7 @@ public class BasicGridPage : ContentPage
 
         // Row 2
         // Alternatively, the BoxView and Label can be positioned in cells with the Grid.SetRow
-        // and Grid.SetColumn methods.
+        // and Grid.SetColumn methods. Here, the Grid.SetColumnSpan method is used to span two columns.
         BoxView boxView = new BoxView { Color = Colors.Red };
         Grid.SetRow(boxView, 2);
         Grid.SetColumnSpan(boxView, 2);
@@ -256,9 +253,16 @@ public class BasicGridPage : ContentPage
 
 In code, to specify the height of a `RowDefinition` object, and the width of a `ColumnDefinition` object, you use values of the `GridLength` structure, often in combination with the `GridUnitType` enumeration.
 
+::: moniker range=">=net-maui-8.0"
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Grid> also defines an <xref:Microsoft.Maui.Controls.GridExtensions.AddWithSpan%2A> extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
+
+::: moniker-end
+
 ### Simplify row and column definitions
 
-In XAML, the row and column characteristics of a `Grid` can be specified using a simplified syntax that avoids having to define `RowDefinition` and `ColumnDefinition` objects for each row and column. Instead, the `RowDefinitions` and `ColumnDefinitions` properties can be set to strings containing comma-delimited `GridUnitType` values, from which type converters built into .NET MAUI create `RowDefinition` and `ColumnDefinition` objects:
+In XAML, the row and column characteristics of a <xref:Microsoft.Maui.Controls.Grid> can be specified using a simplified syntax that avoids having to define `RowDefinition` and `ColumnDefinition` objects for each row and column. Instead, the `RowDefinitions` and `ColumnDefinitions` properties can be set to strings containing comma-delimited `GridUnitType` values, from which type converters built into .NET MAUI create `RowDefinition` and `ColumnDefinition` objects:
 
 ```xaml
 <Grid RowDefinitions="1*, Auto, 25, 14, 20"
@@ -267,13 +271,13 @@ In XAML, the row and column characteristics of a `Grid` can be specified using a
 </Grid>
 ```
 
-In this example, the `Grid` has five rows and four columns. The third, forth, and fifth rows are set to absolute heights, with the second row auto-sizing to its content. The remaining height is then allocated to the first row.
+In this example, the <xref:Microsoft.Maui.Controls.Grid> has five rows and four columns. The third, forth, and fifth rows are set to absolute heights, with the second row auto-sizing to its content. The remaining height is then allocated to the first row.
 
 The forth column is set to an absolute width, with the third column auto-sizing to its content. The remaining width is allocated proportionally between the first and second columns based on the number before the star. In this example, the width of the second column is twice that of the first column (because `*` is identical to `1*`).
 
 ## Space between rows and columns
 
-By default, `Grid` rows and columns have no space between them. This can be changed by setting the `RowSpacing` and `ColumnSpacing` properties, respectively:
+By default, <xref:Microsoft.Maui.Controls.Grid> rows and columns have no space between them. This can be changed by setting the `RowSpacing` and `ColumnSpacing` properties, respectively:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -287,7 +291,7 @@ By default, `Grid` rows and columns have no space between them. This can be chan
 </ContentPage>
 ```
 
-This example creates a `Grid` whose rows and columns are separated by 6 device-independent units of space:
+This example creates a <xref:Microsoft.Maui.Controls.Grid> whose rows and columns are separated by 6 device-independent units of space:
 
 :::image type="content" source="media/grid/spacing.png" alt-text=".NET MAUI Grid with spacing between cells.":::
 
@@ -316,14 +320,14 @@ public class GridSpacingPage : ContentPage
 
 ## Alignment
 
-Child views in a `Grid` can be positioned within their cells by the `HorizontalOptions` and `VerticalOptions` properties. These properties can be set to the following fields from the `LayoutOptions` struct:
+Child views in a <xref:Microsoft.Maui.Controls.Grid> can be positioned within their cells by the `HorizontalOptions` and `VerticalOptions` properties. These properties can be set to the following fields from the `LayoutOptions` struct:
 
 - `Start`
 - `Center`
 - `End`
 - `Fill`
 
-The following XAML creates a `Grid` with nine equal-size cells, and places a `Label` in each cell with a different alignment:
+The following XAML creates a <xref:Microsoft.Maui.Controls.Grid> with nine equal-size cells, and places a <xref:Microsoft.Maui.Controls.Label> in each cell with a different alignment:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -406,7 +410,7 @@ The following XAML creates a `Grid` with nine equal-size cells, and places a `La
 </ContentPage>
 ```
 
-In this example, the `Label` objects in each row are all identically aligned vertically, but use different horizontal alignments. Alternatively, this can be thought of as the `Label` objects in each column being identically aligned horizontally, but using different vertical alignments:
+In this example, the <xref:Microsoft.Maui.Controls.Label> objects in each row are all identically aligned vertically, but use different horizontal alignments. Alternatively, this can be thought of as the <xref:Microsoft.Maui.Controls.Label> objects in each column being identically aligned horizontally, but using different vertical alignments:
 
 :::image type="content" source="media/grid/alignment.png" alt-text="Cell alignment in a .NET MAUI Grid.":::
 
@@ -543,9 +547,9 @@ public class GridAlignmentPage : ContentPage
 
 ## Nested Grid objects
 
-A `Grid` can be used as a parent layout that contains nested child `Grid` objects, or other child layouts. When nesting `Grid` objects, the `Grid.Row`, `Grid.Column`, `Grid.RowSpan`, and `Grid.ColumnSpan` attached properties always refer to the position of views within their parent `Grid`.
+A <xref:Microsoft.Maui.Controls.Grid> can be used as a parent layout that contains nested child <xref:Microsoft.Maui.Controls.Grid> objects, or other child layouts. When nesting <xref:Microsoft.Maui.Controls.Grid> objects, the `Grid.Row`, `Grid.Column`, `Grid.RowSpan`, and `Grid.ColumnSpan` attached properties always refer to the position of views within their parent <xref:Microsoft.Maui.Controls.Grid>.
 
-The following XAML shows an example of nesting `Grid` objects:
+The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Grid> objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -612,12 +616,12 @@ The following XAML shows an example of nesting `Grid` objects:
 </ContentPage>
 ```
 
-In this example, the root `Grid` contains a `BoxView` in its first row, and a child `Grid` in its second row. The child `Grid` contains `Slider` objects that manipulate the color displayed by the `BoxView`, and `Label` objects that display the value of each `Slider`:
+In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains <xref:Microsoft.Maui.Controls.Slider> objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and <xref:Microsoft.Maui.Controls.Label> objects that display the value of each <xref:Microsoft.Maui.Controls.Slider>:
 
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 
 > [!IMPORTANT]
-> The deeper you nest `Grid` objects and other layouts, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
+> The deeper you nest <xref:Microsoft.Maui.Controls.Grid> objects and other layouts, the more layout calculations will be performed which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
 
 The equivalent C# code is:
 

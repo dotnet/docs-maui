@@ -8,22 +8,22 @@ ms.date: 01/19/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
 
-In a .NET Multi-platform App UI (.NET MAUI) app that uses the Model-View-ViewModel (MVVM) pattern, data bindings are defined between properties in the viewmodel, which is typically a class that derives from `INotifyPropertyChanged`, and properties in the view, which is typically the XAML file. Sometimes an app has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the `Button` or the `Tapped` event of a `TapGestureRecognizer`.
+In a .NET Multi-platform App UI (.NET MAUI) app that uses the Model-View-ViewModel (MVVM) pattern, data bindings are defined between properties in the viewmodel, which is typically a class that derives from `INotifyPropertyChanged`, and properties in the view, which is typically the XAML file. Sometimes an app has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button> or the `Tapped` event of a <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
 
-The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a `Button` click. Data bindings are defined between these commands and the `Button`.
+The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a <xref:Microsoft.Maui.Controls.Button> click. Data bindings are defined between these commands and the <xref:Microsoft.Maui.Controls.Button>.
 
-To allow a data binding between a `Button` and a viewmodel, the `Button` defines two properties:
+To allow a data binding between a <xref:Microsoft.Maui.Controls.Button> and a viewmodel, the <xref:Microsoft.Maui.Controls.Button> defines two properties:
 
 - `Command` of type [`System.Windows.Input.ICommand`](xref:System.Windows.Input.ICommand)
 - `CommandParameter` of type `Object`
 
-To use the command interface, you define a data binding that targets the `Command` property of the `Button` where the source is a property in the viewmodel of type `ICommand`. The viewmodel contains code associated with that `ICommand` property that is executed when the button is clicked. You can set the `CommandParameter` property to arbitrary data to distinguish between multiple buttons if they are all bound to the same `ICommand` property in the viewmodel.
+To use the command interface, you define a data binding that targets the `Command` property of the <xref:Microsoft.Maui.Controls.Button> where the source is a property in the viewmodel of type <xref:System.Windows.Input.ICommand>. The viewmodel contains code associated with that <xref:System.Windows.Input.ICommand> property that is executed when the button is clicked. You can set the `CommandParameter` property to arbitrary data to distinguish between multiple buttons if they are all bound to the same <xref:System.Windows.Input.ICommand> property in the viewmodel.
 
 Many other views also define `Command` and `CommandParameter` properties. All these commands can be handled within a viewmodel using an approach that doesn't depend on the user-interface object in the view.
 
 ## ICommands
 
-The [`ICommand`](xref:System.Windows.Input.ICommand) interface is defined in the [System.Windows.Input](xref:System.Windows.Input) namespace, and consists of two methods and one event:
+The [<xref:System.Windows.Input.ICommand>](xref:System.Windows.Input.ICommand) interface is defined in the [System.Windows.Input](xref:System.Windows.Input) namespace, and consists of two methods and one event:
 
 ```csharp
 public interface ICommand
@@ -34,32 +34,32 @@ public interface ICommand
 }
 ```
 
-To use the command interface, your viewmodel should contain properties of type `ICommand`:
+To use the command interface, your viewmodel should contain properties of type <xref:System.Windows.Input.ICommand>:
 
 ```csharp
 public ICommand MyCommand { private set; get; }
 ```
 
-The viewmodel must also reference a class that implements the `ICommand` interface. In the view, the `Command` property of a `Button` is bound to that property:
+The viewmodel must also reference a class that implements the <xref:System.Windows.Input.ICommand> interface. In the view, the `Command` property of a <xref:Microsoft.Maui.Controls.Button> is bound to that property:
 
 ```xaml
 <Button Text="Execute command"
         Command="{Binding MyCommand}" />
 ```
 
-When the user presses the `Button`, the `Button` calls the `Execute` method in the `ICommand` object bound to its `Command` property.
+When the user presses the <xref:Microsoft.Maui.Controls.Button>, the <xref:Microsoft.Maui.Controls.Button> calls the `Execute` method in the <xref:System.Windows.Input.ICommand> object bound to its `Command` property.
 
-When the binding is first defined on the `Command` property of the `Button`, and when the data binding changes in some way, the `Button` calls the `CanExecute` method in the `ICommand` object. If `CanExecute` returns `false`, then the `Button` disables itself. This indicates that the particular command is currently unavailable or invalid.
+When the binding is first defined on the `Command` property of the <xref:Microsoft.Maui.Controls.Button>, and when the data binding changes in some way, the <xref:Microsoft.Maui.Controls.Button> calls the `CanExecute` method in the <xref:System.Windows.Input.ICommand> object. If `CanExecute` returns `false`, then the <xref:Microsoft.Maui.Controls.Button> disables itself. This indicates that the particular command is currently unavailable or invalid.
 
-The `Button` also attaches a handler on the `CanExecuteChanged` event of `ICommand`. The event is raised from within the viewmodel. When that event is raised, the `Button` calls `CanExecute` again. The `Button` enables itself if `CanExecute` returns `true` and disables itself if `CanExecute` returns `false`.
+The <xref:Microsoft.Maui.Controls.Button> also attaches a handler on the `CanExecuteChanged` event of <xref:System.Windows.Input.ICommand>. The event is raised from within the viewmodel. When that event is raised, the <xref:Microsoft.Maui.Controls.Button> calls `CanExecute` again. The <xref:Microsoft.Maui.Controls.Button> enables itself if `CanExecute` returns `true` and disables itself if `CanExecute` returns `false`.
 
 > [!WARNING]
-> Do not use the `IsEnabled` property of `Button` if you're using the command interface.  
+> Do not use the `IsEnabled` property of <xref:Microsoft.Maui.Controls.Button> if you're using the command interface.  
 
-When your viewmodel defines a property of type `ICommand`, the viewmodel must also contain or reference a class that implements the `ICommand` interface. This class must contain or reference the `Execute` and `CanExecute` methods, and fire the `CanExecuteChanged` event whenever the `CanExecute` method might return a different value. You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the `ICommand` interface. These classes allow you to specify the bodies of the `Execute` and `CanExecute` methods in class constructors.
+When your viewmodel defines a property of type <xref:System.Windows.Input.ICommand>, the viewmodel must also contain or reference a class that implements the <xref:System.Windows.Input.ICommand> interface. This class must contain or reference the `Execute` and `CanExecute` methods, and fire the `CanExecuteChanged` event whenever the `CanExecute` method might return a different value. You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the <xref:System.Windows.Input.ICommand> interface. These classes allow you to specify the bodies of the `Execute` and `CanExecute` methods in class constructors.
 
 > [!TIP]
-> Use `Command<T>` when you use the `CommandParameter` property to distinguish between multiple views bound to the same `ICommand` property, and the `Command` class when that isn't a requirement.
+> Use `Command<T>` when you use the `CommandParameter` property to distinguish between multiple views bound to the same <xref:System.Windows.Input.ICommand> property, and the `Command` class when that isn't a requirement.
 
 ## Basic commanding
 
@@ -116,7 +116,7 @@ public class PersonViewModel : INotifyPropertyChanged
 }
 ```
 
-The `PersonCollectionViewModel` class shown below creates new objects of type `PersonViewModel` and allows the user to fill in the data. For that purpose, the class defines `IsEditing`, of type `bool`, and `PersonEdit`, of type `PersonViewModel`, properties. In addition, the class defines three properties of type `ICommand` and a property named `Persons` of type `IList<PersonViewModel>`:
+The `PersonCollectionViewModel` class shown below creates new objects of type `PersonViewModel` and allows the user to fill in the data. For that purpose, the class defines `IsEditing`, of type `bool`, and `PersonEdit`, of type `PersonViewModel`, properties. In addition, the class defines three properties of type <xref:System.Windows.Input.ICommand> and a property named `Persons` of type `IList<PersonViewModel>`:
 
 ```csharp
 public class PersonCollectionViewModel : INotifyPropertyChanged
@@ -162,7 +162,7 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
 }
 ```
 
-In this example, changes to the three `ICommand` properties and the `Persons` property do not result in `PropertyChanged` events being raised. These properties are all set when the class is first created and do not change.
+In this example, changes to the three <xref:System.Windows.Input.ICommand> properties and the `Persons` property do not result in `PropertyChanged` events being raised. These properties are all set when the class is first created and do not change.
 
 The following example shows the XAML that consumes the `PersonCollectionViewModel`:
 
@@ -244,13 +244,13 @@ The following example shows the XAML that consumes the `PersonCollectionViewMode
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The `Grid` contains a `Button` with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The `ListView` displays the collection of persons already entered:
+In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.Button> with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The <xref:Microsoft.Maui.Controls.ListView> displays the collection of persons already entered:
 
 The following screenshot shows the **Submit** button enabled after an age has been set:
 
 :::image type="content" source="media/commanding/personentry.png" alt-text="Person Entry.":::
 
-When the user first presses the **New** button, this enables the entry form but disables the **New** button. The user then enters a name, age, and skills. At any time during the editing, the user can press the **Cancel** button to start over. Only when a name and a valid age have been entered is the **Submit** button enabled. Pressing this **Submit** button transfers the person to the collection displayed by the `ListView`. After either the **Cancel** or **Submit** button is pressed, the entry form is cleared and the **New** button is enabled again.
+When the user first presses the **New** button, this enables the entry form but disables the **New** button. The user then enters a name, age, and skills. At any time during the editing, the user can press the **Cancel** button to start over. Only when a name and a valid age have been entered is the **Submit** button enabled. Pressing this **Submit** button transfers the person to the collection displayed by the <xref:Microsoft.Maui.Controls.ListView>. After either the **Cancel** or **Submit** button is pressed, the entry form is cleared and the **New** button is enabled again.
 
 All the logic for the **New**, **Submit**, and **Cancel** buttons is handled in `PersonCollectionViewModel` through definitions of the `NewCommand`, `SubmitCommand`, and `CancelCommand` properties. The constructor of the `PersonCollectionViewModel` sets these three properties to objects of type `Command`.  
 
@@ -294,9 +294,9 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
 
 When the user clicks the **New** button, the `execute` function passed to the `Command` constructor is executed. This creates a new `PersonViewModel` object, sets a handler on that object's `PropertyChanged` event, sets `IsEditing` to `true`, and calls the `RefreshCanExecutes` method defined after the constructor.
 
-Besides implementing the `ICommand` interface, the `Command` class also defines a method named `ChangeCanExecute`. A viewmodel should call `ChangeCanExecute` for an `ICommand` property whenever anything happens that might change the return value of the `CanExecute` method. A call to `ChangeCanExecute` causes the `Command` class to fire the `CanExecuteChanged` method. The `Button` has attached a handler for that event and responds by calling `CanExecute` again, and then enabling itself based on the return value of that method.
+Besides implementing the <xref:System.Windows.Input.ICommand> interface, the `Command` class also defines a method named `ChangeCanExecute`. A viewmodel should call `ChangeCanExecute` for an <xref:System.Windows.Input.ICommand> property whenever anything happens that might change the return value of the `CanExecute` method. A call to `ChangeCanExecute` causes the `Command` class to fire the `CanExecuteChanged` method. The <xref:Microsoft.Maui.Controls.Button> has attached a handler for that event and responds by calling `CanExecute` again, and then enabling itself based on the return value of that method.
 
-When the `execute` method of `NewCommand` calls `RefreshCanExecutes`, the `NewCommand` property gets a call to `ChangeCanExecute`, and the `Button` calls the `canExecute` method, which now returns `false` because the `IsEditing` property is now `true`.
+When the `execute` method of `NewCommand` calls `RefreshCanExecutes`, the `NewCommand` property gets a call to `ChangeCanExecute`, and the <xref:Microsoft.Maui.Controls.Button> calls the `canExecute` method, which now returns `false` because the `IsEditing` property is now `true`.
 
 The `PropertyChanged` handler for the new `PersonViewModel` object calls the `ChangeCanExecute` method of `SubmitCommand`:
 
@@ -366,9 +366,9 @@ The `canExecute` method returns `true` at any time a `PersonViewModel` is being 
 
 ## Using Command parameters
 
-It's' sometimes convenient for one or more buttons, or other user-interface objects, to share the same `ICommand` property in the viewmodel. In this case, you can use the `CommandParameter` property to distinguish between the buttons.
+It's' sometimes convenient for one or more buttons, or other user-interface objects, to share the same <xref:System.Windows.Input.ICommand> property in the viewmodel. In this case, you can use the `CommandParameter` property to distinguish between the buttons.
 
-You can continue to use the `Command` class for these shared `ICommand` properties. The class defines an alternative constructor that accepts `execute` and `canExecute` methods with parameters of type `Object`. This is how the `CommandParameter` is passed to these methods. However, when specifying a `CommandParameter`, it's easiest to use the generic `Command<T>` class to specify the type of the object set to `CommandParameter`. The `execute` and `canExecute` methods that you specify have parameters of that type.
+You can continue to use the `Command` class for these shared <xref:System.Windows.Input.ICommand> properties. The class defines an alternative constructor that accepts `execute` and `canExecute` methods with parameters of type `Object`. This is how the `CommandParameter` is passed to these methods. However, when specifying a `CommandParameter`, it's easiest to use the generic `Command<T>` class to specify the type of the object set to `CommandParameter`. The `execute` and `canExecute` methods that you specify have parameters of that type.
 
 The following example demonstrates a keyboard for entering decimal numbers:
 
@@ -458,11 +458,11 @@ The following example demonstrates a keyboard for entering decimal numbers:
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The `Entry` property of this viewmodel is bound to the `Text` property of a `Label`. All the `Button` objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
+In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The <xref:Microsoft.Maui.Controls.Entry> property of this viewmodel is bound to the `Text` property of a <xref:Microsoft.Maui.Controls.Label>. All the <xref:Microsoft.Maui.Controls.Button> objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
 
 :::image type="content" source="media/commanding/decimalkeyboard.png" alt-text="Decimal keyboard.":::
 
-The `DecimalKeypadViewModel` defines an `Entry` property of type `string` and three properties of type `ICommand`:
+The `DecimalKeypadViewModel` defines an <xref:Microsoft.Maui.Controls.Entry> property of type `string` and three properties of type <xref:System.Windows.Input.ICommand>:
 
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
@@ -522,7 +522,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 
 Because the button is always enabled, it is not necessary to specify a `canExecute` argument in the `Command` constructor.
 
-The **Backspace** button is enabled only when the length of the entry is greater than 1, or if `Entry` is not equal to the string "0":
+The **Backspace** button is enabled only when the length of the entry is greater than 1, or if <xref:Microsoft.Maui.Controls.Entry> is not equal to the string "0":
 
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
@@ -551,7 +551,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 }
 ```
 
-The logic for the `execute` function for the **Backspace** button ensures that the `Entry` is at least a string of "0".
+The logic for the `execute` function for the **Backspace** button ensures that the <xref:Microsoft.Maui.Controls.Entry> is at least a string of "0".
 
 The `DigitCommand` property is bound to 11 buttons, each of which identifies itself with the `CommandParameter` property. The `DigitCommand` is set to an instance of the `Command<T>` class. When using the commanding interface with XAML, the `CommandParameter` properties are usually strings, which is type of the generic argument. The `execute` and `canExecute` functions then have arguments of type `string`:
 
@@ -581,4 +581,4 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 }
 ```
 
-The `execute` method appends the string argument to the `Entry` property. However, if the result begins with a zero (but not a zero and a decimal point) then that initial zero must be removed using the `Substring` function. The `canExecute` method returns `false` only if the argument is the decimal point (indicating that the decimal point is being pressed) and `Entry` already contains a decimal point. All the `execute` methods call `RefreshCanExecutes`, which then calls `ChangeCanExecute` for both `DigitCommand` and `ClearCommand`. This ensures that the decimal point and backspace buttons are enabled or disabled based on the current sequence of entered digits.
+The `execute` method appends the string argument to the <xref:Microsoft.Maui.Controls.Entry> property. However, if the result begins with a zero (but not a zero and a decimal point) then that initial zero must be removed using the `Substring` function. The `canExecute` method returns `false` only if the argument is the decimal point (indicating that the decimal point is being pressed) and <xref:Microsoft.Maui.Controls.Entry> already contains a decimal point. All the `execute` methods call `RefreshCanExecutes`, which then calls `ChangeCanExecute` for both `DigitCommand` and `ClearCommand`. This ensures that the decimal point and backspace buttons are enabled or disabled based on the current sequence of entered digits.

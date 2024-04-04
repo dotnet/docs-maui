@@ -1,16 +1,18 @@
 ---
 title: "Secure storage"
-description: "Learn how to use the .NET MAUI SecureStorage class, which helps securely store simple key/value pairs. This article discusses how to use the class, platform implementation specifics, and its limitations."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI ISecureStorage interface, which helps securely store simple key/value pairs. This article discusses how to use the ISecureStorage, platform implementation specifics, and its limitations."
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 #acrolinx score 95
 ---
 
 # Secure storage
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs. The `ISecureStorage` interface is exposed through the `SecureStorage.Default` property.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
-The `SecureStorage` and `ISecureStorage` types are available in the `Microsoft.Maui.Storage` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs.
+
+The default implementation of the `ISecureStorage` interface is available through the `SecureStorage.Default` property. Both the `ISecureStorage` interface and `SecureStorage` class are contained in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started
 
@@ -49,21 +51,21 @@ Auto Backup can be configured to disable specific content from backing up. You c
     </application>
     ```
 
-01. Create a new XML file named _auto_backup_rules.xml_ in the _Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
+01. Create a new XML file named _auto_backup_rules.xml_ in the _Platforms/Android/Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <full-backup-content>
         <include domain="sharedpref" path="."/>
-        <exclude domain="sharedpref" path="${applicationId}.mauiessentials.xml"/>
+        <exclude domain="sharedpref" path="${applicationId}.microsoft.maui.essentials.preferences.xml"/>
     </full-backup-content>
     ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 When developing on the **iOS simulator**, enable the **Keychain** entitlement and add a keychain access group for the application's bundle identifier.
 
-Create or open the _Entitlements.plist_ in the project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group. For more information about editing the _Entitlements.plist_ file, see [Entitlements and capabilities](../../ios/deployment/entitlements.md).
+Create or open the _Entitlements.plist_ in the project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group. For more information about editing the _Entitlements.plist_ file, see [Entitlements](../../ios/entitlements.md).
 
 In the project properties, under **iOS Bundle Signing** set the **Custom Entitlements** to **Entitlements.plist**.
 
@@ -124,7 +126,7 @@ This section describes the platform-specific differences with the secure storage
 
 For more information about the Android Security library, see [Work with data more securely](https://developer.android.com/topic/security/data) on developer.android.com.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 [KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].microsoft.maui.essentials.preferences_.
 
@@ -134,9 +136,9 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 `DataProtectionProvider` is used to encrypt values securely on Windows devices. <!-- (/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) -->
 
-Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_.
+In packaged apps, encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_. `SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
-`SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
+In unpackaged apps, encrypted values are stored in JSON format in `securestorage.dat` inside the app's data folder.
 
 -----
 <!-- markdownlint-enable MD024 -->
