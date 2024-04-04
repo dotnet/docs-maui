@@ -88,14 +88,14 @@ Some controls can use images, which enhances how users interact with your app. I
 
 Download the following images:
 
-- [Icon: About](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_about.png)\
+- [Icon: About](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_about.png)\
   This image is used as an icon for the about page you created earlier.
 
-- [Icon: Notes](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_notes.png)\
+- [Icon: Notes](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_notes.png)\
   This image is used as an icon for the notes page you'll create in the next part of this tutorial.
 
-- [Icon: About (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_about_ios.png)
-- [Icon: Notes (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_notes_ios.png)
+- [Icon: About (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_about_ios.png)
+- [Icon: Notes (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_notes_ios.png)
 
 After you've downloaded the images, you can move them with File Explorer to the _Resources\Images_ folder of the project. Any file in this folder is automatically included in the project as a **MauiImage** resource. You can also use Visual Studio to add the images to your project. If you move the images by hand, skip the following procedure.
 
