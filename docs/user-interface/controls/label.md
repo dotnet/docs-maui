@@ -153,7 +153,7 @@ The following screenshot shows the result of setting the `Label.LineHeight` prop
 ## Display HTML
 
 > [!IMPORTANT]
-> Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform. For example, Android supports only a subset of HTML tags, focusing on basic styling and formatting for block level elements such as <span> and <p>. For more complex HTML rendering, consider using a WebView or FormattedText.
+> Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform. For example, Android supports only a subset of HTML tags, focusing on basic styling and formatting for block level elements such as `<span>` and `<p>`. For more complex HTML rendering, consider using a <xref:Microsoft.Maui.Controls.WebView> or `FormattedText`.
 
 The <xref:Microsoft.Maui.Controls.Label> class has a `TextType` property, which determines whether the <xref:Microsoft.Maui.Controls.Label> object should display plain text, or HTML text. This property should be set to one of the members of the `TextType` enumeration:
 
