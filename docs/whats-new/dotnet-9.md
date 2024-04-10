@@ -29,12 +29,12 @@ For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/c
 
 ### Asset packs
 
-.NET Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger that the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
+.NET Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
 
 > [!IMPORTANT]
-> Asset packs can only contain assets. In the case of .NET Android this means items which have the `AndroidAsset` build action.
+> Asset packs can only contain assets. In the case of .NET Android this means items that have the `AndroidAsset` build action.
 
-.NET MAUI defines assets via the `MauiAsset` build action. An asset pack can be specified via the `AssetPack` attribute:
+.NET MAUI apps define assets via the `MauiAsset` build action. An asset pack can be specified via the `AssetPack` attribute:
 
 ```xml
 <MauiAsset
@@ -52,11 +52,11 @@ If you have specific items you want to place in an asset pack you can use the `U
 <MauiAsset Update="Resources\Raw\MyLargeAsset.txt" AssetPack="myassetpack" />
 ```
 
-Asset packs can can have different delivery options, which control when your assets will install on the device:
+Asset packs can have different delivery options, which control when your assets will install on the device:
 
-- Install time packs are installed at the same time as the app. This type pack can be up to 1Gb in size, but you can only have one of them. This delivery type is specified with `InstallTime` metadata.
-- Fast follow packs will install at some point shortly after the app has finished installing. The app will be able to start while this type of pack is being installed so developers should check it has finished installing before trying to use the assets. This kind of asset pack can be up to 512Mb in size. This delivery type is specified with `FastFollow` metadata.
-- On demand packs will never be downloaded to the device unless the app specifically requests it. The total size of all your asset packs cannot exceed 2Gb, and you can have up to 50 separate asset packs. This delivery type is specified with `OnDemand` metadata.
+- Install time packs are installed at the same time as the app. This pack type can be up to 1Gb in size, but you can only have one of them. This delivery type is specified with `InstallTime` metadata.
+- Fast follow packs will install at some point shortly after the app has finished installing. The app will be able to start while this type of pack is being installed so you should check it has finished installing before trying to use the assets. This kind of asset pack can be up to 512Mb in size. This delivery type is specified with `FastFollow` metadata.
+- On demand packs will never be downloaded to the device unless the app specifically requests it. The total size of all your asset packs can't exceed 2Gb, and you can have up to 50 separate asset packs. This delivery type is specified with `OnDemand` metadata.
 
 In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` attribute on a `MauiAsset`:
 
