@@ -29,7 +29,7 @@ For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/c
 
 ### Asset packs
 
-.NET Android 9 Preview 3 includes the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger that the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
+.NET Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger that the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
 
 > [!IMPORTANT]
 > Asset packs can only contain assets. In the case of .NET Android this means items which have the `AndroidAsset` build action.
