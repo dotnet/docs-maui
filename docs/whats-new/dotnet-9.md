@@ -83,7 +83,7 @@ For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS,
 
 ### Bindings
 
-Projects can now multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct versions:
+.NET iOS 9 Preview 3 introduces the ability to multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct iOS versions:
 
 ```xml
 <TargetFrameworks>net9.0-ios17.0;net9.0-ios17.2</TargetFrameworks>
