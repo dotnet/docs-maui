@@ -23,7 +23,7 @@ For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/c
 
 .NET Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET Android 9 Preview, see the following release notes:
 
-- [.NET Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.189)
+- [.NET Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.231)
 - [.NET Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
 - [.NET Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.1.151)
 
