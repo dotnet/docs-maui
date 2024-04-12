@@ -27,8 +27,8 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Mar
 ### New articles
 
 - AI
-  - [ChatGPT](/windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-  - [DALL-E](/windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [ChatGPT](/windows/ai/samples/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [DALL-E](/windows/ai/samples/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)  
 - Authentication
   - [Microsoft Authentication Library](/entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
   - [Prepare tenant](/entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
