@@ -38,7 +38,7 @@ The following table lists the layout property values that have changed between X
 | `Grid.RowSpacing` | 6 | 0 |
 | `StackLayout.Spacing` | 6 | 0 |
 
-The following code snippet retains the Xamarin.Forms defaults. 
+The following code snippet retains the Xamarin.Forms defaults:
 
 ```xml
 <!-- Forms defaults -->
@@ -56,7 +56,7 @@ The following code snippet retains the Xamarin.Forms defaults.
 
 ## Frame
 
-<xref:Microsoft.Maui.Controls.Frame> has been replaced in .NET MAUI by <xref:Microsoft.Maui.Controls.Border>, however it is included to ease migration from Xamarin.Forms. .NET MAUI layout correctly measures <xref:Microsoft.Maui.Controls.Frame> `Padding` across all platforms, whereas Xamarin.Forms had some discrepencies across platforms. This may result in your applications not looking the same in .NET MAUI. The code snippet above accounts for this if you're using default values.    
+<xref:Microsoft.Maui.Controls.Frame> has been replaced in .NET MAUI by <xref:Microsoft.Maui.Controls.Border>, however it is included to ease migration from Xamarin.Forms. .NET MAUI layout correctly measures <xref:Microsoft.Maui.Controls.Frame> `Padding` across all platforms, whereas Xamarin.Forms had some discrepencies across platforms. This may result in your applications not looking the same in .NET MAUI. The code snippet above accounts for this if you're using default values.
 
 ## Grid
 
