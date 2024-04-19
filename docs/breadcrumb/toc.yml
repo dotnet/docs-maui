@@ -9,7 +9,6 @@
     - name: .NET MAUI
       tocHref: /dotnet/maui
       topicHref: /dotnet/maui/index
-      items:
     - name: .NET MAUI
       tocHref: /dotnet/architecture/maui
       topicHref: /dotnet/maui/index
