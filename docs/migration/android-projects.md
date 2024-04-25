@@ -120,16 +120,16 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 ## Linker
 
-.NET 5+ has new settings for the linker:
+.NET 8 has new settings for the linker:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
-- `<TrimMode>link</TrimMode>`, which enables member-level trimming.
+- `<TrimMode>partial</TrimMode>`, which enables member-level trimming.
 
 For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
 
-In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=link`. `TrimMode=copyused` is the default for the .NET SDK but isn't appropriate for mobile apps. However, you can still opt into `TrimMode=copyused` if required.
+In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`. `TrimMode=full` is the default for the .NET SDK but isn't appropriate for all mobile apps.
 
-If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent linker settings:
+If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent older linker settings:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
 - `<TrimMode>link</TrimMode>`
