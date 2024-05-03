@@ -18,7 +18,7 @@ The process for migrating a Xamarin.Forms effect to .NET MAUI is to:
 
 ## Remove effect attributes
 
-Any <xref:Xamarin.Forms.ResolutionGroupNameAttribute> and <xref:Xamarin.Forms.ExportEffectAttribute> attributes should be removed from your effect classes.
+Any `ResolutionGroupNameAttribute` and `ExportEffectAttribute` attributes should be removed from your effect classes.
 
 ## Remove using directives
 
