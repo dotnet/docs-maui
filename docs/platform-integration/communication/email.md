@@ -61,7 +61,7 @@ The Email functionality works by providing the email information as an argument 
 
 When creating the email provided to the email client, you can add file attachments. The file type (MIME) is automatically detected, so you don't need to specify it. Some mail clients may restrict the types of files you send, or possibly prevent attachments altogether.
 
-Use the <xref:Xamarin.Essentials.EmailMessage.Attachments?displayProperty=nameWithType> collection to manage the files attached to an email.
+Use the <xref:Microsoft.Maui.ApplicationModel.Communication.EmailMessage.Attachments?displayProperty=nameWithType> collection to manage the files attached to an email.
 
 The following example demonstrates adding an image file to the email attachments.
 
