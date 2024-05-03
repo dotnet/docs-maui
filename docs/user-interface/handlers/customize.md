@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: "Learn how to customize .NET MAUI handlers, to augment the appearance and behavior of a cross-platform control."
-ms.date: 08/15/2022
+ms.date: 05/03/2024
 ---
 
 # Customize controls with handlers
@@ -204,7 +204,12 @@ The <xref:Microsoft.Maui.Controls.Element.HandlerChanging> event is raised befor
 
 ### Partial classes
 
-Rather than using conditional compilation, it's also possible to use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class and a platform-specific partial class. The following example shows the cross-platform partial class:
+Rather than using conditional compilation, it's also possible to use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class and a platform-specific partial class:
+
+- The cross-platform partial class typically defines members, but doesn't implement them, and is built for all platforms. This class shouldn't be placed in any of the *Platforms* child folders of your project, because doing so would make it a platform-specific class.
+- The platform-specific partial class typically implements the members defined in the cross-platform partial class, and is built for a single platform. This class should be placed in the child folder of the *Platforms* folder for your chosen platform.
+
+The following example shows a cross-platform partial class:
 
 ```csharp
 namespace CustomizeHandlersDemo.Views;
@@ -223,9 +228,6 @@ public partial class CustomizeEntryPartialMethodsPage : ContentPage
     void OnEntryHandlerChanging(object sender, HandlerChangingEventArgs e) => ChangingHandler(sender, e);
 }
 ```
-
-> [!IMPORTANT]
-> The cross-platform partial class shouldn't be placed in any of the *Platforms* child folders of your project.
 
 In this example, the two event handlers call partial methods named `ChangedHandler` and `ChangingHandler`, whose signatures are defined in the cross-platform partial class. The partial method implementations are then defined in the platform-specific partial classes, which should be placed in the correct *Platforms* child folders to ensure that the build system only attempts to build native code when building for the specific platform. For example, the following code shows the `CustomizeEntryPartialMethodsPage` class in the *Platforms* > *Windows* folder of the project:
 
