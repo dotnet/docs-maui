@@ -220,7 +220,7 @@ To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetC
     }
     ```
 
-- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Micrsofot.AspNetCore.Components.WebView.Maui.BlazorWebViewInitializing> event:
+- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewInitializing> event:
 
     ```csharp
     private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
