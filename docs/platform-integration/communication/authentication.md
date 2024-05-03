@@ -38,7 +38,7 @@ To access the <xref:Microsoft.Maui.Authentication.WebAuthenticator> functionalit
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Android requires an **Intent Filter** setup to handle your callback URI. This is accomplished by inheriting from the <xref:Xamarin.Essentials.WebAuthenticatorCallbackActivity> class:
+Android requires an **Intent Filter** setup to handle your callback URI. This is accomplished by inheriting from the `WebAuthenticatorCallbackActivity` class:
 
 :::code language="csharp" source="../snippets/shared_1/Platforms/Android/WebAuthActivity.cs":::
 
