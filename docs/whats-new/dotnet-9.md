@@ -21,18 +21,18 @@ For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/c
 
 ## Android
 
-.NET Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET Android 9 Preview, see the following release notes:
+.NET for Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
 
-- [.NET Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.231)
-- [.NET Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
-- [.NET Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.1.151)
+- [.NET for Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.231)
+- [.NET for Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
+- [.NET for Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.1.151)
 
 ### Asset packs
 
-.NET Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
+.NET for Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
 
 > [!IMPORTANT]
-> Asset packs can only contain assets. In the case of .NET Android this means items that have the `AndroidAsset` build action.
+> Asset packs can only contain assets. In the case of .NET for Android this means items that have the `AndroidAsset` build action.
 
 .NET MAUI apps define assets via the `MauiAsset` build action. An asset pack can be specified via the `AssetPack` attribute:
 
@@ -83,7 +83,7 @@ For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS,
 
 ### Bindings
 
-.NET iOS 9 Preview 3 introduces the ability to multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct iOS versions:
+.NET for iOS 9 Preview 3 introduces the ability to multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct iOS versions:
 
 ```xml
 <TargetFrameworks>net9.0-ios17.0;net9.0-ios17.2</TargetFrameworks>

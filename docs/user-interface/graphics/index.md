@@ -24,9 +24,9 @@ The following table lists the graphics abstractions that are supported on each p
 | Platform | Graphics abstractions |
 | -- | -- |
 | .NET MAUI | Platform support as shown per platform below. |
-| .NET iOS | CoreGraphics, SkiaSharp |
-| .NET Android | Android.Graphics, SkiaSharp |
-| .NET macOS | CoreGraphics, SkiaSharp |
+| .NET for iOS | CoreGraphics, SkiaSharp |
+| .NET for Android | Android.Graphics, SkiaSharp |
+| .NET for macOS | CoreGraphics, SkiaSharp |
 | Windows Presentation Foundation | SharpDX, XAML, GDI, SkiaSharp |
 | Universal Windows Platform | SharpDX, Win2D, XAML, SkiaSharp |
 | Windows Forms | SharpDX, GDI, SkiaSharp |
