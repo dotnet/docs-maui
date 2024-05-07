@@ -6,7 +6,7 @@ ms.date: 02/15/2023
 
 # Xamarin Apple project migration
 
-A .NET 8 project for a .NET iOS app is similar to the following example:
+A .NET 8 project for a .NET for iOS app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -47,7 +47,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 
 ### Convert to RuntimeIdentifier
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property, or the `RuntimeIdentifiers` property, when migrating a Xamarin.iOS project to .NET iOS:
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property, or the `RuntimeIdentifiers` property, when migrating a Xamarin.iOS project to .NET for iOS:
 
 | Value              | RuntimeIdentifier  | RuntimeIdentifiers                |
 | ------------------ | ------------------ | --------------------------------- |
@@ -64,7 +64,7 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 > [!IMPORTANT]
 > If you have multiple runtime identifiers, use the `RuntimeIdentifiers` property rather than the `RuntimeIdentifier` property.
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET macOS+:
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
 
 | Property | RuntimeIdentifier |
 | -------- | ----------------- |

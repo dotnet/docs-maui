@@ -1,17 +1,17 @@
 ---
-title: "Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps"
-description: "Learn how to migrate your Xamarin.Essentials code in .NET iOS and .NET Android apps."
+title: "Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps"
+description: "Learn how to migrate your Xamarin.Essentials code in .NET for iOS and .NET for Android apps."
 ms.date: 03/09/2023
 no-loc: [ "Xamarin.Essentials", ".NET MAUI" ]
 ---
 
-# Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps
+# Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps
 
 Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and its functionality is now part of .NET Multi-platform App UI (.NET MAUI).
 
-The following steps outline the process to use .NET MAUI's native device functionality, formerly known as Xamarin.Essentials, in a .NET Android or .NET iOS app:
+The following steps outline the process to use .NET MAUI's native device functionality, formerly known as Xamarin.Essentials, in a .NET for Android or .NET for iOS app:
 
-1. Remove the Xamarin.Essentials NuGet package from your .NET Android or .NET iOS app.
+1. Remove the Xamarin.Essentials NuGet package from your .NET for Android or .NET for iOS app.
 1. Set the `$(UseMauiEssentials)` build property to `true` in your project file. For more information, see [Modify your project file](#modify-your-project-file).
 1. Initialize the "essentials" functionality by calling the `Platform.Init` method. For more information, see [Initialize the platform](#initialize-the-platform).
 1. Perform additional setup, if necessary. For more information, see [Perform additional setup](#perform-additional-setup).
@@ -22,7 +22,7 @@ The following steps outline the process to use .NET MAUI's native device functio
 
 ## Modify your project file
 
-To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
+To use .NET MAUIs native device functionality in a .NET for Android or .NET for iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -228,7 +228,7 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
 
 ## Add using directives
 
-The implicit `global using` directives for .NET iOS and .NET Android don't include the namespaces for .NET MAUIs native device functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace that contains the required functionality:
+The implicit `global using` directives for .NET for iOS and .NET for Android don't include the namespaces for .NET MAUIs native device functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace that contains the required functionality:
 
 | Namespace | Purpose |
 | --------- | ------- |
