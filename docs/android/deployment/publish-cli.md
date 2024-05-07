@@ -15,7 +15,7 @@ To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need 
 
 ## Create a keystore file
 
-During development, .NET Android uses a debug keystore to sign the app, which allows it to be deployed directly to an emulator or to devices configured to run debuggable apps. However, this keystore isn't recognized as a valid keystore for the purposes of distributing apps. Therefore, a private keystore must be created and used for signing release builds. This is a step that should only be performed once, as the same key will be used for publishing updates and can be used to sign other apps. After generating a keystore file, you'll supply its details from the command line when building the app, or configure your project file to reference it.
+During development, .NET for Android uses a debug keystore to sign the app, which allows it to be deployed directly to an emulator or to devices configured to run debuggable apps. However, this keystore isn't recognized as a valid keystore for the purposes of distributing apps. Therefore, a private keystore must be created and used for signing release builds. This is a step that should only be performed once, as the same key will be used for publishing updates and can be used to sign other apps. After generating a keystore file, you'll supply its details from the command line when building the app, or configure your project file to reference it.
 
 Perform the following steps to create a keystore file:
 

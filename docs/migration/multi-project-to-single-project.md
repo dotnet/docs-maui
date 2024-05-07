@@ -65,7 +65,7 @@ Code, and their containing folders, from your Xamarin.Forms head projects should
 - Code from your Xamarin.Forms iOS head project should be copied to the *Platforms\iOS* folder of your .NET MAUI app project. In addition, copy any custom code from your Xamarin.Forms `AppDelegate` class to the same class in your .NET MAUI app project.
 
     > [!NOTE]
-    > For a list of breaking changes in .NET iOS, see [Breaking changes in .NET iOS](https://github.com/xamarin/xamarin-macios/wiki/Breaking-changes-in-.NET).
+    > For a list of breaking changes in .NET for iOS, see [Breaking changes in .NET for iOS](https://github.com/xamarin/xamarin-macios/wiki/Breaking-changes-in-.NET).
 
 - Code from your Xamarin.Forms UWP head project should be copied to the *Platforms\Windows* folder of your .NET MAUI app project. In addition, copy any custom code from your Xamarin.Forms `App` class to the same class in your .NET MAUI app project.
 

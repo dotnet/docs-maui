@@ -199,5 +199,5 @@ Prior to building your upgraded app for the first time, delete the `bin` and `ob
 ## See also
 
 - [Release notes for .NET MAUI](https://github.com/dotnet/maui/releases/tag/8.0.3)
-- [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
-- [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/34.0.43)
+- [Release notes for .NET for iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
+- [Release notes for .NET for Android](https://github.com/xamarin/xamarin-android/releases/tag/34.0.43)
