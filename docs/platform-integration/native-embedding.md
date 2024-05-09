@@ -1,7 +1,7 @@
 ---
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
-ms.date: 03/11/2024
+ms.date: 05/09/2024
 zone_pivot_groups: devices-deployment
 ---
 
@@ -555,9 +555,11 @@ On iOS and Mac Catalyst, the `ToPlatformEmbedded` extension method converts the 
 ```csharp
 var mauiView = new MyMauiContent();
 UIView nativeView = mauiView.ToPlatformEmbedded(mauiContext);
+nativeView.WidthAnchor.ConstraintEqualTo(View.Frame.Width).Active = true;
+nativeView.HeightAnchor.ConstraintEqualTo(500).Active = true;
 ```
 
-In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to a <xref:UIKit.UIView> object.
+In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to a <xref:UIKit.UIView> object and then width and height constraints are set on it to allow interaction.
 
 > [!NOTE]
 > The `ToPlatformEmbedded` extension method is in the .NET MAUI class library you created earlier. Therefore your native app project should include a reference to that project.
@@ -567,9 +569,6 @@ The <xref:UIKit.UIView> object can then be added to a view in your view controll
 ```csharp
 stackView.AddArrangedSubView(nativeView);
 ```
-
-> [!WARNING]
-> It's not currently possible to interact with the .NET MAUI UI on iOS and Mac Catalyst. For more information, see [GitHub issue #19340](https://github.com/dotnet/maui/issues/19340).
 
 In addition, a `ToUIViewController` extension method in .NET MAUI can be used to attempt to convert a .NET MAUI page to a <xref:UIKit.UIViewController>:
 
