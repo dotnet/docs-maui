@@ -1,7 +1,7 @@
 ---
 title: "Populate a CollectionView with Data"
 description: "A .NET MAUI CollectionView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 01/18/2022
+ms.date: 05/09/2024
 ---
 
 # Populate a CollectionView with data
@@ -320,6 +320,9 @@ For more information about <xref:Microsoft.Maui.Controls.RefreshView>, see [Refr
 ## Load data incrementally
 
 <xref:Microsoft.Maui.Controls.CollectionView> supports incremental data virtualization as the user scrolls. This enables scenarios such as asynchronously loading a page of data from a web service, as the user scrolls. In addition, the point at which more data is loaded is configurable so that users don't see blank space, or are stopped from scrolling.
+
+> [!WARNING]
+> Don't attempt to load data incrementally in a <xref:Microsoft.Maui.Controls.CollectionView> that's in a <xref:Microsoft.Maui.Controls.StackLayout>. This scenario will cause an infinite loop to occur where the <xref:Microsoft.Maui.Controls.CollectionView> will keep expanding.
 
 <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties to control incremental loading of data:
 
