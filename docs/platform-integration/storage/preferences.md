@@ -76,10 +76,9 @@ The following methods take a string parameter named `sharedName`:
 
 ## Integrate with system settings
 
-Preferences are stored natively, which allows you to integrate your settings into the native system settings. Follow the platform documentation and samples to integrate with the platform:
+Preferences are stored natively, which allows you to integrate your settings into the native system settings. Follow the platform documentation to integrate with the platform:
 
 - Apple: [Implementing an iOS Settings Bundle](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html)
-- [iOS Application Preferences Sample](/samples/xamarin/ios-samples/appprefs/)
 - Android: [Getting Started with Settings Screens](https://developer.android.com/guide/topics/ui/settings.html)
 
 ## Platform differences
