@@ -577,175 +577,175 @@
           href: platform-integration/invoke-platform-code.md
         - name: Native embedding
           href: platform-integration/native-embedding.md
-      - name: Platform features
-        items:
-          - name: Overview
-            href: platform-integration/index.md
-          - name: Application model
-            items:
-              - name: App actions
-                href: platform-integration/appmodel/app-actions.md
-              - name: App information
-                href: platform-integration/appmodel/app-information.md
-              - name: Browser
-                href: platform-integration/appmodel/open-browser.md
-              - name: Launcher
-                href: platform-integration/appmodel/launcher.md
-              - name: Main thread
-                href: platform-integration/appmodel/main-thread.md
-              - name: Map
-                href: platform-integration/appmodel/maps.md
-              - name: Permissions
-                href: platform-integration/appmodel/permissions.md
-              - name: Version tracking
-                href: platform-integration/appmodel/version-tracking.md
-          - name: Communication
-            items:
-              - name: Contacts
-                href: platform-integration/communication/contacts.md
-              - name: Email
-                href: platform-integration/communication/email.md
-              - name: Networking
-                href: platform-integration/communication/networking.md
-              - name: Phone dialer
-                href: platform-integration/communication/phone-dialer.md
-              - name: SMS (messaging)
-                href: platform-integration/communication/sms.md
-              - name: Web authenticator
-                href: platform-integration/communication/authentication.md
-          - name: Device features
-            items:
-              - name: Battery
-                href: platform-integration/device/battery.md
-              - name: Device display
-                href: platform-integration/device/display.md
-              - name: Device information
-                href: platform-integration/device/information.md
-              - name: Device sensors
-                href: platform-integration/device/sensors.md
-                displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
-              - name: Flashlight
-                href: platform-integration/device/flashlight.md
-              - name: Geocoding
-                href: platform-integration/device/geocoding.md
-              - name: Geolocation
-                href: platform-integration/device/geolocation.md
-              - name: Haptic feedback
-                href: platform-integration/device/haptic-feedback.md
-              - name: Vibration
-                href: platform-integration/device/vibrate.md
-          - name: Media
-            items:
-              - name: Photos and videos
-                href: platform-integration/device-media/picker.md
-              - name: Screenshot
-                href: platform-integration/device-media/screenshot.md
-              - name: Text-to-speech
-                href: platform-integration/device-media/text-to-speech.md
-              - name: Unit converters
-                href: platform-integration/device-media/unit-converters.md
-          - name: Platform-specifics
-            items:
-              - name: Android
-                items:
-                  - name: Overview
-                    href: android/platform-specifics/index.md
-                  - name: Entry input method editor options
-                    href: android/platform-specifics/entry-ime-options.md
-                  - name: ListView fast scrolling
-                    href: android/platform-specifics/listview-fast-scrolling.md
-                  - name: Soft keyboard input mode
-                    href: android/platform-specifics/soft-keyboard-input-mode.md
-                  - name: SwipeView swipe transition mode
-                    href: android/platform-specifics/swipeview-swipetransitionmode.md
-                  - name: TabbedPage page swiping
-                    href: android/platform-specifics/tabbedpage-page-swiping.md
-                  - name: TabbedPage page transition animations
-                    href: android/platform-specifics/tabbedpage-transition-animations.md
-                  - name: TabbedPage toolbar placement
-                    href: android/platform-specifics/tabbedpage-toolbar-placement.md
-                  - name: WebView mixed content
-                    href: android/platform-specifics/webview-mixed-content.md
-                  - name: WebView zoom
-                    href: android/platform-specifics/webview-zoom-controls.md
-              - name: iOS
-                items:
-                  - name: Overview
-                    href: ios/platform-specifics/index.md
-                  - name: Cell background color
-                    href: ios/platform-specifics/cell-background-color.md
-                  - name: DatePicker item selection
-                    href: ios/platform-specifics/datepicker-selection.md
-                  - name: Entry cursor color
-                    href: ios/platform-specifics/entry-cursor-color.md
-                  - name: Entry font size
-                    href: ios/platform-specifics/entry-font-size.md
-                  - name: FlyoutPage shadow
-                    href: ios/platform-specifics/flyoutpage-shadow.md
-                  - name: Large page titles
-                    href: ios/platform-specifics/page-large-title.md
-                  - name: ListView group header style
-                    href: ios/platform-specifics/listview-group-header-style.md
-                  - name: ListView row animations
-                    href: ios/platform-specifics/listview-row-animations.md
-                  - name: ListView separator style
-                    href: ios/platform-specifics/listview-separator-style.md
-                  - name: Modal page presentation style
-                    href: ios/platform-specifics/page-presentation-style.md
-                  - name: NavigationPage bar translucency
-                    href: ios/platform-specifics/navigation-bar-translucent.md
-                  - name: Picker item selection
-                    href: ios/platform-specifics/picker-selection.md
-                  - name: Safe area layout guide
-                    href: ios/platform-specifics/page-safe-area-layout.md
-                  - name: ScrollView content touches
-                    href: ios/platform-specifics/scrollview-content-touches.md
-                  - name: SearchBar style
-                    href: ios/platform-specifics/searchbar-style.md
-                  - name: Simultaneous pan gesture recognition
-                    href: ios/platform-specifics/application-pan-gesture.md
-                  - name: Slider thumb tap
-                    href: ios/platform-specifics/slider-thumb.md
-                  - name: SwipeView swipe transition mode
-                    href: ios/platform-specifics/swipeview-swipetransitionmode.md
-                  - name: TabbedPage translucent tabbar
-                    href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
-                  - name: TimePicker item selection
-                    href: ios/platform-specifics/timepicker-selection.md
-              - name: Windows
-                items:
-                  - name: Overview
-                    href: windows/platform-specifics/index.md
-                  - name: Default image directory
-                    href: windows/platform-specifics/default-image-directory.md
-                  - name: InputView reading order
-                    href: windows/platform-specifics/inputview-reading-order.md
-                  - name: ListView SelectionMode
-                    href: windows/platform-specifics/listview-selectionmode.md
-                  - name: RefreshView pull direction
-                    href: windows/platform-specifics/refreshview-pulldirection.md
-                  - name: SearchBar spell check
-                    href: windows/platform-specifics/searchbar-spell-check.md
-                  - name: VisualElement access keys
-                    href: windows/platform-specifics/visualelement-access-keys.md
-          - name: Sharing
-            items:
-              - name: Clipboard
-                href: platform-integration/data/clipboard.md
-              - name: Share files and text
-                href: platform-integration/data/share.md
-          - name: Storage
-            items:
-              - name: File picker
-                href: platform-integration/storage/file-picker.md
-              - name: File system helpers
-                href: platform-integration/storage/file-system-helpers.md
-              - name: Preferences
-                href: platform-integration/storage/preferences.md
-              - name: Secure storage
-                href: platform-integration/storage/secure-storage.md
-          - name: Platform helpers
-            href: platform-integration/platform-helpers.md
+    - name: Platform features
+      items:
+        - name: Overview
+          href: platform-integration/index.md
+        - name: Application model
+          items:
+            - name: App actions
+              href: platform-integration/appmodel/app-actions.md
+            - name: App information
+              href: platform-integration/appmodel/app-information.md
+            - name: Browser
+              href: platform-integration/appmodel/open-browser.md
+            - name: Launcher
+              href: platform-integration/appmodel/launcher.md
+            - name: Main thread
+              href: platform-integration/appmodel/main-thread.md
+            - name: Map
+              href: platform-integration/appmodel/maps.md
+            - name: Permissions
+              href: platform-integration/appmodel/permissions.md
+            - name: Version tracking
+              href: platform-integration/appmodel/version-tracking.md
+        - name: Communication
+          items:
+            - name: Contacts
+              href: platform-integration/communication/contacts.md
+            - name: Email
+              href: platform-integration/communication/email.md
+            - name: Networking
+              href: platform-integration/communication/networking.md
+            - name: Phone dialer
+              href: platform-integration/communication/phone-dialer.md
+            - name: SMS (messaging)
+              href: platform-integration/communication/sms.md
+            - name: Web authenticator
+              href: platform-integration/communication/authentication.md
+        - name: Device features
+          items:
+            - name: Battery
+              href: platform-integration/device/battery.md
+            - name: Device display
+              href: platform-integration/device/display.md
+            - name: Device information
+              href: platform-integration/device/information.md
+            - name: Device sensors
+              href: platform-integration/device/sensors.md
+              displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
+            - name: Flashlight
+              href: platform-integration/device/flashlight.md
+            - name: Geocoding
+              href: platform-integration/device/geocoding.md
+            - name: Geolocation
+              href: platform-integration/device/geolocation.md
+            - name: Haptic feedback
+              href: platform-integration/device/haptic-feedback.md
+            - name: Vibration
+              href: platform-integration/device/vibrate.md
+        - name: Media
+          items:
+            - name: Photos and videos
+              href: platform-integration/device-media/picker.md
+            - name: Screenshot
+              href: platform-integration/device-media/screenshot.md
+            - name: Text-to-speech
+              href: platform-integration/device-media/text-to-speech.md
+            - name: Unit converters
+              href: platform-integration/device-media/unit-converters.md
+        - name: Platform-specifics
+          items:
+            - name: Android
+              items:
+                - name: Overview
+                  href: android/platform-specifics/index.md
+                - name: Entry input method editor options
+                  href: android/platform-specifics/entry-ime-options.md
+                - name: ListView fast scrolling
+                  href: android/platform-specifics/listview-fast-scrolling.md
+                - name: Soft keyboard input mode
+                  href: android/platform-specifics/soft-keyboard-input-mode.md
+                - name: SwipeView swipe transition mode
+                  href: android/platform-specifics/swipeview-swipetransitionmode.md
+                - name: TabbedPage page swiping
+                  href: android/platform-specifics/tabbedpage-page-swiping.md
+                - name: TabbedPage page transition animations
+                  href: android/platform-specifics/tabbedpage-transition-animations.md
+                - name: TabbedPage toolbar placement
+                  href: android/platform-specifics/tabbedpage-toolbar-placement.md
+                - name: WebView mixed content
+                  href: android/platform-specifics/webview-mixed-content.md
+                - name: WebView zoom
+                  href: android/platform-specifics/webview-zoom-controls.md
+            - name: iOS
+              items:
+                - name: Overview
+                  href: ios/platform-specifics/index.md
+                - name: Cell background color
+                  href: ios/platform-specifics/cell-background-color.md
+                - name: DatePicker item selection
+                  href: ios/platform-specifics/datepicker-selection.md
+                - name: Entry cursor color
+                  href: ios/platform-specifics/entry-cursor-color.md
+                - name: Entry font size
+                  href: ios/platform-specifics/entry-font-size.md
+                - name: FlyoutPage shadow
+                  href: ios/platform-specifics/flyoutpage-shadow.md
+                - name: Large page titles
+                  href: ios/platform-specifics/page-large-title.md
+                - name: ListView group header style
+                  href: ios/platform-specifics/listview-group-header-style.md
+                - name: ListView row animations
+                  href: ios/platform-specifics/listview-row-animations.md
+                - name: ListView separator style
+                  href: ios/platform-specifics/listview-separator-style.md
+                - name: Modal page presentation style
+                  href: ios/platform-specifics/page-presentation-style.md
+                - name: NavigationPage bar translucency
+                  href: ios/platform-specifics/navigation-bar-translucent.md
+                - name: Picker item selection
+                  href: ios/platform-specifics/picker-selection.md
+                - name: Safe area layout guide
+                  href: ios/platform-specifics/page-safe-area-layout.md
+                - name: ScrollView content touches
+                  href: ios/platform-specifics/scrollview-content-touches.md
+                - name: SearchBar style
+                  href: ios/platform-specifics/searchbar-style.md
+                - name: Simultaneous pan gesture recognition
+                  href: ios/platform-specifics/application-pan-gesture.md
+                - name: Slider thumb tap
+                  href: ios/platform-specifics/slider-thumb.md
+                - name: SwipeView swipe transition mode
+                  href: ios/platform-specifics/swipeview-swipetransitionmode.md
+                - name: TabbedPage translucent tabbar
+                  href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
+                - name: TimePicker item selection
+                  href: ios/platform-specifics/timepicker-selection.md
+            - name: Windows
+              items:
+                - name: Overview
+                  href: windows/platform-specifics/index.md
+                - name: Default image directory
+                  href: windows/platform-specifics/default-image-directory.md
+                - name: InputView reading order
+                  href: windows/platform-specifics/inputview-reading-order.md
+                - name: ListView SelectionMode
+                  href: windows/platform-specifics/listview-selectionmode.md
+                - name: RefreshView pull direction
+                  href: windows/platform-specifics/refreshview-pulldirection.md
+                - name: SearchBar spell check
+                  href: windows/platform-specifics/searchbar-spell-check.md
+                - name: VisualElement access keys
+                  href: windows/platform-specifics/visualelement-access-keys.md
+        - name: Sharing
+          items:
+            - name: Clipboard
+              href: platform-integration/data/clipboard.md
+            - name: Share files and text
+              href: platform-integration/data/share.md
+        - name: Storage
+          items:
+            - name: File picker
+              href: platform-integration/storage/file-picker.md
+            - name: File system helpers
+              href: platform-integration/storage/file-system-helpers.md
+            - name: Preferences
+              href: platform-integration/storage/preferences.md
+            - name: Secure storage
+              href: platform-integration/storage/secure-storage.md
+        - name: Platform helpers
+          href: platform-integration/platform-helpers.md
     - name: Data & cloud services
       items:
         - name: AI
