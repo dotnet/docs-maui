@@ -549,7 +549,7 @@
               items:
               - name: Overview
                 href: /dotnet/android/messages?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: ADBxxxx: ADB tooling
+              - name: "ADBxxxx: ADB tooling"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#adbxxxx-adb-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -567,7 +567,7 @@
                   href: /dotnet/android/messages/adb0050?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: ADB0060
                   href: /dotnet/android/messages/adb0060?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: ANDXXxxxx: Generic Android tooling
+              - name: "ANDXXxxxx: Generic Android tooling"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -579,7 +579,7 @@
                   href: /dotnet/android/messages/andkt0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: ANDZA0000
                   href: /dotnet/android/messages/andza0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: APTxxxx: AAPT tooling
+              - name: "APTxxxx: AAPT tooling"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#aptxxxx-aapt-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -591,19 +591,19 @@
                   href: /dotnet/android/messages/apt2264?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: APT2265
                   href: /dotnet/android/messages/apt2265?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: JAVAxxxx: Java tool
+              - name: "JAVAxxxx: Java tool"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#javaxxxx-java-tool?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: JAVA0000
                   href: /dotnet/android/messages/java0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: JAVACxxxx: Java compiler
+              - name: "JAVACxxxx: Java compiler"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#javacxxxx-java-compiler?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: JAVAC0000
                   href: /dotnet/android/messages/javac0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA0xxx: Environment issue or missing tooling
+              - name: "XA0xxx: Environment issue or missing tooling"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa0xxx-environment-issue-or-missing-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -697,7 +697,7 @@
                   href: messages/xa0139?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA0140
                   href: messages/xa0140?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA1xxx: Project related
+              - name: "XA1xxx: Project related"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa1xxx-project-related?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -749,7 +749,7 @@
                   href: /dotnet/android/messages/xa1036?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA1037
                   href: /dotnet/android/messages/xa1037?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA2xxx: Linker
+              - name: "XA2xxx: Linker"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa2xxx-linker?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -759,9 +759,9 @@
                   href: /dotnet/android/messages/xa2001?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA2002
                   href: /dotnet/android/messages/xa2002?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA3xxx: Unmanaged code compilation
+              - name: "XA3xxx: Unmanaged code compilation"
                 href: /dotnet/android/messages/#xa3xxx-unmanaged-code-compilation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA4xxx: Code generation
+              - name: "XA4xxx: Code generation"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa4xxx-code-generation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -829,7 +829,7 @@
                   href: /dotnet/android/messages/xa4313?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4314
                   href: /dotnet/android/messages/xa4314?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA5xxx: GCC and toolchain
+              - name: "XA5xxx: GCC and toolchain"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa5xxx-gcc-and-toolchain?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -843,11 +843,11 @@
                   href: /dotnet/android/messages/xa5301?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA5302
                   href: /dotnet/android/messages/xa5302?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA6xxx: Internal tools
+              - name: "XA6xxx: Internal tools"
                 href: /dotnet/android/messages/#xa6xxx-internal-tools?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XAccc7xxx: Unhandled MSBuild exceptions
+              - name: "XAccc7xxx: Unhandled MSBuild exceptions"
                 href: /dotnet/android/messages/#xaccc7xxx-unhandled-msbuild-exceptions?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: XA8xxx: Linker step errors
+              - name: "XA8xxx: Linker step errors"
                 items:
                 - name: Overview
                   href: /dotnet/android/messages/#xa8xxx-linker-step-errors?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
