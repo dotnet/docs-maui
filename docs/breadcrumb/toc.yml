@@ -27,3 +27,9 @@
     - name: .NET MAUI
       tocHref: /entra
       topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/building-apps
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/features
+      topicHref: /dotnet/maui/index
