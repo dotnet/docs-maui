@@ -527,18 +527,18 @@
                 href: /dotnet/android/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Build items
                 href: /dotnet/android/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: Features
+            - name: Features
+              items:
+              - name: Layout code behind
+                href: /dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Maven
                 items:
-                - name: Layout code behind
-                  href: /dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-                - name: Maven
-                  items:
-                  - name: "@(AndroidMavenLibrary) build item"
-                    href: /dotnet/android/features/maven/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-                  - name: Resolving Java ependencies
-                    href: /dotnet/android/features/maven/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-                  - name: Java dependency verification
-                    href: /dotnet/android/features/maven/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: "@(AndroidMavenLibrary) build item"
+                  href: /dotnet/android/features/maven/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Resolving Java ependencies
+                  href: /dotnet/android/features/maven/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Java dependency verification
+                  href: /dotnet/android/features/maven/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Internals
               items:
                 - name: Java and managed code interoperability
