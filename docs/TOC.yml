@@ -746,8 +746,6 @@
                 href: platform-integration/storage/secure-storage.md
           - name: Platform helpers
             href: platform-integration/platform-helpers.md
-
-
     - name: Data & cloud services
       items:
         - name: AI
