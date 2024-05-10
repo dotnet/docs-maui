@@ -33,3 +33,6 @@
     - name: .NET MAUI
       tocHref: /dotnet/android/features
       topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/messages
+      topicHref: /dotnet/maui/index
