@@ -535,7 +535,7 @@
                 items:
                 - name: "@(AndroidMavenLibrary) build item"
                   href: /dotnet/android/features/maven/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-                - name: Resolving Java ependencies
+                - name: Resolving Java dependencies
                   href: /dotnet/android/features/maven/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: Java dependency verification
                   href: /dotnet/android/features/maven/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
