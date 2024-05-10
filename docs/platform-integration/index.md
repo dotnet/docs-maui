@@ -1,10 +1,10 @@
 ---
-title: "Platform integration"
+title: "Platform features"
 description: ".NET MAUI provides cross-platform APIs to access platform functionality that includes access to sensors, storing data, and checking network connectivity."
 ms.date: 06/27/2022
 ---
 
-# Platform integration
+# Platform features
 
 Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique operating system and platform APIs that you can access from C#. .NET MAUI provides cross-platform APIs to access much of this platform functionality, which includes access to sensors, accessing information about the device an app is running on, checking network connectivity, storing data securely, and initiating browser-based authentication flows.
 
