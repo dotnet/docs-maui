@@ -37,21 +37,6 @@ In addition, all of the numeric values in a <xref:Microsoft.Maui.Graphics.Color?
 
 The following table lists the layout APIs that have been removed in the move from Xamarin.Forms to .NET MAUI:
 
-::: moniker range="=net-maui-7.0"
-
-> [!div class="mx-tdBreakAll"]
-> | Xamarin.Forms API | .NET MAUI API | Comments |
-> | ----------------- | ------------- | -------- |
-> | `Xamarin.Forms.AbsoluteLayout.IAbsoluteList<T>Add` |  | The `Add` overload that accepts 3 arguments isn't present in .NET MAUI. |
-> | `Xamarin.Forms.Grid.IGridList<T>.Add` |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
-> | `Xamarin.Forms.Grid.IGridList<T>.AddHorizontal` |  | No .NET MAUI equivalent. |
-> | `Xamarin.Forms.Grid.IGridList<T>.AddVertical` |  | No .NET MAUI equivalent. |
-> | `Xamarin.Forms.RelativeLayout` | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comments |
 > | ----------------- | ------------- | -------- |
@@ -59,8 +44,6 @@ The following table lists the layout APIs that have been removed in the move fro
 > | `Xamarin.Forms.Grid.IGridList<T>.AddHorizontal` |  | No .NET MAUI equivalent. |
 > | `Xamarin.Forms.Grid.IGridList<T>.AddVertical` |  | No .NET MAUI equivalent. |
 > | `Xamarin.Forms.RelativeLayout` | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
-
-::: moniker-end
 
 In addition, adding children to a layout in code in Xamarin.Forms is accomplished by adding the children to the layout's `Children` collection:
 

@@ -2,7 +2,6 @@
 title: "Class modifiers"
 description: "The .NET MAUI x:ClassModifier attribute specifies the access level for generated fields for named XAML elements."
 ms.date: 10/19/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Class modifiers
