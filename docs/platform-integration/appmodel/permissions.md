@@ -17,37 +17,6 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
-::: moniker range="=net-maui-7.0"
-
-| Permission                                                                              | Android | iOS | Windows | tvOS |
-|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
-| [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
-| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
-| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
-| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ❌      | ❌    |
-| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
-| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ❌      | ✔️   |
-| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
-| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
-| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
-| [NetworkState](xref:Microsoft.Maui.ApplicationModel.Permissions.NetworkState)           | ✔️     | ❌  | ❌      | ❌   |
-| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
-| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
-| [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
-| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
-| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
-| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
-| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
-| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
-| [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
 | [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
@@ -74,8 +43,6 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
 | [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
 | [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
-
-::: moniker-end
 
 If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
 

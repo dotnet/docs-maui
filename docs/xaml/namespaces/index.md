@@ -24,25 +24,6 @@ XAML uses prefixes to declare non-default namespaces, with the prefix being used
 
 The following table outlines the `x` constructs supported by .NET MAUI:
 
-::: moniker range="=net-maui-7.0"
-
-|Construct|Description|
-|--- |--- |
-|`x:Arguments`|Specifies constructor arguments for a non-default constructor, or for a factory method object declaration.|
-|`x:Class`|Specifies the namespace and class name for a class defined in XAML. The class name must match the class name of the code-behind file. Note that this construct can only appear in the root element of a XAML file.|
-|`x:DataType`|Specifies the type of the object that the XAML element, and it's children, will bind to.|
-|`x:FactoryMethod`|Specifies a factory method that can be used to initialize an object.|
-|`x:FieldModifier`|Specifies the access level for generated fields for named XAML elements.|
-|`x:Key`|Specifies a unique user-defined key for each resource in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key's value is used to retrieve the XAML resource, and is typically used as the argument for the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension.|
-|`x:Name`|Specifies a runtime object name for the XAML element. Setting `x:Name` is similar to declaring a variable in code.|
-|`x:TypeArguments`|Specifies the generic type arguments to the constructor of a generic type.|
-
-For more information about the `x:DataType` attribute, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md). For more information about the `x:FieldModifier` attribute, see [Field modifiers](~/xaml/field-modifiers.md). For more information about the `x:Arguments` and `x:FactoryMethod` attributes, see [Pass arguments](~/xaml/pass-arguments.md). For more information about the `x:TypeArguments` attribute, see [Generics](~/xaml/generics.md).
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 |Construct|Description|
 |--- |--- |
 |`x:Arguments`|Specifies constructor arguments for a non-default constructor, or for a factory method object declaration.|
@@ -56,8 +37,6 @@ For more information about the `x:DataType` attribute, see [Compiled bindings](~
 |`x:TypeArguments`|Specifies the generic type arguments to the constructor of a generic type.|
 
 For more information about the `x:ClassModifier` attribute, see [Class modifiers](~/xaml/class-modifiers.md). For more information about the `x:DataType` attribute, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md). For more information about the `x:FieldModifier` attribute, see [Field modifiers](~/xaml/field-modifiers.md). For more information about the `x:Arguments` and `x:FactoryMethod` attributes, see [Pass arguments](~/xaml/pass-arguments.md). For more information about the `x:TypeArguments` attribute, see [Generics](~/xaml/generics.md).
-
-::: moniker-end
 
 > [!NOTE]
 > In addition to the constructs listed above, .NET MAUI also includes markup extensions that can be consumed through the `x` namespace prefix. For more information, see [Consume XAML Markup Extensions](~/xaml/markup-extensions/consume.md).

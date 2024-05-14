@@ -26,39 +26,6 @@ Image loading functionality is provided by the <xref:Microsoft.Maui.Graphics.Pla
 
 The following example shows how to load an image:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using Microsoft.Maui.Graphics.Platform;
 using System.Reflection;
@@ -76,8 +43,6 @@ if (image != null)
     canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, the image is retrieved from the assembly, loaded as a stream, and displayed.
 
@@ -99,40 +64,6 @@ The <xref:Microsoft.Maui.Graphics.ResizeMode> enumeration defines the following 
 
 The following example shows how to resize an image:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    IImage newImage = image.Resize(100, 60, ResizeMode.Stretch, true);
-    canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using Microsoft.Maui.Graphics.Platform;
 using System.Reflection;
@@ -151,8 +82,6 @@ if (image != null)
     canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (10,10).
 
@@ -164,40 +93,6 @@ The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an o
 
 The following example shows how to downsize an image:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    IImage newImage = image.Downsize(100, true);
-    canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using Microsoft.Maui.Graphics.Platform;
 using System.Reflection;
@@ -216,8 +111,6 @@ if (image != null)
     canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (10,10).
 
@@ -229,44 +122,6 @@ You can save images using the <xref:Microsoft.Maui.Graphics.IImage.Save%2A> and 
 > The <xref:Microsoft.Maui.Graphics.IImage.Save%2A> and <xref:Microsoft.Maui.Graphics.IImage.SaveAsync%2A> methods on Android and iOS can save images to JPEG and PNG format.
 
 The following example shows how to save an image:
-
-::: moniker range="=net-maui-7.0"
-
-```csharp
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-// Save image to a memory stream
-if (image != null)
-{
-    IImage newImage = image.Downsize(150, true);
-    using (MemoryStream memStream = new MemoryStream())
-    {
-        newImage.Save(memStream);
-    }
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
 
 ```csharp
 using Microsoft.Maui.Graphics.Platform;
@@ -291,8 +146,6 @@ if (image != null)
     }
 }
 ```
-
-::: moniker-end
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.
 

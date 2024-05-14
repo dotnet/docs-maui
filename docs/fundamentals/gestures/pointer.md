@@ -8,19 +8,6 @@ ms.date: 10/16/2023
 
 A .NET Multi-platform App UI (.NET MAUI) pointer gesture recognizer detects when the pointer enters, exits, and moves within a view and is implemented with the <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> class. This class defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer enters the bounding area of the view.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer enters the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
@@ -32,23 +19,9 @@ A .NET Multi-platform App UI (.NET MAUI) pointer gesture recognizer detects when
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that has previously initiated a press is released, while within the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommandParameter>, of type `object`, which is the parameter that's passed to the <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommand>.
 
-::: moniker-end
-
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> class also defines the following events:
-
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEntered>, that's raised when the pointer enters the bounding area of the view.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExited>, that's raised when the pointer that's in the view's bounding area leaves that bounding area.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMoved>, that's raised when the pointer moves while remaining within the bounding area of the view.
-
-A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events, and defines a <xref:Microsoft.Maui.Controls.PointerEventArgs.GetPosition%2A> method that returns a `Point?` object that represents the position of the pointer when the gesture was detected. For more information about the <xref:Microsoft.Maui.Controls.PointerEventArgs.GetPosition%2A> method, see [Get the gesture position](#get-the-gesture-position).
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
 
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEntered>, that's raised when the pointer enters the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExited>, that's raised when the pointer that's in the view's bounding area leaves that bounding area.
@@ -86,8 +59,6 @@ On Windows, the <xref:Microsoft.Maui.Controls.PlatformPointerEventArgs> class de
 <!-- markdownlint-enable MD025 -->
 
 In addition, the <xref:Microsoft.Maui.Controls.PointerEventArgs> object defines a <xref:Microsoft.Maui.Controls.PointerEventArgs.GetPosition%2A> method that returns a `Point?` object that represents the position of the pointer when the gesture was detected. For more information about the <xref:Microsoft.Maui.Controls.PointerEventArgs.GetPosition%2A> method, see [Get the gesture position](#get-the-gesture-position).
-
-::: moniker-end
 
 > [!IMPORTANT]
 > Pointer gesture recognition is supported on Android, iPadOS, Mac Catalyst, and Windows.
