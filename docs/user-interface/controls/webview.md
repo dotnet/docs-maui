@@ -11,24 +11,11 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView
 
 <xref:Microsoft.Maui.Controls.WebView> defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.WebView.Cookies>, of type `CookieContainer`, provides storage for a collection of cookies.
-- <xref:Microsoft.Maui.Controls.WebView.CanGoBack>, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
-- <xref:Microsoft.Maui.Controls.WebView.CanGoForward>, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
-- <xref:Microsoft.Maui.Controls.WebView.Source>, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.Maui.Controls.WebView.Cookies>, of type `CookieContainer`, provides storage for a collection of cookies.
 - <xref:Microsoft.Maui.Controls.WebView.CanGoBack>, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
 - <xref:Microsoft.Maui.Controls.WebView.CanGoForward>, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
 - <xref:Microsoft.Maui.Controls.WebView.Source>, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
 - <xref:Microsoft.Maui.Controls.WebView.UserAgent>, of type `string`, represents the user agent. The default value is the user agent of the underlying platform browser, or `null` if it can't be determined.
-
-::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -422,8 +409,6 @@ using Microsoft.Maui.Handlers;
 
 :::zone-end
 
-::: moniker range=">=net-maui-8.0"
-
 :::zone pivot="devices-ios, devices-maccatalyst"
 
 ## Set media playback preferences on iOS and Mac Catalyst
@@ -464,8 +449,6 @@ using Microsoft.Maui.Handlers;
 For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> on iOS, see [Configure the native WebView on iOS and Mac Catalyst](#configure-the-native-webview-on-ios-and-mac-catalyst).
 
 :::zone-end
-
-::: moniker-end
 
 :::zone pivot="devices-maccatalyst"
 

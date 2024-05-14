@@ -10,20 +10,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
-- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath>, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
-
-::: moniker-end
 
 The <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent> class defines the following properties:
 
@@ -134,8 +123,6 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
     }
     ```
 
-::: moniker range=">=net-maui-8.0"
-
 ## Access scoped services from native UI
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
@@ -202,8 +189,6 @@ services.AddLogging(logging =>
 ```
 
 When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
-
-::: moniker-end
 
 ## Play inline video on iOS
 

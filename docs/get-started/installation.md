@@ -2,7 +2,6 @@
 title: "Install Visual Studio 2022 to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio 2022 for Mac, to develop native, cross-platform apps using .NET MAUI."
 ms.date: 11/13/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Installation

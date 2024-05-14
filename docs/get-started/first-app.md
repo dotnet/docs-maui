@@ -3,7 +3,6 @@ title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
 ms.date: 11/10/2023
 zone_pivot_groups: devices-deployment
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Build your first app

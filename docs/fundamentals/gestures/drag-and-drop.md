@@ -37,16 +37,6 @@ The <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class also defines <xre
 
 The <xref:Microsoft.Maui.Controls.DragStartingEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStarting> event defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
-- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Cancel>, of type `bool`, indicates whether the event should be canceled.
-- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, indicates the data package that accompanies the drag source. This is a read-only property.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Cancel>, of type `bool`, indicates whether the event should be canceled.
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, indicates the data package that accompanies the drag source. This is a read-only property.
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.PlatformArgs>, of type `PlatformDragStartingEventArgs?`, represents the platform-specific arguments associated with the event.
@@ -171,8 +161,6 @@ On Windows, the <xref:Microsoft.Maui.Controls.PlatformDropCompletedEventArgs> cl
 
 <!-- markdownlint-enable MD025 -->
 
-::: moniker-end
-
 The following XAML example shows a <xref:Microsoft.Maui.Controls.DragGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
@@ -296,15 +284,6 @@ The <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class also defines <xre
 
 The <xref:Microsoft.Maui.Controls.DragEventArgs> class, which accompanies the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOver> and <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeave> events, defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.DragEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, which contains the data associated with the drag source. This property is read-only.
-- <xref:Microsoft.Maui.Controls.DragEventArgs.AcceptedOperation>, of type <xref:Microsoft.Maui.Controls.DataPackageOperation>, which specifies which operations are allowed by the drop target.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.Maui.Controls.DragEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, which contains the data associated with the drag source. This property is read-only.
 - <xref:Microsoft.Maui.Controls.DragEventArgs.AcceptedOperation>, of type <xref:Microsoft.Maui.Controls.DataPackageOperation>, which specifies which operations are allowed by the drop target.
 - <xref:Microsoft.Maui.Controls.DragEventArgs.PlatformArgs>, of type `PlatformDragEventArgs?`, represents the platform-specific arguments associated with the event.
@@ -366,20 +345,9 @@ In this example, the drag glyph is disabled and caption text that overlays the d
 
 <!-- markdownlint-enable MD025 -->
 
-::: moniker-end
-
 For information about the <xref:Microsoft.Maui.Controls.DataPackageOperation> enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 
 The <xref:Microsoft.Maui.Controls.DropEventArgs> class that accompanies the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop> event defines the following properties:
-
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.Maui.Controls.DropEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackageView>, which is a read-only version of the data package.
-- <xref:Microsoft.Maui.Controls.DropEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
 
 - <xref:Microsoft.Maui.Controls.DropEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackageView>, which is a read-only version of the data package.
 - <xref:Microsoft.Maui.Controls.DropEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
@@ -410,8 +378,6 @@ On Windows, the <xref:Microsoft.Maui.Controls.PlatformDropEventArgs> class defin
 - `DragEventArgs`, of type <xref:Microsoft.UI.Xaml.DragEventArgs>, provides event data for the native event. -->
 
 ---
-
-::: moniker-end
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.DropGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
@@ -524,8 +490,6 @@ void OnDrop(object sender, DropEventArgs e)
 
 In this example, the `Square` object is retrieved from the property bag of the data package, by specifying the "Square" dictionary key. An action based on the retrieved value can then be taken.
 
-::: moniker range=">=net-maui-8.0"
-
 ## Get the gesture position
 
 The position at which a drag or drop gesture occurred can be obtained by calling the <xref:Microsoft.Maui.Controls.DragEventArgs.GetPosition%2A> method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.Controls.DropEventArgs> object. The <xref:Microsoft.Maui.Controls.DragEventArgs.GetPosition%2A> method accepts an `Element?` argument, and returns a position as a `Point?` object:
@@ -542,5 +506,3 @@ void OnDragStarting(object sender, DragStartingEventArgs e)
 ```
 
 The `Element?` argument defines the element the position should be obtained relative to. Supplying a `null` value as this argument means that the <xref:Microsoft.Maui.Controls.DragEventArgs.GetPosition%2A> method returns a `Point?` object that defines the position of the drag or drop gesture relative to the screen.
-
-::: moniker-end

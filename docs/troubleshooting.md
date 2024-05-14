@@ -192,8 +192,6 @@ Therefore, the recommended approach to specifying the location of Xcode on your 
 
 You can then safely delete *~/Library/Preferences/Xamarin/Settings.plist* from your machine.
 
-::: moniker range=">=net-maui-8.0"
-
 ## Diagnose issues in Blazor Hybrid apps
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
@@ -270,5 +268,3 @@ If you receive this build error it can be fixed by ensuring that your project fi
 ```
 
 For information about MSBuild item element attributes, see [Item element (MSBuild): Attributes and elements](/visualstudio/msbuild/item-element-msbuild#attributes-and-elements).
-
-::: moniker-end
