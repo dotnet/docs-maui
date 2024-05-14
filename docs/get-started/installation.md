@@ -194,7 +194,6 @@ In the command above:
   * build-tools >= 34.0.0
   * cmdline-tools == 11.0
   * platforms;android-34*
-  * .NET 7: platform-tools = 33.0.2
   * .NET 8: platform-tools = 34.0.5
 
 #### There's an error that Android licenses aren't accepted

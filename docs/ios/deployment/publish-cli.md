@@ -80,7 +80,6 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> <!-- Required in .NET 7 but not in .NET 8 -->
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
