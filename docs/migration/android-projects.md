@@ -141,10 +141,7 @@ With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimm
 
 ## Ahead-of-Time compilation
 
-`$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET for Android projects.
-
-> [!TIP]
-> You should migrate to the new `$(RunAOTCompilation)` property, because `$(AotAssemblies)` is deprecated from .NET 7.
+`$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET for Android projects. However, this property was deprecated in .NET 7.
 
 Release builds default to the following AOT property values:
 
