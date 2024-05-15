@@ -180,7 +180,7 @@ You'll need to provide one or more reason codes from [User defaults APIs](https:
 
 ## See also
 
-Use the following links to learn more the required reasons API use in .NET MAUI, .NET iOS, and the .NET runtime and BCL:
+Use the following links to learn more the required reasons API use in .NET MAUI, .NET for iOS, and the .NET runtime and BCL:
 
 - [Required reasons API usage in .NET MAUI and Xamarin.Forms](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-dotnet-maui.md)
 - [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md)
