@@ -10,28 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 
 <xref:Microsoft.Maui.Controls.Entry> defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
-- `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
-- `CursorPosition`, of type `int`, defines the position of the cursor within the entry.
-- `FontAttributes`, of type `FontAttributes`, determines text style.
-- `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
-- `FontFamily`, of type `string`, defines the font family.
-- `FontSize`, of type `double`, defines the font size.
-- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
-- `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
-- `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
-- `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
-- `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
-- `SelectionLength`, of type `int`, represents the length of selected text within the entry.
-- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
@@ -39,31 +17,12 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
-
-::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Entry> with the return key.
 
 <xref:Microsoft.Maui.Controls.Entry> derives from the `InputView` class, from which it inherits the following properties:
-
-::: moniker range="=net-maui-7.0"
-
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
-- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
-- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
-- `MaxLength`, of type `int`, defines the maximum input length.
-- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
-- `Text`, of type `string`, defines the text entered into the control.
-- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
-- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
@@ -82,8 +41,6 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 - `Text`, of type `string`, defines the text entered into the control.
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
-
-::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -308,8 +265,6 @@ The following XAML example shows how to set the return key:
 
 When the <kbd>Return</kbd> key is pressed, the `Completed` event fires and any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the <xref:System.Windows.Input.ICommand> as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
-::: moniker range=">=net-maui-8.0"
-
 [!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
 
 The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Entry> named `entry`, if it's currently showing:
@@ -318,8 +273,6 @@ The following example shows how to hide the soft input keyboard on an <xref:Micr
 if (entry.IsSoftInputShowing())
     await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
 ```
-
-::: moniker-end
 
 ## Enable and disable spell checking
 

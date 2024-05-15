@@ -55,42 +55,6 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 <!-- Todo: It's possible to re-sign an existing app bundle with a different certificate to change the distribution channel -->
 
-::: moniker range="=net-maui-7.0"
-
-## Runtime identifiers
-
-If the `RuntimeIdentifier` parameter isn't specified on the command line, or in the project file, the build process will default to a simulator runtime identifier. In addition, passing the runtime identifier on the command line can result in the build failing to restore if there are multiple target frameworks in the project file. For more information, see [Specifying both -f and -r to dotnet build fails to restore if multiple frameworks are present in the project file](https://github.com/dotnet/sdk/issues/21877).
-
-One solution to these issues is to add the following `<PropertyGroup>` to your project file:
-
-```xml
-<PropertyGroup Condition="'$(IsPublishing)'  == 'true' And '$(TargetFramework)' == 'net7.0-ios'">
-    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-</PropertyGroup>
-```
-
-Then, use the following command to publish your app:
-
-```dotnetcli
-dotnet publish -f net7.0-ios -p:IsPublishing=true ...
-```
-
-An alternative solution to these issues is to add the following `<PropertyGroup>` to your project file:
-
-```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net7.0-ios'">
-    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-</PropertyGroup>
-```
-
-Then, use the following command to publish your app:
-
-```dotnetcli
-dotnet publish -f net7.0-ios -c Release ...
-```
-
-::: moniker-end
-
 ## Define build properties in your project file
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
@@ -116,7 +80,6 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> <!-- Required in .NET 7 but not in .NET 8 -->
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
@@ -167,8 +130,6 @@ During the publishing process it maybe necessary to allow `codesign` to run on y
 
 :::image type="content" source="media/publish/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
-::: moniker range=">=net-maui-8.0"
-
 ### Troubleshoot a remote build
 
 If a `RuntimeIdentifier` isn't specified when building remotely from the command line on Windows, the architecture of the Windows machine will be used. This occurs because the `RuntimeIdentifier` has to be set early in the build process, before the build can connect to the Mac to derive its architecture.
@@ -180,8 +141,6 @@ If a `RuntimeIdentifier` isn't specified when building remotely using Visual Stu
     <ForceSimulatorX64ArchitectureInIDE>true</ForceSimulatorX64ArchitectureInIDE>
 </PropertyGroup>
 ```
-
-::: moniker-end
 
 ## Distribute the app
 
