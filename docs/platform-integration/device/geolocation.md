@@ -134,8 +134,6 @@ Not all location values may be available, depending on the device. For example, 
 > [!WARNING]
 > <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
 
-::: moniker range=">=net-maui-8.0"
-
 ## Listen for location changes
 
 In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
@@ -194,8 +192,6 @@ void OnStopListening()
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method has no effect when the app isn't listening for location changes.
-
-::: moniker-end
 
 ## Accuracy
 

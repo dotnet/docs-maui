@@ -10,8 +10,6 @@ items:
       href: dotnet-9.md
     - name: .NET 8
       href: dotnet-8.md
-    - name: .NET 7
-      href: dotnet-7.md
   - name: Docs updates
     expanded: true
     items:

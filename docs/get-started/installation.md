@@ -2,7 +2,6 @@
 title: "Install Visual Studio 2022 to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio 2022 for Mac, to develop native, cross-platform apps using .NET MAUI."
 ms.date: 11/13/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Installation
@@ -195,7 +194,6 @@ In the command above:
   * build-tools >= 34.0.0
   * cmdline-tools == 11.0
   * platforms;android-34*
-  * .NET 7: platform-tools = 33.0.2
   * .NET 8: platform-tools = 34.0.5
 
 #### There's an error that Android licenses aren't accepted

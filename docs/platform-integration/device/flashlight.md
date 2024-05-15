@@ -72,11 +72,7 @@ The flashlight can be turned on and off through the <xref:Microsoft.Maui.Devices
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
 
-::: moniker range=">=net-maui-8.0"
-
 In addition, the <xref:Microsoft.Maui.Devices.Flashlight.IsSupportedAsync%2A> method can be invoked to check if a flashlight is available on the device, prior to calling the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> method.
-
-::: moniker-end
 
 ## Platform differences
 

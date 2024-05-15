@@ -2,7 +2,6 @@
 title: "Keyboard accelerators"
 description: "Learn how to define keyboard accelerators on Mac Catalyst and Windows so that menu items can be invoked through keyboard shortcuts."
 ms.date: 10/25/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Keyboard accelerators

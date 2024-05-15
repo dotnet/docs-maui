@@ -91,6 +91,10 @@
     {
       "source_path": "docs/migration/forms-projects.md",
       "redirect_url": "/dotnet/maui/migration/multi-project-to-multi-project"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-7.md",
+      "redirect_url": "/dotnet/maui/whats-new/dotnet-8"
     }
   ]
 }

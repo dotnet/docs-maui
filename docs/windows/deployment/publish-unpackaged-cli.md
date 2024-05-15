@@ -2,7 +2,6 @@
 title: "Use the CLI to publish unpackaged apps for Windows"
 description: "Learn how to package and publish an unpackaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 11/08/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Publish an unpackaged .NET MAUI app for Windows with the CLI
