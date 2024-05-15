@@ -1,55 +1,23 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for January 2024"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for January 2024."
-ms.custom: January-2024
-ms.date: 02/01/2024
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2024"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for April 2024."
+ms.custom: April-2024
+ms.date: 05/07/2024
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for January 2024
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2024
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for January 2024. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for April 2024. This article lists some of the major changes to docs during this period.
 
-## Android
+## Training modules
 
-### New articles
+Two new training modules have been added to the [Build mobile and desktop apps with .NET MAUI](/training/paths/build-apps-with-dotnet-maui) learning path:
 
-- [Connect to an Android emulator on a Mac from inside a Windows virtual machine](../android/emulator/mac-with-windows-vm.md)
-
-## Fundamentals
-
-### New articles
-
-- [Dependency injection](../fundamentals/dependency-injection.md)
-
-## Get started
-
-### Updated articles
-
-- [Installation](../get-started/installation.md)
+- [Create a UI that uses data binding in .NET MAUI](/training/modules/separate-ui-and-logic-with-data-binding)
+- [Design an MVVM viewmodel for .NET MAUI](/training/modules/design-mvvm-viewmodel)
 
 ## Migration from Xamarin.Forms
 
-### New articles
-
-- [Reuse SkiaSharp code in .NET MAUI](../migration/skiasharp.md)
-
 ### Updated articles
 
-- [Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant](../migration/upgrade-assistant.md)
-
-## User interface
-
-### New articles
-
-- [Custom layouts](../user-interface/layouts/custom.md)
-
-### Updated articles
-
-- [Handlers](../user-interface/handlers/index.md)
-
-## Community contributors
-
-The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
-
-- [ammahir](https://github.com/ammahir) - Mohamed Mahir ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [danellisuk](https://github.com/danellisuk) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [Layout behavior changes from Xamarin.Forms](../migration/layouts.md)
