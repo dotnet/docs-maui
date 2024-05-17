@@ -18,6 +18,10 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
+## Control enhancements
+
+.NET MAUI in .NET 9 also includes control enhancements.
+
 ### Soft keyboard input support
 
 .NET MAUI 9 Preview 4 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
