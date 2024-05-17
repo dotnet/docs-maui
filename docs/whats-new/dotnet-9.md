@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 04/11/2024
+ms.date: 05/21/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview, see the following release notes:
 
+- [.NET MAUI 9 Preview 4](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.4.XXXXX)
 - [.NET MAUI 9 Preview 3](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.3.10457)
 - [.NET MAUI 9 Preview 2](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.2.10293)
 - [.NET MAUI 9 Preview 1](https://github.com/dotnet/maui/releases/tag/9.0.100-preview.1.9973)
@@ -17,12 +18,19 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
-For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/core/whats-new/dotnet-9/overview).
+### Soft keyboard input support
+
+.NET MAUI 9 Preview 4 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
+
+```xaml
+<Entry Keyboard="Date" />
+```
 
 ## Android
 
 .NET for Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
 
+- [.NET for Android 9 Preview 4](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.4.272)
 - [.NET for Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.231)
 - [.NET for Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
 - [.NET for Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.1.151)
@@ -66,6 +74,14 @@ In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` at
 
 For more information about Android asset packs, see [Android Asset Packs](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/AndroidAssetPacks.md).
 
+### Android 15 beta 1 support
+
+.NET for Android Preview 4 .NET bindings for the first beta of Android 15 codenamed "Vanilla Ice Cream". To build for these APIs, update the target framework of your project:
+
+```xml
+<TargetFramework>net9.0-android35</TargetFramework>
+```
+
 ## iOS
 
 .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
@@ -77,6 +93,7 @@ For more information about Android asset packs, see [Android Asset Packs](https:
 
 For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9.0.1xx Preview 4](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview4-XXXX)
 - [.NET 9.0.1xx Preview 3](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview3-9429)
 - [.NET 9.0.1xx Preview 2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview2-9244)
 - [.NET 9.0.1xx Preview 1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview1-9088).
@@ -94,7 +111,14 @@ This will produce two libraries, one using iOS 17.0 bindings, and one using iOS 
 > [!IMPORTANT]
 > An app project should always target the latest iOS SDK.
 
+### Native AOT for iOS & Mac Catalyst
+
+In .NET for iOS 9 Preview 4, native Ahead of Time (AOT) compilation for iOS and Mac Catalyst takes advantage of full trimming to reduce your app's package size and startup performance. This is a publishing feature that you can use when you're ready to ship your app.
+
+> [!IMPORTANT]
+> Your app and it's dependencies must be fully trimmable in order to utilize this feature.
+
 ## See also
 
-- [.NET MAUI updates in .NET 9 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/9.0/preview/preview3/dotnetmaui.md).
+- [What's new in .NET 9](/dotnet/core/whats-new/dotnet-9/overview).
 - [Our Vision for .NET 9](https://devblogs.microsoft.com/dotnet/our-vision-for-dotnet-9/)
