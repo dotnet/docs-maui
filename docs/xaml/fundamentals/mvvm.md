@@ -8,7 +8,7 @@ ms.date: 06/09/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
 
-The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel. The view and the viewmodel are often connected through data bindings defined in XAML. The `BindingContext` for the view is usually an instance of the viewmodel.
+The Model-View-ViewModel (MVVM) pattern was initially described in 2005 and standardized in 2009 by Josh Smith. Originally developed for Windows Presentation Foundation (WPF), it was later adopted by other XAML-based frameworks. This pattern enforces a clear separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel. The view and the viewmodel are often connected through data bindings defined in XAML. The `BindingContext` for the view is usually an instance of the viewmodel.
 
 > [!IMPORTANT]
 > .NET Multi-platform App UI (.NET MAUI) marshals binding updates to the UI thread. When using MVVM this enables you to update data-bound viewmodel properties from any thread, with .NET MAUI's binding engine bringing the updates to the UI thread.
