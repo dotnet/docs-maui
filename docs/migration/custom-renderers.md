@@ -82,7 +82,7 @@ public static class MauiProgram
 The renderers are registered with the `ConfigureMauiHandlers` and `AddHandler` method. This first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its renderer type.
 
 > [!IMPORTANT]
-> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `ShellRenderer` on iOS and Android, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the `AddHandler` method.
+> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer`, `ShellRenderer` on iOS and Android, `TabbedRenderer`, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the `AddHandler` method.
 
 ### Consume the custom renderers
 
