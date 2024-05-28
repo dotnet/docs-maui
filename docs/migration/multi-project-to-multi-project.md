@@ -323,7 +323,6 @@ public static class MauiProgram
 }
 ```
 
-
 > [!NOTE]
 > For Xamarin.Forms UWP projects, the `App` reference in `builder.UseMauiApp<App>()` can be found in the *MainPage.xaml.cs* file.
 
