@@ -46,14 +46,14 @@ Opening the shared project file will confirm that you have .NET SDK-style projec
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFramework>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFramework>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-		<SingleProject>true</SingleProject>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<UseMaui>true</UseMaui>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseMaui>true</UseMaui>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
 </Project>
 ```
@@ -63,22 +63,22 @@ Opening a specific platform project head should also confirm that you have simil
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0-android</TargetFramework>
-		<SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
-		<OutputType>Exe</OutputType>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<UseMaui>true</UseMaui>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0-android</TargetFramework>
+        <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+        <OutputType>Exe</OutputType>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseMaui>true</UseMaui>
+    </PropertyGroup>
 
-	<!--
+    <!--
         ...
     -->
 
-	<ItemGroup>
-		<ProjectReference Include="..\MauiApp.1\MauiApp.1.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MauiApp.1\MauiApp.1.csproj" />
+    </ItemGroup>
 
 </Project>
 ```
