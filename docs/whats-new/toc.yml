@@ -1,0 +1,21 @@
+items:
+- name: What's new
+  href: index.yml
+  expanded: true
+  items:
+  - name: Product releases
+    expanded: true
+    items:
+    - name: .NET 9
+      href: dotnet-9.md
+    - name: .NET 8
+      href: dotnet-8.md
+  - name: Docs updates
+    expanded: true
+    items:
+    - name: April 2024
+      href: dotnet-docs-maui-mod1.md
+    - name: March 2024
+      href: dotnet-docs-maui-mod0.md
+    - name: February 2024
+      href: dotnet-docs-maui-mod2.md

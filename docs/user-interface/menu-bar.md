@@ -75,11 +75,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 
 In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an <xref:System.Windows.Input.ICommand> when selected.
 
-::: moniker range=">=net-maui-8.0"
-
 Keyboard accelerators can be added to menu items in a menu bar, so that a menu item can be invoked through a keyboard shortcut. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
-
-::: moniker-end
 
 ## Display icons on menu items
 
@@ -120,21 +116,3 @@ The following example shows a menu bar item, where the icons for menu items are 
 In this example, the menu bar item defines three menu items that display an icon and text on Windows.
 
 For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons). For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
-
-::: moniker range="=net-maui-7.0"
-
-## Mac Catalyst limitations
-
-.NET MAUI Mac Catalyst apps are limited to 50 menu items. Attempting to add more than 50 menu items to a Mac Catalyst app will result in an exception being thrown.
-
-Additional menu items, beyond the 50 limit, can be added to a menu bar by adding the following code to your `AppDelegate` class:
-
-```csharp
-[Export("MenuItem50:")]
-internal void MenuItem50(UICommand uICommand)
-{
-    uICommand.SendClicked();
-}
-```
-
-::: moniker-end

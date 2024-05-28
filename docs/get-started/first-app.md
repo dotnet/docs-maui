@@ -3,7 +3,6 @@ title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
 ms.date: 11/10/2023
 zone_pivot_groups: devices-deployment
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Build your first app
@@ -395,8 +394,41 @@ By default, you can deploy to your local macOS or Windows development machine. O
 If you want to use Android emulators, follow these steps:
 
 1. Navigate in your terminal to `<YOUR_ANDROID_SDK_DIRECTORY>/cmdline-tools/latest/bin/`.
-1. Run `sdkmanager --install emulator` and `sdkmanager --install system-images;android-33;google_apis;x86_64` on Windows, or `./sdkmanager --install emulator` and `./sdkmanager --install system-images;android-33;google_apis;x86_64` on macOS.
-1. Then, you can create a new emulator on the command line with Android's [avdmanager](https://developer.android.com/tools/avdmanager). For example, you can run `avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"` on Windows, or `./avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"` on macOS.
+1. Use `sdkmanager` to install the emulator.
+
+    On Windows, run the following commands in the terminal:
+
+    ```console
+    sdkmanager --install emulator
+    sdkmanager --install "system-images;android-33;google_apis;x86_64"
+    ```
+
+    On macOS, run the following commands in the terminal:
+
+    ```console
+    ./sdkmanager --install emulator
+    ./sdkmanager --install "system-images;android-33;google_apis;x86_64"
+    ```
+
+    > [!NOTE]
+    > The quotes around the `sdkmanager` command-line arguments are important.
+
+1. Then, you can create a new emulator on the command line with Android's [avdmanager](https://developer.android.com/tools/avdmanager).
+
+    On Windows, run the following commands in the terminal:
+
+    ```console
+    avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"
+    ```
+
+    On macOS, run the following commands in the terminal:
+
+    ```console
+    ./avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"
+    ```
+
+    > [!NOTE]
+    > The quotes around the `avdmanager` command-line arguments are important.
 
 You can also debug on [physical Android devices](~/android/device/setup.md).
 
