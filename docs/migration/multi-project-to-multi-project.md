@@ -35,11 +35,17 @@ This will help to simplify the rest of the migration process, as it will minimiz
 
 ## Create a new project
 
-The upgrade process can be guided in two ways. Using a multi project template approach for your maui project can more easily provide one-to-one mappings as you move individual components of your project over incrementally. Another approach to follow is creating a .NET MAUI Class Library project which would host your library project code and the application heads would reference it.
+The upgrade process can be guided using two approaches:
 
-### Multi Project Template
+- Using a multi-project template approach for your .NET MAUI project can more easily provide one-to-one mappings as you incrementally upgrade individual components of your project.
+- Creating a .NET MAUI class Library project which would host your library project code and the app heads would reference it.
 
-In Visual Studio, create a new .NET MAUI Multi-Project App of the same name as your Xamarin.Forms library project. The Multi-Project template provides a .NET MAUI application for iOS, Android, Mac Catalyst, and WinUI with multiple, separate app projects; you can omit the the platform types that are unused in your app scenario. Some of the project file bootstrapping should already be completed; you can continue this document from project configurations and onward as you pull files into the new multi-project template.
+### Multi-project template
+
+In Visual Studio, create a new .NET MAUI multi-project app of the same name as your Xamarin.Forms library project. The multi-project template provides a .NET MAUI application for iOS, Android, Mac Catalyst, and WinUI with multiple, separate app projects.
+
+> [!NOTE]
+> You can remove the the app projects for platforms you don't support.
 
 Opening the shared project file will confirm that you have .NET SDK-style project with the following property groups:
 
@@ -83,7 +89,9 @@ Opening a specific platform project head should also confirm that you have simil
 </Project>
 ```
 
-### Single Project Template
+Then copy your Xamarin.Forms files into your .NET MAUI project.
+
+### Single project template
 
 In Visual Studio, create a new .NET MAUI class library project of the same name as your Xamarin.Forms library project. This project will host the code from your Xamarin.Forms library project. Opening the project file will confirm that you have a .NET SDK-style project:
 
@@ -118,7 +126,10 @@ In your platform projects, add a reference to this new library project. Then cop
 
 ## Bootstrap your migrated app
 
-When manually updating a Xamarin.Forms to .NET MAUI you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
+When manually updating a Xamarin.Forms class library to a .NET MAUI class library you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
+
+> [!IMPORTANT]
+> This section doesn't apply if you've created your .NET MAUI app using the multi-project template. Instead, proceed to [Update app dependencies](#update-app-dependencies).
 
 ### Enable .NET MAUI in platform projects
 
