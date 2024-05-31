@@ -78,7 +78,13 @@
             - name: Upgrade with the .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
             - name: Upgrade manually to a multi-project app
-              href: migration/multi-project-to-multi-project.md
+              items:
+                - name: Overview
+                  href: migration/multi-project-overview.md
+                - name: Upgrade to a multi-project app with the project template
+                  href: migration/multi-project-to-multi-project-with-template.md
+                - name: Upgrade manually to a multi-project app
+                  href: migration/multi-project-to-multi-project.md
             - name: Upgrade manually to a single project app
               href: migration/multi-project-to-single-project.md
             - name: UWP project migration
