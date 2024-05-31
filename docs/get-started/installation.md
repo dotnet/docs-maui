@@ -108,7 +108,7 @@ To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must 
     :::image type="content" source="media/installation/vscode/maui-extension-preview.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension":::
 
 > [!NOTE]
-> The .NET MAUI extension requires the C# Dev Kit and prerelease C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. See [this blog post](https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/) for more information about C# Dev Kit and its family of extensions.
+> The .NET MAUI extension requires the C# Dev Kit which includes the C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. See [this C# Dev Kit documentation](https://code.visualstudio.com/docs/csharp/get-started) for more information about C# Dev Kit and its family of extensions.
 
 ## Install .NET and .NET MAUI workloads
 
