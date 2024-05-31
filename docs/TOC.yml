@@ -81,7 +81,7 @@
               items:
                 - name: Overview
                   href: migration/multi-project-overview.md
-                - name: Upgrade to a multi-project app with the project template
+                - name: Upgrade manually to a multi-project app with the project template
                   href: migration/multi-project-to-multi-project-with-template.md
                 - name: Upgrade manually to a multi-project app
                   href: migration/multi-project-to-multi-project.md

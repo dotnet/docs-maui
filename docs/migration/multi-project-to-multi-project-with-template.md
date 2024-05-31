@@ -5,7 +5,7 @@ ms.date: 05/31/2024
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
 ---
 
-# Upgrade to a multi-project app with the project template
+# Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app with the project template
 
 Upgrading a multi-project Xamarin.Forms app to a multi-project .NET Multi-platform App UI (.NET MAUI) app can be accomplished by creating a new multi-project .NET MAUI app and then migrating the code and resources from your Xamarin.Forms apps to the multi-project .NET MAUI app. There are then additional steps to take advantage of changes in .NET MAUI.
 

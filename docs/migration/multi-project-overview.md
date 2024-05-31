@@ -11,7 +11,7 @@ A Xamarin.Forms app can be manually upgraded to a multi-project .NET Multi-platf
 
 - By creating a new .NET MAUI app using the multi-project template.
 
-  With this approach you create a new multi-project .NET MAUI app, and then migrate the code and resources from your Xamarin.Forms app to the multi-project .NET MAUI app. For more information, see [Upgrade to a multi-project app with the project template](multi-project-to-multi-project-with-template.md).
+  With this approach you create a new multi-project .NET MAUI app, and then migrate the code and resources from your Xamarin.Forms app to the multi-project .NET MAUI app. For more information, see [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app with the project template](multi-project-to-multi-project-with-template.md).
 
 - By migrating a Xamarin.Forms library project to a .NET MAUI library project.
 
