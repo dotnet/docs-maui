@@ -68,7 +68,7 @@ In your platform projects, add a reference to this new library project. Then cop
 
 ## Bootstrap your migrated app
 
-When manually updating a Xamarin.Forms to .NET MAUI you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
+When manually updating a Xamarin.Forms app to .NET MAUI you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
 
 ### Enable .NET MAUI in platform projects
 

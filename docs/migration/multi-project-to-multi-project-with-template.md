@@ -78,10 +78,20 @@ Opening a specific platform project should also confirm that you have similar pr
 </Project>
 ```
 
-Then copy your Xamarin.Forms files and configuration into your .NET MAUI project.
+## Copy files to the .NET MAUI app
 
-> [!IMPORTANT]
-> If there are platform specific services that need to be migrated to .NET MAUI, use the <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)> method to add a transient service of the specified type to the specified <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.
+All of the cross-platform code from your Xamarin.Forms library project should be copied into your .NET MAUI library project in identically named folders and files.
+
+Custom renderers can either be reused in a .NET MAUI app, or migrated to a .NET MAUI handler. For more information, see [Reuse custom renderers in .NET MAUI](custom-renderers.md) and [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](renderer-to-handler.md).
+
+Effects can be reused in a .NET MAUI app. For more information, see [Reuse effects](effects.md).
+
+> [!NOTE]
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](upgrade-assistant.md) installed.
+
+If there are platform specific services that need to be migrated to .NET MAUI, use the <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)> method to add a transient service of the specified type to the specified <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.
+
+Any platform code, resources, and configuration should then be copied to your multi-project .NET MAUI app.
 
 [!INCLUDE [Namespace changes](includes/namespace-changes.md)]
 
