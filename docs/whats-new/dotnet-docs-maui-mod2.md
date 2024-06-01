@@ -1,45 +1,43 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2024"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2024."
-ms.custom: February-2024
-ms.date: 03/06/2024
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2024"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2024."
+ms.custom: May-2024
+ms.date: 06/01/2024
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2024
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2024
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2024. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2024. This article lists some of the major changes to docs during this period.
 
-## Android
-
-### New articles
-
-- [Android app links](../android/app-links.md)
-
-## Fundamentals
+## Get started
 
 ### Updated articles
 
-- [Control templates](../fundamentals/controltemplate.md)
-- [Attached properties](../fundamentals/attached-properties.md)
+- [Build your first app](../get-started/first-app.md) - sdkmanager/etc. arguments must be quoted.
 
-## iOS and Mac Catalyst
+## Migration from Xamarin.Forms
 
-### New articles
+### Updated articles
 
-- [Apple universal links](../macios/universal-links.md)
+- [Xamarin.Android project migration](../migration/android-projects.md) - Fix .NET branding
+
+## Android
+
+### Updated articles
+
+- [Java and managed code interoperability](../android/internals/java-interop.md) - Fix .NET branding
 
 ## User interface
 
 ### Updated articles
 
-- [Customize controls with handlers](../user-interface/handlers/customize.md)
-- [DatePicker](../user-interface/controls/datepicker.md)
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md) - Add section on playing inline video on iOS
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [AndreKraemer](https://github.com/AndreKraemer) - Andre Kraemer ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [Felicity-R](https://github.com/Felicity-R) - Felicity Rhone ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [JokkerLiu](https://github.com/JokkerLiu) - ChunYang Liu ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [Yves-Be](https://github.com/Yves-Be) - Yves ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [breyed](https://github.com/breyed) - Edward Brey ![2 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-2-green)
+- [ahoffmandevelopment](https://github.com/ahoffmandevelopment) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [JerzyKruszewski](https://github.com/JerzyKruszewski) - Jerzy Kruszewski ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [MitchellTR](https://github.com/MitchellTR) - Todd Mitchell ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
