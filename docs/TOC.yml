@@ -576,7 +576,7 @@
               - name: "ANDXXxxxx: Generic Android tooling"
                 items:
                 - name: Overview
-                  href: /dotnet/android/messages/andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                  href: /dotnet/android/messages/#andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: ANDAS0000
                   href: /dotnet/android/messages/andas0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: ANDJS0000
