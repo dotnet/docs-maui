@@ -13,9 +13,9 @@ On Android and iOS, .NET Multi-platform App UI (.NET MAUI) apps can display a sp
 Once the app is ready for interaction, its splash screen is dismissed.
 
 > [!IMPORTANT]
-> In iOS 16.4+, simulators won't load a splash screen unless your app is signed. For information about a workaround, see [GitHub issue 18479](https://github.com/xamarin/xamarin-macios/issues/18469).
->
-> On Android 12+ (API 31+), the splash screen shows an icon that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
+> On iOS 16.4+, simulators won't load a splash screen unless your app is signed. For more information, including a workaround, see [GitHub issue 18479](https://github.com/xamarin/xamarin-macios/issues/18469).
+
+On Android 12+ (API 31+), the splash screen shows an icon that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
 
 In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be resized to the correct resolution for the target platform, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
