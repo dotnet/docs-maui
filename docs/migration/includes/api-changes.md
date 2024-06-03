@@ -11,7 +11,7 @@ Some APIs have changed in the move from Xamarin.Forms to .NET MAUI. This is mult
 
 In Xamarin.Forms, the `Xamarin.Forms.Color` struct lets you construct <xref:Microsoft.Maui.Graphics.Color> objects using `double` values, and provides named colors, such as `Xamarin.Forms.Color.AliceBlue`. In .NET MAUI, this functionality has been separated into the <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> class, and the <xref:Microsoft.Maui.Graphics.Colors?displayProperty=fullName> class.
 
-The <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> class, in the <xref:Microsoft.Maui.Graphics> namespace, lets you construct <xref:Microsoft.Maui.Graphics.Color> objects using `float` values, `byte` values, and `int` values. The <xref:Microsoft.Maui.Graphics.Colors?displayProperty=fullName> class, which is also in the <xref:Microsoft.Maui.Graphics> namespace, largely provides the same named colors. For example, use <xref:Microsoft.Maui.Graphics.Colors.AliceBlue?displayProperty=nameWithType> to use the `AliceBlue` color.
+The <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> class, in the <xref:Microsoft.Maui.Graphics> namespace, lets you construct <xref:Microsoft.Maui.Graphics.Color> objects using `float` values, `byte` values, and `int` values. The <xref:Microsoft.Maui.Graphics.Colors?displayProperty=fullName> class, which is also in the <xref:Microsoft.Maui.Graphics> namespace, largely provides the same named colors. For example, use <xref:Microsoft.Maui.Graphics.Colors.AliceBlue?displayProperty=nameWithType> to specify the `AliceBlue` color.
 
 The following table shows the API changes between the `Xamarin.Forms.Color` struct and the <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> class:
 
