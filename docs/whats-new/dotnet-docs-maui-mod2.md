@@ -39,7 +39,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May
     - [ADB0040](/dotnet/android/messages/adb0040?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
     - [ADB0050](/dotnet/android/messages/adb0050?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
     - [ADB0060](/dotnet/android/messages/adb0060?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-  - [ANDXXxxxx: Generic Android tooling](/dotnet/android/messages/andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [ANDXXxxxx: Generic Android tooling](/dotnet/android/messages/#andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
     - [ANDAS0000](/dotnet/android/messages/andas0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
     - [ANDJS0000](/dotnet/android/messages/andjs0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
     - [ANDKT0000](/dotnet/android/messages/andkt0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
