@@ -15,7 +15,7 @@ Unit testing has the most significant effect on code quality when it's an integr
 > [!NOTE]
 > Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
 
-[xUnit](https://xunit.net/) is the recommended test framework to unit test a .NET MAUI app.
+[xUnit](https://xunit.net/) is the recommended test framework for .NET MAUI apps.
 
 ## Add xUnit tests to a .NET MAUI solution
 
