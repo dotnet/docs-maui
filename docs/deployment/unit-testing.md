@@ -15,16 +15,6 @@ Unit testing has the most significant effect on code quality when it's an integr
 > [!NOTE]
 > Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
 
-Unit tests typically use the arrange-act-assert pattern:
-
-| Step | Description |
-|---------|---------|
-| Arrange | Initializes objects and sets the value of the data that is passed to the method under test. |
-| Act | Invokes the method under test with the required arguments. |
-| Assert | Verifies that the action of the method under test behaves as expected. |
-
-This pattern ensures that unit tests are readable, self-describing, and consistent.
-
 [xUnit](https://xunit.net/) is the recommended test framework to unit test a .NET MAUI app.
 
 ## Add xUnit tests to a .NET MAUI solution
@@ -34,7 +24,7 @@ To add xUnit tests to your .NET MAUI solution, either:
 - Use Visual Studio to add a new **xUnit Test Project** to your solution.
 
   OR
-  
+
 - Use .NET CLI to create a new xUnit test project and add it to your solution. For more information, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test).
 
 The project file (*.csproj*) for the xUnit test project will be similar to the following example:
@@ -109,6 +99,16 @@ In this example, this ensures that your .NET MAUI app project only produces an e
 Then, add a reference to your .NET MAUI app project from your xUnit test project.
 
 ## Write unit tests
+
+Unit tests typically use the arrange-act-assert pattern:
+
+| Step | Description |
+|---------|---------|
+| Arrange | Initializes objects and sets the value of the data that is passed to the method under test. |
+| Act | Invokes the method under test with the required arguments. |
+| Assert | Verifies that the action of the method under test behaves as expected. |
+
+This pattern ensures that unit tests are readable, self-describing, and consistent.
 
 xUnit supports two different types of unit tests:
 
