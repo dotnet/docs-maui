@@ -22,7 +22,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
 
-<xref:Microsoft.Maui.Controls.SearchBar> derives from the `InputView` class, from which it inherits the following properties:
+<xref:Microsoft.Maui.Controls.SearchBar> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
@@ -44,7 +44,7 @@ In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPre
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 ## Create a SearchBar
 
@@ -69,7 +69,7 @@ SearchBar searchBar = new SearchBar { Placeholder = "Search items..." };
 A search can be executed using the <xref:Microsoft.Maui.Controls.SearchBar> control by attaching an event handler to one of the following events:
 
 - `SearchButtonPressed`, which is called when the user either clicks the search button or presses the enter key.
-- `TextChanged`, which is called anytime the text in the query box is changed. This event is inherited from the `InputView` class.
+- `TextChanged`, which is called anytime the text in the query box is changed. This event is inherited from the <xref:Microsoft.Maui.Controls.InputView> class.
 
 The following XAML example shows an event handler attached to the `TextChanged` event and uses a <xref:Microsoft.Maui.Controls.ListView> to display search results:
 

@@ -22,7 +22,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Entry> with the return key.
 
-<xref:Microsoft.Maui.Controls.Entry> derives from the `InputView` class, from which it inherits the following properties:
+<xref:Microsoft.Maui.Controls.Entry> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
@@ -44,7 +44,7 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Entry>, see [Fonts](~/user-interface/fonts.md).
 
