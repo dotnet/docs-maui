@@ -18,7 +18,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Editor> with the return key.
 
-<xref:Microsoft.Maui.Controls.Editor> derives from the `InputView` class, from which it inherits the following properties:
+<xref:Microsoft.Maui.Controls.Editor> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
@@ -40,7 +40,7 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Editor>, see [Fonts](~/user-interface/fonts.md).
 
@@ -130,9 +130,9 @@ This can be accomplished as follows:
         AutoSize="TextChanges" />
 ```
 
-When auto-resizing is enabled, the height of the <xref:Microsoft.Maui.Controls.Editor> will increase when the user fills it with text, and the height will decrease as the user deletes text.
+When auto-resizing is enabled, the height of the <xref:Microsoft.Maui.Controls.Editor> will increase when the user fills it with text, and the height will decrease as the user deletes text. This can be used to ensure that <xref:Microsoft.Maui.Controls.Editor> objects in a <xref:Microsoft.Maui.Controls.DataTemplate> in a <xref:Microsoft.Maui.Controls.CollectionView> size correctly.
 
-> [!NOTE]
+> [!IMPORTANT]
 > An <xref:Microsoft.Maui.Controls.Editor> will not auto-size if the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property has been set.
 
 ## Transform text
