@@ -59,8 +59,8 @@ The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup exten
 
 - `Default`, of type `object`, that you set to a default value to be applied to the properties that represent device idioms.
 - `Phone`, of type `object`, that you set to a value to be applied on phones.
-- `Tablet`, of type `object`, that you set to a value to be applied on tablets. This is not exclusive to Android or iOS platforms.
-- `Desktop`, of type `object`, that you set to a value to be applied on desktop platforms. Certain portable laptops may appear as Tablet instead.
+- `Tablet`, of type `object`, that you set to a value to be applied on tablets. This property isn't exclusive to Android and iOS platforms.
+- `Desktop`, of type `object`, that you set to a value to be applied on desktop platforms. Note that some laptops may be classified using the `Tablet` property.
 - `TV`, of type `object`, that you set to a value to be applied on TV platforms.
 - `Watch`, of type `object`, that you set to a value to be applied on Watch platforms.
 - `Converter`, of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
