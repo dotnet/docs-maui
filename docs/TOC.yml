@@ -1120,7 +1120,7 @@
               href: data-cloud/rest.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md
-    - name: Deployment
+    - name: Deployment & testing
       items:
         - name: Overview
           href: deployment/index.md
@@ -1180,6 +1180,8 @@
                   href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+        - name: Unit testing
+          href: deployment/unit-testing.md
     - name: Enterprise application patterns
       items:
         - name: Overview
