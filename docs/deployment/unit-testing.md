@@ -10,11 +10,6 @@ Cross-platform apps should be tested as they would be used in the real world to 
 
 A unit test takes a small unit of an app, typically a method, isolates it from the remainder of the code, and verifies that it behaves as expected. Its goal is to check that each unit of functionality performs as expected, so errors don't propagate throughout the app. Detecting a bug where it occurs is more efficient than observing the effect of a bug indirectly at a secondary point of failure.
 
-Unit testing has the most significant effect on code quality when it's an integral part of your software development workflow. Unit tests can act as design documentation and functional specifications for your app. As soon as a method has been written, unit tests should be written that verify the method's behavior in response to standard, boundary, and incorrect input data cases and check any explicit or implicit assumptions made by the code. Alternatively, with test-driven development, unit tests are written before the code.
-
-> [!IMPORTANT]
-> Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
-
 Unit tests should typically use the arrange-act-assert pattern:
 
 | Step | Description |
@@ -24,6 +19,11 @@ Unit tests should typically use the arrange-act-assert pattern:
 | Assert | Verify that the action of the method under test behaves as expected. |
 
 This pattern ensures that unit tests are readable, self-describing, and consistent.
+
+Unit testing has the most significant effect on code quality when it's an integral part of your software development workflow. Unit tests can act as design documentation and functional specifications for your app. As soon as a method has been written, unit tests should be written that verify the method's behavior in response to standard, boundary, and incorrect input data cases and check any explicit or implicit assumptions made by the code. Alternatively, with test-driven development, unit tests are written before the code.
+
+> [!IMPORTANT]
+> Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
 
 [xUnit](https://xunit.net/) is the recommended test framework for .NET MAUI apps.
 
@@ -176,7 +176,7 @@ Unit tests can also be ran on a device with a device runner. A device runner is 
 ## See also
 
 - [Dependency injection and unit testing](/dotnet/architecture/maui/unit-testing#dependency-injection-and-unit-testing)
-- [Testing MVVM apps](/dotnet/architecture/maui/unit-testing#testing-mvvm-apps)
+- [Testing MVVM applications](/dotnet/architecture/maui/unit-testing#testing-mvvm-applications)
 - [Testing asynchronous functionality](/dotnet/architecture/maui/unit-testing#testing-asynchronous-functionality)
-- [Testing INotifyPropertyChanged implementations](/dotnet/architecture/maui/unit-testing#testing-INotifyPropertyChanged-implementations)
+- [Testing INotifyPropertyChanged implementations](/dotnet/architecture/maui/unit-testing#testing-inotifypropertychanged-implementations)
 - [Testing exception handling](/dotnet/architecture/maui/unit-testing#testing-exception-handling)
