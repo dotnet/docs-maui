@@ -293,11 +293,7 @@ public class MainPageViewModel
 }
 ```
 
-In addition, an <xref:System.IServiceProvider> instance can be accessed through the following native properties:
-
-- Android - `MauiApplication.Current.Services`
-- iOS and Mac Catalyst - `MauiUIApplicationDelegate.Current.Services`
-- Windows - `MauiWinUIApplication.Current.Services`
+In addition, an <xref:System.IServiceProvider> instance can be accessed on each platform through the `IPlatformApplication.Current.Services` property.
 
 ## Limitations with XAML resources
 
