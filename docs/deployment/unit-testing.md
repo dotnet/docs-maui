@@ -1,19 +1,29 @@
 ---
 title: Unit testing
 description:  Learn how to unit test a .NET MAUI app using xUnit, to improve your code quality.
-ms.date: 06/05/2024
+ms.date: 06/06/2024
 ---
 
 # Unit testing
 
-Cross-platform apps should be tested as they would be used in the real world to improve their quality, reliability, and performance. Many types of testing should be performed on an app, including unit testing, integration testing, and user interface testing. Unit testing is the most common form and essential to building high-quality apps.
+Cross-platform apps should be tested as they would be used in the real world to improve their quality, reliability, and performance. Many types of testing should be performed on an app, including unit testing, integration testing, and user interface testing. Unit testing is the most common form and is essential to building high-quality apps.
 
-A unit test takes a small unit of the app, typically a method, isolates it from the remainder of the code, and verifies that it behaves as expected. Its goal is to check that each unit of functionality performs as expected, so errors don't propagate throughout the app. Detecting a bug where it occurs is more efficient than observing the effect of a bug indirectly at a secondary point of failure.
+A unit test takes a small unit of an app, typically a method, isolates it from the remainder of the code, and verifies that it behaves as expected. Its goal is to check that each unit of functionality performs as expected, so errors don't propagate throughout the app. Detecting a bug where it occurs is more efficient than observing the effect of a bug indirectly at a secondary point of failure.
 
-Unit testing has the most significant effect on code quality when it's an integral part of your software development workflow. Unit tests can act as design documentation and functional specifications for your app. As soon as a method has been written, unit tests should be written that verify the method's behavior in response to standard, boundary, and incorrect input data cases and check any explicit or implicit assumptions made by the code. Alternatively, with test-driven development, unit tests are written before the code. For more information on test-driven development and how to implement it, see [Walkthrough: Test-driven development using Test Explorer](/visualstudio/test/quick-start-test-driven-development-with-test-explorer).
+Unit testing has the most significant effect on code quality when it's an integral part of your software development workflow. Unit tests can act as design documentation and functional specifications for your app. As soon as a method has been written, unit tests should be written that verify the method's behavior in response to standard, boundary, and incorrect input data cases and check any explicit or implicit assumptions made by the code. Alternatively, with test-driven development, unit tests are written before the code.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
+
+Unit tests should typically use the arrange-act-assert pattern:
+
+| Step | Description |
+|---------|---------|
+| Arrange | Initialize objects and set the value of the data that is passed to the method under test. |
+| Act | Invoke the method under test with the required arguments. |
+| Assert | Verify that the action of the method under test behaves as expected. |
+
+This pattern ensures that unit tests are readable, self-describing, and consistent.
 
 [xUnit](https://xunit.net/) is the recommended test framework for .NET MAUI apps.
 
@@ -55,9 +65,9 @@ The project file (*.csproj*) for the xUnit test project will be similar to the f
 </Project>
 ```
 
-The `$(TargetFramework)` build property specifies the target framework for the test project. By default this will be the latest version of .NET that's installed on your machine.
+The `$(TargetFramework)` build property specifies the target framework for the test project. This will be the latest version of .NET that's installed on your machine.
 
-The `xunit` package brings in child packages that include the testing framework itself, and Roslyn analyzers that detect common issues with unit tests. The `xunit.runner.visualstudio` and `Microsoft.NET.Test.Sdk` packages are required for being able to run your unit tests in Visual Studio as well as with the `dotnet test` command. The `coverlet.collector` packages allows collecting code coverage. If you don't intend to collect code coverage, you can remove this package reference. For more information about code coverage for unit testing, see [Use code coverage for unit testing](/dotnet/core/testing/unit-testing-code-coverage).
+The `xunit` package brings in child packages that include the testing framework itself, and Roslyn analyzers that detect common issues with unit tests. The `xunit.runner.visualstudio` and `Microsoft.NET.Test.Sdk` packages are required to run your unit tests in Visual Studio as well as with the `dotnet test` command. The `coverlet.collector` packages allows collecting code coverage. If you don't intend to collect code coverage, you can remove this package reference. For more information about code coverage for unit testing, see [Use code coverage for unit testing](/dotnet/core/testing/unit-testing-code-coverage).
 
 There are two main approaches to structuring your app for unit testing:
 
@@ -66,19 +76,19 @@ There are two main approaches to structuring your app for unit testing:
 
 Each approach requires specific configuration.
 
-## Configure a .NET MAUI class library project for unit testing
+### Configure a .NET MAUI class library project for unit testing
 
-With this approach, the code you want to unit test is in a .NET MAUI class library project that's consumed by your .NET MAUI app project. To write unit tests against the .NET MAUI class library will require you to update the target frameworks used by the project. This can be achieved by adding the value of the `$(TargetFramework)` build property from the xUnit test project file (*.csproj*) to the `$(TargetFrameworks)` build property in the .NET MAUI library project file:
+With this approach, the code you want to unit test is in a .NET MAUI class library project that's consumed by your .NET MAUI app project. To write unit tests against the .NET MAUI class library will require you to update the target frameworks used by the project. This can be achieved by adding the value of the `$(TargetFramework)` build property from the xUnit test project file (*.csproj*) to the `$(TargetFrameworks)` build property in the .NET MAUI class library project file:
 
 ```xml
 <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
 ```
 
-In this example, a value of `net8.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI library project file.
+In this example, a value of `net8.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI class library project file.
 
 Then, you must add a reference to your .NET MAUI class library project from your xUnit test project.
 
-## Configure a .NET MAUI app project for unit testing
+### Configure a .NET MAUI app project for unit testing
 
 With this approach, the code you want to unit test is in a .NET MAUI app project. To write unit tests against the .NET MAUI app project will require you to update the target frameworks used by the project. This can be achieved by adding the value of the `$(TargetFramework)` build property from the xUnit test project file (*.csproj*) to the `$(TargetFrameworks)` build property in the .NET MAUI app project file:
 
@@ -99,16 +109,6 @@ In this example, the .NET MAUI app project only produces an executable when the 
 Then, you must add a reference to your .NET MAUI app project from your xUnit test project.
 
 ## Write unit tests
-
-Unit tests should typically use the arrange-act-assert pattern:
-
-| Step | Description |
-|---------|---------|
-| Arrange | Initialize objects and set the value of the data that is passed to the method under test. |
-| Act | Invoke the method under test with the required arguments. |
-| Assert | Verify that the action of the method under test behaves as expected. |
-
-This pattern ensures that unit tests are readable, self-describing, and consistent.
 
 xUnit supports two different types of unit tests:
 
@@ -160,7 +160,7 @@ namespace MyUnitTests
 }
 ```
 
-In this example, even though there's only one test method, there are actually three tests because each theory with its data set will be ran as a separate test.
+In this example, even though there's only one test method, there are actually three tests because the theory will be ran once for each item of data.
 
 > [!TIP]
 > Test one operation with each unit test. As the complexity of a test expands, it makes verification of that test more difficult. By limiting a unit test to a single concern, you can ensure that your tests are repeatable, isolated, and have a shorter execution time. For more information, see [Unit testing best practices](/dotnet/core/testing/unit-testing-best-practices).
@@ -175,8 +175,8 @@ Unit tests can also be ran on a device with a device runner. A device runner is 
 
 ## See also
 
-- [Dependency injection and unit testing](/dotnet/architecture/maui/unit-testing#dependency-injection-and-unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-- [Testing MVVM apps](/dotnet/architecture/maui/unit-testing#testing-mvvm-apps?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-- [Testing asynchronous functionality](/dotnet/architecture/maui/unit-testing#testing-asynchronous-functionality?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-- [Testing INotifyPropertyChanged implementations](/dotnet/architecture/maui/unit-testing#testing-INotifyPropertyChanged-implementations?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-- [Testing exception handling](/dotnet/architecture/maui/unit-testing#testing-exception-handling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- [Dependency injection and unit testing](/dotnet/architecture/maui/unit-testing#dependency-injection-and-unit-testing)
+- [Testing MVVM apps](/dotnet/architecture/maui/unit-testing#testing-mvvm-apps)
+- [Testing asynchronous functionality](/dotnet/architecture/maui/unit-testing#testing-asynchronous-functionality)
+- [Testing INotifyPropertyChanged implementations](/dotnet/architecture/maui/unit-testing#testing-INotifyPropertyChanged-implementations)
+- [Testing exception handling](/dotnet/architecture/maui/unit-testing#testing-exception-handling)
