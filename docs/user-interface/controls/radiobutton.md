@@ -39,7 +39,9 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 <xref:Microsoft.Maui.Controls.RadioButton> grouping can be managed by the `RadioButtonGroup` class, which defines the following attached properties:
 
-- `GroupName`, of type `string`, which defines the group name for <xref:Microsoft.Maui.Controls.RadioButton> objects in an `ILayout`.
+- `GroupName`, of type `string`, which defines the group name for <xref:Microsoft.Maui.Controls.RadioButton> objects in an `ILayout`. 
+> [!NOTE]
+> Although not required, it is strongly recommended that you provide a `GroupName` to ensure `SelectedValue` works correctly across all platforms.
 - `SelectedValue`, of type `object`, which represents the value of the checked <xref:Microsoft.Maui.Controls.RadioButton> object within an `ILayout` group. This attached property uses a `TwoWay` binding by default.
 
 For more information about the `GroupName` attached property, see [Group RadioButtons](#group-radiobuttons). For more information about the `SelectedValue` attached property, see [Respond to RadioButton state changes](#respond-to-radiobutton-state-changes).
