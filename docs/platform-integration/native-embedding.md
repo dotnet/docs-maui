@@ -429,7 +429,7 @@ public class AppDelegate : UIApplicationDelegate
 }
 ```
 
-The `WillConnect` method in the `SceneDelegate` class can then be modified to create your main view controller and set it as the view of the `UINavigationController`:
+The `WillConnect` method in the `SceneDelegate` class should then be modified to create your main view controller and set it as the view of the `UINavigationController`:
 
 ```csharp
 namespace MyNativeEmbeddedApp.iOS
