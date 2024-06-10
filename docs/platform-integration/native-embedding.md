@@ -1,7 +1,7 @@
 ---
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
-ms.date: 05/09/2024
+ms.date: 06/10/2024
 zone_pivot_groups: devices-deployment
 ---
 
@@ -257,11 +257,11 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
     ```
 
 01. Delete the `MainPage` class from the project.
-01. Modify the project file so that the `$(TargetFrameworks)` build property is set to `net8.0`, and the `$(OutputType)` build property is removed:
+01. Modify the project file so that the `$(TargetFramework)` build property is set to `net8.0`, and the `$(OutputType)` build property is removed:
 
     ```xml
     <PropertyGroup>
-      <TargetFrameworks>net8.0</TargetFrameworks>
+      <TargetFramework>net8.0</TargetFramework>
 
       <RootNamespace>MyMauiApp</RootNamespace>
       <UseMaui>true</UseMaui>
@@ -272,6 +272,9 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
       ...
     </PropertyGroup>
     ```
+
+    > [!IMPORTANT]
+    > Ensure you set the `$(TargetFramework)` build property, not the`$(TargetFrameworks)` build property.
 
 01. Modify the `CreateMauiApp` method in the `MauiProgram` class so that it accepts an optional `Action<MauiAppBuilder>` argument that's invoked before the method returns:
 
@@ -374,36 +377,35 @@ Typically, the pattern for initializing .NET MAUI in a native app project is as 
 On Android, the `OnCreate` override in the `MainActivity` class is typically the place to perform app startup related tasks. The following code example shows .NET MAUI being initialized in the `MainActivity` class:
 
 ```csharp
-namespace MyNativeEmbeddedApp.Droid
+namespace MyNativeEmbeddedApp.Droid;
+
+[Activity(Label = "@string/app_name", MainLauncher = true, Theme = "@style/AppTheme")]
+public class MainActivity : Activity
 {
-    [Activity(Label = "@string/app_name", MainLauncher = true, Theme = "@style/AppTheme")]
-    public class MainActivity : Activity
+    public static readonly Lazy<MauiApp> MauiApp = new(() =>
     {
-        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        var mauiApp = MauiProgram.CreateMauiApp(builder =>
         {
-            var mauiApp = MauiProgram.CreateMauiApp(builder =>
-            {
-                builder.UseMauiEmbedding();
-            });
-            return mauiApp;
+            builder.UseMauiEmbedding();
         });
+        return mauiApp;
+    });
 
-        public static bool UseWindowContext = true;
+    public static bool UseWindowContext = true;
 
-        protected override void OnCreate(Bundle? savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
 
-            // Ensure .NET MAUI app is built before creating .NET MAUI views
-            var mauiApp = MainActivity.MauiApp.Value;
+        // Ensure .NET MAUI app is built before creating .NET MAUI views
+        var mauiApp = MainActivity.MauiApp.Value;
 
-            // Create .NET MAUI context
-            var mauiContext = UseWindowContext
-                ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
-                : new MauiContext(mauiApp.Services, this);  // Create app context
+        // Create .NET MAUI context
+        var mauiContext = UseWindowContext
+            ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
+            : new MauiContext(mauiApp.Services, this);  // Create app context
 
-            ...              
-        }
+        ...              
     }
 }
 ```
@@ -412,26 +414,71 @@ namespace MyNativeEmbeddedApp.Droid
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class should be modified to create your main view controller:
+On iOS and Mac Catalyst, the `AppDelegate` class should be modified to return `true` for the `FinishedLaunching` override:
 
 ```csharp
-namespace MyNativeEmbeddedApp.iOS
-{
-    [Register("AppDelegate")]
-    public class AppDelegate : UIApplicationDelegate
-    {
-        public override UIWindow? Window { get; set; }
+namespace MyNativeEmbeddedApp.iOS;
 
-        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
-        {
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            var vc = new MainViewController();
-            Window.RootViewController = vc;
-            Window.MakeKeyAndVisible();
-            return true;
-        }
-    }
+[Register("AppDelegate")]
+public class AppDelegate : UIApplicationDelegate
+{
+    public override UIWindow? Window { get; set; }
+
+    public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions) => true;
 }
+```
+
+The `WillConnect` method in the `SceneDelegate` class should then be modified to create your main view controller and set it as the view of the `UINavigationController`:
+
+```csharp
+namespace MyNativeEmbeddedApp.iOS;
+
+[Register("SceneDelegate")]
+public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
+{
+    [Export("window")]
+    public UIWindow? Window { get; set; }
+
+    [Export("scene:willConnectToSession:options:")]
+    public void WillConnect(UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
+    {
+        if (scene is not UIWindowScene windowScene)
+            return;
+
+        Window = new UIWindow(windowScene);
+
+        var mainVC = new MainViewController();
+        var navigationController = new UINavigationController(mainVC);
+        navigationController.NavigationBar.PrefersLargeTitles = true;
+
+        Window.RootViewController = navigationController;
+        Window.MakeKeyAndVisible();
+    }
+
+    /// ...
+}
+```
+
+Then, in the XML editor, open the **Info.plist** file and add the following XML to the end of the file:
+
+```xml
+<key>UIApplicationSceneManifest</key>
+<dict>
+  <key>UIApplicationSupportsMultipleScenes</key>
+  <true/>
+  <key>UISceneConfigurations</key>
+  <dict>
+    <key>UIWindowSceneSessionRoleApplication</key>
+    <array>
+      <dict>
+        <key>UISceneConfigurationName</key>
+        <string>Default Configuration</string>
+        <key>UISceneDelegateClassName</key>
+        <string>SceneDelegate</string>
+      </dict>
+    </array>
+  </dict>
+</dict>
 ```
 
 .NET MAUI can then be initialized in the `ViewDidLoad` method in your main view controller:
@@ -439,41 +486,40 @@ namespace MyNativeEmbeddedApp.iOS
 ```csharp
 using Microsoft.Maui.Platform;
 
-namespace MyNativeEmbeddedApp.iOS
+namespace MyNativeEmbeddedApp.iOS;
+
+public class MainViewController : UIViewController
 {
-    public class MainViewController : UIViewController
+    UIWindow GetWindow() =>
+        View?.Window ??
+        ParentViewController?.View?.Window ??
+        MainViewController.MauiApp.Value.Services.GetRequiredService<IUIApplicationDelegate>().GetWindow() ??
+        UIApplication.SharedApplication.Delegate.GetWindow();
+
+    public static readonly Lazy<MauiApp> MauiApp = new(() =>
     {
-        UIWindow GetWindow() =>
-            View?.Window ??
-            ParentViewController?.View?.Window ??
-            MainViewController.MauiApp.Value.Services.GetRequiredService<IUIApplicationDelegate>().GetWindow() ??
-            UIApplication.SharedApplication.Delegate.GetWindow();
-
-        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        var mauiApp = MauiProgram.CreateMauiApp(builder =>
         {
-            var mauiApp = MauiProgram.CreateMauiApp(builder =>
-            {
-                builder.UseMauiEmbedding();
-            });
-            return mauiApp;
+            builder.UseMauiEmbedding();
         });
+        return mauiApp;
+    });
 
-        public static bool UseWindowContext = true;
+    public static bool UseWindowContext = true;
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
+    public override void ViewDidLoad()
+    {
+        base.ViewDidLoad();
 
-            // Ensure app is built before creating .NET MAUI views
-            var mauiApp = MainViewController.MauiApp.Value;
+        // Ensure app is built before creating .NET MAUI views
+        var mauiApp = MainViewController.MauiApp.Value;
 
-            // Create .NET MAUI context
-            var mauiContext = UseWindowContext
-                ? mauiApp.CreateEmbeddedWindowContext(GetWindow()) // Create window context
-                : new MauiContext(mauiApp.Services);               // Create app context
+        // Create .NET MAUI context
+        var mauiContext = UseWindowContext
+            ? mauiApp.CreateEmbeddedWindowContext(GetWindow()) // Create window context
+            : new MauiContext(mauiApp.Services);               // Create app context
 
-            ...
-        }
+        ...
     }
 }
 ```
@@ -485,35 +531,34 @@ namespace MyNativeEmbeddedApp.iOS
 On Windows, the `MainWindow` class is typically the place to perform UI related app startup tasks:
 
 ```csharp
-namespace MyNativeEmbeddedApp.WinUI
+namespace MyNativeEmbeddedApp.WinUI;
+
+public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
 {
-    public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
+    public static readonly Lazy<MauiApp> MauiApp = new(() =>
     {
-        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        var mauiApp = MauiProgram.CreateMauiApp(builder =>
         {
-            var mauiApp = MauiProgram.CreateMauiApp(builder =>
-            {
-                builder.UseMauiEmbedding();
-            });
-            return mauiApp;
+            builder.UseMauiEmbedding();
         });
+        return mauiApp;
+    });
 
-        public static bool UseWindowContext = true;
+    public static bool UseWindowContext = true;
 
-        public MainWindow()
-        {
-            this.InitializeComponent();
+    public MainWindow()
+    {
+        this.InitializeComponent();
 
-            // Ensure .NET MAUI app is built before creating .NET MAUI views
-            var mauiApp = MainWindow.MauiApp.Value;
+        // Ensure .NET MAUI app is built before creating .NET MAUI views
+        var mauiApp = MainWindow.MauiApp.Value;
 
-            // Create .NET MAUI context
-            var mauiContext = UseWindowContext
-                ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
-                : new MauiContext(mauiApp.Services);        // Create app context
+        // Create .NET MAUI context
+        var mauiContext = UseWindowContext
+            ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
+            : new MauiContext(mauiApp.Services);        // Create app context
 
-            ...
-        }
+        ...
     }
 }
 ```
