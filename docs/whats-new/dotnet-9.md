@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 05/21/2024
+ms.date: 06/11/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview, see the following release notes:
 
+- [.NET MAUI 9 Preview 5](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.5.10690)
 - [.NET MAUI 9 Preview 4](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.4.10690)
 - [.NET MAUI 9 Preview 3](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.3.10457)
 - [.NET MAUI 9 Preview 2](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.2.10293)
@@ -17,6 +18,16 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
+
+## Blazor Hybrid
+
+.NET MAUI 9 Preview 5 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from `dotnew new`:
+
+```dotnetcli
+dotnet new maui-blazor-web -n AllTheTargets
+```
 
 ## Control enhancements
 
@@ -34,6 +45,7 @@ In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The a
 
 .NET for Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
 
+- [.NET for Android 9 Preview 5](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.5.308)
 - [.NET for Android 9 Preview 4](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.4.272)
 - [.NET for Android 9 Preview 3](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.3.231)
 - [.NET for Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
@@ -78,12 +90,37 @@ In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` at
 
 For more information about Android asset packs, see [Android Asset Packs](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/AndroidAssetPacks.md).
 
-### Android 15 beta 1 support
+### Android 15 beta support
 
-.NET for Android Preview 4 .NET bindings for the first beta of Android 15 codenamed "Vanilla Ice Cream". To build for these APIs, update the target framework of your project:
+.NET for Android Preview 4 adds .NET bindings for the first beta of Android 15 (API 35) codenamed "Vanilla Ice Cream". To build for these APIs, update the target framework of your project:
 
 ```xml
 <TargetFramework>net9.0-android35</TargetFramework>
+```
+
+.NET for Android Preview 5 extends these bindings to Android 15 beta 2, with improvements for startup performance and app size.
+
+### LLVM marshalled methods
+
+Low-level Virtual Machine (LLVM) marshalled methods are now enabled by default in .NET for Android Preview 5 in non-Blazor apps. This has resulted in a [~10% improvement in performance in a test app](https://github.com/xamarin/xamarin-android/pull/8925).
+
+LLVM marshalled methods can be disabled in your project file (*.csproj*):
+
+```xml
+<PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+  <AndroidEnableLLVM>false</AndroidEnableLLVM>
+  <AndroidEnableLLVMOptimizations>false</AndroidEnableLLVMOptimizations>
+</PropertyGroup>
+```
+
+### Trimming enhancements
+
+.NET for Android Preview 5 includes fixes for when using full trimming to reduce app size. Full trimming is usually only enabled for release builds of your app, and can be configured in your project file (*.csproj*):
+
+```xml
+<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net9.0-android'">
+	<TrimMode>Full</TrimMode>
+</PropertyGroup>
 ```
 
 ## iOS
@@ -97,10 +134,11 @@ For more information about Android asset packs, see [Android Asset Packs](https:
 
 For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9.0.1xx Preview 5](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview5-9639)
 - [.NET 9.0.1xx Preview 4](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview4-9523)
 - [.NET 9.0.1xx Preview 3](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview3-9429)
 - [.NET 9.0.1xx Preview 2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview2-9244)
-- [.NET 9.0.1xx Preview 1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview1-9088).
+- [.NET 9.0.1xx Preview 1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview1-9088)
 
 ### Bindings
 
