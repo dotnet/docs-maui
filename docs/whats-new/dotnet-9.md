@@ -43,7 +43,7 @@ dotnet new maui-blazor-web -n AllTheTargets
 
 ## Android
 
-.NET for Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
+.NET for Android 9 Preview, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
 
 - [.NET for Android 9 Preview 5](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.5.308)
 - [.NET for Android 9 Preview 4](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.4.272)
