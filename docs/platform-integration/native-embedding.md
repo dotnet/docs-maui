@@ -1,7 +1,7 @@
 ---
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
-ms.date: 06/10/2024
+ms.date: 06/12/2024
 zone_pivot_groups: devices-deployment
 ---
 
@@ -647,3 +647,106 @@ stackPanel.Children.Add(nativeView);
 
 > [!IMPORTANT]
 > To avoid an error occurring, XAML hot reload should be disabled before running a native embedded app in debug configuration.
+
+## Support XAML hot reload
+
+XAML hot reload isn't supported in native embedded apps. However, you can still use XAML hot reload to quickly iterate on your .NET MAUI UI by creating a .NET MAUI app that consumes the .NET MAUI UI.
+
+To view your .NET MAUI UI with XAML hot reload:
+
+1. In the project containing your .NET MAUI UI, update the `MauiProgram` class to add a `CreateMauiApp` overload, and modify the existing `CreateMauiApp` method to accept a generic argument:
+
+    ```csharp
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp(Action<MauiAppBuilder>? additional = null) =>
+            CreateMauiApp<App>(additional);
+
+        public static MauiApp CreateMauiApp<TApp>(Action<MauiAppBuilder>? additional = null) where TApp : App
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<TApp>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
+
+    #if DEBUG
+            builder.Logging.AddDebug();
+    #endif
+            additional?.Invoke(builder);
+
+            return builder.Build();
+        }
+    }
+    ```
+
+1. In the project containing your .NET MAUI UI, convert each resource dictionary from a stand-alone XAML file to a resource dictionary that's backed by a code-behind file.
+1. In the project containing your .NET MAUI UI, update your resource dictionary instantiation, typically in *App.xaml*, so that the `Source` property also specifies the assembly that contains the resource dictionary:
+
+    ```xaml
+    <ResourceDictionary Source="Resources/Styles/Colors.xaml;assembly=NativeEmbeddingDemo" />
+    <ResourceDictionary Source="Resources/Styles/Styles.xaml;assembly=NativeEmbeddingDemo" />
+    ```
+
+1. Create a new .NET MAUI app and add it to the solution containing your .NET MAUI UI project and native embedded apps.
+1. In your .NET MAUI app project, add a reference to the project that contains your .NET MAUI UI.
+1. In your .NET MAUI app project, delete any **Resource** child folders where the resource is provided by your .NET MAUI UI project. For example, if your .NET MAUI UI project contains **Resources > Fonts**, **Resources > Images**, and **Resources > Styles** folders, these folders should be deleted from the .NET MAUI app you've just created. This enables your .NET MAUI app to consume the resources from the project containing your .NET MAUI UI.
+1. In your .NET MAUI app, update your `App` class so that in derives from the `App` class in your .NET MAUI UI project:
+
+    ```xaml
+    <myMauiUIProject:App xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:myMauiUIProject="clr-namespace:NativeEmbeddingDemo;assembly=NativeEmbeddingDemo"
+                         x:Class="TestHarnessApp.TestApp">
+        <myMauiUIProject:App.Resources>
+            <!-- Any app specific resources go here -->
+        </myMauiUIProject:App.Resources>
+    </myMauiUIProject:App>
+    ```
+
+    Then update the code-behind file for the `App` class so that it derives from the `App` class in your .NET MAUI UI project, and loads any XAML resources from this project:
+
+    ```csharp
+    public partial class TestApp :myMauiUIProject.App
+    {
+        public TestApp()
+        {
+            var baseResources = Resources;
+            InitializeComponent();
+            Resources.MergedDictionaries.Add(baseResources);
+            MainPage = new HostPage();
+        }
+    }
+    ```
+
+1. In your .NET MAUI app, add a page that displays the UI from the project containing your .NET MAUI UI:
+
+    ```xaml
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:myMauiUIProject="clr-namespace:NativeEmbeddingDemo;assembly=NativeEmbeddingDemo"
+                 x:Class="TestHarnessApp.HostPage"
+                 Title="HostPage">
+        <myMauiUIProject:MyMauiContent />
+    </ContentPage>
+    ```
+
+1. In your .NET MAUI app, update the `MauiProgram` class to call the `CreateMauiApp` method in the project containing your .NET MAUI UI:
+
+    ```csharp
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp() =>
+            NativeEmbeddingDemo.MauiProgram.CreateMauiApp<TestApp>(builder =>
+            {
+                // Add any test harness configuration such as service stubs or mocks.
+            });
+    }
+    ```
+
+You should now be able to run your .NET MAUI app project on each platform and use XAML hot reload to iterate on your .NET MAUI UI.
+
+For an example of this approach, see the [sample app](/samples/dotnet/maui-samples/platformintegration-nativeembedding).
