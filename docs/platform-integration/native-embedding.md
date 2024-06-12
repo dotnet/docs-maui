@@ -694,7 +694,7 @@ To view your .NET MAUI UI with XAML hot reload:
 1. Create a new .NET MAUI app and add it to the solution containing your .NET MAUI UI project and native embedded apps.
 1. In your .NET MAUI app project, add a reference to the project that contains your .NET MAUI UI.
 1. In your .NET MAUI app project, delete any **Resource** child folders where the resource is provided by your .NET MAUI UI project. For example, if your .NET MAUI UI project contains **Resources > Fonts**, **Resources > Images**, and **Resources > Styles** folders, these folders should be deleted from the .NET MAUI app you've just created. This enables your .NET MAUI app to consume the resources from the project containing your .NET MAUI UI.
-1. In your .NET MAUI app, update your `App` class so that in derives from the `App` class in your .NET MAUI UI project:
+1. In your .NET MAUI app, update your `App` class so that it derives from the `App` class in your .NET MAUI UI project:
 
     ```xaml
     <myMauiUIProject:App xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -702,7 +702,7 @@ To view your .NET MAUI UI with XAML hot reload:
                          xmlns:myMauiUIProject="clr-namespace:NativeEmbeddingDemo;assembly=NativeEmbeddingDemo"
                          x:Class="TestHarnessApp.TestApp">
         <myMauiUIProject:App.Resources>
-            <!-- Any app specific resources go here -->
+            <!-- App specific resources go here -->
         </myMauiUIProject:App.Resources>
     </myMauiUIProject:App>
     ```
@@ -710,7 +710,7 @@ To view your .NET MAUI UI with XAML hot reload:
     Then update the code-behind file for the `App` class so that it derives from the `App` class in your .NET MAUI UI project, and loads any XAML resources from this project:
 
     ```csharp
-    public partial class TestApp :myMauiUIProject.App
+    public partial class TestApp : myMauiUIProject.App
     {
         public TestApp()
         {
