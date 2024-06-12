@@ -306,7 +306,7 @@ protected override void OnNavigating(ShellNavigatingEventArgs args)
     {
         args.Cancel();
     }
-// }
+}
 ```
 
 ## Navigation deferral
