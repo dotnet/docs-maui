@@ -190,7 +190,7 @@ Please read the [C# Dev Kit FAQs](https://code.visualstudio.com/docs/csharp/cs-d
 
 ## Next steps
 
-To learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac, click the button below.
+To learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code, click the button below.
 
 > [!div class="nextstepaction"]
 > [Build your first app](first-app.md)
