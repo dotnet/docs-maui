@@ -1,12 +1,12 @@
 ---
-title: "Install Visual Studio 2022 to develop cross-platform apps using .NET MAUI"
-description: "Learn how to install Visual Studio 2022 and Visual Studio 2022 for Mac, to develop native, cross-platform apps using .NET MAUI."
-ms.date: 11/13/2023
+title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
+description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
+ms.date: 06/12/2024
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or Visual Studio 2022 for Mac 17.6.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
@@ -43,18 +43,14 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
     :::image type="content" source="media/installation/vs/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 <!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
+# [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-To start developing native, cross-platform .NET MAUI apps on macOS, install Visual Studio 2022 for Mac 17.6 by following the [installation](#installation) steps.
+To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation steps](https://code.visualstudio.com/docs/setup/setup-overview).
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.6. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements).
-
-To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
+To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 
 - A Mac that is compatible with Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/).
 - A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
@@ -62,53 +58,13 @@ To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
 
 ## Installation
 
-1. To create .NET MAUI apps, you'll need the latest Visual Studio for Mac:
-
-    > [!div class="button"]
-    > [Download Visual Studio 2022 for Mac](https://visualstudio.microsoft.com/vs/mac/)
-
-1. Either install Visual Studio 2022 for Mac, or modify your existing installation, and ensure that the following workloads are installed:
-
-    - .NET
-    - .NET MAUI
-    - Android
-    - iOS
-
-    :::image type="content" source="media/installation/vsmac/mac-maui-workloads.png" alt-text="Visual Studio for Mac .NET MAUI workloads.":::
-    :::image type="content" source="media/installation/vsmac/mac-legacy-workloads.png" alt-text="Visual Studio for Mac legacy workloads.":::
-
-    > [!IMPORTANT]
-    > For new installations of Visual Studio 2022 for Mac, selecting the .NET MAUI workload will automatically select the Android and iOS workloads, which are currently required for .NET MAUI development.
-
-    <!-- At some point, the legacy workloads shouldn't be required. -->
-
-1. Install .NET 8 through the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-1. After .NET 8 has finished installing, run `dotnet workload install maui` in a terminal.
-
-    [!INCLUDE [Enable .NET 8 support in Visual Studio Mac](includes/vsmac-net8.md)]
-
-If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#installation-behind-a-firewall-or-proxy-server) instructions.
-
-## Installation behind a firewall or proxy server
-
-To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must be made accessible in order to allow downloads of the required tools and updates for your software. For more information about configuring your network to allow access to the required endpoints, see [Install and use Visual Studio for Mac behind a firewall or proxy server](/visualstudio/mac/install-behind-a-firewall-or-proxy-server).
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio Code (Preview)](#tab/visual-studio-code)
-<!-- markdownlint-enable MD025 -->
-
-> [!NOTE]
-> .NET MAUI support in Visual Studio Code is still in preview. Try it out and [share your feedback](https://github.com/microsoft/vscode-dotnettools/issues)!
-
-## Install Visual Studio Code and the .NET MAUI extension
-
-1. Install [Visual Studio Code](https://code.visualstudio.com/).
-1. In the Extensions tab, search for ".NET MAUI" and install the [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace). The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
+1. To create .NET MAUI apps you'll need to install the latest [Visual Studio Code](https://code.visualstudio.com).
+1. In Visual Studio Code, in the Extensions tab, search for ".NET MAUI" and install the [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace). The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
 
     :::image type="content" source="media/installation/vscode/maui-extension-preview.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension":::
 
 > [!NOTE]
-> The .NET MAUI extension requires the C# Dev Kit which includes the C# extension. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. See [this C# Dev Kit documentation](https://code.visualstudio.com/docs/csharp/get-started) for more information about C# Dev Kit and its family of extensions.
+> The .NET MAUI extension requires the C# Dev Kit and C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. For more information, see [this blog post](https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/) to learn more about C# Dev Kit and its family of extensions.
 
 ## Install .NET and .NET MAUI workloads
 
@@ -144,8 +100,9 @@ To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target 
 
 To debug to an iOS or macOS target in Visual Studio Code:
 
-1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Mac App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
 1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
+1. Open Xcode, and ensure you accept any license agreements.
 
 ### Android
 
@@ -160,7 +117,7 @@ To debug to an Android target in Visual Studio Code:
 
 ## Troubleshooting
 
-You might face issues when setting up the .NET MAUI extension for Visual Studio Code. If you're still facing issues after following the below troubleshooting steps, please [report an issue](#provide-feedback).
+You might face issues when setting up the .NET MAUI extension for Visual Studio Code. To see details on errors related to the extension, navigate to the **Output** window (<kbd>CTRL/CMD + Shift + u</kdb>) and select **.NET MAUI** in the dropdown. See the below sections to help address your issue. If you're still facing issues after following the troubleshooting steps, please [report an issue](#provide-feedback).
 
 ### Project creation
 
@@ -178,11 +135,11 @@ In the command above:
 
 * `AndroidSdkDirectory="<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
   * Windows: the suggested AndroidSdkPath is `%LOCALAPPDATA%/Android/Sdk`.
-  * MacOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
+  * macOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
 * `JavaSdkDirectory="<JavaSdkPath>"`: installs Java to the specified absolute path.
 * `AcceptAndroidSDKLicenses=True`: accepts the required Android licenses for development.
 
-#### There's an error that the Android SDK or Java SDK was not found
+#### There's an error that the Android SDK or Java SDK wasn't found
 
 * Open the command palette (Ctrl/Cmd + Shift + P) and search for the `.NET MAUI: Configure Android` command. Select both "Set Android SDK path" and "Set Android JDK path" and validate that they point to installations of each.
   * The Android SDK folder should have sub-folders such as `build-tools`, `cmdline-tools`, and `platform-tools`.
@@ -206,27 +163,24 @@ This is a known issue if you install to `%APPDATA%` on Windows and will be fixed
 
 ### iOS/Xcode Setup
 
-* If you get an error that Xcode is not found, run `xcode-select --install` in a terminal, then check that `xcode-select -p` points to your Xcode installation.
+* If you get an error that Xcode isn't found, run `xcode-select --install` in a terminal, then check that `xcode-select -p` points to your Xcode installation.
 * If you're still facing issues, open Xcode itself to make sure it loads correctly. Once Xcode is open, navigate to **Xcode > Settings > Locations** and check that the **Command Line Tools** field is pointing to the correct Xcode.
-* There is a known issue that sometimes you have to build your iOS/macOS app twice for it to deploy. This will be fixed in an upcoming release.
+* There's a known issue that sometimes you have to build your iOS/macOS app twice for it to deploy. This will be fixed in an upcoming release.
 
 ### Debugging issues
 
-* Debugging can fail to start for multiple reasons. If there isn't a clear error in the Output window, first double check that you are using the ".NET MAUI" run configuration in Visual Studio Code.
+* Debugging can fail to start for multiple reasons. If there isn't a clear error in the **Output** window, first double check that you're using the **C#** run configuration in Visual Studio Code.
+* If you're using an older version of .NET, the C# debugger isn't supported for .NET MAUI apps. You can use the legacy .NET MAUI debug configuration by unchecking the extension setting **MAUI > Configuration > Experimental > Use VSDbg**.
 * You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net8.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
 
-## Known Limitations
+## Known limitations
 
-This extension is still in early preview, so there are a number of known limitations. Please [give us your feedback](#provide-feedback) on other features you'd like to see as we continue building this new experience.
-
-* XAML editing capabilities are very lightweight - you get basic syntax highlighting and autocomplete. We're exploring how to improve the XAML experience in a future release.
-* Currently, you can't switch the target framework for IntelliSense (it will show syntax highlighting for only the first target framework listed in your .csproj file). This capability is in progress.
+* Currently, you can't switch the target framework for IntelliSense (it will show syntax highlighting for only the first target framework listed in your .csproj file). This capability is in progress. To get syntax highlighting for other targets (e.g. Android instead of iOS) you can reorder the target frameworks in your project file.
 * XAML and .NET Hot Reload are't currently supported.
-* This extension hasn't yet been fully tested with the latest iOS and Xcode betas.
 
 Please [give us your feedback](#provide-feedback) on other features you'd like to see as we continue building this new experience!
 
-## Provide Feedback
+## Provide feedback
 
 Please read the [C# Dev Kit FAQs](https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq) and check existing [Known Issues](https://github.com/microsoft/vscode-dotnettools/issues) before filing a new issue or suggestion. You can file suggestions and issues from inside Visual Studio Code through through the **Help > Report Issue** dialog. Ensure you select “An extension” then the .NET MAUI extension in the drop-down.
 
@@ -236,7 +190,7 @@ Please read the [C# Dev Kit FAQs](https://code.visualstudio.com/docs/csharp/cs-d
 
 ## Next steps
 
-To learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac, click the button below.
+To learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code, click the button below.
 
 > [!div class="nextstepaction"]
 > [Build your first app](first-app.md)

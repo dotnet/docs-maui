@@ -1,13 +1,13 @@
 ---
 title: "Build your first .NET MAUI app"
-description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
-ms.date: 11/10/2023
+description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code with the .NET MAUI extension"
+ms.date: 06/12/2024
 zone_pivot_groups: devices-deployment
 ---
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows or Visual Studio 2022 for Mac. This will help to ensure that your development environment is correctly set up.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows or Visual Studio Code on Windows, macOS, or Linux. This will help to ensure that your development environment is correctly set up.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
@@ -202,198 +202,45 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 :::zone-end
 
 <!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
+# [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.6 with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
-
-[!INCLUDE [Enable .NET 8 support in Visual Studio Mac](includes/vsmac-net8.md)]
+- Visual Studio Code, with the .NET MAUI extension installed. For more information, see [Installation](installation.md?tabs=visual-studio-code).
 
 ## Create an app
 
-:::zone pivot="devices-android, devices-ios, devices-maccatalyst"
-
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac and run it on your chosen platform:
-
-01. Launch Visual Studio 2022 for Mac. In the start window, click **New** to create a new project:
-
-    :::image type="content" source="media/first-app/vsmac/new-project.png" alt-text="Create a new project in Visual Studio for Mac.":::
-
-01. In the **Choose a template for your new project** window, select **Multiplatform > App**, select the **.NET MAUI App** template, and click the **Continue** button:
-
-    :::image type="content" source="media/first-app/vsmac/choose-template.png" alt-text="Choose the .NET MAUI App project template.":::
-
-01. In the **Configure your new .NET MAUI App** window, choose the version of .NET that you'd like to target and click the **Continue** button:
-
-    :::image type="content" source="media/first-app/vsmac/select-target-framework.png" alt-text="Select the target framework for your .NET MAUI app.":::
-
-01. In the **Configure your new .NET MAUI App** window, enter **MyMauiApp** as the project name, select a suitable location for the project, and click the **Create** button:
-
-    :::image type="content" source="media/first-app/vsmac/name-project.png" alt-text="Name your .NET MAUI project and specify its location.":::
-
-01. Wait for the project to be created and its dependencies to be restored:
-
-    :::image type="content" source="media/first-app/vsmac/project-dependencies-restored.png" alt-text="Ensure the project dependencies have been restored.":::
-
-:::zone-end
-
-:::zone pivot="devices-android"
-
-<!-- markdownlint-disable MD029 -->
-06. Visual Studio 2022 for Mac will display an infobar if your Mac lacks the Android SDK components. Click the **Install** button to install the Android SDK:
-
-    :::image type="content" source="media/first-app/vsmac/android-install-sdk.png" alt-text="Install the missing Android SDK components.":::
-
-    <!-- markdownlint-enable MD029 -->
-
-01. In the **Android SDK** window, select the **Download and install Android dependencies automatically** checkbox and click the **Download and Install** button:
-
-    :::image type="content" source="media/first-app/vsmac/android-sdk-download.png" alt-text="Download and install the Android SDK.":::
-
-01. In the **License Acceptance** window, click the **Accept** button:
-
-    :::image type="content" source="media/first-app/vsmac/android-sdk-license-acceptance.png" alt-text="Accept the Android SDK license.":::
-
-    Wait for Visual Studio 2022 for Mac to download the Android SDK:
-
-01. In the Visual Studio 2022 for Mac toolbar, change the debug target to **Android Emulator**:
-
-    :::image type="content" source="media/first-app/vsmac/android-emulator-debug-target.png" alt-text="Set the Android emulator as the debug target.":::
-
-01. In the Visual Studio 2022 for Mac toolbar, press the **Play** button to build the app and attempt to launch it:
-
-    :::image type="content" source="media/first-app/vsmac/android-emulator-run.png" alt-text="Build and launch the app in an Android emulator.":::
-
-    Visual Studio 2022 for Mac will build the app, and then will create a default Android emulator.
-
-01. In the **New Device** window, click the **Create** button:
-
-    :::image type="content" source="media/first-app/vsmac/android-create-emulator.png" alt-text="Create a default Android emulator.":::
-
-01. In the **License Acceptance** window, click the **Accept** button:
-
-    :::image type="content" source="media/first-app/vsmac/android-emulator-accept-license.png" alt-text="Accept the Android emulator license.":::
-
-    Wait for Visual Studio 2022 for Mac to download and install an Android emulator.
-
-01. Close the **Android Device Manager** window:
-
-    :::image type="content" source="media/first-app/vsmac/android-device-manager.png" alt-text="Close the Android Device Manager window.":::
-
-01. In the Visual Studio 2022 for Mac toolbar, change the debug target to **Pixel 5 - API 34 (API 34)**:
-
-    :::image type="content" source="media/first-app/vsmac/android-pixel5-debug-target.png" alt-text="Set the created Android emulator as the debug target.":::
-
-01. In the Visual Studio 2022 for Mac toolbar, press the **Play** button to launch the app in the Android emulator:
-
-    :::image type="content" source="media/first-app/vsmac/android-pixel5-run.png" alt-text="Launch the app in the default Android emulator.":::
-
-    Visual Studio 2022 for Mac will start the Android emulator, build the app, and deploy the app to the emulator.
-
-01. In the running app in the Android emulator, press the **Click me** button several times and observe that the count of the number of buttons clicks is incremented:
-
-    :::image type="content" source="media/first-app/vsmac/android-running-app.png" alt-text=".NET MAUI app running in an Android emulator on a Mac.":::
-
-:::zone-end
-
-:::zone pivot="devices-ios"
-
-<!-- markdownlint-disable MD029 -->
-06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to an iOS simulator:
-
-    :::image type="content" source="media/first-app/vsmac/ios-debug-target.png" alt-text="Ensure the debug target is set to an iOS simulator.":::
-
-    <!-- markdownlint-enable MD029 -->
-
-01. In the Visual Studio 2022 for Mac toolbar, press the **Play** button to launch the app in your chosen iOS simulator:
-
-    :::image type="content" source="media/first-app/vsmac/ios-run.png" alt-text="Launch the app in your chosen iOS simulator.":::
-
-    Visual Studio 2022 for Mac will start the iOS simulator, build the app, and deploy the app to the simulator.
-
-01. In the running app, press the **Click me** button several times and observe that the count of the number of buttons clicks is incremented:
-
-    :::image type="content" source="media/first-app/vsmac/ios-running-app.png" alt-text=".NET MAUI app running in iOS simulator on a Mac.":::
-
-:::zone-end
-
-:::zone pivot="devices-maccatalyst"
-
-<!-- markdownlint-disable MD029 -->
-06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to **My Mac (MacCatalyst)**:
-
-    :::image type="content" source="media/first-app/vsmac/mac-debug-target.png" alt-text="Ensure the debug target is set to My Mac.":::
-
-    <!-- markdownlint-enable MD029 -->
-
-01. In Visual Studio 2022 for Mac, right-click on the **MyMauiApp** project and select **Edit Project File**. Then, in the project file editor insert the following XML before the first `<ItemGroup>`:
-
-    ```xml
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
-        <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>
-    </PropertyGroup>
-    ```
-
-01. In the Visual Studio 2022 for Mac toolbar, press the **Play** button to launch the app on your Mac:
-
-    :::image type="content" source="media/first-app/vsmac/mac-run.png" alt-text="Launch the app on your Mac.":::
-
-    Visual Studio 2022 for Mac will build and deploy the app.
-
-01. In the running app, press the **Click me** button several times and observe that the count of the number of buttons clicks is incremented:
-
-    :::image type="content" source="media/first-app/vsmac/mac-running-app.png" alt-text=".NET MAUI app running on a Mac.":::
-
-:::zone-end
-
-:::zone pivot="devices-windows"
-
-.NET MAUI apps that target Windows can only be launched and debugged using Visual Studio 2022.
-
-:::zone-end
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio Code (Preview)](#tab/visual-studio-code)
-<!-- markdownlint-enable MD025 -->
-
-> [!NOTE]
-> .NET MAUI support in Visual Studio Code is still in preview. Try it out and [share your feedback](https://github.com/microsoft/vscode-dotnettools/issues)!
-
-## Install the extension
-
-Follow the [instructions](installation.md#install-visual-studio-code-and-the-net-maui-extension) to set up the .NET MAUI extension for Visual Studio Code.
-
-## Create your app
-
 To create a new .NET MAUI app:
 
-1. Click **Create .NET Project** in the Explorer, OR `CTRL/CMD+SHIFT+P` > **.NET: New Project...**.
+1. Launch Visual Studio Code. In the Explorer, click **Create .NET Project** in the Explorer. Alternatively, select <kbd>CTRL/CMD+SHIFT+P</kbd> **.NET: New Project...**.
 1. Select **.NET MAUI App** or **.NET MAUI Blazor App**.
-1. Select an **empty** folder. If the file explorer pops open again, your folder is not empty.
+1. Select an **empty** folder. If the file explorer opens again, your folder is not empty.
 1. Name the project.
 1. Ensure the project loads successfully in the Solution Explorer, and then open a C# or XAML file.
 
-You can also open an existing .NET MAUI project in Visual Studio Code via **File > Open...**.
+> [!NOTE]
+> You can also open an existing .NET MAUI project in Visual Studio Code via the **File > Open...** menu.
 
 You should now see your app in [C# Dev Kit's](/visualstudio/subscriptions/vs-c-sharp-dev-kit) Solution Explorer in Visual Studio Code. Since the .NET MAUI extension depends on C# Dev Kit, you can use [all of its features](https://code.visualstudio.com/docs/csharp/get-started) alongside the .NET MAUI extension.
 
 ## Choose your target device
 
-Click on the curly brackets symbol `{ }` in the bottom right corner of Visual Studio Code. Here, you can change your Startup Project, change your Debug Target to anything valid on your development machine, and pin either setting to the Visual Studio Code status bar:
+To choose your target device, click on the curly brackets symbol **{ }** in the bottom right corner of Visual Studio Code. You can use this symbol to change your startup project, change your debug target to anything valid on your development machine, and pin either setting to the Visual Studio Code status bar:
 
-:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of Visual Studio Code, showing the debug target picker open":::
+:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of Visual Studio Code, showing the debug target picker open.":::
 
-You can also set the Startup Project and Debug Target in the command palette, using `CTRL/CMD+SHIFT+P` and searching for ".NET MAUI".
+You can also set the startup project and debug target in the command palette, using <kbd>CTRL/CMD+SHIFT+P</kbd> and searching for ".NET MAUI".
 
-By default, you can deploy to your local macOS or Windows development machine. On macOS, you can also deploy to iOS simulators.
+You can deploy to your local development machine (Windows desktop or macOS with Xcode) without any additional steps.
 
-If you want to use Android emulators, follow these steps:
+:::zone pivot="devices-android"
 
-1. Navigate in your terminal to `<YOUR_ANDROID_SDK_DIRECTORY>/cmdline-tools/latest/bin/`.
+### Target Android
+
+If you want to use Android emulators, follow these steps to install and create an emulator:
+
+1. Navigate in your terminal to `<YOUR_ANDROID_SDK_DIRECTORY>/cmdline-tools/11.0/bin/`.
 1. Use `sdkmanager` to install the emulator.
 
     On Windows, run the following commands in the terminal:
@@ -432,19 +279,38 @@ If you want to use Android emulators, follow these steps:
 
 You can also debug on [physical Android devices](~/android/device/setup.md).
 
+:::zone-end
+
+:::zone pivot="devices-ios"
+
+### Target iOS
+
+iOS simulators are built into Xcode. To download the simulators, either ensure that the option is selected to install them when Xcode first launches, or navigate to **Xcode > Settings > Platforms** and choose a simulator runtime to install.
+
+To debug with an iOS device, follow these steps before attempting to debug:
+
+1. Specify your Apple ID in **Xcode > Settings > Account**.
+1. Register the device with your team if you belong to the Apple Developer Program.
+1. Enable Developer Mode on your device, as described in [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device). The first time you run your app you may receive a pop-up on the device - ensure you select **Allow**.
+
+:::zone-end
+
 ## Debug your app
 
-To debug your app, navigate to Visual Studio Code's **Run and Debug** menu and select the "Run and Debug" button. Alternatively, you can use `F5` to start a debug session. If Visual Studio Code prompts you to select a debugger, make sure you select ".NET MAUI".
+To debug your app, navigate to Visual Studio Code's **Run and Debug** menu and select the **Run and Debug** button. Alternatively, you can use <kbd>F5</kbd> to start a debug session. If Visual Studio Code prompts you to select a debugger, ensure you select **C#**.
+
+> [!NOTE]
+> In preview versions of the extension, the debugger was listed as .NET MAUI. In the stable release, this configuration was replaced with C#.
 
 :::image type="content" source="media/first-app/vscode/debug-menu.png" alt-text="A screenshot of the run and debug menu in visual studio code":::
 
-The debugger will automatically choose the Debug Target and Startup Project you set in the curly brackets `{ }` menu. If you haven't selected anything, it will prompt you to choose a Debug Target.
+The debugger will automatically choose the debug target and startup project you set in the curly brackets **{ }** menu. If you haven't selected anything, you'll be prompted to choose a debug target.
 
 Once your app starts debugging, you can use the built-in Visual Studio Code debugging tools to set breakpoints, step throughout your code, and [more](https://code.visualstudio.com/Docs/editor/debugging).
 
 ## Learn more
 
-If you face any issues with the extension, you can follow the [troubleshooting steps](./installation.md#troubleshooting), see our [known issues](./installation.md#known-limitations), or [provide feedback](./installation.md#provide-feedback).
+If you face any issues with the extension, you can follow the [troubleshooting steps](./installation.md#troubleshooting), see the [known issues](./installation.md#known-limitations), or [provide feedback](./installation.md#provide-feedback).
 
 ---
 
