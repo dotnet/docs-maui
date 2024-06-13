@@ -288,6 +288,7 @@ You can also debug on [physical Android devices](~/android/device/setup.md).
 iOS simulators are built into Xcode. To download the simulators, either ensure that the option is selected to install them when Xcode first launches, or navigate to **Xcode > Settings > Platforms** and choose a simulator runtime to install.
 
 To debug with an iOS device, follow these steps before attempting to debug:
+
 1. Specify your Apple ID in **Xcode > Settings > Account**.
 1. Register the device with your team if you belong to the Apple Developer Program.
 1. Enable Developer Mode on your device, as described in [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device). The first time you run your app you may receive a pop-up on the device - ensure you select **Allow**.
