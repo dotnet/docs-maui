@@ -447,6 +447,8 @@ The `NotificationReceiver` class is registered as the `UNUserNotificationCenter`
 
 :::zone pivot="devices-windows"
 
+## Implement local notifications on Windows
+
 Local notifications in the Windows App SDK are messages that your app can send to your user while they are not currently inside your app. The notification content is displayed in a transient window in the bottom right corner of the screen and in the Notification Center. Local notifications can be used to inform the user of app status, or to prompt the user to take an action.
 
 For information about local notifications on Windows, including implementation details for packaged and unpackaged apps, see [App notifications overview](/windows/apps/windows-app-sdk/notifications/app-notifications/).
