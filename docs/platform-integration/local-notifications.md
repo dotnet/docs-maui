@@ -96,7 +96,7 @@ public class NotificationManagerService : INotificationManagerService
             Intent intent = new Intent(Platform.AppContext, typeof(AlarmHandler));
             intent.PutExtra(TitleKey, title);
             intent.PutExtra(MessageKey, message);
-            intent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
+            intent.SetFlags(ActivityFlags.SingleTop | ActivityFlags.ClearTop);
 
             var pendingIntentFlags = (Build.VERSION.SdkInt >= BuildVersionCodes.S)
                 ? PendingIntentFlags.CancelCurrent | PendingIntentFlags.Immutable
@@ -128,7 +128,7 @@ public class NotificationManagerService : INotificationManagerService
         Intent intent = new Intent(Platform.AppContext, typeof(MainActivity));
         intent.PutExtra(TitleKey, title);
         intent.PutExtra(MessageKey, message);
-        intent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
+        intent.SetFlags(ActivityFlags.SingleTop | ActivityFlags.ClearTop);
 
         var pendingIntentFlags = (Build.VERSION.SdkInt >= BuildVersionCodes.S)
             ? PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable
@@ -198,7 +198,7 @@ public class AlarmHandler : BroadcastReceiver
 ```
 
 > [!IMPORTANT]
-> By default, notifications scheduled using the `AlarmManager` class will not survive device restart. However, you can design your app to automatically reschedule notifications if the device is restarted. For more information, see [Start an alarm when the device restarts](https://developer.android.com/training/scheduling/alarms#boot) in [Schedule repeating alarms](https://developer.android.com/training/scheduling/alarms) on developer.android.com. For information about background processing on Android, see [Guide to background processing](https://developer.android.com/guide/background) on developer.android.com.
+> By default, notifications scheduled using the `AlarmManager` class won't survive device restart. However, you can design your app to automatically reschedule notifications if the device is restarted. For more information, see [Start an alarm when the device restarts](https://developer.android.com/training/scheduling/alarms#boot) in [Schedule repeating alarms](https://developer.android.com/training/scheduling/alarms) on developer.android.com. For information about background processing on Android, see [Guide to background processing](https://developer.android.com/guide/background) on developer.android.com.
 
 ### Handle incoming notifications
 
