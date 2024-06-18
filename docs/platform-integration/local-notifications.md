@@ -2,7 +2,7 @@
 title: "Local notifications"
 description: "Learn how to send, schedule, and receive local notifications in .NET MAUI"
 ms.date: 06/17/2024
-zone_pivot_groups: devices-deployment
+zone_pivot_groups: devices-three-platforms
 ---
 
 # Local notifications
@@ -16,6 +16,8 @@ Local notifications are alerts sent by apps installed on a device. Local notific
 - Location-based triggers
 
 Each platform requires its own native code implementation to create, display, and consume local notifications. However, each platform implementation can be abstracted at the cross-platform layer so that there's a consistent API to send, schedule, and receive local notifications in a .NET Multi-platform App UI (.NET MAUI) app.
+
+For information about local notifications on Windows, see [App notifications overview](/windows/apps/windows-app-sdk/notifications/app-notifications/).
 
 ## Create a cross-platform interface
 
@@ -439,12 +441,6 @@ The `NotificationReceiver` class provides incoming notification data to the `Rec
 
 :::zone-end
 
-:::zone pivot="devices-windows"
-
-## Local notifications on Windows
-
-:::zone-end
-
 ## Register platform implementations
 
 Each platforms `NotificationManagerService` implementation should be registered against the `INotificationManagerService` interface, so that the operations the interface exposes can be called from cross-platform code. This can be achieved by registering the types with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiApp` method in the `MauiProgram` class:
@@ -515,11 +511,5 @@ IMAGE GOES HERE
 On iOS, incoming notifications are automatically received by the application without requiring user input. The application receives the notification and displays a message:
 
 IMAGE GOES HERE
-
-:::zone-end
-
-:::zone pivot="devices-android"
-
-On Windows,
 
 :::zone-end

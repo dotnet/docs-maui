@@ -2,7 +2,7 @@
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code with the .NET MAUI extension"
 ms.date: 06/12/2024
-zone_pivot_groups: devices-deployment
+zone_pivot_groups: devices-four-platforms
 ---
 
 # Build your first app
