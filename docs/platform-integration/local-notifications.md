@@ -305,13 +305,13 @@ For more information about .NET MAUI permissions, see [Permissions](~/platform-i
 
 ## Implement local notifications on iOS and Mac Catalyst
 
-For a .NET MAUI app to send and receive notifications on Apple platforms the app must provide an implementation of the `INotificationManagerService` interface.
+On Apple platforms, a local notification is a message that conveys important information to users. The system handles delivery of notifications based on a specified time or location. For information about local notifications on Apple platforms, see [Scheduling a notification locally from your app](https://developer.apple.com/documentation/usernotifications/scheduling-a-notification-locally-from-your-app) on developer.apple.com.
 
-For information about local notifications on Apple platforms, see [Scheduling a notification locally from your app](https://developer.apple.com/documentation/usernotifications/scheduling-a-notification-locally-from-your-app) on developer.apple.com.
+For a .NET MAUI app to send and receive notifications on Apple platforms, the app must provide an implementation of the `INotificationManagerService` interface.
 
 ### Send and receive local notifications
 
-On iOS and Mac Catalyst, the `NotificationManagerService` class implements the `INotificationManagerService` interface, and contains the logic to send and receive local notifications:
+On Apple platforms, the `NotificationManagerService` class implements the `INotificationManagerService` interface, and contains the logic to send and receive local notifications:
 
 ```csharp
 using Foundation;
@@ -396,11 +396,13 @@ public class NotificationManagerService : INotificationManagerService
 
 The `NotificationManagerService` class should be placed in your app's *Platforms > iOS*  or *Platforms > Mac Catalyst* folder. Alternatively, multi-targeting can be performed based on your own filename and folder criteria, rather than using the *Platforms* folders. For more information, see [Configure multi-targeting](configure-multi-targeting.md).
 
-On iOS, you must request permission to use notifications before attempting to schedule a notification. This occurs in the `NotificationManagerService` constructor. The `SendNotification` method defines the logic required to create and send a notification, and creates an immediate local notification using a `UNTimeIntervalNotificationTrigger` object, or at an exact `DateTime` using a `UNCalendarNotificationTrigger` object. The `ReceiveNotification` method is called by iOS when a message is received, and invokes the `NotificationReceived` event handler. For more information about local notification permission,, see [Asking permission to use notifications](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications) on developer.apple.com.
+On Apple platforms, you must request permission to use notifications before attempting to schedule a notification. This occurs in the `NotificationManagerService` constructor. For more information about local notification permission,, see [Asking permission to use notifications](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications) on developer.apple.com.
+
+The `SendNotification` method defines the logic required to create and send a notification, and creates an immediate local notification using a `UNTimeIntervalNotificationTrigger` object, or at an exact `DateTime` using a `UNCalendarNotificationTrigger` object. The `ReceiveNotification` method is called by iOS when a message is received, and invokes the `NotificationReceived` event handler.
 
 ### Handle incoming notifications
 
-On iOS, you must create a delegate that subclasses `UNUserNotificationCenterDelegate` to handle incoming messages:
+On Apple platforms, to handle incoming messages you must create a delegate that subclasses `UNUserNotificationCenterDelegate`:
 
 ```csharp
 using UserNotifications;
@@ -441,7 +443,7 @@ public class NotificationReceiver : UNUserNotificationCenterDelegate
 }
 ```
 
-The `NotificationReceiver` class provides incoming notification data to the `ReceiveNotification` method in the `NavigationManagerService` class, and is registered as the `UNUserNotificationCenter` delegate in the `NavigationManagerService` constructor.
+The `NotificationReceiver` class is registered as the `UNUserNotificationCenter` delegate in the `NavigationManagerService` constructor, and provides incoming notification data to the `ReceiveNotification` method in the `NavigationManagerService` class.
 
 :::zone-end
 
@@ -475,6 +477,13 @@ For more information about resolving registered types, see [Resolution](~/fundam
 Once the `INotificationManagerService` implementation is resolved, its operations can be invoked:
 
 ```csharp
+// Send
+notificationManager.SendNotification();
+
+// Scheduled send
+notificationManager.SendNotification("Notification title goes here", "Notification messages goes here.", DateTime.Now.AddSeconds(10));
+
+// Receive
 notificationManager.NotificationReceived += (sender, eventArgs) =>
 {
     var eventData = (NotificationEventArgs)eventArgs;
@@ -484,12 +493,6 @@ notificationManager.NotificationReceived += (sender, eventArgs) =>
         // Take required action in the app once the notification has been received.
     });
 };
-
-// Send
-notificationManager.SendNotification();
-
-// Scheduled send
-notificationManager.SendNotification("Notification title goes here", "Notification messages goes here.", DateTime.Now.AddSeconds(10));
 }
 ```
 
