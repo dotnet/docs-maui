@@ -2,7 +2,7 @@
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
 ms.date: 06/12/2024
-zone_pivot_groups: devices-four-platforms
+zone_pivot_groups: devices-platforms
 ---
 
 # Native embedding

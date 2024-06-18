@@ -2,7 +2,7 @@
 title: "Local notifications"
 description: "Learn how to send, schedule, and receive local notifications in .NET MAUI"
 ms.date: 06/18/2024
-zone_pivot_groups: devices-three-platforms
+zone_pivot_groups: devices-platforms
 ---
 
 # Local notifications
@@ -16,8 +16,6 @@ Local notifications are alerts sent by apps installed on a device. Local notific
 - Location-based triggers
 
 Each platform requires its own native code implementation to send and receive local notifications. However, each platform implementation can be abstracted at the cross-platform layer so that there's a consistent API to send and receive local notifications in a .NET Multi-platform App UI (.NET MAUI) app.
-
-For information about local notifications on Windows, see [App notifications overview](/windows/apps/windows-app-sdk/notifications/app-notifications/).
 
 ## Create a cross-platform abstraction
 
@@ -447,6 +445,14 @@ The `NotificationReceiver` class is registered as the `UNUserNotificationCenter`
 
 :::zone-end
 
+:::zone pivot="devices-windows"
+
+Local notifications in the Windows App SDK are messages that your app can send to your user while they are not currently inside your app. The notification content is displayed in a transient window in the bottom right corner of the screen and in the Notification Center. Local notifications can be used to inform the user of app status, or to prompt the user to take an action.
+
+For information about local notifications on Windows, including implementation details for packaged and unpackaged apps, see [App notifications overview](/windows/apps/windows-app-sdk/notifications/app-notifications/).
+
+:::zone-end
+
 ## Register platform implementations
 
 Each `NotificationManagerService` implementation should be registered against the `INotificationManagerService` interface, so that the operations the interface exposes can be called from cross-platform code. This can be achieved by registering the types with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiApp` method in the `MauiProgram` class:
@@ -458,6 +464,8 @@ Each `NotificationManagerService` implementation should be registered against th
             builder.Services.AddTransient<INotificationManagerService, LocalNotificationsDemo.Platforms.iOS.NotificationManagerService>();
 #elif MACCATALYST
             builder.Services.AddTransient<INotificationManagerService, LocalNotificationsDemo.Platforms.MacCatalyst.NotificationManagerService>();
+#elif WINDOWS
+            builder.Services.AddTransient<INotificationManagerService, LocalNotificationsDemo.Platforms.Windows.NotificationManagerService>();          
 #endif
 ```
 
