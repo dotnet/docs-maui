@@ -173,7 +173,7 @@ public class NotificationManagerService : INotificationManagerService
 }
 ```
 
-The `NotificationManagerService` class should be placed in the *Platforms > Android* folder. Alternatively, multi-targeting can be performed based on your own filename and folder criteria, rather than using the *Platforms* folders. For more information, see [Configure multi-targeting](#configure-multi-targeting).
+The `NotificationManagerService` class should be placed in the *Platforms > Android* folder. Alternatively, multi-targeting can be performed based on your own filename and folder criteria, rather than using the *Platforms* folders. For more information, see [Configure multi-targeting](configure-multi-targeting.md).
 
 Android allows apps to define multiple channels for notifications. The `NotificationManagerService` constructor creates a basic channel that's used to send notifications. The `SendNotification` method defines the platform-specific logic required to create and send a notification. The `ReceiveNotification` method is called by Android OS when a message is received, and invokes the `NotificationReceived` event handler. For more information, see [Create a notification](https://developer.android.com/develop/ui/views/notifications/build-notification) on developer.android.com.
 
@@ -252,8 +252,6 @@ The `CreateNotificationFromIntent` method extracts notification data from the `i
 
 - When the application is started by notification data, the `Intent` data will be passed to the `OnCreate` method.
 - If the application is already in the foreground, the `Intent` data will be passed to the `OnNewIntent` method.
-
-Android offers many advanced options for notifications. For more information, see [Notifications in Xamarin.Android](~/android/app-fundamentals/notifications/index.md).
 
 ### Check for permission
 
@@ -390,7 +388,7 @@ public class NotificationManagerService : INotificationManagerService
 }
 ```
 
-The `NotificationManagerService` class should be placed in the *Platforms > iOS*  or *Platforms > Mac Catalyst* folder. Alternatively, multi-targeting can be performed based on your own filename and folder criteria, rather than using the *Platforms* folders. For more information, see [Configure multi-targeting](#configure-multi-targeting).
+The `NotificationManagerService` class should be placed in the *Platforms > iOS*  or *Platforms > Mac Catalyst* folder. Alternatively, multi-targeting can be performed based on your own filename and folder criteria, rather than using the *Platforms* folders. For more information, see [Configure multi-targeting](configure-multi-targeting.md).
 
 On iOS, you must request permission to use notifications before attempting to schedule a notification. This occurs in the `NotificationManagerService` constructor. The `SendNotification` method defines the logic required to create and send a notification, and creates an immediate local notification using a `UNTimeIntervalNotificationTrigger` object, or at an exact `DateTime` using a `UNCalendarNotificationTrigger` object. The `ReceiveNotification` method is called by iOS when a message is received, and invokes the `NotificationReceived` event handler. For more information about local notification permission,, see [Asking permission to use notifications](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications) on developer.apple.com.
 
