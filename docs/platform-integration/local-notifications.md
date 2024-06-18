@@ -1,13 +1,13 @@
 ---
 title: "Local notifications"
 description: "Learn how to send, schedule, and receive local notifications in .NET MAUI"
-ms.date: 06/17/2024
+ms.date: 06/18/2024
 zone_pivot_groups: devices-three-platforms
 ---
 
 # Local notifications
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/local-notifications)
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-local-notifications)
 
 Local notifications are alerts sent by apps installed on a device. Local notifications are often used for features such as:
 
