@@ -1,7 +1,7 @@
 ---
 title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add an app icon to a .NET MAUI app project. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
-ms.date: 06/28/2022
+ms.date: 06/19/2024
 no-loc: ["MauiIcon"]
 ---
 
@@ -51,6 +51,8 @@ Alternatively, the app icon can be composed of two images, one image representin
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
 </ItemGroup>
 ```
+
+On Android, a `ForegroundScale` attribute can be optionally specified to rescale the foreground image so that it fits on the app icon. For more information, see [Adaptive launcher](#adaptive-launcher).
 
 > [!IMPORTANT]
 > The background image (`Include` attribute) must be specified for the `<MauiIcon>` item. The foreground image (`ForegroundFile` attribute) is optional.
@@ -184,7 +186,7 @@ Adaptive launcher icons are composed icons, using a background layer and a foreg
 </ItemGroup>
 ```
 
-The `ForegroundScale` attribute can be optionally specified to change the scaling of the foreground layer being rendered over the background layer.
+The `ForegroundScale` attribute can be optionally specified to rescale the foreground image so that it fits on the app icon. It's a percentage value so 0.65 will be translated as 65%.
 
 # [iOS/Mac Catalyst](#tab/macios)
 
