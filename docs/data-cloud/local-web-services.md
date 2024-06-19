@@ -43,7 +43,7 @@ public static string TodoItemsUrl = $"{BaseAddress}/api/todoitems/";
 
 For more information about the <xref:Microsoft.Maui.Devices.DeviceInfo> class, see [Device information](~/platform-integration/device/information.md).
 
-In addition, to run your app on Android you must add the required network security configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network security configuration](#android-network-security-configuration) and [iOS ATS configuration](#ios-ats-configuration).
+In addition, to run your app on Android you must add the required network configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network configuration](#android-network-configuration) and [iOS ATS configuration](#ios-ats-configuration).
 
 You must also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
 
@@ -68,16 +68,16 @@ You must also ensure that your ASP.NET Core web service is configured to allow H
 
 A .NET MAUI app running in the Android emulator or iOS simulator can then consume an ASP.NET Core web service that's running locally over HTTP, provided that web service is launched with the `http` profile.
 
-### Android network security configuration
+### Android network configuration
 
 There are two main approaches to enabling clear-text local traffic on Android:
 
 - Enable cleartext network traffic for communication with all domains. For more information, see [Enable clear-text network traffic for all domains](#enable-clear-text-network-traffic-for-all-domains).
-- Create a network security configuration file that permits cleartext network traffic on a specified domain. For more information, see [Create a network security configuration file](#create-a-network-security-configuration-file).
+- Create a network security configuration file that permits cleartext network traffic on the `localhost` domain. For more information, see [Create a network security configuration file](#create-a-network-security-configuration-file).
 
 #### Enable clear-text network traffic for all domains
 
-Clear-text network traffic for all domains can be enabled by setting the `UsesCleartextTraffic` property of the `Application` attribute to `true` in the *Platforms > Android > MainApplication.cs* file. This should be wrapped in an `#if DEBUG` to ensure that it isn't accidentally enabled in a production app:
+Clear-text network traffic for all domains can be enabled by setting the `UsesCleartextTraffic` property of the `Application` attribute to `true` in the *Platforms > Android > MainApplication.cs* file in your .NET MAUI app project. This should be wrapped in an `#if DEBUG` to ensure that it isn't accidentally enabled in a production app:
 
 ```csharp
 #if DEBUG
@@ -101,7 +101,7 @@ public class MainApplication : MauiApplication
 
 #### Create a network security configuration file
 
-A network security configuration file can be created by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration, which enables cleartext network traffic on the specified domain:
+A network security configuration file can be created by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration, which enables cleartext network traffic on the `localhost` domain:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
