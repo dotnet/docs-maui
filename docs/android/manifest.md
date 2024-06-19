@@ -229,7 +229,7 @@ By default, your app will be given a .NET icon. For information about specifying
 
 ## Attributes
 
-The following table shows the .NET Android attributes that generate Android manifest XML fragments:
+The following table shows the .NET for Android attributes that generate Android manifest XML fragments:
 
 | Attribute | Description |
 | --------- | ----------- |

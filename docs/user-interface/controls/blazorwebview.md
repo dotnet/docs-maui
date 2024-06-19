@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 10/02/2023
+ms.date: 05/03/2024
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -10,20 +10,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
-- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath>, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
-
-::: moniker-end
 
 The <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent> class defines the following properties:
 
@@ -134,8 +123,6 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
     }
     ```
 
-::: moniker range=">=net-maui-8.0"
-
 ## Access scoped services from native UI
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
@@ -203,4 +190,28 @@ services.AddLogging(logging =>
 
 When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
 
-::: moniker-end
+## Play inline video on iOS
+
+To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you should:
+
+- Set the <xref:Microsoft.AspNetCore.Components.WebView.UrlLoadingEventArgs.UrlLoadingStrategy> property to `OpenInWebView`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading> event:
+
+    ```csharp
+    private void BlazorUrlLoading(object? sender, UrlLoadingEventArgs e)
+    {
+    #if IOS
+        e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
+    #endif
+    }
+    ```
+
+- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing> event:
+
+    ```csharp
+    private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
+    {
+    #if IOS
+        e.Configuration.AllowsInlineMediaPlayback = true;
+    #endif
+    }
+    ```

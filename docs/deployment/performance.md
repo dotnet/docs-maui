@@ -471,7 +471,7 @@ container.AddSubview(new MyView(container));
 
 When this code creates the `Container` instance, the C# object will have a strong reference to an Objective-C object. Similarly, the `MyView` instance will also have a strong reference to an Objective-C object.
 
-In addition, the call to `container.AddSubview` will increase the reference count on the unmanaged `MyView` instance. When this happens, the .NET iOS runtime creates a `GCHandle` instance to keep the `MyView` object in managed code alive, because there is no guarantee that any managed objects will keep a reference to it. From a managed code perspective, the `MyView` object would be reclaimed after the <xref:UIKit.UIView.AddSubview(UIKit.UIView)> call were it not for the `GCHandle`.
+In addition, the call to `container.AddSubview` will increase the reference count on the unmanaged `MyView` instance. When this happens, the .NET for iOS runtime creates a `GCHandle` instance to keep the `MyView` object in managed code alive, because there is no guarantee that any managed objects will keep a reference to it. From a managed code perspective, the `MyView` object would be reclaimed after the <xref:UIKit.UIView.AddSubview(UIKit.UIView)> call were it not for the `GCHandle`.
 
 The unmanaged `MyView` object will have a `GCHandle` pointing to the managed object, known as a *strong link*. The managed object will contain a reference to the `Container` instance. In turn the `Container` instance will have a managed reference to the `MyView` object.
 

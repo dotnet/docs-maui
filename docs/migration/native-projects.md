@@ -20,7 +20,7 @@ To simplify the upgrade process, we recommend creating a new .NET project of the
 
 ## Create a new project
 
-In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET Android select the **Android Application** project template:
+In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET for Android select the **Android Application** project template:
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
@@ -56,7 +56,7 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Generally, Xamarin native NuGet packages are not compatible with .NET 8 unless they have been recompiled using .NET TFMs. However, .NET Android apps can use NuGet packages targeting the `monoandroid` and `monoandroidXX.X` frameworks.
+Generally, Xamarin native NuGet packages are not compatible with .NET 8 unless they have been recompiled using .NET TFMs. However, .NET for Android apps can use NuGet packages targeting the `monoandroid` and `monoandroidXX.X` frameworks.
 
 You can confirm a package is .NET 8 compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
@@ -79,7 +79,7 @@ If you can't find a .NET 8 compatible version of a NuGet package you should:
 - Look for a preview release of a .NET 8 version of the package.
 - Replace the dependency with a .NET 8 compatible alternative.
 
-For information about migrating Xamarin.Essentials code in a .NET Android or .NET iOS app, see [Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps](native-essentials.md).
+For information about migrating Xamarin.Essentials code in a .NET for Android or .NET for iOS app, see [Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps](native-essentials.md).
 
 ## Compile and troubleshoot
 

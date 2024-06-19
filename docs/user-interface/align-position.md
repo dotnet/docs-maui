@@ -12,7 +12,7 @@ In addition, the `Margin` and `Padding` properties position controls relative to
 
 ## Align views in layouts
 
-The alignment of a <xref:Microsoft.Maui.Controls.View>, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the <xref:Microsoft.Maui.Controls.View> to one of the public fields from the `LayoutOptions` structure. The public fields are as `Start`, `Center`, `End`, and `Fill`.
+The alignment of a <xref:Microsoft.Maui.Controls.View>, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the <xref:Microsoft.Maui.Controls.View> to one of the public fields from the `LayoutOptions` structure. The public fields are `Start`, `Center`, `End`, and `Fill`.
 
 The `Start`, `Center`, `End`, and `Fill` fields are used to define the view's alignment within the parent layout:
 
@@ -74,9 +74,9 @@ The following XAML example shows all three possibilities:
   <!-- Margin defined by a single uniform value. -->
   <Label Text=".NET MAUI" Margin="20" />
   <!-- Margin defined by horizontal and vertical values. -->  
-  <Label Text=".NET iOS" Margin="10,15" />
+  <Label Text=".NET for iOS" Margin="10,15" />
   <!-- Margin defined by four distinct values that are applied to the left, top, right, and bottom. -->  
-  <Label Text=".NET Android" Margin="0,20,15,5" />
+  <Label Text=".NET for Android" Margin="0,20,15,5" />
 </StackLayout>
 ```
 
@@ -90,9 +90,9 @@ StackLayout stackLayout = new StackLayout
 // Margin defined by a single uniform value.
 stackLayout.Add(new Label { Text = ".NET MAUI", Margin = new Thickness(20) });
 // Margin defined by horizontal and vertical values.
-stackLayout.Add(new Label { Text = ".NET iOS", Margin = new Thickness(10,25) });
+stackLayout.Add(new Label { Text = ".NET for iOS", Margin = new Thickness(10,25) });
 // Margin defined by four distinct values that are applied to the left, top, right, and bottom.
-stackLayout.Add(new Label { Text = ".NET Android", Margin = new Thickness(0,20,15,5) });  
+stackLayout.Add(new Label { Text = ".NET for Android", Margin = new Thickness(0,20,15,5) });  
 ```
 
 > [!NOTE]

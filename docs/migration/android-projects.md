@@ -1,12 +1,12 @@
 ---
 title: "Xamarin.Android project migration"
-description: "Learn how to migrate a Xamarin.Android project to a .NET Android project."
+description: "Learn how to migrate a Xamarin.Android project to a .NET for Android project."
 ms.date: 02/15/2023
 ---
 
 # Xamarin.Android project migration
 
-A .NET 8 project for a .NET Android app is similar to the following example:
+A .NET 8 project for a .NET for Android app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -21,7 +21,7 @@ For a library project, omit the `$(OutputType)` property completely or specify `
 
 ## .NET configuration files
 
-There's no support for [configuration files](/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` in .NET Android projects. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements aren't supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Android projects.
+There's no support for [configuration files](/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` in .NET for Android projects. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements aren't supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Android projects.
 
 ## Changes to MSBuild properties
 
@@ -38,14 +38,14 @@ Instead, the `$(AndroidSupportedAbis)` property should be replaced with .NET run
 
 ```xml
 <PropertyGroup>
-  <!-- Used in .NET Android projects -->
+  <!-- Used in .NET for Android projects -->
   <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 </PropertyGroup>
 ```
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
-The following table shows other MSBuild properties that have changed in .NET Android:
+The following table shows other MSBuild properties that have changed in .NET for Android:
 
 | Property | Comments |
 | --- | --- |
@@ -112,7 +112,7 @@ if (OperatingSystem.IsAndroidVersionAtLeast(23))
 
 ## Default file inclusion
 
-Default .NET Android related file globbing behavior is defined in `AutoImport.props`. This behavior can be disabled for Android items by setting `$(EnableDefaultAndroidItems)` to `false`, or all default item inclusion behavior can be disabled by setting `$(EnableDefaultItems)` to `false`. For more information, see [Workload props files](https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files).
+Default .NET for Android related file globbing behavior is defined in `AutoImport.props`. This behavior can be disabled for Android items by setting `$(EnableDefaultAndroidItems)` to `false`, or all default item inclusion behavior can be disabled by setting `$(EnableDefaultItems)` to `false`. For more information, see [Workload props files](https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files).
 
 ## Runtime behavior
 
@@ -127,7 +127,7 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
 
-In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
+In .NET for Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
 
 If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent older linker settings:
 
@@ -141,10 +141,7 @@ With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimm
 
 ## Ahead-of-Time compilation
 
-`$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET Android projects.
-
-> [!TIP]
-> You should migrate to the new `$(RunAOTCompilation)` property, because `$(AotAssemblies)` is deprecated from .NET 7.
+`$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET for Android projects. However, this property was deprecated in .NET 7.
 
 Release builds default to the following AOT property values:
 
@@ -170,15 +167,15 @@ To disable AOT, you need to explicitly set the `$(RunAOTCompilation)` and `$(And
 
 If your Xamarin.Android app uses certain international codesets, they have to be specified explicitly in your project file using the `Mandroidl18n` MSBuild property, so that the linker can include supporting resources. For more information about this build property, see [MAndroidl18n](/xamarin/android/deploy-test/building-apps/build-properties#mandroidi18n).
 
-However, the `Mandroidl18n` MSBuild property isn't supported in .NET Android apps. Instead, support is provided by the [System.TextEncoding.CodePages](https://www.nuget.org/packages/System.Text.Encoding.CodePages/) NuGet package. For more information, see <xref:System.Text.CodePagesEncodingProvider>.
+However, the `Mandroidl18n` MSBuild property isn't supported in .NET for Android apps. Instead, support is provided by the [System.TextEncoding.CodePages](https://www.nuget.org/packages/System.Text.Encoding.CodePages/) NuGet package. For more information, see <xref:System.Text.CodePagesEncodingProvider>.
 
 ## .NET CLI
 
-.NET Android supports using .NET command-line interface (.NET CLI) to create, build, publish, and run Android apps.
+.NET for Android supports using .NET command-line interface (.NET CLI) to create, build, publish, and run Android apps.
 
 ### dotnet new
 
-`dotnet new` can be used to create new .NET Android projects and items using project templates and item templates that are named following the patterns and naming of existing .NET templates:
+`dotnet new` can be used to create new .NET for Android projects and items using project templates and item templates that are named following the patterns and naming of existing .NET templates:
 
 | Template | Short Name | Language | Tags |
 | -------- | ---------- | -------- | ---- |
@@ -188,7 +185,7 @@ However, the `Mandroidl18n` MSBuild property isn't supported in .NET Android app
 | Android Class library | androidlib | C# | Android |
 | Android Application | android | C# | Android |
 
-The following examples show using `dotnet new` to create different types of .NET Android projects:
+The following examples show using `dotnet new` to create different types of .NET for Android projects:
 
 ```dotnetcli
 dotnet new android            --output MyAndroidApp     --packageName com.mycompany.myandroidapp
@@ -196,7 +193,7 @@ dotnet new androidlib         --output MyAndroidLibrary
 dotnet new android-bindinglib --output MyJavaBinding
 ```
 
-Once .NET Android projects have been created, item templates can be used to add items to the projects:
+Once .NET for Android projects have been created, item templates can be used to add items to the projects:
 
 ```dotnetcli
 dotnet new android-activity --name LoginActivity --namespace MyAndroidApp
@@ -205,7 +202,7 @@ dotnet new android-layout   --name MyLayout      --output Resources/layout
 
 ### dotnet build & publish
 
-For .NET Android, `dotnet build` produces a runnable app. This means creating an `.apk` or `.aab` file during the build process, and reordering MSBuild tasks from the .NET SDK so that they run during the build. Therefore, .NET Android does the following during a build:
+For .NET for Android, `dotnet build` produces a runnable app. This means creating an `.apk` or `.aab` file during the build process, and reordering MSBuild tasks from the .NET SDK so that they run during the build. Therefore, .NET for Android does the following during a build:
 
 - Run `aapt` to generate `Resource.designer.cs` and potentially emit build errors for issues in `@(AndroidResource)` files.
 - Compile C# code.

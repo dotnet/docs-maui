@@ -212,7 +212,6 @@ public static class MauiProgram
 
                         if (action == Android.Content.Intent.ActionView && data is not null)
                         {
-                            activity.Finish();
                             Task.Run(() => HandleAppLink(data));
                         }
                     });

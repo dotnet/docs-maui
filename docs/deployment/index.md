@@ -1,12 +1,14 @@
 ---
-title: "Deployment"
-description: "Learn how to deploy and publish .NET MAUI apps to Android, iOS, macOS, and Windows."
-ms.date: 05/15/2023
+title: "Deployment & testing"
+description: "Learn how to deploy, test, and publish .NET MAUI apps to Android, iOS, macOS, and Windows."
+ms.date: 06/04/2024
 ---
 
-# Deployment
+# Deployment & testing
 
 .NET Multi-platform App UI (.NET MAUI) uses a single-project system to manage the configuration of your cross-platform app. This configuration includes properties and settings that control building and packaging the app on each platform. For more information, see [Project configuration for .NET MAUI apps](visual-studio-properties.md).
+
+Unit testing checks that each unit of functionality in your app performs as expected, so that errors don't propagate throughout your app. A unit test takes a small unit of the app, typically a method, isolates it from the remainder of the code, and verifies that it behaves as expected. For more information, see [Unit testing](unit-testing.md).
 
 There are many techniques for increasing the performance, and perceived performance, of .NET MAUI apps. Collectively these techniques can greatly reduce the amount of work being performed by a CPU, and the amount of memory consumed by an app. For more information, see [Improve app performance](performance.md).
 

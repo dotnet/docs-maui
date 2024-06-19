@@ -19,7 +19,7 @@ Currently the **note** view displays a single note. To display multiple notes, c
 
 ## Code the AllNotes model
 
-The new model will represent the data required to display multiple notes. This data will be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a <xref:Microsoft.Maui.Controls.ListView>, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
+The new model will represent the data required to display multiple notes. This data will be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control which lists multiple items, such as a <xref:Microsoft.Maui.Controls.ListView>, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
 
 01. In the **Solution Explorer** pane, open the _Models\\AllNotes.cs_ file.
 01. Replace the code with the following snippet:

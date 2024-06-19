@@ -76,15 +76,15 @@ In Xamarin.Forms, despite not declaring that the <xref:Microsoft.Maui.Controls.G
 
 ## StackLayout
 
-There are several differences between the stack layouts in .NET MAUI (<xref:Microsoft.Maui.Controls.StackLayout>, <xref:Microsoft.Maui.Controls.VerticalStackLayout>, and <xref:Microsoft.Maui.Controls.HorizontalStackLayout>) and the <xref:Xamarin.Forms.StackLayout> in Xamarin.Forms.
+There are several differences between the stack layouts in .NET MAUI (<xref:Microsoft.Maui.Controls.StackLayout>, <xref:Microsoft.Maui.Controls.VerticalStackLayout>, and <xref:Microsoft.Maui.Controls.HorizontalStackLayout>) and the `StackLayout` in Xamarin.Forms.
 
-The main difference is that .NET MAUI stack layouts are very simple. They stack their child views in a single direction until all of them have been stacked. They will keep going until the last child has been stacked, even if that takes them beyond the available space in the stacking direction. Therefore, .NET MAUI stack layouts arrange controls in a particular direction. They do not subdivide a space. This is completely different to the Xamarin.Forms <xref:Xamarin.Forms.StackLayout>, which changes its layout behavior based on circumstances and the presence of any `*AndExpand` layout options, such as `FillAndExpand` or `CenterAndExpand`. The Xamarin.Forms <xref:Xamarin.Forms.StackLayout> sometimes subdivides the space, expanding to or stopping at the edge of its container. In other cases, it expands beyond its container.
+The main difference is that .NET MAUI stack layouts are very simple. They stack their child views in a single direction until all of them have been stacked. They will keep going until the last child has been stacked, even if that takes them beyond the available space in the stacking direction. Therefore, .NET MAUI stack layouts arrange controls in a particular direction. They do not subdivide a space. This is completely different to the Xamarin.Forms `StackLayout`, which changes its layout behavior based on circumstances and the presence of any `*AndExpand` layout options, such as `FillAndExpand` or `CenterAndExpand`. The Xamarin.Forms `StackLayout` sometimes subdivides the space, expanding to or stopping at the edge of its container. In other cases, it expands beyond its container.
 
 The new stack layouts in .NET MAUI, <xref:Microsoft.Maui.Controls.HorizontalStackLayout> and <xref:Microsoft.Maui.Controls.VerticalStackLayout>, do not recognize the `*AndExpand` layout options. If they encounter a child with such layout options, they simply treat it as if the `AndExpand` wasn't there. For example, `FillAndExpand` becomes `Fill`. However, for simplicity of migration from Xamarin.Forms, the .NET MAUI <xref:Microsoft.Maui.Controls.StackLayout> does honor the `*AndExpand` layout options, although they've been marked as obsolete. To avoid warnings about using obsolete members, you should convert your layouts that use `*AndExpand` layout options to the appropriate layout type. The can be achieved as follows:
 
 1. If your layout is anything other than a <xref:Microsoft.Maui.Controls.StackLayout>, remove all uses of `AndExpand`. Just as in Xamarin.Forms, in .NET MAUI the `AndExpand` layout options have no effect on any layout other than <xref:Microsoft.Maui.Controls.StackLayout>.
 1. Remove any `AndExpand` properties which are orthogonal to the stacking direction. For example, if you have a <xref:Microsoft.Maui.Controls.StackLayout> with an `Orientation` of `Vertical`, and it has a child with a `HorizontalAligment="CenterAndExpand"` - that layout options has no effect and can be removed.
-1. If you have any remaining `AndExpand` properties on a <xref:Microsoft.Maui.Controls.StackLayout>, you should convert that <xref:Microsoft.Maui.Controls.StackLayout> to a <xref:Microsoft.Maui.Controls.Grid>. A <xref:Microsoft.Maui.Controls.Grid> is designed to subdivide a space, and will provide the layout that `AndExpand` provided in Xamarin.Forms. The following example shows a Xamarin.Forms <xref:Xamarin.Forms.StackLayout> that uses an `AndExpand` property:
+1. If you have any remaining `AndExpand` properties on a <xref:Microsoft.Maui.Controls.StackLayout>, you should convert that <xref:Microsoft.Maui.Controls.StackLayout> to a <xref:Microsoft.Maui.Controls.Grid>. A <xref:Microsoft.Maui.Controls.Grid> is designed to subdivide a space, and will provide the layout that `AndExpand` provided in Xamarin.Forms. The following example shows a Xamarin.Forms `StackLayout` that uses an `AndExpand` property:
 
     ```xaml
     <StackLayout>
@@ -102,7 +102,7 @@ The new stack layouts in .NET MAUI, <xref:Microsoft.Maui.Controls.HorizontalStac
     </Grid>
     ```
 
-    When performing this conversion, anything that was marked `AndExpand` in the <xref:Xamarin.Forms.StackLayout> should go in its own row or column with a size of `*` in the <xref:Microsoft.Maui.Controls.Grid>.
+    When performing this conversion, anything that was marked `AndExpand` in the `StackLayout` should go in its own row or column with a size of `*` in the <xref:Microsoft.Maui.Controls.Grid>.
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.StackLayout> continues in its stacking direction until it runs out of content. It does not subdivide its container along that axis. If you want to limit your content to a constrained space in a direction, you should use another layout such as a <xref:Microsoft.Maui.Controls.Grid>.
@@ -127,6 +127,6 @@ If you absolutely require a <xref:Microsoft.Maui.Controls.Compatibility.Relative
 
 ## ScrollView
 
-While <xref:Microsoft.Maui.Controls.ScrollView> often isn't considered to be a layout, it can be thought of as a layout as it's used to scroll its child content. In Xamarin.Forms, <xref:Xamarin.Forms.ScrollView> doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a <xref:Xamarin.Forms.StackLayout> in ways that are inconsistent and sometimes surprising.
+While <xref:Microsoft.Maui.Controls.ScrollView> often isn't considered to be a layout, it can be thought of as a layout as it's used to scroll its child content. In Xamarin.Forms, `ScrollView` doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a `StackLayout` in ways that are inconsistent and sometimes surprising.
 
 In .NET MAUI, the <xref:Microsoft.Maui.Controls.ScrollView> expands to whatever size it wants to be unless otherwise constrained. This means that inside of a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, which can expand infinitely, a <xref:Microsoft.Maui.Controls.ScrollView> will expand to its full content height and doesn't scroll. This behavior can be confusing if you're a Xamarin.Forms user.

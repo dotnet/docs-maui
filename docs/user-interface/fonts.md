@@ -97,8 +97,6 @@ Label label2 = new Label
 };
 ```
 
-::: moniker range=">=net-maui-8.0"
-
 On Android, the following system fonts can be consumed by setting them as the value of the `FontFamily` property:
 
 - monospace
@@ -127,8 +125,6 @@ Label label1 = new Label
     FontFamily = "monospace"
 };
 ```
-
-::: moniker-end
 
 ## Set font attributes
 
