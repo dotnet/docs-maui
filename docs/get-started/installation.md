@@ -71,13 +71,21 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 1. Install [.NET 8](/dotnet/core/install/windows).
 
     On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
+   
+   On Linux, install using the [scripted installation instructions](/dotnet/core/install/linux-scripted-manual#scripted-install).
 
 1. Install the .NET MAUI workload.
 
-    On Windows and macOS, run the following command in a terminal:
+    On Windows, unless installed through the Visual Studio installer, run the following command in a terminal:
 
     ```dotnetcli
     dotnet workload install maui
+    ```
+
+    On macOS, run the following command in a terminal:
+
+   ```dotnetcli
+    sudo dotnet workload install maui
     ```
 
     On Linux, run the following command in a terminal:
@@ -88,7 +96,14 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 
 ## Set up target platforms
 
-To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target platform for your development machine's operating system:
+To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target platform relative to your development machine's operating system. Including invalid target platforms will prevent your project from building. Manage these directly in your projects `*.csproj` file.
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+```
 
 | Your Operating System | Supported Target Platforms |
 |---|---|
