@@ -77,7 +77,7 @@ There are two main approaches to enabling clear-text local traffic on Android:
 
 #### Enable clear-text network traffic for all domains
 
-Clear-text network traffic for all domains can be enabled by setting the `UsesCleartextTraffic` property of the `Application` attribute to `true` in the *Platforms > Android > MainApplication.cs* file in your .NET MAUI app project. This should be wrapped in an `#if DEBUG` to ensure that it isn't accidentally enabled in a production app:
+Clear-text network traffic for all domains can be enabled by setting the `UsesCleartextTraffic` property of the `Application` attribute to `true`. This should be performed *Platforms > Android > MainApplication.cs* file in your .NET MAUI app project, and should be wrapped in an `#if DEBUG` to ensure that it isn't accidentally enabled in a production app:
 
 ```csharp
 #if DEBUG
