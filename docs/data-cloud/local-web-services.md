@@ -73,7 +73,7 @@ A .NET MAUI app running in the Android emulator or iOS simulator can then consum
 There are two main approaches to enabling clear-text local traffic on Android:
 
 - Enable clear-text network traffic for communication with all domains. For more information, see [Enable clear-text network traffic for all domains](#enable-clear-text-network-traffic-for-all-domains).
-- Create a network security configuration file that enables clear-text network traffic on the `localhost` domain. For more information, see [Create a network security configuration file](#create-a-network-security-configuration-file).
+- Enable clear-text network traffic for communication with the `localhost` domain. For more information, see [Enable clear-text network traffic for the localhost domain](#enable-clear-text-network-traffic-for-the-localhost-domain).
 
 #### Enable clear-text network traffic for all domains
 
@@ -99,9 +99,9 @@ public class MainApplication : MauiApplication
 > [!NOTE]
 > The `UsesCleartextTraffic` property is ignored on Android 7.0 (API 24) and higher if a network security config file is present.
 
-#### Create a network security configuration file
+#### Enable clear-text network traffic for the localhost domain
 
-A network security configuration file can be created by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration, which enables clear-text network traffic on the `localhost` domain:
+Clear-text network traffic for the `localhost` domain can be enabled by creating a network security configuration file. This can be achieved by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
