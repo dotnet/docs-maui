@@ -129,7 +129,7 @@ For more information, see [Trimming options](/dotnet/core/deploying/trimming-opt
 
 In .NET for Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
 
-If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent older linker settings:
+If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent linker settings:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
 - `<TrimMode>partial</TrimMode>`
