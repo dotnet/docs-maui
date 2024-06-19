@@ -123,18 +123,18 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 .NET 8 has new settings for the linker:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
-- `<TrimMode>partial</TrimMode>`, which enables member-level trimming.
+- `<TrimMode>partial</TrimMode>`, which trims assemblies that have opted-in to trimming.
 
 For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
 
-In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`. `TrimMode=full` is the default for the .NET SDK but isn't appropriate for all mobile apps.
+In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
 
 If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent older linker settings:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
-- `<TrimMode>link</TrimMode>`
+- `<TrimMode>partial</TrimMode>`
 
-With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimmable)` are linked at the member level. `AndroidLinkMode=Full` sets `%(TrimMode)=link` on all .NET assemblies.
+With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimmable)` are linked at the member level. `AndroidLinkMode=Full` sets `%(TrimMode)=partial` on all .NET assemblies.
 
 > [!TIP]
 > You should migrate to the new linker settings, because the `AndroidLinkMode` setting will eventually be deprecated.
