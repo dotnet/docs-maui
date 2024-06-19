@@ -12,7 +12,7 @@ In addition, the `Margin` and `Padding` properties position controls relative to
 
 ## Align views in layouts
 
-The alignment of a <xref:Microsoft.Maui.Controls.View>, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the <xref:Microsoft.Maui.Controls.View> to one of the public fields from the `LayoutOptions` structure. The public fields are as `Start`, `Center`, `End`, and `Fill`.
+The alignment of a <xref:Microsoft.Maui.Controls.View>, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the <xref:Microsoft.Maui.Controls.View> to one of the public fields from the `LayoutOptions` structure. The public fields are `Start`, `Center`, `End`, and `Fill`.
 
 The `Start`, `Center`, `End`, and `Fill` fields are used to define the view's alignment within the parent layout:
 
