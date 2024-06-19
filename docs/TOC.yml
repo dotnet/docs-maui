@@ -911,6 +911,8 @@
           href: platform-integration/customize-ui-appearance.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Local notifications
+          href: platform-integration/local-notifications.md
         - name: Native embedding
           href: platform-integration/native-embedding.md
     - name: Platform features
