@@ -1,7 +1,7 @@
 ---
 title: "Connect to local web services from Android emulators and iOS simulators"
 description: "Learn how a .NET MAUI app running in the Android emulator or iOS simulator can consume a ASP.NET Core web service running locally."
-ms.date: 10/21/2022
+ms.date: 06/19/2024
 ---
 
 # Connect to local web services from Android emulators and iOS simulators
@@ -33,7 +33,7 @@ The iOS simulator uses the host machine network. Therefore, apps running in the 
 
 A .NET MAUI app running in the Android emulator or iOS simulator can consume an ASP.NET Core web service that's running locally over HTTP. This can be achieved by configuring your .NET MAUI app project and your ASP.NET Core web service project to allow clear-text HTTP traffic.
 
-In the code that defines the URL of your local web service in your .NET MAUI app, ensure that the web service URL specifies the HTTP scheme, and the correct hostname. The `DeviceInfo` class can be used to detect the platform the app is running on. The correct hostname can then be set as follows:
+In the code that defines the URL of your local web service in your .NET MAUI app, ensure that the web service URL specifies the HTTP scheme, and the correct hostname. The <xref:Microsoft.Maui.Devices.DeviceInfo> class can be used to detect the platform the app is running on. The correct hostname can then be set as follows:
 
 ```csharp
 public static string BaseAddress =
@@ -41,9 +41,9 @@ public static string BaseAddress =
 public static string TodoItemsUrl = $"{BaseAddress}/api/todoitems/";
 ```
 
-For more information about the `DeviceInfo` class, see [Device information](~/platform-integration/device/information.md).
+For more information about the <xref:Microsoft.Maui.Devices.DeviceInfo> class, see [Device information](~/platform-integration/device/information.md).
 
-In addition, to run your app on Android you must add the required network security configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network security configuration](#android-network-security-configuration) and [iOS ATS configuration](#ios-ats-configuration).
+In addition, to run your app on Android you must add the required network configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network configuration](#android-network-configuration) and [iOS ATS configuration](#ios-ats-configuration).
 
 You must also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
 
@@ -68,9 +68,40 @@ You must also ensure that your ASP.NET Core web service is configured to allow H
 
 A .NET MAUI app running in the Android emulator or iOS simulator can then consume an ASP.NET Core web service that's running locally over HTTP, provided that web service is launched with the `http` profile.
 
-### Android network security configuration
+### Android network configuration
 
-To enable clear-text local traffic on Android you must create a network security configuration file. This can be achieved by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration:
+There are two main approaches to enabling clear-text local traffic on Android:
+
+- Enable clear-text network traffic for communication with all domains. For more information, see [Enable clear-text network traffic for all domains](#enable-clear-text-network-traffic-for-all-domains).
+- Enable clear-text network traffic for communication with the `localhost` domain. For more information, see [Enable clear-text network traffic for the localhost domain](#enable-clear-text-network-traffic-for-the-localhost-domain).
+
+#### Enable clear-text network traffic for all domains
+
+Clear-text network traffic for all domains can be enabled by setting the `UsesCleartextTraffic` property of the `Application` attribute to `true`. This should be performed in the *Platforms > Android > MainApplication.cs* file in your .NET MAUI app project, and should be wrapped in an `#if DEBUG` to ensure that it isn't accidentally enabled in a production app:
+
+```csharp
+#if DEBUG
+[Application(UsesCleartextTraffic = true)]
+#else
+[Application]
+#endif
+public class MainApplication : MauiApplication
+{
+    public MainApplication(IntPtr handle, JniHandleOwnership ownership)
+        : base(handle, ownership)
+    {
+    }
+
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+}
+```
+
+> [!NOTE]
+> The `UsesCleartextTraffic` property is ignored on Android 7.0 (API 24) and higher if a network security config file is present.
+
+#### Enable clear-text network traffic for the localhost domain
+
+Clear-text network traffic for the `localhost` domain can be enabled by creating a network security configuration file. This can be achieved by adding a new XML file named *network_security_config.xml* to the *Platforms\Android\Resources\xml* folder in your .NET MAUI app project. The XML file should specify the following configuration:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -144,7 +175,7 @@ For more information about enabling local HTTPS on your machine, see [Enable loc
 
 ### Specify the local machine address
 
-In the code that defines the URL of your local web service in your .NET MAUI app, ensure that the web service URL specifies the HTTPS scheme, and the correct hostname. The `DeviceInfo` class can be used to detect the platform the app is running on. The correct hostname can then be set as follows:
+In the code that defines the URL of your local web service in your .NET MAUI app, ensure that the web service URL specifies the HTTPS scheme, and the correct hostname. The <xref:Microsoft.Maui.Devices.DeviceInfo> class can be used to detect the platform the app is running on. The correct hostname can then be set as follows:
 
 ```csharp
 public static string BaseAddress =
@@ -152,7 +183,7 @@ public static string BaseAddress =
 public static string TodoItemsUrl = $"{BaseAddress}/api/todoitems/";
 ```
 
-For more information about the `DeviceInfo` class, see [Device information](~/platform-integration/device/information.md).
+For more information about the <xref:Microsoft.Maui.Devices.DeviceInfo> class, see [Device information](~/platform-integration/device/information.md).
 
 ### Bypass the certificate security check
 
