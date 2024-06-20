@@ -25,7 +25,7 @@ To migrate a Xamarin.Forms library project to a .NET MAUI library project, you m
 > - Upgrade or replace incompatible dependencies with .NET 8 versions.
 > - Compile and test your app.
 
-To simplify the upgrade process, you should create a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copy in your code. This is the approach outlined below.
+To simplify the upgrade process, you should create a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copy in your code, configuration, and resources. This is the approach outlined below.
 
 ## Update your Xamarin.Forms app
 
@@ -68,7 +68,7 @@ In your platform projects, add a reference to this new library project. Then cop
 
 ## Bootstrap your migrated app
 
-When manually updating a Xamarin.Forms to .NET MAUI you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
+When manually updating a Xamarin.Forms app to .NET MAUI you will need to enable .NET MAUI support in each platform project, update each platform project's entry point class, and then configure the bootstrapping of your .NET MAUI app.
 
 ### Enable .NET MAUI in platform projects
 
@@ -272,6 +272,14 @@ public static class MauiProgram
     }
 }
 ```
+
+> [!NOTE]
+> For Xamarin.Forms UWP projects, the `App` reference in `builder.UseMauiApp<App>()` can be found in the *MainPage.xaml.cs* file.
+
+If there are platform specific services that need to be migrated to .NET MAUI, use the <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)> method to add a transient service of the specified type to the specified <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.
+
+> [!NOTE]
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](upgrade-assistant.md) installed.
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 

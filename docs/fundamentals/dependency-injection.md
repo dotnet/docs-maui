@@ -98,7 +98,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddTransient<ILoggingService, loggingService>();
+        builder.Services.AddTransient<ILoggingService, LoggingService>();
         builder.Services.AddTransient<ISettingsService, SettingsService>();
         builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
@@ -158,7 +158,7 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddTransient<ILoggingService, loggingService>();
+        mauiAppBuilder.Services.AddTransient<ILoggingService, LoggingService>();
         mauiAppBuilder.Services.AddTransient<ISettingsService, SettingsService>();
 
         // More services registered here.
@@ -293,11 +293,7 @@ public class MainPageViewModel
 }
 ```
 
-In addition, an <xref:System.IServiceProvider> instance can be accessed through the following native properties:
-
-- Android - `MauiApplication.Current.Services`
-- iOS and Mac Catalyst - `MauiUIApplicationDelegate.Current.Services`
-- Windows - `MauiWinUIApplication.Current.Services`
+In addition, an <xref:System.IServiceProvider> instance can be accessed on each platform through the `IPlatformApplication.Current.Services` property.
 
 ## Limitations with XAML resources
 

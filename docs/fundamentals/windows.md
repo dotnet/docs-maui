@@ -232,8 +232,6 @@ Dispatcher.Dispatch(() =>
 });
 ```
 
-::: moniker range=">=net-maui-8.0"
-
 ## Decouple window management from the App class
 
 Window management can be decoupled from the `App` class by creating a class that implements the <xref:Microsoft.Maui.Controls.IWindowCreator> interface, and adding your window management code in the <xref:Microsoft.Maui.Controls.IWindowCreator.CreateWindow%2A> method:
@@ -283,5 +281,3 @@ public partial class App : Application
 ```
 
 Provided that the <xref:Microsoft.Maui.Controls.IWindowCreator> interface and its concrete type have been registered with the app's service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
-
-::: moniker-end

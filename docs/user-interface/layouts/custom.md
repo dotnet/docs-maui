@@ -224,7 +224,7 @@ public override Size Measure(double widthConstraint, double heightConstraint)
 The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
 
 > [!IMPORTANT]
-> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to `false`. This ensures that the custom layout won't leave space for invisible children.
+> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to <xref:Microsoft.Maui.Visibility.Collapsed>. This ensures that the custom layout won't leave space for invisible children.
 
 #### Arrange children in the layout
 
@@ -284,7 +284,7 @@ public override Size ArrangeChildren(Rect bounds)
 The `ArrangeChildren` method enumerates through all the visible children in the layout to size and position them within the layout. It does this by invoking <xref:Microsoft.Maui.IView.Arrange%2A> on each child with appropriate bounds, that take into account the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> of the underlying layout. It then returns the actual size of the layout. The <xref:Microsoft.Maui.Layouts.LayoutExtensions.AdjustForFill%2A> method is called to ensure that the size takes into account whether the the layout has its <xref:Microsoft.Maui.IView.HorizontalLayoutAlignment> and <xref:Microsoft.Maui.IView.VerticalLayoutAlignment> properties set to <xref:Microsoft.Maui.Controls.LayoutOptions.Fill?displayProperty=nameWithType>.
 
 > [!IMPORTANT]
-> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to `false`. This ensures that the custom layout won't leave space for invisible children.
+> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to <xref:Microsoft.Maui.Visibility.Collapsed>. This ensures that the custom layout won't leave space for invisible children.
 
 ### Consume the layout type
 

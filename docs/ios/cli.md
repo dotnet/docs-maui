@@ -27,6 +27,8 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 <!-- markdownlint-enable MD029 -->
 
+[!INCLUDE [choose Xcode version](~/macios/includes/choose-xcode-version.md)]
+
 ## Launch the app on a specific simulator
 
 A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by providing its unique device id (UDID):
@@ -78,7 +80,7 @@ A device must be provisioned before you can deploy an iOS app to it. For more in
     Alternatively, right-click on your device and select **Copy Identifier** to copy the UDID to the clipboard.
 
 <!-- markdownlint-disable MD029 -->
-5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
+5. In **Terminal**, build the app and run it on your chosen device by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
     dotnet build -t:Run -f net8.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=MY_SPECIFIC_UDID

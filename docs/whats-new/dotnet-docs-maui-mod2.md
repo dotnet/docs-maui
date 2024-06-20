@@ -1,83 +1,177 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for November 2023"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for November 2023."
-ms.custom: November-2023
-ms.date: 12/12/2023
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2024"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2024."
+ms.custom: May-2024
+ms.date: 06/01/2024
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for November 2023
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2024
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for November 2023. This article lists some of the major changes to docs during this period.
-
-## Android
-
-### Updated articles
-
-- [Publish an Android app using the command line](../android/deployment/publish-cli.md)
-
-## Fundamentals
-
-### Updated articles
-
-- [Localization](../fundamentals/localization.md)
-- [Commanding](../fundamentals/data-binding/commanding.md)
-- [Recognize a drag and drop gesture](../fundamentals/gestures/drag-and-drop.md)
-- [Recognize a pointer gesture](../fundamentals/gestures/pointer.md)
-- [.NET MAUI Shell navigation](../fundamentals/shell/navigation.md)
-- [.NET MAUI windows](../fundamentals/windows.md)
-- [App lifecycle](../fundamentals/app-lifecycle.md)
-- [.NET MAUI Shell tabs](../fundamentals/shell/tabs.md)
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2024. This article lists some of the major changes to docs during this period.
 
 ## Get started
 
 ### Updated articles
 
 - [Build your first app](../get-started/first-app.md)
-- [Installation](../get-started/installation.md)
 
-## Home
+## Android
 
-### Updated articles
+## New articles
 
-- [.NET Multi-platform App UI documentation](index.yml)
-
-## iOS
-
-### Updated articles
-
-- [Publish an iOS app using the command line](../ios/deployment/publish-cli.md)
-
-## iOS and Mac Catalyst
-
-### Updated articles
-
-- [Information property list](../macios/info-plist.md)
-
-## Mac Catalyst
-
-### Updated articles
-
-- [Publish a Mac Catalyst app for ad-hoc distribution](../mac-catalyst/deployment/publish-ad-hoc.md)
-- [Publish a Mac Catalyst app for Mac App Store distribution](../mac-catalyst/deployment/publish-app-store.md)
-- [Publish a Mac Catalyst app for distribution outside the Mac App Store](../mac-catalyst/deployment/publish-outside-app-store.md)
-- [Publish an unsigned .NET MAUI Mac Catalyst app](../mac-catalyst/deployment/publish-unsigned.md)
-
-## Migration from Xamarin.Forms
-
-### Updated articles
-
-- [Xamarin.Android binding project migration](../migration/android-binding-projects.md)
-- [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET](../migration/native-projects.md)
-
-## Platform integration
-
-### Updated articles
-
-- [Permissions](../platform-integration/appmodel/permissions.md)
-- [Configure multi-targeting](../platform-integration/configure-multi-targeting.md)
-- [Customize UI appearance based on the platform and device idiom](../platform-integration/customize-ui-appearance.md)
-- [Geolocation](../platform-integration/device/geolocation.md)
-- [Accessing device sensors](../platform-integration/device/sensors.md)
+- Building apps
+  - [Build process](/dotnet/android/building-apps/build-process?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build targets](/dotnet/android/building-apps/build-targets?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build properties](/dotnet/android/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build items](/dotnet/android/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- Features
+  - [Layout code behind](/dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - Maven
+    - [@(AndroidMavenLibrary) build item](/dotnet/android/features/maven/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Resolving Java dependencies](/dotnet/android/features/maven/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Java dependency verification](/dotnet/android/features/maven/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- [Message reference](/dotnet/android/messages?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [ADBxxxx: ADB tooling](/dotnet/android/messages/#adbxxxx-adb-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0000](/dotnet/android/messages/adb0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0010](/dotnet/android/messages/adb0010?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0020](/dotnet/android/messages/adb0020?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0030](/dotnet/android/messages/adb0030?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0040](/dotnet/android/messages/adb0040?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0050](/dotnet/android/messages/adb0050?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ADB0060](/dotnet/android/messages/adb0060?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [ANDXXxxxx: Generic Android tooling](/dotnet/android/messages/#andxxxxxx-generic-android-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ANDAS0000](/dotnet/android/messages/andas0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ANDJS0000](/dotnet/android/messages/andjs0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ANDKT0000](/dotnet/android/messages/andkt0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [ANDZA0000](/dotnet/android/messages/andza0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [APTxxxx: AAPT tooling](/dotnet/android/messages/#aptxxxx-aapt-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [APT0000](/dotnet/android/messages/apt0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [APT0001](/dotnet/android/messages/apt0001?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [APT2264](/dotnet/android/messages/apt2264?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [APT2265](/dotnet/android/messages/apt2265?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [JAVAxxxx: Java tool](/dotnet/android/messages/#javaxxxx-java-tool?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [JAVA0000](/dotnet/android/messages/java0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [JAVACxxxx: Java compiler](/dotnet/android/messages/#javacxxxx-java-compiler?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [JAVAC0000](/dotnet/android/messages/javac0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA0xxx: Environment issue or missing tooling](/dotnet/android/messages/#xa0xxx-environment-issue-or-missing-tooling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0000](/dotnet/android/messages/xa0000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0001](/dotnet/android/messages/xa0001?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0002](/dotnet/android/messages/xa0002?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0003](/dotnet/android/messages/xa0003?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0004](/dotnet/android/messages/xa0004?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0030](/dotnet/android/messages/xa0030?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0031](/dotnet/android/messages/xa0031?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0032](/dotnet/android/messages/xa0032?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0033](/dotnet/android/messages/xa0033?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0034](/dotnet/android/messages/xa0034?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0035](/dotnet/android/messages/xa0035?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0036](/dotnet/android/messages/xa0036?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0101](/dotnet/android/messages/xa0101?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0102](/dotnet/android/messages/xa0102?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0103](/dotnet/android/messages/xa0103?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0105](/dotnet/android/messages/xa0105?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0107](/dotnet/android/messages/xa0107?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0108](/dotnet/android/messages/xa0108?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0109](/dotnet/android/messages/xa0109?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0111](/dotnet/android/messages/xa0111?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0112](/dotnet/android/messages/xa0112?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0113](/dotnet/android/messages/xa0113?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0115](/dotnet/android/messages/xa0115?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0116](/dotnet/android/messages/xa0116?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0117](/dotnet/android/messages/xa0117?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0118](/dotnet/android/messages/xa0118?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0119](/dotnet/android/messages/xa0119?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0121](/dotnet/android/messages/xa0121?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0122](/dotnet/android/messages/xa0122?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0125](/dotnet/android/messages/xa0125?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0126](/dotnet/android/messages/xa0126?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0127](/dotnet/android/messages/xa0127?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0128](/dotnet/android/messages/xa0128?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0129](/dotnet/android/messages/xa0129?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0130](/dotnet/android/messages/xa0130?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0131](/dotnet/android/messages/xa0131?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0132](/dotnet/android/messages/xa0132?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0133](/dotnet/android/messages/xa0133?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0134](/dotnet/android/messages/xa0134?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0135](/dotnet/android/messages/xa0135?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0136](/dotnet/android/messages/xa0136?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0137](/dotnet/android/messages/xa0137?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0138](/dotnet/android/messages/xa0138?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0139](/dotnet/android/messages/xa0139?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA0140](/dotnet/android/messages/xa0140?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA1xxx: Project related](/dotnet/android/messages/#xa1xxx-project-related?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1000](/dotnet/android/messages/xa1000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1001](/dotnet/android/messages/xa1001?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1002](/dotnet/android/messages/xa1002?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1003](/dotnet/android/messages/xa1003?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1004](/dotnet/android/messages/xa1004?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1005](/dotnet/android/messages/xa1005?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1006](/dotnet/android/messages/xa1006?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1007](/dotnet/android/messages/xa1007?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1008](/dotnet/android/messages/xa1008?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1009](/dotnet/android/messages/xa1009?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1010](/dotnet/android/messages/xa1010?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1011](/dotnet/android/messages/xa1011?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1023](/dotnet/android/messages/xa1023?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1024](/dotnet/android/messages/xa1024?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1025](/dotnet/android/messages/xa1025?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1027](/dotnet/android/messages/xa1027?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1028](/dotnet/android/messages/xa1028?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1029](/dotnet/android/messages/xa1029?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1031](/dotnet/android/messages/xa1031?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1032](/dotnet/android/messages/xa1032?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1033](/dotnet/android/messages/xa1033?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1035](/dotnet/android/messages/xa1035?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1036](/dotnet/android/messages/xa1036?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA1037](/dotnet/android/messages/xa1037?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA2xxx: Linker](/dotnet/android/messages/#xa2xxx-linker?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA2000](/dotnet/android/messages/xa2000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA2001](/dotnet/android/messages/xa2001?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA2002](/dotnet/android/messages/xa2002?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA3xxx: Unmanaged code compilation](/dotnet/android/messages/#xa3xxx-unmanaged-code-compilation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA4xxx: Code generation](/dotnet/android/messages/#xa4xxx-code-generation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4214](/dotnet/android/messages/xa4214?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4215](/dotnet/android/messages/xa4215?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4216](/dotnet/android/messages/xa4216?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4218](/dotnet/android/messages/xa4218?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4231](/dotnet/android/messages/xa4231?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4232](/dotnet/android/messages/xa4232?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4234](/dotnet/android/messages/xa4234?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4235](/dotnet/android/messages/xa4235?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4236](/dotnet/android/messages/xa4236?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4237](/dotnet/android/messages/xa4237?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4239](/dotnet/android/messages/xa4239?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4241](/dotnet/android/messages/xa4241?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4242](/dotnet/android/messages/xa4242?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4243](/dotnet/android/messages/xa4243?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4244](/dotnet/android/messages/xa4244?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4245](/dotnet/android/messages/xa4245?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4246](/dotnet/android/messages/xa4246?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4247](/dotnet/android/messages/xa4247?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4248](/dotnet/android/messages/xa4248?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4301](/dotnet/android/messages/xa4301?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4302](/dotnet/android/messages/xa4302?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4303](/dotnet/android/messages/xa4303?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4304](/dotnet/android/messages/xa4304?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4305](/dotnet/android/messages/xa4305?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4306](/dotnet/android/messages/xa4306?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4307](/dotnet/android/messages/xa4307?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4308](/dotnet/android/messages/xa4308?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4309](/dotnet/android/messages/xa4309?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4310](/dotnet/android/messages/xa4310?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4312](/dotnet/android/messages/xa4312?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4313](/dotnet/android/messages/xa4313?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA4314](/dotnet/android/messages/xa4314?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA5xxx: GCC and toolchain](/dotnet/android/messages/#xa5xxx-gcc-and-toolchain?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA5205](/dotnet/android/messages/xa5205?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA5207](/dotnet/android/messages/xa5207?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA5300](/dotnet/android/messages/xa5300?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA5301](/dotnet/android/messages/xa5301?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA5302](/dotnet/android/messages/xa5302?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA6xxx: Internal tools](/dotnet/android/messages/#xa6xxx-internal-tools?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XAccc7xxx: Unhandled MSBuild exceptions](/dotnet/android/messages/#xaccc7xxx-unhandled-msbuild-exceptions?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA8xxx: Linker step errors](/dotnet/android/messages/#xa8xxx-linker-step-errors?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [XA8000/IL8000](/dotnet/android/messages/xa8000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
 
 ## User interface
 
@@ -89,7 +183,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Nov
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [thimanshu1993](https://github.com/thimanshu1993) - Himanshu Tyagi ![2 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-2-green)
+- [breyed](https://github.com/breyed) - Edward Brey ![2 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-2-green)
 - [ahoffmandevelopment](https://github.com/ahoffmandevelopment) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [osniel](https://github.com/osniel) - Osniel Gonzalez ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [paulstevens95](https://github.com/paulstevens95) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [JerzyKruszewski](https://github.com/JerzyKruszewski) - Jerzy Kruszewski ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [MitchellTR](https://github.com/MitchellTR) - Todd Mitchell ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)

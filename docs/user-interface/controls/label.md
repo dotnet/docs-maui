@@ -152,6 +152,9 @@ The following screenshot shows the result of setting the `Label.LineHeight` prop
 
 ## Display HTML
 
+> [!IMPORTANT]
+> Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform. For example, Android supports only a subset of HTML tags, focusing on basic styling and formatting for block level elements such as `<span>` and `<p>`. For more complex HTML rendering, consider using a <xref:Microsoft.Maui.Controls.WebView> or `FormattedText`.
+
 The <xref:Microsoft.Maui.Controls.Label> class has a `TextType` property, which determines whether the <xref:Microsoft.Maui.Controls.Label> object should display plain text, or HTML text. This property should be set to one of the members of the `TextType` enumeration:
 
 - `Text` indicates that the <xref:Microsoft.Maui.Controls.Label> will display plain text, and is the default value of the `TextType` property.
@@ -162,7 +165,7 @@ Therefore, <xref:Microsoft.Maui.Controls.Label> objects can display HTML by sett
 ```csharp
 Label label = new Label
 {
-    Text = "This is <strong style=\"color:red\">HTML</strong> text.",
+    Text = "This is <span style=\"color:red;\"><strong>HTML</strong></span> text.",
     TextType = TextType.Html
 };
 ```
@@ -172,7 +175,7 @@ In the example above, the double quote characters in the HTML have to be escaped
 In XAML, HTML strings can become unreadable due to additionally escaping the `<` and `>` symbols:
 
 ```xaml
-<Label Text="This is &lt;strong style=&quot;color:red&quot;&gt;HTML&lt;/strong&gt; text."
+<Label Text="This is &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/span&gt; text."
        TextType="Html"  />
 ```
 
@@ -181,15 +184,12 @@ Alternatively, for greater readability the HTML can be inlined in a `CDATA` sect
 ```xaml
 <Label TextType="Html">
     <![CDATA[
-    This is <strong style="color:red">HTML</strong> text.
+    <Label Text="This is &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/span&gt; text."
     ]]>
 </Label>
 ```
 
 In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) for the <xref:Microsoft.Maui.Controls.Label> class.
-
-> [!IMPORTANT]
-> Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform.
 
 ## Decorate text
 

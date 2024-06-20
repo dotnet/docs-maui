@@ -306,7 +306,7 @@ protected override void OnNavigating(ShellNavigatingEventArgs args)
     {
         args.Cancel();
     }
-// }
+}
 ```
 
 ## Navigation deferral
@@ -378,8 +378,6 @@ Any data that's passed as an `IDictionary<string, object>` argument is retained 
 
 While this is desirable in many scenarios, if it isn't desired you should clear the `IDictionary<string, object>` argument with the `Clear` method after it's first been received by a page.
 
-::: moniker range=">=net-maui-8.0"
-
 ### Pass single use object-based navigation data
 
 Single use object-based navigation data can be passed with a <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> overload that specifies a <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> argument. A <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object is intended for single use navigation data that's cleared after navigation has occurred. The following example shows navigating while passing single use data:
@@ -398,8 +396,6 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal` that's added to the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object. Then, navigation to the `beardetails` route is performed, with the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object being passed as a navigation parameter. After navigation has occurred the data in the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object is cleared.
 
-::: moniker-end
-
 ## Receive navigation data
 
 There are two approaches to receiving navigation data:
@@ -409,17 +405,7 @@ There are two approaches to receiving navigation data:
 
 ### Process navigation data using query property attributes
 
-::: moniker range="=net-maui-7.0"
-
-Navigation data can be received by decorating the receiving class with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each string-based query parameter and object-based navigation parameter:
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 Navigation data can be received by decorating the receiving class with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each string-based query parameter, object-based navigation parameter, or <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object:
-
-::: moniker-end
 
 ```csharp
 [QueryProperty(nameof(Bear), "Bear")]

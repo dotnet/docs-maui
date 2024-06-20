@@ -1,14 +1,14 @@
 ---
 title: "Xamarin.Android binding project migration"
-description: "Learn how to upgrade a Xamarin.Android binding project to a .NET Android project."
+description: "Learn how to upgrade a Xamarin.Android binding project to a .NET for Android project."
 ms.date: 08/21/2023
 ---
 
 # Xamarin.Android binding project migration
 
-In .NET, there's no concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET Android app or library.
+In .NET, there's no concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET for Android app or library.
 
-To migrate a Xamarin.Android binding library to a .NET Android class library:
+To migrate a Xamarin.Android binding library to a .NET for Android class library:
 
 1. In Visual Studio, create a new Android Java Library Binding project with the same name as your Xamarin.Android binding project:
 

@@ -229,7 +229,7 @@ public class BasicGridPage : ContentPage
 
         // Row 2
         // Alternatively, the BoxView and Label can be positioned in cells with the Grid.SetRow
-        // and Grid.SetColumn methods.
+        // and Grid.SetColumn methods. Here, the Grid.SetColumnSpan method is used to span two columns.
         BoxView boxView = new BoxView { Color = Colors.Red };
         Grid.SetRow(boxView, 2);
         Grid.SetColumnSpan(boxView, 2);
@@ -253,12 +253,8 @@ public class BasicGridPage : ContentPage
 
 In code, to specify the height of a `RowDefinition` object, and the width of a `ColumnDefinition` object, you use values of the `GridLength` structure, often in combination with the `GridUnitType` enumeration.
 
-::: moniker range=">=net-maui-8.0"
-
 > [!NOTE]
 > <xref:Microsoft.Maui.Controls.Grid> also defines an <xref:Microsoft.Maui.Controls.GridExtensions.AddWithSpan%2A> extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
-
-::: moniker-end
 
 ### Simplify row and column definitions
 

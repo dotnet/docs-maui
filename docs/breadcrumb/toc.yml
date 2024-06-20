@@ -9,7 +9,30 @@
     - name: .NET MAUI
       tocHref: /dotnet/maui
       topicHref: /dotnet/maui/index
-      items:
-      - name: Architecture
-        tocHref: /dotnet/architecture/maui
-        topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/architecture/maui
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /windows/ai/samples
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /windows/apps/windows-dotnet-maui/tutorial-graph-api
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /entra
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/building-apps
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/features
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/messages
+      topicHref: /dotnet/maui/index

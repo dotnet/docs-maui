@@ -52,7 +52,7 @@ The interpreter can also be enabled for Mac Catalyst release builds on ARM64:
 On iOS and Mac Catalyst, the interpreter can also be enabled with the `MtouchInterpreter` MSBuild property. This property optionally takes a comma-separated list of assemblies to be interpreted. In addition, `all` can be used to specify all assemblies, and when prefixed with a minus sign, an assembly will be AOT compiled. This enables you to:
 
 - Interpret all assemblies by specifying `all` or AOT compile everything by specifying `-all`.
-- Interpret individual assemblies by specifying **MyAssembly.dll** or AOT compile individual assemblies by specifying **-MyAssembly.dll**.
+- Interpret individual assemblies by specifying **MyAssembly** or AOT compile individual assemblies by specifying **-MyAssembly**.
 - Mix and match to interpret some assemblies and AOT compile other assemblies.
 
 The following example shows how to interpret all assemblies except **System.Xml.dll**:
@@ -60,7 +60,7 @@ The following example shows how to interpret all assemblies except **System.Xml.
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
     <!-- Interpret everything, except System.Xml.dll -->
-    <MtouchInterpreter>all,-System.Xml.dll</MtouchInterpreter>
+    <MtouchInterpreter>all,-System.Xml</MtouchInterpreter>
 </PropertyGroup>
 ```
 
@@ -69,7 +69,7 @@ The following example shows how to AOT compile all assemblies except **System.Nu
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
     <!-- AOT everything, except System.Numerics.dll, which will be interpreted -->
-    <MtouchInterpreter>-all,System.Numerics.dll</MtouchInterpreter>
+    <MtouchInterpreter>-all,System.Numerics</MtouchInterpreter>
 </PropertyGroup>
 ```
 
@@ -88,6 +88,6 @@ Another common scenario where the interpreter is sometimes required is a .NET MA
 
 ```xml
 <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'maccatalyst-arm64' and '$(Configuration)' == 'Release'">
-    <MtouchInterpreter>-all,MyAssembly.dll</MtouchInterpreter>
+    <MtouchInterpreter>-all,MyAssembly</MtouchInterpreter>
 </PropertyGroup>
 ```

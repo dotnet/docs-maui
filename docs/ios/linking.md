@@ -1,6 +1,6 @@
 ---
 title: "Linking a .NET MAUI iOS app"
-description: "Learn about the .NET iOS linker, which is used to eliminate unused code from a .NET MAUI iOS app in order to reduce its size."
+description: "Learn about the .NET for iOS linker, which is used to eliminate unused code from a .NET MAUI iOS app in order to reduce its size."
 ms.date: 04/11/2023
 no-loc: [ ILLink ]
 ---

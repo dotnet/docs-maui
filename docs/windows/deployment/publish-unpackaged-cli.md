@@ -2,7 +2,6 @@
 title: "Use the CLI to publish unpackaged apps for Windows"
 description: "Learn how to package and publish an unpackaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 11/08/2023
-monikerRange: ">=net-maui-8.0"
 ---
 
 # Publish an unpackaged .NET MAUI app for Windows with the CLI
@@ -34,7 +33,6 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 |------------------------------|-------------------------------------------------------------------------------------|
 | `-f` | The target framework, which is `net8.0-windows{version}`. This value is a Windows TFM, such as `net8.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c`                 | The build configuration, which is `Release`.                                   |
-| `-p:WindowsPackageType=None` | Indicates to the publish command that there should be no package. |
 | `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform. |
 | `-p:WindowsPackageType` | The package type, which is `None` for unpackaged apps. |
 | `-p:WindowsAppSDKSelfContained` | The deployment mode for your app, which can be framework-dependent or self-contained. This value should be `true` for self-contained apps. For more information about framework-dependent apps and self-contained apps, see [Windows App SDK deployment overview](/windows/apps/package-and-deploy/deploy-overview). |

@@ -27,7 +27,7 @@ While the focus of this release of .NET MAUI is quality, there's also some new f
 - The <xref:Microsoft.Maui.Controls.ContentPage> class gains a <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property, which indicates whether tapping anywhere on the page will cause the soft input keyboard to hide if it's visible. For more information, see [ContentPage](~/user-interface/pages/contentpage.md).
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> gains a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath> property, a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method, and enhanced logging capabilities. For more information, see [Host a Blazor web app in a .NET MAUI app using BlazorWebView](~/user-interface/controls/blazorwebview.md).
 - <xref:Microsoft.Maui.Controls.WebView> gains a <xref:Microsoft.Maui.Controls.WebView.UserAgent> property. For more information, see [WebView](~/user-interface/controls/webview.md).
-- Inline media playback of HTML5 video, including autoplay and picture in picture, has been enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS. For more information, see [Set media playback preferences on iOS and Mac Catalyst](~/user-interface/controls/webview.md#set-media-playback-preferences-on-ios-and-mac-catalyst).
+- Inline media playback of HTML5 video, including autoplay and picture in picture, has been enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS. For more information, see [Set media playback preferences on iOS and Mac Catalyst](~/user-interface/controls/webview.md?pivots=devices-ios#set-media-playback-preferences-on-ios-and-mac-catalyst).
 - The `Grid.Add` overload that accepts 5 arguments has been added back to .NET MAUI. However, this method is deprecated and is only present to aid migrations from Xamarin.Forms.
 - <xref:Microsoft.Maui.Controls.Grid> gains an <xref:Microsoft.Maui.Controls.GridExtensions.AddWithSpan%2A> extension method that adds a view to the <xref:Microsoft.Maui.Controls.Grid> at the specified row and column with the specified row and column spans.
 
@@ -199,5 +199,5 @@ Prior to building your upgraded app for the first time, delete the `bin` and `ob
 ## See also
 
 - [Release notes for .NET MAUI](https://github.com/dotnet/maui/releases/tag/8.0.3)
-- [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
-- [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/34.0.43)
+- [Release notes for .NET for iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
+- [Release notes for .NET for Android](https://github.com/xamarin/xamarin-android/releases/tag/34.0.43)

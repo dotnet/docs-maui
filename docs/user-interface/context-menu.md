@@ -63,11 +63,7 @@ The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` pr
 > [!WARNING]
 > It's not currently possible to add items to, or remove items from, the `MenuFlyout` at runtime.
 
-::: moniker range=">=net-maui-8.0"
-
 Keyboard accelerators can be added to context menu items, so that a context menu item can be invoked through a keyboard shortcut. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
-
-::: moniker-end
 
 ### Create sub-menu items
 

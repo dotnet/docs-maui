@@ -19,7 +19,7 @@ issues:
     # Manages the Not Triaged label for issues missing/having an org category issue
     - check:
         - type: query
-          value: "length(Issue.labels[?contains(name, '/prod') || contains(name, '/tech')]) != `0`"
+          value: "length(Issue.labels[?contains(name, '/svc') || contains(name, '/subsvc')]) != `0`"
       pass:
         - check:
           - type: query

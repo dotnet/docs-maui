@@ -12,8 +12,10 @@ ms.date: 06/19/2023
 
 The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <xref:Microsoft.Maui.Graphics.ICanvas> object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
-> [!IMPORTANT]
-> Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using a device-independent unit that's recognized by each platform. This ensures that graphical objects are scaled appropriately to the pixel density of the underlying platform.
+> [!NOTE]
+> Many of the graphical objects have `Draw` and `Fill` methods, for example <xref:Microsoft.Maui.Graphics.ICanvas.DrawRectangle%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillRectangle%2A>. A `Draw` method draws the outline of the shape, which is unfilled. A `Fill` method draws the outline of the shape and also fills it.
+
+Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using a device-independent unit that's recognized by each platform. This ensures that graphical objects are scaled appropriately to the pixel density of the underlying platform.
 
 ## Draw a line
 
@@ -281,39 +283,6 @@ Images can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the <xref
 
 The following example shows how to load an image and draw it to the canvas:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using System.Reflection;
 using IImage = Microsoft.Maui.Graphics.IImage;
@@ -331,8 +300,6 @@ if (image != null)
     canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (10,10):
 
@@ -550,42 +517,6 @@ Graphical objects that are drawn to an <xref:Microsoft.Maui.Graphics.ICanvas> ca
 
 The following example shows how to use the <xref:Microsoft.Maui.Graphics.ICanvas.ClipPath%2A> method to clip an image:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    PathF path = new PathF();
-    path.AppendCircle(100, 90, 80);
-    canvas.ClipPath(path);  // Must be called before DrawImage
-    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using System.Reflection;
 using IImage = Microsoft.Maui.Graphics.IImage;
@@ -606,8 +537,6 @@ if (image != null)
     canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, the image is clipped using a <xref:Microsoft.Maui.Graphics.PathF> object that defines a circle that's centered at (100,90) with a radius of 80. The result is that only the part of the image within the circle is visible:
 
@@ -618,40 +547,6 @@ In this example, the image is clipped using a <xref:Microsoft.Maui.Graphics.Path
 
 The following example shows how to use the <xref:Microsoft.Maui.Graphics.ICanvas.SubtractFromClip%2A> method to clip an image:
 
-::: moniker range="=net-maui-7.0"
-
-```csharp
-using System.Reflection;
-using IImage = Microsoft.Maui.Graphics.IImage;
-#if IOS || ANDROID || MACCATALYST
-using Microsoft.Maui.Graphics.Platform;
-#elif WINDOWS
-using Microsoft.Maui.Graphics.Win2D;
-#endif
-
-IImage image;
-Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-{
-#if IOS || ANDROID || MACCATALYST
-    // PlatformImage isn't currently supported on Windows.
-    image = PlatformImage.FromStream(stream);
-#elif WINDOWS
-    image = new W2DImageLoadingService().FromStream(stream);
-#endif
-}
-
-if (image != null)
-{
-    canvas.SubtractFromClip(60, 60, 90, 90);
-    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
-}
-```
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 ```csharp
 using System.Reflection;
 using IImage = Microsoft.Maui.Graphics.IImage;
@@ -670,8 +565,6 @@ if (image != null)
     canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
-
-::: moniker-end
 
 In this example, the area defined by the rectangle that's specified by the arguments supplied to the <xref:Microsoft.Maui.Graphics.ICanvas.SubtractFromClip%2A> method is clipped from the image. The result is that only the parts of the image outside the rectangle are visible:
 

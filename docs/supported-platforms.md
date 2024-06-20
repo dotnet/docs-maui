@@ -1,25 +1,28 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 04/13/2022
+ms.date: 04/04/2024
 ---
 
 # Supported platforms for .NET MAUI apps
 
 .NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 
-- Android 5.0 (API 21) or higher.
-- iOS 11 or higher, using the latest release of Xcode.
-- macOS 13.1 or higher, using Mac Catalyst.
+- Android 5.0 (API 21) or higher is required.
+- iOS 11 or higher is required
+- macOS 11 or higher, using Mac Catalyst.
 - Windows 11 and Windows 10 version 1809 or higher, using [Windows UI Library (WinUI) 3](/windows/apps/winui/winui3/).
 
 .NET MAUI Blazor apps have the following additional platform requirements:
 
-- Android 7.0 (API 24) or higher is required
+- Android 7.0 (API 24) or higher is required.
 - iOS 14 or higher is required.
-- macOS 13.1 or higher, using Mac Catalyst.
+- macOS 11 or higher, using Mac Catalyst.
 
 .NET MAUI Blazor apps also require an updated platform specific WebView control. For more information, see [Blazor supported platforms](/aspnet/core/blazor/supported-platforms).
+
+> [!IMPORTANT]
+> For information about the version of Xcode, the Android SDK and JDK, and the Windows App SDK, that's required for a specific version of .NET MAUI, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 
 .NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development.
 

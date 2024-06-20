@@ -10,51 +10,15 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 
 <xref:Microsoft.Maui.Controls.Editor> defines the following properties:
 
-::: moniker range="=net-maui-7.0"
-
-- `AutoSize`, of type `EditorAutoSizeOption`, defines whether the editor will change size to accommodate user input. By default, the editor doesn't auto size.
-- `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
-- `FontAttributes`, of type `FontAttributes`, determines text style.
-- `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
-- `FontFamily`, of type `string`, defines the font family.
-- `FontSize`, of type `double`, defines the font size.
-- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
-- `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `SelectionLength`, of type `int`, represents the length of selected text within the editor.
-- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
-
 - `AutoSize`, of type `EditorAutoSizeOption`, defines whether the editor will change size to accommodate user input. By default, the editor doesn't auto size.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
-
-::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Editor> with the return key.
 
-<xref:Microsoft.Maui.Controls.Editor> derives from the `InputView` class, from which it inherits the following properties:
-
-::: moniker range="=net-maui-7.0"
-
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
-- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
-- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
-- `MaxLength`, of type `int`, defines the maximum input length.
-- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
-- `Text`, of type `string`, defines the text entered into the control.
-- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
-- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-8.0"
+<xref:Microsoft.Maui.Controls.Editor> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
@@ -74,11 +38,9 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
 
-::: moniker-end
-
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
+In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Editor>, see [Fonts](~/user-interface/fonts.md).
 
@@ -121,7 +83,7 @@ void OnEditorTextChanged(object sender, TextChangedEventArgs e)
 }
 ```
 
-The `Completed` event is raised when the user has ended input by pressing the return key on the keyboard, or by pressing the Tab key on Windows. The handler for the event is a generic event handler:
+The `Completed` event is only raised on Windows when the user has ended input by pressing the <kbd>Tab</kbd> key on the keyboard, or by focusing another control. The handler for the event is a generic event handler:
 
 ```csharp
 void OnEditorCompleted(object sender, EventArgs e)
@@ -168,9 +130,9 @@ This can be accomplished as follows:
         AutoSize="TextChanges" />
 ```
 
-When auto-resizing is enabled, the height of the <xref:Microsoft.Maui.Controls.Editor> will increase when the user fills it with text, and the height will decrease as the user deletes text.
+When auto-resizing is enabled, the height of the <xref:Microsoft.Maui.Controls.Editor> will increase when the user fills it with text, and the height will decrease as the user deletes text. This can be used to ensure that <xref:Microsoft.Maui.Controls.Editor> objects in a <xref:Microsoft.Maui.Controls.DataTemplate> in a <xref:Microsoft.Maui.Controls.CollectionView> size correctly.
 
-> [!NOTE]
+> [!IMPORTANT]
 > An <xref:Microsoft.Maui.Controls.Editor> will not auto-size if the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property has been set.
 
 ## Transform text
@@ -240,8 +202,6 @@ Editor editor = new Editor();
 editor.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeCharacter);
 ```
 
-::: moniker range=">=net-maui-8.0"
-
 [!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
 
 The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Editor> named `editor`, if it's currently showing:
@@ -250,8 +210,6 @@ The following example shows how to hide the soft input keyboard on an <xref:Micr
 if (editor.IsSoftInputShowing())
     await editor.HideSoftInputAsync(System.Threading.CancellationToken.None);
 ```
-
-::: moniker-end
 
 ## Enable and disable spell checking
 

@@ -1,6 +1,6 @@
 ### YamlMime:ZonePivotGroups
 groups:
-- id: devices-deployment
+- id: devices-platforms
   title: Devices
   prompt: Choose your platform
   pivots:
