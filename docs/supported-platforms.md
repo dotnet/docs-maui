@@ -10,7 +10,7 @@ ms.date: 04/04/2024
 
 - Android 5.0 (API 21) or higher is required.
 - iOS 11 or higher is required
-- macOS 10.15 or higher, using Mac Catalyst.
+- macOS 11 or higher, using Mac Catalyst.
 - Windows 11 and Windows 10 version 1809 or higher, using [Windows UI Library (WinUI) 3](/windows/apps/winui/winui3/).
 
 .NET MAUI Blazor apps have the following additional platform requirements:
