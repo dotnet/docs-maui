@@ -32,6 +32,8 @@ Image filenames must also be unique, otherwise a build error will occur. For mor
 
 At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package. For information about disabling image packaging, see [Disable image packaging](~/troubleshooting.md#disable-image-packaging).
 
+For information about displaying images, see [Image](~/user-interface/controls/image.md).
+
 ## Resize an image
 
 Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. The base size of an image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
