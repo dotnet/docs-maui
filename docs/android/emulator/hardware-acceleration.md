@@ -11,8 +11,7 @@ With Visual Studio, you can easily test and debug your .NET MAUI app for Android
 
 The emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). For more information, see [Connect to an Android emulator on a Mac from inside a Windows virtual machine](mac-with-windows-vm.md).
 
-> [!NOTE]
-> On macOS, the Android emulator uses the built-in Hypervisor.Framework. For more information, see [Hypervisor](https://developer.apple.com/documentation/hypervisor) on developer.apple.com.
+On macOS, the Android emulator uses the built-in Hypervisor.Framework. For more information, see [Hypervisor](https://developer.apple.com/documentation/hypervisor) on developer.apple.com.
 
 ## Accelerate Android emulators on Windows
 
