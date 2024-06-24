@@ -1,7 +1,7 @@
 ---
 title: "Enable hardware acceleration for the Android emulator (Hyper-V & AEHD)"
 description: "Learn how to enable hardware acceleration features to maximize Android emulator performance for a .NET MAUI app."
-ms.date: 05/19/2023
+ms.date: 06/24/2024
 ms.topic: how-to
 ---
 
@@ -11,9 +11,12 @@ With Visual Studio, you can easily test and debug your .NET MAUI app for Android
 
 The emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). For more information, see [Connect to an Android emulator on a Mac from inside a Windows virtual machine](mac-with-windows-vm.md).
 
+> [!NOTE]
+> On macOS, the Android emulator uses the built-in Hypervisor.Framework. For more information, see [Hypervisor](https://developer.apple.com/documentation/hypervisor) on developer.apple.com.
+
 ## Accelerate Android emulators on Windows
 
-The following virtualization technologies are available for accelerating the Android emulator:
+The following virtualization technologies are available for accelerating the Android emulator on Windows:
 
 - The Windows Hypervisor Platform (WHPX). [Hyper-V](/virtualization/hyper-v-on-windows/) is a virtualization feature of Windows that makes it possible to run virtualized computer systems on a physical host computer.
 - The Android Emulator hypervisor driver (AEHD).
@@ -41,14 +44,8 @@ Hyper-V runs on the Windows Hypervisor Platform. To use the Android emulator wit
 
 - Your computer hardware must meet the following requirements:
 
-  - A 64-bit Intel or AMD Ryzen CPU with Second Level Address Translation (SLAT).
-  - CPU support for VM Monitor Mode Extension (VT-c on Intel CPUs).
-  - Minimum of 4-GB memory.
-
-- In your computer's BIOS, the following items must be enabled:
-
-  - Virtualization Technology (may have a different label depending on motherboard manufacturer).
-  - Hardware Enforced Data Execution Prevention.
+  - Intel processors with support for Virtualization Technology (VT-x), Extended Page Tables (EPT), and Unrestricted Guest (UG) features. VT-x must be enabled in your computer's BIOS.
+  - AMD processors: AMD Ryzen processor recommended. Virtualization or SVM must be enabled in your computer's BIOS.
 
 - Your computer must be running the Enterprise, Pro, or Education versions of Windows 11 or Windows 10 Version 1909 or later.
 
@@ -93,7 +90,7 @@ If your computer doesn't support Hyper-V, you should use AEHD to accelerate the 
 Your computer must meet the following criteria to support AEHD:
 
 - An Intel or AMD processor with virtualization extension, which must be enabled in your BIOS.
-- 64-bit Windows 11, Windows 10, Windows 8, or Windows 7.
+- 64-bit Windows 11 or Windows 10.
 - Hyper-V must be turned off.
 
 > [!NOTE]
@@ -114,13 +111,84 @@ If your computer meets the above criteria, use the following steps to accelerate
 
 1. Make sure that the virtual device you [created in the Android Device Manager](device-manager.md) is an **x86-64** or **x86**-based system image. If you use an Arm-based system image, the virtual device won't be accelerated and will run slowly.
 
+#### AEHD 2.1 and higher
+
 After installation, confirm that the driver is operating correctly using the following command:
 
 ```cmd
 sc query aehd
 ```
 
+If the driver is operating correctly, the status message will include the following information:
+
+```
+SERVICE_NAME: aehd
+       ...
+       STATE              : 4  RUNNING
+       ...
+```
+
+The following error message means that the virtualization extension isn't enabled in your BIOS or that Hyper-V isn't disabled:
+
+```
+SERVICE_NAME: aehd
+       ...
+       STATE              : 1  STOPPED
+       WIN32_EXIT_CODE    : 4294967201 (0xffffffa1)
+       ...
+```
+
 After AEHD is installed and running, you'll be able to run your accelerated Android emulator.
+
+#### AEHD 2.0 and lower
+
+After installation, confirm that the driver is operating correctly using the following command:
+
+```cmd
+sc query gvm
+```
+
+If the driver is operating correctly, the status message will include the following information:
+
+```
+SERVICE_NAME: gvm
+       ...
+       STATE              : 4  RUNNING
+       ...
+```
+
+The following error message means that the virtualization extension isn't enabled in your BIOS or that Hyper-V isn't disabled:
+
+```
+SERVICE_NAME: gvm
+       ...
+       STATE              : 1  STOPPED
+       WIN32_EXIT_CODE    : 4294967201 (0xffffffa1)
+       ...
+```
+
+After AEHD is installed and running, you'll be able to run your accelerated Android emulator.
+
+### Uninstall AEHD
+
+To uninstall AEHD, use the following commands at a command line with administrator privileges:
+
+- AEHD 2.1 and higher
+
+    ```cmd
+    sc stop aehd
+    sc delete aehd
+    ```
+
+- AEHD 2.0 and lower
+
+    ```cmd
+    sc stop gvm
+    sc delete gvm
+    ```
+
+> [!IMPORTANT]
+> Shut down any x86 emulators before uninstalling AEHD for AMD.
 
 ## Troubleshoot
 
