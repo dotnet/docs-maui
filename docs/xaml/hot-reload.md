@@ -1,7 +1,7 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 10/25/2022
+ms.date: 06/25/2024
 ---
 
 # XAML Hot Reload for .NET MAUI
