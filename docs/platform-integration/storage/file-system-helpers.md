@@ -1,7 +1,7 @@
 ---
 title: "File system helpers"
 description: "Learn how to use the .NET MAUI IFileSystem interface in the Microsoft.Maui.Storage namespace. This interface contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 06/20/2023
+ms.date: 06/25/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
@@ -83,6 +83,11 @@ Returns the `LocalFolder` directory that is backed up to the cloud. <!-- (/uwp/a
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
+
+> [!IMPORTANT]
+> On Windows, packaged apps operate over a virtual file system where read and write operations are relocated to mapped locations. Therefore, files might not be located where expected due to this virtualization. For more information, see [Common file system operations](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes#common-file-system-operations) and [Flexible virtualization](/windows/msix/desktop/flexible-virtualization).
+
+
 
 -----
 <!-- markdownlint-enable MD025 -->
