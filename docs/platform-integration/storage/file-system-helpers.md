@@ -87,7 +87,5 @@ Files that were added to the project with the **Build Action** of **MauiAsset** 
 > [!IMPORTANT]
 > On Windows, packaged apps operate over a virtual file system where read and write operations are relocated to mapped locations. Therefore, files might not be located where expected due to this virtualization. For more information, see [Common file system operations](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes#common-file-system-operations) and [Flexible virtualization](/windows/msix/desktop/flexible-virtualization).
 
-
-
 -----
 <!-- markdownlint-enable MD025 -->
