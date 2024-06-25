@@ -85,7 +85,7 @@ Returns the `LocalFolder` directory that is backed up to the cloud. <!-- (/uwp/a
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
 
 > [!IMPORTANT]
-> On Windows, packaged apps operate over a virtual file system where read and write operations are relocated to mapped locations. Therefore, files might not be located where expected due to this virtualization. For more information, see [Common file system operations](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes#common-file-system-operations) and [Flexible virtualization](/windows/msix/desktop/flexible-virtualization).
+> On Windows, packaged apps operate over a virtual file system where read and write operations are relocated to mapped locations. Therefore, files might not be located where expected. For more information, see [Common file system operations](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes#common-file-system-operations) and [Flexible virtualization](/windows/msix/desktop/flexible-virtualization).
 
 -----
 <!-- markdownlint-enable MD025 -->
