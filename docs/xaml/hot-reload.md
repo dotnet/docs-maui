@@ -1,7 +1,7 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 10/25/2022
+ms.date: 06/25/2024
 ---
 
 # XAML Hot Reload for .NET MAUI
@@ -15,7 +15,7 @@ By default, you don't need to save your XAML file to see the results of your edi
 > [!NOTE]
 > If you're writing a native UWP or WPF app, without using .NET MAUI, see [What is XAML Hot Reload for WPF and UWP apps?](/visualstudio/xaml-tools/xaml-hot-reload).
 
-XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices.
+XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices. In all cases, XAML Hot Reload requires your debug configuration to be named `Debug`.
 
 > [!IMPORTANT]
 > XAML Hot Reload doesn't reload C# code, including event handlers.
@@ -57,6 +57,8 @@ XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual 
 The XAML Hot Reload output displays status messages that can help with troubleshooting. In Visual Studio, these can be displayed by selecting **View > Output** from the menu bar, and then selecting **Xamarin Hot Reload** in the **Show output from:** drop-down. In Visual Studio for Mac, these can be displayed by hovering your mouse cursor over **XAML Hot Reload** in the status bar.
 
 If XAML Hot Reload fails to initialize you should ensure that you're using the latest version of .NET MAUI, the latest version of the IDE, and that your iOS linker settings are set to **Don't Link** in the project's build settings.
+
+XAML Hot Reload requires your debug configuration to be named `Debug`. If a custom build configuration is used, XAML Hot Reload will stop working if the build configuration isn't named `Debug`.
 
 If nothing happens when saving your XAML file, ensure that XAML Hot Reload is enabled in the IDE. For more information, see [Enable XAML Hot Reload](#enable-xaml-hot-reload).
 
