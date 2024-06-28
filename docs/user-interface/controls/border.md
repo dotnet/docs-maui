@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border>
 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
-- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. It's default value is <xref:Microsoft.Maui.Controls.Shapes.Rectangle>. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
+- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. Its default value is <xref:Microsoft.Maui.Controls.Shapes.Rectangle>. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
 - `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
