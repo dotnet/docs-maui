@@ -13,16 +13,14 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Jun
 
 ### Updated articles
 
-- [Build your first app](../get-started/first-app.md) - VSCode update
+- [Build your first app](../get-started/first-app.md)
 - [Installation](../get-started/installation.md)
-  - Clarifications for installing .NET MAUI on Linux plus VS Code
-  - VSCode update
 
 ## Data & cloud services
 
 ### Updated articles
 
-- [Connect to local web services from Android emulators and iOS simulators](../data-cloud/local-web-services.md) - Add UseCleartextTraffic option for Android
+- [Connect to local web services from Android emulators and iOS simulators](../data-cloud/local-web-services.md)
 
 ## Deployment
 
@@ -46,14 +44,12 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Jun
 ### Updated articles
 
 - [Native embedding](../platform-integration/native-embedding.md)
-  - Support XAML hot reload in native embedded scenarios
-  - iOS fixes for multi-window and image loading
 
 ## Android
 
 ### Updated articles
 
-- [How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)](../android/emulator/hardware-acceleration.md) - AEHD updates
+- [How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)](../android/emulator/hardware-acceleration.md)
 
 ## Community contributors
 
