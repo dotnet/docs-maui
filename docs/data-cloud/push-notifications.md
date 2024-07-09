@@ -654,14 +654,608 @@ For more information about calling REST APIs, see [Use .http files in Visual Stu
 
 ## Create a .NET MAUI app
 
-## Configure the Android app
+In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that enables you to register to receive push notifications from a notification hub via the backend service, and de-register:
 
-## Configure the iOS app
+1. In Visual Studio, create a new .NET MAUI app named **PushNotificationsDemo**, using the **.NET MAUI App** project template.
+1. In Visual Studio, add a new folder named **Models** to the .NET MAUI project, and then add a new class named `DeviceInstallation` to the *Models* folder. Then replace the code in the *DeviceInstallation.cs* file with the following code:
+
+    ```csharp
+    using System.Text.Json.Serialization;
+
+    namespace PushNotificationsDemo.Models;
+
+    public class DeviceInstallation
+    {
+        [JsonPropertyName("installationId")]
+        public string InstallationId { get; set; }
+
+        [JsonPropertyName("platform")]
+        public string Platform { get; set; }
+
+        [JsonPropertyName("pushChannel")]
+        public string PushChannel { get; set; }
+
+        [JsonPropertyName("tags")]
+        public List<string> Tags { get; set; } = new List<string>();
+    }
+    ```
+
+1. In Visual Studio, add an enumeration named `PushDemoAction` to the *Models* folder. Then replace the code in the *PushDemoAction.cs* file with the following code:
+
+    ```csharp
+    namespace PushNotificationsDemo.Models;
+
+    public enum PushDemoAction
+    {
+        ActionA,
+        ActionB
+    }
+    ```
+
+1. In Visual Studio, add a new folder named **Services** to the .NET MAUI project, and then add a new interface named `IDeviceInstallationService` to the *Services* folder. Then replace the code in the *IDeviceInstallationService.cs* file with the following code:
+
+    ```csharp
+    using PushNotificationsDemo.Models;
+
+    namespace PushNotificationsDemo.Services;
+
+    public interface IDeviceInstallationService
+    {
+        string Token { get; set; }
+        bool NotificationsSupported { get; }
+        string GetDeviceId();
+        DeviceInstallation GetDeviceInstallation(params string[] tags);
+    }
+    ```
+
+    This interface will be implemented on each platform later, to provide the `DeviceInstallation` information required by the backend service.
+
+1. In Visual Studio, add an interface named `INotificationRegistrationService` to the *Services* folder. Then replace the code in the *INotificationRegistrationService.cs* file with the following code:
+
+    ```csharp
+    namespace PushNotificationsDemo.Services;
+
+    public interface INotificationRegistrationService
+    {
+        Task DeregisterDeviceAsync();
+        Task RegisterDeviceAsync(params string[] tags);
+        Task RefreshRegistrationAsync();
+    }
+    ```
+
+    This interface will handle the interaction between the client and the backend service.
+
+1. In Visual Studio, add an interface named `INotificationActionService` to the *Services* folder. Then replace the code in the *INotificationActionService.cs* file with the following code:
+
+    ```csharp
+    namespace PushNotificationsDemo.Services;
+
+    public interface INotificationActionService
+    {
+        void TriggerAction(string action);
+    }
+    ```
+
+    This interface will be used as a simple mechanism to centralize the handling of notification actions.
+
+1. In Visual Studio, add an interface named `IPushDemoNotificationActionService` to the *Services* folder. Then replace the code in the *IPushDemoNotificationActionService.cs* file with the following code:
+
+    ```csharp
+    using PushNotificationsDemo.Models;
+
+    namespace PushNotificationsDemo.Services;
+
+    public interface IPushDemoNotificationActionService : INotificationActionService
+    {
+        event EventHandler<PushDemoAction> ActionTriggered;
+    }
+    ```
+
+    The `IPushDemoNotificationActionService` type is specific to this app, and uses the `PushDemoAction` enumeration to identify the action that's being triggered using a strongly-typed approach.
+
+1. In Visual Studio, add a class named `NotificationRegistrationService` to the *Services* folder. Then replace the code in the *NotificationRegistrationService.cs* file with the following code:
+
+```csharp
+using System.Text;
+using System.Text.Json;
+using PushNotificationsDemo.Models;
+
+namespace PushNotificationsDemo.Services;
+
+public class NotificationRegistrationService : INotificationRegistrationService
+{
+    const string RequestUrl = "api/notifications/installations";
+    const string CachedDeviceTokenKey = "cached_device_token";
+    const string CachedTagsKey = "cached_tags";
+
+    string _baseApiUrl;
+    HttpClient _client;
+    IDeviceInstallationService _deviceInstallationService;
+
+    IDeviceInstallationService DeviceInstallationService =>
+        _deviceInstallationService ?? (_deviceInstallationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
+
+    public NotificationRegistrationService(string baseApiUri, string apiKey)
+    {
+        _client = new HttpClient();
+        _client.DefaultRequestHeaders.Add("Accept", "application/json");
+        _client.DefaultRequestHeaders.Add("apikey", apiKey);
+
+        _baseApiUrl = baseApiUri;
+    }
+
+    public async Task DeregisterDeviceAsync()
+    {
+        var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
+            .ConfigureAwait(false);
+
+        if (cachedToken == null)
+            return;
+
+        var deviceId = DeviceInstallationService?.GetDeviceId();
+
+        if (string.IsNullOrWhiteSpace(deviceId))
+            throw new Exception("Unable to resolve an ID for the device.");
+
+        await SendAsync(HttpMethod.Delete, $"{RequestUrl}/{deviceId}")
+            .ConfigureAwait(false);
+
+        SecureStorage.Remove(CachedDeviceTokenKey);
+        SecureStorage.Remove(CachedTagsKey);
+    }
+
+    public async Task RegisterDeviceAsync(params string[] tags)
+    {
+        var deviceInstallation = DeviceInstallationService?.GetDeviceInstallation(tags);
+
+        await SendAsync<DeviceInstallation>(HttpMethod.Put, RequestUrl, deviceInstallation)
+            .ConfigureAwait(false);
+
+        await SecureStorage.SetAsync(CachedDeviceTokenKey, deviceInstallation.PushChannel)
+            .ConfigureAwait(false);
+
+        await SecureStorage.SetAsync(CachedTagsKey, JsonSerializer.Serialize(tags));
+    }
+
+    public async Task RefreshRegistrationAsync()
+    {
+        var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
+            .ConfigureAwait(false);
+
+        var serializedTags = await SecureStorage.GetAsync(CachedTagsKey)
+            .ConfigureAwait(false);
+
+        if (string.IsNullOrWhiteSpace(cachedToken) ||
+            string.IsNullOrWhiteSpace(serializedTags) ||
+            string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
+            cachedToken == DeviceInstallationService.Token)
+            return;
+
+        var tags = JsonSerializer.Deserialize<string[]>(serializedTags);
+
+        await RegisterDeviceAsync(tags);
+    }
+
+    async Task SendAsync<T>(HttpMethod requestType, string requestUri, T obj)
+    {
+        string serializedContent = null;
+
+        await Task.Run(() => serializedContent = JsonSerializer.Serialize(obj))
+            .ConfigureAwait(false);
+
+        await SendAsync(requestType, requestUri, serializedContent);
+    }
+
+    async Task SendAsync(HttpMethod requestType, string requestUri, string jsonRequest = null)
+    {
+        var request = new HttpRequestMessage(requestType, new Uri($"{_baseApiUrl}{requestUri}"));
+
+        if (jsonRequest != null)
+            request.Content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        var response = await _client.SendAsync(request).ConfigureAwait(false);
+
+        response.EnsureSuccessStatusCode();
+    }
+}
+```
+
+1. In Visual Studio, add a class named `PushDemoNotificationActionService` to the *Services* folder. Then replace the code in the *PushDemoNotificationActionService.cs* file with the following code:
+
+```csharp
+using PushNotificationsDemo.Models;
+
+namespace PushNotificationsDemo.Services;
+
+public class PushDemoNotificationActionService : IPushDemoNotificationActionService
+{
+    readonly Dictionary<string, PushDemoAction> _actionMappings = new Dictionary<string, PushDemoAction>
+    {
+        { "action_a", PushDemoAction.ActionA },
+        { "action_b", PushDemoAction.ActionB }
+    };
+
+    public event EventHandler<PushDemoAction> ActionTriggered = delegate { };
+
+    public void TriggerAction(string action)
+    {
+        if (!_actionMappings.TryGetValue(action, out var pushDemoAction))
+            return;
+
+        List<Exception> exceptions = new List<Exception>();
+
+        foreach (var handler in ActionTriggered?.GetInvocationList())
+        {
+            try
+            {
+                handler.DynamicInvoke(this, pushDemoAction);
+            }
+            catch (Exception ex)
+            {
+                exceptions.Add(ex);
+            }
+        }
+
+        if (exceptions.Any())
+            throw new AggregateException(exceptions);
+    }
+}
+```
+
+1. In Visual Studio, add a class named `Config` to the root of the project. Then replace the code in the *Config.cs* file with the following code:
+
+    ```csharp
+    namespace PushNotificationsDemo;
+
+    public static partial class Config
+    {
+        public static string ApiKey = "API_KEY";
+        public static string BackendServiceEndpoint = "BACKEND_SERVICE_ENDPOINT";
+    }
+    ```
+
+    The `Config` class is used as simple way to keep your secrets out of source control. You can replace these values as part of an automated build or override them using a local partial class.
+
+    > [!IMPORTANT]
+    > When specifying the base address in the .NET MAUI app, ensure it ends with a `/`.
+
+1. In Visual Studio, add a class named `Config.local_secrets` to the root of the project. Then replace the code in the *Config.local_secrets.cs* file with the following code:
+
+    ```csharp
+    namespace PushNotificationsDemo;
+
+    public static partial class Config
+    {
+        static Config()
+        {
+            ApiKey = "<your_api_key>";
+            BackendServiceEndpoint = "<your_api_app_url>";
+        }
+    }
+    ```
+
+    Replace the placeholder values with the values you chose when creating the backend service. The `BackendServiceEndpoint` URL should use the format `https://<api_app_name>.azurewebsites.net/`.
+
+    > [!TIP]
+    > Remember to add `*.local_secrets.*` to your `.gitignore` file to avoid committing this file to source control.
+
+### Create the UI
+
+1. In Visual Studio, open *MainPage.xaml* and replace the `VerticalStackLayout` and its children with the following XAML:
+
+    ```xaml
+    <VerticalStackLayout Margin="20"
+                         Spacing="6">
+        <Button x:Name="registerButton"
+                Text="Register"
+                Clicked="OnRegisterButtonClicked" />
+        <Button x:Name="deregisterButton"
+                Text="Deregister"
+                Clicked="OnDeregisterButtonClicked" />
+    </VerticalStackLayout>
+    ```
+
+1. In Visual Studio, open *MainPage.xaml.cs* and add a `using` statement for the `PushNotificationsDemo.Services` namespace:
+
+    ```csharp
+    using PushNotificationsDemo.Services;
+    ```
+
+1. In Visual Studio, open *MainPage.xaml.cs* and add a `readonly` backing field to store a reference to the `INotificationRegistrationService` implementation:
+
+    ```csharp
+    readonly INotificationRegistrationService _notificationRegistrationService;
+    ```
+
+1. In the `MainPage` constructor, resolve the `INotificationRegistrationService` implementation and assign it to the `_notificationRegistrationService` backing field:
+
+    ```csharp
+    public MainPage(INotificationRegistrationService service)
+    {
+        InitializeComponent();
+
+        _notificationRegistrationService = service;
+    }
+    ```
+
+1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods:
+
+    ```csharp
+    void OnRegisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.RegisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device registered");
+            });
+    }
+
+    void OnDeregisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.DeregisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device deregistered");
+            });
+    }
+
+    void ShowAlert(string message)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            DisplayAlert("Push notifications demo", message, "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    > [!IMPORTANT]
+    > In the app, registration and de-registration is performed in response to user input. However, you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.
+
+1. In Visual Studio, open *App.xaml.cs* and add the following `using` statements:
+
+    ```csharp
+    using PushNotificationsDemo.Models;
+    using PushNotificationsDemo.Services;
+    ```
+
+1. In *App.xaml.cs*, add a `readonly` backing field to store a reference to the `IPushDemoNotificationActionService` implementation:
+
+    ```csharp
+    readonly IPushDemoNotificationActionService _actionService;
+    ```
+
+1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
+
+    ```csharp
+    public App(IPushDemoNotificationActionService service)
+    {
+        InitializeComponent();
+
+        _actionService = service;
+        _actionService.ActionTriggered += NotificationActionTriggered;
+
+        MainPage = new AppShell();
+    }
+    ```
+
+1. In the `App` class, implement the event handler for the `IPushDemoNotificationActionService.ActionTriggered` event:
+
+    ```csharp
+    void NotificationActionTriggered(object sender, PushDemoAction e)
+    {
+        ShowActionAlert(e);
+    }
+
+    void ShowActionAlert(PushDemoAction action)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            MainPage?.DisplayAlert("Push notifications demo", $"{action} action received.", "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    The event handler for the `ActionTriggered` event demonstrates the receipt and propagation of push notification actions. These would typically be handled silently, for example navigating to a specific view or refreshing some data rather than displaying an alert.
+
+### Configure the Android app
+
+Xamarin.Firebase.Messaging nuget
+
+google-services.json
+
+Android Manifest
+
+SupportedOSPlatformVersion - 23.0
+
+DeviceInstallationService
+
+PushNotificationFirebaseMessagingService
+
+MainActivity
+
+Permission
+
+```csharp
+using Android;
+
+namespace PushNotificationsDemo.Platforms.Android;
+
+public class PushNotificationPermission : Permissions.BasePlatformPermission
+{
+    public override (string androidPermission, bool isRuntime)[] RequiredPermissions
+    {
+        get
+        {
+            var result = new List<(string androidPermission, bool isRuntime)>();
+            if (OperatingSystem.IsAndroidVersionAtLeast(33))
+                result.Add((Manifest.Permission.PostNotifications, true));
+            return result.ToArray();
+        }
+    }
+}
+```
+
+MainPage.xaml.cs:
+
+```csharp
+#if ANDROID
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            PermissionStatus status = await Permissions.RequestAsync<PushNotificationsDemo.Platforms.Android.PushNotificationPermission>();
+        }
+#endif
+```
+
+### Configure the iOS app
+
+Can we do this on a simulator without a provisioning profile etc?
+
+SupportedOSPlatformVersion - 13.0
+
+Entitlements
+
+DeviceInstallationService
+
+NSDataExtensions
+
+AppDelegate
+
+### Register types with the app's dependency injection container
+
+1. In Visual Studio, open *MauiProgram.cs* and add a `using` statement for the `PushNotificationsDemo.Services` namespace:
+
+    ```csharp
+    using PushNotificationsDemo.Services;
+    ```
+
+1. In the `MauiProgram` class, add code for the `RegisterServices` extension method which registers the `DeviceInstallationService` on each platform, and the cross-platform `PushDemoNotificationActionService` and `NotificationRegistrationService` services, and which returns a `MauiAppBuilder` object:
+
+    ```csharp
+    public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
+    {
+    #if IOS
+        builder.Services.AddSingleton<IDeviceInstallationService, PushNotificationsDemo.Platforms.iOS.DeviceInstallationService>();
+    #elif ANDROID
+        builder.Services.AddSingleton<IDeviceInstallationService, PushNotificationsDemo.Platforms.Android.DeviceInstallationService>();
+    #endif
+
+        builder.Services.AddSingleton<IPushDemoNotificationActionService, PushDemoNotificationActionService>();
+        builder.Services.AddSingleton<INotificationRegistrationService>(new NotificationRegistrationService(Config.BackendServiceEndpoint, Config.ApiKey));
+
+        return builder;
+    }
+    ```
+
+1. In the `MauiProgram` class, add code for the `RegisterViews` extension method which registers the `MainPage` type as a singleton and which returns a `MauiAppBuilder` object:
+
+    ```csharp
+    public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
+    {
+        builder.Services.AddSingleton<MainPage>();
+        return builder;
+    }
+    ```
+
+    The `MainPage` type is registered because it requires a `INotificationRegistrationService` dependency, and any types that require a dependency must be registered with the dependency injection container.
+
+1. In the `MauiProgram` class, modify the `CreateMauiApp` method so that it calls the `RegisterServices` and `RegisterViews` extension methods:
+
+    ```csharp
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            })
+            .RegisterServices()
+            .RegisterViews();
+
+    #if DEBUG
+          builder.Logging.AddDebug();
+    #endif
+          return builder.Build();
+    }
+    ```
+
+For more information about dependency injection in .NET MAUI, see [Dependency injection](~/fundamentals/dependency-injection.md).
 
 ## Test the app
 
+Send a test notification.
+
+The app displays an alert when a push notification is received that specifies an action, and the app is in the foreground. Otherwise, notifications are displayed in notification center.
+
+
 ## Troubleshooting
 
+### No response from the backend service
+
+When testing locally, ensure that the backend service is running and is using the correct port.
+
+If testing against the Azure API app, check that the service is running and has been deployed and has started without error.
+
+Ensure that you've specified the base address correctly in your REST tooling, or in the .NET MAUI app configuration. The base address should be `https://<api_name>.azurewebsites.net` or `https://localhost:7020` when testing locally.
+
+### Receiving a 401 status code from the backend service
+
+Validate that you're setting the `apikey` request header correctly and that this value matches the one you configured for the backend service.
+
+If you receive this error when testing locally, ensure that the key value you defined in the .NET MAUI app matches the `Authentication:ApiKey` user-secrets value used by the backend service.
+
+If you're testing with an Azure API app, ensure that the key value defined in the .NET MAUI app matches the `Authentication:ApiKey` app-setting value defined in the Azure portal. If you created or changed this app-setting after you had deployed the backend service then you must restart the service for the value to take effect.
+
+### Receiving a 404 status code from the backend service
+
+Validate that the endpoint and HTTP request method is correct:
+
+- [PUT] `https://<api_name>.azurewebsites.net/api/notifications/installations`
+- [DELETE] `https://<api_name>.azurewebsites.net/api/notifications/installations/<installation_id>`
+- [POST] `https://<api_name>.azurewebsites.net/api/notifications/requests`
+
+Or when testing locally:
+
+- [PUT] `https://localhost:7020/api/notifications/installations`
+- [DELETE] `https://localhost:7020/api/notifications/installations/<installation_id>`
+- [POST] `https://localhost:7020/api/notifications/requests`
+
+> [!IMPORTANT]
+> When specifying the base address in the .NET MAUI app, ensure it ends with a `/`. The base address should be `https://<api_name>.azurewebsites.net` or `https://localhost:7020/` when testing locally.
+
+### Not receiving notifications on Android after starting or stopping a debug session
+
+Ensure you register each time you start a debug session. The debugger will cause a new Firebase token to be generated, and so the notification hub installation must be updated.
+
+### Unable to register and a notification hub error message is displayed
+
+Verify that the test device has network connectivity. Then determine the HTTP response status code by setting a breakpoint to inspect the `StatusCode` property in the `HttpResponse`.
+
+Review the previous troubleshooting suggestions, where applicable, based on the status code.
+
+Set a breakpoint on the lines that return specific status codes for the respective API. Then try calling the backend service when debugging locally.
+
+Validate the backend service is working as expected by your REST tooling of choice, and use the payload created by the .NET MAUI app for your chosen platform.
+
+Review the platform-specific configuration sections to ensure that no steps have been missed. Check that suitable values are being resolved for `InstallationId` and `Token` variables for your chosen platform.
+
+### Unable to resolve an ID for the device the device error message
+
+Review the platform-specific configuration sections to ensure that no steps have been missed.
 
 ---
 
