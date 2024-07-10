@@ -1069,68 +1069,591 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
 
 ### Configure the Android app
 
-Xamarin.Firebase.Messaging nuget
+1. In Visual Studio, add the **Xamarin.Firebase.Messaging** NuGet package to .NET MAUI app project.
+1. In Visual Studio, add your *google-services.json* file to the *Platforms/Android* folder of your .NET MAUI app project. Once the file has been added to your project it should have been added with a build action of `GoogleServicesJson`:
 
-google-services.json
+    ```xml
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+      <GoogleServicesJson Include="Platforms\Android\google-services.json" />
+    </ItemGroup>
+    ```
 
-Android Manifest
+1. In Visual Studio, edit the project file (*.csproj) and set the `SupportedOSPlatformVersion` for Android to 26.0:
 
-SupportedOSPlatformVersion - 23.0
+    ```xml
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">26.0</SupportedOSPlatformVersion>
+    ```
 
-DeviceInstallationService
+    Google made changes to how Android notification channels in API 26. For more information, see [Notification channels](https://developer.android.com/develop/ui/views/notifications#ManageChannels) on developer.android.com.
 
-PushNotificationFirebaseMessagingService
+1. In the *Platforms/Android* folder of the project, add a new class named `DeviceInstallationService` and replace its code with the following code:
 
-MainActivity
+    ```csharp
+    using Android.Gms.Common;
+    using PushNotificationsDemo.Models;
+    using PushNotificationsDemo.Services;
+    using static Android.Provider.Settings;
 
-Permission
+    namespace PushNotificationsDemo.Platforms.Android;
 
-```csharp
-using Android;
-
-namespace PushNotificationsDemo.Platforms.Android;
-
-public class PushNotificationPermission : Permissions.BasePlatformPermission
-{
-    public override (string androidPermission, bool isRuntime)[] RequiredPermissions
+    public class DeviceInstallationService : IDeviceInstallationService
     {
-        get
+        public string Token { get; set; }
+
+        public bool NotificationsSupported
+            => GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(Platform.AppContext) == ConnectionResult.Success;
+
+        public string GetDeviceId()
+            => Secure.GetString(Platform.AppContext.ContentResolver, Secure.AndroidId);
+
+        public DeviceInstallation GetDeviceInstallation(params string[] tags)
         {
-            var result = new List<(string androidPermission, bool isRuntime)>();
-            if (OperatingSystem.IsAndroidVersionAtLeast(33))
-                result.Add((Manifest.Permission.PostNotifications, true));
-            return result.ToArray();
+            if (!NotificationsSupported)
+                throw new Exception(GetPlayServicesError());
+
+            if (string.IsNullOrWhiteSpace(Token))
+                throw new Exception("Unable to resolve token for FCMv1.");
+
+            var installation = new DeviceInstallation
+            {
+                InstallationId = GetDeviceId(),
+                Platform = "fcmv1",
+                PushChannel = Token
+            };
+
+            installation.Tags.AddRange(tags);
+
+            return installation;
+        }
+
+        string GetPlayServicesError()
+        {
+            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(Platform.AppContext);
+
+            if (resultCode != ConnectionResult.Success)
+                return GoogleApiAvailability.Instance.IsUserResolvableError(resultCode) ?
+                           GoogleApiAvailability.Instance.GetErrorString(resultCode) :
+                           "This device isn't supported.";
+
+            return "An error occurred preventing the use of push notifications.";
         }
     }
-}
-```
+    ```
 
-MainPage.xaml.cs:
+    This class provides a unique ID, using the `Secure.AndroidId` value, and the notification hub registration payload.
 
-```csharp
-#if ANDROID
-        protected override async void OnAppearing()
+1. In the *Platforms/Android* folder of the project, add a new class named `PushNotificationFirebaseMessagingService` and replace its code with the following code:
+
+    ```csharp
+    using Android;
+    using Android.App;
+    using Android.Content.PM;
+    using Android.Graphics;
+    using AndroidX.Core.Content;
+    using Firebase.Messaging;
+    using PushNotificationsDemo.Services;
+
+    namespace PushNotificationsDemo.Platforms.Android;
+
+    [Service(Exported = false)]
+    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+    public class PushNotificationFirebaseMessagingService : FirebaseMessagingService
+    {
+        IPushDemoNotificationActionService _notificationActionService;
+        INotificationRegistrationService _notificationRegistrationService;
+        IDeviceInstallationService _deviceInstallationService;
+        int _messageId;
+
+        IPushDemoNotificationActionService NotificationActionService =>
+            _notificationActionService ?? (_notificationActionService = IPlatformApplication.Current.Services.GetService<IPushDemoNotificationActionService>());
+
+        INotificationRegistrationService NotificationRegistrationService =>
+            _notificationRegistrationService ?? (_notificationRegistrationService = IPlatformApplication.Current.Services.GetService<INotificationRegistrationService>());
+
+        IDeviceInstallationService DeviceInstallationService =>
+            _deviceInstallationService ?? (_deviceInstallationService = IPlatformApplication.Current.Services.GetService<IDeviceInstallationService>());
+
+        public override void OnNewToken(string token)
         {
-            base.OnAppearing();
+            DeviceInstallationService.Token = token;
 
-            PermissionStatus status = await Permissions.RequestAsync<PushNotificationsDemo.Platforms.Android.PushNotificationPermission>();
+            NotificationRegistrationService.RefreshRegistrationAsync()
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
         }
-#endif
-```
+
+        public override void OnMessageReceived(RemoteMessage message)
+        {
+            base.OnMessageReceived(message);
+
+            if (OperatingSystem.IsAndroidVersionAtLeast(33) &&
+                ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
+            {
+                return;
+            }
+
+            // Notifications must be assigned to a channel from Android 26.
+            // On API 25 and lower, each app only has one channel.
+            if (!OperatingSystem.IsAndroidVersionAtLeast(26))
+            {
+                return;
+            }
+
+            var pushnotification = message.GetNotification();
+
+            var manager = NotificationManager.FromContext(Platform.AppContext);
+            var channel = new NotificationChannel(pushnotification.ChannelId ?? "MauiNotifications", "MauiNotifications", NotificationImportance.Max);
+            manager?.CreateNotificationChannel(channel);
+
+            var notification = new Notification.Builder(Platform.AppContext, channel.Id)
+                .SetContentTitle(pushnotification.Title)
+                .SetContentText(pushnotification.Body)
+                .SetLargeIcon(BitmapFactory.DecodeResource(Platform.AppContext.Resources, Resource.Drawable.dotnet_logo))
+                .SetSmallIcon(Resource.Drawable.message_small)
+                .Build();
+
+            manager?.Notify(_messageId++, notification);
+
+            if (message.Data.TryGetValue("action", out var messageAction))
+                NotificationActionService.TriggerAction(messageAction);
+        }
+    }
+    ```
+
+1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/ANdroid* folder and add the following `using` statements:
+
+    ```csharp
+    using Android.App;
+    using Android.Content;
+    using Android.Content.PM;
+    using Android.OS;
+    using PushNotificationsDemo.Services;
+    using Firebase.Messaging;
+    ```
+
+1. In the `MainActivity` class, set the `LaunchMode` to `SingleTop` so that the `MainActivity` won't get created again when opened:
+
+    ```csharp
+    [Activity(
+        Theme = "@style/Maui.SplashTheme",
+        MainLauncher = true,
+        LaunchMode = LaunchMode.SingleTop,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+    ```
+
+1. In the `MainActivity` class, add backing fields to store references to the `IPushDemoNotificationActionService` and `IDeviceInstallationService` implementations:
+
+    ```csharp
+    IPushDemoNotificationActionService _notificationActionService;
+    IDeviceInstallationService _deviceInstallationService;
+    ```
+
+1. In the `MainActivity` class, add `NotificationActionService` and `DeviceInstallationService` private properties that retrieve their concrete implementations from the app's dependency injection container:
+
+    ```csharp
+    IPushDemoNotificationActionService NotificationActionService =>
+        _notificationActionService ?? (_notificationActionService = IPlatformApplication.Current.Services.GetService<IPushDemoNotificationActionService>());
+
+    IDeviceInstallationService DeviceInstallationService =>
+        _deviceInstallationService ?? (_deviceInstallationService = IPlatformApplication.Current.Services.GetService<IDeviceInstallationService>());
+    ```
+
+1. In the `MainActivity` class, implement the `Android.Gms.Tasks.IOnSuccessListener` interface to retrieve and store the Firebase token:
+
+    ```csharp
+    public class MainActivity : MauiAppCompatActivity, Android.Gms.Tasks.IOnSuccessListener
+    {
+        public void OnSuccess(Java.Lang.Object result)
+        {
+            DeviceInstallationService.Token = result.ToString();
+        }
+    }
+    ```
+
+1. In the `MainActivity` class, add the `ProcessNotificationActions` method that will check whether a given `Intent` has an extra value named `action`, and then conditionally trigger that `action` using the `IPushDemoNotificationActionService` implementation:
+
+    ```csharp
+    void ProcessNotificationsAction(Intent intent)
+    {
+        try
+        {
+            if (intent?.HasExtra("action") == true)
+            {
+                var action = intent.GetStringExtra("action");
+
+                if (!string.IsNullOrEmpty(action))
+                    NotificationActionService.TriggerAction(action);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+        }
+    }
+    ```
+
+1. In the `MainActivity` class, override the `OnNewIntent` method to call the `ProcessNotificationActions` method:
+
+    ```csharp
+    protected override void OnNewIntent(Intent? intent)
+    {
+        base.OnNewIntent(intent);
+        ProcessNotificationsAction(intent);
+    }
+    ```
+
+    Because the `LaunchMode` for the `Activity` is set to `SingleTop`, an `Intent` will be sent to the existing `Activity` instance via the `OnNewIntent` override, rather than the `OnCreate` method. Therefore, you must handle an incoming intent in both `OnNewIntent` and `OnCreate`.
+
+1. In the `MainActivity` class, override the `OnCreate` method to call the `ProcessNotificationActions` method, and to retrieve the token from Firebase, adding `MainActivity` as the `IOnSuccessListener`:
+
+    ```csharp
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+
+        if (DeviceInstallationService.NotificationsSupported)
+            FirebaseMessaging.Instance.GetToken().AddOnSuccessListener(this);
+
+        ProcessNotificationsAction(Intent);
+    }
+    ```
+
+    > [!NOTE]
+    > The app must be re-registered each time you run it and stop it from a debug session to continue receiving push notifications,
+
+1. In Visual Studio, add the `POST_NOTIFICATIONS` permission to the *AndroidManifest.xml* file in the *Platforms/Android* folder:
+
+    ```xml
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    ```
+
+    For more information about this permission, see [Notification runtime permission](https://developer.android.com/develop/ui/views/notifications/notification-permission) on developer.android.com.
+
+1. In Visual Studio, add a class named `PushNotificationPermission` to the *Platforms/Android* folder, and replace its code with the following code:
+
+    ```csharp
+    using Android;
+
+    namespace PushNotificationsDemo.Platforms.Android;
+
+    public class PushNotificationPermission : Permissions.BasePlatformPermission
+    {
+        public override (string androidPermission, bool isRuntime)[] RequiredPermissions
+        {
+            get
+            {
+                var result = new List<(string androidPermission, bool isRuntime)>();
+                if (OperatingSystem.IsAndroidVersionAtLeast(33))
+                    result.Add((Manifest.Permission.PostNotifications, true));
+                return result.ToArray();
+            }
+        }
+    }
+    ```
+
+    This class implements a permission class that checks for the `POST_NOTIFICATIONS` permission declaration at runtime.
+
+1. In Visual Studio, open *MainPage.xaml.cs* and add the following code to the `MainPage` class:
+
+    ```csharp
+    #if ANDROID
+            protected override async void OnAppearing()
+            {
+                base.OnAppearing();
+
+                PermissionStatus status = await Permissions.RequestAsync<PushNotificationsDemo.Platforms.Android.PushNotificationPermission>();
+            }
+    #endif
+    ```
+
+    This code runs on Android when the `MainPage` appears, and requests the user to grant the `POST_NOTIFICATIONS` permission. For more information about .NET MAUI permissions, see [Permissions](~/platform-integration/appmodel/permissions.md).
 
 ### Configure the iOS app
 
-Can we do this on a simulator without a provisioning profile etc?
+The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. Each simulator generates registration tokens that are unique to the combination of that simulator and the Mac hardware it's running on. Tokens in the simulator may be larger than physical device tokens. Therefore, don't hardcode any specific length or format for these tokens.
 
-SupportedOSPlatformVersion - 13.0
+> [!IMPORTANT]
+> The simulator supports the Apple Push Notification Service sandbox environment.
 
-Entitlements
+For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
 
-DeviceInstallationService
+The following instructions assume you are using hardware that supports receiving remote notifications in an iOS simulator. If this is not the case you'll have to run the iOS app on a physical device, which will require you to create a provisioning profile for your app that includes the Push Notifications capability. You'll then need to ensure that your app is built using your certificate and provisioning profile. For more information on how to do this, see [Set up your iOS app to work with Azure Notification Hubs](/azure/notification-hubs/ios-sdk-get-started), and then follow the instructions below.
 
-NSDataExtensions
+1. In Visual Studio, edit the project file (*.csproj) and set the `SupportedOSPlatformVersion` for iOS to 13.0:
 
-AppDelegate
+    ```csharp
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.0</SupportedOSPlatformVersion>
+    ```
+
+    Apple made changes to their push service in iOS 13. For more information, see [Azure Notification Hubs updates for iOS 13](/azure/notification-hubs/push-notification-updates-ios-13).
+
+1. In Visual Studio, add an *Entitlements.plist* file to the *Platforms/iOS* folder of the project and add the following XML to the file:
+
+    ```csharp
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+    	<key>aps-environment</key>
+    	<string>development</string>
+    </dict>
+    </plist>
+    ```
+
+    This sets the APS environment entitlement and specifies to use the development Apple Push Notification service environment. In production apps, this entitlement value should be set to `production`. For more information about this entitlement, see [APS Environment Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment) on developer.apple.com.
+
+    For more information about adding an entitlements file, see [iOS entitlements](~/ios/entitlements.md).
+
+1. In Visual Studio, add a new class named `DeviceInstallationService` to the *Platforms/iOS* folder of the project and add the following code to the file:
+
+    ```csharp
+    using PushNotificationsDemo.Services;
+    using PushNotificationsDemo.Models;
+    using UIKit;
+
+    namespace PushNotificationsDemo.Platforms.iOS;
+
+    public class DeviceInstallationService : IDeviceInstallationService
+    {
+        const int SupportedVersionMajor = 13;
+        const int SupportedVersionMinor = 0;
+
+        public string Token { get; set; }
+
+        public bool NotificationsSupported =>
+            UIDevice.CurrentDevice.CheckSystemVersion(SupportedVersionMajor, SupportedVersionMinor);
+
+        public string GetDeviceId() =>
+            UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+
+        public DeviceInstallation GetDeviceInstallation(params string[] tags)
+        {
+            if (!NotificationsSupported)
+                throw new Exception(GetNotificationsSupportError());
+
+            if (string.IsNullOrWhiteSpace(Token))
+                throw new Exception("Unable to resolve token for APNS");
+
+            var installation = new DeviceInstallation
+            {
+                InstallationId = GetDeviceId(),
+                Platform = "apns",
+                PushChannel = Token
+            };
+
+            installation.Tags.AddRange(tags);
+
+            return installation;
+        }
+
+        string GetNotificationsSupportError()
+        {
+            if (!NotificationsSupported)
+                return $"This app only supports notifications on iOS {SupportedVersionMajor}.{SupportedVersionMinor} and above. You are running {UIDevice.CurrentDevice.SystemVersion}.";
+
+            if (Token == null)
+                return $"This app can support notifications but you must enable this in your settings.";
+
+            return "An error occurred preventing the use of push notifications";
+        }
+    }
+    ```
+
+    This class provides a unique ID, using the `UIDevice.IdentifierForVendor` value, and the notification hub registration payload.
+
+1. In Visual Studio, add a new class named `NSDataExtensions` to the *Platforms/iOS* folder of the project and add the following code to the file:
+
+    ```csharp
+    using Foundation;
+    using System.Text;
+
+    namespace PushNotificationsDemo.Platforms.iOS;
+
+    internal static class NSDataExtensions
+    {
+        internal static string ToHexString(this NSData data)
+        {
+            var bytes = data.ToArray();
+
+            if (bytes == null)
+                return null;
+
+            StringBuilder sb = new StringBuilder(bytes.Length * 2);
+
+            foreach (byte b in bytes)
+                sb.AppendFormat("{0:x2}", b);
+
+            return sb.ToString().ToUpperInvariant();
+        }
+    }
+    ```
+
+    The `ToHexString` extension method will be consumed by code you'll add that parses the retrieved device token.
+
+1. In Visual Studio, open the *AppDelegate.cs* file in the *Platforms/iOS* folder and add the following `using` statements:
+
+    ```csharp
+    using System.Diagnostics;
+    using Foundation;
+    using PushNotificationsDemo.Platforms.iOS;
+    using PushNotificationsDemo.Services;
+    using UIKit;
+    using UserNotifications;
+    ```
+
+1. In the `AppDelegate` class, add backing fields to store references to the `IPushDemoNotificationActionService`, `INotificationRegistrationService`, and `IDeviceInstallationService` implementations:
+
+    ```csharp
+    IPushDemoNotificationActionService _notificationActionService;
+    INotificationRegistrationService _notificationRegistrationService;
+    IDeviceInstallationService _deviceInstallationService;
+    ```
+
+1. In the `AppDelegate` class, add `NotificationActionService`, `NotificationRegistrationService`, and `DeviceInstallationService` private properties that retrieve their concrete implementations from the app's dependency injection container:
+
+    ```csharp
+    IPushDemoNotificationActionService NotificationActionService =>
+        _notificationActionService ?? (_notificationActionService = IPlatformApplication.Current.Services.GetService<IPushDemoNotificationActionService>());
+
+    INotificationRegistrationService NotificationRegistrationService =>
+        _notificationRegistrationService ?? (_notificationRegistrationService = IPlatformApplication.Current.Services.GetService<INotificationRegistrationService>());
+
+    IDeviceInstallationService DeviceInstallationService =>
+        _deviceInstallationService ?? (_deviceInstallationService = IPlatformApplication.Current.Services.GetService<IDeviceInstallationService>());
+    ```
+
+1. In the `AppDelegate` class, add the `RegisterForRemoteNotifications` method to register user notification settings and then for remote notifications with APNS:
+
+    ```csharp
+    void RegisterForRemoteNotifications()
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
+                UIUserNotificationType.Alert |
+                UIUserNotificationType.Badge |
+                UIUserNotificationType.Sound,
+                new NSSet());
+
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+        });
+    }
+    ```
+
+1. In the `AppDelegate` class, add the `CompleteRegistrationAsync` method to set the `IDeviceInstallationService.Token` property value:
+
+    ```csharp
+    Task CompleteRegistrationAsync(NSData deviceToken)
+    {
+        DeviceInstallationService.Token = deviceToken.ToHexString();
+        return NotificationRegistrationService.RefreshRegistrationAsync();
+    }
+    ```
+
+    This method also refreshes the registration and caches the device token if it's been update since it was last stored.
+
+1. In the `AppDelegate` class, add the `ProcessNotificationActions` method for processing the `NSDictionary` notification data and conditionally calling `NotificationActionService.TriggerAction`:
+
+    ```csharp
+    void ProcessNotificationActions(NSDictionary userInfo)
+    {
+        if (userInfo == null)
+            return;
+
+        try
+        {
+            // If your app isn't in the foreground, the notification goes to Notification Center.
+            // If your app is in the foreground, the notification goes directly to your app and you
+            // need to process the notification payload yourself.
+            var actionValue = userInfo.ObjectForKey(new NSString("action")) as NSString;
+
+            if (!string.IsNullOrWhiteSpace(actionValue?.Description))
+                NotificationActionService.TriggerAction(actionValue.Description);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+    }
+    ```
+
+1. In the `AppDelegate` class, add the `RegisteredForRemoteNotifications` method passing the `deviceToken` argument to the `CompleteRegistrationAsync` method:
+
+    ```csharp
+    [Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
+    public void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+    {
+        CompleteRegistrationAsync(deviceToken)
+            .ContinueWith((task) =>
+            {
+                if (task.IsFaulted)
+                    throw task.Exception;
+            });
+    }
+    ```
+
+    This method will be called when the app is registered to receive remote notification, and is used to request the unique device token, which is effectively the address of your app on the device.
+
+1. In the `AppDelegate` class, add the `ReceivedRemoteNotification` method passing the `userInfo` argument to the `ProcessNotificationActions` method:
+
+    ```csharp
+    [Export("application:didReceiveRemoteNotification:")]
+    public void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
+    {
+        ProcessNotificationActions(userInfo);
+    }
+    ```
+
+    This method will be called when the app has received a remote notification, and is used to process the notification.
+
+1. In the `AppDelegate` class, add the `FailedToRegisterForRemoteNotifications` method to log any errors:
+
+    ```csharp
+    [Export("application:didFailToRegisterForRemoteNotificationsWithError:")]
+    public void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+    {
+        Debug.WriteLine(error.Description);
+    }
+    ```
+
+    This method  will be called when the app has failed to register to receive remote notifications. Registration might fail if the device isn't connected to the network, if the APNS server is unreachable, or if the app is incorrectly configured.
+
+    > [!NOTE]
+    > For production scenarios, you'll want to implement proper logging and error handling in the `FailedToRegisterForRemoteNotifications` method.
+
+1. In the `AppDelegate` class, add the `FinishedLaunching` method to conditionally request permission to use notifications and register for remote notifications:
+
+    ```csharp
+    [Export("application:didFinishLaunchingWithOptions:")]
+    public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+    {
+        if (DeviceInstallationService.NotificationsSupported)
+        {
+            UNUserNotificationCenter.Current.RequestAuthorization(
+                UNAuthorizationOptions.Alert |
+                UNAuthorizationOptions.Badge |
+                UNAuthorizationOptions.Sound,
+                (approvalGranted, error) =>
+                {
+                    if (approvalGranted && error == null)
+                        RegisterForRemoteNotifications();
+                });
+        }
+
+        using (var userInfo = launchOptions?.ObjectForKey(UIApplication.LaunchOptionsRemoteNotificationKey) as NSDictionary)
+        {
+            ProcessNotificationActions(userInfo);
+        }
+
+        return base.FinishedLaunching(application, launchOptions);
+    }
+    ```
+
+    For information about asking permission to use notifications, see [Asking permission to use notifications](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications) on developer.apple.com.
 
 ### Register types with the app's dependency injection container
 
@@ -1196,6 +1719,8 @@ AppDelegate
 For more information about dependency injection in .NET MAUI, see [Dependency injection](~/fundamentals/dependency-injection.md).
 
 ## Test the app
+
+
 
 Send a test notification.
 
