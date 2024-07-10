@@ -28,5 +28,11 @@
           "ParentNodeId": 233465
       }
     ],
-    "DefaultParentNode": 227487
+    "DefaultParentNode": 227487,
+    "WorkItemTags": [
+        {
+            "Label": "okr-curation",
+            "Tag": "content-curation"
+        }
+    ]
 }
