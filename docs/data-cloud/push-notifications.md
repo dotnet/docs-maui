@@ -1145,11 +1145,7 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
 1. In the *Platforms/Android* folder of the project, add a new class named `PushNotificationFirebaseMessagingService` and replace its code with the following code:
 
     ```csharp
-    using Android;
     using Android.App;
-    using Android.Content.PM;
-    using Android.Graphics;
-    using AndroidX.Core.Content;
     using Firebase.Messaging;
     using PushNotificationsDemo.Services;
 
@@ -1188,34 +1184,6 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
         public override void OnMessageReceived(RemoteMessage message)
         {
             base.OnMessageReceived(message);
-
-            if (OperatingSystem.IsAndroidVersionAtLeast(33) &&
-                ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
-            {
-                return;
-            }
-
-            // Notifications must be assigned to a channel from Android 26.
-            // On API 25 and lower, each app only has one channel.
-            if (!OperatingSystem.IsAndroidVersionAtLeast(26))
-            {
-                return;
-            }
-
-            var pushnotification = message.GetNotification();
-
-            var manager = NotificationManager.FromContext(Platform.AppContext);
-            var channel = new NotificationChannel(pushnotification.ChannelId ?? "MauiNotifications", "MauiNotifications", NotificationImportance.Max);
-            manager?.CreateNotificationChannel(channel);
-
-            var notification = new Notification.Builder(Platform.AppContext, channel.Id)
-                .SetContentTitle(pushnotification.Title)
-                .SetContentText(pushnotification.Body)
-                .SetLargeIcon(BitmapFactory.DecodeResource(Platform.AppContext.Resources, Resource.Drawable.dotnet_logo))
-                .SetSmallIcon(Resource.Drawable.message_small)
-                .Build();
-
-            manager?.Notify(_messageId++, notification);
 
             if (message.Data.TryGetValue("action", out var messageAction))
                 NotificationActionService.TriggerAction(messageAction);
@@ -1720,12 +1688,92 @@ For more information about dependency injection in .NET MAUI, see [Dependency in
 
 ## Test the app
 
+You can test your app by sending push notifications to the app using the backend service, or via the Azure portal.
 
+Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior.
 
-Send a test notification.
+### Backend service
 
-The app displays an alert when a push notification is received that specifies an action, and the app is in the foreground. Otherwise, notifications are displayed in notification center.
+To send a test push notification to your app via the backend service:
 
+1. In Visual Studio, run the *PushNotificationsDemo* app on Android or iOS and select the **Register** button.
+
+  > [!NOTE]
+  > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
+
+1. In the REST tooling of your choice, send a `POST` request to the following address:
+
+  ```
+  https://<app_name>.azurewebsites.net/api/notifications/requests
+  ```
+
+  Ensure that you configure the request headers to include the key `apikey` and its value, set the body to raw, and use the following JSON content:
+
+  ```json
+  {
+      "text": "Message from REST tooling!",
+      "action": "action_a"
+  }
+  ```
+
+  The overall request should be similar to the following example:
+
+  ```
+  POST /api/notifications/requests HTTP/1.1
+  Host: https://<app_name>.azurewebsites.net
+  apikey: <your_api_key>
+  Content-Type: application/json
+
+  {
+      "text": "Message from REST tooling!",
+      "action": "action_a"
+  }
+  ```
+
+1. In the REST tooling of your choice, validate that you receive a **200 OK** response.
+1. In the app on Android or iOS, an alert should appear showing **ActionA action received.**.
+
+For more information about calling REST APIs, see [Use .http files in Visual Studio](/aspnet/core/test/http-files) and [Test web APIs with the Http Repl](/aspnet/core/web-api/http-repl/?tabs=windows). In Visual Studio Code, [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) can be used to test REST APIs.
+
+### Azure portal
+
+To send a test push notification to your app via the Azure portal:
+
+1. In Visual Studio, run the *PushNotificationsDemo* app on Android or iOS and select the **Register** button.
+
+  > [!NOTE]
+  > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
+
+1. In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Test Send** button on the **Overview** blade.
+1. In the **Test Send** blade, select your required **Platform** and modify the payload:
+
+    Apple:
+    ```json
+    {
+      "aps": {
+        "alert": "Message from Notification Hub!"
+      },
+      "action": "action_a"
+    }
+    ```
+    Android:
+    ```json
+    {
+      "message": {
+        "notification": {
+          "title": "PushDemo",
+          "body": "Message from Notification Hub!"
+        },
+        "data": {
+          "action": "action_a"
+        }
+      }
+    }
+    ```
+
+    The Azure portal should indicate that the notification has been successfully sent.
+
+1. In the app on Android or iOS, an alert should appear showing **ActionA action received.**.
 
 ## Troubleshooting
 
@@ -1797,20 +1845,10 @@ https://developer.apple.com/documentation/usernotifications/handling-notificatio
 
 If a notification arrives when your app is running in the foreground, the system delivers that notification directly to your app. Upon receiving a notification, you can use the notification’s payload to do whatever you want. For example, you can update your app’s interface to reflect new information contained in the notification. You can then suppress any scheduled alerts or modify those alerts.
 
+> [!IMPORTANT]
+> To receive background notifications on iOS you must add the remote notifications background mode to your app. For more information, see [Enable the remote notifications capability](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app#Enable-the-remote-notifications-capability) on developer.apple.com.
+
+
 
 > [!NOTE]
 > You would typically perform the registration (and deregisration) actions during the appropriate point in the application lifecycle (or as part of your first-run experience perhaps) without explicit user register/deregister inputs. However, this example will require explicit user input to allow this functionality to be explored and tested more easily. The notification payloads are defined outside of the [Installation](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation?view=azure-dotnet) to allow experimentation without having to update existing installations via the service. [Custom templates](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages) would otherwise be ideal.
-
-
-// FCMv1:
-//{
-//  "message": {
-//    "notification": {
-//      "title": "Breaking News",
-//      "body": "New news story available."
-//    },
-//    "data": {
-//    "story_id": "story_12345"
-//    }
-//  }
-//}
