@@ -8,7 +8,15 @@ ms.date: 07/12/2024
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/webservices-pushnotifications)
 
-In this tutorial you'll use [Azure Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) to send push notifications to a .NET Multi-platform App UI (.NET MAUI) app targeting Android and iOS. An ASP.NET Core Web API backend is used to handle [device registration](/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) for the client, and to initiate a push notification. These operations are handled using the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package. For more information on the overall approach, see [Registeration management from a backend](/azure/notification-hubs/notification-hubs-push-notification-registration-management#registration-management-from-a-backend).
+Push notifications deliver information from a backend system to a client app. Apple, Google, and other platforms each have their own Push Notification Service (PNS). Azure Notification Hubs enable you to centralize notifications across platforms so that your backend app can communicate with a single hub, which takes care of distributing notifications to each platform-specific PNS.
+
+Azure Notification Hubs requires apps to register with the hub, define templates, and optionally subscribe to tags:
+
+- Registration links a platform-specific PNS handle to an identifier in the Azure Notification Hub. For more information about registrations, see [Registration management](/azure/notification-hubs/notification-hubs-push-notification-registration-management).
+- Templates allow devices to specify parameterized message templates. Incoming messages can be customized per device, and per tag. For more information, see [Notification hubs templates](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages).
+- Tags can be used to subscribe to message categories such as news, sports, and weather. For more information, see [Routing and tag expressions](/azure/notification-hubs/notification-hubs-tags-segment-push-message).
+
+In this tutorial you'll use [Azure Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) to send push notifications to a .NET Multi-platform App UI (.NET MAUI) app targeting Android and iOS. An ASP.NET Core Web API backend is used to handle device registration for the client, and to initiate a push notification. These operations are handled using the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package. For more information on the overall approach, see [Registration management from a backend](/azure/notification-hubs/notification-hubs-push-notification-registration-management#registration-management-from-a-backend).
 
 This tutorial guides you through the following steps:
 
@@ -180,13 +188,13 @@ In this section you'll create an ASP.NET Core Web API backend to handle [device 
 
 1. In Visual Studio, create a **ASP.NET Core Web API** project:
 
-IMAGE GOES HERE
+    :::image type="content" source="media/push-notifications/web-api-project-create.png" alt-text="Screenshot of creating a new ASP.NET Core Web API project in Visual Studio.":::
 
 1. In the **Configure your new project** dialog, name the project **PushNotificationsAPI**.
 
 1. In the **Additional information** dialog ensure that the **Configure for HTTPS** and **Use controllers** checkboxes are enabled:
 
-IMAGE GOES HERE
+    :::image type="content" source="media/push-notifications/web-api-project-additional-information.png" alt-text="Screenshot of configuring the ASP.NET Core Web API project in Visual Studio.":::
 
 1. Once the project has been created, press <kbd>F5</kbd> to run the project.
 
@@ -1348,6 +1356,8 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
     }
     ```
 
+    This class is decorated with an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
+
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/ANdroid* folder and add the following `using` statements:
 
     ```csharp
@@ -1893,6 +1903,8 @@ To send a test push notification to your app via the backend service:
 For more information about calling REST APIs, see [Use .http files in Visual Studio](/aspnet/core/test/http-files) and [Test web APIs with the Http Repl](/aspnet/core/web-api/http-repl/?tabs=windows). In Visual Studio Code, [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) can be used to test REST APIs.
 
 ### Azure portal
+
+Azure Notification Hubs enable you to check that your app can receive push notifications.
 
 To send a test push notification to your app via the Azure portal:
 
