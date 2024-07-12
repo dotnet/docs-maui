@@ -188,7 +188,7 @@ IMAGE GOES HERE
 
 IMAGE GOES HERE
 
-1. Once the project has been created, press <keybd>F5</keybd> to run the project.
+1. Once the project has been created, press <kbd>F5</kbd> to run the project.
 
     The app is currently configured to use the `WeatherForecastController` as the `launchUrl`, which is set in the *Properties\launchSettings.json* file. The app will launch in a web browser, and will display some JSON data.
 
@@ -608,7 +608,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     }
     ```
 
-    The tag expression provided to the `SendTemplateNotificationsAsync` method is limited to 20 tags if they only contain ORs. Otherwise they are limited to 6 tags. For more information, see [Routing and Tag Expressions](https://learn.microsoft.com/en-us/previous-versions/azure/azure-services/dn530749(v=azure.100)?f=255&MSPPError=-2147217396).
+    The tag expression provided to the `SendTemplateNotificationsAsync` method is limited to 20 tags if they only contain ORs. Otherwise they are limited to 6 tags. For more information, see [Routing and Tag Expressions](/azure/notification-hubs/notification-hubs-tags-segment-push-message).
 
 1. In Visual Studio, open *Program.cs* and update the code to add the `NotificationHubService` as a singleton implementation of `INotificationService` below the call to the `builder.Services.AddAuthentication` method:
 
@@ -1988,8 +1988,6 @@ Review the platform-specific configuration sections to ensure that no steps have
 Review the platform-specific configuration sections to ensure that no steps have been missed.
 
 ---
-
-https://learn.microsoft.com/en-us/previous-versions/azure/developer/mobile-apps/notification-hubs-backend-service-xamarin-forms
 
 Android FCM1 setup with ANH - https://medium.com/@pramodyahk/migrating-to-fcm-v1-in-azure-notification-hubs-android-push-notifications-c342d76adfb2
 
