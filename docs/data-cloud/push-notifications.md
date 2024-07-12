@@ -120,6 +120,9 @@ If you want to receive push notifications on a physical device, you'll also need
 
 - [Create a provisioning profile](/azure/notification-hubs/ios-sdk-get-started#create-a-provisioning-profile)
 
+> [!IMPORTANT]
+> To receive background notifications on iOS you must add the remote notifications background mode to your app. For more information, see [Enable the remote notifications capability](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app#Enable-the-remote-notifications-capability) on developer.apple.com.
+
 ### Azure Notification Hub
 
 To create a notification hub in the Azure portal:
@@ -1179,7 +1182,7 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
     ```
 
     > [!IMPORTANT]
-    > In the app, registration and de-registration is performed in response to user input. However, you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.
+    > In the app, registration and de-registration is performed in response to user input, to allow this functionality to be explored and tested more easily. In a production app you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.
 
 1. In Visual Studio, open *App.xaml.cs* and add the following `using` statements:
 
@@ -1357,6 +1360,8 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
     ```
 
     This class is decorated with an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
+
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.    
 
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/ANdroid* folder and add the following `using` statements:
 
@@ -1755,7 +1760,7 @@ The following instructions assume you are using hardware that supports receiving
     }
     ```
 
-    This method  will be called when the app has failed to register to receive remote notifications. Registration might fail if the device isn't connected to the network, if the APNS server is unreachable, or if the app is incorrectly configured.
+    This method will be called when the app has failed to register to receive remote notifications. Registration might fail if the device isn't connected to the network, if the APNS server is unreachable, or if the app is incorrectly configured.
 
     > [!NOTE]
     > For production scenarios, you'll want to implement proper logging and error handling in the `FailedToRegisterForRemoteNotifications` method.
@@ -1857,7 +1862,7 @@ For more information about dependency injection in .NET MAUI, see [Dependency in
 
 You can test your app by sending push notifications to the app using the backend service, or via the Azure portal.
 
-Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior.
+Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior. For example, you can update your app’s interface to reflect new information contained in the notification.
 
 ### Backend service
 
@@ -1942,6 +1947,8 @@ To send a test push notification to your app via the Azure portal:
 
     The Azure portal should indicate that the notification has been successfully sent.
 
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
+
 1. In the app on Android or iOS, an alert should appear showing **ActionA action received.**.
 
 ## Troubleshooting
@@ -1998,24 +2005,3 @@ Review the platform-specific configuration sections to ensure that no steps have
 ### Unable to resolve an ID for the device the device error message
 
 Review the platform-specific configuration sections to ensure that no steps have been missed.
-
----
-
-Android FCM1 setup with ANH - https://medium.com/@pramodyahk/migrating-to-fcm-v1-in-azure-notification-hubs-android-push-notifications-c342d76adfb2
-
-https://firebase.google.com/docs/cloud-messaging/concept-options
-https://developer.apple.com/documentation/usernotifications/handling-notifications-and-notification-related-actions#Handle-notifications-while-your-app-runs-in-the-foreground
-
-
-
-## iOS
-
-If a notification arrives when your app is running in the foreground, the system delivers that notification directly to your app. Upon receiving a notification, you can use the notification’s payload to do whatever you want. For example, you can update your app’s interface to reflect new information contained in the notification. You can then suppress any scheduled alerts or modify those alerts.
-
-> [!IMPORTANT]
-> To receive background notifications on iOS you must add the remote notifications background mode to your app. For more information, see [Enable the remote notifications capability](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app#Enable-the-remote-notifications-capability) on developer.apple.com.
-
-
-
-> [!NOTE]
-> You would typically perform the registration (and deregisration) actions during the appropriate point in the application lifecycle (or as part of your first-run experience perhaps) without explicit user register/deregister inputs. However, this example will require explicit user input to allow this functionality to be explored and tested more easily. The notification payloads are defined outside of the [Installation](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation?view=azure-dotnet) to allow experimentation without having to update existing installations via the service. [Custom templates](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages) would otherwise be ideal.
