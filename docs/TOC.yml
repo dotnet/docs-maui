@@ -1116,6 +1116,8 @@
           href: /windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
+        - name: Push notifications
+          href: data-cloud/push-notifications.md
         - name: Web services
           items:
             - name: Consume a REST-based web service

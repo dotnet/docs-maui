@@ -1,10 +1,10 @@
 ---
-title: "Push notifications"
+title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service"
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.date: 07/12/2024
 ---
 
-# Push notifications
+# Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/webservices-pushnotifications)
 
