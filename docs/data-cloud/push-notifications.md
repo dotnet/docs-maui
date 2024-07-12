@@ -1,19 +1,176 @@
 ---
 title: "Push notifications"
-description: ""
-ms.date: 07/08/2024
+description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
+ms.date: 07/12/2024
 ---
 
 # Push notifications
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/webservices-pushnotifications)
 
+In this tutorial you'll use [Azure Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) to send push notifications to a .NET Multi-platform App UI (.NET MAUI) app targeting Android and iOS. An ASP.NET Core Web API backend is used to handle [device registration](/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) for the client, and to initiate a push notification. These operations are handled using the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package. For more information on the overall approach, see [Registeration management from a backend](/azure/notification-hubs/notification-hubs-push-notification-registration-management#registration-management-from-a-backend).
+
+This tutorial guides you through the following steps:
+
+> [!div class="checklist"]
+>
+> - Setup push notification services and Azure Notification Hub
+> - Create an ASP.NET Core WebAPI backend app
+> - Create a .NET MAUI app
+> - Configure the Android app for push notifications
+> - Configure the iOS app for push notification
+> - Test the app
+> - Troubleshooting
 
 ## Prerequisites
 
-## Setup push notification services
+To complete this tutorial you'll require:
 
-## Setup Azure Notification Hub
+- An [Azure subscription](https://azure.microsoft.com/free/dotnet/).
+- A PC running the latest Visual Studio, with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
+
+For Android, you must have:
+
+- A developer unlocked physical device, or an emulator, running API 26+ with Google Play Services installed.
+
+For iOS, you must have:
+
+- An active Apple developer Account.
+- A Mac running Xcode, along with a valid developer certificate installed into your Keychain.
+
+Then, on iOS you should either have:
+
+- An iOS 16+ simulator that runs in macOS 13+ on Mac computers with Apple silicon or T2 processors.
+
+  OR
+
+- A physical iOS device that's registered to your developer account (running iOS 13.0+).
+- Your physical device registered in your Apple developer account, and associated with your certificate.
+
+> [!IMPORTANT]
+> The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll require an active Apple developer account and a physical device
+
+To follow this tutorial you'll benefit from having familiarity with:
+
+- [Apple Developer Portal](https://developer.apple.com)
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core) and [web APIs](/aspnet/core/web-api)
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
+- [Microsoft Azure](https://portal.azure.com)
+
+While this tutorial targets Visual Studio, it's possible to follow it using Visual Studio Code on a PC or Mac. However, there will be some differences that need reconciling. For example, descriptions of user interface and workflows, template names, and environment configuration.
+
+## Setup push notification services and Azure Notification Hub
+
+In this section, you'll setup [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) and [Apple Push Notification Services (APNS)](https://developer.apple.com/documentation/usernotifications). You'll then create and configure an [Azure Notification Hub](/azure/notification-hubs/) to work with these services.
+
+### Create a Firebase project
+
+1. In a web browser, sign in to the [Firebase console](https://console.firebase.google.com/).
+1. In the Firebase console, select the **Add project** button and create a new Firebase project, entering **PushDemo** as the **Project name**.
+
+    > [!NOTE]
+    > A unique name will be generated for you. By default this comprises a lowercase variant of the name you provided plus a generated number separated by a dash. You can change this if you want, provided that your edits are still globally unique.
+
+1. After your project is created, select the Android logo to add Firebase to an Android app:
+
+    :::image type="content" source="media/push-notifications/firebase-add-to-android-app.png" alt-text="Screenshot of adding Firebase to an Android app in the Firebase Cloud Messaging console.":::
+
+1. In the **Add Firebase to your Android app** page, enter a name for your package, optionally an app nickname, and select the **Register app** button:
+
+    :::image type="content" source="media/push-notifications/firebase-register-app.png" alt-text="Screenshot of registering your Android app with Firebase.":::
+
+1. In the **Add Firebase to your Android app** page, select the **Download google-services.json** button and save the file to a local folder before selecting the **Next** button:
+
+    :::image type="content" source="media/push-notifications/firebase-download-google-services-json.png" alt-text="Screenshot of downloading the google services JSON file.":::
+
+1. In the **Add Firebase to your Android app** page, select the **Next** button.
+1. In the **Add Firebase to your Android app** page, select the **Continue to the console** button.
+1. In the Firebase console, select the **Project Overview** icon and then select **Project settings**:
+
+    :::image type="content" source="media/push-notifications/firebase-project-settings.png" alt-text="Screenshot of selecting the project settings in the Firebase Cloud Messaging console.":::
+
+1. In the **Project settings**, select the **Cloud Messaging** tab. You'll see that **Firebase Cloud Messaging API (V1)** is enabled:
+
+  :::image type="content" source="media/push-notifications/firebase-cloud-messaging-v1-enabled.png" alt-text="Screenshot confirming that Firebase Cloud Messaging V1 is enabled.":::
+
+1. In the **Project settings**, select the **Service accounts** tab and then select the **Generate new private key** button.
+1. In the **Generate new private key** dialog, select the **Generate key** button:
+
+    :::image type="content" source="media/push-notifications/firebase-generate-new-private-key.png" alt-text="Screenshot of generating a new private key in the Firebase Cloud Messaging console.":::
+
+    A JSON file will be downloaded, which will contain values you'll enter into your Azure Notification Hub.
+
+### Register your iOS app for push notifications
+
+To send push notifications to an iOS app, you'll need to register your app with Apple and register for push notifications. This can be accomplished by performing the steps in the following Azure Notification Hub documentation:
+
+- [Generate the certificate signing request file](/azure/notification-hubs/ios-sdk-get-started#generate-the-certificate-signing-request-file)
+- [Register your app for push notifications](/azure/notification-hubs/ios-sdk-get-started#register-your-app-for-push-notifications)
+- [Create a certificate for your notification hub](/azure/notification-hubs/ios-sdk-get-started#create-a-certificate-for-notification-hubs)
+
+If you want to receive push notifications on a physical device, you'll also need to:
+
+- [Create a provisioning profile](/azure/notification-hubs/ios-sdk-get-started#create-a-provisioning-profile)
+
+### Azure Notification Hub
+
+To create a notification hub in the Azure portal:
+
+1. In a web browser, sign into the [Azure portal](https://portal.azure.com).
+1. In the Azure portal, click the **Create a resource** button and then search for and choose **Notification Hub** before selecting the **Create** button.
+1. In the **Notification Hub** page, perform the following steps:
+    1. In the **Subscription** field, select the name of the Azure subscription you want to use, and then select an existing resource group, or create a new one.
+    1. In the **Namespace Details** field, enter a unique name for the new namespace.
+    1. In the **Notification Hub Details** field, type a name for the notification hub. This is required because a namespace contains one or more notification hubs.
+    1. In the **Location** drop-down, select a value that specifies the location in which you want to create the notification hub.
+    1. Review the [Availability Zones](/azure/reliability/reliability-notification-hubs) option. If you chose a region that has availability zones, the checkbox is selected by default.
+
+        > [!NOTE]
+        > Availability zones is a paid feature, so an additional fee is added to your tier.
+
+    1. Choose a **Disaster recovery** option: none, paired recovery region, or flexible recovery region. If you choose **Paired recovery region**, the failover region is displayed. If you select **Flexible recovery region**, use the drop-down to choose from a list of recovery regions.
+    1. Select the **Create** button.
+
+        The notification hub will be created.
+1. In the Azure portal, browse to your newly created notification hub and then to the **Manage > Access Policies** blade.
+1. In the **Access Policies** blade, make a note of the connection string for the `DefaultFullSharedAccessSignature` policy. You'll require this later when building a backend service that communicates with your notification hub.
+
+For more information about creating a notification hub, see [Create an Azure notification hub in the Azure portal](/azure/notification-hubs/create-notification-hub-portal).
+
+#### Configure Firebase Cloud Messaging in the notification hub
+
+1. In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Settings > Google (FCM v1)** blade.
+1. In the **Google (FCM v1)** blade, enter values for the **Private Key**, **Client Email**, and **Project ID** fields. These values can be found in the private key JSON file you downloaded from Firebase Cloud Messaging:
+
+    | Azure field | JSON key | JSON value example |
+    | ----------- | -------- | ------------------ |
+    | Private Key | `private_key` | This value should begin with `-----BEGIN PRIVATE KEY-----\n` and end with `-----END PRIVATE KEY-----\n`. |
+    | Client Email | `client_email` | `firebase-adminsdk-55sfg@pushdemo-d6ab2.iam.gserviceaccount.com` |
+    | Project ID | `project_id` | `pushdemo-d6ab2` |
+
+1. In the **Google (FCM v1)** blade, select the **Save** button.
+
+#### Configure APNS in the notification hub
+
+In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Settings > Apple (APNS)** blade. Then follow the appropriate steps based on the approach you chose previously when creating a certificate for the notification hub.
+
+> [!IMPORTANT]
+> When setting the **Application Mode**, only choose **Production** if you want to send push notifications to users who've purchased your app from the store.
+
+##### Option 1 - Use a .p12 push certificate
+
+1. In the *Apple (APNS)* blade, select the **Certificate** authentication mode.
+1. In the *Apple (APNS)* blade, select the file icon next to the **Upload Certificate** field. Then select the .p12 file that you exported earlier and upload it.
+1. In the *Apple (APNS)* blade, enter the certificate password into the **Password** field if required.
+1. In the *Apple (APNS)* blade, select the **Sandbox** application mode.
+1. In the *Apple (APNS)* blade, select the **Save** button.
+
+##### Option 2 - Use token-based authentication
+
+1. In the *Apple (APNS)* blade, select the **Token** authentication mode.
+1. In the *Apple (APNS)* blade, enter the values you previously acquired for the **Key Id**, **Bundle Id**, **Team Id**, and **Token** fields.
+1. In the *Apple (APNS)* blade, select the **Sandbox** application mode.
+1. In the *Apple (APNS)* blade, select the **Save** button.
 
 ## Create an ASP.NET Core Web API backend app
 
