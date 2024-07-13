@@ -188,7 +188,7 @@ namespace PlatformLifecycleDemo
 
 For more information about the Android app lifecycle, see [Understand the Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle) on developer.android.com.
 
-### iOS
+### iOS & Mac Catalyst
 
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
 
