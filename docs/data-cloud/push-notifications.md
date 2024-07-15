@@ -1922,7 +1922,7 @@ To send a test push notification to your app via the Azure portal:
 1. In the **Test Send** blade, select your required **Platform** and modify the payload:
 
     Apple:
-    
+
     ```json
     {
       "aps": {
