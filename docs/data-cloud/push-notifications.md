@@ -56,7 +56,7 @@ Then, on iOS you should either have:
 - Your physical device registered in your Apple developer account, and associated with your certificate.
 
 > [!IMPORTANT]
-> The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll require an active Apple developer account and a physical device
+> The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll require an active Apple developer account and a physical device.
 
 To follow this tutorial you'll benefit from having familiarity with:
 
@@ -343,7 +343,7 @@ While an API key isn't as secure as a token, it will suffice for this tutorial, 
         options.DefaultAuthenticateScheme = ApiKeyAuthOptions.DefaultScheme;
         options.DefaultChallengeScheme = ApiKeyAuthOptions.DefaultScheme;
     }).AddApiKeyAuth(builder.Configuration.GetSection("Authentication").Bind);
-    ```    
+    ```
 
 1. In *Program.cs*, update the code below the `// Configure the HTTP request pipeline` comment to call the `UseRouting`, `UseAuthentication`, and `MapControllers` extension methods:
 
@@ -1361,7 +1361,7 @@ public class PushDemoNotificationActionService : IPushDemoNotificationActionServ
 
     This class is decorated with an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
 
-    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.    
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
 
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/ANdroid* folder and add the following `using` statements:
 
@@ -1537,8 +1537,8 @@ The following instructions assume you are using hardware that supports receiving
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
-    	<key>aps-environment</key>
-    	<string>development</string>
+      <key>aps-environment</key>
+      <string>development</string>
     </dict>
     </plist>
     ```
@@ -1922,6 +1922,7 @@ To send a test push notification to your app via the Azure portal:
 1. In the **Test Send** blade, select your required **Platform** and modify the payload:
 
     Apple:
+    
     ```json
     {
       "aps": {
@@ -1930,7 +1931,9 @@ To send a test push notification to your app via the Azure portal:
       "action": "action_a"
     }
     ```
+
     Android:
+
     ```json
     {
       "message": {
