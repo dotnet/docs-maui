@@ -1534,12 +1534,10 @@ To configure your .NET MAUI app on Android to receive and process push notificat
 
 ### Configure the iOS app
 
-The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. Each simulator generates registration tokens that are unique to the combination of that simulator and the Mac hardware it's running on. Tokens in the simulator may be larger than physical device tokens. Therefore, don't hardcode any specific length or format for these tokens.
+The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. Each simulator generates registration tokens that are unique to the combination of that simulator and the Mac hardware it's running on.
 
 > [!IMPORTANT]
 > The simulator supports the Apple Push Notification Service sandbox environment.
-
-For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
 
 The following instructions assume you are using hardware that supports receiving remote notifications in an iOS simulator. If this is not the case you'll have to run the iOS app on a physical device, which will require you to create a provisioning profile for your app that includes the Push Notifications capability. You'll then need to ensure that your app is built using your certificate and provisioning profile. For more information on how to do this, see [Set up your iOS app to work with Azure Notification Hubs](/azure/notification-hubs/ios-sdk-get-started), and then follow the instructions below.
 
@@ -1706,6 +1704,8 @@ To configure your .NET MAUI app on iOS to receive and process push notifications
         });
     }
     ```
+
+    For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
 
 1. In the `AppDelegate` class, add the `CompleteRegistrationAsync` method to set the `IDeviceInstallationService.Token` property value:
 
