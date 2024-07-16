@@ -115,20 +115,18 @@ To create a Firebase project:
 
 ### Register your iOS app for push notifications
 
-To send push notifications to an iOS app, you'll need to register your app with Apple and register for push notifications. This can be accomplished by performing the steps in the following Azure Notification Hub documentation:
+To send push notifications to an iOS app you'll need to register your app with Apple and register for push notifications. This can be accomplished by performing the steps in the following Azure Notification Hub documentation:
 
 - [Generate the certificate signing request file](/azure/notification-hubs/ios-sdk-get-started#generate-the-certificate-signing-request-file)
 - [Register your app for push notifications](/azure/notification-hubs/ios-sdk-get-started#register-your-app-for-push-notifications)
 - [Create a certificate for your notification hub](/azure/notification-hubs/ios-sdk-get-started#create-a-certificate-for-notification-hubs)
 
-If you want to receive push notifications on a physical device, you'll also need to:
-
-- [Create a provisioning profile](/azure/notification-hubs/ios-sdk-get-started#create-a-provisioning-profile)
+If you want to receive push notifications on a physical device, you'll also need to [create a provisioning profile](/azure/notification-hubs/ios-sdk-get-started#create-a-provisioning-profile).
 
 > [!IMPORTANT]
 > To receive background notifications on iOS you must add the remote notifications background mode to your app. For more information, see [Enable the remote notifications capability](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app#Enable-the-remote-notifications-capability) on developer.apple.com.
 
-### Azure Notification Hub
+### Create an Azure Notification Hub
 
 To create a notification hub in the Azure portal:
 
@@ -153,7 +151,9 @@ To create a notification hub in the Azure portal:
 
 For more information about creating a notification hub, see [Create an Azure notification hub in the Azure portal](/azure/notification-hubs/create-notification-hub-portal).
 
-#### Configure Firebase Cloud Messaging in the notification hub
+### Configure Firebase Cloud Messaging in the notification hub
+
+To configure your notification hub to communicate with Firebase Cloud Messaging:
 
 1. In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Settings > Google (FCM v1)** blade.
 1. In the **Google (FCM v1)** blade, enter values for the **Private Key**, **Client Email**, and **Project ID** fields. These values can be found in the private key JSON file you downloaded from Firebase Cloud Messaging:
@@ -166,14 +166,14 @@ For more information about creating a notification hub, see [Create an Azure not
 
 1. In the **Google (FCM v1)** blade, select the **Save** button.
 
-#### Configure APNS in the notification hub
+### Configure Apple Push Notification Service in the notification hub
 
 In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Settings > Apple (APNS)** blade. Then follow the appropriate steps based on the approach you chose previously when creating a certificate for the notification hub.
 
 > [!IMPORTANT]
 > When setting the **Application Mode**, only choose **Production** if you want to send push notifications to users who've purchased your app from the store.
 
-##### Option 1 - Use a .p12 push certificate
+#### Option 1 - Use a .p12 push certificate
 
 1. In the *Apple (APNS)* blade, select the **Certificate** authentication mode.
 1. In the *Apple (APNS)* blade, select the file icon next to the **Upload Certificate** field. Then select the .p12 file that you exported earlier and upload it.
@@ -181,7 +181,7 @@ In the [Azure portal](https://portal.azure.com/), browse to your notification hu
 1. In the *Apple (APNS)* blade, select the **Sandbox** application mode.
 1. In the *Apple (APNS)* blade, select the **Save** button.
 
-##### Option 2 - Use token-based authentication
+#### Option 2 - Use token-based authentication
 
 1. In the *Apple (APNS)* blade, select the **Token** authentication mode.
 1. In the *Apple (APNS)* blade, enter the values you previously acquired for the **Key Id**, **Bundle Id**, **Team Id**, and **Token** fields.
@@ -193,6 +193,8 @@ In the [Azure portal](https://portal.azure.com/), browse to your notification hu
 In this section you'll create an ASP.NET Core Web API backend to handle [device registration](/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) and sending notifications to the .NET MAUI app.
 
 ### Create a web API project
+
+To create a web API project:
 
 1. In Visual Studio, create a **ASP.NET Core Web API** project:
 
@@ -237,7 +239,7 @@ In this section you'll create an ASP.NET Core Web API backend to handle [device 
 
 ### Authenticate clients with an API key
 
-While an API key isn't as secure as a token, it will suffice for this tutorial, and be easily configured via the [ASP.NET Middleware](/aspnet/core/fundamentals/middleware):
+To authenticate clients with an API key:
 
 1. Open a command window, and navigate to the directory that contains the project file. Then, run the following commands:
 
@@ -276,7 +278,10 @@ While an API key isn't as secure as a token, it will suffice for this tutorial, 
     {
         const string ApiKeyIdentifier = "apikey";
 
-        public ApiKeyAuthHandler(IOptionsMonitor<ApiKeyAuthOptions> options, ILoggerFactory logger, UrlEncoder encoder)
+        public ApiKeyAuthHandler(
+            IOptionsMonitor<ApiKeyAuthOptions> options,
+            ILoggerFactory logger,
+            UrlEncoder encoder)
             : base(options, logger, encoder)
         {
         }
@@ -324,7 +329,9 @@ While an API key isn't as secure as a token, it will suffice for this tutorial, 
 
     public static class AuthenticationBuilderExtensions
     {
-        public static AuthenticationBuilder AddApiKeyAuth(this AuthenticationBuilder builder, Action<ApiKeyAuthOptions> configureOptions)
+      public static AuthenticationBuilder AddApiKeyAuth(
+          this AuthenticationBuilder builder,
+          Action<ApiKeyAuthOptions> configureOptions)
         {
             return builder
                 .AddScheme<ApiKeyAuthOptions, ApiKeyAuthHandler>(
@@ -365,6 +372,9 @@ While an API key isn't as secure as a token, it will suffice for this tutorial, 
     ```
 
     The `UseAuthentication` extension method registers the middleware that uses the previously registered authentication scheme. `UseAuthentication` must be called before any middleware that depends on users being authenticated.
+
+    > [!IMPORTANT]
+    > While an API key isn't as secure as a token, it will suffice for this tutorial, and be easily configured via the [ASP.NET Middleware](/aspnet/core/fundamentals/middleware).
 
 ### Add dependencies and configure services
 
