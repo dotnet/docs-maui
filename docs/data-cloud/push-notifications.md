@@ -378,8 +378,6 @@ To authenticate clients with an API key:
 
 ### Add and configure services
 
-ASP.NET Core supports the [dependency injection](/aspnet/core/fundamentals/dependency-injection) software design pattern, which is a technique for achieving [inversion of control](/dotnet/architecture/modern-web-apps-azure/architectural-principles#dependency-inversion) between classes and their dependencies.
-
 To add and configure services in your web API backend app:
 
 1. In Visual Studio, add the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package to your project. This NuGet package is used to access your notification hub, encapsulated within a service.
@@ -683,7 +681,7 @@ To create the notifications REST API:
     using PushNotificationsAPI.Services;
     ```
 
-1. In the *NotificationsController.cs* file, decorate the `NotificationsController` class with the `Authorize` attribute:
+1. In the *NotificationsController.cs* file, add the `Authorize` attribute to the `NotificationsController` class:
 
     ```csharp
     [Authorize]
@@ -767,7 +765,7 @@ To create the notifications REST API:
 
 1. In the *Properties/launchSettings.json* file, change the `launchUrl` property for each profile from `weatherforecast` to `api/notifications`.
 
-### Create the API app
+### Create an API app
 
 You'll now create an [API app](https://azure.microsoft.com/products/app-service/api/) in [Azure App Service](/azure/app-service/) to host your backend service. This can be accomplished directly from Visual Studio or Visual Studio Code, with Azure CLI, Azure PowerShell, Azure Developer CLI, and through the Azure Portal. For more information, see [Publish your web app](/azure/app-service/quickstart-dotnetcore?tabs=net80&pivots=development-environment-azure-portal).
 
