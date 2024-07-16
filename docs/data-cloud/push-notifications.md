@@ -1126,6 +1126,8 @@ To create your .NET MAUI app:
 
 ### Create the UI
 
+To create the app's UI:
+
 1. In Visual Studio, open *MainPage.xaml* and replace the `VerticalStackLayout` and its children with the following XAML:
 
     ```xaml
@@ -1146,7 +1148,7 @@ To create your .NET MAUI app:
     using PushNotificationsDemo.Services;
     ```
 
-1. In Visual Studio, open *MainPage.xaml.cs* and add a `readonly` backing field to store a reference to the `INotificationRegistrationService` implementation:
+1. In *MainPage.xaml.cs*, add a `readonly` backing field to store a reference to the `INotificationRegistrationService` implementation:
 
     ```csharp
     readonly INotificationRegistrationService _notificationRegistrationService;
@@ -1163,7 +1165,7 @@ To create your .NET MAUI app:
     }
     ```
 
-1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods:
+1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods on the `INotificationRegistrationService` object:
 
     ```csharp
     void OnRegisterButtonClicked(object sender, EventArgs e)
@@ -1254,7 +1256,9 @@ To create your .NET MAUI app:
 
 ### Configure the Android app
 
-1. In Visual Studio, add the **Xamarin.Firebase.Messaging** NuGet package to .NET MAUI app project.
+To configure your .NET MAUI app on Android to receive and process push notifications:
+
+1. In Visual Studio, add the [Xamarin.Firebase.Messaging](https://www.nuget.org/packages/Xamarin.Firebase.Messaging) NuGet package to your .NET MAUI app project.
 1. In Visual Studio, add your *google-services.json* file to the *Platforms/Android* folder of your .NET MAUI app project. Once the file has been added to your project it should have been added with a build action of `GoogleServicesJson`:
 
     ```xml
@@ -1269,7 +1273,7 @@ To create your .NET MAUI app:
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">26.0</SupportedOSPlatformVersion>
     ```
 
-    Google made changes to how Android notification channels in API 26. For more information, see [Notification channels](https://developer.android.com/develop/ui/views/notifications#ManageChannels) on developer.android.com.
+    Google made changes to Android notification channels in API 26. For more information, see [Notification channels](https://developer.android.com/develop/ui/views/notifications#ManageChannels) on developer.android.com.
 
 1. In the *Platforms/Android* folder of the project, add a new class named `DeviceInstallationService` and replace its code with the following code:
 
@@ -1376,11 +1380,11 @@ To create your .NET MAUI app:
     }
     ```
 
-    This class is decorated with an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
+    This class has an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
 
     For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
 
-1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/ANdroid* folder and add the following `using` statements:
+1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/Android* folder and add the following `using` statements:
 
     ```csharp
     using Android.App;
@@ -1479,7 +1483,7 @@ To create your .NET MAUI app:
     ```
 
     > [!NOTE]
-    > The app must be re-registered each time you run it and stop it from a debug session to continue receiving push notifications,
+    > The app must be re-registered each time you run it and stop it from a debug session to continue receiving push notifications.
 
 1. In Visual Studio, add the `POST_NOTIFICATIONS` permission to the *AndroidManifest.xml* file in the *Platforms/Android* folder:
 
@@ -1538,6 +1542,8 @@ The iOS simulator supports remote notifications in iOS 16+ when running in macOS
 For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
 
 The following instructions assume you are using hardware that supports receiving remote notifications in an iOS simulator. If this is not the case you'll have to run the iOS app on a physical device, which will require you to create a provisioning profile for your app that includes the Push Notifications capability. You'll then need to ensure that your app is built using your certificate and provisioning profile. For more information on how to do this, see [Set up your iOS app to work with Azure Notification Hubs](/azure/notification-hubs/ios-sdk-get-started), and then follow the instructions below.
+
+To configure your .NET MAUI app on iOS to receive and process push notifications:
 
 1. In Visual Studio, edit the project file (*.csproj) and set the `SupportedOSPlatformVersion` for iOS to 13.0:
 
@@ -1820,7 +1826,7 @@ The following instructions assume you are using hardware that supports receiving
     using PushNotificationsDemo.Services;
     ```
 
-1. In the `MauiProgram` class, add code for the `RegisterServices` extension method which registers the `DeviceInstallationService` on each platform, and the cross-platform `PushDemoNotificationActionService` and `NotificationRegistrationService` services, and which returns a `MauiAppBuilder` object:
+1. In the `MauiProgram` class, add code for the `RegisterServices` extension method that registers the `DeviceInstallationService` on each platform, and the cross-platform `PushDemoNotificationActionService` and `NotificationRegistrationService` services, and which returns a `MauiAppBuilder` object:
 
     ```csharp
     public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
@@ -1838,7 +1844,7 @@ The following instructions assume you are using hardware that supports receiving
     }
     ```
 
-1. In the `MauiProgram` class, add code for the `RegisterViews` extension method which registers the `MainPage` type as a singleton and which returns a `MauiAppBuilder` object:
+1. In the `MauiProgram` class, add code for the `RegisterViews` extension method that registers the `MainPage` type as a singleton and which returns a `MauiAppBuilder` object:
 
     ```csharp
     public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
@@ -1879,52 +1885,54 @@ For more information about dependency injection in .NET MAUI, see [Dependency in
 
 You can test your app by sending push notifications to the app using the backend service, or via the Azure portal.
 
-Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior. For example, you can update your app’s interface to reflect new information contained in the notification.
+The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll have to test your iOS app on a physical device. On Android you can test your app on a developer unlocked physical device, or an emulator.
 
-### Backend service
+Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior. For example, you could update your app’s interface to reflect new information contained in the notification.
 
-To send a test push notification to your app via the backend service:
+### Test using the backend service
+
+To send a test push notification to your app via the backend service that's published to Azure App Service:
 
 1. In Visual Studio, run the *PushNotificationsDemo* app on Android or iOS and select the **Register** button.
 
-  > [!NOTE]
-  > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
+    > [!NOTE]
+    > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
 
 1. In the REST tooling of your choice, send a `POST` request to the following address:
 
-  ```
-  https://<app_name>.azurewebsites.net/api/notifications/requests
-  ```
+    ```
+    https://<app_name>.azurewebsites.net/api/notifications/requests
+    ```
 
-  Ensure that you configure the request headers to include the key `apikey` and its value, set the body to raw, and use the following JSON content:
+    Ensure that you configure the request headers to include the key `apikey` and its value, set the body to raw, and use the following JSON content:
 
-  ```json
-  {
-      "text": "Message from REST tooling!",
-      "action": "action_a"
-  }
-  ```
+    ```json
+    {
+        "text": "Message from REST tooling!",
+        "action": "action_a"
+    }
+    ```
 
-  The overall request should be similar to the following example:
+    The overall request should be similar to the following example:
 
-  ```
-  POST /api/notifications/requests HTTP/1.1
-  Host: https://<app_name>.azurewebsites.net
-  apikey: <your_api_key>
-  Content-Type: application/json
+    ```
+    POST /api/notifications/requests HTTP/1.1
+    Host: https://<app_name>.azurewebsites.net
+    apikey: <your_api_key>
+    Content-Type: application/json
 
-  {
-      "text": "Message from REST tooling!",
-      "action": "action_a"
-  }
-  ```
+    {
+        "text": "Message from REST tooling!",
+        "action": "action_a"
+    }
+    ```
 
 1. In the REST tooling of your choice, validate that you receive a **200 OK** response.
-1. In the app on Android or iOS, an alert should appear showing **ActionA action received.**.
+1. In the app on Android or iOS, an alert should appear showing **ActionA action received**.
 
 For more information about calling REST APIs, see [Use .http files in Visual Studio](/aspnet/core/test/http-files) and [Test web APIs with the Http Repl](/aspnet/core/web-api/http-repl/?tabs=windows). In Visual Studio Code, [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) can be used to test REST APIs.
 
-### Azure portal
+### Test using the Azure portal
 
 Azure Notification Hubs enable you to check that your app can receive push notifications.
 
@@ -1932,13 +1940,13 @@ To send a test push notification to your app via the Azure portal:
 
 1. In Visual Studio, run the *PushNotificationsDemo* app on Android or iOS and select the **Register** button.
 
-  > [!NOTE]
-  > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
+    > [!NOTE]
+    > If you're testing on Android ensure that you're not running using the debug configuration. Alternatively, if the app has previously been deployed ensure that it's been force closed and then start it again from the launcher.
 
 1. In the [Azure portal](https://portal.azure.com/), browse to your notification hub and select the **Test Send** button on the **Overview** blade.
-1. In the **Test Send** blade, select your required **Platform** and modify the payload:
+1. In the **Test Send** blade, select your required **Platform** and modify the payload.
 
-    Apple:
+    For Apple, use the following payload:
 
     ```json
     {
@@ -1949,7 +1957,7 @@ To send a test push notification to your app via the Azure portal:
     }
     ```
 
-    Android:
+    For Android, use the following payload:
 
     ```json
     {
@@ -1969,9 +1977,11 @@ To send a test push notification to your app via the Azure portal:
 
     For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
 
-1. In the app on Android or iOS, an alert should appear showing **ActionA action received.**.
+1. In the app on Android or iOS, an alert should appear showing **ActionA action received**.
 
 ## Troubleshooting
+
+The following sections discuss the common issues encountered when attempting to consume push notifications in a client app.
 
 ### No response from the backend service
 
@@ -1979,29 +1989,29 @@ When testing locally, ensure that the backend service is running and is using th
 
 If testing against the Azure API app, check that the service is running and has been deployed and has started without error.
 
-Ensure that you've specified the base address correctly in your REST tooling, or in the .NET MAUI app configuration. The base address should be `https://<api_name>.azurewebsites.net` or `https://localhost:7020` when testing locally.
+Ensure that you've specified the base address correctly in your REST tooling, or in your .NET MAUI app configuration. The base address should be `https://<api_name>.azurewebsites.net` or `https://localhost:7020` when testing locally.
 
 ### Receiving a 401 status code from the backend service
 
 Validate that you're setting the `apikey` request header correctly and that this value matches the one you configured for the backend service.
 
-If you receive this error when testing locally, ensure that the key value you defined in the .NET MAUI app matches the `Authentication:ApiKey` user-secrets value used by the backend service.
+If you receive this error when testing locally, ensure that the key value you defined in your .NET MAUI app matches the `Authentication:ApiKey` user-secrets value used by the backend service.
 
-If you're testing with an Azure API app, ensure that the key value defined in the .NET MAUI app matches the `Authentication:ApiKey` app-setting value defined in the Azure portal. If you created or changed this app-setting after you had deployed the backend service then you must restart the service for the value to take effect.
+If you're testing with an Azure API app, ensure that the key value defined in your .NET MAUI app matches the `Authentication:ApiKey` app-setting value defined in the Azure portal. If you created or changed this app-setting after you had deployed the backend service then you must restart the service for the value to take effect.
 
 ### Receiving a 404 status code from the backend service
 
 Validate that the endpoint and HTTP request method is correct:
 
-- [PUT] `https://<api_name>.azurewebsites.net/api/notifications/installations`
-- [DELETE] `https://<api_name>.azurewebsites.net/api/notifications/installations/<installation_id>`
-- [POST] `https://<api_name>.azurewebsites.net/api/notifications/requests`
+- PUT - `https://<api_name>.azurewebsites.net/api/notifications/installations`
+- DELETE - `https://<api_name>.azurewebsites.net/api/notifications/installations/<installation_id>`
+- POST - `https://<api_name>.azurewebsites.net/api/notifications/requests`
 
 Or when testing locally:
 
-- [PUT] `https://localhost:7020/api/notifications/installations`
-- [DELETE] `https://localhost:7020/api/notifications/installations/<installation_id>`
-- [POST] `https://localhost:7020/api/notifications/requests`
+- PUT - `https://localhost:7020/api/notifications/installations`
+- DELETE - `https://localhost:7020/api/notifications/installations/<installation_id>`
+- POST - `https://localhost:7020/api/notifications/requests`
 
 > [!IMPORTANT]
 > When specifying the base address in the .NET MAUI app, ensure it ends with a `/`. The base address should be `https://<api_name>.azurewebsites.net` or `https://localhost:7020/` when testing locally.
