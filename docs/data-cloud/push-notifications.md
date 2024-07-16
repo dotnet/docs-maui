@@ -837,10 +837,12 @@ For more information about calling REST APIs, see [Use .http files in Visual Stu
 
 ## Create a .NET MAUI app
 
-In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that enables you to register to receive push notifications from a notification hub via the backend service, and de-register:
+In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that enables you to register to receive push notifications from a notification hub via the backend service, and de-register.
+
+To create your .NET MAUI app:
 
 1. In Visual Studio, create a new .NET MAUI app named **PushNotificationsDemo**, using the **.NET MAUI App** project template.
-1. In Visual Studio, add a new folder named **Models** to the .NET MAUI project, and then add a new class named `DeviceInstallation` to the *Models* folder. Then replace the code in the *DeviceInstallation.cs* file with the following code:
+1. In Visual Studio, add a new folder named **Models** to the .NET MAUI project, and then add a new class named `DeviceInstallation` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     using System.Text.Json.Serialization;
@@ -863,7 +865,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
     }
     ```
 
-1. In Visual Studio, add an enumeration named `PushDemoAction` to the *Models* folder. Then replace the code in the *PushDemoAction.cs* file with the following code:
+1. In Visual Studio, add an enumeration named `PushDemoAction` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsDemo.Models;
@@ -875,7 +877,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
     }
     ```
 
-1. In Visual Studio, add a new folder named **Services** to the .NET MAUI project, and then add a new interface named `IDeviceInstallationService` to the *Services* folder. Then replace the code in the *IDeviceInstallationService.cs* file with the following code:
+1. In Visual Studio, add a new folder named **Services** to the .NET MAUI project, and then add a new interface named `IDeviceInstallationService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using PushNotificationsDemo.Models;
@@ -893,7 +895,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
 
     This interface will be implemented on each platform later, to provide the `DeviceInstallation` information required by the backend service.
 
-1. In Visual Studio, add an interface named `INotificationRegistrationService` to the *Services* folder. Then replace the code in the *INotificationRegistrationService.cs* file with the following code:
+1. In Visual Studio, add an interface named `INotificationRegistrationService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsDemo.Services;
@@ -908,7 +910,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
 
     This interface will handle the interaction between the client and the backend service.
 
-1. In Visual Studio, add an interface named `INotificationActionService` to the *Services* folder. Then replace the code in the *INotificationActionService.cs* file with the following code:
+1. In Visual Studio, add an interface named `INotificationActionService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsDemo.Services;
@@ -921,7 +923,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
 
     This interface will be used as a simple mechanism to centralize the handling of notification actions.
 
-1. In Visual Studio, add an interface named `IPushDemoNotificationActionService` to the *Services* folder. Then replace the code in the *IPushDemoNotificationActionService.cs* file with the following code:
+1. In Visual Studio, add an interface named `IPushDemoNotificationActionService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using PushNotificationsDemo.Models;
@@ -936,156 +938,156 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
 
     The `IPushDemoNotificationActionService` type is specific to this app, and uses the `PushDemoAction` enumeration to identify the action that's being triggered using a strongly-typed approach.
 
-1. In Visual Studio, add a class named `NotificationRegistrationService` to the *Services* folder. Then replace the code in the *NotificationRegistrationService.cs* file with the following code:
+1. In Visual Studio, add a class named `NotificationRegistrationService` to the *Services* folder and replace its code with the following code:
 
-```csharp
-using System.Text;
-using System.Text.Json;
-using PushNotificationsDemo.Models;
+    ```csharp
+    using System.Text;
+    using System.Text.Json;
+    using PushNotificationsDemo.Models;
 
-namespace PushNotificationsDemo.Services;
+    namespace PushNotificationsDemo.Services;
 
-public class NotificationRegistrationService : INotificationRegistrationService
-{
-    const string RequestUrl = "api/notifications/installations";
-    const string CachedDeviceTokenKey = "cached_device_token";
-    const string CachedTagsKey = "cached_tags";
-
-    string _baseApiUrl;
-    HttpClient _client;
-    IDeviceInstallationService _deviceInstallationService;
-
-    IDeviceInstallationService DeviceInstallationService =>
-        _deviceInstallationService ?? (_deviceInstallationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
-
-    public NotificationRegistrationService(string baseApiUri, string apiKey)
+    public class NotificationRegistrationService : INotificationRegistrationService
     {
-        _client = new HttpClient();
-        _client.DefaultRequestHeaders.Add("Accept", "application/json");
-        _client.DefaultRequestHeaders.Add("apikey", apiKey);
+        const string RequestUrl = "api/notifications/installations";
+        const string CachedDeviceTokenKey = "cached_device_token";
+        const string CachedTagsKey = "cached_tags";
 
-        _baseApiUrl = baseApiUri;
-    }
+        string _baseApiUrl;
+        HttpClient _client;
+        IDeviceInstallationService _deviceInstallationService;
 
-    public async Task DeregisterDeviceAsync()
-    {
-        var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
-            .ConfigureAwait(false);
+        IDeviceInstallationService DeviceInstallationService =>
+            _deviceInstallationService ?? (_deviceInstallationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
 
-        if (cachedToken == null)
-            return;
-
-        var deviceId = DeviceInstallationService?.GetDeviceId();
-
-        if (string.IsNullOrWhiteSpace(deviceId))
-            throw new Exception("Unable to resolve an ID for the device.");
-
-        await SendAsync(HttpMethod.Delete, $"{RequestUrl}/{deviceId}")
-            .ConfigureAwait(false);
-
-        SecureStorage.Remove(CachedDeviceTokenKey);
-        SecureStorage.Remove(CachedTagsKey);
-    }
-
-    public async Task RegisterDeviceAsync(params string[] tags)
-    {
-        var deviceInstallation = DeviceInstallationService?.GetDeviceInstallation(tags);
-
-        await SendAsync<DeviceInstallation>(HttpMethod.Put, RequestUrl, deviceInstallation)
-            .ConfigureAwait(false);
-
-        await SecureStorage.SetAsync(CachedDeviceTokenKey, deviceInstallation.PushChannel)
-            .ConfigureAwait(false);
-
-        await SecureStorage.SetAsync(CachedTagsKey, JsonSerializer.Serialize(tags));
-    }
-
-    public async Task RefreshRegistrationAsync()
-    {
-        var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
-            .ConfigureAwait(false);
-
-        var serializedTags = await SecureStorage.GetAsync(CachedTagsKey)
-            .ConfigureAwait(false);
-
-        if (string.IsNullOrWhiteSpace(cachedToken) ||
-            string.IsNullOrWhiteSpace(serializedTags) ||
-            string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
-            cachedToken == DeviceInstallationService.Token)
-            return;
-
-        var tags = JsonSerializer.Deserialize<string[]>(serializedTags);
-
-        await RegisterDeviceAsync(tags);
-    }
-
-    async Task SendAsync<T>(HttpMethod requestType, string requestUri, T obj)
-    {
-        string serializedContent = null;
-
-        await Task.Run(() => serializedContent = JsonSerializer.Serialize(obj))
-            .ConfigureAwait(false);
-
-        await SendAsync(requestType, requestUri, serializedContent);
-    }
-
-    async Task SendAsync(HttpMethod requestType, string requestUri, string jsonRequest = null)
-    {
-        var request = new HttpRequestMessage(requestType, new Uri($"{_baseApiUrl}{requestUri}"));
-
-        if (jsonRequest != null)
-            request.Content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-        var response = await _client.SendAsync(request).ConfigureAwait(false);
-
-        response.EnsureSuccessStatusCode();
-    }
-}
-```
-
-1. In Visual Studio, add a class named `PushDemoNotificationActionService` to the *Services* folder. Then replace the code in the *PushDemoNotificationActionService.cs* file with the following code:
-
-```csharp
-using PushNotificationsDemo.Models;
-
-namespace PushNotificationsDemo.Services;
-
-public class PushDemoNotificationActionService : IPushDemoNotificationActionService
-{
-    readonly Dictionary<string, PushDemoAction> _actionMappings = new Dictionary<string, PushDemoAction>
-    {
-        { "action_a", PushDemoAction.ActionA },
-        { "action_b", PushDemoAction.ActionB }
-    };
-
-    public event EventHandler<PushDemoAction> ActionTriggered = delegate { };
-
-    public void TriggerAction(string action)
-    {
-        if (!_actionMappings.TryGetValue(action, out var pushDemoAction))
-            return;
-
-        List<Exception> exceptions = new List<Exception>();
-
-        foreach (var handler in ActionTriggered?.GetInvocationList())
+        public NotificationRegistrationService(string baseApiUri, string apiKey)
         {
-            try
-            {
-                handler.DynamicInvoke(this, pushDemoAction);
-            }
-            catch (Exception ex)
-            {
-                exceptions.Add(ex);
-            }
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Add("Accept", "application/json");
+            _client.DefaultRequestHeaders.Add("apikey", apiKey);
+
+            _baseApiUrl = baseApiUri;
         }
 
-        if (exceptions.Any())
-            throw new AggregateException(exceptions);
-    }
-}
-```
+        public async Task DeregisterDeviceAsync()
+        {
+            var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
+                .ConfigureAwait(false);
 
-1. In Visual Studio, add a class named `Config` to the root of the project. Then replace the code in the *Config.cs* file with the following code:
+            if (cachedToken == null)
+                return;
+
+            var deviceId = DeviceInstallationService?.GetDeviceId();
+
+            if (string.IsNullOrWhiteSpace(deviceId))
+                throw new Exception("Unable to resolve an ID for the device.");
+
+            await SendAsync(HttpMethod.Delete, $"{RequestUrl}/{deviceId}")
+                .ConfigureAwait(false);
+
+            SecureStorage.Remove(CachedDeviceTokenKey);
+            SecureStorage.Remove(CachedTagsKey);
+        }
+
+        public async Task RegisterDeviceAsync(params string[] tags)
+        {
+            var deviceInstallation = DeviceInstallationService?.GetDeviceInstallation(tags);
+
+            await SendAsync<DeviceInstallation>(HttpMethod.Put, RequestUrl, deviceInstallation)
+                .ConfigureAwait(false);
+
+            await SecureStorage.SetAsync(CachedDeviceTokenKey, deviceInstallation.PushChannel)
+                .ConfigureAwait(false);
+
+            await SecureStorage.SetAsync(CachedTagsKey, JsonSerializer.Serialize(tags));
+        }
+
+        public async Task RefreshRegistrationAsync()
+        {
+            var cachedToken = await SecureStorage.GetAsync(CachedDeviceTokenKey)
+                .ConfigureAwait(false);
+
+            var serializedTags = await SecureStorage.GetAsync(CachedTagsKey)
+                .ConfigureAwait(false);
+
+            if (string.IsNullOrWhiteSpace(cachedToken) ||
+                string.IsNullOrWhiteSpace(serializedTags) ||
+                string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
+                cachedToken == DeviceInstallationService.Token)
+                return;
+
+            var tags = JsonSerializer.Deserialize<string[]>(serializedTags);
+
+            await RegisterDeviceAsync(tags);
+        }
+
+        async Task SendAsync<T>(HttpMethod requestType, string requestUri, T obj)
+        {
+            string serializedContent = null;
+
+            await Task.Run(() => serializedContent = JsonSerializer.Serialize(obj))
+                .ConfigureAwait(false);
+
+            await SendAsync(requestType, requestUri, serializedContent);
+        }
+
+        async Task SendAsync(HttpMethod requestType, string requestUri, string jsonRequest = null)
+        {
+            var request = new HttpRequestMessage(requestType, new Uri($"{_baseApiUrl}{requestUri}"));
+
+            if (jsonRequest != null)
+                request.Content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(request).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+        }
+    }
+    ```
+
+1. In Visual Studio, add a class named `PushDemoNotificationActionService` to the *Services* folder and replace its code with the following code:
+
+    ```csharp
+    using PushNotificationsDemo.Models;
+
+    namespace PushNotificationsDemo.Services;
+
+    public class PushDemoNotificationActionService : IPushDemoNotificationActionService
+    {
+        readonly Dictionary<string, PushDemoAction> _actionMappings = new Dictionary<string, PushDemoAction>
+        {
+            { "action_a", PushDemoAction.ActionA },
+            { "action_b", PushDemoAction.ActionB }
+        };
+
+        public event EventHandler<PushDemoAction> ActionTriggered = delegate { };
+
+        public void TriggerAction(string action)
+        {
+            if (!_actionMappings.TryGetValue(action, out var pushDemoAction))
+                return;
+
+            List<Exception> exceptions = new List<Exception>();
+
+            foreach (var handler in ActionTriggered?.GetInvocationList())
+            {
+                try
+                {
+                    handler.DynamicInvoke(this, pushDemoAction);
+                }
+                catch (Exception ex)
+                {
+                    exceptions.Add(ex);
+                }
+            }
+
+            if (exceptions.Any())
+                throw new AggregateException(exceptions);
+        }
+    }
+    ```
+
+1. In Visual Studio, add a class named `Config` to the root of the project and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsDemo;
