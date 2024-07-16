@@ -1,41 +1,44 @@
 ---
 title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service"
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
-ms.date: 07/12/2024
+ms.topic: "tutorial"
+ms.date: 07/15/2024
+
+#customer intent: As a developer, I want to be able to send notifications to .NET MAUI apps to alert users to important information.
 ---
 
-# Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service
+# Tutorial: Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/webservices-pushnotifications)
 
-Push notifications deliver information from a backend system to a client app. Apple, Google, and other platforms each have their own Push Notification Service (PNS). Azure Notification Hubs enable you to centralize notifications across platforms so that your backend app can communicate with a single hub, which takes care of distributing notifications to each platform-specific PNS.
+Push notifications deliver information from a backend system to a client app. Apple, Google, and other platforms each have their own Push Notification Service (PNS). Azure Notification Hubs enable you to centralize notifications across platforms so that your backend app can communicate with a single hub, which takes care of distributing notifications to each PNS.
 
 Azure Notification Hubs requires apps to register with the hub, define templates, and optionally subscribe to tags:
 
-- Registration links a platform-specific PNS handle to an identifier in the Azure Notification Hub. For more information about registrations, see [Registration management](/azure/notification-hubs/notification-hubs-push-notification-registration-management).
-- Templates allow devices to specify parameterized message templates. Incoming messages can be customized per device, and per tag. For more information, see [Notification hubs templates](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages).
+- Registration links a PNS handle to an identifier in the Azure Notification Hub. For more information about registrations, see [Registration management](/azure/notification-hubs/notification-hubs-push-notification-registration-management).
+- Templates allow devices to specify parameterized message templates. Incoming messages can be customized per device. For more information, see [Notification hubs templates](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages).
 - Tags can be used to subscribe to message categories such as news, sports, and weather. For more information, see [Routing and tag expressions](/azure/notification-hubs/notification-hubs-tags-segment-push-message).
 
 In this tutorial you'll use [Azure Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) to send push notifications to a .NET Multi-platform App UI (.NET MAUI) app targeting Android and iOS. An ASP.NET Core Web API backend is used to handle device registration for the client, and to initiate a push notification. These operations are handled using the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package. For more information on the overall approach, see [Registration management from a backend](/azure/notification-hubs/notification-hubs-push-notification-registration-management#registration-management-from-a-backend).
 
-This tutorial guides you through the following steps:
+In this tutorial, you:
 
 > [!div class="checklist"]
 >
-> - Setup push notification services and Azure Notification Hub
-> - Create an ASP.NET Core WebAPI backend app
-> - Create a .NET MAUI app
-> - Configure the Android app for push notifications
-> - Configure the iOS app for push notification
-> - Test the app
-> - Troubleshooting
+> - Setup push notification services and Azure Notification Hub.
+> - Create an ASP.NET Core WebAPI backend app.
+> - Create a .NET MAUI app.
+> - Configure the Android app for push notifications.
+> - Configure the iOS app for push notifications.
+> - Test the app.
+> - Troubleshoot any setup and configuration issues.
 
 ## Prerequisites
 
 To complete this tutorial you'll require:
 
-- An [Azure subscription](https://azure.microsoft.com/free/dotnet/).
-- A PC running the latest Visual Studio, with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
+- An [Azure account with an active subscription](https://azure.microsoft.com/free/dotnet/).
+- A PC running the latest version of Visual Studio with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
 
 For Android, you must have:
 
@@ -58,7 +61,7 @@ Then, on iOS you should either have:
 > [!IMPORTANT]
 > The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll require an active Apple developer account and a physical device.
 
-To follow this tutorial you'll benefit from having familiarity with:
+To follow this tutorial you should have familiarity with:
 
 - [Apple Developer Portal](https://developer.apple.com)
 - [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core) and [web APIs](/aspnet/core/web-api)
@@ -72,6 +75,8 @@ While this tutorial targets Visual Studio, it's possible to follow it using Visu
 In this section, you'll setup [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) and [Apple Push Notification Services (APNS)](https://developer.apple.com/documentation/usernotifications). You'll then create and configure an [Azure Notification Hub](/azure/notification-hubs/) to work with these services.
 
 ### Create a Firebase project
+
+To create a Firebase project:
 
 1. In a web browser, sign in to the [Firebase console](https://console.firebase.google.com/).
 1. In the Firebase console, select the **Add project** button and create a new Firebase project, entering **PushDemo** as the **Project name**.
@@ -99,7 +104,7 @@ In this section, you'll setup [Firebase Cloud Messaging](https://firebase.google
 
 1. In the **Project settings**, select the **Cloud Messaging** tab. You'll see that **Firebase Cloud Messaging API (V1)** is enabled:
 
-  :::image type="content" source="media/push-notifications/firebase-cloud-messaging-v1-enabled.png" alt-text="Screenshot confirming that Firebase Cloud Messaging V1 is enabled.":::
+    :::image type="content" source="media/push-notifications/firebase-cloud-messaging-v1-enabled.png" alt-text="Screenshot confirming that Firebase Cloud Messaging V1 is enabled.":::
 
 1. In the **Project settings**, select the **Service accounts** tab and then select the **Generate new private key** button.
 1. In the **Generate new private key** dialog, select the **Generate key** button:
