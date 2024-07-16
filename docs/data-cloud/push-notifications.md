@@ -782,9 +782,9 @@ To create an API app in the Azure portal:
     | Name | Enter a globally unique name. |
     | Runtime stack | Ensure that the latest version of .NET is selected. |
 
-1. Once the **API app** has been provisioned, navigate to the resource.
-1. On the **Overview** page, make a note of the default domain value. This URL is your backend endpoint that will be used from your .NET MAUI app. The URL will use the API app name that you specified, with the format `https://<app_name>.azurewebsites.net`.
-1. In the app's left menu, select **Settings > Environment variables** and then ensure that the **App settings** tab is selected. Then use the **Add** button to add the following settings:
+1. Once the **API App** has been provisioned, navigate to the resource.
+1. On the **Overview** page, make a note of the default domain value. This URL is your backend endpoint that will be consumed from your .NET MAUI app. The URL will use the API app name that you specified, with the format `https://<app_name>.azurewebsites.net`.
+1. In the Azure portal, browse to the **Settings > Environment variables** blade and then ensure that the **App settings** tab is selected. Then use the **Add** button to add the following settings:
 
     | Name | Value |
     | ---- | ----- |
@@ -799,21 +799,21 @@ To create an API app in the Azure portal:
 
 ### Publish the backend service
 
+To publish your backend service to Azure App Service:
+
 1. In Visual Studio, right-click your project and select **Publish**.
 1. In the **Publish** wizard, select **Azure** and then the **Next** button.
 1. In the **Publish** wizard, select **Azure App Service (Windows)** and then the **Next** button.
 1. In the **Publish** wizard, follow the authentication flow to connect Visual Studio to your Azure subscription and publish the app.
 
-Visual Studio builds, packages, and publishes the app to Azure, and then launches the app in your default browser.
-
-For more information, see [Publish an ASP.NET web app](/visualstudio/deployment/quickstart-deploy-aspnet-web-app?tabs=azure#publish-to-azure-app-service-on-windows).
+Visual Studio builds, packages, and publishes the app to Azure, and then launches the app in your default browser. For more information, see [Publish an ASP.NET web app](/visualstudio/deployment/quickstart-deploy-aspnet-web-app?tabs=azure#publish-to-azure-app-service-on-windows).
 
 > [!TIP]
-> You can download a publish profile for your app from the **Overview** page of your API app in the Azure portal and then use the profile in Visual Studio to publish your app.
+> You can download a publish profile for your app from the **Overview** blade of your API app in the Azure portal and then use the profile in Visual Studio to publish your app.
 
 ### Validate the published API
 
-To check that the API app has been published correctly, you should use tooling of your choice to send a `POST` request to the following address:
+To check that the API app has been published correctly you should use the REST tooling of your choice to send a `POST` request to the following address:
 
 ```
 https://<app_name>.azurewebsites.net/api/notifications/requests
@@ -824,7 +824,7 @@ https://<app_name>.azurewebsites.net/api/notifications/requests
 
 Ensure that you configure the request headers to include the key `apikey` and its value, set the body to raw, and use the following placeholder JSON content:
 
-```
+```json
 {}
 ```
 
