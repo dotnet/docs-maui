@@ -72,7 +72,7 @@ While the focus of this release of .NET MAUI is quality, there's also some new f
 
 - Window management can be decoupled from the `App` class. For more information, see [Decouple window management from the App class](~/fundamentals/windows.md#decouple-window-management-from-the-app-class).
 - Several system fonts can be easily consumed in Android apps. For more information, see [Consume fonts](~/user-interface/fonts.md#consume-fonts).
-- On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS platform lifecycle events](~/fundamentals/app-lifecycle.md#ios).
+- On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS and Mac Catalyst platform lifecycle events](~/fundamentals/app-lifecycle.md#ios-and-maccatalyst).
 
 ## Type deprecation and removal
 
