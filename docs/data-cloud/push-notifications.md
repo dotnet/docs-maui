@@ -373,17 +373,17 @@ To authenticate clients with an API key:
 
     The `UseAuthentication` extension method registers the middleware that uses the previously registered authentication scheme. `UseAuthentication` must be called before any middleware that depends on users being authenticated.
 
-    > [!IMPORTANT]
+    > [!NOTE]
     > While an API key isn't as secure as a token, it will suffice for this tutorial, and be easily configured via the [ASP.NET Middleware](/aspnet/core/fundamentals/middleware).
 
-### Add dependencies and configure services
+### Add and configure services
 
 ASP.NET Core supports the [dependency injection](/aspnet/core/fundamentals/dependency-injection) software design pattern, which is a technique for achieving [inversion of control](/dotnet/architecture/modern-web-apps-azure/architectural-principles#dependency-inversion) between classes and their dependencies.
 
-Azure Notification Hubs can be accessed through the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package, with calls into your Azure Notification Hub being encapsulated within a service:
+To add and configure services in your web API backend app:
 
-1. In Visual Studio, add the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package to your project.
-1. In Visual Studio, add a new folder named **Models** to your project, and then add a new class named `PushTemplates` to the *Models* folder. Then replace the code in the *PushTemplates.cs* file with the following code:
+1. In Visual Studio, add the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package to your project. This NuGet package is used to access your notification hub, encapsulated within a service.
+1. In Visual Studio, add a new folder named **Models** to your project, and then add a new class named `PushTemplates` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsAPI.Models;
@@ -406,7 +406,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
 
     The `PushTemplates` class contains tokenized notification payloads for generic and silent push notifications. These payloads are defined outside of the [installation](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages) to allow experimentation without having to update existing installations via the service. Handling changes to installations in this way is out of scope for this article. In product scenarios, consider using [custom templates](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages).
 
-1. In Visual Studio, add a new class named `DeviceInstallation` to the *Models* folder. Then replace the code in the *DeviceInstallation.cs* file with the following code:
+1. In Visual Studio, add a new class named `DeviceInstallation` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     using System.ComponentModel.DataAnnotations;
@@ -428,7 +428,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     }
     ```
 
-1. In Visual Studio, add a new class named `NotificationRequest` to the *Models* folder. Then replace the code in the *NotificationRequest.cs* file with the following code:
+1. In Visual Studio, add a new class named `NotificationRequest` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsAPI.Models;
@@ -442,7 +442,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     }
     ```
 
-1. In Visual Studio, add a new class named `NotificationHubOptions` to the *Models* folder. Then replace the code in the *NotificationHubOptions.cs* file with the following code:
+1. In Visual Studio, add a new class named `NotificationHubOptions` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     using System.ComponentModel.DataAnnotations;
@@ -459,7 +459,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     }
     ```
 
-1. In Visual Studio, add a new folder named **Services** to your project, and then add a new interface named `INotificationService` to the *Services* folder. Then replace the code in the *INotificationService.cs* file with the following code:
+1. In Visual Studio, add a new folder named **Services** to your project, and then add a new interface named `INotificationService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using PushNotificationsAPI.Models;
@@ -474,7 +474,7 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     }
     ```
 
-1. In Visual Studio, add a new class named `NotificationHubService` to the *Services* folder. Then replace the code in the *NotificationHubService.cs* file with the following code:
+1. In Visual Studio, add a new class named `NotificationHubService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using Microsoft.Extensions.Options;
@@ -663,7 +663,9 @@ Azure Notification Hubs can be accessed through the [Microsoft.Azure.Notificatio
     var app = builder.Build();
     ```
 
-### Create the notifications API
+### Create the notifications REST API
+
+To create the notifications REST API:
 
 1. In Visual Studio, add a new **Controller** named `NotificationsController` to the *Controllers* folder.
 
