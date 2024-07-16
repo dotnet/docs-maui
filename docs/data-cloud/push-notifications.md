@@ -215,7 +215,7 @@ To create a web API project:
 
 1. Close the web browser.
 
-1. In **Solution Explorer**, expand the **Controllers** folder and delete *WeatherForecastController.cs*.
+1. In **Solution Explorer**, expand the *Controllers* folder and delete *WeatherForecastController.cs*.
 1. In **Solution Explorer**, in the root of the project, delete *WeatherForecast.cs*.
 1. Open a command window, and navigate to the directory that contains the project file. Then, run the following commands:
 
@@ -249,7 +249,7 @@ To authenticate clients with an API key:
 
     Replace the placeholder value with your API key, which can be any value.
 
-1. In Visual Studio, add a new folder named **Authentication** to your project, and then add a new class named `ApiKeyAuthOptions` to the *Authentication* folder. Then replace the code in the *ApiKeyAuthOptions.cs* file with the following code:
+1. In Visual Studio, add a new folder named *Authentication* to your project, and then add a new class named `ApiKeyAuthOptions` to the *Authentication* folder and replace its code with the following code:
 
     ```csharp
     using Microsoft.AspNetCore.Authentication;
@@ -264,7 +264,7 @@ To authenticate clients with an API key:
     }
     ```
 
-1. In Visual Studio, add a new class named `ApiKeyAuthHandler` to the *Authentication* folder. Then replace the code in the *ApiKeyAuthHandler.cs* file with the following code:
+1. In Visual Studio, add a new class named `ApiKeyAuthHandler` to the *Authentication* folder and replace its code with the following code:
 
     ```csharp
     using Microsoft.AspNetCore.Authentication;
@@ -320,7 +320,7 @@ To authenticate clients with an API key:
 
     An [authentication handler](/aspnet/core/security/authentication#authentication-handler) is a type that implements the behavior of a scheme, which in this case is a custom API key scheme.
 
-1. In Visual Studio, add a new class named `AuthenticationBuilderExtensions` to the *Authentication* folder. Then replace the code in the *AuthenticationBuilderExtensions.cs* file with the following code:
+1. In Visual Studio, add a new class named `AuthenticationBuilderExtensions` to the *Authentication* folder and replace its code with the following code:
 
     ```csharp
     using Microsoft.AspNetCore.Authentication;
@@ -381,7 +381,7 @@ To authenticate clients with an API key:
 To add and configure services in your web API backend app:
 
 1. In Visual Studio, add the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) NuGet package to your project. This NuGet package is used to access your notification hub, encapsulated within a service.
-1. In Visual Studio, add a new folder named **Models** to your project, and then add a new class named `PushTemplates` to the *Models* folder and replace its code with the following code:
+1. In Visual Studio, add a new folder named *Models* to your project, and then add a new class named `PushTemplates` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     namespace PushNotificationsAPI.Models;
@@ -457,7 +457,7 @@ To add and configure services in your web API backend app:
     }
     ```
 
-1. In Visual Studio, add a new folder named **Services** to your project, and then add a new interface named `INotificationService` to the *Services* folder and replace its code with the following code:
+1. In Visual Studio, add a new folder named *Services* to your project, and then add a new interface named `INotificationService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using PushNotificationsAPI.Models;
@@ -842,7 +842,7 @@ In this section, you'll build a .NET Multi-platform App UI (.NET MAUI) app that 
 To create your .NET MAUI app:
 
 1. In Visual Studio, create a new .NET MAUI app named **PushNotificationsDemo**, using the **.NET MAUI App** project template.
-1. In Visual Studio, add a new folder named **Models** to the .NET MAUI project, and then add a new class named `DeviceInstallation` to the *Models* folder and replace its code with the following code:
+1. In Visual Studio, add a new folder named *Models* to the .NET MAUI project, and then add a new class named `DeviceInstallation` to the *Models* folder and replace its code with the following code:
 
     ```csharp
     using System.Text.Json.Serialization;
@@ -877,7 +877,7 @@ To create your .NET MAUI app:
     }
     ```
 
-1. In Visual Studio, add a new folder named **Services** to the .NET MAUI project, and then add a new interface named `IDeviceInstallationService` to the *Services* folder and replace its code with the following code:
+1. In Visual Studio, add a new folder named *Services* to the .NET MAUI project, and then add a new interface named `IDeviceInstallationService` to the *Services* folder and replace its code with the following code:
 
     ```csharp
     using PushNotificationsDemo.Models;
