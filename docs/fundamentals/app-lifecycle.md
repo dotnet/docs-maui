@@ -188,9 +188,9 @@ namespace PlatformLifecycleDemo
 
 For more information about the Android app lifecycle, see [Understand the Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle) on developer.android.com.
 
-### iOS
+### iOS and Mac Catalyst
 
-The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
+The following table lists the .NET MAUI delegates that are invoked in response to iOS and Mac Catalyst lifecycle events being raised:
 
 | Delegate | Arguments | Description |
 | -- | -- | -- |
@@ -223,7 +223,7 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 > [!IMPORTANT]
 > Each delegate, with the exception of `PerformFetch`, has a corresponding identically named extension method that can be called to register a handler for the delegate.
 
-To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
+To respond to an iOS and Mac Catalyst lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -239,7 +239,7 @@ namespace PlatformLifecycleDemo
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
-#if IOS
+#if IOS || MACCATALYST
                     events.AddiOS(ios => ios
                         .OnActivated((app) => LogEvent(nameof(iOSLifecycle.OnActivated)))
                         .OnResignActivation((app) => LogEvent(nameof(iOSLifecycle.OnResignActivation)))
