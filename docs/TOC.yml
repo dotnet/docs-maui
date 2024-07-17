@@ -105,6 +105,8 @@
               href: migration/secure-storage.md
             - name: Migrate version tracking data
               href: migration/version-tracking.md
+            - name: Migrate push notification code
+              href: migration/push-notifications.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
