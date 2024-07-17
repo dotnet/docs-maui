@@ -6,14 +6,14 @@ ms.date: 07/17/2024
 
 # Migrate Azure Notification Hub code from Xamarin.Forms to .NET MAUI
 
-In Xamarin.Forms apps, the [Xamarin.Azure.NotificationHubs.iOS](https://www.nuget.org/packages/Xamarin.Azure.NotificationHubs.iOS) and [Xamarin.Azure.NotificationHubs.Android](https://www.nuget.org/packages/Xamarin.Azure.NotificationHubs.Android) NuGet packages could be used to register for push notifications with Azure Notification Hubs. However, these NuGet packages are no longer supported and you must take an alternative approach to performing device registration with an Azure Notification Hub from a .NET Multi-platform App UI (.NET MAUI) app.
+In Xamarin.Forms apps, the [Xamarin.Azure.NotificationHubs.iOS](https://www.nuget.org/packages/Xamarin.Azure.NotificationHubs.iOS) and [Xamarin.Azure.NotificationHubs.Android](https://www.nuget.org/packages/Xamarin.Azure.NotificationHubs.Android) NuGet packages could be used to register for push notifications with Azure Notification Hubs. However, these NuGet packages are no longer supported and you must take an alternative approach to performing device installation with an Azure Notification Hub from a .NET Multi-platform App UI (.NET MAUI) app.
 
 One possible approach is to use the Azure Notification Hubs REST APIs to manage installations and send notifications. This can be accomplished from a backend service, or directly from a device. For more information, see [How to use the Notification Hubs REST Interface](/rest/api/notificationhubs/use-notification-hubs-rest-interface).
 
 Alternatively, a .NET wrapper around the REST APIs is available via the [Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) NuGet package. This NuGet package can be used to handle device installation for a .NET MAUI app, and to initiate a push notification. For more information on this approach, see [Registration management from a backend](/azure/notification-hubs/notification-hubs-push-notification-registration-management#registration-management-from-a-backend).
 
 > [!IMPORTANT]
-> Azure Notification Hub SDKs aren't provided for .NET for Android, .NET for iOS, and .NET MAUI. Instead, a [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) can be used by apps built with .NET.
+> Specific Azure Notification Hub SDKs aren't provided for .NET for Android, .NET for iOS, and .NET MAUI. Instead, a [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) can be used by apps built with .NET.
 
 For information on using [Azure Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) to send push notifications to a .NET MAUI app targeting Android and iOS, see [Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service](~/data-cloud/push-notifications.md).
 

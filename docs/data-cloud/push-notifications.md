@@ -13,9 +13,9 @@ ms.date: 07/15/2024
 
 Push notifications deliver information from a backend system to a client app. Apple, Google, and other platforms each have their own Push Notification Service (PNS). Azure Notification Hubs enable you to centralize notifications across platforms so that your backend app can communicate with a single hub, which takes care of distributing notifications to each PNS.
 
-Azure Notification Hubs requires apps to register with the hub, define templates, and optionally subscribe to tags:
+Azure Notification Hubs require apps to register with the hub and optionally define templates and/or subscribe to tags:
 
-- Registration links a PNS handle to an identifier in the Azure Notification Hub. For more information about registrations, see [Registration management](/azure/notification-hubs/notification-hubs-push-notification-registration-management).
+- Performing a device installation links a PNS handle to an identifier in the Azure Notification Hub. For more information about registrations, see [Registration management](/azure/notification-hubs/notification-hubs-push-notification-registration-management).
 - Templates allow devices to specify parameterized message templates. Incoming messages can be customized per device. For more information, see [Notification hubs templates](/azure/notification-hubs/notification-hubs-templates-cross-platform-push-messages).
 - Tags can be used to subscribe to message categories such as news, sports, and weather. For more information, see [Routing and tag expressions](/azure/notification-hubs/notification-hubs-tags-segment-push-message).
 
@@ -38,7 +38,7 @@ In this tutorial, you:
 To complete this tutorial you'll require:
 
 - An [Azure account with an active subscription](https://azure.microsoft.com/free/dotnet/).
-- A PC running the latest version of Visual Studio with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
+- A PC or Mac running the latest version of Visual Studio/Visual Studio Code with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
 
 For Android, you must have:
 
@@ -143,9 +143,7 @@ To create a notification hub in the Azure portal:
         > Availability zones is a paid feature, so an additional fee is added to your tier.
 
     1. Choose a **Disaster recovery** option: none, paired recovery region, or flexible recovery region. If you choose **Paired recovery region**, the failover region is displayed. If you select **Flexible recovery region**, use the drop-down to choose from a list of recovery regions.
-    1. Select the **Create** button.
-
-        The notification hub will be created.
+    1. Select the **Create** button. The notification hub will be created.
 1. In the Azure portal, browse to your newly created notification hub and then to the **Manage > Access Policies** blade.
 1. In the **Access Policies** blade, make a note of the connection string for the `DefaultFullSharedAccessSignature` policy. You'll require this later when building a backend service that communicates with your notification hub.
 
@@ -190,7 +188,7 @@ In the [Azure portal](https://portal.azure.com/), browse to your notification hu
 
 ## Create an ASP.NET Core Web API backend app
 
-In this section you'll create an ASP.NET Core Web API backend to handle [device registration](/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) and sending notifications to the .NET MAUI app.
+In this section you'll create an ASP.NET Core Web API backend to handle [device installation](/azure/notification-hubs/notification-hubs-push-notification-registration-management#installations) and sending notifications to the .NET MAUI app.
 
 ### Create a web API project
 
@@ -1267,6 +1265,9 @@ To configure your .NET MAUI app on Android to receive and process push notificat
     </ItemGroup>
     ```
 
+    > [!TIP]
+    > Remember to add `google-services.json` to your `.gitignore` file to avoid committing this file to source control.
+
 1. In Visual Studio, edit the project file (*.csproj) and set the `SupportedOSPlatformVersion` for Android to 26.0:
 
     ```xml
@@ -1686,27 +1687,6 @@ To configure your .NET MAUI app on iOS to receive and process push notifications
         _deviceInstallationService ?? (_deviceInstallationService = IPlatformApplication.Current.Services.GetService<IDeviceInstallationService>());
     ```
 
-1. In the `AppDelegate` class, add the `RegisterForRemoteNotifications` method to register user notification settings and then for remote notifications with APNS:
-
-    ```csharp
-    void RegisterForRemoteNotifications()
-    {
-        MainThread.BeginInvokeOnMainThread(() =>
-        {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
-                UIUserNotificationType.Alert |
-                UIUserNotificationType.Badge |
-                UIUserNotificationType.Sound,
-                new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-        });
-    }
-    ```
-
-    For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
-
 1. In the `AppDelegate` class, add the `CompleteRegistrationAsync` method to set the `IDeviceInstallationService.Token` property value:
 
     ```csharp
@@ -1792,7 +1772,7 @@ To configure your .NET MAUI app on iOS to receive and process push notifications
 
     ```csharp
     [Export("application:didFinishLaunchingWithOptions:")]
-    public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+    public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
         if (DeviceInstallationService.NotificationsSupported)
         {
@@ -1803,7 +1783,12 @@ To configure your .NET MAUI app on iOS to receive and process push notifications
                 (approvalGranted, error) =>
                 {
                     if (approvalGranted && error == null)
-                        RegisterForRemoteNotifications();
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+                        });
+                    }
                 });
         }
 
@@ -1817,6 +1802,8 @@ To configure your .NET MAUI app on iOS to receive and process push notifications
     ```
 
     For information about asking permission to use notifications, see [Asking permission to use notifications](https://developer.apple.com/documentation/usernotifications/asking-permission-to-use-notifications) on developer.apple.com.
+
+For information about notifications in iOS, see [User Notifications](https://developer.apple.com/documentation/usernotifications/) on developer.apple.com.
 
 ### Register types with the app's dependency injection container
 
