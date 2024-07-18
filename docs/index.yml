@@ -259,6 +259,9 @@ conceptualContent:
             - text: Offline data sync with Azure Mobile Apps
               url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline
               itemType: tutorial
+            - text: Send push notifications using Azure Notification Hubs
+              url: data-cloud/push-notifications.md
+              itemType: tutorial
             - text: Consume a REST-based web service
               url: data-cloud/rest.md
               itemType: concept
