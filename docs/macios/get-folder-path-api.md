@@ -6,7 +6,7 @@ ms.date: 07/18/2024
 
 # Environment.GetFolderPath API on Mac Catalyst
 
-The following table provides a comparison of the [Environment.GetFolderPath](https://learn.microsoft.com/en-us/dotnet/api/system.environment.getfolderpath?view=net-8.0#system-environment-getfolderpath(system-environment-specialfolder)) API behavior between macOS and Mac Catalyst for all supported [Environment.SpecialFolder](https://learn.microsoft.com/en-us/dotnet/api/system.environment.specialfolder?view=net-8.0) enumeration values.
+The following table provides a comparison of the [Environment.GetFolderPath](https://learn.microsoft.com/dotnet/api/system.environment.getfolderpath) API behavior between macOS and Mac Catalyst for all supported [Environment.SpecialFolder](https://learn.microsoft.com/dotnet/api/system.environment.specialfolder) enumeration values.
 
 | Environment.SpecialFolder Enum value | Returned path on macOS             | Returned path on Mac Catalyst |
 |--------------------------------------|------------------------------------|-----------------------------|
@@ -65,11 +65,11 @@ The following table provides a comparison of the [Environment.GetFolderPath](htt
 As it can be seen the returned system paths for: `ApplicationData`, `Desktop`, `DesktopDirectory`, `Fonts`, `LocalApplicationData`, `MyMusic`, `MyPictures`, `MyVideos`, `ProgramFiles`, `System`, `Templates` differ.
 The reason for the difference is that by design Mac Catalyst matches the behavior of iOS platforms.
 
-# Matching macOS behavior
+## Matching macOS behavior
 
 If it is required to match macOS applications behavior and use the same system paths on Mac Catalyst, then the recommended way of obtaining such paths is as follows:
 
-## Environment.SpecialFolder.ApplicationData
+### Environment.SpecialFolder.ApplicationData
 
 Instead of:
 
@@ -83,7 +83,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.Desktop
+### Environment.SpecialFolder.Desktop
 
 Instead of:
 
@@ -97,7 +97,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.DesktopDirectory
+### Environment.SpecialFolder.DesktopDirectory
 
 Instead of:
 
@@ -111,7 +111,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.Fonts
+### Environment.SpecialFolder.Fonts
 
 Instead of:
 
@@ -125,7 +125,7 @@ Use:
 Path.Combine(new NSFileManager().GetUrls(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomain.User)[0].Path, "Fonts")
 ```
 
-## Environment.SpecialFolder.LocalApplicationData
+### Environment.SpecialFolder.LocalApplicationData
 
 Instead of:
 
@@ -139,7 +139,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.MyMusic
+### Environment.SpecialFolder.MyMusic
 
 Instead of:
 
@@ -153,7 +153,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.MusicDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.MyPictures
+### Environment.SpecialFolder.MyPictures
 
 Instead of:
 
@@ -167,7 +167,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.PicturesDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.MyVideos
+### Environment.SpecialFolder.MyVideos
 
 Instead of:
 
@@ -181,7 +181,7 @@ Use:
 new NSFileManager().GetUrls(NSSearchPathDirectory.MoviesDirectory, NSSearchPathDomain.User)[0].Path
 ```
 
-## Environment.SpecialFolder.ProgramFiles
+### Environment.SpecialFolder.ProgramFiles
 
 Instead of:
 
@@ -195,7 +195,7 @@ Use:
 "/Applications"
 ```
 
-## Environment.SpecialFolder.System
+### Environment.SpecialFolder.System
 
 Instead of:
 
@@ -209,7 +209,7 @@ Use:
 "/System"
 ```
 
-## Environment.SpecialFolder.Templates
+### Environment.SpecialFolder.Templates
 
 Instead of:
 
