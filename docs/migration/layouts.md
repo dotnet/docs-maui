@@ -1,7 +1,7 @@
 ---
 title: "Layout behavior changes from Xamarin.Forms"
 description: "Learn about the layout behavior changes between Xamarin.Forms and .NET MAUI."
-ms.date: 02/15/2023
+ms.date: 07/18/2024
 ---
 
 # Layout behavior changes from Xamarin.Forms
@@ -73,6 +73,8 @@ In Xamarin.Forms, despite not declaring that the <xref:Microsoft.Maui.Controls.G
 
 > [!IMPORTANT]
 > By default, .NET MAUI creates a <xref:Microsoft.Maui.Controls.Grid> with one column and one row. Therefore, it's not necessary to set the `ColumnDefinitions` and `RowDefinitions` properties if this is your intention.
+
+In Xamarin.Forms, when a `Label` is a column where the width of its `ColumnDefinition` is set to `Auto`, line breaks such as word wrap and tail truncation implicitly occur. In .NET MAUI, in this scenario line breaks don't implicitly occur because the column expands past the width of the screen to accommodate the child's content. If you want the <xref:Microsoft.Maui.Controls.Label> to wrap at the edge of the <xref:Microsoft.Maui.Controls.Grid> you should set the appropriate `ColumnDefinition` to either `*` or a value.
 
 ## StackLayout
 
