@@ -37,7 +37,7 @@ The [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtensi
 - `Value`, of type `object`, that returns the resource that's currently being used by the markup extension.
 
 > [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppBindingTheme`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppThemeBinding`.
 
 The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
 
