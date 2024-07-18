@@ -149,6 +149,8 @@ A small number of other APIs have been consolidated in the move from Xamarin.For
 > | `Xamarin.Forms.Span.ForegroundColor` | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
 > | `Xamarin.Forms.ToolbarItem.Name` | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
 
+In addition, in Xamarin.Forms, the `Page.OnAppearing` override is called on Android when an app is backgrounded and then brought to the foreground. However, this override isn't called on iOS and Windows in the same scenario. In .NET MAUI, the <xref:Microsoft.Maui.Controls.Page.OnAppearing> override isn't called on any platforms when an app is backgrounded and then brought to the foreground. Instead, you should listen to lifecycle events on <xref:Microsoft.Maui.Controls.Window> to be notified when an app returns to the foreground. For more information, see [.NET MAUI windows](~/fundamentals/windows.md).
+
 ### Native forms changes
 
 [Native forms](/xamarin/xamarin-forms/platform/native-forms) in Xamarin.Forms has become native embedding in .NET MAUI, and uses a different initialization approach and different extension methods to convert cross-platform controls to their native types. For more information, see [Native embedding](~/platform-integration/native-embedding.md).

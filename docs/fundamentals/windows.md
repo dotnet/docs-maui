@@ -37,7 +37,7 @@ The <xref:Microsoft.Maui.Controls.Window> class defines the following events:
 - <xref:Microsoft.Maui.Controls.Window.Destroying>, which is raised when the window is destroyed.
 - <xref:Microsoft.Maui.Controls.Window.SizeChanged>, which is raised on desktop platforms when the window changes size.
 - <xref:Microsoft.Maui.Controls.Window.Backgrounding>, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
-- <xref:Microsoft.Maui.Controls.Window`DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
+- <xref:Microsoft.Maui.Controls.Window.DisplayDensityChanged>, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
 
 For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
 
