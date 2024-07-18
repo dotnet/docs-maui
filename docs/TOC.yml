@@ -907,6 +907,8 @@
               href: mac-catalyst/user-interface-idiom.md
             - name: Universal links
               href: macios/universal-links.md
+            - name: Environment.GetFolderPath API on Mac Catalyst
+              href: macios/get-folder-path-api.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
         - name: Customize UI appearance
