@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI Android app for Google Play distribution"
 description: "Learn how to publish a .NET MAUI Android app for Google Play distribution."
-ms.date: 05/15/2023
+ms.date: 07/18/2024
 ---
 
 # Publish an Android app for Google Play distribution
@@ -38,7 +38,7 @@ To publish Android apps on Google Play, you'll need to create a Google Play Deve
 1. Verify your identity by following the instructions in your verification email.
 
 > [!IMPORTANT]
-> Identity verification must be complete before you can publish apps through Google Play.
+> Identity verification must be complete before you can publish apps through Google Play. In addition, new personal account holders will have to verify that they have access to a real Android device. For more information, see [Device verification requirements for new developer accounts](https://support.google.com/googleplay/android-developer/answer/14316361?hl=en) on support.google.com.
 
 Once your Google Play Developer account has been created you'll be able to begin the process to publish an app to Google Play.
 
