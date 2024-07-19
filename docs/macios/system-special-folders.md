@@ -67,46 +67,46 @@ The returned system paths for `ApplicationData`, `Desktop`, `DesktopDirectory`, 
 
 If you need to match macOS app behavior and use the same system paths on Mac Catalyst, the recommended way of obtaining such paths is shown below.
 
-### `Environment.SpecialFolder.ApplicationData`
+- `Environment.SpecialFolder.ApplicationData`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.Desktop`
+- `Environment.SpecialFolder.Desktop`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Desktop, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Desktop, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.DesktopDirectory`
+- `Environment.SpecialFolder.DesktopDirectory`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.DesktopDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.Fonts`
+- `Environment.SpecialFolder.Fonts`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Fonts, Environment.SpecialFolderOption.None)`, use `Path.Combine(new NSFileManager().GetUrls(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomain.User)[0].Path, "Fonts")`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Fonts, Environment.SpecialFolderOption.None)`, use `Path.Combine(new NSFileManager().GetUrls(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomain.User)[0].Path, "Fonts")`.
 
-### `Environment.SpecialFolder.LocalApplicationData`
+- `Environment.SpecialFolder.LocalApplicationData`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.MyMusic`
+- `Environment.SpecialFolder.MyMusic`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyMusic, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.MusicDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyMusic, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.MusicDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.MyPictures`
+- `Environment.SpecialFolder.MyPictures`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyPictures, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.PicturesDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyPictures, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.PicturesDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.MyVideos`
+- `Environment.SpecialFolder.MyVideos`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyVideos, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.MoviesDirectory, NSSearchPathDomain.User)[0].Path`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.MyVideos, Environment.SpecialFolderOption.None)`, use `new NSFileManager().GetUrls(NSSearchPathDirectory.MoviesDirectory, NSSearchPathDomain.User)[0].Path`.
 
-### `Environment.SpecialFolder.ProgramFiles`
+- `Environment.SpecialFolder.ProgramFiles`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles, Environment.SpecialFolderOption.None)`, use `"/Applications"`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles, Environment.SpecialFolderOption.None)`, use `"/Applications"`.
 
-### `Environment.SpecialFolder.System`
+- `Environment.SpecialFolder.System`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.System, Environment.SpecialFolderOption.None)`, use `"/System"`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.System, Environment.SpecialFolderOption.None)`, use `"/System"`.
 
-### `Environment.SpecialFolder.Templates`
+- `Environment.SpecialFolder.Templates`
 
-Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Templates, Environment.SpecialFolderOption.None)`, use `Path.Combine(NSFileManager.HomeDirectory, "Templates")`.
+    Instead of `Environment.GetFolderPath(Environment.SpecialFolder.Templates, Environment.SpecialFolderOption.None)`, use `Path.Combine(NSFileManager.HomeDirectory, "Templates")`.
