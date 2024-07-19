@@ -1,7 +1,7 @@
 ---
 title: "CheckBox"
 description: "The .NET MAUI CheckBox is a type of button that can either be checked or empty. When a checkbox is checked, it's considered to be on. When a checkbox is empty, it's considered to be off."
-ms.date: 02/09/2022
+ms.date: 07/19/2024
 ---
 
 # CheckBox
@@ -129,21 +129,23 @@ The following XAML example shows how to define a visual state for the `IsChecked
 ```xaml
 <CheckBox ...>
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="Normal">
-                <VisualState.Setters>
-                    <Setter Property="Color"
-                            Value="Red" />
-                </VisualState.Setters>
-            </VisualState>
+        <VisualStateGroupList>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Property="Color"
+                                Value="Red" />
+                    </VisualState.Setters>
+                </VisualState>
 
-            <VisualState x:Name="IsChecked">
-                <VisualState.Setters>
-                    <Setter Property="Color"
-                            Value="Green" />
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
+                <VisualState x:Name="IsChecked">
+                    <VisualState.Setters>
+                        <Setter Property="Color"
+                                Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 </CheckBox>
 ```
