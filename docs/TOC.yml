@@ -905,6 +905,8 @@
               href: macios/interpreter.md
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
+            - name: System special folders
+              href: macios/system-special-folders.md
             - name: Universal links
               href: macios/universal-links.md
         - name: Configure multi-targeting
