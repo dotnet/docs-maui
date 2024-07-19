@@ -65,7 +65,7 @@ The returned system paths for `ApplicationData`, `Desktop`, `DesktopDirectory`, 
 
 ## Match macOS behavior on Mac Catalyst
 
-If you need to match macOS app behavior and use the same system paths on Mac Catalyst, the recommended way of obtaining such paths is shown below.
+If you need to match macOS app behavior and use the same system paths on Mac Catalyst, the recommended way of obtaining such paths is shown below:
 
 - `Environment.SpecialFolder.ApplicationData`
 
