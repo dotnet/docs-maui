@@ -319,138 +319,126 @@
                   href: user-interface/pages/tabbedpage.md
             - name: Views
               items:
-                - name: Present data
+                - name: ActivityIndicator
+                  href: user-interface/controls/activityindicator.md
+                - name: BlazorWebView
+                  href: user-interface/controls/blazorwebview.md
+                - name: Border
+                  href: user-interface/controls/border.md
+                - name: BoxView
+                  href: user-interface/controls/boxview.md
+                - name: Button
+                  href: user-interface/controls/button.md
+                - name: CarouselView
                   items:
-                    - name: BlazorWebView
-                      href: user-interface/controls/blazorwebview.md
-                    - name: Border
-                      href: user-interface/controls/border.md
-                    - name: BoxView
-                      href: user-interface/controls/boxview.md
-                    - name: Frame
-                      href: user-interface/controls/frame.md
-                    - name: GraphicsView
-                      href: user-interface/controls/graphicsview.md
-                    - name: Image
-                      href: user-interface/controls/image.md
-                    - name: Label
-                      href: user-interface/controls/label.md
-                    - name: Map
-                      href: user-interface/controls/map.md
-                    - name: ScrollView
-                      href: user-interface/controls/scrollview.md
-                    - name: Shapes
-                      items:
-                        - name: Overview
-                          href: user-interface/controls/shapes/index.md
-                        - name: Ellipse
-                          href: user-interface/controls/shapes/ellipse.md
-                        - name: Fill rules
-                          href: user-interface/controls/shapes/fillrules.md
-                        - name: Geometries
-                          href: user-interface/controls/shapes/geometries.md
-                        - name: Line
-                          href: user-interface/controls/shapes/line.md
-                        - name: Paths
-                          items:
-                            - name: Path
-                              href: user-interface/controls/shapes/path.md
-                            - name: Path markup syntax
-                              href: user-interface/controls/shapes/path-markup-syntax.md
-                            - name: Path transforms
-                              href: user-interface/controls/shapes/path-transforms.md
-                        - name: Polygon
-                          href: user-interface/controls/shapes/polygon.md
-                        - name: Polyline
-                          href: user-interface/controls/shapes/polyline.md
-                        - name: Rectangle
-                          href: user-interface/controls/shapes/rectangle.md
-                    - name: WebView
-                      href: user-interface/controls/webview.md
-                - name: Initiate commands
+                    - name: Overview
+                      href: user-interface/controls/carouselview/index.md
+                    - name: Data
+                      href: user-interface/controls/carouselview/populate-data.md
+                    - name: Layout
+                      href: user-interface/controls/carouselview/layout.md
+                    - name: Interaction
+                      href: user-interface/controls/carouselview/interaction.md
+                    - name: EmptyView
+                      href: user-interface/controls/carouselview/emptyview.md
+                    - name: Scrolling
+                      href: user-interface/controls/carouselview/scrolling.md
+                - name: CheckBox
+                  href: user-interface/controls/checkbox.md
+                - name: CollectionView
                   items:
-                    - name: Button
-                      href: user-interface/controls/button.md
-                    - name: ImageButton
-                      href: user-interface/controls/imagebutton.md
-                    - name: RadioButton
-                      href: user-interface/controls/radiobutton.md
-                    - name: RefreshView
-                      href: user-interface/controls/refreshview.md
-                    - name: SearchBar
-                      href: user-interface/controls/searchbar.md
-                    - name: SwipeView
-                      href: user-interface/controls/swipeview.md
-                - name: Set values
-                  items:
-                    - name: CheckBox
-                      href: user-interface/controls/checkbox.md
-                    - name: DatePicker
-                      href: user-interface/controls/datepicker.md
-                    - name: Slider
-                      href: user-interface/controls/slider.md
-                    - name: Stepper
-                      href: user-interface/controls/stepper.md
-                    - name: Switch
-                      href: user-interface/controls/switch.md
-                    - name: TimePicker
-                      href: user-interface/controls/timepicker.md
-                - name: Edit text
-                  items:
-                    - name: Editor
-                      href: user-interface/controls/editor.md
-                    - name: Entry
-                      href: user-interface/controls/entry.md
-                - name: Indicate activity
-                  items:
-                    - name: ActivityIndicator
-                      href: user-interface/controls/activityindicator.md
-                    - name: ProgressBar
-                      href: user-interface/controls/progressbar.md
-                - name: Display collections
-                  items:
-                    - name: CarouselView
-                      items:
-                        - name: Overview
-                          href: user-interface/controls/carouselview/index.md
-                        - name: Data
-                          href: user-interface/controls/carouselview/populate-data.md
-                        - name: Layout
-                          href: user-interface/controls/carouselview/layout.md
-                        - name: Interaction
-                          href: user-interface/controls/carouselview/interaction.md
-                        - name: EmptyView
-                          href: user-interface/controls/carouselview/emptyview.md
-                        - name: Scrolling
-                          href: user-interface/controls/carouselview/scrolling.md
-                    - name: CollectionView
-                      items:
-                        - name: Overview
-                          href: user-interface/controls/collectionview/index.md
-                        - name: Data
-                          href: user-interface/controls/collectionview/populate-data.md
-                        - name: Layout
-                          href: user-interface/controls/collectionview/layout.md
-                        - name: Selection
-                          href: user-interface/controls/collectionview/selection.md
-                        - name: EmptyView
-                          href: user-interface/controls/collectionview/emptyview.md
-                        - name: Scrolling
-                          href: user-interface/controls/collectionview/scrolling.md
-                        - name: Grouping
-                          href: user-interface/controls/collectionview/grouping.md
-                    - name: IndicatorView
-                      href: user-interface/controls/indicatorview.md
-                    - name: ListView
-                      href: user-interface/controls/listview.md
-                    - name: Picker
-                      href: user-interface/controls/picker.md
-                    - name: TableView
-                      href: user-interface/controls/tableview.md
+                    - name: Overview
+                      href: user-interface/controls/collectionview/index.md
+                    - name: Data
+                      href: user-interface/controls/collectionview/populate-data.md
+                    - name: Layout
+                      href: user-interface/controls/collectionview/layout.md
+                    - name: Selection
+                      href: user-interface/controls/collectionview/selection.md
+                    - name: EmptyView
+                      href: user-interface/controls/collectionview/emptyview.md
+                    - name: Scrolling
+                      href: user-interface/controls/collectionview/scrolling.md
+                    - name: Grouping
+                      href: user-interface/controls/collectionview/grouping.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
+                - name: DatePicker
+                  href: user-interface/controls/datepicker.md
+                - name: Editor
+                  href: user-interface/controls/editor.md
+                - name: Entry
+                  href: user-interface/controls/entry.md
+                - name: Frame
+                  href: user-interface/controls/frame.md
+                - name: GraphicsView
+                  href: user-interface/controls/graphicsview.md
+                - name: Image
+                  href: user-interface/controls/image.md
+                - name: ImageButton
+                  href: user-interface/controls/imagebutton.md
+                - name: IndicatorView
+                  href: user-interface/controls/indicatorview.md
+                - name: Label
+                  href: user-interface/controls/label.md
+                - name: ListView
+                  href: user-interface/controls/listview.md
+                - name: Map
+                  href: user-interface/controls/map.md
+                - name: Picker
+                  href: user-interface/controls/picker.md
+                - name: ProgressBar
+                  href: user-interface/controls/progressbar.md
+                - name: RadioButton
+                  href: user-interface/controls/radiobutton.md
+                - name: RefreshView
+                  href: user-interface/controls/refreshview.md
+                - name: ScrollView
+                  href: user-interface/controls/scrollview.md
+                - name: SearchBar
+                  href: user-interface/controls/searchbar.md
+                - name: Shapes
+                  items:
+                    - name: Overview
+                      href: user-interface/controls/shapes/index.md
+                    - name: Ellipse
+                      href: user-interface/controls/shapes/ellipse.md
+                    - name: Fill rules
+                      href: user-interface/controls/shapes/fillrules.md
+                    - name: Geometries
+                      href: user-interface/controls/shapes/geometries.md
+                    - name: Line
+                      href: user-interface/controls/shapes/line.md
+                    - name: Paths
+                      items:
+                        - name: Path
+                          href: user-interface/controls/shapes/path.md
+                        - name: Path markup syntax
+                          href: user-interface/controls/shapes/path-markup-syntax.md
+                        - name: Path transforms
+                          href: user-interface/controls/shapes/path-transforms.md
+                    - name: Polygon
+                      href: user-interface/controls/shapes/polygon.md
+                    - name: Polyline
+                      href: user-interface/controls/shapes/polyline.md
+                    - name: Rectangle
+                      href: user-interface/controls/shapes/rectangle.md
+                - name: Slider
+                  href: user-interface/controls/slider.md
+                - name: Stepper
+                  href: user-interface/controls/stepper.md
+                - name: SwipeView
+                  href: user-interface/controls/swipeview.md
+                - name: Switch
+                  href: user-interface/controls/switch.md
+                - name: TableView
+                  href: user-interface/controls/tableview.md
+                - name: TimePicker
+                  href: user-interface/controls/timepicker.md
                 - name: TwoPaneView
                   href: user-interface/controls/twopaneview.md
+                - name: WebView
+                  href: user-interface/controls/webview.md
         - name: C# markup
           href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
