@@ -58,7 +58,7 @@ The <xref:System.Environment.GetFolderPath%2A> API returns the path to the syste
 | `UserProfile`                        | $HOME                             | $HOME                         |
 | `Windows`                            |                                   |                               |
 
-The returned system paths for `ApplicationData`, `Desktop`, `DesktopDirectory`, `Fonts`, `LocalApplicationData`, `MyMusic`, `MyPictures`, `MyVideos`, `ProgramFiles`, `System`, `Templates` differ beween macOS and Mac Catalyst. This is because by design Mac Catalyst matches the behavior of iOS.
+The returned system paths for `ApplicationData`, `Desktop`, `DesktopDirectory`, `Fonts`, `LocalApplicationData`, `MyMusic`, `MyPictures`, `MyVideos`, `ProgramFiles`, `System`, and `Templates` differ between macOS and Mac Catalyst. This is because by design Mac Catalyst matches the behavior of iOS.
 
 > [!IMPORTANT]
 > The `$HOME` path differs between apps which have the App Sandbox capability enabled or disabled. In a sandboxed environment `$HOME` resolves to `/Users/<username>/Library/Containers/<bundle-id>/Data`, while in a non-sandboxed environment it resolves to `/Users/<username>`. For more information about capabilities, see [Mac Catalyst capabilities](~/mac-catalyst/capabilities.md).
