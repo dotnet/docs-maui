@@ -52,6 +52,9 @@ public static readonly BindableProperty IsExpandedProperty =
 
 This creates a <xref:Microsoft.Maui.Controls.BindableProperty> instance named `IsExpandedProperty`, of type `bool`. The property is owned by the `Expander` class, and has a default value of `false`.
 
+> [!NOTE]
+> `Expander` is a control in .NET MAUI Community Toolkit. For more information, see [Expander](/dotnet/communitytoolkit/maui/views/expander).
+
 Optionally, when creating a <xref:Microsoft.Maui.Controls.BindableProperty> instance, the following parameters can be specified:
 
 - The binding mode. This is used to specify the direction in which property value changes will propagate. In the default binding mode, changes will propagate from the *source* to the *target*. For more information, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
