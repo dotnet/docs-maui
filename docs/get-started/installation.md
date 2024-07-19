@@ -191,7 +191,7 @@ This is a known issue if you install to `%APPDATA%` on Windows and will be fixed
 ## Known limitations
 
 * Currently, you can't switch the target framework for IntelliSense (it will show syntax highlighting for only the first target framework listed in your .csproj file). This capability is in progress. To get syntax highlighting for other targets (e.g. Android instead of iOS) you can reorder the target frameworks in your project file.
-* XAML and .NET Hot Reload are't currently supported.
+* .NET Hot Reload is currently in preview in the C# Dev Kit.
 
 Please [give us your feedback](#provide-feedback) on other features you'd like to see as we continue building this new experience!
 
