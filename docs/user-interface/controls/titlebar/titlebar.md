@@ -1,5 +1,16 @@
 # Customize the Title bar
 
+The `TitleBar` control makes it easy to create a great, customizable titlebar for your app with the following features:
+
+* Configurable Icon, Title, and Subtitle properties
+* Integrated shell buttons
+* The ability to add a custom control like a search box
+* Automatic hiding and showing of elements based on window width
+* Affordances for showing active or deactive window state
+* Support for default titlebar features including draggable regions in empty areas, theme responsiveness, default caption (min/max/close) buttons, and built-in accessibility support
+
+![Title bar component overview](media/overview.png)
+
 ## Create a default Window
 
 To customize the title bar in your application, you can simply add a `TitleBar` control to a parent `Window` object. However, .NET MAUI automatically handles the creation of the `Window` object, so we must first override how a new `Window` is created.
@@ -155,6 +166,9 @@ If the default components on the `TitleBar` control do not meet your needs, you 
     </ControlTemplate>
  </TitleBar.ControlTemplate>
 ```
+
+> [!NOTE]
+> When overriding the default control template, you must add the interactive elements to the `TitleBar.PassthroughElements` property otherwise they will not recieve input.
 
 ### Title bar visual states
 
