@@ -6,7 +6,7 @@ ms.date: 07/19/2024
 
 # System special folders on Mac Catalyst
 
-The <xref:System.Environment.GetFolderPath> API returns the path to the system special folder that's identified by the specified enumeration. However, its behavior is different between macOS and Mac Catalyst. The following table provides a comparison of the <xref:System.Environment.GetFolderPath> API behavior between macOS and Mac Catalyst for all supported <xref:System.Environment.SpecialFolder> enumeration values:
+The <xref:System.Environment.GetFolderPath%2A> API returns the path to the system special folder that's identified by the specified enumeration. However, its behavior is different between macOS and Mac Catalyst. The following table provides a comparison of the <xref:System.Environment.GetFolderPath%2A> API behavior between macOS and Mac Catalyst for all supported <xref:System.Environment.SpecialFolder> enumeration values:
 
 | Environment.SpecialFolder Enum value | Returned path on macOS            | Returned path on Mac Catalyst |
 |--------------------------------------|-----------------------------------|-------------------------------|
