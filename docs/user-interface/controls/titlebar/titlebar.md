@@ -31,11 +31,11 @@ namespace TitlebarSample;
 
 public partial class MainWindow : Window
 {
-	public MainWindow(Page page)
-	{
-		InitializeComponent();
+    public MainWindow(Page page)
+    {
+        InitializeComponent();
         Page = page;
-	}
+    }
 }
 ```
 
