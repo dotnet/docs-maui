@@ -139,4 +139,4 @@ This setting shows all detailed warnings, instead of collapsing them to a single
 
 ## See also
 
-- [ILLink](https://github.com/dotnet/linker/tree/main/docs)
+- [ILLink](https://learn.microsoft.com/en-us/dotnet/core/deploying/trimming/trimming-options?pivots=dotnet-8-0)
