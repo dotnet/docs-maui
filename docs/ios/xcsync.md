@@ -17,7 +17,7 @@ Supported file types include:
 
 #### How to use Xcsync
 
-The tool has 2 commands right now: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET.<br />
+The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET.<br />
 Xcsync can be invoked via a dotnet build target, like so:
 ```dotnet build /t:xcsync-generate``` or ```dotnet build /t:xcsync-sync```
 
@@ -29,7 +29,7 @@ You can customize several things regarding the tool's functionality like where t
 
 #### Known issues
 
-* The addition of Xcsync to the workload as it is now has made it quite large. In the next release, we plan to optimize how intermediate dependencies are included and make the workload size more manageable.
+* The addition of Xcsync to the workload has increased the overall install and download size of the workloads significantly. In the next release, we plan decrease the overall installed and download workload size by 75% or more.
 * When invoking the tool via the dotnet command with a higher verbosity, the xcsync command might generate some extra output in the logs regarding a compatible .NET SDK not being found. Please disregard this extraneous output, the tool will still execute successfully.
 * Using an invalid value for the --verbosity, -v results in a runtime exception instead of the proper help message.
 
