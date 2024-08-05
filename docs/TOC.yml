@@ -43,6 +43,8 @@
               href: ios/pair-to-mac.md
             - name: Remote iOS simulator for Windows
               href: ios/remote-simulator.md
+            - name: Xcsync for .NET MAUI
+              href: ios/xcsync.md
         - name: macOS
           items:
             - name: Build a Mac Catalyst app with .NET CLI
