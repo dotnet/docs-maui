@@ -1,12 +1,19 @@
 ---
-title: Xcsync for .NET MAUI
+title: Xcode Sync (xcsync) for .NET MAUI
 description: [Xcsync is designed to provide .NET developers with improved support for editing Apple specific files]
 author: haritha-mohan, mcumming
 ms.date: [08/05/2024]
 ---
-# Xcsync: improved support for Apple development via .NET
+# Xcode Sync (Xcsync)
 
-Xcsync is a tool designed to provide developers using the .NET MAUI/.NET Apple SDKs have improved support for editing Apple specific files, such as storyboards and assets. The tool generates a temporary Xcode project from a .NET project, monitors both for changes, and synchronizes the changes between them.
+Xcsync is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
+
+Supported file types include:
+
+- Asset Catalogue
+- Plist
+- Storyboard
+- Xib
 
 #### How to use Xcsync
 
@@ -23,7 +30,7 @@ You can customize several things regarding the tool's functionality like where t
 #### Known issues
 
 * The addition of Xcsync to the workload as it is now has made it quite large. In the next release, we plan to optimize how intermediate dependencies are included and make the workload size more manageable.
-* When invoking the tool via the dotnet command with a higher verbosity, the xcsync command might generate some extra output in the logs regarding a compatible .NET SDK not being found. Please disregard this extraneous output, the tool will still execute successfully
+* When invoking the tool via the dotnet command with a higher verbosity, the xcsync command might generate some extra output in the logs regarding a compatible .NET SDK not being found. Please disregard this extraneous output, the tool will still execute successfully.
 * Using an invalid value for the --verbosity, -v results in a runtime exception instead of the proper help message.
 
 - - - -
