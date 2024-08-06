@@ -6,7 +6,9 @@ ms.date: [08/05/2024]
 ---
 # Xcode Sync (Xcsync)
 
-Xcsync is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
+**This article applies to:** ✔️ .NET Core 9 Preview 7 SDK and later versions
+
+Xcode Sync (Xcsync) is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
 
 Supported file types include:
 
@@ -15,27 +17,69 @@ Supported file types include:
 - Storyboard
 - Xib
 
-#### How to use Xcsync
+The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET. You can also add the xcsync tool path to your PATH environment variable to invoke the tool directly as a more seamless dotnet command.
 
-The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET.<br />
-Xcsync can be invoked via a dotnet build target, like so:
-```dotnet build /t:xcsync-generate``` or ```dotnet build /t:xcsync-sync```
+## Synopsis
 
-You can also add the xcsync tool path to your PATH environment variable to invoke the tool directly as a more seamless dotnet command.
+### xcsync-generate
 
-You can customize several things regarding the tool's functionality like where the temporary Xcode project will be generated, if you would like to open the Xcode project upon being generated, how verbose you would like the logging output to be. Run ```xcsync [generate/sync] -h``` to learn more.
+```dotnetcli
+dotnet build /t:xcsync-generate [-p|--project <PROJECT>]
+    [-tfm|--target-framework-moniker <FRAMEWORK>]
+    [-t|--target <TARGET_DIRECTORY>] [-f|--force [true|false]]
+    [-o|--open [true|false]]
+    [-v|--verbosity <LEVEL>]
+    [-d|--dotnet-path <.NET_SDK_PATH>]
 
-- - - -
+dotnet build /t:xcsync-generate -?|-h|--help
+```
 
-#### Known issues
+### xcsync-sync
 
-* The addition of Xcsync to the workload has increased the overall install and download size of the workloads significantly. In the next release, we plan decrease the overall installed and download workload size by 75% or more.
-* When invoking the tool via the dotnet command with a higher verbosity, the xcsync command might generate some extra output in the logs regarding a compatible .NET SDK not being found. Please disregard this extraneous output, the tool will still execute successfully.
-* Using an invalid value for the --verbosity, -v results in a runtime exception instead of the proper help message.
+```dotnetcli
+dotnet build /t:xcsync-sync [-p|--project <PROJECT>]
+    [-tfm|--target-framework-moniker <FRAMEWORK>]
+    [-t|--target <TARGET_DIRECTORY>]
+    [-v|--verbosity <LEVEL>]
+    [-d|--dotnet-path <.NET_SDK_PATH>]
 
-- - - -
+dotnet build /t:xcsync-sync -?|h|--help
+```
 
-#### Next steps:
+### Arguments
 
-* A watch command will be added so that the generate and sync commands do not have to be called explicitly each time and changes between your .NET project and the corresponding Xcode project will be tracked more seamlessly.
-* We plan to integrate this tool as part of the .NET MAUI extension for VS Code for a better user experience
+- **`-p|--project <PROJECT>`**
+  The .NET project file to build. This is **required**.
+
+### Options
+
+These are optional; if not specified, the default value will be used.
+
+- **`-tfm|--target-framework-moniker <FRAMEWORK>`**
+  Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple tfms (for example, a standard MAUI project). If a single platform project, the default value will be the single tfm specified in the project file.
+- **`-t|--target <TARGET_DIRECTORY>`**
+  Directory in which to place the generated Xcode project. Default path is `./obj/xcode`
+- **`-f|--force [true|false]`**
+  Forces target directory to be overidden. Default value is `true`.
+- **`-o|--open [true|false]`**
+  Opens Xcode project. Default value is `false`.
+- **`-v|--verbosity <LEVEL>`**
+  Sets verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. Default value is `Normal`.
+- **`-d|--dotnet-path <.NET_SDK_PATH>`**
+  Sets the path to the .NET SDK to use. Default path is parent process if `dotnet`; otherwise, will use `dotnet` on the PATH environment variable.
+- **`-?|-h|--help`**
+  Prints out a description of how to use the command.
+
+### Examples
+
+- Generate and open a Xcode project for a MAUI project that supports .net9.0-ios
+
+  ```dotnetcli
+  dotnet build /t:xcsync-generate --project "path/to/maui.csproj" -tfm "net9.0-ios -o"
+  ```
+
+- Sync changes from a generated Xcode project in the default location (./obj/xcode) back to a .NET macOS project
+
+  ```dotnetcli
+  dotnet build /t:xcsync-sync --project "path/to/macOS.csproj"
+  ```
