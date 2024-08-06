@@ -38,19 +38,6 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI c
 > [!NOTE]
 > Building apps for iOS and macOS requires a Mac.
 
-### Cross-platform APIs for device features
-
-.NET MAUI provides cross-platform APIs for native device features. Examples of functionality provided by .NET MAUI for accessing device features includes:
-
-- Access to sensors, such as the accelerometer, compass, and gyroscope on devices.
-- Ability to check the device's network connectivity state, and detect changes.
-- Provide information about the device the app is running on.
-- Copy and paste text to the system clipboard, between apps.
-- Pick single or multiple files from the device.
-- Store data securely as key/value pairs.
-- Utilize built-in text-to-speech engines to read text from the device.
-- Initiate browser-based authentication flows that listen for a callback to a specific app registered URL.
-
 ### Single project
 
 .NET MAUI single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
