@@ -12,7 +12,7 @@ Xcode Sync (Xcsync) is a tool that enables developers to leverage Xcode for mana
 
 Supported file types include:
 
-- Asset Catalogue
+- Asset Catalog
 - Plist
 - Storyboard
 - Xib
