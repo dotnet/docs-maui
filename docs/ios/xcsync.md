@@ -24,51 +24,46 @@ The tool has 2 commands: generate and sync. Use generate for tracking your chang
 ### xcsync-generate
 
 ```dotnetcli
-dotnet build /t:xcsync-generate [-p|--project <PROJECT>]
-    [-tfm|--target-framework-moniker <FRAMEWORK>]
-    [-t|--target <TARGET_DIRECTORY>] [-f|--force [true|false]]
-    [-o|--open [true|false]]
-    [-v|--verbosity <LEVEL>]
-    [-d|--dotnet-path <.NET_SDK_PATH>]
+dotnet build /t:xcsync-generate /p:<XCSYNC_PROPERTY>=<Value>
 
-dotnet build /t:xcsync-generate -?|-h|--help
+Parameters:
+  <XCSYNC_PROPERTY> ::= xcSyncProjectFile | xcSyncXcodeFolder | xcSyncTargetFrameworkMoniker | xcSyncVerbosity
+
+  <xcSyncProjectFile> ::=<PROJECT>
+  <xcSyncXcodeFolder> ::=<TARGET_XCODE_DIRECTORY>
+  <xcSyncTargetFrameworkMoniker> ::=<FRAMEWORK>
+  <xcSyncVerbosity> ::=<LEVEL>
 ```
 
 ### xcsync-sync
 
 ```dotnetcli
-dotnet build /t:xcsync-sync [-p|--project <PROJECT>]
-    [-tfm|--target-framework-moniker <FRAMEWORK>]
-    [-t|--target <TARGET_DIRECTORY>]
-    [-v|--verbosity <LEVEL>]
-    [-d|--dotnet-path <.NET_SDK_PATH>]
+dotnet build /t:xcsync-sync /p:<XCSYNC_PROPERTY>=<Value>
 
-dotnet build /t:xcsync-sync -?|h|--help
+Parameters:
+  <XCSYNC_PROPERTY> ::= xcSyncProjectFile | xcSyncXcodeFolder | xcSyncTargetFrameworkMoniker | xcSyncVerbosity
+
+  <xcSyncProjectFile> ::=<PROJECT>
+  <xcSyncXcodeFolder> ::=<TARGET_XCODE_DIRECTORY>
+  <xcSyncTargetFrameworkMoniker> ::=<FRAMEWORK>
+  <xcSyncVerbosity> ::=<LEVEL>
 ```
 
 ### Arguments
 
-- **`-p|--project <PROJECT>`**
-  The .NET project file to build. This is **required**.
+- **`/p:<xcSyncProjectFile>=<PROJECT>`**
+  The project file to build. This is **required**. Allowed values are MAUI project files or a project file that targets a supported platform (iOS, tvOS, macOS, MacCatalyst).
 
 ### Options
 
 These are optional; if not specified, the default value will be used.
 
-- **`-tfm|--target-framework-moniker <FRAMEWORK>`**
+- **`/p:<xcSyncTargetFrameworkMoniker>=<FRAMEWORK>`**
   Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
-- **`-t|--target <TARGET_DIRECTORY>`**
+- **`/p:<xcSyncXcodeFolder>=<TARGET_XCODE_DIRECTORY>`**
   Directory in which to place the generated Xcode project. Default path is `./obj/xcode`
-- **`-f|--force [true|false]`**
-  Forces target directory to be overidden. Default value is `true`.
-- **`-o|--open [true|false]`**
-  Opens Xcode project. Default value is `false`.
-- **`-v|--verbosity <LEVEL>`**
+- **`/p:<xcSyncVerbosity>=<LEVEL>`**
   Sets verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. Default value is `Normal`.
-- **`-d|--dotnet-path <.NET_SDK_PATH>`**
-  Sets the path to the .NET SDK to use. Default path is parent process if `dotnet`; otherwise, will use `dotnet` on the PATH environment variable.
-- **`-?|-h|--help`**
-  Prints out a description of how to use the command.
 
 ### Examples
 
