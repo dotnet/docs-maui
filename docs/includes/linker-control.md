@@ -136,7 +136,3 @@ Trim analysis produces at most one warning for each assembly that comes from a `
 ```
 
 This setting shows all detailed warnings, instead of collapsing them to a single warning per assembly.
-
-## See also
-
-- [ILLink](https://github.com/dotnet/linker/tree/main/docs)
