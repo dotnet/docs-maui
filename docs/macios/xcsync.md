@@ -17,7 +17,7 @@ Supported file types include:
 - Storyboard
 - Xib
 
-The tool has 2 commands: generate and sync. Use generate to create an Xcode project from a .NET project and sync to bring changes in the Xcode project back to the .NET project.
+The tool has 2 commands: `generate` and `sync`. Use `generate` to create an Xcode project from a .NET project and `sync` to bring changes in the Xcode project back to the .NET project.
 
 ## Synopsis
 
