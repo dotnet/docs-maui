@@ -282,7 +282,6 @@ The following XAML example shows how to define a visual state for the `Pressed` 
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup x:Name="CommonStates">
             <VisualState x:Name="PointerOver" />
-            <VisualState x:Name="Focused" />
             <VisualState x:Name="Normal">
                 <VisualState.Setters>
                     <Setter Property="Scale"
@@ -299,11 +298,11 @@ The following XAML example shows how to define a visual state for the `Pressed` 
     </VisualStateManager.VisualStateGroups>
 </Button>
 ```
-> [!IMPORTANT]
-> For a Button to return to its Normal state, the user has to define blank `Focused` and `PointerOver` state
-<xref:Microsoft.Maui.Controls.Button>must have its `IsEnabled` property set to `true` for it to respond to taps.
 
 In this example, the `Pressed` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.Button> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.Button> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.Button> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.Button> is released, it's rescaled to its default size.
+
+> [!IMPORTANT]
+> For a Button to return to its `Normal` state the `VisualStateGroup` must also define a `PointerOver` state. If you use the styles `ResourceDictionary` created by the .NET MAUI app project template, you'll already have an implicit `Button` style that defines the `PointerOver` state.
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
