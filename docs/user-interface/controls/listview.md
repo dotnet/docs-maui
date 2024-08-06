@@ -24,7 +24,7 @@ The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Ce
 - `Header`, of type `object`, specifies the string or view that will be displayed at the start of the list.
 - `HeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Header`.
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the horizontal scroll bar will be visible.
-- `IsGroupedEnabled`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
+- `IsGroupingEnabled`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
 - `IsPullToRefreshEnabled`, of type `bool`, indicates whether the user can swipe down to cause the <xref:Microsoft.Maui.Controls.ListView> to refresh its data. The default value of this property is `false`.
 - `IsRefreshing`, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.ListView> is currently refreshing. The default value of this property is `false`.
 - `RefreshCommand`, of type <xref:System.Windows.Input.ICommand>, represents the command that will be executed when a refresh is triggered.
