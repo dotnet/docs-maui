@@ -31,7 +31,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Jul
 
 ### Updated articles
 
-- [CheckBox](../user-interface/controls/checkbox.md) - Insert VisualStateGroupList
+- [CheckBox](../user-interface/controls/checkbox.md)
 
 ## Community contributors
 
