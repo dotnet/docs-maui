@@ -1,12 +1,12 @@
 ---
-title: Xcode Sync (xcsync) for .NET MAUI
-description: [Xcsync is designed to provide .NET developers with improved support for editing Apple specific files]
+title: Xcode Sync
+description: Xcsync is designed to provide .NET developers with improved support for editing Apple specific files
 author: haritha-mohan, mcumming
-ms.date: [08/05/2024]
+ms.author: harithamohan, mcumming
+ms.date: 08/05/2024
+monikerRange: ">=net-maui-9.0"
 ---
 # Xcode Sync (Xcsync)
-
-**This article applies to:** ✔️ .NET Core 9 Preview 7 SDK and later versions
 
 Xcode Sync (Xcsync) is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
 
