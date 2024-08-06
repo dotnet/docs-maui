@@ -17,7 +17,7 @@ Supported file types include:
 - Storyboard
 - Xib
 
-The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET. You can also add the xcsync tool path to your PATH environment variable to invoke the tool directly as a more seamless dotnet command.
+The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET.
 
 ## Synopsis
 
@@ -56,7 +56,7 @@ dotnet build /t:xcsync-sync -?|h|--help
 These are optional; if not specified, the default value will be used.
 
 - **`-tfm|--target-framework-moniker <FRAMEWORK>`**
-  Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple tfms (for example, a standard MAUI project). If a single platform project, the default value will be the single tfm specified in the project file.
+  Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
 - **`-t|--target <TARGET_DIRECTORY>`**
   Directory in which to place the generated Xcode project. Default path is `./obj/xcode`
 - **`-f|--force [true|false]`**
@@ -72,7 +72,7 @@ These are optional; if not specified, the default value will be used.
 
 ### Examples
 
-- Generate and open a Xcode project for a MAUI project that supports .net9.0-ios
+- Generate and open a Xcode project for a MAUI project that supports the `net9.0-ios` [TFM](https://learn.microsoft.com/en-us/dotnet/standard/frameworks).
 
   ```dotnetcli
   dotnet build /t:xcsync-generate --project "path/to/maui.csproj" -tfm "net9.0-ios -o"
