@@ -18,16 +18,16 @@ By default, you don't need to save your XAML file to see the results of your edi
 XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices. In all cases, XAML Hot Reload requires your debug configuration to be named `Debug`.
 
 > [!IMPORTANT]
-> XAML Hot Reload doesn't reload C# code. If you add a new event handler in code, it can only be used in XAML after code is hot reloaded. Also, if you add a new XAML element with an x:Name, the name cannot be used in code until code is hot reloaded.
+> XAML Hot Reload doesn't reload C# code. If you add a new event handler in code, it can only be used in XAML after the code is reloaded. In addition, if you add a new XAML element with an `x:Name`, the name cannot be used in code until the code is reloaded.
 
 <!-- XAML Hot Reload does work in collaboration with C# Hot Reload, but there's no official doc to link to, to explain the limitations. -->
 
-## MAUI Full Page Reload
+## Full page reload
 
-There may be cases where XAML Hot Reload doesn't update the running app as expected. For example, you could change a color property on a MAUI control, but not see the color change in the running app. To work around issues like that, you can fully reload the XAML file by clicking the Hot Reload toolbar button (the keyboard shortcut is Alt+F10 by default). Only XAML files that have been edited will be reloaded. The exception is if you change a ResourceDictionary file, in which case all XAML files will be reloaded in order to apply new resources.
+There may be cases where XAML Hot Reload doesn't update the running app as expected. For example, you might change a color property on a .NET MAUI control but not see the color change in the running app. To work around such issues you can fully reload the XAML file by clicking the Hot Reload toolbar button, or pressing <kbd>Alt+F10</kbd>. Only XAML files that have been edited will be reloaded. The exception to this is if you change a resource dictionary file, in which case all XAML files will be reloaded in order to apply new resources.
 
 > [!IMPORTANT]
-> When XAML is reloaded, some UI state may be lost, such as current focus and selection.
+> When XAML is reloaded some UI state may be lost, such as current focus and selection.
 
 ## Enable XAML Hot Reload
 
