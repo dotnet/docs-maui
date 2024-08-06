@@ -24,29 +24,21 @@ The tool has 2 commands: `generate` and `sync`. Use `generate` to create an Xcod
 ### xcsync-generate
 
 ```dotnetcli
-dotnet build /t:xcsync-generate /p:<XCSYNC_PROPERTY>=<Value>
-
-Parameters:
-  <XCSYNC_PROPERTY> ::= xcSyncProjectFile | xcSyncXcodeFolder | xcSyncTargetFrameworkMoniker | xcSyncVerbosity
-
-  xcSyncProjectFile ::=<PROJECT>
-  xcSyncXcodeFolder ::=<TARGET_XCODE_DIRECTORY>
-  xcSyncTargetFrameworkMoniker ::=<FRAMEWORK>
-  xcSyncVerbosity ::=<LEVEL>
+dotnet build /t:xcsync-generate
+    /p:xcSyncProjectFile=<PROJECT>
+    /p:xcSyncXcodeFolder=<TARGET_XCODE_DIRECTORY>
+    /p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>
+    /p:xcSyncVerbosity=<LEVEL>
 ```
 
 ### xcsync-sync
 
 ```dotnetcli
-dotnet build /t:xcsync-sync /p:<XCSYNC_PROPERTY>=<Value>
-
-Parameters:
-  <XCSYNC_PROPERTY> ::= xcSyncProjectFile | xcSyncXcodeFolder | xcSyncTargetFrameworkMoniker | xcSyncVerbosity
-
-  xcSyncProjectFile ::=<PROJECT>
-  xcSyncXcodeFolder ::=<TARGET_XCODE_DIRECTORY>
-  xcSyncTargetFrameworkMoniker ::=<FRAMEWORK>
-  xcSyncVerbosity ::=<LEVEL>
+dotnet build /t:xcsync-sync
+    /p:xcSyncProjectFile=<PROJECT>
+    /p:xcSyncXcodeFolder=<TARGET_XCODE_DIRECTORY>
+    /p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>
+    /p:xcSyncVerbosity=<LEVEL>
 ```
 
 ### Arguments
