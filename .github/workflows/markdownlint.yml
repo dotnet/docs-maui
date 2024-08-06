@@ -16,6 +16,9 @@ on:
       - ".github/workflows/markdownlint.yml"
       - ".github/workflows/markdownlint-problem-matcher.json"
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -23,13 +26,13 @@ jobs:
       statuses: write
 
     steps:
-      - uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
-      - name: Use Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
+      - name: Harden Runner
+        uses: step-security/harden-runner@0d381219ddf674d61a7572ddd19d7941e271515c # v2.9.0
         with:
-          node-version: 16.x
-      - name: Run Markdownlint
-        run: |
-          echo "::add-matcher::.github/workflows/markdownlint-problem-matcher.json"
-          npm i -g markdownlint-cli2
-          markdownlint-cli2 "**/*.md"
+          egress-policy: audit
+
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
+        with:
+          config: ".markdownlint-cli2.jsonc"
+          globs: "**/*.md"
