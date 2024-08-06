@@ -141,12 +141,16 @@ The following XAML example shows how to define a visual state for the `Pressed` 
                             Value="0.8" />
                 </VisualState.Setters>
             </VisualState>
+            <VisualState x:Name="PointerOver" />            
         </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
 </ImageButton>
 ```
 
 In this example, the `Pressed` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.ImageButton> is released, it's rescaled to its default size.
+
+> [!IMPORTANT]
+> For an <xref:Microsoft.Maui.Controls.ImageButton> to return to its `Normal` state the `VisualStateGroup` must also define a `PointerOver` state. If you use the styles `ResourceDictionary` created by the .NET MAUI app project template, you'll already have an implicit `ImageButton` style that defines the `PointerOver` state.
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 

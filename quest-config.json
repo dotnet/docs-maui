@@ -26,10 +26,22 @@
       {
           "Label": "doc-bug",
           "ParentNodeId": 233465
+      },
+      {
+          "Label": "sfi-ropc",
+          "ParentNodeId": 271716
+      },
+      {
+          "Label": "sfi-admin",
+          "ParentNodeId": 271716
       }
     ],
     "DefaultParentNode": 227487,
     "WorkItemTags": [
+        {
+            "Label": ":checkered_flag: Release: .NET 9",
+            "Tag": "new-feature"
+        },
         {
             "Label": "okr-curation",
             "Tag": "content-curation"
