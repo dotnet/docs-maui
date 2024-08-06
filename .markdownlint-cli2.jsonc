@@ -62,6 +62,13 @@
         "MD051": false
     },
     "ignores": [
-        ".github/"
+        ".github/",
+        "README.md",
+        "CONTRIBUTING.md",
+        "SUPPORT.md",
+        "ThirdPartyNotices.md",
+        "SECURITY.md",
+        "CODE_OF_CONDUCT.md",
+        "issues-policy.md"
     ]
 }
