@@ -252,6 +252,35 @@ Therefore, when the <xref:Microsoft.Maui.Controls.CollectionView> appears, the s
 
 The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`. When either of these properties are cleared, the `SelectionChanged` event is raised with an empty `CurrentSelection` property, and the `SelectionChangedCommand` is executed.
 
+## Handle reselection
+
+A common scenario is that users will select an item in the `CollectionView` and then navigate to another page. When they navigate back the item is still selected, which will result in them being unable to reselect the given item. To enable reselection you should  clear the item selection on the `CollectionView`:
+
+```xaml
+<CollectionView ...
+                SelectionChanged="OnCollectionViewSelectionChanged" />
+```
+
+The equivalent C# code is:
+
+```csharp
+CollectionView collectionView = new CollectionView();
+collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
+```
+
+The following example shows the event handler code for the `SelectionChanged` event:
+
+```csharp
+void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    var cv = (CollectionView)sender;
+    if (cv.SelectedItem == null)
+        return;
+
+    cv.SelectedItem = null;
+}
+```
+
 ## Change selected item color
 
 <xref:Microsoft.Maui.Controls.CollectionView> has a `Selected` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the selected item in the <xref:Microsoft.Maui.Controls.CollectionView>. A common use case for this <xref:Microsoft.Maui.Controls.VisualState> is to change the background color of the selected item, which is shown in the following XAML example:
@@ -340,33 +369,3 @@ When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft
 
 > [!NOTE]
 > When an item has been selected and the `SelectionMode` property is changed from `Single` to `None`, the `SelectedItem` property will be set to `null` and the `SelectionChanged` event will be fired with an empty `CurrentSelection` property.
-
-## Handle a reselection
-
-A common scenario is that users will select something and then navigate away. Once they navigate back the element is still selected which will result in users being unable to reselect the given item. To enable reselect you can clear the item selection on the collection view.
-
-```xaml
-<CollectionView ...
-                SelectionChanged="OnCollectionViewSelectionChanged" />
-```
-
-The equivalent C# code is:
-
-```csharp
-CollectionView collectionView = new CollectionView();
-collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
-```
-
-```csharp
-void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
-{
-    var cv = (CollectionView)sender;
-    if (cv.SelectedItem == null)
-        return;
-
-    cv.SelectedItem = null;
-}
-```
-
-
-
