@@ -18,9 +18,16 @@ By default, you don't need to save your XAML file to see the results of your edi
 XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices. In all cases, XAML Hot Reload requires your debug configuration to be named `Debug`.
 
 > [!IMPORTANT]
-> XAML Hot Reload doesn't reload C# code, including event handlers.
+> XAML Hot Reload doesn't reload C# code. If you add a new event handler in code, it can only be used in XAML after the code is reloaded. In addition, if you add a new XAML element with an `x:Name`, the name cannot be used in code until the code is reloaded.
 
 <!-- XAML Hot Reload does work in collaboration with C# Hot Reload, but there's no official doc to link to, to explain the limitations. -->
+
+## Full page reload
+
+There may be cases where XAML Hot Reload doesn't update the running app as expected. For example, you might change a color property on a .NET MAUI control but not see the color change in the running app. To work around such issues you can fully reload the XAML file by clicking the Hot Reload toolbar button, or pressing <kbd>Alt+F10</kbd>. Only XAML files that have been edited will be reloaded. The exception to this is if you change a resource dictionary file, in which case all XAML files will be reloaded in order to apply new resources.
+
+> [!IMPORTANT]
+> When XAML is reloaded some UI state may be lost, such as current focus and selection.
 
 ## Enable XAML Hot Reload
 
@@ -54,7 +61,7 @@ XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual 
 
 ## Troubleshooting
 
-The XAML Hot Reload output displays status messages that can help with troubleshooting. In Visual Studio, these can be displayed by selecting **View > Output** from the menu bar, and then selecting **Xamarin Hot Reload** in the **Show output from:** drop-down. In Visual Studio for Mac, these can be displayed by hovering your mouse cursor over **XAML Hot Reload** in the status bar.
+The XAML Hot Reload output displays status messages that can help with troubleshooting. In Visual Studio, these can be displayed by selecting **View > Output** from the menu bar, and then selecting **Hot Reload** in the **Show output from:** drop-down. In Visual Studio for Mac, these can be displayed by hovering your mouse cursor over **XAML Hot Reload** in the status bar.
 
 If XAML Hot Reload fails to initialize you should ensure that you're using the latest version of .NET MAUI, the latest version of the IDE, and that your iOS linker settings are set to **Don't Link** in the project's build settings.
 
