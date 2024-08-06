@@ -17,7 +17,7 @@ Supported file types include:
 - Storyboard
 - Xib
 
-The tool has 2 commands: generate and sync. Use generate for tracking your changes from your .NET to Xcode and sync for tracking your changes from Xcode to .NET.
+The tool has 2 commands: generate and sync. Use generate to create an Xcode project from a .NET project and sync to bring changes in the Xcode project back to the .NET project.
 
 ## Synopsis
 
@@ -52,11 +52,11 @@ Parameters:
 ### Arguments
 
 - **`/p:xcSyncProjectFile=<PROJECT>`**
-  The project file to build. This is **required**. Allowed values are MAUI project files or a project file that targets a supported platform (iOS, tvOS, macOS, MacCatalyst).
+  The project file to build. Supported project types are .NET MAUI projects or any .NET project that targets a supported platform (iOS, tvOS, macOS, MacCatalyst).
 
 ### Options
 
-These are optional; if not specified, the default value will be used.
+The following options allow you to change the default behavior of the tool.
 
 - **`/p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>`**
   Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
