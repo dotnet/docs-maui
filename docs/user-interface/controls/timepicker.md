@@ -1,7 +1,7 @@
 ---
 title: "TimePicker"
 description: "The .NET MAUI TimePicker is a view that allows the user to select a time."
-ms.date: 02/09/2022
+ms.date: 08/07/2024
 ---
 
 # TimePicker
@@ -20,8 +20,18 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePic
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
+::: moniker range="=net-maui-8.0"
+
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.TimePicker> doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add an event handler for the `PropertyChanged` event.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+In addition, <xref:Microsoft.Maui.Controls.TimePicker> defines a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
+
+::: moniker-end
 
 ## Create a TimePicker
 
