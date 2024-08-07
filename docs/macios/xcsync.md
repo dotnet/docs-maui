@@ -59,19 +59,19 @@ The following options allow you to change the default behavior of the tool.
 
 ### Examples
 
-- Generate and open a Xcode project for .NET MAUI project that uses the project file in the current directory that supports the `net9.0-ios` [TFM](https://learn.microsoft.com/dotnet/standard/frameworks)
+- Generate and open a Xcode project for .NET MAUI project that uses the project file in the current directory that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
 
     ```dotnetcli
     dotnet build /t:xcsync-generate /p:xcSyncTargetFrameworkMoniker=net9.0-ios
     ```
 
-- Generate and open a Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](https://learn.microsoft.com/dotnet/standard/frameworks)
+- Generate and open a Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
 
   ```dotnetcli
   dotnet build /t:xcsync-generate /p:xcSyncProjectFile=path/to/maui.csproj /p:xcSyncTargetFrameworkMoniker=net9.0-ios
   ```
 
-- Sync changes from a generated Xcode project in the default location (./obj/xcode) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](https://learn.microsoft.com/dotnet/standard/frameworks)
+- Sync changes from a generated Xcode project in the default location (./obj/xcode) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
 
   ```dotnetcli
   dotnet build /t:xcsync-sync /p:xcSyncProjectFile=path/to/maui.csproj /p:xcSyncTargetFrameworkMoniker=net9.0-ios
