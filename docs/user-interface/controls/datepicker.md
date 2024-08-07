@@ -27,7 +27,7 @@ All eight properties are backed by <xref:Microsoft.Maui.Controls.BindablePropert
 
 The <xref:Microsoft.Maui.Controls.DatePicker> ensures that `Date` is between `MinimumDate` and `MaximumDate`, inclusive. If `MinimumDate` or `MaximumDate` is set so that `Date` is not between them, <xref:Microsoft.Maui.Controls.DatePicker> will adjust the value of `Date`.
 
-The <xref:Microsoft.Maui.Controls.DatePicker> fires a `DateSelected` event when the user selects a date.
+The <xref:Microsoft.Maui.Controls.DatePicker> raises a `DateSelected` event when the user selects a date.
 
 ## Create a DatePicker
 
