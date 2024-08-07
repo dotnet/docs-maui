@@ -29,7 +29,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 
 ::: moniker range=">=net-maui-9.0"
 
-In addition, <xref:Microsoft.Maui.Controls.TimePicker> defines a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
+In addition, <xref:Microsoft.Maui.Controls.TimePicker> defines a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <xref:Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
 
 ::: moniker-end
 
