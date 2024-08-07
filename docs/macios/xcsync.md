@@ -1,8 +1,8 @@
 ---
 title: Xcode Sync
 description: Xcsync is designed to provide .NET developers with improved support for editing Apple specific files
-author: haritha-mohan; mcumming
-ms.author: harithamohan; mcumming
+author: haritha-mohan
+ms.author: harithamohan
 ms.date: 08/05/2024
 monikerRange: ">=net-maui-9.0"
 ---
