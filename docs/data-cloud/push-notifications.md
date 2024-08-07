@@ -2,7 +2,7 @@
 title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service"
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.topic: "tutorial"
-ms.date: 07/15/2024
+ms.date: 08/07/2024
 
 #customer intent: As a developer, I want to be able to send notifications to .NET MAUI apps to alert users to important information.
 ---
@@ -1494,30 +1494,6 @@ To configure your .NET MAUI app on Android to receive and process push notificat
 
     For more information about this permission, see [Notification runtime permission](https://developer.android.com/develop/ui/views/notifications/notification-permission) on developer.android.com.
 
-1. In Visual Studio, add a class named `PushNotificationPermission` to the *Platforms/Android* folder, and replace its code with the following code:
-
-    ```csharp
-    using Android;
-
-    namespace PushNotificationsDemo.Platforms.Android;
-
-    public class PushNotificationPermission : Permissions.BasePlatformPermission
-    {
-        public override (string androidPermission, bool isRuntime)[] RequiredPermissions
-        {
-            get
-            {
-                var result = new List<(string androidPermission, bool isRuntime)>();
-                if (OperatingSystem.IsAndroidVersionAtLeast(33))
-                    result.Add((Manifest.Permission.PostNotifications, true));
-                return result.ToArray();
-            }
-        }
-    }
-    ```
-
-    This class implements a permission class that checks for the `POST_NOTIFICATIONS` permission declaration at runtime.
-
 1. In Visual Studio, open *MainPage.xaml.cs* and add the following code to the `MainPage` class:
 
     ```csharp
@@ -1526,7 +1502,7 @@ To configure your .NET MAUI app on Android to receive and process push notificat
             {
                 base.OnAppearing();
 
-                PermissionStatus status = await Permissions.RequestAsync<PushNotificationsDemo.Platforms.Android.PushNotificationPermission>();
+                PermissionStatus status = await Permissions.RequestAsync<Permissions.PostNotifications>();
             }
     #endif
     ```
