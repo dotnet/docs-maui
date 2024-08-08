@@ -1,24 +1,24 @@
 ---
-title: Xcode Sync
-description: Xcsync is designed to provide .NET developers with improved support for editing Apple specific files
+title: Xcode sync
+description: Learn how to use Xcsync, to provide .NET developers with improved support for editing Apple specific files.
 author: haritha-mohan
 ms.author: harithamohan
 ms.date: 08/05/2024
 monikerRange: ">=net-maui-9.0"
 no-loc: [ "xcsync" ]
 ---
-# Xcode Sync (Xcsync)
+# Xcode sync (xcsync)
 
-Xcode Sync (Xcsync) is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
+Xcode sync (xcsync) is a tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
 
 Supported file types include:
 
-- Asset Catalog
+- Asset catalog
 - Plist
 - Storyboard
 - Xib
 
-The tool has 2 commands: `generate` and `sync`. Use `generate` to create an Xcode project from a .NET project and `sync` to bring changes in the Xcode project back to the .NET project.
+The tool has two commands: `generate` and `sync`. Use `generate` to create an Xcode project from a .NET project and `sync` to bring changes in the Xcode project back to the .NET project.
 
 ## Synopsis
 
@@ -50,7 +50,7 @@ dotnet build /t:xcsync-sync
 
 ### Options
 
-The following options allow you to change the default behavior of the tool.
+The following options allow you to change the default behavior of the tool:
 
 - **`/p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>`**
 
@@ -66,19 +66,19 @@ The following options allow you to change the default behavior of the tool.
 
 ### Examples
 
-- Generate and open a Xcode project for .NET MAUI project that uses the project file in the current directory that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
+- Generate and open a Xcode project for .NET MAUI project that uses the project file in the current directory that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     dotnet build /t:xcsync-generate /p:xcSyncTargetFrameworkMoniker=net9.0-ios
     ```
 
-- Generate and open a Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
+- Generate and open a Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     dotnet build /t:xcsync-generate /p:xcSyncProjectFile=path/to/maui.csproj /p:xcSyncTargetFrameworkMoniker=net9.0-ios
     ```
 
-- Sync changes from a generated Xcode project in the default location (./obj/xcode) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks)
+- Sync changes from a generated Xcode project in the default location (*./obj/Xcode*) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     dotnet build /t:xcsync-sync /p:xcSyncProjectFile=path/to/maui.csproj /p:xcSyncTargetFrameworkMoniker=net9.0-ios

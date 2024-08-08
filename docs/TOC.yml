@@ -901,7 +901,7 @@
               href: macios/system-special-folders.md
             - name: Universal links
               href: macios/universal-links.md
-            - name: Xcode Sync
+            - name: Xcode sync
               href: macios/xcsync.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
