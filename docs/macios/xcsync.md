@@ -5,6 +5,7 @@ author: haritha-mohan
 ms.author: harithamohan
 ms.date: 08/05/2024
 monikerRange: ">=net-maui-9.0"
+no-loc: [ "xcsync" ]
 ---
 # Xcode Sync (Xcsync)
 
