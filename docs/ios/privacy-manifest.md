@@ -23,7 +23,7 @@ You'll also need to review your own code, any native code, and data collection a
 > [!NOTE]
 > If your app includes any third-party SDKs or packages, then these third-party components must include their own privacy manifests separately.
 
-For more information about creating a privacy manifest, see [Create a privacy manifest](#create-a-privacy-manifest).
+A privacy manifest is automatically added to new .NET MAUI app projects that are created using .NET CLI or Visual Studio. For information about adding a privacy manifest to an existing .NET MAUI app, see [Add a privacy manifest to an existing app](#add-a-privacy-manifest-to-an-existing-app).
 
 > [!IMPORTANT]
 > The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
@@ -36,9 +36,7 @@ For a dynamic framework, the framework is added to the app bundle. The privacy p
 
 Currently, when binding a static framework, app developers will be required to manually merge the privacy manifest included with the static framework into the app privacy manifest. This is due to how static libraries are linked into the main app binary, removing the need for the framework.
 
-## Create a privacy manifest
-
-A privacy manifest is automatically added to new .NET MAUI app projects that are created using .NET CLI or Visual Studio.
+## Add a privacy manifest to an existing app
 
 To add a privacy manifest to an existing .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
 
