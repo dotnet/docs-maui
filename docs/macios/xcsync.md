@@ -22,6 +22,8 @@ The tool has two commands: `generate` and `sync`. Use `generate` to create an Xc
 
 ## Synopsis
 
+The following examples show the syntax for the generate and sync commands.
+
 ### xcsync-generate
 
 ```dotnetcli
