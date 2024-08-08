@@ -44,18 +44,24 @@ dotnet build /t:xcsync-sync
 ### Arguments
 
 - **`/p:xcSyncProjectFile=<PROJECT>`**
-  The project file to build. Supported project types are .NET MAUI projects or any .NET project that targets a supported platform (iOS, tvOS, macOS, MacCatalyst).
+
+    The project file to build. Supported project types are .NET MAUI projects or any .NET project that targets a supported platform (iOS, tvOS, macOS, MacCatalyst).
 
 ### Options
 
 The following options allow you to change the default behavior of the tool.
 
 - **`/p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>`**
-  Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
+
+    Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
+
 - **`/p:xcSyncXcodeFolder=<TARGET_XCODE_DIRECTORY>`**
-  Directory in which to place the generated Xcode project. Default path is `./obj/xcode`
+
+    Directory in which to place the generated Xcode project. The default path is *./obj/xcode*.
+
 - **`/p:xcSyncVerbosity=<LEVEL>`**
-  Sets verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. Default value is `Normal`.
+
+    Sets the verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. The default value is `Normal`.
 
 ### Examples
 
