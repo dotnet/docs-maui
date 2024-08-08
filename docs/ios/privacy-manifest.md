@@ -1,7 +1,7 @@
 ---
 title: "Apple privacy manifest"
 description: Learn how to include a privacy manifest in your .NET MAUI app on iOS.
-ms.date: 03/19/2024
+ms.date: 08/08/2024
 no-loc: [ "xcframework" ]
 ---
 
@@ -23,7 +23,7 @@ You'll also need to review your own code, any native code, and data collection a
 > [!NOTE]
 > If your app includes any third-party SDKs or packages, then these third-party components must include their own privacy manifests separately.
 
-For more information about creating a privacy manifest, see [Create a privacy manifest](#create-a-privacy-manifest).
+A privacy manifest is automatically added to new .NET MAUI app projects that are created using .NET CLI or Visual Studio. For information about adding a privacy manifest to an existing .NET MAUI app, see [Add a privacy manifest to an existing app](#add-a-privacy-manifest-to-an-existing-app).
 
 > [!IMPORTANT]
 > The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
@@ -36,9 +36,9 @@ For a dynamic framework, the framework is added to the app bundle. The privacy p
 
 Currently, when binding a static framework, app developers will be required to manually merge the privacy manifest included with the static framework into the app privacy manifest. This is due to how static libraries are linked into the main app binary, removing the need for the framework.
 
-## Create a privacy manifest
+## Add a privacy manifest to an existing app
 
-To add a privacy manifest to your .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
+To add a privacy manifest to an existing .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -68,7 +68,7 @@ All .NET MAUI apps that target devices running iOS or iPadOS require a privacy m
 | `NSPrivacyAccessedAPICategorySystemBootTime` | `35F9.1` | [System boot time APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394) |
 | `NSPrivacyAccessedAPICategoryDiskSpace` | `E174.1` | [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) |
 
-To add these entries to your privacy manifest, open the *PrivacyInfo.xcprivacy* file in a text editor and add the `NSPrivacyAccessAPITypes` key, where each required reason API category use will subsequently be added:
+If you've manually added a privacy manifest to an existing .NET MAUI app you'll need to add these entries to it. To do so, open the *PrivacyInfo.xcprivacy* file in a text editor and add the `NSPrivacyAccessAPITypes` key, where each required reason API category use will subsequently be added:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
