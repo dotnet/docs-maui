@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 09/26/2022
+ms.date: 08/30/2024
 ---
 
 # Controls

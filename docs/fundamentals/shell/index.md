@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell overview"
 description: ".NET MAUI Shell provides the fundamental features that most apps require, including a common navigation user experience, a URI-based navigation scheme, and an integrated search handler."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell overview

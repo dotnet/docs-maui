@@ -1,7 +1,7 @@
 ---
 title: "Upgrade from Xamarin to .NET"
 description: "Learn how to upgrade Xamarin apps to .NET."
-ms.date: 08/30/2023
+ms.date: 08/30/2024
 ---
 
 # Upgrade from Xamarin to .NET

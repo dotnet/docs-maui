@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 03/14/2022
+ms.date: 08/30/2024
 ---
 
 # NavigationPage

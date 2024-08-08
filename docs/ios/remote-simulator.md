@@ -1,7 +1,7 @@
 ---
 title: "Remote iOS Simulator for Windows"
 description: "Learn how the remote iOS Simulator for Windows allows you to test your apps on an iOS simulator displayed in Windows alongside Visual Studio 2022."
-ms.date: 05/20/2022
+ms.date: 08/30/2024
 ---
 
 # Remote iOS Simulator for Windows

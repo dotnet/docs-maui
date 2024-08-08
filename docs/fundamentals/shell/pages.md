@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell pages"
 description: "Learn how to customize the appearance of pages in .NET MAUI Shell apps, including setting page colors, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell pages

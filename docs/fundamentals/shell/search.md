@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell search"
 description: "Learn how .NET MAUI Shell apps can use integrated search functionality that's provided by a search box that can be added to the top of each page."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell search

@@ -1,7 +1,7 @@
 ---
 title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add an app icon to a .NET MAUI app project. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
-ms.date: 06/19/2024
+ms.date: 08/30/2024
 no-loc: ["MauiIcon"]
 ---
 

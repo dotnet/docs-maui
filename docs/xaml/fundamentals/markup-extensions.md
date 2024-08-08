@@ -1,7 +1,7 @@
 ---
 title: "XAML markup extensions"
 description: ".NET MAUI XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources."
-ms.date: 01/25/2022
+ms.date: 08/30/2024
 ---
 
 # XAML markup extensions

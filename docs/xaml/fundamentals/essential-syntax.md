@@ -1,7 +1,7 @@
 ---
 title: "Essential .NET MAUI XAML syntax"
 description: "This article explains the essential XAML syntax features of property elements and attached properties."
-ms.date: 01/24/2022
+ms.date: 08/30/2024
 ---
 
 # Essential XAML syntax
