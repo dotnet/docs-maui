@@ -1,7 +1,7 @@
 ---
 title: "Apple privacy manifest"
 description: Learn how to include a privacy manifest in your .NET MAUI app on iOS.
-ms.date: 03/19/2024
+ms.date: 08/08/2024
 no-loc: [ "xcframework" ]
 ---
 
@@ -38,7 +38,9 @@ Currently, when binding a static framework, app developers will be required to m
 
 ## Create a privacy manifest
 
-To add a privacy manifest to your .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
+Visual Studio automatically adds a privacy manifest to .NET MAUI app projects that are created using the .NET MAUI app project templates.
+
+To add a privacy manifest to an existing .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -68,7 +70,7 @@ All .NET MAUI apps that target devices running iOS or iPadOS require a privacy m
 | `NSPrivacyAccessedAPICategorySystemBootTime` | `35F9.1` | [System boot time APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394) |
 | `NSPrivacyAccessedAPICategoryDiskSpace` | `E174.1` | [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) |
 
-To add these entries to your privacy manifest, open the *PrivacyInfo.xcprivacy* file in a text editor and add the `NSPrivacyAccessAPITypes` key, where each required reason API category use will subsequently be added:
+If you've manually added a privacy manifest to your .NET MAUI app you'll need to add these entries to it. To do so, open the *PrivacyInfo.xcprivacy* file in a text editor and add the `NSPrivacyAccessAPITypes` key, where each required reason API category use will subsequently be added:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
