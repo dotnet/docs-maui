@@ -20,6 +20,10 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
+## App lifecycle
+
+.NET MAUI 9 Preview 7 adds the `RegisteredForRemoteNotifications` and `ReceivedRemoteNotifications` lifecycle methods on iOS and Mac Catalyst. For more information, see [iOS and Mac Catalyst platform lifecycle events](~/fundamentals/app-lifecycle.md#ios-and-mac-catalyst).
+
 ## Blazor Hybrid
 
 .NET MAUI 9 Preview 5 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
