@@ -111,7 +111,7 @@ Multiple windows can be simultaneously opened on Android, iOS on iPad (iPadOS), 
 
 ```csharp
 Window secondWindow = new Window(new MyPage());
-Application.Current!.OpenWindow(secondWindow);
+Application.Current?.OpenWindow(secondWindow);
 ```
 
 The `Application.Current.Windows` collection, of type `IReadOnlyList<Window>` maintains references to all <xref:Microsoft.Maui.Controls.Window> objects that are registered with the `Application` object.
@@ -121,7 +121,7 @@ The `Application.Current.Windows` collection, of type `IReadOnlyList<Window>` ma
 A specific window can be brought to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
 
 ```csharp
-Application.Current!.ActivateWindow(secondWindow);
+Application.Current?.ActivateWindow(secondWindow);
 ```
 
 ::: moniker-end
@@ -130,10 +130,10 @@ Windows can be closed with the `Application.Current.CloseWindow` method:
 
 ```csharp
 // Close a specific window
-Application.Current!.CloseWindow(secondWindow);
+Application.Current?.CloseWindow(secondWindow);
 
 // Close the active window
-Application.Current!.CloseWindow(GetParentWindow());
+Application.Current?.CloseWindow(GetParentWindow());
 ```
 
 > [!IMPORTANT]

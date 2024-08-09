@@ -51,7 +51,7 @@ dotnet new maui-blazor-web -n AllTheTargets
 .NET MAUI 9 Preview 7 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
 
 ```csharp
-Application.Current!.ActivateWindow(windowToActivate);
+Application.Current?.ActivateWindow(windowToActivate);
 ```
 
 ## Android
