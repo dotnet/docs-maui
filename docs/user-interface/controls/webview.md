@@ -21,7 +21,20 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebViewSource` object, which both derive from `WebViewSource`. A `UrlWebViewSource` is used for loading a web page specified with a URL, while a `HtmlWebViewSource` object is used for loading a local HTML file, or local HTML.
 
+::: moniker range="=net-maui-8.0"
+
 <xref:Microsoft.Maui.Controls.WebView> defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+<xref:Microsoft.Maui.Controls.WebView> defines the following events:
+
+- `Navigating`, that's raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies this event defines a `Cancel` property of type `bool` that can be used to cancel navigation.
+- `Navigated`, that's raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies this event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
+- `ProcessTerminated`, that's raised when a <xref:Microsoft.Maui.Controls.WebView> process ends unexpectedly. The `WebViewProcessTerminatedEventArgs` object that accompanies this event defines platform-specific properties that indicate why the process failed.
+
+::: moniker-end
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.WebView> must specify its <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
