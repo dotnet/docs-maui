@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 07/09/2024
+ms.date: 08/07/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -41,6 +41,10 @@ dotnet new maui-blazor-web -n AllTheTargets
 ```xaml
 <Entry Keyboard="Date" />
 ```
+
+### TimePicker
+
+<xref:Microsoft.Maui.Controls.TimePicker> gains a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <xref:Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
 
 ## Android
 
