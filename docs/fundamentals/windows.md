@@ -124,7 +124,7 @@ A specific window can be brought to the front with the `Application.Current.Acti
 Application.Current!.ActivateWindow(secondWindow);
 ```
 
-::: moniker end
+::: moniker-end
 
 Windows can be closed with the `Application.Current.CloseWindow` method:
 
