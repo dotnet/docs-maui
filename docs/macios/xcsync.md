@@ -22,7 +22,7 @@ The tool has two commands: `generate` and `sync`. Use `generate` to create an Xc
 
 ## Synopsis
 
-The following examples show the syntax for the generate and sync commands.
+The following examples show the syntax for the `generate` and `sync` commands.
 
 ### xcsync-generate
 
@@ -60,7 +60,7 @@ The following options allow you to change the default behavior of the tool:
 
 - **`/p:xcSyncXcodeFolder=<TARGET_XCODE_DIRECTORY>`**
 
-    Directory in which to place the generated Xcode project. The default path is *./obj/xcode*.
+    The directory in which to place the generated Xcode project. The default path is *./obj/xcode*.
 
 - **`/p:xcSyncVerbosity=<LEVEL>`**
 
@@ -68,13 +68,13 @@ The following options allow you to change the default behavior of the tool:
 
 ### Examples
 
-- Generate and open a Xcode project for .NET MAUI project that uses the project file in the current directory that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
+- Generate and open an Xcode project for a .NET MAUI project that uses the project file in the current directory, which supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     dotnet build /t:xcsync-generate /p:xcSyncTargetFrameworkMoniker=net9.0-ios
     ```
 
-- Generate and open a Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
+- Generate and open an Xcode project for a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     dotnet build /t:xcsync-generate /p:xcSyncProjectFile=path/to/maui.csproj /p:xcSyncTargetFrameworkMoniker=net9.0-ios
