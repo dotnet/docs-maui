@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 10/13/2022
+ms.date: 08/09/2024
 ---
 
 # App lifecycle
@@ -203,6 +203,8 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OpenUrl` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app should open a specified URL. |
 | `PerformActionForShortcutItem` | `UIKit.UIApplication`, `UIKit.UIApplicationShortcutItem`, `UIKit.UIOperationHandler` | Invoked when a Home screen quick action is initiated. |
 | `PerformFetch` | `UIKit.UIApplication`, `Action<UIBackgroundFetchResult>` | Invoked to tell the app that it can begin a fetch operation if it has data to download. |
+| `ReceivedRemoteNotifications` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when a remote notification is received. |
+| `RegisteredForRemoteNotifications` | `UIKit.UIApplication`, `Foundation.NSData` | Invoked when the app has successfully registered for remote notifications. |
 | `SceneContinueUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to handle the specified Handoff-related activity. |
 | `SceneDidDisconnect` | `UIKit.UIScene` | Invoked when a scene is removed from the app. |
 | `SceneDidEnterBackground` | `UIKit.UIScene` | Invoked when a scene is running in the background and isn't onscreen. |
