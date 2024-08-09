@@ -118,7 +118,7 @@ The `Application.Current.Windows` collection, of type `IReadOnlyList<Window>` ma
 
 ::: moniker range=">=net-maui-9.0"
 
-A specific window can be brought to the front with the `Application.Current.ActivateWindow` method:
+A specific window can be brought to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
 
 ```csharp
 Application.Current!.ActivateWindow(secondWindow);
