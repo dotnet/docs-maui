@@ -219,7 +219,7 @@ A `TitleBar` is highly customizable through its `Content`, `LeadingContent`, and
         <ImageButton HeightRequest="36"
                      WidthRequest="36"
                      BorderWidth="0"
-                    Background="Transparent">
+                     Background="Transparent">
             <ImageButton.Source>
                 <FontImageSource Size="16"
                                  Glyph="&#xE713;"
