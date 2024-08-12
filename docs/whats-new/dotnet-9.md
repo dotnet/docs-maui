@@ -341,7 +341,7 @@ public static class MauiProgram
 
 ## Handler disconnection
 
-When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to dispose a control, such as when navigating backwards in an app.
+When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to cleanup a control, such as when navigating backwards in an app.
 
 In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 adds a `HandlerProperties.DisconnectPolicy` attached property for controlling when handlers are disconnected from their controls. This property requires a `HandlerDisconnectPolicy` argument, with the `HandlerDisconnectPolicy` enumeration defining the following values:
 
