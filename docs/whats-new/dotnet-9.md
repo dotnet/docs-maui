@@ -46,14 +46,6 @@ dotnet new maui-blazor-web -n AllTheTargets
 
 <xref:Microsoft.Maui.Controls.TimePicker> gains a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <xref:Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
 
-## Multi-window support
-
-.NET MAUI 9 Preview 7 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
-
-```csharp
-Application.Current?.ActivateWindow(windowToActivate);
-```
-
 ## Android
 
 .NET for Android 9 Preview, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
