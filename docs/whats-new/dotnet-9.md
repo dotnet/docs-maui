@@ -21,19 +21,9 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
-## Blazor Hybrid
-
-.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
-
-The template can also be used from `dotnew new`:
-
-```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
-```
-
 ## New controls
 
-.NET MAUI in .NET 9 includes two new controls.
+.NET MAUI 9 includes two new controls.
 
 ### HybridWebView
 
@@ -242,7 +232,7 @@ The following screenshot shows the resulting appearance:
 
 ## Control enhancements
 
-.NET MAUI in .NET 9 also includes control enhancements.
+.NET MAUI 9 also includes control enhancements.
 
 ### BackButtonBehavior OneWay binding mode
 
@@ -445,6 +435,16 @@ dotnet build /t:xcsync-generate
 
 For more information, see [Xcode sync](~/macios/xcode-sync.md).
 
+## Blazor Hybrid
+
+.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from `dotnew new`:
+
+```dotnetcli
+dotnet new maui-blazor-web -n AllTheTargets
+```
+
 ## Deprecated types and members
 
 .NET MAUI 9 obsoletes some types and members, which will be completely removed in a future release.
@@ -493,9 +493,9 @@ This `Measure` method returns the minimum size that an element needs in order to
 
 In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Microsoft.Maui.Size` should be used.
 
-## Android
+## .NET for Android
 
-.NET for Android 9 Preview, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
+.NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
 
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
 - [.NET for Android 9 Preview 6](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.6.340)
@@ -575,7 +575,7 @@ LLVM marshalled methods can be disabled in your project file (*.csproj*):
 </PropertyGroup>
 ```
 
-## iOS
+## .NET for iOS
 
 .NET 9 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
 
