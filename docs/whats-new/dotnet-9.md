@@ -348,6 +348,8 @@ In .NET MAUI 9, handlers automatically disconnect from their controls when possi
 - `Automatic`, which indicates that handlers will be disconnected automatically. This is the default value of the `HandlerProperties.DisconnectPolicy` attached property.
 - `Manual`, which indicates that handlers will have to be disconnected manually by invoking the `DisconnectHandler` implementation.
 
+The following example shows setting the `HandlerProperties.DisconnectPolicy` attached property:
+
 ```xaml
 <controls:Video x:Name="video"
                 HandlerProperties.DisconnectPolicy="Manual"
