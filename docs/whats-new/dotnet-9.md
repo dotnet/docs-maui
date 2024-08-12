@@ -6,7 +6,7 @@ ms.date: 08/13/2024
 
 # What's new in .NET MAUI for .NET 9
 
-The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview, see the following release notes:
+The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
 - [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24406.13)
 - [.NET MAUI 9 Preview 6](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.6.24327.7)
@@ -27,7 +27,7 @@ In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The a
 
 ### HybridWebView
 
-`HybridWebView` enables hosting arbitrary HTML/JS/CSS content in a `WebView`, and enables communication between the code in the `WebView` (JavaScript) and the code that hosts the `WebView` (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
+`HybridWebView` enables hosting arbitrary HTML/JS/CSS content in a WebView, and enables communication between the code in the WebView (JavaScript) and the code that hosts the WebView (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
 
 To build a .NET MAUI app with `HybridWebView` you need:
 
@@ -35,16 +35,14 @@ To build a .NET MAUI app with `HybridWebView` you need:
 - A `HybridWebView` control as part of the app's UI. This can be achieved by referencing it in the app's XAML.
 - Code in the web content, and in C#/.NET, that uses the `HybridWebView` APIs to send messages between the two components.
 
-The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native webview control and runs within the context of the app. Any part of the app can access external web services, but it is'nt required.
-
-#### Use the HybridWebView
+The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
 
 To build a hybrid app:
 
 1. Open an existing .NET MAUI app project or create a new .NET MAUI app project.
 1. Add your web content to the .NET MAUI app project.
 
-    Your app's web content is included as part of a .NET MAUI app project as raw assets. A raw assets is any file in the app's *Resources\Raw* folder, and includes sub-folders. For a `HybridWebView`, web content should be placed in the *Resources\Raw\wwwroot* folder, with the main file named *index.html*.
+    Your app's web content should be included as part of a .NET MAUI project as raw assets. A raw asset is any file in the app's *Resources\Raw* folder, and includes sub-folders. For a `HybridWebView`, web content should be placed in the *Resources\Raw\wwwroot* folder, with the main file named *index.html*.
 
     A simple app might have the following files and contents:
 
@@ -80,7 +78,7 @@ To build a hybrid app:
         </html>
         ```
 
-    - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard HybridWebView JavaScript library:
+    - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard `HybridWebView` JavaScript library:
 
         ```js
         function HybridWebViewInit() {
@@ -136,18 +134,22 @@ To build a hybrid app:
     Then, add any additional web content to your project.
 
     > [!WARNING]
-    > In some cases the IDE or editor might add entries to the project's *.csproj* file that are incorrect. When using the default location for raw assets there shouldn't be any entries for these files or folders in the *.csproj* file.
+    > In some cases Visual Studio might add entries to the project's *.csproj* file that are incorrect. When using the default location for raw assets there shouldn't be any entries for these files or folders in the *.csproj* file.
 
 1. Add the `HybridWebView` control to your app:
 
     ```xaml
-    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*">
-        <Button Text="Send message to JavaScript" Clicked="OnSendMessageButtonClicked" />
-        <HybridWebView x:Name="hybridWebView" RawMessageReceived="OnHybridWebViewRawMessageReceived" Grid.Row="1" />
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="*">
+        <Button Text="Send message to JavaScript"
+                Clicked="OnSendMessageButtonClicked" />
+        <HybridWebView x:Name="hybridWebView"
+                       RawMessageReceived="OnHybridWebViewRawMessageReceived"
+                       Grid.Row="1" />
     </Grid>
     ```
 
-1. Use `HybridWebView` APIs to send messages between the JavaScript and C# code:
+1. Use the `HybridWebView` APIs to send messages between the JavaScript and C# code:
 
     ```csharp
     private void OnSendMessageButtonClicked(object sender, EventArgs e)
@@ -161,21 +163,22 @@ To build a hybrid app:
     }
     ```
 
-    The messages are considered to be raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
+    The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
 
 ### Titlebar for Windows
 
-.NET MAUI 9 introduces a `TitleBar` control on Windows that provides the ability to add a custom title bars to your app on Windows:
+The `TitleBar` control provides the ability to add a custom title bar to your app on Windows:
 
 :::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
-The `TitleBar` control can be set as the value of the `Window.TitleBar` property on any `Window`:
+A `TitleBar` can be set as the value of the `Window.TitleBar` property on any `Window`:
 
 ```xaml
 <Window.TitleBar>
     <TitleBar x:Name="TeamsTitleBar"
-              HeightRequest="46"
-              Title="Hello World">
+              Title="Hello World"
+              Icon="appicon.png"
+              HeightRequest="46">
         <TitleBar.Content>
             <Entry x:Name="SearchTitleBar"
                    Placeholder="Search"
@@ -188,18 +191,19 @@ The `TitleBar` control can be set as the value of the `Window.TitleBar` property
 </Window.TitleBar>
 ```
 
-The equivalent C# code is:
+An example of its use in C# is:
 
 ```csharp
 Window.TitleBar = new TitleBar
 {
     Title = "MAUI App",
     Icon = "appicon.png",
+    HeightRequest = 46,
     LeadingContent = new AvatarButton()
 };
 ```
 
-The `TitleBar` is highly customizable via its `Content` and `LeadingContent` properties:
+A `TitleBar` is highly customizable through its `Content`, `LeadingContent`, and `TrailingContent` properties:
 
 ```xaml
 <TitleBar Title="My App"
@@ -230,13 +234,16 @@ The following screenshot shows the resulting appearance:
 
 :::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
 
+> [!NOTE]
+> Mac Catalyst support for the `TitleBar` control will be added in a future release.
+
 ## Control enhancements
 
-.NET MAUI 9 also includes control enhancements.
+.NET MAUI 9 includes control enhancements.
 
 ### BackButtonBehavior OneWay binding mode
 
-The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a Shell app is now `BindinMode.OneWay` instead of `BindingMode.OneTime`. This enables you to more easily control the behavior of the back button at runtime using data bindings:
+The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a Shell app is now `BindingMode.OneWay` instead of `BindingMode.OneTime`. This enables you to more easily control the behavior of the back button at runtime, with data bindings:
 
 ```xaml
 <ContentPage ...>    
@@ -251,9 +258,9 @@ The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a 
 
 ### BlazorWebView
 
-On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content to `localhost`. The internal `0.0.0.0` address used to host `BlazorWebView` content no longer works and causes the `BlazorWebView` to not load and render as an empty rectangle.
+On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a `BlazorWebView` to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the `BlazorWebView` not loading any content and rendering as an empty rectangle.
 
-To opt into using `0.0.0.0`, add the following code to your `MauiProgram` class:
+To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram` class:
 
 ```csharp
 // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
@@ -268,7 +275,7 @@ To opt into using these handlers, add the following code to your `MauiProgram` c
 
 ```csharp
 #if IOS || MACCATALYST
-appBuilder.ConfigureMauiHandlers(handlers =>
+builder.ConfigureMauiHandlers(handlers =>
 {
     handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2>();
     handlers.AddHandler<Microsoft.Maui.Controls.CarouselView, Microsoft.Maui.Controls.Handlers.Items2.CarouselViewHandler2>();
@@ -299,7 +306,7 @@ appBuilder.ConfigureMauiHandlers(handlers =>
 - `RegisteredForRemoteNotifications`, which is invoked when the app has successfully registered for remote notifications.
 - `ReceivedRemoteNotifications`, which is invoked when a remote notification is received.
 
-The following examples shows how to consume these methods:
+The following example shows how to consume these lifecycle methods:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -332,22 +339,14 @@ public static class MauiProgram
 }
 ```
 
-## Multi-window support
-
-.NET MAUI 9 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
-
-```csharp
-Application.Current?.ActivateWindow(windowToActivate);
-```
-
 ## Handler disconnection policy
 
-When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events and disposing objects. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to dispose a control, such as when navigating backwards in an app.
+When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to dispose a control, such as when navigating backwards in an app.
 
-In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 includes a `HandlerProperties.DisconnectPolicy` attached property for controlling when handlers are disconnected from their controls. This property requires a `HandlerDisconnectPolicy` argument, with the `HandlerDisconnectPolicy` enumeration defining the following values:
+In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 adds a `HandlerProperties.DisconnectPolicy` attached property for controlling when handlers are disconnected from their controls. This property requires a `HandlerDisconnectPolicy` argument, with the `HandlerDisconnectPolicy` enumeration defining the following values:
 
 - `Automatic`, which indicates that handlers will be disconnected automatically. This is the default value of the `HandlerProperties.DisconnectPolicy` attached property.
-- `Manual`, which indicates that handlers will have to be disconnected manually.
+- `Manual`, which indicates that handlers will have to be disconnected manually by invoking the `DisconnectHandler` implementation.
 
 ```xaml
 <controls:Video x:Name="video"
@@ -367,7 +366,7 @@ Video video = new Video
 HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
 ```
 
-In addition, there's a `DisconnectHandlers` extension method that disconnect handlers from a given `IView`:
+In addition, there's a `DisconnectHandlers` extension method that disconnects handlers from a given `IView`:
 
 ```csharp
 video.DisconnectHandlers();
@@ -375,9 +374,17 @@ video.DisconnectHandlers();
 
 When disconnecting, the `DisconnectHandlers` method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
 
+## Multi-window support
+
+.NET MAUI 9 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
+
+```csharp
+Application.Current?.ActivateWindow(windowToActivate);
+```
+
 ## Native embedding
 
-.NET MAUI 9 includes full APIs for native embedding scenarios, that you previously had to define for yourself:
+.NET MAUI 9 includes full APIs for native embedding scenarios, which previously had to be manually added to your project:
 
 ```csharp
 var mauiApp = MauiProgram.CreateMauiApp();
@@ -419,11 +426,21 @@ public static class MauiProgram
 }
 ```
 
+## Project templates
+
+.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from `dotnew new`:
+
+```dotnetcli
+dotnet new maui-blazor-web -n AllTheTargets
+```
+
 ## Xcode sync
 
-Xcode sync (`xcsync`) is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to the .NET project for iOS, tvOS, macOS, or Mac Catalyst.
+.NET MAUI 9 includes Xcode sync (`xcsync`), which is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to your .NET project.
 
-You use the `dotnet build` command with the `xcsync-generate` or `xcsync-sync` commands, to generate or sync these files, and pass in a project file and additional parameters arguments:
+You use `dotnet build` with the `xcsync-generate` or `xcsync-sync` commands, to generate or sync these files, and pass in a project file and additional arguments:
 
 ```dotnetcli
 dotnet build /t:xcsync-generate
@@ -435,19 +452,9 @@ dotnet build /t:xcsync-generate
 
 For more information, see [Xcode sync](~/macios/xcode-sync.md).
 
-## Blazor Hybrid
+## Deprecated APIs
 
-.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
-
-The template can also be used from `dotnew new`:
-
-```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
-```
-
-## Deprecated types and members
-
-.NET MAUI 9 obsoletes some types and members, which will be completely removed in a future release.
+.NET MAUI 9 deprecates some APIs, which will be completely removed in a future release.
 
 ### Frame
 
@@ -456,6 +463,8 @@ The `Frame` control is marked as obsolete in .NET MAUI 9, and will be completely
 ### MainPage
 
 Instead of defining the first page of your app using the `MainPage` property on an `Application` object, you should set the `Page` property on a `Window` to the first page of your app. This is what happens internally in .NET MAUI when you set the `MainPage` property, so there's no behavior change introduced by the `MainPage` property being marked as obsolete.
+
+The following example shows setting the `Page` property on a `Window`, via the `CreateWindow` override:
 
 ```csharp
 public partial class App : Application
@@ -476,16 +485,16 @@ The `MainPage` property is retained for .NET MAUI 9, but will be completely remo
 
 ### Compatibility layouts
 
-In .NET MAUI 9, the compatibility layout classes in the `Microsoft.Maui.Controls.Compatibility` namespace have been obsoleted.
+The compatibility layout classes in the `Microsoft.Maui.Controls.Compatibility` namespace have been obsoleted.
 
 ### Legacy measure calls
 
-.NET MAUI 9 obsoletes the following `VisualElement` legacy measure methods:
+The following `VisualElement` legacy measure methods have been obsoleted:
 
 - `protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)`.
 - `public virtual SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)` from `VisualElement`.
 
-As a replacement, the following measure method has been introduced:
+As a replacement, the following method has been introduced:
 
 - `public size Measure(double widthConstraint, double heightConstraint)`
 
@@ -495,7 +504,7 @@ In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Mic
 
 ## .NET for Android
 
-.NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
+.NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9, see the following release notes:
 
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
 - [.NET for Android 9 Preview 6](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.6.340)
@@ -544,9 +553,9 @@ In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` at
 
 For more information about Android asset packs, see [Android Asset Packs](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/AndroidAssetPacks.md).
 
-### Android 15 beta support
+### Android 15 support
 
-.NET for Android 9 adds .NET bindings for the first beta of Android 15 (API 35) codenamed "Vanilla Ice Cream". To build for these APIs, update the target framework of your project:
+.NET for Android 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project:
 
 ```xml
 <TargetFramework>net9.0-android35</TargetFramework>
