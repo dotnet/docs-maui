@@ -416,15 +416,15 @@ To bootstrap a native embedded app in .NET MAUI 9, call the `UseMauiEmbeddedApp`
 ```csharp
 public static class MauiProgram
 {
-  	public static MauiApp CreateMauiApp()
-  	{
-    		var builder = MauiApp.CreateBuilder();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
 
-    		builder
-    			.UseMauiEmbeddedApp<App>();
+        builder
+            .UseMauiEmbeddedApp<App>();
 
-    		return builder.Build();
-  	}
+        return builder.Build();
+    }
 }
 ```
 
@@ -471,15 +471,15 @@ The following example shows setting the `Page` property on a `Window`, via the `
 ```csharp
 public partial class App : Application
 {
-  	public App()
-  	{
-  		InitializeComponent();
-  	}
+    public App()
+    {
+        InitializeComponent();
+    }
 
-  	protected override Window CreateWindow(IActivationState? activationState)
-  	{
-  		return new Window(new AppShell());
-  	}
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
 }
 ```
 
