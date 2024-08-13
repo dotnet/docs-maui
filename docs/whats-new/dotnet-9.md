@@ -452,7 +452,7 @@ dotnet build /t:xcsync-generate
     /p:xcSyncVerbosity=<LEVEL>
 ```
 
-For more information, see [Xcode sync](~/macios/xcode-sync.md).
+For more information, see [Xcode sync](~/macios/xcsync.md).
 
 ## Deprecated APIs
 
