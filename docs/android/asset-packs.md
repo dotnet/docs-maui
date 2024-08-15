@@ -207,7 +207,7 @@ The location of the `OnDemand` asset pack is queried with the `GetPackLocation` 
 
 The status of the download can then be monitored via the `AssetPackStateUpdateListenerWrapper`.
 
-## Testing
+## Test asset packs locally
 
 By default, .NET for Android uses the Android Application Package (APK) format for debugging. However, to test asset packs locally you'll need to ensure you're using the Android App Bundle (AAB) package format. To debug your asset packs update your *.csproj* file with the following build properties:
 
