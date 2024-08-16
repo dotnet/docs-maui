@@ -1,8 +1,11 @@
 ---
 title: Android asset packs
 description: Learn how to place your large Android app assets into asset packs to increase the size of the package that you upload to Google Play.
+ms.topic: concept-article
 ms.date: 08/15/2024
 monikerRange: ">=net-maui-9.0"
+
+#customer intent: As a developer, I want to bundle my app assets separately from my code so that I can upload a bigger package to Google Play.
 ---
 
 # Android asset packs
