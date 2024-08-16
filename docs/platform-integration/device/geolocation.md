@@ -39,7 +39,7 @@ Additionally, if your app targets Android 5.0 (API level 21) or higher, you must
   If your application is targeting Android 10 - Q (API Level 29 or higher) and is requesting `LocationAlways`, you must also add this permission request:
 
   ```csharp
-  [assembly: UsesPermission(Manifest.Permission.AccessBackgroundLocation)]
+  [assembly: UsesPermission(Android.Manifest.Permission.AccessBackgroundLocation)]
   ```
 
   \- or -
