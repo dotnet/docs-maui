@@ -1,7 +1,7 @@
 ---
 title: "Fill rules"
 description: ".NET MAUI Shapes fill rules determine whether a point is in the fill region of a shape."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Fill rules

@@ -1,7 +1,7 @@
 ---
 title: "BoxView"
 description: "The .NET MAUI BoxView draws a simple rectangle or square, of a specified width, height, and color."
-ms.date: 02/10/2022
+ms.date: 08/30/2024
 ---
 
 # BoxView

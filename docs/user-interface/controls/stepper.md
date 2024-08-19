@@ -1,7 +1,7 @@
 ---
 title: "Stepper"
 description: "The .NET MAUI Stepper allows you to select a numeric value from a range of values. It consists of two buttons labeled with minus and plus signs. Manipulating the two buttons changes the selected value incrementally."
-ms.date: 02/10/2022
+ms.date: 08/30/2024
 ---
 
 # Stepper

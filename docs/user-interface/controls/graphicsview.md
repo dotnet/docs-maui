@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI GraphicsView"
 description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphics can be drawn using types from the Microsoft.Maui.Graphics namespace."
-ms.date: 04/19/2022
+ms.date: 08/30/2024
 ---
 
 # GraphicsView

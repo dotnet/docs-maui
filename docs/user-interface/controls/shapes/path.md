@@ -1,7 +1,7 @@
 ---
 title: "Path"
 description: "The .NET MAUI Path class can be used to draw curves and complex shapes."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Path

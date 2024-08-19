@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shapes: Path markup syntax"
 description: ".NET MAUI Path markup syntax enables you to compactly specify path geometries in XAML."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Path markup syntax

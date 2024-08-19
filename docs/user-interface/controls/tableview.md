@@ -1,7 +1,7 @@
 ---
 title: "TableView"
 description: "The .NET MAUI TableView displays a table of scrollable items that can be grouped into sections."
-ms.date: 03/11/2022
+ms.date: 08/30/2024
 ---
 
 # TableView

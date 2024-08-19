@@ -1,7 +1,7 @@
 ---
 title: "SwipeView"
 description: "The .NET MAUI SwipeView is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture."
-ms.date: 02/15/2022
+ms.date: 08/30/2024
 ---
 
 # SwipeView

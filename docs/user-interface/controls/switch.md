@@ -1,7 +1,7 @@
 ---
 title: "Switch"
 description: "The .NET MAUI Switch is a type of button that can be manipulated by the user to toggle between on and off states."
-ms.date: 02/09/2022
+ms.date: 08/30/2024
 ---
 
 # Switch

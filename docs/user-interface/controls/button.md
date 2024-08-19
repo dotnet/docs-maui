@@ -1,7 +1,7 @@
 ---
 title: "Button"
 description: "The .NET MAUI Button displays text and responds to a tap or click that directs an app to carry out a task."
-ms.date: 02/14/2022
+ms.date: 08/30/2024
 ---
 
 # Button

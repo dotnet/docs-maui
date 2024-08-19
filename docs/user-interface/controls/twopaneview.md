@@ -3,7 +3,7 @@ title: "TwoPaneView foldable and large-screen layout control"
 description: "Learn how to use the TwoPaneView control to create adaptive layouts that work on phones, tablets, desktop, and foldable devices."
 author: conceptdev
 ms.author: crdun
-ms.date: 11/03/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI TwoPaneView layout
