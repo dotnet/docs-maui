@@ -2,7 +2,7 @@
 title: Android asset packs
 description: Learn how to place your large Android app assets into asset packs to increase the size of the package that you upload to Google Play.
 ms.topic: concept-article
-ms.date: 08/15/2024
+ms.date: 08/19/2024
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to bundle my app assets separately from my code so that I can upload a bigger package to Google Play.
@@ -32,16 +32,16 @@ AndroidManifest.xml
 
 To support asset packages in .NET for Android apps, the `AndroidAsset` item group supports two new metadata attributes:
 
-- `AssetPack`. If present, this attribute controls which asset pack and asset is placed into. If not present, the asset will be placed into the main app bundle.
+- `AssetPack`. If present, this attribute controls which asset pack an asset is placed into. If not present, the asset will be placed into the main app bundle.
 
     The name of the asset pack will be `$(AndroidPackage).%(AssetPack)`. Therefore, if your package name is `com.mycompany.myproject` and the `AssetPack` value is `myassets`, the asset pack name would be `com.mycompany.myproject.myassets`.
 
     > [!NOTE]
     > The `AssetPack` value can also be `base`, which indicates that the asset should be placed into the main app bundle rather than an asset pack. For more information, see [Force an asset into the main app bundle](#force-an-asset-into-the-main-app-bundle).
 
-- `DeliveryType`. If present, this attribute controls what type of asset pack is created. Valid values for this are `InstallTime`, `FastFollow`, and `OnDemand`. If not present, the default value is `InstallTime`. For more information, see [Asset delivery options](#asset-delivery-options).
+- `DeliveryType`. If present, this attribute controls the type of asset pack is created. Valid values for this are `InstallTime`, `FastFollow`, and `OnDemand`. If not present, the default value is `InstallTime`. For more information, see [Asset delivery options](#asset-delivery-options).
 
-Therefore, returning to the earlier example, *MyLargeAsset.mp4* can be moved into its own asset pack by specifying the following `<ItemGroup>` element in the project's *.csproj* file:
+Returning to the previous example, *MyLargeAsset.mp4* can be moved into its own asset pack by specifying the following `<ItemGroup>` element in the project's *.csproj* file:
 
 ```xml
 <ItemGroup>
@@ -54,9 +54,19 @@ This item group will cause the .NET for Android build system to create a new ass
 > [!NOTE]
 > This `AndroidAsset` is using the `Update` attribute rather than `Include` because .NET for Android supports auto-import of assets.
 
+In scenarios where you have a large number of assets you can use wildcards to update the auto-imported assets:
+
+```xml
+<ItemGroup>
+    <AndroidAsset Update="Assets/*" AssetPack="myassets" />
+</ItemGroup>
+```
+
+In this example, all of the assets in the *Assets* folder will be placed into an asset pack named `myassets`.
+
 ### Force an asset into the main app bundle
 
-In scenarios where you have a large number of assets, and you only want some of them to be placed into an asset pack, you can use wildcards to update the auto-imported assets:
+In scenarios where you have a large number of assets, but you don't want all of them to be placed into an asset pack, you can specify an `AssetPack` value of `base` to force an asset into the main app bundle:
 
 ```xml
 <ItemGroup>
@@ -65,7 +75,7 @@ In scenarios where you have a large number of assets, and you only want some of 
 </ItemGroup>
 ```
 
-In this example, all of the assets in the *Assets* folder except *myimportantfile.json*, will be placed into an asset pack named `myassets`. However, *myimportantfile.json* is placed into the main app bundle via the `AssetPack="base"` value, rather than the `myassets` asset pack.
+In this example, all of the assets in the *Assets* folder except *myimportantfile.json* will be placed into an asset pack named `myassets`. However, *myimportantfile.json* is placed into the main app bundle via the `AssetPack="base"` value, rather than the `myassets` asset pack.
 
 ## Asset delivery options
 
@@ -108,9 +118,9 @@ In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` at
 
 ## Check the status of `FastFollow` asset packs
 
-If you're using a `FastFollow` asset pack, you'll need to check that the pack is installed before trying to access its contents.
+If your app uses a `FastFollow` asset pack, it'll need to check that the pack is installed before trying to access its contents.
 
-To do this, you must add the [Xamarin.Google.Android.Play.Asset.Delivery](https://www.nuget.org/packages/Xamarin.Google.Android.Play.Asset.Delivery) NuGet package to your project. This NuGet package provides access to the `AssetPackManager` type, which provides the ability to query the location of the `FastFollow` asset pack:
+To do this, add the [Xamarin.Google.Android.Play.Asset.Delivery](https://www.nuget.org/packages/Xamarin.Google.Android.Play.Asset.Delivery) NuGet package to your project. This NuGet package provides access to the `AssetPackManager` type, which provides the ability to query the location of the asset pack:
 
 ```csharp
 using Xamarin.Google.Android.Play.Core.AssetPacks;
@@ -128,7 +138,7 @@ The location of the `FastFollow` asset pack is queried with the `GetPackLocation
 
 ## Download `OnDemand` asset packs
 
-If you're using an `OnDemand` asset pack, you'll need to download it manually. To do this, you must add the [Xamarin.Google.Android.Play.Asset.Delivery](https://www.nuget.org/packages/Xamarin.Google.Android.Play.Asset.Delivery) NuGet package to your project. This NuGet package provides access to the `AssetPackStateUpdateListener` type, that enables you to monitor the progress of the download. However, in .NET this type is wrapped by the `AssetPackStateUpdateListenerWrapper` type, which can be used to register an event to monitor the download progress.
+If you app uses an `OnDemand` asset pack, it'll need to download it manually. To do this, add the [Xamarin.Google.Android.Play.Asset.Delivery](https://www.nuget.org/packages/Xamarin.Google.Android.Play.Asset.Delivery) NuGet package to your project. This NuGet package provides access to the `AssetPackStateUpdateListener` type, that enables you to monitor the progress of the download. However, in .NET this type is wrapped by the `AssetPackStateUpdateListenerWrapper` type, which can be used to register an event handler to monitor the download progress.
 
 To monitor the download progress you'll need to declare some fields:
 
