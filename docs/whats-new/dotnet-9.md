@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 08/07/2024
+ms.date: 08/13/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
-The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview, see the following release notes:
+The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
+- [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24407.4)
 - [.NET MAUI 9 Preview 6](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.6.24327.7)
 - [.NET MAUI 9 Preview 5](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.5.24307.10)
 - [.NET MAUI 9 Preview 4](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.4.10690)
@@ -20,23 +21,271 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
-## Blazor Hybrid
+## New controls
 
-.NET MAUI 9 Preview 5 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+.NET MAUI 9 includes two new controls.
 
-The template can also be used from `dotnew new`:
+### HybridWebView
 
-```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
+`HybridWebView` enables hosting arbitrary HTML/JS/CSS content in a WebView, and enables communication between the code in the WebView (JavaScript) and the code that hosts the WebView (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
+
+To build a .NET MAUI app with `HybridWebView` you need:
+
+- The web content of the app, which consists of static HTML, JavaScript, CSS, images, and other files.
+- A `HybridWebView` control as part of the app's UI. This can be achieved by referencing it in the app's XAML.
+- Code in the web content, and in C#/.NET, that uses the `HybridWebView` APIs to send messages between the two components.
+
+The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
+
+To build a hybrid app:
+
+1. Open an existing .NET MAUI app project or create a new .NET MAUI app project.
+1. Add your web content to the .NET MAUI app project.
+
+    Your app's web content should be included as part of a .NET MAUI project as raw assets. A raw asset is any file in the app's *Resources\Raw* folder, and includes sub-folders. For a `HybridWebView`, web content should be placed in the *Resources\Raw\wwwroot* folder, with the main file named *index.html*.
+
+    A simple app might have the following files and contents:
+
+    - *Resources\Raw\wwwroot\index.html* with content for the main UI:
+
+        ```html
+        <!DOCTYPE html>
+
+        <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <link rel="icon" href="data:,">
+            <script src="scripts/HybridWebView.js"></script>
+            <script>
+                window.addEventListener(
+                    "HybridWebViewMessageReceived",
+                    function (e) {
+                        var messageFromCSharp = document.getElementById("messageFromCSharp");
+                        messageFromCSharp.value += '\r\n' + e.detail.message;
+                    });
+            </script>
+        </head>
+        <body>
+            <h1>HybridWebView app!</h1>
+            <div>
+                <button onclick="window.HybridWebView.SendRawMessage('Message from JS!')">Send message to C#</button>
+            </div>
+            <div>
+                Messages from C#: <textarea readonly id="messageFromCSharp" style="width: 80%; height: 300px;"></textarea>
+            </div>
+        </body>
+        </html>
+        ```
+
+    - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard `HybridWebView` JavaScript library:
+
+        ```js
+        function HybridWebViewInit() {
+
+            function DispatchHybridWebViewMessage(message) {
+                const event = new CustomEvent("HybridWebViewMessageReceived", { detail: { message: message } });
+                window.dispatchEvent(event);
+            }
+
+            if (window.chrome && window.chrome.webview) {
+                // Windows WebView2
+                window.chrome.webview.addEventListener('message', arg => {
+                    DispatchHybridWebViewMessage(arg.data);
+                });
+            }
+            else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.webwindowinterop) {
+                // iOS and MacCatalyst WKWebView
+                window.external = {
+                    "receiveMessage": message => {
+                        DispatchHybridWebViewMessage(message);
+                    }
+                };
+            }
+            else {
+                // Android WebView
+                window.addEventListener('message', arg => {
+                    DispatchHybridWebViewMessage(arg.data);
+                });
+            }
+        }
+
+        window.HybridWebView = {
+            "SendRawMessage": function (message) {
+
+                if (window.chrome && window.chrome.webview) {
+                    // Windows WebView2
+                    window.chrome.webview.postMessage(message);
+                }
+                else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.webwindowinterop) {
+                    // iOS and MacCatalyst WKWebView
+                    window.webkit.messageHandlers.webwindowinterop.postMessage(message);
+                }
+                else {
+                    // Android WebView
+                    hybridWebViewHost.sendRawMessage(message);
+                }
+            }
+        }
+
+        HybridWebViewInit();
+        ```
+
+    Then, add any additional web content to your project.
+
+    > [!WARNING]
+    > In some cases Visual Studio might add entries to the project's *.csproj* file that are incorrect. When using the default location for raw assets there shouldn't be any entries for these files or folders in the *.csproj* file.
+
+1. Add the `HybridWebView` control to your app:
+
+    ```xaml
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="*">
+        <Button Text="Send message to JavaScript"
+                Clicked="OnSendMessageButtonClicked" />
+        <HybridWebView x:Name="hybridWebView"
+                       RawMessageReceived="OnHybridWebViewRawMessageReceived"
+                       Grid.Row="1" />
+    </Grid>
+    ```
+
+1. Use the `HybridWebView` APIs to send messages between the JavaScript and C# code:
+
+    ```csharp
+    private void OnSendMessageButtonClicked(object sender, EventArgs e)
+    {
+        hybridWebView.SendRawMessage($"Hello from C#!");
+    }
+
+    private async void OnHybridWebViewRawMessageReceived(object sender, HybridWebViewRawMessageReceivedEventArgs e)
+    {
+        await DisplayAlert("Raw Message Received", e.Message, "OK");
+    }
+    ```
+
+    The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
+
+### Titlebar for Windows
+
+The `TitleBar` control provides the ability to add a custom title bar to your app on Windows:
+
+:::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
+
+A `TitleBar` can be set as the value of the `Window.TitleBar` property on any `Window`:
+
+```xaml
+<Window.TitleBar>
+    <TitleBar x:Name="TeamsTitleBar"
+              Title="Hello World"
+              Icon="appicon.png"
+              HeightRequest="46">
+        <TitleBar.Content>
+            <Entry x:Name="SearchTitleBar"
+                   Placeholder="Search"
+                   VerticalOptions="Center"
+                   MinimumWidthRequest="300"
+                   MaximumWidthRequest="450"
+                   HeightRequest="32"/>
+        </TitleBar.Content>
+    </TitleBar>
+</Window.TitleBar>
 ```
+
+An example of its use in C# is:
+
+```csharp
+Window.TitleBar = new TitleBar
+{
+    Title = "MAUI App",
+    Icon = "appicon.png",
+    HeightRequest = 46,
+    LeadingContent = new AvatarButton()
+};
+```
+
+A `TitleBar` is highly customizable through its `Content`, `LeadingContent`, and `TrailingContent` properties:
+
+```xaml
+<TitleBar Title="My App"
+          BackgroundColor="#512BD4"
+          HeightRequest="48">
+    <TitleBar.Content>
+        <SearchBar Placeholder="Search"
+                   MaximumWidthRequest="300"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center" />
+    </TitleBar.Content>
+    <TitleBar.TrailingContent>
+        <ImageButton HeightRequest="36"
+                     WidthRequest="36"
+                     BorderWidth="0"
+                     Background="Transparent">
+            <ImageButton.Source>
+                <FontImageSource Size="16"
+                                 Glyph="&#xE713;"
+                                 FontFamily="SegoeMDL2"/>
+            </ImageButton.Source>
+        </ImageButton>
+    </TitleBar.TrailingContent>
+</TitleBar>
+```
+
+The following screenshot shows the resulting appearance:
+
+:::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
+
+> [!NOTE]
+> Mac Catalyst support for the `TitleBar` control will be added in a future release.
 
 ## Control enhancements
 
-.NET MAUI in .NET 9 also includes control enhancements.
+.NET MAUI 9 includes control enhancements.
+
+### BackButtonBehavior OneWay binding mode
+
+The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a Shell app is now `BindingMode.OneWay` instead of `BindingMode.OneTime`. This enables you to more easily control the behavior of the back button at runtime, with data bindings:
+
+```xaml
+<ContentPage ...>    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"
+                            IsVisible="{Binding IsBackButtonVisible}"
+                            IconOverride="back.png" />   
+    </Shell.BackButtonBehavior>
+    ...
+</ContentPage>
+```
+
+### BlazorWebView
+
+On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a `BlazorWebView` to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the `BlazorWebView` not loading any content and rendering as an empty rectangle.
+
+To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram` class:
+
+```csharp
+// Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
+AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+```
+
+### CollectionView and CarouselView
+
+.NET MAUI 9 includes two optional new handlers on iOS and Mac Catalyst that bring performance and stability improvements to `CollectionView` and `CarouselView`. These handlers are based on `UICollectionView` APIs.
+
+To opt into using these handlers, add the following code to your `MauiProgram` class:
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2>();
+    handlers.AddHandler<Microsoft.Maui.Controls.CarouselView, Microsoft.Maui.Controls.Handlers.Items2.CarouselViewHandler2>();
+});
+#endif
+```
 
 ### Soft keyboard input support
 
-.NET MAUI 9 Preview 4 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
+.NET MAUI 9 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
 
 ```xaml
 <Entry Keyboard="Date" />
@@ -46,10 +295,220 @@ dotnet new maui-blazor-web -n AllTheTargets
 
 <xref:Microsoft.Maui.Controls.TimePicker> gains a <xref:Microsoft.Maui.Controls.TimePicker.TimeSelected> event, which is raised when the selected time changes. The <xref:Microsoft.Maui.Controls.TimeChangedEventArgs> object that accompanies the `TimeSelected` event has `NewTime` and `OldTime` properties, which specify the new and old time, respectively.
 
-## Android
+### WebView
 
-.NET for Android 9 Preview, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9 Preview, see the following release notes:
+<xref:Microsoft.Maui.Controls.WebView> adds a `ProcessTerminated` event that's raised when a <xref:Microsoft.Maui.Controls.WebView> process ends unexpectedly. The `WebViewProcessTerminatedEventArgs` object that accompanies this event defines platform-specific properties that indicate why the process failed.
 
+## App lifecycle
+
+.NET MAUI 9 adds the following remote notification lifecycle methods on iOS and Mac Catalyst:
+
+- `RegisteredForRemoteNotifications`, which is invoked when the app has successfully registered for remote notifications.
+- `ReceivedRemoteNotifications`, which is invoked when a remote notification is received.
+
+The following example shows how to consume these lifecycle methods:
+
+```csharp
+using Microsoft.Maui.LifecycleEvents;
+
+namespace PlatformLifecycleDemo;
+
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureLifecycleEvents(events =>
+            {
+#if IOS || MACCATALYST
+                events.AddiOS(ios => ios
+                    .ReceivedRemoteNotifications((app, dictionary) => LogEvent(nameof(iOSLifecycle.OnReceivedRemoteNotifications)))
+                    .RegisteredForRemoteNotifications((app, data) => LogEvent(nameof(iOSLifecycle.OnRegisteredForRemoteNotifications)));
+#endif
+                static bool LogEvent(string eventName, string type = null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                    return true;
+                }
+            });
+
+        return builder.Build();
+    }
+}
+```
+
+## Handler disconnection
+
+When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to cleanup a control, such as when navigating backwards in an app.
+
+In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 adds a `HandlerProperties.DisconnectPolicy` attached property for controlling when handlers are disconnected from their controls. This property requires a `HandlerDisconnectPolicy` argument, with the `HandlerDisconnectPolicy` enumeration defining the following values:
+
+- `Automatic`, which indicates that handlers will be disconnected automatically. This is the default value of the `HandlerProperties.DisconnectPolicy` attached property.
+- `Manual`, which indicates that handlers will have to be disconnected manually by invoking the `DisconnectHandler` implementation.
+
+The following example shows setting the `HandlerProperties.DisconnectPolicy` attached property:
+
+```xaml
+<controls:Video x:Name="video"
+                HandlerProperties.DisconnectPolicy="Manual"
+                Source="video.mp4"
+                AutoPlay="False" />
+```
+
+The equivalent C# code is:
+
+```csharp
+Video video = new Video
+{
+    Source = "video.mp4",
+    AutoPlay = false
+};
+HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
+```
+
+In addition, there's a `DisconnectHandlers` extension method that disconnects handlers from a given `IView`:
+
+```csharp
+video.DisconnectHandlers();
+```
+
+When disconnecting, the `DisconnectHandlers` method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
+
+## Multi-window support
+
+.NET MAUI 9 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
+
+```csharp
+Application.Current?.ActivateWindow(windowToActivate);
+```
+
+## Native embedding
+
+.NET MAUI 9 includes full APIs for native embedding scenarios, which previously had to be manually added to your project:
+
+```csharp
+var mauiApp = MauiProgram.CreateMauiApp();
+
+#if ANDROID
+var mauiContext = new MauiContext(mauiApp.Services, window);
+#else
+var mauiContext = new MauiContext(mauiApp.Services);
+#endif
+
+var mauiView = new MyMauiContent();
+var nativeView = mauiView.ToPlatform(mauiContext);
+```
+
+Alternatively, you can use the `ToPlatformEmbedded` method, passing in the `Window` for the platform on which the app is running:
+
+```csharp
+var mauiApp = MauiProgram.CreateMauiApp();
+var mauiView = new MyMauiContent();
+var nativeView = mauiView.ToPlatformEmbedded(mauiApp, window);
+```
+
+In both examples, `nativeView` is a platform-specific version of `mauiView`.
+
+To bootstrap a native embedded app in .NET MAUI 9, call the `UseMauiEmbeddedApp` extension method on your `MauiAppBuilder` object:
+
+```csharp
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+
+        builder
+            .UseMauiEmbeddedApp<App>();
+
+        return builder.Build();
+    }
+}
+```
+
+## Project templates
+
+.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from `dotnew new`:
+
+```dotnetcli
+dotnet new maui-blazor-web -n AllTheTargets
+```
+
+## Xcode sync
+
+.NET MAUI 9 includes Xcode sync (`xcsync`), which is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to your .NET project.
+
+You use `dotnet build` with the `xcsync-generate` or `xcsync-sync` commands, to generate or sync these files, and pass in a project file and additional arguments:
+
+```dotnetcli
+dotnet build /t:xcsync-generate
+    /p:xcSyncProjectFile=<PROJECT>
+    /p:xcSyncXcodeFolder=<TARGET_XCODE_DIRECTORY>
+    /p:xcSyncTargetFrameworkMoniker=<FRAMEWORK>
+    /p:xcSyncVerbosity=<LEVEL>
+```
+
+For more information, see [Xcode sync](~/macios/xcsync.md).
+
+## Deprecated APIs
+
+.NET MAUI 9 deprecates some APIs, which will be completely removed in a future release.
+
+### Frame
+
+The `Frame` control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The `Border` control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
+
+### MainPage
+
+Instead of defining the first page of your app using the `MainPage` property on an `Application` object, you should set the `Page` property on a `Window` to the first page of your app. This is what happens internally in .NET MAUI when you set the `MainPage` property, so there's no behavior change introduced by the `MainPage` property being marked as obsolete.
+
+The following example shows setting the `Page` property on a `Window`, via the `CreateWindow` override:
+
+```csharp
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
+}
+```
+
+The `MainPage` property is retained for .NET MAUI 9, but will be completely removed in a future release.
+
+### Compatibility layouts
+
+The compatibility layout classes in the `Microsoft.Maui.Controls.Compatibility` namespace have been obsoleted.
+
+### Legacy measure calls
+
+The following `VisualElement` legacy measure methods have been obsoleted:
+
+- `protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)`.
+- `public virtual SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)` from `VisualElement`.
+
+As a replacement, the following method has been introduced:
+
+- `public size Measure(double widthConstraint, double heightConstraint)`
+
+This `Measure` method returns the minimum size that an element needs in order to be displayed on a device. Margins are excluded from the measurement, but are returned with the size. This is the preferred method to call when measuring a view.
+
+In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Microsoft.Maui.Size` should be used.
+
+## .NET for Android
+
+.NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9, see the following release notes:
+
+- [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
 - [.NET for Android 9 Preview 6](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.6.340)
 - [.NET for Android 9 Preview 5](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.5.308)
 - [.NET for Android 9 Preview 4](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.4.272)
@@ -59,7 +518,7 @@ dotnet new maui-blazor-web -n AllTheTargets
 
 ### Asset packs
 
-.NET for Android 9 Preview 3 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
+.NET for Android 9 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
 
 > [!IMPORTANT]
 > Asset packs can only contain assets. In the case of .NET for Android this means items that have the `AndroidAsset` build action.
@@ -96,19 +555,17 @@ In .NET MAUI apps, the delivery type can be specified with the `DeliveryType` at
 
 For more information about Android asset packs, see [Android Asset Packs](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/AndroidAssetPacks.md).
 
-### Android 15 beta support
+### Android 15 support
 
-.NET for Android Preview 4 adds .NET bindings for the first beta of Android 15 (API 35) codenamed "Vanilla Ice Cream". To build for these APIs, update the target framework of your project:
+.NET for Android 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project:
 
 ```xml
 <TargetFramework>net9.0-android35</TargetFramework>
 ```
 
-.NET for Android Preview 5 extends these bindings to Android 15 beta 2, with improvements for startup performance and app size.
-
 ### LLVM marshalled methods
 
-Low-level Virtual Machine (LLVM) marshalled methods are now enabled by default in .NET for Android Preview 5 in non-Blazor apps. This has resulted in a [~10% improvement in performance in a test app](https://github.com/xamarin/xamarin-android/pull/8925).
+Low-level Virtual Machine (LLVM) marshalled methods are now enabled by default in .NET for Android 9 in non-Blazor apps. This has resulted in a [~10% improvement in performance in a test app](https://github.com/xamarin/xamarin-android/pull/8925).
 
 LLVM marshalled methods can be disabled in your project file (*.csproj*):
 
@@ -121,7 +578,7 @@ LLVM marshalled methods can be disabled in your project file (*.csproj*):
 
 ### Trimming enhancements
 
-.NET for Android Preview 5 includes fixes for when using full trimming to reduce app size. Full trimming is usually only enabled for release builds of your app, and can be configured in your project file (*.csproj*):
+.NET for Android 9 includes fixes for when using full trimming to reduce app size. Full trimming is usually only enabled for release builds of your app, and can be configured in your project file (*.csproj*):
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net9.0-android'">
@@ -129,17 +586,18 @@ LLVM marshalled methods can be disabled in your project file (*.csproj*):
 </PropertyGroup>
 ```
 
-## iOS
+## .NET for iOS
 
-.NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
+.NET 9 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
 
 - iOS: 17.2
 - tvOS: 17.2
 - Mac Catalyst: 17.2
 - macOS: 14.2
 
-For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
+For more information about .NET 9 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9.0.1xx Preview 7](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview7-9231)
 - [.NET 9.0.1xx Preview 6](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview6-9714)
 - [.NET 9.0.1xx Preview 5](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview5-9639)
 - [.NET 9.0.1xx Preview 4](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview4-9523)
@@ -149,7 +607,7 @@ For more information about .NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS,
 
 ### Bindings
 
-.NET for iOS 9 Preview 3 introduces the ability to multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct iOS versions:
+.NET for iOS 9 introduces the ability to multi-target versions of .NET for iOS bindings. For example, a library project may need to build for two distinct iOS versions:
 
 ```xml
 <TargetFrameworks>net9.0-ios17.0;net9.0-ios17.2</TargetFrameworks>
@@ -162,7 +620,7 @@ This will produce two libraries, one using iOS 17.0 bindings, and one using iOS 
 
 ### Native AOT for iOS & Mac Catalyst
 
-In .NET for iOS 9 Preview 4, native Ahead of Time (AOT) compilation for iOS and Mac Catalyst takes advantage of full trimming to reduce your app's package size and startup performance. This is a publishing feature that you can use when you're ready to ship your app.
+In .NET for iOS 9, native Ahead of Time (AOT) compilation for iOS and Mac Catalyst takes advantage of full trimming to reduce your app's package size and startup performance. This is a publishing feature that you can use when you're ready to ship your app.
 
 > [!IMPORTANT]
 > Your app and it's dependencies must be fully trimmable in order to utilize this feature.
