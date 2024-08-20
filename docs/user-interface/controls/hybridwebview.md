@@ -15,7 +15,7 @@ monikerRange: ">=net-maui-9.0"
 <xref:Microsoft.Maui.Controls.HybridWebView> defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.HybridWebView.DefaultFile>, of type `string?`, which specifies the file within the <xref:Microsoft.Maui.Controls.HybridWebView.HybridRoot> that should be served as the default file. The default value is *index.html*.
-- <xref:Microsoft.Maui.Controls.HybridWebView.HybridRoot>, of type `string?`, which is the path within the app's raw asset resources that contain the web app's contents. The default value is *wwwroot*, which maps to *<ProjectFolder>/Resources/Raw/wwwroot*.
+- <xref:Microsoft.Maui.Controls.HybridWebView.HybridRoot>, of type `string?`, which is the path within the app's raw asset resources that contain the web app's contents. The default value is *wwwroot*, which maps to *Resources/Raw/wwwroot*.
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a `Message` property.
 
