@@ -513,6 +513,8 @@
               href: android/app-links.md
             - name: App manifest
               href: android/manifest.md
+            - name: Asset packs
+              href: android/asset-packs.md
             - name: Building apps
               items:
               - name: Build process
