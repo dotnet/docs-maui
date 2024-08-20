@@ -5,7 +5,7 @@ ms.topic: concept-article
 ms.date: 08/20/2024
 monikerRange: ">=net-maui-9.0"
 
-#customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can communicate between the app and a .NET back-end.
+#customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
 ---
 
 # HybridWebView
