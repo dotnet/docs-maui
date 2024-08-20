@@ -373,6 +373,8 @@
                   href: user-interface/controls/frame.md
                 - name: GraphicsView
                   href: user-interface/controls/graphicsview.md
+                - name: HybridWebView
+                  href: user-interface/controls/hybridwebview.md
                 - name: Image
                   href: user-interface/controls/image.md
                 - name: ImageButton
