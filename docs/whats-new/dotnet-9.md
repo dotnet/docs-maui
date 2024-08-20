@@ -165,6 +165,8 @@ To build a hybrid app:
 
     The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
 
+For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
+
 ### Titlebar for Windows
 
 The `TitleBar` control provides the ability to add a custom title bar to your app on Windows:

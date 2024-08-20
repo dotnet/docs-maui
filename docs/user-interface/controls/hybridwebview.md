@@ -1,11 +1,11 @@
 ---
 title: HybridWebView
-description: Learn how to
+description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that code and .NET.
 ms.topic: concept-article
 ms.date: 08/20/2024
 monikerRange: ">=net-maui-9.0"
 
-#customer intent: As a developer, I want to XXXXXXX so that I can YYYYYYY.
+#customer intent: As a developer, I want to host HTML/JS/CSS content in a WebView so that I can communicate between the app and a .NET back-end.
 ---
 
 # HybridWebView
@@ -19,8 +19,6 @@ monikerRange: ">=net-maui-9.0"
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a `Message` property.
 
-## Create a .NET MAUI HybridWebView app
-
 To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
 - The web content of the app, which consists of static HTML, JavaScript, CSS, images, and other files.
@@ -28,6 +26,8 @@ To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you 
 - Code in the web content, and in C#/.NET, that uses the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the two components.
 
 The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
+
+## Create a .NET MAUI HybridWebView app
 
 To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
