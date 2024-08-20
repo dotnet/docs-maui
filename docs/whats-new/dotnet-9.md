@@ -27,7 +27,7 @@ In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The a
 
 ### HybridWebView
 
-<xref:Microsoft.Maui.Controls.HybridWebView> enables hosting arbitrary HTML/JS/CSS content in a WebView, and enables communication between the code in the WebView (JavaScript) and the code that hosts the WebView (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
+<xref:Microsoft.Maui.Controls.HybridWebView> enables hosting arbitrary HTML/JS/CSS content in a web view, and enables communication between the code in the web view (JavaScript) and the code that hosts the web view (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
 
 To build a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
@@ -35,7 +35,7 @@ To build a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you n
 - A <xref:Microsoft.Maui.Controls.HybridWebView> control as part of the app's UI. This can be achieved by referencing it in the app's XAML.
 - Code in the web content, and in C#/.NET, that uses the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the two components.
 
-The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
+The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native web view control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
 
 To build a hybrid app:
 
