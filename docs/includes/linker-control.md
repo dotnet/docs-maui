@@ -71,7 +71,7 @@ To exclude a member from the linking process when linking all assemblies, set th
 </ItemGroup>
 ```
 
-The XML file then uses the trimmer [descriptor format](https://github.com/dotnet/linker/blob/main/docs/data-formats.md#descriptor-format) to define which members to exclude from linking:
+The XML file then uses the trimmer [descriptor format](https://github.com/dotnet/runtime/blob/main/docs/tools/illink/data-formats.md#descriptor-format) to define which members to exclude from linking:
 
 ```xml
 <linker>
