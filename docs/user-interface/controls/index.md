@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 09/26/2022
+ms.date: 08/21/2024
 ---
 
 # Controls
@@ -67,6 +67,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.Entry> | <xref:Microsoft.Maui.Controls.Entry> enables you to enter and edit a single line of text. For more information, see [Entry](~/user-interface/controls/entry.md). |
 | <xref:Microsoft.Maui.Controls.Frame> | <xref:Microsoft.Maui.Controls.Frame> is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | <xref:Microsoft.Maui.Controls.GraphicsView> | <xref:Microsoft.Maui.Controls.GraphicsView> is a graphics canvas on which 2D graphics can be drawn using types from the <xref:Microsoft.Maui.Graphics> namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
+| <xref:Microsoft.Maui.Controls.HybridWebView> | <xref:Microsoft.Maui.Controls.HybridWebView> enables you to host arbitrary HTML/JS/CSS content in a web view, and enables communication between the code in the web view (JavaScript) and the code that hosts the web view (C#/.NET). For more information, see [HybridWebView](hybridwebview.md). |
 | <xref:Microsoft.Maui.Controls.Image> | <xref:Microsoft.Maui.Controls.Image> displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. For more information, see [Image](~/user-interface/controls/image.md). |
 | <xref:Microsoft.Maui.Controls.ImageButton> | <xref:Microsoft.Maui.Controls.ImageButton> displays an image and responds to a tap or click that direct an app to carry out a task. For more information, see [ImageButton](~/user-interface/controls/imagebutton.md). |
 | <xref:Microsoft.Maui.Controls.IndicatorView> | <xref:Microsoft.Maui.Controls.IndicatorView> displays indicators that represent the number of items in a <xref:Microsoft.Maui.Controls.CarouselView>. For more information, see [IndicatorView](~/user-interface/controls/indicatorview.md). |
