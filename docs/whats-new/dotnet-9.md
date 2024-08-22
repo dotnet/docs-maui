@@ -35,7 +35,7 @@ To build a .NET MAUI app with `HybridWebView` you need:
 - A `HybridWebView` control as part of the app's UI. This can be achieved by referencing it in the app's XAML.
 - Code in the web content, and in C#/.NET, that uses the `HybridWebView` APIs to send messages between the two components.
 
-The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but is'nt required to.
+The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native WebView control and runs within the context of the app. Any part of the app can access external web services, but isn't required to.
 
 To build a hybrid app:
 
