@@ -1,7 +1,7 @@
 ---
 title: "ScrollView"
 description: "The .NET MAUI ScrollView is a layout that's capable of scrolling its content."
-ms.date: 01/13/2022
+ms.date: 08/30/2024
 ---
 
 # ScrollView

@@ -1,7 +1,7 @@
 ---
 title: "Frame"
 description: "The .NET MAUI Frame is used to wrap a view or layout with a border that can be configured with color, shadow, and other options."
-ms.date: 04/12/2022
+ms.date: 08/30/2024
 ---
 
 # Frame

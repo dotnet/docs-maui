@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell flyout"
 description: "Learn how to customize and control a .NET MAUI flyout, which is the optional root menu for a .NET MAUI Shell app."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell flyout

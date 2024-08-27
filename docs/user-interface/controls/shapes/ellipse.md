@@ -1,7 +1,7 @@
 ---
 title: "Ellipse"
 description: "The .NET MAUI Ellipse class can be used to draw ellipses and circles."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Ellipse

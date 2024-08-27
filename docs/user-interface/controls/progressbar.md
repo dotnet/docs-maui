@@ -1,7 +1,7 @@
 ---
 title: "ProgressBar"
 description: "The .NET MAUI ProgressBar indicates to users that the app is progressing through a lengthy activity."
-ms.date: 02/08/2022
+ms.date: 08/30/2024
 ---
 
 # ProgressBar

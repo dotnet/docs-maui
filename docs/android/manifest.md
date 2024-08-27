@@ -1,7 +1,7 @@
 ---
 title: "Android app manifest"
 description: Learn about the Android app manifest, AndroidManifest.xml, that describes essential information about your app to build tools, the Android OS, and Google Play.
-ms.date: 03/07/2023
+ms.date: 08/30/2024
 ---
 
 # Android app manifest

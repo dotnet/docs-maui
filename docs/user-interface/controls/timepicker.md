@@ -1,7 +1,7 @@
 ---
 title: "TimePicker"
 description: "The .NET MAUI TimePicker is a view that allows the user to select a time."
-ms.date: 08/07/2024
+ms.date: 08/30/2024
 ---
 
 # TimePicker

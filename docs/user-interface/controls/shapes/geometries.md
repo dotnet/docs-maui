@@ -1,7 +1,7 @@
 ---
 title: "Geometries"
 description: ".NET MAUI geometry classes enable you to describe the geometry of a 2D shape."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Geometries

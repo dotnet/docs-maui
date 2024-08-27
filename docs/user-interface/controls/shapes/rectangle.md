@@ -1,7 +1,7 @@
 ---
 title: "Rectangle"
 description: "The .NET MAUI Rectangle class can be used to draw rectangles."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Rectangle

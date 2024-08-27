@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 10/23/2023
+ms.date: 08/30/2024
 zone_pivot_groups: devices-platforms
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "ContentView"
 description: "The .NET MAUI ContentView class can be used to create a custom control."
-ms.date: 01/13/2022
+ms.date: 08/30/2024
 ---
 
 # ContentView

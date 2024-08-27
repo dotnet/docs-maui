@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shapes: Line"
 description: "The .NET MAUI Line class can be used to draw lines."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Line

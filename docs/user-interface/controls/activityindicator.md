@@ -1,7 +1,7 @@
 ---
 title: "ActivityIndicator"
 description: "The .NET MAUI ActivityIndicator indicates to users that the app is engaged in a lengthy activity, without giving any indication of progress."
-ms.date: 02/08/2022
+ms.date: 08/30/2024
 ---
 
 # ActivityIndicator

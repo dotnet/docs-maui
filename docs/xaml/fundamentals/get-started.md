@@ -1,7 +1,7 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 06/27/2022
+ms.date: 08/30/2024
 ---
 
 # Get started with XAML

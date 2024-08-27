@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 05/03/2024
+ms.date: 08/30/2024
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView

@@ -1,7 +1,7 @@
 ---
 title: "Shapes"
 description: ".NET MAUI Shapes are types of Views that enable you to draw shapes to the screen."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Shapes

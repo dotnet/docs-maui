@@ -1,7 +1,7 @@
 ---
 title: "RadioButton"
 description: "The .NET MAUI RadioButton is a type of button that allows users to select one option from a set. Each option is represented by one radio button, and you can only select one radio button in a group."
-ms.date: 3/6/2023
+ms.date: 08/30/2024
 ---
 
 # RadioButton

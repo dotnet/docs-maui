@@ -1,7 +1,7 @@
 ---
 title: "Image"
 description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, or a stream."
-ms.date: 04/18/2023
+ms.date: 08/30/2024
 ---
 
 # Image

@@ -1,7 +1,7 @@
 ---
 title: "CollectionView"
 description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
-ms.date: 01/18/2022
+ms.date: 08/30/2024
 ---
 
 # CollectionView
