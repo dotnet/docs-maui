@@ -44,7 +44,7 @@ To retrieve a value from preferences you pass the key of the preference, followe
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_defaults":::
 
-Alternatively, to retrieve a value from preferences you pass the key of the preference, followed by the default value and its type when the key doesn't exist:
+In some scenarios you may need to pass the key of the preference, followed by the default value and its type:
 
 ```csharp
 long value = Preferences.Get("master_date", (long)0);
