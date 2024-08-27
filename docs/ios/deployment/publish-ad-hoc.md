@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI iOS app for ad-hoc distribution"
 description: "Learn how to provision and publish a .NET MAUI iOS app for ad-hoc distribution."
-ms.date: 02/24/2023
+ms.date: 08/27/2024
 ---
 
 # Publish an iOS app for ad-hoc distribution
@@ -77,11 +77,7 @@ To create a provisioning profile for ad-hoc distribution:
 
 ## Publish the app
 
-Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution. For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution:
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
@@ -100,49 +96,6 @@ Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution. For infor
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-[!INCLUDE [Publish](../includes/publish-vsmac.md)]
-
-<!-- markdownlint-disable MD029 -->
-5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
-
-    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-individual.png" alt-text="Screenshot of the archive tab in Visual Studio for Mac once archiving is complete.":::
-
-    The **Sign and Distribute** window will appear.
-    <!-- markdownlint-enable MD029 -->
-
-1. In the **Sign and Distribute** window, select the **Ad Hoc** distribution channel, and then select the **Next** button:
-
-    :::image type="content" source="media/publish/vsMAC/distribution-select-channel-ad-hoc.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
-
-1. In the **Sign and Distribute** window, ensure that the **Use Existing Identity and Provisioning Profile** radio button is selected and then select the **Next** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-ad-hoc.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
-
-    > [!NOTE]
-    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
-
-    Alternatively, select the **Re-sign With Another Identity and Provisioning Profile** radio button and choose your signing identity and provisioning profile.
-
-1. In the **Sign and Distribute** window, select the **Publish** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-publish-ad-hoc.png" alt-text="Screenshot of publishing an iOS app using ad hoc distribution.":::
-
-1. In the **Output IPA file** dialog, choose a location and filename for your IPA file, and select the **Save** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-save-ipa-ad-hoc.png" alt-text="Screenshot of saving an IPA file using ad hoc distribution.":::
-
-    Your app will then be published to an *.ipa* file on your file system:
-
-    :::image type="content" source="media/publish/vsmac/distribution-publish-complete.png" alt-text="Screenshot of publishing being complete.":::
-
-1. In the **Sign and Distribute** window, select the **Close** button.
-
----
-
 The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com.
+
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).

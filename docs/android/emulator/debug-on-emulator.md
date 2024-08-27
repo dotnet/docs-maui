@@ -1,7 +1,7 @@
 ---
 title: "Debugging on the Android Emulator"
 description: "This guide explains how to launch and debug .NET MAUI apps in Visual Studio using the Android Emulator."
-ms.date: 02/23/2022
+ms.date: 08/27/2024
 ---
 
 # Debug on the Android Emulator
@@ -15,17 +15,6 @@ Near the top of Visual Studio, there's the **Solution Configurations** drop-down
 After you've chosen a virtual device from the **Debug Target** device drop-down menu, select either **Debug** or **Release** mode, then select the Play button to run the application:
 
 :::image type="content" source="media/debug-on-emulator/win/vs-config-selection.png" alt-text="Debug and release modes in Visual Studio along with the Play button.":::
-
-<!--
-
-# [Visual Studio](#tab/windows)
-
-# [Visual Studio for Mac](#tab/macos)
-
-[![Debug and Release modes, Play button.](media/debug-on-emulator/mac/16-debug-release-sml.png)](media/debug-on-emulator/mac/16-debug-release.png#lightbox)
-
--->
------
 
 After the emulator starts, Visual Studio deploys the app to the virtual device. An example screenshot of the Android Emulator is displayed below. In this example, the emulator is running the .NET MAUI template app.
 

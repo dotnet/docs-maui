@@ -1,7 +1,7 @@
 ---
 title: "Enable hardware acceleration for the Android emulator (Hyper-V & AEHD)"
 description: "Learn how to enable hardware acceleration features to maximize Android emulator performance for a .NET MAUI app."
-ms.date: 06/24/2024
+ms.date: 08/27/2024
 ms.topic: how-to
 ---
 
@@ -192,85 +192,3 @@ To uninstall AEHD, use the following commands at a command line with administrat
 ## Troubleshoot
 
 For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](troubleshooting.md#hardware-acceleration-issues) guide.
-
-<!--
-
-TODO: The Mac stuff hasn't been rewritten/touched.
-
-::: zone-end
-::: zone pivot="macos"
-
-## Accelerating Android emulators on macOS
-
-The following virtualization technologies are available for accelerating the Android emulator:
-
-1. **Apple's Hypervisor Framework**. [Hypervisor](https://developer.apple.com/documentation/hypervisor) is a feature of macOS 10.10 and later that makes it possible to run virtual machines on a Mac.
-
-2. **Intel's Hardware Accelerated Execution Manager (HAXM)**. [HAXM](https://software.intel.com/articles/intel-hardware-accelerated-execution-manager-intel-haxm) is a virtualization engine for computers running Intel CPUs.
-
-It is recommended that you use the Hypervisor Framework to accelerate the Android emulator. If the Hypervisor Framework isn't available on your Mac, then HAXM can be used. The Android emulator will automatically make use of hardware acceleration if the following criteria are met:
-
-- Hardware acceleration is available and enabled on the development computer.
-
-- The emulator is running a system image created for an **x86**-based virtual device.
-
-> [!IMPORTANT]
->
-> You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker. You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
-
-For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md).
-
-## Accelerating with the Hypervisor Framework
-
-To use the Android emulator with the Hypervisor Framework, your Mac must meet the following criteria:
-
-- Your Mac must be running macOS 10.10 or later.
-
-- Your Mac's CPU must be able to support the Hypervisor Framework.
-
-If your Mac meets these criteria, the Android emulator will automatically use the Hypervisor Framework for acceleration. If you aren't sure if Hypervisor Framework is supported on your Mac, see the [Troubleshooting guide](troubleshooting.md?tabs=vsmac#hypervisor-issues) for ways to verify that your Mac supports Hypervisor.
-
-If the Hypervisor Framework isn't supported by your Mac, you can use HAXM to accelerate the Android emulator (described next).
-
-## Accelerating with HAXM
-
-If your Mac doesn't support the Hypervisor framework (or you're using a version of macOS earlier than 10.10), you can use **Intel's Hardware Accelerated Execution Manager** ([HAXM](https://software.intel.com/articles/intel-hardware-accelerated-execution-manager-intel-haxm)) to speed up the Android emulator.
-
-Before using the Android emulator with HAXM for the first time, it's a good idea to verify that HAXM is installed and available for the Android emulator to use.
-
-### Verifying HAXM support
-
-You can check to see if HAXM is already installed by using the following steps:
-
-01. Open a Terminal and enter the following command:
-
-    ```bash
-    ~/Library/Developer/Xamarin/android-sdk-macosx/tools/emulator -accel-check
-    ```
-
-    This command assumes that the Android SDK is installed at the default location of **~/Library/Developer/Xamarin/android-sdk-macosx**; if not, modify the above path for the location of the Android SDK on your Mac.
-
-01. If HAXM is installed, the above command will return a message similar to the following result:
-
-    > HAXM version 7.2.0 (3) is installed and usable.
-
-    If HAXM is *not* installed, a message similar to the following output is returned:
-
-    > HAXM is not installed on this machine (/dev/HAX is missing).
-
-If HAXM isn't installed, use the steps in the next section to install HAXM.
-
-### Installing HAXM
-
-HAXM installation packages for macOS are available from the [Intel Hardware Accelerated Execution Manager](https://software.intel.com/android/articles/intel-hardware-accelerated-execution-manager) page. Use the following steps to download and install HAXM:
-
-01. From the Intel website, download the latest [HAXM virtualization engine](https://software.intel.com/android/articles/intel-hardware-accelerated-execution-manager/) installer for macOS.
-
-01. Run the HAXM installer. Accept the default values in the installer dialogs.
-
-## Troubleshooting
-
-For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](troubleshooting.md?tabs=vsmac#accel-issues-mac) guide.
-
-::: zone-end
--->

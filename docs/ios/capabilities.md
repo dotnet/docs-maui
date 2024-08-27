@@ -1,7 +1,7 @@
 ---
 title: "iOS capabilities"
 description: "Learn how to add capabilities to your .NET MAUI iOS app's provisioning profile, to code sign your app."
-ms.date: 01/13/2023
+ms.date: 08/27/2024
 ---
 
 # iOS capabilities
@@ -14,7 +14,7 @@ Capabilities are closely related to the concept of entitlements. They both reque
 
 ## Add capabilities with Visual Studio
 
-Capabilities can be added to a provisioning profile in Visual Studio or Visual Studio for Mac. This approach requires the use of automatic provisioning, and only works for a subset of capabilities. For more information about automatic provisioning, see [Automatic provisioning for iOS apps](~/ios/device-provisioning/automatic-provisioning.md).
+Capabilities can be added to a provisioning profile in Visual Studio. This approach requires the use of automatic provisioning, and only works for a subset of capabilities. For more information about automatic provisioning, see [Automatic provisioning for iOS apps](~/ios/device-provisioning/automatic-provisioning.md).
 
 The following list shows the capabilities that can be automatically provisioned using Visual Studio or Visual Studio for Mac:
 
@@ -31,9 +31,7 @@ The following list shows the capabilities that can be automatically provisioned 
 
 In Visual Studio, all capabilities are added to your app's *Entitlements.plist* file. The capabilities listed above are also added to your provisioning profile. For more information about entitlements, including how to add an entitlements file to your project, see [Entitlements](entitlements.md).
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+To add a capability in Visual Studio:
 
 1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 1. In Visual Studio, enable automatic provisioning for your project. For more information, see [Enable automatic provisioning](~/ios/device-provisioning/automatic-provisioning.md#enable-automatic-provisioning).
@@ -44,25 +42,6 @@ In Visual Studio, all capabilities are added to your app's *Entitlements.plist* 
     :::image type="content" source="media/capabilities/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
 
 1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file, and add the app service to your App ID.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In Visual Studio for Mac, enable automatic provisioning for your project. For more information, see [Enable automatic provisioning](~/ios/device-provisioning/automatic-provisioning.md#enable-automatic-provisioning).
-1. In the **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
-
-    :::image type="content" source="media/capabilities/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
-
-1. In the entitlements editor, select and configure any entitlements required for your app:
-
-    :::image type="content" source="media/capabilities/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
-
-1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file, and add the app service to your App ID.
-
----
 
 It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 

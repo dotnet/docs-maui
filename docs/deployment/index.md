@@ -1,7 +1,7 @@
 ---
 title: "Deployment & testing"
 description: "Learn how to deploy, test, and publish .NET MAUI apps to Android, iOS, macOS, and Windows."
-ms.date: 06/04/2024
+ms.date: 08/27/2024
 ---
 
 # Deployment & testing
@@ -28,7 +28,7 @@ When combined with Pair to Mac, the remote iOS Simulator for Windows allows you 
 
 While developing a .NET MAUI iOS app it's essential to test it by deploying the app to a physical device, in addition to the simulator. Device-only bugs and performance issues can transpire when running on a device, due to hardware limitations such as memory or network connectivity. To test an app on a physical device, the device must be *provisioned*, and Apple must be informed that the device will be used for testing. For more information about device provisioning, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
 
-Rather than having to use a USB cable to connect an iOS device to your Mac to deploy and debug a .NET MAUI app, Visual Studio and Visual Studio for Mac can deploy .NET MAUI iOS apps to devices wirelessly, and debug them wirelessly. For more information, see [Wireless deployment for .NET MAUI iOS apps](~/ios/wireless-deployment.md).
+Rather than having to use a USB cable to connect an iOS device to your Mac to deploy and debug a .NET MAUI app, Visual Studio can deploy .NET MAUI iOS apps to devices wirelessly, and debug them wirelessly. For more information, see [Wireless deployment for .NET MAUI iOS apps](~/ios/wireless-deployment.md).
 
 Alternatively, hot restart enables you to quickly deploy iOS apps to a 64-bit local device, from Visual Studio, without requiring a Mac build host. It also removes the need for a full package rebuild by pushing new changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your apps during their development. For more information, see [Deploy an iOS app to a local device using hot restart](~/ios/hot-restart.md).
 

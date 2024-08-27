@@ -1,7 +1,7 @@
 ---
 title: "iOS entitlements"
 description: "Learn how to add entitlements to your .NET MAUI iOS app, to request access to specific system resources or user data."
-ms.date: 01/13/2023
+ms.date: 08/27/2024
 ---
 
 # iOS entitlements
@@ -30,11 +30,7 @@ To add a new entitlements file to your .NET MAUI app project, add a new XML file
 
 ## Set entitlements
 
-Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the entitlements editor.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the entitlements editor:
 
 1. In **Solution Explorer**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor.
 1. In the entitlements editor, select and configure any entitlements required by your app:
@@ -42,24 +38,6 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
     :::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
 
 1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In the **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
-
-    :::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
-
-1. In the entitlements editor, select and configure any entitlements required for your app:
-
-    :::image type="content" source="media/entitlements/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
-
-1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file.
-
----
 
 It may also be necessary to set privacy keys in *Info.plist*, for certain entitlements.
 

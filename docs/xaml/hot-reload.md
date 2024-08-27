@@ -1,7 +1,7 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 06/25/2024
+ms.date: 08/27/2024
 ---
 
 # XAML Hot Reload for .NET MAUI
@@ -31,29 +31,11 @@ There may be cases where XAML Hot Reload doesn't update the running app as expec
 
 ## Enable XAML Hot Reload
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vswin)
-<!-- markdownlint-enable MD025 -->
-
 XAML Hot Reload is enabled by default in Visual Studio 2022. If it's been previously disabled, it can be enabled by selecting **Debug > Options > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that the **Enable XAML Hot Reload**, **WinUI (including .NET MAUI)**, and **Android and iOS (.NET MAUI)** options are checked:
 
 :::image type="content" source="media/hot-reload/vs-options.png" alt-text="XAML Hot Reload options for .NET MAUI in Visual Studio.":::
 
 Then, on iOS in your build settings, check that the Linker is set to "Don't Link".
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-XAML Hot Reload is enabled by default in Visual Studio 2022 for Mac. If it's been previously disabled, it can be enabled by selecting **Visual Studio > Preferences > Other > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Preferences** dialog box, ensure that the **Enable XAML Hot Reload**, and **.NET MAUI** options are checked:
-
-:::image type="content" source="media/hot-reload/vsmac-preferences.png" alt-text="XAML Hot Reload options for .NET MAUI in Visual Studio for Mac":::
-
-Then, on iOS in your build settings, check that the Linker is set to "Don't Link".
-
----
 
 ## Reload on multiple platforms
 

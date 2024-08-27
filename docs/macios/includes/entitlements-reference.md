@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 03/28/2023
+ms.date: 08/27/2024
 ---
 
 ## Key reference
@@ -267,8 +267,6 @@ The entitlement is defined using the `com.apple.developer.icloud-container-devel
 The `$(AppIdentifierPrefix)` and `$(CFBundleIdentifier)` placeholders will be substituted for the correct values at build time.
 
 For more information, see [iCloud Container Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_icloud-container-identifiers?language=objc) on developer.apple.com.
-
-<!-- Note: In-App purchases only present in VSMac and not producing any XML -->
 
 ### Increased memory limit
 

@@ -1,7 +1,7 @@
 ---
 title: "Apple account management"
 description: "Learn how to use Apple account management features in Visual Studio and Visual Studio for Mac"
-ms.date: 11/15/2022
+ms.date: 08/27/2024
 ---
 
 # Apple account management
@@ -19,9 +19,7 @@ Before you begin, ensure that you've accepted any user license agreements in you
 
 If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+To add your Apple account to Visual Studio:
 
 1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
 
@@ -46,38 +44,6 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 1. Once your account has been added successfully, you'll see your Apple ID and any teams that your Apple ID is part of:
 
     :::image type="content" source="media/apple-account-management/vs/account.png" alt-text="Apple Developer Account added to Visual Studio.":::
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
-
-    :::image type="content" source="media/apple-account-management/vsmac/add-account.png" alt-text="Add an Apple Developer Account to Visual Studio for Mac.":::
-
-1. To add an enterprise account, in the **Add Enterprise Account** dialog, enter your Apple ID and password, and click the **Sign In** button:
-
-    :::image type="content" source="media/apple-account-management/vsmac/enterprise-account.png" alt-text="Add an Enterprise Apple Developer Account to Visual Studio for Mac.":::
-
-    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
-
-1. To add an individual account, in the **Add Individual Account** dialog, enter your App Store Connect API key data and click the **Add** button:
-
-    :::image type="content" source="media/apple-account-management/vsmac/individual-account.png" alt-text="Add an Individual Apple Developer Account to Visual Studio for Mac.":::
-
-    The **Name**, **Issuer ID**, and **Key ID** data can be found in [App Store Connect](https://appstoreconnect.apple.com/) by selecting **Users and Access** and then the **Keys** tab. The **Private key** can also be downloaded from this location:
-
-    :::image type="content" source="media/apple-account-management/app-store-connect-details.png" lightbox="media/apple-account-management/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
-
-    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
-
-1. Once your account has been added successfully, you'll see your Apple ID and any teams that your Apple ID is part of:
-
-    :::image type="content" source="media/apple-account-management/vsmac/account.png" alt-text="Apple Developer Account added to Visual Studio.":::
-
----
 
 ## View signing certificates and provisioning profiles
 
