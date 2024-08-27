@@ -1,7 +1,7 @@
 ---
 title: "Linking a .NET MAUI Mac Catalyst app"
 description: "Learn about the .NET for Mac Catalyst linker, which is used to eliminate unused code from a .NET MAUI Mac Catalyst app in order to reduce its size."
-ms.date: 04/11/2023
+ms.date: 08/27/2024
 no-loc: [ ILLink ]
 ---
 
