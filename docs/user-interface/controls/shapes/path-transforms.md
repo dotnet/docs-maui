@@ -1,7 +1,7 @@
 ---
 title: "Path transforms"
 description: "A .NET MAUI transform defines how to transform a Path object from one coordinate space to another coordinate space."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Path transforms

@@ -1,7 +1,7 @@
 ---
 title: "Data binding and MVVM"
 description: "The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel."
-ms.date: 06/09/2022
+ms.date: 08/30/2024
 ---
 
 # Data binding and MVVM

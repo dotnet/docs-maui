@@ -1,7 +1,7 @@
 ---
 title: "Polyline"
 description: "The .NET MAUI Polyline class can be used to draw a series of connected straight lines."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Polyline

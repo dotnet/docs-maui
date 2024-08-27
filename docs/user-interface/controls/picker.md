@@ -1,7 +1,7 @@
 ---
 title: "Picker"
 description: "The .NET MAUI Picker displays a short list of items, from which the user can select an item."
-ms.date: 02/11/2022
+ms.date: 08/30/2024
 ---
 
 # Picker

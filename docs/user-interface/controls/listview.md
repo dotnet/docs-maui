@@ -1,7 +1,7 @@
 ---
 title: "ListView"
 description: "The .NET MAUI ListView displays a scrollable vertical list of selectable data items. ListView supports displaying headers and footers, grouped data, pull-to-refresh, and context menu items."
-ms.date: 03/10/2022
+ms.date: 08/30/2024
 ---
 
 # ListView

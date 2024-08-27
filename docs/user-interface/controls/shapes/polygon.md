@@ -1,7 +1,7 @@
 ---
 title: "Polygon"
 description: "The .NET MAUI Polygon class can be used to draw polygons, which are connected series of lines that form closed shapes."
-ms.date: 01/12/2022
+ms.date: 08/30/2024
 ---
 
 # Polygon

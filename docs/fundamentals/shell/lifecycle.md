@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell lifecycle"
 description: "Learn about Shell apps and the .NET MAUI page lifecycle."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell lifecycle

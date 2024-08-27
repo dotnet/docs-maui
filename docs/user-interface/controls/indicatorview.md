@@ -1,7 +1,7 @@
 ---
 title: "IndicatorView"
 description: "The .NET MAUI IndicatorView is a control that displays indicators that represent the number of items, and current position, in a CarouselView."
-ms.date: 02/15/2022
+ms.date: 08/30/2024
 ---
 
 # IndicatorView

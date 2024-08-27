@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 09/29/2022
+ms.date: 08/30/2024
 ---
 
 # Border

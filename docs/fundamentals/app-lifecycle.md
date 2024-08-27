@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 08/09/2024
+ms.date: 08/30/2024
 ---
 
 # App lifecycle

@@ -1,7 +1,7 @@
 ---
 title: "RefreshView"
 description: "The .NET MAUI RefreshView is a container control that provides pull to refresh functionality for scrollable content."
-ms.date: 02/15/2022
+ms.date: 08/30/2024
 no-loc: [RefreshView]
 ---
 

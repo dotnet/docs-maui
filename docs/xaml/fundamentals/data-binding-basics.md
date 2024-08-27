@@ -1,7 +1,7 @@
 ---
 title: "Data binding basics"
 description: ".NET MAUI data bindings allow properties of two objects to be linked so that a change in one causes a change in the other."
-ms.date: 01/25/2022
+ms.date: 08/30/2024
 ---
 
 # Data binding basics

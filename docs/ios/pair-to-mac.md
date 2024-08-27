@@ -1,7 +1,7 @@
 ---
 title: "Pair to Mac for iOS development"
 description: "Learn how to use Pair to Mac to connect Visual Studio 2022 to a Mac build host. This article discusses how to enable remote login on the Mac, connect to the Mac from Visual Studio 2022, and manually add a Mac build host to the Windows machine."
-ms.date: 3/2/2023
+ms.date: 08/30/2024
 ---
 
 # Pair to Mac for iOS development

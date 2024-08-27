@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 10/23/2023
+ms.date: 08/30/2024
 ---
 
 # .NET MAUI Shell navigation

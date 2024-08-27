@@ -1,7 +1,7 @@
 ---
 title: "Editor"
 description: "The .NET MAUI Editor allows you to enter and edit multiple lines of text."
-ms.date: 10/19/2023
+ms.date: 08/30/2024
 ---
 
 # Editor

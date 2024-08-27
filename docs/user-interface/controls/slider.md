@@ -1,7 +1,7 @@
 ---
 title: "Slider"
 description: "The .NET MAUI Slider is a horizontal bar that can be manipulated by a user to select a double value from a continuous range."
-ms.date: 02/09/2022
+ms.date: 08/30/2024
 ---
 
 # Slider

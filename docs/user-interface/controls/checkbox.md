@@ -1,7 +1,7 @@
 ---
 title: "CheckBox"
 description: "The .NET MAUI CheckBox is a type of button that can either be checked or empty. When a checkbox is checked, it's considered to be on. When a checkbox is empty, it's considered to be off."
-ms.date: 07/19/2024
+ms.date: 08/30/2024
 ---
 
 # CheckBox

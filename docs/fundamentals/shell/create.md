@@ -1,7 +1,7 @@
 ---
 title: "Create a .NET MAUI Shell app"
 description: "Learn how to create a .NET MAUI Shell app, and how to describe the visual hierarchy of the app in the AppShell class."
-ms.date: 04/07/2022
+ms.date: 08/30/2024
 ---
 
 # Create a .NET MAUI Shell app
