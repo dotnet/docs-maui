@@ -1,7 +1,7 @@
 ---
 title: "Preferences"
 description: "Learn how to read and write application preferences, in .NET MAUI. The IPreferences interface can save and load application preferences in a key/value store."
-ms.date: 09/02/2022
+ms.date: 08/27/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 ---
 
@@ -40,9 +40,15 @@ Preferences are set by calling the `Preferences.Set` method, providing the key a
 
 ## Get preferences
 
-To retrieve a value from preferences, you pass the key of the preference, followed by the default value when the key doesn't exist:
+To retrieve a value from preferences you pass the key of the preference, followed by the default value when the key doesn't exist:
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_defaults":::
+
+Alternatively, to retrieve a value from preferences you pass the key of the preference, followed by the default value and its type when the key doesn't exist:
+
+```csharp
+long value = Preferences.Get("master_date", (long)0);
+```
 
 ## Check for a key
 
