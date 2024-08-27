@@ -373,6 +373,8 @@
                   href: user-interface/controls/frame.md
                 - name: GraphicsView
                   href: user-interface/controls/graphicsview.md
+                - name: HybridWebView
+                  href: user-interface/controls/hybridwebview.md
                 - name: Image
                   href: user-interface/controls/image.md
                 - name: ImageButton
@@ -513,6 +515,8 @@
               href: android/app-links.md
             - name: App manifest
               href: android/manifest.md
+            - name: Asset packs
+              href: android/asset-packs.md
             - name: Building apps
               items:
               - name: Build process
