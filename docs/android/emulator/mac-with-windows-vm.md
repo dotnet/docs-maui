@@ -117,7 +117,4 @@ To connect to the Android Emulator running on a Mac from a Windows virtual machi
     > [!NOTE]
     > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.  
 
-    <!-- > [!CAUTION]
-    > If you use port 5555 for the local port, `adb` will think that the emulator is running locally on Windows. This doesn't cause any issues in Visual Studio, but in Visual Studio for Mac it causes the app to exit immediately after launch. -->
-
 When the connection is completed Visual Studio will display the emulator as a debug target under **Android Local Devices**, which you can use to deploy your app to the emulator.

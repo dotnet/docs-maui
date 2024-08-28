@@ -39,11 +39,11 @@ Then, on iOS in your build settings, check that the Linker is set to "Don't Link
 
 ## Reload on multiple platforms
 
-XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual Studio and Visual Studio for Mac, provided that you have separate head projects per platform rather than a single project app. For example, you can deploy an Android and an iOS target at the same time to see your changes reflected on both platforms at once. To debug on multiple platforms on Windows, see [How To: Set multiple startup projects](/visualstudio/ide/how-to-set-multiple-startup-projects). To debug on multiple platforms on a Mac, see [Set multiple startup projects](/visualstudio/mac/set-startup-projects).
+XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual Studio, provided that you have separate head projects per platform rather than a single project app. For example, you can deploy an Android and an iOS target at the same time to see your changes reflected on both platforms at once. To debug on multiple platforms on Windows, see [How To: Set multiple startup projects](/visualstudio/ide/how-to-set-multiple-startup-projects).
 
 ## Troubleshooting
 
-The XAML Hot Reload output displays status messages that can help with troubleshooting. In Visual Studio, these can be displayed by selecting **View > Output** from the menu bar, and then selecting **Hot Reload** in the **Show output from:** drop-down. In Visual Studio for Mac, these can be displayed by hovering your mouse cursor over **XAML Hot Reload** in the status bar.
+The XAML Hot Reload output displays status messages that can help with troubleshooting. In Visual Studio, these can be displayed by selecting **View > Output** from the menu bar, and then selecting **Hot Reload** in the **Show output from:** drop-down.
 
 If XAML Hot Reload fails to initialize you should ensure that you're using the latest version of .NET MAUI, the latest version of the IDE, and that your iOS linker settings are set to **Don't Link** in the project's build settings.
 

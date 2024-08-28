@@ -5,7 +5,7 @@ ms.date: 08/27/2024
 
 ## Key reference
 
-The entitlement key/value pairs are listed below for reference. In Visual Studio they can be added by editing the *Entitlements.plist* file as an XML file. In Visual Studio for Mac they can be added via the **Source** view of the entitlements editor.
+The entitlement key/value pairs are listed below for reference. In Visual Studio they can be added by editing the *Entitlements.plist* file as an XML file. In Visual Studio Code they can be added by editing the XML in the *Entitlements.plist* file.
 
 ### Access WiFi information
 

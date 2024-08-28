@@ -6,7 +6,7 @@ ms.date: 08/27/2024
 
 # Wireless deployment for .NET MAUI iOS apps
 
-Rather than having to use a USB cable to connect an iOS device to your Mac to deploy and debug a .NET Multi-platform App UI (.NET MAUI) app, Visual Studio and Visual Studio for Mac can deploy .NET MAUI iOS apps to devices wirelessly, and debug them wirelessly. To do this you must pair your iOS device with Xcode on your Mac. Once paired, the device can be selected from the device target list in Visual Studio and Visual Studio for Mac.
+Rather than having to use a USB cable to connect an iOS device to your Mac to deploy and debug a .NET Multi-platform App UI (.NET MAUI) app, Visual Studio can deploy .NET MAUI iOS apps to devices wirelessly, and debug them wirelessly. To do this you must pair your iOS device with Xcode on your Mac. Once paired, the device can be selected from the device target list in Visual Studio.
 
 > [!IMPORTANT]
 > .NET MAUI iOS apps must have been provisioned before they can be deployed to a device for testing and debugging. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
