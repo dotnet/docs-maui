@@ -1,7 +1,7 @@
 ---
 title: "Mac Catalyst capabilities"
 description: "Learn how to add capabilities to your .NET MAUI Mac Catalyst app's provisioning profile, to code sign your app."
-ms.date: 03/28/2023
+ms.date: 08/28/2024
 ---
 
 # Mac Catalyst capabilities
@@ -38,19 +38,7 @@ Once you've created an App ID you must create a provisioning profile for the App
 
 ## Download provisioning profiles
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-Once you've created a provisioning profile it must be downloaded by Visual Studio for Mac:
-
-1. In Visual Studio for Mac, go to *Visual Studio > Preferences > Publishing > Apple Developer Account*.
-1. In the *Apple Developer Accounts* window, select a team and click the *View Details...* button.
-1. In the *Details* window, verify that the new profile appears in the *Provisioning Profiles* list. You may need to restart Visual Studio for Mac to refresh the list.
-1. In the *Details* dialog, click the *Download All Profiles* button.
-
-The provisioning profile will then be available for use.
-
-> [!NOTE]
-> You can also download your provisioning profile in Xcode. For more information, see [Download your provisioning profile in Xcode](~/mac-catalyst/deployment/publish-app-store.md#download-your-provisioning-profile-in-xcode).
+[!INCLUDE [Download provisioning profile in Xcode](includes/download-profiles.md)
 
 ## Define build properties in your project file
 
