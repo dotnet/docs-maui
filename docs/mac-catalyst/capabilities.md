@@ -38,7 +38,7 @@ Once you've created an App ID you must create a provisioning profile for the App
 
 ## Download provisioning profiles
 
-[!INCLUDE [Download provisioning profile in Xcode](includes/download-profiles.md)
+[!INCLUDE [Download provisioning profile in Xcode](includes/download-profiles.md)]
 
 ## Define build properties in your project file
 
