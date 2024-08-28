@@ -1,7 +1,7 @@
 ---
 title: "Manual provisioning for .NET MAUI iOS apps"
 description: "Learn how to use manual provisioning to create development certificates and profiles for .NET MAUI iOS apps."
-ms.date: 11/29/2022
+ms.date: 08/28/2024
 ---
 
 # Manual provisioning for iOS apps
@@ -19,11 +19,7 @@ Development certificates and their associated keys establish your identity with 
 > [!IMPORTANT]
 > You can only have two iOS development certificates at any one time. If you need to create any more, you will need to revoke an existing one. Any machine using a revoked certificate will not be able to sign their app.
 
-Once you've added your Apple Developer Account to Visual Studio, you need to generate a signing certificate.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+Once you've added your Apple Developer Account to Visual Studio, you need to generate a signing certificate:
 
 1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**.
 1. In the **Apple Developer Accounts** dialog, select a team and then select **View Details**.
@@ -31,18 +27,6 @@ Once you've added your Apple Developer Account to Visual Studio, you need to gen
 
 > [!IMPORTANT]
 > The private key and certificate that make up your signing identity will also be exported to **Keychain Access** on your Mac build host, provided that the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
-1. In the **Apple Developer Accounts** window, select a team and then select **View Details**.
-1. In the **Details** window, select **Create Certificate** and then select **Apple Development** or **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
-
----
 
 ### Understanding certificate key pairs
 
@@ -119,11 +103,7 @@ A development provisioning profile can be created with the following steps:
 
 ## Download provisioning profiles in Visual Studio
 
-After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app:
 
 1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**.
 1. In the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button.
@@ -132,28 +112,9 @@ After creating a development provisioning profile in your Apple Developer Accoun
 
 The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
-1. In the **Apple Developer Accounts** window, select a team and click the **View Details...** button.
-1. In the **Details** window, verify that the new profile appears in the **Provisioning Profiles** list. You may need to restart Visual Studio for Mac to refresh the list.
-1. In the **Details** dialog, click the **Download All Profiles** button.
-
-The development provisioning profile will then be available for use.
-
----
-
 ## Enable manual provisioning
 
-After manually creating the development provisioning profile, and installing it in Visual Studio, your .NET MAUI app project should be configured to use manual provisioning.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+After manually creating the development provisioning profile, and installing it in Visual Studio, your .NET MAUI app project should be configured to use manual provisioning:
 
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab and ensure that the value of the **Application ID** field corresponds to the format of the App ID you created earlier.
 1. In the project properties, navigate to the **iOS Bundle Signing** tab and ensure that **Manual Provisioning** is selected in the **Scheme** drop-down:
@@ -161,35 +122,6 @@ After manually creating the development provisioning profile, and installing it 
     :::image type="content" source="media/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
 1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
-1. In the **Project Properties** window, select the **Build > App Info** tab and ensure that the value of the **Application ID** field corresponds to the format of the App ID you created earlier.
-1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
-1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:
-
-    :::image type="content" source="media/manual-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
-
-1. In the **Signing** section of the **Application** view, select **Manual Provisioning**:
-
-    :::image type="content" source="media/manual-provisioning/vsmac/manual-provisioning.png" alt-text="Screenshot of manual provisioning selected as the signing scheme in Visual Studio for Mac.":::
-
-1. In the **Signing** section of the **Application** view, click the **Bundle Signing Options...** button.
-1. In the **Project Properties** window, select your **Signing Identity** and **Provisioning profile**, or leave both as **Automatic**:
-
-    :::image type="content" source="media/manual-provisioning/vsmac/bundle-signing.png" alt-text="Screenshot of bundle signing options in Visual Studio for Mac.":::
-
-    When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
-
-1. In the **Project Properties** window, click the **OK** button.
-1. In Visual Studio for Mac, close the **Info.plist** file.
-
----
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
 

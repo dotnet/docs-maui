@@ -43,11 +43,7 @@ It may also be necessary to set privacy keys in *Info.plist*, for certain entitl
 
 ## Consume entitlements
 
-A .NET MAUI iOS app must be configured to consume the entitlements defined in the *Entitlements.plist* file.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+A .NET MAUI iOS app must be configured in Visual Studio to consume the entitlements defined in the *Entitlements.plist* file:
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab.
 1. In the **Bundle Signing** settings, click the **Browse...** button for the **Custom Entitlements** field.
@@ -60,27 +56,6 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 
 > [!NOTE]
 > Visual Studio will set the custom entitlements field for both debug and release builds.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
-1. In the **Project Properties** window, select the **Build > iOS > Bundle Signing** tab and click the **...** button next to the **Custom Entitlements** field:
-
-    :::image type="content" source="media/entitlements/set-custom-entitlements-vsmac.png" alt-text="Visual Studio for Mac bundle signing properties.":::
-
-1. In the dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
-1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
-
-    :::image type="content" source="media/entitlements/custom-entitlements-set-vsmac.png" alt-text="Visual Studio for Mac custom entitlements field set.":::
-
-1. In the **Project Properties** window, click the **OK** button to close the window.
-
-> [!IMPORTANT]
-> The custom entitlements field must be set separately for each build configuration for your app.
 
 ---
 
