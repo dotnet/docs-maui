@@ -1,6 +1,6 @@
 ---
 title: "Apple account management"
-description: "Learn how to use Apple account management features in Visual Studio and Visual Studio for Mac"
+description: "Learn how to use Apple account management features in Visual Studio."
 ms.date: 08/27/2024
 ---
 
@@ -8,7 +8,7 @@ ms.date: 08/27/2024
 
 When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a device, prior to uploading it to the App Store for distribution. Both of these tasks require you to have an [Apple ID](https://appleid.apple.com/account), and have enrolled your Apple ID in the [Apple Developer Program](https://developer.apple.com/programs).
 
-The Apple account management interface in Visual Studio and Visual Studio for Mac enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
+The Apple account management interface in Visual Studio enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
 
 > [!IMPORTANT]
 > Adding an Apple account that uses federated credentials isn't possible in Visual Studio.

@@ -8,7 +8,7 @@ ms.date: 08/27/2024
 
 On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities enable you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
-Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in your Apple Developer Account.
+Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile can be created automatically in Visual Studio, or manually in your Apple Developer Account.
 
 Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your app runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
 
@@ -16,7 +16,7 @@ Capabilities are closely related to the concept of entitlements. They both reque
 
 Capabilities can be added to a provisioning profile in Visual Studio. This approach requires the use of automatic provisioning, and only works for a subset of capabilities. For more information about automatic provisioning, see [Automatic provisioning for iOS apps](~/ios/device-provisioning/automatic-provisioning.md).
 
-The following list shows the capabilities that can be automatically provisioned using Visual Studio or Visual Studio for Mac:
+The following list shows the capabilities that can be automatically provisioned using Visual Studio:
 
 - HealthKit
 - HomeKit

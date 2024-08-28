@@ -1,7 +1,7 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 04/04/2024
+ms.date: 08/28/2024
 ---
 
 # Supported platforms for .NET MAUI apps
@@ -26,7 +26,7 @@ ms.date: 04/04/2024
 
 .NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development.
 
-.NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio for Mac, and in Visual Studio Code when using the .NET MAUI extension.
+On Windows, .NET MAUI apps for Android, iOS, and Windows can also be built with Visual Studio Code when using the .NET MAUI extension. On macOS, .NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio Code when using the .NET MAUI extension.
 
 ## Additional platform support
 
