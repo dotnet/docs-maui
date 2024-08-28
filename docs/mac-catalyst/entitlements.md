@@ -46,7 +46,7 @@ A .NET MAUI Mac Catalyst app must be configured to consume the entitlements defi
 ```
 
 > [!IMPORTANT]
-> The `$(CodesignEntitlements)` build property must be set separately for each build configuration for your app.
+> The `$(CodesignEntitlements)` build property can be set separately for each build configuration for your app.
 
 Alternatively, you can specify the entitlements file via the CLI when building and publishing your app. For more information, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
 
