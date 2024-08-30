@@ -1,7 +1,7 @@
 ---
 title: "Information property list"
 description: Learn about the Apple information property list file, Info.plist, that contains configuration information for your .NET MAUI app on iOS and Mac Catalyst.
-ms.date: 04/12/2023
+ms.date: 08/27/2024
 ---
 
 # Information property list
@@ -14,13 +14,7 @@ When you build your app, .NET MAUI copies your *Info.plist* file into the compil
 
 ## Edit the information property list in the editor
 
-Double-clicking an *Info.plist* file will open it in Visual Studio's Info.plist editor.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
-
-Visual Studio's *Info.plist* editor contains two views of the data:
+Double-clicking an *Info.plist* file will open it in Visual Studio's Info.plist editor, which contains two views of the data:
 
 - Application, which enables you to set common app properties:
 
@@ -32,31 +26,6 @@ Visual Studio's *Info.plist* editor contains two views of the data:
 - Advanced, which enables you to specify supported document types, universal type identifiers (UTIs), and URL types:
 
     :::image type="content" source="media/info-plist/vs/advanced.png" alt-text="Screenshot of advanced tab in Visual Studio Info.plist editor.":::
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-Visual Studio for Mac's *Info.plist* editor contains three views of the data:
-
-- Source, which enables you to edit keys and values manually:
-
-    :::image type="content" source="media/info-plist/vsmac/source.png" alt-text="Screenshot of source view in Visual Studio for Mac Info.plist editor.":::
-
-- Advanced, which enables you to specify supported document types, universal type identifiers (UTIs), and URL types:
-
-    :::image type="content" source="media/info-plist/vsmac/advanced.png" alt-text="Screenshot of advanced view in Visual Studio for Mac Info.plist editor.":::
-
-- Application, which enables you to set common app properties:
-
-    :::image type="content" source="media/info-plist/vsmac/application.png" alt-text="Screenshot of application view in Visual Studio for Mac Info.plist editor.":::
-
-    > [!NOTE]
-    > Values for the **Application Name**, **Bundle Identifier**, **Version**, and **Build** fields are retrieved from your app's project file. For more information, see [Provide app info](#provide-app-info).
-
----
 
 ## Edit the information property list source
 
@@ -76,91 +45,35 @@ The *Info.plist* editor retrieves basic app data from the app's project file, ra
 
 ### Application name
 
-The application name for a .NET MAUI app is stored in the app's project file as the `ApplicationTitle` build property:
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+The application name for a .NET MAUI app is stored in the app's project file as the `ApplicationTitle` build property.
 
 In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application Title** field lists the application name.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application Title** field lists the application name.
-
----
 
 When the value of the **Application Title** field is updated, the value of the **Application Name** field in the application view in the *Info.plist* file will be automatically updated.
 
 ### Application ID
 
-The bundle identifier for a .NET MAUI app is stored in the app's project file as the `ApplicationId` build property:
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+The bundle identifier for a .NET MAUI app is stored in the app's project file as the `ApplicationId` build property.
 
 In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
-
----
 
 When the value of the **Application ID** field is updated, the value of the **Bundle Identifier** field in the application view in the *Info.plist* file will be automatically updated.
 
 ### Application display version
 
-The application display version for a .NET MAUI app is stored in the app's project file as the `ApplicationDisplayVersion` build property:
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+The application display version for a .NET MAUI app is stored in the app's project file as the `ApplicationDisplayVersion` build property.
 
 In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application Display Version** field lists the application display version.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application Display Version** field lists the application display version.
-
----
 
 When the value of the **Application Display Version** field is updated, the value of the **Version** field in the application view in the *Info.plist* file will be automatically updated.
 
 ### Application version
 
-The application version for a .NET MAUI app is stored in the app's project file as the `ApplicationVersion` build property:
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+The application version for a .NET MAUI app is stored in the app's project file as the `ApplicationVersion` build property.
 
 In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application Version** field lists the application version.
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application Version** field lists the application version.
-
----
-
-When the value of the **Application Version** field is updated, the value of the **Build** field in the application view in the  *Info.plist* file will be automatically updated.
+When the value of the **Application Version** field is updated, the value of the **Build** field in the application view in the *Info.plist* file will be automatically updated.
 
 ## See also
 

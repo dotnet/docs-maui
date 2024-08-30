@@ -1,7 +1,7 @@
 ---
 title: "Linking a .NET MAUI Mac Catalyst app"
 description: "Learn about the .NET for Mac Catalyst linker, which is used to eliminate unused code from a .NET MAUI Mac Catalyst app in order to reduce its size."
-ms.date: 04/11/2023
+ms.date: 08/28/2024
 no-loc: [ ILLink ]
 ---
 
@@ -9,16 +9,17 @@ no-loc: [ ILLink ]
 
 [!INCLUDE [Linker introduction and behavior](../macios/includes/linker-behavior.md)]
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+To configure linker behavior in Visual Studio Code you should add the `$(MtouchLink)` build property to a property group in your app's *.csproj* file. This build property should be set to `None`, `SdkOnly`, or `Full`:
 
-To configure linker behavior in Visual Studio for Mac:
+```xml
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+  <MtouchLink>SdkOnly</MtouchLink>
+</PropertyGroup>
+```
 
-1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
-1. In the **Project Properties** window, select the **Build > Mac Catalyst > Build** tab.
-1. In the **Project Properties** window, ensure the **Configuration** drop-down is set to **Release** and set the **Linker behavior** drop-down to your desired linker behavior:
+Alternatively, you can specify the linker behavior via the CLI when building and publishing your app. For more information, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
 
-    :::image type="content" source="media/linking/vsmac.png" alt-text="Screenshot of the linker behavior for Mac Catalyst in Visual Studio for Mac.":::
-
-1. In the **Project Properties** window, click the **OK** button.
+> [!IMPORTANT]
+> The `$(MtouchLink)` build property can be set separately for each build configuration for your app.
 
 [!INCLUDE [Control the linker](../includes/linker-control.md)]

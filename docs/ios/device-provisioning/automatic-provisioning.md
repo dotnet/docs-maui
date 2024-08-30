@@ -1,7 +1,7 @@
 ---
 title: "Automatic provisioning for .NET MAUI iOS apps"
 description: "Learn how to use automatic provisioning to request development certificates and profiles for .NET MAUI iOS apps."
-ms.date: 11/28/2022
+ms.date: 08/28/2024
 ---
 
 # Automatic provisioning for iOS apps
@@ -15,11 +15,7 @@ Once you've added your Apple Developer Account to Visual Studio, you can use any
 
 ## Enable automatic provisioning
 
-Once you've added your Apple Developer Account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+Once you've added your Apple Developer Account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project:
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab and ensure that **Automatic Provisioning** is selected in the **Scheme** drop-down:
 
@@ -34,28 +30,6 @@ Once you've added your Apple Developer Account to Visual Studio, you need to ena
     If the automatic provisioning fails the **Configure Automatic Provisioning** dialog will display the reason for the error.
 
 1. In the **Configure Automatic Provisioning** dialog, click the **Ok** button to dismiss the dialog.
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
-
-1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:
-
-    :::image type="content" source="media/automatic-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
-
-1. In the **Signing** section of the **Application** view, select **Automatic Provisioning**, and then select your team from the **Team** drop-down. Visual Studio for Mac will attempt to automatically provision your project and will indicate if the process completed successfully:
-
-    :::image type="content" source="media/automatic-provisioning/vsmac/application-view.png" alt-text="Screenshot of application view in Info.plist editor in Visual Studio for Mac.":::
-
-    If the automatic provisioning fails the **Automatic signing** window will display the reason for the error.
-
-1. Close the **Info.plist** file.
-
----
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
 
