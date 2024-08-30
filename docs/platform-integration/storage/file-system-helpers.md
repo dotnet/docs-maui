@@ -1,7 +1,7 @@
 ---
 title: "File system helpers"
 description: "Learn how to use the .NET MAUI IFileSystem interface in the Microsoft.Maui.Storage namespace. This interface contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 06/25/2024
+ms.date: 08/30/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
@@ -34,6 +34,12 @@ To get the app's top-level directory for any files that aren't user data files. 
 To open a file that is bundled into the app package, use the `OpenAppPackageFileAsync` method and pass the file name. This method returns a read-only <xref:System.IO.Stream> representing the file contents. The following example demonstrates using a method to read the text contents of a file:
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
+
+The following example demonstrates reading a bundled font file from the app package:
+
+```csharp
+await using var myFont = await FileSystem.OpenAppPackageFileAsync("MyFont.ttf");
+```
 
 ### Copy a bundled file to the app data folder
 
