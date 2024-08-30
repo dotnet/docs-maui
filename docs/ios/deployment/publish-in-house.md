@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI iOS app for in-house distribution"
 description: "Learn how to provision and publish a .NET MAUI iOS app for in-house distribution."
-ms.date: 02/24/2023
+ms.date: 08/27/2024
 ---
 
 # Publish an iOS app for in-house distribution
@@ -60,9 +60,7 @@ To create a new App ID:
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the **Bundle identifier** in the *Info.plist* file in your app project.
     >
-    > The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
-    > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
-    > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
+    > The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property. In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
     >
     > When the value of the **Application ID** field is updated, the value of the **Bundle identifier** in the **Info.plist** will be automatically updated.
     <!-- markdownlint-enable MD032 -->
@@ -108,11 +106,7 @@ To create a distribution provisioning profile:
 
 ## Publish the app
 
-Visual Studio can publish a .NET MAUI iOS app for in-house distribution. For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
-
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
+Visual Studio can publish a .NET MAUI iOS app for in-house distribution:
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
@@ -131,49 +125,6 @@ Visual Studio can publish a .NET MAUI iOS app for in-house distribution. For inf
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio for Mac](#tab/vsmac)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
-[!INCLUDE [Publish](../includes/publish-vsmac.md)]
-
-<!-- markdownlint-disable MD029 -->
-5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
-
-    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-enterprise.png" alt-text="Screenshot of the archive tab in Visual Studio Mac once archiving is complete.":::
-
-    The **Sign and Distribute** window will appear.
-    <!-- markdownlint-enable MD029 -->
-
-1. In the **Sign and Distribute** window, select the **Enterprise** distribution channel, and then select the **Next** button:
-
-    :::image type="content" source="media/publish/vsMAC/distribution-select-channel-enterprise.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
-
-1. In the **Sign and Distribute** window, ensure that the **Use Existing Identity and Provisioning Profile** radio button is selected and then select the **Next** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-enterprise.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
-
-    > [!NOTE]
-    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
-
-    Alternatively, select the **Re-sign With Another Identity and Provisioning Profile** radio button and choose your signing identity and provisioning profile.
-
-1. In the **Sign and Distribute** window, select the **Publish** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-publish-enterprise.png" alt-text="Screenshot of publishing an iOS app using ad hoc distribution.":::
-
-1. In the **Output IPA file** dialog, choose a location and filename for your IPA file, and select the **Save** button:
-
-    :::image type="content" source="media/publish/vsmac/distribution-save-ipa-ad-hoc.png" alt-text="Screenshot of saving an IPA file using enterprise distribution.":::
-
-    Your app will then be published to an *.ipa* file on your file system:
-
-    :::image type="content" source="media/publish/vsmac/distribution-publish-complete.png" alt-text="Screenshot of publishing being complete.":::
-
-1. In the **Sign and Distribute** window, select the **Close** button.
-
----
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
 
 In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.

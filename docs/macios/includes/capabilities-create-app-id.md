@@ -9,9 +9,7 @@ An App ID is similar to a reverse-DNS string, that uniquely identifies an app, a
 
 <!-- markdownlint-disable MD032 -->
 > [!IMPORTANT]
-> The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
-> - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
-> - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
+> The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property. In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
 >
 > When the value of the **Application ID** field is updated, the value of the **Bundle identifier** in the **Info.plist** will be automatically updated.
 <!-- markdownlint-enable MD032 -->

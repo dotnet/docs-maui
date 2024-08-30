@@ -57,19 +57,6 @@ Then, you should keep executing the `reg query` command until it doesn't return 
 
 After following this process, you should be able to reinstall .NET MAUI either through Visual Studio, or by installing your chosen .NET SDK version and running the `dotnet workload install maui` command.
 
-### Mac
-
-Visual Studio for Mac's installer and updater uses `dotnet workload install` commands to install the .NET MAUI *.pkg* files.
-
-Since *.pkg* files can't be uninstalled, the simplest approach to uninstalling the workloads on a Mac is to run the following commands to delete the specified folders:
-
-```zsh
-rm -r ~/.dotnet/
-sudo rm -r /usr/local/share/dotnet/
-```
-
-After executing these commands, you should be able to reinstall .NET MAUI either through Visual Studio for Mac, or by installing your chosen .NET SDK version and running `dotnet workload install maui` command.
-
 <!-- Leaving here in case this situation occurs with .NET 8
 ## Templates are missing
 
@@ -161,7 +148,7 @@ var contact = await Communication.Contacts.Default.PickContactAsync();
 
 ## Xcode isn't currently installed or couldn't be found
 
-After you install the Xcode command line tools using `xcode-select --install`, Visual Studio for Mac might show a "Xcode is not currently installed or could not be found" message when you attempt to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it's empty, select the drop-down, and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio for Mac.
+After you install the Xcode command line tools using `xcode-select --install`, Visual Studio Code might show a "Xcode is not currently installed or could not be found" message when you attempt to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it's empty, select the drop-down, and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio Code.
 
 ## Couldn't find a valid Xcode app bundle
 
