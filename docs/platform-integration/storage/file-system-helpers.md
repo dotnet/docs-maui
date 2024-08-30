@@ -35,7 +35,7 @@ To open a file that is bundled into the app package, use the `OpenAppPackageFile
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
 
-The following example demonstrates reading a bundled font file from the app package:
+The following example demonstrates opening a bundled font file from the app package:
 
 ```csharp
 await using var myFont = await FileSystem.OpenAppPackageFileAsync("MyFont.ttf");
