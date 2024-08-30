@@ -36,8 +36,6 @@ Once you've created an App ID you must create a provisioning profile for the App
 - If you intend to distribute your app outside the Mac App Store, see [Create a provisioning profile](~/mac-catalyst/deployment/publish-outside-app-store.md#create-a-provisioning-profile) in [Publish a Mac Catalyst app for distribution outside the Mac App Store](~/mac-catalyst/deployment/publish-outside-app-store.md).
 - If you intend to distribute your app to a limited number of users on registered devices, outside the Mac App Store, see [Create a provisioning profile](~/mac-catalyst/deployment/publish-ad-hoc.md#create-a-provisioning-profile) in [Publish a Mac Catalyst app for ad-hoc distribution](~/mac-catalyst/deployment/publish-ad-hoc.md).
 
-## Download provisioning profiles
-
 [!INCLUDE [Download provisioning profile in Xcode](includes/download-profiles.md)]
 
 ## Define build properties in your project file

@@ -11,10 +11,6 @@ no-loc: [ ILLink ]
 
 To configure linker behavior in Visual Studio:
 
-<!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vs)
-<!-- markdownlint-enable MD025 -->
-
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Build** tab and set the **Linker behavior** drop-down to your desired linker behavior:
 
     :::image type="content" source="media/linking/vs.png" alt-text="Screenshot of the linker behavior for iOS in Visual Studio.":::
