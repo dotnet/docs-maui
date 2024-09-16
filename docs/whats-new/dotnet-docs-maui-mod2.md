@@ -13,8 +13,8 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Aug
 
 ### Updated articles
 
-- [.NET MAUI windows](../fundamentals/windows.md) - ActivateWindow method.
-- [App lifecycle](../fundamentals/app-lifecycle.md) - Remote notifications lifecycle methods on iOS/MacCat.
+- [.NET MAUI windows](../fundamentals/windows.md)
+- [App lifecycle](../fundamentals/app-lifecycle.md)
 
 ## Android
 
@@ -28,13 +28,6 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Aug
 
 - [Xcode sync (xcsync)](../macios/xcsync.md)
 
-## Mac Catalyst
-
-### Updated articles
-
-- [Linking a .NET MAUI Mac Catalyst app](../mac-catalyst/linking.md) - Remove VSMac content
-- [Mac Catalyst entitlements](../mac-catalyst/entitlements.md) - Remove VSMac content
-
 ## User interface
 
 ### New articles
@@ -43,10 +36,10 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Aug
 
 ### Updated articles
 
-- [Configure CollectionView item selection](../user-interface/controls/collectionview/selection.md) - Added information to the CoillectionView documentation - item reselect
-- [Controls](../user-interface/controls/index.md) - HybridWebView
-- [TimePicker](../user-interface/controls/timepicker.md) - TimePicker gains a TimeSelected event
-- [WebView](../user-interface/controls/webview.md) - WebView gains a ProcessTerminated event
+- [Configure CollectionView item selection](../user-interface/controls/collectionview/selection.md)
+- [Controls](../user-interface/controls/index.md)
+- [TimePicker](../user-interface/controls/timepicker.md)
+- [WebView](../user-interface/controls/webview.md)
 
 ## Community contributors
 
