@@ -441,7 +441,7 @@ public class NotificationReceiver : UNUserNotificationCenterDelegate
 }
 ```
 
-The `NotificationReceiver` class is registered as the `UNUserNotificationCenter` delegate in the `NavigationManagerService` constructor, and provides incoming notification data to the `ReceiveNotification` method in the `NavigationManagerService` class.
+The `NotificationReceiver` class is registered as the `UNUserNotificationCenter` delegate in the `NotificationManagerService` constructor, and provides incoming notification data to the `ReceiveNotification` method in the `NotificationManagerService` class.
 
 :::zone-end
 
