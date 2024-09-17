@@ -517,7 +517,7 @@
               href: android/manifest.md
             - name: Asset packs
               href: android/asset-packs.md
-            - name: Building apps
+            - name: Build apps
               items:
               - name: Build process
                 href: /dotnet/android/building-apps/build-process?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -527,18 +527,46 @@
                 href: /dotnet/android/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Build items
                 href: /dotnet/android/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-            - name: Features
+            - name: Fundamentals
               items:
               - name: Layout code behind
                 href: /dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-              - name: Maven
+            - name: Bind Java libraries
+              items:
+              - name: Overview
+                href: /dotnet/android/binding-libs/binding-java-libs?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Bind a Java library
+                href: /dotnet/android/binding-libs/binding-java-libs/binding-java-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Bind a Java library from Maven
+                href: /dotnet/android/binding-libs/binding-java-libs/binding-java-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Customize bindings
                 items:
-                - name: "@(AndroidMavenLibrary) build item"
-                  href: /dotnet/android/features/maven/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-                - name: Resolving Java dependencies
-                  href: /dotnet/android/features/maven/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Overview
+                  href: /dotnet/android/binding-libs/customizing-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Customize namespaces
+                  href: /dotnet/android/binding-libs/customizing-bindings/namespace-customization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Java bindings metadata
+                  href: /dotnet/android/binding-libs/customizing-bindings/java-bindings-metadata?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Create enumerations
+                  href: /dotnet/android/binding-libs/customizing-bindings/creating-enums?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: MSBuild reference
+                items:
+                - name: MSBuild bindings project properties
+                  href: /dotnet/android/binding-libs/msbuild-reference/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: MSBuild bindings project items
+                  href: /dotnet/android/binding-libs/msbuild-reference/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Advanced concepts
+                items:
+                - name: AndroidMavenLibrary reference
+                  href: /dotnet/android/binding-libs/advanced-concepts/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: Java dependency verification
-                  href: /dotnet/android/features/maven/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                  href: /dotnet/android/binding-libs/advanced-concepts/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Resolve java dependencies
+                  href: /dotnet/android/binding-libs/advanced-concepts/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Distribute bindings libraries
+                  href: /dotnet/android/binding-libs/advanced-concepts/distributing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              - name: Troubleshoot bindings
+                href: /dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json                  
             - name: Internals
               items:
                 - name: Java and managed code interoperability
