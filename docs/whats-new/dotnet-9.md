@@ -198,7 +198,7 @@ To build a hybrid app:
 
 For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
 
-#### Invoke JavaScript methods from C#
+#### Invoke JavaScript methods from C\#
 
 Your app's C# code can invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, and synchronous and asynchronous method invocation and JavaScript methods are supported. Internally, parameters and return values are JSON encoded.
 
@@ -216,10 +216,10 @@ This JavaScript method could be asynchronously invoked from C#:
 var x = 123d;
 var y = 321d;
 var result = await hwv.InvokeJavaScriptAsync<double>(
-	"AddNumbers",
-	HybridSampleJsContext.Default.Double,
-	[x, y],
-	[HybridSampleJsContext.Default.Double, HybridSampleJsContext.Default.Double]);
+    "AddNumbers",
+    HybridSampleJsContext.Default.Double,
+    [x, y],
+    [HybridSampleJsContext.Default.Double, HybridSampleJsContext.Default.Double]);
 ```
 
 The method invocation requires specifying `JsonTypeInfo` objects that include serialization information for the types used in the operation. These objects are automatically created by including the following `partial` class in your project:
