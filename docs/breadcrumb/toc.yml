@@ -36,3 +36,6 @@
     - name: .NET MAUI
       tocHref: /dotnet/android/messages
       topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/binding-libs
+      topicHref: /dotnet/maui/index
