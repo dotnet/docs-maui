@@ -1,7 +1,7 @@
 ---
 title: "Project property settings in Visual Studio"
 description: "Describes the Visual Studio project properties available to a .NET MAUI app. The properties and settings are related to building the app, configuring debug options, and other settings related to building the application for Windows, Android, and iOS."
-ms.date: 07/11/2022
+ms.date: 09/17/2024
 ---
 
 # Project configuration for .NET MAUI apps
@@ -367,7 +367,11 @@ General settings related to .NET MAUI.
 
 - **Application Display Version**
 
-  The version of the application. This should be a single digit integer. Defaults to `1`.
+  The display version of the application. This should be at most a three part version number such as 1.0.0.
+
+- **Application Version**
+
+  The version of the application. This should be a single digit integer such as 1.
 
 ## Android
 
