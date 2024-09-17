@@ -527,10 +527,6 @@
                 href: /dotnet/android/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Build items
                 href: /dotnet/android/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-            - name: Fundamentals
-              items:
-              - name: Layout code behind
-                href: /dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Bind Java libraries
               items:
               - name: Overview
@@ -566,7 +562,11 @@
                 - name: Distribute bindings libraries
                   href: /dotnet/android/binding-libs/advanced-concepts/distributing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Troubleshoot bindings
-                href: /dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                href: /dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json                
+            - name: Fundamentals
+              items:
+              - name: Layout code behind
+                href: /dotnet/android/features/layout-code-behind?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Internals
               items:
                 - name: Java and managed code interoperability

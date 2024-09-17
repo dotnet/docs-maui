@@ -37,5 +37,14 @@
       tocHref: /dotnet/android/messages
       topicHref: /dotnet/maui/index
     - name: .NET MAUI
-      tocHref: /dotnet/android/binding-libs
+      tocHref: /dotnet/android/binding-libs/binding-java-libs
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/binding-libs/customizing-bindings
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/binding-libs/msbuild-reference
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /dotnet/android/binding-libs/advanced-concepts
       topicHref: /dotnet/maui/index
