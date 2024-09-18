@@ -1,7 +1,7 @@
 ---
 title: "Transforms"
 description: ".NET MAUI graphics supports translation, scaling, and rotation transforms."
-ms.date: 07/26/2021
+ms.date: 09/30/2024
 ---
 
 # Transforms

@@ -1,7 +1,7 @@
 ---
 title: "CarouselView"
 description: "The .NET MAUI CarouselView is a view for presenting data in a scrollable layout, where users can swipe to move through a collection of items."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # CarouselView

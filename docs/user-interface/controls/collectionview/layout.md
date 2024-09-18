@@ -1,7 +1,7 @@
 ---
 title: "Specify CollectionView layout"
 description: "By default, a CollectionView will display its items in a vertical list. However, vertical and horizontal lists and grids can be specified."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Specify CollectionView layout

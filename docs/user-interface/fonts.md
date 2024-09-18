@@ -1,7 +1,7 @@
 ---
 title: "Fonts in .NET MAUI"
 description: "This article explains how to specify font information on controls that display text in .NET MAUI apps."
-ms.date: 12/23/2021
+ms.date: 09/30/2024
 ---
 
 # Fonts in .NET MAUI

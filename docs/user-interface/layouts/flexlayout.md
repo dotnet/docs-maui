@@ -1,7 +1,7 @@
 ---
 title: "FlexLayout"
 description: "The .NET MAUI FlexLayout is a layout that stacks or wraps a collection of child views."
-ms.date: 12/31/2021
+ms.date: 09/30/2024
 ---
 
 # FlexLayout

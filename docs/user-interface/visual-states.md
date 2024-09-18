@@ -1,7 +1,7 @@
 ---
 title: "Visual states"
 description: "The .NET MAUI visual state manager can be used to make changes to XAML elements based on visual states set from code."
-ms.date: 10/24/2022
+ms.date: 09/30/2024
 ---
 
 # Visual states

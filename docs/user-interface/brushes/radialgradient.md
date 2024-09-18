@@ -1,7 +1,7 @@
 ---
 title: "Radial gradient brushes"
 description: "The .NET MAUI RadialGradientBrush class paints an area with a radial gradient."
-ms.date: 01/11/2022
+ms.date: 09/30/2024
 ---
 
 # Radial gradient brushes

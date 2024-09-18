@@ -1,7 +1,7 @@
 ---
 title: "Display grouped data in a CollectionView"
 description: "CollectionView can display correctly grouped data by setting its IsGrouped property to true."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Display grouped data in a CollectionView

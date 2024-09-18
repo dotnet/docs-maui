@@ -1,7 +1,7 @@
 ---
 title: "Consume a REST-based web service"
 description: "Learn how to consume a REST-based web service from a .NET MAUI app."
-ms.date: 06/21/2022
+ms.date: ms.date: 09/30/2024
 ---
 
 # Consume a REST-based web service

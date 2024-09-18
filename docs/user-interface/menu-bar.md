@@ -1,7 +1,7 @@
 ---
 title: "Display a menu bar in a .NET MAUI desktop app"
 description: "Learn how to add a .NET MAUI menu bar at the top of a desktop app."
-ms.date: 10/05/2022
+ms.date: 09/30/2024
 ---
 
 # Display a menu bar in a .NET MAUI desktop app

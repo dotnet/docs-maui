@@ -1,7 +1,7 @@
 ---
 title: "Populate a CollectionView with Data"
 description: "A .NET MAUI CollectionView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 05/09/2024
+ms.date: 09/30/2024
 ---
 
 # Populate a CollectionView with data

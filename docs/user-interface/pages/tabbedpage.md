@@ -1,7 +1,7 @@
 ---
 title: "TabbedPage"
 description: "The .NET MAUI TabbedPage consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content."
-ms.date: 03/15/2022
+ms.date: 09/30/2024
 ---
 
 # TabbedPage
