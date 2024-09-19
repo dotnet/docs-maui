@@ -46,6 +46,9 @@ In this example, the retrieved `DateTime` value is set as the `BindingContext` o
 
 However, the problem is that the date and time are set once when the page is constructed and initialized, and never change.
 
+> [!IMPORTANT]
+> Not all properties of a `BindableObject` are bindable; the property must specifically be of type `BindableProperty`. For example, in a .NET MAUI `Label` and `Button` control, properties like `IsLoaded`, `IsFocused`, and `Parent` are not bindable.
+
 A XAML page can display a clock that always shows the current time, but it requires additional code. The MVVM pattern is a natural choice for .NET MAUI apps when data binding from properties between visual objects and the underlying data. When thinking in terms of MVVM, the model and viewmodel are classes written entirely in code. The view is often a XAML file that references properties defined in the viewmodel through data bindings. In MVVM, a model is ignorant of the viewmodel, and a viewmodel is ignorant of the view. However, often you tailor the types exposed by the viewmodel to the types associated with the UI.
 
 > [!NOTE]
