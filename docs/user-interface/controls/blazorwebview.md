@@ -143,32 +143,6 @@ private async void OnMyMauiButtonClicked(object sender, EventArgs e)
 }
 ```
 
-## Play inline video on iOS
-
-To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you should:
-
-- Set the <xref:Microsoft.AspNetCore.Components.WebView.UrlLoadingEventArgs.UrlLoadingStrategy> property to `OpenInWebView`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading> event:
-
-    ```csharp
-    private void BlazorUrlLoading(object? sender, UrlLoadingEventArgs e)
-    {
-    #if IOS
-        e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
-    #endif
-    }
-    ```
-
-- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing> event:
-
-    ```csharp
-    private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
-    {
-    #if IOS
-        e.Configuration.AllowsInlineMediaPlayback = true;
-    #endif
-    }
-    ```
-
 ## Diagnosing issues
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose issues in your Blazor Hybrid app. There are two steps to enable this logging:
@@ -216,9 +190,35 @@ services.AddLogging(logging =>
 
 When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
 
+## Play inline video on iOS
+
+To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you should:
+
+- Set the <xref:Microsoft.AspNetCore.Components.WebView.UrlLoadingEventArgs.UrlLoadingStrategy> property to `OpenInWebView`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading> event:
+
+    ```csharp
+    private void BlazorUrlLoading(object? sender, UrlLoadingEventArgs e)
+    {
+    #if IOS
+        e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
+    #endif
+    }
+    ```
+
+- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing> event:
+
+    ```csharp
+    private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
+    {
+    #if IOS
+        e.Configuration.AllowsInlineMediaPlayback = true;
+    #endif
+    }
+    ```
+
 ::: moniker range=">=net-maui-9.0"
 
-### Fix disposal deadlocks on Android
+## Fix disposal deadlocks on Android
 
 By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
