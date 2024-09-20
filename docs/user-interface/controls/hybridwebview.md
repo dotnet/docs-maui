@@ -1,8 +1,8 @@
 ---
 title: HybridWebView
-description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that code and .NET.
+description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 09/17/2024
+ms.date: 09/20/2024
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -10,7 +10,9 @@ monikerRange: ">=net-maui-9.0"
 
 # HybridWebView
 
-<xref:Microsoft.Maui.Controls.HybridWebView> enables hosting arbitrary HTML/JS/CSS content in a web view, and enables communication between the code in the web view (JavaScript) and the code that hosts the web view (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
+<!-- [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-hybridwebview) -->
+
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HybridWebView> enables hosting arbitrary HTML/JS/CSS content in a web view, and enables communication between the code in the web view (JavaScript) and the code that hosts the web view (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
 
 <xref:Microsoft.Maui.Controls.HybridWebView> defines the following properties:
 
@@ -18,6 +20,8 @@ monikerRange: ">=net-maui-9.0"
 - <xref:Microsoft.Maui.Controls.HybridWebView.HybridRoot>, of type `string?`, which is the path within the app's raw asset resources that contain the web app's contents. The default value is *wwwroot*, which maps to *Resources/Raw/wwwroot*.
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs.Message> property that contains the message.
+
+Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the `InvokeJavaScriptAsync` and `EvaluateJavaScriptAsync` methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c).
 
 To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
@@ -186,3 +190,93 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
     ```
 
     The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
+
+## Invoke JavaScript from C\#
+
+Your app's C# code can synchronously and asynchronously invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, with optional parameters and an optional return value. This can be achieved with the `InvokeJavaScriptAsync` and `EvaluateJavaScriptAsync` methods:
+
+- The `EvaluateJavaScriptAsync` method runs the JavaScript code provided via a parameter and returns the result as a string.
+- The `InvokeJavaScriptAsync` method invokes a specified JavaScript method, optionally passing in parameter values, and returns a string containing the return value of the JavaScript method. Internally, parameters and return values are JSON encoded.
+
+### Invoke synchronous JavaScript
+
+Synchronous JavaScript methods can be invoked with the `EvaluateJavaScriptAsync` and `InvokeJavaScriptAsync` methods. In the following example the `InvokeJavaScriptAsync` method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a simple Javascript method to add two numbers could be defined in your web content:
+
+```javascript
+function AddNumbers(a, b) {
+    return a + b;
+}
+```
+
+The `AddNumbers` JavaScript method can be invoked from C# with the `InvokeJavaScriptAsync` method:
+
+```csharp
+double x = 123d;
+double y = 321d;
+
+var result = await hybridWebView.InvokeJavaScriptAsync<double>(
+    "AddNumbers", // JavaScript method name
+    HybridSampleJSContext.Default.Double, // JSON serialization info for return type
+    [x, y], // Parameter values
+    [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
+```
+
+The method invocation requires specifying `JsonTypeInfo` objects that include serialization information for the types used in the operation. These objects are automatically created by including the following `partial` class in your project:
+
+```csharp
+[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSerializable(typeof(double))]
+internal partial class HybridSampleJsContext : JsonSerializerContext
+{
+    // This type's attributes specify JSON serialization info to preserve type structure
+    // for trimmed builds.
+}
+```
+
+> [!IMPORTANT]
+> The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
+
+### Invoke asynchronous JavaScript
+
+Asynchronous JavaScript methods can be invoked with the `EvaluateJavaScriptAsync` and `InvokeJavaScriptAsync` methods. In the following example the `InvokeJavaScriptAsync` method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a Javascript method that asynchronously retrieves data could be defined in your web content:
+
+```javascript
+async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
+    const response = await fetch("/asyncdata.txt");
+    if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+    }
+    var jsonData = await response.json();
+    jsonData[s1] = s2;
+
+    return jsonData;
+}
+```
+
+The `EvaluateMeWithParamsAndAsyncReturn` JavaScript method can be invoked from C# with the `InvokeJavaScriptAsync` method:
+
+```csharp
+var asyncResult = await hybridWebView.InvokeJavaScriptAsync<Dictionary<string, string>>(
+    "EvaluateMeWithParamsAndAsyncReturn", // JavaScript method name
+    HybridSampleJSContext.Default.DictionaryStringString, // JSON serialization info for return type
+    ["new_key", "new_value"], // Parameter values
+    [HybridSampleJSContext.Default.String, HybridSampleJSContext.Default.String]); // JSON serialization info for each parameter
+```
+
+In this example, `asyncResult` is a `Dictionary<string, string>` containing the JSON data from the web request.
+
+The method invocation requires specifying `JsonTypeInfo` objects that include serialization information for the types used in the operation. These objects are automatically created by including the following `partial` class in your project:
+
+```csharp
+[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSerializable(typeof(Dictionary<string, string>))]
+[JsonSerializable(typeof(string))]
+internal partial class HybridSampleJSContext : JsonSerializerContext
+{
+    // This type's attributes specify JSON serialization info to preserve type structure
+    // for trimmed builds.  
+}
+```
+
+> [!IMPORTANT]
+> The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
