@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 08/30/2024
+ms.date: 09/20/2024
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -143,6 +143,32 @@ private async void OnMyMauiButtonClicked(object sender, EventArgs e)
 }
 ```
 
+## Play inline video on iOS
+
+To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you should:
+
+- Set the <xref:Microsoft.AspNetCore.Components.WebView.UrlLoadingEventArgs.UrlLoadingStrategy> property to `OpenInWebView`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading> event:
+
+    ```csharp
+    private void BlazorUrlLoading(object? sender, UrlLoadingEventArgs e)
+    {
+    #if IOS
+        e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
+    #endif
+    }
+    ```
+
+- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing> event:
+
+    ```csharp
+    private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
+    {
+    #if IOS
+        e.Configuration.AllowsInlineMediaPlayback = true;
+    #endif
+    }
+    ```
+
 ## Diagnosing issues
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose issues in your Blazor Hybrid app. There are two steps to enable this logging:
@@ -190,28 +216,21 @@ services.AddLogging(logging =>
 
 When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
 
-## Play inline video on iOS
+::: moniker range=">=net-maui-9.0"
 
-To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you should:
+### Fix disposal deadlocks on Android
 
-- Set the <xref:Microsoft.AspNetCore.Components.WebView.UrlLoadingEventArgs.UrlLoadingStrategy> property to `OpenInWebView`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading> event:
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
-    ```csharp
-    private void BlazorUrlLoading(object? sender, UrlLoadingEventArgs e)
-    {
-    #if IOS
-        e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
-    #endif
-    }
-    ```
+If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you can enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in *MauiProgram.cs*:
 
-- Ensure that the `AllowsInlineMediaPlayback` property in a `Configuration` object is set to `true`. This can be accomplished in the event handler for the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing> event:
+```csharp
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+```
 
-    ```csharp
-    private void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
-    {
-    #if IOS
-        e.Configuration.AllowsInlineMediaPlayback = true;
-    #endif
-    }
-    ```
+This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that can occur on Android.
+
+> [!WARNING]
+> Enabling this switch means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of the app.
+
+::: moniker-end
