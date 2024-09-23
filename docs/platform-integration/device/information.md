@@ -19,6 +19,8 @@ The `IDeviceInfo` interface provides many properties that describe the device, s
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="read_info":::
 
+To access the user-assigned device name through the <xref:Microsoft.Maui.Devices.IDeviceInfo.Name?displayProperty=nameWithType> property in iOS 16 and later, rather than the generic device name, your app must meet certain criteria and be assigned the `com.apple.developer.device-information.user-assigned-device-name` entitlement. For more information, see [`com.apple.developer.device-information.user-assigned-device-name`](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_device-information_user-assigned-device-name?language=objc) on developer.apple.com.
+
 ## Get the device platform
 
 The `IDeviceInfo.Platform` property represents the operating system the app is running on. The <xref:Microsoft.Maui.Devices.DevicePlatform> type provides a property for each operating system:
@@ -68,8 +70,6 @@ This section describes the platform-specific differences with the device informa
 No platform differences.
 
 # [iOS/Mac Catalyst](#tab/macios)
-
-To access the user-assigned device name through the <xref:Microsoft.Maui.Devices.IDeviceInfo.Name?displayProperty=nameWithType> property in iOS 16 and later, rather than the generic device name, your app must meet certain criteria and be assigned the `com.apple.developer.device-information.user-assigned-device-name` entitlement. For more information, see [`com.apple.developer.device-information.user-assigned-device-name`](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_device-information_user-assigned-device-name?language=objc) on developer.apple.com.
 
 iOS doesn't expose an API for developers to get the model of the specific iOS device. Instead, a hardware identifier is returned, like _iPhone10,6_, which refers to the iPhone X. A mapping of these identifiers isn't provided by Apple, but can be found on the internet such as at [The iPhone Wiki](https://www.theiphonewiki.com/wiki/Models) and [Get iOS Model](https://github.com/dannycabrera/Get-iOS-Model) websites.
 
