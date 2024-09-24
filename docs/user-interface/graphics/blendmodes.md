@@ -1,7 +1,7 @@
 ---
 title: "Blend modes"
 description: ".NET MAUI graphics enables different compositing operations to be specified by the BlendMode property."
-ms.date: 12/16/2021
+ms.date: 09/30/2024
 ---
 
 # Blend modes

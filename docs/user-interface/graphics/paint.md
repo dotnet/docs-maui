@@ -1,7 +1,7 @@
 ---
 title: "Paint graphical objects"
 description: ".NET MAUI graphics includes several paint classes, that enable graphical objects to be painted with solid colors, gradients, images, and patterns."
-ms.date: 06/19/2023
+ms.date: 09/30/2024
 ---
 
 # Paint graphical objects

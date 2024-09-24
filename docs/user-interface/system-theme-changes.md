@@ -1,7 +1,7 @@
 ---
 title: "Respond to system theme changes"
 description: ".NET MAUI app can respond to operating system theme changes by using the AppThemeBinding markup extension, and the SetAppThemeColor and SetAppTheme extension methods."
-ms.date: 04/18/2023
+ms.date: 09/30/2024
 ---
 
 # Respond to system theme changes

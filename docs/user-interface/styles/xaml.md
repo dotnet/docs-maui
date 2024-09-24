@@ -1,7 +1,7 @@
 ---
 title: "Style apps using XAML"
 description: ".NET MAUI styles allow the appearance of visual elements to be customized. Styles are defined for a specific type and contain values for the properties available on that type."
-ms.date: 03/01/2022
+ms.date: 09/30/2024
 ---
 
 # Style apps using XAML

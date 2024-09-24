@@ -1,7 +1,7 @@
 ---
 title: "Display menu items"
 description: "Learn how to create menu items for menus such as ListView item context menus and Shell app flyout menus."
-ms.date: 08/02/2023
+ms.date: 09/30/2024
 ---
 
 # Display menu items

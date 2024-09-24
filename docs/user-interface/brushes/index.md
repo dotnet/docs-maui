@@ -1,7 +1,7 @@
 ---
 title: "Brushes"
 description: "The .NET MAUI Brush class is an abstract class that paints an area with its output."
-ms.date: 01/11/2022
+ms.date: 09/30/2024
 ---
 
 # Brushes

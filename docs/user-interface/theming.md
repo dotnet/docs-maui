@@ -1,7 +1,7 @@
 ---
 title: "Theme an app"
 description: "Theming can be implemented in .NET MAUI apps by creating a ResourceDictionary for each theme, and then loading the resources with the DynamicResource markup extension."
-ms.date: 02/25/2022
+ms.date: 09/30/2024
 ---
 
 # Theme an app

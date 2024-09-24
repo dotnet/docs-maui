@@ -1,7 +1,7 @@
 ---
 title: "FlyoutPage"
 description: "The .NET MAUI FlyoutPage is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page."
-ms.date: 01/06/2023
+ms.date: 09/30/2024
 ---
 
 # FlyoutPage

@@ -1,7 +1,7 @@
 ---
 title: "BindableLayout"
 description: ".NET MAUI bindable layouts enable layout classes to generate their content by binding to a collection of items, with the option to set the appearance of each item with a DataTemplate."
-ms.date: 02/22/2022
+ms.date: 09/30/2024
 ---
 
 # BindableLayout
