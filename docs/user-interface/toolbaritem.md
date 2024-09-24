@@ -1,7 +1,7 @@
 ---
 title: "Display toolbar items"
 description: "Learn how to add toolbar items, which are a special type of button, to the app's navigation bar."
-ms.date: 08/01/2023
+ms.date: 09/30/2024
 ---
 
 # Display toolbar items

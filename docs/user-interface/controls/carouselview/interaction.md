@@ -1,7 +1,7 @@
 ---
 title: "Configure CarouselView interaction"
 description: "The currently displayed item in a .NET MAUI CarouselView can be accessed through the CurrentItem and Position properties."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Configure CarouselView interaction

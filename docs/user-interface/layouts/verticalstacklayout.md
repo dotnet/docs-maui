@@ -1,7 +1,7 @@
 ---
 title: "VerticalStackLayout"
 description: "Learn how the .NET MAUI VerticalStackLayout organizes child views in a one-dimensional vertical stack."
-ms.date: 12/06/2021
+ms.date: 09/30/2024
 ---
 
 # VerticalStackLayout

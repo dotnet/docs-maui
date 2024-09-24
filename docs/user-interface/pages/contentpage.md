@@ -1,7 +1,7 @@
 ---
 title: "ContentPage"
 description: "The .NET MAUI ContentPage displays a single view, which is often a layout, and is the most common page type."
-ms.date: 10/27/2023
+ms.date: 09/30/2024
 ---
 
 # ContentPage

@@ -1,7 +1,7 @@
 ---
 title: "Images"
 description: ".NET MAUI graphics includes functionality to load, save, resize, and downsize images."
-ms.date: 06/19/2023
+ms.date: 09/30/2024
 ---
 
 # Images

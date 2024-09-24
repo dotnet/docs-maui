@@ -1,7 +1,7 @@
 ---
 title: "StackLayout"
 description: "The .NET MAUI StackLayout organizes child views in a one-dimensional stack, either horizontally or vertically."
-ms.date: 12/28/2021
+ms.date: 09/30/2024
 ---
 
 # StackLayout

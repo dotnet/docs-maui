@@ -1,7 +1,7 @@
 ---
 title: "Specify CarouselView layout"
 description: "By default, a .NET MAUI CarouselView will display its items horizontally. However, a vertical orientation is also possible."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Specify CarouselView layout

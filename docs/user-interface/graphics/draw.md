@@ -1,7 +1,7 @@
 ---
 title: "Draw graphical objects"
 description: ".NET MAUI graphics enables you to draw graphical objects on a canvas."
-ms.date: 06/19/2023
+ms.date: 09/30/2024
 ---
 
 # Draw graphical objects

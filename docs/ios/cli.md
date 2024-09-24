@@ -1,7 +1,7 @@
 ---
 title: "Build an iOS app on macOS with .NET CLI"
 description: "Learn how to create and run a .NET MAUI app on iOS using .NET CLI on macOS."
-ms.date: 03/01/2023
+ms.date: 09/30/2024
 no-loc: [ "MY_SPECIFIC_UDID" ]
 ---
 
