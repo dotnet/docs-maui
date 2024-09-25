@@ -330,6 +330,10 @@ The template can also be used from `dotnew new`:
 dotnet new maui-blazor-web -n AllTheTargets
 ```
 
+## Resource dictionaries
+
+In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDictionary> (which isn't backed by a code-behind file) defaults to having its XAML compiled. To opt out of this behavior, specify `<?xaml-comp compile="false" ?>` after the XML header.
+
 ## Xcode sync
 
 .NET MAUI 9 includes Xcode sync (`xcsync`), which is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to your .NET project.
