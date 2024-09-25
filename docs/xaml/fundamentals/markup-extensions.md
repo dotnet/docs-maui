@@ -12,7 +12,7 @@ ms.date: 08/30/2024
 
 Typically, you use XAML to set properties of an object to explicit values, such as a string, a number, an enumeration member, or a string that is converted to a value behind the scenes. Sometimes, however, properties must instead reference values defined somewhere else, or which might require a little processing by code at runtime. For these purposes, XAML *markup extensions* are available.
 
-XAML markup extensions are so named because they are backed by code in classes that implement `IMarkupExtension`. It's also possible to write your own custom markup extensions.
+XAML markup extensions are so named because they are backed by code in classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>. It's also possible to write your own custom markup extensions.
 
 In many cases, XAML markup extensions are instantly recognizable in XAML files because they appear as attribute values delimited by curly braces, { and }, but sometimes markup extensions also appear in markup as conventional elements.
 
