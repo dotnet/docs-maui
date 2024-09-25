@@ -90,6 +90,8 @@ public class HslColorExtension : IMarkupExtension<Color>
 }
 ```
 
+This markup extension is annotated with <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute> because it doesn't use a service from the service provider. For more information, see [Service providers](#service-providers).
+
 ::: moniker-end
 
 Because <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> derives from <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, the class must contain two `ProvideValue` methods, one that returns a <xref:Microsoft.Maui.Graphics.Color> and another that returns an `object`, but the second method can call the first method.
