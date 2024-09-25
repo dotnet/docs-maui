@@ -133,7 +133,7 @@ The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a 
 
 ### BlazorWebView
 
-On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a `BlazorWebView` to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the `BlazorWebView` not loading any content and rendering as an empty rectangle.
+On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
 
 To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram` class:
 
@@ -141,6 +141,14 @@ To opt into using the `0.0.0.0` address, add the following code to your `MauiPro
 // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
+
+If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+
+```csharp
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+```
+
+This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
 
 ### CollectionView and CarouselView
 
@@ -321,6 +329,10 @@ The template can also be used from `dotnew new`:
 ```dotnetcli
 dotnet new maui-blazor-web -n AllTheTargets
 ```
+
+## Resource dictionaries
+
+In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDictionary> (which isn't backed by a code-behind file) defaults to having its XAML compiled. To opt out of this behavior, specify `<?xaml-comp compile="false" ?>` after the XML header.
 
 ## XAML
 
