@@ -15,6 +15,12 @@ At the developer level, a .NET Multi-platform App UI (.NET MAUI) XAML markup ext
 - `DynamicResourceExtension` derives from `IMarkupExtension<DynamicResource>`
 - `BindingExtension` derives from `IMarkupExtension<BindingBase>`
 
+::: moniker range=">=net-maui-9.0"
+
+All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> or <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. For more information, see [Service providers](#service-providers).
+
+::: moniker-end
+
 The two <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> interfaces define only one method each, named `ProvideValue`:
 
 ```csharp
@@ -59,8 +65,6 @@ public class HslColorExtension : IMarkupExtension<Color>
 }
 ```
 
-Because <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> derives from <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, the class must contain two `ProvideValue` methods, one that returns a <xref:Microsoft.Maui.Graphics.Color> and another that returns an `object`, but the second method can call the first method.
-
 ::: moniker-end
 
 ::: moniker range=">=net-maui-9.0"
@@ -86,11 +90,9 @@ public class HslColorExtension : IMarkupExtension<Color>
 }
 ```
 
-Because <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> derives from <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, the class must contain two `ProvideValue` methods, one that returns a <xref:Microsoft.Maui.Graphics.Color> and another that returns an `object`, but the second method can call the first method.
-
-All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> or <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance. For more information, see [Service providers](#service-providers).
-
 ::: moniker-end
+
+Because <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> derives from <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, the class must contain two `ProvideValue` methods, one that returns a <xref:Microsoft.Maui.Graphics.Color> and another that returns an `object`, but the second method can call the first method.
 
 ## Consume a markup extension
 
@@ -145,7 +147,7 @@ The `IProvideValueTarget` interface defines two properties, `TargetObject` and `
 
 ::: moniker range=">=net-maui-9.0"
 
-All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> or <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>.
+All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> or <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>:
 
 - For each use of `serviceProvider.GetService(typeof(T))` in the `ProvideValue` method, the class should be annotated with `[RequireService(typeof(T))]`:
 
@@ -165,5 +167,7 @@ All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> 
     ```
 
 - If the markup extension doesn't use any service from the service provider, the class should be annotated with `[AcceptEmptyServiceProvider]`.
+
+These annotations are required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
 
 ::: moniker-end
