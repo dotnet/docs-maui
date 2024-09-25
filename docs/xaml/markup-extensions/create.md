@@ -158,7 +158,7 @@ All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension> 
             ...
             var referenceProvider = serviceProvider.GetService<IReferenceProvider>();
             var valueProvider = serviceProvider.GetService<IProvideValueTarget>() as IProvideParentValues
-    								   ?? throw new ArgumentException("serviceProvider does not provide an IProvideValueTarget");
+                                    ?? throw new ArgumentException("serviceProvider does not provide an IProvideValueTarget");
             ...
         }
     }
