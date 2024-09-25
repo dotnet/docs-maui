@@ -1,7 +1,7 @@
 ---
 title: "Resource dictionaries"
 description: "Learn how .NET MAUI XAML resources dictionaries enable resources to be shared and reused throughout an app."
-ms.date: 04/21/2023
+ms.date: 09/25/2024
 ---
 
 # Resource dictionaries
@@ -126,7 +126,17 @@ When resources share keys, resources defined lower in the visual tree will take 
 
 ## Stand-alone resource dictionaries
 
+::: moniker range="=net-maui-8.0"
+
 A <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be created as a stand-alone XAML file that isn't backed by a code-behind file. To create a stand-alone <xref:Microsoft.Maui.Controls.ResourceDictionary>, add a new <xref:Microsoft.Maui.Controls.ResourceDictionary> file to the project with the **.NET MAUI ResourceDictionary (XAML)** item template and delete its code-behind file. Then, in the XAML file remove the `x:Class` attribute from the <xref:Microsoft.Maui.Controls.ResourceDictionary> tag near the start of the file. In addition, add `<?xaml-comp compile="true" ?>` after the XML header to ensure that the XAML will be compiled.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+A <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be created as a stand-alone XAML file that isn't backed by a code-behind file. To create a stand-alone <xref:Microsoft.Maui.Controls.ResourceDictionary>, add a new <xref:Microsoft.Maui.Controls.ResourceDictionary> file to the project with the **.NET MAUI ResourceDictionary (XAML)** item template and delete its code-behind file. Then, in the XAML file remove the `x:Class` attribute from the <xref:Microsoft.Maui.Controls.ResourceDictionary> tag near the start of the file. By default, a stand-alone <xref:Microsoft.Maui.Controls.ResourceDictionary> has its XAML compiled, unless `<?xaml-comp compile="false" ?>` is specified after the XML header.
+
+::: moniker-end
 
 > [!NOTE]
 > A stand-alone <xref:Microsoft.Maui.Controls.ResourceDictionary> must have a build action of **MauiXaml**.
@@ -135,7 +145,6 @@ The following XAML example shows a stand-alone <xref:Microsoft.Maui.Controls.Res
 
 ```xaml
 <?xml version="1.0" encoding="UTF-8" ?>
-<?xaml-comp compile="true" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <DataTemplate x:Key="PersonDataTemplate">
