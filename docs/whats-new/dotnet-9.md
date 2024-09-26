@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 09/17/2024
+ms.date: 09/26/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -229,6 +229,14 @@ public static class MauiProgram
         return builder.Build();
     }
 }
+```
+
+## Compiled bindings
+
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you have enabled NativeAOT. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+
+```xml
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 ```
 
 ## Handler disconnection

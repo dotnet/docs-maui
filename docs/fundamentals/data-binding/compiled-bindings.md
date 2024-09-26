@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 01/19/2022
+ms.date: 09/27/2024
 ---
 
 # Compiled bindings
@@ -26,6 +26,12 @@ To use compiled bindings, the `x:DataType` attribute must be set to a string lit
 > Compiled bindings are disabled for any binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
 >
 > In addition, compiled bindings are currently unsupported on multi-bindings.
+
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you have enabled NativeAOT. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+
+```xml
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+```
 
 ## Use compiled bindings
 
