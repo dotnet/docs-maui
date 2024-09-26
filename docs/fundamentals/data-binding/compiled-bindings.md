@@ -173,12 +173,6 @@ Bindings written in code typically use string paths that are resolved at runtime
 MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
 ```
 
-This compiled binding approach provides the following benefits:
-
-- Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
-- A better developer troubleshooting experience because invalid bindings are reported as build errors.
-- Intellisense while editing.
-
 Not all methods can be used to define a compiled binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
 
 ```csharp
@@ -217,6 +211,12 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
     Converter = new StringConcatenationConverter()
 });
 ```
+
+These compiled binding approaches provide the following benefits:
+
+- Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
+- A better developer troubleshooting experience because invalid bindings are reported as build errors.
+- Intellisense while editing.
 
 ::: moniker-end
 
