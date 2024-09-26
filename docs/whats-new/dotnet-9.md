@@ -233,7 +233,7 @@ public static class MauiProgram
 
 ## Compiled bindings in code
 
-Bindings written in code use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding-2%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
+Bindings written in code use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding`1%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
 
 ```csharp
 // in .NET 8
