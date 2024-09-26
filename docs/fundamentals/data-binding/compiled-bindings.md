@@ -27,7 +27,7 @@ To use compiled bindings, the `x:DataType` attribute must be set to a string lit
 >
 > In addition, compiled bindings are currently unsupported on multi-bindings.
 
-By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you have enabled NativeAOT. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
 
 ```xml
 <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
