@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 09/17/2024
+ms.date: 09/26/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -231,6 +231,14 @@ public static class MauiProgram
 }
 ```
 
+## Compiled bindings
+
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+
+```xml
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+```
+
 ## Handler disconnection
 
 When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to cleanup a control, such as when navigating backwards in an app.
@@ -333,6 +341,20 @@ dotnet new maui-blazor-web -n AllTheTargets
 ## Resource dictionaries
 
 In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDictionary> (which isn't backed by a code-behind file) defaults to having its XAML compiled. To opt out of this behavior, specify `<?xaml-comp compile="false" ?>` after the XML header.
+
+## Trimming feature switches
+
+Several areas of .NET MAUI come with trimmer directives, known as feature switches, that make it possible to remove the code for disabled features when `TrimMode=full`, as well as for NativeAOT:
+
+| MSBuild property | Description |
+| ---------------- | ----------- |
+| `MauiEnableVisualAssemblyScanning` | When set to `true`, .NET MAUI will scan assemblies for types implementing `IVisual` and for `[assembly:Visual(...)]` attributes, and will register these types. By default, this build property is set to `false`. |
+| `MauiShellSearchResultsRendererDisplayMemberNameSupported` | When set to `false`, the value of `SearchHandler.DisplayMemberName` will be ignored. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. By default, this build property is set to `true`.|
+| `MauiQueryPropertyAttributeSupport` | When set to `false`, `[QueryProperty(...)]` attributes won't be used to set property values when navigating. Instead, you should implement the `IQueryAttributable` interface to accept query parameters. By default, this build property is set to `true`. |
+| `MauiImplicitCastOperatorsUsageViaReflectionSupport` | When set to `false`, .NET MAUI won't look for implicit cast operators when converting values from one type to another. This can affect bindings between properties with different types, and setting a property value of a bindable object with a value of a different type. Instead, you should define a `TypeConverter` for your type and attach it to the type using the `[TypeConverter(typeof(MyTypeConverter))]` attribute. By default, this build property is set to `true`.|
+| `_MauiBindingInterceptorsSupport` | When set to `false`, .NET MAUI won't intercept any calls to the `SetBinding` methods and won't try to compile them. By default, this build property is set to `true`. |
+
+To consume a feature switch you should put the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `Full` trimming mode.
 
 ## XAML
 
