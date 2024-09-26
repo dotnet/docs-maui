@@ -15,6 +15,9 @@ ms.date: 09/27/2024
 
 Compiled bindings improve data binding performance in .NET MAUI applications by resolving binding expressions at compile-time rather than runtime. In addition, this compile-time validation of binding expressions enables a better developer troubleshooting experience because invalid bindings are reported as build errors.
 
+> [!IMPORTANT]
+> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
 ## Compiled bindings in XAML
 
 To use compiled bindings in XAML, set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to. It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the `BindingContext` is set. However, this attribute can be re-defined at any location in a view hierarchy.
@@ -25,7 +28,7 @@ To use compiled bindings in XAML, set an `x:DataType` attribute on a <xref:Micro
 To use compiled bindings in XAML, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
 
 > [!IMPORTANT]
-> Compiled bindings are disabled for any binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
+> Compiled bindings are disabled for any XAML binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
 >
 > In addition, compiled bindings in XAML are currently unsupported on multi-bindings.
 
@@ -173,7 +176,7 @@ MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
 This compiled binding approach provides the following benefits:
 
 - Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
-- Compile-time validation of binding expressions enables a better developer troubleshooting experience because invalid bindings are reported as build errors.
+- A better developer troubleshooting experience because invalid bindings are reported as build errors.
 - Intellisense while editing.
 
 Not all methods can be used to define a binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
@@ -200,7 +203,7 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
-In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A> method that sets the binding directly on the object with a `Func`, and returns the binding object instance so that you can pass it to another method for later use:
+In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
 // in .NET 8
@@ -227,9 +230,6 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
     Converter = new StringConcatenationConverter()
 });
 ```
-
-> [!IMPORTANT]
-> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
 
 ::: moniker-end
 
