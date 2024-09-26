@@ -167,7 +167,7 @@ For more information about the `x:Null` markup expression, see [x:Null Markup Ex
 
 ## Compiled bindings in code
 
-Bindings written in code typically use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method has an overload that defines bindings using a `Func` argument instead of a string path:
+Bindings written in code typically use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method also has an overload that defines bindings using a `Func` argument instead of a string path:
 
 ```csharp
 MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
