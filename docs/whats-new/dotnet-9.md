@@ -231,14 +231,6 @@ public static class MauiProgram
 }
 ```
 
-## Compiled bindings in XAML
-
-By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
-
-```xml
-<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
-```
-
 ## Compiled bindings in code
 
 Bindings written in code use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
@@ -311,6 +303,14 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 
 > [!IMPORTANT]
 > Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+## Compiled bindings in XAML
+
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+
+```xml
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+```
 
 ## Handler disconnection
 
