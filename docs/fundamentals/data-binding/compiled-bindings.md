@@ -206,19 +206,6 @@ static (PersonViewModel vm) => $"Name: {vm.Name}";
 In addition, the <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
-// in .NET 8
-myEntry.SetBinding(Entry.TextProperty, new MultiBinding
-{
-    Bindings = new Collection<BindingBase>
-    {
-        new Binding(nameof(Entry.FontFamily), source: RelativeBindingSource.Self),
-        new Binding(nameof(Entry.FontSize), source: RelativeBindingSource.Self),
-        new Binding(nameof(Entry.FontAttributes), source: RelativeBindingSource.Self),
-    },
-    Converter = new StringConcatenationConverter()
-});
-
-// in .NET 9
 myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 {
     Bindings = new Collection<BindingBase>
