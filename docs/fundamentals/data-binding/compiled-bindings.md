@@ -163,13 +163,9 @@ For more information about the `x:Null` markup expression, see [x:Null Markup Ex
 
 ## Compiled bindings in code
 
-Bindings written in code use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
+Bindings written in code typically use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method has an overload that defines bindings using a `Func` argument instead of a string path:
 
 ```csharp
-// in .NET 8
-MyLabel.SetBinding(Label.TextProperty, "Text");
-
-// in .NET 9
 MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
 ```
 
@@ -179,7 +175,7 @@ This compiled binding approach provides the following benefits:
 - A better developer troubleshooting experience because invalid bindings are reported as build errors.
 - Intellisense while editing.
 
-Not all methods can be used to define a binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
+Not all methods can be used to define a compiled binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
 
 ```csharp
 // Valid: Property access
@@ -203,7 +199,7 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
-In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
+In addition, the <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
 // in .NET 8
