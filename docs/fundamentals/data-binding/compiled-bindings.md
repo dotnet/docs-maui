@@ -15,8 +15,12 @@ ms.date: 09/27/2024
 
 Compiled bindings improve data binding performance in .NET MAUI applications by resolving binding expressions at compile-time rather than runtime. In addition, this compile-time validation of binding expressions enables a better developer troubleshooting experience because invalid bindings are reported as build errors.
 
+::: moniker range=">=net-maui-9.0"
+
 > [!IMPORTANT]
 > Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+::: moniker-end
 
 ## Compiled bindings in XAML
 
