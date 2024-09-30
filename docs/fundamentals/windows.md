@@ -157,6 +157,7 @@ public class MainActivity : MauiAppCompatActivity
 ```
 
 ### iPadOS and macOS configuration
+
 To use multi-window support on iPadOS and Mac Catalyst, add a class named `SceneDelegate` to the **Platforms > iOS** and **Platforms > MacCatalyst** folders:
 
 ```csharp
