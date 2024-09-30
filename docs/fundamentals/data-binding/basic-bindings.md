@@ -1,7 +1,7 @@
 ---
 title: "Basic bindings"
 description: ".NET MAUI data binding links a pair of properties between two objects, at least one of which is usually a user-interface object. These two objects are called the target and the source."
-ms.date: 01/19/2022
+ms.date: 09/26/2024
 ---
 
 # Basic bindings
@@ -118,6 +118,9 @@ XAML markup extensions such as `x:Reference` and `Binding` can have *content pro
        BindingContext="{x:Reference slider}"
        Rotation="{Binding Value}" />
 ```
+
+> [!IMPORTANT]
+> Binding performance can be improved by using compiled bindings. For more information, see [Compiled bindings](compiled-bindings.md).
 
 ## Bindings without a binding context
 
