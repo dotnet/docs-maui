@@ -141,7 +141,7 @@ Application.Current?.CloseWindow(GetParentWindow());
 
 ### Android configuration
 
-To use multi-window support on Android, you must change the Main Activity Launch Mode in **Platforms > Android > MainActivity.cs**. change launch mode from the Default of `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
+To use multi-window support on Android, you must change the `MainActivity` launch mode in *Platforms > Android > MainActivity.cs* from the `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
 
 ```csharp
 using Android.App;
