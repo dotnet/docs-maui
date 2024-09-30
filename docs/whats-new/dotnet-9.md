@@ -231,7 +231,82 @@ public static class MauiProgram
 }
 ```
 
-## Compiled bindings
+## Compiled bindings in code
+
+Bindings written in code typically use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
+
+```csharp
+// in .NET 8
+MyLabel.SetBinding(Label.TextProperty, "Text");
+
+// in .NET 9
+MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
+```
+
+This compiled binding approach provides the following benefits:
+
+- Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
+- A better developer troubleshooting experience because invalid bindings are reported as build errors.
+- Intellisense while editing.
+
+Not all methods can be used to define a compiled binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
+
+```csharp
+// Valid: Property access
+static (PersonViewModel vm) => vm.Name;
+static (PersonViewModel vm) => vm.Address?.Street;
+
+// Valid: Array and indexer access
+static (PersonViewModel vm) => vm.PhoneNumbers[0];
+static (PersonViewModel vm) => vm.Config["Font"];
+
+// Valid: Casts
+static (Label label) => (label.BindingContext as PersonViewModel).Name;
+static (Label label) => ((PersonViewModel)label.BindingContext).Name;
+
+// Invalid: Method calls
+static (PersonViewModel vm) => vm.GetAddress();
+static (PersonViewModel vm) => vm.Address?.ToString();
+
+// Invalid: Complex expressions
+static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
+static (PersonViewModel vm) => $"Name: {vm.Name}";
+```
+
+In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
+
+```csharp
+// in .NET 8
+myEntry.SetBinding(Entry.TextProperty, new MultiBinding
+{
+    Bindings = new Collection<BindingBase>
+    {
+        new Binding(nameof(Entry.FontFamily), source: RelativeBindingSource.Self),
+        new Binding(nameof(Entry.FontSize), source: RelativeBindingSource.Self),
+        new Binding(nameof(Entry.FontAttributes), source: RelativeBindingSource.Self),
+    },
+    Converter = new StringConcatenationConverter()
+});
+
+// in .NET 9
+myEntry.SetBinding(Entry.TextProperty, new MultiBinding
+{
+    Bindings = new Collection<BindingBase>
+    {
+        Binding.Create(static (Entry entry) => entry.FontFamily, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontSize, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontAttributes, source: RelativeBindingSource.Self),
+    },
+    Converter = new StringConcatenationConverter()
+});
+```
+
+> [!IMPORTANT]
+> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+## Compiled bindings in XAML
+
+In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9.
 
 By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
 
