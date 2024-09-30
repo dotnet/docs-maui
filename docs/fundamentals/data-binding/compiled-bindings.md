@@ -15,17 +15,30 @@ ms.date: 09/27/2024
 
 Compiled bindings improve data binding performance in .NET MAUI applications by resolving binding expressions at compile-time rather than runtime. In addition, this compile-time validation of binding expressions enables a better developer troubleshooting experience because invalid bindings are reported as build errors.
 
-To use compiled bindings, set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to. It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the `BindingContext` is set. However, this attribute can be re-defined at any location in a view hierarchy.
+::: moniker range=">=net-maui-9.0"
+
+> [!IMPORTANT]
+> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+::: moniker-end
+
+## Compiled bindings in XAML
+
+To use compiled bindings in XAML, set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to. It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the `BindingContext` is set. However, this attribute can be re-defined at any location in a view hierarchy.
 
 > [!NOTE]
 > Compiled bindings require the use of XAML compilation, which is enabled by default in .NET MAUI. If you've disabled XAML compilation, you'll need to enable it. For more information, see [XAML Compilation](~/xaml/xamlc.md).
 
-To use compiled bindings, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
+To use compiled bindings in XAML, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
+
+::: moniker range="=net-maui-8.0"
 
 > [!IMPORTANT]
-> Compiled bindings are disabled for any binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
+> Compiled bindings are disabled for any XAML binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
 >
-> In addition, compiled bindings are currently unsupported on multi-bindings.
+> In addition, compiled bindings in XAML are currently unsupported on multi-bindings.
+
+::: moniker-end
 
 By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
 
@@ -33,7 +46,7 @@ By default, .NET MAUI doesn't produce build warnings for bindings that don't use
 <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 ```
 
-## Use compiled bindings
+### Use compiled bindings in XAML
 
 The following example demonstrates using compiled bindings between .NET MAUI views and viewmodel properties:
 
@@ -77,7 +90,7 @@ When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, <xref
 
 For more information about this color selector, see [ViewModels and property-change notifications](binding-mode.md#viewmodels-and-property-change-notifications).
 
-## Use compiled bindings in a DataTemplate
+### Use compiled bindings in XAML in a DataTemplate
 
 Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the context of the object being templated. Therefore, when using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>, the <xref:Microsoft.Maui.Controls.DataTemplate> needs to declare the type of its data object using the `x:DataType` attribute.
 
@@ -124,7 +137,7 @@ When the example is first run, the <xref:Microsoft.Maui.Controls.ListView> is po
 
 Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
 
-## Combine compiled bindings with classic bindings
+### Combine compiled bindings with classic bindings in XAML
 
 Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the <xref:Microsoft.Maui.Controls.DataTemplate> use compiled bindings, while the <xref:Microsoft.Maui.Controls.BoxView> that's set to the color selected in the <xref:Microsoft.Maui.Controls.ListView> does not.
 
@@ -153,6 +166,63 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 The root <xref:Microsoft.Maui.Controls.StackLayout> sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy will be compiled. However, the inner <xref:Microsoft.Maui.Controls.StackLayout> redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner <xref:Microsoft.Maui.Controls.StackLayout> use classic bindings. Only the <xref:Microsoft.Maui.Controls.BoxView>, within the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy, uses compiled bindings.
 
 For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension).
+
+::: moniker range=">=net-maui-9.0"
+
+## Compiled bindings in code
+
+Bindings written in code typically use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method also has an overload that defines bindings using a `Func` argument instead of a string path:
+
+```csharp
+MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
+```
+
+Not all methods can be used to define a compiled binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
+
+```csharp
+// Valid: Property access
+static (PersonViewModel vm) => vm.Name;
+static (PersonViewModel vm) => vm.Address?.Street;
+
+// Valid: Array and indexer access
+static (PersonViewModel vm) => vm.PhoneNumbers[0];
+static (PersonViewModel vm) => vm.Config["Font"];
+
+// Valid: Casts
+static (Label label) => (label.BindingContext as PersonViewModel).Name;
+static (Label label) => ((PersonViewModel)label.BindingContext).Name;
+
+// Invalid: Method calls
+static (PersonViewModel vm) => vm.GetAddress();
+static (PersonViewModel vm) => vm.Address?.ToString();
+
+// Invalid: Complex expressions
+static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
+static (PersonViewModel vm) => $"Name: {vm.Name}";
+```
+
+In addition, the <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
+
+```csharp
+myEntry.SetBinding(Entry.TextProperty, new MultiBinding
+{
+    Bindings = new Collection<BindingBase>
+    {
+        Binding.Create(static (Entry entry) => entry.FontFamily, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontSize, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontAttributes, source: RelativeBindingSource.Self),
+    },
+    Converter = new StringConcatenationConverter()
+});
+```
+
+These compiled binding approaches provide the following benefits:
+
+- Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
+- A better developer troubleshooting experience because invalid bindings are reported as build errors.
+- Intellisense while editing.
+
+::: moniker-end
 
 ## Performance
 
