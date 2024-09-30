@@ -137,10 +137,11 @@ Application.Current?.CloseWindow(GetParentWindow());
 ```
 
 > [!IMPORTANT]
-> Multi-window support works on Windows without additional configuration. However, additional configuration is required on Android iPadOS and Mac Catalyst.
+> Multi-window support works on Windows without additional configuration. However, additional configuration is required on Android, iPadOS and Mac Catalyst.
 
 ### Android configuration
-To use multi-window support on Android, you must change the Main Activity Launch Mode in **Platforms > Android > MainActivity.cs**. change launch mode from the Default of ```LaunchMode.SingleTop``` to ```LaunchMode.Multiple```
+
+To use multi-window support on Android, you must change the Main Activity Launch Mode in **Platforms > Android > MainActivity.cs**. change launch mode from the Default of `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
 
 ```csharp
 using Android.App;
