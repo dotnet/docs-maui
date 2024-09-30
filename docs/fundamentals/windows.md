@@ -141,7 +141,7 @@ Application.Current?.CloseWindow(GetParentWindow());
 
 ### Android configuration
 
-To use multi-window support on Android, you must change the `MainActivity` launch mode in *Platforms > Android > MainActivity.cs* from the `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
+To use multi-window support on Android, you must change the `MainActivity` launch mode in *Platforms > Android > MainActivity.cs* from `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
 
 ```csharp
 using Android.App;
@@ -150,7 +150,7 @@ using Android.OS;
 
 namespace MyMauiApp;
 
-[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.Multiple, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.Multiple, ...)]
 public class MainActivity : MauiAppCompatActivity
 {
 }
