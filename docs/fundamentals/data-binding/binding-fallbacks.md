@@ -99,26 +99,36 @@ Therefore, in this example the <xref:Microsoft.Maui.Controls.Image> and <xref:Mi
 Both `TargetNullValue` and `FallbackValue` are used in data bindings to handle scenarios where the bound value is `null` or when the binding itself fails. Knowing when to use each helps ensure a smooth user experience.
 
 ### TargetNullValue
+
 - **Purpose**: Specifies a value to display when the binding succeeds but the bound property is `null`.
+
 - **Example**: 
-  ```xaml
-  <Label Text="{Binding FirstName, TargetNullValue='No name available'}" />
-  ```
-  If `FirstName` is `null`, the label will display "No name available."
+
+   ```xaml
+   <Label Text="{Binding FirstName, TargetNullValue='No name available'}" />
+   ```
+
+   If `FirstName` is `null`, the label will display "No name available."
 
 ### FallbackValue
+
 - **Purpose**: Provides a value when the binding process fails entirely (e.g., incorrect path, missing data context).
+
 - **Example**: 
-  ```xaml
-  <Label Text="{Binding FirstName, FallbackValue='Binding failed'}" />
-  ```
-  If the binding fails, the label will display "Binding failed."
+
+   ```xaml
+   <Label Text="{Binding FirstName, FallbackValue='Binding failed'}" />
+   ```
+
+   If the binding fails, the label will display "Binding failed."
 
 ### Key Differences
+
 - **TargetNullValue** handles `null` values when the binding succeeds.
 - **FallbackValue** handles binding failures.
 
 ### Combined Use Example:
+
 ```xaml
 <Label Text="{Binding FirstName, TargetNullValue='No name available', FallbackValue='Binding failed'}" />
 ```
