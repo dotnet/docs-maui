@@ -30,32 +30,26 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Sep
     - [Distribute bindings libraries](/dotnet/android/binding-libs/advanced-concepts/distributing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
   - [Troubleshoot bindings](/dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
 
-## Home
-
-### Updated articles
-
-- [Supported platforms for .NET MAUI apps](../supported-platforms.md)
-
 ## Fundamentals
 
 ### Updated articles
 
 - [.NET MAUI windows](../fundamentals/windows.md)
-- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md)
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md?view=net-maui-9)
 - [Resource dictionaries](../fundamentals/resource-dictionaries.md)
 
 ## User interface
 
 ### Updated articles
 
-- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md)
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md?view=net-maui-9)
 - [HybridWebView](../user-interface/controls/hybridwebview.md)
 
 ## XAML
 
 ### Updated articles
 
-- [Create XAML markup extensions](../xaml/markup-extensions/create.md)
+- [Create XAML markup extensions](../xaml/markup-extensions/create.md?view=net-maui-9)
 
 ## Community contributors
 
