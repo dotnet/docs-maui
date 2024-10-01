@@ -1,7 +1,7 @@
 ---
 title: "Winding modes"
 description: ".NET MAUI graphics enables you to specify the fill algorithm when filling or clipping a path."
-ms.date: 12/16/2021
+ms.date: 09/30/2024
 ---
 
 # Winding modes

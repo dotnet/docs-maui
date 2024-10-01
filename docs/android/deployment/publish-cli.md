@@ -1,7 +1,7 @@
 ---
 title: "Publish an Android app using the command line"
 description: "Learn how to publish and sign a .NET MAUI Android app using the command line."
-ms.date: 05/16/2023
+ms.date: 09/30/2024
 ---
 
 # Publish an Android app using the command line

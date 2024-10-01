@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 09/17/2024
+ms.date: 09/26/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -38,202 +38,7 @@ To build a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you n
 
 The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native web view control and runs within the context of the app. Any part of the app can access external web services, but isn't required to.
 
-To build a hybrid app:
-
-1. Open an existing .NET MAUI app project or create a new .NET MAUI app project.
-1. Add your web content to the .NET MAUI app project.
-
-    Your app's web content should be included as part of a .NET MAUI project as raw assets. A raw asset is any file in the app's *Resources\Raw* folder, and includes sub-folders. For a <xref:Microsoft.Maui.Controls.HybridWebView>, web content should be placed in the *Resources\Raw\wwwroot* folder, with the main file named *index.html*.
-
-    A simple app might have the following files and contents:
-
-    - *Resources\Raw\wwwroot\index.html* with content for the main UI:
-
-        ```html
-        <!DOCTYPE html>
-
-        <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-            <meta charset="utf-8" />
-            <title></title>
-            <link rel="icon" href="data:,">
-            <script src="scripts/HybridWebView.js"></script>
-            <script>
-                window.addEventListener(
-                    "HybridWebViewMessageReceived",
-                    function (e) {
-                        var messageFromCSharp = document.getElementById("messageFromCSharp");
-                        messageFromCSharp.value += '\r\n' + e.detail.message;
-                    });
-            </script>
-        </head>
-        <body>
-            <h1>HybridWebView app!</h1>
-            <div>
-                <button onclick="window.HybridWebView.SendRawMessage('Message from JS!')">Send message to C#</button>
-            </div>
-            <div>
-                Messages from C#: <textarea readonly id="messageFromCSharp" style="width: 80%; height: 300px;"></textarea>
-            </div>
-        </body>
-        </html>
-        ```
-
-    - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard <xref:Microsoft.Maui.Controls.HybridWebView> JavaScript library:
-
-        ```js
-        window.HybridWebView = {
-            "Init": function () {
-                function DispatchHybridWebViewMessage(message) {
-                    const event = new CustomEvent("HybridWebViewMessageReceived", { detail: { message: message } });
-                    window.dispatchEvent(event);
-                }
-
-                if (window.chrome && window.chrome.webview) {
-                    // Windows WebView2
-                    window.chrome.webview.addEventListener('message', arg => {
-                        DispatchHybridWebViewMessage(arg.data);
-                    });
-                }
-                else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.webwindowinterop) {
-                    // iOS and MacCatalyst WKWebView
-                    window.external = {
-                        "receiveMessage": message => {
-                            DispatchHybridWebViewMessage(message);
-                        }
-                    };
-                }
-                else {
-                    // Android WebView
-                    window.addEventListener('message', arg => {
-                        DispatchHybridWebViewMessage(arg.data);
-                    });
-                }
-            },
-
-            "SendRawMessage": function (message) {
-                window.HybridWebView.__SendMessageInternal('RawMessage', message);
-            },
-
-            "__SendMessageInternal": function (type, message) {
-
-                const messageToSend = type + '|' + message;
-
-                if (window.chrome && window.chrome.webview) {
-                    // Windows WebView2
-                    window.chrome.webview.postMessage(messageToSend);
-                }
-                else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.webwindowinterop) {
-                    // iOS and MacCatalyst WKWebView
-                    window.webkit.messageHandlers.webwindowinterop.postMessage(messageToSend);
-                }
-                else {
-                    // Android WebView
-                    hybridWebViewHost.sendMessage(messageToSend);
-                }
-            },
-
-            "InvokeMethod": function (taskId, methodName, args) {
-                if (methodName[Symbol.toStringTag] === 'AsyncFunction') {
-                    // For async methods, we need to call the method and then trigger the callback when it's done
-                    const asyncPromise = methodName(...args);
-                    asyncPromise
-                        .then(asyncResult => {
-                            window.HybridWebView.__TriggerAsyncCallback(taskId, asyncResult);
-                        })
-                        .catch(error => console.error(error));
-                } else {
-                    // For sync methods, we can call the method and trigger the callback immediately
-                    const syncResult = methodName(...args);
-                    window.HybridWebView.__TriggerAsyncCallback(taskId, syncResult);
-                }
-            },
-
-            "__TriggerAsyncCallback": function (taskId, result) {
-                // Make sure the result is a string
-                if (result && typeof (result) !== 'string') {
-                    result = JSON.stringify(result);
-                }
-
-                window.HybridWebView.__SendMessageInternal('InvokeMethodCompleted', taskId + '|' + result);
-            }
-        }
-
-        window.HybridWebView.Init();
-        ```
-
-    Then, add any additional web content to your project.
-
-    > [!WARNING]
-    > In some cases Visual Studio might add entries to the project's *.csproj* file that are incorrect. When using the default location for raw assets there shouldn't be any entries for these files or folders in the *.csproj* file.
-
-1. Add the <xref:Microsoft.Maui.Controls.HybridWebView> control to your app:
-
-    ```xaml
-    <Grid RowDefinitions="Auto,*"
-          ColumnDefinitions="*">
-        <Button Text="Send message to JavaScript"
-                Clicked="OnSendMessageButtonClicked" />
-        <HybridWebView x:Name="hybridWebView"
-                       RawMessageReceived="OnHybridWebViewRawMessageReceived"
-                       Grid.Row="1" />
-    </Grid>
-    ```
-
-1. Use the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the JavaScript and C# code:
-
-    ```csharp
-    private void OnSendMessageButtonClicked(object sender, EventArgs e)
-    {
-        hybridWebView.SendRawMessage($"Hello from C#!");
-    }
-
-    private async void OnHybridWebViewRawMessageReceived(object sender, HybridWebViewRawMessageReceivedEventArgs e)
-    {
-        await DisplayAlert("Raw Message Received", e.Message, "OK");
-    }
-    ```
-
-    The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
-
 For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
-
-#### Invoke JavaScript methods from C\#
-
-Your app's C# code can invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, and synchronous and asynchronous method invocation and JavaScript methods are supported. Internally, parameters and return values are JSON encoded.
-
-For example, a simple JavaScript method to add two numbers could be defined in *index.html*:
-
-```javascript
-function AddNumbers(a, b) {
-    return a + b;
-}
-```
-
-This JavaScript method could be asynchronously invoked from C#:
-
-```csharp
-var x = 123d;
-var y = 321d;
-var result = await hwv.InvokeJavaScriptAsync<double>(
-    "AddNumbers",
-    HybridSampleJsContext.Default.Double,
-    [x, y],
-    [HybridSampleJsContext.Default.Double, HybridSampleJsContext.Default.Double]);
-```
-
-The method invocation requires specifying `JsonTypeInfo` objects that include serialization information for the types used in the operation. These objects are automatically created by including the following `partial` class in your project:
-
-```csharp
-[JsonSourceGenerationOptions(WriteIndented = true)]
-[JsonSerializable(typeof(double))]
-internal partial class HybridSampleJsContext : JsonSerializerContext
-{
-}
-```
-
-> [!NOTE]
-> The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
 
 ### Titlebar for Windows
 
@@ -328,14 +133,22 @@ The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a 
 
 ### BlazorWebView
 
-On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a `BlazorWebView` to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the `BlazorWebView` not loading any content and rendering as an empty rectangle.
+On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
 
-To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram` class:
+To opt into using the `0.0.0.0` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
 
 ```csharp
 // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
+
+If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+
+```csharp
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+```
+
+This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
 
 ### CollectionView and CarouselView
 
@@ -416,6 +229,89 @@ public static class MauiProgram
         return builder.Build();
     }
 }
+```
+
+## Compiled bindings in code
+
+Bindings written in code typically use string paths that are resolved at runtime with reflection, and the overhead of doing this varies from platform to platform. .NET MAUI 9 introduces an additional <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method that defines bindings using a `Func` argument instead of a  string path:
+
+```csharp
+// in .NET 8
+MyLabel.SetBinding(Label.TextProperty, "Text");
+
+// in .NET 9
+MyLabel.SetBinding(Label.TextProperty, static (Entry entry) => entry.Text);
+```
+
+This compiled binding approach provides the following benefits:
+
+- Improved data binding performance by resolving binding expressions at compile-time rather than runtime.
+- A better developer troubleshooting experience because invalid bindings are reported as build errors.
+- Intellisense while editing.
+
+Not all methods can be used to define a compiled binding. The expression must be a simple property access expression. The following examples show valid and invalid binding expressions:
+
+```csharp
+// Valid: Property access
+static (PersonViewModel vm) => vm.Name;
+static (PersonViewModel vm) => vm.Address?.Street;
+
+// Valid: Array and indexer access
+static (PersonViewModel vm) => vm.PhoneNumbers[0];
+static (PersonViewModel vm) => vm.Config["Font"];
+
+// Valid: Casts
+static (Label label) => (label.BindingContext as PersonViewModel).Name;
+static (Label label) => ((PersonViewModel)label.BindingContext).Name;
+
+// Invalid: Method calls
+static (PersonViewModel vm) => vm.GetAddress();
+static (PersonViewModel vm) => vm.Address?.ToString();
+
+// Invalid: Complex expressions
+static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
+static (PersonViewModel vm) => $"Name: {vm.Name}";
+```
+
+In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
+
+```csharp
+// in .NET 8
+myEntry.SetBinding(Entry.TextProperty, new MultiBinding
+{
+    Bindings = new Collection<BindingBase>
+    {
+        new Binding(nameof(Entry.FontFamily), source: RelativeBindingSource.Self),
+        new Binding(nameof(Entry.FontSize), source: RelativeBindingSource.Self),
+        new Binding(nameof(Entry.FontAttributes), source: RelativeBindingSource.Self),
+    },
+    Converter = new StringConcatenationConverter()
+});
+
+// in .NET 9
+myEntry.SetBinding(Entry.TextProperty, new MultiBinding
+{
+    Bindings = new Collection<BindingBase>
+    {
+        Binding.Create(static (Entry entry) => entry.FontFamily, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontSize, source: RelativeBindingSource.Self),
+        Binding.Create(static (Entry entry) => entry.FontAttributes, source: RelativeBindingSource.Self),
+    },
+    Converter = new StringConcatenationConverter()
+});
+```
+
+> [!IMPORTANT]
+> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+## Compiled bindings in XAML
+
+In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9.
+
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+
+```xml
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 ```
 
 ## Handler disconnection
@@ -516,6 +412,30 @@ The template can also be used from `dotnew new`:
 ```dotnetcli
 dotnet new maui-blazor-web -n AllTheTargets
 ```
+
+## Resource dictionaries
+
+In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDictionary> (which isn't backed by a code-behind file) defaults to having its XAML compiled. To opt out of this behavior, specify `<?xaml-comp compile="false" ?>` after the XML header.
+
+## Trimming feature switches
+
+Several areas of .NET MAUI come with trimmer directives, known as feature switches, that make it possible to remove the code for disabled features when `TrimMode=full`, as well as for NativeAOT:
+
+| MSBuild property | Description |
+| ---------------- | ----------- |
+| `MauiEnableVisualAssemblyScanning` | When set to `true`, .NET MAUI will scan assemblies for types implementing `IVisual` and for `[assembly:Visual(...)]` attributes, and will register these types. By default, this build property is set to `false`. |
+| `MauiShellSearchResultsRendererDisplayMemberNameSupported` | When set to `false`, the value of `SearchHandler.DisplayMemberName` will be ignored. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. By default, this build property is set to `true`.|
+| `MauiQueryPropertyAttributeSupport` | When set to `false`, `[QueryProperty(...)]` attributes won't be used to set property values when navigating. Instead, you should implement the `IQueryAttributable` interface to accept query parameters. By default, this build property is set to `true`. |
+| `MauiImplicitCastOperatorsUsageViaReflectionSupport` | When set to `false`, .NET MAUI won't look for implicit cast operators when converting values from one type to another. This can affect bindings between properties with different types, and setting a property value of a bindable object with a value of a different type. Instead, you should define a `TypeConverter` for your type and attach it to the type using the `[TypeConverter(typeof(MyTypeConverter))]` attribute. By default, this build property is set to `true`.|
+| `_MauiBindingInterceptorsSupport` | When set to `false`, .NET MAUI won't intercept any calls to the `SetBinding` methods and won't try to compile them. By default, this build property is set to `true`. |
+
+To consume a feature switch you should put the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `Full` trimming mode.
+
+## XAML
+
+All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1>, <xref:Microsoft.Maui.Controls.Xaml.IValueProvider>, and <xref:Microsoft.Maui.Controls.IExtendedTypeConverter> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization introduced in .NET MAUI 9 that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
+
+For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9).
 
 ## Xcode sync
 

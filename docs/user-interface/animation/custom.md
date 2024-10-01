@@ -1,7 +1,7 @@
 ---
 title: "Custom animation"
 description: "The .NET MAUI Animation class can create and cancel animations, synchronize multiple animations, and create custom animations that animate properties that aren't animated by existing animation methods."
-ms.date: 02/08/2022
+ms.date: 09/30/2024
 ---
 
 # Custom animation

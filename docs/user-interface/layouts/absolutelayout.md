@@ -1,7 +1,7 @@
 ---
 title: "AbsoluteLayout"
 description: "The .NET MAUI AbsoluteLayout is used to position and size elements using explicit values, or values proportional to the size of the layout."
-ms.date: 01/09/2023
+ms.date: 09/30/2024
 ---
 
 # AbsoluteLayout

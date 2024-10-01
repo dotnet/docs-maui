@@ -1,7 +1,7 @@
 ---
 title: "Display tooltips"
 description: "Learn how to display a tooltip, which displays information about the view's purpose, when the user rests the pointer on the view."
-ms.date: 10/03/2022
+ms.date: 09/30/2024
 ---
 
 # Display tooltips

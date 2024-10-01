@@ -1,7 +1,7 @@
 ---
 title: "Theme an app"
 description: "Theming can be implemented in .NET MAUI apps by creating a ResourceDictionary for each theme, and then loading the resources with the DynamicResource markup extension."
-ms.date: 02/25/2022
+ms.date: 09/30/2024
 ---
 
 # Theme an app
@@ -18,14 +18,14 @@ The process for implementing runtime theming in a .NET MAUI app is as follows:
 1. Add code to load a theme at runtime. For more information, see [Load a theme at runtime](#load-a-theme-at-runtime).
 
 > [!IMPORTANT]
-> Use the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension if you don't need to change the app theme at runtime.
+> Use the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension if your app doesn’t need to change themes dynamically at runtime. If you anticipate switching themes while the app is running, use the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension, which enables resources to be updated at runtime.
 
 The following screenshot shows themed pages, with the iOS app using a light theme and the Android app using a dark theme:
 
 :::image type="content" source="media/theming/main-page-both-themes.png" alt-text="Screenshot of the main page of a themed app.":::
 
 > [!NOTE]
-> Changing a theme at runtime requires the use of XAML styles, and is not possible using CSS.
+> Changing a theme at runtime requires the use of XAML or C# style definitions, and isn't possible using CSS.
 
 .NET MAUI also has the ability to respond to system theme changes. The system theme may change for a variety of reasons, depending on the device configuration. This includes the system theme being explicitly changed by the user, it changing due to the time of day, and it changing due to environmental factors such as low light. For more information, see [Respond to system theme changes](system-theme-changes.md).
 

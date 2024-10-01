@@ -1,7 +1,7 @@
 ---
 title: "Display pop-ups"
 description: ".NET MAUI provides three pop-up-like user interface elements – an alert, an action sheet, and a prompt - that can be used to ask simple questions, guide users through tasks, and display prompts."
-ms.date: 12/22/2023
+ms.date: 09/30/2024
 ---
 
 # Display pop-ups

@@ -1,7 +1,7 @@
 ---
 title: "Shadow"
 description: "Learn how to use the .NET MAUI Shadow class, which paints a shadow around a control."
-ms.date: 12/13/2021
+ms.date: 09/30/2024
 ---
 
 # Shadow

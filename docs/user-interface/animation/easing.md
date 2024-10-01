@@ -1,7 +1,7 @@
 ---
 title: "Easing functions"
 description: ".NET MAUI includes an Easing class that enables you to specify a transfer function that controls how animations speed up or slow down as they're running."
-ms.date: 02/08/2022
+ms.date: 09/30/2024
 ---
 
 # Easing functions

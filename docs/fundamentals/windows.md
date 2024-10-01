@@ -137,7 +137,24 @@ Application.Current?.CloseWindow(GetParentWindow());
 ```
 
 > [!IMPORTANT]
-> Multi-window support works on Android and Windows without additional configuration. However, additional configuration is required on iPadOS and Mac Catalyst.
+> Multi-window support works on Windows without additional configuration. However, additional configuration is required on Android, iPadOS and Mac Catalyst.
+
+### Android configuration
+
+To use multi-window support on Android, you must change the `MainActivity` launch mode in *Platforms > Android > MainActivity.cs* from `LaunchMode.SingleTop` to `LaunchMode.Multiple`:
+
+```csharp
+using Android.App;
+using Android.Content.PM;
+using Android.OS;
+
+namespace MyMauiApp;
+
+[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.Multiple, ...)]
+public class MainActivity : MauiAppCompatActivity
+{
+}
+```
 
 ### iPadOS and macOS configuration
 

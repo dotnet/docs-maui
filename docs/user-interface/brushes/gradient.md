@@ -1,7 +1,7 @@
 ---
 title: "Gradients"
 description: "The .NET MAUI GradientBrush class is an abstract class that describes a gradient, composed of gradient stops."
-ms.date: 01/11/2022
+ms.date: 09/30/2024
 ---
 
 # Gradients
