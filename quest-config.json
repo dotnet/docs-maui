@@ -34,7 +34,7 @@
         },
         {
           "Semester": "Selenium",
-          "ParentNodeId": 286016
+          "ParentNodeId": 308202
         },
         {
           "Label": "okr-freshness",
@@ -81,7 +81,7 @@
         "ParentNodeId": 227487
       }
     ],
-    "DefaultParentNode": 286016,
+    "DefaultParentNode": 308202,
     "WorkItemTags": [
         {
             "Label": ":checkered_flag: Release: .NET 9",
