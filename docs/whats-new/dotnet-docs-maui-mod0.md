@@ -1,62 +1,59 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for June 2024"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for June 2024."
-ms.custom: June-2024
-ms.date: 07/01/2024
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for September 2024"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for September 2024."
+ms.custom: September-2024
+ms.date: 10/01/2024
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for June 2024
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for September 2024
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for June 2024. This article lists some of the major changes to docs during this period.
-
-## Get started
-
-### Updated articles
-
-- [Build your first app](../get-started/first-app.md)
-- [Installation](../get-started/installation.md)
-
-## Data & cloud services
-
-### Updated articles
-
-- [Connect to local web services from Android emulators and iOS simulators](../data-cloud/local-web-services.md)
-
-## Deployment
-
-### New articles
-
-- [Unit testing](../deployment/unit-testing.md)
-
-## Migration from Xamarin.Forms
-
-### New articles
-
-- [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app with the project template](../migration/multi-project-to-multi-project-with-template.md)
-- [Upgrade manually to a multi-project app](../migration/multi-project-overview.md)
-
-## Platform integration
-
-### New articles
-
-- [Local notifications](../platform-integration/local-notifications.md)
-
-### Updated articles
-
-- [Native embedding](../platform-integration/native-embedding.md)
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for September 2024. This article lists some of the major changes to docs during this period.
 
 ## Android
 
+### New articles
+
+- [Bind Java libraries](/dotnet/android/binding-libs/binding-java-libs?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Bind a Java library](/dotnet/android/binding-libs/binding-java-libs/binding-java-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Bind a Java library from Maven](/dotnet/android/binding-libs/binding-java-libs/binding-java-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Customize bindings](/dotnet/android/binding-libs/customizing-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Customize namespaces](/dotnet/android/binding-libs/customizing-bindings/namespace-customization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Java bindings metadata](/dotnet/android/binding-libs/customizing-bindings/java-bindings-metadata?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Create enumerations](/dotnet/android/binding-libs/customizing-bindings/creating-enums?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - MSBuild reference
+    - [MSBuild bindings project properties](/dotnet/android/binding-libs/msbuild-reference/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [MSBuild bindings project items](/dotnet/android/binding-libs/msbuild-reference/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - Advanced concepts
+    - [AndroidMavenLibrary reference](/dotnet/android/binding-libs/advanced-concepts/android-maven-library?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Java dependency verification](/dotnet/android/binding-libs/advanced-concepts/java-dependency-verification?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Resolve java dependencies](/dotnet/android/binding-libs/advanced-concepts/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+    - [Distribute bindings libraries](/dotnet/android/binding-libs/advanced-concepts/distributing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Troubleshoot bindings](/dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+
+## Fundamentals
+
 ### Updated articles
 
-- [How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)](../android/emulator/hardware-acceleration.md)
+- [.NET MAUI windows](../fundamentals/windows.md)
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md?view=net-maui-9)
+- [Resource dictionaries](../fundamentals/resource-dictionaries.md)
+
+## User interface
+
+### Updated articles
+
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md?view=net-maui-9)
+- [HybridWebView](../user-interface/controls/hybridwebview.md)
+
+## XAML
+
+### Updated articles
+
+- [Create XAML markup extensions](../xaml/markup-extensions/create.md?view=net-maui-9)
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [breyed](https://github.com/breyed) - Edward Brey ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [daltzctr](https://github.com/daltzctr) - Dalton Smith ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [Saccomani](https://github.com/Saccomani) - Rafael Felipe Sacomani ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [sethbuckley](https://github.com/sethbuckley) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [the-wazz](https://github.com/the-wazz) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [Fred-Hudson-CST](https://github.com/Fred-Hudson-CST) - Fred Hudson ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [venelinmandov](https://github.com/venelinmandov) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
