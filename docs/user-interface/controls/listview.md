@@ -275,10 +275,10 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
                                              OtherMonkey="{StaticResource OtherMonkeyTemplate}" />
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <ListView ItemsSource="{Binding Monkeys}"
                   ItemTemplate="{StaticResource MonkeySelector}" />
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
@@ -376,7 +376,7 @@ The `RetainElement` caching strategy specifies that the <xref:Microsoft.Maui.Con
 - The cell template changes frequently.
 - Testing reveals that the `RecycleElement` caching strategy results in a reduced execution speed.
 
-It's important to recognize the consequences of the `RetainElement` caching strategy when working with custom cells. Any cell initialization code will need to run for each cell creation, which may be multiple times per second. In this circumstance, layout techniques that were fine on a page, like using multiple nested <xref:Microsoft.Maui.Controls.StackLayout> objects, become performance bottlenecks when they're set up and destroyed in real time as the user scrolls.
+It's important to recognize the consequences of the `RetainElement` caching strategy when working with custom cells. Any cell initialization code will need to run for each cell creation, which may be multiple times per second. In this circumstance, layout techniques that were fine on a page, like using multiple nested <xref:Microsoft.Maui.Controls.Grid> objects, become performance bottlenecks when they're set up and destroyed in real time as the user scrolls.
 
 ### Recycle elements
 
@@ -505,25 +505,25 @@ The following screenshot shows the resulting header:
 
 ### Display views in the header and footer
 
-The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.Grid> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
     <ListView.Header>
-        <StackLayout BackgroundColor="LightGray">
+        <Grid BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Monkeys"
                    FontSize="12"
                    FontAttributes="Bold" />
-        </StackLayout>
+        </Grid>
     </ListView.Header>
     <ListView.Footer>
-        <StackLayout BackgroundColor="LightGray">
+        <Grid BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Friends of Monkey"
                    FontSize="12"
                    FontAttributes="Bold" />
-        </StackLayout>
+        </Grid>
     </ListView.Footer>
     ...
 </ListView>
@@ -543,22 +543,22 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microso
           Footer="{Binding .}">
     <ListView.HeaderTemplate>
         <DataTemplate>
-            <StackLayout BackgroundColor="LightGray">
+            <Grid BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Monkeys"
                        FontSize="12"
                        FontAttributes="Bold" />
-            </StackLayout>
+            </Grid>
         </DataTemplate>
     </ListView.HeaderTemplate>
     <ListView.FooterTemplate>
         <DataTemplate>
-            <StackLayout BackgroundColor="LightGray">
+            <Grid BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Friends of Monkey"
                        FontSize="12"
                        FontAttributes="Bold" />
-            </StackLayout>
+            </Grid>
         </DataTemplate>
     </ListView.FooterTemplate>
     ...
@@ -618,15 +618,15 @@ In this example, the `OnImageTapped` event handler is executed in response to an
              x:Class="ListViewDemos.RightToLeftListPage"
              Title="Right to left list"
              FlowDirection="RightToLeft">
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <ListView ItemsSource="{Binding Monkeys}">
             ...
         </ListView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the <xref:Microsoft.Maui.Controls.ListView> inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.StackLayout>, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the <xref:Microsoft.Maui.Controls.ListView> inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.Grid>, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
 
 ## Display grouped data
 

@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI Android app for ad-hoc distribution"
 description: "Learn how to publish a .NET MAUI Android app for ad-hoc distribution."
-ms.date: 05/15/2023
+ms.date: 09/30/2024
 ---
 
 # Publish an Android app for ad-hoc distribution

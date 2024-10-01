@@ -1,7 +1,7 @@
 ---
 title: "Linear gradient brushes"
 description: "The .NET MAUI LinearGradientBrush class paints an area with a linear gradient."
-ms.date: 01/11/2022
+ms.date: 09/30/2024
 ---
 
 # Linear gradient brushes

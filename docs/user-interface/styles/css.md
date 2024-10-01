@@ -1,7 +1,7 @@
 ---
 title: "Style apps using Cascading Style Sheets"
 description: ".NET MAUI supports styling visual elements using Cascading Style Sheets (CSS)."
-ms.date: 03/01/2022
+ms.date: 09/30/2024
 ---
 
 # Style apps using Cascading Style Sheets

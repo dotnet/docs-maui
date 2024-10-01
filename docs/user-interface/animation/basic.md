@@ -1,7 +1,7 @@
 ---
 title: "Basic animation"
 description: "The .NET MAUI ViewExtensions class, in the Microsoft.Maui.Controls namespace, provides extension methods that can be used to create and cancel basic animations."
-ms.date: 02/08/2022
+ms.date: 09/30/2024
 ---
 
 # Basic animation

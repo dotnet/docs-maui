@@ -1,7 +1,7 @@
 ---
 title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
-ms.date: 05/13/2022
+ms.date: 09/30/2024
 ---
 
 # Layouts

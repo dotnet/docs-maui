@@ -1,7 +1,7 @@
 ---
 title: "Colors"
 description: "The .NET MAUI Color class, in the Microsoft.Maui.Graphics namespace, lets you specify colors as RGB values, HSL values, HSV values, or with a color name."
-ms.date: 12/16/2021
+ms.date: 09/30/2024
 ---
 
 # Colors

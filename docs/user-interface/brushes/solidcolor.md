@@ -1,7 +1,7 @@
 ---
 title: "Solid color brushes"
 description: "The .NET MAUI SolidColorBrush class paints an area with a solid color."
-ms.date: 01/11/2022
+ms.date: 09/30/2024
 ---
 
 # Solid color brushes

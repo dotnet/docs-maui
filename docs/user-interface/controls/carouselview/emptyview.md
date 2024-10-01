@@ -1,7 +1,7 @@
 ---
 title: "Define an EmptyView for a CarouselView"
 description: "In a .NET MAUI CarouselView, an empty view can be specified that provides feedback to the user when no data is available for display. The empty view can be a string, a view, or multiple views."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Define an EmptyView for a CarouselView

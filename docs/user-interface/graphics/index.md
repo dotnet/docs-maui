@@ -1,7 +1,7 @@
 ---
 title: "Graphics"
 description: ".NET MAUI includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux."
-ms.date: 12/16/2021
+ms.date: 09/30/2024
 ---
 
 # Graphics

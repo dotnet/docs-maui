@@ -1,7 +1,7 @@
 ---
 title: "Populate a CarouselView with data"
 description: "A .NET MAUI CarouselView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Populate a CarouselView with data

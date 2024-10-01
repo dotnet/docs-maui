@@ -1,7 +1,7 @@
 ---
 title: "Control scrolling in a CollectionView"
 description: "When a user swipes to initiate a scroll, the end position of the scroll can be controlled so that items are fully displayed. In addition, the .NET MAUI CollectionView defines two ScrollTo methods, that programmatically scroll items into view."
-ms.date: 01/18/2022
+ms.date: 09/30/2024
 ---
 
 # Control scrolling in a CollectionView

@@ -7,40 +7,81 @@
     "ImportTriggerLabel": ":world_map: reQUEST",
     "ImportedLabel": ":pushpin: seQUESTered",
     "ParentNodes": [
-      {
+        {
+            "Label": "okr-freshness",
+            "Semester": "Selenium",
+            "ParentNodeId": 286034
+        },
+        {
+            "Label": "okr-curation",
+            "Semester": "Selenium",
+            "ParentNodeId": 286038
+        },
+        {
+            "Label": "okr-health",
+            "Semester": "Selenium",
+            "ParentNodeId": 268038
+        },
+        {
+            "Label": "user-feedback",
+            "Semester": "Selenium",
+            "ParentNodeId": 286039
+        },
+        {
+            "Label": "doc-bug",
+            "Semester": "Selenium",
+            "ParentNodeId": 286039
+        },
+        {
+          "Semester": "Selenium",
+          "ParentNodeId": 286016
+        },
+        {
           "Label": "okr-freshness",
+          "Semester": "Dilithium",
           "ParentNodeId": 237266
       },
       {
           "Label": "okr-curation",
+          "Semester": "Dilithium",
           "ParentNodeId": 237271
       },
       {
           "Label": "okr-health",
+          "Semester": "Dilithium",
           "ParentNodeId": 237266
       },
       {
           "Label": "user-feedback",
+          "Semester": "Dilithium",
           "ParentNodeId": 233465
       },
       {
           "Label": "doc-bug",
+          "Semester": "Dilithium",
           "ParentNodeId": 233465
       },
       {
           "Label": "sfi-ropc",
+          "Semester": "Dilithium",
           "ParentNodeId": 271716
       },
       {
           "Label": "sfi-admin",
+          "Semester": "Dilithium",
           "ParentNodeId": 271716
       },
-        {
-            "Label": "sfi-images",
-            "ParentNodeId": 286370
-        }
+      {
+          "Label": "sfi-images",
+          "Semester": "Dilithium",
+          "ParentNodeId": 286370
+      },
+      {
+        "Semester": "Dilithium",
+        "ParentNodeId": 227487
+      }
     ],
-    "DefaultParentNode": 227487,
+    "DefaultParentNode": 286016,
     "WorkItemTags": [
         {
             "Label": ":checkered_flag: Release: .NET 9",

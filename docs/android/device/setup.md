@@ -1,7 +1,7 @@
 ---
 title: "Set up a device for development"
 description: "This article discusses how to enable development mode on an Android device so that you can deploy and debug a .NET MAUI application."
-ms.date: 02/23/2022
+ms.date: 09/30/2024
 ---
 
 # Set up Android device for debugging
