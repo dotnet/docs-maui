@@ -54,31 +54,33 @@ The following example shows visual states defined on an <xref:Microsoft.Maui.Con
 ```xaml
 <Entry FontSize="18">
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup Name="CommonStates">
-            <VisualState Name="Normal">
-                <VisualState.Setters>
-                    <Setter Property="BackgroundColor" Value="Lime" />
-                </VisualState.Setters>
-            </VisualState>
+        <VisualStateGroupList>
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="Lime" />
+                    </VisualState.Setters>
+                </VisualState>
 
-            <VisualState Name="Focused">
-                <VisualState.Setters>
-                    <Setter Property="FontSize" Value="36" />
-                </VisualState.Setters>
-            </VisualState>
+                <VisualState Name="Focused">
+                    <VisualState.Setters>
+                        <Setter Property="FontSize" Value="36" />
+                    </VisualState.Setters>
+                </VisualState>
 
-            <VisualState Name="Disabled">
-                <VisualState.Setters>
-                    <Setter Property="BackgroundColor" Value="Pink" />
-                </VisualState.Setters>
-            </VisualState>
+                <VisualState Name="Disabled">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="Pink" />
+                    </VisualState.Setters>
+                </VisualState>
 
-            <VisualState Name="PointerOver">
-                <VisualState.Setters>
-                    <Setter Property="BackgroundColor" Value="LightBlue" />
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
+                <VisualState Name="PointerOver">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 </Entry>
 ```
