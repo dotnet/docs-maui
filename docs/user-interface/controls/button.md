@@ -294,7 +294,7 @@ The following XAML example shows how to define a visual state for the `Pressed` 
                                 Value="0.8" />
                     </VisualState.Setters>
                 </VisualState>
-            <VisualState x:Name="PointerOver" />            
+                <VisualState x:Name="PointerOver" />            
             </VisualStateGroup>
         </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
