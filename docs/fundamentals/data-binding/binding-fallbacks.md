@@ -101,7 +101,7 @@ Both `TargetNullValue` and `FallbackValue` are used in data bindings to handle s
 ### TargetNullValue
 
 - **Purpose**: Specifies a value to display when the binding succeeds but the bound property is `null`.
-- **Example**: 
+- **Example**:
 
    ```xaml
    <Label Text="{Binding FirstName, TargetNullValue='No name available'}" />
@@ -112,7 +112,7 @@ Both `TargetNullValue` and `FallbackValue` are used in data bindings to handle s
 ### FallbackValue
 
 - **Purpose**: Provides a value when the binding process fails entirely (e.g., incorrect path, missing data context).
-- **Example**: 
+- **Example**:
 
    ```xaml
    <Label Text="{Binding FirstName, FallbackValue='Binding failed'}" />
