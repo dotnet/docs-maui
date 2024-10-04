@@ -166,6 +166,10 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
+### ContentPage
+
+In .NET MAUI 9, the <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property is also supported on Mac Catalyst, as well and Android and iOS.
+
 ### Label text alignment
 
 You can now horizontally align text in <xref:Microsoft.Maui.Controls.Label> objects with `HorizontalTextAlignment.Justify`:
