@@ -118,7 +118,7 @@ The following screenshot shows the resulting appearance:
 
 ### BackButtonBehavior OneWay binding mode
 
-The binding mode for `IsVisible` and `IsEnabled` on a `BackButtonBehavior` in a Shell app is now `BindingMode.OneWay` instead of `BindingMode.OneTime`. This enables you to more easily control the behavior of the back button at runtime, with data bindings:
+The binding mode for `IsVisible` and `IsEnabled` on a <xref:Microsoft.Maui.Controls.BackButtonBehavior> in a Shell app is now `BindingMode.OneWay` instead of `BindingMode.OneTime`. This enables you to more easily control the behavior of the back button at runtime, with data bindings:
 
 ```xaml
 <ContentPage ...>    
