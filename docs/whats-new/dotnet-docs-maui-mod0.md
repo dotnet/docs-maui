@@ -35,21 +35,21 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Sep
 ### Updated articles
 
 - [.NET MAUI windows](../fundamentals/windows.md)
-- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md?view=net-maui-9)
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md?view=net-maui-9&preserve-view=true)
 - [Resource dictionaries](../fundamentals/resource-dictionaries.md)
 
 ## User interface
 
 ### Updated articles
 
-- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md?view=net-maui-9)
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md?view=net-maui-9&preserve-view=true)
 - [HybridWebView](../user-interface/controls/hybridwebview.md)
 
 ## XAML
 
 ### Updated articles
 
-- [Create XAML markup extensions](../xaml/markup-extensions/create.md?view=net-maui-9)
+- [Create XAML markup extensions](../xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true)
 
 ## Community contributors
 

@@ -11,8 +11,8 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 <xref:Microsoft.Maui.Controls.Editor> defines the following properties:
 
 - `AutoSize`, of type `EditorAutoSizeOption`, defines whether the editor will change size to accommodate user input. By default, the editor doesn't auto size.
-- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
-- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
+- `HorizontalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the horizontal alignment of the text.
+- `VerticalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the vertical alignment of the text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
