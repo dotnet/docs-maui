@@ -166,21 +166,21 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
-### Label text alignment
-
-You can now horizontally align text in <xref:Microsoft.Maui.Controls.Label> objects with `HorizontalTextAlignment.Justify`:
-
-```xaml
-<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate."
-       HorizontalTextAlignment="Justify"/>
-```
-
 ### Soft keyboard input support
 
 .NET MAUI 9 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
 
 ```xaml
 <Entry Keyboard="Date" />
+```
+
+### Text alignment
+
+The <xref:Microsoft.Maui.TextAlignment> enumeration adds a `Justify` member that can be used to align text in text controls. For example, you can horizontally align text in a <xref:Microsoft.Maui.Controls.Label> with `HorizontalTextAlignment.Justify`:
+
+```xaml
+<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate."
+       HorizontalTextAlignment="Justify"/>
 ```
 
 ### TimePicker
