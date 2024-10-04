@@ -13,10 +13,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 <xref:Microsoft.Maui.Controls.SearchBar> defines the following properties:
 
 - `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
-- `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
+- `HorizontalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the horizontal alignment of the query text.
 - `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
-- `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
+- `VerticalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the vertical alignment of the query text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

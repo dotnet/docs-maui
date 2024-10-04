@@ -166,14 +166,9 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
-### Label text alignment
+### ContentPage
 
-You can now horizontally align text in <xref:Microsoft.Maui.Controls.Label> objects with `HorizontalTextAlignment.Justify`:
-
-```xaml
-<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate."
-       HorizontalTextAlignment="Justify"/>
-```
+In .NET MAUI 9, the <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property is also supported on Mac Catalyst, as well and Android and iOS.
 
 ### Soft keyboard input support
 
@@ -181,6 +176,15 @@ You can now horizontally align text in <xref:Microsoft.Maui.Controls.Label> obje
 
 ```xaml
 <Entry Keyboard="Date" />
+```
+
+### Text alignment
+
+The <xref:Microsoft.Maui.TextAlignment> enumeration adds a `Justify` member that can be used to align text in text controls. For example, you can horizontally align text in a <xref:Microsoft.Maui.Controls.Label> with `HorizontalTextAlignment.Justify`:
+
+```xaml
+<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate."
+       HorizontalTextAlignment="Justify"/>
 ```
 
 ### TimePicker
