@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Label> 
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
 - `FormattedText`, of type `FormattedString`, specifies the presentation of text with multiple presentation options such as fonts and colors.
-- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the displayed text.
+- `HorizontalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the horizontal alignment of the displayed text.
 - `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
 - `MaxLines`, of type `int`, indicates the maximum number of lines allowed in the <xref:Microsoft.Maui.Controls.Label>.
@@ -28,7 +28,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Label> 
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
 - `TextType`, of type `TextType`, determines whether the <xref:Microsoft.Maui.Controls.Label> should display plain text or HTML text.
-- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the displayed text.
+- `VerticalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the vertical alignment of the displayed text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

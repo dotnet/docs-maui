@@ -177,13 +177,13 @@ The following screenshot shows the resulting cell appearance:
 
 An <xref:Microsoft.Maui.Controls.EntryCell> displays a label and text data that's editable. <xref:Microsoft.Maui.Controls.EntryCell> defines the following properties:
 
-- `HorizontalTextAlignment`, of type `TextAlignment`, represents the horizontal alignment of the text.
+- `HorizontalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, represents the horizontal alignment of the text.
 - `Keyboard`, of type `Keyboard`, determines the keyboard to display when entering text.
 - <xref:Microsoft.Maui.Controls.Label>, of type `string`,  represents the text to display to the left of the editable text.
 - `LabelColor`, of type <xref:Microsoft.Maui.Graphics.Color>,  defines the color of the label text.
 - `Placeholder`, of type `string`, represents the text that's displayed when the `Text` property is empty.
 - `Text`, of type `string`, defines the text that's editable.
-- `VerticalTextAlignment`, of type `TextAlignment`, represents the vertical alignment of the text.
+- `VerticalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, represents the vertical alignment of the text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
