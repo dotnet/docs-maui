@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 09/26/2024
+ms.date: 10/04/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -21,6 +21,10 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
+
+## Minimum deployment targets
+
+.NET MAUI 9 requires minimum deployment targets of iOS 12.2, and Mac Catalyst 15.0 (macOS 12.0). Android and Windows minimum deployment targets remain the same. For more information, see [Supported platforms for .NET MAUI apps](../supported-platforms.md).
 
 ## New controls
 
