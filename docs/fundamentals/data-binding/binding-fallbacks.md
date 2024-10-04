@@ -94,38 +94,33 @@ Therefore, in this example the <xref:Microsoft.Maui.Controls.Image> and <xref:Mi
 > [!IMPORTANT]
 > String formatting is not applied in a binding expression when the <xref:Microsoft.Maui.Controls.BindingBase.TargetNullValue> property is set.
 
-## TargetNullValue vs FallbackValue
+## TargetNullValue and FallbackValue comparison
 
-Both <xref:Microsoft.Maui.Controls.BindingBase.TargetNullValue> and <xref:Microsoft.Maui.Controls.BindingBase.FallbackValue> are used in data bindings to handle scenarios where the bound value is `null` or when the binding itself fails. Knowing when to use each helps ensure a smooth user experience.
+Both <xref:Microsoft.Maui.Controls.BindingBase.TargetNullValue> and <xref:Microsoft.Maui.Controls.BindingBase.FallbackValue> are used in data bindings to handle scenarios where the bound value is `null` or when the binding fails. Knowing when to use each helps ensure a smooth user experience.
 
 ### TargetNullValue
 
-- **Purpose**: Specifies a value to display when the binding succeeds but the bound property is `null`.
-- **Example**:
+Use the <xref:Microsoft.Maui.Controls.BindingBase.TargetNullValue> property to specify a value to display when the binding succeeds but the bound property is `null`:
 
-   ```xaml
-   <Label Text="{Binding FirstName, TargetNullValue='No name available'}" />
-   ```
+```xaml
+<Label Text="{Binding FirstName, TargetNullValue='No name available'}" />
+```
 
-   If `FirstName` is `null`, the label will display "No name available."
+In this example, if `FirstName` is `null` the <xref:Microsoft.Maui.Controls.Label> will display "No name available".
 
 ### FallbackValue
 
-- **Purpose**: Provides a value when the binding process fails entirely (e.g., incorrect path, missing data context).
-- **Example**:
+Use the <xref:Microsoft.Maui.Controls.BindingBase.FallbackValue> property to provide a value when the binding process fails entirely, such as an incorrect path, or a missing binding context:
 
-   ```xaml
-   <Label Text="{Binding FirstName, FallbackValue='Binding failed'}" />
-   ```
+```xaml
+<Label Text="{Binding FirstName, FallbackValue='Binding failed'}" />
+```
 
-   If the binding fails, the label will display "Binding failed."
+In this example, if the binding fails the <xref:Microsoft.Maui.Controls.Label> will display "Binding failed".
 
-### Key Differences
+### Combined use
 
-- **TargetNullValue** handles `null` values when the binding succeeds.
-- **FallbackValue** handles binding failures.
-
-### Combined Use Example:
+The <xref:Microsoft.Maui.Controls.BindingBase.TargetNullValue> and <xref:Microsoft.Maui.Controls.BindingBase.FallbackValue> properties can be combined in a single binding expression:
 
 ```xaml
 <Label Text="{Binding FirstName, TargetNullValue='No name available', FallbackValue='Binding failed'}" />
