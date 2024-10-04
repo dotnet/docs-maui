@@ -64,8 +64,8 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
         </CollectionView.ItemTemplate>
         <CollectionView.EmptyView>
             <ContentView>
-                <StackLayout HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center">
                     <Label Text="No results matched your filter."
                            Margin="10,25,10,10"
                            FontAttributes="Bold"
@@ -215,18 +215,18 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
         </ContentView>
     </ContentPage.Resources>
 
-    <Grid Margin="20" RowDefinitions="Auto,*">
+    <Grid Margin="20" RowDefinitions="Auto, Auto, *">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                    Placeholder="Filter" />
-        <StackLayout Orientation="Horizontal">
+        <HorizontalStackLayout Grid.Row="1">
             <Label Text="Toggle EmptyViews" />
             <Switch Toggled="OnEmptyViewSwitchToggled" />
-        </StackLayout>
+        </HorizontalStackLayout>
         <CollectionView x:Name="collectionView"
                         ItemsSource="{Binding Monkeys}"
-                        Grid.Row="1">
+                        Grid.Row="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     ...
