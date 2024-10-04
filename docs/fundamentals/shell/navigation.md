@@ -544,7 +544,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 
 ::: moniker range=">=net-maui-9.0"
 
-All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. The `Command`, `CommandParameter`, IconOveride`, and `TextOveride` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneTime` binding modes, which means that data goes from the source to the target but only when the `BindingContext` changes. The `IsEnabled` and `IsVisible` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneWay` binding modes, which means that data goes from the source to the target.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. The `Command`, `CommandParameter`, `IconOveride`, and `TextOveride` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneTime` binding modes, which means that data goes from the source to the target but only when the `BindingContext` changes. The `IsEnabled` and `IsVisible` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneWay` binding modes, which means that data goes from the source to the target.
 
 ::: moniker-end
 
