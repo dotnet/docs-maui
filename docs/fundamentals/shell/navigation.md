@@ -12,13 +12,13 @@ ms.date: 08/30/2024
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following navigation-related properties:
 
-- `BackButtonBehavior`, of type `BackButtonBehavior`, an attached property that defines the behavior of the back button.
+- <xref:Microsoft.Maui.Controls.BackButtonBehavior>, of type <xref:Microsoft.Maui.Controls.BackButtonBehavior>, an attached property that defines the behavior of the back button.
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
 - `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the <xref:Microsoft.Maui.Controls.Shell>.
 - `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, a type-casted alias for `Application.Current.MainPage`.
 
-The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
+The <xref:Microsoft.Maui.Controls.BackButtonBehavior>, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
 Navigation is performed by invoking the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from the <xref:Microsoft.Maui.Controls.Shell> class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
@@ -527,7 +527,7 @@ In this example, the `ApplyQueryAttributes` method retrieves the value of the `n
 
 ## Back button behavior
 
-Back button appearance and behavior can be redefined by setting the `BackButtonBehavior` attached property to a `BackButtonBehavior` object. The `BackButtonBehavior` class defines the following properties:
+Back button appearance and behavior can be redefined by setting the <xref:Microsoft.Maui.Controls.BackButtonBehavior> attached property to a <xref:Microsoft.Maui.Controls.BackButtonBehavior> object. The <xref:Microsoft.Maui.Controls.BackButtonBehavior> class defines the following properties:
 
 - `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when the back button is pressed.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
@@ -536,7 +536,17 @@ Back button appearance and behavior can be redefined by setting the `BackButtonB
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.
 
-All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
+::: moniker range="=net-maui-8.0"
+
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. Each <xref:Microsoft.Maui.Controls.BindableProperty> has a `OneTime` binding mode, which means that data goes from the source to the target but only when the `BindingContext` changes.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. The `Command`, `CommandParameter`, `IconOveride`, and `TextOveride` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneTime` binding modes, which means that data goes from the source to the target but only when the `BindingContext` changes. The `IsEnabled` and `IsVisible` <xref:Microsoft.Maui.Controls.BindableProperty> objects have `OneWay` binding modes, which means that data goes from the source to the target.
+
+::: moniker-end
 
 The following code shows an example of redefining back button appearance and behavior:
 
