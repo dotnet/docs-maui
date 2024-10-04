@@ -11,12 +11,12 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 <xref:Microsoft.Maui.Controls.Entry> defines the following properties:
 
 - `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
-- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
+- `HorizontalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the horizontal alignment of the text.
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
 - `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
-- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
+- `VerticalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, defines the vertical alignment of the text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

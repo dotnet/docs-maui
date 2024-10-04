@@ -280,21 +280,23 @@ The following XAML example shows how to define a visual state for the `Pressed` 
 <Button Text="Click me!"
         ...>
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="Normal">
-                <VisualState.Setters>
-                    <Setter Property="Scale"
-                            Value="1" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="Pressed">
-                <VisualState.Setters>
-                    <Setter Property="Scale"
-                            Value="0.8" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="PointerOver" />            
-        </VisualStateGroup>
+        <VisualStateGroupList>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Property="Scale"
+                                Value="1" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Pressed">
+                    <VisualState.Setters>
+                        <Setter Property="Scale"
+                                Value="0.8" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="PointerOver" />            
+            </VisualStateGroup>
+        </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 </Button>
 ```

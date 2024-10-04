@@ -15,7 +15,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `FontAutoScalingEnabled`, of type `bool`, which determines whether the text respects scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
-- `HorizontalTextAlignment`, of type `TextAlignment`, is the horizontal alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
+- `HorizontalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, is the horizontal alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
 - `TitleColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the `Title` text.
-- `VerticalTextAlignment`, of type `TextAlignment`, is the vertical alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
+- `VerticalTextAlignment`, of type <xref:Microsoft.Maui.TextAlignment>, is the vertical alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 
 All of the properties, with the exception of `ItemDisplayBinding`, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
 
