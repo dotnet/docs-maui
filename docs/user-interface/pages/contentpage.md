@@ -19,7 +19,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Content
 
 ::: moniker-end
 
-::: moniker range=">=net-maui-8.0"
+::: moniker range=">=net-maui-9.0"
 
 - <xref:Microsoft.Maui.Controls.ContentPage.Content> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content.
 - <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped>, of type `bool`, which indicates whether tapping anywhere on the page will cause the soft input keyboard to hide if it's visible on Android, iOS, and Mac Catalyst.
