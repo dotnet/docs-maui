@@ -189,57 +189,21 @@ For more information about the <xref:Microsoft.Maui.Devices.DeviceInfo> class, s
 
 Attempting to invoke a local secure web service from a .NET MAUI app running in an Android emulator will result in a `java.security.cert.CertPathValidatorException` being thrown, with a message indicating that the trust anchor for the certification path hasn't been found. Similarly, attempting to invoke a local secure web service from a .NET MAUI app running in an iOS simulator will result in an `NSURLErrorDomain` error with a message indicating that the certificate for the server is invalid. These errors occur because the local HTTPS development certificate is self-signed, and self-signed certificates aren't trusted by Android or iOS. Therefore, it's necessary to ignore SSL errors when an app consumes a local secure web service.
 
-This can be accomplished by passing configured versions of the native `HttpMessageHandler` classes to the `HttpClient` constructor, which instruct the `HttpClient` class to trust localhost communication over HTTPS. The `HttpMessageHandler` class is an abstract class, whose implementation on Android is provided by the `AndroidMessageHandler` class, and whose implementation on iOS is provided by the `NSUrlSessionHandler` class.
-
-The following example shows a class that configures the `AndroidMessageHandler` class on Android and the `NSUrlSessionHandler` class on iOS to trust localhost communication over HTTPS:
+This can be accomplished by configuring an instance of `HttpClientHandler` with a custom `ServerCertificateCustomValidationCallback`, which instruct the `HttpClient` class to trust localhost communication over HTTPS. The following example shows how to create an instance of `HttpClientHandler` which will ignore validation errors of the localhost certificate, but only in Debug builds to avoid security incidents in production builds:
 
 ```csharp
-public class HttpsClientHandlerService
-{
-    public HttpMessageHandler GetPlatformMessageHandler()
-    {
-#if ANDROID
-        var handler = new Xamarin.Android.Net.AndroidMessageHandler();
-        handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
-        {
-            if (cert != null && cert.Issuer.Equals("CN=localhost"))
-                return true;
-            return errors == System.Net.Security.SslPolicyErrors.None;
-        };
-        return handler;
-#elif IOS
-        var handler = new NSUrlSessionHandler
-        {
-            TrustOverrideForUrl = IsHttpsLocalhost
-        };
-        return handler;
-#else
-     throw new PlatformNotSupportedException("Only Android and iOS supported.");
-#endif
-    }
+var handler = new HttpClientHandler();
 
-#if IOS
-    public bool IsHttpsLocalhost(NSUrlSessionHandler sender, string url, Security.SecTrust trust)
-    {
-        return url.StartsWith("https://localhost");
-    }
-#endif
-}
-```
-
-On Android, the `GetPlatformMessageHandler` method returns an `AndroidMessageHandler` object. The `GetPlatformMessageHandler` method sets the `ServerCertificateCustomValidationCallback` property on the `AndroidMessageHandler` object to a callback that ignores the result of the certificate security check for the local HTTPS development certificate.
-
-On iOS, the `GetPlatformMessageHandler` method returns a `NSUrlSessionHandler` object that sets its `TrustOverrideForUrl` property to a delegate named `IsHttpsLocalHost` that matches the signature of the `NSUrlSessionHandler.NSUrlSessionHandlerTrustOverrideForUrlCallback` delegate. The `IsHttpsLocalHost` delegate returns `true` when the URL starts with `https://localhost`.
-
-The resulting `HttpClientHandler` object can then be passed as an argument to the `HttpClient` constructor for debug builds:
-
-```csharp
 #if DEBUG
-            HttpsClientHandlerService handler = new HttpsClientHandlerService();
-            HttpClient client = new HttpClient(handler.GetPlatformMessageHandler());
-#else
-            client = new HttpClient();
+handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+{
+    if (cert != null && cert.Issuer.Equals("CN=localhost"))
+        return true;
+    return errors == System.Net.Security.SslPolicyErrors.None;
+};
 #endif
+
+var client = new HttpClient(handler);
 ```
 
 A .NET MAUI app running in the Android emulator or iOS simulator can then consume an ASP.NET Core web service that's running locally over HTTPS.
