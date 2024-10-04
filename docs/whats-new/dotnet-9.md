@@ -166,6 +166,10 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
+### ContentPage
+
+In .NET MAUI 9, the <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property is also supported on Mac Catalyst, as well and Android and iOS.
+
 ### Soft keyboard input support
 
 .NET MAUI 9 adds new soft keyboard input support for `Password`, `Date`, and `Time`. These can be enabled on <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> controls:
