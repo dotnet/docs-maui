@@ -189,7 +189,7 @@ For more information about the <xref:Microsoft.Maui.Devices.DeviceInfo> class, s
 
 Attempting to invoke a local secure web service from a .NET MAUI app running in an Android emulator will result in a `java.security.cert.CertPathValidatorException` being thrown, with a message indicating that the trust anchor for the certification path hasn't been found. Similarly, attempting to invoke a local secure web service from a .NET MAUI app running in an iOS simulator will result in an `NSURLErrorDomain` error with a message indicating that the certificate for the server is invalid. These errors occur because the local HTTPS development certificate is self-signed, and self-signed certificates aren't trusted by Android or iOS. Therefore, it's necessary to ignore SSL errors when an app consumes a local secure web service.
 
-This can be accomplished by configuring an instance of <xref:System.Net.Http.HttpClientHandler> with a custom <xref:System.Net.Http.HttpClientHandler.ServerCertificateCustomValidationCallback>, which instruct the <xref:System.Net.Http.HttpClient> class to trust localhost communication over HTTPS. The following example shows how to create an instance of <xref:System.Net.Http.HttpClientHandler> that will ignore validation errors of the localhost certificate, but only in debug builds to avoid security incidents in production builds:
+This can be accomplished by configuring an instance of <xref:System.Net.Http.HttpClientHandler> with a custom <xref:System.Net.Http.HttpClientHandler.ServerCertificateCustomValidationCallback>, which instructs the <xref:System.Net.Http.HttpClient> class to trust localhost communication over HTTPS. The following example shows how to create an instance of <xref:System.Net.Http.HttpClientHandler> that will ignore localhost certificate validation errors:
 
 ```csharp
 var handler = new HttpClientHandler();
@@ -205,5 +205,8 @@ handler.ServerCertificateCustomValidationCallback = (message, cert, chain, error
 
 var client = new HttpClient(handler);
 ```
+
+> [!IMPORTANT]
+> The code above ignores localhost certificate validation errors, but only in debug builds. This approach avoids security incidents in production builds.
 
 A .NET MAUI app running in the Android emulator or iOS simulator can then consume an ASP.NET Core web service that's running locally over HTTPS.
