@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 10/04/2024
+ms.date: 10/08/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -274,13 +274,9 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 
 ## Compiled bindings in XAML
 
-In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9.
+In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9. For information about compiling XAML binding expressions that define the `Source` property, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
-By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
-
-```xml
-<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
-```
+By default, .NET MAUI 9 produces build warnings for bindings that don't use compiled bindings. For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
 
 ## Handler disconnection
 
@@ -408,6 +404,10 @@ Several areas of .NET MAUI come with trimmer directives, known as feature switch
 | `_MauiBindingInterceptorsSupport` | When set to `false`, .NET MAUI won't intercept any calls to the `SetBinding` methods and won't try to compile them. By default, this build property is set to `true`. |
 
 To consume a feature switch you should put the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `Full` trimming mode.
+
+## XAML compiler
+
+In .NET MAUI 9, the XAML compiler error codes have changed their prefix from `XFC` to `XC`. Ensure that you update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project files, if used, to reference the new prefix.
 
 ## XAML markup extensions
 
