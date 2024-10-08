@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 09/27/2024
+ms.date: 10/08/2024
 ---
 
 # Compiled bindings
@@ -38,13 +38,29 @@ To use compiled bindings in XAML, the `x:DataType` attribute must be set to a st
 >
 > In addition, compiled bindings in XAML are currently unsupported on multi-bindings.
 
-::: moniker-end
-
-By default, .NET MAUI doesn't produce build warnings for bindings that don't use compiled bindings, unless you've enabled NativeAOT for your app. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+By default, .NET MAUI doesn't produce build warnings for bindings that don't use XAML compiled bindings. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
 
 ```xml
 <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. You can opt into compiled bindings warnings being treated as errors by setting the `$(MauiStrictXamlCompilation)` and `$(TreatWarningsAsErrors)` build properties to `true` in your app's project file (*.csproj):
+
+```xml
+<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+```
+
+::: moniker-end
+
+> [!NOTE]
+> By default, the `$(MauiStrictXamlCompilation)` build property is `false` unless you are publishing your app using full trimming or NativeAOT.
+
+For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](#xaml-compiled-bindings-warnings).
 
 ### Use compiled bindings in XAML
 
@@ -94,7 +110,23 @@ For more information about this color selector, see [ViewModels and property-cha
 
 Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the context of the object being templated. Therefore, when using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>, the <xref:Microsoft.Maui.Controls.DataTemplate> needs to declare the type of its data object using the `x:DataType` attribute.
 
-The following example demonstrates using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>:
+<xref:Microsoft.Maui.Controls.DataTemplate> elements should be annotated with the correct `x:DataType`, otherwise an incorrect `x:DataType` could be inherited from its parent scope:
+
+```xaml
+<ContentPage x:DataType="local:AnimalsPageViewModel">
+    <!-- Binding to AnimalsPageViewModel.Animals -->
+    <CollectionView ItemsSource="{Binding Animals}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <!-- incorrect: compiler thinks you want to bind to AnimalsPageViewModel.Name -->  
+                <Label Text="{Binding Name}" />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
+```
+
+The following example demonstrates correctly using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -137,6 +169,27 @@ When the example is first run, the <xref:Microsoft.Maui.Controls.ListView> is po
 
 Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
 
+::: moniker range=">=net-maui-9.0"
+
+### Compile bindings that define the `Source` property
+
+Prior to .NET MAUI 9, the XAML compiler would skip compilation of bindings that define the `Source` property instead of the `BindingContext`. From .NET MAUI 9, these bindings can be compiled to take advantage of better runtime performance. However, this optimization isn't enabled by default to avoid breaking existing app code. To enable this optimization, set the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property to `true` in your app's project file:
+
+```xml
+<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+```
+
+Then, ensure that all your bindings are annotated with the correct `x:DataType` and that they don't inherit incorrect data types from their parent scope:
+
+```xaml
+<HorizontalStackLayout BindingContext="{x:Reference slider}" x:DataType="Slider">
+  <Label Text="{Binding Value}" />
+  <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
+</HorizontalStackLayout>
+```
+
+::: moniker-end
+
 ### Combine compiled bindings with classic bindings in XAML
 
 Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the <xref:Microsoft.Maui.Controls.DataTemplate> use compiled bindings, while the <xref:Microsoft.Maui.Controls.BoxView> that's set to the color selected in the <xref:Microsoft.Maui.Controls.ListView> does not.
@@ -166,6 +219,63 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 The root <xref:Microsoft.Maui.Controls.StackLayout> sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy will be compiled. However, the inner <xref:Microsoft.Maui.Controls.StackLayout> redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner <xref:Microsoft.Maui.Controls.StackLayout> use classic bindings. Only the <xref:Microsoft.Maui.Controls.BoxView>, within the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy, uses compiled bindings.
 
 For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension).
+
+## XAML compiled bindings warnings
+
+The following table lists the compiler warnings for compiled bindings, and how to resolve them:
+
+::: moniker range=">=net-maui-9.0"
+
+| Code | Message | Fix |
+| ---- | ------- | --- |
+| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. | Add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
+| `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. | Replace `x:DataType="{x:Null}"` with the right type.  |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+| Code | Message | Fix |
+| ---- | ------- | --- |
+| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. | Add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
+| `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. | Replace `x:DataType="{x:Null}"` with the right type.  |
+| `XC0024` | Binding might be compiled incorrectly since the `x:DataType` annotation comes from an outer scope. Make sure you annotate all `DataTemplate` XAML elements with the correct `x:DataType`. | Ensure that all `DataTemplate` elements are annotated with the correct `x:DataType`. |
+| `XC0025` | Binding was not compiled because it has an explicitly set `Source` property and compilation of bindings with `Source` is not enabled. Consider enabling this optimization by setting the `<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>` in your project file and make sure the correct `x:DataType` is specified for this binding. | Enable the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property in your project file, and annotate all your bindings with the appropriate `x:DataType`. |
+
+::: moniker-end
+
+To ensure these warnings aren't ignored, consider changing the appropriate warnings to build errors with the `$(WarningsAsErrors)` build property:
+
+```xml
+<WarningsAsErrors>$(WarningsAsErrors);XC0022;XC0023</WarningsAsErrors>
+```
+
+To ignore these warnings, use the `$(NoWarn)` build property to specify the appropriate warning codes:
+
+```xml
+<NoWarn>$(NoWarn);XC0022;XC0023</WarningsAsErrors>
+```
+
+::: moniker range="=net-maui-8.0"
+
+> [!IMPORTANT]
+> The `XC0022` and `XC0023` warnings will be suppressed unless the `$(MauiStrictXamlCompilation)` build property is set to `true`.
+
+::: moniker-end
+
+If you set the `$(TreatWarningsAsErrors)` build property to `true` in your project file, but you want to ignore certain compiled bindings warnings, use either the `$(NoWarn)` build property to silence these warnings or the `$(WarningsNotAsErrors)` build property to reduce the severity of some specific codes.
+
+::: moniker range=">=net-maui-9.0"
+
+> [!IMPORTANT]
+> In .NET 9, all compiled bindings warnings will be displayed by default. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is `true`:
+>
+> ```xml
+> <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+> <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+> ```
+
+::: moniker-end
 
 ::: moniker range=">=net-maui-9.0"
 
