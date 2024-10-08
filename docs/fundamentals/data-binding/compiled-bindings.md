@@ -224,7 +224,7 @@ For more information about the `x:Null` markup expression, see [x:Null Markup Ex
 
 The following table lists the compiler warnings for compiled bindings, and how to resolve them:
 
-::: moniker range=">=net-maui-9.0"
+::: moniker range="=net-maui-8.0"
 
 | Code | Message | Fix |
 | ---- | ------- | --- |
