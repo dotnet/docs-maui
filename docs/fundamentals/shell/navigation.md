@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 08/30/2024
+ms.date: 10/08/2024
 ---
 
 # .NET MAUI Shell navigation
@@ -401,7 +401,7 @@ This example retrieves the currently selected bear in the <xref:Microsoft.Maui.C
 There are two approaches to receiving navigation data:
 
 1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each query parameter. For more information, see [Process navigation data using query property attributes](#process-navigation-data-using-query-property-attributes).
-1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can implement the `IQueryAttributable` interface. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
+1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
 
 ### Process navigation data using query property attributes
 
@@ -432,14 +432,21 @@ public partial class BearDetailPage : ContentPage
 
 In this example the first argument for the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies the name of the property that will receive the data, with the second argument specifying the parameter id. Therefore, the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> in the above example specifies that the `Bear` property will receive the data passed in the `Bear` navigation parameter in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
-> [!NOTE]
+> [!IMPORTANT]
 > String-based query parameter values that are received via the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> are automatically URL decoded.
+
+::: moniker range=">=net-maui-9.0"
+
+> [!WARNING]
+> Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
+
+::: moniker-end
 
 ### Process navigation data using a single method
 
-Navigation data can be received by implementing the `IQueryAttributable` interface on the receiving class. The `IQueryAttributable` interface specifies that the implementing class must implement the `ApplyQueryAttributes` method. This method has a `query` argument, of type `IDictionary<string, object>`, that contains any data passed during navigation. Each key in the dictionary is a query parameter id, with its value corresponding to the object that represents the data. The advantage of using this approach is that navigation data can be processed using a single method, which can be useful when you have multiple items of navigation data that require processing as a whole.
+Navigation data can be received by implementing the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on the receiving class. The <xref:Microsoft.Maui.Controls.IQueryAttributable> interface specifies that the implementing class must implement the `ApplyQueryAttributes` method. This method has a `query` argument, of type `IDictionary<string, object>`, that contains any data passed during navigation. Each key in the dictionary is a query parameter id, with its value corresponding to the object that represents the data. The advantage of using this approach is that navigation data can be processed using a single method, which can be useful when you have multiple items of navigation data that require processing as a whole.
 
-The following example shows a view model class that implements the `IQueryAttributable` interface:
+The following example shows a view model class that implements the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface:
 
 ```csharp
 public class MonkeyDetailViewModel : IQueryAttributable, INotifyPropertyChanged
@@ -458,7 +465,7 @@ public class MonkeyDetailViewModel : IQueryAttributable, INotifyPropertyChanged
 In this example, the `ApplyQueryAttributes` method retrieves the object that corresponds to the `Monkey` key in the `query` dictionary, which was passed as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 > [!IMPORTANT]
-> String-based query parameter values that are received via the `IQueryAttributable` interface aren't automatically URL decoded.
+> String-based query parameter values that are received via the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface aren't automatically URL decoded.
 
 #### Pass and process multiple items of data
 
@@ -503,7 +510,14 @@ public partial class ElephantDetailPage : ContentPage
 
 In this example, the class is decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each query parameter. The first <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Name` property will receive the data passed in the `name` query parameter, while the second <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Location` property will receive the data passed in the `location` query parameter. In both cases, the query parameter values are specified in the URI in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
-Alternatively, navigation data can be processed by a single method by implementing the `IQueryAttributable` interface on the class that represents the page being navigated to, or the class for the page's `BindingContext`:
+::: moniker range=">=net-maui-9.0"
+
+> [!WARNING]
+> Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters.
+
+::: moniker-end
+
+Alternatively, navigation data can be processed by a single method by implementing the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on the class that represents the page being navigated to, or the class for the page's `BindingContext`:
 
 ```csharp
 public class ElephantDetailViewModel : IQueryAttributable, INotifyPropertyChanged
