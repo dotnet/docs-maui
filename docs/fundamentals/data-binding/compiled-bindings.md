@@ -38,7 +38,7 @@ To use compiled bindings in XAML, the `x:DataType` attribute must be set to a st
 >
 > In addition, compiled bindings in XAML are currently unsupported on multi-bindings.
 
-By default, .NET MAUI doesn't produce build warnings for bindings that don't use XAML compiled bindings. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
+By default, .NET MAUI doesn't produce build warnings for XAML bindings that don't use compiled bindings. However, you can opt into compiled bindings warnings being produced by setting the `$(MauiStrictXamlCompilation)` build property to `true` in your app's project file (*.csproj):
 
 ```xml
 <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
@@ -48,7 +48,7 @@ By default, .NET MAUI doesn't produce build warnings for bindings that don't use
 
 ::: moniker range=">=net-maui-9.0"
 
-By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings.
+By default, .NET MAUI produces build warnings for XAML bindings that don't use compiled bindings.
 
 ::: moniker-end
 
@@ -258,7 +258,7 @@ If you set the `$(TreatWarningsAsErrors)` build property to `true` in your app's
 
 ::: moniker range=">=net-maui-9.0"
 
-By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. You can opt into compiled bindings warnings being treated as errors by setting the `$(MauiStrictXamlCompilation)` and `$(TreatWarningsAsErrors)` build properties to `true` in your app's project file (*.csproj):
+By default, .NET MAUI produces build warnings for XAML bindings that don't use compiled bindings. You can opt into compiled bindings warnings being treated as errors by setting the `$(MauiStrictXamlCompilation)` and `$(TreatWarningsAsErrors)` build properties to `true` in your app's project file (*.csproj):
 
 ```xml
 <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
