@@ -71,7 +71,7 @@ Create the **Note viewmodel**:
 
     These methods are invoked by associated commands. They perform the related actions on the model and make the app navigate to the previous page. A query string parameter is added to the `..` navigation path, indicating which action was taken and the note's unique identifier.
 
-01. Next, add the `ApplyQueryAttributes` method to the class, which satisfies the requirements of the `IQueryAttributable` interface:
+01. Next, add the `ApplyQueryAttributes` method to the class, which satisfies the requirements of the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="iquery":::
 
