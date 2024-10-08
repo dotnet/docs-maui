@@ -35,7 +35,7 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
 The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension methods that can be used to load and parse XAML at runtime. The <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
 
 > [!WARNING]
-> Loading XAML at runtime isn't trim safe, and requires annotating all types that could be loaded using the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This is very error prone, and so it isn't recommended to use runtime XAML parsing with full trimming or NativeAOT. In addition, loading XAML at runtime has a significant performance cost.
+> Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In addition, loading XAML at runtime has a significant performance cost.
 
 The following code example shows a simple usage:
 
