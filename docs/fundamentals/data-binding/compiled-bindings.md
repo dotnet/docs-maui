@@ -55,10 +55,10 @@ By default, .NET MAUI produces build warnings for bindings that don't use XAML c
 <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 ```
 
-::: moniker-end
-
 > [!NOTE]
 > By default, the `$(MauiStrictXamlCompilation)` build property is `false` unless you are publishing your app using full trimming or NativeAOT.
+
+::: moniker-end
 
 For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](#xaml-compiled-bindings-warnings).
 
@@ -108,9 +108,7 @@ For more information about this color selector, see [ViewModels and property-cha
 
 ### Use compiled bindings in XAML in a DataTemplate
 
-Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the context of the object being templated. Therefore, when using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>, the <xref:Microsoft.Maui.Controls.DataTemplate> needs to declare the type of its data object using the `x:DataType` attribute.
-
-<xref:Microsoft.Maui.Controls.DataTemplate> elements should be annotated with the correct `x:DataType`, otherwise an incorrect `x:DataType` could be inherited from its parent scope:
+Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the context of the object being templated. Therefore, when using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>, the <xref:Microsoft.Maui.Controls.DataTemplate> needs to declare the type of its data object using the `x:DataType` attribute. Failure to do this could result in the <xref:Microsoft.Maui.Controls.DataTemplate> inheriting an incorrect `x:DataType` from its parent scope:
 
 ```xaml
 <ContentPage x:DataType="local:AnimalsPageViewModel">
@@ -126,7 +124,7 @@ Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the
 </ContentPage>
 ```
 
-The following example demonstrates correctly using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>:
+The following example demonstrates correctly setting the `x:DataType` on a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -244,13 +242,13 @@ The following table lists the compiler warnings for compiled bindings, and how t
 
 ::: moniker-end
 
-To ensure these warnings aren't ignored, consider changing the appropriate warnings to build errors with the `$(WarningsAsErrors)` build property:
+To ensure these warnings aren't ignored, consider changing specific warnings to build errors with the `$(WarningsAsErrors)` build property:
 
 ```xml
 <WarningsAsErrors>$(WarningsAsErrors);XC0022;XC0023</WarningsAsErrors>
 ```
 
-To ignore these warnings, use the `$(NoWarn)` build property to specify the appropriate warning codes:
+To ignore these warnings, use the `$(NoWarn)` build property with specific warning codes:
 
 ```xml
 <NoWarn>$(NoWarn);XC0022;XC0023</WarningsAsErrors>
@@ -259,16 +257,16 @@ To ignore these warnings, use the `$(NoWarn)` build property to specify the appr
 ::: moniker range="=net-maui-8.0"
 
 > [!IMPORTANT]
-> The `XC0022` and `XC0023` warnings will be suppressed unless the `$(MauiStrictXamlCompilation)` build property is set to `true`.
+> `XC0022` and `XC0023` warnings will always be suppressed unless the `$(MauiStrictXamlCompilation)` build property is set to `true`.
 
 ::: moniker-end
 
-If you set the `$(TreatWarningsAsErrors)` build property to `true` in your project file, but you want to ignore certain compiled bindings warnings, use either the `$(NoWarn)` build property to silence these warnings or the `$(WarningsNotAsErrors)` build property to reduce the severity of some specific codes.
+If you set the `$(TreatWarningsAsErrors)` build property to `true` in your app's project file, but you want to ignore certain XAML compiler warnings, use either the `$(NoWarn)` build property to silence these warnings or the `$(WarningsNotAsErrors)` build property to reduce the severity of some specific codes.
 
 ::: moniker range=">=net-maui-9.0"
 
 > [!IMPORTANT]
-> In .NET 9, all compiled bindings warnings will be displayed by default. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is `true`:
+> In .NET MAUI 9, all compiled bindings warnings will be displayed by default. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is also `true`:
 >
 > ```xml
 > <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
