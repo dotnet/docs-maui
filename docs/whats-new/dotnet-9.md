@@ -435,6 +435,10 @@ Several areas of .NET MAUI come with trimmer directives, known as feature switch
 
 To consume a feature switch you should put the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `Full` trimming mode.
 
+## XAML compiler
+
+In .NET MAUI 9, the XAML compiler error codes have changed their prefix from `XFC` to `XC`. Ensure that you update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project files, if used, to reference the new prefix.
+
 ## XAML
 
 All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1>, <xref:Microsoft.Maui.Controls.Xaml.IValueProvider>, and <xref:Microsoft.Maui.Controls.IExtendedTypeConverter> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization introduced in .NET MAUI 9 that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
