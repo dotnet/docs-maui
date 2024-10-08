@@ -220,7 +220,7 @@ The root <xref:Microsoft.Maui.Controls.StackLayout> sets the `x:DataType` attrib
 
 For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension).
 
-## XAML compiled bindings warnings
+### XAML compiled bindings warnings
 
 The following table lists the compiler warnings for compiled bindings, and how to resolve them:
 
