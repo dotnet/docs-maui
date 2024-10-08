@@ -265,8 +265,10 @@ If you set the `$(TreatWarningsAsErrors)` build property to `true` in your app's
 
 ::: moniker range=">=net-maui-9.0"
 
+By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings.
+
 > [!IMPORTANT]
-> In .NET MAUI 9, all compiled bindings warnings will be displayed by default. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is also `true`:
+> By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is also `true`:
 >
 > ```xml
 > <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
