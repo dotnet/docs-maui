@@ -99,8 +99,12 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
 
 The `AnimalSearchHandler.OnQueryChanged` method returns a `List` of `Animal` objects. The `DisplayMemberName` property is set to the `Name` property of each `Animal` object, and so the data displayed in the suggestions area will be each animal name.
 
+::: moniker range=">=net-maui-9.0"
+
 > [!WARNING]
 > `SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](#define-search-results-item-appearance).
+
+::: moniker-end
 
 The `ShowsResults` property is set to `true`, so that search suggestions are displayed as the user enters a search query:
 
