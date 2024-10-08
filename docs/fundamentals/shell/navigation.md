@@ -436,7 +436,7 @@ In this example the first argument for the <xref:Microsoft.Maui.Controls.QueryPr
 > String-based query parameter values that are received via the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> are automatically URL decoded.
 
 > [!WARNING]
-> Performing navigation using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
+> Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
 
 ### Process navigation data using a single method
 
@@ -507,7 +507,7 @@ public partial class ElephantDetailPage : ContentPage
 In this example, the class is decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each query parameter. The first <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Name` property will receive the data passed in the `name` query parameter, while the second <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Location` property will receive the data passed in the `location` query parameter. In both cases, the query parameter values are specified in the URI in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 > [!WARNING]
-> Performing navigation using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters.
+> Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters.
 
 Alternatively, navigation data can be processed by a single method by implementing the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on the class that represents the page being navigated to, or the class for the page's `BindingContext`:
 
