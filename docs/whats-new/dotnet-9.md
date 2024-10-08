@@ -427,7 +427,7 @@ In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDiction
 
 ## Shell
 
-`SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](#define-search-results-item-appearance).
+`SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 
 ## Trimming feature switches
 
