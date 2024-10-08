@@ -274,9 +274,9 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 
 ## Compiled bindings in XAML
 
-In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9. For information about compiling XAML binding expressions that define the `Source` property, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
+In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9. For information about compiling XAML binding expressions that define the `Source` property, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
-By default, .NET MAUI 9 produces build warnings for bindings that don't use compiled bindings. For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
+By default, .NET MAUI 9 produces build warnings for bindings that don't use compiled bindings. For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
 
 ## Handler disconnection
 
