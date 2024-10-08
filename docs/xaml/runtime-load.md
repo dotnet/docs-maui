@@ -44,7 +44,7 @@ The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, include
 ::: moniker range=">=net-maui-9.0"
 
 > [!WARNING]
-> Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In addition, loading XAML at runtime has a significant performance cost.
+> Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In addition, loading XAML at runtime has a significant performance cost.
 
 ::: moniker-end
 
