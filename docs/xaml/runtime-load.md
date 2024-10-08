@@ -1,7 +1,7 @@
 ---
 title: "Load XAML at runtime"
 description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
-ms.date: 01/26/2022
+ms.date: 10/08/2024
 ---
 
 # Load XAML at runtime
@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-When Visual Studio builds a project containing a XAML file, a source generator generates new C# source that contains the definition of the `InitializeComponent` method and adds it to the compilation object. The following example shows the generated `InitializeComponent` method for the `MainPage` class:
+When a project containing a XAML file is built, a source generator generates new C# source that contains the definition of the `InitializeComponent` method and adds it to the compilation object. The following example shows the generated `InitializeComponent` method for the `MainPage` class:
 
 ```csharp
 private void InitializeComponent()
@@ -34,8 +34,19 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
 
 The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension methods that can be used to load and parse XAML at runtime. The <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
 
+::: moniker range="=net-maui-8.0"
+
 > [!WARNING]
 > Loading XAML at runtime has a significant performance cost, and generally should be avoided.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+> [!WARNING]
+> Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In addition, loading XAML at runtime has a significant performance cost.
+
+::: moniker-end
 
 The following code example shows a simple usage:
 
