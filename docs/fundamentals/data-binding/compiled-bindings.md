@@ -235,12 +235,12 @@ The following table lists the compiler warnings for compiled bindings, and how t
 
 ::: moniker range=">=net-maui-9.0"
 
-| Code | Message | Fix |
-| ---- | ------- | --- |
-| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. | Add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
-| `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. | Replace `x:DataType="{x:Null}"` with the right type.  |
-| `XC0024` | Binding might be compiled incorrectly since the `x:DataType` annotation comes from an outer scope. Make sure you annotate all `DataTemplate` XAML elements with the correct `x:DataType`. | Ensure that all `DataTemplate` elements are annotated with the correct `x:DataType`. |
-| `XC0025` | Binding was not compiled because it has an explicitly set `Source` property and compilation of bindings with `Source` is not enabled. Consider enabling this optimization by setting the `<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>` in your project file and make sure the correct `x:DataType` is specified for this binding. | Enable the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property in your project file, and annotate all your bindings with the appropriate `x:DataType`. |
+| Code | Message |
+| ---- | ------- |
+| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. <br><br>To fix this warning, add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
+| `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. <br><br>To fix this warning, replace `x:DataType="{x:Null}"` with the right type. |
+| `XC0024` | Binding might be compiled incorrectly since the `x:DataType` annotation comes from an outer scope. Make sure you annotate all `DataTemplate` XAML elements with the correct `x:DataType`. <br><br>To fix this warning, ensure that all `DataTemplate` elements are annotated with the correct `x:DataType`. |
+| `XC0025` | Binding was not compiled because it has an explicitly set `Source` property and compilation of bindings with `Source` is not enabled. Consider enabling this optimization by setting the `<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>` in your project file and make sure the correct `x:DataType` is specified for this binding. <br><br>To fix this warning, enable the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property in your project file, and annotate all your bindings with the appropriate `x:DataType`. |
 
 ::: moniker-end
 
