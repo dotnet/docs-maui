@@ -244,7 +244,7 @@ To ensure these warnings aren't ignored, consider changing specific warnings to 
 To ignore these warnings, use the `$(NoWarn)` build property with specific warning codes:
 
 ```xml
-<NoWarn>$(NoWarn);XC0022;XC0023</WarningsAsErrors>
+<NoWarn>$(NoWarn);XC0022;XC0023</NoWarn>
 ```
 
 ::: moniker range="=net-maui-8.0"
