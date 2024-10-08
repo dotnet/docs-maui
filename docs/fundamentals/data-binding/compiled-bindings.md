@@ -24,12 +24,12 @@ Compiled bindings improve data binding performance in .NET MAUI applications by 
 
 ## Compiled bindings in XAML
 
-To use compiled bindings in XAML, set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to. It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the `BindingContext` is set. However, this attribute can be re-defined at any location in a view hierarchy.
+To use compiled bindings in XAML, set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to. It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> is set. However, this attribute can be re-defined at any location in a view hierarchy.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Compiled bindings require the use of XAML compilation, which is enabled by default in .NET MAUI. If you've disabled XAML compilation, you'll need to enable it. For more information, see [XAML Compilation](~/xaml/xamlc.md).
 
-To use compiled bindings in XAML, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
+To use compiled bindings in XAML, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
 
 ::: moniker range="=net-maui-8.0"
 
@@ -93,7 +93,7 @@ The following example demonstrates using compiled bindings between .NET MAUI vie
 </ContentPage>
 ```
 
-The <xref:Microsoft.Maui.Controls.ContentPage> instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. The <xref:Microsoft.Maui.Controls.ContentPage> also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the <xref:Microsoft.Maui.Controls.ContentPage> view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+The <xref:Microsoft.Maui.Controls.ContentPage> instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> property. The <xref:Microsoft.Maui.Controls.ContentPage> also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the <xref:Microsoft.Maui.Controls.ContentPage> view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
@@ -111,7 +111,8 @@ For more information about this color selector, see [ViewModels and property-cha
 Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the context of the object being templated. Therefore, when using compiled bindings in a <xref:Microsoft.Maui.Controls.DataTemplate>, the <xref:Microsoft.Maui.Controls.DataTemplate> needs to declare the type of its data object using the `x:DataType` attribute. Failure to do this could result in the <xref:Microsoft.Maui.Controls.DataTemplate> inheriting an incorrect `x:DataType` from its parent scope:
 
 ```xaml
-<ContentPage x:DataType="local:AnimalsPageViewModel">
+<ContentPage ...
+             x:DataType="local:AnimalsPageViewModel">
     <!-- Binding to AnimalsPageViewModel.Animals -->
     <CollectionView ItemsSource="{Binding Animals}">
         <CollectionView.ItemTemplate>
@@ -171,7 +172,7 @@ Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the
 
 ### Compile bindings that define the `Source` property
 
-Prior to .NET MAUI 9, the XAML compiler would skip compilation of bindings that define the `Source` property instead of the `BindingContext`. From .NET MAUI 9, these bindings can be compiled to take advantage of better runtime performance. However, this optimization isn't enabled by default to avoid breaking existing app code. To enable this optimization, set the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property to `true` in your app's project file:
+Prior to .NET MAUI 9, the XAML compiler would skip compilation of bindings that define the `Source` property instead of the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext>. From .NET MAUI 9, these bindings can be compiled to take advantage of better runtime performance. However, this optimization isn't enabled by default to avoid breaking existing app code. To enable this optimization, set the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property to `true` in your app's project file:
 
 ```xml
 <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
@@ -226,7 +227,7 @@ The following table lists the compiler warnings for compiled bindings, and how t
 
 | Code | Message | Fix |
 | ---- | ------- | --- |
-| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. | Add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
+| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. | Add `x:DataType` to your XAML to specify the type of the current <xref:Microsoft.Maui.Controls.BindableObject.BindingContext>. It's best practice to add `x:DataType` to all elements where the binding context changes. |
 | `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. | Replace `x:DataType="{x:Null}"` with the right type.  |
 
 ::: moniker-end
@@ -235,7 +236,7 @@ The following table lists the compiler warnings for compiled bindings, and how t
 
 | Code | Message |
 | ---- | ------- |
-| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. <br><br>To fix this warning, add `x:DataType` to your XAML to specify the type of the current `BindingContext`. It's best practice to add `x:DataType` to all elements where the binding context changes. |
+| `XC0022` | Binding could be compiled to improve runtime performance if `x:DataType` is specified. <br><br>To fix this warning, add `x:DataType` to your XAML to specify the type of the current <xref:Microsoft.Maui.Controls.BindableObject.BindingContext>. It's best practice to add `x:DataType` to all elements where the binding context changes. |
 | `XC0023` | Binding could be compiled to improve runtime performance if `x:DataType` is not explicitly `null`. <br><br>To fix this warning, replace `x:DataType="{x:Null}"` with the right type. |
 | `XC0024` | Binding might be compiled incorrectly since the `x:DataType` annotation comes from an outer scope. Make sure you annotate all `DataTemplate` XAML elements with the correct `x:DataType`. <br><br>To fix this warning, ensure that all `DataTemplate` elements are annotated with the correct `x:DataType`. |
 | `XC0025` | Binding was not compiled because it has an explicitly set `Source` property and compilation of bindings with `Source` is not enabled. Consider enabling this optimization by setting the `<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>` in your project file and make sure the correct `x:DataType` is specified for this binding. <br><br>To fix this warning, enable the `$(MauiEnableXamlCBindingWithSourceCompilation)` build property in your project file, and annotate all your bindings with the appropriate `x:DataType`. |
@@ -265,8 +266,6 @@ If you set the `$(TreatWarningsAsErrors)` build property to `true` in your app's
 
 ::: moniker range=">=net-maui-9.0"
 
-By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings.
-
 > [!IMPORTANT]
 > By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is also `true`:
 >
@@ -274,6 +273,8 @@ By default, .NET MAUI produces build warnings for bindings that don't use XAML c
 > <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 > <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
 > ```
+>
+> By default, the `$(MauiStrictXamlCompilation)` build property is `false` unless you are publishing your app using full trimming or NativeAOT.
 
 ::: moniker-end
 
@@ -340,7 +341,7 @@ Compiled bindings improve data binding performance, with the performance benefit
 
 - A compiled binding that uses property-change notification (i.e. a `OneWay`, `OneWayToSource`, or `TwoWay` binding) is resolved approximately 8 times quicker than a classic binding.
 - A compiled binding that doesn't use property-change notification (i.e. a `OneTime` binding) is resolved approximately 20 times quicker than a classic binding.
-- Setting the `BindingContext` on a compiled binding that uses property change notification (i.e. a `OneWay`, `OneWayToSource`, or `TwoWay` binding) is approximately 5 times quicker than setting the `BindingContext` on a classic binding.
-- Setting the `BindingContext` on a compiled binding that doesn't use property change notification (i.e. a `OneTime` binding) is approximately 7 times quicker than setting the `BindingContext` on a classic binding.
+- Setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a compiled binding that uses property change notification (i.e. a `OneWay`, `OneWayToSource`, or `TwoWay` binding) is approximately 5 times quicker than setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a classic binding.
+- Setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a compiled binding that doesn't use property change notification (i.e. a `OneTime` binding) is approximately 7 times quicker than setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a classic binding.
 
 These performance differences can be magnified on mobile devices, dependent upon the platform being used, the version of the operating system being used, and the device on which the application is running.
