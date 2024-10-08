@@ -48,15 +48,7 @@ By default, .NET MAUI doesn't produce build warnings for bindings that don't use
 
 ::: moniker range=">=net-maui-9.0"
 
-By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. You can opt into compiled bindings warnings being treated as errors by setting the `$(MauiStrictXamlCompilation)` and `$(TreatWarningsAsErrors)` build properties to `true` in your app's project file (*.csproj):
-
-```xml
-<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
-```
-
-> [!NOTE]
-> By default, the `$(MauiStrictXamlCompilation)` build property is `false` unless you are publishing your app using full trimming or NativeAOT.
+By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings.
 
 ::: moniker-end
 
@@ -266,14 +258,14 @@ If you set the `$(TreatWarningsAsErrors)` build property to `true` in your app's
 
 ::: moniker range=">=net-maui-9.0"
 
-> [!IMPORTANT]
-> By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. However the `XC0022` and `XC0023` warnings won't be reported as errors even when the `($TreatWarningsAsErrors)` build property is `true` unless the `$(MauiStrictXamlCompilation)` build property is also `true`:
->
-> ```xml
-> <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-> <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
-> ```
->
+By default, .NET MAUI produces build warnings for bindings that don't use XAML compiled bindings. You can opt into compiled bindings warnings being treated as errors by setting the `$(MauiStrictXamlCompilation)` and `$(TreatWarningsAsErrors)` build properties to `true` in your app's project file (*.csproj):
+
+```xml
+<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+<MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+```
+
+> [!NOTE]
 > By default, the `$(MauiStrictXamlCompilation)` build property is `false` unless you are publishing your app using full trimming or NativeAOT.
 
 ::: moniker-end
