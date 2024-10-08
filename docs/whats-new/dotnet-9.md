@@ -199,45 +199,6 @@ The <xref:Microsoft.Maui.TextAlignment> enumeration adds a `Justify` member that
 
 <xref:Microsoft.Maui.Controls.WebView> adds a `ProcessTerminated` event that's raised when a <xref:Microsoft.Maui.Controls.WebView> process ends unexpectedly. The `WebViewProcessTerminatedEventArgs` object that accompanies this event defines platform-specific properties that indicate why the process failed.
 
-## App lifecycle
-
-.NET MAUI 9 adds the following remote notification lifecycle methods on iOS and Mac Catalyst:
-
-- `RegisteredForRemoteNotifications`, which is invoked when the app has successfully registered for remote notifications.
-- `ReceivedRemoteNotifications`, which is invoked when a remote notification is received.
-
-The following example shows how to consume these lifecycle methods:
-
-```csharp
-using Microsoft.Maui.LifecycleEvents;
-
-namespace PlatformLifecycleDemo;
-
-public static class MauiProgram
-{
-    public static MauiApp CreateMauiApp()
-    {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
-            .ConfigureLifecycleEvents(events =>
-            {
-#if IOS || MACCATALYST
-                events.AddiOS(ios => ios
-                    .ReceivedRemoteNotifications((app, dictionary) => LogEvent(nameof(iOSLifecycle.OnReceivedRemoteNotifications)))
-                    .RegisteredForRemoteNotifications((app, data) => LogEvent(nameof(iOSLifecycle.OnRegisteredForRemoteNotifications)));
-#endif
-                static bool LogEvent(string eventName, string type = null)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
-                    return true;
-                }
-            });
-
-        return builder.Build();
-    }
-}
-```
 
 ## Compiled bindings in code
 
