@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 10/08/2024
+ms.date: 10/09/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
+- [.NET MAUI 9 RC2](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.2.24503.2)
 - [.NET MAUI 9 RC1](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.1.24453.9)
 - [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24407.4)
 - [.NET MAUI 9 Preview 6](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.6.24327.7)
@@ -19,6 +20,8 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve prod
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
+
+Compatibility with Xcode 16, which includes SDK support for iOS 18, iPadOS 18, tvOS 18, and macOS 15, is required when building with .NET MAUI 9. Xcode 16 requires a Mac running macOS 14.5 or later.
 
 In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
@@ -485,6 +488,7 @@ In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Mic
 
 .NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9, see the following release notes:
 
+- [.NET for Android 9 RC2](https://github.com/dotnet/android/releases/tag/35.0.0-rc.2.152)
 - [.NET for Android 9 RC1](https://github.com/dotnet/android/releases/tag/35.0.0-rc.1.80)
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
 - [.NET for Android 9 Preview 6](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.6.340)
@@ -566,15 +570,16 @@ LLVM marshalled methods can be disabled in your project file (*.csproj*):
 
 ## .NET for iOS
 
-.NET 9 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.4 for the following platform versions:
+.NET 9 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 16.0 for the following platform versions:
 
-- iOS: 17.5
-- tvOS: 17.5
-- Mac Catalyst: 17.5
-- macOS: 14.5
+- iOS: 18.0
+- tvOS: 18.0
+- Mac Catalyst: 18.0
+- macOS: 15.0
 
 For more information about .NET 9 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9.0.1xx RC2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc2-9600)
 - [.NET 9.0.1xx RC1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc1-9270)
 - [.NET 9.0.1xx Preview 7](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview7-9231)
 - [.NET 9.0.1xx Preview 6](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview6-9714)
