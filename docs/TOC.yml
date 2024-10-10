@@ -1062,6 +1062,10 @@
                   href: ios/platform-specifics/page-presentation-style.md
                 - name: NavigationPage bar translucency
                   href: ios/platform-specifics/navigation-bar-translucent.md
+                - name: Page home indicator visibility
+                  href: ios/platform-specifics/page-home-indicator.md
+                - name: Page status bar visibility
+                  href: ios/platform-specifics/page-status-bar-visibility.md
                 - name: Picker item selection
                   href: ios/platform-specifics/picker-selection.md
                 - name: Safe area layout guide
