@@ -20,18 +20,18 @@ The following platform-specific functionality is provided for .NET MAUI views on
 - Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.Picker>. For more information, see [Picker item selection on iOS](picker-selection.md).
 - Controlling whether a <xref:Microsoft.Maui.Controls.SearchBar> has a background. For more information, see [SearchBar style on iOS](searchbar-style.md).
 - Enabling the `Slider.Value` property to be set by tapping on a position on the <xref:Microsoft.Maui.Controls.Slider> bar, rather than by having to drag the <xref:Microsoft.Maui.Controls.Slider> thumb. For more information, see [Slider thumb tap on iOS](slider-thumb.md).
-- Controlling the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition mode](swipeview-swipetransitionmode.md).
+- Controlling the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition mode on iOS](swipeview-swipetransitionmode.md).
 - Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.TimePicker>. For more information, see [TimePicker item selection on iOS](timepicker-selection.md).
 
 The following platform-specific functionality is provided for .NET MAUI pages on iOS:
 
-- Controlling whether the detail page of a <xref:Microsoft.Maui.Controls.FlyoutPage> has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow](flyoutpage-shadow.md).
+- Controlling whether the detail page of a <xref:Microsoft.Maui.Controls.FlyoutPage> has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow on iOS](flyoutpage-shadow.md).
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
 - Disabling the safe area layout guide, which ensures that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Disable the safe area layout guide on iOS](page-safe-area-layout.md).
 - Setting the visibility of the homage indicator on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Home indicator visibility on iOS](page-home-indicator.md).
 - Setting the status bar visibility on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Page status bar visibility on iOS](page-status-bar-visibility.md).
-- Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).
+- Setting the presentation style of modal pages. For more information, see [Modal page presentation style on iOS](page-presentation-style.md).
 - Setting the translucency mode of the tab bar on a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
 
 The following platform-specific functionality is provided for .NET MAUI layouts on iOS:
