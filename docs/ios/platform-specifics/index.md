@@ -1,7 +1,7 @@
 ---
 title: "iOS platform-specifics in .NET MAUI"
 description: "Learn how to consume iOS platform-specifics in .NET MAUI apps."
-ms.date: 02/16/2023
+ms.date: 10/10/2024
 ---
 
 # iOS platform-specifics
@@ -29,6 +29,8 @@ The following platform-specific functionality is provided for .NET MAUI pages on
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
 - Disabling the safe area layout guide, which ensures that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Disable the safe area layout guide on iOS](page-safe-area-layout.md).
+- Setting the visibility of the homage indicator on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Home indicator visibility on iOS](page-home-indicator.md).
+- Setting the status bar visibility on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Page status bar visibility on iOS](page-status-bar-visibility.md).
 - Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).
 - Setting the translucency mode of the tab bar on a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
 
@@ -36,6 +38,6 @@ The following platform-specific functionality is provided for .NET MAUI layouts 
 
 - Controlling whether a <xref:Microsoft.Maui.Controls.ScrollView> handles a touch gesture or passes it to its content. For more information, see [ScrollView content touches on iOS](scrollview-content-touches.md).
 
-The following platform-specific functionality is provided for the .NET MAUI `Application` class on iOS:
+The following platform-specific functionality is provided for the .NET MAUI <xref:Microsoft.Maui.Controls.Application> class on iOS:
 
 - Enabling a <xref:Microsoft.Maui.Controls.PanGestureRecognizer> in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous pan gesture recognition on iOS](application-pan-gesture.md).
