@@ -27,7 +27,7 @@ On<iOS>().SetPrefersHomeIndicatorAutoHidden(true);
 ```
 
 The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The
-<xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.SetPrefersHomeIndicatorAutoHidden?displayProperty=nameWithType> method, in the <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> namespace, controls the visibility of the home indicator. In addition, the <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.PrefersHomeIndicatorAutoHidden?displayProperty=nameWithType> method can be used to retrieve the visibility of the home indicator.
+<xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.SetPrefersHomeIndicatorAutoHidden%2A?displayProperty=nameWithType> method, in the <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> namespace, controls the visibility of the home indicator. In addition, the <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page.PrefersHomeIndicatorAutoHidden%2A?displayProperty=nameWithType> method can be used to retrieve the visibility of the home indicator.
 
 The result is that the visibility of the home indicator on a <xref:Microsoft.Maui.Controls.Page> can be controlled:
 
