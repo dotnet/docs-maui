@@ -107,7 +107,7 @@ A <xref:Microsoft.Maui.Controls.TitleBar> is highly customizable through its <xr
 
 The following screenshot shows the resulting appearance:
 
-:::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
+:::image type="content" source="media/titlebar/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
 
 > [!NOTE]
 > The title bar can be hidden by setting the `IsVisible` property, which causes the window content to be displayed in the title bar region.
