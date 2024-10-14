@@ -9,7 +9,7 @@ monikerRange: ">=net-maui-9.0"
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-titlebar)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBar> is a view that enables you to add a custom title bar to a <xref:Microsoft.Maui.Controls.Window> on Windows to match the personality of your app. The following diagram shows the components of the <xref:Microsoft.Maui.Controls.TitleBar>:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBar> is a Windows-only view that lets you to add a custom title bar to a <xref:Microsoft.Maui.Controls.Window> to match the personality of your app. The following diagram shows the components of the <xref:Microsoft.Maui.Controls.TitleBar>:
 
 :::image type="content" source="media/titlebar/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
@@ -23,7 +23,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 - <xref:Microsoft.Maui.Controls.TitleBar.ForegroundColor>, of type <xref:Microsoft.Maui.Graphics.Color>, which specifies the foreground colour of the title bar, and is used as the color for the title and subtitle text.
 - <xref:Microsoft.Maui.Controls.TitleBar.Icon>, of type <xref:Microsoft.Maui.Controls.ImageSource>, which represents an optional 16x16px icon image for the title bar.
 - <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control for the content that follows the icon.
-- <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements>, of type `IList<IView>`, which represents a list of elements that should prevent dragging in the title bar region and instead handle input directly.
+- <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements>, of type `IList<IView>`, which represents a list of elements that should prevent dragging in the title bar region and instead directly handle input.
 - <xref:Microsoft.Maui.Controls.TitleBar.Subtitle>, of type `string`, which specifies the subtitle text of the title bar. This is usually secondary information about the app or window.
 - <xref:Microsoft.Maui.Controls.TitleBar.Title>, of type `string`, which specifies the title text of the title bar. This is usually the name of the app or indicates the purpose of the window.
 - <xref:Microsoft.Maui.Controls.TitleBar.TrailingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control that follows the `Content` control.
@@ -31,13 +31,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 These properties, with the exception of <xref:Microsoft.Maui.Controls.TitleBar.DefaultTemplate> and <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements>, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 > [!IMPORTANT]
-> Views set as the value of the `Content`, `LeadingContent`, or `TrailingContent` properties will block all input to the title bar region and will directly handle input.
+> Views set as the value of the <xref:Microsoft.Maui.Controls.TitleBar.Content>, <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, and <xref:Microsoft.Maui.Controls.TitleBar.TrailingContent> properties will block all input to the title bar region and will directly handle input.
 
 The standard title bar height is 32px, but can be set to a larger value. For information about designing your title bar on Windows, see [Title bar](/windows/apps/design/basics/titlebar-design).
 
 ## Create a TitleBar
 
-To add a title bar to a window, set the <xref:Microsoft.Maui.Controls.Window.TitleBar?displayProperty=nameWithType> property on any <xref:Microsoft.Maui.Controls.Window> to a <xref:Microsoft.Maui.Controls.TitleBar> object.
+To add a title bar to a window, set the <xref:Microsoft.Maui.Controls.Window.TitleBar?displayProperty=nameWithType> property to a <xref:Microsoft.Maui.Controls.TitleBar> object.
 
 The following XAML example shows how to add a <xref:Microsoft.Maui.Controls.TitleBar> to a <xref:Microsoft.Maui.Controls.Window>:
 
