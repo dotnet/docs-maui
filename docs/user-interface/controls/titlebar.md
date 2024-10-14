@@ -110,7 +110,7 @@ The following screenshot shows the resulting appearance:
 :::image type="content" source="media/titlebar/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
 
 > [!NOTE]
-> The title bar can be hidden by setting the `IsVisible` property, which causes the window content to be displayed in the title bar region.
+> The title bar can be hidden by setting the <xref:Microsoft.Maui.Controls.VisualElement.IsVisible> property, which causes the window content to be displayed in the title bar region.
 
 ## TitleBar visual states
 
