@@ -9,12 +9,12 @@ monikerRange: ">=net-maui-9.0"
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-titlebar)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBar> is a Windows-only view that lets you to add a custom title bar to a <xref:Microsoft.Maui.Controls.Window> to match the personality of your app. The following diagram shows the components of the <xref:Microsoft.Maui.Controls.TitleBar>:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBar> is a view that lets you to add a custom title bar to a <xref:Microsoft.Maui.Controls.Window> to match the personality of your app. The following diagram shows the components of the <xref:Microsoft.Maui.Controls.TitleBar>:
 
 :::image type="content" source="media/titlebar/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
 > [!IMPORTANT]
-> Mac Catalyst support for the  <xref:Microsoft.Maui.Controls.TitleBar> control will be added in a future release.
+> <xref:Microsoft.Maui.Controls.TitleBar> is only available on Windows. Mac Catalyst support will be added in a future release.
 
 <xref:Microsoft.Maui.Controls.TitleBar> defines the following properties:
 
