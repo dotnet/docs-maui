@@ -154,7 +154,7 @@ The bindings on three of the <xref:Microsoft.Maui.Controls.Slider> views are `On
 
 :::image type="content" source="media/data-binding-basics/slidertransforms.png" alt-text="Reverse bindings.":::
 
-However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the <xref:Microsoft.Maui.Controls.Slider> initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the <xref:Microsoft.Maui.Controls.Slider> default value. The <xref:Microsoft.Maui.Controls.Label> would not be visible
+However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the <xref:Microsoft.Maui.Controls.Slider> initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the <xref:Microsoft.Maui.Controls.Slider> default value. The <xref:Microsoft.Maui.Controls.Label> would not be visible.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.VisualElement> class also has `ScaleX` and `ScaleY` properties, which scale the <xref:Microsoft.Maui.Controls.VisualElement> on the x-axis and y-axis respectively.
