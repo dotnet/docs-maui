@@ -49,11 +49,11 @@ For more information, see [HybridWebView](~/user-interface/controls/hybridwebvie
 
 ### Titlebar for Windows
 
-The `TitleBar` control provides the ability to add a custom title bar to your app on Windows:
+The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Windows:
 
 :::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
-A `TitleBar` can be set as the value of the `Window.TitleBar` property on any `Window`:
+A <xref:Microsoft.Maui.Controls.TitleBar> can be set as the value of the <xref:Microsoft.Maui.Controls.Window.TitleBar?displayProperty=nameWithType> property on any <xref:Microsoft.Maui.Controls.TitleBar>:
 
 ```xaml
 <Window.TitleBar>
@@ -62,12 +62,11 @@ A `TitleBar` can be set as the value of the `Window.TitleBar` property on any `W
               Icon="appicon.png"
               HeightRequest="46">
         <TitleBar.Content>
-            <Entry x:Name="SearchTitleBar"
-                   Placeholder="Search"
-                   VerticalOptions="Center"
-                   MinimumWidthRequest="300"
-                   MaximumWidthRequest="450"
-                   HeightRequest="32"/>
+            <SearchBar Placeholder="Search"
+                       PlaceholderColor="White"
+                       MaximumWidthRequest="300"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center" />
         </TitleBar.Content>
     </TitleBar>
 </Window.TitleBar>
@@ -85,7 +84,7 @@ Window.TitleBar = new TitleBar
 };
 ```
 
-A `TitleBar` is highly customizable through its `Content`, `LeadingContent`, and `TrailingContent` properties:
+A <xref:Microsoft.Maui.Controls.TitleBar> is highly customizable through its <xref:Microsoft.Maui.Controls.TitleBar.Content>, <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, and <xref:Microsoft.Maui.Controls.TitleBar.TrailingContent> properties:
 
 ```xaml
 <TitleBar Title="My App"
@@ -94,7 +93,7 @@ A `TitleBar` is highly customizable through its `Content`, `LeadingContent`, and
     <TitleBar.Content>
         <SearchBar Placeholder="Search"
                    MaximumWidthRequest="300"
-                   HorizontalOptions="FillAndExpand"
+                   HorizontalOptions="Fill"
                    VerticalOptions="Center" />
     </TitleBar.Content>
     <TitleBar.TrailingContent>
@@ -118,6 +117,8 @@ The following screenshot shows the resulting appearance:
 
 > [!NOTE]
 > Mac Catalyst support for the `TitleBar` control will be added in a future release.
+
+For more information, see [TitleBar](~/user-interface/controls/titlebar.md).
 
 ## Control enhancements
 
