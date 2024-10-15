@@ -75,12 +75,15 @@ A <xref:Microsoft.Maui.Controls.TitleBar> can be set as the value of the <xref:M
 An example of its use in C# is:
 
 ```csharp
-Window.TitleBar = new TitleBar
+Window window = new Window
 {
-    Title = "MAUI App",
-    Icon = "appicon.png",
-    HeightRequest = 46,
-    LeadingContent = new AvatarButton()
+    TitleBar = new TitleBar
+    {
+        Icon = "titlebar_icon.png"
+        Title = "My App",
+        Subtitle = "Demo"
+        Content = new SearchBar { ... }      
+    }
 };
 ```
 

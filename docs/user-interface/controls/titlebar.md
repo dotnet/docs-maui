@@ -69,12 +69,15 @@ The following XAML example shows how to add a <xref:Microsoft.Maui.Controls.Titl
 A <xref:Microsoft.Maui.Controls.TitleBar> can also be defined in C# and added to a <xref:Microsoft.Maui.Controls.Window>:
 
 ```csharp
-Window.TitleBar = new TitleBar
+Window window = new Window
 {
-    Icon = "titlebar_icon.png"
-    Title = "My App",
-    Subtitle = "Demo"
-    Content = new SearchBar { ... }
+    TitleBar = new TitleBar
+    {
+        Icon = "titlebar_icon.png"
+        Title = "My App",
+        Subtitle = "Demo"
+        Content = new SearchBar { ... }      
+    }
 };
 ```
 
