@@ -378,7 +378,7 @@ public static class MauiProgram
 }
 ```
 
-For more information, see [Native embedding](~/platform-intergration/native-embedding.md?view=net-maui-9&preserve-view=true).
+For more information, see [Native embedding](~/platform-integration/native-embedding.md?view=net-maui-9&preserve-view=true).
 
 ## Project templates
 

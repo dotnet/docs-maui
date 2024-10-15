@@ -375,7 +375,7 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
     }
     ```
 
-01. In the `MauiProgram` class, modify the existing `CreateMauiApp` method to accept a `TApp` generic argument, and accept an optional `Action<MauiAppBuilder>` argument that's invoked before the method returns. In addition, change the call to `UseMauiApp<App>` to `UseMauiEmbeddedApp<TApp>`:
+01. In the `MauiProgram` class, modify the existing `CreateMauiApp` method to accept a `TApp` generic argument, and accept an optional `Action<MauiAppBuilder>` argument that's invoked before the method returns. In addition, change the call from `UseMauiApp<App>` to `UseMauiEmbeddedApp<TApp>`:
 
     ```csharp
     public static class MauiProgram
