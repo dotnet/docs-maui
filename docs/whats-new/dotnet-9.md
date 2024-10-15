@@ -543,15 +543,16 @@ For more information about Android asset packs, see [Android asset packs](~/andr
 
 ### Android 15 support
 
-.NET for Android in .NET 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project to `net9.0`:
+.NET for Android in .NET 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project to `net9.0-android`:
 
 ```xml
 <TargetFramework>net9.0-android</TargetFramework>
 ```
 
-You can also specify `net9.0-android35` as a target framework, but the number `35` will likely change in future .NET releases to match newer Android OS releases.
+> [!NOTE]
+> You can also specify `net9.0-android35` as a target framework, but the number 35 will probably change in future .NET releases to match newer Android OS releases.
 
-### 64-bit Architectures by Default
+### 64-bit architectures by default
 
 .NET for Android in .NET 9 no longer builds the following runtime identifiers (RIDs) by default:
 
@@ -572,11 +573,11 @@ Or in a multi-targeted project:
 <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 ```
 
-### Android Marshal Methods
+### Android marshal methods
 
-Improvements to Android Marshal Methods in .NET 9, has made the feature work more reliably in applications but is not yet the default. Enabling this feature has resulted in a [~10% improvement in performance in a test app](https://github.com/dotnet/android/commit/a9706b6ef0429250ecaf1e500d77cd19e94e2eb5).
+Improvements to Android marshal methods in .NET 9 has made the feature work more reliably in applications but is not yet the default. Enabling this feature has resulted in a [~10% improvement in performance in a test app](https://github.com/dotnet/android/commit/a9706b6ef0429250ecaf1e500d77cd19e94e2eb5).
 
-Android Marshal Methods can be enabled in your project file (*.csproj*) via the `$(AndroidEnableMarshalMethods)` property:
+Android marshal methods can be enabled in your project file (*.csproj*) via the `$(AndroidEnableMarshalMethods)` property:
 
 ```xml
 <PropertyGroup>
@@ -588,7 +589,7 @@ For specific details about the feature, see the [feature documentation](https://
 
 ### Trimming enhancements
 
-In .NET 9, the Android API assemblies (`Mono.Android.dll`, `Java.Interop.dll`) are now fully trim-compatible. To opt into full trimming, set the `TrimMode` property in your project file (*.csproj*):
+In .NET 9, the Android API assemblies (*Mono.Android.dll*, *Java.Interop.dll*) are now fully trim-compatible. To opt into full trimming, set the `$(TrimMode)` property in your project file (*.csproj*):
 
 ```xml
 <PropertyGroup>
@@ -598,7 +599,7 @@ In .NET 9, the Android API assemblies (`Mono.Android.dll`, `Java.Interop.dll`) a
 
 This also enables trimming analyzers, so that warnings are introduced for any problematic C# code.
 
-See the [documentation on trimming granularity](https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity) for more information.
+For more information, see [Trimming granularity](/dotnet/core/deploying/trimming/trimming-options#trimming-granularity).
 
 ## .NET for iOS
 
@@ -636,7 +637,7 @@ This will produce two libraries, one using iOS 17.0 bindings, and one using iOS 
 
 ### Trimming enhancements
 
-In .NET 9, the `Microsoft.iOS.dll`, `Microsoft.MacCatalyst.dll`, etc. assemblies are now fully trim-compatible. To opt into full trimming, set the `TrimMode` property in your project file (*.csproj*):
+In .NET 9, the iOS and Mac Catalyst assemblies (*Microsoft.iOS.dll*, *Microsoft.MacCatalyst.dll* etc.) are now fully trim-compatible. To opt into full trimming, set the `$(TrimMode)` property in your project file (*.csproj*):
 
 ```xml
 <PropertyGroup>
@@ -646,7 +647,7 @@ In .NET 9, the `Microsoft.iOS.dll`, `Microsoft.MacCatalyst.dll`, etc. assemblies
 
 This also enables trimming analyzers, so that warnings are introduced for any problematic C# code.
 
-See the [documentation on trimming granularity](https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity) for more information.
+For more information, see [Trimming granularity](/dotnet/core/deploying/trimming/trimming-options#trimming-granularity).
 
 ### Native AOT for iOS & Mac Catalyst
 
