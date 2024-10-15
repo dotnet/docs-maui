@@ -378,6 +378,8 @@ public static class MauiProgram
 }
 ```
 
+For more information, see [Native embedding](~/platform-intergration/native-embedding.md?view=net-maui-9&preserve-view=true).
+
 ## Project templates
 
 .NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
