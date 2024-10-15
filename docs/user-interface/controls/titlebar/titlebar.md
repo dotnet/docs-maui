@@ -1,6 +1,13 @@
-# Customize the Title bar
+---
+title: Customize the title bar
+description: How to use and customize the .NET MAUI title bar control
+author: Foda
+ms.date: 10/15/2024
+---
 
-The `TitleBar` control makes it easy to create a great, customizable titlebar for your app with the following features:
+# Customize the title bar
+
+The <xref:Microsoft.Maui.Controls.TitleBar> control makes it easy to create a customizable titlebar for your MAUI app with the following features:
 
 * Configurable Icon, Title, and Subtitle properties
 * Integrated shell buttons
@@ -11,11 +18,11 @@ The `TitleBar` control makes it easy to create a great, customizable titlebar fo
 
 ![Title bar component overview](media/overview.png)
 
-## Create a default Window
+## Create a default window
 
-To customize the title bar in your application, you can simply add a `TitleBar` control to a parent `Window` object. However, .NET MAUI automatically handles the creation of the `Window` object, so we must first override how a new `Window` is created.
+To customize the title bar in your application, you can simply add a <xref:Microsoft.Maui.Controls.TitleBar> control to a parent <xref:Microsoft.Maui.Controls.Window> object. However, .NET MAUI automatically handles the creation of the `Window` object, so we must first override how a new `Window` is created.
 
-First, create a new file named `MainWindow.xaml`:
+First, create a new file named _MainWindow.xaml_, which will inherit from the default `Window` class:
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -25,7 +32,7 @@ First, create a new file named `MainWindow.xaml`:
 </Window>
 ```
 
-Then, modify `MainWindow.xaml.cs`:
+Then, modify _MainWindow.xaml.cs_:
 ```csharp
 namespace TitlebarSample;
 
@@ -39,7 +46,7 @@ public partial class MainWindow : Window
 }
 ```
 
-Finally, modify `App.xaml.cs` to use the new `MainWindow` object:
+Finally, modify _App.xaml.cs_ to return the newly created `MainWindow` object:
 ```csharp
 public partial class App : Application
 {
@@ -57,7 +64,7 @@ public partial class App : Application
 
 ## Add a new title bar control
 
-Next, set the `Window.TitleBar` property to the `TitleBar` control:
+Next, set the <xref:Microsoft.Maui.Controls.Window.TitleBar> property to the `TitleBar` control:
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -78,11 +85,11 @@ Run your app, and you'll see the title bar is now purple with the title set to "
 
 ## Interactive content
 
-You can use the `LeadingContent`, `Content`, and `TrailingContent` properties to display interactive controls in the title bar. Content set in these properties will automatically recieve input while blocking the title bar drag behavior.
+You can use the <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>,  <xref:Microsoft.Maui.Controls.TitleBar.Content>, and  <xref:Microsoft.Maui.Controls.TitleBar.TrailingContent> properties to display interactive controls in the title bar. Any content set in these properties will automatically recieve input while blocking the title bar drag behavior.
 
 You can also set the height of the title bar to fit the added content.
 
-For example, to add a search box and settings button you can utilize the `Content` and `TrailingContent` properties:
+For example, to add a search box and settings button you can utilize the <xref:Microsoft.Maui.Controls.TitleBar.Content> and <xref:Microsoft.Maui.Controls.TitleBar.TrailingContent> properties:
 
 ![Title bar with search box](media/sample_3.png)
 ```xml
@@ -114,13 +121,14 @@ For example, to add a search box and settings button you can utilize the `Conten
 </TitleBar>
 ```
 
+
 ## Match title bar and menu bar background color
 
-When using `MenuBarItems` you may want to match the title bar menu bar items background color:
+When using <xref:Microsoft.Maui.Controls.TitleBar.menubaritem> you may want to match the title bar and menu bar background color:
 
 ![Title bar with menu bar items](media/sample_2.png)
 
-To do this, modify the `NavigationPage.BarBackgroundColor` property to match the color of the title bar:
+To do this, modify the <xref:Microsoft.Maui.Controls.NavigationPage.BarBackgroundColor> property to match the color of the title bar:
 
 ```csharp
 public partial class App : Application
@@ -142,7 +150,7 @@ public partial class App : Application
 
 ## Override the default template
 
-If the default components on the `TitleBar` control do not meet your needs, you can also override the default control template to fully customize the title bar:
+If the default components on the `TitleBar` control do not meet your needs, you can also override the default control template to fully customize the title bar behavior:
 
 ```xml
  <TitleBar.ControlTemplate>
@@ -168,11 +176,11 @@ If the default components on the `TitleBar` control do not meet your needs, you 
 ```
 
 > [!NOTE]
-> When overriding the default control template, you must add the interactive elements to the `TitleBar.PassthroughElements` property otherwise they will not recieve input.
+> When overriding the default control template, you must add the interactive elements to the <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements> property otherwise they will not recieve input.
 
 ### Title bar visual states
 
-`TitleBar` objects have `TitleBarTitleActive` and `TitleBarTitleInactive` states to indicate when the window is active or inactive.
+The `TitleBar` control has the `TitleBarTitleActive` and `TitleBarTitleInactive` states to indicate when the parent window is active or inactive.
 
 The following XAML example shows how to define a visual state for the `TitleBarTitleActive` and `TitleBarTitleInactive` states:
 
