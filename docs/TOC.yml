@@ -437,6 +437,8 @@
                   href: user-interface/controls/tableview.md
                 - name: TimePicker
                   href: user-interface/controls/timepicker.md
+                - name: TitleBar
+                  href: user-interface/controls/titlebar.md
                 - name: TwoPaneView
                   href: user-interface/controls/twopaneview.md
                 - name: WebView
