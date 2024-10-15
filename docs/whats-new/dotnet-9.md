@@ -546,18 +546,19 @@ For more information about Android asset packs, see [Android asset packs](~/andr
 <TargetFramework>net9.0-android35</TargetFramework>
 ```
 
-### LLVM marshalled methods
+### LLVM Marshal Methods
 
-Low-level Virtual Machine (LLVM) marshalled methods are now enabled by default in .NET for Android 9 in non-Blazor apps. This has resulted in a [~10% improvement in performance in a test app](https://github.com/xamarin/xamarin-android/pull/8925).
+Improvements to Low-level Virtual Machine (LLVM) Marshal Methods in .NET 9, has made the feature work more reliably in applications but is not yet the default. Enabling this feature has resulted in a [~10% improvement in performance in a test app](https://github.com/dotnet/android/commit/a9706b6ef0429250ecaf1e500d77cd19e94e2eb5).
 
-LLVM marshalled methods can be disabled in your project file (*.csproj*):
+LLVM Marshal Methods can be enabled in your project file (*.csproj*) via the `$(AndroidEnableMarshalMethods)` property:
 
 ```xml
-<PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
-    <AndroidEnableLLVM>false</AndroidEnableLLVM>
-    <AndroidEnableLLVMOptimizations>false</AndroidEnableLLVMOptimizations>
+<PropertyGroup>
+    <AndroidEnableMarshalMethods>true</AndroidEnableMarshalMethods>
 </PropertyGroup>
 ```
+
+For specific details about the feature, see the [implementation on GitHub](https://github.com/dotnet/android/commit/8bc7a3e84f95e70fe12790ac31ecd97957771cb2).
 
 ### Trimming enhancements
 
