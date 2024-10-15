@@ -490,7 +490,7 @@ In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Mic
 
 ## .NET for Android
 
-.NET for Android 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android 9, see the following release notes:
+.NET for Android in .NET 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android in .NET 9, see the following release notes:
 
 - [.NET for Android 9 RC2](https://github.com/dotnet/android/releases/tag/35.0.0-rc.2.152)
 - [.NET for Android 9 RC1](https://github.com/dotnet/android/releases/tag/35.0.0-rc.1.80)
@@ -504,7 +504,7 @@ In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Mic
 
 ### Asset packs
 
-.NET for Android 9 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
+.NET for Android in .NET 9 introduces the ability to place assets into a separate package, known as an *asset pack*. This enables you to upload games and apps that would normally be larger than the basic package size allowed by Google Play. By putting these assets into a separate package you gain the ability to upload a package which is up to 2Gb in size, rather than the basic package size of 200Mb.
 
 > [!IMPORTANT]
 > Asset packs can only contain assets. In the case of .NET for Android this means items that have the `AndroidAsset` build action.
@@ -543,10 +543,33 @@ For more information about Android asset packs, see [Android asset packs](~/andr
 
 ### Android 15 support
 
-.NET for Android 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project:
+.NET for Android in .NET 9 adds .NET bindings for Android 15 (API 35). To build for these APIs, update the target framework of your project to `net9.0`:
 
 ```xml
-<TargetFramework>net9.0-android35</TargetFramework>
+<TargetFramework>net9.0-android</TargetFramework>
+```
+
+You can also specify `net9.0-android35` as a target framework, but the number `35` will likely change in future .NET releases to match newer Android OS releases.
+
+### 64-bit Architectures by Default
+
+.NET for Android in .NET 9 no longer builds the following runtime identifiers (RIDs) by default:
+
+* `android-arm`
+* `android-x86`
+
+This should improve build times and reduce the size of Android `.apk` files. Note that Google Play supports splitting up app bundles per architecture.
+
+If you need to build for these architectures, you can add them to your project file (*.csproj*):
+
+```xml
+<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+```
+
+Or in a multi-targeted project:
+
+```xml
+<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 ```
 
 ### LLVM Marshal Methods
@@ -565,13 +588,17 @@ For specific details about the feature, see the [implementation on GitHub](https
 
 ### Trimming enhancements
 
-.NET for Android 9 includes fixes for when using full trimming to reduce app size. Full trimming is usually only enabled for release builds of your app, and can be configured in your project file (*.csproj*):
+In .NET 9, the Android API assemblies (`Mono.Android.dll`, `Java.Interop.dll`) are now fully trim-compatible. To opt into full trimming, set the `TrimMode` property in your project file (*.csproj*):
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net9.0-android'">
+<PropertyGroup>
     <TrimMode>Full</TrimMode>
 </PropertyGroup>
 ```
+
+This also enables trimming analyzers, so that warnings are introduced for any problematic C# code.
+
+See the [documentation on trimming granularity](https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity) for more information.
 
 ## .NET for iOS
 
@@ -607,12 +634,28 @@ This will produce two libraries, one using iOS 17.0 bindings, and one using iOS 
 > [!IMPORTANT]
 > An app project should always target the latest iOS SDK.
 
+### Trimming enhancements
+
+In .NET 9, the `Microsoft.iOS.dll`, `Microsoft.MacCatalyst.dll`, etc. assemblies are now fully trim-compatible. To opt into full trimming, set the `TrimMode` property in your project file (*.csproj*):
+
+```xml
+<PropertyGroup>
+    <TrimMode>Full</TrimMode>
+</PropertyGroup>
+```
+
+This also enables trimming analyzers, so that warnings are introduced for any problematic C# code.
+
+See the [documentation on trimming granularity](https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity) for more information.
+
 ### Native AOT for iOS & Mac Catalyst
 
-In .NET for iOS 9, native Ahead of Time (AOT) compilation for iOS and Mac Catalyst takes advantage of full trimming to reduce your app's package size and startup performance. This is a publishing feature that you can use when you're ready to ship your app.
+In .NET for iOS 9, native Ahead of Time (AOT) compilation for iOS and Mac Catalyst takes advantage of full trimming to reduce your app's package size and startup performance. NativeAOT builds upon full trimming, by also opting into a new runtime.
 
 > [!IMPORTANT]
 > Your app and it's dependencies must be fully trimmable in order to utilize this feature.
+
+NativeAOT requires applications to be built with zero trimmer warnings, in order to prove the application will work correctly at runtime.
 
 ## See also
 
