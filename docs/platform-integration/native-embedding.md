@@ -513,12 +513,14 @@ Then, add `$(PackageReference)` build items to the project file for the `Microso
 
 .NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed. The approach outlined here is to initialize .NET MAUI when the app's initial UI is created.
 
+Embedding can be performed in an app context or a window context, but for maximum .NET MAUI compatibility it should be performed in a window context.
+
 ::: moniker range="=net-maui-8.0"
 
 Typically, the pattern for initializing .NET MAUI in a native app project is as follows:
 
 - Create a <xref:Microsoft.Maui.Hosting.MauiApp> object.
-- Create a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object.
+- Create a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used to obtain a native view from the .NET MAUI view.
 
 :::zone pivot="devices-android"
 
@@ -719,14 +721,12 @@ In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created usi
 
 ::: moniker range=">=net-maui-9.0"
 
-Embedding can be performed in an app context, and a window context. Embedding should be performed in a window context for maximum .NET MAUI compatibility.
-
 ### App context
 
-In the simplest case, embedding can be performed by:
+In the simplest case, native embedding initialization can be performed by:
 
 - Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object.
-- Creating a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object, from which a native view can be obtained for the .NET MAUI view.
+- Creating a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used to obtain a native view from the .NET MAUI view.
 
 The following example shows this approach:
 
@@ -735,27 +735,20 @@ var mauiApp = MauiProgram.CreateMauiApp();
 var context = new MauiContext(mauiApp.Services);
 ```
 
-The .NET MAUI view can then be created and converted to a native view before being added to the UI:
+A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument. However, with this approach the native view is effectively a .NET MAUI floating view that has access to some app-specific features. The outcome of this approach is that tooling such as hot reload, and some .NET MAUI features, won't work.
 
-```csharp
-var mauiView = new MyMauiContent();
-var nativeView = mauiView.ToPlatformEmbedded(context);
-rootLayout.Children.Add(nativeView);
-```
-
-With this approach, the native view is effectively a .NET MAUI floating view that has access to some app-specific features. However, the disadvantage of this approach is that tooling such as hot reload, and some .NET MAUI features, won't work.
-
-Another issue with this approach is that a brand new app is created each time a .NET MAUI view is embedded as a native view, which can be problematic if embedded views access the `Application.Current` property. An alternative approach is to created a shared, static instance of the <xref:Microsoft.Maui.Hosting.MauiApp> object:
-
-```csharp
-public static class MyEmbeddedMauiApp
-{
-    static MauiApp? _shared;
-    public static MauiApp Shared => _shared ??= MauiProgram.CreateMauiApp();
-}
-```
-
-With this approach, you can instantiate the <xref:Microsoft.Maui.Hosting.MauiApp> object early in your app lifecycle to avoid having a small delay when instantiating .NET MAUI views.
+> [!TIP]
+> Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object each time a .NET MAUI view is embedded as a native view isn't recommended. This can be problematic if embedded views access the `Application.Current` property. Instead, the <xref:Microsoft.Maui.Hosting.MauiApp> object can be created as a shared, static instance:
+>
+> ```csharp
+> public static class MyEmbeddedMauiApp
+> {
+>     static MauiApp? _shared;
+>     public static MauiApp Shared => _shared ??= MauiProgram.CreateMauiApp();
+> }
+> ```
+>
+> With this approach, you can instantiate the <xref:Microsoft.Maui.Hosting.MauiApp> object early in your app lifecycle to avoid having a small delay the first time you embed a .NET MAUI view.
 
 ### Full example
 
