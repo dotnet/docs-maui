@@ -18,7 +18,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 1. Create extension methods to bootstrap your native embedded app. For more information, see [Create extension methods](#create-extension-methods).
 1. Create a .NET MAUI single project that contains your .NET MAUI UI and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
 1. Create a native app and enable .NET MAUI support in it. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
-1. Initialize .NET MAUI by calling the `UseMauiEmbedding` extension method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
+1. Initialize .NET MAUI in your native app project. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
 1. Create the .NET MAUI UI and convert it to the appropriate native type with the `ToPlatformEmbedding` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
 
 ::: moniker-end
@@ -27,7 +27,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 
 1. Create a .NET MAUI single project that contains your .NET MAUI UI and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
 1. Create a native app and enable .NET MAUI support in it. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
-1. Initialize .NET MAUI by calling the `UseMauiEmbedding` extension method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
+1. Initialize .NET MAUI in your native app project. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
 1. Create the .NET MAUI UI and convert it to the appropriate native type with the `ToPlatformEmbedding` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
 
 ::: moniker-end
@@ -1264,6 +1264,20 @@ FrameworkElement nativeView = myMauiPage.ToPlatformEmbedded(context);
 ```
 
 In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to a <xref:Microsoft.UI.Xaml.FrameworkElement> object. The <xref:Microsoft.UI.Xaml.FrameworkElement> object can then be set as the content of a WinUI page.
+
+::: moniker range="=net-maui-8.0"
+
+> [!NOTE]
+> The `ToPlatformEmbedded` extension method is in the .NET MAUI class library you created earlier. Therefore your native app project should include a reference to that project.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+> [!NOTE]
+> The `ToPlatformEmbedded` extension method is in the <xref:Microsoft.Maui.Controls.Embedding> namespace. Therefore your native app project should include a `using` statement for that namespace.
+
+::: moniker-end
 
 The <xref:Microsoft.UI.Xaml.FrameworkElement> object can then be added to a layout in your native app:
 
