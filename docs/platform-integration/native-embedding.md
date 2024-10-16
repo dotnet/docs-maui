@@ -732,10 +732,10 @@ The following example shows this approach:
 
 ```csharp
 var mauiApp = MauiProgram.CreateMauiApp();
-var context = new MauiContext(mauiApp.Services);
+var context = new MauiContext(mauiApp.Services); // Activity also needs passing on Android
 ```
 
-A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument. However, with this approach the native view is effectively a .NET MAUI floating view that has access to some app-specific features. The outcome of this approach is that tooling such as hot reload, and some .NET MAUI features, won't work.
+A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument. However, with this approach tooling such as hot reload, and some .NET MAUI features, won't work.
 
 > [!TIP]
 > Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object each time a .NET MAUI view is embedded as a native view isn't recommended. This can be problematic if embedded views access the `Application.Current` property. Instead, the <xref:Microsoft.Maui.Hosting.MauiApp> object can be created as a shared, static instance:
@@ -748,13 +748,11 @@ A .NET MAUI view can then be created and converted to a native view with the `To
 > }
 > ```
 >
-> With this approach, you can instantiate the <xref:Microsoft.Maui.Hosting.MauiApp> object early in your app lifecycle to avoid having a small delay the first time you embed a .NET MAUI view.
-
-### Full example
+> With this approach, you can instantiate the <xref:Microsoft.Maui.Hosting.MauiApp> object early in your app lifecycle to avoid having a small delay the first time you embed a .NET MAUI view in your app.
 
 :::zone pivot="devices-android"
 
-On Android, fragments typically represent a portion of the UI within an activity. The following code example shows .NET MAUI being initialized in a fragment:
+On Android, a fragment represents a portion of the UI within an activity. The following code example shows .NET MAUI being initialized in a fragment:
 
 ```csharp
 using Android.Runtime;
@@ -871,7 +869,7 @@ public class MainViewController : UIViewController
         base.ViewDidLoad();
 
         // Ensure .NET MAUI app is built before creating .NET MAUI views
-        var mauiApp = MauiProgram.CreateMauiApp();
+        var mauiApp = MyEmbeddedMauiApp.Shared;
 
         // Create .NET MAUI context
         var context = new MauiContext(mauiApp.Services);
@@ -903,7 +901,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
     private void OnRootLayoutLoaded(object? sender, RoutedEventArgs e)
     {
         // Ensure .NET MAUI app is built before creating .NET MAUI views
-        var mauiApp = MauiProgram.CreateMauiApp();
+        var mauiApp = MyEmbeddedMauiApp.Shared;
 
         // Create .NET MAUI context
         var context = new MauiContext(mauiApp.Services);
@@ -915,7 +913,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
 
 :::zone-end
 
-In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as a shared, static instance. When this object is created, `MauiProgram.CreateMauiApp` is called which in turn calls the `UseMauiEmbedding` extension method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains your .NET MAUI UI. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, that's scoped to the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as a shared, static instance. When this object is created, `MauiProgram.CreateMauiApp` is called which in turn calls the `UseMauiEmbedding` extension method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains your `MauiProgram` class and your .NET MAUI UI. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, that's scoped to the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
 ### Window context
 
@@ -944,7 +942,7 @@ The advantage of this approach is that there's a single shared <xref:Microsoft.M
 
 :::zone pivot="devices-android"
 
-On Android, fragments typically represent a portion of the UI within an activity. The following code example shows .NET MAUI being initialized in a fragment:
+On Android, a fragment represents a portion of the UI within an activity. The following code example shows .NET MAUI being initialized in a fragment:
 
 ```csharp
 using Android.Runtime;
@@ -1119,7 +1117,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
 
 :::zone-end
 
-In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as a shared, static instance. When this object is created, `MauiProgram.CreateMauiApp` is called which in turn calls the `UseMauiEmbedding` extension method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains your .NET MAUI UI. A <xref:Microsoft.Maui.MauiContext> object is then created with the `CreateEmbeddedWindowContext` method, that's scoped to the window. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as a shared, static instance. When this object is created, `MauiProgram.CreateMauiApp` is called which in turn calls the `UseMauiEmbedding` extension method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains your `MauiProgram` class and your .NET MAUI UI. A <xref:Microsoft.Maui.MauiContext> object is then created with the `CreateEmbeddedWindowContext` method, that's scoped to the window. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
 ::: moniker-end
 
