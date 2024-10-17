@@ -723,7 +723,7 @@ In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created usi
 
 ### App context
 
-In the simplest case, native embedding initialization can be performed by:
+Native embedding can be performed in an app context, where the native app has no knowledge of a parent window. With this approach, native embedding initialization can be performed by:
 
 - Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object.
 - Creating a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used to obtain a native view from the .NET MAUI view.
@@ -735,7 +735,9 @@ var mauiApp = MauiProgram.CreateMauiApp();
 var context = new MauiContext(mauiApp.Services); // Activity also needs passing on Android
 ```
 
-A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument. However, with this approach tooling such as hot reload, and some .NET MAUI features, won't work.
+A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument.
+
+The disadvantage of this approach is that tooling such as hot reload, and some .NET MAUI features, won't work.
 
 > [!TIP]
 > Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object each time a .NET MAUI view is embedded as a native view isn't recommended. This can be problematic if embedded views access the `Application.Current` property. Instead, the <xref:Microsoft.Maui.Hosting.MauiApp> object can be created as a shared, static instance:
@@ -917,12 +919,12 @@ In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as 
 
 ### Window context
 
-In some scenarios, .NET MAUI views require access to a window to work correctly. For example, adaptive triggers require access to a view's window, and if there is no window they don't work.
+Native embedding can be performed in an window context, where the native app has knowledge of the parent window. In some scenarios, .NET MAUI views require access to a window to work correctly. For example, adaptive triggers require access to a view's window, and if there is no window they don't work.
 
-The `ToPlatformEmbedded` extension method has an overload that adds a .NET MAUI view to an embedded window. This ensures that window-related APIs will work correctly, as well as tooling such as hot reload.
+With this approach, native embedding initialization can be performed by:
 
-> [!WARNING]
-> When the `ToPlatformEmbedded` extension method is called with a <xref:Microsoft.Maui.MauiContext> object that's scoped to the <xref:Microsoft.Maui.Hosting.MauiApp> object, an embedded window will be created for each invocation. Therefore, if you have three embedded views you'll also have three native windows in your app.
+- Creating a <xref:Microsoft.Maui.Hosting.MauiApp> object.
+- Creating a <xref:Microsoft.Maui.MauiContext> object with the `CreateEmbeddedWindowContext` method. The <xref:Microsoft.Maui.MauiContext> object will be used to obtain a native view from the .NET MAUI view.
 
 The `CreateEmbeddedWindowContext` method can be used to correctly relate a single native window to a single .NET MAUI window. This method creates a window context that can be used, instead of the app context, to attach windows:
 
@@ -933,7 +935,10 @@ var context = mauiApp.CreateEmbeddedWindowContext(this);
 
 A .NET MAUI view can then be created and converted to a native view with the `ToPlatformEmbedded` extension method, which requires the <xref:Microsoft.Maui.MauiContext> object as an argument.
 
-The advantage of this approach is that there's a single shared <xref:Microsoft.Maui.Hosting.MauiApp> object, a single .NET MAUI window for each native window, and tooling such as hot reload works correctly.
+> [!NOTE]
+> The `ToPlatformEmbedded` extension method has an overload that adds a .NET MAUI view to an embedded window.
+
+The advantage of this approach is that there's a single shared <xref:Microsoft.Maui.Hosting.MauiApp> object, a single .NET MAUI window for each native window, window-related APIs will work correctly, and tooling such as hot reload works correctly.
 
 :::zone pivot="devices-android"
 
