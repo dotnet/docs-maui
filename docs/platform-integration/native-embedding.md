@@ -908,14 +908,14 @@ In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as 
 
 ### Window context
 
-Native embedding can be performed in an window context, where the native app has knowledge of the parent window. In some scenarios, .NET MAUI views require access to a window to work correctly. For example, adaptive triggers require access to a view's window, and if there is no window they don't work.
+Native embedding can be performed in an window context, where the native app has knowledge of a window. In some scenarios, .NET MAUI views require access to a window to work correctly. For example, adaptive triggers require access to a view's window, and if there is no window they don't work.
 
 With this approach, native embedding initialization requires you to:
 
 - Create a <xref:Microsoft.Maui.Hosting.MauiApp> object.
 - Create a <xref:Microsoft.Maui.MauiContext> object with the `CreateEmbeddedWindowContext` method. The <xref:Microsoft.Maui.MauiContext> object will be used to obtain a native view from the .NET MAUI view.
 
-The `CreateEmbeddedWindowContext` method can be used to relate a single native window to a single .NET MAUI window. This method creates a window context that can be used, instead of the app context, to attach windows:
+The `CreateEmbeddedWindowContext` method creates a window context that relates a single native window to a single .NET MAUI window:
 
 ```csharp
 var mauiApp = MyEmbeddedMauiApp.Shared;
