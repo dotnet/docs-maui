@@ -380,7 +380,7 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
                 });
 
             #if DEBUG
-            		builder.Logging.AddDebug();
+                builder.Logging.AddDebug();
             #endif
 
             additional?.Invoke(builder);
@@ -1224,7 +1224,7 @@ class ContainerView : UIView
 
 ::: moniker-end
 
-In addition, a `ToUIViewController` extension method in .NET MAUI can be used to attempt to convert a .NET MAUI page to a <xref:UIKit.UIViewController>:
+In addition, a `ToUIViewController` extension method in .NET MAUI can be used to convert a .NET MAUI page to a <xref:UIKit.UIViewController>:
 
 ```csharp
 MyMauiPage myMauiPage = new MyMauiPage();
