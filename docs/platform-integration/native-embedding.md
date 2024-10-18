@@ -513,8 +513,6 @@ Then, add `$(PackageReference)` build items to the project file for the `Microso
 
 .NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed. The approach outlined here is to initialize .NET MAUI when the app's initial UI is created.
 
-Embedding can be performed in an app context or a window context, but for maximum .NET MAUI compatibility it should be performed in a window context.
-
 ::: moniker range="=net-maui-8.0"
 
 Typically, the pattern for initializing .NET MAUI in a native app project is as follows:
@@ -605,7 +603,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
         Window.MakeKeyAndVisible();
     }
 
-    /// ...
+    ...
 }
 ```
 
@@ -721,6 +719,8 @@ In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created usi
 
 ::: moniker range=">=net-maui-9.0"
 
+Embedding can be performed in an app context or a window context, but for maximum .NET MAUI compatibility it should be performed in a window context.
+
 ### App context
 
 Native embedding can be performed in an app context, where the native app has no knowledge of a parent window. With this approach, native embedding initialization requires you to:
@@ -820,7 +820,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
         Window.MakeKeyAndVisible();
     }
 
-    /// ...
+    ...
 }
 ```
 
