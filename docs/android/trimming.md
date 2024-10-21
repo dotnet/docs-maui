@@ -8,7 +8,7 @@ monikerRange: ">=net-maui-9.0"
 
 # Trim a .NET MAUI Android app
 
-When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
+When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
 To prevent changes in behavior when trimming applications, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the application should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 
