@@ -33,11 +33,11 @@ Trimming granularity can be controlled by setting the `$(TrimMode)` build proper
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-  <TrimMode>partial</TrimMode>
+  <TrimMode>full</TrimMode>
 </PropertyGroup>
 ```
 
-By default, release builds default to the `full` trim mode which fully removes any code that's not used by your app. The `partial` trim mode is used to only trim .NET MAUI and platform assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
+The `full` trim mode removes any code that's not used by your app. By default, release builds default to the `partial` trim mode, which is used to only trim .NET MAUI and platform assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
 
 ```xml
 <ItemGroup>
