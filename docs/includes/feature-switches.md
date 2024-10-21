@@ -1,12 +1,12 @@
 ---
 ms.topic: include
-ms.date: 09/26/2024
+ms.date: 10/21/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
-## Trim MAUI features
+## Trimming feature switches
 
-Several areas of .NET MAUI come with trimmer directives, known as feature switches, that make it possible to remove the code for disabled features when the `$(TrimMode)` build property is set to `full`, as well as for NativeAOT:
+.NET MAUI possesses trimmer directives, known as feature switches, that make it possible to preserve the code for features that aren't trim safe. These trimmer directives can be used when the `$(TrimMode)` build property is set to `full`, as well as for NativeAOT:
 
 | MSBuild property | Description |
 | ---------------- | ----------- |
@@ -18,12 +18,10 @@ Several areas of .NET MAUI come with trimmer directives, known as feature switch
 
 These MSBuild properties also have equivalent `AppContext` switches:
 
-| MSBuild property | AppContext switch |
-| ---------------- | ----------------- |
-| `MauiEnableVisualAssemblyScanning` | `Microsoft.Maui.RuntimeFeature.IsIVisualAssemblyScanningEnabled` |
-| `MauiShellSearchResultsRendererDisplayMemberNameSupported` | `Microsoft.Maui.RuntimeFeature.IsShellSearchResultsRendererDisplayMemberNameSupported` |
-| `MauiQueryPropertyAttributeSupport` | `Microsoft.Maui.RuntimeFeature.IsQueryPropertyAttributeSupported` |
-| `MauiImplicitCastOperatorsUsageViaReflectionSupport` | `Microsoft.Maui.RuntimeFeature.IsImplicitCastOperatorsUsageViaReflectionSupported` |
-| `_MauiBindingInterceptorsSupport` | `Microsoft.Maui.RuntimeFeature.AreBindingInterceptorsSupported` |
+- The `MauiEnableVisualAssemblyScanning` MSBuild property has an equivalent `AppContext` switch named `Microsoft.Maui.RuntimeFeature.IsIVisualAssemblyScanningEnabled`.
+- The `MauiShellSearchResultsRendererDisplayMemberNameSupported` MSBuild property has an equivalent `AppContext` switch named `Microsoft.Maui.RuntimeFeature.IsShellSearchResultsRendererDisplayMemberNameSupported`.
+- The `MauiQueryPropertyAttributeSupport` MSBuild property has an equivalent `AppContext` switch named `Microsoft.Maui.RuntimeFeature.IsQueryPropertyAttributeSupported`.
+- The `MauiImplicitCastOperatorsUsageViaReflectionSupport` MSBuild property has an equivalent `AppContext` switch named `Microsoft.Maui.RuntimeFeature.IsImplicitCastOperatorsUsageViaReflectionSupported`.
+- The `_MauiBindingInterceptorsSupport` MSBuild property has an equivalent `AppContext` switch named `Microsoft.Maui.RuntimeFeature.AreBindingInterceptorsSupported`.
 
-The easiest way to consume a feature switch is by putting the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `full` trimming mode.
+The easiest way to consume a feature switch is by putting the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies.

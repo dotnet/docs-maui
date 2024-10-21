@@ -45,6 +45,20 @@ By default, release builds default to the `full` trim mode. The `partial` trim m
 
 This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
+## Trimming incompatibilities
+
+The following .NET MAUI features are incompatible with full trimming and will be removed by the trimmer:
+
+- String-based bindings. Instead, use compiled bindings. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+- Implicit cast operators. This typically affects bindings between properties with different types, and setting a property value of a bindable object with a value of a different type. Instead, you should define a `TypeConverter` for your type and attach it to the type using the `[TypeConverter(typeof(MyTypeConverter))]` attribute.
+- Loading XAML at runtime with the `LoadFromXaml` extension method. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
+- Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute>. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
+- The `SearchHandler.DisplayMemberName` property. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+
+Alternatively, you can use trimmer directives so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-features-switches).
+
+For known .NET trimming incompatibilities, see [Known trimming incompatibilities](/dotnet/core/deploying/trimming/incompatibilities).
+
 [!INCLUDE [Trimming feature switches](../includes/feature-switches.md)]
 
 [!INCLUDE [Control the trimmer](../includes/linker-control.md)]
