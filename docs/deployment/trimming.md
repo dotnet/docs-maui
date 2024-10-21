@@ -1,12 +1,12 @@
 ---
-title: "Trim a .NET MAUI Android app"
-description: "Learn about the .NET for Android trimmer, which eliminates unused code from a .NET MAUI Android app to reduce its size."
+title: "Trim a .NET MAUI app"
+description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
 ms.date: 10/21/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
 
-# Trim a .NET MAUI Android app
+# Trim a .NET MAUI app
 
 When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
@@ -37,7 +37,7 @@ Trimming granularity can be controlled by setting the `$(TrimMode)` build proper
 </PropertyGroup>
 ```
 
-By default, release builds default to the `full` trim mode which fully removes any code that's not used by your app. The `partial` trim mode is used to only trim Android API assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
+By default, release builds default to the `full` trim mode which fully removes any code that's not used by your app. The `partial` trim mode is used to only trim .NET MAUI and platform assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
 
 ```xml
 <ItemGroup>

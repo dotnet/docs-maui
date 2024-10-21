@@ -885,8 +885,6 @@
                   href: /dotnet/android/messages/#xa8xxx-linker-step-errors?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA8000/IL8000
                   href: /dotnet/android/messages/xa8000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-            - name: Trimming
-              href: android/trimming.md                  
         - name: iOS
           items:
             - name: Apple account management
@@ -1222,6 +1220,8 @@
                   href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+        - name: Trimming
+          href: deployment/trimming.md
         - name: Unit testing
           href: deployment/unit-testing.md
     - name: Enterprise application patterns

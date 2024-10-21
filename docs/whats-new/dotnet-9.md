@@ -402,7 +402,7 @@ Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyA
 
 ## Trimming
 
-Trimming behavior can be controlled with the `$(PublishTrimmed)` and `$(TrimMode)` MSBuild properties. For more information, see [Trim a .NET MAUI Android app](~/android/trimming.md).
+Trimming behavior can be controlled with the `$(PublishTrimmed)` and `$(TrimMode)` MSBuild properties. For more information, see [Trim a .NET MAUI app](~/deployment/trimming.md).
 
 [!INCLUDE [Trimming feature switches](../includes/feature-switches.md)]
 
