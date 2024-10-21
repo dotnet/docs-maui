@@ -1,6 +1,6 @@
 ---
 title: "Trim a .NET MAUI Android app"
-description: "Learn about the .NET for Android trimmer which is used to eliminate unused code from a .NET MAUI Android app in order to reduce its size."
+description: "Learn about the .NET for Android trimmer, which eliminates unused code from a .NET MAUI Android app to reduce its size."
 ms.date: 10/21/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
@@ -10,11 +10,11 @@ monikerRange: ">=net-maui-9.0"
 
 When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
-To prevent changes in behavior when trimming applications, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the application should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
+To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 
-## Trimmer behavior
+## Trimming behavior
 
-The linker enables you to trim your .NET MAUI Android apps. When trimming is enabled, the linker leaves your assemblies untouched and reduces the size of the SDK assemblies by removing types and members that your app doesn't use.
+When trimming is enabled, the linker leaves your assemblies untouched and reduces the size of the SDK assemblies by removing types and members that your app doesn't use.
 
 Trimming behavior can be configured for each build configuration of your app. By default, trimming is disabled for debug builds and enabled for release builds. This behavior can be changed with the `$(PublishTrimmed)` build property:
 
@@ -25,7 +25,7 @@ Trimming behavior can be configured for each build configuration of your app. By
 ```
 
 > [!WARNING]
-> Enabling trimming for your app's debug configuration may hinder your debugging experience, as it may remove property accessors that enable you to inspect the state of your objects.
+> Enabling trimming for your app's debug configuration could hinder your debugging experience, because it could remove property accessors that enable you to inspect the state of your objects.
 
 ## Trimming granularity
 
@@ -37,7 +37,7 @@ Trimming granularity can be controlled by setting the `$(TrimMode)` build proper
 </PropertyGroup>
 ```
 
-By default, release builds default to the `full` trim mode. The `partial` trim mode is used to only trim assemblies that have opted in to trimming with the `$(TrimmableAsssembly)` MSBuild item:
+By default, release builds default to the `full` trim mode which fully removes any code that's not used by your app. The `partial` trim mode is used to only trim Android API assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
 
 ```xml
 <ItemGroup>
@@ -45,7 +45,8 @@ By default, release builds default to the `full` trim mode. The `partial` trim m
 </ItemGroup>
 ```
 
-This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
+> [!NOTE]
+> This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 
@@ -53,15 +54,15 @@ For more trimming options, see [Trimming options](/dotnet/core/deploying/trimmin
 
 The following .NET MAUI features are incompatible with full trimming and will be removed by the trimmer:
 
-- String-based bindings. Instead, use compiled bindings. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+- Binding expressions where that binding path is set so a string. Instead, use compiled bindings. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 - Implicit cast operators. This typically affects bindings between properties with different types, and setting a property value of a bindable object with a value of a different type. Instead, you should define a `TypeConverter` for your type and attach it to the type using the `[TypeConverter(typeof(MyTypeConverter))]` attribute.
-- Loading XAML at runtime with the `LoadFromXaml` extension method. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
+- Loading XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension method. This XAML can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute>. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
-- The `SearchHandler.DisplayMemberName` property. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+- The `SearchHandler.DisplayMemberName` property. Instead, you should provide an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define the appearance of <xref:Microsoft.Maui.Controls.SearchHandler> results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 
-Alternatively, you can use trimmer directives so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-feature-switches).
+Alternatively, you can use feature switches so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-feature-switches).
 
-For known .NET trimming incompatibilities, see [Known trimming incompatibilities](/dotnet/core/deploying/trimming/incompatibilities).
+For .NET trimming incompatibilities, see [Known trimming incompatibilities](/dotnet/core/deploying/trimming/incompatibilities).
 
 [!INCLUDE [Trimming feature switches](../includes/feature-switches.md)]
 
