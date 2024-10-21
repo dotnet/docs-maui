@@ -45,6 +45,8 @@ By default, release builds default to the `full` trim mode. The `partial` trim m
 
 This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
+[!INCLUDE [Trimming feature switches](../includes/feature-switches.md)]
+
 [!INCLUDE [Control the linker](../includes/linker-control.md)]
 
 ## See also

@@ -4,7 +4,7 @@ ms.date: 09/26/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
-# Trim MAUI features
+## Trim MAUI features
 
 Several areas of .NET MAUI come with trimmer directives, known as feature switches, that make it possible to remove the code for disabled features when `TrimMode=full`, as well as for NativeAOT:
 
