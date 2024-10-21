@@ -46,7 +46,7 @@ The type and member strings use a variation of the C# documentation comment ID s
 
 It's possible to specify assemblies that should be excluded from the trimming process, while allowing other assemblies to be trimmed. This approach can be useful when you can't easily use the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute, or don't control the code that's being trimmed.
 
-When it trims all assemblies, you can tell the trimmer to skip an assembly by setting the `TrimmerRootAssembly` MSBuild property in an `<ItemGroup>` tag in the project file:
+When it trims all assemblies, you can tell the trimmer to skip an assembly by setting an `TrimmerRootAssembly` MSBuild item in the project file:
 
 ```xml
 <ItemGroup>
@@ -63,7 +63,7 @@ If the trimmer skips an assembly, it's considered *rooted*, which means that it 
 
 You can pass the trimmer an XML description file that specifies which assemblies, types, and members need to be retained.
 
-To exclude a member from the trimming process when trimming all assemblies, set the `TrimmerRootDescriptor` MSBuild property in an `<ItemGroup>` tag in the project file to the XML file that defines the members to exclude:
+To exclude a member from the trimming process when trimming all assemblies, set the `TrimmerRootDescriptor` MSBuild item in the project file to the XML file that defines the members to exclude:
 
 ```xml
 <ItemGroup>
