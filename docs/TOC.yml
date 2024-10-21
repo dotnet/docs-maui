@@ -885,6 +885,8 @@
                   href: /dotnet/android/messages/#xa8xxx-linker-step-errors?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA8000/IL8000
                   href: /dotnet/android/messages/xa8000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Trimming
+              href: android/trimming.md                  
         - name: iOS
           items:
             - name: Apple account management
