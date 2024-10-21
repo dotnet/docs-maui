@@ -47,7 +47,7 @@ This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when b
 
 [!INCLUDE [Trimming feature switches](../includes/feature-switches.md)]
 
-[!INCLUDE [Control the linker](../includes/linker-control.md)]
+[!INCLUDE [Control the trimmer](../includes/linker-control.md)]
 
 ## See also
 
