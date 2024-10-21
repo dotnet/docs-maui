@@ -55,7 +55,7 @@ The following .NET MAUI features are incompatible with full trimming and will be
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute>. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 - The `SearchHandler.DisplayMemberName` property. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 
-Alternatively, you can use trimmer directives so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-features-switches).
+Alternatively, you can use trimmer directives so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-feature-switches).
 
 For known .NET trimming incompatibilities, see [Known trimming incompatibilities](/dotnet/core/deploying/trimming/incompatibilities).
 
