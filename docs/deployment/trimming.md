@@ -20,6 +20,9 @@ Trimming behavior can be controlled by setting the `$(TrimMode)` build property 
 <TrimMode>full</TrimMode>
 ```
 
+> [!IMPORTANT]
+> The `$(TrimMode)` build property shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
+
 The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims SDK assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
 
 ```xml
