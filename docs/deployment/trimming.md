@@ -1,7 +1,7 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 10/21/2024
+ms.date: 10/22/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
@@ -14,12 +14,10 @@ When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker
 
 To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 
-Trimming behavior can be configured for each build configuration of your app with the `$(PublishTrimmed)` build property:
+Trimming behavior can be configured for your app with the `$(PublishTrimmed)` build property:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-  <PublishTrimmed>True</PublishTrimmed>
-</PropertyGroup>
+<PublishTrimmed>True</PublishTrimmed>
 ```
 
 > [!WARNING]
@@ -30,9 +28,7 @@ Trimming behavior can be configured for each build configuration of your app wit
 Trimming granularity can be controlled by setting the `$(TrimMode)` build property to either `partial` or `full`:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-  <TrimMode>full</TrimMode>
-</PropertyGroup>
+<TrimMode>full</TrimMode>
 ```
 
 The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims SDK assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
