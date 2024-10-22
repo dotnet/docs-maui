@@ -10,13 +10,11 @@ monikerRange: ">=net-maui-9.0"
 
 When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
-To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
-
 ## Trimming behavior
 
-When trimming is enabled, the linker leaves your assemblies untouched and reduces the size of the SDK assemblies by removing types and members that your app doesn't use.
+To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 
-Trimming behavior can be configured for each build configuration of your app. By default, trimming is disabled for debug builds and enabled for release builds. This behavior can be changed with the `$(PublishTrimmed)` build property:
+Trimming behavior can be configured for each build configuration of your app with the `$(PublishTrimmed)` build property:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -37,7 +35,7 @@ Trimming granularity can be controlled by setting the `$(TrimMode)` build proper
 </PropertyGroup>
 ```
 
-The `full` trim mode removes any code that's not used by your app. By default, release builds default to the `partial` trim mode, which is used to only trim .NET MAUI and platform assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
+The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims SDK assemblies, and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
 
 ```xml
 <ItemGroup>
@@ -49,6 +47,10 @@ The `full` trim mode removes any code that's not used by your app. By default, r
 > This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
+
+## Trimming defaults per platform
+
+By default, Android and Mac Catalyst builds use partial trimming when the build configuration is set to a release build. iOS uses partial trimming for any device builds, regardless of the build configuration, and doesn't use trimming for simulator builds.
 
 ## Trimming incompatibilities
 
