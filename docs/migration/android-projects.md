@@ -151,7 +151,7 @@ With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimm
 
 For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
 
-In .NET for Android projects by default, `Debug` builds don't perform any trimming, and `Release` builds set `PublishTrimmed=True` and `TrimMode=Full`.
+In .NET for Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
 
 ::: moniker-end
 
