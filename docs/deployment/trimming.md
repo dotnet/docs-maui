@@ -17,7 +17,9 @@ To prevent changes in behavior when trimming apps, .NET provides static analysis
 Trimming behavior can be controlled by setting the `$(TrimMode)` build property to either `partial` or `full`:
 
 ```xml
-<TrimMode>full</TrimMode>
+<PropertyGroup>
+  <TrimMode>full</TrimMode>
+</PropertyGroup>
 ```
 
 > [!IMPORTANT]
