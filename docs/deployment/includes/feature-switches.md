@@ -4,8 +4,6 @@ ms.date: 10/22/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
-## Trimming feature switches
-
 .NET MAUI has trimmer directives, known as feature switches, that make it possible to preserve the code for features that aren't trim safe. These trimmer directives can be used when the `$(TrimMode)` build property is set to `full`, as well as for NativeAOT:
 
 | MSBuild property | Description |

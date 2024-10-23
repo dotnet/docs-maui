@@ -4,8 +4,6 @@ ms.date: 10/23/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
-## Trimming incompatibilities
-
 The following .NET MAUI features are incompatible with full trimming and will be removed by the trimmer:
 
 - Binding expressions where that binding path is set to a string. Instead, use compiled bindings. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).

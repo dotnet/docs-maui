@@ -40,6 +40,8 @@ For more trimming options, see [Trimming options](/dotnet/core/deploying/trimmin
 
 By default, Android and Mac Catalyst builds use partial trimming when the build configuration is set to a release build. iOS uses partial trimming for any device builds, regardless of the build configuration, and doesn't use trimming for simulator builds.
 
+## Trimming incompatibilities
+
 [!INCLUDE [Trimming incompatibilities](includes/trimming-incompatibilities.md)]
 
 Alternatively, you can use feature switches so that the trimmer preserves the code for these features. For more information, see [Trimming feature switches](#trimming-feature-switches).
@@ -158,6 +160,8 @@ public struct SizeRequest : IEquatable<SizeRequest>
     }
 }
 ```
+
+## Trimming feature switches
 
 [!INCLUDE [Trimming feature switches](includes/feature-switches.md)]
 

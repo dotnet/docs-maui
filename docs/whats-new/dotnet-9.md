@@ -398,6 +398,8 @@ Full trimming is now supported by setting the `$(TrimMode)` MSBuild property to 
 
 [!INCLUDE [Trimming incompatibilities](../deployment/includes/trimming-incompatibilities.md)]
 
+### Trimming feature switches
+
 [!INCLUDE [Trimming feature switches](../deployment/includes/feature-switches.md)]
 
 ## XAML compiler
