@@ -1,7 +1,7 @@
 ---
 title: "Mono interpreter on iOS and Mac Catalyst"
 description: Learn how to enable the Mono interpreter, which lets you use dynamic code generation in your .NET MAUI iOS and ARM64-based Mac Catalyst release builds.
-ms.date: 05/24/2023
+ms.date: 10/23/2024
 ---
 
 # Mono interpreter on iOS and Mac Catalyst
@@ -30,7 +30,7 @@ The interpreter is enabled by default for .NET MAUI debug builds, and can be ena
 
 ## Enable the interpreter
 
-The Mono interpreter can be enabled in iOS release builds by setting the `UseInterpreter` MSBuild property to `true` in your .NET MAUI app's project file:
+The Mono interpreter can be enabled in iOS release builds by setting the `$(UseInterpreter)` MSBuild property to `true` in your .NET MAUI app's project file:
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -49,11 +49,14 @@ The interpreter can also be enabled for Mac Catalyst release builds on ARM64:
 > [!WARNING]
 > Don't enable the interpreter for release builds on Android because it disables JIT compilation.
 
-On iOS and Mac Catalyst, the interpreter can also be enabled with the `MtouchInterpreter` MSBuild property. This property optionally takes a comma-separated list of assemblies to be interpreted. In addition, `all` can be used to specify all assemblies, and when prefixed with a minus sign, an assembly will be AOT compiled. This enables you to:
+On iOS and Mac Catalyst, the interpreter can also be enabled with the `$(MtouchInterpreter)` MSBuild property. This property optionally takes a comma-separated list of assemblies to be interpreted. In addition, `all` can be used to specify all assemblies, and when prefixed with a minus sign, an assembly will be AOT compiled. This enables you to:
 
 - Interpret all assemblies by specifying `all` or AOT compile everything by specifying `-all`.
 - Interpret individual assemblies by specifying **MyAssembly** or AOT compile individual assemblies by specifying **-MyAssembly**.
 - Mix and match to interpret some assemblies and AOT compile other assemblies.
+
+> [!WARNING]
+> The interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT.
 
 The following example shows how to interpret all assemblies except **System.Xml.dll**:
 

@@ -279,6 +279,9 @@ conceptualContent:
             - text: Improve app performance
               url: deployment/performance.md
               itemType: concept
+            - text: Native AOT
+              url: concept
+              itemType: concept
             - text: Hot restart
               url: ios/hot-restart.md
               itemType: concept
