@@ -1,7 +1,7 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
-description: "Learn how to reduce your app size and achieve faster startup time with NativeAOT on iOS and Mac Catalyst."
-ms.date: 10/23/2024
+description: "Learn how to reduce your app size and achieve faster startup time with NativeAOT deployment on iOS and Mac Catalyst."
+ms.date: 10/24/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -127,5 +127,5 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 >   - When both source and target types have an associated type converter, either of them can be used.
 > For more information, see [Define a TypeConverter to replace an implicit conversion operator](trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator)
 > - Compile all regular expressions using source generators. For more information, see [.NET regular expression source generators](/dotnet/standard/base-types/regular-expression-source-generators).
-> - Ensure that JSON serialization and deserialization uses a source generated context. For more information, see [Minimal APIs and JSON payloads](/aspnet/core/fundamentals/native-aot?view=aspnetcore-8.0#minimal-apis-and-json-payloads).
+> - Ensure that JSON serialization and deserialization uses a source generated context. For more information, see [Minimal APIs and JSON payloads](/aspnet/core/fundamentals/native-aot#minimal-apis-and-json-payloads).
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
