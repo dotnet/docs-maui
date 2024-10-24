@@ -15,7 +15,7 @@ Publishing and deploying a Native AOT app produces the following benefits:
 - Faster startup time.
 - Faster build time.
 
-Native AOT will introduce limitations on usage of certain aspects of the .NET runtime, and should only be used in scenarios where app size and performance are important. It'll require you to adapt your apps to Native AOT requirements, which means ensuring that they are fully trimming and AOT compatible. For more information about Native AOT limitations, see [Limitations](#limitations).
+Native AOT will introduce limitations on usage of certain aspects of the .NET runtime, and should only be used in scenarios where app size and performance are important. It'll require you to adapt your apps to Native AOT requirements, which means ensuring that they are fully trimming and AOT compatible. For more information about Native AOT limitations, see [Native AOT limitations](#native-aot-limitations).
 
 When Native AOT deployment is enabled, the build system analyzes your code, and all its dependencies, to verify if it's suitable for full trimming and AOT compilation. If incompatibilities are detected, trimming and AOT warnings are produced. A single trimming or AOT warning means that the app isn't compatible with Native AOT deployment, and that it might not work correctly. Therefore, when building an app for Native AOT deployment you should review and correct all trimming and AOT warnings. Failure to do this will result in any AOT incompatible constructs in your app being removed at build time, which can result in crashes at runtime. It's therefore important to test an app thoroughly when moving to the Native AOT deployment model. The AOT deployed app must be tested to verify that functionality hasn't changed from the untrimmed app. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 
@@ -89,7 +89,7 @@ dotnet publish -f net9.0-maccatalyst
 > [!TIP]
 > Publish apps frequently to discover trimming or AOT issues early in the development lifecycle.
 
-## Limitations
+## Native AOT limitations
 
 Native AOT will introduce limitations on usage of certain aspects of the .NET runtime, and should only be used in scenarios where app size and performance are important. It'll require you to adapt your apps to Native AOT requirements, which means ensuring that they are fully trimming and AOT compatible, and this can require a lot of work. In addition to the [.NET limitations of Native AOT deployment](/dotnet/core/deploying/native-aot/?tabs=windows%2Cnet8#limitations-of-native-aot-deployment), Native AOT deployment for .NET MAUI has additional limitations.
 
@@ -116,7 +116,6 @@ For more information about trim warnings, see [Introduction to trim warnings](/d
 ## Adapt an app to Native AOT deployment
 
 Use the following checklist to help you adapt your app to Native AOT deployment requirements:
-
 
 > [!div class="checklist"]
 >
