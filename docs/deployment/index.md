@@ -1,7 +1,7 @@
 ---
 title: "Deployment & testing"
 description: "Learn how to deploy, test, and publish .NET MAUI apps to Android, iOS, macOS, and Windows."
-ms.date: 08/27/2024
+ms.date: 10/21/2024
 ---
 
 # Deployment & testing
@@ -11,6 +11,8 @@ ms.date: 08/27/2024
 Unit testing checks that each unit of functionality in your app performs as expected, so that errors don't propagate throughout your app. A unit test takes a small unit of the app, typically a method, isolates it from the remainder of the code, and verifies that it behaves as expected. For more information, see [Unit testing](unit-testing.md).
 
 There are many techniques for increasing the performance, and perceived performance, of .NET MAUI apps. Collectively these techniques can greatly reduce the amount of work being performed by a CPU, and the amount of memory consumed by an app. For more information, see [Improve app performance](performance.md).
+
+When it builds your app, .NET MAUI can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app. For more information, see [Trim a .NET MAUI app](trimming.md).
 
 ## Android
 

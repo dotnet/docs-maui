@@ -3,6 +3,7 @@ title: "Linking a .NET MAUI Android app"
 description: "Learn about the .NET for Android linker, which is used to eliminate unused code from a .NET MAUI Android app in order to reduce its size."
 ms.date: 08/27/2024
 no-loc: [ ILLink ]
+monikerRange: "=net-maui-8.0"
 ---
 
 # Linking a .NET MAUI Android app
