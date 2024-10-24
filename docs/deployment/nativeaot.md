@@ -1,11 +1,11 @@
 ---
-title: "Native AOT on iOS and Mac Catalyst"
+title: "Native AOT deployment on iOS and Mac Catalyst"
 description: "Learn how to reduce your app size and achieve faster startup time with NativeAOT on iOS and Mac Catalyst."
 ms.date: 10/23/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
-# Native AOT on iOS and Mac Catalyst
+# Native AOT deployment on iOS and Mac Catalyst
 
 Native ahead-of-time (AOT) deployment produces a .NET Multi-platform App UI (.NET MAUI) app on iOS and Mac Catalyst that's been ahead-of-time compiled to native code. Publishing and deploying a Native AOT app produces the following benefits:
 

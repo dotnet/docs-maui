@@ -338,7 +338,7 @@ In .NET MAUI 9 you can opt into Native ahead-of-time (AOT) deployment on iOS and
 - Faster startup time, typically up to 2x faster.
 - Faster build time.
 
-For more information, see [Native AOT on iOS and Mac Catalyst](~/deployment/nativeaot.md).
+For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
 
 ## Native embedding
 
