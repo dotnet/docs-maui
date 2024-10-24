@@ -56,7 +56,7 @@ On iOS and Mac Catalyst, the interpreter can also be enabled with the `$(MtouchI
 - Mix and match to interpret some assemblies and AOT compile other assemblies.
 
 > [!WARNING]
-> The interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT.
+> The interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT.  For more information, see [Native AOT deployment](~/deployment/nativeaot.md).
 
 The following example shows how to interpret all assemblies except **System.Xml.dll**:
 
