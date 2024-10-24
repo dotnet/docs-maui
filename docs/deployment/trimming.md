@@ -1,7 +1,7 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
@@ -10,7 +10,7 @@ monikerRange: ">=net-maui-9.0"
 
 When it builds your app, .NET Multi-platform App UI (.NET MAUI) can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
-To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings, the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
+To prevent changes in behavior when trimming apps, .NET provides static analysis of trim compatibility through trim warnings. The trimmer produces trim warnings when it finds code that might not be compatible with trimming. If there are any trim warnings they should be fixed and the app should be thoroughly tested after trimming to ensure that there are no behavior changes. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 
 ## Trimming behavior
 
@@ -25,7 +25,7 @@ Trimming behavior can be controlled by setting the `$(TrimMode)` build property 
 > [!IMPORTANT]
 > The `$(TrimMode)` build property shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
 
-The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims the base class library (BCL), assemblies for the underlying platforms (such as *Mono.Android.dll* and *Java.Interop.dll*), and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` MSBuild item:
+The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims the base class library (BCL), assemblies for the underlying platforms (such as *Mono.Android.dll* and *Microsoft.iOS.dll*), and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` build item:
 
 ```xml
 <ItemGroup>
@@ -36,7 +36,7 @@ The `full` trim mode removes any code that's not used by your app. The `partial`
 This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
 > [!NOTE]
-> It's not necessary to set the `$(PublishTrimmed)` MSBuild property to `true` in your app's project file, because this is set by default.
+> It's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 
@@ -54,7 +54,7 @@ For .NET trimming incompatibilities, see [Known trimming incompatibilities](/dot
 
 ### Define a TypeConverter to replace an implicit conversion operator
 
-It's not possible to rely on implicit conversion operators when assigning a value of an incompatible type to a property in XAML, or when two properties of different types use a data binding, when full trimming is enabled. This is because the implicit operator methods might be removed by the trimmer if they aren't used in your C# code. For more information about implicit conversion operators, see [User-defined explicit and implicit conversion operators](/dotnet/csharp/language-reference/operators/user-defined-conversion-operators).
+It's not possible to rely on implicit conversion operators when assigning a value of an incompatible type to a property in XAML, or when two properties of different types use a data binding, when full trimming is enabled. This is because the implicit operator methods could be removed by the trimmer if they aren't used in your C# code. For more information about implicit conversion operators, see [User-defined explicit and implicit conversion operators](/dotnet/csharp/language-reference/operators/user-defined-conversion-operators).
 
 For example, consider the following type that defines implicit conversion operators between `SizeRequest` and `Size`:
 
@@ -94,7 +94,7 @@ public struct SizeRequest : IEquatable<SizeRequest>
 }
 ```
 
-With full trimming enabled, the implicit conversion operators between `SizeRequest` and `Size` might be removed by the trimmer if they aren't used in your C# code.
+With full trimming enabled, the implicit conversion operators between `SizeRequest` and `Size` could be removed by the trimmer if they aren't used in your C# code.
 
 Instead, you should define a <xref:System.ComponentModel.TypeConverter> for your type and attach it to the type using the <xref:System.ComponentModel.TypeConverterAttribute>:
 
