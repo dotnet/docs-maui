@@ -322,10 +322,6 @@ video.DisconnectHandlers();
 
 When disconnecting, the `DisconnectHandlers` method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
 
-## Load XAML at runtime
-
-Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
-
 ## Multi-window support
 
 .NET MAUI 9 adds the ability to bring a specific window to the front on Mac Catalyst and Windows with the `Application.Current.ActivateWindow` method:
@@ -394,25 +390,17 @@ dotnet new maui-blazor-web -n AllTheTargets
 
 In .NET MAUI 9, a stand-alone XAML <xref:Microsoft.Maui.Controls.ResourceDictionary> (which isn't backed by a code-behind file) defaults to having its XAML compiled. To opt out of this behavior, specify `<?xaml-comp compile="false" ?>` after the XML header.
 
-## Shell apps
+## Trimming
 
-Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
+Full trimming is now supported by setting the `$(TrimMode)` MSBuild property to `full`. For more information, see [Trim a .NET MAUI app](~/deployment/trimming.md).
 
-`SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+### Trimming incompatibilities
 
-## Trimming feature switches
+[!INCLUDE [Trimming incompatibilities](../deployment/includes/trimming-incompatibilities.md)]
 
-Several areas of .NET MAUI come with trimmer directives, known as feature switches, that make it possible to remove the code for disabled features when `TrimMode=full`, as well as for NativeAOT:
+### Trimming feature switches
 
-| MSBuild property | Description |
-| ---------------- | ----------- |
-| `MauiEnableVisualAssemblyScanning` | When set to `true`, .NET MAUI will scan assemblies for types implementing `IVisual` and for `[assembly:Visual(...)]` attributes, and will register these types. By default, this build property is set to `false`. |
-| `MauiShellSearchResultsRendererDisplayMemberNameSupported` | When set to `false`, the value of `SearchHandler.DisplayMemberName` will be ignored. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. By default, this build property is set to `true`.|
-| `MauiQueryPropertyAttributeSupport` | When set to `false`, `[QueryProperty(...)]` attributes won't be used to set property values when navigating. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface to accept query parameters. By default, this build property is set to `true`. |
-| `MauiImplicitCastOperatorsUsageViaReflectionSupport` | When set to `false`, .NET MAUI won't look for implicit cast operators when converting values from one type to another. This can affect bindings between properties with different types, and setting a property value of a bindable object with a value of a different type. Instead, you should define a `TypeConverter` for your type and attach it to the type using the `[TypeConverter(typeof(MyTypeConverter))]` attribute. By default, this build property is set to `true`.|
-| `_MauiBindingInterceptorsSupport` | When set to `false`, .NET MAUI won't intercept any calls to the `SetBinding` methods and won't try to compile them. By default, this build property is set to `true`. |
-
-To consume a feature switch you should put the corresponding MSBuild property into your app's project file (*.csproj), which causes the related code to be trimmed from the .NET MAUI assemblies. Disabling features an app doesn't require can help reduce the app size when combined with the `Full` trimming mode.
+[!INCLUDE [Trimming feature switches](../deployment/includes/feature-switches.md)]
 
 ## XAML compiler
 

@@ -297,6 +297,9 @@ conceptualContent:
             - text: Publish Windows apps
               url: windows/deployment/overview.md
               itemType: concept
+            - text: Trimming
+              url: deployment/trimming.md
+              itemType: concept
 
 additionalContent:
   sections:
