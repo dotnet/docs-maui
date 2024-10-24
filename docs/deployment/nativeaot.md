@@ -67,7 +67,7 @@ Setting the `$(IsAotCompatible)` build property to `true`, for all platforms, en
 Conditionally setting `$(PublishAot)` to `true`, for iOS and Mac Catalyst, enables dynamic code usage analysis during build and Native AOT compilation during publish. Native AOT analysis includes all of the app's code and any libraries the app depends on.
 
 > [!WARNING]
-> The `$(PublishAot)` build property shouldn't be conditioned by build configuration. This is because trimming features switches are enabled or disabled based on the value of the `$(PublishAot)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
+> The `$(PublishAot)` build property shouldn't be conditioned by build configuration. This is because trimming features switches are enabled or disabled based on the value of the `$(PublishAot)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically. For more information about trimming feature switches, see [Trimming feature switches](trimming.md#trimming-feature-switches).
 
 The only way to verify that a Native AOT app works correctly is to publish it using `dotnet publish` and verify that there are no trimming or AOT warnings produced by your code and its dependencies. In particular, `dotnet build -t:Publish` isn't equivalent to `dotnet publish`.
 
