@@ -1172,6 +1172,8 @@
               href: ios/hot-restart.md
             - name: Wireless deployment
               href: ios/wireless-deployment.md
+        - name: Native AOT
+          href: deployment/nativeaot.md
         - name: Project configuration
           href: deployment/visual-studio-properties.md
         - name: Publish
