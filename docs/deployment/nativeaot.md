@@ -117,7 +117,6 @@ For more information about trim warnings, see [Introduction to trim warnings](/d
 
 Use the following checklist to help you adapt your app to Native AOT deployment requirements:
 
-<!-- markdownlint-disable MD032 -->
 
 > [!div class="checklist"]
 >
@@ -125,23 +124,17 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 >   - Remove all `[XamlCompilation(XamlCompilationOptions.Skip)]` usage.
 >   - Remove all `<?xaml-comp compile="false" ?>` usage.
 > - Remove all calls to the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method.
-> - Ensure that all data bindings are compiled:
+> - Ensure that all data bindings are compiled. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 >   - Ensure that all XAML data bindings are annotated with `x:DataType`.
 >   - Ensure that all code data bindings replace all string-based bindings with lambda-based bindings.
->
-> For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 > - Replace all `[QueryProperty(...)]` usage with an implementation of the `IQueryAttributable` interface. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 > - Replace all `SearchHandler.DisplayMemberName` usage with an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate>. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
-> - Replace all implicit conversion operators for types used in XAML with a <xref:System.ComponentModel.TypeConverter>, and it attach it to your type using the <xref:System.ComponentModel.TypeConverterAttribute>:
+> - Replace all implicit conversion operators for types used in XAML with a <xref:System.ComponentModel.TypeConverter>, and it attach it to your type using the <xref:System.ComponentModel.TypeConverterAttribute>. For more information, see [Define a TypeConverter to replace an implicit conversion operator](trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator).
 >   - When converting from type `A` to type `B`, either the `ConvertTo` method on a type converter associated with `A` will be used or the `ConvertFrom` method on a type converter associated with `B` will be used.
 >   - When both source and target types have an associated type converter, either of them can be used.
->
-> For more information, see [Define a TypeConverter to replace an implicit conversion operator](trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator)
 > - Compile all regular expressions using source generators. For more information, see [.NET regular expression source generators](/dotnet/standard/base-types/regular-expression-source-generators).
 > - Ensure that JSON serialization and deserialization uses a source generated context. For more information, see [Minimal APIs and JSON payloads](/aspnet/core/fundamentals/native-aot#minimal-apis-and-json-payloads).
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
-
-<!-- markdownlint-enable MD032 -->
 
 ## See also
 
