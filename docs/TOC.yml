@@ -1222,6 +1222,8 @@
                   href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+        - name: Trimming
+          href: deployment/trimming.md
         - name: Unit testing
           href: deployment/unit-testing.md
     - name: Enterprise application patterns

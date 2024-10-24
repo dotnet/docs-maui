@@ -120,6 +120,8 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 ## Linker
 
+::: moniker range="=net-maui-8.0"
+
 .NET 8 has new settings for the linker:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
@@ -138,6 +140,20 @@ With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimm
 
 > [!TIP]
 > You should migrate to the new linker settings, because the `AndroidLinkMode` setting will eventually be deprecated.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+.NET 9 has new settings for the linker:
+
+- `<TrimMode>Full</TrimMode>`, which performs full trimming.
+
+For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
+
+In .NET for Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=partial`.
+
+::: moniker-end
 
 ## Ahead-of-Time compilation
 
