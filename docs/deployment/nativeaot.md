@@ -20,7 +20,7 @@ Native AOT will introduce limitations on usage of certain aspects of the .NET ru
 When Native AOT deployment is enabled, the build system analyzes your code, and all its dependencies, to verify if it's suitable for full trimming and AOT compilation. If incompatibilities are detected, trimming and AOT warnings are produced. A single trimming or AOT warning means that the app isn't compatible with Native AOT deployment, and that it might not work correctly. Therefore, when building an app for Native AOT deployment you should review and correct all trimming and AOT warnings. Failure to do this will result in any AOT incompatible constructs in your app being removed at build time, which can result in crashes at runtime. It's therefore important to test an app thoroughly when moving to the Native AOT deployment model. The AOT deployed app must be tested to verify that functionality hasn't changed from the untrimmed app. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 
 > [!NOTE]
-> There may be cases where fixing trimming and AOT warnings isn't possible, such as when they occur for third-party libraries.
+> There may be cases where fixing trimming and AOT warnings isn't possible, such as when they occur for third-party libraries. In such cases, third-party libraries will need to be updated to become fully compatible.
 
 ## Native AOT performance benefits
 
