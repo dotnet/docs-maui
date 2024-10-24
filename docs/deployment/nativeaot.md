@@ -117,6 +117,8 @@ For more information about trim warnings, see [Introduction to trim warnings](/d
 
 Use the following checklist to help you adapt your app to Native AOT deployment requirements:
 
+<!-- markdownlint-disable MD032 -->
+
 > [!div class="checklist"]
 >
 > - Ensure that all XAML is compiled:
@@ -138,6 +140,8 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Compile all regular expressions using source generators. For more information, see [.NET regular expression source generators](/dotnet/standard/base-types/regular-expression-source-generators).
 > - Ensure that JSON serialization and deserialization uses a source generated context. For more information, see [Minimal APIs and JSON payloads](/aspnet/core/fundamentals/native-aot#minimal-apis-and-json-payloads).
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
+
+<!-- markdownlint-enable MD032 -->
 
 ## See also
 
