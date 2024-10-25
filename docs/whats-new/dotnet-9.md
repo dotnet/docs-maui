@@ -332,7 +332,7 @@ Application.Current?.ActivateWindow(windowToActivate);
 
 ## Native AOT deployment
 
-In .NET MAUI 9 you can opt into Native ahead-of-time (AOT) deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time compiled to native code. This produces the following benefits:
+In .NET MAUI 9 you can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time (AOT) compiled to native code. This produces the following benefits:
 
 - Reduced app package size, typically up to 2.5x smaller.
 - Faster startup time, typically up to 2x faster.
