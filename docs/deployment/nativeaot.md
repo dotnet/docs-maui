@@ -1,7 +1,7 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
 description: "Learn how to reduce your app size and achieve faster startup time with native AOT deployment on iOS and Mac Catalyst."
-ms.date: 10/24/2024
+ms.date: 10/25/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -24,25 +24,25 @@ When Native AOT deployment is enabled, the build system analyzes your code, and 
 
 ## Native AOT performance benefits
 
-Publishing and deployment a Native AOT app produces an app that's typically up to 2.5x smaller, and an app that starts up typically up to 2x faster.
+Publishing and deployment a Native AOT app produces an app that's typically up to 2.5x smaller, and an app that starts up typically up to 2x faster. However, the exact performance benefits are dependent upon multiple factors which include the platform being used, the device on which the app is running, and the app itself.
 
-The following chart shows the resulting app package size for a `dotnet new maui` app on iOS and Mac Catalyst across different deployment models:
+The following chart shows typical app package sizes for a `dotnet new maui` app on iOS and Mac Catalyst across different deployment models:
 
 :::image type="content" source="media/nativeaot/app-package-size.png" alt-text="Chart showing app package size across different deployment models." border="false":::
 
-The preceding chart shows that Native AOT produces more than 2x smaller apps for both iOS and Mac Catalyst compared to the default deployment model.
+The preceding chart shows that, typically, Native AOT produces more than 2x smaller apps for both iOS and Mac Catalyst compared to the default deployment model.
 
-The following chart shows the average startup time for a `dotnet new maui` app on iOS and Mac Catalyst on Mono and Native AOT deployment:
+The following chart shows typical average startup time, on specific hardware, for a `dotnet new maui` app on iOS and Mac Catalyst on Mono and Native AOT deployment:
 
 :::image type="content" source="media/nativeaot/average-startup-time.png" alt-text="Chart showing average app startup time on Mono and Native AOT." border="false":::
 
-The preceding chart shows that Native AOT has up to 2x faster startup times on iOS devices and 1.2x faster startup time on Mac Catalyst, compared to Mono deployment.
+The preceding chart shows that Native AOT typically has up to 2x faster startup times on iOS devices and 1.2x faster startup time on Mac Catalyst, compared to Mono deployment.
 
-The following chart shows the average build time for a `dotnet new maui` app on iOS and Mac Catalyst across different deployment models:
+The following chart shows the typical average build time, on specific hardware, for a `dotnet new maui` app on iOS and Mac Catalyst across different deployment models:
 
 :::image type="content" source="media/nativeaot/average-build-time.png" alt-text="Chart showing average app build time on Mono and Native AOT." border="false":::
 
-The preceding chart shows that Native AOT has up to 2.8x faster build times on iOS devices compared to the default deployment model. For Mac Catalyst, build times are comparable for arm64 single RID apps, but are slightly slower for universal apps when compared to Mono deployment.
+The preceding chart shows that typically Native AOT has up to 2.8x faster build times on iOS devices compared to the default deployment model. For Mac Catalyst, build times are comparable for arm64 single RID apps, but are slightly slower for universal apps when compared to Mono deployment.
 
 > [!IMPORTANT]
 > In many scenarios Native AOT will produce smaller and faster apps. However, in some scenarios Native AOT might not produce smaller and faster apps. Therefore, it's important to test and profile your app to determine the result of enabling Native AOT deployment.
