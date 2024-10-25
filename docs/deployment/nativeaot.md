@@ -26,6 +26,9 @@ When Native AOT deployment is enabled, the build system analyzes your code, and 
 
 Publishing and deployment a Native AOT app produces an app that's typically up to 2.5x smaller, and an app that starts up typically up to 2x faster. However, the exact performance benefits are dependent upon multiple factors which include the platform being used, the device on which the app is running, and the app itself.
 
+> [!IMPORTANT]
+> The following charts show typical performance benefits of Native AOT deployment for a `dotnet new maui` app on iOS and Mac Catalyst. The exact data is hardware dependent and may change in future releases.
+
 The following chart shows typical app package sizes for a `dotnet new maui` app on iOS and Mac Catalyst across different deployment models:
 
 :::image type="content" source="media/nativeaot/app-package-size.png" alt-text="Chart showing app package size across different deployment models." border="false":::
