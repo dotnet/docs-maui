@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 10/09/2024
+ms.date: 10/24/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -329,6 +329,16 @@ When disconnecting, the `DisconnectHandlers` method will propagate down the cont
 ```csharp
 Application.Current?.ActivateWindow(windowToActivate);
 ```
+
+## Native AOT deployment
+
+In .NET MAUI 9 you can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time (AOT) compiled to native code. This produces the following benefits:
+
+- Reduced app package size, typically up to 2.5x smaller.
+- Faster startup time, typically up to 2x faster.
+- Faster build time.
+
+For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
 
 ## Native embedding
 

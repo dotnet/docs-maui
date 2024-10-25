@@ -18,7 +18,7 @@ Compiled bindings improve data binding performance in .NET MAUI applications by 
 ::: moniker range=">=net-maui-9.0"
 
 > [!IMPORTANT]
-> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+> Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled. For more information, see [Trim a .NET MAUI app](~/deployment/trimming.md) and [Native AOT deployment](~/deployment/nativeaot.md).
 
 ::: moniker-end
 
