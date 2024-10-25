@@ -276,14 +276,14 @@ conceptualContent:
             - text: Overview
               url: deployment/index.md
               itemType: concept
-            - text: Improve app performance
-              url: deployment/performance.md
-              itemType: concept
             - text: Hot restart
               url: ios/hot-restart.md
               itemType: concept
-            - text: Wireless deployment
-              url: ios/wireless-deployment.md
+            - text: Improve app performance
+              url: deployment/performance.md
+              itemType: concept
+            - text: Native AOT
+              url: deployment/nativeaot.md
               itemType: concept
             - text: Publish Android apps
               url: android/deployment/index.md
@@ -299,6 +299,9 @@ conceptualContent:
               itemType: concept
             - text: Trimming
               url: deployment/trimming.md
+              itemType: concept
+            - text: Wireless deployment
+              url: ios/wireless-deployment.md
               itemType: concept
 
 additionalContent:
