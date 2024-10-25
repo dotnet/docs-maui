@@ -1,13 +1,13 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
-description: "Learn how to reduce your app size and achieve faster startup time with NativeAOT deployment on iOS and Mac Catalyst."
+description: "Learn how to reduce your app size and achieve faster startup time with native AOT deployment on iOS and Mac Catalyst."
 ms.date: 10/24/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
 # Native AOT deployment on iOS and Mac Catalyst
 
-Native ahead-of-time (AOT) deployment produces a .NET Multi-platform App UI (.NET MAUI) app on iOS and Mac Catalyst that's been ahead-of-time compiled to native code. Native AOT performs static program analysis, full trimming of your app, which is aggressive in removing code that's not AOT compatible, and ahead-of-time code generation.
+Native ahead-of-time (AOT) deployment produces a .NET Multi-platform App UI (.NET MAUI) app on iOS and Mac Catalyst that's been ahead-of-time compiled to native code. Native AOT performs static program analysis, full trimming of your app, which is aggressive in removing code that's not statically referenced, and ahead-of-time code generation.
 
 Publishing and deploying a Native AOT app produces the following benefits:
 
@@ -17,7 +17,7 @@ Publishing and deploying a Native AOT app produces the following benefits:
 
 Native AOT will introduce limitations on usage of certain aspects of the .NET runtime, and should only be used in scenarios where app size and performance are important. It'll require you to adapt your apps to Native AOT requirements, which means ensuring that they are fully trimming and AOT compatible. For more information about Native AOT limitations, see [Native AOT limitations](#native-aot-limitations).
 
-When Native AOT deployment is enabled, the build system analyzes your code, and all its dependencies, to verify if it's suitable for full trimming and AOT compilation. If incompatibilities are detected, trimming and AOT warnings are produced. A single trimming or AOT warning means that the app isn't compatible with Native AOT deployment, and that it might not work correctly. Therefore, when building an app for Native AOT deployment you should review and correct all trimming and AOT warnings. Failure to do this will result in any AOT incompatible constructs in your app being removed at build time, which can result in crashes at runtime. It's therefore important to test an app thoroughly when moving to the Native AOT deployment model. The AOT deployed app must be tested to verify that functionality hasn't changed from the untrimmed app. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
+When Native AOT deployment is enabled, the build system analyzes your code, and all its dependencies, to verify if it's suitable for full trimming and AOT compilation. If incompatibilities are detected, trimming and AOT warnings are produced. A single trimming or AOT warning means that the app isn't compatible with Native AOT deployment, and that it might not work correctly. Therefore, when building an app for Native AOT deployment you should review and correct all trimming and AOT warnings. Failure to do this may result in exceptions at runtime since necessary code could have been removed. Should you suppress the warnings, the AOT deployed app must be thoroughly tested to verify that functionality hasn't changed from the untrimmed app. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 
 > [!NOTE]
 > There may be cases where fixing trimming and AOT warnings isn't possible, such as when they occur for third-party libraries. In such cases, third-party libraries will need to be updated to become fully compatible.
