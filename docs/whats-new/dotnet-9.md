@@ -144,12 +144,12 @@ The binding mode for `IsVisible` and `IsEnabled` on a <xref:Microsoft.Maui.Contr
 
 ### BlazorWebView
 
-On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to `localhost`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
+On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to `localhost`. The internal `0.0.0.1` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
 
-To opt into using the `0.0.0.0` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
+To opt into using the `0.0.0.1` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
 
 ```csharp
-// Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
+// Set this switch to use the LEGACY behavior of always using 0.0.0.1 to host BlazorWebView
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
 
