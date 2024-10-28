@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 09/20/2024
+ms.date: 10/28/2024
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -196,7 +196,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 Your app's C# code can synchronously and asynchronously invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, with optional parameters and an optional return value. This can be achieved with the `InvokeJavaScriptAsync` and `EvaluateJavaScriptAsync` methods:
 
 - The `EvaluateJavaScriptAsync` method runs the JavaScript code provided via a parameter and returns the result as a string.
-- The `InvokeJavaScriptAsync` method invokes a specified JavaScript method, optionally passing in parameter values, and returns a string containing the return value of the JavaScript method. Internally, parameters and return values are JSON encoded.
+- The `InvokeJavaScriptAsync` method invokes a specified JavaScript method, optionally passing in parameter values, and specifies a generic argument that indicates the type of the return value. It returns an object of the generic argument type that contains the return value of the called JavaScript method. Internally, parameters and return values are JSON encoded.
 
 ### Invoke synchronous JavaScript
 
@@ -214,7 +214,7 @@ The `AddNumbers` JavaScript method can be invoked from C# with the `InvokeJavaSc
 double x = 123d;
 double y = 321d;
 
-var result = await hybridWebView.InvokeJavaScriptAsync<double>(
+double result = await hybridWebView.InvokeJavaScriptAsync<double>(
     "AddNumbers", // JavaScript method name
     HybridSampleJSContext.Default.Double, // JSON serialization info for return type
     [x, y], // Parameter values
@@ -256,14 +256,14 @@ async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
 The `EvaluateMeWithParamsAndAsyncReturn` JavaScript method can be invoked from C# with the `InvokeJavaScriptAsync` method:
 
 ```csharp
-var asyncResult = await hybridWebView.InvokeJavaScriptAsync<Dictionary<string, string>>(
+Dictionary<string, string> asyncResult = await hybridWebView.InvokeJavaScriptAsync<Dictionary<string, string>>(
     "EvaluateMeWithParamsAndAsyncReturn", // JavaScript method name
     HybridSampleJSContext.Default.DictionaryStringString, // JSON serialization info for return type
     ["new_key", "new_value"], // Parameter values
     [HybridSampleJSContext.Default.String, HybridSampleJSContext.Default.String]); // JSON serialization info for each parameter
 ```
 
-In this example, `asyncResult` is a `Dictionary<string, string>` containing the JSON data from the web request.
+In this example, `asyncResult` is a `Dictionary<string, string>` that contains the JSON data from the web request.
 
 The method invocation requires specifying `JsonTypeInfo` objects that include serialization information for the types used in the operation. These objects are automatically created by including the following `partial` class in your project:
 
