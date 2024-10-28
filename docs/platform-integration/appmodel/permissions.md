@@ -1,7 +1,7 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 08/07/2024
+ms.date: 10/28/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -46,6 +46,9 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
 
 If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
+
+> [!IMPORTANT]
+> The <xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead> and <xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite> permissions will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> on Android API 33+. This is because the underlying Android `READ_EXTERNAL_STORAGE` and `.WRITE_EXTERNAL_STORAGE` permissions are no longer available from API 33.
 
 ## Checking permissions
 
