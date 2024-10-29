@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 10/08/2024
+ms.date: 10/29/2024
 ---
 
 # Compiled bindings
@@ -178,6 +178,9 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
   <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
 </HorizontalStackLayout>
 ```
+
+> [!NOTE]
+> In cases where there's a binding with a `Source`, but it inherits the `x:DataType` from the parent, there can be a mismatch between the `x:DataType` and the type of the `Source`. In this scenario, a warning will be generated and a fallback to a reflection-based binding that resolves the binding path at runtime will occur.
 
 ::: moniker-end
 
