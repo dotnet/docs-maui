@@ -161,6 +161,10 @@ AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
 
 This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
 
+### Buttons on iOS
+
+<xref:Microsoft.Maui.Controls.Button> controls on iOS now respect spacing, padding, border width, and margins more accurately than in previous releases. A large image in a <xref:Microsoft.Maui.Controls.Button> will now be resized to the maximum size, taking into account the spacing, padding, border width, and margins. However, if a <xref:Microsoft.Maui.Controls.Button> contains text and an image it might not be possible to fit all the content inside the button, and so you should size your image manually to achieve your desired layout.
+
 ### CollectionView and CarouselView
 
 .NET MAUI 9 includes two optional new handlers on iOS and Mac Catalyst that bring performance and stability improvements to `CollectionView` and `CarouselView`. These handlers are based on `UICollectionView` APIs.
