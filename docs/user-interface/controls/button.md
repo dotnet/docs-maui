@@ -1,7 +1,7 @@
 ---
 title: "Button"
 description: "The .NET MAUI Button displays text and responds to a tap or click that directs an app to carry out a task."
-ms.date: 08/30/2024
+ms.date: 10/29/2024
 ---
 
 # Button
@@ -343,6 +343,9 @@ Button button = new Button
     ContentLayout = new Button.ButtonContentLayout(Button.ButtonContentLayout.ImagePosition.Right, 20)
 };
 ```
+
+> [!NOTE]
+> If a <xref:Microsoft.Maui.Controls.Button> contains text and an image it might not be possible to fit all the content inside the button, and so you should size your image manually to achieve your desired layout.
 
 ## Disable a Button
 
