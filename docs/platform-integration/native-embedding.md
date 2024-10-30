@@ -887,8 +887,10 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
         this.InitializeComponent();
     }
 
-    private void OnRootLayoutLoaded(object? sender, RoutedEventArgs e)
+    private async void OnRootLayoutLoaded(object? sender, RoutedEventArgs e)
     {
+        await Task.Yield();
+
         // Ensure .NET MAUI app is built before creating .NET MAUI views
         var mauiApp = MyEmbeddedMauiApp.Shared;
 
@@ -1095,8 +1097,10 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
         _window ??= this;
     }
 
-    private void OnRootLayoutLoaded(object? sender, RoutedEventArgs e)
+    private async void OnRootLayoutLoaded(object? sender, RoutedEventArgs e)
     {
+        await Task.Yield();
+
         // Create MAUI embedded window context
         var context = WindowContext;
 
