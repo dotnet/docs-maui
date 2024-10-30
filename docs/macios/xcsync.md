@@ -15,7 +15,7 @@ no-loc: [ "xcsync" ]
 
 ## Description
 
-xcsync is a global .NET tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
+xcsync is a .NET tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
 
 Supported file types include:
 
@@ -23,6 +23,14 @@ Supported file types include:
 - Plist
 - Storyboard
 - Xib
+
+## Installation
+
+Install .NET xcsync globally with the following command:
+
+```dotnetcli
+dotnet tool install -g xcsync
+```
 
 ## Subcommands
 
