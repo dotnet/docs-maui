@@ -238,12 +238,12 @@ Each platform handler class should be a partial class and derive from the <xref:
 
 Each of the platform handler implementations should override the following methods:
 
-- <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView>, which should create and return the native view that implements the cross-platform control.
-- <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
-- <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A>, which should create and return the native view that implements the cross-platform control.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+> The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
 
 Each platform handler should also implement the Actions that are defined in the mapper dictionaries.
 
@@ -284,7 +284,7 @@ namespace VideoDemos.Handlers
 
 `VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `VideoView` native view.
 
-The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -447,7 +447,7 @@ public class MauiVideoPlayer : CoordinatorLayout
 In addition to unsubscribing from the `Prepared` event, the `Dispose` override also performs native view cleanup.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by Android's `MediaController` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, a `MediaController` is set as the media player of the `VideoView`. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -519,7 +519,7 @@ namespace VideoDemos.Handlers
 
 `VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `AVPlayer` and `AVPlayerViewController` native views.
 
-The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -684,7 +684,7 @@ public class MauiVideoPlayer : UIView
 In some scenarios, videos continue playing after a video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWithPlayerItem` is set to `null` in the `Dispose` override, and other native view cleanup is performed.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by the `AVPlayerViewController` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, the `AVPlayerViewController` will display its playback controls. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -742,7 +742,7 @@ namespace VideoDemos.Handlers
 
 `VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `MediaPlayerElement` native view.
 
-The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -875,7 +875,7 @@ public class MauiVideoPlayer : Grid, IDisposable
 In addition to unsubscribing from the `MediaOpened` event, the `Dispose` override also performs native view cleanup.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by the `MediaPlayerElement` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, the `MediaPlayerElement` will display its playback controls. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -2890,7 +2890,7 @@ The `Position` property of the `Video` object is bound to the `Position` propert
 
 ### Native view cleanup
 
-Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This will often be when the page containing the `Video` control is navigated away from, which causes the page's `Unloaded` event to be raised.
+Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This will often be when the page containing the `Video` control is navigated away from, which causes the page's `Unloaded` event to be raised.
 
 An event handler for the page's `Unloaded` event can be registered in XAML:
 
@@ -2903,7 +2903,7 @@ An event handler for the page's `Unloaded` event can be registered in XAML:
 </ContentPage>
 ```
 
-The event handler for the `Unloaded` event can then invoke the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> method on its `Handler` instance:
+The event handler for the `Unloaded` event can then invoke the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method on its `Handler` instance:
 
 ```csharp
 void OnContentPageUnloaded(object sender, EventArgs e)
@@ -2912,4 +2912,4 @@ void OnContentPageUnloaded(object sender, EventArgs e)
 }
 ```
 
-In addition to cleaning up native view resources, invoking the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler> method also ensures that videos stop playing on backwards navigation on iOS.
+In addition to cleaning up native view resources, invoking the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method also ensures that videos stop playing on backwards navigation on iOS.
