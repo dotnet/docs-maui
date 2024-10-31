@@ -1,7 +1,7 @@
 ---
 title: "Create custom controls with .NET MAUI handlers"
 description: "Learn how to create a .NET MAUI handler, to provide the platform implementations for a cross-platform video control."
-ms.date: 12/20/2022
+ms.date: 10/31/2024
 ---
 
 # Create a custom control using handlers
@@ -34,10 +34,10 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. Create a class for the cross-platform control, which provides the control's public API. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
 1. Create any required additional cross-platform types.
 1. Create a `partial` handler class. For more information, see [Create the handler](#create-the-handler).
-1. In the handler class, create a `PropertyMapper` dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
-1. Optionally, in your handler class, create a `CommandMapper` dictionary, which defines the Actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
+1. In the handler class, create a <xref:Microsoft.Maui.PropertyMapper> dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
+1. Optionally, in your handler class, create a <xref:Microsoft.Maui.CommandMapper> dictionary, which defines the Actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
 1. Create `partial` handler classes for each platform that create the native views that implement the cross-platform control. For more information, see [Create the platform controls](#create-the-platform-controls).
-1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
+1. Register the handler using the <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> and <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
@@ -126,14 +126,14 @@ The conditional `using` statements define the `PlatformView` type on each platfo
 
 ## Create the property mapper
 
-Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's properties to their associated Actions.
+Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The <xref:Microsoft.Maui.PropertyMapper> type is a `Dictionary` that maps the cross-platform control's properties to their associated Actions.
 
-`PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
+<xref:Microsoft.Maui.PropertyMapper> is defined in .NET MAUI's <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, and requires two generic arguments to be supplied:
 
 - The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
-The following code example shows the `VideoHandler` class extended with the `PropertyMapper` definition:
+The following code example shows the `VideoHandler` class extended with the <xref:Microsoft.Maui.PropertyMapper> definition:
 
 ```csharp
 public partial class VideoHandler
@@ -152,20 +152,20 @@ public partial class VideoHandler
 }
 ```
 
-The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's property name, and the `Action` represents a `static` method that requires the handler and cross-platform control as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(VideoHandler handler, Video video)`.
+The <xref:Microsoft.Maui.PropertyMapper> is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's property name, and the `Action` represents a `static` method that requires the handler and cross-platform control as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(VideoHandler handler, Video video)`.
 
 Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it allows for easy cross-platform control customization, because the property mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the command mapper
 
-Each handler can also provide a *command mapper*, which defines what Actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context, a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control members to their associated Actions.
+Each handler can also provide a *command mapper*, which defines what Actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context, a command is an instruction, and optionally its data, that's sent to a native view. The <xref:Microsoft.Maui.CommandMapper> type is a `Dictionary` that maps cross-platform control members to their associated Actions.
 
-`CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
+<xref:Microsoft.Maui.CommandMapper> is defined in .NET MAUI's <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, and requires two generic arguments to be supplied:
 
 - The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
-The following code example shows the `VideoHandler` class extended with the `CommandMapper` definition:
+The following code example shows the `VideoHandler` class extended with the <xref:Microsoft.Maui.CommandMapper> definition:
 
 ```csharp
 public partial class VideoHandler
@@ -192,7 +192,7 @@ public partial class VideoHandler
 }
 ```
 
-The `CommandMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's command name, and the `Action` represents a `static` method that requires the handler, cross-platform control, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(VideoHandler handler, Video video, object? args)`.
+The <xref:Microsoft.Maui.CommandMapper> is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's command name, and the `Action` represents a `static` method that requires the handler, cross-platform control, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(VideoHandler handler, Video video, object? args)`.
 
 Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it removes the need for native views to subscribe to and unsubscribe from cross-platform control events. In addition, it allows for easy customization because the command mapper can be modified by cross-platform control consumers without subclassing.
 
@@ -228,22 +228,33 @@ The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its 
 
 For more information about configuring multi-targeting, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 
-Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, which requires two type arguments:
+Each platform handler class should be a partial class and derive from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, which requires two type arguments:
 
 - The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
 
 > [!IMPORTANT]
-> The `ViewHandler` class provides `VirtualView` and `PlatformView` properties. The `VirtualView` property is used to access the cross-platform control from its handler. The `PlatformView` property, is used to access the native view on each platform that implements the cross-platform control.
+> The <xref:Microsoft.Maui.Handlers.ViewHandler`2> class provides <xref:Microsoft.Maui.Handlers.ViewHandler`2.VirtualView> and <xref:Microsoft.Maui.Handlers.ViewHandler`2.PlatformView> properties. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.VirtualView> property is used to access the cross-platform control from its handler. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.PlatformView> property, is used to access the native view on each platform that implements the cross-platform control.
 
 Each of the platform handler implementations should override the following methods:
 
-- `CreatePlatformView`, which should create and return the native view that implements the cross-platform control.
-- `ConnectHandler`, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
-- `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A>, which should create and return the native view that implements the cross-platform control.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
+
+::: moniker range="=net-maui-8.0"
 
 > [!IMPORTANT]
-> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+> The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+> [!IMPORTANT]
+> The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method is automatically invoked by .NET MAUI by default, although this behavior can be changed. For more information, see [Control handler disconnection](#control-handler-disconnection).
+
+::: moniker-end
 
 Each platform handler should also implement the Actions that are defined in the mapper dictionaries.
 
@@ -282,9 +293,9 @@ namespace VideoDemos.Handlers
 }
 ```
 
-`VideoHandler` derives from the `ViewHandler` class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `VideoView` native view.
+`VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `VideoView` native view.
 
-The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup. The `DisconnectHandler` override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -447,7 +458,7 @@ public class MauiVideoPlayer : CoordinatorLayout
 In addition to unsubscribing from the `Prepared` event, the `Dispose` override also performs native view cleanup.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's `DisconnectHandler` override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by Android's `MediaController` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, a `MediaController` is set as the media player of the `VideoView`. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -517,9 +528,9 @@ namespace VideoDemos.Handlers
 }
 ```
 
-`VideoHandler` derives from the `ViewHandler` class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `AVPlayer` and `AVPlayerViewController` native views.
+`VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `AVPlayer` and `AVPlayerViewController` native views.
 
-The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup. The `DisconnectHandler` override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -684,7 +695,7 @@ public class MauiVideoPlayer : UIView
 In some scenarios, videos continue playing after a video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWithPlayerItem` is set to `null` in the `Dispose` override, and other native view cleanup is performed.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's `DisconnectHandler` override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by the `AVPlayerViewController` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, the `AVPlayerViewController` will display its playback controls. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -740,9 +751,9 @@ namespace VideoDemos.Handlers
 }
 ```
 
-`VideoHandler` derives from the `ViewHandler` class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `MediaPlayerElement` native view.
+`VideoHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `MediaPlayerElement` native view.
 
-The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup. The `DisconnectHandler` override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns a `MauiVideoPlayer` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
@@ -875,7 +886,7 @@ public class MauiVideoPlayer : Grid, IDisposable
 In addition to unsubscribing from the `MediaOpened` event, the `Dispose` override also performs native view cleanup.
 
 > [!NOTE]
-> The `Dispose` override is called by the handler's `DisconnectHandler` override.
+> The `Dispose` override is called by the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override.
 
 The platform transport controls include buttons that play, pause, and stop the video, and are provided by the `MediaPlayerElement` type. If the `Video.AreTransportControlsEnabled` property is set to `true`, the `MediaPlayerElement` will display its playback controls. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
 
@@ -1841,7 +1852,7 @@ namespace VideoDemos.Controls
 
 The `VideoPositionEventArgs` class defines a `Position` property that can be set through its constructor. This property represents the position at which video playback was started, paused, or stopped.
 
-The final line in the `Play`, `Pause`, and `Stop` methods sends a command and associated data to `VideoHandler`. The `CommandMapper` for `VideoHandler` maps command names to Actions that are executed when a command is received. For example, when `VideoHandler` receives the `PlayRequested` command, it executes its `MapPlayRequested` method. The advantage of this approach is that it removes the need for native views to subscribe to and unsubscribe from cross-platform control events. In addition, it allows for easy customization because the command mapper can be modified by cross-platform control consumers without subclassing. For more information about `CommandMapper`, see [Create the command mapper](create.md#create-the-command-mapper).
+The final line in the `Play`, `Pause`, and `Stop` methods sends a command and associated data to `VideoHandler`. The <xref:Microsoft.Maui.CommandMapper> for `VideoHandler` maps command names to Actions that are executed when a command is received. For example, when `VideoHandler` receives the `PlayRequested` command, it executes its `MapPlayRequested` method. The advantage of this approach is that it removes the need for native views to subscribe to and unsubscribe from cross-platform control events. In addition, it allows for easy customization because the command mapper can be modified by cross-platform control consumers without subclassing. For more information about <xref:Microsoft.Maui.CommandMapper>, see [Create the command mapper](create.md#create-the-command-mapper).
 
 The `MauiVideoPlayer` implementation on Android, iOS and Mac Catalyst, has `PlayRequested`, `PauseRequested`, and `StopRequested` methods that are executed in response to the `Video` control sending `PlayRequested`, `PauseRequested`, and `StopRequested` commands. Each method invokes a method on its native view to play, pause, or stop the video. For example, the following code shows the `PlayRequested`, `PauseRequested`, and `StopRequested` methods on iOS and Mac Catalyst:
 
@@ -2614,7 +2625,7 @@ public static class MauiProgram
 }
 ```
 
-The handler is registered with the `ConfigureMauiHandlers` and `AddHandler` method. The first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its handler type.
+The handler is registered with the <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> and <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method. The first argument to the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method is the cross-platform control type, with the second argument being its handler type.
 
 ## Consume the cross-platform control
 
@@ -2888,9 +2899,11 @@ The following example shows a custom positioning bar, `PositionSlider`, being co
 
 The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two <xref:Microsoft.Maui.Controls.Label> objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
 
+::: moniker range="=net-maui-8.0"
+
 ### Native view cleanup
 
-Each platform's handler implementation overrides the `DisconnectHandler` implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This will often be when the page containing the `Video` control is navigated away from, which causes the page's `Unloaded` event to be raised.
+Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This will often be when the page containing the `Video` control is navigated away from, which causes the page's `Unloaded` event to be raised.
 
 An event handler for the page's `Unloaded` event can be registered in XAML:
 
@@ -2903,7 +2916,7 @@ An event handler for the page's `Unloaded` event can be registered in XAML:
 </ContentPage>
 ```
 
-The event handler for the `Unloaded` event can then invoke the `DisconnectHandler` method on its `Handler` instance:
+The event handler for the `Unloaded` event can then invoke the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method on its `Handler` instance:
 
 ```csharp
 void OnContentPageUnloaded(object sender, EventArgs e)
@@ -2912,4 +2925,49 @@ void OnContentPageUnloaded(object sender, EventArgs e)
 }
 ```
 
-In addition to cleaning up native view resources, invoking the handler's `DisconnectHandler` method also ensures that videos stop playing on backwards navigation on iOS.
+In addition to cleaning up native view resources, invoking the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method also ensures that videos stop playing on backwards navigation on iOS.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+## Control handler disconnection
+
+Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. By default, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app.
+
+In some scenarios you might want to control when a handler disconnects from its control, which can be achieved with the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property. This property requires a <xref:Microsoft.Maui.HandlerDisconnectPolicy> argument, with the enumeration defining the following values:
+
+- `Automatic`, which indicates that the handler will be disconnected automatically. This is the default value of the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property.
+- `Manual`, which indicates that the handler will have to be disconnected manually by invoking the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> implementation.
+
+The following example shows setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property:
+
+```xaml
+<controls:Video x:Name="video"
+                HandlerProperties.DisconnectPolicy="Manual"
+                Source="video.mp4"
+                AutoPlay="False" />
+```
+
+The equivalent C# code is:
+
+```csharp
+Video video = new Video
+{
+    Source = "video.mp4",
+    AutoPlay = false
+};
+HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
+```
+
+When setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property to `Manual` you must invoke the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation yourself from a suitable location in your app's lifecycle. This can be achieved by invoking `video.Handler?.DisconnectHandler();`.
+
+In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
+
+```csharp
+video.DisconnectHandlers();
+```
+
+When disconnecting, the <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
+
+::: moniker-end

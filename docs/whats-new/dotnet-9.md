@@ -291,14 +291,14 @@ By default, .NET MAUI 9 produces build warnings for bindings that don't use comp
 
 ## Handler disconnection
 
-When implementing a custom control using handlers, every platform handler implementation is required to implement the `DisconnectHandler` method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the `DisconnectHandler` implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to cleanup a control, such as when navigating backwards in an app.
+When implementing a custom control using handlers, every platform handler implementation is required to implement the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> method, to perform any native view cleanup such as unsubscribing from events. However, prior to .NET MAUI 9, the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> implementation is intentionally not invoked by .NET MAUI. Instead, you'd have to invoke it yourself when choosing to cleanup a control, such as when navigating backwards in an app.
 
-In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 adds a `HandlerProperties.DisconnectPolicy` attached property for controlling when handlers are disconnected from their controls. This property requires a `HandlerDisconnectPolicy` argument, with the `HandlerDisconnectPolicy` enumeration defining the following values:
+In .NET MAUI 9, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app. In some scenarios you might not want this behavior. Therefore, .NET MAUI 9 adds a [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property for controlling when handlers are disconnected from their controls. This property requires a <xref:Microsoft.Maui.HandlerDisconnectPolicy> argument, with the enumeration defining the following values:
 
-- `Automatic`, which indicates that handlers will be disconnected automatically. This is the default value of the `HandlerProperties.DisconnectPolicy` attached property.
-- `Manual`, which indicates that handlers will have to be disconnected manually by invoking the `DisconnectHandler` implementation.
+- `Automatic`, which indicates that handlers will be disconnected automatically. This is the default value of the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property.
+- `Manual`, which indicates that handlers will have to be disconnected manually by invoking the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> implementation.
 
-The following example shows setting the `HandlerProperties.DisconnectPolicy` attached property:
+The following example shows setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property:
 
 ```xaml
 <controls:Video x:Name="video"
@@ -318,13 +318,13 @@ Video video = new Video
 HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
 ```
 
-In addition, there's a `DisconnectHandlers` extension method that disconnects handlers from a given `IView`:
+In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
 
 ```csharp
 video.DisconnectHandlers();
 ```
 
-When disconnecting, the `DisconnectHandlers` method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
+When disconnecting, the <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
 
 ## Multi-window support
 

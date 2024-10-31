@@ -79,10 +79,10 @@ public static class MauiProgram
 }
 ```
 
-The renderers are registered with the `ConfigureMauiHandlers` and `AddHandler` method. This first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its renderer type.
+The renderers are registered with the <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> and <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method. This first argument to the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method is the cross-platform control type, with the second argument being its renderer type.
 
 > [!IMPORTANT]
-> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the `AddHandler` method.
+> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method.
 
 ### Consume the custom renderers
 
