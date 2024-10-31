@@ -35,13 +35,13 @@ The tool has two commands: `generate` and `sync`. Use `generate` to create an Xc
 Install .NET xcsync globally with the following command:
 
 ```dotnetcli
-dotnet tool install -g xcsync
+dotnet tool install -g dotnet-xcsync
 ```
 
 ## Usage
 
-1. The [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace) provides support for xcsync. Ensure you have the latest version.
-2. Open the command palette (Cmd + Shift + P) and search for the `.NET MAUI: xcsync- Generate an Xcode project` and `.NET MAUI: xcsync- Sync from an Xcode project` commands.
+1. The [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace) provides support for xcsync. Ensure you have the latest version on macOS.
+2. Open the command palette (Cmd + Shift + P) and search for the `.NET MAUI: xcsync - Generate an Xcode project` and `.NET MAUI: xcsync - Sync from an Xcode project` commands.
 
 ## Troubleshooting
 
@@ -60,7 +60,7 @@ Please check existing [Known Issues](https://github.com/dotnet/xcsync/issues) be
 Install .NET xcsync globally with the following command:
 
 ```dotnetcli
-dotnet tool install -g xcsync
+dotnet tool install -g dotnet-xcsync
 ```
 
 ## Synopsis
@@ -70,6 +70,7 @@ xcsync generate [-p|--project <PROJECT>]
 [-tfm|--target-framework-moniker <FRAMEWORK>]
 [-t|--target <TARGET_XCODE_DIRECTORY>] [-f|--force]
 [-o|--open] [-v|--verbosity <LEVEL>]
+[-d|--dotnet-path <PATH>]
 
 xcsync sync [-p|--project <PROJECT>]
 [-tfm|--target-framework-moniker <FRAMEWORK>]
@@ -98,6 +99,9 @@ xcsync -h|--help
 - **`-v|--verbosity <LEVEL>`**
 
     Sets the verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. Default value is `Normal`.
+- **`-d|--dotnet-path <PATH>`**
+
+    Path to .NET SDK. Default value is path from parent process if dotnet, otherwise falls back to `dotnet` on PATH.
 - **`-h|--help`**
   
     Shows help and usage information
