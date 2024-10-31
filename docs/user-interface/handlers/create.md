@@ -242,8 +242,19 @@ Each of the platform handler implementations should override the following metho
 - <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
 - <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
 
+::: moniker range="=net-maui-8.0"
+
 > [!IMPORTANT]
 > The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+> [!IMPORTANT]
+> The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method is automatically invoked by .NET MAUI by default, although this behavior can be changed. For more information, see [Handler disconnection](#handler-disconnection).
+
+::: moniker-end
 
 Each platform handler should also implement the Actions that are defined in the mapper dictionaries.
 
@@ -2888,6 +2899,8 @@ The following example shows a custom positioning bar, `PositionSlider`, being co
 
 The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two <xref:Microsoft.Maui.Controls.Label> objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
 
+::: moniker range="=net-maui-8.0"
+
 ### Native view cleanup
 
 Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This will often be when the page containing the `Video` control is navigated away from, which causes the page's `Unloaded` event to be raised.
@@ -2913,3 +2926,48 @@ void OnContentPageUnloaded(object sender, EventArgs e)
 ```
 
 In addition to cleaning up native view resources, invoking the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> method also ensures that videos stop playing on backwards navigation on iOS.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+## Handler disconnection
+
+Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. Handlers then automatically disconnect from their controls when possible, such as when navigating backwards in an app.
+
+In some scenarios you might want to control when a handler disconnects from its control, which can be achieved with the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property. This property requires a <xref:Microsoft.Maui.HandlerDisconnectPolicy> argument, with the <xref:Microsoft.Maui.HandlerDisconnectPolicy> enumeration defining the following values:
+
+- `Automatic`, which indicates that a handler will be disconnected automatically. This is the default value of the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property.
+- `Manual`, which indicates that a handler will have to be disconnected manually by invoking the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> implementation.
+
+The following example shows setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property:
+
+```xaml
+<controls:Video x:Name="video"
+                HandlerProperties.DisconnectPolicy="Manual"
+                Source="video.mp4"
+                AutoPlay="False" />
+```
+
+The equivalent C# code is:
+
+```csharp
+Video video = new Video
+{
+    Source = "video.mp4",
+    AutoPlay = false
+};
+HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
+```
+
+When setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property to `Manual` you must then invoke the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation yourself, from a suitable location in your app's lifecycle.
+
+In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
+
+```csharp
+video.DisconnectHandlers();
+```
+
+When disconnecting, the <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
+
+::: moniker-end
