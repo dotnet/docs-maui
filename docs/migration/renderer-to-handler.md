@@ -334,7 +334,7 @@ The following example shows setting the [`HandlerProperties.DisconnectPolicy`](x
                       HandlerProperties.DisconnectPolicy="Manual" />             
 ```
 
-When setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property to `Manual` you must invoke the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation yourself, from a suitable location in your app's lifecycle. This can be achieved by invoking `customEntry.Handler?.DisconnectHandler();`.
+When setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property to `Manual` you must invoke the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation yourself from a suitable location in your app's lifecycle. This can be achieved by invoking `customEntry.Handler?.DisconnectHandler();`.
 
 In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
 
