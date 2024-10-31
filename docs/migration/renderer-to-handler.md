@@ -1,7 +1,7 @@
 ---
 title: "Migrate a custom renderer to a .NET MAUI handler"
 description: "Learn how to migrate a Xamarin.Forms custom renderer to a .NET MAUI handler."
-ms.date: 04/11/2023
+ms.date: 10/31/2024
 ---
 
 # Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler
@@ -156,9 +156,21 @@ Each platform handler class should be a partial class and derive from the <xref:
 
 Each of the platform handler implementations should override the following methods:
 
+::: moniker range="=net-maui-8.0"
+
 - <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A>, which should create and return the native view that implements the cross-platform control.
 - <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
 - <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects. This method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A>, which should create and return the native view that implements the cross-platform control.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
+- <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A>, which should perform any native view cleanup, such as unsubscribing from events and disposing objects. This method is automatically invoked by .NET MAUI by default, although this behavior can be changed. For more information, see [Control handler disconnection](#control-handler-disconnection).]
+
+::: moniker-end
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A>, <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A>, and <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> overrides are the replacements for the `OnElementChanged` method in a Xamarin.Forms custom renderer.
@@ -272,6 +284,8 @@ After registering the handler with your app, the cross-platform control can then
 </ContentPage>
 ```
 
+::: moniker range="=net-maui-8.0"
+
 ### Native view cleanup
 
 Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. However, this override is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. This could be when the page containing the control is navigated away from, which causes the page's `Unloaded` event to be raised.
@@ -297,6 +311,40 @@ void ContentPage_Unloaded(object sender, EventArgs e)
     customEntry.Handler?.DisconnectHandler();
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+## Control handler disconnection
+
+Each platform's handler implementation overrides the <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation, which is used to perform native view cleanup such as unsubscribing from events and disposing objects. By default, handlers automatically disconnect from their controls when possible, such as when navigating backwards in an app.
+
+In some scenarios you might want to control when a handler disconnects from its control, which can be achieved with the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property. This property requires a <xref:Microsoft.Maui.HandlerDisconnectPolicy> argument, with the <xref:Microsoft.Maui.HandlerDisconnectPolicy> enumeration defining the following values:
+
+- `Automatic`, which indicates that a handler will be disconnected automatically. This is the default value of the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property.
+- `Manual`, which indicates that a handler will have to be disconnected manually by invoking the <xref:Microsoft.Maui.IElementHandler.DisconnectHandler> implementation.
+
+The following example shows setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property:
+
+```xaml
+<controls:CustomEntry x:Name="customEntry"
+                      Text="Hello world"
+                      TextColor="Blue"
+                      HandlerProperties.DisconnectPolicy="Manual" />             
+```
+
+When setting the [`HandlerProperties.DisconnectPolicy`](xref:Microsoft.Maui.Controls.HandlerProperties.DisconnectPolicyProperty) attached property to `Manual` you must then invoke the handler's <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> implementation yourself, from a suitable location in your app's lifecycle. This can be achieved by invoking `customEntry.Handler?.DisconnectHandler();`.
+
+In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
+
+```csharp
+video.DisconnectHandlers();
+```
+
+When disconnecting, the <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> method will propagate down the control tree until it completes or arrives at a control that has set a manual policy.
+
+::: moniker-end
 
 ## See also
 
