@@ -26,6 +26,35 @@ Supported file types include:
 
 The tool has two commands: `generate` and `sync`. Use `generate` to create an Xcode project from a .NET project and `sync` to bring changes in the Xcode project back to the .NET project.
 
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio Code](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
+
+## Installation
+
+Install .NET xcsync globally with the following command:
+
+```dotnetcli
+dotnet tool install -g xcsync
+```
+
+## Usage
+
+1. The [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace) provides support for xcsync. Ensure you have the latest version.
+2. Open the command palette (Cmd + Shift + P) and search for the `.NET MAUI: xcsync- Generate an Xcode project` and `.NET MAUI: xcsync- Sync from an Xcode project` commands.
+
+## Troubleshooting
+
+To see details on errors related to xcsync, navigate to the **Output** window (<kbd>CMD + Shift + u </kbd>) and select **.NET MAUI - xcsync** in the dropdown. If you are facing issues, please [report an issue](#provide-feedback).
+
+## Provide feedback
+
+Please check existing [Known Issues](https://github.com/dotnet/xcsync/issues) before filing a new issue or suggestion.
+
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
 ## Installation
 
 Install .NET xcsync globally with the following command:
