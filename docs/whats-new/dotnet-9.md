@@ -318,7 +318,7 @@ Video video = new Video
 HandlerProperties.SetDisconnectPolicy(video, HandlerDisconnectPolicy.Manual);
 ```
 
-In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.View>:
+In addition, there's a <xref:Microsoft.Maui.ViewExtensions.DisconnectHandlers%2A> extension method that disconnects handlers from a given <xref:Microsoft.Maui.IView>:
 
 ```csharp
 video.DisconnectHandlers();
