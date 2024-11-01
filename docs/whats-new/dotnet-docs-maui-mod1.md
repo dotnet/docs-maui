@@ -13,13 +13,13 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Oct
 
 ### Updated articles
 
-- [Supported platforms for .NET MAUI apps](supported-platforms.md) - Min deployment targets
+- [Supported platforms for .NET MAUI apps](supported-platforms.md)
 
 ## Data & cloud services
 
 ### Updated articles
 
-- [Connect to local web services from Android emulators and iOS simulators](../data-cloud/local-web-services.md) - Simplify ignoring localhost certificate validation errors
+- [Connect to local web services from Android emulators and iOS simulators](../data-cloud/local-web-services.md)
 
 ## Deployment
 
@@ -33,23 +33,21 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Oct
 ### Updated articles
 
 - [.NET MAUI Shell navigation](../fundamentals/shell/navigation.md)
-  - QueryPropertyAttribute isn't trim safe.
-  - BackButtonBehavior binding mode changes.
-- [Binding fallbacks](../fundamentals/data-binding/binding-fallbacks.md) - Clarified differences between `TargetNullValue` and `FallbackValue`
-- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md) - Compiled bindings updates
+- [Binding fallbacks](../fundamentals/data-binding/binding-fallbacks.md)
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md)
 
 ## Migration from Xamarin.Forms
 
 ### Updated articles
 
-- [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](../migration/renderer-to-handler.md) - Handler disconnection
-- [Xamarin.Android project migration](../migration/android-projects.md) - Trimming
+- [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](../migration/renderer-to-handler.md)
+- [Xamarin.Android project migration](../migration/android-projects.md)
 
 ## Platform integration
 
 ### Updated articles
 
-- [Native embedding](../platform-integration/native-embedding.md) - Native embedding in .NET 9.
+- [Native embedding](../platform-integration/native-embedding.md)
 
 ## iOS
 
@@ -66,19 +64,19 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Oct
 
 ### Updated articles
 
-- [Button](../user-interface/controls/button.md) - Visual states examples need VisualStateGroupList for them to work properly
-- [ContentPage](../user-interface/pages/contentpage.md) - HideSoftInputOnTappedChanged is lit up on MacCat
-- [Create a custom control using handlers](../user-interface/handlers/create.md) - Handler disconnection
-- [Handlers](../user-interface/handlers/index.md) - Handler disconnection
-- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md) - Host content using the legacy behavior on Apple platforms
-- [ListView](../user-interface/controls/listview.md) - StackLayout becomes Grid
-- [Visual states](../user-interface/visual-states.md) - Visual states examples need VisualStateGroupList for them to work properly
+- [Button](../user-interface/controls/button.md)
+- [ContentPage](../user-interface/pages/contentpage.md)
+- [Create a custom control using handlers](../user-interface/handlers/create.md)
+- [Handlers](../user-interface/handlers/index.md)
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md)
+- [ListView](../user-interface/controls/listview.md)
+- [Visual states](../user-interface/visual-states.md)
 
 ## XAML
 
 ### Updated articles
 
-- [Load XAML at runtime](../xaml/runtime-load.md) - Loading XAML at runtime isn't trim safe
+- [Load XAML at runtime](../xaml/runtime-load.md)
 
 ## Community contributors
 
