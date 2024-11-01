@@ -101,7 +101,7 @@ xcsync -h|--help
     Sets the verbosity level of the command. Allowed values are `Detailed`, `Diagnostic`, `Minimal`, `Normal`, `Quiet`. Default value is `Normal`.
 - **`-d|--dotnet-path <PATH>`**
 
-    Path to .NET SDK. Default value is path from parent process if dotnet, otherwise falls back to `dotnet` on PATH.
+    Path to .NET SDK. Default value is path from parent process if it is `dotnet`, otherwise falls back to `dotnet` on PATH.
 - **`-h|--help`**
   
     Shows help and usage information
