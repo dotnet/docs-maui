@@ -221,7 +221,7 @@ public override Size Measure(double widthConstraint, double heightConstraint)
 }
 ```
 
-The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
+The <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double)> method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
 
 > [!IMPORTANT]
 > When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to <xref:Microsoft.Maui.Visibility.Collapsed>. This ensures that the custom layout won't leave space for invisible children.
