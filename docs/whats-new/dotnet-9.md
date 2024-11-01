@@ -482,15 +482,11 @@ The compatibility layout classes in the <xref:Microsoft.Maui.Controls.Compatibil
 The following <xref:Microsoft.Maui.Controls.VisualElement> measure methods have been obsoleted:
 
 - <xref:Microsoft.Maui.Controls.VisualElement.OnMeasure%2A?displayProperty=nameWithType>
-- <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double,Microsoft.Maui.Controls.MeasureFlags)>
+- <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double,Microsoft.Maui.Controls.MeasureFlags)?displayProperty=nameWithType>
 
 These are legacy measure methods that don't function correctly with .NET MAUI layout expectations.
 
-As a replacement, the following method has been introduced:
-
-- <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double)>
-
-This method returns the minimum size that an element needs in order to be displayed on a device. Margins are excluded from the measurement, but are returned with the size. This is the preferred method to call when measuring a view.
+As a replacement, the <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double)?displayProperty=nameWithType> method has been introduced. This method returns the minimum size that an element needs in order to be displayed on a device. Margins are excluded from the measurement, but are returned with the size. This is the preferred method to call when measuring a view.
 
 In addition, the <xref:Microsoft.Maui.SizeRequest> struct is obsoleted. Instead, <xref:Microsoft.Maui.Graphics.Size> should be used.
 
