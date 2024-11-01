@@ -9,6 +9,22 @@ ms.date: 11/01/2024
 
 Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for October 2024. This article lists some of the major changes to docs during this period.
 
+## Android
+
+### New articles
+
+- [Native library interop](/dotnet/android/binding-libs/advanced-concepts/native-library-interop?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- Message reference
+  - [XA141](/dotnet/android/messages/xa0141?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA142](/dotnet/android/messages/xa0142?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA1038](/dotnet/android/messages/xa1038?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [XA4315](/dotnet/android/messages/xa4315?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+
+### Updated articles
+
+- [Build process](/dotnet/android/building-apps/build-process?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- [Build items](/dotnet/android/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+
 ## Home
 
 ### Updated articles
