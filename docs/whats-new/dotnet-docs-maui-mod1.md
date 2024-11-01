@@ -29,7 +29,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Oct
 
 ### Updated articles
 
-- [Supported platforms for .NET MAUI apps](supported-platforms.md)
+- [Supported platforms for .NET MAUI apps](../supported-platforms.md)
 
 ## Data & cloud services
 
