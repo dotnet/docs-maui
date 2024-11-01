@@ -475,22 +475,24 @@ The `MainPage` property is retained for .NET MAUI 9, but will be completely remo
 
 ### Compatibility layouts
 
-The compatibility layout classes in the `Microsoft.Maui.Controls.Compatibility` namespace have been obsoleted.
+The compatibility layout classes in the <xref:Microsoft.Maui.Controls.Compatibility> namespace have been obsoleted.
 
 ### Legacy measure calls
 
-The following `VisualElement` legacy measure methods have been obsoleted:
+The following <xref:Microsoft.Maui.Controls.VisualElement> measure methods have been obsoleted:
 
-- `protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)`.
-- `public virtual SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)` from `VisualElement`.
+- <xref:Microsoft.Maui.Controls.VisualElement.OnMeasure%2A?displayProperty=nameWithType>
+- <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double,Microsoft.Maui.Controls.MeasureFlags)>
+
+These are legacy measure methods that don't function correctly with .NET MAUI layout expectations.
 
 As a replacement, the following method has been introduced:
 
-- `public size Measure(double widthConstraint, double heightConstraint)`
+- <xref:Microsoft.Maui.Controls.VisualElement.Measure(System.Double,System.Double)>
 
-This `Measure` method returns the minimum size that an element needs in order to be displayed on a device. Margins are excluded from the measurement, but are returned with the size. This is the preferred method to call when measuring a view.
+This method returns the minimum size that an element needs in order to be displayed on a device. Margins are excluded from the measurement, but are returned with the size. This is the preferred method to call when measuring a view.
 
-In addition, the `Microsoft.Maui.SizeRequest` struct is obsoleted. Instead, `Microsoft.Maui.Size` should be used.
+In addition, the <xref:Microsoft.Maui.SizeRequest> struct is obsoleted. Instead, <xref:Microsoft.Maui.Graphics.Size> should be used.
 
 ## .NET for Android
 
