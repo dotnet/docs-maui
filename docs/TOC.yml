@@ -553,6 +553,8 @@
                   href: /dotnet/android/binding-libs/advanced-concepts/resolving-java-dependencies?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: Distribute bindings libraries
                   href: /dotnet/android/binding-libs/advanced-concepts/distributing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Native library interop
+                  href: /dotnet/android/binding-libs/advanced-concepts/native-library-interop?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Troubleshoot bindings
                 href: /dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Build apps
@@ -727,6 +729,10 @@
                   href: /dotnet/android/messages/xa0139?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA0140
                   href: /dotnet/android/messages/xa0140?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA141
+                  href: /dotnet/android/messages/xa0141?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA142
+                  href: /dotnet/android/messages/xa0142?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: "XA1xxx: Project related"
                 items:
                 - name: Overview
@@ -779,6 +785,8 @@
                   href: /dotnet/android/messages/xa1036?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA1037
                   href: /dotnet/android/messages/xa1037?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1038
+                  href: /dotnet/android/messages/xa1038?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: "XA2xxx: Linker"
                 items:
                 - name: Overview
@@ -861,6 +869,8 @@
                   href: /dotnet/android/messages/xa4313?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4314
                   href: /dotnet/android/messages/xa4314?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4315
+                  href: /dotnet/android/messages/xa4315?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: "XA5xxx: GCC and toolchain"
                 items:
                 - name: Overview
