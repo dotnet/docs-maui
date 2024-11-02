@@ -40,7 +40,7 @@ dotnet tool install -g dotnet-xcsync
 
 ## Usage
 
-1. The [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace) provides support for xcsync. Ensure you have the latest version on macOS.
+1. The [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace) provides support for xcsync. Ensure you have the latest version. The xcsync commands in the .NET MAUI extension are only available when using VS Code on macOS.
 2. Open the command palette (Cmd + Shift + P) and search for the `.NET MAUI: xcsync - Generate an Xcode project` and `.NET MAUI: xcsync - Sync from an Xcode project` commands.
 
 ## Troubleshooting
