@@ -62,6 +62,8 @@ Navigation methods are exposed by the `Navigation` property on any <xref:Microso
 
 ### Create the root page
 
+::: moniker range="=net-maui-8.0"
+
 An app that is structured around multiple pages always has a *root* page, which is the first page added to the navigation stack. This is accomplished by creating a <xref:Microsoft.Maui.Controls.NavigationPage> object whose constructor argument is the root page of the app, and setting the resulting object as the value of the `App.MainPage` property:
 
 ```csharp
@@ -74,6 +76,29 @@ public partial class App : Application
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+An app that is structured around multiple pages always has a *root* page, which is the first page added to the navigation stack. This is accomplished by creating a <xref:Microsoft.Maui.Controls.NavigationPage> object whose constructor argument is the root page of the app, and setting the resulting object as the root page of a <xref:Microsoft.Maui.Controls.Window>:
+
+```csharp
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new NavigationPage(new MainPage()));
+    }    
+}
+```
+
+::: moniker-end
 
 > [!NOTE]
 > The `RootPage` property of a <xref:Microsoft.Maui.Controls.NavigationPage> provides access to the first page in the navigation stack.
