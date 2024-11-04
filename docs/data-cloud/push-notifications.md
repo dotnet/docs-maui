@@ -956,7 +956,7 @@ To create your .NET MAUI app:
         IDeviceInstallationService _deviceInstallationService;
 
         IDeviceInstallationService DeviceInstallationService =>
-            _deviceInstallationService ?? (_deviceInstallationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
+            _deviceInstallationService ?? (_deviceInstallationService = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
 
         public NotificationRegistrationService(string baseApiUri, string apiKey)
         {
@@ -1216,6 +1216,8 @@ To create the app's UI:
 
 1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
 
+::: moniker range="=net-maui-8.0"
+
     ```csharp
     public App(IPushDemoNotificationActionService service)
     {
@@ -1227,6 +1229,22 @@ To create the app's UI:
         MainPage = new AppShell();
     }
     ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+    ```csharp
+    public App(IPushDemoNotificationActionService service)
+    {
+        InitializeComponent();
+
+        _actionService = service;
+        _actionService.ActionTriggered += NotificationActionTriggered;
+    }
+    ```
+
+::: moniker-end
 
 1. In the `App` class, implement the event handler for the `IPushDemoNotificationActionService.ActionTriggered` event:
 
@@ -1240,7 +1258,7 @@ To create the app's UI:
     {
         MainThread.BeginInvokeOnMainThread(() =>
         {
-            MainPage?.DisplayAlert("Push notifications demo", $"{action} action received.", "OK")
+            Windows[0].Page?.DisplayAlert("Push notifications demo", $"{action} action received.", "OK")
                 .ContinueWith((task) =>
                 {
                     if (task.IsFaulted)
