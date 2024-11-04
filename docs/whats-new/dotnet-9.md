@@ -452,7 +452,7 @@ The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET M
 
 ### MainPage
 
-Instead of defining the first page of your app using the <xref:Microsoft.Maui.Conrols.Application.MainPage> property on an <xref:Microsoft.Maui.Controls.Application> object, you should set the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window> to the first page of your app. This is what happens internally in .NET MAUI when you set the <xref:Microsoft.Maui.Conrols.Application.MainPage> property, so there's no behavior change introduced by the <xref:Microsoft.Maui.Conrols.Application.MainPage> property being marked as obsolete.
+Instead of defining the first page of your app using the <xref:Microsoft.Maui.Controls.Application.MainPage> property on an <xref:Microsoft.Maui.Controls.Application> object, you should set the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window> to the first page of your app. This is what happens internally in .NET MAUI when you set the <xref:Microsoft.Maui.Controls.Application.MainPage> property, so there's no behavior change introduced by the <xref:Microsoft.Maui.Controls.Application.MainPage> property being marked as obsolete.
 
 The following example shows setting the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window>, via the `CreateWindow` override:
 
@@ -471,11 +471,9 @@ public partial class App : Application
 }
 ```
 
-> [!IMPORTANT]
-> Code that accesses the `Application.Current.MainPage` property should now access the `Application.Current.Windows[0].Page` property. Alternatively, if you're on an element that's attached to the window you can access the `Window.Page` property instead. Platform code can retrieve the app's <xref:Microsoft.Maui.IWindow> object with the `Microsoft.Maui.Platform.GetWindow` extension method.
+Code that accesses the `Application.Current.MainPage` property should now access the `Application.Current.Windows[0].Page` property for apps with a single window. For apps with multiple windows, use the `Application.Current.Windows` collection to identify the correct window and then access the `Page` property. In addition, each element features a `Window` property, that's accessible when the element is part of the current window, from which the `Page` property can be accessed (`Window.Page`). Platform code can retrieve the app's <xref:Microsoft.Maui.IWindow> object with the `Microsoft.Maui.Platform.GetWindow` extension method.
 
-While the <xref:Microsoft.Maui.Conrols.Application.MainPage> property is retained in .NET MAUI 9 it will be completely removed in a future release.
-
+While the <xref:Microsoft.Maui.Controls.Application.MainPage> property is retained in .NET MAUI 9 it will be completely removed in a future release.
 
 ### Compatibility layouts
 
