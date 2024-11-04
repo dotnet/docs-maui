@@ -7,10 +7,13 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
-
         AppActions.Current.AppActionActivated += App_AppActionActivated;
     }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }    
 
     private void App_AppActionActivated(object sender, AppActionEventArgs e)
     {
