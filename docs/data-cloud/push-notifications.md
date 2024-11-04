@@ -1214,9 +1214,9 @@ To create the app's UI:
     readonly IPushDemoNotificationActionService _actionService;
     ```
 
-1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
-
 ::: moniker range="=net-maui-8.0"
+
+1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
 
     ```csharp
     public App(IPushDemoNotificationActionService service)
@@ -1233,6 +1233,8 @@ To create the app's UI:
 ::: moniker-end
 
 ::: moniker range=">=net-maui-9.0"
+
+1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
 
     ```csharp
     public App(IPushDemoNotificationActionService service)
