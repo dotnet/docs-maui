@@ -16,7 +16,7 @@ The <xref:Microsoft.Maui.Controls.Shell> class defines the following navigation-
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
 - `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the <xref:Microsoft.Maui.Controls.Shell>.
-- `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, a type-casted alias for `Application.Current.MainPage`.
+- `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, which provides access to the current Shell.
 
 The <xref:Microsoft.Maui.Controls.BackButtonBehavior>, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
@@ -118,7 +118,7 @@ This example enables contextual page navigation, where navigating to the `detail
 
 ## Perform navigation
 
-To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a <xref:Microsoft.Maui.Controls.Shell> object, or through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
+To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
 
 > [!IMPORTANT]
 > When a route from the Shell visual hierarchy is navigated to, a navigation stack isn't created. However, when a page that's not in the Shell visual hierarchy is navigated to, a navigation stack is created.

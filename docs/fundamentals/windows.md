@@ -53,6 +53,8 @@ The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Window` property t
 
 ## Create a Window
 
+::: moniker range="=net-maui-8.0"
+
 By default, .NET MAUI creates a <xref:Microsoft.Maui.Controls.Window> object when you set the `MainPage` property to a <xref:Microsoft.Maui.Controls.Page> object in your `App` class. However, you can also override the `CreateWindow` method in your `App` class to create a <xref:Microsoft.Maui.Controls.Window> object:
 
 ```csharp
@@ -80,6 +82,34 @@ namespace MyMauiApp
 ```
 
 While the <xref:Microsoft.Maui.Controls.Window> class has a default constructor and a constructor that accepts a <xref:Microsoft.Maui.Controls.Page> argument, which represents the root page of the app, you can also call the base `CreateWindow` method to return the .NET MAUI created <xref:Microsoft.Maui.Controls.Window> object.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+By default, your .NET MAUI app overrides the `CreateWindow` method in your `App` class to create a <xref:Microsoft.Maui.Controls.Window> object:
+
+```csharp
+namespace MyMauiApp
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+        }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+    		{
+    				return new Window(new AppShell());
+    		}
+    }
+}
+```
+
+::: moniker-end
+
+The <xref:Microsoft.Maui.Controls.Window> class has a default constructor and a constructor that accepts a <xref:Microsoft.Maui.Controls.Page> argument, which represents the root page of the app.
 
 In addition, you can also create your own <xref:Microsoft.Maui.Controls.Window>-derived object:
 
