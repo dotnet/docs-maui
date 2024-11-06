@@ -84,7 +84,7 @@ Color values can be specified in hexadecimal, or as a .NET MAUI color. For examp
 
 ## Control image quality by specifying FilterQuality
 
-The underlying `SKFilterQuality` used to compress the images is set to `SKFilterQuality.High` by default.
+The underlying [SKFilterQuality](https://github.com/mono/SkiaSharp/blob/f9bf4512767c9de22b6683e573b145ce5f0ce0a9/binding/SkiaSharp/SKPaint.cs#L17) used to compress the images is set to `SKFilterQuality.High` by default.
 
 With https://github.com/dotnet/maui/pull/25686 a new configuration property `FilterQuality` was introduced that can be set to any member of `SKFilterQuality`:
 
