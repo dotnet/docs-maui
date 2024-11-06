@@ -81,3 +81,14 @@ A background color for an image can also be specified:
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
+
+## Control image quality by specifying FilterQuality
+
+The underlying `SKFilterQuality` used to compress the images is set to `SKFilterQuality.High` by default.
+
+With https://github.com/dotnet/maui/pull/25686 a new configuration property `FilterQuality` was introduced that can be set to any member of `SKFilterQuality`:
+
+```xml
+<!-- This instructs Skia to use the internal default for filter quality and to avoid the current default value `SKFilterQuality.High` -->
+<MauiImage Include="Resources\Images\logo.svg" FilterQuality="None" />
+```
