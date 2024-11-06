@@ -492,7 +492,7 @@ In this example, the `Square` object is retrieved from the property bag of the d
 
 ## Drag and drop between applications
 
-On iOS, Mac Catalyst, and Windows, drag can start in one application with the corresponding drop operation ending in another application. The app from which an item is dragged is the *source* application, and the app on which an item is dropped is the *destination* application.
+On iOS, Mac Catalyst, and Windows, drag can start in one application with the corresponding drop operation ending in a .NET MAUI application. The app from which an item is dragged is the *source* application, and the .NET MAUI app on which an item is dropped is the *destination* application.
 
 <!-- markdownlint-disable MD025 -->
 
@@ -504,7 +504,7 @@ It's not possible to drag from a *source* application to a .NET MAUI *destinatio
 
 On an iPhone you need to drag an item out of a supported application, such as Files or Photos, and then drag the item to the drop target in your application. On an iPad, dragging items between applications can be achieved with apps in Split View.
 
-The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that process an item that's been dragged from a *source* application to your *destination* application:
+The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that processes an item that's been dragged from a *source* application to your .NET MAUI *destination* application:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -555,7 +555,7 @@ async void OnDropGestureRecognizerDrop(object? sender, DropEventArgs e)
 
 # [Windows](#tab/windows)
 
-The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that process an item that's been dragged from a *source* application to your *destination* application:
+The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that processes an item that's been dragged from a *source* application to your *destination* application:
 
 ```csharp
 #if WINDOWS
