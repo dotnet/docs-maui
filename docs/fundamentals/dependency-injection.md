@@ -119,6 +119,12 @@ When registering dependencies, you need to register all dependencies including i
 > [!TIP]
 > A dependency injection container is ideal for creating view-model instances. If a view-model has dependencies, it will manage the creation and injection of any required services. Just ensure that you register your view-models and any dependencies that they may have in the `CreateMauiApp` method in the `MauiProgram` class.  
 
+::: moniker range=">=net-maui-9.0"
+
+In a Shell app, you don't need to register your pages with the dependency injection container unless you want to influence the lifetime of the page relative to the container with the [`AddSingleton`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. For more information, see [Dependency lifetime](#dependency-lifetime).
+
+::: moniker-end
+
 ### Dependency lifetime
 
 Depending on the needs of your app, you may need to register dependencies with different lifetimes. The following table lists the main methods you can use to register dependencies, and their registration lifetimes:
