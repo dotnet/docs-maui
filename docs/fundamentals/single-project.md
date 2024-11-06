@@ -221,6 +221,8 @@ public static class MauiProgram
 
 The `App` class derives from the `Application` class:
 
+::: moniker range="=net-maui-8.0"
+
 ```csharp
 namespace MyMauiApp;
 
@@ -236,3 +238,28 @@ public class App : Application
 ```
 
 In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+```csharp
+namespace MyMauiApp;
+
+public class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }    
+}
+```
+
+In the preceding example, a new <xref:Microsoft.Maui.Controls.Window> is created whose initial content is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+
+::: moniker-end
