@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 10/24/2024
+ms.date: 11/06/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -252,7 +252,7 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
-In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
+In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.BindingBase.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
 // in .NET 8
@@ -288,6 +288,10 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9. For information about compiling XAML binding expressions that define the `Source` property, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
 By default, .NET MAUI 9 produces build warnings for bindings that don't use compiled bindings. For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
+
+## Dependency injection
+
+In a Shell app, you no longer need to register your pages with the dependency injection container unless you want to influence the lifetime of the page relative to the container with the [`AddSingleton`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. For more information about these methods, see [Dependency lifetime](~/fundamentals/dependency-injection.md#dependency-lifetime).
 
 ## Handler disconnection
 
