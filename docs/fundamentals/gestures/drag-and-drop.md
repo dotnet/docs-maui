@@ -496,6 +496,10 @@ On iOS, Mac Catalyst, and Windows, drag can start in one application with the co
 
 <!-- markdownlint-disable MD025 -->
 
+# [Android](#tab/android)
+
+It's not possible to drag from a *source* application to a .NET MAUI *destination* application on Android.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 On an iPhone you need to drag an item out of a supported application, such as Files or Photos, and then drag the item to the drop target in your application. On an iPad, dragging items between applications can be achieved with apps in Split View.
