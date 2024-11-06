@@ -29,7 +29,7 @@ To add your Apple account to Visual Studio:
 
     :::image type="content" source="media/apple-account-management/vs/enterprise-account.png" alt-text="Add an Enterprise Apple Developer Account to Visual Studio.":::
 
-    The **Name**, **Issuer ID**, and **Key ID** data can be found in [Apple Developer Accounts](https://developer.apple.com/accounts) by selecting **Users and Access** and then the **Integrations** tab. The **Private key** can also be downloaded from this location:
+    The **Name**, **Issuer ID**, and **Key ID** data can be found in [Apple Developer Accounts](https://developer.apple.com/account) by selecting **Users and Access** and then the **Integrations** tab. The **Private key** can also be downloaded from this location:
 
     :::image type="content" source="media/apple-account-management/enterprise-details.png" alt-text="Screenshot of Apple Enterprise Program API details.":::
 
