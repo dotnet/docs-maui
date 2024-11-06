@@ -56,6 +56,8 @@ In addition to these events, the `Window` class also has the following overridab
 
 To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
 
+::: moniker range="=net-maui-8.0"
+
 ```csharp
 namespace MyMauiApp
 {
@@ -66,6 +68,35 @@ namespace MyMauiApp
             InitializeComponent();
 
             MainPage = new MainPage();
+        }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            Window window = new Window(new AppShell());
+
+            window.Created += (s, e) =>
+            {
+                // Custom logic
+            };
+
+            return window;
+        }
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+```csharp
+namespace MyMauiApp
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
         }
 
         protected override Window CreateWindow(IActivationState activationState)
@@ -82,6 +113,8 @@ namespace MyMauiApp
     }
 }
 ```
+
+::: moniker-end
 
 Alternatively, to consume the lifecycle overrides, create a class that derives from the `Window` class
 
@@ -108,8 +141,12 @@ namespace MyMauiApp
 
 The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance.
 
+::: moniker range="=net-maui-8.0"
+
 > [!WARNING]
 > An `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a <xref:Microsoft.Maui.Controls.Page> argument.
+
+::: moniker-end
 
 ## Platform lifecycle events
 

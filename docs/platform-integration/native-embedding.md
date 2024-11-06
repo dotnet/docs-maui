@@ -259,7 +259,7 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
 01. Delete the **Resources/raw** folder from the project.
 01. Delete the **Resources/Splash** folder from the project.
 01. Delete the `AppShell` class from the project.
-01. Modify the `App` class so that it doesn't set the `MainPage` property:
+01. Ensure the `App` class doesn't set the `MainPage` property or override the `CreateWindow` method:
 
     ```csharp
     public partial class App : Application
@@ -330,7 +330,7 @@ Before creating a native app that consumes .NET MAUI controls, you should add a 
 01. Delete the **Resources/raw** folder from the project.
 01. Delete the **Resources/Splash** folder from the project.
 01. Delete the `AppShell` class from the project.
-01. Modify the `App` class so that it doesn't set the `MainPage` property:
+01. Ensure the `App` class doesn't set the `MainPage` property or override the `CreateWindow` method:
 
     ```csharp
     public partial class App : Application

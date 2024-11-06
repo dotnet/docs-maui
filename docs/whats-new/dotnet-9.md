@@ -452,13 +452,13 @@ For more information, see [Xcode sync](~/macios/xcsync.md).
 
 ### Frame
 
-The `Frame` control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The `Border` control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
+The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
 
 ### MainPage
 
-Instead of defining the first page of your app using the `MainPage` property on an `Application` object, you should set the `Page` property on a `Window` to the first page of your app. This is what happens internally in .NET MAUI when you set the `MainPage` property, so there's no behavior change introduced by the `MainPage` property being marked as obsolete.
+Instead of defining the first page of your app using the <xref:Microsoft.Maui.Controls.Application.MainPage> property on an <xref:Microsoft.Maui.Controls.Application> object, you should set the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window> to the first page of your app. This is what happens internally in .NET MAUI when you set the <xref:Microsoft.Maui.Controls.Application.MainPage> property, so there's no behavior change introduced by the <xref:Microsoft.Maui.Controls.Application.MainPage> property being marked as obsolete.
 
-The following example shows setting the `Page` property on a `Window`, via the `CreateWindow` override:
+The following example shows setting the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window>, via the `CreateWindow` override:
 
 ```csharp
 public partial class App : Application
@@ -475,7 +475,9 @@ public partial class App : Application
 }
 ```
 
-The `MainPage` property is retained for .NET MAUI 9, but will be completely removed in a future release.
+Code that accesses the `Application.Current.MainPage` property should now access the `Application.Current.Windows[0].Page` property for apps with a single window. For apps with multiple windows, use the `Application.Current.Windows` collection to identify the correct window and then access the `Page` property. In addition, each element features a `Window` property, that's accessible when the element is part of the current window, from which the `Page` property can be accessed (`Window.Page`). Platform code can retrieve the app's <xref:Microsoft.Maui.IWindow> object with the `Microsoft.Maui.Platform.GetWindow` extension method.
+
+While the <xref:Microsoft.Maui.Controls.Application.MainPage> property is retained in .NET MAUI 9 it will be completely removed in a future release.
 
 ### Compatibility layouts
 

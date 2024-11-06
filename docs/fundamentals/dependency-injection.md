@@ -267,6 +267,8 @@ This approach can be useful if you need to resolve a dependency from an <xref:Mi
 > [!WARNING]
 > The `Handler` property of your `Element` could be `null`, so be aware that you may need to account for this situation. For more information, see [Handler lifecycle](~/user-interface/handlers/index.md#handler-lifecycle).
 
+::: moniker range="=net-maui-8.0"
+
 In a view-model, the dependency injection container can be explicitly accessed through the [`Handler.MauiContext.Service`](xref:Microsoft.Maui.IMauiContext.Services) property of `Application.Current.MainPage`:
 
 ```csharp
@@ -282,6 +284,28 @@ public class MainPageViewModel
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+In a view-model, the dependency injection container can be explicitly accessed through the [`Handler.MauiContext.Service`](xref:Microsoft.Maui.IMauiContext.Services) property of the `Window.Page`:
+
+```csharp
+public class MainPageViewModel
+{
+    readonly ILoggingService _loggingService;
+    readonly ISettingsService _settingsService;
+
+    public MainPageViewModel()
+    {
+        _loggingService = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<ILoggingService>();
+        _settingsService = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<ISettingsService>();
+    }
+}
+```
+
+::: moniker-end
 
 A drawback of this approach is that the view-model now has a dependency on the <xref:Microsoft.Maui.Controls.Application> type. However, this drawback can be eliminated by passing an <xref:System.IServiceProvider> argument to the view-model constructor. The <xref:System.IServiceProvider> is resolved through automatic dependency resolution without having to register it with the dependency injection container. With this approach a type and its <xref:System.IServiceProvider> dependency can be automatically resolved provided that the type is registered with the dependency injection container. The <xref:System.IServiceProvider> can then be used for explicit dependency resolution:
 
@@ -303,6 +327,8 @@ In addition, an <xref:System.IServiceProvider> instance can be accessed on each 
 
 ## Limitations with XAML resources
 
+::: moniker range="=net-maui-8.0"
+
 A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` constructor and set it as the value of the `MainPage` property:
 
 ```csharp
@@ -313,9 +339,34 @@ public App(MyFirstAppPage page)
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` constructor and set it as the first page to be displayed in the app:
+
+```csharp
+MyFirstAppPage _firstPage;
+
+public App(MyFirstAppPage page)
+{
+    InitializeComponent();
+    _firstPage = page;
+}
+
+protected override Window CreateWindow(IActivationState? activationState)
+{
+    return new Window(_firstPage);
+}
+```
+
+::: moniker-end
+
 However, in this scenario if `MyFirstAppPage` attempts to access a `StaticResource` that's been declared in XAML in the `App` resource dictionary, a <xref:Microsoft.Maui.Controls.Xaml.XamlParseException> will be thrown with a message similar to `Position {row}:{column}. StaticResource not found for key {key}`. This occurs because the page resolved through constructor injection has been created before the application-level XAML resources have been initialized.
 
 A workaround for this issue is to inject an <xref:System.IServiceProvider> into your `App` class and then use it to resolve the page inside the `App` class:
+
+::: moniker range="=net-maui-8.0"
 
 ```csharp
 public App(IServiceProvider serviceProvider)
@@ -324,5 +375,26 @@ public App(IServiceProvider serviceProvider)
     MainPage = serviceProvider.GetService<MyFirstAppPage>();
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+```csharp
+MyFirstAppPage _firstPage;
+
+public App(IServiceProvider serviceProvider)
+{
+    InitializeComponent();
+    _firstPage = serviceProvider.GetService<MyFirstAppPage>();
+}
+
+protected override Window CreateWindow(IActivationState? activationState)
+{
+    return new Window(_firstPage);
+}
+```
+
+::: moniker-end
 
 This approach forces the XAML object tree to be created and initialized before the page is resolved.
