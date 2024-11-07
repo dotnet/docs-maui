@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -419,6 +419,10 @@ Full trimming is now supported by setting the `$(TrimMode)` MSBuild property to 
 ### Trimming feature switches
 
 [!INCLUDE [Trimming feature switches](../deployment/includes/feature-switches.md)]
+
+## Windows app deployment
+
+When debugging and deploying a new .NET MAUI project to Windows, the default behavior in .NET MAUI 9 is to deploy an unpackaged app. For more information, see [Deploy and debug your .NET MAUI app on Windows](~/windows/setup.md).
 
 ## XAML compiler
 
