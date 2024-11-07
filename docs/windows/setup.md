@@ -21,35 +21,6 @@ When debugging and deploying a new .NET MAUI project to Windows, the default beh
 
 ::: moniker-end
 
-## Configure Windows
-
-You'll need to enable Developer Mode in Windows to be able to deploy a packaged .NET MAUI Windows app. Both Windows 10 and Windows 11 are supported.
-
-:::image type="content" source="media/setup/developer-mode-win11.png" alt-text="Developer mode settings in Windows 11 for MAUI .NET Windows app.":::
-
-### Windows 11
-
-Developer Mode is enabled in **Settings** app, under **Privacy & security** > **For developers**. To enable Developer Mode in Windows 11:
-
-01. Open the Start Menu.
-01. Type **Developer settings** in the search box and select it.
-01. Turn on **Developer Mode**.
-01. If you receive a warning message about Developer Mode, read it, and select **Yes** if you understand the warning.
-
-### Windows 10
-
-Developer Mode is enabled in **Settings** app, under **Update & Security** > **For developers**. To enable Developer Mode in Windows 10:
-
-01. Open the Start Menu.
-01. Search for **Developer settings**, select it.
-01. Turn on **Developer Mode**.
-01. If you receive a warning message about Developer Mode, read it, and select **Yes** if you understand the warning.
-
-## Target Windows
-
-In Visual Studio, set the **Debug Target** to **Framework (...)** > **net8.0-windows**. There is a version number in the item entry, which may or may not match the following screenshot:
-
-:::image type="content" source="media/setup/vs-target-windows-net8.png" alt-text="Visual Studio debug target set to Windows for .NET MAUI app.":::
 
 ::: moniker range=">=net-maui-9.0"
 
@@ -120,13 +91,43 @@ If your app needs to use APIs that are only available with Windows packaged apps
     }
     ```
 
-When deploying a packaged .NET MAUI Windows app, you'll need to enable Developer Mode in Windows. For more information, see [Deploy and debug your .NET MAUI app on Windows](~/windows/setup.md).
-
 ---
+
+When deploying a packaged .NET MAUI Windows app, you'll need to enable Developer Mode in Windows. For more information, see [Deploy and debug your .NET MAUI app on Windows](~/windows/setup.md).
 
 <!-- markdownlint-enable MD025 -->
 
 ::: moniker-end
+
+## Configure Windows for packaged app deployment
+
+You'll need to enable Developer Mode in Windows to be able to deploy a packaged .NET MAUI Windows app. Both Windows 10 and Windows 11 are supported.
+
+:::image type="content" source="media/setup/developer-mode-win11.png" alt-text="Developer mode settings in Windows 11 for MAUI .NET Windows app.":::
+
+### Windows 11
+
+Developer Mode is enabled in **Settings** app, under **Privacy & security** > **For developers**. To enable Developer Mode in Windows 11:
+
+01. Open the Start Menu.
+01. Type **Developer settings** in the search box and select it.
+01. Turn on **Developer Mode**.
+01. If you receive a warning message about Developer Mode, read it, and select **Yes** if you understand the warning.
+
+### Windows 10
+
+Developer Mode is enabled in **Settings** app, under **Update & Security** > **For developers**. To enable Developer Mode in Windows 10:
+
+01. Open the Start Menu.
+01. Search for **Developer settings**, select it.
+01. Turn on **Developer Mode**.
+01. If you receive a warning message about Developer Mode, read it, and select **Yes** if you understand the warning.
+
+## Target Windows
+
+In Visual Studio, set the **Debug Target** to **Framework (...)** > **net8.0-windows**. There is a version number in the item entry, which may or may not match the following screenshot:
+
+:::image type="content" source="media/setup/vs-target-windows-net8.png" alt-text="Visual Studio debug target set to Windows for .NET MAUI app.":::
 
 <!--
 ## Start Menu entry
