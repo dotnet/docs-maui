@@ -21,16 +21,16 @@ Visual Studio will modify your app's project file (*.csproj) to set the `$(Windo
 
 In addition, your app's *Properties/launchSettings.json* file will have the `commandName` value changed from `MsixPackage` to `Project`:
 
-    ```json
-    {
-      "profiles": {
-        "Windows Machine": {
-          "commandName": "Project",
-          "nativeDebugging": false
-        }
-      }
+```json
+{
+  "profiles": {
+    "Windows Machine": {
+      "commandName": "Project",
+      "nativeDebugging": false
     }
-    ```
+  }
+}
+```
 
 > [!IMPORTANT]
 > If your app defines multiple launch setting profiles you'll have to manually update the `commandName` value from `MsixPackage` to `Project` for each profile.
