@@ -9,7 +9,7 @@ If your app needs to use APIs that are only available with Windows packaged apps
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Application > Windows Targets** tab and ensure that **Create a Windows MSIX package** is checked:
 
-:::image type="content" source="../media/setup/packaged-app-checked.png" alt-text="Screenshot of Create a Windows MSIX package checked in Visual Studio.":::
+    :::image type="content" source="../media/setup/packaged-app-checked.png" alt-text="Screenshot of Create a Windows MSIX package checked in Visual Studio.":::
 
 Visual Studio will modify your app's project file (*.csproj*) to remove the `<WindowsPackageType>None</WindowsPackageType>` line. In addition, your app's *Properties/launchSettings.json* file will have the `commandName` value changed from `Project` to `MsixPackage`:
 
