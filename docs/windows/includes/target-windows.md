@@ -13,7 +13,7 @@ In Visual Studio, set the **Debug Target** to **Framework (...)** > **net8.0-win
 
 ::: moniker-end
 
-::: moniker range="=net-maui-8.0"
+::: moniker range="=net-maui-9.0"
 
 In Visual Studio, set the **Debug Target** to **Framework (...)** > **net9.0-windows**. There's also a version number in the item entry.
 
