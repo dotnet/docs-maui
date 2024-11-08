@@ -502,11 +502,11 @@ In addition, the <xref:Microsoft.Maui.SizeRequest> struct is obsoleted. Instead,
 
 ## Upgrade from .NET 8 to .NET 9
 
-To upgrade your projects from .NET 8 to .NET 9, first install .NET 9 and the .NET MAUI workload with [Visual Studio 17.12+](https://visualstudio.microsoft.com/vs/), with [Visual Studio Code and the .NET MAUI extension](~/get-started/installation.md?tabs=visual-studio-code) and .NET and the .NET MAUI workloads, or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and the `dotnet workload install maui` command.
+To upgrade your .NET MAUI projects from .NET 8 to .NET 9, first install .NET 9 and the .NET MAUI workload with [Visual Studio 17.12+](https://visualstudio.microsoft.com/vs/), with [Visual Studio Code and the .NET MAUI extension and .NET and the .NET MAUI workloads](~/get-started/installation.md?tabs=visual-studio-code), or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and the `dotnet workload install maui` command.
 
 ### Update project file
 
-To update your app to .NET 9 open the app's project file (*.csproj*) and change the Target Framework Monikers (TFMs) from 8 to 9. If you're using a TFM such as `net8.0-ios15.2` be sure to match the platform version or remove it entirely. The following example shows the TFMs for a .NET 8 project:
+To update your .NET MAUI app to .NET 9 open the app's project file (*.csproj*) and change the Target Framework Monikers (TFMs) from 8 to 9. If you're using a TFM such as `net8.0-ios15.2` be sure to match the platform version or remove it entirely. The following example shows the TFMs for a .NET 8 project:
 
 ```xml
 <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0-tizen</TargetFrameworks>
@@ -520,7 +520,7 @@ The following example shows the TFMs for a .NET 9 project:
 <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 ```
 
-If your project file references a .NET 8 version of the [`Microsoft.Maui.Controls`](https://www.nuget.org/packages/Microsoft.Maui.Controls/) NuGet package, either directly or through the `$(MauiVersion)` build property, update this to a .NET 9 version. Then, remove the package reference for the [`Microsoft.Maui.Controls.Compatibility`](https://www.nuget.org/packages/Microsoft.Maui.Controls.Compatibility/) NuGet package, provided that your app doesn't use any types from this package. In addition, update the package reference for the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) NuGet package to the latest .NET 9 release.
+If your app's project file references a .NET 8 version of the [`Microsoft.Maui.Controls`](https://www.nuget.org/packages/Microsoft.Maui.Controls/) NuGet package, either directly or through the `$(MauiVersion)` build property, update this to a .NET 9 version. Then, remove the package reference for the [`Microsoft.Maui.Controls.Compatibility`](https://www.nuget.org/packages/Microsoft.Maui.Controls.Compatibility/) NuGet package, provided that your app doesn't use any types from this package. In addition, update the package reference for the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) NuGet package to the latest .NET 9 release.
 
 If your app targets iOS or Mac Catalyst, update the `$(SupportedOSPlatformVersion)` build properties for those platforms to 15.0:
 
@@ -529,13 +529,13 @@ If your app targets iOS or Mac Catalyst, update the `$(SupportedOSPlatformVersio
 <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
 ```
 
-When debugging and deploying a new .NET MAUI project to Windows, the default behavior in .NET MAUI 9 is to deploy an unpackaged app. To adopt this behavior, see [Deploy and debug your .NET MAUI app on Windows](~/windows/setup.md).
+When debugging and deploying a new .NET MAUI project to Windows, the default behavior in .NET MAUI 9 is to deploy an unpackaged app. To adopt this behavior, see [Convert a packaged .NET MAUI Windows app to unpackaged](~/windows/setup.md#convert-a-packaged-net-maui-windows-app-to-unpackaged).
 
-Prior to building your upgraded app for the first time, delete the `bin` and `obj` folders. Then build your app. Any errors and warnings will guide you towards next steps.
+Prior to building your upgraded app for the first time, delete the `bin` and `obj` folders. Any build errors and warnings will guide you towards next steps.
 
 ### Update XAML compiler error codes
 
-The XAML compiler error codes have changed their prefix from `XFC` to `XC`, so update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project file, if used, to reference the new prefix.
+XAML compiler error codes have changed their prefix from `XFC` to `XC`, so update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project file, if used, to reference the new prefix.
 
 ### Address new XAML compiler warnings for compiled bindings
 
@@ -543,17 +543,15 @@ Build warnings will be produced for bindings that don't use compiled bindings, a
 
 ### Update XAML markup extensions
 
-All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1>, <xref:Microsoft.Maui.Controls.Xaml.IValueProvider>, and <xref:Microsoft.Maui.Controls.IExtendedTypeConverter> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization introduced in .NET MAUI 9 that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
-
-For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true).
+XAML markup extensions will need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance. For more information, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true).
 
 ### Address deprecated APIs
 
-.NET MAUI 9 deprecates some APIs, which will be completely removed in a future release. Therefore, address any compiler warnings about deprecated APIs. For more information, see [Deprecated APIs](#deprecated-apis).
+.NET MAUI 9 deprecates some APIs, which will be completely removed in a future release. Therefore, address any build warnings about deprecated APIs. For more information, see [Deprecated APIs](#deprecated-apis).
 
 ### Adopt compiled bindings that set the Source property
 
-You can opt into compiling bindings that set the `Source` property, to take advantage of better runtime performance. For information, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
+You can opt into compiling bindings that set the `Source` property, to take advantage of better runtime performance. For more information, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
 ### Adopt compiled bindings in C#
 
@@ -565,13 +563,7 @@ You can adopt into using full trimming, to reduce the overall size of your app, 
 
 ### Adopt NativeAOT deployment on supported platforms
 
-You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time (AOT) compiled to native code. This produces the following benefits:
-
-- Reduced app package size, typically up to 2.5x smaller.
-- Faster startup time, typically up to 2x faster.
-- Faster build time.
-
-For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
+You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time (AOT) compiled to native code. For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
 
 ## .NET for Android
 
