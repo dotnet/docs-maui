@@ -502,7 +502,7 @@ In addition, the <xref:Microsoft.Maui.SizeRequest> struct is obsoleted. Instead,
 
 ## Upgrade from .NET 8 to .NET 9
 
-To upgrade your projects from .NET 8 to .NET 9, first install .NET 9 and the .NET MAUI workload with [Visual Studio 17.12+](https://visualstudio.microsoft.com/vs/), with [Visual Studio Code and the .NET MAUI extension](~/get-started/installation.md&tabs=visual-studio-code) and .NET and the .NET MAUI workloads, or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and the `dotnet workload install maui` command.
+To upgrade your projects from .NET 8 to .NET 9, first install .NET 9 and the .NET MAUI workload with [Visual Studio 17.12+](https://visualstudio.microsoft.com/vs/), with [Visual Studio Code and the .NET MAUI extension](~/get-started/installation.md?tabs=visual-studio-code) and .NET and the .NET MAUI workloads, or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and the `dotnet workload install maui` command.
 
 ### Update project file
 
@@ -572,7 +572,6 @@ You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deplo
 - Faster build time.
 
 For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
-
 
 ## .NET for Android
 
