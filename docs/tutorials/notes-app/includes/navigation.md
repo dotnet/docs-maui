@@ -190,7 +190,7 @@ The final change to the about page is updating the button click that opens a web
 
     :::code language="csharp" source="../snippets/navigation/Views/AboutPage.xaml.cs" id="learn_more" highlight="3,6":::
 
-If you look at the highlighted line, the code checks if the `BindingContext` is a `Models.About` type, and if it is, assigns it's assigned to the `about` variable. The next line inside of the `if` statement opens the browser to the URL provided by the `about.MoreInfoUrl` property.
+If you look at the highlighted line, the code checks if the `BindingContext` is a `Models.About` type, and if it is, assigns it to the `about` variable. The next line inside of the `if` statement opens the browser to the URL provided by the `about.MoreInfoUrl` property.
 
 Run the app and you should see that it runs exactly the same as before. Try changing the about model's values and see how the UI and URL opened by the browser also change.
 
