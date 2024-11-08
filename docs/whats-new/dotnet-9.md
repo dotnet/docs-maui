@@ -432,7 +432,7 @@ In .NET MAUI 9, the XAML compiler error codes have changed their prefix from `XF
 
 All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1>, <xref:Microsoft.Maui.Controls.Xaml.IValueProvider>, and <xref:Microsoft.Maui.Controls.IExtendedTypeConverter> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization introduced in .NET MAUI 9 that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
 
-For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md#service-providers?view=net-maui-9&preserve-view=true).
+For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true#service-providers).
 
 ## Xcode sync
 
@@ -543,7 +543,7 @@ Build warnings will be produced for bindings that don't use compiled bindings, a
 
 ### Update XAML markup extensions
 
-XAML markup extensions will need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance. For more information, see [Service providers](~/xaml/markup-extensions/create.md#service-providers?view=net-maui-9&preserve-view=true).
+XAML markup extensions will need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance. For more information, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true#service-providers).
 
 ### Address deprecated APIs
 
