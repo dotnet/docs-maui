@@ -120,7 +120,7 @@ xcsync -h|--help
     xcsync generate -p path/to/maui.csproj -tfm net9.0-ios
     ```
 
-- Sync changes from a generated Xcode project in the default location (*./obj/Xcode*) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
+- Sync changes from a generated Xcode project in the default location (*_$(IntermediateOutputPath)_/xcsync*) back to a .NET MAUI project that supports the `net9.0-ios` [TFM](/dotnet/standard/frameworks):
 
     ```dotnetcli
     xcsync sync -p path/to/maui.csproj -tfm net9.0-ios
