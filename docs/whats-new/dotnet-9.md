@@ -553,7 +553,7 @@ XAML markup extensions will need to be annotated with either the <xref:Microsoft
 
 You can opt into compiling bindings that set the `Source` property, to take advantage of better runtime performance. For more information, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
-### Adopt compiled bindings in C#
+### Adopt compiled bindings in C\#
 
 You can opt into compiling binding expressions that are declared in code, to take advantage of better runtime performance. For more information, see [Compiled bindings in code](~/fundamentals/data-binding/compiled-bindings.md#compiled-bindings-in-code).
 
