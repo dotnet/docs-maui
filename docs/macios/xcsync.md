@@ -89,7 +89,7 @@ xcsync -h|--help
     Invoke the tool for a specific framework. The framework must be defined in the project file. Examples: `net9.0-ios`, `net9.0-maccatalyst`. **Required** if the .NET project supports multiple target frameworks (for example, a standard MAUI project). If a single platform project, the default value will be the single target framework specified in the project file.
 - **`-t|--target <TARGET_XCODE_DIRECTORY>`**
 
-    The directory in which to place the generated Xcode project. Default value is `./obj/xcode`.
+    The directory in which to place the generated Xcode project. Default value is `(*_$(IntermediateOutputPath)_/xcsync*)`.
 - **`-f|--force`**
 
     Forces the overwrite of an existing Xcode project. Default value is `False`.
