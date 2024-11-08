@@ -1,7 +1,7 @@
 ---
 title: "Apple account management"
 description: "Learn how to use Apple account management features in Visual Studio."
-ms.date: 08/27/2024
+ms.date: 11/08/2024
 ---
 
 # Apple account management
@@ -35,7 +35,8 @@ To add your Apple account to Visual Studio:
 
     Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
 
-    Note: Only "Admin" keys will be able to register new Bundle IDs and generate new provisioning profiles. "Developer" keys will not be able to perform these tasks.
+    > [!NOTE]
+    > Only "Admin" keys will be able to register new Bundle IDs and generate new provisioning profiles. "Developer" keys will not be able to perform these tasks.
 
 1. To add an individual account, in the **Individual Account...** dialog, enter your App Store Connect API key data and click the **Add** button:
 
