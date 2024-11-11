@@ -1,7 +1,7 @@
 ---
 title: "Recognize a drag and drop gesture"
 description: "This article explains how to recognize drag and drop gestures with .NET MAUI."
-ms.date: 10/09/2023
+ms.date: 11/06/2024
 ---
 
 # Recognize a drag and drop gesture
@@ -489,6 +489,108 @@ void OnDrop(object sender, DropEventArgs e)
 ```
 
 In this example, the `Square` object is retrieved from the property bag of the data package, by specifying the "Square" dictionary key. An action based on the retrieved value can then be taken.
+
+## Drag and drop between applications
+
+On iOS, Mac Catalyst, and Windows, drag can start in one application with the corresponding drop operation ending in a .NET MAUI application. The app from which an item is dragged is the *source* application, and the .NET MAUI app on which an item is dropped is the *destination* application.
+
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+It's not possible to drag from a *source* application to a .NET MAUI *destination* application on Android.
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On an iPhone you need to drag an item out of a supported application, such as Files or Photos, and then drag the item to the drop target in your application. On an iPad, dragging items between applications can be achieved with apps in Split View.
+
+The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that processes an item that's been dragged from a *source* application to your .NET MAUI *destination* application:
+
+```csharp
+#if IOS || MACCATALYST
+using UIKit;
+using Foundation;
+#endif
+
+async void OnDropGestureRecognizerDrop(object? sender, DropEventArgs e)
+{
+    var filePaths = new List<string>();
+
+#if IOS || MACCATALYST
+    var session = e.PlatformArgs?.DropSession;
+    if (session == null)
+        return;
+
+    foreach (UIDragItem item in session.Items)
+    {
+        var result = await LoadItemAsync(item.ItemProvider, item.ItemProvider.RegisteredTypeIdentifiers.ToList());
+        if (result is not null)
+            filePaths.Add(result.FileUrl?.Path!);
+    }
+    foreach (var item in filePaths)
+    {
+        Debug.WriteLine($"Path: {item}");
+    }
+
+    static async Task<LoadInPlaceResult?> LoadItemAsync(NSItemProvider itemProvider, List<string> typeIdentifiers)
+    {
+        if (typeIdentifiers is null || typeIdentifiers.Count == 0)
+            return null;
+
+        var typeIdent = typeIdentifiers.First();
+
+        if (itemProvider.HasItemConformingTo(typeIdent))
+            return await itemProvider.LoadInPlaceFileRepresentationAsync(typeIdent);
+
+        typeIdentifiers.Remove(typeIdent);
+        return await LoadItemAsync(itemProvider, typeIdentifiers);
+    }
+#endif
+
+    string filePath = filePaths.FirstOrDefault();
+
+    // Process the dropped file
+}
+```
+
+# [Windows](#tab/windows)
+
+The following example shows an event handler for the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop?displayProperty=nameWithType> event that processes an item that's been dragged from a *source* application to your *destination* application:
+
+```csharp
+#if WINDOWS
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
+#endif
+
+async void OnDropGestureRecognizerDrop(object? sender, DropEventArgs e)
+{
+    var filePaths = new List<string>();
+
+#if WINDOWS
+    if (e.PlatformArgs is not null && e.PlatformArgs.DragEventArgs.DataView.Contains(StandardDataFormats.StorageItems))
+    {
+        var items = await e.PlatformArgs.DragEventArgs.DataView.GetStorageItemsAsync();
+        if (items.Any())
+        {
+            foreach (var item in items)
+            {
+                if (item is StorageFile file)
+                    filePaths.Add(item.Path);
+            }
+        }
+    }
+#endif
+
+    string filePath = filePaths.FirstOrDefault();
+
+    // Process the dropped file
+}
+```
+
+---
+
+<!-- markdownlint-enable MD025 -->
 
 ## Get the gesture position
 

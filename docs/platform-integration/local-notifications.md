@@ -478,8 +478,9 @@ For more information about dependency injection in .NET MAUI, see [Dependency in
 A `INotificationManagerService` implementation can be resolved through automatic dependency resolution, or through explicit dependency resolution. The following example shows using explicit dependency resolution to resolve a `INotificationManagerService` implementation:
 
 ```csharp
+// Assume the app uses a single window.
 INotificationManagerService notificationManager =
-    Application.Current?.MainPage?.Handler?.MauiContext?.Services.GetService<INotificationManagerService>();
+    Application.Current?.Windows[0].Page?.Handler?.MauiContext?.Services.GetService<INotificationManagerService>();
 ```
 
 For more information about resolving registered types, see [Resolution](~/fundamentals/dependency-injection.md).

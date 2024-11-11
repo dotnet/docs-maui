@@ -5,8 +5,11 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
+    }
 
-        MainPage = new AppShell();
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
     }
 
     //<appaction_handle>
@@ -23,8 +26,9 @@ public partial class App : Application
 
             if (page != null)
             {
-                await Application.Current.MainPage.Navigation.PopToRootAsync();
-                await Application.Current.MainPage.Navigation.PushAsync(page);
+                // Assume an app with a single window.
+                await Application.Current.Windows[0].Page.Navigation.PopToRootAsync();
+                await Application.Current.Windows[0].Page.Navigation.PushAsync(page);
             }
         });
     }
