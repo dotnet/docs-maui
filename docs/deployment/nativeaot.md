@@ -139,6 +139,85 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 > - Thoroughly test your app.
 
+## Native AOT diagnostic support on iOS-like platforms
+
+Native AOT and Mono share a subset of diagnostics and instrumentation capabilities. Due to Mono's extensive range of diagnostic tools, it can be beneficial to diagnose and debug issues within Mono instead of Native AOT. Apps that are trim and AOT-compatible shouldn't have behavioral differences, so investigations often apply to both runtimes.
+The following subsections describe diagnostics support with Native AOT on iOS-like platforms.
+
+| Feature | Fully supported | Partially supported | Not supported |
+| - | - | - | - |
+| [Observability and telemetry](#observability-and-telemetry) | | | <span aria-hidden="true">❌</span><span class="visually-hidden">Not supported</span> |
+| [Development-time diagnostics](#development-time-diagnostics) | <span aria-hidden="true">✔️</span><span class="visually-hidden">Fully supported</span> | | |
+| [Native debugging](#native-debugging) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
+| [CPU Profiling](#cpu-profiling) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
+| [Heap analysis](#heap-analysis) | | | <span aria-hidden="true">❌</span><span class="visually-hidden">Not supported</span> |
+
+### Observability and telemetry
+
+Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET mobile applications running on iOS-like platforms over TCP/IP. However, Native AOT is currently not compatible with this scenario as it does not support EventPipe/DiagnosticServer components built with TCP/IP stack.
+
+### Development-time diagnostics
+
+The .NET CLI tooling (`dotnet` SDK) offers separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in VS Code), uses Mono by default when building or launching .NET MAUI iOS (or Mac Catalyst) applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot). As described in this section, not all diagnostic tools will work seamlessly with published Native AOT applications.
+However, all applications that are trim and AOT-compatible, i.e., that do not produce any trim and AOT warnings during build time, shouldn't have behavioral differences between Mono and Native AOT.
+Therefore, all .NET development-time diagnostic tools (like Hot Reload) are still available for developers during mobile app development cycle.
+We recommend developing, debugging, and testing the applications as usual and publishing the working app with Native AOT as one of the last steps.
+
+### Native debugging
+
+When you run your .NET MAUI iOS (or Mac Catalyst) app during development, like inside VS Code, or with `dotnet build -t:Run`, it runs on Mono by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between Mono and Native AOT when the application is not producing any trim and AOT warnings upon build. This characteristic allows you to use the standard VS Code managed debugging engine for development and testing, if your application fulfils the mentioned requirement.
+
+After publishing, Native AOT applications are true native binaries. The managed debugger won't work on them. However, the Native AOT compiler generates fully native executable files that you can debug with `lldb`. Debugging a Mac Catalyst app with `lldb` is straight-forward, as it is executed on the same system. However, debugging NativeAOT iOS applications requires a few extra steps which are covered in the following subsection.
+
+#### Debugging .NET MAUI iOS applications with NativeAOT
+
+.NET MAUI iOS applications which are compatible with NativeAOT and are properly configured and published with this deployment model, can be debugged in the following way (tested with `Xcode 16.0` CLI tools):
+
+1. Publish your app with Native AOT targeting `ios-arm64` and store the following information:
+
+    - Application name - referenced bellow as `<app-name>`
+    - Bundle identifier - referenced bellow as `<bundle-identifier>`
+    - Path to the published application's archive *.ipa* file - referenced bellow as `<path-to-ipa>`
+
+2. Discover physical device ID - referenced bellow as: `<device-identifier>`
+
+    ```bash
+    xcrun devicectl list devices
+    ```
+
+3. Install the app on your physical device
+
+    ```bash
+    xcrun devicectl device install app --device <device-identifier> <path-to-ipa>
+    ```
+
+4. Launch the app stopped on your physical device
+
+    ```bash
+    xcrun devicectl device process launch --device <device-identifier> --start-stopped <bundle-identifier>
+    ```
+
+5. Open `lldb` and connect to your physical device
+
+    ```bash
+    (lldb) device select <device-identifier>
+    (lldb) device process attach -n <app-name>
+    ```
+
+After successfully completing previous steps, you are all set to start debugging your Native AOT .NET MAUI iOS application with `lldb`.
+
+#### Importance of the symbol file
+
+By default, debug symbols are stripped from the application's binary file into *.dSYM* files. This file is used by debuggers and post mortem analysis tools to show information about local variables, source line numbers, to recreate stack traces of crash dumps etc. Therefore, it is essential to preserve it before submitting your application to App Store.
+
+### CPU profiling
+
+[Xcode Instruments](https://developer.apple.com/xcode) can be used to collect CPU samples of a Native AOT application.
+
+### Heap analysis
+
+Currently not supported with Native AOT.
+
 ## See also
 
 - [Trim a .NET MAUI app](trimming.md)
