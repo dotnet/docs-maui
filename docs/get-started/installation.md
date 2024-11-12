@@ -1,22 +1,23 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 06/12/2024
+ms.date: 11/12/2024
+monikerRange: ">=net-maui-9.0"
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.12 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.8 or greater by following the [installation](#installation) steps.
+To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.12 or greater by following the [installation](#installation) steps.
 
 ## Prerequisites
 
-- Visual Studio 2022 17.8 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
+- Visual Studio 2022 17.12 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
 To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 

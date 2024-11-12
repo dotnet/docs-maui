@@ -15,7 +15,7 @@ By default, you don't need to save your XAML file to see the results of your edi
 > [!NOTE]
 > If you're writing a native UWP or WPF app, without using .NET MAUI, see [What is XAML Hot Reload for WPF and UWP apps?](/visualstudio/xaml-tools/xaml-hot-reload).
 
-XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices. In all cases, XAML Hot Reload requires your debug configuration to be named `Debug`.
+XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio Code. On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices. On Mac, XAML Hot Reload is available on Android, iOS, and Mac Catalyst on emulators, simulators, and physical devices. In all cases, XAML Hot Reload requires your debug configuration to be named `Debug`.
 
 > [!IMPORTANT]
 > XAML Hot Reload doesn't reload C# code. If you add a new event handler in code, it can only be used in XAML after the code is reloaded. In addition, if you add a new XAML element with an `x:Name`, the name cannot be used in code until the code is reloaded.
