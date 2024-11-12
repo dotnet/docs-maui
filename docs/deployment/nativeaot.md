@@ -139,11 +139,11 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 > - Thoroughly test your app.
 
-## Native AOT diagnostic support on iOS-like platforms
+## Native AOT diagnostic support on iOS and Mac Catalyst
 
 Native AOT and Mono share a subset of diagnostics and instrumentation capabilities. Due to Mono's range of diagnostic tools, it can be beneficial to diagnose and debug issues within Mono instead of Native AOT. Apps that are trim and AOT-compatible shouldn't have behavioral differences, so investigations often apply to both runtimes.
 
-The following table shows the diagnostics support with Native AOT on iOS-like platforms:
+The following table shows the diagnostics support with Native AOT on iOS and Mac Catalyst:
 
 | Feature | Fully supported | Partially supported | Not supported |
 | - | - | - | - |
@@ -157,7 +157,7 @@ The following subsections provide additional information about this diagnostics 
 
 ### Observability and telemetry
 
-Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET mobile applications running on iOS-like platforms over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn;=;t support EventPipe/DiagnosticServer components built with the TCP/IP stack.
+Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn;=;t support EventPipe/DiagnosticServer components built with the TCP/IP stack.
 
 ### Development-time diagnostics
 
@@ -213,7 +213,7 @@ After successfully completing these steps, you'll be able to start debugging you
 
 #### Importance of the symbol file
 
-By default, debug symbols are stripped from the application's binary file into *.dSYM* files. This file is used by debuggers and post mortem analysis tools to show information about local variables, source line numbers, and to recreate stack traces of crash dumps. Therefore, it's essential to preserve it before submitting your application to the App Store.
+By default, debug symbols are stripped from the application's binary file into a *.dSYM* file. This file is used by debuggers and post mortem analysis tools to show information about local variables, source line numbers, and to recreate stack traces of crash dumps. Therefore, it's essential to preserve the symbol file before submitting your application to the App Store.
 
 ### CPU profiling
 
