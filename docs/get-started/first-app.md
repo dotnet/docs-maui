@@ -1,8 +1,9 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code with the .NET MAUI extension"
-ms.date: 06/12/2024
+ms.date: 11/12/2024
 zone_pivot_groups: devices-platforms
+monikerRange: ">=net-maui-9.0"
 ---
 
 # Build your first app
@@ -15,7 +16,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Prerequisites
 
-- Visual Studio 2022 17.8 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
+- Visual Studio 2022 17.12 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
 
 ## Create an app
 
@@ -76,35 +77,31 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
     :::image type="content" source="media/first-app/vs/android-emulator-button.png" alt-text="Android emulator button.":::
 
-    Visual Studio will start to install the default Android SDK and Android Emulator.
+    Visual Studio will start the process of installing the default Android SDK and Android Emulator.
 
 01. In the **Android SDK - License Agreement** window, press the **Accept** button:
 
     :::image type="content" source="media/first-app/vs/android-sdk-license1.png" alt-text="First Android SDK License Agreement window.":::
 
-01. In the **Android SDK - License Agreement** window, press the **Accept** button:
-
-    :::image type="content" source="media/first-app/vs/android-sdk-license2.png" alt-text="Second Android SDK License Agreement window.":::
-
 01. In the **User Account Control** dialog, press the **Yes** button:
 
     :::image type="content" source="media/first-app/vs/android-sdk-license-uac.png" alt-text="Android SDK license user account control dialog.":::
 
-01. In the **License Acceptance** window, press the **Accept** button:
-
-    :::image type="content" source="media/first-app/vs/android-device-license.png" alt-text="Android device license window.":::
-
-    Wait for Visual Studio to download the Android SDK and Android Emulator.
-
-01. In the Visual Studio toolbar, press the **Android Emulator** button:
-
-    :::image type="content" source="media/first-app/vs/android-emulator-button.png" alt-text="Android emulator button.":::
-
-    Visual Studio will start to create a default Android emulator.
+    Wait for Visual Studio to download the default Android SDK and Android Emulator.
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
     :::image type="content" source="media/first-app/vs/android-device-manager-uac.png" alt-text="Android Device Manager user account control dialog.":::
+
+01. In the **Android SDK Platform is missing** dialog, press the **Install** button:
+
+    :::image type="content" source="media/first-app/vs/android-sdk-platform-missing.png" alt-text="Android SDK platform is missing dialog.":::
+
+01. In the **Android SDK - License Agreement** window, press the **Accept** button:
+
+    :::image type="content" source="media/first-app/vs/android-sdk-license2.png" alt-text="Second Android SDK License Agreement window.":::
+
+    Wait for Visual Studio to install the Android SDK components.
 
 01. In the **New Device** window, press the **Create** button:
 
@@ -116,9 +113,23 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
     :::image type="content" source="media/first-app/vs/android-device-manager.png" alt-text="Android Device Manager window.":::
 
-01. In the Visual Studio toolbar, press the **Pixel 5 - API 34 (Android 14.0 - API 33)** button to build and run the app:
+01. In the Visual Studio toolbar, press the **Pixel 7 - API 35 (Android 15.0 - API 35)** button:
 
-    :::image type="content" source="media/first-app/vs/pixel5-api-34.png" alt-text="Pixel 5 API 34 emulator button.":::
+    :::image type="content" source="media/first-app/vs/pixel7-api-35.png" alt-text="Pixel 7 API 35 emulator button.":::
+
+01. In the **Android SDK - License Agreement** window, press the **Accept** button:
+
+    :::image type="content" source="media/first-app/vs/android-sdk-license3.png" alt-text="Third Android SDK License Agreement window.":::
+
+01. In the **User Account Control** dialog, press the **Yes** button:
+
+    :::image type="content" source="media/first-app/vs/android-sdk-license-uac.png" alt-text="Android SDK license user account control dialog.":::
+
+    Wait for Visual Studio to install to download the Android SDK.
+
+01. In the Visual Studio toolbar, press the **Pixel 7 - API 35 (Android 15.0 - API 35)** button to build and run the app:
+
+    :::image type="content" source="media/first-app/vs/pixel7-api-35.png" alt-text="Pixel 5 API 35 emulator button.":::
 
     Visual Studio will start the Android emulator, build the app, and deploy the app to the emulator.
 
@@ -138,25 +149,10 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-06. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Framework** and then the **net8.0-windows** entry:
-
-    :::image type="content" source="media/first-app/vs/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
-
-    <!-- markdownlint-enable MD029 -->
-
-01. In the Visual Studio toolbar, press the **Windows Machine** button to build and run the app:
+06. In the Visual Studio toolbar, press the **Windows Machine** button to build and run the app:
 
     :::image type="content" source="media/first-app/vs/windows-run-button.png" alt-text="Run .NET MAUI app in Visual Studio button.":::
-
-    If you've not enabled Developer Mode, Visual Studio will prompt you to enable it. In the **Enable Developer Mode for Windows** dialog, click **settings for developers** to open the Settings app:
-
-    :::image type="content" source="media/first-app/vs/windows-enable-developer-mode.png" alt-text="Enable Windows developer mode dialog.":::
-
-    In the Settings app, turn on **Developer Mode** and accept the disclaimer:
-
-    :::image type="content" source="media/first-app/vs/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
-
-    Close the Settings app and then close the **Enable Developer Mode for Windows** dialog.
+    <!-- markdownlint-enable MD029 -->
 
 01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
 
@@ -197,7 +193,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 :::zone pivot="devices-maccatalyst"
 
-.NET MAUI apps that target Mac Catalyst can only be launched and debugged using Visual Studio 2022 for Mac.
+.NET MAUI apps that target Mac Catalyst can only be launched and debugged using Visual Studio Code.
 
 :::zone-end
 

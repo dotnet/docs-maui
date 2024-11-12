@@ -20,9 +20,9 @@ Pair to Mac enables the following software development workflow:
 - It's possible to use the Windows command-line to build iOS apps.
 
 > [!NOTE]
-> Before following the instructions in this article, on a Mac, [install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Then manually open Xcode, after installation, so that it can add additional components. In addition, you should also install either the latest [Visual Studio 2022 for Mac](https://visualstudio.microsoft.com/vs/mac/) or [Mono](https://www.mono-project.com/download/stable/#download-mac). In addition, if you have a Mac computer with Apple silicon please ensure that Rosetta is installed.
+> Before following the instructions in this article, on a Mac, [install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Then manually open Xcode, after installation, so that it can add additional components. You should also install [Mono](https://www.mono-project.com/download/stable/#download-mac). In addition, if you have a Mac computer with Apple silicon please ensure that Rosetta is installed.
 >
-> If you would prefer not to install Visual Studio 2022 for Mac, Visual Studio 2022 can automatically configure the Mac build host. However, you must still install and run Xcode, and install Mono.
+> Visual Studio 2022 will automatically configure the Mac build host. However, you must still install and run Xcode, and install Mono.
 
 ## Enable remote login on the Mac
 

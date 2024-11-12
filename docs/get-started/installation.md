@@ -1,22 +1,23 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 06/12/2024
+ms.date: 11/12/2024
+monikerRange: ">=net-maui-9.0"
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.12 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.8 or greater by following the [installation](#installation) steps.
+To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.12 or greater by following the [installation](#installation) steps.
 
 ## Prerequisites
 
-- Visual Studio 2022 17.8 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
+- Visual Studio 2022 17.12 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
 To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 
@@ -68,7 +69,7 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 
 ## Install .NET and .NET MAUI workloads
 
-1. Install [.NET 8](/dotnet/core/install/windows).
+1. Install [.NET 9](/dotnet/core/install/windows).
 
     On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](installation.md?tabs=vswin).
 
@@ -101,8 +102,8 @@ To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 ```
 
 | Your Operating System | Supported Target Platforms |
@@ -140,10 +141,10 @@ If you try to create a new project and the file explorer keeps popping up in an 
 
 #### Using the InstallAndroidDependencies target
 
-.NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
+.NET 9 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
 
 ```dotnetcli
-dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<AndroidSdkPath>" -p:JavaSdkDirectory="<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
+dotnet build -t:InstallAndroidDependencies -f:net9.0-android -p:AndroidSdkDirectory="<AndroidSdkPath>" -p:JavaSdkDirectory="<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
 ```
 
 In the command above:
@@ -166,7 +167,7 @@ In the command above:
   * build-tools >= 34.0.0
   * cmdline-tools == 11.0
   * platforms;android-34*
-  * .NET 8: platform-tools = 34.0.5
+  * .NET 9: platform-tools = 34.0.5
 
 #### There's an error that Android licenses aren't accepted
 
@@ -186,7 +187,7 @@ This is a known issue if you install to `%APPDATA%` on Windows and will be fixed
 
 * Debugging can fail to start for multiple reasons. If there isn't a clear error in the **Output** window, first double check that you're using the **C#** run configuration in Visual Studio Code.
 * If you're using an older version of .NET, the C# debugger isn't supported for .NET MAUI apps. You can use the legacy .NET MAUI debug configuration by unchecking the extension setting **MAUI > Configuration > Experimental > Use VSDbg**.
-* You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net8.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
+* You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net9.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
 
 ## Known limitations
 
