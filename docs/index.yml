@@ -332,7 +332,7 @@ additionalContent:
       items:
         - title: .NET MAUI API reference
           summary: API reference documentation for .NET MAUI.
-          url: /dotnet/api/?view=net-maui-8.0&preserve-view=true
+          url: /dotnet/api/?view=net-maui-9.0&preserve-view=true
         - title: .NET API reference
           summary: API reference documentation for .NET.
           url: /dotnet/api?view=net-8.0&preserve-view=true
