@@ -153,15 +153,15 @@ The following table shows the diagnostics support with Native AOT on iOS and Mac
 | [CPU Profiling](#cpu-profiling) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
 | [Heap analysis](#heap-analysis) | | | <span aria-hidden="true">❌</span><span class="visually-hidden">Not supported</span> |
 
-The following subsections provide additional information about this diagnostics support.
+The following sections provide additional information about this diagnostics support.
 
 ### Observability and telemetry
 
-Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn;=;t support EventPipe/DiagnosticServer components built with the TCP/IP stack.
+Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst, over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn't support EventPipe/DiagnosticServer components built with the TCP/IP stack.
 
 ### Development-time diagnostics
 
-The .NET CLI tooling provides separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in Visual Studio Code), uses Mono by default when building or launching .NET MAUI iOS or Mac Catalyst applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot).
+.NET CLI tooling provides separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in Visual Studio Code), uses Mono by default when building or launching .NET MAUI iOS or Mac Catalyst applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot).
 
 Not all diagnostic tools will work seamlessly with published Native AOT applications. However, all applications that are trim and AOT-compatible (that is, those that don't produce any trim and AOT warnings at build time) shouldn't have behavioral differences between Mono and Native AOT. Therefore, all .NET development-time diagnostic tools, such as Hot Reload, are still available for developers during the mobile application development cycle.
 
@@ -170,7 +170,7 @@ Not all diagnostic tools will work seamlessly with published Native AOT applicat
 
 ### Native debugging
 
-When you run your .NET MAUI iOS or Mac Catalyst application during development it runs on Mono by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between Mono and Native AOT when the application is not producing any trim and AOT warnings upon build. This characteristic allows you to use the standard Visual Studio Code managed debugging engine for development and testing, provided that your application fulfils this requirement.
+When you run your .NET MAUI iOS or Mac Catalyst application during development it runs on Mono by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between Mono and Native AOT when the application isn't producing any trim and AOT warnings at build time. Provided that your application fulfils this requirement, you can use the standard Visual Studio Code managed debugging engine for development and testing,
 
 After publishing, Native AOT applications are true native binaries and so the managed debugger won't work on them. However, the Native AOT compiler generates fully native executable files that you can debug with `lldb`. Debugging a Mac Catalyst app with `lldb` is straight forward, as it is executed on the same system. However, debugging NativeAOT iOS applications requires additional effort.
 
