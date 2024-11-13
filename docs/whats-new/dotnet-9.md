@@ -396,7 +396,7 @@ For more information, see [Native embedding](~/platform-integration/native-embed
 
 ## Project templates
 
-The **.NET MAUI App** project template includes the ability to create a fully functional todo app using controls from the Syncfusion Toolkit for .NET MAUI to visualize data and persist it to a local database based on SQLite. To create this todo app, create a new project in Visual Studio using the **.NET MAUI App** project template, and then check the **Include sample content** checkbox in the **Additional information** window:
+The **.NET MAUI App** project template includes the ability to create a fully functional todo app, using controls from the Syncfusion Toolkit for .NET MAUI to visualize data and persist it to a local database based on SQLite. To create this todo app, create a new project in Visual Studio using the **.NET MAUI App** project template, and then check the **Include sample content** checkbox in the **Additional information** window:
 
 :::image type="content" source="media/dotnet-9/syncfusion-sample-pages.png" alt-text="Screenshot of how to add SyncFusion sample pages to your .NET MAUI app project.":::
 
