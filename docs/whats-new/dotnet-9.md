@@ -403,7 +403,7 @@ The **.NET MAUI App** project template includes the ability to create a fully fu
 The todo app can also be created from the .NET CLI with the `--sample-content` or `-sc` option:
 
 ```dotnetcli
-dotnet maui maui --sample-content
+dotnet new maui --sample-content -n MyProject
 ```
 
 .NET MAUI 9 also adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
@@ -411,7 +411,7 @@ dotnet maui maui --sample-content
 The template can also be used from the .NET CLI:
 
 ```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
+dotnet new maui-blazor-web -n MyProject
 ```
 
 ## Resource dictionaries
