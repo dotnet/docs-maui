@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 10/01/2024
+ms.date: 11/13/2024
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -220,18 +220,18 @@ To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetC
 
 ## Fix disposal deadlocks on Android
 
-By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
-
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in *MauiProgram.cs*:
-
-```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
-```
-
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android.
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the number of disposal deadlocks that can occur on Android, resulting in less application hangs occurring.
 
 > [!WARNING]
-> Enabling this switch means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+
+```csharp
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
+```
+
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
 ## Host content using the legacy behavior on iOS and Mac Catalyst
 
