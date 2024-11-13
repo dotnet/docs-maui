@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/08/2024
+ms.date: 11/13/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
+- [.NET MAUI 9](https://github.com/dotnet/maui/releases/tag/9.0.0)
 - [.NET MAUI 9 RC2](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.2.24503.2)
 - [.NET MAUI 9 RC1](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.1.24453.9)
 - [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24407.4)
@@ -569,6 +570,7 @@ You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deplo
 
 .NET for Android in .NET 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android in .NET 9, see the following release notes:
 
+- [.NET for Android 9](https://github.com/dotnet/android/releases/tag/35.0.7)
 - [.NET for Android 9 RC2](https://github.com/dotnet/android/releases/tag/35.0.0-rc.2.152)
 - [.NET for Android 9 RC1](https://github.com/dotnet/android/releases/tag/35.0.0-rc.1.80)
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
@@ -689,6 +691,7 @@ For more information, see [Trimming granularity](/dotnet/core/deploying/trimming
 
 For more information about .NET 9 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-xcode16.0-9617)
 - [.NET 9.0.1xx RC2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc2-9600)
 - [.NET 9.0.1xx RC1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc1-9270)
 - [.NET 9.0.1xx Preview 7](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview7-9231)
