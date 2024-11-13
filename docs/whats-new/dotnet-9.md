@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/08/2024
+ms.date: 11/13/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -396,12 +396,22 @@ For more information, see [Native embedding](~/platform-integration/native-embed
 
 ## Project templates
 
-.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+The **.NET MAUI App** project template includes the ability to create a fully functional todo app, using controls from the Syncfusion Toolkit for .NET MAUI to visualize data and persist it to a local database based on SQLite. To create this todo app, create a new project in Visual Studio using the **.NET MAUI App** project template, and then check the **Include sample content** checkbox in the **Additional information** window:
 
-The template can also be used from `dotnew new`:
+:::image type="content" source="media/dotnet-9/syncfusion-sample-pages.png" alt-text="Screenshot of how to add SyncFusion sample pages to your .NET MAUI app project.":::
+
+The todo app can also be created from the .NET CLI with the `--sample-content` or `-sc` option:
 
 ```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
+dotnet new maui --sample-content -n MyProject
+```
+
+.NET MAUI 9 also adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from the .NET CLI:
+
+```dotnetcli
+dotnet new maui-blazor-web -n MyProject
 ```
 
 ## Resource dictionaries
