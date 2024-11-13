@@ -147,7 +147,7 @@ The following table shows the diagnostics support with Native AOT on iOS and Mac
 
 | Feature | Fully supported | Partially supported | Not supported |
 | - | - | - | - |
-| [Observability and telemetry](#observability-and-telemetry) | | | <span aria-hidden="true">❌</span><span class="visually-hidden">Not supported</span> |
+| [Observability and telemetry](#observability-and-telemetry) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
 | [Development-time diagnostics](#development-time-diagnostics) | <span aria-hidden="true">✔️</span><span class="visually-hidden">Fully supported</span> | | |
 | [Native debugging](#native-debugging) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
 | [CPU Profiling](#cpu-profiling) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
@@ -157,7 +157,7 @@ The following sections provide additional information about this diagnostics sup
 
 ### Observability and telemetry
 
-Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst, over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn't support EventPipe/DiagnosticServer components built with the TCP/IP stack.
+Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst, over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn't support EventPipe/DiagnosticServer components built with the TCP/IP stack. Observability is still achievable explicitly in the code.
 
 ### Development-time diagnostics
 
