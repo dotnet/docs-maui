@@ -218,9 +218,9 @@ To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetC
 
 ::: moniker range=">=net-maui-9.0"
 
-## Fix disposal deadlocks on Android
+## Disposal deadlocks on Android
 
-By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the number of disposal deadlocks that can occur on Android, resulting in less application hangs occurring.
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
 
 > [!WARNING]
 > This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.

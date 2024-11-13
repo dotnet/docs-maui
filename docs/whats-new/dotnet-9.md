@@ -153,7 +153,7 @@ To opt into using the `0.0.0.1` address, add the following code to the `CreateMa
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
 
-<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager` by default. This reduces the number of disposal deadlocks that can occur on Android, resulting in less application hangs occurring.
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
 
 > [!WARNING]
 > This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
