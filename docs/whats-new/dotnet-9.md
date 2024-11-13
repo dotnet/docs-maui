@@ -153,13 +153,18 @@ To opt into using the `0.0.0.1` address, add the following code to the `CreateMa
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
 
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
+
+> [!WARNING]
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
 
 ```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
 ```
 
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
 ### Buttons on iOS
 
