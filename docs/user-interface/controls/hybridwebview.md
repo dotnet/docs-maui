@@ -473,7 +473,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-You must call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
+You must then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 ```csharp
 public partial class MainPage : ContentPage
