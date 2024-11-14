@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 10/28/2024
+ms.date: 11/14/2024
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -10,7 +10,7 @@ monikerRange: ">=net-maui-9.0"
 
 # HybridWebView
 
-<!-- [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-hybridwebview) -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-hybridwebview)
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HybridWebView> enables hosting arbitrary HTML/JS/CSS content in a web view, and enables communication between the code in the web view (JavaScript) and the code that hosts the web view (C#/.NET). For example, if you have an existing React JS app, you could host it in a cross-platform .NET MAUI native app, and build the back-end of the app using C# and .NET.
 
@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HybridW
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs.Message> property that contains the message.
 
-Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the `InvokeJavaScriptAsync` and `EvaluateJavaScriptAsync` methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c).
+Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c).
 
 To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
@@ -175,6 +175,32 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
     </Grid>
     ```
 
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to enable developer tools on the underlying WebView controls when your app is running in debug configuration. To do this, call the <xref:Microsoft.Maui.Hosting.HybridWebViewServiceCollectionExtensions.AddHybridWebViewDeveloperTools%2A> method on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object:
+
+    ```csharp
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
+
+    #if DEBUG
+            builder.Services.AddHybridWebViewDeveloperTools();
+    #endif
+            // Register any app services on the IServiceCollection object
+
+            return builder.Build();
+        }
+    }
+    ```
+
 1. Use the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the JavaScript and C# code:
 
     ```csharp
@@ -193,14 +219,14 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 ## Invoke JavaScript from C\#
 
-Your app's C# code can synchronously and asynchronously invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, with optional parameters and an optional return value. This can be achieved with the `InvokeJavaScriptAsync` and `EvaluateJavaScriptAsync` methods:
+Your app's C# code can synchronously and asynchronously invoke JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView>, with optional parameters and an optional return value. This can be achieved with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods:
 
-- The `EvaluateJavaScriptAsync` method runs the JavaScript code provided via a parameter and returns the result as a string.
-- The `InvokeJavaScriptAsync` method invokes a specified JavaScript method, optionally passing in parameter values, and specifies a generic argument that indicates the type of the return value. It returns an object of the generic argument type that contains the return value of the called JavaScript method. Internally, parameters and return values are JSON encoded.
+- The <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> method runs the JavaScript code provided via a parameter and returns the result as a string.
+- The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method invokes a specified JavaScript method, optionally passing in parameter values, and specifies a generic argument that indicates the type of the return value. It returns an object of the generic argument type that contains the return value of the called JavaScript method. Internally, parameters and return values are JSON encoded.
 
 ### Invoke synchronous JavaScript
 
-Synchronous JavaScript methods can be invoked with the `EvaluateJavaScriptAsync` and `InvokeJavaScriptAsync` methods. In the following example the `InvokeJavaScriptAsync` method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a simple Javascript method to add two numbers could be defined in your web content:
+Synchronous JavaScript methods can be invoked with the <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> methods. In the following example the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a simple Javascript method to add two numbers could be defined in your web content:
 
 ```javascript
 function AddNumbers(a, b) {
@@ -208,7 +234,7 @@ function AddNumbers(a, b) {
 }
 ```
 
-The `AddNumbers` JavaScript method can be invoked from C# with the `InvokeJavaScriptAsync` method:
+The `AddNumbers` JavaScript method can be invoked from C# with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method:
 
 ```csharp
 double x = 123d;
@@ -238,7 +264,7 @@ internal partial class HybridSampleJsContext : JsonSerializerContext
 
 ### Invoke asynchronous JavaScript
 
-Asynchronous JavaScript methods can be invoked with the `EvaluateJavaScriptAsync` and `InvokeJavaScriptAsync` methods. In the following example the `InvokeJavaScriptAsync` method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a Javascript method that asynchronously retrieves data could be defined in your web content:
+Asynchronous JavaScript methods can be invoked with the <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> methods. In the following example the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a Javascript method that asynchronously retrieves data could be defined in your web content:
 
 ```javascript
 async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
@@ -253,7 +279,7 @@ async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
 }
 ```
 
-The `EvaluateMeWithParamsAndAsyncReturn` JavaScript method can be invoked from C# with the `InvokeJavaScriptAsync` method:
+The `EvaluateMeWithParamsAndAsyncReturn` JavaScript method can be invoked from C# with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method:
 
 ```csharp
 Dictionary<string, string> asyncResult = await hybridWebView.InvokeJavaScriptAsync<Dictionary<string, string>>(

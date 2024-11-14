@@ -160,7 +160,7 @@ public class TodoItemDatabase
 
 ## Access data
 
-The `TodoItemDatabase` class can be registered as a singleton that can be used throughout the app if you are using dependency injection. For example, you can register your pages and the database access class as services on the `IServiceCollection` object, in **MauiProgram.cs**, with the `AddSingleton` and `AddTransient` methods:
+The `TodoItemDatabase` class can be registered as a singleton that can be used throughout the app if you are using dependency injection. For example, you can register your pages and the database access class as services on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object, in **MauiProgram.cs**, with the `AddSingleton` and `AddTransient` methods:
 
 ```csharp
 builder.Services.AddSingleton<TodoListPage>();
