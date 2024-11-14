@@ -154,13 +154,18 @@ To opt into using the `0.0.0.1` address, add the following code to the `CreateMa
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
 
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
+
+> [!WARNING]
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
 
 ```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
 ```
 
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
 ### Buttons on iOS
 
@@ -397,12 +402,22 @@ For more information, see [Native embedding](~/platform-integration/native-embed
 
 ## Project templates
 
-.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+The **.NET MAUI App** project template includes the ability to create a fully functional todo app, using controls from the Syncfusion Toolkit for .NET MAUI to visualize data and persist it to a local database based on SQLite. To create this todo app, create a new project in Visual Studio using the **.NET MAUI App** project template, and then check the **Include sample content** checkbox in the **Additional information** window:
 
-The template can also be used from `dotnew new`:
+:::image type="content" source="media/dotnet-9/syncfusion-sample-pages.png" alt-text="Screenshot of how to add SyncFusion sample pages to your .NET MAUI app project.":::
+
+The todo app can also be created from the .NET CLI with the `--sample-content` or `-sc` option:
 
 ```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
+dotnet new maui --sample-content -n MyProject
+```
+
+.NET MAUI 9 also adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from the .NET CLI:
+
+```dotnetcli
+dotnet new maui-blazor-web -n MyProject
 ```
 
 ## Resource dictionaries
