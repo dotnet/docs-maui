@@ -96,7 +96,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
     </ContentPage>
     ```
 
-1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control for use in your app. To do this, on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public static class MauiProgram
@@ -122,6 +122,8 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+    This code also enables developer tools on the underlying WebView controls, when the app is running in debug configuration.
 
 ## Access scoped services from native UI
 
