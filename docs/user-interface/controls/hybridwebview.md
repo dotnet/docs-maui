@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HybridW
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs.Message> property that contains the message.
 
-Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c). Your app's JavaScript code can also synchronously invoke C# methods. For more information, see [Invoke C# from JavaScript](#invoke-c-from-javascript).
+Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods. Your app's JavaScript code can also synchronously invoke C# methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c) and [Invoke C# from JavaScript](#invoke-c-from-javascript).
 
 To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
@@ -32,7 +32,7 @@ To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you 
 The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native web view control and runs within the context of the app. Any part of the app can access external web services, but isn't required to.
 
 > [!IMPORTANT]
-> By default, the <xref:Microsoft.Maui.Controls.HybridWebView> won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
+> By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
 ## Create a .NET MAUI HybridWebView app
 
@@ -425,14 +425,14 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 Your app's JavaScript code within the <xref:Microsoft.Maui.Controls.HybridWebView> can synchronously invoke C# methods, with optional parameters and an optional return value. This can be achieved by:
 
-- Declaring public methods that will be invoked from JavaScript.
-- Setting the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>, with the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method.
+- Declaring public C# methods that will be invoked from JavaScript.
+- Calling the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>.
 - Calling the C# methods from JavaScript.
 
 > [!IMPORTANT]
 > Asynchronously invoking C# methods from JavaScript isn't currently supported.
 
-The following example shows four methods that will be invoked from JavaScript:
+The following example shows four public methods that can be invoked from JavaScript:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -473,7 +473,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-You must then set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>, with the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method:
+You must then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -483,10 +483,12 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         hybridWebView.SetInvokeJavaScriptTarget(this);
     }
+
+    ...
 }
 ```
 
-The public methods on the object that's the target of JavaScript calls can then be invoked using the `window.HybridWebView.InvokeDotNet` JavaScript function:
+The public methods on the object set via the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method can then be invoked from JavaScript with the `window.HybridWebView.InvokeDotNet`function:
 
 ```js
 await window.HybridWebView.InvokeDotNet('DoSyncWork');
@@ -496,3 +498,6 @@ const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkParamsReturn
 ```
 
 The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified C# method, with optional parameters and an optional return value.
+
+> [!NOTE]
+> Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
