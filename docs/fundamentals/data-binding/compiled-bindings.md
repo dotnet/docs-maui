@@ -150,8 +150,8 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 ```xaml
 <HorizontalStackLayout BindingContext="{x:Reference slider}" x:DataType="Slider">
-  <Label Text="{Binding Value}" />
-  <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
+    <Label Text="{Binding Value}" />
+    <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
 </HorizontalStackLayout>
 ```
 
