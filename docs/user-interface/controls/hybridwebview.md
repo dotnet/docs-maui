@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HybridW
 
 In addition, <xref:Microsoft.Maui.Controls.HybridWebView> defines a <xref:Microsoft.Maui.Controls.HybridWebView.RawMessageReceived> event that's raised when a raw message is received. The <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs> object that accompanies the event defines a <xref:Microsoft.Maui.Controls.HybridWebViewRawMessageReceivedEventArgs.Message> property that contains the message.
 
-Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c).
+Your app's C# code can invoke synchronous and asynchronous JavaScript methods within the <xref:Microsoft.Maui.Controls.HybridWebView> with the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> methods. Your app's JavaScript code can also synchronously invoke C# methods. For more information, see [Invoke JavaScript from C#](#invoke-javascript-from-c) and [Invoke C# from JavaScript](#invoke-c-from-javascript).
 
 To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you need:
 
@@ -30,6 +30,9 @@ To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you 
 - Code in the web content, and in C#/.NET, that uses the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the two components.
 
 The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native web view control and runs within the context of the app. Any part of the app can access external web services, but isn't required to.
+
+> [!IMPORTANT]
+> By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
 ## Create a .NET MAUI HybridWebView app
 
@@ -52,23 +55,89 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
             <meta charset="utf-8" />
             <title></title>
             <link rel="icon" href="data:,">
+            <link rel="stylesheet" href="styles/app.css">
             <script src="scripts/HybridWebView.js"></script>
             <script>
+                function LogMessage(msg) {
+                    var messageLog = document.getElementById("messageLog");
+                    messageLog.value += '\r\n' + msg;
+                }
+
                 window.addEventListener(
                     "HybridWebViewMessageReceived",
                     function (e) {
-                        var messageFromCSharp = document.getElementById("messageFromCSharp");
-                        messageFromCSharp.value += '\r\n' + e.detail.message;
+                        LogMessage("Raw message: " + e.detail.message);
                     });
+
+                function AddNumbers(a, b) {
+                    var result = {
+                        "result": a + b,
+                        "operationName": "Addition"
+                    };
+                    return result;
+                }
+
+                var count = 0;
+
+                async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
+                    const response = await fetch("/asyncdata.txt");
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+                    var jsonData = await response.json();
+
+                    jsonData[s1] = s2;
+
+                    const msg = 'JSON data is available: ' + JSON.stringify(jsonData);
+                    window.HybridWebView.SendRawMessage(msg)
+
+                    return jsonData;
+                }
+
+                async function InvokeDoSyncWork() {
+                    LogMessage("Invoking DoSyncWork");
+                    await window.HybridWebView.InvokeDotNet('DoSyncWork');
+                    LogMessage("Invoked DoSyncWork");
+                }
+
+                async function InvokeDoSyncWorkParams() {
+                    LogMessage("Invoking DoSyncWorkParams");
+                    await window.HybridWebView.InvokeDotNet('DoSyncWorkParams', [123, 'hello']);
+                    LogMessage("Invoked DoSyncWorkParams");
+                }
+
+                async function InvokeDoSyncWorkReturn() {
+                    LogMessage("Invoking DoSyncWorkReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkReturn');
+                    LogMessage("Invoked DoSyncWorkReturn, return value: " + retValue);
+                }
+
+                async function InvokeDoSyncWorkParamsReturn() {
+                    LogMessage("Invoking DoSyncWorkParamsReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkParamsReturn', [123, 'hello']);
+                    LogMessage("Invoked DoSyncWorkParamsReturn, return value: message=" + retValue.Message + ", value=" + retValue.Value);
+                }
+
             </script>
         </head>
         <body>
-            <h1>HybridWebView app!</h1>
             <div>
-                <button onclick="window.HybridWebView.SendRawMessage('Message from JS!')">Send message to C#</button>
+                Hybrid sample!
             </div>
             <div>
-                Messages from C#: <textarea readonly id="messageFromCSharp" style="width: 80%; height: 300px;"></textarea>
+                <button onclick="window.HybridWebView.SendRawMessage('Message from JS! ' + (count++))">Send message to C#</button>
+            </div>
+            <div>
+                <button onclick="InvokeDoSyncWork()">Call C# sync method (no params)</button>
+                <button onclick="InvokeDoSyncWorkParams()">Call C# sync method (params)</button>
+                <button onclick="InvokeDoSyncWorkReturn()">Call C# method (no params) and get simple return value</button>
+                <button onclick="InvokeDoSyncWorkParamsReturn()">Call C# method (params) and get complex return value</button>
+            </div>
+            <div>
+                Log: <textarea readonly id="messageLog" style="width: 80%; height: 10em;"></textarea>
+            </div>
+            <div>
+                Consider checking out this PDF: <a href="docs/sample.pdf">sample.pdf</a>
             </div>
         </body>
         </html>
@@ -78,7 +147,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
         ```js
         window.HybridWebView = {
-            "Init": function () {
+            "Init": function Init() {
                 function DispatchHybridWebViewMessage(message) {
                     const event = new CustomEvent("HybridWebViewMessageReceived", { detail: { message: message } });
                     window.dispatchEvent(event);
@@ -106,11 +175,53 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
                 }
             },
 
-            "SendRawMessage": function (message) {
-                window.HybridWebView.__SendMessageInternal('RawMessage', message);
+            "SendRawMessage": function SendRawMessage(message) {
+                window.HybridWebView.__SendMessageInternal('__RawMessage', message);
             },
 
-            "__SendMessageInternal": function (type, message) {
+            "InvokeDotNet": async function InvokeDotNetAsync(methodName, paramValues) {
+                const body = {
+                    MethodName: methodName
+                };
+
+                if (typeof paramValues !== 'undefined') {
+                    if (!Array.isArray(paramValues)) {
+                        paramValues = [paramValues];
+                    }
+
+                    for (var i = 0; i < paramValues.length; i++) {
+                        paramValues[i] = JSON.stringify(paramValues[i]);
+                    }
+
+                    if (paramValues.length > 0) {
+                        body.ParamValues = paramValues;
+                    }
+                }
+
+                const message = JSON.stringify(body);
+
+                var requestUrl = `${window.location.origin}/__hwvInvokeDotNet?data=${encodeURIComponent(message)}`;
+
+                const rawResponse = await fetch(requestUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                const response = await rawResponse.json();
+
+                if (response) {
+                    if (response.IsJson) {
+                        return JSON.parse(response.Result);
+                    }
+
+                    return response.Result;
+                }
+
+                return null;
+            },
+
+            "__SendMessageInternal": function __SendMessageInternal(type, message) {
 
                 const messageToSend = type + '|' + message;
 
@@ -128,7 +239,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
                 }
             },
 
-            "InvokeMethod": function (taskId, methodName, args) {
+            "__InvokeJavaScript": function __InvokeJavaScript(taskId, methodName, args) {
                 if (methodName[Symbol.toStringTag] === 'AsyncFunction') {
                     // For async methods, we need to call the method and then trigger the callback when it's done
                     const asyncPromise = methodName(...args);
@@ -144,13 +255,13 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
                 }
             },
 
-            "__TriggerAsyncCallback": function (taskId, result) {
+            "__TriggerAsyncCallback": function __TriggerAsyncCallback(taskId, result) {
                 // Make sure the result is a string
                 if (result && typeof (result) !== 'string') {
                     result = JSON.stringify(result);
                 }
 
-                window.HybridWebView.__SendMessageInternal('InvokeMethodCompleted', taskId + '|' + result);
+                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + result);
             }
         }
 
@@ -178,6 +289,8 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 1. Modify the `CreateMauiApp` method of your `MauiProgram` class to enable developer tools on the underlying WebView controls when your app is running in debug configuration. To do this, call the <xref:Microsoft.Maui.Hosting.HybridWebViewServiceCollectionExtensions.AddHybridWebViewDeveloperTools%2A> method on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object:
 
     ```csharp
+    using Microsoft.Extensions.Logging;
+
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
@@ -193,6 +306,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
     #if DEBUG
             builder.Services.AddHybridWebViewDeveloperTools();
+            builder.Logging.AddDebug();            
     #endif
             // Register any app services on the IServiceCollection object
 
@@ -306,3 +420,84 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 > [!IMPORTANT]
 > The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
+
+## Invoke C\# from JavaScript
+
+Your app's JavaScript code within the <xref:Microsoft.Maui.Controls.HybridWebView> can synchronously invoke C# methods, with optional parameters and an optional return value. This can be achieved by:
+
+- Defining public C# methods that will be invoked from JavaScript.
+- Calling the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>.
+- Calling the C# methods from JavaScript.
+
+> [!IMPORTANT]
+> Asynchronously invoking C# methods from JavaScript isn't currently supported.
+
+The following example defines four public methods for invoking from JavaScript:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    ...  
+
+    public void DoSyncWork()
+    {
+        Debug.WriteLine("DoSyncWork");
+    }
+
+    public void DoSyncWorkParams(int i, string s)
+    {
+        Debug.WriteLine($"DoSyncWorkParams: {i}, {s}");
+    }
+
+    public string DoSyncWorkReturn()
+    {
+        Debug.WriteLine("DoSyncWorkReturn");
+        return "Hello from C#!";
+    }
+
+    public SyncReturn DoSyncWorkParamsReturn(int i, string s)
+    {
+        Debug.WriteLine($"DoSyncWorkParamReturn: {i}, {s}");
+        return new SyncReturn
+        {
+            Message = "Hello from C#!" + s,
+            Value = i
+        };
+    }
+
+    public class SyncReturn
+    {
+        public string? Message { get; set; }
+        public int Value { get; set; }
+    }  
+}
+```
+
+You must then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+        hybridWebView.SetInvokeJavaScriptTarget(this);
+    }
+
+    ...
+}
+```
+
+The public methods on the object set via the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method can then be invoked from JavaScript with the `window.HybridWebView.InvokeDotNet` function:
+
+```js
+await window.HybridWebView.InvokeDotNet('DoSyncWork');
+await window.HybridWebView.InvokeDotNet('DoSyncWorkParams', [123, 'hello']);
+const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkReturn');
+const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkParamsReturn', [123, 'hello']);
+```
+
+The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified C# method, with optional parameters and an optional return value.
+
+> [!NOTE]
+> Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
