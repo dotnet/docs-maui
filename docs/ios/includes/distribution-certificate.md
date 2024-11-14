@@ -7,7 +7,7 @@ ms.topic: include
 
 A distribution certificate is used to confirm your identity. Before creating a distribution certificate, you should ensure that you've added your Apple Developer Account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
 
-You only need to create a distribution certificate if you don't already one. The distribution certificate must be created using the Apple ID for your Apple Developer Account.
+You only need to create a distribution certificate if you don't already have one. The distribution certificate must be created using the Apple ID for your Apple Developer Account.
 
 To create a distribution certificate in Visual Studio:
 
