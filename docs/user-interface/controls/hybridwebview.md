@@ -425,14 +425,14 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 Your app's JavaScript code within the <xref:Microsoft.Maui.Controls.HybridWebView> can synchronously invoke C# methods, with optional parameters and an optional return value. This can be achieved by:
 
-- Declaring public C# methods that will be invoked from JavaScript.
+- Defining public C# methods that will be invoked from JavaScript.
 - Calling the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>.
 - Calling the C# methods from JavaScript.
 
 > [!IMPORTANT]
 > Asynchronously invoking C# methods from JavaScript isn't currently supported.
 
-The following example shows four public methods that can be invoked from JavaScript:
+The following example defines four public methods for invoking from JavaScript:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -473,7 +473,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-You must then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
+You must call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -488,7 +488,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-The public methods on the object set via the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method can then be invoked from JavaScript with the `window.HybridWebView.InvokeDotNet`function:
+The public methods on the object set via the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method can then be invoked from JavaScript with the `window.HybridWebView.InvokeDotNet` function:
 
 ```js
 await window.HybridWebView.InvokeDotNet('DoSyncWork');
