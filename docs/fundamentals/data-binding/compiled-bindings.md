@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 10/29/2024
+ms.date: 11/14/2024
 ---
 
 # Compiled bindings
@@ -120,6 +120,25 @@ Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the
 The following example demonstrates correctly setting the `x:DataType` on a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
+<ContentPage ...
+             x:DataType="local:AnimalsPageViewModel">
+    <!-- Binding to AnimalsPageViewModel.Animals -->
+    <CollectionView ItemsSource="{Binding Animals}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:Animal">
+                <!-- correct: compiler knows you want to bind to Animal.Name -->
+                <Label Text="{Binding Name}" />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
+```
+
+While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+
+<!-- Old example
+
+```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
@@ -158,7 +177,7 @@ When the example is first run, the <xref:Microsoft.Maui.Controls.ListView> is po
 
 :::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
 
-Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
+Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>. -->
 
 ::: moniker range=">=net-maui-9.0"
 
