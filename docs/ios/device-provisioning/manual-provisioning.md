@@ -99,7 +99,11 @@ A development provisioning profile can be created with the following steps:
 
 1. In the **Generate a Provisioning Profile** page, you can optionally click the **Download** button to download the provisioning profile.
 
-## Download provisioning profiles in Visual Studio
+<!-- markdownlint-disable MD025 -->
+## [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
+
+### Download provisioning profiles
 
 After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app:
 
@@ -110,7 +114,7 @@ After creating a development provisioning profile in your Apple Developer Accoun
 
 The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
-## Enable manual provisioning
+### Enable manual provisioning
 
 After manually creating the development provisioning profile, and installing it in Visual Studio, your .NET MAUI app project should be configured to use manual provisioning:
 
@@ -122,6 +126,19 @@ After manually creating the development provisioning profile, and installing it 
 1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
+
+## [Visual Studio Code](#tab/visual-studio-code)
+
+### Download provisioning profiles
+
+After creating a development provisioning profile in your Apple Developer Account, you will need to download it so that it's available for signing your app:
+
+1. Open the **Xcode** app.
+2. Select the **Settings...** item in the **Xcode** menu.
+3. Select the **@ Accounts** tab.
+4. If you haven't already, add your Apple Developer Account. Otherwise, select your account.
+5. In the right-hand pane with your account selected, select the appropriate **Team**.
+6. Click the **Download Manual Profiles** button.
 
 ## Provisioning for application services
 
