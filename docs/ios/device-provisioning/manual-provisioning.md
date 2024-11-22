@@ -103,7 +103,7 @@ A development provisioning profile can be created with the following steps:
 ## [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-### Download provisioning profiles
+### Download provisioning profiles in Visual Studio
 
 After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app:
 
@@ -129,7 +129,7 @@ After manually creating the development provisioning profile, and installing it 
 
 ## [Visual Studio Code](#tab/visual-studio-code)
 
-### Download provisioning profiles
+### Download provisioning profiles in Xcode
 
 After creating a development provisioning profile in your Apple Developer Account, you will need to download it so that it's available for signing your app:
 
