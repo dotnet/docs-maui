@@ -21,6 +21,9 @@ Supported file types include:
 
 The tool has two commands: `generate` and `sync`. Use `generate` to create an Xcode project from a .NET project and `sync` to bring changes in the Xcode project back to the .NET project.
 
+> [!NOTE]
+> This tool is only available for macOS due to the interactions with Xcode.
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
