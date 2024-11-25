@@ -114,7 +114,9 @@ After creating a development provisioning profile in your Apple Developer Accoun
 
 The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio Code](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
 
 After creating a development provisioning profile in your Apple Developer Account, you will need to download it in Xcode so that it's available for signing your app:
 
