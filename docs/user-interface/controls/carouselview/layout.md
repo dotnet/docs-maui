@@ -42,13 +42,13 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items h
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">  
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -68,7 +68,7 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items h
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -110,13 +110,13 @@ This results in a layout that grows horizontally as new items are added.
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -136,7 +136,7 @@ This results in a layout that grows horizontally as new items are added.
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>

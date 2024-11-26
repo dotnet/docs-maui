@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/13/2024
+ms.date: 11/29/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -472,7 +472,30 @@ For more information, see [Xcode sync](~/macios/xcsync.md).
 
 ### Frame
 
-The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
+The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place.
+
+When replacing a <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border>, the <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=nameWithType> property value should become the <xref:Microsoft.Maui.Controls.Border.Stroke?displayProperty=nameWithType> property value, and the <xref:Microsoft.Maui.Controls.Frame.CornerRadius?displayProperty=nameWithType> property value should become part of the <xref:Microsoft.Maui.Controls.Border.StrokeShape?displayProperty=nameWithType> property value. In addition, it may be necessary to duplicate the `Margin` value as the `Padding` value.
+
+The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border> elements in XAML:
+
+```xaml
+<Frame BorderColor="DarkGray"
+       CornerRadius="5"
+       Margin="20"
+       HeightRequest="300"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+
+<Border Stroke="DarkGray"
+        StrokeShape="RoundRectangle 5"
+        Margin="20"
+        Padding="20"
+        HeightRequest="360"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+```
+
+For more information see [Border](~/user-interface/controls/border.md).
 
 ### MainPage
 

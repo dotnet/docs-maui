@@ -53,19 +53,19 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
              ...>
     <ContentPage.Resources>
       <ControlTemplate x:Key="CardViewControlTemplate">
-          <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
-                 BackgroundColor="{Binding CardColor}"
-                 BorderColor="{Binding BorderColor}"
+          <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                  BackgroundColor="{Binding CardColor}"
+                  Stroke="{Binding BorderColor}"
                  ...>
               <!-- UI objects that define the CardView visual structure -->
-          </Frame>
+          </Border>
       </ControlTemplate>
     </ContentPage.Resources>
     ...
 </ContentPage>
 ```
 
-When a <xref:Microsoft.Maui.Controls.ControlTemplate> is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of controls to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a <xref:Microsoft.Maui.Controls.ControlTemplate> is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Border> object. The <xref:Microsoft.Maui.Controls.Border> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of controls to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Border> element. For more information about the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
@@ -95,7 +95,7 @@ The following example shows the `CardViewControlTemplate` being assigned to the 
 </ContentPage>
 ```
 
-In this example, the controls in the `CardViewControlTemplate` become part of the visual tree for each `CardView` object. Because the root <xref:Microsoft.Maui.Controls.Frame> object for the control template sets its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the templated parent, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object.
+In this example, the controls in the `CardViewControlTemplate` become part of the visual tree for each `CardView` object. Because the root <xref:Microsoft.Maui.Controls.Border> object for the control template sets its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the templated parent, the <xref:Microsoft.Maui.Controls.Border> and its children resolve their binding expressions against the properties of each `CardView` object.
 
 The following screenshot shows the `CardViewControlTemplate` applied to the the `CardView` objects:
 
@@ -132,11 +132,11 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
              ...>
     <ContentPage.Resources>
         <ControlTemplate x:Key="CardViewControlTemplate">
-            <Frame BackgroundColor="{TemplateBinding CardColor}"
-                   BorderColor="{TemplateBinding BorderColor}"
+            <Border BackgroundColor="{TemplateBinding CardColor}"
+                    Stroke="{TemplateBinding BorderColor}"
                    ...>
                 <!-- UI objects that define the CardView visual structure -->                   
-            </Frame>
+            </Border>
         </ControlTemplate>
     </ContentPage.Resources>
     ...
@@ -197,12 +197,12 @@ For example, the `CardViewUI` custom control defines its user interface using th
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ControlTemplateDemos.Controls.CardViewUI"
              x:Name="this">
-    <Frame BindingContext="{x:Reference this}"
-           BackgroundColor="{Binding CardColor}"
-           BorderColor="{Binding BorderColor}"
+    <Border BindingContext="{x:Reference this}"
+            BackgroundColor="{Binding CardColor}"
+            Stroke="{Binding BorderColor}"
            ...>
         <!-- UI objects that define the CardView visual structure -->           
-    </Frame>
+    </Border>
 </ContentView>
 ```
 
@@ -384,16 +384,16 @@ In this example, the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext
 
 ```xaml
 <ControlTemplate x:Key="CardViewControlTemplate">
-    <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
-           BackgroundColor="{Binding CardColor}"
-           BorderColor="{Binding BorderColor}"
+    <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+            BackgroundColor="{Binding CardColor}"
+            Stroke="{Binding BorderColor}"
            ...>
         <!-- UI objects that define the CardView visual structure -->           
-    </Frame>
+    </Border>
 </ControlTemplate>
 ```
 
-In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the templated parent. The binding expressions of the <xref:Microsoft.Maui.Controls.Frame> object and its children resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Frame> element. The following screenshot shows the page displaying the `People` collection:
+In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Border> object. The <xref:Microsoft.Maui.Controls.Border> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the templated parent. The binding expressions of the <xref:Microsoft.Maui.Controls.Border> object and its children resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Border> element. The following screenshot shows the page displaying the `People` collection:
 
 :::image type="content" source="media/controltemplate/viewmodel-controltemplate.png" alt-text="Screenshot of three templated CardView objects that bind to a viewmodel.":::
 
