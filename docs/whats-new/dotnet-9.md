@@ -476,7 +476,7 @@ The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET M
 
 When replacing a <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border>, the <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=nameWithType> property value should become the <xref:Microsoft.Maui.Controls.Border.Stroke?displayProperty=nameWithType> property value, and the <xref:Microsoft.Maui.Controls.Frame.CornerRadius?displayProperty=nameWithType> property value should become part of the <xref:Microsoft.Maui.Controls.Border.StrokeShape?displayProperty=nameWithType> property value. In addition, it may be necessary to duplicate the `Margin` value as the `Padding` value.
 
-The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border> elements in XAML:
+The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> and <xref:Microsoft.Maui.Controls.Border> elements in XAML:
 
 ```xaml
 <Frame BorderColor="DarkGray"
