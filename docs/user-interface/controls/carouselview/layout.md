@@ -228,7 +228,7 @@ void OnImageTapped(object sender, EventArgs e)
 }
 ```
 
-The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Border>, so that it's more easily viewed:
+The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Border>), so that it's more easily viewed:
 
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
 
