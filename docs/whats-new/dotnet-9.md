@@ -482,7 +482,7 @@ The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> and 
 <Frame BorderColor="DarkGray"
        CornerRadius="5"
        Margin="20"
-       HeightRequest="300"
+       HeightRequest="360"
        HorizontalOptions="Center"
        VerticalOptions="Center" />
 
