@@ -28,7 +28,7 @@ A linear gradient brush's gradient stops are positioned along the gradient axis.
 
 The `StartPoint` and `EndPoint` properties are relative to the area being painted. (0,0) represents the top-left corner of the area being painted, and (1,1) represents the bottom-right corner of the area being painted. The following diagram shows the gradient axis for a diagonal linear gradient brush:
 
-:::image type="content" source="media/lineargradient/gradient-axis.png" alt-text="Frame with a diagonal gradient axis." border="false":::
+:::image type="content" source="media/lineargradient/gradient-axis.png" alt-text="Screenshot of a Border with a diagonal gradient axis." border="false":::
 
 In this diagram, the dashed line shows the gradient axis, which highlights the interpolation path of the gradient from the start point to the end point.
 
