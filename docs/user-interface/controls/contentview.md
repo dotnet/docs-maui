@@ -75,18 +75,18 @@ The custom control UI can be defined in the XAML file for the <xref:Microsoft.Ma
 <ContentView ...
              x:Name="this"
              x:Class="CardViewDemo.Controls.CardView">
-    <Frame BindingContext="{x:Reference this}"
-           BackgroundColor="{Binding CardColor}"
-           BorderColor="{Binding BorderColor}"
+    <Border BindingContext="{x:Reference this}"
+            BackgroundColor="{Binding CardColor}"
+            Stroke="{Binding BorderColor}"
             ...>
         <Grid>
             ...
-            <Frame BorderColor="{Binding BorderColor, FallbackValue='Black'}"
-                   BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Grey'}"
+            <Border Stroke="{Binding BorderColor, FallbackValue='Black'}"
+                    BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Grey'}"
                    ...>
                 <Image Source="{Binding IconImageSource}"
                        .. />
-            </Frame>
+            </Border>
             <Label Text="{Binding CardTitle, FallbackValue='Card Title'}"
                    ... />
             <BoxView BackgroundColor="{Binding BorderColor, FallbackValue='Black'}"
@@ -94,7 +94,7 @@ The custom control UI can be defined in the XAML file for the <xref:Microsoft.Ma
             <Label Text="{Binding CardDescription, FallbackValue='Card description text.'}"
                    ... />
         </Grid>
-    </Frame>
+    </Border>
 </ContentView>
 ```
 

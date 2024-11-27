@@ -28,15 +28,14 @@ A radial gradient brush's gradient stops are positioned along a gradient axis de
 
 To create a radial gradient, create a <xref:Microsoft.Maui.Controls.RadialGradientBrush> object and set its `Center` and `Radius` properties. Then, add two or more <xref:Microsoft.Maui.Controls.GradientStop> objects to the `RadialGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
-The following XAML example shows a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Border>:
 
 ```xaml
-<Frame BorderColor="LightGray"
-       HasShadow="True"
-       CornerRadius="12"
-       HeightRequest="120"
-       WidthRequest="120">
-    <Frame.Background>
+<Border Stroke="LightGray"
+        StrokeShape="RoundRectangle 12"
+        HeightRequest="120"
+        WidthRequest="120">
+    <Border.Background>
         <!-- Center defaults to (0.5,0.5)
              Radius defaults to (0.5) -->
         <RadialGradientBrush>
@@ -45,15 +44,15 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.RadialGradientB
             <GradientStop Color="DarkBlue"
                           Offset="1.0" />
         </RadialGradientBrush>
-    </Frame.Background>
-</Frame>
+    </Border.Background>
+</Border>
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the <xref:Microsoft.Maui.Controls.Frame>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the <xref:Microsoft.Maui.Controls.Border>:
 
-:::image type="content" source="media/radialgradient/center.png" alt-text="Screenshot of a Frame painted with a centered RadialGradientBrush.":::
+:::image type="content" source="media/radialgradient/center.png" alt-text="Screenshot of a Border painted with a centered RadialGradientBrush.":::
 
-The following XAML example moves the center of the radial gradient to the top-left corner of the <xref:Microsoft.Maui.Controls.Frame>:
+The following XAML example moves the center of the radial gradient to the top-left corner of the <xref:Microsoft.Maui.Controls.Border>:
 
 ```xaml
 <!-- Radius defaults to (0.5) -->
@@ -65,11 +64,11 @@ The following XAML example moves the center of the radial gradient to the top-le
 </RadialGradientBrush>
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the <xref:Microsoft.Maui.Controls.Frame>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the <xref:Microsoft.Maui.Controls.Border>:
 
-:::image type="content" source="media/radialgradient/top-left.png" alt-text="Screenshot of a Frame painted with a top-left RadialGradientBrush.":::
+:::image type="content" source="media/radialgradient/top-left.png" alt-text="Screenshot of a Border painted with a top-left RadialGradientBrush.":::
 
-The following XAML example moves the center of the radial gradient to the bottom-right corner of the <xref:Microsoft.Maui.Controls.Frame>:
+The following XAML example moves the center of the radial gradient to the bottom-right corner of the <xref:Microsoft.Maui.Controls.Border>:
 
 ```xaml
 <!-- Radius defaults to (0.5) -->
@@ -81,6 +80,6 @@ The following XAML example moves the center of the radial gradient to the bottom
 </RadialGradientBrush>            
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the <xref:Microsoft.Maui.Controls.Frame>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a <xref:Microsoft.Maui.Controls.RadialGradientBrush> that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the <xref:Microsoft.Maui.Controls.Border>:
 
-:::image type="content" source="media/radialgradient/bottom-right.png" alt-text="Screenshot of a Frame painted with a bottom-right RadialGradientBrush.":::
+:::image type="content" source="media/radialgradient/bottom-right.png" alt-text="Screenshot of a Border painted with a bottom-right RadialGradientBrush.":::
