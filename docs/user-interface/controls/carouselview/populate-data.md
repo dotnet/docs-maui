@@ -55,13 +55,13 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">            
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -81,7 +81,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -114,9 +114,9 @@ carouselView.ItemTemplate = new DataTemplate(() =>
     stackLayout.Add(locationLabel);
     stackLayout.Add(detailsLabel);
 
-    Frame frame = new Frame { ... };
+    Border border = new Border { ... };
     StackLayout rootStackLayout = new StackLayout();
-    rootStackLayout.Add(frame);
+    rootStackLayout.Add(border);
 
     return rootStackLayout;
 });
@@ -239,13 +239,13 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                    <Frame HasShadow="True"
-                           BorderColor="DarkGray"
-                           CornerRadius="5"
-                           Margin="20"
-                           HeightRequest="300"
-                           HorizontalOptions="Center"
-                           VerticalOptions="CenterAndExpand">
+                    <Border Stroke="DarkGray"
+                            StrokeShape="RoundRectangle 5"
+                            Margin="20"
+                            Padding="20"
+                            HeightRequest="360"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
                         <SwipeView>
                             <SwipeView.TopItems>
                                 <SwipeItems>
@@ -269,7 +269,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
                                 <!-- Define item appearance -->
                             </StackLayout>
                         </SwipeView>
-                    </Frame>
+                    </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -285,7 +285,7 @@ carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 carouselView.ItemTemplate = new DataTemplate(() =>
 {
     StackLayout stackLayout = new StackLayout();
-    Frame frame = new Frame { ... };
+    Border border = new Border { ... };
 
     SwipeView swipeView = new SwipeView();
     SwipeItem favoriteSwipeItem = new SwipeItem
@@ -311,14 +311,14 @@ carouselView.ItemTemplate = new DataTemplate(() =>
 
     StackLayout swipeViewStackLayout = new StackLayout { ... };
     swipeView.Content = swipeViewStackLayout;
-    frame.Content = swipeView;
-    stackLayout.Add(frame);
+    border.Content = swipeView;
+    stackLayout.Add(border);
 
     return stackLayout;
 });
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Frame> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the bottom and from the top:
+In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Border> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the bottom and from the top:
 
 :::image type="content" source="media/populate-data/swipeview-bottom.png" alt-text="Screenshot of a CarouselView bottom context menu item.":::
 :::image type="content" source="media/populate-data/swipeview-top.png" alt-text="Screenshot of a CarouselView top context menu item.":::

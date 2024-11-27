@@ -410,18 +410,19 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
 </Style>
 ...
 <Grid>
-    <Frame BackgroundColor="White"
-           CornerRadius="12"
-           Margin="24"
-           HorizontalOptions="Center"
-           VerticalOptions="Center">
+    <Border BackgroundColor="White"
+            StrokeShape="RoundRectangle 12"
+            Margin="24"
+            Padding="24"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
         <StackLayout Orientation="Horizontal">
             <CheckBox x:Name="checkBox"
                       VerticalOptions="Center" />
             <Label Text="Check the CheckBox to modify the Grid background color."
                    VerticalOptions="Center" />
         </StackLayout>
-    </Frame>
+    </Border>
 </Grid>
 ```
 

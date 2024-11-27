@@ -154,8 +154,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Hor
     <VerticalStackLayout Margin="20"
                          Spacing="6">
        <Label Text="Primary colors" />
-       <Frame BorderColor="Black"
-              Padding="5">
+       <Border Stroke="Black"
+               Padding="5">
            <HorizontalStackLayout Spacing="15">
                <Rectangle Fill="Red"
                           HeightRequest="30"
@@ -163,9 +163,9 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Hor
                <Label Text="Red"
                       FontSize="18" />
            </HorizontalStackLayout>
-       </Frame>
-       <Frame BorderColor="Black"
-              Padding="5">
+       </Border>
+       <Border Stroke="Black"
+               Padding="5">
            <HorizontalStackLayout Spacing="15">
                <Rectangle Fill="Yellow"
                           HeightRequest="30"
@@ -173,9 +173,9 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Hor
                <Label Text="Yellow"
                       FontSize="18" />
            </HorizontalStackLayout>
-       </Frame>
-       <Frame BorderColor="Black"
-              Padding="5">
+       </Border>
+       <Border Stroke="Black"
+               Padding="5">
            <HorizontalStackLayout Spacing="15">
                <Rectangle Fill="Blue"
                           HeightRequest="30"
@@ -183,12 +183,12 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Hor
                <Label Text="Blue"
                       FontSize="18" />
            </HorizontalStackLayout>
-       </Frame>
+       </Border>
     </VerticalStackLayout>
 </ContentPage>
 ```
 
-In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside <xref:Microsoft.Maui.Controls.Frame> objects:
+In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside <xref:Microsoft.Maui.Controls.Border> objects:
 
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 
