@@ -42,13 +42,13 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items h
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">  
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -68,7 +68,7 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items h
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -110,13 +110,13 @@ This results in a layout that grows horizontally as new items are added.
     <CarouselView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -136,7 +136,7 @@ This results in a layout that grows horizontally as new items are added.
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -216,19 +216,19 @@ This code results in a vertical layout that has a spacing of 20 between items.
 
 ## Dynamic resizing of items
 
-Items in a <xref:Microsoft.Maui.Controls.CarouselView> can be dynamically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object, and the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property of its parent <xref:Microsoft.Maui.Controls.Frame>:
+Items in a <xref:Microsoft.Maui.Controls.CarouselView> can be dynamically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object, and the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property of its parent <xref:Microsoft.Maui.Controls.Border>:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)
 {
     Image image = sender as Image;
     image.HeightRequest = image.WidthRequest = image.HeightRequest.Equals(150) ? 200 : 150;
-    Frame frame = ((Frame)image.Parent.Parent);
-    frame.HeightRequest = frame.HeightRequest.Equals(300) ? 350 : 300;
+    Border border = ((Border)image.Parent.Parent);
+    border.HeightRequest = border.HeightRequest.Equals(360) ? 410 : 360;
 }
 ```
 
-The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Frame>, so that it's more easily viewed:
+The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Border>), so that it's more easily viewed:
 
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
 

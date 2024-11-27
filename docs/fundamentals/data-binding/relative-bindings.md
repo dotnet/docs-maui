@@ -126,9 +126,9 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 <ContentPage ...>
     <ContentPage.Resources>
         <ControlTemplate x:Key="CardViewControlTemplate">
-            <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
-                   BackgroundColor="{Binding CardColor}"
-                   BorderColor="{Binding BorderColor}"
+            <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                    BackgroundColor="{Binding CardColor}"
+                    Stroke="{Binding BorderColor}"
                    ...>
                 <Grid>
                     ...
@@ -139,7 +139,7 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
                     <Label Text="{Binding CardDescription}"
                            ... />
                 </Grid>
-            </Frame>
+            </Border>
         </ControlTemplate>
     </ContentPage.Resources>
     <StackLayout>        
@@ -165,7 +165,7 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Frame>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object:
+In this example, the <xref:Microsoft.Maui.Controls.Border>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Border> and its children resolve their binding expressions against the properties of each `CardView` object:
 
 :::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
 
