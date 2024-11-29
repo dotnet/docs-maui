@@ -102,6 +102,8 @@ If you have a library in your project, or you're a developer of a reusable libra
 
 This marks your assembly as "trimmable" and enables trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members are removed in the final output.
 
+When using Native AOT deployment in .NET 9+, setting the `IsAotCompatible` MSBuild property to `true` also assigns a value of `true` to the `IsTrimmable` property, and enables additional AOT analyzer build properties. For more information about AOT analyzers, see [AOT-compatibility analyzers](/dotnet/core/deploying/native-aot#aot-compatibility-analyzers). For more information about Native AOT deployment for .NET MAUI, see [Native AOT deployment](~/deployment/nativeaot.md).
+
 Setting the `IsTrimmable` MSBuild property to `true` in your project file inserts the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute into your assembly:
 
 ```csharp
