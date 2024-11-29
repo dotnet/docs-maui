@@ -1,7 +1,7 @@
 ---
 title: "Manual provisioning for .NET MAUI iOS apps"
 description: "Learn how to use manual provisioning to create development certificates and profiles for .NET MAUI iOS apps."
-ms.date: 08/28/2024
+ms.date: 11/25/2024
 ---
 
 # Manual provisioning for iOS apps
@@ -99,7 +99,11 @@ A development provisioning profile can be created with the following steps:
 
 1. In the **Generate a Provisioning Profile** page, you can optionally click the **Download** button to download the provisioning profile.
 
-## Download provisioning profiles in Visual Studio
+## Download provisioning profiles
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
 
 After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app:
 
@@ -109,6 +113,21 @@ After creating a development provisioning profile in your Apple Developer Accoun
 1. In the **Details** dialog, click the **Download All Profiles** button.
 
 The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio Code](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
+
+After creating a development provisioning profile in your Apple Developer Account, you will need to download it in Xcode so that it's available for signing your app:
+
+1. Open the **Xcode** app.
+2. Select the **Settings...** item in the **Xcode** menu.
+3. Select the **@ Accounts** tab.
+4. If you haven't already, add your Apple Developer Account. Otherwise, select your account.
+5. In the right-hand pane with your account selected, select the appropriate **Team**.
+6. Click the **Download Manual Profiles** button.
+
+---
 
 ## Enable manual provisioning
 

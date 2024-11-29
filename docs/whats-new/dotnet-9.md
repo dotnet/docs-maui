@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/13/2024
+ms.date: 11/29/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
+- [.NET MAUI 9](https://github.com/dotnet/maui/releases/tag/9.0.0)
 - [.NET MAUI 9 RC2](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.2.24503.2)
 - [.NET MAUI 9 RC1](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.1.24453.9)
 - [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24407.4)
@@ -153,13 +154,18 @@ To opt into using the `0.0.0.1` address, add the following code to the `CreateMa
 AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 ```
 
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
+
+> [!WARNING]
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
 
 ```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
 ```
 
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
 ### Buttons on iOS
 
@@ -466,7 +472,30 @@ For more information, see [Xcode sync](~/macios/xcsync.md).
 
 ### Frame
 
-The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
+The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place.
+
+When replacing a <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border>, the <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=nameWithType> property value should become the <xref:Microsoft.Maui.Controls.Border.Stroke?displayProperty=nameWithType> property value, and the <xref:Microsoft.Maui.Controls.Frame.CornerRadius?displayProperty=nameWithType> property value should become part of the <xref:Microsoft.Maui.Controls.Border.StrokeShape?displayProperty=nameWithType> property value. In addition, it may be necessary to duplicate the `Margin` value as the `Padding` value.
+
+The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> and <xref:Microsoft.Maui.Controls.Border> elements in XAML:
+
+```xaml
+<Frame BorderColor="DarkGray"
+       CornerRadius="5"
+       Margin="20"
+       HeightRequest="360"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+
+<Border Stroke="DarkGray"
+        StrokeShape="RoundRectangle 5"
+        Margin="20"
+        Padding="20"
+        HeightRequest="360"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+```
+
+For more information see [Border](~/user-interface/controls/border.md).
 
 ### MainPage
 
@@ -579,6 +608,7 @@ You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deplo
 
 .NET for Android in .NET 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android in .NET 9, see the following release notes:
 
+- [.NET for Android 9](https://github.com/dotnet/android/releases/tag/35.0.7)
 - [.NET for Android 9 RC2](https://github.com/dotnet/android/releases/tag/35.0.0-rc.2.152)
 - [.NET for Android 9 RC1](https://github.com/dotnet/android/releases/tag/35.0.0-rc.1.80)
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
@@ -699,6 +729,7 @@ For more information, see [Trimming granularity](/dotnet/core/deploying/trimming
 
 For more information about .NET 9 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-xcode16.0-9617)
 - [.NET 9.0.1xx RC2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc2-9600)
 - [.NET 9.0.1xx RC1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc1-9270)
 - [.NET 9.0.1xx Preview 7](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview7-9231)

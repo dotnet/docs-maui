@@ -52,6 +52,6 @@ The following XAML example creates a diagonal <xref:Microsoft.Maui.Controls.Line
 
 The color of each point between gradient stops is interpolated as a combination of the color specified by the two bounding gradient stops. The following diagram shows the gradient stops from the previous example:
 
-:::image type="content" source="media/gradient/gradient-stops.png" alt-text="Screenshot of a Frame painted with a diagonal LinearGradientBrush." border="false":::
+:::image type="content" source="media/gradient/gradient-stops.png" alt-text="Screenshot of a Border painted with a diagonal LinearGradientBrush." border="false":::
 
 In this diagram, the circles mark the position of gradient stops, and the dashed line shows the gradient axis. The first gradient stop specifies the color yellow at an offset of 0.0. The second gradient stop specifies the color red at an offset of 0.25. The points between these two gradient stops gradually change from yellow to red as you move from left to right along the gradient axis. The third gradient stop specifies the color blue at an offset of 0.75. The points between the second and third gradient stops gradually change from red to blue. The fourth gradient stop specifies the color lime green at an offset of 1.0. The points between the third and fourth gradient stops gradually change from blue to lime green.

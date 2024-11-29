@@ -316,9 +316,9 @@ The following XAML example shows how to define the `CurrentItem`, `PreviousItem`
                 </VisualStateManager.VisualStateGroups>
 
                 <!-- Item template content -->
-                <Frame HasShadow="true">
+                <Border>
                     ...
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
