@@ -1,20 +1,20 @@
 ---
 title: "Behaviors"
 description: ".NET MAUI behaviors let you add functionality to user interface controls without having to subclass them. Instead, the functionality is implemented in a behavior class and attached to the control as if it was part of the control itself."
-ms.date: 08/24/2023
+ms.date: 11/29/2024
 ---
 
 # Behaviors
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-behaviors)
 
-.NET Multi-platform App UI (.NET MAUI) behaviors let you add functionality to user interface controls without having to subclass them. Instead, the functionality is implemented in a behavior class and attached to the control as if it was part of the control itself.
+.NET Multi-platform App UI (.NET MAUI) behaviors let you add extra functionality to user interface controls, such as <xref:Microsoft.Maui.Controls.Button> or <xref:Microsoft.Maui.Controls.Entry>, without having to subclass the controls. Instead, the extra functionality is implemented in a <xref:Microsoft.Maui.Controls.Behavior> class and attached to the control.
 
-Behaviors enable you to implement code that you would normally have to write as code-behind, because it directly interacts with the API of the control in such a way that it can be concisely attached to the control and packaged for reuse across more than one application. They can be used to provide a full range of functionality to controls, such as:
+Behaviors can be used to add different functionality to UI controls, such as:
 
-- Adding an email validator to an <xref:Microsoft.Maui.Controls.Entry>.
-- Creating a rating control using a tap gesture recognizer.
-- Controlling an animation.
+- Input validations. Behaviors can be used with input controls to ensure the data is valid. For example, you might write a behavior for an <xref:Microsoft.Maui.Controls.Entry> to ensure that a phone number of email address is in the correct format.
+- Enhancing the UI. Behaviors can be used to enhance UI controls in your app. For example, you might write a behavior for a <xref:Microsoft.Maui.Controls.Button> to make it shake when it's clicked, or change color.
+- Runtime responses. Behaviors can be used to make controls react to different situations. For example, you might automatically save user input in an <xref:Microsoft.Maui.Controls.Entry> when a user finishes typing.
 
 .NET MAUI supports three different types of behaviors:
 
