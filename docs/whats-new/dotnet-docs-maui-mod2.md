@@ -13,69 +13,67 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Nov
 
 ### Updated articles
 
-- [Build your first app](../get-started/first-app.md) - .NET 9 updates
-- [Installation](../get-started/installation.md) - .NET 9 updates
+- [Build your first app](../get-started/first-app.md)
+- [Installation](../get-started/installation.md)
 
 ## Data & cloud services
 
 ### Updated articles
 
-- [Tutorial: Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service](../data-cloud/push-notifications.md) - Obsolete setting App.MainPage
+- [Tutorial: Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service](../data-cloud/push-notifications.md)
 
 ## Deployment
 
 ### Updated articles
 
-- [Native AOT deployment on iOS and Mac Catalyst](../deployment/nativeaot.md) - [docs] Add Native AOT diagnostics support documentation for iOS-like platforms
+- [Native AOT deployment on iOS and Mac Catalyst](../deployment/nativeaot.md)
 
 ## Fundamentals
 
 ### Updated articles
 
-- [.NET MAUI Shell search](../fundamentals/shell/search.md) - Obsolete setting App.MainPage
-- [.NET MAUI windows](../fundamentals/windows.md) - Obsolete setting App.MainPage
-- [App lifecycle](../fundamentals/app-lifecycle.md) - Obsolete setting App.MainPage
-- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md) - Use the sample example in compiled bindings
-- [Control templates](../fundamentals/controltemplate.md) - Replace Frame with Border
-- [Dependency injection](../fundamentals/dependency-injection.md) - Obsolete setting App.MainPage
-- [Localization](../fundamentals/localization.md) - No need to set IPhoneResourcePrefix
-- [Recognize a drag and drop gesture](../fundamentals/gestures/drag-and-drop.md) - Drag/drop between apps
-- [Target multiple platforms from .NET MAUI single project](../fundamentals/single-project.md) - Obsolete setting App.MainPage
+- [.NET MAUI Shell search](../fundamentals/shell/search.md)
+- [.NET MAUI windows](../fundamentals/windows.md)
+- [App lifecycle](../fundamentals/app-lifecycle.md)
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md)
+- [Control templates](../fundamentals/controltemplate.md)
+- [Dependency injection](../fundamentals/dependency-injection.md)
+- [Localization](../fundamentals/localization.md)
+- [Recognize a drag and drop gesture](../fundamentals/gestures/drag-and-drop.md)
+- [Target multiple platforms from .NET MAUI single project](../fundamentals/single-project.md)
 
 ## iOS
 
 ### Updated articles
 
-- [Apple account management](../ios/apple-account-management.md) - Updated Apple Account Management docs for new Enterprise Program API
-- [Manual provisioning for iOS apps](../ios/device-provisioning/manual-provisioning.md) - Added manual steps for downloading iOS provisioning profiles
+- [Apple account management](../ios/apple-account-management.md)
+- [Manual provisioning for iOS apps](../ios/device-provisioning/manual-provisioning.md)
 
 ## iOS and Mac Catalyst
 
 ### Updated articles
 
-- [Syncing with Xcode](../macios/xcsync.md) - Update xcsync docs
+- [Syncing with Xcode](../macios/xcsync.md)
 
 ## Windows
 
 ### Updated articles
 
-- [Deploy and debug your .NET MAUI app on Windows](../windows/setup.md) - Unpackaged app deployment
+- [Deploy and debug your .NET MAUI app on Windows](../windows/setup.md)
 
 ## User interface
 
 ### Updated articles
 
 - [HybridWebView](../user-interface/controls/hybridwebview.md)
-  - Invoke C# from JavaScript
-  - Add developer tools to HybridWebView
-- [Linear gradient brushes](../user-interface/brushes/lineargradient.md) - Replace Frame with Border
-- [NavigationPage](../user-interface/pages/navigationpage.md) - Obsolete setting App.MainPage
-- [Populate a CarouselView with data](../user-interface/controls/carouselview/populate-data.md) - Replace Frame with Border
-- [Radial gradient brushes](../user-interface/brushes/radialgradient.md) - Replace Frame with Border
-- [Solid color brushes](../user-interface/brushes/solidcolor.md) - Replace Frame with Border
-- [Specify CarouselView layout](../user-interface/controls/carouselview/layout.md) - Replace Frame with Border
-- [StackLayout](../user-interface/layouts/stacklayout.md) - Replace Frame with Border
-- [VerticalStackLayout](../user-interface/layouts/verticalstacklayout.md) - Replace Frame with Border
+- [Linear gradient brushes](../user-interface/brushes/lineargradient.md)
+- [NavigationPage](../user-interface/pages/navigationpage.md)
+- [Populate a CarouselView with data](../user-interface/controls/carouselview/populate-data.md)
+- [Radial gradient brushes](../user-interface/brushes/radialgradient.md)
+- [Solid color brushes](../user-interface/brushes/solidcolor.md)
+- [Specify CarouselView layout](../user-interface/controls/carouselview/layout.md)
+- [StackLayout](../user-interface/layouts/stacklayout.md)
+- [VerticalStackLayout](../user-interface/layouts/verticalstacklayout.md)
 
 ## Community contributors
 
