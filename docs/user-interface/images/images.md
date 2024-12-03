@@ -1,7 +1,7 @@
 ---
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
-ms.date: 08/30/2024
+ms.date: 12/03/2024
 ---
 
 # Add images to a .NET MAUI app project
@@ -81,3 +81,7 @@ A background color for an image can also be specified:
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
+
+## Display an image
+
+Images can be displayed with the <xref:Microsoft.Maui.Controls.Image> control. For more information, see [Image](../controls/image.md).
