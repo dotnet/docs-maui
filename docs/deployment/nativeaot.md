@@ -1,7 +1,7 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
 description: "Learn how to reduce your app size and achieve faster startup time with native AOT deployment on iOS and Mac Catalyst."
-ms.date: 11/12/2024
+ms.date: 12/03/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -110,6 +110,8 @@ In .NET MAUI app this means that:
 - It's not possible to parse XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method. While this can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute this is very error prone and isn't recommended.
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> won't work. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 - The `SearchHandler.DisplayMemberName` property might not work. Instead, you should provide an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define the appearance of <xref:Microsoft.Maui.Controls.SearchHandler> results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+- Customizing UI appearance with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customimze-ui-appearance.md#custom-ui-appearance-based-on-the-platform).
+- Customizing UI appearance with the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customimze-ui-appearance.md#custom-ui-appearance-based-on-the-device-idiom).
 
 > [!IMPORTANT]
 > The Mono interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT. For more information about the Mono interpreter, see [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md).
@@ -129,6 +131,8 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Ensure that all data bindings are compiled. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 >   - Ensure that all XAML data bindings are annotated with `x:DataType`.
 >   - Ensure that all code data bindings replace all string-based bindings with lambda-based bindings.
+> - Replace all [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension usage with an implementation that uses the  <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customimze-ui-appearance.md#custom-ui-appearance-based-on-the-platform).
+- Replace all [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension usage with an implementation that uses the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customimze-ui-appearance.md#custom-ui-appearance-based-on-the-device-idiom).
 > - Replace all `[QueryProperty(...)]` usage with an implementation of the `IQueryAttributable` interface. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 > - Replace all `SearchHandler.DisplayMemberName` usage with an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate>. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 > - Replace all implicit conversion operators for types used in XAML with a <xref:System.ComponentModel.TypeConverter>, and it attach it to your type using the <xref:System.ComponentModel.TypeConverterAttribute>. For more information, see [Define a TypeConverter to replace an implicit conversion operator](trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator).
