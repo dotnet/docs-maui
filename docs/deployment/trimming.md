@@ -1,7 +1,7 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 10/24/2024
+ms.date: 12/03/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
