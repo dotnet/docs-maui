@@ -222,7 +222,7 @@ For .NET for Android, `dotnet build` produces a runnable app. This means creatin
 
 - Run `aapt` to generate `Resource.designer.cs` and potentially emit build errors for issues in `@(AndroidResource)` files.
 - Compile C# code.
-- Run the [ILLink](https://github.com/mono/linker/blob/master/src/linker/README.md) MSBuild target for linking.
+- Run the [ILLink](https://github.com/dotnet/runtime/blob/main/src/tools/illink/src/linker/README.md) MSBuild target for linking.
 - Generate java stubs, and `AndroidManifest.xml`.
 - Compile java code via `javac`.
 - Convert java code to `.dex` via d8/r8.
