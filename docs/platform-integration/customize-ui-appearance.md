@@ -158,7 +158,7 @@ In this example, all three [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPl
 
 ### Customize UI appearance with a markup extension based on the device idiom
 
-The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension enables you to customize UI appearance based on the idiom of the device the app is running on. It provides the same functionality as the <xref:Microsoft.Maui.Controls.OnIdiom`1> and <xref:Microsoft.Maui.Controls.On> classes, but with a more concise representation.
+The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension enables you to customize UI appearance based on the idiom of the device the app is running on. It provides the same functionality as the <xref:Microsoft.Maui.Controls.OnIdiom`1> class, but with a more concise representation.
 
 The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class, which defines the following properties:
 
