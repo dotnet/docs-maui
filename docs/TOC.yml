@@ -897,10 +897,26 @@
                   href: /dotnet/android/messages/xa8000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: iOS
           items:
+            - name: App fundamentals
+              items:
+                - name: Images & icons
+                  items:
+                    - name: Overview
+                      href: /dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                    - name: Alternate app icons
+                      href: /dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Apple account management
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
               href: ios/privacy-manifest.md
+            - name: Build apps
+              items:
+                - name: Build targets
+                  href: /dotnet/ios/building-apps/build-targets?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Build properties
+                  href: /dotnet/ios/building-apps/build-properties ?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Build items
+                  href: /dotnet/ios/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
