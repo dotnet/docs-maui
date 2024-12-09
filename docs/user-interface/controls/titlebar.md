@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 - <xref:Microsoft.Maui.Controls.TitleBar.DefaultTemplate>, of type <xref:Microsoft.Maui.Controls.ControlTemplate>, which represents the default template for the title bar.
 - <xref:Microsoft.Maui.Controls.TitleBar.ForegroundColor>, of type <xref:Microsoft.Maui.Graphics.Color>, which specifies the foreground colour of the title bar, and is used as the color for the title and subtitle text.
 - <xref:Microsoft.Maui.Controls.TitleBar.Icon>, of type <xref:Microsoft.Maui.Controls.ImageSource>, which represents an optional 16x16px icon image for the title bar.
-- <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control for the content that follows the icon.
+- <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control for the content that precedes the icon.
 - <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements>, of type `IList<IView>`, which represents a list of elements that should prevent dragging in the title bar region and instead directly handle input.
 - <xref:Microsoft.Maui.Controls.TitleBar.Subtitle>, of type `string`, which specifies the subtitle text of the title bar. This is usually secondary information about the app or window.
 - <xref:Microsoft.Maui.Controls.TitleBar.Title>, of type `string`, which specifies the title text of the title bar. This is usually the name of the app or indicates the purpose of the window.
