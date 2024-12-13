@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 11/29/2024
+ms.date: 12/13/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -258,6 +258,9 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
+> [!WARNING]
+> A CS0272 compiler error will occur if the set accessor for the property or indexer is inaccessible. If this occurs, increase the accessibility of the accessor.
+
 In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.BindingBase.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
@@ -288,6 +291,8 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 
 > [!IMPORTANT]
 > Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
+
+For more information about compiled bindings in code, see [Compiled bindings in code](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compiled-bindings-in-code).
 
 ## Compiled bindings in XAML
 

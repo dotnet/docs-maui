@@ -283,6 +283,9 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
+> [!WARNING]
+> A CS0272 compiler error will occur if the set accessor for the property or indexer is inaccessible. If this occurs, increase the accessibility of the accessor.
+
 In addition, the <xref:Microsoft.Maui.Controls.BindingBase.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
