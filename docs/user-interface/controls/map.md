@@ -21,7 +21,7 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control 
 
 The <xref:Microsoft.Maui.Controls.Maps.Map> control is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/), which should be added to your .NET MAUI app project.
 
-After installing the NuGet package, it must be initialized in your app by calling the `UseMauiMap` method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class:
+After installing the NuGet package, it must be initialized in your app by calling the <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.UseMauiMaps%2A> method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class:
 
 ```csharp
 public static class MauiProgram
