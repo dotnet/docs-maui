@@ -1,7 +1,7 @@
 ---
 title: "Improve app performance"
 description: "Learn how to increase the performance of .NET MAUI apps by reducing the amount of work being performed by a CPU, and the amount of memory consumed by an app."
-ms.date: 08/01/2023
+ms.date: 12/16/2024
 no-loc: [ "Objective-C" ]
 ---
 

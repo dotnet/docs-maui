@@ -1,7 +1,7 @@
 ---
 title: Dependency injection in .NET MAUI
 description: Learn how to inject dependencies in a .NET MAUI app, to decouple concrete types from the code that depends on these types.
-ms.date: 01/15/2024
+ms.date: 12/16/2024
 ---
 
 # Dependency injection
