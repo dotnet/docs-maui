@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 02/02/2023
+ms.date: 12/16/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 

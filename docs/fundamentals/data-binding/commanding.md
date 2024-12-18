@@ -1,7 +1,7 @@
 ---
 title: "Commanding"
 description: "Learn how to implement the Command property with .NET MAUI data bindings. The commanding interface provides an alternative approach to implementing commands that is suited to the MVVM architecture."
-ms.date: 01/19/2022
+ms.date: 12/16/2024
 ---
 
 # Commanding

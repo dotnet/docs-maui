@@ -1,7 +1,7 @@
 ---
 title: "XAML"
 description: ".NET MAUI XAML enables you to define app user interfaces using markup rather than code."
-ms.date: 01/24/2022
+ms.date: 12/16/2024
 ---
 
 # XAML
