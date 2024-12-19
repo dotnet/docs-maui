@@ -155,7 +155,7 @@ The following XAML example shows how to define a visual state for the `TitleBarT
                 </VisualState>
             </VisualStateGroup>
         </VisualStateGroupList>
-    <VisualStateManager.VisualStateGroups>
+    </VisualStateManager.VisualStateGroups>
 </TitleBar>
 ```
 
