@@ -3,7 +3,7 @@ title: xcsync
 description: Learn how to use xcsync, to provide .NET developers with improved support for editing Apple specific files.
 author: haritha-mohan
 ms.author: harithamohan
-ms.date: 10/30/2024
+ms.date: 12/20/2024
 monikerRange: ">=net-maui-9.0"
 no-loc: [ "xcsync" ]
 ---
@@ -11,6 +11,9 @@ no-loc: [ "xcsync" ]
 # Syncing with Xcode
 
 xcsync is a .NET tool that enables developers to leverage Xcode for managing Apple specific files with .NET projects. The tool generates a temporary Xcode project from a .NET project and synchronizes changes to the Xcode files back to the .NET project.
+
+> [!IMPORTANT]
+> xcsync is currently in preview.
 
 Supported file types include:
 
@@ -30,10 +33,10 @@ The tool has two commands: `generate` and `sync`. Use `generate` to create an Xc
 
 ## Installation
 
-Install .NET xcsync globally with the following command:
+Install the preview of .NET xcsync globally with the following command:
 
 ```dotnetcli
-dotnet tool install -g dotnet-xcsync
+dotnet tool install dotnet-xcsync -g --prerelease --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet9/nuget/v3/index.json
 ```
 
 ## Usage
@@ -55,10 +58,10 @@ Please check existing [Known Issues](https://github.com/dotnet/xcsync/issues) be
 
 ## Installation
 
-Install .NET xcsync globally with the following command:
+Install the preview of .NET xcsync globally with the following command:
 
 ```dotnetcli
-dotnet tool install -g dotnet-xcsync
+dotnet tool install dotnet-xcsync -g --prerelease --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet9/nuget/v3/index.json
 ```
 
 ## Synopsis
