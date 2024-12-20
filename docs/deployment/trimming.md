@@ -1,7 +1,7 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 12/03/2024
+ms.date: 12/20/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
@@ -35,8 +35,10 @@ The `full` trim mode removes any code that's not used by your app. The `partial`
 
 This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
+In a .NET MAUI app, it's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
+
 > [!NOTE]
-> It's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
+> Don't set the `$(TrimMode)` build property when using Native AOT deployment. Native AOT deployment automatically performs full trimming of your app. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 
