@@ -23,7 +23,7 @@ Trimming behavior can be controlled by setting the `$(TrimMode)` build property 
 ```
 
 > [!IMPORTANT]
-> Don't set the `$(TrimMode)` build property when using Native AOT deployment. Native AOT deployment automatically performs full trimming of your app. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
+> Don't set the `$(TrimMode)` build property when using Native AOT deployment, which automatically performs full trimming of your app. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
 
 The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims the base class library (BCL), assemblies for the underlying platforms (such as *Mono.Android.dll* and *Microsoft.iOS.dll*), and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` build item:
 
