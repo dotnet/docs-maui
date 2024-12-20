@@ -37,7 +37,7 @@ This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when b
 
 In a .NET MAUI app, it's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Don't set the `$(TrimMode)` build property when using Native AOT deployment. Native AOT deployment automatically performs full trimming of your app. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
