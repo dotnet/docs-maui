@@ -38,7 +38,7 @@ This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when b
 Full trimming shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
 
 > [!NOTE]
-> In a .NET MAUI app, it's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
+> Don't set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 
