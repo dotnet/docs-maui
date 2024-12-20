@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 12/13/2024
+ms.date: 12/20/2024
 ---
 
 # What's new in .NET MAUI for .NET 9
@@ -458,6 +458,9 @@ For information about annotating markup extensions with these attributes, see [S
 ## Xcode sync
 
 .NET MAUI 9 includes Xcode sync (`xcsync`), which is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to your .NET project.
+
+> [!IMPORTANT]
+> xcsync is currently in preview.
 
 You use `dotnet build` with the `xcsync-generate` or `xcsync-sync` commands, to generate or sync these files, and pass in a project file and additional arguments:
 
