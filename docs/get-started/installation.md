@@ -1,7 +1,7 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 11/12/2024
+ms.date: 30/12/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -47,7 +47,7 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 # [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation steps](https://code.visualstudio.com/docs/setup/setup-overview).
+To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation](#install-visual-studio-code) steps.
 
 ## Prerequisites
 
@@ -57,17 +57,27 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 - A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
-## Installation
+## Install Visual Studio Code
 
-1. To create .NET MAUI apps you'll need to install the latest [Visual Studio Code](https://code.visualstudio.com).
-1. In Visual Studio Code, in the Extensions tab, search for ".NET MAUI" and install the [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace). The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
+1. To create .NET MAUI apps, you'll need to download the latest version of Visual Studio Code:
 
-    :::image type="content" source="media/installation/vscode/maui-extension-preview.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension":::
+    - [Download Visual Studio Code](https://code.visualstudio.com)
 
-> [!NOTE]
-> The .NET MAUI extension requires the C# Dev Kit and C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. For more information, see [this blog post](https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/) to learn more about C# Dev Kit and its family of extensions.
+1. Install Visual Studio Code. For detailed instructions on how to install Visual Studio Code, see [Visual Studio Code on Windows](https://code.visualstudio.com/docs/setup/windows), [Visual Studio Code on macOS](https://code.visualstudio.com/docs/setup/mac), and [Visual Studio Code on Linux](https://code.visualstudio.com/docs/setup/linux).
 
-## Install .NET and .NET MAUI workloads
+## Install the .NET MAUI extension
+
+1. Launch Visual Studio Code.
+1. In Visual Studio Code, navigate to the **Extensions** tab and search for ".NET MAUI". Then select the [.NET MAUI](https://aka.ms/mauidevkit-marketplace) extension and install it by pressing the **Install** button:
+
+    :::image type="content" source="media/installation/vscode/maui-extension.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension":::
+
+    The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
+
+    > [!IMPORTANT]
+    > The .NET MAUI extension requires the C# Dev Kit and C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. For more information, see [C# Dev Kit for Visual Studio Code](/visualstudio/subscriptions/vs-c-sharp-dev-kit).
+
+## Install the .NET and .NET MAUI workloads
 
 1. Install [.NET 9](/dotnet/core/install/windows).
 
