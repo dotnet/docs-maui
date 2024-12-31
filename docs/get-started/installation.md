@@ -84,7 +84,7 @@ Using C# Dev Kit requires you to sign in with a Microsoft account that has an ac
 
     :::image type="content" source="media/installation/vscode/connect-account.png" alt-text="Screenshot of the Visual Studio Code connect account to c# dev kit button.":::
 
-    Follow the prompts to sign in your Microsoft account. For more information, see [Signing in to C# Dev Kit](https://code.visualstudio.com/docs/csharp/signing-in#_sign-in-with-a-microsoft-or-organizational-account).
+    Follow the prompts to sign into your Microsoft account. For more information, see [Signing in to C# Dev Kit](https://code.visualstudio.com/docs/csharp/signing-in#_sign-in-with-a-microsoft-or-organizational-account).
 
 For more information about C# Dev Kit licensing, see [C# Dev Kit FAQ](https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq).
 
@@ -97,8 +97,8 @@ Alternatively, to manually install the .NET SDK:
 1. Download the [.NET installer](https://aka.ms/dotnet-extensionpack-sdk).
 1. Install the .NET SDK by running the .NET installer. For more information, see [Install .NET on Windows, Linux, and macOS](/dotnet/core/install/).
 
-> [!TIP]
-> On Linux, you can install the .NET SDK using the [scripted installation instructions](/dotnet/core/install/linux-scripted-manual#scripted-install).
+    > [!TIP]
+    > On Linux, you can install the .NET SDK using the [scripted installation instructions](/dotnet/core/install/linux-scripted-manual#scripted-install).
 
 To verify that the .NET SDK is installed:
 
@@ -111,8 +111,8 @@ To verify that the .NET SDK is installed:
 
     You should see the version of the .NET SDK that you've installed.
 
-> [!NOTE]
-> It may be necessary to restart your machine before verifying that the .NET SDK is installed.
+    > [!NOTE]
+    > It may be necessary to restart your machine before verifying that the .NET SDK is installed.
 
 ## Set up your .NET MAUI environment
 
