@@ -31,7 +31,7 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 
 ## Installation
 
-1. To create .NET MAUI apps, you'll need the latest version of Visual Studio 2022:
+1. To create .NET MAUI apps, you'll need to download the latest version of Visual Studio 2022:
 
     - [Download Visual Studio 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2305)
 
@@ -67,15 +67,14 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
 
 ## Install the .NET MAUI extension
 
+Before you can create .NET MAUI apps in Visual Studio Code you'll have to install the .NET MAUI extension:
+
 1. Launch Visual Studio Code.
 1. In Visual Studio Code, navigate to the **Extensions** tab and search for ".NET MAUI". Then select the [.NET MAUI](https://aka.ms/mauidevkit-marketplace) extension and install it by pressing the **Install** button:
 
     :::image type="content" source="media/installation/vscode/maui-extension.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension.":::
 
-    The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
-
-    > [!IMPORTANT]
-    > The .NET MAUI extension requires the C# Dev Kit and C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. For more information, see [C# Dev Kit for Visual Studio Code](/visualstudio/subscriptions/vs-c-sharp-dev-kit).
+    The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run. For more information about C# Dev Kit, see [C# Dev Kit for Visual Studio Code](/visualstudio/subscriptions/vs-c-sharp-dev-kit).
 
 ## Connect your account to C# Dev Kit
 
@@ -85,13 +84,13 @@ Using C# Dev Kit requires you to sign in with a Microsoft account that has an ac
 
     :::image type="content" source="media/installation/vscode/connect-account.png" alt-text="Screenshot of the Visual Studio Code connect account to c# dev kit button.":::
 
-    Follow the on screen prompts to sign in your Microsoft account. For more information, see [Signing in to C# Dev Kit](https://code.visualstudio.com/docs/csharp/signing-in#_sign-in-with-a-microsoft-or-organizational-account).
+    Follow the prompts to sign in your Microsoft account. For more information, see [Signing in to C# Dev Kit](https://code.visualstudio.com/docs/csharp/signing-in#_sign-in-with-a-microsoft-or-organizational-account).
 
 For more information about C# Dev Kit licensing, see [C# Dev Kit FAQ](https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq).
 
 ## Set up your .NET environment
 
-If you don't have the .NET SDK installed on your machine, the preferred approach to installing it is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=vswin).
+You'll need the .NET SDK installed on your machine to develop .NET MAUI apps in Visual Studio Code. If you don't have the .NET SDK installed on your machine, the preferred approach to installing it is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=vswin).
 
 Alternatively, to manually install the .NET SDK:
 
@@ -112,12 +111,12 @@ To verify that the .NET SDK is installed:
 
     You should see the version of the .NET SDK that you've installed.
 
-    > [!NOTE]
-    > It may be necessary to restart your machine before verifying that the .NET SDK is installed.
+> [!NOTE]
+> It may be necessary to restart your machine before verifying that the .NET SDK is installed.
 
 ## Set up your .NET MAUI environment
 
-If you don't have the .NET MAUI SDK installed on your machine, the preferred approach to installing it is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=vswin).
+You'll need the .NET MAUI SDK installed on your machine to develop .NET MAUI apps in Visual Studio Code. If you don't have the .NET MAUI SDK installed on your machine, the preferred approach to installing it is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=vswin).
 
 Alternatively, to manually install the .NET MAUI SDK:
 
@@ -162,7 +161,7 @@ To verify that the .NET MAUI SDK is installed:
 
 ## Troubleshooting
 
-If you encounter issues when setting up the .NET MAUI extension for Visual Studio Code, for more information navigate to the **Output** window (<kbd>CTRL/CMD + Shift + u </kbd>) and select **.NET MAUI** in the dropdown. To provide feedback about the .NET MAUI extension from inside Visual Studio code, navigate to the **Help > Report Issue** dialog. Then ensure you select “An extension” and the .NET MAUI extension in the drop-down:
+If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL/CMD + Shift + u </kbd>) and selecting **.NET MAUI** in the drop-down. To provide feedback about the .NET MAUI extension from inside Visual Studio code, navigate to the **Help > Report Issue** dialog. Then, ensure you select "Bug Report" as the value of the **This is a** drop-down, "A VS Code extension" as the value of the **For** drop-down, and ".NET MAUI" as the value of the **Extension** drop-down:
 
 :::image type="content" source="media/installation/vscode/report-issue.png" alt-text="Picture of the report issue dialog in Visual Studio Code":::
 
