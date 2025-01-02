@@ -256,6 +256,28 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
     :::image type="content" source="media/first-app/vscode/mainpage-xaml-cs-open.png" alt-text="Screenshot of a C# file opened in Visual Studio Code.":::
 
+:::zone pivot="devices-android"
+
+<!-- markdownlint-disable MD029 -->
+7. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific Android emulator:
+
+    :::image type="content" source="media/first-app/vscode/android-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to an Android emulator.":::
+
+    You can also set the debug target by pressing <kbd>CMD+SHIFT+P</kbd> and selecting **.NET MAUI: Pick Android Device** from the command palette.
+    <!-- markdownlint-enable MD029 -->
+
+1. Build and run the app on macOS by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
+
+    :::image type="content" source="media/first-app/vscode/mac-run-button.png" alt-text="Screenshot of the run button in Visual Studio Code on macOS.":::
+
+    If you're asked to select a debugger in the command palette, select **C#** and then the launch configuration for your project.
+
+1. In the running app in your chosen Android emulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
+
+    :::image type="content" source="media/first-app/vscode/android-running-app.png" alt-text="Screenshot of the app running on Android.":::
+
+:::zone-end
+
 :::zone pivot="devices-ios"
 
 <!-- markdownlint-disable MD029 -->
