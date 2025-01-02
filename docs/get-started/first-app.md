@@ -259,14 +259,16 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-7. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific Android emulator:
+7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then select **.NET MAUI: Configure Android**, followed by **Refresh Android environment** to ensure that your Android environment is configured correctly. Any errors must be addressed.
+<!-- markdownlint-enable MD029 -->
+
+1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific Android emulator:
 
     :::image type="content" source="media/first-app/vscode/android-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to an Android emulator.":::
 
     You can also set the debug target by pressing <kbd>CMD+SHIFT+P</kbd> and selecting **.NET MAUI: Pick Android Device** from the command palette.
-    <!-- markdownlint-enable MD029 -->
 
-1. Build and run the app on macOS by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
+1. Build and run the app on Android by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
 
     :::image type="content" source="media/first-app/vscode/mac-run-button.png" alt-text="Screenshot of the run button in Visual Studio Code on macOS.":::
 
@@ -281,14 +283,16 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-ios"
 
 <!-- markdownlint-disable MD029 -->
-7. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific iOS simulator:
+7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> and then select **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment** to ensure that your iOS environment is configured correctly. Any errors must be addressed.
+<!-- markdownlint-enable MD029 -->
+
+1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific iOS simulator:
 
     :::image type="content" source="media/first-app/vscode/ios-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to an iOS simulator.":::
 
     You can also set the debug target by pressing <kbd>CMD+SHIFT+P</kbd> and selecting **.NET MAUI: Pick iOS Device** from the command palette.
-    <!-- markdownlint-enable MD029 -->
 
-1. Build and run the app on macOS by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
+1. Build and run the app on iOS by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
 
     :::image type="content" source="media/first-app/vscode/mac-run-button.png" alt-text="Screenshot of the run button in Visual Studio Code on macOS.":::
 
@@ -303,12 +307,14 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-maccatalyst"
 
 <!-- markdownlint-disable MD029 -->
-7. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to your Mac:
+7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> and then select **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment** to ensure that your macOS environment is configured correctly. Any errors must be addressed.
+<!-- markdownlint-enable MD029 -->
+
+1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to your Mac:
 
     :::image type="content" source="media/first-app/vscode/mac-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to macOS.":::
 
     You can also set the debug target by pressing <kbd>CMD+SHIFT+P</kbd> and selecting **.NET MAUI: Pick macOS Device** from the command palette.
-    <!-- markdownlint-enable MD029 -->
 
 1. Build and run the app on macOS by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
 
@@ -344,70 +350,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
 :::zone-end
 
-:::zone pivot="devices-android"
+## Troubleshooting
 
-### Target Android
-
-If you want to use Android emulators, follow these steps to install and create an emulator:
-
-1. Navigate in your terminal to `<YOUR_ANDROID_SDK_DIRECTORY>/cmdline-tools/11.0/bin/`.
-1. Use `sdkmanager` to install the emulator.
-
-    On Windows, run the following commands in the terminal:
-
-    ```console
-    sdkmanager --install emulator
-    sdkmanager --install "system-images;android-33;google_apis;x86_64"
-    ```
-
-    On macOS, run the following commands in the terminal:
-
-    ```console
-    ./sdkmanager --install emulator
-    ./sdkmanager --install "system-images;android-33;google_apis;x86_64"
-    ```
-
-    > [!NOTE]
-    > The quotes around the `sdkmanager` command-line arguments are important.
-
-1. Then, you can create a new emulator on the command line with Android's [avdmanager](https://developer.android.com/tools/avdmanager).
-
-    On Windows, run the following commands in the terminal:
-
-    ```console
-    avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"
-    ```
-
-    On macOS, run the following commands in the terminal:
-
-    ```console
-    ./avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"
-    ```
-
-    > [!NOTE]
-    > The quotes around the `avdmanager` command-line arguments are important.
-
-You can also debug on [physical Android devices](~/android/device/setup.md).
-
-:::zone-end
-
-:::zone pivot="devices-ios"
-
-### Target iOS
-
-iOS simulators are built into Xcode. To download the simulators, either ensure that the option is selected to install them when Xcode first launches, or navigate to **Xcode > Settings > Platforms** and choose a simulator runtime to install.
-
-To debug with an iOS device, follow these steps before attempting to debug:
-
-1. Specify your Apple ID in **Xcode > Settings > Account**.
-1. Register the device with your team if you belong to the Apple Developer Program.
-1. Enable Developer Mode on your device, as described in [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device). The first time you run your app you may receive a pop-up on the device - ensure you select **Allow**.
-
-:::zone-end
-
-## Learn more
-
-If you face any issues with the extension, you can follow the [troubleshooting steps](./installation.md#troubleshooting), see the [known issues](./installation.md#known-limitations), or [provide feedback](./installation.md#provide-feedback).
+If your app fails to build and deploy, review [Troubleshooting known issues](~/troubleshooting.md), which may have a solution to your problem.
 
 ---
 
