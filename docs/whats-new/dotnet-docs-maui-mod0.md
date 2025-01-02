@@ -9,17 +9,31 @@ ms.date: 01/01/2025
 
 Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for December 2024. This article lists some of the major changes to docs during this period.
 
+## iOS
+
+- App fundamentals
+  - [Images & icons](/dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Alternate app icons](/dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- Build apps
+  - [Build targets](/dotnet/ios/building-apps/build-targets?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build properties](/dotnet/ios/building-apps/build-properties ?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build items](/dotnet/ios/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+
+## Samples
+
+All [.NET 9 samples](https://github.com/dotnet/maui-samples/tree/main/9.0) have been updated to use [compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+
 ## Platform integration
 
 ### Updated articles
 
-- [Customize UI appearance based on the platform and device idiom](../platform-integration/customize-ui-appearance.md) - OnPlatform and OnIdiom trim incompatibilities
+- [Customize UI appearance based on the platform and device idiom](../platform-integration/customize-ui-appearance.md)
 
 ## iOS
 
 ### Updated articles
 
-- [Remote iOS Simulator for Windows](../ios/remote-simulator.md) - Update remote-simulator.md with workaround steps for boot loops
+- [Remote iOS Simulator for Windows](../ios/remote-simulator.md)
 
 ## Community contributors
 
