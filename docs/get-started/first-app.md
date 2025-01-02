@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code with the .NET MAUI extension"
-ms.date: 11/12/2024
+ms.date: 01/02/2025
 zone_pivot_groups: devices-platforms
 monikerRange: ">=net-maui-9.0"
 ---
@@ -207,28 +207,73 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 ## Create an app
 
-To create a new .NET MAUI app:
+:::zone pivot="devices-android"
 
-1. Launch Visual Studio Code. In the Explorer, click **Create .NET Project** in the Explorer. Alternatively, select <kbd>CTRL/CMD+SHIFT+P</kbd> **.NET: New Project...**.
-1. Select **.NET MAUI App** or **.NET MAUI Blazor App**.
-1. Select an **empty** folder. If the file explorer opens again, your folder is not empty.
-1. Name the project.
-1. Ensure the project loads successfully in the Solution Explorer, and then open a C# or XAML file.
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code and run it on an Android emulator:
 
-> [!NOTE]
-> You can also open an existing .NET MAUI project in Visual Studio Code via the **File > Open...** menu.
+:::zone-end
 
-You should now see your app in [C# Dev Kit's](/visualstudio/subscriptions/vs-c-sharp-dev-kit) Solution Explorer in Visual Studio Code. Since the .NET MAUI extension depends on C# Dev Kit, you can use [all of its features](https://code.visualstudio.com/docs/csharp/get-started) alongside the .NET MAUI extension.
+:::zone pivot="devices-ios"
 
-## Choose your target device
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code on a Mac, and run it on an iOS simulator:
 
-To choose your target device, click on the curly brackets symbol **{ }** in the bottom right corner of Visual Studio Code. You can use this symbol to change your startup project, change your debug target to anything valid on your development machine, and pin either setting to the Visual Studio Code status bar:
+:::zone-end
 
-:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of Visual Studio Code, showing the debug target picker open.":::
+:::zone pivot="devices-maccatalyst"
 
-You can also set the startup project and debug target in the command palette, using <kbd>CTRL/CMD+SHIFT+P</kbd> and searching for ".NET MAUI".
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code on a Mac, and run it on a Mac:
 
-You can deploy to your local development machine (Windows desktop or macOS with Xcode) without any additional steps.
+:::zone-end
+
+:::zone pivot="devices-windows"
+
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code on Windows, and run it on Windows:
+
+:::zone-end
+
+1. Launch Visual Studio Code. In the **Explorer** press **Create .NET Project**:
+
+    :::image type="content" source="media/first-app/vscode/create-new-project.png" alt-text="Screenshot of the create new project button in Visual Studio Code.":::
+
+    Alternatively, select <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then the **.NET: New Project...** command.
+
+1. In the command palette, select the **.NET MAUI App** template:
+
+    :::image type="content" source="media/first-app/vscode/select-project-template.png" alt-text="Screenshot of selecting the .NET MAUI App template in the command paletter in Visual Studio Code.":::
+
+1. In the **Project Location** dialog, select the location where you'd like the new project to be created.
+1. In the command palette, enter a name for your new project and press <kbd>ENTER</kdb>:
+
+    :::image type="content" source="media/first-app/vscode/enter-project-name.png" alt-text="Screenshot of entering a project name in the command paletter in Visual Studio Code.":::
+
+1. In the command palette, press **Create project**:
+
+    :::image type="content" source="media/first-app/vscode/create-project.png" alt-text="Screenshot of creating a new project in the command paletter in Visual Studio Code.":::
+
+1. Wait for the project to be created, accepting the folder as a trusted location if required.
+1. In **Explorer**, expand the root node of your project and then open a C# file such as *MainPage.xaml.cs*:
+
+    :::image type="content" source="media/first-app/vscode/mainpage-xaml-cs-open.png" alt-text="Screenshot of a C# file opened in Visual Studio Code.":::
+
+:::zone pivot="devices-windows"
+
+1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to Windows:
+
+    :::image type="content" source="media/first-app/vscode/windows-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to Windows.":::
+
+    You can also set the debug target by pressing <kbd>CTRL+SHIFT+P</kdb> (or <kdb>CMD+SHIFT+P</kbd> on macOS) and selecting **.NET MAUI: Pick Windows Device** from the command palette.
+
+1. Build and run the app on Windows by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
+
+    :::image type="content" source="media/first-app/vscode/run-button.png" alt-text="Screenshot of the run button in Visual Studio Code.":::
+
+    If you're asked to select a debugger in the command palette, select **C#** and then the launch configuration for your project.
+
+1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
+
+    :::image type="content" source="media/first-app/vscode/windows-running-app.png" alt-text="Screenshot of the app running in Windows.":::
+
+:::zone-end
 
 :::zone pivot="devices-android"
 
@@ -290,19 +335,6 @@ To debug with an iOS device, follow these steps before attempting to debug:
 1. Enable Developer Mode on your device, as described in [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device). The first time you run your app you may receive a pop-up on the device - ensure you select **Allow**.
 
 :::zone-end
-
-## Debug your app
-
-To debug your app, navigate to Visual Studio Code's **Run and Debug** menu and select the **Run and Debug** button. Alternatively, you can use <kbd>F5</kbd> to start a debug session. If Visual Studio Code prompts you to select a debugger, ensure you select **C#**.
-
-> [!NOTE]
-> In preview versions of the extension, the debugger was listed as .NET MAUI. In the stable release, this configuration was replaced with C#.
-
-:::image type="content" source="media/first-app/vscode/debug-menu.png" alt-text="A screenshot of the run and debug menu in visual studio code":::
-
-The debugger will automatically choose the debug target and startup project you set in the curly brackets **{ }** menu. If you haven't selected anything, you'll be prompted to choose a debug target.
-
-Once your app starts debugging, you can use the built-in Visual Studio Code debugging tools to set breakpoints, step throughout your code, and [more](https://code.visualstudio.com/Docs/editor/debugging).
 
 ## Learn more
 
