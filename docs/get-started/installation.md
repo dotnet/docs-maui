@@ -179,6 +179,8 @@ To debug to an iOS or macOS target in Visual Studio Code:
 1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
 1. Open Xcode, and ensure you accept any license agreements.
 
+In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed.
+
 ### Android
 
 To debug to an Android target in Visual Studio Code:
@@ -189,6 +191,8 @@ To debug to an Android target in Visual Studio Code:
     - Install via Visual Studio (Windows only).
     - Install via Android Studio.
     - Install via your preferred package manager on Linux.
+
+In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed.
 
 ## Troubleshooting
 
