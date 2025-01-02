@@ -9,14 +9,14 @@ ms.date: 01/01/2025
 
 Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for December 2024. This article lists some of the major changes to docs during this period.
 
-## iOS
+## Apple platforms
 
 - App fundamentals
   - [Images & icons](/dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
   - [Alternate app icons](/dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
 - Build apps
   - [Build targets](/dotnet/ios/building-apps/build-targets?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
-  - [Build properties](/dotnet/ios/building-apps/build-properties ?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Build properties](/dotnet/ios/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
   - [Build items](/dotnet/ios/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
 
 ## Samples
