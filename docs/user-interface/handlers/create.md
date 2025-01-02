@@ -341,28 +341,28 @@ public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 
     public static void MapPlayRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PlayRequested(position);
     }
 
     public static void MapPauseRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PauseRequested(position);
     }
 
     public static void MapStopRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.StopRequested(position);
     }
     ...
@@ -576,28 +576,28 @@ public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 
     public static void MapPlayRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PlayRequested(position);
     }
 
     public static void MapPauseRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PauseRequested(position);
     }
 
     public static void MapStopRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.StopRequested(position);
     }
     ...
@@ -799,28 +799,28 @@ public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 
     public static void MapPlayRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PlayRequested(position);
     }
 
     public static void MapPauseRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.PauseRequested(position);
     }
 
     public static void MapStopRequested(VideoHandler handler, Video video, object? args)
     {
-        if (args is not VideoPositionEventArgs)
+        if (args is not VideoPositionEventArgs ev)
             return;
 
-        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        TimeSpan position = ev.Position;
         handler.PlatformView?.StopRequested(position);
     }
     ...
@@ -1094,9 +1094,9 @@ namespace VideoDemos.Platforms.Android
             _isPrepared = false;
             bool hasSetSource = false;
 
-            if (_video.Source is UriVideoSource)
+            if (_video.Source is UriVideoSource source)
             {
-                string uri = (_video.Source as UriVideoSource).Uri;
+                string uri = source.Uri;
                 if (!string.IsNullOrWhiteSpace(uri))
                 {
                     _videoView.SetVideoURI(Uri.Parse(uri));
@@ -1145,9 +1145,9 @@ namespace VideoDemos.Platforms.MaciOS
         {
             AVAsset asset = null;
 
-            if (_video.Source is UriVideoSource)
+            if (_video.Source is UriVideoSource source)
             {
-                string uri = (_video.Source as UriVideoSource).Uri;
+                string uri = source.Uri;
                 if (!string.IsNullOrWhiteSpace(uri))
                     asset = AVAsset.FromUrl(new NSUrl(uri));
             }
@@ -1216,9 +1216,9 @@ namespace VideoDemos.Platforms.Windows
         {
             bool hasSetSource = false;
 
-            if (_video.Source is UriVideoSource)
+            if (_video.Source is UriVideoSource source)
             {
-                string uri = (_video.Source as UriVideoSource).Uri;
+                string uri = source.Uri;
                 if (!string.IsNullOrWhiteSpace(uri))
                 {
                     _mediaPlayerElement.Source = MediaSource.CreateFromUri(new Uri(uri));
@@ -1308,10 +1308,10 @@ namespace VideoDemos.Platforms.Android
             bool hasSetSource = false;
             ...
 
-            else if (_video.Source is ResourceVideoSource)
+            else if (_video.Source is ResourceVideoSource source)
             {
                 string package = Context.PackageName;
-                string path = (_video.Source as ResourceVideoSource).Path;
+                string path = source.Path;
                 if (!string.IsNullOrWhiteSpace(path))
                 {
                     string assetFilePath = "content://" + package + "/" + path;
@@ -1395,9 +1395,9 @@ namespace VideoDemos.Platforms.MaciOS
             AVAsset asset = null;
             ...
 
-            else if (_video.Source is ResourceVideoSource)
+            else if (_video.Source is ResourceVideoSource source)
             {
-                string path = (_video.Source as ResourceVideoSource).Path;
+                string path = source.Path;
                 if (!string.IsNullOrWhiteSpace(path))
                 {
                     string directory = Path.GetDirectoryName(path);
@@ -1459,9 +1459,9 @@ namespace VideoDemos.Platforms.Windows
             bool hasSetSource = false;
 
             ...
-            else if (_video.Source is ResourceVideoSource)
+            else if (_video.Source is ResourceVideoSource source)
             {
-                string path = "ms-appx:///" + (_video.Source as ResourceVideoSource).Path;
+                string path = "ms-appx:///" + source.Path;
                 if (!string.IsNullOrWhiteSpace(path))
                 {
                     _mediaPlayerElement.Source = MediaSource.CreateFromUri(new Uri(path));
@@ -1537,9 +1537,9 @@ namespace VideoDemos.Platforms.Android
             bool hasSetSource = false;
             ...
 
-            else if (_video.Source is FileVideoSource)
+            else if (_video.Source is FileVideoSource source)
             {
-                string filename = (_video.Source as FileVideoSource).File;
+                string filename = source.File;
                 if (!string.IsNullOrWhiteSpace(filename))
                 {
                     _videoView.SetVideoPath(filename);
@@ -1580,9 +1580,9 @@ namespace VideoDemos.Platforms.MaciOS
             AVAsset asset = null;
             ...
 
-            else if (_video.Source is FileVideoSource)
+            else if (_video.Source is FileVideoSource source)
             {
-                string uri = (_video.Source as FileVideoSource).File;
+                string uri = source.File;
                 if (!string.IsNullOrWhiteSpace(uri))
                     asset = AVAsset.FromUrl(NSUrl.CreateFileUrl(new [] { uri }));
             }
@@ -1620,9 +1620,9 @@ namespace VideoDemos.Platforms.Windows
             bool hasSetSource = false;
 
             ...
-            else if (_video.Source is FileVideoSource)
+            else if (_video.Source is FileVideoSource source)
             {
-                string filename = (_video.Source as FileVideoSource).File;
+                string filename = source.File;
                 if (!string.IsNullOrWhiteSpace(filename))
                 {
                     StorageFile storageFile = await StorageFile.GetFileFromPathAsync(filename);
