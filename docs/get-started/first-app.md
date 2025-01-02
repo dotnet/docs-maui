@@ -266,7 +266,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then select **.NET MAUI: Configure Android**, followed by **Refresh Android environment** to ensure that your Android environment is configured correctly. Any errors must be addressed.
+7. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed.
     <!-- markdownlint-enable MD029 -->
 
 1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific Android emulator:
@@ -290,7 +290,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-ios"
 
 <!-- markdownlint-disable MD029 -->
-7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> and then select **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment** to ensure that your iOS environment is configured correctly. Any errors must be addressed.
+7. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed.
     <!-- markdownlint-enable MD029 -->
 
 1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to a specific iOS simulator:
@@ -314,7 +314,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 :::zone pivot="devices-maccatalyst"
 
 <!-- markdownlint-disable MD029 -->
-7. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> and then select **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment** to ensure that your macOS environment is configured correctly. Any errors must be addressed.
+7. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed.
     <!-- markdownlint-enable MD029 -->
 
 1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to your Mac:
