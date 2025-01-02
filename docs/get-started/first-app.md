@@ -250,18 +250,21 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
     :::image type="content" source="media/first-app/vscode/create-project.png" alt-text="Screenshot of creating a new project in the command paletter in Visual Studio Code.":::
 
-1. Wait for the project to be created, accepting the folder as a trusted location if required.
+    Wait for the project to be created, accepting the folder as a trusted location if required.
+
 1. In **Explorer**, expand the root node of your project and then open a C# file such as *MainPage.xaml.cs*:
 
     :::image type="content" source="media/first-app/vscode/mainpage-xaml-cs-open.png" alt-text="Screenshot of a C# file opened in Visual Studio Code.":::
 
 :::zone pivot="devices-windows"
 
-1. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to Windows:
+<!-- markdownlint-disable MD029 -->
+7. In the status bar at the bottom of Visual Studio Code, press on the curly brackets symbol **{ }** and ensure that the **Debug Target** is set to Windows:
 
     :::image type="content" source="media/first-app/vscode/windows-debug-target.png" alt-text="Screenshot of the debug target in Visual Studio Code set to Windows.":::
 
-    You can also set the debug target by pressing <kbd>CTRL+SHIFT+P</kdb> (or <kdb>CMD+SHIFT+P</kbd> on macOS) and selecting **.NET MAUI: Pick Windows Device** from the command palette.
+    You can also set the debug target by pressing <kbd>CTRL+SHIFT+P</kdb> (or <kbd>CMD+SHIFT+P</kbd> on macOS) and selecting **.NET MAUI: Pick Windows Device** from the command palette.
+    <!-- markdownlint-enable MD029 -->
 
 1. Build and run the app on Windows by pressing <kbd>F5</kbd> or by pressing the **Run** button in the upper right corner of Visual Studio Code:
 
