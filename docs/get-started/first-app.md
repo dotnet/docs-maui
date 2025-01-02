@@ -361,6 +361,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
 If your app fails to build and deploy, review [Troubleshooting known issues](~/troubleshooting.md), which may have a solution to your problem.
 
+## Provide feedback
+
+To provide feedback about the .NET MAUI extension from inside Visual Studio Code, navigate to the **Help > Report Issue** dialog. Then, ensure you select "Bug Report" as the value of the **This is a** drop-down, "A VS Code extension" as the value of the **For** drop-down, and ".NET MAUI" as the value of the **Extension** drop-down:
+
+:::image type="content" source="media/first-app/vscode/report-issue.png" alt-text="Picture of the report issue dialog in Visual Studio Code":::
+
 ---
 
 ## Next steps

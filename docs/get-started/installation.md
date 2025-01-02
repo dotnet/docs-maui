@@ -159,11 +159,40 @@ To verify that the .NET MAUI SDK is installed:
 
     On Linux, you should see the `maui-android` workload ID listed alongside the installed version.
 
+## Set up target platforms
+
+To build and debug a .NET MAUI app in Visual Studio Code, you'll need to have a valid target platform relative to your development machine's operating system. The following table lists the supported target platforms on each operating system:
+
+| Your Operating System | Supported Target Platforms |
+|---|---|
+| Windows | Windows, Android |
+| macOS | Android, iOS, macOS |
+| Linux | Android |
+
+Building a .NET MAUI app in Visual Studio Code for Apple platforms, and for Android, requires you to perform additional set up and configuration.
+
+### iOS and macOS
+
+To debug to an iOS or macOS target in Visual Studio Code:
+
+1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
+1. Open Xcode, and ensure you accept any license agreements.
+
+### Android
+
+To debug to an Android target in Visual Studio Code:
+
+1. Install [Microsoft OpenJDK 17](/java/openjdk/download#openjdk-17).
+1. Install the Android SDK via one of the following approaches:
+    - **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
+    - Install via Visual Studio (Windows only).
+    - Install via Android Studio.
+    - Install via your preferred package manager on Linux.
+
 ## Troubleshooting
 
-If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL/CMD + Shift + u </kbd>) and selecting **.NET MAUI** in the drop-down. To provide feedback about the .NET MAUI extension from inside Visual Studio code, navigate to the **Help > Report Issue** dialog. Then, ensure you select "Bug Report" as the value of the **This is a** drop-down, "A VS Code extension" as the value of the **For** drop-down, and ".NET MAUI" as the value of the **Extension** drop-down:
-
-:::image type="content" source="media/installation/vscode/report-issue.png" alt-text="Picture of the report issue dialog in Visual Studio Code":::
+If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL/CMD + Shift + U</kbd>) and selecting **.NET MAUI** in the drop-down.
 
 ---
 
