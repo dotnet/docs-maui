@@ -192,7 +192,7 @@ To debug to an Android target in Visual Studio Code:
 
 ## Troubleshooting
 
-If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL/CMD + Shift + U</kbd>) and selecting **.NET MAUI** in the drop-down.
+If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL+SHIFT+U</kbd> on Windows or <kbd>CTRL+SHIFT+U</kbd> on macOS) and selecting **.NET MAUI** in the drop-down.
 
 ---
 
