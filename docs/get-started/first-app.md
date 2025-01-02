@@ -203,7 +203,14 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 ## Prerequisites
 
-- Visual Studio Code, with the .NET MAUI extension installed. For more information, see [Installation](installation.md?tabs=visual-studio-code).
+- Visual Studio Code, with the .NET MAUI extension installed and configured:
+    - Your Microsoft account connected to C# Dev Kit.
+    - The .NET SDK installed.
+    - The .NET MAUI SDK installed.
+    - Xcode installed on your Mac, including simulator runtimes and the Xcode command line tools, if targeting Apple platforms.
+    - Microsoft OpenJDK, the Android SDK, and an Android emulator, if targeting Android.    
+
+For more information, see [Installation](installation.md?tabs=visual-studio-code).
 
 ## Create an app
 
