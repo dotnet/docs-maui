@@ -291,7 +291,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
 ## Debug the app on an Android device
 
-To run the app on an Android device:
+To debug the app on an Android device:
 
 1. Ensure that your device is set up for deployment. For more information, see [Set up a device for deployment](~/android/device/setup.md).
 1. Plug your device into your machine and select it as a debug target in Visual Studio Code.
@@ -323,7 +323,7 @@ To run the app on an Android device:
 
 ## Debug the app on an iOS device
 
-To run the app on an iOS device:
+To debug the app on an iOS device:
 
 1. Ensure that you've added your Apple ID to Xcode in **Xcode > Settings > Accounts**.
 1. Ensure that your device has been registered with your team, if you belong to the Apple Developer Program.

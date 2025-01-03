@@ -171,37 +171,20 @@ To build and debug a .NET MAUI app in Visual Studio Code, you'll need to have a 
 
 Building a .NET MAUI app in Visual Studio Code for Apple platforms, and for Android, requires you to perform additional set up and configuration.
 
-### iOS and macOS
-
-To set up your machine for iOS and Mac Catalyst development with Visual Studio Code:
-
-1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
-1. In a terminal, run the following command to acquire the Xcode command line tools:
-
-    ```
-    xcode-select --install
-    ```
-
-1. Launch Xcode and accept any license agreements. If simulators don't start installing, navigate to **Xcode > Settings > Components** and install your chosen simulator runtimes.
-1. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CMD+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed.
-    - Ensure you've ran `xcode-select --install` in a terminal.
-    - If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
-    - Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
-
 ### Android
 
 To set up your machine for Android development with Visual Studio Code:
 
 1. Download and install [Microsoft OpenJDK 17.0 or later](/java/openjdk/download). For information about installing the OpenJDK, see [Install the Microsoft Build of OpenJDK](/java/openjdk/install).
 
-> [!IMPORTANT]
-> Ensure that you note the location that the OpenJDK is installed to, as this is required in the next step.
+    > [!IMPORTANT]
+    > Ensure that you note the location that the OpenJDK is installed to, as this is required in the next step.
 
 1. Ensure that you've configured the path to OpenJDK via one of the following approaches:
     1. Set the `JAVA_HOME` environment variable to define the Java SDK path for your machine. This is the recommended approach, which defines the Java SDK path at the machine level.
 
-    > [!NOTE]
-    > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
+      > [!NOTE]
+      > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
 
     1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then select **.NET MAUI: Configure Android**, followed by **Select Java SDK location** to set the path at the user/workspace level.
     1. Configure the OpenJDK path in your .csproj file by setting the `$(JavaSdkDirectory)` MSBuild property to the OpenJDK path. This will define the OpenJDK path at the project level.
@@ -217,7 +200,7 @@ To set up your machine for Android development with Visual Studio Code:
     1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then select **.NET MAUI: Configure Android**, followed by **Select Android SDK location** to set the path at the user/workspace level.
     1. Configure the Android SDK path in your .csproj file by setting the `$(AndroidSdkDirectory)` MSBuild property to the Android SDK path. This will define the Android SDK path at the project level.
 
-1. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed.
+1. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed:
     - In the command palette, select **.NET MAUI: Configure Android** followed by both **Select Android SDK location** and **Select Android SDK location** and validate that they correctly point to installations of each. On Windows, if you install the SDKs via Visual Stdio, OpenJDK will be located at *C:\Program Files\Microsoft* and the Android SDK will be located at *C:\Program Files (x86)\Android\android-sdk*.
     - Ensure that your Android SDK folder has sub-folders such as *build-tools*, *cmdline-tools*, and *platform-tools*.
     - Ensure that your OpenJDK folder has sub-folders such as *bin*, *lib*, and more.
@@ -268,7 +251,6 @@ You'll also need an Android emulator to run your app on:
 
     For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
 
-
 #### Using the InstallAndroidDependencies target
 
 The easiest way to install the required dependencies for your .NET MAUI project on Android is to run the [InstallAndroidDependencies](/dotnet/android/building-apps/build-targets#installandroiddependencies) MSBuild target. This target will examine your app project and install the exact components that are needed. If you update your project to target a new Android API you'll need to run this target again to ensure you receive the required components.
@@ -298,6 +280,23 @@ In the command above:
 
 > [!IMPORTANT]
 > Try to avoid using paths that contain spaces or non-ASCII characters.
+
+### iOS and macOS
+
+To set up your machine for iOS and Mac Catalyst development with Visual Studio Code:
+
+1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+1. In a terminal, run the following command to acquire the Xcode command line tools:
+
+    ```console
+    xcode-select --install
+    ```
+
+1. Launch Xcode and accept any license agreements. If simulators don't start installing, navigate to **Xcode > Settings > Components** and install your chosen simulator runtimes.
+1. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CMD+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed:
+    - Ensure you've ran `xcode-select --install` in a terminal.
+    - If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
+    - Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
 
 ## Troubleshooting
 
