@@ -169,7 +169,7 @@ To build and debug a .NET MAUI app in Visual Studio Code, you'll need to have a 
 | macOS | Android, iOS, macOS |
 | Linux | Android |
 
-Building a .NET MAUI app in Visual Studio Code for Apple platforms, and for Android, requires you to perform additional set up and configuration.
+Building a .NET MAUI app in Visual Studio Code for Android, and for Apple platforms, requires you to perform additional set up and configuration.
 
 ### Android
 
@@ -183,8 +183,8 @@ To set up your machine for Android development with Visual Studio Code:
 1. Ensure that you've configured the path to OpenJDK via one of the following approaches:
     1. Set the `JAVA_HOME` environment variable to define the Java SDK path for your machine. This is the recommended approach, which defines the Java SDK path at the machine level.
 
-      > [!NOTE]
-      > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
+        > [!NOTE]
+        > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
 
     1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> (or <kbd>CTRL+SHIFT+P</kbd> on macOS) and then select **.NET MAUI: Configure Android**, followed by **Select Java SDK location** to set the path at the user/workspace level.
     1. Configure the OpenJDK path in your .csproj file by setting the `$(JavaSdkDirectory)` MSBuild property to the OpenJDK path. This will define the OpenJDK path at the project level.
