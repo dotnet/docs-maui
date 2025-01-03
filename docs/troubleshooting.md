@@ -255,9 +255,3 @@ If you receive this build error it can be fixed by ensuring that your project fi
 ```
 
 For information about MSBuild item element attributes, see [Item element (MSBuild): Attributes and elements](/visualstudio/msbuild/item-element-msbuild#attributes-and-elements).
-
-## Provide feedback about the .NET MAUI extension in Visual Studio Code
-
-To provide feedback about the .NET MAUI extension from inside Visual Studio Code, navigate to the **Help > Report Issue** dialog. Then, ensure you select "Bug Report" as the value of the **This is a** drop-down, "A VS Code extension" as the value of the **For** drop-down, and ".NET MAUI" as the value of the **Extension** drop-down:
-
-:::image type="content" source="media/troubleshooting/report-issue.png" alt-text="Picture of the report issue dialog in Visual Studio Code":::

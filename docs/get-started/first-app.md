@@ -249,6 +249,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
     :::image type="content" source="media/first-app/vscode/select-project-template.png" alt-text="Screenshot of selecting the .NET MAUI App template in the command palette in Visual Studio Code.":::
 
 1. In the **Project Location** dialog, select the location where you'd like the new project to be created.
+
+    > [!IMPORTANT]
+    > Projects must be created in an empty folder.
+
 1. In the command palette, enter a name for your new project and press <kbd>ENTER</kdb>:
 
     :::image type="content" source="media/first-app/vscode/enter-project-name.png" alt-text="Screenshot of entering a project name in the command palette in Visual Studio Code.":::
@@ -285,6 +289,14 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
     :::image type="content" source="media/first-app/vscode/android-running-app.png" alt-text="Screenshot of the app running on Android.":::
 
+## Debug the app on an Android device
+
+To run the app on an Android device:
+
+1. Ensure that your device is set up for deployment. For more information, see [Set up a device for deployment](~/android/device/setup.md).
+1. Plug your device into your machine and select it as a debug target in Visual Studio Code.
+1. Run the app.
+
 :::zone-end
 
 :::zone pivot="devices-ios"
@@ -308,6 +320,16 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 1. In the running app in your chosen iOS simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
 
     :::image type="content" source="media/first-app/vscode/ios-running-app.png" alt-text="Screenshot of the app running on iOS.":::
+
+## Debug the app on an iOS device
+
+To run the app on an iOS device:
+
+1. Ensure that you've added your Apple ID to Xcode in **Xcode > Settings > Accounts**.
+1. Ensure that your device has been registered with your team, if you belong to the Apple Developer Program.
+1. Enable Developer Mode on your device. The first time you run your app you may receive a pop-up on the device - ensure you select **Allow**. For more information about Developer Mode, see [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device).
+1. Plug your device into your machine and select it as a debug target in Visual Studio Code.
+1. Run the app.
 
 :::zone-end
 
