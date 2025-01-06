@@ -175,7 +175,7 @@ Building a .NET MAUI app for Android, and for Apple platforms, requires you to p
 
 To process to set up your machine for .NET MAUI development on Android with Visual Studio Code is:
 
-- Download and install the Java SDK or later. For more information, see [Download and install the Java JDK](#download-and-install-the-java-sdk).
+- Download and install the Java SDK For more information, see [Download and install the Java JDK](#download-and-install-the-java-sdk).
 - Download and install the Android SDK. For more information, see [Download and install the Android SDK](#download-and-install-the-android-sdk).
 - Download and install an Android emulator. For more information, see [Download and install an Android emulator](#download-and-install-an-android-emulator).
 
