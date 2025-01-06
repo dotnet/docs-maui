@@ -39,7 +39,7 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 
     - [Download Visual Studio 2022 Enterprise](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2305)
 
-1. Either install Visual Studio, or modify your existing installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
+1. Either install Visual Studio, or modify your existing installation through the Visual Studio installer, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
     :::image type="content" source="media/installation/vs/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
