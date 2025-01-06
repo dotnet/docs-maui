@@ -242,7 +242,7 @@ In the command above:
 - `-p:AndroidSdkDirectory="/path/to/sdk"` installs or updates Android dependencies to the specified absolute path. Suggested paths are *%LOCALAPPDATA%/Android/Sdk* on Windows, and *$HOME/Library/Android/sdk* on macOS.
 - `-p:AcceptAndroidSDKLicenses=True` accepts the required Android licenses for development.
 
-Try to avoid using paths that contain spaces or non-ASCII characters.    
+Try to avoid using paths that contain spaces or non-ASCII characters.
 
 > [!NOTE]
 > The `InstallAndroidDependencies` MSBuild target can also install the Java SDK if the `JavaSdkDirectory` MSBuild property is provided.
