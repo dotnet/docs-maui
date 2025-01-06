@@ -222,7 +222,7 @@ To download and install the Android SDK, and configure Visual Studio Code to use
 
 ##### Using the InstallAndroidDependencies target
 
-The recommended approach to installing the required dependencies for your .NET MAUI project on Android is to run the [InstallAndroidDependencies](/dotnet/android/building-apps/build-targets#installandroiddependencies) MSBuild target. This target will examine your .NET MAUI app project and install the exact components that are needed. For example, if you don't have the Android SDK installed, this target will install the SDK for you.
+The recommended approach to installing the required dependencies for your .NET MAUI project on Android is to run the [InstallAndroidDependencies](/dotnet/android/building-apps/build-targets#installandroiddependencies) MSBuild target. This target will examine install the Android SDK for you, if it isn't already installed.
 
 In a terminal, create a new .NET MAUI project:
 
