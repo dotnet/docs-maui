@@ -201,7 +201,7 @@ To download and install the Java SDK, and configure Visual Studio Code to use it
 
 To download and install the Android SDK, and configure Visual Studio Code to use it:
 
-1. Download and install the Android SDK via on the following approaches:
+1. Download and install the Android SDK via one of the following approaches:
     1. Download and install the Android SDK by creating a new .NET MAUI project and then use the `InstallAndroidDependencies` build target, which helps set up your Android environment. This is the recommended approach. For more information, see [Using the InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
     1. Download and install the Android SDK on Windows by [installing the .NET MAUI development workload in Visual Studio](installation.md?tabs=visual-studio), and then [creating and running a .NET MAUI app on Android](first-app.md?pivots=devices-android&tabs=visual-studio). This process will ensure that the Android SDK and an Android emulator are installed.
     1. Download and install the Android SDK through Android Studio. For more information, see [Install Android Studio](https://developer.android.com/studio/install) on developer.android.com.
