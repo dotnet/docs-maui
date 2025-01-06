@@ -46,7 +46,7 @@ dotnet tool install dotnet-xcsync -g --prerelease --add-source https://pkgs.dev.
 
 ## Troubleshooting
 
-To see details on errors related to xcsync, navigate to the **Output** window (<kbd>CMD + Shift + u </kbd>) and select **.NET MAUI - xcsync** in the dropdown. If you are facing issues, please [report an issue](#provide-feedback).
+To see details on errors related to xcsync, navigate to the **Output** window (<kbd>CMD + Shift + u </kbd>) and select **.NET MAUI - xcsync** in the drop-down. If you are facing issues, please [report an issue](#provide-feedback).
 
 ## Provide feedback
 

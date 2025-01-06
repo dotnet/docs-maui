@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
-ms.date: 12/22/2023
+ms.date: 01/02/2025
 ---
 
 # Troubleshooting known issues
