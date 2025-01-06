@@ -16,7 +16,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Prerequisites
 
-- Visual Studio 2022 17.12 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
+- Visual Studio 2022 17.12 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=visual-studio).
 
 ## Create an app
 
@@ -242,7 +242,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio Code o
 
     :::image type="content" source="media/first-app/vscode/create-new-project.png" alt-text="Screenshot of the create new project button in Visual Studio Code.":::
 
-    Alternatively, select <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CTRL+SHIFT+P</kbd> on macOS, and then the **.NET: New Project...** command.
+    Alternatively, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CTRL+SHIFT+P</kbd> on macOS, and then the **.NET: New Project...** command.
 
 1. In the command palette, select the **.NET MAUI App** template:
 
