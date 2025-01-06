@@ -1,7 +1,7 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 12/30/2024
+ms.date: 01/06/2025
 monikerRange: ">=net-maui-9.0"
 ---
 
