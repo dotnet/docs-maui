@@ -1,7 +1,7 @@
 ---
 title: "Improve app performance"
 description: "Learn how to increase the performance of .NET MAUI apps by reducing the amount of work being performed by a CPU, and the amount of memory consumed by an app."
-ms.date: 12/16/2024
+ms.date: 01/07/2025
 no-loc: [ "Objective-C" ]
 ---
 
@@ -122,9 +122,9 @@ In addition, images should only be created when required and should be released 
 
 When downloading an image for display with the <xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)?displayProperty=nameWithType> method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
 
-## Reduce the visual tree size
+## Reduce the number of elements on a page
 
-Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The <xref:Microsoft.Maui.Controls.VisualElement.IsVisible> property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
+Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The <xref:Microsoft.Maui.Controls.VisualElement.IsVisible> property of each element determines whether the element should be visible on screen. If an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`. Setting the `IsVisible` property on an element to `false` retains the element in the visual tree, but excludes it from rendering and layout calculations.
 
 The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple <xref:Microsoft.Maui.Controls.Label> elements:
 
