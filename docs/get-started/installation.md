@@ -183,7 +183,9 @@ To process to set up your machine for .NET MAUI development on Android with Visu
 
 To download and install the Java SDK, and configure Visual Studio Code to use it:
 
-1. Download and install [Microsoft OpenJDK 17.0 or later](/java/openjdk/download). For information about installing the OpenJDK, see [Install the Microsoft Build of OpenJDK](/java/openjdk/install).
+1. Download and install [Microsoft OpenJDK 17](/java/openjdk/download). For information about installing the OpenJDK, see [Install the Microsoft Build of OpenJDK](/java/openjdk/install).
+
+    Alternatively, rather than manually downloading and installing the Java SDK, you can use the `InstallAndroidDependencies` build target to install the Java SDK (and the Android SDK). For more information, see [Using the InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
 
     > [!IMPORTANT]
     > Ensure that you note the location that the OpenJDK is installed to, as this is required in the next step.
@@ -237,15 +239,16 @@ cd MyMauiApp
 dotnet build -t:InstallAndroidDependencies -f:net9.0-android -p:AndroidSdkDirectory="/path/to/sdk" -p:AcceptAndroidSDKLicenses=True
 ```
 
+> [!NOTE]
+> The `InstallAndroidDependencies` MSBuild target can also install the Java SDK if the `JavaSdkDirectory` MSBuild property is provided.
+
 In the command above:
 
 - `-p:AndroidSdkDirectory="/path/to/sdk"` installs or updates Android dependencies to the specified absolute path. Suggested paths are *%LOCALAPPDATA%/Android/Sdk* on Windows, and *$HOME/Library/Android/sdk* on macOS.
 - `-p:AcceptAndroidSDKLicenses=True` accepts the required Android licenses for development.
+- (optional) `-p:JavaSdkDirectory="/path/to/sdk"` installs the Java SDK to the specified absolute path.
 
 Try to avoid using paths that contain spaces or non-ASCII characters.
-
-> [!NOTE]
-> The `InstallAndroidDependencies` MSBuild target can also install the Java SDK if the `JavaSdkDirectory` MSBuild property is provided.
 
 #### Download and install an Android emulator
 
