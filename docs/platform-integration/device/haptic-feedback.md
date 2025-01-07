@@ -1,7 +1,7 @@
 ---
 title: "Haptic Feedback"
 description: "Learn how to use the .NET MAUI IHapticFeedback class in the Microsoft.Maui.Devices namespace. This interface lets you control haptic feedback on a device."
-ms.date: 02/02/2023
+ms.date: 01/07/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
@@ -62,3 +62,6 @@ No setup is required.
 The haptic feedback functionality is performed in two modes: a short <xref:Microsoft.Maui.Devices.HapticFeedbackType.Click> or a <xref:Microsoft.Maui.Devices.HapticFeedbackType.LongPress>. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which <xref:Microsoft.Maui.Controls.Button> they click:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="hapticfeedback":::
+
+> [!IMPORTANT]
+> On Apple platforms, haptic feedback functionality must be executed on the UI thread.
