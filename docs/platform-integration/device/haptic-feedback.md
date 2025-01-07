@@ -64,4 +64,4 @@ The haptic feedback functionality is performed in two modes: a short <xref:Micro
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="hapticfeedback":::
 
 > [!IMPORTANT]
-> On Apple platforms, haptic feedback functionality must be invoked on the UI thread.
+> On Apple platforms, haptic feedback functionality must be executed on the UI thread.
