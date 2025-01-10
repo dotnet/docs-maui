@@ -132,7 +132,7 @@ Let's break down the key parts of the XAML:
 - `<TabBar>` is the content of the <xref:Microsoft.Maui.Controls.Shell>.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
-The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell takes these objects and produces the user interface for the content, with a bar at the top representing each page. The `ShellContent.Icon` property for each page uses special syntax: `{OnPlatform ...}`. This syntax is processed when the XAML pages are compiled for each platform, and with it you can specify a property value for each platform. In this case, every platform uses the `icon_about.png` icon by default, but iOS and MacCatalyst will use `icon_about_ios.png`.
+The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell takes these objects and produces the user interface for the content, with a bar at the top representing each page. The `ShellContent.Icon` property for each page uses `OnPlatform` markup extension. This markup extension in XAML is used to specify different values for different platforms. This syntax is processed when the XAML pages are compiled for each platform. In this case, every platform uses the `icon_about.png` icon by default, but iOS and MacCatalyst will use `icon_about_ios.png`.
 
 Each `<ShellContent>` object is pointing to a page to display. This is set by the `ContentTemplate` property.
 
