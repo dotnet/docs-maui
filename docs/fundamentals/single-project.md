@@ -186,12 +186,12 @@ Multi-targeting can also be combined with conditional compilation so that code i
 
 ```csharp
 #if ANDROID
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToPlatform());
+                  handler.PlatformView.SetBackgroundColor(Colors.Red.ToPlatform());
 #elif IOS
-                  handler.NativeView.BackgroundColor = Colors.Red.ToPlatform();
-                  handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
+                  handler.PlatformView.BackgroundColor = Colors.Red.ToPlatform();
+                  handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
-                  handler.NativeView.Background = Colors.Red.ToPlatform();
+                  handler.PlatformView.Background = Colors.Red.ToPlatform();
 #endif
 ```
 
