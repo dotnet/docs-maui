@@ -11,7 +11,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Frame> 
 ::: moniker range=">=net-maui-9.0"
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information see [Border](border.md).
+> The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information, see [Border](border.md).
 
 ::: moniker-end
 
