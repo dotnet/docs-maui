@@ -88,7 +88,7 @@ The <xref:Microsoft.Maui.Controls.OnIdiom`1> class enables you to customize UI a
             <OnIdiom.Phone>0,20,0,0</OnIdiom.Phone>
             <OnIdiom.Tablet>0,40,0,0</OnIdiom.Tablet>
             <OnIdiom.Desktop>0,60,0,0</OnIdiom.Desktop>
-        </OnPlatform>
+        </OnIdiom>
     </ContentPage.Margin>
     ...
 </ContentPage>
@@ -103,7 +103,7 @@ The <xref:Microsoft.Maui.Controls.OnIdiom`1> class enables you to customize UI a
     <ContentPage.Margin>
         <OnIdiom x:TypeArguments="Thickness" Default="20">
             <OnIdiom.Desktop>0,60,0,0</OnIdiom.Desktop>
-        </OnPlatform>
+        </OnIdiom>
     </ContentPage.Margin>
     ...
 </ContentPage>
