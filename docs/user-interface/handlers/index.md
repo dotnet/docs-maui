@@ -1,12 +1,12 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 01/17/2024
+ms.date: 01/13/2025
 ---
 
 # Handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of cross-platform controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to controls on each platform, which are known as *native views*. Handlers are also responsible for instantiating the underlying native view, and mapping the cross-platform control API to the native view API. For example, on iOS a handler maps a .NET MAUI <xref:Microsoft.Maui.Controls.Button> to an iOS `UIButton`. On Android, the <xref:Microsoft.Maui.Controls.Button> is mapped to an `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of cross-platform controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to controls on each platform, which are known as *native views*. Handlers are also responsible for instantiating the underlying native view, and mapping the cross-platform control API to the native view API. For example, on iOS a handler maps a .NET MAUI <xref:Microsoft.Maui.Controls.Button> to an iOS `UIButton`. On Android, the <xref:Microsoft.Maui.Controls.Button> is mapped to a `MaterialButton`:
 
 :::image type="content" source="media/overview/button-handler.png" alt-text="Button handler architecture." border="false":::
 
