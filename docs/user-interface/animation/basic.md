@@ -180,7 +180,7 @@ In this example, the `Task.WhenAll` method contains three tasks, each of which e
 
 ## Canceling animations
 
-An app can cancel one or more animations with a call to the <xref:Microsoft.Maui.Controls.ViewExtensions.CancelAnimations%2A> extension method:
+The <xref:Microsoft.Maui.Controls.ViewExtensions.CancelAnimations%2A> extension method is used to cancel any animations, such as rotation, scaling, translation, and fading, that are running on a specific <xref:Microsoft.Maui.Controls.VisualElement>.
 
 ```csharp
 image.CancelAnimations();
