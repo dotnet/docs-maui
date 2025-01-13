@@ -260,7 +260,7 @@ The following steps demonstrate how to intercept permission requests from the `W
     }
     ```
 
-01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace:
+01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace (don't append `.Platforms.Android` to the namespace):
 
     ```csharp
     using Android.Webkit;
