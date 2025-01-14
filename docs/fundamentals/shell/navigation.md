@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 10/08/2024
+ms.date: 01/14/2025
 ---
 
 # .NET MAUI Shell navigation
@@ -135,18 +135,12 @@ await Shell.Current.GoToAsync("//animals/monkeys");
 
 This example navigates to the page for the `monkeys` route, with the route being defined on a <xref:Microsoft.Maui.Controls.ShellContent> object. The <xref:Microsoft.Maui.Controls.ShellContent> object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
 
+> [!WARNING]
+> Absolute routes don't work with pages that are registered with the `Routing.RegisterRoute` method.
+
 ### Relative routes
 
 Navigation can also be performed by specifying a valid relative URI as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. The routing system will attempt to match the URI to a <xref:Microsoft.Maui.Controls.ShellContent> object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
-
-The following relative route formats are supported:
-
-| Format | Description |
-| --- | --- |
-| *route* | The route hierarchy will be searched for the specified route, upwards from the current position. The matching page will be pushed to the navigation stack. |
-| /*route* | The route hierarchy will be searched from the specified route, downwards from the current position. The matching page will be pushed to the navigation stack. |
-| //*route* | The route hierarchy will be searched for the specified route, upwards from the current position. The matching page will replace the navigation stack. |
-| ///*route* | The route hierarchy will be searched for the specified route, downwards from the current position. The matching page will replace the navigation stack. |
 
 The following example navigates to the page for the `monkeydetails` route:
 
@@ -154,7 +148,10 @@ The following example navigates to the page for the `monkeydetails` route:
 await Shell.Current.GoToAsync("monkeydetails");
 ```
 
-In this example, the `monkeyDetails` route is searched for up the hierarchy until the matching page is found. When the page is found, it's pushed to the navigation stack.
+In this example, the `monkeyDetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
+
+> [!WARNING]
+> Relative routes don't work with pages that are defined in a subclassed <xref:Microsoft.Maui.Controls.Shell> class, which is typically *AppShell.xaml*. Instead, only pages registered with the `Routing.RegisterRoute` method can be pushed onto the navigation stack using relative routes. For more information, see [Register detail page routes](#register-detail-page-routes).
 
 #### Contextual navigation
 
