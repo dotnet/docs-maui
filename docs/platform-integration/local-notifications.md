@@ -483,7 +483,7 @@ INotificationManagerService notificationManager =
     Application.Current?.Windows[0].Page?.Handler?.MauiContext?.Services.GetService<INotificationManagerService>();
 ```
 
-For more information about resolving registered types, see [Resolution](~/fundamentals/dependency-injection.md).
+For more information about resolving registered types, see [Resolution](~/fundamentals/dependency-injection.md#resolution).
 
 Once the `INotificationManagerService` implementation is resolved, its operations can be invoked:
 
