@@ -6,53 +6,63 @@ ms.date: 11/08/2024
 
 # Apple account management
 
-When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a device, prior to uploading it to the App Store for distribution. Both of these tasks require you to have an [Apple ID](https://appleid.apple.com/account), and have enrolled your Apple ID in the [Apple Developer Program](https://developer.apple.com/programs).
+When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a device, prior to uploading it to the App Store for distribution. Both of these tasks require you or someone else in your organization to enroll in one of Apple's Developer Programs:
 
-The Apple account management interface in Visual Studio enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
+1. Enrolling in Apple's [AppStoreConnect Program](https://developer.apple.com/programs/enroll) allows you to publish your iOS applications to Apple's public AppStore.
+2. Enrolling in Apple's [Enterprise Program](https://developer.apple.com/programs/enterprise/) allows you to publish your iOS applications to a private "AppStore" that's fully controlled by your organization.
 
-> [!IMPORTANT]
-> Adding an Apple account that uses federated credentials isn't possible in Visual Studio.
+The Apple account management interface in Visual Studio enables you to view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
+
+## Accepting Apple's licensing agreement
+
+Every year, Apple requires you to review and agree to their licensing agreement. To do this, sign-in to your [Apple Developer Account](https://developer.apple.com/account/) and agree to any licensing agreement that's presented to you.
+
+## Generating an API Key
+
+Before you can add an Apple Developer Account to Visual Studio, you'll need to generate an API Key.
+
+### Generating an AppStoreConnect API Key
+
+If you've enrolled in Apple's **AppStoreConnect Program**, you'll need to:
+
+1. Sign-in to your [Apple Developer Account](https://appstoreconnect.apple.com).
+2. Select **Users and Access**.
+3. Select the **Integrations** tab.
+4. Select the **Team Keys** tab.
+5. Press the **+** button.
+
+> [!NOTE]
+> Visual Studio currently only supports **Team Keys** and doesn't support **Individual Keys**.
+>
+> Only **Admin** keys will be able to register new Bundle IDs and generate new provisioning profiles. **Developer** keys won't be able to perform these tasks.
+>
+> For more information about Apple's AppStoreConnect API, visit Apple's [AppStoreConnect API documentation](https://developer.apple.com/documentation/appstoreconnectapi).
+
+### Generating an Enterprise API Key
+
+If you've enrolled in Apple's **Enterprise Program**, you'll need to:
+
+1. Sign-in to your [Apple Developer Account](https://developer.apple.com/account).
+2. Select **Users and Access** located under the **Services** section.
+3. Select the **Integrations** tab.
+4. Press the **+** button.
+
+> [!NOTE]
+> Only **Admin** keys will be able to register new Bundle IDs and generate new provisioning profiles. **Developer** keys won't be able to perform these tasks.
+>
+> For more information about how to generate an Enterprise API Key, visit Apple's [Enterprise Program API documentation](https://developer.apple.com/documentation/enterpriseprogramapi).
 
 ## Add an Apple Developer Account
 
-Before you begin, ensure that you've accepted any user license agreements in your [Apple Developer Account](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
-
-If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
-
 To add your Apple account to Visual Studio:
 
-1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
+1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts** and click on the **Add** button:
 
     :::image type="content" source="media/apple-account-management/vs/add-account.png" alt-text="Add an Apple Developer Account to Visual Studio.":::
 
-1. To add an enterprise account, in the **Enterprise Account...** dialog, enter your Enterprise Program API key data and click the **Add** button:
+1. Provide a descriptive **Name** for your API Key and copy the **Issuer ID** and **Key ID** values from Apple's website into the appropriate text boxes. If you haven't already done so, download the **Private Key** from Apple's website to a safe location and then use the **Browse...** button to select the location of the downloaded private key file:
 
-    :::image type="content" source="media/apple-account-management/vs/enterprise-account.png" alt-text="Add an Enterprise Apple Developer Account to Visual Studio.":::
-
-    The **Name**, **Issuer ID**, and **Key ID** data can be found in [Apple Developer Accounts](https://developer.apple.com/account) by selecting **Users and Access** and then the **Integrations** tab. The **Private key** can also be downloaded from this location:
-
-    :::image type="content" source="media/apple-account-management/enterprise-details.png" alt-text="Screenshot of Apple Enterprise Program API details.":::
-
-    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
-
-    > [!NOTE]
-    > Only "Admin" keys will be able to register new Bundle IDs and generate new provisioning profiles. "Developer" keys will not be able to perform these tasks.
-
-1. To add an individual account, in the **Individual Account...** dialog, enter your App Store Connect API key data and click the **Add** button:
-
-    :::image type="content" source="media/apple-account-management/vs/individual-account.png" alt-text="Add an Individual Apple Developer Account to Visual Studio.":::
-
-    The **Name**, **Issuer ID**, and **Key ID** data can be found in [App Store Connect](https://appstoreconnect.apple.com/) by selecting **Users and Access** and then the **Keys** tab. The **Private key** can also be downloaded from this location:
-
-    :::image type="content" source="media/apple-account-management/app-store-connect-details.png" lightbox="media/apple-account-management/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
-
-    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
-
-    Note: Only "Admin" keys will be able to register new Bundle IDs and generate new provisioning profiles. "Developer" keys will not be able to perform these tasks.
-
-1. Once your account has been added successfully, you'll see your Apple ID and any teams that your Apple ID is part of:
-
-    :::image type="content" source="media/apple-account-management/vs/account.png" alt-text="Apple Developer Account added to Visual Studio.":::
+    :::image type="content" source="media/apple-account-management/vs/api-key-dialog.png" alt-text="Enter your API Key information.":::
 
 ## View signing certificates and provisioning profiles
 
