@@ -1,7 +1,7 @@
 ---
 title: "ListView fast scrolling on Android"
 description: "This article explains how to consume the .NET MAUI Android platform-specific that enables fast scrolling through data in a ListView."
-ms.date: 04/05/2022
+ms.date: 01/16/2025
 ---
 
 # ListView fast scrolling on Android
@@ -10,7 +10,9 @@ This .NET Multi-platform App UI (.NET MAUI) Android platform-specific is used to
 
 ```xaml
 <ContentPage ...
-             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls">
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:PlatformSpecifics"
+             x:DataType="local:ListViewViewModel">
     <StackLayout>
         ...
         <ListView ItemsSource="{Binding GroupedEmployees}"
@@ -29,9 +31,9 @@ Alternatively, it can be consumed from C# using the fluent API:
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 ...
 
-var listView = new Microsoft.Maui.Controls.ListView { IsGroupingEnabled = true, ... };
-listView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "GroupedEmployees");
-listView.GroupDisplayBinding = new Binding("Key");
+var listView = new Microsoft.Maui.Controls.ListView { IsGroupingEnabled = true, ItemTemplate = personDataTemplate };
+listView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, static (ListViewViewModel vm) => vm.GroupedEmployees); // .NET 9+ only
+listView.GroupDisplayBinding = Binding.Create(static (Grouping<char, Person> g) => g.Key); // .NET 9+ only
 listView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetIsFastScrollEnabled(true);
 ```
 
