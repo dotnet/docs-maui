@@ -75,6 +75,8 @@ Alternatively, an item in grouped data can be scrolled into view by specifying t
 // Items and groups are indexed from zero.
 collectionView.ScrollTo(2, 1);
 ```
+> [!TIP]
+> Placing a <xref:Microsoft.Maui.Controls.CollectionView> inside a <xref:Microsoft.Maui.Controls.VerticalStackLayout> or <xref:Microsoft.Maui.Controls.StackLayout> may prevent the **ScrollTo** method from functioning as expected. To resolve this issue, replace the <xref:Microsoft.Maui.Controls.VerticalStackLayout> or <xref:Microsoft.Maui.Controls.StackLayout> with a <xref:Microsoft.Maui.Controls.Grid>.
 
 > [!NOTE]
 > The `ScrollToRequested` event is fired when the `ScrollTo` method is invoked.
