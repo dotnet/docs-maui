@@ -32,8 +32,8 @@ using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 ...
 
 var listView = new Microsoft.Maui.Controls.ListView { IsGroupingEnabled = true, ItemTemplate = personDataTemplate };
-listView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, static (ListViewViewModel vm) => vm.GroupedEmployees); // .NET 9+ only
-listView.GroupDisplayBinding = Binding.Create(static (Grouping<char, Person> g) => g.Key); // .NET 9+ only
+listView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, static (ListViewViewModel vm) => vm.GroupedEmployees); // .NET 9+ compiled binding
+listView.GroupDisplayBinding = Binding.Create(static (Grouping<char, Person> g) => g.Key); // .NET 9+ compiled binding
 listView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetIsFastScrollEnabled(true);
 ```
 
