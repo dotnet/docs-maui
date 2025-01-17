@@ -231,9 +231,9 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 
 :::zone pivot="devices-android"
 
-## Navigation to content that opens a new Window on Android
+## Navigate to content that opens a new Window on Android
 
-On Android, navigation won't occur in a <xref:Microsoft.Maui.Controls.WebView> when a hyperlink that specifies `target="_blank"` (to open the content in a new window) is pressed. This is because opening a hyperlink in a new window requires <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> to be implemented, which .NET MAUI doesn't. Therefore, you should decide whether to implement <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> yourself, open the URL in the system browser, or do something else.
+On Android, navigation won't occur in a <xref:Microsoft.Maui.Controls.WebView> when a hyperlink that specifies `target="_blank"` (to open the content in a new window) is pressed. This is because opening a hyperlink in a new window requires <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> to be implemented, which .NET MAUI doesn't. Therefore, for this scenario you should decide whether to implement <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> yourself, open the URL in the system browser, or do something else.
 
 Alternatively, to force all hyperlinks to open in the same <xref:Microsoft.Maui.Controls.WebView>, modify the `WebViewHandler` in your app so that the native <xref:Android.Webkit.WebView> disables support for multiple windows:
 
@@ -246,7 +246,7 @@ Alternatively, to force all hyperlinks to open in the same <xref:Microsoft.Maui.
 #endif
 ```
 
-This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument. The code should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
+This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument, and it should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
 ## Handle permissions on Android
 
