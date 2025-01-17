@@ -33,7 +33,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Nov
 ### Updated articles
 
 - [.NET MAUI Shell search](../fundamentals/shell/search.md)
-- [.NET MAUI windows](../fundamentals/windows.md)
+- [.NET MAUI window](../user-interface/controls/window.md)
 - [App lifecycle](../fundamentals/app-lifecycle.md)
 - [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md)
 - [Control templates](../fundamentals/controltemplate.md)
