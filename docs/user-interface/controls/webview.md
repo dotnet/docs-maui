@@ -246,7 +246,7 @@ Alternatively, to force all hyperlinks to open in the same <xref:Microsoft.Maui.
 #endif
 ```
 
-This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument, and it should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
+This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument, and should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
 ## Handle permissions on Android
 
