@@ -230,10 +230,20 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 
 ## Position and size a Window
 
+::: moniker range="=net-maui-8.0"
+
 The position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object.
 
 > [!WARNING]
 > Mac Catalyst doesn't support resizing or repositioning windows programmatically by setting the `X`, `Y`, `Width`, and `Height` properties.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+The position and size of a window can be programmatically defined for a .NET MAUI app on Mac Catalyst and Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object.
+
+::: moniker-end
 
 For example, to set the window position and size on launch you should override the `CreateWindow` method in your `App` class and set the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object:
 
@@ -269,6 +279,8 @@ Window.Y = (displayInfo.Height / displayInfo.Density - Window.Height) / 2;
 
 For information about obtaining the device's screen metrics, see [Device display information](~/platform-integration/device/display.md).
 
+::: moniker range="=net-maui-8.0"
+
 ### Mac Catalyst
 
 Mac Catalyst doesn't support resizing or repositioning windows programmatically. However, a workaround to enable resizing is to set the `MinimumWidth` and `MaximumWidth` properties to the desired width of the window, and the `MinimumHeight` and `MaximumHeight` properties to the desired height of the window. This will trigger a resize, and you can then revert the properties back to their original values:
@@ -288,6 +300,8 @@ Dispatcher.Dispatch(() =>
     Window.MaximumHeight = double.PositiveInfinity;
 });
 ```
+
+::: moniker-end
 
 ## Decouple window management from the App class
 
