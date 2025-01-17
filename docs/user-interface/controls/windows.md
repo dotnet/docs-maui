@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI windows"
+title: "Window"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 08/09/2024
+ms.date: 01/17/2025
 ---
 
-# .NET MAUI windows
+# Window
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window> class provides the ability to create, configure, show, and manage multiple windows.
 
