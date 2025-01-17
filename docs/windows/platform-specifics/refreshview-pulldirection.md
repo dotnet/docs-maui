@@ -1,7 +1,7 @@
 ---
 title: "RefreshView pull direction on Windows"
 description: "This article explains how to consume the .NET MAUI Windows platform-specific that enables the pull direction of a RefreshView to be changed."
-ms.date: 04/06/2022
+ms.date: 01/17/2025
 ---
 
 # RefreshView pull direction on Windows
@@ -10,7 +10,9 @@ This .NET Multi-platform App UI (.NET MAUI) Windows platform-specific enables th
 
 ```xaml
 <ContentPage ...
-             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls">
+             xmlns:local="clr-namespace:PlatformSpecifics"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             x:DataType="local:WindowsRefreshViewPageViewModel">
     <RefreshView windows:RefreshView.RefreshPullDirection="LeftToRight"
                  IsRefreshing="{Binding IsRefreshing}"
                  Command="{Binding RefreshCommand}">
