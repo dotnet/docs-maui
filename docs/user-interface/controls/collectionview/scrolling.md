@@ -10,7 +10,7 @@ ms.date: 09/30/2024
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines two <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> methods, that scroll items into view. One of the overloads scrolls the item at the specified index into view, while the other scrolls the specified item into view. Both overloads have additional arguments that can be specified to indicate the group the item belongs to, the exact position of the item after the scroll has completed, and whether to animate the scroll.
 
-<xref:Microsoft.Maui.Controls.CollectionView> defines a <xref:Microsoft.Maui.Controls.ItemsView.ScrollToRequested> event that is fired when one of the <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> methods is invoked. The <xref:Microsoft.Maui.Controls.ScrollToRequestedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.ItemsView.ScrollToRequested> event has many properties, including `IsAnimated`, `Index`, `Item`, and <xref:Microsoft.Maui.Controls.ScrollToPosition>. These properties are set from the arguments specified in the <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> method calls.
+<xref:Microsoft.Maui.Controls.CollectionView> defines a <xref:Microsoft.Maui.Controls.ItemsView.ScrollToRequested> event that is fired when one of the <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> methods is invoked. The <xref:Microsoft.Maui.Controls.ScrollToRequestedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.ItemsView.ScrollToRequested> event has many properties, including `IsAnimated`, `Index`, `Item`, and `ScrollToPosition`. These properties are set from the arguments specified in the <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> method calls.
 
 In addition, <xref:Microsoft.Maui.Controls.CollectionView> defines a <xref:Microsoft.Maui.Controls.ItemsView.Scrolled> event that is fired to indicate that scrolling occurred. The <xref:Microsoft.Maui.Controls.ItemsViewScrolledEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.ItemsView.Scrolled> event has many properties. For more information, see [Detect scrolling](#detect-scrolling).
 
@@ -166,7 +166,7 @@ This example code results in the item being scrolled to the end of the view:
 
 ## Control scroll position when new items are added
 
-<xref:Microsoft.Maui.Controls.CollectionView> defines a <xref:Microsoft.Maui.Controls.ItemsView.ItemsUpdatingScrollMode> property, which is backed by a bindable property. This property gets or sets a <xref:Microsoft.Maui.Controls.ItemsView.ItemsUpdatingScrollMode> enumeration value that represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CollectionView> when new items are added to it. The <xref:Microsoft.Maui.Controls.ItemsView.ItemsUpdatingScrollMode> enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.CollectionView> defines a <xref:Microsoft.Maui.Controls.ItemsView.ItemsUpdatingScrollMode> property, which is backed by a bindable property. This property gets or sets a <xref:Microsoft.Maui.Controls.ItemsUpdatingScrollMode> enumeration value that represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CollectionView> when new items are added to it. The <xref:Microsoft.Maui.Controls.ItemsUpdatingScrollMode> enumeration defines the following members:
 
 - `KeepItemsInView` keeps the first item in the list displayed when new items are added.
 - `KeepScrollOffset` ensures that the current scroll position is maintained when new items are added.
