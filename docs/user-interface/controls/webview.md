@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 08/30/2024
+ms.date: 01/17/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -230,6 +230,23 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 - `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 :::zone pivot="devices-android"
+
+## Navigate to content that opens a new Window on Android
+
+On Android, navigation won't occur in a <xref:Microsoft.Maui.Controls.WebView> when a hyperlink that specifies `target="_blank"` (to open the content in a new window) is pressed. This is because opening a hyperlink in a new window requires <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> to be implemented, which .NET MAUI doesn't. Therefore, for this scenario you should decide whether to implement <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> yourself, open the URL in the system browser, or do something else.
+
+Alternatively, to force all hyperlinks to open in the same <xref:Microsoft.Maui.Controls.WebView>, modify the `WebViewHandler` in your app so that the native <xref:Android.Webkit.WebView> disables support for multiple windows:
+
+```csharp
+#if ANDROID
+    Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("SupportMultipleWindows", (handler, view) =>
+    {
+        handler.PlatformView.Settings.SetSupportMultipleWindows(false);
+    });
+#endif
+```
+
+This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument, and should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
 ## Handle permissions on Android
 
