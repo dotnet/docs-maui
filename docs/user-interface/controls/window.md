@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI windows"
+title: "Window"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 08/09/2024
+ms.date: 01/17/2025
 ---
 
-# .NET MAUI windows
+# Window
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window> class provides the ability to create, configure, show, and manage multiple windows.
 
@@ -39,7 +39,7 @@ The <xref:Microsoft.Maui.Controls.Window> class defines the following events:
 - <xref:Microsoft.Maui.Controls.Window.Backgrounding>, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
 - <xref:Microsoft.Maui.Controls.Window.DisplayDensityChanged>, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
 
-For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
+For more information about the lifecycle events, and their associated overrides, see [App lifecycle](~/fundamentals/app-lifecycle.md).
 
 The <xref:Microsoft.Maui.Controls.Window> class also defines the following modal navigation events:
 
@@ -230,10 +230,20 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 
 ## Position and size a Window
 
+::: moniker range="=net-maui-8.0"
+
 The position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object.
 
 > [!WARNING]
 > Mac Catalyst doesn't support resizing or repositioning windows programmatically by setting the `X`, `Y`, `Width`, and `Height` properties.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+The position and size of a window can be programmatically defined for a .NET MAUI app on Mac Catalyst and Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object.
+
+::: moniker-end
 
 For example, to set the window position and size on launch you should override the `CreateWindow` method in your `App` class and set the `X`, `Y`, `Width`, and `Height` properties on a <xref:Microsoft.Maui.Controls.Window> object:
 
@@ -269,6 +279,8 @@ Window.Y = (displayInfo.Height / displayInfo.Density - Window.Height) / 2;
 
 For information about obtaining the device's screen metrics, see [Device display information](~/platform-integration/device/display.md).
 
+::: moniker range="=net-maui-8.0"
+
 ### Mac Catalyst
 
 Mac Catalyst doesn't support resizing or repositioning windows programmatically. However, a workaround to enable resizing is to set the `MinimumWidth` and `MaximumWidth` properties to the desired width of the window, and the `MinimumHeight` and `MaximumHeight` properties to the desired height of the window. This will trigger a resize, and you can then revert the properties back to their original values:
@@ -288,6 +300,8 @@ Dispatcher.Dispatch(() =>
     Window.MaximumHeight = double.PositiveInfinity;
 });
 ```
+
+::: moniker-end
 
 ## Decouple window management from the App class
 

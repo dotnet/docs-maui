@@ -247,8 +247,6 @@
               href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
-        - name: Windows
-          href: fundamentals/windows.md
     - name: User interface
       items:
         - name: Animation
@@ -443,6 +441,8 @@
                   href: user-interface/controls/twopaneview.md
                 - name: WebView
                   href: user-interface/controls/webview.md
+            - name: Window
+              href: user-interface/controls/window.md
         - name: C# markup
           href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
