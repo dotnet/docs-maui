@@ -1,7 +1,7 @@
 ---
 title: "Cell background Color on iOS"
 description: "This article explains how to consume the .NET MAUI iOS platform-specific that sets the default background color of cells on iOS."
-ms.date: 04/05/2022
+ms.date: 01/17/2025
 ---
 
 # Cell background color on iOS
@@ -10,12 +10,14 @@ This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific sets the defau
 
 ```xaml
 <ContentPage ...
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:PlatformSpecifics"
+             x:DataType="local:ListViewViewModel">
     <StackLayout Margin="20">
         <ListView ItemsSource="{Binding GroupedEmployees}"
                   IsGroupingEnabled="true">
             <ListView.GroupHeaderTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:Grouping(x:Char,local:Person)">
                     <ViewCell ios:Cell.DefaultBackgroundColor="Teal">
                         <Label Margin="10,10"
                                Text="{Binding Key}"
