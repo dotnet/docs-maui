@@ -453,6 +453,9 @@ Local notifications in the Windows App SDK are messages that your app can send t
 
 For information about local notifications on Windows, including implementation details for packaged and unpackaged apps, see [App notifications overview](/windows/apps/windows-app-sdk/notifications/app-notifications/).
 
+> [!WARNING]
+> Currently, scheduled notifications aren't supported in the Windows App SDK. For more information, see [Feature Request: Schedule toast notifications](https://github.com/microsoft/WindowsAppSDK/issues/5050$0).
+
 :::zone-end
 
 ## Register platform implementations
