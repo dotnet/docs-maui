@@ -148,7 +148,7 @@ The `BindingContext` property is an important component of data bindings, but it
 
 In this example, the <xref:Microsoft.Maui.Controls.Slider> is defined to control the `Scale` property of the <xref:Microsoft.Maui.Controls.Label>. For that reason, the <xref:Microsoft.Maui.Controls.Slider> is set for a range of -2 to 2.
 
-The code-behind file sets the binding with the `SetBinding` method, with the second argument being a constructor for the `Binding` class:
+The code-behind file sets the binding with the `SetBinding` method, with the second argument being a `Func` that gets the value of the `Slider`:
 
 ```csharp
 public partial class AlternativeCodeBindingPage : ContentPage
@@ -157,12 +157,10 @@ public partial class AlternativeCodeBindingPage : ContentPage
     {
         InitializeComponent();
 
-        label.SetBinding(Label.ScaleProperty, new Binding("Value", source: slider));
+        label.SetBinding(Label.ScaleProperty, static (Slider s) => s.Value, source: slider);
     }
 }
 ```
-
-The `Binding` constructor has 6 parameters, so the `source` parameter is specified with a named argument. The argument is the `slider` object.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.VisualElement> class also defines `ScaleX` and `ScaleY` properties, which can scale the <xref:Microsoft.Maui.Controls.VisualElement> differently in the horizontal and vertical directions.
