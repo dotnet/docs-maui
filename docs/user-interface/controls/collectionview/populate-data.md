@@ -252,8 +252,8 @@ collectionView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "favorite.png",
         BackgroundColor = Colors.LightGreen
     };
-    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (CollectionView cv) => (cv.BindingContext as MonkeysViewModel).FavoriteCommand, source: collectionView));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: collectionView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -261,8 +261,8 @@ collectionView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "delete.png",
         BackgroundColor = Colors.LightPink
     };
-    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (CollectionView cv) => (cv.BindingContext as MonkeysViewModel).DeleteCommand, source: collectionView));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.CurrentItem);
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: collectionView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
 
     swipeView.LeftItems = new SwipeItems { favoriteSwipeItem, deleteSwipeItem };
     swipeView.Content = grid;    
