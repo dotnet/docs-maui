@@ -17,7 +17,7 @@ public class MediaPage : ContentPage
         this.BindingContext = this;
 
         var imageControl = new Image();
-        imageControl.SetBinding(Image.SourceProperty, new Binding("ImageItem"));
+        imageControl.SetBinding(Image.SourceProperty, Binding.Create(static (ImageItem item) => item.ImageItem));
 
         Content = new VerticalStackLayout
         {
@@ -105,7 +105,7 @@ public class MediaPage : ContentPage
     {
         if (cts?.IsCancellationRequested ?? true)
             return;
-        
+
         cts.Cancel();
     }
     //</speak_cancel>
@@ -113,7 +113,7 @@ public class MediaPage : ContentPage
 
     //<speak_queue>
     bool isBusy = false;
-    
+
     public void SpeakMultiple()
     {
         isBusy = true;

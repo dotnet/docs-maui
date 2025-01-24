@@ -159,12 +159,12 @@ public class MultiBindingConverterCodePage : ContentPage
         {
             Bindings = new Collection<BindingBase>
             {
-                new Binding("Employee1.IsOver16"),
-                new Binding("Employee1.HasPassedTest"),
-                new Binding("Employee1.IsSuspended", converter: new InverterConverter())
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.IsOver16),
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.HasPassedTest),
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.IsSuspended, converter: new InverterConverter())
             },
             Converter = new AllTrueMultiConverter()
-        });
+        });        
 
         Title = "MultiBinding converter demo";
         Content = checkBox;
@@ -201,9 +201,9 @@ label.SetBinding(Label.TextProperty, new MultiBinding
 {
     Bindings = new Collection<BindingBase>
     {
-        new Binding("Employee1.Forename"),
-        new Binding("Employee1.MiddleName"),
-        new Binding("Employee1.Surname")
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.Forename),
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.MiddleName),
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.Surname)
     },
     StringFormat = "{0} {1} {2}"
 });
