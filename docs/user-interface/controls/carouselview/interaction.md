@@ -55,7 +55,7 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 carouselView.CurrentItemChanged += OnCurrentItemChanged;
 ```
 
@@ -89,9 +89,9 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-carouselView.SetBinding(CarouselView.CurrentItemChangedCommandProperty, "ItemChangedCommand");
-carouselView.SetBinding(CarouselView.CurrentItemChangedCommandParameterProperty, new Binding("CurrentItem", source: RelativeBindingSource.Self));
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+carouselView.SetBinding(CarouselView.CurrentItemChangedCommandProperty, static (MonkeysViewModel vm) => vm.ItemChangedCommand);
+carouselView.SetBinding(CarouselView.CurrentItemChangedCommandParameterProperty, Binding.Create(static (CarouselView cv) => cv.CurrentItem, source: RelativeBindingSource.Self));
 ```
 
 In this example, the `CurrentItemChangedCommand` property binds to the `ItemChangedCommand` property, passing the `CurrentItem` property value to it as an argument. The `ItemChangedCommand` can then respond to the current item changing, as required:
@@ -128,7 +128,7 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 carouselView.PositionChanged += OnPositionChanged;
 ```
 
@@ -162,9 +162,9 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-carouselView.SetBinding(CarouselView.PositionChangedCommandProperty, "PositionChangedCommand");
-carouselView.SetBinding(CarouselView.PositionChangedCommandParameterProperty, new Binding("Position", source: RelativeBindingSource.Self));
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+carouselView.SetBinding(CarouselView.PositionChangedCommandProperty, static (MonkeysViewModel vm) => vm.PositionChangedCommand);
+carouselView.SetBinding(CarouselView.PositionChangedCommandParameterProperty, Binding.Create(static (CarouselView cv) => cv.Position, source: RelativeBindingSource.Self));
 ```
 
 In this example, the `PositionChangedCommand` property binds to the `PositionChangedCommand` property, passing the `Position` property value to it as an argument. The `PositionChangedCommand` can then respond to the position changing, as required:
@@ -194,8 +194,8 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-carouselView.SetBinding(CarouselView.CurrentItemProperty, "CurrentItem");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+carouselView.SetBinding(CarouselView.CurrentItemProperty, static (MonkeysViewModel vm) => vm.CurrentItem);
 ```
 
 > [!NOTE]
@@ -239,8 +239,8 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-carouselView.SetBinding(CarouselView.PositionProperty, "Position");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+carouselView.SetBinding(CarouselView.PositionProperty, static (MonkeysViewModel vm) => vm.Position);
 ```
 
 > [!NOTE]

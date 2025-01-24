@@ -36,7 +36,7 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
@@ -92,21 +92,21 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 carouselView.ItemTemplate = new DataTemplate(() =>
 {
     Label nameLabel = new Label { ... };
-    nameLabel.SetBinding(Label.TextProperty, "Name");
+    nameLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Name);
 
     Image image = new Image { ... };
-    image.SetBinding(Image.SourceProperty, "ImageUrl");
+    image.SetBinding(Image.SourceProperty, static (Monkey monkey) => monkey.ImageUrl);
 
     Label locationLabel = new Label { ... };
-    locationLabel.SetBinding(Label.TextProperty, "Location");
+    locationLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Location);
 
     Label detailsLabel = new Label { ... };
-    detailsLabel.SetBinding(Label.TextProperty, "Details");
+    detailsLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Details);
 
     StackLayout stackLayout = new StackLayout();
     stackLayout.Add(nameLabel);
@@ -174,7 +174,7 @@ CarouselView carouselView = new CarouselView
 {
     ItemTemplate = new MonkeyDataTemplateSelector { ... }
 };
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `ItemTemplate` property is set to a `MonkeyDataTemplateSelector` object. The following example shows the `MonkeyDataTemplateSelector` class:
@@ -280,7 +280,7 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 carouselView.ItemTemplate = new DataTemplate(() =>
 {
@@ -294,8 +294,8 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "favorite.png",
         BackgroundColor = Colors.LightGreen
     };
-    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.FavoriteCommand", source: carouselView));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -303,8 +303,8 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "delete.png",
         BackgroundColor = Colors.LightPink
     };
-    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.DeleteCommand", source: carouselView));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
     swipeView.BottomItems = new SwipeItems { deleteSwipeItem };
@@ -353,7 +353,7 @@ ICommand refreshCommand = new Command(() =>
 refreshView.Command = refreshCommand;
 
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 refreshView.Content = carouselView;
 // ...
 ```
@@ -402,7 +402,7 @@ CarouselView carouselView = new CarouselView
     RemainingItemsThreshold = 2
 };
 carouselView.RemainingItemsThresholdReached += OnCollectionViewRemainingItemsThresholdReached;
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 ```
 
 In this code example, the `RemainingItemsThresholdReached` event fires when there are 2 items not yet scrolled to, and in response executes the `OnCollectionViewRemainingItemsThresholdReached` event handler:
