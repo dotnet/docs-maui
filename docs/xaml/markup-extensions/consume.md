@@ -1,7 +1,7 @@
 ---
 title: "Consume XAML markup extensions"
 description: ".NET MAUI XAML markup extensions enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources."
-ms.date: 04/18/2023
+ms.date: 01/27/2025
 ---
 
 # Consume XAML markup extensions
@@ -220,6 +220,24 @@ public partial class TypeDemoPage : ContentPage
 When a <xref:Microsoft.Maui.Controls.Button> is pressed a new instance of the `CommandParameter` argument is created and added to the <xref:Microsoft.Maui.Controls.StackLayout>. The three <xref:Microsoft.Maui.Controls.Button> objects then share the page with dynamically created views:
 
 :::image type="content" source="media/consume/typedemo.png" alt-text="x:Type demo.":::
+
+Generic types can be specified with the `x:Type` markup extension by specifying the generic constraint as a prefixed string argument in parentheses:
+
+```xaml
+<x:Array Type="{x:Type local:MyType(local:MyObject)}">
+    ...
+</x:Array>
+```
+
+Multiple type arguments can be specified as prefixed string arguments, delimited by a comma:
+
+```xaml
+<x:Array Type="{x:Type local:MyType(local:MyObject,x:Boolean)}">
+    ...
+</x:Array>
+```
+
+For more information about generics in XAML, see [Generics](~/xaml/generics.md).
 
 ## x:Array markup extension
 

@@ -1,7 +1,7 @@
 ---
 title: "Generics"
 description: ".NET MAUI XAML provides support for consuming generic CLR types by specifying the generic constraints as type arguments."
-ms.date: 01/24/2022
+ms.date: 01/27/2025
 ---
 
 # Generics
@@ -11,12 +11,14 @@ ms.date: 01/24/2022
 Type arguments are specified as a string, and are typically prefixed, such as `sys:String` and `sys:Int32`. Prefixing is required because the typical types of CLR generic constraints come from libraries that are not mapped to the default .NET MAUI namespaces. However, the XAML 2009 built-in types such as `x:String` and `x:Int32`, can also be specified as type arguments, where `x` is the XAML language namespace for XAML 2009. For more information about the XAML 2009 built-in types, see [XAML 2009 Language Primitives](/dotnet/desktop-wpf/xaml-services/types-for-primitives#xaml-2009-language-primitives).
 
 > [!IMPORTANT]
-> Defining generic classes in .NET MAUI XAML, with the `x:TypeArguments` directive, is unsupported.
+> Defining generic types in .NET MAUI XAML, with the `x:TypeArguments` directive, is unsupported.
 
 Multiple type arguments can be specified by using a comma delimiter. In addition, if a generic constraint uses generic types, the nested constraint type arguments should be contained in parentheses.
 
 > [!NOTE]
 > The `x:Type` markup extension supplies a Common Language Runtime (CLR) type reference for a generic type, and has a similar function to the `typeof` operator in C#. For more information, see [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+
+For information about specifying generic types in .NET MAUI XAML, with the `x:DataType` and `x:Type` directives, see [Compile bindings that specify a generic type](~/fundamentals/data-binding/compiled-bindings.md#compile-bindings-that-specify-a-generic-type) and [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 ## Single primitive type argument
 

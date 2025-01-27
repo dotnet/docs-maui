@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 11/14/2024
+ms.date: 01/27/2025
 ---
 
 # Compiled bindings
@@ -135,6 +135,30 @@ The following example demonstrates correctly setting the `x:DataType` on a <xref
 ```
 
 While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+
+### Compile bindings that specify a generic type
+
+Generic types can be specified with the `x:DataType` attribute by specifying the generic constraint as a prefixed string argument in parentheses:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyMauiApp"
+             x:Class="MyMauiApp.MyPage"
+             x:DataType="local:MyViewModel(x:Boolean)">
+    ...
+</ContentPage>
+```
+
+Multiple type arguments can be specified as prefixed string arguments, delimited by a comma:
+
+```xaml
+<DataTemplate x:DataType="local:MyType(local:MyObject,x:Boolean)">
+    ...
+</DataTemplate>
+```
+
+For more information about generics in XAML, see [Generics](~/xaml/generics.md).
 
 ::: moniker range=">=net-maui-9.0"
 
