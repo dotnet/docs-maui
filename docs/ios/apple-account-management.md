@@ -30,6 +30,9 @@ If you've enrolled in Apple's **AppStoreConnect Program**, you'll need to:
 3. Select the **Integrations** tab.
 4. Select the **Team Keys** tab.
 5. Press the **+** button.
+6. Enter a descriptive name in the **Name** field.
+7. Enter **Admin** in the **Access** field.
+8. Click **OK**.
 
 > [!NOTE]
 > Visual Studio currently only supports **Team Keys** and doesn't support **Individual Keys**.
@@ -46,6 +49,9 @@ If you've enrolled in Apple's **Enterprise Program**, you'll need to:
 2. Select **Users and Access** located under the **Services** section.
 3. Select the **Integrations** tab.
 4. Press the **+** button.
+5. Enter a descriptive name in the **Name** field.
+6. Enter **Admin** in the **Access** field.
+7. Click **OK**.
 
 > [!NOTE]
 > Only **Admin** keys will be able to register new Bundle IDs and generate new provisioning profiles. **Developer** keys won't be able to perform these tasks.
