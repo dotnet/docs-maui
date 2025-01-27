@@ -18,7 +18,7 @@ Multiple type arguments can be specified by using a comma delimiter. In addition
 > [!NOTE]
 > The `x:Type` markup extension supplies a Common Language Runtime (CLR) type reference for a generic type, and has a similar function to the `typeof` operator in C#. For more information, see [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
-Specifying generic types in .NET MAUI XAML, with the `x:DataType` and `x:Type` directives is supported. For more information, see [Compile bindings that specify a generic type](~/fundamentals/data-binding/compiled-bindings.md#compile-bindings-that-specify-a-generic-type) and [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+For information about specifying generic types in .NET MAUI XAML, with the `x:DataType` and `x:Type` directives, see [Compile bindings that specify a generic type](~/fundamentals/data-binding/compiled-bindings.md#compile-bindings-that-specify-a-generic-type) and [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 ## Single primitive type argument
 

@@ -229,7 +229,7 @@ Generic types can be specified with the `x:Type` markup extension by specifying 
 </x:Array>
 ```
 
-Multiple type arguments are specified as prefixed string arguments, delimited by a comma:
+Multiple type arguments can be specified as prefixed string arguments, delimited by a comma:
 
 ```xaml
 <x:Array Type="{x:Type local:MyType(local:MyObject,x:Boolean)}">

@@ -150,7 +150,7 @@ Generic types can be specified with the `x:DataType` attribute by specifying the
 </ContentPage>
 ```
 
-Multiple type arguments are specified as prefixed string arguments, delimited by a comma:
+Multiple type arguments can be specified as prefixed string arguments, delimited by a comma:
 
 ```xaml
 <DataTemplate x:DataType="local:MyType(local:MyObject,x:Boolean)">
