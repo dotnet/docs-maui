@@ -196,7 +196,6 @@ To add your Google Play Developer account to Visual Studio:
 
     :::image type="content" source="media/publish/vs/distribution-add-google-play-account.png" alt-text="Screenshot of adding a Google Play Developer account in the distribution dialog.":::
 
-
 1. In the **Register Google API Access** dialog, enter a description and your OAuth client ID and client secret, and then click the **Register** button:
 
     :::image type="content" source="media/publish/vs/register-google-api-access.png" alt-text="Screenshot of registering your OAuth client ID and client secret in Visual Studio.":::
