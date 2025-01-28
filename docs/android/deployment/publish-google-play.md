@@ -190,11 +190,12 @@ For more information about enabling Google API access to your Google Play Develo
 
 #### Add your Google Play Developer account details
 
-<!-- markdownlint-disable MD029 -->
-7. In the **Distribute - Google Play Account** dialog, select the **+** button to add your Google Play Developer account details:
+To add your Google Play Developer account to Visual Studio:
+
+1. In the **Distribute - Google Play Account** dialog, select the **+** button to add your Google Play Developer account details:
 
     :::image type="content" source="media/publish/vs/distribution-add-google-play-account.png" alt-text="Screenshot of adding a Google Play Developer account in the distribution dialog.":::
-    <!-- markdownlint-enable MD029 -->
+
 
 1. In the **Register Google API Access** dialog, enter a description and your OAuth client ID and client secret, and then click the **Register** button:
 
@@ -225,8 +226,9 @@ For more information about enabling Google API access to your Google Play Develo
 <!-- Don't delete this heading - the Visual Studio IDE links to it -->
 #### Select a track to upload your app to
 
-<!-- markdownlint-disable MD029 -->
-12. In the **Distribute - Google Play Track** dialog, select the track to upload your app to. Google Play offers five tracks for uploading your app:
+To select the Google Play track to upload your app to:
+
+1. In the **Distribute - Google Play Track** dialog, select the track to upload your app to. Google Play offers five tracks for uploading your app:
 
     - Internal should be used for quickly distributing your app for internal testing and quality assurance checks.
     - Alpha should be used for uploading an early version of your app to a small group of testers.
@@ -242,7 +244,6 @@ For more information about enabling Google API access to your Google Play Develo
     :::image type="content" source="media/publish/vs/distribution-select-google-play-track.png" alt-text="Screenshot of selecting a Google Play Track prior to uploading your app.":::
 
     For more information about Google Play testing, see [Set up an open, closed, or internal test](https://support.google.com/googleplay/android-developer/answer/9845334?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
-    <!-- markdownlint-enable MD029 -->
 
 1. Visual Studio will begin publishing your app to Google Play. In the **Signing Password** dialog, enter your password you created for the signing identity and select the **OK** button:
 
