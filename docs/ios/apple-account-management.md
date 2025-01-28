@@ -9,7 +9,7 @@ ms.date: 11/08/2024
 When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a device, prior to uploading it to the App Store for distribution. Both of these tasks require you or someone else in your organization to enroll in one of Apple's Developer Programs:
 
 1. Enrolling in Apple's [AppStoreConnect Program](https://developer.apple.com/programs/enroll) allows you to publish your iOS applications to Apple's public AppStore.
-2. Enrolling in Apple's [Enterprise Program](https://developer.apple.com/programs/enterprise/) allows you to publish your iOS applications to a private "AppStore" that's fully controlled by your organization.
+1. Enrolling in Apple's [Enterprise Program](https://developer.apple.com/programs/enterprise/) allows you to publish your iOS applications to a private "AppStore" that's fully controlled by your organization.
 
 The Apple account management interface in Visual Studio enables you to view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
 
@@ -26,13 +26,13 @@ Before you can add an Apple Developer Account to Visual Studio, you'll need to g
 If you've enrolled in Apple's **AppStoreConnect Program**, you'll need to:
 
 1. Sign-in to your [Apple Developer Account](https://appstoreconnect.apple.com).
-2. Select **Users and Access**.
-3. Select the **Integrations** tab.
-4. Select the **Team Keys** tab.
-5. Press the **+** button.
-6. Enter a descriptive name in the **Name** field.
-7. Enter **Admin** in the **Access** field.
-8. Click **OK**.
+1. Select **Users and Access**.
+1. Select the **Integrations** tab.
+1. Select the **Team Keys** tab.
+1. Press the **+** button.
+1. Enter a descriptive name in the **Name** field.
+1. Enter **Admin** in the **Access** field.
+1. Press **OK**.
 
 > [!NOTE]
 > Visual Studio currently only supports **Team Keys** and doesn't support **Individual Keys**.
@@ -46,12 +46,12 @@ If you've enrolled in Apple's **AppStoreConnect Program**, you'll need to:
 If you've enrolled in Apple's **Enterprise Program**, you'll need to:
 
 1. Sign-in to your [Apple Developer Account](https://developer.apple.com/account).
-2. Select **Users and Access** located under the **Services** section.
-3. Select the **Integrations** tab.
-4. Press the **+** button.
-5. Enter a descriptive name in the **Name** field.
-6. Enter **Admin** in the **Access** field.
-7. Click **OK**.
+1. Select **Users and Access** located under the **Services** section.
+1. Select the **Integrations** tab.
+1. Press the **+** button.
+1. Enter a descriptive name in the **Name** field.
+1. Enter **Admin** in the **Access** field.
+1. Press **OK**.
 
 > [!NOTE]
 > Only **Admin** keys will be able to register new Bundle IDs and generate new provisioning profiles. **Developer** keys won't be able to perform these tasks.
