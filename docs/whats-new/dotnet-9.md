@@ -191,20 +191,9 @@ builder.ConfigureMauiHandlers(handlers =>
 
 In .NET MAUI 9, the <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property is also supported on Mac Catalyst, as well and Android and iOS.
 
-### Focus event behavior on Windows
+### Focus behavior on Windows
 
-In .NET MAUI 8 on Windows, the <xref:Microsoft.Maui.Controls.VisualElement.Focus?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property are applied to an element and its children:
-
-```xaml
-<VerticalStackLayout Focus="OnFocused">
-    <Entry />
-    <Editor />
-</VerticalStackLayout>
-```
-
-In this example, the `OnFocused` event handler is executed on Windows when the `VerticalStackLayout`, `Entry`, or `Editor` gains focus.
-
-.NET MAUI 9 changes this behavior on Windows to be identical to the other platforms. Therefore, the <xref:Microsoft.Maui.Controls.VisualElement.Focus?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property only apply to an element:
+In .NET MAUI 8 on Windows, the <xref:Microsoft.Maui.Controls.VisualElement.Focused?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property are applied to an element and its children:
 
 ```xaml
 <VerticalStackLayout Focus="OnFocused">
@@ -213,7 +202,9 @@ In this example, the `OnFocused` event handler is executed on Windows when the `
 </VerticalStackLayout>
 ```
 
-In this example, the `OnFocused` event handler isn't executed because only input controls can gain focus.
+In this example on .NET 8, the `OnFocused` event handler is executed on Windows when the <xref:Microsoft.Maui.Controls.VerticalStackLayout>, <xref:Microsoft.Maui.Controls.Entry>, or <xref:Microsoft.Maui.Controls.Editor> gains focus.
+
+.NET MAUI 9 changes this behavior on Windows to be identical to the other platforms. Therefore, the <xref:Microsoft.Maui.Controls.VisualElement.Focused?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property only apply to an element. Therefore, when the previous example runs on .NET 9, the `OnFocused` event handler isn't executed because only input controls can gain focus.
 
 ### Soft keyboard input support
 
