@@ -13,40 +13,38 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Jan
 
 ### Updated articles
 
-- [Build your first app](../get-started/first-app.md) - New VSCode installation and first app docs
-- [Installation](../get-started/installation.md) - New VSCode installation and first app docs
+- [Build your first app](../get-started/first-app.md)
+- [Installation](../get-started/installation.md)
 
 ## Fundamentals
 
 ### Updated articles
 
-- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md) - Generic types for XAML compiled bindings
+- [Compiled bindings](../fundamentals/data-binding/compiled-bindings.md)
 
 ## iOS
 
 ### Updated articles
 
 - [Apple account management](../ios/apple-account-management.md)
-  - Added a few more steps for adding an Apple API Key for clarity
-  - Update documentation for Apple account management
 
 ## User interface
 
 ### Updated articles
 
-- [Configure CarouselView interaction](../user-interface/controls/carouselview/interaction.md) - Replace new Binding with compiled bindings
-- [Control scrolling in a CollectionView](../user-interface/controls/collectionview/scrolling.md) - Adding a Tip to specify ScrollTo may not work under specific condition's
-- [Picker](../user-interface/controls/picker.md) - Replace new Binding with compiled bindings
-- [Populate a CarouselView with data](../user-interface/controls/carouselview/populate-data.md) - Replace new Binding with compiled bindings
-- [Populate a CollectionView with data](../user-interface/controls/collectionview/populate-data.md) - Replace new Binding with compiled bindings
-- [WebView](../user-interface/controls/webview.md) - Disable support for multiple windows in a WebView on Android
-- [Window](../user-interface/controls/window.md) - Window positioning and sizing now available on Mac Cat
+- [Configure CarouselView interaction](../user-interface/controls/carouselview/interaction.md)
+- [Control scrolling in a CollectionView](../user-interface/controls/collectionview/scrolling.md)
+- [Picker](../user-interface/controls/picker.md)
+- [Populate a CarouselView with data](../user-interface/controls/carouselview/populate-data.md)
+- [Populate a CollectionView with data](../user-interface/controls/collectionview/populate-data.md)
+- [WebView](../user-interface/controls/webview.md)
+- [Window](../user-interface/controls/window.md)
 
 ## XAML
 
 ### Updated articles
 
-- [Consume XAML markup extensions](../xaml/markup-extensions/consume.md) - Generic types for XAML compiled bindings
+- [Consume XAML markup extensions](../xaml/markup-extensions/consume.md)
 
 ## Community contributors
 
