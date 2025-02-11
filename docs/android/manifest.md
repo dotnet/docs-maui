@@ -15,7 +15,7 @@ The manifest file for your .NET MAUI Android app is generated as part of the .NE
 
 ## Generating the manifest
 
-All .NET MAUI app's have a `MainActivity` class that derives from <xref:Android.App.Activity>, via the `MauiAppCompatActivity` class, and that has the <xref:Android.App.ActivityAttribute> applied to it. Some apps may include additional classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied.
+All .NET MAUI apps have a `MainActivity` class that derives from <xref:Android.App.Activity>, via the `MauiAppCompatActivity` class, and that has the <xref:Android.App.ActivityAttribute> applied to it. Some apps may include additional classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied.
 
 At build time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied. These classes and attributes are used to generate the app's manifest. For example, consider the following code:
 
@@ -158,7 +158,7 @@ This example produces the following XML fragment:
 
 The Android manifest file also provides a way for you to declare properties for your entire app. This is achieved via the `<application>` element and its counterpart, the <xref:Android.App.ApplicationAttribute>. Typically, you declare `<application>` properties for your entire app and then override these properties as required on an activity basis.
 
-For example, the following `Application` attribute could be added to *MainApplication.cs* to indicate that the app's  user-readable name is "My Maui App", and that it uses the `Maui.SplashTheme` style as the default theme for all activities:
+For example, the following `Application` attribute could be added to *MainApplication.cs* to indicate that the app's user-readable name is "My Maui App", and that it uses the `Maui.SplashTheme` style as the default theme for all activities:
 
 ```csharp
 using Android.App;
@@ -197,7 +197,7 @@ The <xref:Android.App.ApplicationAttribute> isn't the only way to configure `<ap
 
 ## App title bar
 
-Android app's have a title bar that displays a label. The value of the `$(ApplicationTitle)` build property, in your .NET MAUI app project file, is displayed on the title bar. .NET MAUI includes it in the generated manifest as the value of [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label):
+Android apps have a title bar that displays a label. The value of the `$(ApplicationTitle)` build property, in your .NET MAUI app project file, is displayed on the title bar. .NET MAUI includes it in the generated manifest as the value of [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label):
 
 ```xml
 <application android:label="My Maui App" ... />
