@@ -37,6 +37,6 @@ items:
   - name: Controls
     items:
     - name: BlazorWebView
-      href: user-interface/controls/blazorwebview.md
+      href: ~/user-interface/controls/blazorwebview.md
     - name: HybridWebView
-      href: user-interface/controls/hybridwebview.md
+      href: ~/user-interface/controls/hybridwebview.md
