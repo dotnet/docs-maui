@@ -3,6 +3,7 @@ items:
   href: index.md
   items:
   - name: Blazor hybrid apps
+    expanded: true
     items:
     - name: Overview
       href: /aspnet/core/blazor/hybrid/?toc=/dotnet/maui/hybrid/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
@@ -35,6 +36,7 @@ items:
     - name: Troubleshoot
       href: /aspnet/core/blazor/hybrid/troubleshoot?toc=/dotnet/maui/hybrid/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
   - name: Controls
+    expanded: true
     items:
     - name: BlazorWebView
       href: ~/user-interface/controls/blazorwebview.md
