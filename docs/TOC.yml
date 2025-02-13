@@ -510,8 +510,9 @@
         - name: Visual states
           href: user-interface/visual-states.md
     - name: Hybrid apps
-      href: hybrid/index.md
       items:
+      - name: Overview
+        href: hybrid/index.md
       - name: Blazor hybrid apps
         items:
         - name: Overview
