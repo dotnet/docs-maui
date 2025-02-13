@@ -115,4 +115,4 @@ To debug an app on an Android device:
 1. Plug the device into your machine and select it as a debug target in Visual Studio or Visual Studio Code.
 1. Run the app.
 
-For information about selecting a debug target in Visual Studio, see [Build your first app](~/get-started/first-app?pivots=devices-android&tabs=vswin). For information about selecting a debug target in Visual Studio Code, see [Build your first app](~/get-started/first-app?pivots=devices-android&tabs=visual-studio-code).
+For information about selecting a debug target in Visual Studio, see [Build your first app](~/get-started/first-app.md?pivots=devices-android&tabs=vswin). For information about selecting a debug target in Visual Studio Code, see [Build your first app](~/get-started/first-app.md?pivots=devices-android&tabs=visual-studio-code).
