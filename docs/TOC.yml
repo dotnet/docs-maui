@@ -509,6 +509,47 @@
               href: user-interface/live-visual-tree.md
         - name: Visual states
           href: user-interface/visual-states.md
+  - name: Hybrid apps
+    href: hybrid/index.md
+    items:
+    - name: Blazor hybrid apps
+      items:
+      - name: Overview
+        href: /aspnet/core/blazor/hybrid/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Tutorials
+        items:
+        - name: Build a .NET MAUI Blazor hybrid app
+          href: /aspnet/core/blazor/hybrid/tutorials/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Build a .NET MAUI Blazor hybrid app with a Blazor web app
+          href: /aspnet/core/blazor/hybrid/tutorials/maui-blazor-web-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Routing and navigatoin
+        href: /aspnet/core/blazor/hybrid/routing?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Static files
+        href: /aspnet/core/blazor/hybrid/static-files?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Browser developer tools
+        href: /aspnet/core/blazor/hybrid/developer-tools?pivots=android&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Reuse Razor components
+        href: /aspnet/core/blazor/hybrid/reuse-razor-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Class libraries
+        href: /aspnet/core/blazor/hybrid/class-libraries?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Root component parameters
+        href: /aspnet/core/blazor/hybrid/root-component-parameters?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Security and identity
+        items:
+        - name: Overview
+          href: /aspnet/core/blazor/hybrid/security/?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Security considerations
+          href: /aspnet/core/blazor/hybrid/security/security-considerations?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Publish
+        href: /aspnet/core/blazor/hybrid/publish/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Troubleshoot
+        href: /aspnet/core/blazor/hybrid/troubleshoot?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+    - name: Controls
+      items:
+      - name: BlazorWebView
+        href: ~/user-interface/controls/blazorwebview.md
+      - name: HybridWebView
+        href: ~/user-interface/controls/hybridwebview.md
     - name: Platforms
       items:
         - name: Android
