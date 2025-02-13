@@ -512,7 +512,7 @@
     - name: Hybrid apps
       items:
       - name: Overview
-        href: hybrid/index.md
+        href: hybrid/index.md?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
       - name: Blazor hybrid apps
         items:
         - name: Overview
