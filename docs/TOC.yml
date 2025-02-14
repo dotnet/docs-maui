@@ -516,7 +516,7 @@
       - name: Blazor hybrid apps
         items:
         - name: Overview
-          href: /aspnet/core/blazor/hybrid/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          href: /aspnet/core/blazor/hybrid/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json        
         - name: Tutorials
           items:
           - name: Build a .NET MAUI Blazor hybrid app
