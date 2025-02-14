@@ -40,13 +40,13 @@ To target the Android 16 preview API:
 - Use the Android SDK Manager to download the Android 16 (Baklava) platform.
 - Update your project's `TargetFramework` to `net10.0-android36`.
 
-### Update recommended minimum supported Android API
+### Recommended minimum supported Android API
 
 The .NET for Android project templates have been updated to specify 24 (Nougat) as the default `$(SupportedOSPlatformVersion)` instead of 21 (Lollipop). This prevents you from hitting "desugaring" runtime crashes when using Java default interface methods.
 
 While API 21 is still supported in .NET 10, it's recommended to update existing projects to API 24 to avoid unexpected runtime errors.
 
-### Support for `dotnet run`
+### `dotnet run` support
 
 Previously, the `dotnet run` command wasn't supported for .NET for Android projects because it didn't accept parameters needed to specify which Android device or emulator to use.
 
@@ -65,7 +65,7 @@ dotnet run -p:AdbTarget="-s emulator-5554"
 
 The `$(AdbTarget)` property is passed to `adb`. For more information, see [Issue shell commands](https://developer.android.com/tools/adb#shellcommands) on developer.android.com.
 
-### Enable marshal methods by default
+### Marshal methods enabled by default
 
 In .NET 9, a [new way](https://github.com/dotnet/android/pull/7351) of creating the marshal methods needed for Java calling into C# code provided startup performance improvements. However, in .NET 9 they were off by default.
 
@@ -79,7 +79,7 @@ In .NET 10, they are enabled by default. Problems with these marshal methods oft
 
 If this fixes the hang, please file an [issue](https://github.com/dotnet/android/issues).
 
-### Add `ArtifactFilename` metadata for `@(AndroidMavenLibrary)` item
+### `ArtifactFilename` metadata for `@(AndroidMavenLibrary)` item
 
 [`@(AndroidMavenLibrary)`](/dotnet/android/binding-libs/binding-java-libs/binding-java-maven-library) was added in .NET 9 and allows a Java library to be automatically downloaded from Maven to be bound. Generally, this library is named `{artifact.Id}-{artifact.Version}.[jar|aar]`. However, this doesn't follow a standard and could be arbitrarily different.
 
@@ -95,11 +95,11 @@ In .NET 10 you can add the `ArtifactFilename` metadata to the `@(AndroidMavenLib
 
 In order to speed up design time builds, `aapt2` is no longer invoked. Instead, the `.aar` files and underlying Android resources are parsed directly. This reduces the time of a design time build for some unit tests from over 2s to under 600ms.
 
-### Building with JDK 21 is now supported
+### Building with JDK 21
 
 .NET for Android projects can now be built with JDK 21.
 
-### `generator` output now avoids potential System.Reflection.Emit usage
+### `generator` output avoids potential System.Reflection.Emit usage
 
 App startup and overall performance has been optimized by removing codepaths that may hit `System.Reflection.Emit` from "Java calling into C#" codepaths.
 
