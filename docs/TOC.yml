@@ -512,7 +512,7 @@
     - name: Hybrid apps
       items:
       - name: Overview
-        href: hybrid-apps/index.md?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        href: hybrid-apps/index.md
       - name: Blazor hybrid apps
         items:
         - name: Overview
@@ -528,7 +528,7 @@
         - name: Static files
           href: /aspnet/core/blazor/hybrid/static-files?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Browser developer tools
-          href: /aspnet/core/blazor/hybrid/developer-tools?view=net-maui-9.0&pivots=android&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          href: /aspnet/core/blazor/hybrid/developer-tools?pivots=android&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Reuse Razor components
           href: /aspnet/core/blazor/hybrid/reuse-razor-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Class libraries
