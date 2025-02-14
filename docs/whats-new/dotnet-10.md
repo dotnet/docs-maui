@@ -103,9 +103,9 @@ In order to speed up design time builds, `aapt2` is no longer invoked. Instead, 
 
 App startup and overall performance has been optimized by removing codepaths that may hit `System.Reflection.Emit` from "Java calling into C#" codepaths.
 
-### Fixed `InvalidCastException` when using `ApplicationAttribute.ManageSpaceActivity`
+### `ApplicationAttribute.ManageSpaceActivity` no longer throws an `InvalidCastException`
 
-Trying to set the `ApplicationAttribute.ManageSpaceActivity` property would result in an XAGJS7007 error. This has been fixed.
+Trying to set the `ApplicationAttribute.ManageSpaceActivity` property would result in an XAGJS7007 error. This has been fixed in .NET 10.
 
 ## .NET for iOS
 
