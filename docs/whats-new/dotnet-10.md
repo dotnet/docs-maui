@@ -17,6 +17,8 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 ## Control enhancements
 
+.NET MAUI in .NET 10 includes control enhancements.
+
 ### CollectionView and CarouselView
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
@@ -63,7 +65,7 @@ dotnet run -p:AdbTarget="-s emulator-5554"
 
 The `$(AdbTarget)` property is passed to `adb`. For more information, see [Issue shell commands](https://developer.android.com/tools/adb#shellcommands) on developer.android.com.
 
-### Enable Marshal Methods by default
+### Enable marshal methods by default
 
 In .NET 9, a [new way](https://github.com/dotnet/android/pull/7351) of creating the marshal methods needed for Java calling into C# code provided startup performance improvements. However, in .NET 9 they were off by default.
 
