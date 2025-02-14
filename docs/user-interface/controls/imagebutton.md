@@ -125,26 +125,28 @@ For more information about these events, see [Press and release the button](butt
 The following XAML example shows how to define a visual state for the `Pressed` state:
 
 ```xaml
-<ImageButton Source="image.png"
-             ...>
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="Normal">
-                <VisualState.Setters>
-                    <Setter Property="Scale"
-                            Value="1" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="Pressed">
-                <VisualState.Setters>
-                    <Setter Property="Scale"
-                            Value="0.8" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="PointerOver" />            
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
-</ImageButton>
+ <ImageButton Source="image.png"
+              ...>
+     <VisualStateManager.VisualStateGroups>
+         <VisualStateGroupList>
+             <VisualStateGroup x:Name="CommonStates">
+                 <VisualState x:Name="Normal">
+                     <VisualState.Setters>
+                         <Setter Property="Scale"
+                                 Value="1" />
+                     </VisualState.Setters>
+                 </VisualState>
+                 <VisualState x:Name="Pressed">
+                     <VisualState.Setters>
+                         <Setter Property="Scale"
+                                 Value="0.8" />
+                     </VisualState.Setters>
+                 </VisualState>
+                 <VisualState x:Name="PointerOver" />
+             </VisualStateGroup>
+         </VisualStateGroupList>
+     </VisualStateManager.VisualStateGroups>
+ </ImageButton>
 ```
 
 In this example, the `Pressed` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.ImageButton> is released, it's rescaled to its default size.

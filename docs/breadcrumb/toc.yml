@@ -54,3 +54,12 @@
     - name: .NET MAUI
       tocHref: /dotnet/ios/app-fundamentals/images-icons
       topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /aspnet/core/blazor/hybrid
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /aspnet/core/blazor/hybrid/tutorials
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /aspnet/core/blazor/hybrid/security
+      topicHref: /dotnet/maui/index

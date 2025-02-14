@@ -1,7 +1,7 @@
 ---
 title: "Set up a device for development"
 description: "This article discusses how to enable development mode on an Android device so that you can deploy and debug a .NET MAUI application."
-ms.date: 09/30/2024
+ms.date: 02/13/2025
 ---
 
 # Set up Android device for debugging
@@ -107,3 +107,12 @@ Next, use adb to connect to your device, first through a USB connection:
 ## Configure on-device developer options
 
 The Settings app on Android includes a screen called **Developer options** where you can configure system behaviors that help you profile and debug your app performance. For more information, see [Configure on-device developer options](https://developer.android.com/studio/debug/dev-options) on developer.android.com.
+
+## Debug an app on an Android device
+
+To debug an app on an Android device:
+
+1. Plug the device into your machine and select it as a debug target in Visual Studio or Visual Studio Code.
+1. Run the app.
+
+For information about selecting a debug target in Visual Studio, see [Build your first app](~/get-started/first-app.md?pivots=devices-android&tabs=vswin). For information about selecting a debug target in Visual Studio Code, see [Build your first app](~/get-started/first-app.md?pivots=devices-android&tabs=visual-studio-code).
