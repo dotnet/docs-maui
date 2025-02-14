@@ -512,7 +512,7 @@
     - name: Hybrid apps
       items:
       - name: Overview
-        href: hybrid-apps/index.md?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        href: hybrid-apps/index.md
       - name: Blazor hybrid apps
         items:
         - name: Overview
@@ -523,7 +523,7 @@
             href: /aspnet/core/blazor/hybrid/tutorials/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
           - name: Build a .NET MAUI Blazor hybrid app with a Blazor web app
             href: /aspnet/core/blazor/hybrid/tutorials/maui-blazor-web-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
-        - name: Routing and navigatoin
+        - name: Routing and navigation
           href: /aspnet/core/blazor/hybrid/routing?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Static files
           href: /aspnet/core/blazor/hybrid/static-files?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
