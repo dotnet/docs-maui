@@ -245,6 +245,52 @@ This is the standard way to set a platform-dependent `Padding` property in XAML.
 
 For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 
+### Understanding the "Left, Top, Right, Bottom" Syntax in XAML  
+
+In XAML, several properties that define spacing or thickness follow a specific order when multiple values are provided:  
+
+**`Left, Top, Right, Bottom`**  
+
+This applies to commonly used properties like:  
+- **Padding** – Defines inner spacing within an element.  
+- **Margin** – Defines the space around an element.  
+- **BorderThickness** – Specifies the thickness of an element's border.  
+
+#### Consistent Value Ordering  
+The **Padding** examples above follow this same syntax. For instance:  
+
+```xml
+<OnPlatform x:TypeArguments="Thickness" Default="20">
+    <On Platform="iOS, Android" Value="10,20,20,10" /> <!-- BorderThickness format: Left, Top, Right, Bottom -->
+</OnPlatform>
+```
+
+**`Left = 10, Top = 20, Right = 20, Bottom = 10`**  
+
+This same structure is used across other properties, ensuring consistency in how spacing values are applied.
+
+#### Other Properties Using the Same Syntax
+The same ordering applies to properties like **Margin** and **BorderThickness**:
+
+```xml
+ <!-- Margin Example -->
+<!-- Left = 5, Top = 10, Right = 15, Bottom = 20 -->
+<Button Text="Click Me" Margin="5,10,15,20"/>
+
+<!-- BorderThickness Example -->
+<!-- Left = 2, Top = 4, Right = 6, Bottom = 8 -->
+<Frame BorderColor="Black" BorderThickness="2,4,6,8"/>
+```
+
+#### Alternative Value Formats
+Depending on how many values are provided, XAML applies them as follows:
+
+| Values Provided  | Applied As |
+|-----------------|------------------------------------------------|
+| `20`            | Applies to all four sides (Left, Top, Right, Bottom) |
+| `10,20`        | `10` → Left & Right, `20` → Top & Bottom |
+| `10,20,30,40`  | `10` → Left, `20` → Top, `30` → Right, `40` → Bottom |
+
 ## Next steps
 
 .NET MAUI XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources. XAML markup extensions are particularly important for sharing objects, and referencing constants used throughout an app.
