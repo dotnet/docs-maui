@@ -28,7 +28,7 @@ In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The a
 
 ## Minimum deployment targets
 
-.NET MAUI 9 requires minimum deployment targets of iOS 12.2, and Mac Catalyst 15.0 (macOS 12.0). Android and Windows minimum deployment targets remain the same. For more information, see [Supported platforms for .NET MAUI apps](../supported-platforms.md).
+.NET MAUI 9 requires minimum deployment targets of iOS 15.0, and Mac Catalyst 15.0 (macOS 12.0). Android and Windows minimum deployment targets remain the same. For more information, see [Supported platforms for .NET MAUI apps](../supported-platforms.md).
 
 ## New controls
 
