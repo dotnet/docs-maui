@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 11/14/2024
+ms.date: 02/18/2024
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -239,29 +239,53 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
                 }
             },
 
-            "__InvokeJavaScript": function __InvokeJavaScript(taskId, methodName, args) {
-                if (methodName[Symbol.toStringTag] === 'AsyncFunction') {
-                    // For async methods, we need to call the method and then trigger the callback when it's done
-                    const asyncPromise = methodName(...args);
-                    asyncPromise
-                        .then(asyncResult => {
-                            window.HybridWebView.__TriggerAsyncCallback(taskId, asyncResult);
-                        })
-                        .catch(error => console.error(error));
-                } else {
-                    // For sync methods, we can call the method and trigger the callback immediately
-                    const syncResult = methodName(...args);
-                    window.HybridWebView.__TriggerAsyncCallback(taskId, syncResult);
+            "__InvokeJavaScript": async function __InvokeJavaScript(taskId, methodName, args) {
+                try {
+                    var result = null;
+                    if (methodName[Symbol.toStringTag] === 'AsyncFunction') {
+                        result = await methodName(...args);
+                    } else {
+                        result = methodName(...args);
+                    }
+                    window.HybridWebView.__TriggerAsyncCallback(taskId, result);
+                } catch (ex) {
+                    console.error(ex);
+                    window.HybridWebView.__TriggerAsyncFailedCallback(taskId, ex);
                 }
             },
 
             "__TriggerAsyncCallback": function __TriggerAsyncCallback(taskId, result) {
-                // Make sure the result is a string
-                if (result && typeof (result) !== 'string') {
-                    result = JSON.stringify(result);
+                const json = JSON.stringify(result);
+                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + json);
+            },
+
+            "__TriggerAsyncFailedCallback": function __TriggerAsyncCallback(taskId, error) {
+
+                if (!error) {
+                    json = {
+                        Message: "Unknown error",
+                        StackTrace: Error().stack
+                    };
+                } else if (error instanceof Error) {
+                    json = {
+                        Name: error.name,
+                        Message: error.message,
+                        StackTrace: error.stack
+                    };
+                } else if (typeof (error) === 'string') {
+                    json = {
+                        Message: error,
+                        StackTrace: Error().stack
+                    };
+                } else {
+                    json = {
+                        Message: JSON.stringify(error),
+                        StackTrace: Error().stack
+                    };
                 }
 
-                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + result);
+                json = JSON.stringify(json);
+                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptFailed', taskId + '|' + json);
             }
         }
 
@@ -420,6 +444,19 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 > [!IMPORTANT]
 > The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
+
+### Send JavaScript exceptions to .NET
+
+By default, invocation of JavaScript methods in a <xref:Microsoft.Maui.Controls.HybridWebView> can hide exceptions thrown by your JavaScript code. To opt into JavaScript exceptions being sent to .NET, where they're re-thrown as .NET exceptions, add the following code to your `MauiProgram` class:
+
+```csharp
+static MauiProgram()
+{
+    AppContext.SetSwitch("HybridWebView.InvokeJavaScriptThrowsExceptions", true);
+}
+```
+
+This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure can be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
 
 ## Invoke C\# from JavaScript
 
