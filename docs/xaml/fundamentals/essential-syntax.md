@@ -223,6 +223,10 @@ Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentP
 
 In this example, the `Padding` property is set to different values on iOS and Android, with the other platforms being set to the default value.
 
+> [!NOTE]  
+> In XAML, when defining spacing, properties like **Padding**, **Margin**, and **BorderThickness** follow the order: **Left, Top, Right, Bottom** when multiple values are provided.  
+> For more details, see [Align and position .NET MAUI controls](/dotnet/maui/user-interface/align-position).
+
 The `OnPlatform` class also defines a `Platforms` property, which is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform. In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
 
 ```xaml
@@ -244,52 +248,6 @@ This is the standard way to set a platform-dependent `Padding` property in XAML.
 > If the `Value` property of an `On` object can't be represented by a single string, you can define property elements for it.
 
 For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
-
-### Understanding the "Left, Top, Right, Bottom" Syntax in XAML  
-
-In XAML, several properties that define spacing or thickness follow a specific order when multiple values are provided:  
-
-**`Left, Top, Right, Bottom`**  
-
-This applies to commonly used properties like:  
-- **Padding** – Defines inner spacing within an element.  
-- **Margin** – Defines the space around an element.  
-- **BorderThickness** – Specifies the thickness of an element's border.  
-
-#### Consistent Value Ordering  
-The **Padding** examples above follow this same syntax. For instance:  
-
-```xml
-<OnPlatform x:TypeArguments="Thickness" Default="20">
-    <On Platform="iOS, Android" Value="10,20,20,10" /> <!-- BorderThickness format: Left, Top, Right, Bottom -->
-</OnPlatform>
-```
-
-**`Left = 10, Top = 20, Right = 20, Bottom = 10`**  
-
-This same structure is used across other properties, ensuring consistency in how spacing values are applied.
-
-#### Other Properties Using the Same Syntax
-The same ordering applies to properties like **Margin** and **BorderThickness**:
-
-```xml
- <!-- Margin Example -->
-<!-- Left = 5, Top = 10, Right = 15, Bottom = 20 -->
-<Button Text="Click Me" Margin="5,10,15,20"/>
-
-<!-- BorderThickness Example -->
-<!-- Left = 2, Top = 4, Right = 6, Bottom = 8 -->
-<Frame BorderColor="Black" BorderThickness="2,4,6,8"/>
-```
-
-#### Alternative Value Formats
-Depending on how many values are provided, XAML applies them as follows:
-
-| Values Provided  | Applied As |
-|-----------------|------------------------------------------------|
-| `20`            | Applies to all four sides (Left, Top, Right, Bottom) |
-| `10,20`        | `10` → Left & Right, `20` → Top & Bottom |
-| `10,20,30,40`  | `10` → Left, `20` → Top, `30` → Right, `40` → Bottom |
 
 ## Next steps
 
