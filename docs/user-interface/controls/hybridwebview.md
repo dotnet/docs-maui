@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 11/14/2024
+ms.date: 02/18/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -420,6 +420,34 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 > [!IMPORTANT]
 > The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
+
+### Invoke JavaScript methods that don't return a value
+
+The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are two approaches to doing this:
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method without specifying the generic argument:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync(
+         "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+         HybridSampleJSContext.Default.Double, // JSON serialization info for return type
+         [x, y], // Parameter values
+         [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
+    ```
+
+    In this example, while the generic argument isn't required it's still necessary to supply JSON serialization information for the return type even though it isn't used.
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method while specifying the generic argument:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync<double>(
+        "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+        null, // JSON serialization info for return type
+        [x, y], // Parameter values
+        [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
+    ```
+
+    In this example, the generic argument is required and `null` can be passed as the value of the JSON serialization information for the return type.
 
 ## Invoke C\# from JavaScript
 
