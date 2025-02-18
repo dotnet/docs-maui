@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 11/14/2024
+ms.date: 02/18/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -256,12 +256,8 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
             },
 
             "__TriggerAsyncCallback": function __TriggerAsyncCallback(taskId, result) {
-                // Make sure the result is a string
-                if (result && typeof (result) !== 'string') {
-                    result = JSON.stringify(result);
-                }
-
-                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + result);
+                const json = JSON.stringify(result);
+                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + json);
             }
         }
 
