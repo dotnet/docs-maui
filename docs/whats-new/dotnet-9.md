@@ -48,9 +48,9 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
 
-### Titlebar for Windows
+### Titlebar for Mac Catalyst and Windows
 
-The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Windows:
+The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Mac Catalyst and Windows:
 
 :::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
@@ -119,9 +119,6 @@ The following screenshot shows the resulting appearance:
 
 :::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
 
-> [!NOTE]
-> Mac Catalyst support for the `TitleBar` control will be added in a future release.
-
 For more information, see [TitleBar](~/user-interface/controls/titlebar.md).
 
 ## Control enhancements
@@ -147,11 +144,14 @@ The binding mode for `IsVisible` and `IsEnabled` on a <xref:Microsoft.Maui.Contr
 
 The default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has changed to `0.0.0.1`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
 
-To opt into using the `0.0.0.0` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
+To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram.cs` class:
 
 ```csharp
-// Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
-AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+static MauiProgram()
+{
+    // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
+    AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+}
 ```
 
 By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
@@ -159,10 +159,13 @@ By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> no
 > [!WARNING]
 > This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
 
-To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in your `MauiProgram` class:
 
 ```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
+static MauiProgram()
+{
+    AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
+}
 ```
 
 If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
