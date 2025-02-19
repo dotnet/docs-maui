@@ -224,8 +224,7 @@ Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentP
 In this example, the `Padding` property is set to different values on iOS and Android, with the other platforms being set to the default value.
 
 > [!NOTE]  
-> In XAML, when defining spacing, properties like **Padding**, **Margin**, and **BorderThickness** follow the order: **Left, Top, Right, Bottom** when multiple values are provided.  
-> For more details, see [Align and position .NET MAUI controls](/dotnet/maui/user-interface/align-position).
+> When positioning controls with the `Padding` and `Margin` properties, if four values are provided the order is left, top, right, bottom. For more information, see [Position controls](~/user-interface/align-position.md#position-controls).
 
 The `OnPlatform` class also defines a `Platforms` property, which is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform. In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
 
