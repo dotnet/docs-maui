@@ -514,7 +514,7 @@ static MauiProgram()
 }
 ```
 
-This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure can be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
+This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure will be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
 
 ## Invoke C\# from JavaScript
 
