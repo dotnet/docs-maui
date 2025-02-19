@@ -48,9 +48,9 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
 
-### Titlebar for Windows
+### Titlebar for Mac Catalyst and Windows
 
-The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Windows:
+The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Mac Catalyst and Windows:
 
 :::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
@@ -118,9 +118,6 @@ A <xref:Microsoft.Maui.Controls.TitleBar> is highly customizable through its <xr
 The following screenshot shows the resulting appearance:
 
 :::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
-
-> [!NOTE]
-> Mac Catalyst support for the `TitleBar` control will be added in a future release.
 
 For more information, see [TitleBar](~/user-interface/controls/titlebar.md).
 
