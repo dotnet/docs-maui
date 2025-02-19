@@ -286,12 +286,8 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
             },
 
             "__TriggerAsyncCallback": function __TriggerAsyncCallback(taskId, result) {
-                // Make sure the result is a string
-                if (result && typeof (result) !== 'string') {
-                    result = JSON.stringify(result);
-                }
-
-                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + result);
+                const json = JSON.stringify(result);
+                window.HybridWebView.__SendMessageInternal('__InvokeJavaScriptCompleted', taskId + '|' + json);
             }
         }
 
