@@ -475,6 +475,34 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 > [!IMPORTANT]
 > The `HybridSampleJsContext` class must be `partial` so that code generation can provide the implementation when the project is compiled. If the type is nested into another type, then that type must also be `partial`.
 
+### Invoke JavaScript methods that don't return a value
+
+The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are two approaches to doing this:
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method without specifying the generic argument:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync(
+         "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+         HybridSampleJSContext.Default.Double, // JSON serialization info for return type
+         [x, y], // Parameter values
+         [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
+    ```
+
+    In this example, while the generic argument isn't required it's still necessary to supply JSON serialization information for the return type even though it isn't used.
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method while specifying the generic argument:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync<double>(
+        "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+        null, // JSON serialization info for return type
+        [x, y], // Parameter values
+        [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
+    ```
+
+    In this example, the generic argument is required and `null` can be passed as the value of the JSON serialization information for the return type.
+
 ### Send JavaScript exceptions to .NET
 
 By default, invocation of JavaScript methods in a <xref:Microsoft.Maui.Controls.HybridWebView> can hide exceptions thrown by your JavaScript code. To opt into JavaScript exceptions being sent to .NET, where they're re-thrown as .NET exceptions, add the following code to your `MauiProgram` class:
@@ -486,7 +514,7 @@ static MauiProgram()
 }
 ```
 
-This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure can be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
+This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure will be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
 
 ## Invoke C\# from JavaScript
 
