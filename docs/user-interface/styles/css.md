@@ -342,8 +342,18 @@ The following selectors are unsupported:
 - `@media` and `@supports`
 - `:` and `::`
 
+::: moniker range="=net-maui-8.0"
+
 > [!NOTE]
 > Specificity, and specificity overrides are unsupported.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+If two or more CSS rules point to the same element, the selector with the highest specificity will take precedence and its style declaration will be applied to the element. The [specificity algorithm](https://github.com/dotnet/maui/blob/main/src/Controls/src/Core/StyleSheets/Selector.cs#L319) calculates the weight of a CSS selector to determine which rule from competing CSS declarations gets applied to the element.
+
+::: moniker-end
 
 ## Property reference
 
