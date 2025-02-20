@@ -109,7 +109,7 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 ## .NET for iOS
 
-.NET 10 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 17.0+ for the following platform versions:
+.NET 10 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
 
 - iOS: 18.2
 - tvOS: 18.2
