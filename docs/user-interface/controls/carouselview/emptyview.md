@@ -38,7 +38,7 @@ CarouselView carouselView = new CarouselView
 {
     EmptyView = "No items to display."
 };
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "EmptyMonkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.EmptyMonkeys);
 ```
 
 The result is that, because the data bound collection is `null`, the string set as the `EmptyView` property value is displayed.
@@ -95,7 +95,7 @@ CarouselView carouselView = new CarouselView
         Content = stackLayout
     }
 };
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CarouselView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.StackLayout> set as the `EmptyView` property value is displayed.
@@ -282,7 +282,7 @@ CarouselView carouselView = new CarouselView()
     EmptyView = searchBar.Text,
     EmptyViewTemplate = new SearchTermDataTemplateSelector { ... }
 };
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `EmptyView` property is set to the `SearchBar.Text` property, and the `EmptyViewTemplate` property is set to a `SearchTermDataTemplateSelector` object.
