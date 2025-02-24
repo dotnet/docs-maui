@@ -71,7 +71,7 @@ The equivalent C# code is:
 
 ```csharp
 ListView listView = new ListView();
-listView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+listView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
@@ -777,7 +777,7 @@ ListView listView = new ListView
 {
     IsGroupingEnabled = true
 };
-listView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+listView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 // ...
 ```
 
