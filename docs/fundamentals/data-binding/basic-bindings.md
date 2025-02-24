@@ -50,7 +50,7 @@ You can set a binding on an instance of any class that derives from <xref:Micros
 
 In this example, the <xref:Microsoft.Maui.Controls.Label> is the binding target, and the <xref:Microsoft.Maui.Controls.Slider> is the binding source. Changes in the <xref:Microsoft.Maui.Controls.Slider> source affect the rotation of the <xref:Microsoft.Maui.Controls.Label> target. Data flows from the source to the target.
 
-The `SetBinding` method defined by <xref:Microsoft.Maui.Controls.BindableObject> has an argument of type `BindingBase` from which the `Binding` class derives, but there are other `SetBinding` methods defined by the `BindableObjectExtensions` class. The code-behind for the XAML uses a simpler `SetBinding` extension method from the `BindableObjectExtensions` class:
+Bindings written in code sometimes use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method also has an overload that defines bindings using a `Func` argument:
 
 ```csharp
 public partial class BasicCodeBindingPage : ContentPage
@@ -60,17 +60,17 @@ public partial class BasicCodeBindingPage : ContentPage
         InitializeComponent();
 
         label.BindingContext = slider;
-        label.SetBinding(Label.RotationProperty, "Value");
+        label.SetBinding(Label.RotationProperty, static (Slider slider) => slider.Value);
     }
 }
 ```
 
-The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `BindingContext` property indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a <xref:Microsoft.Maui.Controls.BindableProperty> object: `Label.RotationProperty`. The source property is specified as a string and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
+The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `Func` argument indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a <xref:Microsoft.Maui.Controls.BindableProperty> object: `Label.RotationProperty`. The source property is specified using a lambda expression and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
 
 > [!IMPORTANT]
 > The target property must be backed by a bindable property. Therefore, the target object must be an instance of a class that derives from <xref:Microsoft.Maui.Controls.BindableObject>. For more information, see [Bindable properties](../bindable-properties.md).
 
-The source property is specified as a string. Internally, reflection is used to access the actual property. In this particular case, however, the `Value` property is also backed by a bindable property.
+The source property is specified using a lambda expression, and uses a technique called compiled bindings. For more information about compiled bindings, see [Compiled bindings](compiled-bindings.md).
 
 As you manipulate the <xref:Microsoft.Maui.Controls.Slider>, the <xref:Microsoft.Maui.Controls.Label> rotates accordingly:
 
