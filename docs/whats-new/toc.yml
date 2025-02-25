@@ -6,6 +6,8 @@ items:
   - name: Product releases
     expanded: true
     items:
+    - name: .NET 10
+      href: dotnet-10.md
     - name: .NET 9
       href: dotnet-9.md
     - name: .NET 8
