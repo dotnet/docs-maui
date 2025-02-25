@@ -1,14 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 02/18/2025
+ms.date: 02/25/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For more information about the product quality improvements in .NET MAUI in .NET 10, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview1)
+- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
