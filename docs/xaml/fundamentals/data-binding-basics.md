@@ -21,6 +21,9 @@ The target property must be a bindable property, which means that the target obj
 
 In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
 
+> [!NOTE]
+> The data binding expressions on this page use compiled bindings. For more information about compiled bindings, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+
 ## View-to-view bindings
 
 You can define data bindings to link properties of two views on the same page. In this case, you set the `BindingContext` of the target object using the `x:Reference` markup extension.
@@ -31,7 +34,8 @@ The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two <
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamlSamples.SliderBindingsPage"
-             Title="Slider Bindings Page">
+             Title="Slider Bindings Page"
+             x:DataType="Slider">
     <StackLayout>
         <Label Text="ROTATION"
                BindingContext="{x:Reference slider}"
@@ -103,44 +107,52 @@ The following example demonstrates one common use of the `OneWayToSource` and `T
 
         <!-- Slider and identifying Label for Scale -->
         <Slider x:Name="scaleSlider"
+                x:DataType="Label"
                 BindingContext="{x:Reference label}"
                 Grid.Row="1" Grid.Column="0"
                 Maximum="10"
                 Value="{Binding Scale, Mode=TwoWay}" />
-        <Label BindingContext="{x:Reference scaleSlider}"
+        <Label x:DataType="Slider"
+               BindingContext="{x:Reference scaleSlider}"
                Text="{Binding Value, StringFormat='Scale = {0:F1}'}"
                Grid.Row="1" Grid.Column="1"
                VerticalTextAlignment="Center" />
 
         <!-- Slider and identifying Label for Rotation -->
         <Slider x:Name="rotationSlider"
+                x:DataType="Label"
                 BindingContext="{x:Reference label}"
                 Grid.Row="2" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding Rotation, Mode=OneWayToSource}" />
-        <Label BindingContext="{x:Reference rotationSlider}"
+        <Label x:DataType="Slider"
+               BindingContext="{x:Reference rotationSlider}"
                Text="{Binding Value, StringFormat='Rotation = {0:F0}'}"
                Grid.Row="2" Grid.Column="1"
                VerticalTextAlignment="Center" />
 
         <!-- Slider and identifying Label for RotationX -->
         <Slider x:Name="rotationXSlider"
+                x:DataType="Label"
                 BindingContext="{x:Reference label}"
                 Grid.Row="3" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding RotationX, Mode=OneWayToSource}" />
-        <Label BindingContext="{x:Reference rotationXSlider}"
+        <Label x:DataType="Slider"
+               BindingContext="{x:Reference rotationXSlider}"
                Text="{Binding Value, StringFormat='RotationX = {0:F0}'}"
                Grid.Row="3" Grid.Column="1"
                VerticalTextAlignment="Center" />
 
         <!-- Slider and identifying Label for RotationY -->
         <Slider x:Name="rotationYSlider"
+                x:DataType="Label"
                 BindingContext="{x:Reference label}"
                 Grid.Row="4" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding RotationY, Mode=OneWayToSource}" />
-        <Label BindingContext="{x:Reference rotationYSlider}"
+        <Label x:DataType="Slider"
+               BindingContext="{x:Reference rotationYSlider}"
                Text="{Binding Value, StringFormat='RotationY = {0:F0}'}"
                Grid.Row="4" Grid.Column="1"
                VerticalTextAlignment="Center" />
@@ -255,7 +267,7 @@ To define a template for the items, the `ItemTemplate` should be set to a <xref:
 ```xaml
 <ListView ItemsSource="{x:Static local:NamedColor.All}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:NamedColor">
             <ViewCell>
                 <Label Text="{Binding FriendlyName}" />
             </ViewCell>
@@ -288,7 +300,7 @@ The item template can be expanded to display more information and the actual col
     <ListView ItemsSource="{x:Static local:NamedColor.All}"
               RowHeight="{StaticResource rowHeight}">
         <ListView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="local:NamedColor">
                 <ViewCell>
                     <StackLayout Padding="5, 5, 0, 5"
                                  Orientation="Horizontal"
