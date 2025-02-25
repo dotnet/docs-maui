@@ -164,7 +164,7 @@ CollectionView collectionView = new CollectionView
 {
     IsGrouped = true
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 // ...
 ```
 
