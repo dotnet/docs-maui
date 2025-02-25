@@ -349,7 +349,7 @@ CollectionView collectionView = new CollectionView
     Header = "Monkeys",
     Footer = "2019"
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:
@@ -395,7 +395,7 @@ CollectionView collectionView = new CollectionView
     Header = headerStackLayout,
     Footer = footerStackLayout            
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:
@@ -404,12 +404,10 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ### Display a templated header and footer
 
-The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
+The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer:
 
 ```xaml
-<CollectionView ItemsSource="{Binding Monkeys}"
-                Header="{Binding .}"
-                Footer="{Binding .}">
+<CollectionView ItemsSource="{Binding Monkeys}">
     <CollectionView.HeaderTemplate>
         <DataTemplate>
             <StackLayout BackgroundColor="LightGray">
@@ -448,9 +446,7 @@ CollectionView collectionView = new CollectionView
         return new StackLayout { };
     })
 };
-collectionView.SetBinding(ItemsView.HeaderProperty, ".");
-collectionView.SetBinding(ItemsView.FooterProperty, ".");
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:

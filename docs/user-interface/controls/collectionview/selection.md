@@ -52,7 +52,7 @@ CollectionView collectionView = new CollectionView
 {
     SelectionMode = SelectionMode.Single
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
 ```
 
@@ -95,7 +95,7 @@ CollectionView collectionView = new CollectionView
 {
     SelectionMode = SelectionMode.Multiple
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
 ```
 
@@ -136,8 +136,8 @@ CollectionView collectionView = new CollectionView
 {
     SelectionMode = SelectionMode.Single
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-collectionView.SetBinding(SelectableItemsView.SelectedItemProperty, "SelectedMonkey");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
+collectionView.SetBinding(SelectableItemsView.SelectedItemProperty,  static (MonkeysViewModel vm) => vm.SelectedMonkey);
 ```
 
 > [!NOTE]
@@ -200,8 +200,8 @@ CollectionView collectionView = new CollectionView
 {
     SelectionMode = SelectionMode.Multiple
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
-collectionView.SetBinding(SelectableItemsView.SelectedItemsProperty, "SelectedMonkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
+collectionView.SetBinding(SelectableItemsView.SelectedItemsProperty,  static (MonkeysViewModel vm) => vm.SelectedMonkeys);
 ```
 
 > [!NOTE]

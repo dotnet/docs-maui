@@ -30,7 +30,7 @@ You can change properties by using the following guidelines:
 
 - To change a string or integer property, double-click the current string or integer setting in the value column and enter a new value.
 
-  :::image type="content" source="media/device-properties/win/enum-value.png" alt-text="Changing an integer property in the Android Emulator settings for .NET MAUI on Windows.":::
+  :::image type="content" source="media/device-properties/win/integer-value.png" alt-text="Changing an integer property in the Android Emulator settings for .NET MAUI on Windows.":::
 
 <!--
 
