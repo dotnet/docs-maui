@@ -30,11 +30,17 @@ To set up the Mac build host, first enable remote login:
 
 1. On the Mac, open **System Preferences** and go to the **Sharing** pane.
 
-1. Check **Remote Login** in the **Service** list.
+1. Toggle on **Remote Login** in the **Advanced** list.
 
-    :::image type="content" source="media/pair-to-mac/sharing.png" alt-text="Enabling remote login.":::
+    :::image type="content" source="media/pair-to-mac/remote-login-setting.png" alt-text="Enabling remote login.":::
+
+1. Click on the **i** next to the Remote Login setting to configure more settings:
+
+    Check **Allow full disk access for remote users**.
 
     Make sure that it's configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
+
+    :::image type="content" source="media/pair-to-mac/remote-login-advanced-settings.png" alt-text="Enabling remote login.":::
 
 1. If prompted, configure the macOS firewall. If you have set the macOS firewall to block incoming connections, you may need to allow `mono-sgen` to receive incoming connections. An alert appears to prompt you if so.
 
