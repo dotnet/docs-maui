@@ -24,7 +24,8 @@ In [XAML markup extensions](markup-extensions.md) you saw how to define a new XM
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="XamlSamples.OneShotDateTimePage"
-             Title="One-Shot DateTime Page">
+             Title="One-Shot DateTime Page"
+             x:DataType="sys:DateTime">
 
     <VerticalStackLayout BindingContext="{x:Static sys:DateTime.Now}"
                          Spacing="25" Padding="30,0"
@@ -108,7 +109,8 @@ The following example shows XAML that consumes `ClockViewModel`:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamlSamples"
              x:Class="XamlSamples.ClockPage"
-             Title="Clock Page">
+             Title="Clock Page"
+             x:DataType="local:ClockViewModel">
     <ContentPage.BindingContext>
         <local:ClockViewModel />
     </ContentPage.BindingContext>
@@ -215,7 +217,8 @@ The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> who
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamlSamples"
              x:Class="XamlSamples.HslColorScrollPage"
-             Title="HSL Color Scroll Page">
+             Title="HSL Color Scroll Page"
+             x:DataType="local:HslViewModel">
     <ContentPage.BindingContext>
         <local:HslViewModel Color="Aqua" />
     </ContentPage.BindingContext>
@@ -373,7 +376,8 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamlSamples"
              x:Class="XamlSamples.KeypadPage"
-             Title="Keypad Page">
+             Title="Keypad Page"
+             x:DataType="local:KeypadViewModel">
     <ContentPage.BindingContext>
         <local:KeypadViewModel />
     </ContentPage.BindingContext>
