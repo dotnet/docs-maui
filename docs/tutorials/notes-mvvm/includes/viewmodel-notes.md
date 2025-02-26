@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 03/21/2024
+ms.date: 02/26/2025
 ms.topic: include
 no-loc: ["Notes viewmodel", "AllNotes view", "ViewModels", "NotesViewModel.cs", "AllNotesPage.xaml", "AllNotesPage.xaml.cs"]
 ---
@@ -83,7 +83,7 @@ Update the **AllNotes view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="full" highlight="3,7,12,17,20-21":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="full" highlight="3,6,8,13,18,21-22":::
 
 The toolbar no longer uses the `Clicked` event and instead uses a command.
 
@@ -93,7 +93,15 @@ Look at the binding used for the `CollectionView`:
 
 :::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="collection_view" highlight="5-6":::
 
-The `SelectionChangedCommandParameter` property uses `Source={RelativeSource Self}` binding. The `Self` references the current object, which is the `CollectionView`. Notice that the binding path is the `SelectedItem` property. When the command is invoked by changing the selected item, the `SelectNoteCommand` command is invoked and the selected item is passed to the command as a parameter.
+The `SelectionChangedCommandParameter` property uses `Source={RelativeSource Self}` binding. The `Self` references the current object, which is the `CollectionView`. Therefore, `x:DataType` specifies `CollectionView` as the type for the compiled binding. Notice that the binding path is the `SelectedItem` property. When the command is invoked by changing the selected item, the `SelectNoteCommand` command is invoked and the selected item is passed to the command as a parameter.
+
+For the binding expression defined in the `SelectionChangedCommandParameter` property to compile, it's necessary to instruct the project to enable compiled bindings in expressions that specify the `Source` property. To do this edit the project file for your solution and add `<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>` within the `<PropertyGroup>` element:
+
+```xml
+<PropertyGroup>
+  <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+</PropertyGroup>
+```
 
 ## Clean up the AllNotes code-behind
 
