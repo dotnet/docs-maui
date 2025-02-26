@@ -179,7 +179,7 @@ After making this change to **user.config**, you should be able to launch the An
 
 ### Wrong version of Android SDK Tools
 
-If you have the wrong Android SDK tools installed, installed, you may see this error dialog on launch:
+If you have the wrong Android SDK tools installed, you may see this error dialog on launch:
 
 :::image type="content" source="media/device-manager/win/32-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box.":::
 

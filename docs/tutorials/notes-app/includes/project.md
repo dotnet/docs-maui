@@ -17,7 +17,7 @@ Before you can begin this tutorial, you must follow the [Build your first app ar
 
 :::image type="content" source="../media/project/vs-configure-project.png" alt-text="Set the name of the .NET MAUI project to Notes in Visual Studio.":::
 
-Choose the latest .NET framework when creating your project.
+Choose the latest .NET version when creating your project.
 
 ## Select the target device
 

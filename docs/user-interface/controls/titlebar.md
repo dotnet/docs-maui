@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 :::image type="content" source="media/titlebar/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
 > [!IMPORTANT]
-> <xref:Microsoft.Maui.Controls.TitleBar> is only available on Windows. Mac Catalyst support will be added in a future release.
+> <xref:Microsoft.Maui.Controls.TitleBar> is only available on Mac Catalyst and Windows.
 
 <xref:Microsoft.Maui.Controls.TitleBar> defines the following properties:
 

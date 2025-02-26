@@ -119,20 +119,22 @@ The following XAML example shows how to define visual states for the `On` and `O
 ```xaml
 <Switch IsToggled="True">
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="On">
-                <VisualState.Setters>
-                    <Setter Property="ThumbColor"
-                            Value="MediumSpringGreen" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="Off">
-                <VisualState.Setters>
-                    <Setter Property="ThumbColor"
-                            Value="Red" />
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
+        <VisualStateGroupList>
+             <VisualStateGroup x:Name="CommonStates">
+                 <VisualState x:Name="On">
+                     <VisualState.Setters>
+                         <Setter Property="ThumbColor"
+                             Value="MediumSpringGreen" />
+                     </VisualState.Setters>
+                 </VisualState>
+                 <VisualState x:Name="Off">
+                     <VisualState.Setters>
+                         <Setter Property="ThumbColor"
+                             Value="Red" />
+                     </VisualState.Setters>
+                 </VisualState>
+             </VisualStateGroup>
+        </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 </Switch>
 ```

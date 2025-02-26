@@ -38,7 +38,7 @@ CollectionView collectionView = new CollectionView
 {
     EmptyView = "No items to display"
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "EmptyMonkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.EmptyMonkeys);
 ```
 
 The result is that, because the data bound collection is `null`, the string set as the `EmptyView` property value is displayed:
@@ -101,7 +101,7 @@ CollectionView collectionView = new CollectionView
         Content = stackLayout
     }
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.StackLayout> set as the `EmptyView` property value is displayed:
@@ -295,7 +295,7 @@ CollectionView collectionView = new CollectionView
     EmptyView = searchBar.Text,
     EmptyViewTemplate = new SearchTermDataTemplateSelector { ... }
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `EmptyView` property is set to the `SearchBar.Text` property, and the `EmptyViewTemplate` property is set to a `SearchTermDataTemplateSelector` object.
