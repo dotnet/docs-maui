@@ -26,9 +26,9 @@ Create the **Note viewmodel**:
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.ComponentModel;
     using System.Windows.Input;
-    
+
     namespace Notes.ViewModels;
-    
+
     internal class NoteViewModel : ObservableObject, IQueryAttributable
     {
         private Models.Note _note;
@@ -104,7 +104,7 @@ Update the **Note view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
 
-:::code language="xaml" source="../snippets/viewmodel-shared/Views/NotePage.xaml" highlight="4,7-9,18,22":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/Views/NotePage.xaml" highlight="4,7,8-10,19,23":::
 
 Previously, this view didn't declare a binding context, as it was supplied by the code-behind of the page itself. Setting the binding context directly in the XAML provides two things:
 
