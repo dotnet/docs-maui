@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 03/21/2024
+ms.date: 02/26/2025
 ms.topic: include
 no-loc: ["MainPage.xaml", "MainPage.xaml.cs", "NotePage.xaml", "NotePage.xaml.cs", "AboutPage.xaml", "AboutPage.xaml.cs", "AppShell.xaml", "AppShell.xaml.cs", "Note.cs", "AllNotes"]
 ---
@@ -150,13 +150,17 @@ The about page will be the quickest page to update and you'll be able to run the
 01. In the **Solution Explorer** pane, open the _Views\\AboutPage.xaml_ file.
 01. Replace the content with the following snippet:
 
-    :::code language="xaml" source="../snippets/navigation/Views/AboutPage.xaml" highlight="4,6-8,14,15,18":::
+    :::code language="xaml" source="../snippets/navigation/Views/AboutPage.xaml" highlight="4,6,7-9,15,16,19":::
 
 Let's look at the changed lines, which are highlighted in the previous snippet:
 
 - `xmlns:models="clr-namespace:Notes.Models"`
 
   This line maps the `Notes.Models` .NET namespace to the `models` XML namespace.
+
+- `x:DataType="models:About"`
+
+  This line instructs the XAML compiler to compile all binding expressions for increased runtime performance, and resolves the binding expressions against the `Notes.Models.About` type.
 
 - The `BindingContext` property of the <xref:Microsoft.Maui.Controls.ContentPage> is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
 
@@ -199,9 +203,23 @@ Run the app and you should see that it runs exactly the same as before. Try chan
 The previous section bound the **:::no-loc text="about":::** page view to the **:::no-loc text="about":::** model, and now you'll do the same, binding the **:::no-loc text="note":::** view to the **:::no-loc text="note":::** model. However, in this case, the model won't be created in XAML but will be provided in the code-behind in the next few steps.
 
 01. In the **Solution Explorer** pane, open the _Views\\NotePage.xaml_ file.
-01. Change the `<Editor>` control adding the `Text` property. Bind the property to the `Text` property: `<Editor ... Text="{Binding Text}"`:
+01. Replace the content with the following snippet:
 
-    :::code language="xaml" source="../snippets/navigation/Views/NotePage.xaml" highlight="9":::
+    :::code language="xaml" source="../snippets/navigation/Views/NotePage.xaml" highlight="4,7,11":::
+
+Let's look at the changed lines, which are highlighted in the previous snippet:
+
+- `xmlns:models="clr-namespace:Notes.Models"`
+
+  This line maps the `Notes.Models` .NET namespace to the `models` XML namespace.
+
+- `x:DataType="models:Note"`
+
+  This line instructs the XAML compiler to compile all binding expressions for increased runtime performance, and resolves the binding expressions against the `Notes.Models.Note` type.
+
+- `Text="{Binding Text}"`
+
+  This line changes the `<Editor>` control by adding the `Text` property, and by binding the property to the `Text` property.  
 
 The modifications for the code-behind are more complicated than the XAML. The current code is loading the file content in the constructor, and then setting it directly to the `TextEditor.Text` property. Here is what the current code looks like:
 

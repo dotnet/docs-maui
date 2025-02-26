@@ -67,7 +67,7 @@ Update the **About view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AboutPage.xaml" highlight="4,7,19":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AboutPage.xaml" highlight="4,6,8,20":::
 
     The previous code snippet highlights the lines that have changed in this version of the view.
 
