@@ -136,7 +136,8 @@ The following XAML example shows two uses of `x:Reference` with data bindings, t
              x:Name="page"
              Title="x:Reference Demo">    
     <StackLayout Margin="10, 0">        
-        <Label Text="{Binding Source={x:Reference page},
+        <Label x:DataType="ContentPage"
+               Text="{Binding Source={x:Reference page},
                               StringFormat='The type of this page is {0}'}"
                FontSize="18"
                VerticalOptions="Center"
@@ -144,7 +145,8 @@ The following XAML example shows two uses of `x:Reference` with data bindings, t
         <Slider x:Name="slider"
                 Maximum="360"
                 VerticalOptions="Center" />
-        <Label BindingContext="{x:Reference slider}"
+        <Label x:DataType="Slider"
+               BindingContext="{x:Reference slider}"
                Text="{Binding Value, StringFormat='{0:F0}&#x00B0; rotation'}"
                Rotation="{Binding Value}"
                FontSize="24"
@@ -171,10 +173,12 @@ The following XAML example demonstrates using the `x:Type` markup extension to i
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MarkupExtensions"
              x:Class="MarkupExtensions.TypeDemoPage"
-             Title="x:Type Demo">    
+             Title="x:Type Demo"
+             x:DataType="local:TypeDemoPage">
     <StackLayout x:Name="stackLayout"
-                 Padding="10, 0">        
+                 Padding="10, 0">
         <Button Text="Create a Slider"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
@@ -278,7 +282,7 @@ The following XAML example shows how to use `x:Array` to add items to a <xref:Mi
             </x:Array>
         </ListView.ItemsSource>
         <ListView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="Color">
                 <ViewCell>
                     <BoxView Color="{Binding}"
                              Margin="3" />
@@ -286,7 +290,7 @@ The following XAML example shows how to use `x:Array` to add items to a <xref:Mi
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-</ContentPage>     
+</ContentPage>  
 ```
 
 In this example, the <xref:Microsoft.Maui.Controls.ViewCell> creates a simple <xref:Microsoft.Maui.Controls.BoxView> for each color entry:

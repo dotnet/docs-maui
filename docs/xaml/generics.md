@@ -96,7 +96,7 @@ A single object type argument can be specified as a prefixed string argument usi
             </scg:List>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="models:Monkey">
                 <Grid Padding="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -165,7 +165,7 @@ Multiple type arguments can be specified as prefixed string arguments, delimited
             </scg:List>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="scg:KeyValuePair(x:String,models:Monkey)">
                 <Grid Padding="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
