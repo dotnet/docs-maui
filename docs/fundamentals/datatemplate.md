@@ -1,7 +1,7 @@
 ---
 title: "Data templates"
 description: ".NET MAUI data templates provide the ability to define the presentation of data on supported controls. Data templates can be chosen at runtime, using a DataTemplateSelector, based on the value of a data-bound property."
-ms.date: 02/21/2022
+ms.date: 02/27/2024
 ---
 
 # Data templates
@@ -100,7 +100,7 @@ An inline data template, which is one that's defined inline in a control, should
         </x:Array>
     </CollectionView.ItemsSource>
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:Person">
             <Grid>
                 ...
                 <Label Text="{Binding Name}" FontAttributes="Bold" />
@@ -148,7 +148,9 @@ In this example, the <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> prope
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DataTemplates.PersonView">
+             xmlns:local="clr-namespace:DataTemplates"
+             x:Class="DataTemplates.PersonView"
+             x:DataType="local:Person">
      <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*" />

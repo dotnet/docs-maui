@@ -1,7 +1,7 @@
 ---
 title: "Binding value converters"
 description: "Learn how how to cast or convert values within a .NET MAUI data binding by implementing a value converter (which is also known as a binding converter, or binding value converter)."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Binding value converters
@@ -57,7 +57,8 @@ The following example demonstrates how to use this value converter in a data bin
                Text=""
                Placeholder="enter search term"
                VerticalOptions="Center" />
-        <Button Text="Search"
+        <Button x:DataType="Entry"
+                Text="Search"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 IsEnabled="{Binding Source={x:Reference entry1},
@@ -67,7 +68,8 @@ The following example demonstrates how to use this value converter in a data bin
                Text=""
                Placeholder="enter destination"
                VerticalOptions="Center" />
-        <Button Text="Submit"
+        <Button x:DataType="Entry"
+                Text="Submit"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 IsEnabled="{Binding Source={x:Reference entry2},
@@ -140,7 +142,8 @@ The following example demonstrates how this converter can be used to display the
             <Switch x:Name="switch1" />
             <Label>
                 <Label.Text>
-                    <Binding Source="{x:Reference switch1}"
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch1}"
                              Path="IsToggled">
                         <Binding.Converter>
                             <local:BoolToObjectConverter x:TypeArguments="x:String"
@@ -158,7 +161,8 @@ The following example demonstrates how this converter can be used to display the
             <Switch x:Name="switch2" />
             <Label>
                 <Label.Text>
-                    <Binding Source="{x:Reference switch2}"
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch2}"
                              Path="IsToggled">
                         <Binding.Converter>
                             <local:BoolToObjectConverter x:TypeArguments="x:String"
@@ -168,7 +172,8 @@ The following example demonstrates how this converter can be used to display the
                     </Binding>
                 </Label.Text>
                 <Label.TextColor>
-                    <Binding Source="{x:Reference switch2}"
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch2}"
                              Path="IsToggled">
                         <Binding.Converter>
                             <local:BoolToObjectConverter x:TypeArguments="Color"
@@ -187,7 +192,8 @@ The following example demonstrates how this converter can be used to display the
             <Label FontSize="18"
                    VerticalOptions="Center">
                 <Label.Style>
-                    <Binding Source="{x:Reference switch3}"
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch3}"
                              Path="IsToggled">
                         <Binding.Converter>
                             <local:BoolToObjectConverter x:TypeArguments="Style">
@@ -363,7 +369,8 @@ The following XAML example instantiates `FloatToIntConverter` in its resource di
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.RgbColorSelectorPage"
-             Title="RGB Color Selector">
+             Title="RGB Color Selector"
+             x:DataType="local:RgbColorViewModel">
     <ContentPage.BindingContext>
         <local:RgbColorViewModel Color="Gray" />
     </ContentPage.BindingContext>
