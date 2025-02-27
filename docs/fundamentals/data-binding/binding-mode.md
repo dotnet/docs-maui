@@ -1,7 +1,7 @@
 ---
 title: "Binding mode"
 description: "In .NET MAUI, every bindable property has a default binding mode, which indicates the binding mode in effect when that property is a data-binding target. The binding mode controls the flow of information between source and target, and is specified with a member of the BindingMode enumeration. "
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Binding mode
@@ -24,6 +24,7 @@ The following example shows a data binding defined on a <xref:Microsoft.Maui.Con
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Slider x:Name="slider"
+                x:DataType="Label"
                 VerticalOptions="Center"
                 Value="{Binding Source={x:Reference label},
                                 Path=Opacity}" />
@@ -188,7 +189,8 @@ The following XAML consumes the `HslColorViewModel`:
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
-             x:Class="DataBindingDemos.SimpleColorSelectorPage">
+             x:Class="DataBindingDemos.SimpleColorSelectorPage"
+             x:DataType="local:HslColorViewModel">
     <ContentPage.BindingContext>
         <local:HslColorViewModel Color="MediumTurquoise" />
     </ContentPage.BindingContext>
@@ -237,7 +239,8 @@ However, setting the `Mode` property doesn't always produce the expected result.
        FontSize="40"
        HorizontalOptions="Center"
        VerticalOptions="CenterAndExpand"
-       Scale="{Binding Source={x:Reference slider},
+       Scale="{Binding x:DataType='Slider',
+                       Source={x:Reference slider},
                        Path=Value,
                        Mode=TwoWay}" />
 ```
@@ -251,7 +254,8 @@ Alternatively, you can set the binding mode to `OneWayToSource`:
        FontSize="40"
        HorizontalOptions="Center"
        VerticalOptions="CenterAndExpand"
-       Scale="{Binding Source={x:Reference slider},
+       Scale="{Binding x:DataType='Slider',
+                       Source={x:Reference slider},
                        Path=Value,
                        Mode=OneWayToSource}" />
 ```
