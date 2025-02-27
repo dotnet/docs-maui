@@ -128,7 +128,9 @@ This results in the following flyout items:
 The appearance of each <xref:Microsoft.Maui.Controls.FlyoutItem> can be customized by setting the `Shell.ItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
-<Shell ...>
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
     ...
     <Shell.ItemTemplate>
         <DataTemplate>
@@ -254,14 +256,16 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
 
 ```xaml
 <Shell ...
-       x:Name="shell">
+       xmlns:local="clr-namespace:Xaminals"
+       x:Name="shell"
+       x:DataType="local:AppShell">
     ...
     <Shell.FlyoutContent>
         <CollectionView BindingContext="{x:Reference shell}"
                         IsGrouped="True"
                         ItemsSource="{Binding FlyoutItems}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:AppShell">
                     <Label Text="{Binding Title}"
                            TextColor="White"
                            FontSize="18" />
@@ -281,7 +285,9 @@ Alternatively, flyout content can be defined by setting the `Shell.FlyoutContent
 
 ```xaml
 <Shell ...
-       x:Name="shell">
+       xmlns:local="clr-namespace:Xaminals"
+       x:Name="shell"
+       x:DataType="local:AppShell">
     ...
     <Shell.FlyoutContentTemplate>
         <DataTemplate>
@@ -289,7 +295,7 @@ Alternatively, flyout content can be defined by setting the `Shell.FlyoutContent
                             IsGrouped="True"
                             ItemsSource="{Binding FlyoutItems}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="local:AppShell">
                         <Label Text="{Binding Title}"
                                TextColor="White"
                                FontSize="18" />
@@ -313,7 +319,9 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> class has a `Clicked` event, and a 
  <xref:Microsoft.Maui.Controls.MenuItem> objects can be added to the flyout as shown in the following example:
 
 ```xaml
-<Shell ...>
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
     ...            
     <MenuItem Text="Help"
               IconImageSource="help.png"
@@ -333,14 +341,16 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Win
 
 ### Define MenuItem appearance
 
-The appearance of each  <xref:Microsoft.Maui.Controls.MenuItem> can be customized by setting the `Shell.MenuItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized by setting the `Shell.MenuItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
-<Shell ...>
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
     <Shell.MenuItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="MenuItem">
             <Grid ColumnDefinitions="0.2*,0.8*">
-                <Image Source="{Binding Icon}"
+                <Image Source="{Binding IconImageSource}"
                        Margin="5"
                        HeightRequest="45" />
                 <Label Grid.Column="1"
@@ -358,16 +368,16 @@ The appearance of each  <xref:Microsoft.Maui.Controls.MenuItem> can be customize
 </Shell>
 ```
 
-This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each  <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics:
+This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics:
 
 :::image type="content" source="media/flyout/menuitem-templated.png" alt-text="Screenshot of templated MenuItem objects.":::
 
-Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific  <xref:Microsoft.Maui.Controls.MenuItem> objects.
+Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific <xref:Microsoft.Maui.Controls.MenuItem> objects.
 
 > [!NOTE]
 > Shell provides the `Text` and `IconImageSource` properties to the `BindingContext` of the `MenuItemTemplate`. You can also use `Title` in place of `Text` and `Icon` in place of `IconImageSource` which will let you reuse the same template for menu items and flyout items.
 
-The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for  <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
+The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
 
 ## Style FlyoutItem and MenuItem objects
 
@@ -500,7 +510,8 @@ The `FlyoutFooter` type is shown in the following example:
                TextColor="GhostWhite"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
-        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+        <Label x:DataType="sys:DateTime"
+               Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
                TextColor="GhostWhite"
                HorizontalOptions="Center" />
     </StackLayout>
@@ -517,7 +528,8 @@ This results in the following flyout footer:
 Alternatively, the flyout footer appearance can be defined by setting the `Shell.FlyoutFooterTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
-<Shell ...>
+<Shell ...
+       xmlns:sys="clr-namespace:System;assembly=netstandard">
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>
             <StackLayout>
@@ -525,7 +537,8 @@ Alternatively, the flyout footer appearance can be defined by setting the `Shell
                        TextColor="GhostWhite"
                        FontAttributes="Bold"
                        HorizontalOptions="Center" />
-                <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                <Label x:DataType="sys:DateTime"
+                       Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
                        TextColor="GhostWhite"
                        HorizontalOptions="Center" />
             </StackLayout>

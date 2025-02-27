@@ -146,8 +146,10 @@ The following XAML example shows a stand-alone <xref:Microsoft.Maui.Controls.Res
 ```xaml
 <?xml version="1.0" encoding="UTF-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <DataTemplate x:Key="PersonDataTemplate">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:ResourceDictionaryDemo">
+    <DataTemplate x:Key="PersonDataTemplate"
+                  x:DataType="local:Person">
         <ViewCell>
             <Grid RowSpacing="6"
                   ColumnSpacing="6">

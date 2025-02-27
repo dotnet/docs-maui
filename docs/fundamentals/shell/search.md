@@ -145,7 +145,7 @@ In addition to displaying `string` data in the search results, the appearance of
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true">
             <controls:AnimalSearchHandler.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
                           ColumnDefinitions="0.15*,0.85*">
                         <Image Source="{Binding ImageUrl}"
