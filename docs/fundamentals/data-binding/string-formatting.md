@@ -1,7 +1,7 @@
 ---
 title: "String formatting"
 description: ".NET MAUI apps can use data bindings to format and display objects as strings. This is achieved by setting the StringFormat of the Binding to a standard .NET formatting string with a placeholder."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # String formatting
@@ -16,7 +16,8 @@ String formatting can also be accomplished with data bindings by setting the `St
 
 ```xaml
 <Slider x:Name="slider" />
-<Label Text="{Binding Source={x:Reference slider},
+<Label x:DataType="Slider"
+       Text="{Binding Source={x:Reference slider},
                       Path=Value,
                       StringFormat='The slider value is {0:F2}'}" />
 ```
@@ -48,21 +49,25 @@ The following example demonstrates several uses of the `StringFormat` property:
 
     <StackLayout Margin="10">
         <Slider x:Name="slider" />
-        <Label Text="{Binding Source={x:Reference slider},
+        <Label x:DataType="Slider"
+               Text="{Binding Source={x:Reference slider},
                               Path=Value,
                               StringFormat='The slider value is {0:F2}'}" />
         <BoxView />
         <TimePicker x:Name="timePicker" />
-        <Label Text="{Binding Source={x:Reference timePicker},
+        <Label x:DataType="TimePicker"
+               Text="{Binding Source={x:Reference timePicker},
                               Path=Time,
                               StringFormat='The TimeSpan is {0:c}'}" />
         <BoxView />                              
         <Entry x:Name="entry" />
-        <Label Text="{Binding Source={x:Reference entry},
+        <Label x:DataType="Entry"
+               Text="{Binding Source={x:Reference entry},
                               Path=Text,
                               StringFormat='The Entry text is &quot;{0}&quot;'}" />
         <BoxView />
-        <StackLayout BindingContext="{x:Static sys:DateTime.Now}">
+        <StackLayout x:DataType="sys:DateTime"
+                     BindingContext="{x:Static sys:DateTime.Now}">
             <Label Text="{Binding}" />
             <Label Text="{Binding Path=Ticks,
                                   StringFormat='{0:N0} ticks since 1/1/1'}" />
@@ -70,7 +75,8 @@ The following example demonstrates several uses of the `StringFormat` property:
             <Label Text="{Binding StringFormat='The long date is {0:D}'}" />
         </StackLayout>
         <BoxView />        
-        <StackLayout BindingContext="{x:Static sys:Math.PI}">
+        <StackLayout x:DataType="sys:Double"
+                     BindingContext="{x:Static sys:Math.PI}">
             <Label Text="{Binding}" />
             <Label Text="{Binding StringFormat='PI to 4 decimal points = {0:F4}'}" />
             <Label Text="{Binding StringFormat='PI in scientific notation = {0:E7}'}" />
@@ -107,7 +113,8 @@ This approach is shown in the following example:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.BetterColorSelectorPage"
-             Title="Better Color Selector">
+             Title="Better Color Selector"
+             x:DataType="local:HslColorViewModel">
     <ContentPage.BindingContext>
         <local:HslColorViewModel Color="Sienna" />
     </ContentPage.BindingContext>
