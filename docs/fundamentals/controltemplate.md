@@ -50,9 +50,11 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ControlTemplateDemos.Controls"
              ...>
     <ContentPage.Resources>
-      <ControlTemplate x:Key="CardViewControlTemplate">
+      <ControlTemplate x:Key="CardViewControlTemplate"
+                       x:DataType="controls:CardView">
           <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
                   BackgroundColor="{Binding CardColor}"
                   Stroke="{Binding BorderColor}"
@@ -195,8 +197,10 @@ For example, the `CardViewUI` custom control defines its user interface using th
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ControlTemplateDemos.Controls"
              x:Class="ControlTemplateDemos.Controls.CardViewUI"
-             x:Name="this">
+             x:Name="this"
+             x:DataType="controls:CardViewUI">
     <Border BindingContext="{x:Reference this}"
             BackgroundColor="{Binding CardColor}"
             Stroke="{Binding BorderColor}"
@@ -211,9 +215,11 @@ However, the controls that comprise this UI can be replaced by defining a new vi
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ControlTemplateDemos.Controls"             
              ...>
     <ContentPage.Resources>
-        <ControlTemplate x:Key="CardViewCompressed">
+        <ControlTemplate x:Key="CardViewCompressed"
+                         x:DataType="controls:CardView">
             <Grid RowDefinitions="100"
                   ColumnDefinitions="100, *">
                 <Image Source="{TemplateBinding IconImageSource}"
@@ -360,13 +366,15 @@ The following XAML example shows a page that consumes a viewmodel named `PeopleV
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ControlTemplateDemos"
              xmlns:controls="clr-namespace:ControlTemplateDemos.Controls"
+             x:DataType="local:PeopleViewModel"
              ...>
     <ContentPage.BindingContext>
         <local:PeopleViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
-        <DataTemplate x:Key="PersonTemplate">
+        <DataTemplate x:Key="PersonTemplate"
+                      x:DataType="local:Person">
             <controls:CardView BorderColor="DarkGray"
                                CardTitle="{Binding Name}"
                                CardDescription="{Binding Description}"
@@ -383,7 +391,8 @@ The following XAML example shows a page that consumes a viewmodel named `PeopleV
 In this example, the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an <xref:System.Windows.Input.ICommand> named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the [`ItemTemplate`](xref:Microsoft.Maui.Controls.BindableLayout.ItemTemplateProperty) of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a <xref:Microsoft.Maui.Controls.ControlTemplate> named `CardViewControlTemplate`:
 
 ```xaml
-<ControlTemplate x:Key="CardViewControlTemplate">
+<ControlTemplate x:Key="CardViewControlTemplate"
+                 x:DataType="controls:CardView">
     <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
             BackgroundColor="{Binding CardColor}"
             Stroke="{Binding BorderColor}"

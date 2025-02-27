@@ -1,7 +1,7 @@
 ---
 title: "Binding path"
 description: ".NET MAUI data bindings can be used to access sub-properties and collection members with the Path property of the Binding class."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Binding path
@@ -19,7 +19,8 @@ For example, suppose a page contains a <xref:Microsoft.Maui.Controls.TimePicker>
 The `Time` property of <xref:Microsoft.Maui.Controls.TimePicker> is of type `TimeSpan`, and it has a `TotalSeconds` property. A data binding can be created that references the `TotalSeconds` property of that `TimeSpan` value:
 
 ```xaml
-{Binding Source={x:Reference timePicker},
+{Binding x:DataType='TimePicker',
+         Source={x:Reference timePicker},
          Path=Time.TotalSeconds}
 ```
 
@@ -47,18 +48,22 @@ The following XAML shows multiple examples of binding to sub-properties:
 
     <StackLayout Margin="10, 0">
         <TimePicker x:Name="timePicker" />
-        <Label Text="{Binding Source={x:Reference timePicker},
+        <Label Text="{Binding x:DataType='TimePicker',
+                              Source={x:Reference timePicker},
                               Path=Time.TotalSeconds,
                               StringFormat='{0} total seconds'}" />
-        <Label Text="{Binding Source={x:Reference page},
-                              Path=Content.Children.Count,
+        <Label Text="{Binding x:DataType='StackLayout',
+                              Source={x:Reference page},
+                              Path=Children.Count,
                               StringFormat='There are {0} children in this StackLayout'}" />
-        <Label Text="{Binding Source={x:Static globe:CultureInfo.CurrentCulture},
+        <Label Text="{Binding x:DataType='globe:CultureInfo',
+                              Source={x:Static globe:CultureInfo.CurrentCulture},
                               Path=DateTimeFormat.DayNames[3],
                               StringFormat='The middle day of the week is {0}'}" />
         <Label>
             <Label.Text>
-                <Binding Path="DateTimeFormat.DayNames[3]"
+                <Binding x:DataType="globe:CultureInfo"
+                         Path="DateTimeFormat.DayNames[3]"
                          StringFormat="The middle day of the week in France is {0}">
                     <Binding.Source>
                         <globe:CultureInfo>
@@ -70,8 +75,9 @@ The following XAML shows multiple examples of binding to sub-properties:
                 </Binding>
             </Label.Text>
         </Label>
-        <Label Text="{Binding Source={x:Reference page},
-                              Path=Content.Children[1].Text.Length,
+        <Label Text="{Binding x:DataType='Label',
+                              Source={x:Reference label},
+                              Path=Text.Length,
                               StringFormat='The second Label has {0} characters'}" />
     </StackLayout>
 </ContentPage>
@@ -84,7 +90,8 @@ In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the pa
 In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Label> references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
 
 ```xaml
-<Label Text="{Binding Source={x:Static globe:CultureInfo.CurrentCulture},
+<Label Text="{Binding x:DataType='globe:CultureInfo',
+                      Source={x:Static globe:CultureInfo.CurrentCulture},
                       Path=DateTimeFormat.DayNames[3],
                       StringFormat='The middle day of the week is {0}'}" />
 ```
@@ -96,7 +103,8 @@ The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for t
 ```xaml
 <Label>
     <Label.Text>
-        <Binding Path="DateTimeFormat.DayNames[3]"
+        <Binding x:DataType="globe:CultureInfo",
+                 Path="DateTimeFormat.DayNames[3]"
                  StringFormat="The middle day of the week in France is {0}">
             <Binding.Source>
                 <globe:CultureInfo>
@@ -112,15 +120,16 @@ The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for t
 
 For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](~/xaml/pass-arguments.md#pass-constructor-arguments).
 
-The last <xref:Microsoft.Maui.Controls.Label> is similar to the second, except that it references one of the children of the <xref:Microsoft.Maui.Controls.StackLayout>:
+The last <xref:Microsoft.Maui.Controls.Label> references the second <xref:Microsoft.Maui.Controls.Label> on the page:
 
 ```xaml
-<Label Text="{Binding Source={x:Reference page},
-                      Path=Content.Children[1].Text.Length,
-                      StringFormat='The first Label has {0} characters'}" />
+<Label Text="{Binding x:DataType='Label',
+                      Source={x:Reference label},
+                      Path=Text.Length,
+                      StringFormat='The second Label has {0} characters'}" />
 ```
 
-That child is a <xref:Microsoft.Maui.Controls.Label>, which has a `Text` property of type `String`, which has a `Length` property. The first <xref:Microsoft.Maui.Controls.Label> reports the `TimeSpan` set in the <xref:Microsoft.Maui.Controls.TimePicker>, so when that text changes, the final <xref:Microsoft.Maui.Controls.Label> changes as well:
+<xref:Microsoft.Maui.Controls.Label> has a `Text` property of type `String`, which has a `Length` property. The second <xref:Microsoft.Maui.Controls.Label> reports the `TimeSpan` set in the <xref:Microsoft.Maui.Controls.TimePicker>, so when that text changes, the final <xref:Microsoft.Maui.Controls.Label> changes as well:
 
 :::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
 
@@ -136,7 +145,8 @@ Complex path definitions can be difficult to construct. You need to know the typ
 That displays the type of the binding source, or `DataBindingDemos.PathVariationsPage`. You know `PathVariationsPage` derives from <xref:Microsoft.Maui.Controls.ContentPage>, so it has a `Content` property:
 
 ```xaml
-<Label Text="{Binding Source={x:Reference page},
+<Label Text="{Binding x:DataType='ContentPage',
+                      Source={x:Reference page},
                       Path=Content,
                       StringFormat='{0}'}" />
 ```

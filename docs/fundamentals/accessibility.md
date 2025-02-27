@@ -65,7 +65,7 @@ The accessibility information for an element can also be defined on another elem
 ```xaml
 <Label x:Name="label"
        Text="Enable dark mode: " />
-<Switch SemanticProperties.Description="{Binding Source={x:Reference label} Path=Text}" />
+<Switch SemanticProperties.Description="{Binding x:DataType='Label', Source={x:Reference label}, Path=Text}" />
 ```
 
 Alternatively, it can be set in C# as follows:
