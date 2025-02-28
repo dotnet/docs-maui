@@ -17,6 +17,7 @@ A device must enable Developer mode in order to deploy and test an Android app. 
 
 01. Go to the **Settings** screen.
 01. Select **About phone**.
+01. Select **Software information**.
 01. Tap **Build Number** seven times until **You are now a developer!** is visible.
 
 Depending on the UI your device is running, the **About phone** option may be in a different location. Consult your device documentation if you can't find **About phone**.
