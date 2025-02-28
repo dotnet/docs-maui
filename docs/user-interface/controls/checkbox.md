@@ -84,7 +84,8 @@ The `CheckedChanged` event handler can be eliminated by using data binding and t
 <CheckBox x:Name="checkBox" />
 <Label Text="Lorem ipsum dolor sit amet, elit rutrum, enim hendrerit augue vitae praesent sed non, lorem aenean quis praesent pede.">
     <Label.Triggers>
-        <DataTrigger TargetType="Label"
+        <DataTrigger x:DataType="CheckBox"
+                     TargetType="Label"
                      Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
                      Value="true">
             <Setter Property="FontAttributes"

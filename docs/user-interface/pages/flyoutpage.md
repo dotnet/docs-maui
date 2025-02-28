@@ -90,7 +90,7 @@ The following example shows the definition of the `FlyoutMenuPage` object, which
             </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="local:FlyoutPageItem">
                 <Grid Padding="5,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>

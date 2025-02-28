@@ -45,7 +45,8 @@ The following XAML example shows how to add a <xref:Microsoft.Maui.Controls.Titl
 <Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:local="clr-namespace:TitleBarDemo"
-        x:Class="TitleBarDemo.MainWindow">
+        x:Class="TitleBarDemo.MainWindow"
+        x:DataType="local:MainWindowViewModel">
     ...
     <Window.TitleBar>
         <TitleBar Title="{Binding Title}"

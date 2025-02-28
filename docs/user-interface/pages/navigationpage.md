@@ -242,8 +242,10 @@ The advantage of passing navigation data via a page's `BindingContext` is that t
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyMauiApp"
              x:Class="MyMauiApp.DetailsPage"
-             Title="Details">
+             Title="Details"
+             x:DataType="local:Contact">
     <StackLayout>
         <Label Text="{Binding Name}" />
         <Label Text="{Binding Occupation}" />

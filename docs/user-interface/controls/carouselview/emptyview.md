@@ -50,7 +50,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
 ```xaml
 <StackLayout Margin="20">
     <SearchBar SearchCommand="{Binding FilterCommand}"
-               SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"
+               SearchCommandParameter="{Binding x:DataType='SearchBar', Source={RelativeSource Self}, Path=Text}"
                Placeholder="Filter" />
     <CarouselView ItemsSource="{Binding Monkeys}">
         <CarouselView.EmptyView>
@@ -108,15 +108,16 @@ The `EmptyView` property can be set to a custom type, whose template is displaye
 <StackLayout Margin="20">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
-               SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"
+               SearchCommandParameter="{Binding x:DataType='SearchBar', Source={RelativeSource Self}, Path=Text}"
                Placeholder="Filter" />
     <CarouselView ItemsSource="{Binding Monkeys}">
         <CarouselView.EmptyView>
-            <controls:FilterData Filter="{Binding Source={x:Reference searchBar}, Path=Text}" />
+            <controls:FilterData Filter="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}" />
         </CarouselView.EmptyView>
         <CarouselView.EmptyViewTemplate>
             <DataTemplate>
-                <Label Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
+                <Label x:DataType="controls:FilterData"
+                       Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
                        Margin="10,25,10,10"
                        FontAttributes="Bold"
                        FontSize="18"
@@ -174,7 +175,8 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:CarouselViewDemos.ViewModels"
              x:Class="CarouselViewDemos.Views.EmptyViewSwapPage"
-             Title="EmptyView (swap)">
+             Title="EmptyView (swap)"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.BindingContext>
         <viewmodels:MonkeysViewModel />
     </ContentPage.BindingContext>
@@ -207,7 +209,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
     </ContentPage.Resources>
     <StackLayout Margin="20">
         <SearchBar SearchCommand="{Binding FilterCommand}"
-                   SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"
+                   SearchCommandParameter="{Binding x:DataType='SearchBar', Source={RelativeSource Self}, Path=Text}"
                    Placeholder="Filter" />
         <StackLayout Orientation="Horizontal">
             <Label Text="Toggle EmptyViews" />
@@ -242,7 +244,9 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:CarouselViewDemos.Controls">
+             xmlns:controls="clr-namespace:CarouselViewDemos.Controls"
+             xmlns:viewmodels="clr-namespace:CarouselViewDemos.ViewModels"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
         <DataTemplate x:Key="AdvancedTemplate">
             ...
@@ -260,10 +264,10 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
     <StackLayout Margin="20">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
-                   SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"
+                   SearchCommandParameter="{Binding x:DataType='SearchBar', Source={RelativeSource Self}, Path=Text}"
                    Placeholder="Filter" />
         <CarouselView ItemsSource="{Binding Monkeys}"
-                      EmptyView="{Binding Source={x:Reference searchBar}, Path=Text}"
+                      EmptyView="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                       EmptyViewTemplate="{StaticResource SearchSelector}">
             <CarouselView.ItemTemplate>
                 ...

@@ -30,17 +30,24 @@ To add a <xref:Microsoft.Maui.Controls.RefreshView> to a page, create a <xref:Mi
 The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.RefreshView> in XAML:
 
 ```xaml
-<RefreshView IsRefreshing="{Binding IsRefreshing}"
-             Command="{Binding RefreshCommand}">
-    <ScrollView>
-        <FlexLayout Direction="Row"
-                    Wrap="Wrap"
-                    AlignItems="Center"
-                    AlignContent="Center"
-                    BindableLayout.ItemsSource="{Binding Items}"
-                    BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" />
-    </ScrollView>
-</RefreshView>
+<ContentPage ...
+             xmlns:local="clr-namespace:RefreshViewDemo"
+             x:DataType="local:MainPageViewModel">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>             
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}">
+        <ScrollView>
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        AlignItems="Center"
+                        AlignContent="Center"
+                        BindableLayout.ItemsSource="{Binding Items}"
+                        BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" />
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
 ```
 
 A <xref:Microsoft.Maui.Controls.RefreshView> can also be created in code:

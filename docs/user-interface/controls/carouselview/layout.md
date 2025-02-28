@@ -40,7 +40,7 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items h
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
                 <Border Stroke="DarkGray"
                         StrokeShape="RoundRectangle 5"
@@ -108,7 +108,7 @@ This results in a layout that grows horizontally as new items are added.
         <LinearItemsLayout Orientation="Vertical" />
     </CarouselView.ItemsLayout>
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
                 <Border Stroke="DarkGray"
                         StrokeShape="RoundRectangle 5"
@@ -239,9 +239,11 @@ The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CarouselViewDemos.ViewModels"
              x:Class="CarouselViewDemos.Views.HorizontalTemplateLayoutRTLPage"
              Title="Horizontal layout (RTL FlowDirection)"
-             FlowDirection="RightToLeft">    
+             FlowDirection="RightToLeft"
+             x:DataType="viewmodels:MonkeysViewModel">    
     <CarouselView ItemsSource="{Binding Monkeys}">
         ...
     </CarouselView>

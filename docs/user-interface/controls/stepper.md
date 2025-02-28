@@ -112,7 +112,7 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
              Title="Basic Stepper Bindings">
     <StackLayout Margin="20">
         <Label Text="ROTATING TEXT"
-               Rotation="{Binding Source={x:Reference _stepper}, Path=Value}"
+               Rotation="{Binding x:DataType='Stepper', Source={x:Reference _stepper}, Path=Value}"
                FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
@@ -120,7 +120,7 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
                  Maximum="360"
                  Increment="30"
                  HorizontalOptions="Center" />
-        <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='The Stepper value is {0:F0}'}"
+        <Label Text="{Binding x:DataType='Stepper', Source={x:Reference _stepper}, Path=Value, StringFormat='The Stepper value is {0:F0}'}"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
     </StackLayout>

@@ -650,7 +650,7 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using da
         <maps:Map x:Name="map"
                   ItemsSource="{Binding Positions}">
             <maps:Map.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Position">
                     <maps:Pin Location="{Binding Location}"
                               Address="{Binding Address}"
                               Label="{Binding Description}" />
@@ -677,18 +677,20 @@ The appearance of each item in the `IEnumerable` collection can be chosen at run
 ```xaml
 <ContentPage ...
              xmlns:templates="clr-namespace:WorkingWithMaps.Templates"
-             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps">
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:viewmodels="clr-namespace:WorkingWithMaps.ViewModels"
+             x:DataType="viewmodels:PinItemsSourcePageViewModel">
     <ContentPage.Resources>
        <templates:MapItemTemplateSelector x:Key="MapItemTemplateSelector">
            <templates:MapItemTemplateSelector.DefaultTemplate>
-               <DataTemplate>
+               <DataTemplate x:DataType="models:Position">
                    <maps:Pin Location="{Binding Location}"
                              Address="{Binding Address}"
                              Label="{Binding Description}" />
                </DataTemplate>
            </templates:MapItemTemplateSelector.DefaultTemplate>
            <templates:MapItemTemplateSelector.SanFranTemplate>
-               <DataTemplate>
+               <DataTemplate x:DataType="models:Position">
                    <maps:Pin Location="{Binding Location}"
                              Address="{Binding Address}"
                              Label="Xamarin!" />
