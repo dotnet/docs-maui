@@ -47,7 +47,7 @@ The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a 
     <ScrollView Margin="20">
         <StackLayout BindableLayout.ItemsSource="{x:Static local:NamedColor.All}">
             <BindableLayout.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:NamedColor">
                     <StackLayout Orientation="Horizontal">
                         <BoxView Color="{Binding Color}"
                                  HeightRequest="32"

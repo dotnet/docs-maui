@@ -55,7 +55,7 @@ By default, <xref:Microsoft.Maui.Controls.CollectionView> will display its items
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -128,7 +128,7 @@ In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items i
 <CollectionView ItemsSource="{Binding Monkeys}"
                 ItemsLayout="HorizontalList">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35" />
@@ -192,7 +192,7 @@ In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items i
 <CollectionView ItemsSource="{Binding Monkeys}"
                 ItemsLayout="VerticalGrid, 2">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35" />
@@ -257,7 +257,7 @@ In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items i
 <CollectionView ItemsSource="{Binding Monkeys}"
                 ItemsLayout="HorizontalGrid, 4">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35" />
@@ -576,9 +576,11 @@ The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CollectionViewDemos.ViewModels"
              x:Class="CollectionViewDemos.Views.VerticalListFlowDirectionPage"
              Title="Vertical list (RTL FlowDirection)"
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft"
+             x:DataType="viewmodels:MonkeysViewModel">
     <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}">
             ...

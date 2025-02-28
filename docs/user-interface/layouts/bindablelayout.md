@@ -63,7 +63,7 @@ The appearance of each item in the bindable layout can be defined by setting the
              Orientation="Horizontal"
              ...>
     <BindableLayout.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="sys:String">
             <Image Source="{Binding}"
                    Aspect="AspectFill"
                    WidthRequest="44"
@@ -174,7 +174,7 @@ Similarly, the `EmptyViewTemplate` can be set to a <xref:Microsoft.Maui.Controls
 <StackLayout BindableLayout.ItemsSource="{Binding UserWithoutAchievements.Achievements}">
     <BindableLayout.EmptyViewTemplate>
         <DataTemplate>
-            <Label Text="{Binding Source={x:Reference usernameLabel}, Path=Text, StringFormat='{0} has no achievements.'}" />
+            <Label Text="{Binding x:DataType='Label', Source={x:Reference usernameLabel}, Path=Text, StringFormat='{0} has no achievements.'}" />
         </DataTemplate>
     </BindableLayout.EmptyViewTemplate>
     ...
@@ -193,7 +193,9 @@ The result is that when the data bound collection is `null`, the <xref:Microsoft
 Views that will be displayed as an `EmptyView` when data is unavailable, can be defined as <xref:Microsoft.Maui.Controls.ContentView> objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The `EmptyView` property can then be set to a specific <xref:Microsoft.Maui.Controls.ContentView>, based on some business logic, at runtime. The following XAML shows an example of this scenario:
 
 ```xaml
-<ContentPage ...>
+<ContentPage ...
+             xmlns:viewmodels="clr-namespace:BindableLayoutDemos.ViewModels"
+             x:DataType="viewmodels:UserProfileViewModel">
     <ContentPage.Resources>
         ...    
         <ContentView x:Key="BasicEmptyView">

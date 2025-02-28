@@ -53,7 +53,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
                 <Border Stroke="DarkGray"
                         StrokeShape="RoundRectangle 5"
@@ -147,13 +147,17 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:CarouselViewDemos.Controls"
-             x:Class="CarouselViewDemos.Views.HorizontalLayoutDataTemplateSelectorPage">
+             xmlns:viewmodels="clr-namespace:CarouselViewDemos.ViewModels"
+             x:Class="CarouselViewDemos.Views.HorizontalLayoutDataTemplateSelectorPage"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
-        <DataTemplate x:Key="AmericanMonkeyTemplate">
+        <DataTemplate x:Key="AmericanMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
-        <DataTemplate x:Key="OtherMonkeyTemplate">
+        <DataTemplate x:Key="OtherMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
@@ -237,7 +241,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
 <CarouselView x:Name="carouselView"
               ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
                     <Border Stroke="DarkGray"
                             StrokeShape="RoundRectangle 5"
@@ -252,7 +256,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
                                     <SwipeItem Text="Favorite"
                                                IconImageSource="favorite.png"
                                                BackgroundColor="LightGreen"
-                                               Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.FavoriteCommand}"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
                                                CommandParameter="{Binding}" />
                                 </SwipeItems>
                             </SwipeView.TopItems>
@@ -261,7 +265,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
                                     <SwipeItem Text="Delete"
                                                IconImageSource="delete.png"
                                                BackgroundColor="LightPink"
-                                               Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.DeleteCommand}"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
                                                CommandParameter="{Binding}" />
                                 </SwipeItems>
                             </SwipeView.BottomItems>

@@ -88,7 +88,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <ViewCell>
                 <Grid Padding="10">
                     <Grid.RowDefinitions>
@@ -167,7 +167,7 @@ The following example shows using a <xref:Microsoft.Maui.Controls.TextCell> to d
 ```xaml
 <ListView ItemsSource="{Binding Food}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:FoodItem">
             <TextCell Text="{Binding Name}"
                       Detail="{Binding Description}" />
         </DataTemplate>
@@ -188,7 +188,7 @@ The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to
 ```xaml
 <ListView ItemsSource="{Binding Food}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:FoodItem">
             <ImageCell ImageSource="{Binding Image}"
                        Text="{Binding Name}"
                        Detail="{Binding Description}" />
@@ -213,7 +213,7 @@ The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to d
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <ViewCell>
                 <Grid Padding="10">
                     <Grid.RowDefinitions>
@@ -256,15 +256,19 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 
 ```xaml
 <ContentPage ...
-             xmlns:templates="clr-namespace:ListViewDemos.Templates">
+             xmlns:templates="clr-namespace:ListViewDemos.Templates"
+             xmlns:viewmodels="clr-namespace:ListViewDemos.ViewModels"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
-        <DataTemplate x:Key="AmericanMonkeyTemplate">
+        <DataTemplate x:Key="AmericanMonkeyTemplate"
+                      x:DataType="models:Monkey">
             <ViewCell>
                 ...
             </ViewCell>
         </DataTemplate>
 
-        <DataTemplate x:Key="OtherMonkeyTemplate">
+        <DataTemplate x:Key="OtherMonkeyTemplate"
+                      x:DataType="models:Monkey">
             <ViewCell>
                 ...
             </ViewCell>
@@ -615,9 +619,11 @@ In this example, the `OnImageTapped` event handler is executed in response to an
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ListViewDemos.ViewModels"
              x:Class="ListViewDemos.RightToLeftListPage"
              Title="Right to left list"
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft"
+             x:DataType="viewmodels:MonkeysViewModel">
     <Grid Margin="20">
         <ListView ItemsSource="{Binding Monkeys}">
             ...
@@ -739,7 +745,7 @@ This code creates two groups in the `Animals` collection. The first `AnimalGroup
 <ListView ItemsSource="{Binding Animals}"
           IsGroupingEnabled="True">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Animal">
             <ViewCell>
                 <Grid Padding="10">
                     <Grid.RowDefinitions>
@@ -798,7 +804,7 @@ The appearance of each group header can be customized by setting the `ListView.G
 <ListView ItemsSource="{Binding Animals}"
           IsGroupingEnabled="True">
     <ListView.GroupHeaderTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:AnimalGroup">
             <ViewCell>
                 <Label Text="{Binding Name}"
                        BackgroundColor="LightGray"
@@ -953,14 +959,14 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 <ListView x:Name="listView"
           ItemsSource="{Binding Monkeys}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <ViewCell>
                 <ViewCell.ContextActions>
                     <MenuItem Text="Favorite"
-                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.FavoriteCommand}"
+                              Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
                               CommandParameter="{Binding}" />
                     <MenuItem Text="Delete"
-                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteCommand}"
+                              Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
                               CommandParameter="{Binding}" />
                 </ViewCell.ContextActions>
 
@@ -991,7 +997,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.ListView> that uses 
           RefreshCommand="{Binding RefreshCommand}"
           IsRefreshing="{Binding IsRefreshing}">
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Animal">
             <ViewCell>
                 ...
             </ViewCell>

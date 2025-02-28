@@ -266,7 +266,7 @@ The following XAML shows how to bind a <xref:Microsoft.Maui.Controls.StackLayout
 <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
              Orientation="Horizontal">
     <BindableLayout.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="sys:String">
             <Image Source="{Binding}"
                    Aspect="AspectFill"
                    WidthRequest="44"

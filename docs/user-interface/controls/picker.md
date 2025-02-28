@@ -95,7 +95,7 @@ A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time
 The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
 
 ```xaml
-<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" />
+<Label Text="{Binding x:DataType='Picker', Source={x:Reference picker}, Path=SelectedItem}" />
 ```
 
 The equivalent C# code is:

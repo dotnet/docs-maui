@@ -75,8 +75,10 @@ The custom control UI can be defined in the XAML file for the <xref:Microsoft.Ma
 
 ```XAML
 <ContentView ...
+             xmlns:local="clr-namespace:CardViewDemo.Controls"
              x:Name="this"
-             x:Class="CardViewDemo.Controls.CardView">
+             x:Class="CardViewDemo.Controls.CardView"
+             x:DataType="local:CardView">
     <Border BindingContext="{x:Reference this}"
             BackgroundColor="{Binding CardColor}"
             Stroke="{Binding BorderColor}"

@@ -56,7 +56,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -145,13 +145,18 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:CollectionViewDemos.Controls">
+             xmlns:controls="clr-namespace:CollectionViewDemos.Controls"
+             xmlns:models="clr-namespace:CollectionViewDemos.Models"
+             xmlns:viewmodels="clr-namespace:CollectionViewDemos.ViewModels"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
-        <DataTemplate x:Key="AmericanMonkeyTemplate">
+        <DataTemplate x:Key="AmericanMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
-        <DataTemplate x:Key="OtherMonkeyTemplate">
+        <DataTemplate x:Key="OtherMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
@@ -207,19 +212,19 @@ For more information about data template selectors, see [Create a DataTemplateSe
 <CollectionView x:Name="collectionView"
                 ItemsSource="{Binding Monkeys}">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <SwipeView>
                 <SwipeView.LeftItems>
                     <SwipeItems>
                         <SwipeItem Text="Favorite"
                                    IconImageSource="favorite.png"
                                    BackgroundColor="LightGreen"
-                                   Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.FavoriteCommand}"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
                                    CommandParameter="{Binding}" />
                         <SwipeItem Text="Delete"
                                    IconImageSource="delete.png"
                                    BackgroundColor="LightPink"
-                                   Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteCommand}"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
                                    CommandParameter="{Binding}" />
                     </SwipeItems>
                 </SwipeView.LeftItems>

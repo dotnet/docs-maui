@@ -150,7 +150,8 @@ The following XAML example consumes the `CommandDemoViewModel` class:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ButtonDemos"
              x:Class="ButtonDemos.BasicButtonCommandPage"
-             Title="Basic Button Command">
+             Title="Basic Button Command"
+             x:DataType="local:CommandDemoViewModel">
     <ContentPage.BindingContext>
         <local:CommandDemoViewModel />
     </ContentPage.BindingContext>
