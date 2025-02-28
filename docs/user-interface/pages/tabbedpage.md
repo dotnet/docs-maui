@@ -77,7 +77,8 @@ The following example shows generating <xref:Microsoft.Maui.Controls.TabbedPage>
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:TabbedPageDemo"
             x:Class="TabbedPageDemo.MainPage"
-            ItemsSource="{x:Static local:MonkeyDataModel.All}">
+            ItemsSource="{x:Static local:MonkeyDataModel.All}"
+            x:DataType="local:Monkey">
     <TabbedPage.ItemTemplate>
         <DataTemplate>
             <ContentPage Title="{Binding Name}"
