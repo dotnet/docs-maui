@@ -583,7 +583,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             </Grid.RowDefinitions>
             <Slider x:Name="redSlider"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="1"
+            <Label x:DataType="Slider"
+                   Grid.Row="1"
                    Text="{Binding Source={x:Reference redSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
@@ -592,7 +593,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             <Slider x:Name="greenSlider"
                     Grid.Row="2"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="3"
+            <Label x:DataType="Slider"
+                   Grid.Row="3"
                    Text="{Binding Source={x:Reference greenSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
@@ -601,7 +603,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             <Slider x:Name="blueSlider"
                     Grid.Row="4"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="5"
+            <Label x:DataType="Slider"
+                   Grid.Row="5"
                    Text="{Binding Source={x:Reference blueSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
