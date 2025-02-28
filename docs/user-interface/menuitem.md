@@ -32,7 +32,7 @@ The following example shows how to create a <xref:Microsoft.Maui.Controls.MenuIt
 ```xaml
 <ListView>
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:Monkey">
             <ViewCell>
                 <ViewCell.ContextActions>
                     <MenuItem Text="Context menu option" />

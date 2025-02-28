@@ -30,7 +30,9 @@ A <xref:Microsoft.Maui.Controls.MenuBarItem> can consist of the following childr
 The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> that defines menu bar items:
 
 ```xaml
-<ContentPage ...>
+<ContentPage ...
+             xmlns:local="clr-namespace:MyMauiApp"
+             x:DataType="local:MyViewModel">
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="File">
             <MenuFlyoutItem Text="Exit"
