@@ -311,7 +311,7 @@ The following example shows a `SwipeItemView` object in the `LeftItems` collecti
     <SwipeView.LeftItems>
         <SwipeItems>
             <SwipeItemView Command="{Binding CheckAnswerCommand}"
-                           CommandParameter="{Binding Source={x:Reference resultEntry}, Path=Text}">
+                           CommandParameter="{Binding x:DataType='Entry', Source={x:Reference resultEntry}, Path=Text}">
                 <StackLayout Margin="10"
                              WidthRequest="300">
                     <Entry x:Name="resultEntry"

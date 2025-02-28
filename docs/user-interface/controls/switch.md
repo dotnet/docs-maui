@@ -95,7 +95,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
 <Label Text="Lorem ipsum dolor sit amet, elit rutrum, enim hendrerit augue vitae praesent sed non, lorem aenean quis praesent pede.">
     <Label.Triggers>
         <DataTrigger TargetType="Label"
-                     Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                     Binding="{Binding x:DataType='Switch', Source={x:Reference styleSwitch}, Path=IsToggled}"
                      Value="true">
             <Setter Property="FontAttributes"
                     Value="Italic, Bold" />

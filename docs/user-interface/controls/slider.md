@@ -123,7 +123,8 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
              Padding="10, 0">
     <StackLayout>
         <Label Text="ROTATING TEXT"
-               Rotation="{Binding Source={x:Reference slider},
+               Rotation="{Binding x:DataType='Slider',
+                                  Source={x:Reference slider},
                                   Path=Value}"
                FontSize="18"
                HorizontalOptions="Center"
@@ -131,7 +132,8 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
         <Slider x:Name="slider"
                 Maximum="360" />
         <Label x:Name="displayLabel"
-               Text="{Binding Source={x:Reference slider},
+               Text="{Binding x:DataType='Slider',
+                              Source={x:Reference slider},
                               Path=Value,
                               StringFormat='The Slider value is {0:F0}'}"
                HorizontalOptions="Center"

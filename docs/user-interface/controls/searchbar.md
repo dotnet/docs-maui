@@ -133,14 +133,16 @@ public class SearchViewModel : INotifyPropertyChanged
 The following XAML example consumes the `SearchViewModel` class:
 
 ```xaml
-<ContentPage ...>
+<ContentPage ...
+             xmlns:viewmodels="clr-namespace:SearchBarDemos.ViewModels"
+             x:DataType="viewmodels:SearchViewModel">
     <ContentPage.BindingContext>
         <viewmodels:SearchViewModel />
     </ContentPage.BindingContext>
     <StackLayout>
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding PerformSearch}"
-                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                   SearchCommandParameter="{Binding Text, x:DataType='SearchBar', Source={x:Reference searchBar}}"/>
         <ListView x:Name="searchResults"
                   ItemsSource="{Binding SearchResults}" />
     </StackLayout>
