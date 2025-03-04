@@ -8,6 +8,7 @@ ms.date: 02/18/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For more information about the product quality improvements in .NET MAUI in .NET 10, see the following release notes:
 
+- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.XXXXX.X)
 - [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 > [!IMPORTANT]
@@ -22,6 +23,137 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 ### CollectionView and CarouselView
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>. In .NET 10, these are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
+
+### HybridWebView
+
+<xref:Microsoft.Maui.Controls.HybridWebView> gains a `InvokeJavaScriptAsync` method that invokes a specified JavaScript method without requiring a generic argument, or a return type argument.
+
+### SearchBar
+
+<xref:Microsoft.Maui.Controls.SearchBar> gains a `SearchIconColor` bindable property that sets the color of the search icon:
+
+```xaml
+
+```
+
+### Switch
+
+<xref:Microsoft.Maui.Controls.Switch> gains an `OffColor` bindable property that sets the color of the switch when it's in the off state:
+
+```xaml
+<Switch OffColor="Red"
+        OnColor="Green" />
+```
+
+When the `OffColor` bindable property isn't set, the default color is used for the off state.
+
+## MessagingCenter
+
+`MessagingCenter` has been made internal in .NET 10. It can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
+
+## Shadows
+
+.NET 10 includes a `ShadowTypeConverter` type for converting a formatted string to a `Shadow` on a <xref:Microsoft.Maui.Controls.VisualElement>. The converter supports three different approaches to initializing a `Shadow`:
+
+- color, offset X, offset Y
+
+    ```xaml
+    <VerticalStackLayout BackgroundColor="#fff" Shadow="#000000 4 4" />
+    ```
+
+- offset X, offset Y, radius, color
+
+    ```xaml
+    <VerticalStackLayout BackgroundColor="#fff" Shadow="4 4 16 #000000" />
+    ```
+
+- offset X, offset Y, radius, color, opacity
+
+    ```xaml
+    <VerticalStackLayout BackgroundColor="#fff" Shadow="4 4 16 #000000 0.5" />
+    ```
+
+## Platform integration
+
+The `SpeechOptions` class, in the `Microsoft.Maui.Media` class, gains a `Rate` property that controls the speech rate when using `TextToSpeech` functionality.
+
+## Platforms
+
+### Android
+
+The signature of the `ToSpannableString` extension method on Android, in the `Microsoft.Maui.Controls.Platform.FormattedStringExensions` class, has changed
+
+### iOS and Mac Catalyst
+
+#### Compatibility AccessibilityExtensions
+
+The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been obsoleted:
+
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+
+Instead, the <xref:Microsoft.Maui.Platform.UpdateSemantics> method should be used.
+
+#### MauiWebViewNavigationDelegate overrides
+
+The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
+
+- `DecidePolicy`
+- `DidFailNavigation`
+- `DidFailProvisionalNavigation`
+- `DidFinishNavigation`
+
+#### Style modal dialogs as popovers
+
+.NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a `Rectangle` that defines the rectangle within the source of the modal, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
+
+```csharp
+public partial class PopoverPage : ContentPage
+{
+  	public PopoverPage(View modal, Rectangle rectangle)
+  	{
+    		InitializeComponent();
+    		On<iOS>().SetModalPopoverView(modal);
+    		On<iOS>().SetModalPopoverRect(rectangle);
+    		On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.Popover);
+  	}
+}
+```
+
+Then, navigate to the modal page with the `Navigation.PushModalAsync` method:
+
+```csharp
+Page modalPage = new PopoverPage(originButton, Rectangle.Empty);
+await Navigation.PushModalAsync(modalPage);
+```
+
+## XAML markup extensions
+
+The <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> XAML markup extension has been deprecated. Instead, the `FontImageSource` type should be used:
+
+```xaml
+<Button Text="Press me"
+        Background="Transparent"
+        TextColor="{AppThemeBinding Light=Black, Dark=White}"
+        ImageSource="{FontImageSource Glyph=MyGlyph, Color={AppThemeBinding Light=Black, Dark=White}, FontFamily=FontAwesome, Size=18}" />
+```
+
+For convenience, property element syntax can also be used:
+
+```xaml
+<Button Text="Press me"
+        Background="Transparent"
+        TextColor="{AppThemeBinding Light=Black, Dark=White}" >
+        <Button.ImageSource>
+            <FontImageSource Glyph="MyGlyph"
+                             Color="{AppThemeBinding Light=Black, Dark=White}"
+                             FontFamily="FontAwesome"
+                             Size="18" />
+        </Button.ImageSource>
+</Button>
+```
 
 ## .NET for Android
 
