@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI local databases"
 description: ".NET MAUI supports database-driven apps using the SQLite database engine, which makes it possible to load and save objects in shared code. This article describes how .NET MAUI apps can read and write data to a local SQLite database using SQLite-net"
-ms.date: 08/30/2024
+ms.date: 03/06/2025
 ---
 
 # .NET MAUI local databases
