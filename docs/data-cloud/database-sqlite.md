@@ -82,21 +82,22 @@ The `TodoItemDatabase` uses asynchronous lazy initialization to delay initializa
 ```csharp
 public class TodoItemDatabase
 {
-    SQLiteAsyncConnection Database;
+    SQLiteAsyncConnection _database;
 
     public TodoItemDatabase()
     {
+        Init().Wait();
     }
 
     async Task Init()
     {
-        if (Database is not null)
+        if (_database is not null)
             return;
 
-        Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-        var result = await Database.CreateTableAsync<TodoItem>();
+        _database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        var result = await _database.CreateTableAsync<TodoItem>();
     }
-    ...
+    // ...
 }
 ```
 
