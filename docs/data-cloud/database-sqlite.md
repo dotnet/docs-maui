@@ -86,7 +86,7 @@ public class TodoItemDatabase
 
     public TodoItemDatabase()
     {
-        Init().Wait();
+
     }
 
     async Task Init()
