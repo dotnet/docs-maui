@@ -228,7 +228,7 @@ To create a web API project:
     | Configuration value | Location |
     | ------------------- | -------- |
     | `NotificationHub:Name` | See *Name* in the **Essentials** summary at the top of the **Overview** page. |
-    | `NotificationHub:ConnectinString` | See *DefaultFullSharedAccessSignature** in the **Access Policies** page.|
+    | `NotificationHub:ConnectionString` | See *DefaultFullSharedAccessSignature** in the **Access Policies** page.|
 
     This sets up local configuration values using the [Secret Manager tool](/aspnet/core/security/app-secrets?tabs=windows#secret-manager). This decouples your Azure Notification Hub secrets from the Visual Studio solution, to ensure that they don't end up in source control.
 
