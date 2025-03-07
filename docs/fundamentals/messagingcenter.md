@@ -2,6 +2,7 @@
 title: "Publish and subscribe to messages"
 description: "The .NET MAUI MessagingCenter class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references."
 ms.date: 02/18/2022
+monikerRange: "<=net-maui-9.0"
 ---
 
 # Publish and subscribe to messages
