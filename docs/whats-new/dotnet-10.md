@@ -134,7 +134,7 @@ await Navigation.PushModalAsync(modalPage);
 
 ## XAML markup extensions
 
-The <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> XAML markup extension has been deprecated. Instead, the `FontImageSource` type should be used:
+The <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> XAML markup extension has been deprecated. Instead, the <xref:Microsoft.Maui.Controls.FontImageSource> type should be used:
 
 ```xaml
 <Button Text="Press me"
@@ -157,6 +157,8 @@ For convenience, property element syntax can also be used:
         </Button.ImageSource>
 </Button>
 ```
+
+For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 ## .NET for Android
 
