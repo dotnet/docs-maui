@@ -75,7 +75,7 @@ When the `OffColor` bindable property isn't set, the default color is used for t
 
 ## Platform integration
 
-The `SpeechOptions` class, in the `Microsoft.Maui.Media` class, gains a `Rate` property that controls the speech rate when using `TextToSpeech` functionality.
+The `SpeechOptions` class, in the `Microsoft.Maui.Media` class, gains a `Rate` property that controls the speech rate when using `TextToSpeech` functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech?view=net-maui-10.0&preserve-view=true#settings).
 
 ## Platforms
 
