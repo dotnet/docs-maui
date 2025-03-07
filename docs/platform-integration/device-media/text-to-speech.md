@@ -57,7 +57,24 @@ Text-to-Speech will automatically queue speech requests from the same thread.
 
 ## Settings
 
+::: moniker range="=net-maui-8.0 =net-maui-9.0"
+
 To control the volume, pitch, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. The <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
+
+:::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak_options_old":::
+
+The following are supported values for these parameters:
+
+| Parameter | Minimum | Maximum |
+|-----------|:-------:|:-------:|
+| `Pitch`   | 0       | 2.0     |
+| `Volume`  | 0       | 1.0     |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+To control the volume, pitch, rate, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. The <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak_options":::
 
@@ -67,6 +84,9 @@ The following are supported values for these parameters:
 |-----------|:-------:|:-------:|
 | `Pitch`   | 0       | 2.0     |
 | `Volume`  | 0       | 1.0     |
+| `Rate`    | 0.1     | 2.0     |
+
+::: moniker-end
 
 ## Limitations
 
