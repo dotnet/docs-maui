@@ -87,7 +87,7 @@ public class MediaPage : ContentPage
 
         await TextToSpeech.Default.SpeakAsync("How nice to meet you!", options);
     }
-    //</speak_options>
+    //</speak_options_old>
 
     //<speak_options>
     public async void SpeakSettings()
