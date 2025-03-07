@@ -57,7 +57,7 @@ Text-to-Speech will automatically queue speech requests from the same thread.
 
 ## Settings
 
-::: moniker range="=net-maui-8.0 =net-maui-9.0"
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
 
 To control the volume, pitch, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. The <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
 
