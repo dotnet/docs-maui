@@ -33,8 +33,11 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 <xref:Microsoft.Maui.Controls.SearchBar> gains a `SearchIconColor` bindable property that sets the color of the search icon:
 
 ```xaml
-
+<SearchBar Placeholder="Search items..."
+           SearchIconColor="Blue" />
 ```
+
+For more information, see [SearchBar](~/user-interface/controls/searchbar.md?view=net-maui-10.0&preserve-view=true).
 
 ### Switch
 
