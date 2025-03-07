@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 02/18/2025
+ms.date: 03/07/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -48,7 +48,7 @@ For more information, see [SearchBar](~/user-interface/controls/searchbar.md?vie
         OnColor="Green" />
 ```
 
-When the `OffColor` bindable property isn't set, the default color is used for the off state.
+For more information, see [Switch](~/user-interface/controls/switch.md?view=net-maui-10.0&preserve-view=true).
 
 ## MessagingCenter
 
