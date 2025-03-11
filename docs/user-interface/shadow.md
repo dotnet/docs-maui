@@ -24,7 +24,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
 
-To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
+To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
 
 ::: moniker-end
 
@@ -60,7 +60,7 @@ To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.Vi
     ```
 
 
-Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
+Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
 
 ::: moniker-end
 
