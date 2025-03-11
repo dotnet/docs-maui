@@ -13,7 +13,7 @@ The <xref:Microsoft.Maui.Controls.Shadow> class defines the following properties
 - <xref:Microsoft.Maui.Controls.Shadow.Radius>, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.
 - <xref:Microsoft.Maui.Controls.Shadow.Opacity>, of type `float`, indicates the opacity of the shadow. The default value of this property is 1.
 - <xref:Microsoft.Maui.Controls.Shadow.Brush>, of type <xref:Microsoft.Maui.Controls.Brush>, represents the brush used to colorize the shadow.
-- <xref:Microsoft.Maui.Controls.Shadow.OffSet>, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
+- <xref:Microsoft.Maui.Controls.Shadow.Offset>, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

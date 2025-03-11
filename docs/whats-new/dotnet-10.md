@@ -99,7 +99,7 @@ The following iOS compatibility `AccessibilityExtensions` extension methods, in 
 - `SetAccessibilityHint`
 - `SetAccessibilityLabel`
 
-Instead, the <xref:Microsoft.Maui.Platform.UpdateSemantics> method should be used.
+Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
 
 #### MauiWebViewNavigationDelegate overrides
 
