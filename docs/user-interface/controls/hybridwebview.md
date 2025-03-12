@@ -488,13 +488,13 @@ The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method
 
 ::: moniker range=">=net-maui-10.0"
 
-- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> without specifying the generic argument or JSON serialization information for the return type:
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A>, specifying the JavaScript method name and any optional parameters:
 
     ```csharp
     await hybridWebView.InvokeJavaScriptAsync("javaScriptWithVoidReturn"); // JavaScript method name
     ```
 
-    In this example, only the JavaScript method name is specified. Optional method parameters can be supplied if required.
+    In this example, only the JavaScript method name is specified.
 
 ::: moniker-end
 
