@@ -52,7 +52,7 @@ For more information, see [Switch](~/user-interface/controls/switch.md?view=net-
 
 ## MessagingCenter
 
-`MessagingCenter` has been made internal in .NET 10. It can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
+`MessagingCenter` has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
 
 ## Shadows
 
@@ -80,7 +80,7 @@ For more information, see [Shadow](~/user-interface/shadow.md?view=net-maui-10.0
 
 ## Platform integration
 
-The `SpeechOptions` class, in the `Microsoft.Maui.Media` class, gains a `Rate` property that controls the speech rate when using `TextToSpeech` functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
+The `SpeechOptions` class, in the `Microsoft.Maui.Media` namespace, gains a `Rate` property that controls the speech rate when using `TextToSpeech` functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
 ## Platforms
 
