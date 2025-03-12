@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 03/07/2025
+ms.date: 03/12/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -26,7 +26,7 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 ### HybridWebView
 
-<xref:Microsoft.Maui.Controls.HybridWebView> gains a `InvokeJavaScriptAsync` method that invokes a specified JavaScript method without requiring a generic argument, or a return type argument.
+<xref:Microsoft.Maui.Controls.HybridWebView> gains an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value?view=net-maui-10.0&preserve-view=true).
 
 ### SearchBar
 

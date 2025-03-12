@@ -395,7 +395,7 @@ Your app's C# code can synchronously and asynchronously invoke JavaScript method
 ::: moniker range=">=net-maui-10.0"
 
 > [!NOTE]
-> .NET 10 includes an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying the generic argument or any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value).
+> .NET 10 includes an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value).
 
 ::: moniker-end
 
@@ -486,11 +486,23 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are alternative approaches to doing this:
 
+::: moniker range=">=net-maui-10.0"
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> without specifying the generic argument or JSON serialization information for the return type:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync("javaScriptWithVoidReturn"); // JavaScript method name
+    ```
+
+    In this example, only the JavaScript method name is specified. Optional method parameters can be supplied if required.
+
+::: moniker-end
+
 - Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method without specifying the generic argument:
 
     ```csharp
     await hybridWebView.InvokeJavaScriptAsync(
-         "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+         "javaScriptWithParamsAndVoidReturn",  // JavaScript method name
          HybridSampleJSContext.Default.Double, // JSON serialization info for return type
          [x, y], // Parameter values
          [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
@@ -509,18 +521,6 @@ The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method
     ```
 
     In this example, the generic argument is required and `null` can be passed as the value of the JSON serialization information for the return type.
-
-::: moniker range=">=net-maui-10.0"
-
-- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> without specifying the generic argument or JSON serialization information for the return type:
-
-    ```csharp
-    await hybridWebView.InvokeJavaScriptAsync("javaScriptWithVoidReturn"); // JavaScript method name
-    ```
-
-    In this example, only the JavaScript method name is specified. Optional method parameters can be supplied if required.
-
-::: moniker-end
 
 ### Send JavaScript exceptions to .NET
 
