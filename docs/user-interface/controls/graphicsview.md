@@ -8,7 +8,7 @@ ms.date: 08/30/2024
 
 [![Browse sample.](../../media/code-sample.png) Browse the sample](https://github.com/dotnet/maui-samples/tree/main/9.0/UserInterface/Views/GraphicsViewDemos)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.GraphicsView> is a graphics canvas on which 2D graphics can be drawn using types from the <xref:Microsoft.Maui.Graphics> namespace. For more information about <xref:Microsoft.Maui.Graphics>, see [Graphics](~/user-interface/graphics/index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.GraphicsView> is a graphics canvas on which 2D graphics can be drawn using types from the <xref:Microsoft.Maui.Graphics> namespace. For more information about <xref:Microsoft.Maui.Graphics>, see [Graphics](../graphics/index.md).
 
 <xref:Microsoft.Maui.Controls.GraphicsView> defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty>, which means it can be the target of data binding, and styled.
 
