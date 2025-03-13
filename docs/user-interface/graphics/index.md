@@ -6,7 +6,7 @@ ms.date: 09/30/2024
 
 # Graphics
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
+[![Browse sample.](../../media/code-sample.png) Browse the sample](https://github.com/dotnet/maui-samples/tree/main/9.0/UserInterface/Views/GraphicsViewDemos)
 
 .NET Multi-platform App UI (.NET MAUI) provides a cross-platform graphics canvas on which 2D graphics can be drawn using types from the <xref:Microsoft.Maui.Graphics> namespace. This canvas supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 
@@ -15,7 +15,7 @@ There are many similarities between the functionality provided by <xref:Microsof
 - <xref:Microsoft.Maui.Graphics> functionality must be consumed on a drawing canvas, enables performant graphics to be drawn, and provides a convenient approach for writing graphics-based controls. For example, a control that replicates the GitHub contribution profile can be more easily implemented using <xref:Microsoft.Maui.Graphics> than by using .NET MAUI shapes.
 - .NET MAUI shapes can be consumed directly on a page, and brushes can be consumed by all controls. This functionality is provided to help you produce an attractive UI.
 
-For more information about .NET MAUI shapes, see [Shapes](~/user-interface/controls/shapes/index.md).
+For more information about .NET MAUI shapes, see [Shapes](../controls/shapes/index.md).
 
 <!-- ## Platform abstractions
 
@@ -72,7 +72,7 @@ In XAML, the `IDrawable` object can be declared as a resource and then consumed 
 </ContentPage>
 ```
 
-For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](../controls/graphicsview.md).
 
 ## Drawing canvas
 
