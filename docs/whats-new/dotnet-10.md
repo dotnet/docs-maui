@@ -50,6 +50,10 @@ For more information, see [SearchBar](~/user-interface/controls/searchbar.md?vie
 
 For more information, see [Switch](~/user-interface/controls/switch.md?view=net-maui-10.0&preserve-view=true).
 
+### TableView
+
+<xref:Microsoft.Maui.Controls.TableView> has been deprecated. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
+
 ## MessagingCenter
 
 `MessagingCenter` has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
