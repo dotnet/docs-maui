@@ -66,7 +66,7 @@ Colors can be specified using the following formats:
 | HEX | `#rgb`, `#argb`, `#rrggbb`, `#aarrggbb` |  |
 | RGB | `rgb(255,0,0)`, `rgb(100%,0%,0%)` | Valid values are in the range 0-255, or 0%-100%. |
 | RGBA | `rgba(255, 0, 0, 0.8)`, `rgba(100%, 0%, 0%, 0.8)` | Valid opacity values are 0.0-1.0. |
-| HSL | `hsl(120, 100%, 50%)` |  |
+| HSL | `hsl(120, 100%, 50%)` | Valid values for `h` are 0-360, and for `s` and `l` are 0%-100%. |
 | HSLA | `hsla(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
 | HSV | `hsv(120, 100%, 50%)` | Valid values for `h` are 0-360, and for `s` and `v` are 0%-100%. |
 | HSVA | `hsva(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
