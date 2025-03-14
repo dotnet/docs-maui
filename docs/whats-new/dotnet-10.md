@@ -167,12 +167,12 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
-- [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/INSERT_LINK)
+- [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
 
-### Android 16 (Baklava) beta 1 bindings
+### Android 16 (Baklava) beta 2 bindings
 
-Google has released [Beta 1](https://android-developers.googleblog.com/2025/01/first-beta-android16.html) of the Android 16 (API-36) SDK.  Support has been adding for using these preview APIs.
+Google has released [Beta 2](https://android-developers.googleblog.com/2025/02/second-beta-android16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
 
 To target the Android 16 preview API:
 
