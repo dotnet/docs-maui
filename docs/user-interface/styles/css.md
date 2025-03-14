@@ -442,7 +442,7 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 |`-maui-placeholder`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
 |`-maui-placeholder-color`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_color_ \| `initial` |`-maui-placeholder-color: green;`|
 |`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
-|`-maui-shadow`|<xref:Microsoft.Maui.Controls.VisualElement>|`color, offsetX, offsetY` \| `offset X, offsetY, radius, color` \| `offset X, offsetY, radius, color, opactity` | `-maui-shadow: #000000 4 4;` |
+|`-maui-shadow`|<xref:Microsoft.Maui.Controls.VisualElement>| Valid formats are: color, offsetX, offsetY \| offset X, offsetY, radius, color \| offset X, offsetY, radius, color, opactity | `-maui-shadow: #000000 4 4;` |
 |`-maui-thumb-color`|<xref:Microsoft.Maui.Controls.Slider>, <xref:Microsoft.Maui.Controls.Switch>|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
 |`-maui-vertical-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
 |`-maui-vertical-text-alignment`|<xref:Microsoft.Maui.Controls.Label>| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|
