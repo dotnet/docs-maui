@@ -1,7 +1,7 @@
 ---
 title: "Shadow"
 description: "Learn how to use the .NET MAUI Shadow class, which paints a shadow around a control."
-ms.date: 03/11/2025
+ms.date: 03/14/2025
 ---
 
 # Shadow
@@ -22,7 +22,61 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create a Shadow
 
-To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance. The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image> using property element syntax:
+::: moniker range="=net-maui-8.0"
+
+To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a formatted string that defines the shadow. There are three supported string formats:
+
+- `color, offset X, offset Y`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="#000000 4 4" />
+    ```
+
+- `offset X, offset Y, radius, color`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="5 8 8 rgb(6, 201, 198)" />    
+    ```
+
+- `offset X, offset Y, radius, color, opacity`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="4 4 16 AliceBlue 0.5" />
+    ```
+
+Colors can be specified using the following formats:
+
+| Format | Example | Comments |
+| ------ | ------- | -------- |
+| HEX | `#rgb`, `#argb`, `#rrggbb`, `#aarrggbb` |  |
+| RGB | `rgb(255,0,0)`, `rgb(100%,0%,0%)` | Valid values are in the range 0-255, or 0%-100%. |
+| RGBA | `rgba(255, 0, 0, 0.8)`, `rgba(100%, 0%, 0%, 0.8)` | Valid opacity values are 0.0-1.0. |
+| HSL | `hsl(120, 100%, 50%)` | Valid values for `h` are 0-360, and for `s` and `l` are 0%-100%. |
+| HSLA | `hsla(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
+| HSV | `hsv(120, 100%, 50%)` | Valid values for `h` are 0-360, and for `s` and `v` are 0%-100%. |
+| HSVA | `hsva(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
+| Predefined color | `fuchsia`, `AquaMarine`, `limegreen` | Color strings are case insensitive. |
+
+Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
+
+::: moniker-end
+
+The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image> using property element syntax:
 
 ```xaml
 <Image Source="dotnet_bot.png"
