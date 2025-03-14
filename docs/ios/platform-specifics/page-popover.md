@@ -16,13 +16,13 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 public partial class PopoverPage : ContentPage
 {
-  	public PopoverPage(View modal, Rectangle rectangle)
-  	{
-    		InitializeComponent();
-    		On<iOS>().SetModalPopoverView(modal);
-    		On<iOS>().SetModalPopoverRect(rectangle);
-    		On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.Popover);
-  	}
+    public PopoverPage(View modal, Rectangle rectangle)
+    {
+        InitializeComponent();
+        On<iOS>().SetModalPopoverView(modal);
+        On<iOS>().SetModalPopoverRect(rectangle);
+        On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.Popover);
+    }
 }
 ```
 

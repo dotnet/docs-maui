@@ -59,7 +59,6 @@ To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.Vi
            Shadow="4 4 16 #000000 0.5" />
     ```
 
-
 Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
 
 ::: moniker-end
