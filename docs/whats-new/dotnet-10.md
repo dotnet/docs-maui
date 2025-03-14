@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 03/12/2025
+ms.date: 03/14/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -116,9 +116,12 @@ The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Pl
 
 #### Style modal dialogs as popovers
 
-.NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a `Rectangle` that defines the rectangle within the source of the modal, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
+.NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a <xref:System.Drawing.Rectangle> that defines the rectangle within the view from which the popover will originate, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
 
 ```csharp
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+
 public partial class PopoverPage : ContentPage
 {
   	public PopoverPage(View modal, Rectangle rectangle)
@@ -137,6 +140,8 @@ Then, navigate to the modal page with the `Navigation.PushModalAsync` method:
 Page modalPage = new PopoverPage(originButton, Rectangle.Empty);
 await Navigation.PushModalAsync(modalPage);
 ```
+
+For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](~/ios/platform-specifics/page-popover.md).
 
 ## XAML markup extensions
 
