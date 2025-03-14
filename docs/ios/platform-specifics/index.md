@@ -1,7 +1,7 @@
 ---
 title: "iOS platform-specifics in .NET MAUI"
 description: "Learn how to consume iOS platform-specifics in .NET MAUI apps."
-ms.date: 10/10/2024
+ms.date: 03/14/2025
 ---
 
 # iOS platform-specifics
@@ -29,6 +29,7 @@ The following platform-specific functionality is provided for .NET MAUI pages on
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
 - Disabling the safe area layout guide, which ensures that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Disable the safe area layout guide on iOS](page-safe-area-layout.md).
+- Displaying a modal page as a popover. For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](page-popover.md).
 - Setting the visibility of the homage indicator on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Home indicator visibility on iOS](page-home-indicator.md).
 - Setting the status bar visibility on a <xref:Microsoft.Maui.Controls.Page>. For more information, see [Page status bar visibility on iOS](page-status-bar-visibility.md).
 - Setting the presentation style of modal pages. For more information, see [Modal page presentation style on iOS](page-presentation-style.md).

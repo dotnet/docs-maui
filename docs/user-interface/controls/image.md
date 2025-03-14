@@ -221,6 +221,8 @@ Image image = new Image
 
 ## Load a font icon
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension enables you to display a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. It provides the same functionality as the <xref:Microsoft.Maui.Controls.FontImageSource> class, but with a more concise representation.
 
 The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
@@ -249,6 +251,14 @@ In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xa
 While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
 
 For information about displaying font icons by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+Font icons can be displayed by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+
+::: moniker-end
 
 ## Load animated GIFs
 
