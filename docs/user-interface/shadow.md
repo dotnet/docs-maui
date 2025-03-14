@@ -47,7 +47,7 @@ To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.Vi
     <Image Source="dotnet_bot.png"
            WidthRequest="250"
            HeightRequest="310"
-           Shadow="4 4 16 #000000" />    
+           Shadow="5 8 8 rgb(6, 201, 198)" />    
     ```
 
 - `offset X, offset Y, radius, color, opacity`:
@@ -56,8 +56,21 @@ To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.Vi
     <Image Source="dotnet_bot.png"
            WidthRequest="250"
            HeightRequest="310"
-           Shadow="4 4 16 #000000 0.5" />
+           Shadow="4 4 16 AliceBlue 0.5" />
     ```
+
+Colors can be specified using the following formats:
+
+| Format | Example | Comments |
+| ------ | ------- | -------- |
+| HEX | `#rgb`, `#argb`, `#rrggbb`, `#aarrggbb` |  |
+| RGB | `rgb(255,0,0)`, `rgb(100%,0%,0%)` | Valid values are in the range 0-255, or 0%-100%. |
+| RGBA | `rgba(255, 0, 0, 0.8)`, `rgba(100%, 0%, 0%, 0.8)` | Valid opacity values are 0.0-1.0. |
+| HSL | `hsl(120, 100%, 50%)` |  |
+| HSLA | `hsla(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
+| HSV | `hsv(120, 100%, 50%)` | Valid values for `h` are 0-360, and for `s` and `v` are 0%-100%. |
+| HSVA | `hsva(120, 100%, 50%, .8)` | Valid opacity values are 0.0-1.0. |
+| Predefined color | `fuchsia`, `AquaMarine`, `limegreen` | Color strings are case insensitive. |
 
 Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
 
