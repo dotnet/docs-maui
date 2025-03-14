@@ -8,7 +8,7 @@ ms.date: 03/14/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For more information about the product quality improvements in .NET MAUI in .NET 10, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.XXXXX.X)
+- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/INSERT_LINK)
 - [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 > [!IMPORTANT]
@@ -86,15 +86,7 @@ For more information, see [Shadow](~/user-interface/shadow.md?view=net-maui-10.0
 
 The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
-## Platforms
-
-### Android
-
-The signature of the `ToSpannableString` extension method on Android, in the `Microsoft.Maui.Controls.Platform.FormattedStringExensions` class, has changed
-
-### iOS and Mac Catalyst
-
-#### Compatibility AccessibilityExtensions
+### iOS and Mac Catalyst compatibility AccessibilityExtensions
 
 The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
 
@@ -105,7 +97,7 @@ The following iOS compatibility `AccessibilityExtensions` extension methods, in 
 
 Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
 
-#### MauiWebViewNavigationDelegate overrides
+### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
 
 The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
 
@@ -114,7 +106,7 @@ The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Pl
 - `DidFailProvisionalNavigation`
 - `DidFinishNavigation`
 
-#### Style modal dialogs as popovers
+### Display a modal page as a popover on iOS and Mac Catalyst
 
 .NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a <xref:System.Drawing.Rectangle> that defines the rectangle within the view from which the popover will originate, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
 
@@ -175,6 +167,7 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
+- [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/INSERT_LINK)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
 
 ### Android 16 (Baklava) beta 1 bindings
@@ -264,6 +257,7 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/tag/INSERT_LINK)
 - [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).

@@ -9,7 +9,6 @@ monikerRange: ">=net-maui-10.0"
 
 This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific is used to display a modal page as a popover. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View`, the `Page.ModalPopoverRect` bindable property to a <xref:System.Drawing.Rectangle>, and the `Page.ModalPresentationStyle` bindable property to `UIModalPresentationStyle.Popover`. This can be achieved in C# using the fluent API:
 
-
 ```csharp
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
