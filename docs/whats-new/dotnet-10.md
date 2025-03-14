@@ -60,27 +60,9 @@ For more information, see [Switch](~/user-interface/controls/switch.md?view=net-
 
 ## Shadows
 
-In .NET 10, shadows can be added to controls in XAML by defining their appearance with a formatted string. There are three supported string formats:
+In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` namespace, is now public.
 
-- `color, offset X, offset Y`:
-
-    ```xaml
-    <VerticalStackLayout BackgroundColor="#fff" Shadow="#000000 4 4" />
-    ```
-
-- `offset X, offset Y, radius, color`:
-
-    ```xaml
-    <VerticalStackLayout BackgroundColor="#fff" Shadow="4 4 16 #000000" />
-    ```
-
-- `offset X, offset Y, radius, color, opacity`:
-
-    ```xaml
-    <VerticalStackLayout BackgroundColor="#fff" Shadow="4 4 16 #000000 0.5" />
-    ```
-
-For more information, see [Shadow](~/user-interface/shadow.md?view=net-maui-10.0&preserve-view=true).
+For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
 
 ## Platform integration
 

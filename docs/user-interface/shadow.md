@@ -22,48 +22,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create a Shadow
 
-::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
-
-To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-10.0"
-
-To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a formatted string that defines the shadow. There are three supported string formats:
-
-- `color, offset X, offset Y`:
-
-    ```xaml
-    <Image Source="dotnet_bot.png"
-           WidthRequest="250"
-           HeightRequest="310"
-           Shadow="#000000 4 4" />
-    ```
-
-- `offset X, offset Y, radius, color`:
-
-    ```xaml
-    <Image Source="dotnet_bot.png"
-           WidthRequest="250"
-           HeightRequest="310"
-           Shadow="4 4 16 #000000" />    
-    ```
-
-- `offset X, offset Y, radius, color, opacity`:
-
-    ```xaml
-    <Image Source="dotnet_bot.png"
-           WidthRequest="250"
-           HeightRequest="310"
-           Shadow="4 4 16 #000000 0.5" />
-    ```
-
-Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
-
-::: moniker-end
-
-The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image> using property element syntax:
+To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance. The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image> using property element syntax:
 
 ```xaml
 <Image Source="dotnet_bot.png"
