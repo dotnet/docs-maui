@@ -1,19 +1,19 @@
 ---
 title: "Shadow"
 description: "Learn how to use the .NET MAUI Shadow class, which paints a shadow around a control."
-ms.date: 09/30/2024
+ms.date: 03/14/2025
 ---
 
 # Shadow
 
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shadow> class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a <xref:Microsoft.Maui.Controls.VisualElement.Shadow> bindable property, of type <xref:Microsoft.Maui.Controls.Shadow>, that enables a shadow to be added to any layout or view.
 
-The `Shadow` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.Shadow> class defines the following properties:
 
-- `Radius`, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.
-- `Opacity`, of type `float`, indicates the opacity of the shadow. The default value of this property is 1.
-- `Brush`, of type <xref:Microsoft.Maui.Controls.Brush>, represents the brush used to colorize the shadow.
-- `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
+- <xref:Microsoft.Maui.Controls.Shadow.Radius>, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.
+- <xref:Microsoft.Maui.Controls.Shadow.Opacity>, of type `float`, indicates the opacity of the shadow. The default value of this property is 1.
+- <xref:Microsoft.Maui.Controls.Shadow.Brush>, of type <xref:Microsoft.Maui.Controls.Brush>, represents the brush used to colorize the shadow.
+- <xref:Microsoft.Maui.Controls.Shadow.Offset>, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -22,9 +22,48 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create a Shadow
 
-To add a shadow to a control, set the control's `Shadow` property to a `Shadow` object whose properties define its appearance.
+::: moniker range="=net-maui-8.0"
 
-The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image>:
+To add a shadow to a control, use property element syntax to set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a <xref:Microsoft.Maui.Controls.Shadow> object whose properties define its appearance.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+To add a shadow to a control, set the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property to a formatted string that defines the shadow. There are three supported string formats:
+
+- `color, offset X, offset Y`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="#000000 4 4" />
+    ```
+
+- `offset X, offset Y, radius, color`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="4 4 16 #000000" />    
+    ```
+
+- `offset X, offset Y, radius, color, opacity`:
+
+    ```xaml
+    <Image Source="dotnet_bot.png"
+           WidthRequest="250"
+           HeightRequest="310"
+           Shadow="4 4 16 #000000 0.5" />
+    ```
+
+Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Shadow> property can be set to a <xref:Microsoft.Maui.Controls.Shadow> object, using property element syntax, whose properties define its appearance.
+
+::: moniker-end
+
+The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image> using property element syntax:
 
 ```xaml
 <Image Source="dotnet_bot.png"
