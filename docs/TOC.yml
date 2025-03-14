@@ -541,6 +541,8 @@
             href: /aspnet/core/blazor/hybrid/security/?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
           - name: Security considerations
             href: /aspnet/core/blazor/hybrid/security/security-considerations?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          - name: .NET MAUI with Blazor Web App and Identity sample
+            href: /aspnet/core/blazor/hybrid/security/maui-blazor-web-identity?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Publish
           href: /aspnet/core/blazor/hybrid/publish/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Troubleshoot
