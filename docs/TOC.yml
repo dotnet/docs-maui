@@ -1116,6 +1116,8 @@
                   href: ios/platform-specifics/cell-background-color.md
                 - name: DatePicker item selection
                   href: ios/platform-specifics/datepicker-selection.md
+                - name: Display a modal page as a popover
+                  href: ios/platform-specifics/page-popover.md
                 - name: Entry cursor color
                   href: ios/platform-specifics/entry-cursor-color.md
                 - name: Entry font size
