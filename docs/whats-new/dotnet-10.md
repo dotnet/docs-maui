@@ -1,14 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 03/14/2025
+ms.date: 03/18/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For more information about the product quality improvements in .NET MAUI in .NET 10, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/INSERT_LINK)
+- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.25165.1)
 - [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 > [!IMPORTANT]
@@ -239,7 +239,7 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
-- [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/tag/INSERT_LINK)
+- [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/)
 - [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).
