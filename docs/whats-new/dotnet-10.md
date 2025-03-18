@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 02/18/2025
+ms.date: 03/18/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For more information about the product quality improvements in .NET MAUI in .NET 10, see the following release notes:
 
+- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.25165.1)
 - [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 > [!IMPORTANT]
@@ -23,15 +24,137 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>. In .NET 10, these are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
 
+### HybridWebView
+
+<xref:Microsoft.Maui.Controls.HybridWebView> gains an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#invoke-javascript-methods-that-dont-return-a-value).
+
+### SearchBar
+
+<xref:Microsoft.Maui.Controls.SearchBar> gains a `SearchIconColor` bindable property that sets the color of the search icon:
+
+```xaml
+<SearchBar Placeholder="Search items..."
+           SearchIconColor="Blue" />
+```
+
+For more information, see [SearchBar](~/user-interface/controls/searchbar.md?view=net-maui-10.0&preserve-view=true).
+
+### Switch
+
+<xref:Microsoft.Maui.Controls.Switch> gains an `OffColor` bindable property that sets the color of the switch when it's in the off state:
+
+```xaml
+<Switch OffColor="Red"
+        OnColor="Green" />
+```
+
+For more information, see [Switch](~/user-interface/controls/switch.md?view=net-maui-10.0&preserve-view=true).
+
+### TableView
+
+<xref:Microsoft.Maui.Controls.TableView> has been deprecated. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
+
+## MessagingCenter
+
+<xref:Microsoft.Maui.Controls.MessagingCenter> has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
+
+## Shadows
+
+In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` namespace, is now public.
+
+For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
+
+## Platform integration
+
+The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
+
+### iOS and Mac Catalyst compatibility AccessibilityExtensions
+
+The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
+
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+
+Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
+
+### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
+
+The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
+
+- `DecidePolicy`
+- `DidFailNavigation`
+- `DidFailProvisionalNavigation`
+- `DidFinishNavigation`
+
+### Display a modal page as a popover on iOS and Mac Catalyst
+
+.NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a <xref:System.Drawing.Rectangle> that defines the rectangle within the view from which the popover will originate, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
+
+```csharp
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+
+public partial class PopoverPage : ContentPage
+{
+    public PopoverPage(View modal, Rectangle rectangle)
+    {
+        InitializeComponent();
+        On<iOS>().SetModalPopoverView(modal);
+        On<iOS>().SetModalPopoverRect(rectangle);
+        On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.Popover);
+    }
+}
+```
+
+Then, navigate to the modal page with the `Navigation.PushModalAsync` method:
+
+```csharp
+Page modalPage = new PopoverPage(originButton, Rectangle.Empty);
+await Navigation.PushModalAsync(modalPage);
+```
+
+For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](~/ios/platform-specifics/page-popover.md).
+
+## XAML markup extensions
+
+The <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> XAML markup extension has been deprecated. Instead, the <xref:Microsoft.Maui.Controls.FontImageSource> type should be used:
+
+```xaml
+<Button Text="Press me"
+        Background="Transparent"
+        TextColor="{AppThemeBinding Light=Black, Dark=White}"
+        ImageSource="{FontImageSource Glyph=MyGlyph, Color={AppThemeBinding Light=Black, Dark=White}, FontFamily=FontAwesome, Size=18}" />
+```
+
+For convenience, property element syntax can also be used:
+
+```xaml
+<Button Text="Press me"
+        Background="Transparent"
+        TextColor="{AppThemeBinding Light=Black, Dark=White}" >
+        <Button.ImageSource>
+            <FontImageSource Glyph="MyGlyph"
+                             Color="{AppThemeBinding Light=Black, Dark=White}"
+                             FontFamily="FontAwesome"
+                             Size="18" />
+        </Button.ImageSource>
+</Button>
+```
+
+For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+
 ## .NET for Android
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
+- [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
 
-### Android 16 (Baklava) beta 1 bindings
+### Android 16 (Baklava) beta 2 bindings
 
-Google has released [Beta 1](https://android-developers.googleblog.com/2025/01/first-beta-android16.html) of the Android 16 (API-36) SDK.  Support has been adding for using these preview APIs.
+Google has released [Beta 2](https://android-developers.googleblog.com/2025/02/second-beta-android16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
 
 To target the Android 16 preview API:
 
@@ -116,6 +239,7 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/)
 - [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).
