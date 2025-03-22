@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 02/18/2025
+ms.date: 03/12/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -392,6 +392,13 @@ Your app's C# code can synchronously and asynchronously invoke JavaScript method
 - The <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> method runs the JavaScript code provided via a parameter and returns the result as a string.
 - The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method invokes a specified JavaScript method, optionally passing in parameter values, and specifies a generic argument that indicates the type of the return value. It returns an object of the generic argument type that contains the return value of the called JavaScript method. Internally, parameters and return values are JSON encoded.
 
+::: moniker range=">=net-maui-10.0"
+
+> [!NOTE]
+> .NET 10 includes an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value).
+
+::: moniker-end
+
 ### Invoke synchronous JavaScript
 
 Synchronous JavaScript methods can be invoked with the <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> and <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> methods. In the following example the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method is used to demonstrate invoking JavaScript that's embedded in an app's web content. For example, a simple Javascript method to add two numbers could be defined in your web content:
@@ -477,13 +484,25 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 ### Invoke JavaScript methods that don't return a value
 
-The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are two approaches to doing this:
+The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are alternative approaches to doing this:
+
+::: moniker range=">=net-maui-10.0"
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A>, specifying the JavaScript method name and any optional parameters:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync("javaScriptWithVoidReturn"); // JavaScript method name
+    ```
+
+    In this example, only the JavaScript method name is specified.
+
+::: moniker-end
 
 - Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method without specifying the generic argument:
 
     ```csharp
     await hybridWebView.InvokeJavaScriptAsync(
-         "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+         "javaScriptWithParamsAndVoidReturn",  // JavaScript method name
          HybridSampleJSContext.Default.Double, // JSON serialization info for return type
          [x, y], // Parameter values
          [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
