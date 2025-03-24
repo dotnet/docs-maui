@@ -38,9 +38,7 @@ await Launcher.OpenAsync(new OpenFileRequest
 });
 ```
 
-<!-- markdownlint-disable MD033 -->
-You can verify that the file is being shared correctly if the shared URI excludes the sharing root directory. For example, if you share the file *<CacheDirectory>/sharing-root/mydata.txt* and the shared URI is `content://com.companyname.overwritefileproviderpaths.fileProvider/internal_cache/sharing-root/mydata.txt` then the file provider is not using the correct path. If the shared URI is `content://com.companyname.overwritefileproviderpaths.fileProvider/internal_cache/mydata.txt` then the file provider is using the correct path.
-<!-- markdownlint-enable MD033 -->
+You can verify that the file is being shared correctly if the shared URI excludes the sharing root directory. For example, if you share the file *\<CacheDirectory\>/sharing-root/mydata.txt* and the shared URI is `content://com.companyname.overwritefileproviderpaths.fileProvider/internal_cache/sharing-root/mydata.txt` then the file provider is not using the correct path. If the shared URI is `content://com.companyname.overwritefileproviderpaths.fileProvider/internal_cache/mydata.txt` then the file provider is using the correct path.
 
 > [!WARNING]
 > If when sharing a file you receive an `Java.Lang.IllegalArgumentException`, with a message similar to "Failed to find configured root that contains /data/data/com.companyname.overwritefileproviderpaths/cache/some-non-sharing-path/mydata.txt", you are most likely sharing a file that's outside of the sharing-root.
