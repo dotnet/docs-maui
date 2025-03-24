@@ -23,7 +23,7 @@ For more information about file provider paths, see [FileProvider](https://devel
 
 Prior to sharing a file, you should ensure it's first written to the *sharing-root* folder in one of the locations from the override file:
 
-```cs
+```csharp
 // Write into the specific sub-directory
 var dir = Path.Combine(FileSystem.CacheDirectory, "sharing-root");  
 Directory.CreateDirectory(dir);
