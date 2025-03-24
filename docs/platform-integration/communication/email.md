@@ -1,7 +1,7 @@
 ---
 title: "Email"
 description: "Learn how to use the .NET MAUI IEmail interface in the Microsoft.Maui.ApplicationModel.Communication namespace to open the default email application. The subject, body, and recipients of an email can be set."
-ms.date: 02/02/2023
+ms.date: 03/24/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
@@ -66,6 +66,10 @@ Use the <xref:Microsoft.Maui.ApplicationModel.Communication.EmailMessage.Attachm
 The following example demonstrates adding an image file to the email attachments.
 
 :::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="email_picture" highlight="18":::
+
+### Control file locations
+
+[!INCLUDE [android-fileproviderpaths](../includes/android-fileproviderpaths.md)]
 
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
