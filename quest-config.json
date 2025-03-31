@@ -44,7 +44,7 @@
     "DefaultParentNode": 410743,
     "WorkItemTags": [
         {
-            "Label": ":checkered_flag: Release: .NET 9",
+            "Label": ":checkered_flag: Release: .NET 10",
             "Tag": "new-feature"
         },
         {
