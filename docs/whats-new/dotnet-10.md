@@ -77,6 +77,10 @@ For more information about how shadows can be specified using formatted strings,
 
 The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
+## Geolocation
+
+The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class gains a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
+
 ### iOS and Mac Catalyst compatibility AccessibilityExtensions
 
 The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
