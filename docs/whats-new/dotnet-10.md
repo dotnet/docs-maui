@@ -46,6 +46,8 @@ By default, any exceptions that are thrown by your JavaScript code will be sent 
            SearchIconColor="Blue" />
 ```
 
+<xref:Microsoft.Maui.Controls.SearchBar> also gains a `ReturnType` bindable property, of type <xref:Microsoft.Maui.ReturnType>, that specifies the appearance of the return button. The default value of this property is `Search`.
+
 For more information, see [SearchBar](~/user-interface/controls/searchbar.md?view=net-maui-10.0&preserve-view=true).
 
 ### Switch
