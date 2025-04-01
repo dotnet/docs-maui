@@ -371,6 +371,8 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 1. Use the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the JavaScript and C# code:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     private void OnSendMessageButtonClicked(object sender, EventArgs e)
     {
@@ -382,6 +384,24 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
         await DisplayAlert("Raw Message Received", e.Message, "OK");
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    private void OnSendMessageButtonClicked(object sender, EventArgs e)
+    {
+        hybridWebView.SendRawMessage($"Hello from C#!");
+    }
+
+    private async void OnHybridWebViewRawMessageReceived(object sender, HybridWebViewRawMessageReceivedEventArgs e)
+    {
+        await DisplayAlertAsync("Raw Message Received", e.Message, "OK");
+    }
+    ```
+
+    ::: moniker-end
 
     The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
 

@@ -1165,6 +1165,8 @@ To create the app's UI:
 
 1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods on the `INotificationRegistrationService` object:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     void OnRegisterButtonClicked(object sender, EventArgs e)
     {
@@ -1197,6 +1199,45 @@ To create the app's UI:
         });
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void OnRegisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.RegisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device registered");
+            });
+    }
+
+    void OnDeregisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.DeregisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device deregistered");
+            });
+    }
+
+    void ShowAlert(string message)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            DisplayAlertAsync("Push notifications demo", message, "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
 
     > [!IMPORTANT]
     > In the app, registration and de-registration is performed in response to user input, to allow this functionality to be explored and tested more easily. In a production app you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.

@@ -8,13 +8,13 @@ ms.date: 04/01/2025
 
 ::: moniker range="<=net-maui-9.0"
 
-[!INCLUDE [Display a pop-up](../includes/pop-ups-dotnet9.md)]
+[!INCLUDE [Display a pop-up](includes/pop-ups-dotnet9.md)]
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-10.0"
 
-[!INCLUDE [Display a pop-up](../includes/pop-ups-dotnet10.md)]
+[!INCLUDE [Display a pop-up](includes/pop-ups-dotnet10.md)]
 
 ::: moniker-end
 
