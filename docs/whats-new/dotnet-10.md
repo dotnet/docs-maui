@@ -79,7 +79,7 @@ For more information about how shadows can be specified using formatted strings,
 
 The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
-## Geolocation
+### Geolocation
 
 The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class gains a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
 
@@ -131,6 +131,12 @@ await Navigation.PushModalAsync(modalPage);
 ```
 
 For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](~/ios/platform-specifics/page-popover.md).
+
+## Pop-ups
+
+The `DisplayAlert` and `DisplayActionSheet` methods have been obsoleted and replaced with the `DisplayAlertAsync` and `DisplayActionSheetAsync` methods.
+
+For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net-maui-10.0&preserve-view=true).
 
 ## XAML markup extensions
 
