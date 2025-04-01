@@ -1291,6 +1291,8 @@ To create the app's UI:
 
 1. In the `App` class, implement the event handler for the `IPushDemoNotificationActionService.ActionTriggered` event:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     void NotificationActionTriggered(object sender, PushDemoAction e)
     {
@@ -1310,6 +1312,32 @@ To create the app's UI:
         });
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void NotificationActionTriggered(object sender, PushDemoAction e)
+    {
+        ShowActionAlert(e);
+    }
+
+    void ShowActionAlert(PushDemoAction action)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Windows[0].Page?.DisplayAlertAsync("Push notifications demo", $"{action} action received.", "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
 
     The event handler for the `ActionTriggered` event demonstrates the receipt and propagation of push notification actions. These would typically be handled silently, for example navigating to a specific view or refreshing some data rather than displaying an alert.
 
