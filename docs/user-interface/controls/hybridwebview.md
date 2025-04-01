@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 03/12/2025
+ms.date: 04/01/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -524,6 +524,8 @@ The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method
 
 ### Send JavaScript exceptions to .NET
 
+::: moniker range="<=net-maui-9.0"
+
 By default, invocation of JavaScript methods in a <xref:Microsoft.Maui.Controls.HybridWebView> can hide exceptions thrown by your JavaScript code. To opt into JavaScript exceptions being sent to .NET, where they're re-thrown as .NET exceptions, add the following code to your `MauiProgram` class:
 
 ```csharp
@@ -532,6 +534,12 @@ static MauiProgram()
     AppContext.SetSwitch("HybridWebView.InvokeJavaScriptThrowsExceptions", true);
 }
 ```
+
+::: moniker range=">=net-maui-9.0"
+
+By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
+
+::: moniker-end
 
 This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure will be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
 
