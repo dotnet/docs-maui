@@ -555,6 +555,8 @@ static MauiProgram()
 }
 ```
 
+::: moniker-end
+
 ::: moniker range=">=net-maui-9.0"
 
 By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
