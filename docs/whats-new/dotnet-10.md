@@ -23,6 +23,27 @@ For information about what's new in each .NET MAUI in .NET 10 release, see the f
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
+## .NET Aspire integration
+
+.NET MAUI for .NET 10 includes a new project template that creates a .NET Aspire service defaults project for .NET MAUI. This provides a set of extension methods that connect telemetry and service discovery to your app.
+
+To connect telemetry and service discovery to your app, modify the `CreateMauiApp` method in your `MauiProgram` class to invoke the `AddServiceDefaults` method, from the .NET Aspire service defaults project, on the `MauiAppBuilder` object:
+
+```csharp
+builder.AddServiceDefaults();
+```
+
+The `AddServiceDefaults` method performs the following tasks:
+
+- Configures OpenTelemetry metrics and tracing.
+- Adds service discovery functionality.
+- Configures <xref:System.Net.Http.HttpClient> to work with service discovery.
+
+> [!IMPORTANT]
+> The .NET Aspire service defaults project is designed for sharing the *Extensions.cs* file and its functionality. Don't include other shared functionality or models in this project. Instead, use a shared class library project for those purposes.
+
+For more information, see [.NET Aspire service defaults](/dotnet/aspire/fundamentals/service-defaults).
+
 ## Controls
 
 .NET MAUI in .NET 10 includes control enhancements and deprecations.
