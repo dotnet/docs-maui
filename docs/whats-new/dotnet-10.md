@@ -10,7 +10,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve pro
 
 - [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 - [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.25165.1)
-- [.NET MAUI in .NET 10 Preview 4](INSERT_LINK)
+- [.NET MAUI in .NET 10 Preview 3](INSERT_LINK)
 
 For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
@@ -75,9 +75,9 @@ In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` na
 
 For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
 
-## Platform integration
+## Platform features
 
-The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
+.NET MAUI's platform features have received some updates in .NET 10.
 
 ### Display a modal page as a popover on iOS and Mac Catalyst
 
@@ -131,6 +131,10 @@ The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Pl
 - `DidFailNavigation`
 - `DidFailProvisionalNavigation`
 - `DidFinishNavigation`
+
+### Text to speech
+
+The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
 ### Web authentication
 
