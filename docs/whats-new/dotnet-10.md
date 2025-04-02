@@ -79,30 +79,6 @@ For more information about how shadows can be specified using formatted strings,
 
 The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
 
-### Geolocation
-
-The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class gains a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
-
-### iOS and Mac Catalyst compatibility AccessibilityExtensions
-
-The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
-
-- `SetAccessibilityHint`
-- `SetAccessibilityLabel`
-- `SetAccessibilityHint`
-- `SetAccessibilityLabel`
-
-Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
-
-### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
-
-The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
-
-- `DecidePolicy`
-- `DidFailNavigation`
-- `DidFailProvisionalNavigation`
-- `DidFinishNavigation`
-
 ### Display a modal page as a popover on iOS and Mac Catalyst
 
 .NET MAUI for .NET 10 adds a platform-specific that displays a modal page as a popover on iOS and Mac Catalyst. It's consumed by setting the `Page.ModalPopoverSourceView` bindable property to a `View` that defines the source of the modal, the `Page.ModalPopoverRect` bindable property to a <xref:System.Drawing.Rectangle> that defines the rectangle within the view from which the popover will originate, and the `Page.ModalPresentationStyle` bindable property to `Popover`:
@@ -131,6 +107,34 @@ await Navigation.PushModalAsync(modalPage);
 ```
 
 For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](~/ios/platform-specifics/page-popover.md).
+
+### Geolocation
+
+The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class gains a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
+
+### iOS and Mac Catalyst compatibility AccessibilityExtensions
+
+The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
+
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+
+Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
+
+### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
+
+The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
+
+- `DecidePolicy`
+- `DidFailNavigation`
+- `DidFailProvisionalNavigation`
+- `DidFinishNavigation`
+
+### Web authentication
+
+The <xref:Microsoft.Maui.Authentication.WebAuthenticator> gains a <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method overload that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
 
 ## Pop-ups
 

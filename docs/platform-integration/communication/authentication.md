@@ -1,7 +1,7 @@
 ---
 title: "Web Authenticator"
 description: "Learn how to use the .NET MAUI IWebAuthenticator interface, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 02/02/2023
+ms.date: 04/02/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 
@@ -103,6 +103,12 @@ The API consists mainly of a single method, <xref:Microsoft.Maui.Authentication.
 
 01. The URL used to start the web browser flow.
 01. The URI the flow is expected to ultimately call back to, that is registered to your app.
+
+::: moniker range=">=net-maui-10"
+
+There's also an overload of the <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
+
+::: moniker-end
 
 The result is a `<xref:Microsoft.Maui.Authentication.WebAuthenticatorResult>, which includes any query parameters parsed from the callback URI:
 
