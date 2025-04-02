@@ -104,7 +104,7 @@ The API consists mainly of a single method, <xref:Microsoft.Maui.Authentication.
 01. The URL used to start the web browser flow.
 01. The URI the flow is expected to ultimately call back to, that is registered to your app.
 
-::: moniker range=">=net-maui-10"
+::: moniker range=">=net-maui-10.0"
 
 There's also an overload of the <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
 
