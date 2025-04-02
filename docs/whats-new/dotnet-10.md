@@ -23,9 +23,9 @@ For information about what's new in each .NET MAUI in .NET 10 release, see the f
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
-## Control enhancements
+## Controls
 
-.NET MAUI in .NET 10 includes control enhancements.
+.NET MAUI in .NET 10 includes control enhancements and deprecations.
 
 ### CollectionView and CarouselView
 
