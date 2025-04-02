@@ -37,6 +37,13 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
 
+### ListView
+
+<xref:Microsoft.Maui.Controls.ListView> has been deprecated, along with <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.ImageCell>, <xref:Microsoft.Maui.Controls.SwitchCell>, <xref:Microsoft.Maui.Controls.TextCell>, and <xref:Microsoft.Maui.Controls.ViewCell>. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Cell> hasn't been deprecated because it's currently used for source generation. However, it should be considered deprecated.
+
 ### SearchBar
 
 <xref:Microsoft.Maui.Controls.SearchBar> gains a `SearchIconColor` bindable property that sets the color of the search icon:
