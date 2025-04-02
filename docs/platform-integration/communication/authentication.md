@@ -106,7 +106,8 @@ The API consists mainly of a single method, <xref:Microsoft.Maui.Authentication.
 
 ::: moniker range=">=net-maui-10.0"
 
-There's also an overload of the <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
+> [!NOTE]
+> There's also an overload of the <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
 
 ::: moniker-end
 
