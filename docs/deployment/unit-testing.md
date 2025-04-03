@@ -160,7 +160,7 @@ namespace MyUnitTests
 }
 ```
 
-In this example, even though there's only one test method, there are actually three tests because the theory will be ran once for each item of data.
+In this example, even though there's only one test method, there are actually three tests because the theory will be run once for each item of data.
 
 > [!TIP]
 > Test one operation with each unit test. As the complexity of a test expands, it makes verification of that test more difficult. By limiting a unit test to a single concern, you can ensure that your tests are repeatable, isolated, and have a shorter execution time. For more information, see [Unit testing best practices](/dotnet/core/testing/unit-testing-best-practices).
