@@ -44,6 +44,12 @@ The `AddServiceDefaults` method performs the following tasks:
 
 For more information, see [.NET Aspire service defaults](/dotnet/aspire/fundamentals/service-defaults).
 
+## Animation
+
+The `FadeTo`, `LayoutTo`, `RelRotateTo`, `RelScaleTo`, `RotateXTo`, `RotateYTo`, `ScaleTo`, `ScaleXTo`, `ScaleYTo`, and `TranslateTo` methods have been deprecated and replaced with the `FadeToAsync`, `LayoutToAsync`, `RelRotateToAsync`, `RelScaleToAsync`, `RotateXToAsync`, `RotateYToAsync`, `ScaleToAsync`, `ScaleXToAsync`, `ScaleYToAsync`, and `TranslateToAsync` methods.
+
+For more information, see [Basic animation](~/user-interface/animation/basic.md?view=net-maui-10.0&preserve-view=true).
+
 ## Controls
 
 .NET MAUI in .NET 10 includes control enhancements and deprecations.
@@ -170,7 +176,7 @@ The <xref:Microsoft.Maui.Authentication.WebAuthenticator> gains a <xref:Microsof
 
 ## Pop-ups
 
-The `DisplayAlert` and `DisplayActionSheet` methods have been obsoleted and replaced with the `DisplayAlertAsync` and `DisplayActionSheetAsync` methods.
+The `DisplayAlert` and `DisplayActionSheet` methods have been deprecated and replaced with the `DisplayAlertAsync` and `DisplayActionSheetAsync` methods.
 
 For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net-maui-10.0&preserve-view=true).
 
