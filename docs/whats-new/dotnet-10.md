@@ -58,6 +58,10 @@ For more information, see [Basic animation](~/user-interface/animation/basic.md?
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>. In .NET 10, these are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
 
+### Editor and Entry on Android
+
+On Android, the <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> views change their native views from `AppCompatEditText` to `MauiAppCompatEditText`, which adds support for the `SelectionChanged` event.
+
 ### HybridWebView
 
 <xref:Microsoft.Maui.Controls.HybridWebView> gains an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#invoke-javascript-methods-that-dont-return-a-value).
