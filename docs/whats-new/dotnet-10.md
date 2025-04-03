@@ -46,7 +46,7 @@ For more information, see [.NET Aspire service defaults](/dotnet/aspire/fundamen
 
 ## Animation
 
-The `FadeTo`, `LayoutTo`, `RelRotateTo`, `RelScaleTo`, `RotateXTo`, `RotateYTo`, `ScaleTo`, `ScaleXTo`, `ScaleYTo`, and `TranslateTo` methods have been deprecated and replaced with the `FadeToAsync`, `LayoutToAsync`, `RelRotateToAsync`, `RelScaleToAsync`, `RotateXToAsync`, `RotateYToAsync`, `ScaleToAsync`, `ScaleXToAsync`, `ScaleYToAsync`, and `TranslateToAsync` methods.
+The `FadeTo`, `LayoutTo`, `RelRotateTo`, `RelScaleTo`, `RotateTo`, `RotateXTo`, `RotateYTo`, `ScaleTo`, `ScaleXTo`, `ScaleYTo`, and `TranslateTo` methods have been deprecated and replaced with the `FadeToAsync`, `LayoutToAsync`, `RelRotateToAsync`, `RelScaleToAsync`, `RotateToAsync`, `RotateXToAsync`, `RotateYToAsync`, `ScaleToAsync`, `ScaleXToAsync`, `ScaleYToAsync`, and `TranslateToAsync` methods.
 
 For more information, see [Basic animation](~/user-interface/animation/basic.md?view=net-maui-10.0&preserve-view=true).
 
