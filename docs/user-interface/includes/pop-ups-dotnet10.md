@@ -13,7 +13,7 @@ All .NET MAUI-supported platforms have a pop-up to alert the user or ask simple 
 await DisplayAlertAsync("Alert", "You have been alerted", "OK");
 ```
 
-:::image type="content" source="media/pop-ups/simple-alert.png" alt-text="Screenshot of an alert dialog with one button.":::
+:::image type="content" source="../media/pop-ups/simple-alert.png" alt-text="Screenshot of an alert dialog with one button.":::
 
 Once the alert is dismissed the user continues interacting with the app.
 
@@ -27,7 +27,7 @@ bool answer = await DisplayAlertAsync("Question?", "Would you like to play a gam
 Debug.WriteLine("Answer: " + answer);
 ```
 
-:::image type="content" source="media/pop-ups/two-button-alert.png" alt-text="Screenshot of an alert dialog with two buttons.":::
+:::image type="content" source="../media/pop-ups/two-button-alert.png" alt-text="Screenshot of an alert dialog with two buttons.":::
 
 After the user selects one of the options the response will be returned as a `bool`.
 
@@ -45,7 +45,7 @@ string action = await DisplayActionSheetAsync("ActionSheet: Send to?", "Cancel",
 Debug.WriteLine("Action: " + action);
 ```
 
-:::image type="content" source="media/pop-ups/simple-actionsheet.png" alt-text="Screenshot of an action sheet dialog.":::
+:::image type="content" source="../media/pop-ups/simple-actionsheet.png" alt-text="Screenshot of an action sheet dialog.":::
 
 After the user taps one of the buttons, the button label will be returned as a `string`.
 
@@ -62,7 +62,7 @@ async void OnActionSheetCancelDeleteClicked(object sender, EventArgs e)
 }
 ```
 
-:::image type="content" source="media/pop-ups/actionsheet-destroy-button.png" alt-text="Screenshot of an action sheet with a destroy button.":::
+:::image type="content" source="../media/pop-ups/actionsheet-destroy-button.png" alt-text="Screenshot of an action sheet with a destroy button.":::
 
 > [!NOTE]
 > On iOS, the destroy button is rendered differently to the other buttons in the action sheet.
