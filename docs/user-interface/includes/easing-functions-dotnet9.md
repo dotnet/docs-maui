@@ -37,7 +37,7 @@ await image.TranslateTo(0, -200, 2000, Easing.BounceOut);
 
 By specifying an easing function for an animation, the animation velocity becomes non-linear and produces the effect provided by the easing function. Omitting an easing function when creating an animation causes the animation to use the default <xref:Microsoft.Maui.Easing.Linear> easing function, which produces a linear velocity.
 
-For more information about using the animation extension methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class, see [Basic animation](basic.md). Easing functions can also be consumed by the <xref:Microsoft.Maui.Controls.Animation> class. For more information, see [Custom animation](custom.md).
+For more information about using the animation extension methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class, see [Basic animation](../animation/basic.md). Easing functions can also be consumed by the <xref:Microsoft.Maui.Controls.Animation> class. For more information, see [Custom animation](../animation/custom.md).
 
 ## Custom easing functions
 
