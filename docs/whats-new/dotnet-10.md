@@ -364,7 +364,7 @@ Binding projects are now built entirely on Windows, and so there's no need for a
 
 ### NSUrlSessionHandler no longer sets the TLS minimum supported protocol version for the session
 
-Previously, <xref:Foundation.NSUrlSessionHandler> would initialize the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProperty?displayProperty=nameWithType> value from the <xref:System.Net.ServicePointManager.SecurityProtocol?displayProperty=nameWithType> property, but the <xref:System.Net.ServicePointManager> class is now deprecated. Therefore, you'll have to set the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProperty?displayProperty=nameWithType> value before creating the <xref:Foundation.NSUrlSessionHandler>:
+Previously, <xref:Foundation.NSUrlSessionHandler> would initialize the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProtocol?displayProperty=nameWithType> value from the <xref:System.Net.ServicePointManager.SecurityProtocol?displayProperty=nameWithType> property, but the <xref:System.Net.ServicePointManager> class is now deprecated. Therefore, you'll have to set the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProtocol?displayProperty=nameWithType> value before creating the <xref:Foundation.NSUrlSessionHandler>:
 
 ```csharp
 var sessionConfiguration = NSUrlSessionConfiguration.DefaultSessionConfiguration;
