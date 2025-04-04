@@ -32,13 +32,35 @@ Handlers can be customized per platform by using conditional compilation, to mul
 
 The .NET MAUI <xref:Microsoft.Maui.Controls.Entry> view is a single-line text input control, that implements the <xref:Microsoft.Maui.IEntry> interface. The <xref:Microsoft.Maui.Handlers.EntryHandler> maps the <xref:Microsoft.Maui.Controls.Entry> view to the following native views for each platform:
 
+::: moniker range="<=net-maui-9.0"
+
 - **iOS/Mac Catalyst**: `UITextField`
 - **Android**: `AppCompatEditText`
 - **Windows**: `TextBox`
 
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+- **iOS/Mac Catalyst**: `UITextField`
+- **Android**: `MauiAppCompatEditText`
+- **Windows**: `TextBox`
+
+::: moniker-end
+
 The following diagrams shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the <xref:Microsoft.Maui.Handlers.EntryHandler>:
 
-:::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
+::: moniker range="<=net-maui-9.0"
+
+:::image type="content" source="media/customize/entry-handler-net9.png" alt-text="Entry handler architecture." border="false":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+:::image type="content" source="media/customize/entry-handler-net10.png" alt-text="Entry handler architecture." border="false":::
+
+::: moniker-end
 
 The <xref:Microsoft.Maui.Controls.Entry> property mapper, in the <xref:Microsoft.Maui.Handlers.EntryHandler> class, maps the cross-platform control properties to the native view API. This ensures that when a property is set on an <xref:Microsoft.Maui.Controls.Entry>, the underlying native view is updated as required.
 
@@ -137,6 +159,8 @@ Handlers can be customized per platform by using conditional compilation, or by 
 
 The code-behind file containing the event handlers for the <xref:Microsoft.Maui.Controls.Element.HandlerChanged> and <xref:Microsoft.Maui.Controls.Element.HandlerChanging> events is shown in the following example, which uses conditional compilation:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 #if ANDROID
 using AndroidX.AppCompat.Widget;
@@ -195,6 +219,71 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 #endif
 }
 ```
+
+::: moniker-end
+
+::: moniker range="<=net-maui-9.0"
+
+```csharp
+#if ANDROID
+using Microsoft.Maui.Platform;
+#elif IOS || MACCATALYST
+using UIKit;
+#elif WINDOWS
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+#endif
+
+namespace CustomizeHandlersDemo.Views;
+
+public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
+{
+    public CustomizeEntryHandlerLifecyclePage()
+    {
+        InitializeComponent();
+    }
+
+    void OnEntryHandlerChanged(object sender, EventArgs e)
+    {
+        Entry entry = sender as Entry;
+#if ANDROID
+        (entry.Handler.PlatformView as MauiAppCompatEditText).SetSelectAllOnFocus(true);
+#elif IOS || MACCATALYST
+        (entry.Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
+#elif WINDOWS
+        (entry.Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
+#endif
+    }
+
+    void OnEntryHandlerChanging(object sender, HandlerChangingEventArgs e)
+    {
+        if (e.OldHandler != null)
+        {
+#if IOS || MACCATALYST
+            (e.OldHandler.PlatformView as UITextField).EditingDidBegin -= OnEditingDidBegin;
+#elif WINDOWS
+            (e.OldHandler.PlatformView as TextBox).GotFocus -= OnGotFocus;
+#endif
+        }
+    }
+
+#if IOS || MACCATALYST                   
+    void OnEditingDidBegin(object sender, EventArgs e)
+    {
+        var nativeView = sender as UITextField;
+        nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+    }
+#elif WINDOWS
+    void OnGotFocus(object sender, RoutedEventArgs e)
+    {
+        var nativeView = sender as TextBox;
+        nativeView.SelectAll();
+    }
+#endif
+}
+```
+
+::: moniker-end
 
 The <xref:Microsoft.Maui.Controls.Element.HandlerChanged> event is raised after the native view that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the <xref:Microsoft.Maui.IElementHandler.PlatformView> property of the handler to the type, or base type, of the native view so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnEntryHandlerChanged` event subscribes to native view events that are raised when the native views that implement the <xref:Microsoft.Maui.Controls.Entry> gain focus.
 

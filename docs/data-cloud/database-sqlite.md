@@ -157,6 +157,8 @@ builder.Services.AddSingleton<TodoItemDatabase>();
 
 These services can then be automatically injected into class constructors, and accessed:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 TodoItemDatabase database;
 
@@ -178,6 +180,34 @@ async void OnSaveClicked(object sender, EventArgs e)
     await Shell.Current.GoToAsync("..");
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+TodoItemDatabase database;
+
+public TodoItemPage(TodoItemDatabase todoItemDatabase)
+{
+    InitializeComponent();
+    database = todoItemDatabase;
+}
+
+async void OnSaveClicked(object sender, EventArgs e)
+{
+    if (string.IsNullOrWhiteSpace(Item.Name))
+    {
+        await DisplayAlertAsync("Name Required", "Please enter a name for the todo item.", "OK");
+        return;
+    }
+
+    await database.SaveItemAsync(Item);
+    await Shell.Current.GoToAsync("..");
+}
+```
+
+::: moniker-end
 
 Alternatively, new instances of the database access class can be created:
 

@@ -582,6 +582,8 @@ The `Pin` class also defines a `InfoWindowClicked` event that's fired when an in
 
 The following code shows an example of handling these events:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
@@ -615,6 +617,46 @@ wharfPin.InfoWindowClicked += async (s, args) =>
     await DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
 };
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
+...
+
+Pin boardwalkPin = new Pin
+{
+    Location = new Location(36.9641949, -122.0177232),
+    Label = "Boardwalk",
+    Address = "Santa Cruz",
+    Type = PinType.Place
+};
+boardwalkPin.MarkerClicked += async (s, args) =>
+{
+    args.HideInfoWindow = true;
+    string pinName = ((Pin)s).Label;
+    await DisplayAlertAsync("Pin Clicked", $"{pinName} was clicked.", "Ok");
+};
+
+Pin wharfPin = new Pin
+{
+    Location = new Location(36.9571571, -122.0173544),
+    Label = "Wharf",
+    Address = "Santa Cruz",
+    Type = PinType.Place
+};
+wharfPin.InfoWindowClicked += async (s, args) =>
+{
+    string pinName = ((Pin)s).Label;
+    await DisplayAlertAsync("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
+};
+```
+
+::: moniker-end
 
 The `PinClickedEventArgs` object that accompanies both events has a single `HideInfoWindow` property, of type `bool`. When this property is set to `true` inside an event handler, the information window will be hidden.
 

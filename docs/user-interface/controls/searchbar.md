@@ -1,7 +1,7 @@
 ---
 title: "SearchBar"
 description: "The .NET MAUI SearchBar is a user input control that is used for initiating a search. The SearchBar control supports placeholder text, query input, execution, and cancellation."
-ms.date: 03/07/2025
+ms.date: 04/01/2025
 ---
 
 # SearchBar
@@ -26,6 +26,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 
 - `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
 - `HorizontalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the horizontal alignment of the query text.
+- `ReturnType`, of type <xref:Microsoft.Maui.ReturnType>, specifies the appearance of the return button. The default value of this property is `Search`.
 - `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `SearchIconColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the search icon.

@@ -287,6 +287,8 @@ The following XAML example demonstrates a `FormattedText` property that consists
 
 The equivalent C# code is:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 FormattedString formattedString = new FormattedString ();
 formattedString.Spans.Add (new Span { Text = "Red bold, ", TextColor = Colors.Red, FontAttributes = FontAttributes.Bold });
@@ -298,6 +300,24 @@ formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = F
 
 Label label = new Label { FormattedText = formattedString };
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+FormattedString formattedString = new FormattedString ();
+formattedString.Spans.Add (new Span { Text = "Red bold, ", TextColor = Colors.Red, FontAttributes = FontAttributes.Bold });
+
+Span span = new Span { Text = "default, " };
+span.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(async () => await DisplayAlertAsync("Tapped", "This is a tapped Span.", "OK")) });
+formattedString.Spans.Add(span);
+formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = FontAttributes.Italic, FontSize = 14 });
+
+Label label = new Label { FormattedText = formattedString };
+```
+
+::: moniker-end
 
 The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Label> that contains three <xref:Microsoft.Maui.Controls.Span> objects:
 
