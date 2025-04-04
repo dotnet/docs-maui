@@ -358,7 +358,7 @@ Therefore, opt-in support for embedding the original resource in libraries was a
 </PropertyGroup>
 ```
 
-### Build binding projects on Windows without a Mac
+### Build binding projects on Windows
 
 Binding projects are now built entirely on Windows, and so there's no need for a remote Mac. This makes building binding projects on Windows significantly faster.
 
