@@ -160,14 +160,14 @@ namespace MyUnitTests
 }
 ```
 
-In this example, even though there's only one test method, there are actually three tests because the theory will be ran once for each item of data.
+In this example, even though there's only one test method, there are actually three tests because the theory will be run once for each item of data.
 
 > [!TIP]
 > Test one operation with each unit test. As the complexity of a test expands, it makes verification of that test more difficult. By limiting a unit test to a single concern, you can ensure that your tests are repeatable, isolated, and have a shorter execution time. For more information, see [Unit testing best practices](/dotnet/core/testing/unit-testing-best-practices).
 
 ## Run unit tests
 
-Unit tests can be ran in Test Explorer in Visual Studio, or with the `dotnet test` command. For information about Test Explorer, see [Run unit tests with Test Explorer](/visualstudio/test/run-unit-tests-with-test-explorer). For information about the `dotnet test` command, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test) and [dotnet test](/dotnet/core/tools/dotnet-test).
+Unit tests can be run in Test Explorer in Visual Studio, or with the `dotnet test` command. For information about Test Explorer, see [Run unit tests with Test Explorer](/visualstudio/test/run-unit-tests-with-test-explorer). For information about the `dotnet test` command, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test) and [dotnet test](/dotnet/core/tools/dotnet-test).
 
 ## Run unit tests using device runners
 
