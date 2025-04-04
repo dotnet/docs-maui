@@ -322,6 +322,14 @@ For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see th
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).
 
+### Trimmer enabled in more configurations
+
+The trimmer is now enabled in the following configurations:
+
+- iOS Simulator/arm64 (all configurations)
+- tvOS Simulator/arm64 (all configurations)
+- Mac Catalyst/arm64 (all configurations)
+
 ### Trimmer warnings enabled by default
 
 Trimmer warnings were previously suppressed, because the base class library produced trimmer warnings which means that it wasn't possible for you to fix all the trimmer warnings. However, in .NET 9 all the iOS trimmer warnings were fixed, and so trimmer warnings are now enabled by default. To disable trimmer warnings, set the `$(SuppressTrimAnalysisWarnings)` MSBuild property to `true` in your project file:
@@ -349,6 +357,28 @@ Therefore, opt-in support for embedding the original resource in libraries was a
     <BundleOriginalResources>false</BundleOriginalResources>
 </PropertyGroup>
 ```
+
+### Build binding projects on Windows without a Mac
+
+Binding projects are now built entirely on Windows, and so there's no need for a remote Mac. This makes building binding projects on Windows significantly faster.
+
+### NSUrlSessionHandler no longer sets the TLS minimum supported protocol version for the session
+
+Previously, <xref:Foundation.NSUrlSessionHandler> would initialize the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProperty?displayProperty=nameWithType> value from the <xref:System.Net.ServicePointManager.SecurityProtocol?displayProperty=nameWithType> property, but the <xref:System.Net.ServicePointManager> class is now deprecated. Therefore, you'll have to set the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProperty?displayProperty=nameWithType> value before creating the <xref:Foundation.NSUrlSessionHandler>:
+
+```csharp
+var sessionConfiguration = NSUrlSessionConfiguration.DefaultSessionConfiguration;
+sessionConfiguration.TlsMinimumSupportedProtocolVersion = TlsProtocolVersion.Tls13;
+var handler = new NSUrlSessionHandler(sessionConfiguration);
+```
+
+### NSUrlSessionHandler.BypassBackgroundSessionCheck property is ignored
+
+The `NSUrlSessionHandler.BypassBackgroundSessionCheck` property exists for an old issue in the Mono runtime. This workaround is no longer required and so the property is ignored.
+
+## Xcode 17
+
+Support for Xcode 17 has been added, including many new APIs in iOS 19, tvOS 19, macOS 16, and Mac Catalyst 19.
 
 ## See also
 
