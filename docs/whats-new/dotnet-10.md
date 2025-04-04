@@ -220,14 +220,14 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 - [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 3](INSERT_LINK)
 
-### Android 16 (Baklava) beta 2 bindings
+### Android 16 (Baklava) beta 3 bindings
 
-Google has released [Beta 2](https://android-developers.googleblog.com/2025/02/second-beta-android16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
+Google has released [Beta 2](https://android-developers.googleblog.com/2025/03/the-third-beta-of-android-16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
 
 To target the Android 16 preview API:
 
 - Use the Android SDK Manager to download the Android 16 (Baklava) platform.
-- Update your project's `TargetFramework` to `net10.0-android36`.
+- Update your project's `TargetFramework` to `net10.0-android36.0`.
 
 ### Recommended minimum supported Android API
 
@@ -279,6 +279,15 @@ In .NET 10 you can add the `ArtifactFilename` metadata to the `@(AndroidMavenLib
     <AndroidMavenLibrary Include="com.facebook.react:react-android" Version="0.76.0" ArtifactFilename="react-android-0.76.0-release.aar" />
 </ItemGroup>
 ```
+
+### System.IO.Compression used for *.apk* creation
+
+Historically, [dotnet/android-libzipsharp](https://github.com/dotnet/android-libzipsharp) was used to process ZIP archives and create *.aab* and *.apk* files.
+
+In .NET 10:
+
+- For command line `dotnet build` invocations, <xref:System.IO.Compression.ZipArchive> is used to create *.aab* and *.apk* files. This should result in faster build times.
+- For Visual Studio builds, [dotnet/android-libzipsharp](https://github.com/dotnet/android-libzipsharp) is still used because the .NET Framework version of <xref:System.IO.Compression> can't be used.
 
 ### Visual Studio design time builds no longer invoke `aapt2`
 
