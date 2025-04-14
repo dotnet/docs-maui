@@ -60,6 +60,8 @@ The control should provide a public API that will be accessed by its handler, an
 
 After creating your cross-platform control, you should create a `partial` class for your handler:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 #if IOS || MACCATALYST
 using PlatformView = Microsoft.Maui.Platform.MauiTextField;
@@ -80,6 +82,33 @@ namespace MyMauiControl.Handlers
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+#if IOS || MACCATALYST
+using PlatformView = Microsoft.Maui.Platform.MauiTextField;
+#elif ANDROID
+using PlatformView = Microsoft.Maui.Platform.MauiAppCompatEditText;
+#elif WINDOWS
+using PlatformView = Microsoft.UI.Xaml.Controls.TextBox;
+#elif (NETSTANDARD || !PLATFORM) || (NET6_0_OR_GREATER && !IOS && !ANDROID)
+using PlatformView = System.Object;
+#endif
+using MyMauiControl.Controls;
+using Microsoft.Maui.Handlers;
+
+namespace MyMauiControl.Handlers
+{
+    public partial class CustomEntryHandler
+    {
+    }
+}
+```
+
+::: moniker-end
 
 The handler class is a partial class whose implementation will be completed on each platform with an additional partial class.
 
@@ -179,6 +208,8 @@ Each platform handler should also implement the Actions that are defined in the 
 
 The following example shows the `CustomEntryHandler` implementation on Android:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 #nullable enable
 using AndroidX.AppCompat.Widget;
@@ -223,6 +254,56 @@ namespace MyMauiControl.Handlers
 `CustomEntryHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `CustomEntry` argument specifying the cross-platform control type, and the `AppCompatEditText` argument specifying the type of native control.
 
 The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns an `AppCompatEditText` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `AppCompatEditText` instance.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+#nullable enable
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using MyMauiControl.Controls;
+
+namespace MyMauiControl.Handlers
+{
+    public partial class CustomEntryHandler : ViewHandler<CustomEntry, MauiAppCompatEditText>
+    {
+        protected override AppCompatEditText CreatePlatformView() => new MauiAppCompatEditText(Context);
+
+        protected override void ConnectHandler(MauiAppCompatEditText platformView)
+        {
+            base.ConnectHandler(platformView);
+
+            // Perform any control setup here
+        }
+
+        protected override void DisconnectHandler(MauiAppCompatEditText platformView)
+        {
+            // Perform any native view cleanup here
+            platformView.Dispose();
+            base.DisconnectHandler(platformView);
+        }
+
+        public static void MapText(CustomEntryHandler handler, CustomEntry view)
+        {
+            handler.PlatformView.Text = view.Text;
+            handler.PlatformView?.SetSelection(handler.PlatformView?.Text?.Length ?? 0);
+        }
+
+        public static void MapTextColor(CustomEntryHandler handler, CustomEntry view)
+        {
+            handler.PlatformView?.SetTextColor(view.TextColor.ToPlatform());
+        }
+    }
+}
+```
+
+`CustomEntryHandler` derives from the <xref:Microsoft.Maui.Handlers.ViewHandler`2> class, with the generic `CustomEntry` argument specifying the cross-platform control type, and the `MauiAppCompatEditText` argument specifying the type of native control.
+
+The <xref:Microsoft.Maui.Handlers.ViewHandler`2.CreatePlatformView%2A> override creates and returns an `MauiAppCompatEditText` object. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.ConnectHandler%2A> override is the location to perform any required native view setup. The <xref:Microsoft.Maui.Handlers.ViewHandler`2.DisconnectHandler%2A> override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiAppCompatEditText` instance.
+
+::: moniker-end
 
 The handler also implements the Actions defined in the property mapper dictionary. Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires handler and cross-platform control instances as arguments. In each case, the Action calls methods defined on the native control.
 

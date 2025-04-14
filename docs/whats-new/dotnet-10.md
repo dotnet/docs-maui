@@ -1,37 +1,79 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 03/18/2025
+ms.date: 04/08/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about the product fixes in .NET MAUI in .NET 10, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
+- [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.3.25203.16)
 - [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.25165.1)
+- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview1/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview3/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview2/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview1/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
-## Control enhancements
+## .NET Aspire integration
 
-.NET MAUI in .NET 10 includes control enhancements.
+.NET MAUI for .NET 10 includes a new project template that creates a .NET Aspire service defaults project for .NET MAUI. This provides a set of extension methods that connect telemetry and service discovery to your app.
+
+To connect telemetry and service discovery to your app, modify the `CreateMauiApp` method in your `MauiProgram` class to invoke the `AddServiceDefaults` method, from the .NET Aspire service defaults project, on the `MauiAppBuilder` object:
+
+```csharp
+builder.AddServiceDefaults();
+```
+
+The `AddServiceDefaults` method performs the following tasks:
+
+- Configures OpenTelemetry metrics and tracing.
+- Adds service discovery functionality.
+- Configures <xref:System.Net.Http.HttpClient> to work with service discovery.
+
+> [!IMPORTANT]
+> The .NET Aspire service defaults project is designed for sharing the *Extensions.cs* file and its functionality. Don't include other shared functionality or models in this project. Instead, use a shared class library project for those purposes.
+
+For more information, see [.NET Aspire service defaults](/dotnet/aspire/fundamentals/service-defaults).
+
+## Animation
+
+The `FadeTo`, `LayoutTo`, `RelRotateTo`, `RelScaleTo`, `RotateTo`, `RotateXTo`, `RotateYTo`, `ScaleTo`, `ScaleXTo`, `ScaleYTo`, and `TranslateTo` methods have been deprecated and replaced with the `FadeToAsync`, `LayoutToAsync`, `RelRotateToAsync`, `RelScaleToAsync`, `RotateToAsync`, `RotateXToAsync`, `RotateYToAsync`, `ScaleToAsync`, `ScaleXToAsync`, `ScaleYToAsync`, and `TranslateToAsync` methods.
+
+For more information, see [Basic animation](~/user-interface/animation/basic.md?view=net-maui-10.0&preserve-view=true).
+
+## Controls
+
+.NET MAUI in .NET 10 includes control enhancements and deprecations.
 
 ### CollectionView and CarouselView
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>. In .NET 10, these are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
 
+### Editor and Entry on Android
+
+On Android, the <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.Controls.Entry> views change their native views from `AppCompatEditText` to `MauiAppCompatEditText`, which adds support for the `SelectionChanged` event.
+
 ### HybridWebView
 
 <xref:Microsoft.Maui.Controls.HybridWebView> gains an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#invoke-javascript-methods-that-dont-return-a-value).
+
+By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
+
+### ListView
+
+<xref:Microsoft.Maui.Controls.ListView> has been deprecated, along with <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.ImageCell>, <xref:Microsoft.Maui.Controls.SwitchCell>, <xref:Microsoft.Maui.Controls.TextCell>, and <xref:Microsoft.Maui.Controls.ViewCell>. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Cell> hasn't been deprecated because it's currently used for source generation. However, it should be considered deprecated.
 
 ### SearchBar
 
@@ -41,6 +83,8 @@ In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 <SearchBar Placeholder="Search items..."
            SearchIconColor="Blue" />
 ```
+
+<xref:Microsoft.Maui.Controls.SearchBar> also gains a `ReturnType` bindable property, of type <xref:Microsoft.Maui.ReturnType>, that specifies the appearance of the return button. The default value of this property is `Search`.
 
 For more information, see [SearchBar](~/user-interface/controls/searchbar.md?view=net-maui-10.0&preserve-view=true).
 
@@ -69,29 +113,9 @@ In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` na
 
 For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
 
-## Platform integration
+## Platform features
 
-The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
-
-### iOS and Mac Catalyst compatibility AccessibilityExtensions
-
-The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
-
-- `SetAccessibilityHint`
-- `SetAccessibilityLabel`
-- `SetAccessibilityHint`
-- `SetAccessibilityLabel`
-
-Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
-
-### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
-
-The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
-
-- `DecidePolicy`
-- `DidFailNavigation`
-- `DidFailProvisionalNavigation`
-- `DidFinishNavigation`
+.NET MAUI's platform features have received some updates in .NET 10.
 
 ### Display a modal page as a popover on iOS and Mac Catalyst
 
@@ -121,6 +145,44 @@ await Navigation.PushModalAsync(modalPage);
 ```
 
 For more information, see [Display a modal page as a popover on iOS and Mac Catalyst](~/ios/platform-specifics/page-popover.md).
+
+### Geolocation
+
+The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class gains a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
+
+### iOS and Mac Catalyst compatibility AccessibilityExtensions
+
+The following iOS compatibility `AccessibilityExtensions` extension methods, in the `Microsoft.Maui.Controls.Compatibility.Platform.iOS`, have been deprecated:
+
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+- `SetAccessibilityHint`
+- `SetAccessibilityLabel`
+
+Instead, the `Microsoft.Maui.Platform.UpdateSemantics` method should be used.
+
+### iOS and Mac Catalyst MauiWebViewNavigationDelegate overrides
+
+The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Platform` namespace, are now overridable:
+
+- `DecidePolicy`
+- `DidFailNavigation`
+- `DidFailProvisionalNavigation`
+- `DidFinishNavigation`
+
+### Text to speech
+
+The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
+
+### Web authentication
+
+The <xref:Microsoft.Maui.Authentication.WebAuthenticator> gains a <xref:Microsoft.Maui.Authentication.IWebAuthenticator.AuthenticateAsync%2A> method overload that enables an authentication flow to be cancelled programatically with a <xref:System.Threading.CancellationToken> argument.
+
+## Pop-ups
+
+The `DisplayAlert` and `DisplayActionSheet` methods have been deprecated and replaced with the `DisplayAlertAsync` and `DisplayActionSheetAsync` methods.
+
+For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net-maui-10.0&preserve-view=true).
 
 ## XAML markup extensions
 
@@ -154,17 +216,20 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
+- [.NET for Android 10 Preview 3](https://github.com/dotnet/android/releases/tag/36.0.0-preview.3.22)
 - [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
 
-### Android 16 (Baklava) beta 2 bindings
+### Android 16 (Baklava) beta 3 bindings
 
-Google has released [Beta 2](https://android-developers.googleblog.com/2025/02/second-beta-android16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
+Google has released [Beta 2](https://android-developers.googleblog.com/2025/03/the-third-beta-of-android-16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
 
 To target the Android 16 preview API:
 
 - Use the Android SDK Manager to download the Android 16 (Baklava) platform.
-- Update your project's `TargetFramework` to `net10.0-android36`.
+- Update your project's `TargetFramework` to `net10.0-android`.
+
+This will cause issues when using Visual Studio and Visual Studio Code with .NET 10, because they don't yet know about API 36, which will trigger an [XA5207](/dotnet/android/messages/xa5207) error. To fix this, you'll need to manually install the API36 *platform.jar* into your Android SDK directory or wait for a forthcoming update to Visual Studio.
 
 ### Recommended minimum supported Android API
 
@@ -217,6 +282,15 @@ In .NET 10 you can add the `ArtifactFilename` metadata to the `@(AndroidMavenLib
 </ItemGroup>
 ```
 
+### System.IO.Compression used for *.apk* creation
+
+Historically, [dotnet/android-libzipsharp](https://github.com/dotnet/android-libzipsharp) was used to process ZIP archives and create *.aab* and *.apk* files.
+
+In .NET 10:
+
+- For command line `dotnet build` invocations, <xref:System.IO.Compression.ZipArchive> is used to create *.aab* and *.apk* files. This should result in faster build times.
+- For Visual Studio builds, [dotnet/android-libzipsharp](https://github.com/dotnet/android-libzipsharp) is still used because the .NET Framework version of <xref:System.IO.Compression> can't be used.
+
 ### Visual Studio design time builds no longer invoke `aapt2`
 
 In order to speed up design time builds, `aapt2` is no longer invoked. Instead, the `.aar` files and underlying Android resources are parsed directly. This reduces the time of a design time build for some unit tests from over 2s to under 600ms.
@@ -244,10 +318,19 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 10.0.1xx Preview 3](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview3-10695)
 - [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview2-10552)
 - [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).
+
+### Trimmer enabled in more configurations
+
+The trimmer is now enabled in the following configurations:
+
+- iOS Simulator/arm64 (all configurations)
+- tvOS Simulator/arm64 (all configurations)
+- Mac Catalyst/arm64 (all configurations)
 
 ### Trimmer warnings enabled by default
 
@@ -276,6 +359,28 @@ Therefore, opt-in support for embedding the original resource in libraries was a
     <BundleOriginalResources>false</BundleOriginalResources>
 </PropertyGroup>
 ```
+
+### Build binding projects on Windows
+
+Binding projects are now built entirely on Windows, and so there's no need for a remote Mac. This makes building binding projects on Windows significantly faster.
+
+### NSUrlSessionHandler no longer sets the TLS minimum supported protocol version for the session
+
+Previously, <xref:Foundation.NSUrlSessionHandler> would initialize the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProtocol?displayProperty=nameWithType> value from the <xref:System.Net.ServicePointManager.SecurityProtocol?displayProperty=nameWithType> property, but the <xref:System.Net.ServicePointManager> class is now deprecated. Therefore, you'll have to set the <xref:Foundation.NSUrlSessionConfiguration.TLSMinimumSupportedProtocol?displayProperty=nameWithType> value before creating the <xref:Foundation.NSUrlSessionHandler>:
+
+```csharp
+var sessionConfiguration = NSUrlSessionConfiguration.DefaultSessionConfiguration;
+sessionConfiguration.TlsMinimumSupportedProtocolVersion = TlsProtocolVersion.Tls13;
+var handler = new NSUrlSessionHandler(sessionConfiguration);
+```
+
+### NSUrlSessionHandler.BypassBackgroundSessionCheck property is ignored
+
+The `NSUrlSessionHandler.BypassBackgroundSessionCheck` property exists for an old issue in the Mono runtime. This workaround is no longer required and so the property is ignored.
+
+## Xcode 17
+
+Support for Xcode 17 has been added, including many new APIs in iOS 19, tvOS 19, macOS 16, and Mac Catalyst 19.
 
 ## See also
 
