@@ -227,7 +227,9 @@ Google has released [Beta 2](https://android-developers.googleblog.com/2025/03/t
 To target the Android 16 preview API:
 
 - Use the Android SDK Manager to download the Android 16 (Baklava) platform.
-- Update your project's `TargetFramework` to `net10.0-android36.0`.
+- Update your project's `TargetFramework` to `net10.0-android`.
+
+This will cause issues when using Visual Studio and Visual Studio Code with .NET 10, because they don't yet know about API 36, which will trigger an [XA5207](/dotnet/android/messages/xa5207) error. To fix this, you'll need to manually install the API36 *platform.jar* into your Android SDK directory or wait for a forthcoming update to Visual Studio.
 
 ### Recommended minimum supported Android API
 
