@@ -155,6 +155,8 @@ However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> a
 
 Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a <xref:Microsoft.Maui.Controls.Label> can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the <xref:Microsoft.Maui.Controls.Button> click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button>:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 namespace XamlSamples
 {
@@ -178,6 +180,36 @@ namespace XamlSamples
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+namespace XamlSamples
+{
+    public partial class XamlPlusCodePage
+    {
+        public XamlPlusCodePage()
+        {
+            InitializeComponent();
+        }
+
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        {
+            valueLabel.Text = args.NewValue.ToString("F3");
+        }
+
+        async void OnButtonClicked(object sender, EventArgs args)
+        {
+            Button button = (Button)sender;
+            await DisplayAlertAsync("Clicked!", "The button labeled '" + button.Text + "' has been clicked", "OK");
+        }
+    }
+}
+```
+
+::: moniker-end
 
 Back in the XAML file, the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button> tags need to include attributes for the `ValueChanged` and `Clicked` events that reference these handlers:
 
@@ -228,6 +260,8 @@ The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider>
 
 In the example above the <xref:Microsoft.Maui.Controls.Button> simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a <xref:Microsoft.Maui.Controls.Button> and then access its properties:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 async void OnButtonClicked(object sender, EventArgs args)
 {
@@ -237,6 +271,22 @@ async void OnButtonClicked(object sender, EventArgs args)
 ```
 
 The `OnButtonClicked` method is defined as `async` because the <xref:Microsoft.Maui.Controls.Page.DisplayAlert%2A> method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+async void OnButtonClicked(object sender, EventArgs args)
+{
+    Button button = (Button)sender;
+    await DisplayAlertAsync("Clicked!", "The button labeled '" + button.Text + "' has been clicked", "OK");
+}
+```
+
+The `OnButtonClicked` method is defined as `async` because the <xref:Microsoft.Maui.Controls.Page.DisplayAlertAsync%2A> method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+
+::: moniker-end
 
 ## Next steps
 

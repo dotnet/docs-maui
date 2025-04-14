@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 12/16/2024
+ms.date: 04/01/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -192,6 +192,14 @@ void OnStopListening()
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method has no effect when the app isn't listening for location changes.
+
+::: moniker range=">=net-maui-10.0"
+
+## Check if location services are enabled
+
+The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class has a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
+
+::: moniker-end
 
 ## Accuracy
 
