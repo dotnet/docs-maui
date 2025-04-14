@@ -8,15 +8,15 @@ ms.date: 04/08/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about the product fixes in .NET MAUI in .NET 10, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
+- [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.3.25203.16)
 - [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.2.25165.1)
-- [.NET MAUI in .NET 10 Preview 3](INSERT_LINK)
+- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/maui/releases/tag/10.0.0-preview.1.25122.6)
 
 For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
-- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview1/dotnetmaui.md)
-- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview2/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview3/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview2/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview1/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -216,9 +216,9 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
-- [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
+- [.NET for Android 10 Preview 3](https://github.com/dotnet/android/releases/tag/36.0.0-preview.3.22)
 - [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
-- [.NET for Android 10 Preview 3](INSERT_LINK)
+- [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
 
 ### Android 16 (Baklava) beta 3 bindings
 
@@ -316,9 +316,9 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
-- [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
+- [.NET 10.0.1xx Preview 3](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview3-10695)
 - [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview2-10552)
-- [.NET 10.0.1xx Preview 2](INSERT_LINK)
+- [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)
 
 For information about known issues, see [Known issues in .NET 10](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET10).
 
