@@ -247,8 +247,6 @@
               href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
-        - name: Windows
-          href: fundamentals/windows.md
     - name: User interface
       items:
         - name: Animation
@@ -443,6 +441,8 @@
                   href: user-interface/controls/twopaneview.md
                 - name: WebView
                   href: user-interface/controls/webview.md
+            - name: Window
+              href: user-interface/controls/window.md
         - name: C# markup
           href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
@@ -509,6 +509,50 @@
               href: user-interface/live-visual-tree.md
         - name: Visual states
           href: user-interface/visual-states.md
+    - name: Hybrid apps
+      items:
+      - name: Overview
+        href: hybrid-apps/index.md
+      - name: Blazor hybrid apps
+        items:
+        - name: Overview
+          href: /aspnet/core/blazor/hybrid/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Tutorials
+          items:
+          - name: Build a .NET MAUI Blazor hybrid app
+            href: /aspnet/core/blazor/hybrid/tutorials/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          - name: Build a .NET MAUI Blazor hybrid app with a Blazor web app
+            href: /aspnet/core/blazor/hybrid/tutorials/maui-blazor-web-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Routing and navigation
+          href: /aspnet/core/blazor/hybrid/routing?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Static files
+          href: /aspnet/core/blazor/hybrid/static-files?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Browser developer tools
+          href: /aspnet/core/blazor/hybrid/developer-tools?pivots=android&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Reuse Razor components
+          href: /aspnet/core/blazor/hybrid/reuse-razor-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Class libraries
+          href: /aspnet/core/blazor/hybrid/class-libraries?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Root component parameters
+          href: /aspnet/core/blazor/hybrid/root-component-parameters?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Security and identity
+          items:
+          - name: Overview
+            href: /aspnet/core/blazor/hybrid/security/?pivots=maui&toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          - name: Security considerations
+            href: /aspnet/core/blazor/hybrid/security/security-considerations?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          - name: .NET MAUI with Blazor Web App and Identity sample
+            href: /aspnet/core/blazor/hybrid/security/maui-blazor-web-identity?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Publish
+          href: /aspnet/core/blazor/hybrid/publish/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Troubleshoot
+          href: /aspnet/core/blazor/hybrid/troubleshoot?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+      - name: Controls
+        items:
+        - name: BlazorWebView
+          href: ~/user-interface/controls/blazorwebview.md
+        - name: HybridWebView
+          href: ~/user-interface/controls/hybridwebview.md
     - name: Platforms
       items:
         - name: Android
@@ -897,10 +941,26 @@
                   href: /dotnet/android/messages/xa8000?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: iOS
           items:
+            - name: App fundamentals
+              items:
+                - name: Images & icons
+                  items:
+                    - name: Overview
+                      href: /dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                    - name: Alternate app icons
+                      href: /dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Apple account management
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
               href: ios/privacy-manifest.md
+            - name: Build apps
+              items:
+                - name: Build targets
+                  href: /dotnet/ios/building-apps/build-targets?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Build properties
+                  href: /dotnet/ios/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Build items
+                  href: /dotnet/ios/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
@@ -923,7 +983,7 @@
                   href: ios/device-provisioning/manual-provisioning.md
             - name: Universal links
               href: macios/universal-links.md
-            - name: Xcode sync
+            - name: Syncing with Xcode
               href: macios/xcsync.md
         - name: Mac Catalyst
           items:
@@ -945,7 +1005,7 @@
               href: macios/system-special-folders.md
             - name: Universal links
               href: macios/universal-links.md
-            - name: Xcode sync
+            - name: Syncing with Xcode
               href: macios/xcsync.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
@@ -1056,6 +1116,8 @@
                   href: ios/platform-specifics/cell-background-color.md
                 - name: DatePicker item selection
                   href: ios/platform-specifics/datepicker-selection.md
+                - name: Display a modal page as a popover
+                  href: ios/platform-specifics/page-popover.md
                 - name: Entry cursor color
                   href: ios/platform-specifics/entry-cursor-color.md
                 - name: Entry font size

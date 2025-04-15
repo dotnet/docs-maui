@@ -34,16 +34,6 @@ Despite the package name, use the **sqlite-net-pcl** NuGet package in .NET MAUI 
 > [!IMPORTANT]
 > SQLite.NET is a third-party library that's supported from the [praeclarum/sqlite-net repo](https://github.com/praeclarum/sqlite-net).
 
-### Install SQLitePCLRaw.bundle_green
-
-In addition to **sqlite-net-pcl**, you _temporarily_ need to install the underlying dependency that exposes SQLite on each platform:
-
-- **ID:** SQLitePCLRaw.bundle_green
-- **Version:** >= 2.1.0
-- **Authors:** Eric Sink
-- **Owners:** Eric Sink
-- **NuGet link:** [SQLitePCLRaw.bundle_green](https://www.nuget.org/packages/SQLitePCLRaw.bundle_green/)
-
 ## Configure app constants
 
 Configuration data, such as database filename and path, can be stored as constants in your app. The sample project includes a **Constants.cs** file that provides common configuration data:
@@ -92,19 +82,15 @@ The `TodoItemDatabase` uses asynchronous lazy initialization to delay initializa
 ```csharp
 public class TodoItemDatabase
 {
-    SQLiteAsyncConnection Database;
-
-    public TodoItemDatabase()
-    {
-    }
+    SQLiteAsyncConnection database;
 
     async Task Init()
     {
-        if (Database is not null)
+        if (database is not null)
             return;
 
-        Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-        var result = await Database.CreateTableAsync<TodoItem>();
+        database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        var result = await database.CreateTableAsync<TodoItem>();
     }
     ...
 }
@@ -123,13 +109,13 @@ public class TodoItemDatabase
     public async Task<List<TodoItem>> GetItemsAsync()
     {
         await Init();
-        return await Database.Table<TodoItem>().ToListAsync();
+        return await database.Table<TodoItem>().ToListAsync();
     }
 
     public async Task<List<TodoItem>> GetItemsNotDoneAsync()
     {
         await Init();
-        return await Database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
+        return await database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
 
         // SQL queries are also possible
         //return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
@@ -138,29 +124,29 @@ public class TodoItemDatabase
     public async Task<TodoItem> GetItemAsync(int id)
     {
         await Init();
-        return await Database.Table<TodoItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        return await database.Table<TodoItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
     }
 
     public async Task<int> SaveItemAsync(TodoItem item)
     {
         await Init();
         if (item.ID != 0)
-            return await Database.UpdateAsync(item);
+            return await database.UpdateAsync(item);
         else
-            return await Database.InsertAsync(item);
+            return await database.InsertAsync(item);
     }
 
     public async Task<int> DeleteItemAsync(TodoItem item)
     {
         await Init();
-        return await Database.DeleteAsync(item);
+        return await database.DeleteAsync(item);
     }
 }
 ```
 
 ## Access data
 
-The `TodoItemDatabase` class can be registered as a singleton that can be used throughout the app if you are using dependency injection. For example, you can register your pages and the database access class as services on the `IServiceCollection` object, in **MauiProgram.cs**, with the `AddSingleton` and `AddTransient` methods:
+The `TodoItemDatabase` class can be registered as a singleton that can be used throughout the app if you are using dependency injection. For example, you can register your pages and the database access class as services on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object, in **MauiProgram.cs**, with the `AddSingleton` and `AddTransient` methods:
 
 ```csharp
 builder.Services.AddSingleton<TodoListPage>();
@@ -170,6 +156,8 @@ builder.Services.AddSingleton<TodoItemDatabase>();
 ```
 
 These services can then be automatically injected into class constructors, and accessed:
+
+::: moniker range="<=net-maui-9.0"
 
 ```csharp
 TodoItemDatabase database;
@@ -192,6 +180,34 @@ async void OnSaveClicked(object sender, EventArgs e)
     await Shell.Current.GoToAsync("..");
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+TodoItemDatabase database;
+
+public TodoItemPage(TodoItemDatabase todoItemDatabase)
+{
+    InitializeComponent();
+    database = todoItemDatabase;
+}
+
+async void OnSaveClicked(object sender, EventArgs e)
+{
+    if (string.IsNullOrWhiteSpace(Item.Name))
+    {
+        await DisplayAlertAsync("Name Required", "Please enter a name for the todo item.", "OK");
+        return;
+    }
+
+    await database.SaveItemAsync(Item);
+    await Shell.Current.GoToAsync("..");
+}
+```
+
+::: moniker-end
 
 Alternatively, new instances of the database access class can be created:
 

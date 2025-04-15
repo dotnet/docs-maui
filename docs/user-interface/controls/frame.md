@@ -1,12 +1,19 @@
 ---
 title: "Frame"
 description: "The .NET MAUI Frame is used to wrap a view or layout with a border that can be configured with color, shadow, and other options."
-ms.date: 08/30/2024
+ms.date: 11/12/2024
 ---
 
 # Frame
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Frame> is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. Frames can be used to create borders around controls but can also be used to create more complex UI.
+
+::: moniker range=">=net-maui-9.0"
+
+> [!IMPORTANT]
+> The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place. For more information, see [Border](border.md).
+
+::: moniker-end
 
 The <xref:Microsoft.Maui.Controls.Frame> class defines the following properties:
 

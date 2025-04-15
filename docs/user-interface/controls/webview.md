@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 08/30/2024
+ms.date: 04/15/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -24,6 +24,7 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 ::: moniker range="=net-maui-8.0"
 
 <xref:Microsoft.Maui.Controls.WebView> defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
+
 ::: moniker-end
 
 ::: moniker range=">=net-maui-9.0"
@@ -231,6 +232,57 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 
 :::zone pivot="devices-android"
 
+::: moniker range=">=net-maui-10.0"
+
+## Play video full screen on Android
+
+When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can be played fullscreen by including `allowfullscreen` in the `iframe`:
+
+```csharp
+myWebView.Source = new HtmlWebViewSource
+{
+  Html = @"<!DOCTYPE html>
+    <html>
+    <head>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+      <style>
+        body { margin: 0; padding: 0; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+      </style>
+    </head>
+    <body>
+      <div class='video-container'>
+        <iframe src='https://www.youtube.com/embed/YE7VzlLtp-4'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen>
+        </iframe>
+      </div>
+    </body>
+    </html>"
+};
+```
+
+::: moniker-end
+
+## Navigate to content that opens a new Window on Android
+
+On Android, navigation won't occur in a <xref:Microsoft.Maui.Controls.WebView> when a hyperlink that specifies `target="_blank"` (to open the content in a new window) is pressed. This is because opening a hyperlink in a new window requires <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> to be implemented, which .NET MAUI doesn't. Therefore, for this scenario you should decide whether to implement <xref:Android.Webkit.WebChromeClient.OnCreateWindow%2A> yourself, open the URL in the system browser, or do something else.
+
+Alternatively, to force all hyperlinks to open in the same <xref:Microsoft.Maui.Controls.WebView>, modify the `WebViewHandler` in your app so that the native <xref:Android.Webkit.WebView> disables support for multiple windows:
+
+```csharp
+#if ANDROID
+    Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("SupportMultipleWindows", (handler, view) =>
+    {
+        handler.PlatformView.Settings.SetSupportMultipleWindows(false);
+    });
+#endif
+```
+
+This code customizes the property mapper for the `WebViewHandler` on Android by calling the <xref:Android.Webkit.WebSettings.SetSupportMultipleWindows%2A> method with a `false` argument, and should be executed before a user can navigate to a hyperlink that specifies `target="_blank"`. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
+
 ## Handle permissions on Android
 
 When browsing to a page that requests access to the device's recording hardware, such as the camera or microphone, permission must be granted by the <xref:Microsoft.Maui.Controls.WebView> control. The `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type on Android to react to permission requests. However, the `WebChromeClient` implementation provided by .NET MAUI ignores permission requests. You must create a new type that inherits from `MauiWebChromeClient` and approves the permission requests.
@@ -260,7 +312,7 @@ The following steps demonstrate how to intercept permission requests from the `W
     }
     ```
 
-01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace:
+01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace (don't append `.Platforms.Android` to the namespace):
 
     ```csharp
     using Android.Webkit;

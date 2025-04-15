@@ -1,7 +1,7 @@
 ---
 title: "Binding fallbacks"
 description: ".NET MAUI data bindings can be made more robust by defining fallback values that will be used if binding fails."
-ms.date: 10/04/2024
+ms.date: 02/27/2025
 ---
 
 # Binding fallbacks
@@ -55,7 +55,7 @@ The following example demonstrates setting the <xref:Microsoft.Maui.Controls.Bin
 <ListView ItemsSource="{Binding Monkeys}"
           ...>
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:Monkey">
             <ViewCell>
                 <Grid>
                     ...

@@ -1,7 +1,7 @@
 ---
 title: "Localization"
 description: "Learn how to localize .NET MAUI app strings, images, and app names."
-ms.date: 09/05/2023
+ms.date: 11/11/2024
 ---
 
 # Localization
@@ -198,7 +198,7 @@ Only two characters are required in the folder name when specifying a top-level 
 
 :::image type="content" source="media/localization/images-folder-structure-ios.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on iOS.":::
 
-<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+<!-- This was required in .NET 7 due to a bug in .NET MAUI, which is now allegedly fixed by https://github.com/dotnet/maui/pull/23269
 In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized image folders:
 
 ```xml
@@ -206,6 +206,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
   <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
 </PropertyGroup>
 ```
+-->
 
 If an image isn't present for a particular language, iOS falls back to the default native language folder and loads the image from there.
 
@@ -219,7 +220,7 @@ Only two characters are required in the folder name when specifying a top-level 
 
 :::image type="content" source="media/localization/images-folder-structure-maccatalyst.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on MacCatalyst.":::
 
-<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+<!-- This was required in .NET 7 due to a bug in .NET MAUI, which is now allegedly fixed by https://github.com/dotnet/maui/pull/23269
 In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized image folders:
 
 ```xml
@@ -227,6 +228,8 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
   <IPhoneResourcePrefix>Platforms/MacCatalyst/Resources</IPhoneResourcePrefix>
 </PropertyGroup>
 ```
+
+-->
 
 If an image isn't present for a particular language, Mac Catalyst falls back to the default native language folder and loads the image from there.
 
@@ -326,7 +329,7 @@ Other keys that you can use to localize app-specific strings are:
 - `CFBundleShortVersionString` - specifies the release version number of the app bundle.
 - `NSHumanReadableCopyright` - the copyright notice for the app bundle.
 
-<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+<!-- This was required in .NET 7 due to a bug in .NET MAUI, which is now allegedly fixed by https://github.com/dotnet/maui/pull/23269
 In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized folders:
 
 ```xml
@@ -334,6 +337,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
   <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
 </PropertyGroup>
 ```
+-->
 
 ### Mac Catalyst
 
@@ -367,7 +371,7 @@ Other keys that you can use to localize app-specific strings are:
 - `CFBundleShortVersionString` - specifies the release version number of the app bundle.
 - `NSHumanReadableCopyright` - the copyright notice for the app bundle.
 
-<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+<!-- This was required in .NET 7 due to a bug in .NET MAUI, which is now allegedly fixed by https://github.com/dotnet/maui/pull/23269
 In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized folders:
 
 ```xml
@@ -375,6 +379,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
   <IPhoneResourcePrefix>Platforms/MacCatalyst/Resources</IPhoneResourcePrefix>
 </PropertyGroup>
 ```
+-->
 
 ### Windows
 

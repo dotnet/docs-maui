@@ -2753,7 +2753,8 @@ The following XAML example shows custom transport controls that play, pause, and
              x:Class="VideoDemos.Views.CustomTransportPage"
              Unloaded="OnContentPageUnloaded"
              Title="Custom transport controls">
-    <Grid RowDefinitions="*,Auto">
+    <Grid x:DataType="controls:Video"
+          RowDefinitions="*,Auto">
         <controls:Video x:Name="video"
                         AutoPlay="False"
                         AreTransportControlsEnabled="False"
@@ -2859,7 +2860,8 @@ The following example shows a custom positioning bar, `PositionSlider`, being co
              x:Class="VideoDemos.Views.CustomPositionBarPage"
              Unloaded="OnContentPageUnloaded"
              Title="Custom position bar">
-    <Grid RowDefinitions="*,Auto,Auto">
+    <Grid x:DataType="controls:Video"
+          RowDefinitions="*,Auto,Auto">
         <controls:Video x:Name="video"
                         AreTransportControlsEnabled="False"
                         Source="{StaticResource ElephantsDream}" />

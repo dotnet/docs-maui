@@ -227,26 +227,31 @@ The `RadioButtonGroup` class defines a `SelectedValue` attached property, of typ
 When the `IsChecked` property changes, either through user or programmatic manipulation, the `RadioButtonGroup.SelectedValue` attached property also changes. Therefore, the `RadioButtonGroup.SelectedValue` attached property can be data bound to a property that stores the user's selection:
 
 ```xaml
-<StackLayout RadioButtonGroup.GroupName="{Binding GroupName}"
-             RadioButtonGroup.SelectedValue="{Binding Selection}">
-    <Label Text="What's your favorite animal?" />
-    <RadioButton Content="Cat"
-                 Value="Cat" />
-    <RadioButton Content="Dog"
-                 Value="Dog" />
-    <RadioButton Content="Elephant"
-                 Value="Elephant" />
-    <RadioButton Content="Monkey"
-                 Value="Monkey"/>
-    <Label x:Name="animalLabel">
-        <Label.FormattedText>
-            <FormattedString>
-                <Span Text="You have chosen:" />
-                <Span Text="{Binding Selection}" />
-            </FormattedString>
-        </Label.FormattedText>
-    </Label>
-</StackLayout>
+<ContentPage ...
+             xmlns:local="clr-namespace:RadioButtonDemos"
+             x:DataType="local:AnimalViewModel">
+    <StackLayout Margin="10"
+                 RadioButtonGroup.GroupName="{Binding GroupName}"
+                 RadioButtonGroup.SelectedValue="{Binding Selection}">
+        <Label Text="What's your favorite animal?" />
+        <RadioButton Content="Cat"
+                     Value="Cat" />
+        <RadioButton Content="Dog"
+                     Value="Dog" />
+        <RadioButton Content="Elephant"
+                     Value="Elephant" />
+        <RadioButton Content="Monkey"
+                     Value="Monkey"/>
+        <Label x:Name="animalLabel">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="You have chosen:" />
+                    <Span Text="{Binding Selection}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>
 ```
 
 In this example, the value of the `RadioButtonGroup.GroupName` attached property is set by the `GroupName` property on the binding context. Similarly, the value of the `RadioButtonGroup.SelectedValue` attached property is set by the `Selection` property on the binding context. In addition, the `Selection` property is updated to the `Value` property of the checked <xref:Microsoft.Maui.Controls.RadioButton>.

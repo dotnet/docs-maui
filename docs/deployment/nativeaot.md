@@ -1,7 +1,7 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
 description: "Learn how to reduce your app size and achieve faster startup time with native AOT deployment on iOS and Mac Catalyst."
-ms.date: 10/25/2024
+ms.date: 12/03/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -110,6 +110,8 @@ In .NET MAUI app this means that:
 - It's not possible to parse XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method. While this can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute this is very error prone and isn't recommended.
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> won't work. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 - The `SearchHandler.DisplayMemberName` property might not work. Instead, you should provide an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define the appearance of <xref:Microsoft.Maui.Controls.SearchHandler> results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+- Customizing UI appearance with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
+- Customizing UI appearance with the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
 
 > [!IMPORTANT]
 > The Mono interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT. For more information about the Mono interpreter, see [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md).
@@ -129,6 +131,8 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Ensure that all data bindings are compiled. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 >   - Ensure that all XAML data bindings are annotated with `x:DataType`.
 >   - Ensure that all code data bindings replace all string-based bindings with lambda-based bindings.
+> - Replace all [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension usage with an implementation that uses the  <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
+> - Replace all [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension usage with an implementation that uses the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
 > - Replace all `[QueryProperty(...)]` usage with an implementation of the `IQueryAttributable` interface. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 > - Replace all `SearchHandler.DisplayMemberName` usage with an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate>. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 > - Replace all implicit conversion operators for types used in XAML with a <xref:System.ComponentModel.TypeConverter>, and it attach it to your type using the <xref:System.ComponentModel.TypeConverterAttribute>. For more information, see [Define a TypeConverter to replace an implicit conversion operator](trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator).
@@ -138,6 +142,90 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 > - Ensure that JSON serialization and deserialization uses a source generated context. For more information, see [Minimal APIs and JSON payloads](/aspnet/core/fundamentals/native-aot#minimal-apis-and-json-payloads).
 > - Review and correct any trimming or AOT warnings. For more information, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings) and [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 > - Thoroughly test your app.
+
+## Native AOT diagnostic support on iOS and Mac Catalyst
+
+Native AOT and Mono share a subset of diagnostics and instrumentation capabilities. Due to Mono's range of diagnostic tools, it can be beneficial to diagnose and debug issues within Mono instead of Native AOT. Apps that are trim and AOT-compatible shouldn't have behavioral differences, so investigations often apply to both runtimes.
+
+The following table shows the diagnostics support with Native AOT on iOS and Mac Catalyst:
+
+| Feature | Fully supported | Partially supported | Not supported |
+| - | - | - | - |
+| [Observability and telemetry](#observability-and-telemetry) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
+| [Development-time diagnostics](#development-time-diagnostics) | <span aria-hidden="true">✔️</span><span class="visually-hidden">Fully supported</span> | | |
+| [Native debugging](#native-debugging) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
+| [CPU Profiling](#cpu-profiling) | | <span aria-hidden="true">✔️</span><span class="visually-hidden">Partially supported</span> | |
+| [Heap analysis](#heap-analysis) | | | <span aria-hidden="true">❌</span><span class="visually-hidden">Not supported</span> |
+
+The following sections provide additional information about this diagnostics support.
+
+### Observability and telemetry
+
+Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet-dsrouter](/dotnet/core/diagnostics/dotnet-dsrouter) which connects diagnostic tooling with .NET applications running on iOS and Mac Catalyst, over TCP/IP. However, Native AOT is currently not compatible with this scenario as it doesn't support EventPipe/DiagnosticServer components built with the TCP/IP stack. Observability is still achievable explicitly in the code.
+
+### Development-time diagnostics
+
+.NET CLI tooling provides separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in Visual Studio Code), uses Mono by default when building or launching .NET MAUI iOS or Mac Catalyst applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot).
+
+Not all diagnostic tools will work seamlessly with published Native AOT applications. However, all applications that are trim and AOT-compatible (that is, those that don't produce any trim and AOT warnings at build time) shouldn't have behavioral differences between Mono and Native AOT. Therefore, all .NET development-time diagnostic tools, such as Hot Reload, are still available for developers during the mobile application development cycle.
+
+> [!TIP]
+> You should develop, debug, and test your application as usual and publish your final app with Native AOT as one of the last steps.
+
+### Native debugging
+
+When you run your .NET MAUI iOS or Mac Catalyst application during development it runs on Mono by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between Mono and Native AOT when the application isn't producing any trim and AOT warnings at build time. Provided that your application fulfils this requirement, you can use the standard Visual Studio Code managed debugging engine for development and testing,
+
+After publishing, Native AOT applications are true native binaries and so the managed debugger won't work on them. However, the Native AOT compiler generates fully native executable files that you can debug with `lldb`. Debugging a Mac Catalyst app with `lldb` is straight forward, as it is executed on the same system. However, debugging NativeAOT iOS applications requires additional effort.
+
+#### Debug .NET MAUI iOS applications with Native AOT
+
+.NET MAUI iOS applications that are compatible with Native AOT and which are properly configured and published with this deployment model, can be debugged as follows:
+
+1. Publish your app with Native AOT targeting `ios-arm64` and note the following information:
+
+    - Application name (referenced below as `<app-name>`).
+    - Bundle identifier (referenced below as `<bundle-identifier>`).
+    - Path to the published application's archive *.ipa* file (referenced below as `<path-to-ipa>`).
+
+2. Obtain your physical device ID (referenced below as `<device-identifier>`):
+
+    ```bash
+    xcrun devicectl list devices
+    ```
+
+3. Install the app on your physical device:
+
+    ```bash
+    xcrun devicectl device install app --device <device-identifier> <path-to-ipa>
+    ```
+
+4. Launch the app on your physical device:
+
+    ```bash
+    xcrun devicectl device process launch --device <device-identifier> --start-stopped <bundle-identifier>
+    ```
+
+5. Open `lldb` and connect to your physical device:
+
+    ```bash
+    (lldb) device select <device-identifier>
+    (lldb) device process attach -n <app-name>
+    ```
+
+After successfully completing these steps, you'll be able to start debugging your Native AOT .NET MAUI iOS application with `lldb`.
+
+#### Importance of the symbol file
+
+By default, debug symbols are stripped from the application's binary file into a *.dSYM* file. This file is used by debuggers and post mortem analysis tools to show information about local variables, source line numbers, and to recreate stack traces of crash dumps. Therefore, it's essential to preserve the symbol file before submitting your application to the App Store.
+
+### CPU profiling
+
+[Xcode Instruments](https://developer.apple.com/xcode) can be used to collect CPU samples of a Native AOT application.
+
+### Heap analysis
+
+Heap analysis isn't currently supported with Native AOT.
 
 ## See also
 

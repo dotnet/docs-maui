@@ -74,7 +74,8 @@ The following example shows a <xref:Microsoft.Maui.Controls.DataTrigger> that di
 <Button Text="Save">
     <Button.Triggers>
         <DataTrigger TargetType="Button"
-                     Binding="{Binding Source={x:Reference entry},
+                     Binding="{Binding x:DataType='Entry',
+                                       Source={x:Reference entry},
                                        Path=Text.Length}"
                      Value="0">
             <Setter Property="IsEnabled"
@@ -147,11 +148,13 @@ The following example shows a <xref:Microsoft.Maui.Controls.MultiTrigger> that b
     <Button.Triggers>
         <MultiTrigger TargetType="Button">
             <MultiTrigger.Conditions>
-                <BindingCondition Binding="{Binding Source={x:Reference email},
-                                            Path=Text.Length}"
+                <BindingCondition Binding="{Binding x:DataType='Entry',
+                                                    Source={x:Reference email},
+                                                    Path=Text.Length}"
                                   Value="0" />
-                <BindingCondition Binding="{Binding Source={x:Reference phone},
-                                            Path=Text.Length}"
+                <BindingCondition Binding="{Binding x:DataType='Entry',
+                                                    Source={x:Reference phone},
+                                                    Path=Text.Length}"
                                   Value="0" />
             </MultiTrigger.Conditions>
             <Setter Property="IsEnabled" Value="False" />
@@ -386,7 +389,7 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
             <VisualStateGroup>
                 <VisualState x:Name="Checked">
                     <VisualState.StateTriggers>
-                        <CompareStateTrigger Property="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                        <CompareStateTrigger Property="{Binding x:DataType='CheckBox', Source={x:Reference checkBox}, Path=IsChecked}"
                                              Value="True" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
@@ -396,7 +399,7 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
                 </VisualState>
                 <VisualState x:Name="Unchecked">
                     <VisualState.StateTriggers>
-                        <CompareStateTrigger Property="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                        <CompareStateTrigger Property="{Binding x:DataType='CheckBox', Source={x:Reference checkBox}, Path=IsChecked}"
                                              Value="False" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
@@ -410,18 +413,19 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
 </Style>
 ...
 <Grid>
-    <Frame BackgroundColor="White"
-           CornerRadius="12"
-           Margin="24"
-           HorizontalOptions="Center"
-           VerticalOptions="Center">
+    <Border BackgroundColor="White"
+            StrokeShape="RoundRectangle 12"
+            Margin="24"
+            Padding="24"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
         <StackLayout Orientation="Horizontal">
             <CheckBox x:Name="checkBox"
                       VerticalOptions="Center" />
             <Label Text="Check the CheckBox to modify the Grid background color."
                    VerticalOptions="Center" />
         </StackLayout>
-    </Frame>
+    </Border>
 </Grid>
 ```
 

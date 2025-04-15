@@ -1,7 +1,7 @@
 ---
 title: "Style apps using Cascading Style Sheets"
 description: ".NET MAUI supports styling visual elements using Cascading Style Sheets (CSS)."
-ms.date: 09/30/2024
+ms.date: 03/19/2025
 ---
 
 # Style apps using Cascading Style Sheets
@@ -342,8 +342,18 @@ The following selectors are unsupported:
 - `@media` and `@supports`
 - `:` and `::`
 
+::: moniker range="=net-maui-8.0"
+
 > [!NOTE]
 > Specificity, and specificity overrides are unsupported.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+If two or more CSS rules point to the same element, the selector with the highest specificity will take precedence and its style declaration will be applied to the element. The [specificity algorithm](https://github.com/dotnet/maui/blob/main/src/Controls/src/Core/StyleSheets/Selector.cs#L319) calculates the weight of a CSS selector to determine which rule from competing CSS declarations gets applied to the element.
+
+::: moniker-end
 
 ## Property reference
 
@@ -356,9 +366,9 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`align-self`|<xref:Microsoft.Maui.Controls.VisualElement>| `auto` \| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial`|`align-self: flex-end;`|
 |`background-color`|<xref:Microsoft.Maui.Controls.VisualElement>|_color_ \| `initial` |`background-color: springgreen;`|
 |`background-image`|<xref:Microsoft.Maui.Controls.Page>|_string_ \| `initial` |`background-image: bg.png;`|
-|`border-color`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_color_ \| `initial`|`border-color: #9acd32;`|
-|`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-radius: 10;`|
-|`border-width`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-width: .5;`|
+|`border-color`|<xref:Microsoft.Maui.Controls.Border>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_color_ \| `initial`|`border-color: #9acd32;`|
+|`border-radius`|<xref:Microsoft.Maui.Controls.Border>, <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-radius: 10;`|
+|`border-width`|<xref:Microsoft.Maui.Controls.Border>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-width: .5;`|
 |`color`|<xref:Microsoft.Maui.Controls.ActivityIndicator>, <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.ProgressBar>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.Switch>, <xref:Microsoft.Maui.Controls.TimePicker>|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
 |`column-gap`|<xref:Microsoft.Maui.Controls.Grid>|_double_ \| `initial`|`column-gap: 9;`|
 |`direction`|<xref:Microsoft.Maui.Controls.VisualElement>|`ltr` \| `rtl` \| `inherit` \| `initial` |`direction: rtl;`|
@@ -432,6 +442,7 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 |`-maui-placeholder`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
 |`-maui-placeholder-color`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_color_ \| `initial` |`-maui-placeholder-color: green;`|
 |`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
+|`-maui-shadow`|<xref:Microsoft.Maui.Controls.VisualElement>| Valid formats are: color, offsetX, offsetY \| offset X, offsetY, radius, color \| offset X, offsetY, radius, color, opactity | `-maui-shadow: #000000 4 4;` |
 |`-maui-thumb-color`|<xref:Microsoft.Maui.Controls.Slider>, <xref:Microsoft.Maui.Controls.Switch>|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
 |`-maui-vertical-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
 |`-maui-vertical-text-alignment`|<xref:Microsoft.Maui.Controls.Label>| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|

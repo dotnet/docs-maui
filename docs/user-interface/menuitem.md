@@ -32,12 +32,12 @@ The following example shows how to create a <xref:Microsoft.Maui.Controls.MenuIt
 ```xaml
 <ListView>
     <ListView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="local:Monkey">
             <ViewCell>
                 <ViewCell.ContextActions>
                     <MenuItem Text="Context menu option" />
                 </ViewCell.ContextActions>
-                <Label Text="{Binding .}" />
+                <Label Text="{Binding Name}" />
             </ViewCell>
         </DataTemplate>
     </ListView.ItemTemplate>
@@ -54,7 +54,7 @@ DataTemplate dataTemplate = new DataTemplate(() =>
 {
     // A Label displays the list item text
     Label label = new Label();
-    label.SetBinding(Label.TextProperty, ".");
+    label.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Name);
 
     // A ViewCell serves as the DataTemplate
     ViewCell viewCell = new ViewCell
@@ -65,7 +65,7 @@ DataTemplate dataTemplate = new DataTemplate(() =>
     // Add a MenuItem to the ContextActions
     MenuItem menuItem = new MenuItem
     {
-        Text = "Context Menu Option"
+        Text = "Context menu option"
     };
     viewCell.ContextActions.Add(menuItem);
 

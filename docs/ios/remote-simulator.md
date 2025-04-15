@@ -45,7 +45,7 @@ The buttons are as follows:
 
 - **Home** – simulates the home button on an iOS device.
 - **Lock** – locks the simulator (swipe to unlock).
-- **Take Screenshot** – saves a screenshot of the simulator to **\Users\\{User}\Pictures\Xamarin\iOS Simulator**.
+- **Take Screenshot** – saves a screenshot of the simulator to **\Users\\{User}\Pictures\Microsoft\iOS Simulator**.
 - **Settings** – displays keyboard and other settings.
 - **Other options** – displays various simulator options such as rotation, and shake gesture.
 
@@ -80,6 +80,18 @@ In some circumstances, an Xcode configuration problem can result in the remote i
 - Delete your *~/Library/Developer/CoreSimulator/Devices* folder.
 - Run `killall -9 com.apple.CoreSimulator.CoreSimulatorService`.
 - Run `xcrun simctl list devices`.
+
+In some cases, Xcode may have generated simulator devices that can also cause the remote iOS Simulator for Windows to be unable to read its properties correctly as it attempts to verify which ones can be deployed to, causing a boot loop.
+
+You can work around this by removing and creating new simulators which you can deploy to:
+
+- Ensure that Xamarin Mac Agent (XMA) and Xcode aren't running.
+- Run `xcrun simctl list | grep -w "Shutdown"  | grep -o "([-A-Z0-9]*)" | sed 's/[\(\)]//g' | xargs -I uuid xcrun simctl delete  uuid`.
+- Run `xcrun simctl list devices`. You should see no devices listed.
+- Open Xcode on your connected Mac.
+- Open **Windows > Devices & Simulators**.
+- Select **Simulators**.
+- Create a new simulator you wish to deploy to.
 
 ### Logs
 

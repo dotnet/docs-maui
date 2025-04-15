@@ -17,7 +17,7 @@ public class MediaPage : ContentPage
         this.BindingContext = this;
 
         var imageControl = new Image();
-        imageControl.SetBinding(Image.SourceProperty, new Binding("ImageItem"));
+        imageControl.SetBinding(Image.SourceProperty, Binding.Create(static (ImageItem item) => item.ImageItem));
 
         Content = new VerticalStackLayout
         {
@@ -73,6 +73,22 @@ public class MediaPage : ContentPage
         await TextToSpeech.Default.SpeakAsync("Hello World");
     //</speak>
 
+    //<speak_options_old>
+    public async void SpeakSettings()
+    {
+        IEnumerable<Locale> locales = await TextToSpeech.Default.GetLocalesAsync();
+
+        SpeechOptions options = new SpeechOptions()
+        {
+            Pitch = 1.5f,   // 0.0 - 2.0
+            Volume = 0.75f, // 0.0 - 1.0
+            Locale = locales.FirstOrDefault()
+        };
+
+        await TextToSpeech.Default.SpeakAsync("How nice to meet you!", options);
+    }
+    //</speak_options_old>
+
     //<speak_options>
     public async void SpeakSettings()
     {
@@ -82,6 +98,7 @@ public class MediaPage : ContentPage
         {
             Pitch = 1.5f,   // 0.0 - 2.0
             Volume = 0.75f, // 0.0 - 1.0
+            Rate = 1.5f,    // 0.1 - 2.0
             Locale = locales.FirstOrDefault()
         };
 
@@ -105,7 +122,7 @@ public class MediaPage : ContentPage
     {
         if (cts?.IsCancellationRequested ?? true)
             return;
-        
+
         cts.Cancel();
     }
     //</speak_cancel>
@@ -113,7 +130,7 @@ public class MediaPage : ContentPage
 
     //<speak_queue>
     bool isBusy = false;
-    
+
     public void SpeakMultiple()
     {
         isBusy = true;

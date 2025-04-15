@@ -95,14 +95,14 @@ A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time
 The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
 
 ```xaml
-<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" />
+<Label Text="{Binding x:DataType='Picker', Source={x:Reference picker}, Path=SelectedItem}" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 Label monkeyNameLabel = new Label();
-monkeyNameLabel.SetBinding(Label.TextProperty, new Binding("SelectedItem", source: picker));
+monkeyNameLabel.SetBinding(Label.TextProperty, Binding.Create(static (Picker picker) => picker.SelectedItem, source: picker));
 ```
 
 In addition, an event handler can be executed when the `SelectedIndexChanged` event fires:
@@ -139,8 +139,8 @@ The equivalent C# code is shown below:
 
 ```csharp
 Picker picker = new Picker { Title = "Select a monkey" };
-picker.SetBinding(Picker.ItemsSourceProperty, "Monkeys");
-picker.ItemDisplayBinding = new Binding("Name");
+picker.SetBinding(Picker.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+picker.ItemDisplayBinding = Binding.Create(static (Monkey monkey) => monkey.Name);
 ```
 
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the binding context, which returns an `IList<Monkey>` collection. The following code example shows the `Monkey` class, which contains four properties:
@@ -176,21 +176,21 @@ The equivalent C# code is:
 
 ```csharp
 Picker picker = new Picker { Title = "Select a monkey" };
-picker.SetBinding(Picker.ItemsSourceProperty, "Monkeys");
-picker.SetBinding(Picker.SelectedItemProperty, "SelectedMonkey");
-picker.ItemDisplayBinding = new Binding("Name");
+picker.SetBinding(Picker.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+picker.SetBinding(Picker.SelectedItemProperty, static (MonkeysViewModel vm) => vm.SelectedMonkey);
+picker.ItemDisplayBinding = Binding.Create(static (Monkey monkey) => monkey.Name);
 
 Label nameLabel = new Label { ... };
-nameLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Name");
+nameLabel.SetBinding(Label.TextProperty, static (MonkeysViewModel vm) => vm.SelectedMonkey.Name);
 
 Label locationLabel = new Label { ... };
-locationLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Location");
+locationLabel.SetBinding(Label.TextProperty, static (MonkeysViewModel vm) => vm.SelectedMonkey.Location);
 
 Image image = new Image { ... };
-image.SetBinding(Image.SourceProperty, "SelectedMonkey.ImageUrl");
+image.SetBinding(Image.SourceProperty, static (MonkeysViewModel vm) => vm.SelectedMonkey.ImageUrl);
 
 Label detailsLabel = new Label();
-detailsLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Details");
+detailsLabel.SetBinding(Label.TextProperty, static (MonkeysViewModel vm) => vm.SelectedMonkey.Details);
 ```
 
 The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Image> views.

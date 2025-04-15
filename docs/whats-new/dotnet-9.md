@@ -1,13 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 9
 description: Learn about the new features introduced in .NET MAUI for .NET 9.
-ms.date: 10/24/2024
+ms.date: 01/31/2025
 ---
 
 # What's new in .NET MAUI for .NET 9
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9, see the following release notes:
 
+- [.NET MAUI 9](https://github.com/dotnet/maui/releases/tag/9.0.0)
 - [.NET MAUI 9 RC2](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.2.24503.2)
 - [.NET MAUI 9 RC1](https://github.com/dotnet/maui/releases/tag/9.0.0-rc.1.24453.9)
 - [.NET MAUI 9 Preview 7](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.7.24407.4)
@@ -47,9 +48,9 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 For more information, see [HybridWebView](~/user-interface/controls/hybridwebview.md).
 
-### Titlebar for Windows
+### Titlebar for Mac Catalyst and Windows
 
-The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Windows:
+The <xref:Microsoft.Maui.Controls.TitleBar> control provides the ability to add a custom title bar to your app on Mac Catalyst and Windows:
 
 :::image type="content" source="media/dotnet-9/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
@@ -118,9 +119,6 @@ The following screenshot shows the resulting appearance:
 
 :::image type="content" source="media/dotnet-9/titlebar-full.png" alt-text=".NET MAUI Titlebar screenshot.":::
 
-> [!NOTE]
-> Mac Catalyst support for the `TitleBar` control will be added in a future release.
-
 For more information, see [TitleBar](~/user-interface/controls/titlebar.md).
 
 ## Control enhancements
@@ -144,22 +142,33 @@ The binding mode for `IsVisible` and `IsEnabled` on a <xref:Microsoft.Maui.Contr
 
 ### BlazorWebView
 
-On iOS and Mac Catalyst 18, .NET MAUI 9 changes the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to `localhost`. The internal `0.0.0.1` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
+The default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has changed to `0.0.0.1`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
 
-To opt into using the `0.0.0.1` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
-
-```csharp
-// Set this switch to use the LEGACY behavior of always using 0.0.0.1 to host BlazorWebView
-AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
-```
-
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in your `MauiProgram` class:
+To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram.cs` class:
 
 ```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
+static MauiProgram()
+{
+    // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
+    AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+}
 ```
 
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android. For more information, see [Fix disposal deadlocks on Android](~/user-interface/controls/blazorwebview.md#fix-disposal-deadlocks-on-android).
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> now fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
+
+> [!WARNING]
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in your `MauiProgram` class:
+
+```csharp
+static MauiProgram()
+{
+    AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
+}
+```
+
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
 
 ### Buttons on iOS
 
@@ -184,6 +193,21 @@ builder.ConfigureMauiHandlers(handlers =>
 ### ContentPage
 
 In .NET MAUI 9, the <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped> property is also supported on Mac Catalyst, as well and Android and iOS.
+
+### Focus behavior on Windows
+
+In .NET MAUI 8 on Windows, the <xref:Microsoft.Maui.Controls.VisualElement.Focused?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property are applied to an element and its children:
+
+```xaml
+<VerticalStackLayout Focus="OnFocused">
+    <Entry />
+    <Editor />
+</VerticalStackLayout>
+```
+
+In this example on .NET 8, the `OnFocused` event handler is executed on Windows when the <xref:Microsoft.Maui.Controls.VerticalStackLayout>, <xref:Microsoft.Maui.Controls.Entry>, or <xref:Microsoft.Maui.Controls.Editor> gains focus.
+
+.NET MAUI 9 changes this behavior on Windows to be identical to the other platforms. Therefore, the <xref:Microsoft.Maui.Controls.VisualElement.Focused?displayProperty=nameWithType> event, the <xref:Microsoft.Maui.Controls.VisualElement.Unfocused?displayProperty=nameWithType> event, and the <xref:Microsoft.Maui.Controls.VisualElement.IsFocused?displayProperty=nameWithType> property only apply to an element. Therefore, when the previous example runs on .NET 9, the `OnFocused` event handler isn't executed because only input controls can gain focus.
 
 ### Soft keyboard input support
 
@@ -252,7 +276,10 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
-In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
+> [!WARNING]
+> A CS0272 compiler error will occur if the set accessor for a property or indexer is inaccessible. If this occurs, increase the accessibility of the accessor.
+
+In addition, .NET MAUI 9 adds a <xref:Microsoft.Maui.Controls.BindingBase.Create%2A?displayProperty=nameWithType> method that sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
 // in .NET 8
@@ -283,11 +310,17 @@ myEntry.SetBinding(Entry.TextProperty, new MultiBinding
 > [!IMPORTANT]
 > Compiled bindings are required instead of string-based bindings in NativeAOT apps, and in apps with full trimming enabled.
 
+For more information about compiled bindings in code, see [Compiled bindings in code](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compiled-bindings-in-code).
+
 ## Compiled bindings in XAML
 
 In .NET MAUI 8, compiled bindings are disabled for any XAML binding expressions that define the `Source` property, and are unsupported on multi-bindings. These restrictions have been removed in .NET MAUI 9. For information about compiling XAML binding expressions that define the `Source` property, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
 
 By default, .NET MAUI 9 produces build warnings for bindings that don't use compiled bindings. For more information about XAML compiled bindings warnings, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
+
+## Dependency injection
+
+In a Shell app, you no longer need to register your pages with the dependency injection container unless you want to influence the lifetime of the page relative to the container with the [`AddSingleton`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. For more information about these methods, see [Dependency lifetime](~/fundamentals/dependency-injection.md#dependency-lifetime).
 
 ## Handler disconnection
 
@@ -392,12 +425,22 @@ For more information, see [Native embedding](~/platform-integration/native-embed
 
 ## Project templates
 
-.NET MAUI 9 adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+The **.NET MAUI App** project template includes the ability to create a fully functional todo app, using controls from the Syncfusion Toolkit for .NET MAUI to visualize data and persist it to a local database based on SQLite. To create this todo app, create a new project in Visual Studio using the **.NET MAUI App** project template, and then check the **Include sample content** checkbox in the **Additional information** window:
 
-The template can also be used from `dotnew new`:
+:::image type="content" source="media/dotnet-9/syncfusion-sample-pages.png" alt-text="Screenshot of how to add SyncFusion sample pages to your .NET MAUI app project.":::
+
+The todo app can also be created from the .NET CLI with the `--sample-content` or `-sc` option:
 
 ```dotnetcli
-dotnet new maui-blazor-web -n AllTheTargets
+dotnet new maui --sample-content -n MyProject
+```
+
+.NET MAUI 9 also adds a **.NET MAUI Blazor Hybrid and Web App** project template to Visual Studio that creates a solution with a .NET MAUI Blazor Hybrid app with a Blazor Web app, which share common code in a Razor class library project.
+
+The template can also be used from the .NET CLI:
+
+```dotnetcli
+dotnet new maui-blazor-web -n MyProject
 ```
 
 ## Resource dictionaries
@@ -416,7 +459,11 @@ Full trimming is now supported by setting the `$(TrimMode)` MSBuild property to 
 
 [!INCLUDE [Trimming feature switches](../deployment/includes/feature-switches.md)]
 
-## XAML compiler
+## Windows app deployment
+
+When debugging and deploying a new .NET MAUI project to Windows, the default behavior in .NET MAUI 9 is to deploy an unpackaged app. For more information, see [Deploy and debug your .NET MAUI app on Windows](~/windows/setup.md).
+
+## XAML compiler error codes
 
 In .NET MAUI 9, the XAML compiler error codes have changed their prefix from `XFC` to `XC`. Ensure that you update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project files, if used, to reference the new prefix.
 
@@ -424,11 +471,14 @@ In .NET MAUI 9, the XAML compiler error codes have changed their prefix from `XF
 
 All classes that implement <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension>, <xref:Microsoft.Maui.Controls.Xaml.IMarkupExtension`1>, <xref:Microsoft.Maui.Controls.Xaml.IValueProvider>, and <xref:Microsoft.Maui.Controls.IExtendedTypeConverter> need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization introduced in .NET MAUI 9 that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance.
 
-For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true).
+For information about annotating markup extensions with these attributes, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true#service-providers).
 
 ## Xcode sync
 
 .NET MAUI 9 includes Xcode sync (`xcsync`), which is a tool that enables you to use Xcode for managing Apple specific files with .NET projects, including asset catalogs, plist files, storyboards, and xib files. The tool has two main commands to generate a temporary Xcode project from a .NET project, and to synchronize changes from the Xcode files back to your .NET project.
+
+> [!IMPORTANT]
+> xcsync is currently in preview.
 
 You use `dotnet build` with the `xcsync-generate` or `xcsync-sync` commands, to generate or sync these files, and pass in a project file and additional arguments:
 
@@ -448,13 +498,36 @@ For more information, see [Xcode sync](~/macios/xcsync.md).
 
 ### Frame
 
-The `Frame` control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The `Border` control should be used in its place. For more information see [Border](~/user-interface/controls/border.md).
+The <xref:Microsoft.Maui.Controls.Frame> control is marked as obsolete in .NET MAUI 9, and will be completely removed in a future release. The <xref:Microsoft.Maui.Controls.Border> control should be used in its place.
+
+When replacing a <xref:Microsoft.Maui.Controls.Frame> with a <xref:Microsoft.Maui.Controls.Border>, the <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=nameWithType> property value should become the <xref:Microsoft.Maui.Controls.Border.Stroke?displayProperty=nameWithType> property value, and the <xref:Microsoft.Maui.Controls.Frame.CornerRadius?displayProperty=nameWithType> property value should become part of the <xref:Microsoft.Maui.Controls.Border.StrokeShape?displayProperty=nameWithType> property value. In addition, it may be necessary to duplicate the `Margin` value as the `Padding` value.
+
+The following example shows equivalent <xref:Microsoft.Maui.Controls.Frame> and <xref:Microsoft.Maui.Controls.Border> elements in XAML:
+
+```xaml
+<Frame BorderColor="DarkGray"
+       CornerRadius="5"
+       Margin="20"
+       HeightRequest="360"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+
+<Border Stroke="DarkGray"
+        StrokeShape="RoundRectangle 5"
+        Margin="20"
+        Padding="20"
+        HeightRequest="360"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+```
+
+For more information see [Border](~/user-interface/controls/border.md).
 
 ### MainPage
 
-Instead of defining the first page of your app using the `MainPage` property on an `Application` object, you should set the `Page` property on a `Window` to the first page of your app. This is what happens internally in .NET MAUI when you set the `MainPage` property, so there's no behavior change introduced by the `MainPage` property being marked as obsolete.
+Instead of defining the first page of your app using the <xref:Microsoft.Maui.Controls.Application.MainPage> property on an <xref:Microsoft.Maui.Controls.Application> object, you should set the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window> to the first page of your app. This is what happens internally in .NET MAUI when you set the <xref:Microsoft.Maui.Controls.Application.MainPage> property, so there's no behavior change introduced by the <xref:Microsoft.Maui.Controls.Application.MainPage> property being marked as obsolete.
 
-The following example shows setting the `Page` property on a `Window`, via the `CreateWindow` override:
+The following example shows setting the <xref:Microsoft.Maui.Controls.Window.Page> property on a <xref:Microsoft.Maui.Controls.Window>, via the `CreateWindow` override:
 
 ```csharp
 public partial class App : Application
@@ -471,7 +544,9 @@ public partial class App : Application
 }
 ```
 
-The `MainPage` property is retained for .NET MAUI 9, but will be completely removed in a future release.
+Code that accesses the `Application.Current.MainPage` property should now access the `Application.Current.Windows[0].Page` property for apps with a single window. For apps with multiple windows, use the `Application.Current.Windows` collection to identify the correct window and then access the `Page` property. In addition, each element features a `Window` property, that's accessible when the element is part of the current window, from which the `Page` property can be accessed (`Window.Page`). Platform code can retrieve the app's <xref:Microsoft.Maui.IWindow> object with the `Microsoft.Maui.Platform.GetWindow` extension method.
+
+While the <xref:Microsoft.Maui.Controls.Application.MainPage> property is retained in .NET MAUI 9 it will be completely removed in a future release.
 
 ### Compatibility layouts
 
@@ -490,10 +565,76 @@ As a replacement, the <xref:Microsoft.Maui.Controls.VisualElement.Measure(System
 
 In addition, the <xref:Microsoft.Maui.SizeRequest> struct is obsoleted. Instead, <xref:Microsoft.Maui.Graphics.Size> should be used.
 
+## Upgrade from .NET 8 to .NET 9
+
+To upgrade your .NET MAUI projects from .NET 8 to .NET 9, first install .NET 9 and the .NET MAUI workload with [Visual Studio 17.12+](https://visualstudio.microsoft.com/vs/), or with [Visual Studio Code and the .NET MAUI extension and .NET and the .NET MAUI workloads](~/get-started/installation.md?tabs=visual-studio-code), or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and the `dotnet workload install maui` command.
+
+### Update project file
+
+To update your .NET MAUI app from .NET 8 to .NET 9 open the app's project file (*.csproj*) and change the Target Framework Monikers (TFMs) from 8 to 9. If you're using a TFM such as `net8.0-ios15.2` be sure to match the platform version or remove it entirely. The following example shows the TFMs for a .NET 8 project:
+
+```xml
+<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0-tizen</TargetFrameworks>
+<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+```
+
+The following example shows the TFMs for a .NET 9 project:
+
+```xml
+<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst;net9.0-tizen</TargetFrameworks>
+<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+```
+
+If your app's project file references a .NET 8 version of the [`Microsoft.Maui.Controls`](https://www.nuget.org/packages/Microsoft.Maui.Controls/) NuGet package, either directly or through the `$(MauiVersion)` build property, update this to a .NET 9 version. Then, remove the package reference for the [`Microsoft.Maui.Controls.Compatibility`](https://www.nuget.org/packages/Microsoft.Maui.Controls.Compatibility/) NuGet package, provided that your app doesn't use any types from this package. In addition, update the package reference for the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) NuGet package to the latest .NET 9 release.
+
+If your app targets iOS or Mac Catalyst, update the `$(SupportedOSPlatformVersion)` build properties for these platforms to 15.0:
+
+```xml
+<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+```
+
+When debugging and deploying a new .NET MAUI project to Windows, the default behavior in .NET 9 is to deploy an unpackaged app. To adopt this behavior, see [Convert a packaged .NET MAUI Windows app to unpackaged](~/windows/setup.md#convert-a-packaged-net-maui-windows-app-to-unpackaged).
+
+Prior to building your upgraded app for the first time, delete the `bin` and `obj` folders. Any build errors and warnings will guide you towards next steps.
+
+### Update XAML compiler error codes
+
+XAML compiler error codes have changed their prefix from `XFC` to `XC`, so update the `$(WarningsAsErrors)`, `$(WarningsNotAsErrors)`, and `$(NoWarn)` build properties in your app's project file, if used, to reference the new prefix.
+
+### Address new XAML compiler warnings for compiled bindings
+
+Build warnings will be produced for bindings that don't use compiled bindings, and these will need to be addressed. For more information, see [XAML compiled bindings warnings](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#xaml-compiled-bindings-warnings).
+
+### Update XAML markup extensions
+
+XAML markup extensions will need to be annotated with either the <xref:Microsoft.Maui.Controls.Xaml.RequireServiceAttribute> or <xref:Microsoft.Maui.Controls.Xaml.AcceptEmptyServiceProviderAttribute>. This is required due to a XAML compiler optimization that enables the generation of more efficient code, which helps reduce the app size and improve runtime performance. For more information, see [Service providers](~/xaml/markup-extensions/create.md?view=net-maui-9&preserve-view=true#service-providers).
+
+### Address deprecated APIs
+
+.NET MAUI 9 deprecates some APIs, which will be completely removed in a future release. Therefore, address any build warnings about deprecated APIs. For more information, see [Deprecated APIs](#deprecated-apis).
+
+### Adopt compiled bindings that set the Source property
+
+You can opt into compiling bindings that set the `Source` property, to take advantage of better runtime performance. For more information, see [Compile bindings that define the `Source` property](~/fundamentals/data-binding/compiled-bindings.md?view=net-maui-9.0&preserve-view=true#compile-bindings-that-define-the-source-property).
+
+### Adopt compiled bindings in C\#
+
+You can opt into compiling binding expressions that are declared in code, to take advantage of better runtime performance. For more information, see [Compiled bindings in code](~/fundamentals/data-binding/compiled-bindings.md#compiled-bindings-in-code).
+
+### Adopt full trimming
+
+You can adopt into using full trimming, to reduce the overall size of your app, by setting the `$(TrimMode)` MSBuild property to `full`. For more information, see [Trim a .NET MAUI app](~/deployment/trimming.md).
+
+### Adopt NativeAOT deployment on supported platforms
+
+You can opt into Native AOT deployment on iOS and Mac Catalyst. Native AOT deployment produces a .NET MAUI app that's been ahead-of-time (AOT) compiled to native code. For more information, see [Native AOT deployment on iOS and Mac Catalyst](~/deployment/nativeaot.md).
+
 ## .NET for Android
 
 .NET for Android in .NET 9, which adds support for API 35, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET for Android in .NET 9, see the following release notes:
 
+- [.NET for Android 9](https://github.com/dotnet/android/releases/tag/35.0.7)
 - [.NET for Android 9 RC2](https://github.com/dotnet/android/releases/tag/35.0.0-rc.2.152)
 - [.NET for Android 9 RC1](https://github.com/dotnet/android/releases/tag/35.0.0-rc.1.80)
 - [.NET for Android 9 Preview 7](https://github.com/xamarin/xamarin-android/releases/tag/35.0.0-preview.7.41)
@@ -614,6 +755,7 @@ For more information, see [Trimming granularity](/dotnet/core/deploying/trimming
 
 For more information about .NET 9 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 9](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-xcode16.0-9617)
 - [.NET 9.0.1xx RC2](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc2-9600)
 - [.NET 9.0.1xx RC1](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-rc1-9270)
 - [.NET 9.0.1xx Preview 7](https://github.com/xamarin/xamarin-macios/releases/tag/dotnet-9.0.1xx-preview7-9231)

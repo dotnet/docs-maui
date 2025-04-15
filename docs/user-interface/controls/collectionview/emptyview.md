@@ -38,7 +38,7 @@ CollectionView collectionView = new CollectionView
 {
     EmptyView = "No items to display"
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "EmptyMonkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.EmptyMonkeys);
 ```
 
 The result is that, because the data bound collection is `null`, the string set as the `EmptyView` property value is displayed:
@@ -53,12 +53,12 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
 <Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
-               SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+               SearchCommandParameter="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
     <CollectionView ItemsSource="{Binding Monkeys}"
                     Grid.Row="1">
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="models:Monkey">
                 ...
             </DataTemplate>
         </CollectionView.ItemTemplate>
@@ -101,7 +101,7 @@ CollectionView collectionView = new CollectionView
         Content = stackLayout
     }
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.StackLayout> set as the `EmptyView` property value is displayed:
@@ -116,21 +116,23 @@ The `EmptyView` property can be set to a custom type, whose template is displaye
 <Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
-               SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+               SearchCommandParameter="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
     <CollectionView ItemsSource="{Binding Monkeys}"
                     Grid.Row="1">
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="models:Monkey">
                 ...
             </DataTemplate>
         </CollectionView.ItemTemplate>
         <CollectionView.EmptyView>
-            <views:FilterData Filter="{Binding Source={x:Reference searchBar}, Path=Text}" />
+            <views:FilterData x:DataType="SearchBar"
+                              Filter="{Binding Source={x:Reference searchBar}, Path=Text}" />
         </CollectionView.EmptyView>
         <CollectionView.EmptyViewTemplate>
             <DataTemplate>
-                <Label Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
+                <Label x:DataType="controls:FilterData"
+                       Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
                        Margin="10,25,10,10"
                        FontAttributes="Bold"
                        FontSize="18"
@@ -185,8 +187,11 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CollectionViewDemos.Models"
+             xmlns:viewmodels="clr-namespace:CollectionViewDemos.ViewModels"
              x:Class="CollectionViewDemos.Views.EmptyViewSwapPage"
-             Title="EmptyView (swap)">
+             Title="EmptyView (swap)"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
         <ContentView x:Key="BasicEmptyView">
             <StackLayout>
@@ -218,7 +223,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
     <Grid Margin="20" RowDefinitions="Auto, Auto, *">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
-                   SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                   SearchCommandParameter="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                    Placeholder="Filter" />
         <HorizontalStackLayout Grid.Row="1">
             <Label Text="Toggle EmptyViews" />
@@ -228,7 +233,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
                         ItemsSource="{Binding Monkeys}"
                         Grid.Row="2">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Monkey">
                     ...
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -258,7 +263,9 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:CollectionViewDemos.Controls">
+             xmlns:controls="clr-namespace:CollectionViewDemos.Controls"
+             xmlns:viewmodels="clr-namespace:CollectionViewDemos.ViewModels"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
         <DataTemplate x:Key="AdvancedTemplate">
             ...
@@ -276,10 +283,10 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
     <Grid Margin="20" RowDefinitions="Auto,*">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
-                   SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                   SearchCommandParameter="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                    Placeholder="Filter" />
         <CollectionView ItemsSource="{Binding Monkeys}"
-                        EmptyView="{Binding Source={x:Reference searchBar}, Path=Text}"
+                        EmptyView="{Binding x:DataType='SearchBar', Source={x:Reference searchBar}, Path=Text}"
                         EmptyViewTemplate="{StaticResource SearchSelector}"
                         Grid.Row="1" />
     </Grid>
@@ -295,7 +302,7 @@ CollectionView collectionView = new CollectionView
     EmptyView = searchBar.Text,
     EmptyViewTemplate = new SearchTermDataTemplateSelector { ... }
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `EmptyView` property is set to the `SearchBar.Text` property, and the `EmptyViewTemplate` property is set to a `SearchTermDataTemplateSelector` object.

@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 :::image type="content" source="media/titlebar/titlebar-overview.png" alt-text=".NET MAUI Titlebar overview." border="false":::
 
 > [!IMPORTANT]
-> <xref:Microsoft.Maui.Controls.TitleBar> is only available on Windows. Mac Catalyst support will be added in a future release.
+> <xref:Microsoft.Maui.Controls.TitleBar> is only available on Mac Catalyst and Windows.
 
 <xref:Microsoft.Maui.Controls.TitleBar> defines the following properties:
 
@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TitleBa
 - <xref:Microsoft.Maui.Controls.TitleBar.DefaultTemplate>, of type <xref:Microsoft.Maui.Controls.ControlTemplate>, which represents the default template for the title bar.
 - <xref:Microsoft.Maui.Controls.TitleBar.ForegroundColor>, of type <xref:Microsoft.Maui.Graphics.Color>, which specifies the foreground colour of the title bar, and is used as the color for the title and subtitle text.
 - <xref:Microsoft.Maui.Controls.TitleBar.Icon>, of type <xref:Microsoft.Maui.Controls.ImageSource>, which represents an optional 16x16px icon image for the title bar.
-- <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control for the content that follows the icon.
+- <xref:Microsoft.Maui.Controls.TitleBar.LeadingContent>, of type <xref:Microsoft.Maui.IView>, which specifies the control for the content that precedes the icon.
 - <xref:Microsoft.Maui.Controls.TitleBar.PassthroughElements>, of type `IList<IView>`, which represents a list of elements that should prevent dragging in the title bar region and instead directly handle input.
 - <xref:Microsoft.Maui.Controls.TitleBar.Subtitle>, of type `string`, which specifies the subtitle text of the title bar. This is usually secondary information about the app or window.
 - <xref:Microsoft.Maui.Controls.TitleBar.Title>, of type `string`, which specifies the title text of the title bar. This is usually the name of the app or indicates the purpose of the window.
@@ -45,7 +45,8 @@ The following XAML example shows how to add a <xref:Microsoft.Maui.Controls.Titl
 <Window xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:local="clr-namespace:TitleBarDemo"
-        x:Class="TitleBarDemo.MainWindow">
+        x:Class="TitleBarDemo.MainWindow"
+        x:DataType="local:MainWindowViewModel">
     ...
     <Window.TitleBar>
         <TitleBar Title="{Binding Title}"
@@ -155,7 +156,7 @@ The following XAML example shows how to define a visual state for the `TitleBarT
                 </VisualState>
             </VisualStateGroup>
         </VisualStateGroupList>
-    <VisualStateManager.VisualStateGroups>
+    </VisualStateManager.VisualStateGroups>
 </TitleBar>
 ```
 

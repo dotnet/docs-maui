@@ -1,7 +1,7 @@
 ---
 title: "File picker"
 description: "Learn how to use the .NET MAUI IFilePicker interface in the Microsoft.Maui.Storage namespace, which lets a user choose one or more files from the device."
-ms.date: 05/18/2023
+ms.date: 12/16/2024
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FilePicker"]
 ---
 

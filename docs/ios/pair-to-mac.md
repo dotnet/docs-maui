@@ -20,9 +20,9 @@ Pair to Mac enables the following software development workflow:
 - It's possible to use the Windows command-line to build iOS apps.
 
 > [!NOTE]
-> Before following the instructions in this article, on a Mac, [install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Then manually open Xcode, after installation, so that it can add additional components. In addition, you should also install either the latest [Visual Studio 2022 for Mac](https://visualstudio.microsoft.com/vs/mac/) or [Mono](https://www.mono-project.com/download/stable/#download-mac). In addition, if you have a Mac computer with Apple silicon please ensure that Rosetta is installed.
+> Before following the instructions in this article, on a Mac, [install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Then manually open Xcode, after installation, so that it can add additional components. You should also install [Mono](https://www.mono-project.com/download/stable/#download-mac). In addition, if you have a Mac computer with Apple silicon please ensure that Rosetta is installed.
 >
-> If you would prefer not to install Visual Studio 2022 for Mac, Visual Studio 2022 can automatically configure the Mac build host. However, you must still install and run Xcode, and install Mono.
+> Visual Studio 2022 will automatically configure the Mac build host. However, you must still install and run Xcode, and install Mono.
 
 ## Enable remote login on the Mac
 
@@ -30,11 +30,17 @@ To set up the Mac build host, first enable remote login:
 
 1. On the Mac, open **System Preferences** and go to the **Sharing** pane.
 
-1. Check **Remote Login** in the **Service** list.
+1. Enable **Remote Login** in the **Advanced** list.
 
-    :::image type="content" source="media/pair-to-mac/sharing.png" alt-text="Enabling remote login.":::
+    :::image type="content" source="media/pair-to-mac/remote-login-setting.png" alt-text="Enable remote login setting.":::
 
-    Make sure that it's configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
+1. Click on the **i** next to the Remote Login setting to configure more settings:
+
+    - Enable **Allow full disk access for remote users**.
+
+    - Ensure that remote login is configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
+
+    :::image type="content" source="media/pair-to-mac/remote-login-advanced-settings.png" alt-text="Allow full disk access and allow access for all users settings.":::
 
 1. If prompted, configure the macOS firewall. If you have set the macOS firewall to block incoming connections, you may need to allow `mono-sgen` to receive incoming connections. An alert appears to prompt you if so.
 

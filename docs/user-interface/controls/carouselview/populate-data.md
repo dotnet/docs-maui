@@ -36,7 +36,7 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
@@ -53,15 +53,15 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
-                <Frame HasShadow="True"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       Margin="20"
-                       HeightRequest="300"
-                       HorizontalOptions="Center"
-                       VerticalOptions="CenterAndExpand">
+                <Border Stroke="DarkGray"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="20"
+                        Padding="20"
+                        HeightRequest="360"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">            
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
@@ -81,7 +81,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
                                MaxLines="5"
                                LineBreakMode="TailTruncation" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -92,21 +92,21 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 carouselView.ItemTemplate = new DataTemplate(() =>
 {
     Label nameLabel = new Label { ... };
-    nameLabel.SetBinding(Label.TextProperty, "Name");
+    nameLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Name);
 
     Image image = new Image { ... };
-    image.SetBinding(Image.SourceProperty, "ImageUrl");
+    image.SetBinding(Image.SourceProperty, static (Monkey monkey) => monkey.ImageUrl);
 
     Label locationLabel = new Label { ... };
-    locationLabel.SetBinding(Label.TextProperty, "Location");
+    locationLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Location);
 
     Label detailsLabel = new Label { ... };
-    detailsLabel.SetBinding(Label.TextProperty, "Details");
+    detailsLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Details);
 
     StackLayout stackLayout = new StackLayout();
     stackLayout.Add(nameLabel);
@@ -114,9 +114,9 @@ carouselView.ItemTemplate = new DataTemplate(() =>
     stackLayout.Add(locationLabel);
     stackLayout.Add(detailsLabel);
 
-    Frame frame = new Frame { ... };
+    Border border = new Border { ... };
     StackLayout rootStackLayout = new StackLayout();
-    rootStackLayout.Add(frame);
+    rootStackLayout.Add(border);
 
     return rootStackLayout;
 });
@@ -147,13 +147,17 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:CarouselViewDemos.Controls"
-             x:Class="CarouselViewDemos.Views.HorizontalLayoutDataTemplateSelectorPage">
+             xmlns:viewmodels="clr-namespace:CarouselViewDemos.ViewModels"
+             x:Class="CarouselViewDemos.Views.HorizontalLayoutDataTemplateSelectorPage"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
-        <DataTemplate x:Key="AmericanMonkeyTemplate">
+        <DataTemplate x:Key="AmericanMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
-        <DataTemplate x:Key="OtherMonkeyTemplate">
+        <DataTemplate x:Key="OtherMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
@@ -174,7 +178,7 @@ CarouselView carouselView = new CarouselView
 {
     ItemTemplate = new MonkeyDataTemplateSelector { ... }
 };
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `ItemTemplate` property is set to a `MonkeyDataTemplateSelector` object. The following example shows the `MonkeyDataTemplateSelector` class:
@@ -237,22 +241,22 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
 <CarouselView x:Name="carouselView"
               ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <StackLayout>
-                    <Frame HasShadow="True"
-                           BorderColor="DarkGray"
-                           CornerRadius="5"
-                           Margin="20"
-                           HeightRequest="300"
-                           HorizontalOptions="Center"
-                           VerticalOptions="CenterAndExpand">
+                    <Border Stroke="DarkGray"
+                            StrokeShape="RoundRectangle 5"
+                            Margin="20"
+                            Padding="20"
+                            HeightRequest="360"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
                         <SwipeView>
                             <SwipeView.TopItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Favorite"
                                                IconImageSource="favorite.png"
                                                BackgroundColor="LightGreen"
-                                               Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.FavoriteCommand}"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
                                                CommandParameter="{Binding}" />
                                 </SwipeItems>
                             </SwipeView.TopItems>
@@ -261,7 +265,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
                                     <SwipeItem Text="Delete"
                                                IconImageSource="delete.png"
                                                BackgroundColor="LightPink"
-                                               Command="{Binding Source={x:Reference carouselView}, Path=BindingContext.DeleteCommand}"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
                                                CommandParameter="{Binding}" />
                                 </SwipeItems>
                             </SwipeView.BottomItems>
@@ -269,7 +273,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
                                 <!-- Define item appearance -->
                             </StackLayout>
                         </SwipeView>
-                    </Frame>
+                    </Border>
             </StackLayout>
         </DataTemplate>
     </CarouselView.ItemTemplate>
@@ -280,12 +284,12 @@ The equivalent C# code is:
 
 ```csharp
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 carouselView.ItemTemplate = new DataTemplate(() =>
 {
     StackLayout stackLayout = new StackLayout();
-    Frame frame = new Frame { ... };
+    Border border = new Border { ... };
 
     SwipeView swipeView = new SwipeView();
     SwipeItem favoriteSwipeItem = new SwipeItem
@@ -294,8 +298,8 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "favorite.png",
         BackgroundColor = Colors.LightGreen
     };
-    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.FavoriteCommand", source: carouselView));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -303,22 +307,22 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "delete.png",
         BackgroundColor = Colors.LightPink
     };
-    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.DeleteCommand", source: carouselView));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
     swipeView.BottomItems = new SwipeItems { deleteSwipeItem };
 
     StackLayout swipeViewStackLayout = new StackLayout { ... };
     swipeView.Content = swipeViewStackLayout;
-    frame.Content = swipeView;
-    stackLayout.Add(frame);
+    border.Content = swipeView;
+    stackLayout.Add(border);
 
     return stackLayout;
 });
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Frame> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the bottom and from the top:
+In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Border> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the bottom and from the top:
 
 :::image type="content" source="media/populate-data/swipeview-bottom.png" alt-text="Screenshot of a CarouselView bottom context menu item.":::
 :::image type="content" source="media/populate-data/swipeview-top.png" alt-text="Screenshot of a CarouselView top context menu item.":::
@@ -353,7 +357,7 @@ ICommand refreshCommand = new Command(() =>
 refreshView.Command = refreshCommand;
 
 CarouselView carouselView = new CarouselView();
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 refreshView.Content = carouselView;
 // ...
 ```
@@ -402,7 +406,7 @@ CarouselView carouselView = new CarouselView
     RemainingItemsThreshold = 2
 };
 carouselView.RemainingItemsThresholdReached += OnCollectionViewRemainingItemsThresholdReached;
-carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 ```
 
 In this code example, the `RemainingItemsThresholdReached` event fires when there are 2 items not yet scrolled to, and in response executes the `OnCollectionViewRemainingItemsThresholdReached` event handler:

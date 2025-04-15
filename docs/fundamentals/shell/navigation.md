@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 10/08/2024
+ms.date: 01/14/2025
 ---
 
 # .NET MAUI Shell navigation
@@ -16,7 +16,7 @@ The <xref:Microsoft.Maui.Controls.Shell> class defines the following navigation-
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
 - `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the <xref:Microsoft.Maui.Controls.Shell>.
-- `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, a type-casted alias for `Application.Current.MainPage`.
+- `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, which provides access to the current Shell.
 
 The <xref:Microsoft.Maui.Controls.BackButtonBehavior>, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
@@ -118,7 +118,7 @@ This example enables contextual page navigation, where navigating to the `detail
 
 ## Perform navigation
 
-To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a <xref:Microsoft.Maui.Controls.Shell> object, or through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
+To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
 
 > [!IMPORTANT]
 > When a route from the Shell visual hierarchy is navigated to, a navigation stack isn't created. However, when a page that's not in the Shell visual hierarchy is navigated to, a navigation stack is created.
@@ -135,18 +135,12 @@ await Shell.Current.GoToAsync("//animals/monkeys");
 
 This example navigates to the page for the `monkeys` route, with the route being defined on a <xref:Microsoft.Maui.Controls.ShellContent> object. The <xref:Microsoft.Maui.Controls.ShellContent> object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
 
+> [!WARNING]
+> Absolute routes don't work with pages that are registered with the `Routing.RegisterRoute` method.
+
 ### Relative routes
 
 Navigation can also be performed by specifying a valid relative URI as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. The routing system will attempt to match the URI to a <xref:Microsoft.Maui.Controls.ShellContent> object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
-
-The following relative route formats are supported:
-
-| Format | Description |
-| --- | --- |
-| *route* | The route hierarchy will be searched for the specified route, upwards from the current position. The matching page will be pushed to the navigation stack. |
-| /*route* | The route hierarchy will be searched from the specified route, downwards from the current position. The matching page will be pushed to the navigation stack. |
-| //*route* | The route hierarchy will be searched for the specified route, upwards from the current position. The matching page will replace the navigation stack. |
-| ///*route* | The route hierarchy will be searched for the specified route, downwards from the current position. The matching page will replace the navigation stack. |
 
 The following example navigates to the page for the `monkeydetails` route:
 
@@ -154,7 +148,10 @@ The following example navigates to the page for the `monkeydetails` route:
 await Shell.Current.GoToAsync("monkeydetails");
 ```
 
-In this example, the `monkeyDetails` route is searched for up the hierarchy until the matching page is found. When the page is found, it's pushed to the navigation stack.
+In this example, the `monkeyDetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
+
+> [!WARNING]
+> Relative routes don't work with pages that are defined in a subclassed <xref:Microsoft.Maui.Controls.Shell> class, which is typically *AppShell.xaml*. Instead, only pages registered with the `Routing.RegisterRoute` method can be pushed onto the navigation stack using relative routes. For more information, see [Register detail page routes](#register-detail-page-routes).
 
 #### Contextual navigation
 
@@ -313,6 +310,8 @@ protected override void OnNavigating(ShellNavigatingEventArgs args)
 
 Shell navigation can be intercepted and completed or canceled based on user choice. This can be achieved by overriding the `OnNavigating` method in your <xref:Microsoft.Maui.Controls.Shell> subclass, and by calling the `GetDeferral` method on the `ShellNavigatingEventArgs` object. This method returns a `ShellNavigatingDeferral` token that has a `Complete` method, which can be used to complete the navigation request:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 public MyShell : Shell
 {
@@ -332,6 +331,32 @@ public MyShell : Shell
     }    
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+public MyShell : Shell
+{
+    // ...
+    protected override async void OnNavigating(ShellNavigatingEventArgs args)
+    {
+        base.OnNavigating(args);
+
+        ShellNavigatingDeferral token = args.GetDeferral();
+
+        var result = await DisplayActionSheetAsync("Navigate?", "Cancel", "Yes", "No");
+        if (result != "Yes")
+        {
+            args.Cancel();
+        }
+        token.Complete();
+    }    
+}
+```
+
+::: moniker-end
 
 In this example, an action sheet is displayed that invites the user to complete the navigation request, or cancel it. Navigation is canceled by invoking the `Cancel` method on the `ShellNavigatingEventArgs` object. Navigation is completed by invoking the `Complete` method on the `ShellNavigatingDeferral` token that was retrieved by the `GetDeferral` method on the `ShellNavigatingEventArgs` object.
 

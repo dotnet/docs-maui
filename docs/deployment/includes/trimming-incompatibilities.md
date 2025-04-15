@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 10/23/2024
+ms.date: 12/03/2024
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -11,3 +11,6 @@ The following .NET MAUI features are incompatible with full trimming and will be
 - Loading XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension method. This XAML can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute>. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 - The `SearchHandler.DisplayMemberName` property. Instead, you should provide an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define the appearance of <xref:Microsoft.Maui.Controls.SearchHandler> results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
+- The <xref:Microsoft.Maui.Controls.HybridWebView> control, due to its use of dynamic `System.Text.Json` serialization features.
+- UI customization with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension. Instead, you should use the <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
+- UI customization with the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension. Instead, you should use the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).

@@ -1,7 +1,7 @@
 ---
 title: "Modal page presentation style on iOS"
 description: "This article explains how to consume the .NET MAUI iOS platform-specific that sets the presentation style of a modal page."
-ms.date: 04/05/2022
+ms.date: 03/14/2025
 ---
 
 # Modal page presentation style on iOS
@@ -39,6 +39,7 @@ The `Page.On<iOS>` method specifies that this platform-specific will only run on
 - `Automatic`, which sets the modal presentation style to the default chosen by the system. For most view controllers, `UIKit` maps this to `UIModalPresentationStyle.PageSheet`, but some system view controllers may map it to a different style.
 - `OverFullScreen`, which sets the modal presentation style to cover the screen.
 - `PageSheet`, which sets the modal presentation style to cover the underlying content.
+- `Popover`, which sets the modal presentation style to display content in a popover.
 
 In addition, the `GetModalPresentationStyle` method can be used to retrieve the current value of the `UIModalPresentationStyle` enumeration that's applied to the <xref:Microsoft.Maui.Controls.Page>.
 

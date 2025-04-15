@@ -1,7 +1,7 @@
 ---
 title: "Relative bindings"
 description: ".NET MAUI relative bindings are created with the RelativeSource markup extension, which sets the binding source relative to the position of the binding target."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Relative bindings
@@ -35,7 +35,8 @@ For more information about .NET MAUI markup extensions, see [Consume XAML markup
 The `Self` relative binding mode is used bind a property of an element to another property on the same element:
 
 ```xaml
-<BoxView Color="Red"
+<BoxView x:DataType="ContentPage"
+         Color="Red"
          WidthRequest="200"
          HeightRequest="{Binding Source={RelativeSource Self}, Path=WidthRequest}"
          HorizontalOptions="Center" />
@@ -52,7 +53,9 @@ A common use of this binding mode is set an object's `BindingContext` to a prope
 
 ```xaml
 <ContentPage ...
-             BindingContext="{Binding Source={RelativeSource Self}, Path=DefaultViewModel}">
+             xmlns:local="clr-namespace:DataBindingDemos"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=DefaultViewModel}"
+             x:DataType="local:PeopleViewModel">
     <StackLayout>
         <ListView ItemsSource="{Binding Employees}">
             ...
@@ -79,7 +82,9 @@ The following XAML shows an example where the `Mode` property will be implicitly
 
 ```xaml
 <ContentPage ...
-             BindingContext="{Binding Source={RelativeSource Self}, Path=DefaultViewModel}">
+             xmlns:local="clr-namespace:DataBindingDemos"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=DefaultViewModel}"
+             x:DataType="local:PeopleViewModel">
     <StackLayout>
         <ListView ItemsSource="{Binding Employees}">
             <ListView.ItemTemplate>
@@ -89,7 +94,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
                             <Label Text="{Binding Fullname}"
                                    VerticalOptions="Center" />
                             <Button Text="Delete"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}}, Path=DeleteEmployeeCommand}"
+                                    Command="{Binding x:DataType='local:PeopleViewModel', Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}}, Path=DeleteEmployeeCommand}"
                                     CommandParameter="{Binding}"
                                     HorizontalOptions="End" />
                         </StackLayout>
@@ -108,7 +113,7 @@ In this example, the `BindingContext` of the page is set to the `DefaultViewMode
 In addition, the optional `AncestorLevel` property can help disambiguate ancestor lookup in scenarios where there is possibly more than one ancestor of that type in the visual tree:
 
 ```xaml
-<Label Text="{Binding Source={RelativeSource AncestorType={x:Type Entry}, AncestorLevel=2}, Path=Text}" />
+<Label Text="{Binding x:DataType='Entry', Source={RelativeSource AncestorType={x:Type Entry}, AncestorLevel=2}, Path=Text}" />
 ```
 
 In this example, the `Label.Text` property binds to the `Text` property of the second <xref:Microsoft.Maui.Controls.Entry> that's encountered on the upward path, starting at the target element of the binding.
@@ -123,12 +128,14 @@ The `TemplatedParent` relative binding mode is used to bind from within a contro
 The following XAML shows an example of the `TemplatedParent` relative binding mode:
 
 ```xaml
-<ContentPage ...>
+<ContentPage ...
+             xmlns:controls="clr-namespace:DataBindingDemos.Controls">
     <ContentPage.Resources>
-        <ControlTemplate x:Key="CardViewControlTemplate">
-            <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
-                   BackgroundColor="{Binding CardColor}"
-                   BorderColor="{Binding BorderColor}"
+        <ControlTemplate x:Key="CardViewControlTemplate"
+                         x:DataType="controls:CardView">
+            <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                    BackgroundColor="{Binding CardColor}"
+                    Stroke="{Binding BorderColor}"
                    ...>
                 <Grid>
                     ...
@@ -139,7 +146,7 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
                     <Label Text="{Binding CardDescription}"
                            ... />
                 </Grid>
-            </Frame>
+            </Border>
         </ControlTemplate>
     </ContentPage.Resources>
     <StackLayout>        
@@ -165,7 +172,7 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Frame>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object:
+In this example, the <xref:Microsoft.Maui.Controls.Border>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Border> and its children resolve their binding expressions against the properties of each `CardView` object:
 
 :::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
 

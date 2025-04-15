@@ -65,6 +65,8 @@ The following XAML example show how to create a <xref:Microsoft.Maui.Controls.Bu
 
 The `Text` property specifies the text that appears in the <xref:Microsoft.Maui.Controls.Button>. The `Clicked` event is set to an event handler named `OnButtonClicked`. This handler is located in the code-behind file:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 public partial class BasicButtonClickPage : ContentPage
 {
@@ -80,11 +82,34 @@ public partial class BasicButtonClickPage : ContentPage
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+public partial class BasicButtonClickPage : ContentPage
+{
+    public BasicButtonClickPage ()
+    {
+        InitializeComponent ();
+    }
+
+    async void OnButtonClicked(object sender, EventArgs args)
+    {
+        await label.RelRotateToAsync(360, 1000);
+    }
+}
+```
+
+::: moniker-end
+
 In this example, when the <xref:Microsoft.Maui.Controls.Button> is tapped, the `OnButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.Button> object responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.Button> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.Button> objects sharing the same `Clicked` event. The `Clicked` handler calls an animation function that rotates the <xref:Microsoft.Maui.Controls.Label> 360 degrees in 1000 milliseconds:
 
 :::image type="content" source="media/button/button-rotation.png" alt-text="Screenshot of a Button.":::
 
 The equivalent C# code to create a <xref:Microsoft.Maui.Controls.Button> is:
+
+::: moniker range="<=net-maui-9.0"
 
 ```csharp
 Button button = new Button
@@ -95,6 +120,22 @@ Button button = new Button
 };
 button.Clicked += async (sender, args) => await label.RelRotateTo(360, 1000);
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+Button button = new Button
+{
+    Text = "Click to Rotate Text!",
+    VerticalOptions = LayoutOptions.Center,
+    HorizontalOptions = LayoutOptions.Center
+};
+button.Clicked += async (sender, args) => await label.RelRotateToAsync(360, 1000);
+```
+
+::: moniker-end
 
 ## Use the command interface
 
@@ -150,7 +191,8 @@ The following XAML example consumes the `CommandDemoViewModel` class:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ButtonDemos"
              x:Class="ButtonDemos.BasicButtonCommandPage"
-             Title="Basic Button Command">
+             Title="Basic Button Command"
+             x:DataType="local:CommandDemoViewModel">
     <ContentPage.BindingContext>
         <local:CommandDemoViewModel />
     </ContentPage.BindingContext>

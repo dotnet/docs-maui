@@ -1,7 +1,7 @@
 ---
 title: "Switch"
 description: "The .NET MAUI Switch is a type of button that can be manipulated by the user to toggle between on and off states."
-ms.date: 08/30/2024
+ms.date: 03/07/2025
 ---
 
 # Switch
@@ -16,9 +16,22 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.Switch> control i
 
 The <xref:Microsoft.Maui.Controls.Switch> control defines the following properties:
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 - `IsToggled` is a `boolean` value that indicates whether the <xref:Microsoft.Maui.Controls.Switch> is on. The default value of this property is `false`.
 - `OnColor` is a <xref:Microsoft.Maui.Graphics.Color> that affects how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
 - `ThumbColor` is the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+- `IsToggled` is a `boolean` value that indicates whether the <xref:Microsoft.Maui.Controls.Switch> is on. The default value of this property is `false`.
+- `OffColor`is a <xref:Microsoft.Maui.Graphics.Color> that determines how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the off state.
+- `OnColor` is a <xref:Microsoft.Maui.Graphics.Color> that determines how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
+- `ThumbColor` is the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means they can be styled and be the target of data bindings.
 
@@ -40,6 +53,8 @@ Switch switchControl = new Switch { IsToggled = true };
 
 ## Switch appearance
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.Switch> also defines `OnColor` and `ThumbColor` properties. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it is toggled to its on state, and the `ThumbColor` property can be set to define the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
 
 ```xaml
@@ -52,6 +67,26 @@ The properties can also be set when creating a <xref:Microsoft.Maui.Controls.Swi
 ```csharp
 Switch switch = new Switch { OnColor = Colors.Orange, ThumbColor = Colors.Green };
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.Switch> also defines `OffColor`, `OnColor` and `ThumbColor` properties. The `OffColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color in its off state. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it's toggled to its on state, and the `ThumbColor` property can be set to define the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
+
+```xaml
+<Switch OffColor="Red"
+        OnColor="Orange"
+        ThumbColor="Green" />
+```
+
+The properties can also be set when creating a <xref:Microsoft.Maui.Controls.Switch> in code:
+
+```csharp
+Switch switch = new Switch { OffColor = Colors.Red, OnColor = Colors.Orange, ThumbColor = Colors.Green };
+```
+
+::: moniker-end
 
 The following screenshot shows the <xref:Microsoft.Maui.Controls.Switch> in its on and off toggle states, with the `OnColor` and `ThumbColor` properties set:
 
@@ -95,7 +130,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
 <Label Text="Lorem ipsum dolor sit amet, elit rutrum, enim hendrerit augue vitae praesent sed non, lorem aenean quis praesent pede.">
     <Label.Triggers>
         <DataTrigger TargetType="Label"
-                     Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}"
+                     Binding="{Binding x:DataType='Switch', Source={x:Reference styleSwitch}, Path=IsToggled}"
                      Value="true">
             <Setter Property="FontAttributes"
                     Value="Italic, Bold" />
@@ -119,20 +154,22 @@ The following XAML example shows how to define visual states for the `On` and `O
 ```xaml
 <Switch IsToggled="True">
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="On">
-                <VisualState.Setters>
-                    <Setter Property="ThumbColor"
-                            Value="MediumSpringGreen" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState x:Name="Off">
-                <VisualState.Setters>
-                    <Setter Property="ThumbColor"
-                            Value="Red" />
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
+        <VisualStateGroupList>
+             <VisualStateGroup x:Name="CommonStates">
+                 <VisualState x:Name="On">
+                     <VisualState.Setters>
+                         <Setter Property="ThumbColor"
+                             Value="MediumSpringGreen" />
+                     </VisualState.Setters>
+                 </VisualState>
+                 <VisualState x:Name="Off">
+                     <VisualState.Setters>
+                         <Setter Property="ThumbColor"
+                             Value="Red" />
+                     </VisualState.Setters>
+                 </VisualState>
+             </VisualStateGroup>
+        </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 </Switch>
 ```

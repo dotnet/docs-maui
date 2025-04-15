@@ -583,7 +583,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             </Grid.RowDefinitions>
             <Slider x:Name="redSlider"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="1"
+            <Label x:DataType="Slider"
+                   Grid.Row="1"
                    Text="{Binding Source={x:Reference redSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
@@ -592,7 +593,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             <Slider x:Name="greenSlider"
                     Grid.Row="2"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="3"
+            <Label x:DataType="Slider"
+                   Grid.Row="3"
                    Text="{Binding Source={x:Reference greenSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
@@ -601,7 +603,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
             <Slider x:Name="blueSlider"
                     Grid.Row="4"
                     ValueChanged="OnSliderValueChanged" />
-            <Label Grid.Row="5"
+            <Label x:DataType="Slider"
+                   Grid.Row="5"
                    Text="{Binding Source={x:Reference blueSlider},
                                   Path=Value,
                                   Converter={StaticResource doubleToInt},
@@ -676,7 +679,7 @@ public class ColorSlidersGridPage : ContentPage
         childGrid.Add(redSlider);
 
         Label redLabel = new Label();
-        redLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Red = {0}", source: redSlider));
+        redLabel.SetBinding(Label.TextProperty, Binding.Create(static (Slider slider) => slider.Value, converter: doubleToInt, converterParameter: "255", stringFormat: "Red = {0}", source: redSlider));
         Grid.SetRow(redLabel, 1);
         childGrid.Add(redLabel);
 
@@ -686,7 +689,7 @@ public class ColorSlidersGridPage : ContentPage
         childGrid.Add(greenSlider);
 
         Label greenLabel = new Label();
-        greenLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Green = {0}", source: greenSlider));
+        greenLabel.SetBinding(Label.TextProperty, Binding.Create(static (Slider slider) => slider.Value, converter: doubleToInt, converterParameter: "255", stringFormat: "Green = {0}", source: greenSlider));
         Grid.SetRow(greenLabel, 3);
         childGrid.Add(greenLabel);
 
@@ -696,7 +699,7 @@ public class ColorSlidersGridPage : ContentPage
         childGrid.Add(blueSlider);
 
         Label blueLabel = new Label();
-        blueLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Blue = {0}", source: blueSlider));
+        blueLabel.SetBinding(Label.TextProperty, Binding.Create(static (Slider slider) => slider.Value, converter: doubleToInt, converterParameter: "255", stringFormat: "Blue = {0}", source: blueSlider));
         Grid.SetRow(blueLabel, 5);
         childGrid.Add(blueLabel);
 

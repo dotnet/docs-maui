@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 10/01/2024
+ms.date: 11/13/2024
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -96,7 +96,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
     </ContentPage>
     ```
 
-1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control for use in your app. To do this, on the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public static class MauiProgram
@@ -122,6 +122,8 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+    This code also enables developer tools on the underlying WebView controls, when the app is running in debug configuration.
 
 ## Access scoped services from native UI
 
@@ -218,30 +220,36 @@ To play inline video in a Blazor hybrid app on iOS, in a <xref:Microsoft.AspNetC
 
 ::: moniker range=">=net-maui-9.0"
 
-## Fix disposal deadlocks on Android
+## Disposal deadlocks on Android
 
-By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
-
-If you encounter hangs on Android with <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> you should enable an <xref:System.AppContext> switch in the `CreateMauiApp` method in *MauiProgram.cs*:
-
-```csharp
-AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", true);
-```
-
-This switch enables <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to fire and forget the async disposal that occurs, and as a result fixes the majority of the disposal deadlocks that occur on Android.
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> fires and forgets the async disposal of the underlying `WebViewManager`. This reduces the potential for disposal deadlocks to occur on Android.
 
 > [!WARNING]
-> Enabling this switch means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
+> This fire-and-forget default behavior means that disposal can return before all objects are disposed, which can cause behavioral changes in your app. The items that are disposed are partially Blazor's own internal types, but also app-defined types such as scoped services used within the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> portion of your app.
 
-## Host content using the legacy behavior on iOS and Mac Catalyst
-
-On iOS and Mac Catalyst 18, the default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has changed to `localhost`. The internal `0.0.0.1` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
-
-To opt into using the `0.0.0.1` address, add the following code to the `CreateMauiApp` method in *MauiProgram.cs*:
+To opt out of this behavior, you should configure your app to block on dispose via an <xref:System.AppContext> switch in your `MauiProgram` class:
 
 ```csharp
-// Set this switch to use the LEGACY behavior of always using 0.0.0.1 to host BlazorWebView
-AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+static MauiProgram()
+{
+    AppContext.SetSwitch("BlazorWebView.AndroidFireAndForgetAsync", false);
+}
+```
+
+If your app is configured to block on dispose via this switch, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> performs async-over-sync disposal, which means that it blocks the thread until the async disposal is complete. However, this can cause deadlocks if the disposal needs to run code on the same thread (because the thread is blocked while waiting).
+
+## Host content using the legacy behavior
+
+The default behavior for hosting content in a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has changed to `0.0.0.1`. The internal `0.0.0.0` address used to host content no longer works and results in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> not loading any content and rendering as an empty rectangle.
+
+To opt into using the `0.0.0.0` address, add the following code to your `MauiProgram` class:
+
+```csharp
+static MauiProgram()
+{
+    // Set this switch to use the LEGACY behavior of always using 0.0.0.0 to host BlazorWebView
+    AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
+}
 ```
 
 ::: moniker-end

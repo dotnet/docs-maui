@@ -1,7 +1,7 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 10/24/2024
+ms.date: 12/20/2024
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
@@ -23,7 +23,7 @@ Trimming behavior can be controlled by setting the `$(TrimMode)` build property 
 ```
 
 > [!IMPORTANT]
-> The `$(TrimMode)` build property shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
+> Don't set the `$(TrimMode)` build property when using Native AOT deployment, which automatically performs full trimming of your app. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
 
 The `full` trim mode removes any code that's not used by your app. The `partial` trim mode trims the base class library (BCL), assemblies for the underlying platforms (such as *Mono.Android.dll* and *Microsoft.iOS.dll*), and any other assemblies that have opted into trimming with the `$(TrimmableAsssembly)` build item:
 
@@ -35,8 +35,10 @@ The `full` trim mode removes any code that's not used by your app. The `partial`
 
 This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when building the assembly.
 
+Full trimming shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
+
 > [!NOTE]
-> It's not necessary to set the `$(PublishTrimmed)` build property to `true` in your app's project file, because this is set by default.
+> Don't set the `$(PublishTrimmed)` build property in your app's project file, because this is set by default when required.
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 

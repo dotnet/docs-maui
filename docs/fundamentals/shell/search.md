@@ -48,12 +48,28 @@ public class AnimalSearchHandler : SearchHandler
     {
         base.OnItemSelected(item);
 
-        // Let the animation complete
-        await Task.Delay(1000);
+        Animal animal = item as Animal;
+        string navigationTarget = GetNavigationTarget();
 
-        ShellNavigationState state = (App.Current.MainPage as Shell).CurrentState;
-        // The following route works because route names are unique in this app.
-        await Shell.Current.GoToAsync($"{GetNavigationTarget()}?name={((Animal)item).Name}");
+        if (navigationTarget.Equals("catdetails") || navigationTarget.Equals("dogdetails"))
+        {
+            // Navigate, passing a string
+            await Shell.Current.GoToAsync($"{navigationTarget}?name={((Animal)item).Name}");
+        }
+        else
+        {
+            string lowerCasePropertyName = navigationTarget.Replace("details", string.Empty);
+            // Capitalise the property name
+            string propertyName = char.ToUpper(lowerCasePropertyName[0]) + lowerCasePropertyName.Substring(1);
+
+            var navigationParameters = new Dictionary<string, object>
+            {
+                { propertyName, animal }
+            };
+
+            // Navigate, passing an object
+            await Shell.Current.GoToAsync($"{navigationTarget}", navigationParameters);
+        }
     }
 
     string GetNavigationTarget()
@@ -129,7 +145,7 @@ In addition to displaying `string` data in the search results, the appearance of
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true">
             <controls:AnimalSearchHandler.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
                           ColumnDefinitions="0.15*,0.85*">
                         <Image Source="{Binding ImageUrl}"

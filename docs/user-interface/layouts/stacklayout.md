@@ -286,8 +286,8 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Sta
              Title="Combined StackLayouts demo">
     <StackLayout Margin="20">
         ...
-        <Frame BorderColor="Black"
-               Padding="5">
+        <Border Stroke="Black"
+                Padding="5">
             <StackLayout Orientation="Horizontal"
                          Spacing="15">
                 <BoxView Color="Red"
@@ -296,9 +296,9 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Sta
                        FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
-        </Frame>
-        <Frame BorderColor="Black"
-               Padding="5">
+        </Border>
+        <Border Stroke="Black"
+                Padding="5">
             <StackLayout Orientation="Horizontal"
                          Spacing="15">
                 <BoxView Color="Yellow"
@@ -307,9 +307,9 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Sta
                        FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
-        </Frame>
-        <Frame BorderColor="Black"
-               Padding="5">
+        </Border>
+        <Border Stroke="Black"
+                Padding="5">
             <StackLayout Orientation="Horizontal"
                          Spacing="15">
                 <BoxView Color="Blue"
@@ -318,13 +318,13 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Sta
                        FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
-        </Frame>
+        </Border>
         ...
     </StackLayout>
 </ContentPage>
 ```
 
-In this example, the parent <xref:Microsoft.Maui.Controls.StackLayout> contains nested <xref:Microsoft.Maui.Controls.StackLayout> objects inside <xref:Microsoft.Maui.Controls.Frame> objects. The parent <xref:Microsoft.Maui.Controls.StackLayout> is oriented vertically, while the child <xref:Microsoft.Maui.Controls.StackLayout> objects are oriented horizontally:
+In this example, the parent <xref:Microsoft.Maui.Controls.StackLayout> contains nested <xref:Microsoft.Maui.Controls.StackLayout> objects inside <xref:Microsoft.Maui.Controls.Border> objects. The parent <xref:Microsoft.Maui.Controls.StackLayout> is oriented vertically, while the child <xref:Microsoft.Maui.Controls.StackLayout> objects are oriented horizontally:
 
 :::image type="content" source="media/stacklayout/nested.png" alt-text="Nested .NET MAUI StackLayouts.":::
 
@@ -340,59 +340,59 @@ public class CombinedStackLayoutPage : ContentPage
     {
         Title = "Combined StackLayouts demo";
 
-        Frame frame1 = new Frame
+        Border border1 = new Border
         {
-            BorderColor = Colors.Black,
+            Stroke = Colors.Black,
             Padding = new Thickness(5)
         };
-        StackLayout frame1StackLayout = new StackLayout
+        StackLayout border1StackLayout = new StackLayout
         {
             Orientation = StackOrientation.Horizontal,
             Spacing = 15
         };
-        frame1StackLayout.Add(new BoxView { Color = Colors.Red, WidthRequest = 40 });
-        frame1StackLayout.Add(new Label { Text = "Red", FontSize = 22, VerticalOptions = LayoutOptions.Center });
-        frame1.Content = frame1StackLayout;
+        border1StackLayout.Add(new BoxView { Color = Colors.Red, WidthRequest = 40 });
+        border1StackLayout.Add(new Label { Text = "Red", FontSize = 20, VerticalOptions = LayoutOptions.Center });
+        border1.Content = border1StackLayout;
 
-        Frame frame2 = new Frame
+        Border border2 = new Border
         {
-            BorderColor = Colors.Black,
+            Stroke = Colors.Black,
             Padding = new Thickness(5)
         };
-        StackLayout frame2StackLayout = new StackLayout
+        StackLayout border2StackLayout = new StackLayout
         {
             Orientation = StackOrientation.Horizontal,
             Spacing = 15
         };
-        frame2StackLayout.Add(new BoxView { Color = Colors.Yellow, WidthRequest = 40 });
-        frame2StackLayout.Add(new Label { Text = "Yellow", FontSize = 22, VerticalOptions = LayoutOptions.Center });
-        frame2.Content = frame2StackLayout;
+        border2StackLayout.Add(new BoxView { Color = Colors.Yellow, WidthRequest = 40 });
+        border2StackLayout.Add(new Label { Text = "Yellow", FontSize =  20, VerticalOptions = LayoutOptions.Center });
+        border2.Content = border2StackLayout;
 
-        Frame frame3 = new Frame
+        Border border3 = new Border
         {
-            BorderColor = Colors.Black,
+            Stroke = Colors.Black,
             Padding = new Thickness(5)
         };
-        StackLayout frame3StackLayout = new StackLayout
+        StackLayout border3StackLayout = new StackLayout
         {
             Orientation = StackOrientation.Horizontal,
             Spacing = 15
         };
-        frame3StackLayout.Add(new BoxView { Color = Colors.Blue, WidthRequest = 40 });
-        frame3StackLayout.Add(new Label { Text = "Blue", FontSize = 22, VerticalOptions = LayoutOptions.Center });
-        frame3.Content = frame3StackLayout;
+        border3StackLayout.Add(new BoxView { Color = Colors.Blue, WidthRequest = 40 });
+        border3StackLayout.Add(new Label { Text = "Blue", FontSize = 20, VerticalOptions = LayoutOptions.Center });
+        border3.Content = border3StackLayout;
 
         ...
 
         StackLayout stackLayout = new StackLayout { Margin = new Thickness(20) };
         stackLayout.Add(new Label { Text = "Primary colors" });
-        stackLayout.Add(frame1);
-        stackLayout.Add(frame2);
-        stackLayout.Add(frame3);
+        stackLayout.Add(border1);
+        stackLayout.Add(border2);
+        stackLayout.Add(border3);
         stackLayout.Add(new Label { Text = "Secondary colors" });
-        stackLayout.Add(frame4);
-        stackLayout.Add(frame5);
-        stackLayout.Add(frame6);
+        stackLayout.Add(border4);
+        stackLayout.Add(border5);
+        stackLayout.Add(border6);
 
         Content = stackLayout;
     }

@@ -135,7 +135,7 @@ This code creates two groups in the `Animals` collection. The first `AnimalGroup
 <CollectionView ItemsSource="{Binding Animals}"
                 IsGrouped="true">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Animal">
             <Grid Padding="10">
                 ...
                 <Image Grid.RowSpan="2"
@@ -164,7 +164,7 @@ CollectionView collectionView = new CollectionView
 {
     IsGrouped = true
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 // ...
 ```
 
@@ -182,7 +182,7 @@ The appearance of each group header can be customized by setting the `Collection
                 IsGrouped="true">
     ...
     <CollectionView.GroupHeaderTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:AnimalGroup">
             <Label Text="{Binding Name}"
                    BackgroundColor="LightGray"
                    FontSize="18"
@@ -205,7 +205,7 @@ The appearance of each group footer can be customized by setting the `Collection
                 IsGrouped="true">
     ...
     <CollectionView.GroupFooterTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:AnimalGroup">
             <Label Text="{Binding Count, StringFormat='Total animals: {0:D}'}"
                    Margin="0,0,0,10" />
         </DataTemplate>

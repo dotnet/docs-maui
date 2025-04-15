@@ -1,7 +1,7 @@
 ---
 title: "Data binding"
 description: ".NET MAUI data binding is the technique of linking properties of two objects so that changes in one property are automatically reflected in the other property."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Data binding

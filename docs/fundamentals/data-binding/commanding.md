@@ -1,7 +1,7 @@
 ---
 title: "Commanding"
 description: "Learn how to implement the Command property with .NET MAUI data bindings. The commanding interface provides an alternative approach to implementing commands that is suited to the MVVM architecture."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Commanding
@@ -171,7 +171,8 @@ The following example shows the XAML that consumes the `PersonCollectionViewMode
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.PersonEntryPage"
-             Title="Person Entry">
+             Title="Person Entry"
+             x:DataType="local:PersonCollectionViewModel">             
     <ContentPage.BindingContext>
         <local:PersonCollectionViewModel />
     </ContentPage.BindingContext>
@@ -192,7 +193,8 @@ The following example shows the XAML that consumes the `PersonCollectionViewMode
         <!-- Entry Form -->
         <Grid Grid.Row="1"
               IsEnabled="{Binding IsEditing}">
-            <Grid BindingContext="{Binding PersonEdit}">
+            <Grid x:DataType="local:PersonViewModel"
+                  BindingContext="{Binding PersonEdit}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -377,7 +379,8 @@ The following example demonstrates a keyboard for entering decimal numbers:
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.DecimalKeypadPage"
-             Title="Decimal Keyboard">
+             Title="Decimal Keyboard"
+             x:DataType="local:DecimalKeypadViewModel">
     <ContentPage.BindingContext>
         <local:DecimalKeypadViewModel />
     </ContentPage.BindingContext>

@@ -2,6 +2,7 @@
 title: "Publish and subscribe to messages"
 description: "The .NET MAUI MessagingCenter class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references."
 ms.date: 02/18/2022
+monikerRange: "<=net-maui-9.0"
 ---
 
 # Publish and subscribe to messages
@@ -10,23 +11,23 @@ The publish-subscribe pattern is a messaging pattern in which publishers send me
 
 Events in .NET implement the publish-subscribe pattern, and are the most simple and straightforward approach for a communication layer between components if loose coupling is not required, such as a control and the page that contains it. However, the publisher and subscriber lifetimes are coupled by object references to each other, and the subscriber type must have a reference to the publisher type. This can create memory management issues, especially when there are short lived objects that subscribe to an event of a static or long-lived object. If the event handler isn't removed, the subscriber will be kept alive by the reference to it in the publisher, and this will prevent or delay the garbage collection of the subscriber.
 
-The .NET Multi-platform App UI (.NET MAUI) `MessagingCenter` class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references. This mechanism allows publishers and subscribers to communicate without having a reference to each other, helping to reduce dependencies between them.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.MessagingCenter> class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references. This mechanism allows publishers and subscribers to communicate without having a reference to each other, helping to reduce dependencies between them.
 
 > [!IMPORTANT]
-> `MessagingCenter` has been deprecated and we recommend that you replace it with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
+> <xref:Microsoft.Maui.Controls.MessagingCenter> has been deprecated and we recommend that you replace it with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
 
-The `MessagingCenter` class provides multicast publish-subscribe functionality. This means that there can be multiple publishers that publish a single message, and there can be multiple subscribers listening for the same message:
+The <xref:Microsoft.Maui.Controls.MessagingCenter> class provides multicast publish-subscribe functionality. This means that there can be multiple publishers that publish a single message, and there can be multiple subscribers listening for the same message:
 
 :::image type="content" source="media/messagingcenter/messagingcenter.png" alt-text="Multicast publish-subscribe functionality." border="false":::
 
 Publishers send messages using the `MessagingCenter.Send` method, while subscribers listen for messages using the `MessagingCenter.Subscribe` method. In addition, subscribers can also unsubscribe from message subscriptions, if required, with the `MessagingCenter.Unsubscribe` method.
 
 > [!IMPORTANT]
-> Internally, the `MessagingCenter` class uses weak references. This means that it will not keep objects alive, and will allow them to be garbage collected. Therefore, it should only be necessary to unsubscribe from a message when a class no longer wishes to receive the message.
+> Internally, the <xref:Microsoft.Maui.Controls.MessagingCenter> class uses weak references. This means that it will not keep objects alive, and will allow them to be garbage collected. Therefore, it should only be necessary to unsubscribe from a message when a class no longer wishes to receive the message.
 
 ## Publish a message
 
-`MessagingCenter` messages are strings. Publishers notify subscribers of a message with one of the `MessagingCenter.Send` overloads. The following code example publishes a `Hi` message:
+<xref:Microsoft.Maui.Controls.MessagingCenter> messages are strings. Publishers notify subscribers of a message with one of the `MessagingCenter.Send` overloads. The following code example publishes a `Hi` message:
 
 ```csharp
 MessagingCenter.Send<MainPage>(this, "Hi");

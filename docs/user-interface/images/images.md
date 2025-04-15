@@ -1,7 +1,7 @@
 ---
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
-ms.date: 08/30/2024
+ms.date: 12/03/2024
 ---
 
 # Add images to a .NET MAUI app project
@@ -92,3 +92,7 @@ With https://github.com/dotnet/maui/pull/25686 a new configuration property `Fil
 <!-- This instructs Skia to use the internal default for filter quality and to avoid the current default value `SKFilterQuality.High` -->
 <MauiImage Include="Resources\Images\logo.svg" FilterQuality="None" />
 ```
+
+## Display an image
+
+Images can be displayed with the <xref:Microsoft.Maui.Controls.Image> control. For more information, see [Image](../controls/image.md).

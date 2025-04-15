@@ -1,7 +1,7 @@
 ---
 title: "Basic bindings"
 description: ".NET MAUI data binding links a pair of properties between two objects, at least one of which is usually a user-interface object. These two objects are called the target and the source."
-ms.date: 09/26/2024
+ms.date: 02/27/2025
 ---
 
 # Basic bindings
@@ -50,7 +50,7 @@ You can set a binding on an instance of any class that derives from <xref:Micros
 
 In this example, the <xref:Microsoft.Maui.Controls.Label> is the binding target, and the <xref:Microsoft.Maui.Controls.Slider> is the binding source. Changes in the <xref:Microsoft.Maui.Controls.Slider> source affect the rotation of the <xref:Microsoft.Maui.Controls.Label> target. Data flows from the source to the target.
 
-The `SetBinding` method defined by <xref:Microsoft.Maui.Controls.BindableObject> has an argument of type `BindingBase` from which the `Binding` class derives, but there are other `SetBinding` methods defined by the `BindableObjectExtensions` class. The code-behind for the XAML uses a simpler `SetBinding` extension method from the `BindableObjectExtensions` class:
+Bindings written in code sometimes use string paths that are resolved at runtime with reflection. However, the <xref:Microsoft.Maui.Controls.BindableObjectExtensions.SetBinding%2A> extension method also has an overload that defines bindings using a `Func` argument:
 
 ```csharp
 public partial class BasicCodeBindingPage : ContentPage
@@ -60,17 +60,17 @@ public partial class BasicCodeBindingPage : ContentPage
         InitializeComponent();
 
         label.BindingContext = slider;
-        label.SetBinding(Label.RotationProperty, "Value");
+        label.SetBinding(Label.RotationProperty, static (Slider slider) => slider.Value);
     }
 }
 ```
 
-The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `BindingContext` property indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a <xref:Microsoft.Maui.Controls.BindableProperty> object: `Label.RotationProperty`. The source property is specified as a string and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
+The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `Func` argument indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a <xref:Microsoft.Maui.Controls.BindableProperty> object: `Label.RotationProperty`. The source property is specified using a lambda expression and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
 
 > [!IMPORTANT]
 > The target property must be backed by a bindable property. Therefore, the target object must be an instance of a class that derives from <xref:Microsoft.Maui.Controls.BindableObject>. For more information, see [Bindable properties](../bindable-properties.md).
 
-The source property is specified as a string. Internally, reflection is used to access the actual property. In this particular case, however, the `Value` property is also backed by a bindable property.
+In the example above the binding source is specified using a `Func`, which ensures that the binding expression is compiled for increased runtime performance. For more information about compiled bindings, see [Compiled bindings](compiled-bindings.md).
 
 As you manipulate the <xref:Microsoft.Maui.Controls.Slider>, the <xref:Microsoft.Maui.Controls.Label> rotates accordingly:
 
@@ -84,7 +84,8 @@ Alternatively, the data binding can be specified in XAML:
              x:Class="DataBindingDemos.BasicXamlBindingPage"
              Title="Basic XAML Binding">
     <StackLayout Padding="10, 0">
-        <Label Text="TEXT"
+        <Label x:DataType="Slider"
+               Text="TEXT"
                FontSize="80"
                HorizontalOptions="Center"
                VerticalOptions="Center"
@@ -105,22 +106,22 @@ Just as in code, the data binding is set on the target object, which is the <xre
 
 For more information about XAML markup extensions, see [Consume XAML markup extensions](../../xaml/markup-extensions/consume.md).
 
+In addition, the `x:DataType` attribute on the `Label` instructs the XAML compiler to compile the binding expression on the `Label` for increased runtime performance, and specifies that the binding expression should be resolved against the `Slider` type. For more information, see [Compiled bindings](compiled-bindings.md).
+
 > [!NOTE]
 > The source property is specified with the `Path` property of the `Binding` markup extension, which corresponds with the `Path` property of the `Binding` class.
 
 XAML markup extensions such as `x:Reference` and `Binding` can have *content property* attributes defined, which for XAML markup extensions means that the property name doesn't need to appear. The `Name` property is the content property of `x:Reference`, and the `Path` property is the content property of `Binding`, which means that they can be eliminated from the expressions:
 
 ```xaml
-<Label Text="TEXT"
+<Label x:DataType="Slider"
+       Text="TEXT"
        FontSize="80"
        HorizontalOptions="Center"
        VerticalOptions="Center"
        BindingContext="{x:Reference slider}"
        Rotation="{Binding Value}" />
 ```
-
-> [!IMPORTANT]
-> Binding performance can be improved by using compiled bindings. For more information, see [Compiled bindings](compiled-bindings.md).
 
 ## Bindings without a binding context
 
@@ -148,7 +149,7 @@ The `BindingContext` property is an important component of data bindings, but it
 
 In this example, the <xref:Microsoft.Maui.Controls.Slider> is defined to control the `Scale` property of the <xref:Microsoft.Maui.Controls.Label>. For that reason, the <xref:Microsoft.Maui.Controls.Slider> is set for a range of -2 to 2.
 
-The code-behind file sets the binding with the `SetBinding` method, with the second argument being a constructor for the `Binding` class:
+The code-behind file sets the binding with the `SetBinding` method, with the second argument being a `Func` that gets the value of the `Slider`:
 
 ```csharp
 public partial class AlternativeCodeBindingPage : ContentPage
@@ -157,12 +158,10 @@ public partial class AlternativeCodeBindingPage : ContentPage
     {
         InitializeComponent();
 
-        label.SetBinding(Label.ScaleProperty, new Binding("Value", source: slider));
+        label.SetBinding(Label.ScaleProperty, static (Slider s) => s.Value, source: slider);
     }
 }
 ```
-
-The `Binding` constructor has 6 parameters, so the `source` parameter is specified with a named argument. The argument is the `slider` object.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.VisualElement> class also defines `ScaleX` and `ScaleY` properties, which can scale the <xref:Microsoft.Maui.Controls.VisualElement> differently in the horizontal and vertical directions.
@@ -179,7 +178,8 @@ Alternatively, the data binding can be specified in XAML:
                FontSize="40"
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               Scale="{Binding Source={x:Reference slider},
+               Scale="{Binding x:DataType='Slider',
+                               Source={x:Reference slider},
                                Path=Value}" />
 
         <Slider x:Name="slider"
@@ -195,7 +195,7 @@ In this example, the `Binding` markup extension has two properties set, `Source`
 The content property of the `Binding` markup extension is `Path`, but the `Path=` part of the markup extension can only be eliminated if it is the first property in the expression. To eliminate the `Path=` part, you need to swap the two properties:
 
 ```xaml
-Scale="{Binding Value, Source={x:Reference slider}}" />
+Scale="{Binding Value, Source={x:Reference slider}, x:DataType='Slider'}" />
 ```
 
 Although XAML markup extensions are usually delimited by curly braces, they can also be expressed as object elements:
@@ -206,7 +206,8 @@ Although XAML markup extensions are usually delimited by curly braces, they can 
        HorizontalOptions="Center"
        VerticalOptions="Center">
     <Label.Scale>
-        <Binding Source="{x:Reference slider}"
+        <Binding x:DataType="Slider"
+                 Source="{x:Reference slider}"
                  Path="Value" />
     </Label.Scale>
 </Label>
@@ -220,7 +221,8 @@ In this example, the `Source` and `Path` properties are regular XAML attributes.
        HorizontalOptions="Center"
        VerticalOptions="Center">
     <Label.Scale>
-        <Binding Path="Value">
+        <Binding x:DataType="Slider"
+                 Path="Value">
             <Binding.Source>
                 <x:Reference Name="slider" />
             </Binding.Source>
@@ -251,7 +253,8 @@ The following XAML example demonstrates binding context inheritance:
              x:Class="DataBindingDemos.BindingContextInheritancePage"
              Title="BindingContext Inheritance">
     <StackLayout Padding="10">
-        <StackLayout VerticalOptions="Fill"
+        <StackLayout x:DataType="Slider"
+                     VerticalOptions="Fill"
                      BindingContext="{x:Reference slider}">
 
             <Label Text="TEXT"

@@ -36,7 +36,7 @@ The equivalent C# code is:
 
 ```csharp
 CollectionView collectionView = new CollectionView();
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
@@ -56,7 +56,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <Grid Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -90,7 +90,7 @@ The equivalent C# code is:
 
 ```csharp
 CollectionView collectionView = new CollectionView();
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 collectionView.ItemTemplate = new DataTemplate(() =>
 {
@@ -101,13 +101,13 @@ collectionView.ItemTemplate = new DataTemplate(() =>
     grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
     Image image = new Image { Aspect = Aspect.AspectFill, HeightRequest = 60, WidthRequest = 60 };
-    image.SetBinding(Image.SourceProperty, "ImageUrl");
+    image.SetBinding(Image.SourceProperty, static (Monkey monkey) => monkey.ImageUrl);
 
     Label nameLabel = new Label { FontAttributes = FontAttributes.Bold };
-    nameLabel.SetBinding(Label.TextProperty, "Name");
+    nameLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Name);
 
     Label locationLabel = new Label { FontAttributes = FontAttributes.Italic, VerticalOptions = LayoutOptions.End };
-    locationLabel.SetBinding(Label.TextProperty, "Location");
+    locationLabel.SetBinding(Label.TextProperty, static (Monkey monkey) => monkey.Location);
 
     Grid.SetRowSpan(image, 2);
 
@@ -145,13 +145,18 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:CollectionViewDemos.Controls">
+             xmlns:controls="clr-namespace:CollectionViewDemos.Controls"
+             xmlns:models="clr-namespace:CollectionViewDemos.Models"
+             xmlns:viewmodels="clr-namespace:CollectionViewDemos.ViewModels"
+             x:DataType="viewmodels:MonkeysViewModel">
     <ContentPage.Resources>
-        <DataTemplate x:Key="AmericanMonkeyTemplate">
+        <DataTemplate x:Key="AmericanMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
-        <DataTemplate x:Key="OtherMonkeyTemplate">
+        <DataTemplate x:Key="OtherMonkeyTemplate"
+                      x:DataType="models:Monkey">
             ...
         </DataTemplate>
 
@@ -172,7 +177,7 @@ CollectionView collectionView = new CollectionView
 {
     ItemTemplate = new MonkeyDataTemplateSelector { ... }
 };
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
 The `ItemTemplate` property is set to a `MonkeyDataTemplateSelector` object. The following example shows the `MonkeyDataTemplateSelector` class:
@@ -207,19 +212,19 @@ For more information about data template selectors, see [Create a DataTemplateSe
 <CollectionView x:Name="collectionView"
                 ItemsSource="{Binding Monkeys}">
     <CollectionView.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="models:Monkey">
             <SwipeView>
                 <SwipeView.LeftItems>
                     <SwipeItems>
                         <SwipeItem Text="Favorite"
                                    IconImageSource="favorite.png"
                                    BackgroundColor="LightGreen"
-                                   Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.FavoriteCommand}"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
                                    CommandParameter="{Binding}" />
                         <SwipeItem Text="Delete"
                                    IconImageSource="delete.png"
                                    BackgroundColor="LightPink"
-                                   Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteCommand}"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
                                    CommandParameter="{Binding}" />
                     </SwipeItems>
                 </SwipeView.LeftItems>
@@ -237,7 +242,7 @@ The equivalent C# code is:
 
 ```csharp
 CollectionView collectionView = new CollectionView();
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 
 collectionView.ItemTemplate = new DataTemplate(() =>
 {
@@ -252,8 +257,8 @@ collectionView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "favorite.png",
         BackgroundColor = Colors.LightGreen
     };
-    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.FavoriteCommand", source: collectionView));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: collectionView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -261,8 +266,8 @@ collectionView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "delete.png",
         BackgroundColor = Colors.LightPink
     };
-    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.DeleteCommand", source: collectionView));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: collectionView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
 
     swipeView.LeftItems = new SwipeItems { favoriteSwipeItem, deleteSwipeItem };
     swipeView.Content = grid;    
@@ -304,7 +309,7 @@ ICommand refreshCommand = new Command(() =>
 refreshView.Command = refreshCommand;
 
 CollectionView collectionView = new CollectionView();
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 refreshView.Content = collectionView;
 // ...
 ```
@@ -355,7 +360,7 @@ CollectionView collectionView = new CollectionView
     RemainingItemsThreshold = 5
 };
 collectionView.RemainingItemsThresholdReached += OnCollectionViewRemainingItemsThresholdReached;
-collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (AnimalsViewModel vm) => vm.Animals);
 ```
 
 In this code example, the `RemainingItemsThresholdReached` event fires when there are 5 items not yet scrolled to, and in response executes the `OnCollectionViewRemainingItemsThresholdReached` event handler:

@@ -23,61 +23,58 @@ There are three main techniques for creating a <xref:Microsoft.Maui.Controls.Sol
 .NET MAUI includes a type converter that creates a <xref:Microsoft.Maui.Controls.SolidColorBrush> from a <xref:Microsoft.Maui.Graphics.Color> value. In XAML, this enables a <xref:Microsoft.Maui.Controls.SolidColorBrush> to be created from a predefined <xref:Microsoft.Maui.Graphics.Color> value:
 
 ```xaml
-<Frame Background="DarkBlue"
-       BorderColor="LightGray"
-       HasShadow="True"
-       CornerRadius="12"
-       HeightRequest="120"
-       WidthRequest="120" />
+<Border Background="DarkBlue"
+        Stroke="LightGray"
+        StrokeShape="RoundRectangle 12"
+        HeightRequest="120"
+        WidthRequest="120" />
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a dark blue <xref:Microsoft.Maui.Controls.SolidColorBrush>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a dark blue <xref:Microsoft.Maui.Controls.SolidColorBrush>:
 
-:::image type="content" source="media/solidcolor/predefined-color.png" alt-text="Screenshot of a Frame painted with a predefined color.":::
+:::image type="content" source="media/solidcolor/predefined-color.png" alt-text="Screenshot of a Border painted with a predefined color.":::
 
 Alternatively, the <xref:Microsoft.Maui.Graphics.Color> value can be specified using property tag syntax:
 
 ```xaml
-<Frame BorderColor="LightGray"
-       HasShadow="True"
-       CornerRadius="12"
-       HeightRequest="120"
-       WidthRequest="120">
-       <Frame.Background>
-           <SolidColorBrush Color="DarkBlue" />
-       </Frame.Background>
-</Frame>
+<Border Stroke="LightGray"
+        StrokeShape="RoundRectangle 12"
+        HeightRequest="120"
+        WidthRequest="120">
+    <Border.Background>
+         <SolidColorBrush Color="DarkBlue" />    
+    </Border.Background>
+</Border>
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a <xref:Microsoft.Maui.Controls.SolidColorBrush> whose color is specified by setting the `SolidColorBrush.Color` property.
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a <xref:Microsoft.Maui.Controls.SolidColorBrush> whose color is specified by setting the `SolidColorBrush.Color` property.
 
 ### Use a predefined Brush
 
 The <xref:Microsoft.Maui.Controls.Brush> class defines a set of commonly used <xref:Microsoft.Maui.Controls.SolidColorBrush> objects. The following example uses one of these predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects:
 
 ```xaml
-<Frame Background="{x:Static Brush.Indigo}"
-       BorderColor="LightGray"
-       HasShadow="True"
-       CornerRadius="12"
-       HeightRequest="120"
-       WidthRequest="120" />       
+<Border Background="{x:Static Brush.Indigo}"
+        Stroke="LightGray"
+        StrokeShape="RoundRectangle 12"
+        HeightRequest="120"
+        WidthRequest="120" />   
 ```
 
 The equivalent C# code is:
 
 ```csharp
-Frame frame = new Frame
+Border border = new Border
 {
     Background = Brush.Indigo,
-    BorderColor = Colors.LightGray,
+    Stroke = Colors.LightGray,
     // ...
 };
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with an indigo <xref:Microsoft.Maui.Controls.SolidColorBrush>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with an indigo <xref:Microsoft.Maui.Controls.SolidColorBrush>:
 
-:::image type="content" source="media/solidcolor/predefined-brush.png" alt-text="Screenshot of a Frame painted with a predefined SolidColorBrush.":::
+:::image type="content" source="media/solidcolor/predefined-brush.png" alt-text="Screenshot of a Border painted with a predefined SolidColorBrush.":::
 
 For a list of predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class, see [Solid color brushes](#solid-color-brushes).
 
@@ -94,17 +91,16 @@ In addition, a color can be specified as `#aarrggbb` where `aa` specifies the al
 The following example sets the color value of a <xref:Microsoft.Maui.Controls.SolidColorBrush> using hexadecimal notation:
 
 ```xaml
-<Frame Background="#FF9988"
-       BorderColor="LightGray"
-       HasShadow="True"
-       CornerRadius="12"
-       HeightRequest="120"
-       WidthRequest="120" />
+<Border Background="#FF9988"
+        Stroke="LightGray"
+        StrokeShape="RoundRectangle 12"
+        HeightRequest="120"
+        WidthRequest="120" />       
 ```
 
-In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a salmon-colored <xref:Microsoft.Maui.Controls.SolidColorBrush>:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Border> is painted with a salmon-colored <xref:Microsoft.Maui.Controls.SolidColorBrush>:
 
-:::image type="content" source="media/solidcolor/hex.png" alt-text="Screenshot of a Frame painted with a SolidColorBrush created with hexadecimal notation.":::
+:::image type="content" source="media/solidcolor/hex.png" alt-text="Screenshot of a Border painted with a SolidColorBrush created with hexadecimal notation.":::
 
 For other ways of describing color, see [Colors](~/user-interface/graphics/colors.md).
 

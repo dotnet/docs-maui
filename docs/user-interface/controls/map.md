@@ -21,7 +21,7 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control 
 
 The <xref:Microsoft.Maui.Controls.Maps.Map> control is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/), which should be added to your .NET MAUI app project.
 
-After installing the NuGet package, it must be initialized in your app by calling the `UseMauiMap` method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class:
+After installing the NuGet package, it must be initialized in your app by calling the <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.UseMauiMaps%2A> method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class:
 
 ```csharp
 public static class MauiProgram
@@ -582,6 +582,8 @@ The `Pin` class also defines a `InfoWindowClicked` event that's fired when an in
 
 The following code shows an example of handling these events:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
@@ -615,6 +617,46 @@ wharfPin.InfoWindowClicked += async (s, args) =>
     await DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
 };
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
+...
+
+Pin boardwalkPin = new Pin
+{
+    Location = new Location(36.9641949, -122.0177232),
+    Label = "Boardwalk",
+    Address = "Santa Cruz",
+    Type = PinType.Place
+};
+boardwalkPin.MarkerClicked += async (s, args) =>
+{
+    args.HideInfoWindow = true;
+    string pinName = ((Pin)s).Label;
+    await DisplayAlertAsync("Pin Clicked", $"{pinName} was clicked.", "Ok");
+};
+
+Pin wharfPin = new Pin
+{
+    Location = new Location(36.9571571, -122.0173544),
+    Label = "Wharf",
+    Address = "Santa Cruz",
+    Type = PinType.Place
+};
+wharfPin.InfoWindowClicked += async (s, args) =>
+{
+    string pinName = ((Pin)s).Label;
+    await DisplayAlertAsync("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
+};
+```
+
+::: moniker-end
 
 The `PinClickedEventArgs` object that accompanies both events has a single `HideInfoWindow` property, of type `bool`. When this property is set to `true` inside an event handler, the information window will be hidden.
 
@@ -650,7 +692,7 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using da
         <maps:Map x:Name="map"
                   ItemsSource="{Binding Positions}">
             <maps:Map.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Position">
                     <maps:Pin Location="{Binding Location}"
                               Address="{Binding Address}"
                               Label="{Binding Description}" />
@@ -677,18 +719,20 @@ The appearance of each item in the `IEnumerable` collection can be chosen at run
 ```xaml
 <ContentPage ...
              xmlns:templates="clr-namespace:WorkingWithMaps.Templates"
-             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps">
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:viewmodels="clr-namespace:WorkingWithMaps.ViewModels"
+             x:DataType="viewmodels:PinItemsSourcePageViewModel">
     <ContentPage.Resources>
        <templates:MapItemTemplateSelector x:Key="MapItemTemplateSelector">
            <templates:MapItemTemplateSelector.DefaultTemplate>
-               <DataTemplate>
+               <DataTemplate x:DataType="models:Position">
                    <maps:Pin Location="{Binding Location}"
                              Address="{Binding Address}"
                              Label="{Binding Description}" />
                </DataTemplate>
            </templates:MapItemTemplateSelector.DefaultTemplate>
            <templates:MapItemTemplateSelector.SanFranTemplate>
-               <DataTemplate>
+               <DataTemplate x:DataType="models:Position">
                    <maps:Pin Location="{Binding Location}"
                              Address="{Binding Address}"
                              Label="Xamarin!" />

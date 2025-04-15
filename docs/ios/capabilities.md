@@ -86,7 +86,7 @@ A provisioning profile can be created with the following steps:
 
 Once you've created a provisioning profile it must be downloaded by Visual Studio, and set as the provisioning profile for your project:
 
-1. In Visual Studio, download the provisioning profile you've just created so that it's available for signing your app. For more information, see [Download provisioning profiles in Visual Studio](~/ios/device-provisioning/manual-provisioning.md#download-provisioning-profiles-in-visual-studio).
+1. In Visual Studio, download the provisioning profile you've just created so that it's available for signing your app. For more information, see [Download provisioning profiles](~/ios/device-provisioning/manual-provisioning.md#download-provisioning-profiles).
 1. In Visual Studio, enable manual provisioning for your project. For more information, see [Enable manual provisioning](~/ios/device-provisioning/manual-provisioning.md#enable-manual-provisioning).
 
 ## Troubleshoot

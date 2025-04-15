@@ -1,53 +1,32 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for August 2024"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for August 2024."
-ms.custom: August-2024
-ms.date: 09/01/2024
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2025"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2025."
+ms.custom: February-2025
+ms.date: 03/01/2025
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for August 2024
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2025
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for August 2024. This article lists some of the major changes to docs during this period.
-
-## Fundamentals
-
-### Updated articles
-
-- [.NET MAUI windows](../fundamentals/windows.md)
-- [App lifecycle](../fundamentals/app-lifecycle.md)
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2025. This article lists some of the major changes to docs during this period.
 
 ## Android
 
-### New articles
+### Updated articles
 
-- [Android asset packs](../android/asset-packs.md)
-
-## iOS and Mac Catalyst
-
-### New articles
-
-- [Xcode sync (xcsync)](../macios/xcsync.md)
+- [Set up Android device for debugging](../android/device/setup.md)
 
 ## User interface
 
-### New articles
-
-- [HybridWebView](../user-interface/controls/hybridwebview.md)
-
 ### Updated articles
 
-- [Configure CollectionView item selection](../user-interface/controls/collectionview/selection.md)
-- [Controls](../user-interface/controls/index.md)
-- [TimePicker](../user-interface/controls/timepicker.md)
-- [WebView](../user-interface/controls/webview.md)
+- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md)
+- [HybridWebView](../user-interface/controls/hybridwebview.md)
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [breyed](https://github.com/breyed) - Edward Brey ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [kubaflo](https://github.com/kubaflo) - Jakub Florkowski ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [osniel](https://github.com/osniel) - Osniel Gonzalez ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [SEGMK](https://github.com/SEGMK) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [x-limitless-x](https://github.com/x-limitless-x) - Blake Drumm ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
-- [Youssef1313](https://github.com/Youssef1313) - Youssef Victor ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [educfn](https://github.com/educfn) - Eduardo Cardoso Fernandes Neto ![2 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-2-green)
+- [thimanshu1993](https://github.com/thimanshu1993) - Himanshu Tyagi ![2 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-2-green)
+- [bhavanesh2001](https://github.com/bhavanesh2001) - Bhavanesh N ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [BrayanKhosravian](https://github.com/BrayanKhosravian) - Brayan Khosravian ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)

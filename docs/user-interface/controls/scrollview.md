@@ -47,7 +47,7 @@ The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a 
     <ScrollView Margin="20">
         <StackLayout BindableLayout.ItemsSource="{x:Static local:NamedColor.All}">
             <BindableLayout.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:NamedColor">
                     <StackLayout Orientation="Horizontal">
                         <BoxView Color="{Binding Color}"
                                  HeightRequest="32"
@@ -84,14 +84,14 @@ public class ColorListPage : ContentPage
                 WidthRequest = 32,
                 VerticalOptions = LayoutOptions.Center
             };
-            boxView.SetBinding(BoxView.ColorProperty, "Color");
+            boxView.SetBinding(BoxView.ColorProperty, static (NamedColor nc) => nc.Color);
 
             Label label = new Label
             {
                 FontSize = 24,
                 VerticalOptions = LayoutOptions.Center
             };
-            label.SetBinding(Label.TextProperty, "FriendlyName");
+            label.SetBinding(Label.TextProperty, static (NamedColor nc) => nc.FriendlyName);
 
             StackLayout horizontalStackLayout = new StackLayout
             {

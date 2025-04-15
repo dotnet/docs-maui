@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 10/29/2024
+ms.date: 01/27/2025
 ---
 
 # Compiled bindings
@@ -120,45 +120,45 @@ Bindings in a <xref:Microsoft.Maui.Controls.DataTemplate> are interpreted in the
 The following example demonstrates correctly setting the `x:DataType` on a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:DataBindingDemos"
-             x:Class="DataBindingDemos.CompiledColorListPage"
-             Title="Compiled Color List">
-    <Grid>
-        ...
-        <ListView x:Name="colorListView"
-                  ItemsSource="{x:Static local:NamedColor.All}"
-                  ... >
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:NamedColor">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <BoxView Color="{Binding Color}"
-                                     ... />
-                            <Label Text="{Binding FriendlyName}"
-                                   ... />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <!-- The BoxView doesn't use compiled bindings -->
-        <BoxView Color="{Binding Source={x:Reference colorListView}, Path=SelectedItem.Color}"
-                 ... />
-    </Grid>
+<ContentPage ...
+             x:DataType="local:AnimalsPageViewModel">
+    <!-- Binding to AnimalsPageViewModel.Animals -->
+    <CollectionView ItemsSource="{Binding Animals}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:Animal">
+                <!-- correct: compiler knows you want to bind to Animal.Name -->
+                <Label Text="{Binding Name}" />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
 ```
 
-The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the <xref:Microsoft.Maui.Graphics.Colors> class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the <xref:Microsoft.Maui.Controls.ListView> is filled with all of the `NamedColor` instances. For each item in the <xref:Microsoft.Maui.Controls.ListView>, the binding context for the item is set to a `NamedColor` object. The <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> elements in the <xref:Microsoft.Maui.Controls.ViewCell> are bound to `NamedColor` properties.
+While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
-The <xref:Microsoft.Maui.Controls.DataTemplate> defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the <xref:Microsoft.Maui.Controls.DataTemplate> view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+### Compile bindings that specify a generic type
 
-When the example is first run, the <xref:Microsoft.Maui.Controls.ListView> is populated with `NamedColor` instances. When an item in the <xref:Microsoft.Maui.Controls.ListView> is selected, the `BoxView.Color` property is set to the color of the selected item in the <xref:Microsoft.Maui.Controls.ListView>:
+Generic types can be specified with the `x:DataType` attribute by specifying the generic constraint as a prefixed string argument in parentheses:
 
-:::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyMauiApp"
+             x:Class="MyMauiApp.MyPage"
+             x:DataType="local:MyViewModel(x:Boolean)">
+    ...
+</ContentPage>
+```
 
-Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
+Multiple type arguments can be specified as prefixed string arguments, delimited by a comma:
+
+```xaml
+<DataTemplate x:DataType="local:MyType(local:MyObject,x:Boolean)">
+    ...
+</DataTemplate>
+```
+
+For more information about generics in XAML, see [Generics](~/xaml/generics.md).
 
 ::: moniker range=">=net-maui-9.0"
 
@@ -174,8 +174,8 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 ```xaml
 <HorizontalStackLayout BindingContext="{x:Reference slider}" x:DataType="Slider">
-  <Label Text="{Binding Value}" />
-  <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
+    <Label Text="{Binding Value}" />
+    <Label Text="{Binding Text, Source={x:Reference entry}, x:DataType=Entry}" />
 </HorizontalStackLayout>
 ```
 
@@ -307,7 +307,10 @@ static (PersonViewModel vm) => vm.Address?.Street + " " + vm.Address?.City;
 static (PersonViewModel vm) => $"Name: {vm.Name}";
 ```
 
-In addition, the <xref:Microsoft.Maui.Controls.Binding.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
+> [!WARNING]
+> A CS0272 compiler error will occur if the set accessor for a property or indexer is inaccessible. If this occurs, increase the accessibility of the accessor.
+
+In addition, the <xref:Microsoft.Maui.Controls.BindingBase.Create%2A?displayProperty=nameWithType> method sets the binding directly on the object with a `Func`, and returns the binding object instance:
 
 ```csharp
 myEntry.SetBinding(Entry.TextProperty, new MultiBinding

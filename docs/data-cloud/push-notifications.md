@@ -228,7 +228,7 @@ To create a web API project:
     | Configuration value | Location |
     | ------------------- | -------- |
     | `NotificationHub:Name` | See *Name* in the **Essentials** summary at the top of the **Overview** page. |
-    | `NotificationHub:ConnectinString` | See *DefaultFullSharedAccessSignature** in the **Access Policies** page.|
+    | `NotificationHub:ConnectionString` | See *DefaultFullSharedAccessSignature** in the **Access Policies** page.|
 
     This sets up local configuration values using the [Secret Manager tool](/aspnet/core/security/app-secrets?tabs=windows#secret-manager). This decouples your Azure Notification Hub secrets from the Visual Studio solution, to ensure that they don't end up in source control.
 
@@ -956,7 +956,7 @@ To create your .NET MAUI app:
         IDeviceInstallationService _deviceInstallationService;
 
         IDeviceInstallationService DeviceInstallationService =>
-            _deviceInstallationService ?? (_deviceInstallationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
+            _deviceInstallationService ?? (_deviceInstallationService = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<IDeviceInstallationService>());
 
         public NotificationRegistrationService(string baseApiUri, string apiKey)
         {
@@ -1165,6 +1165,8 @@ To create the app's UI:
 
 1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods on the `INotificationRegistrationService` object:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     void OnRegisterButtonClicked(object sender, EventArgs e)
     {
@@ -1198,6 +1200,45 @@ To create the app's UI:
     }
     ```
 
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void OnRegisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.RegisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device registered");
+            });
+    }
+
+    void OnDeregisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.DeregisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device deregistered");
+            });
+    }
+
+    void ShowAlert(string message)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            DisplayAlertAsync("Push notifications demo", message, "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
+
     > [!IMPORTANT]
     > In the app, registration and de-registration is performed in response to user input, to allow this functionality to be explored and tested more easily. In a production app you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.
 
@@ -1214,6 +1255,8 @@ To create the app's UI:
     readonly IPushDemoNotificationActionService _actionService;
     ```
 
+::: moniker range="=net-maui-8.0"
+
 1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
 
     ```csharp
@@ -1228,7 +1271,27 @@ To create the app's UI:
     }
     ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+1. In the `App` constructor, resolve the `IPushDemoNotificationActionService` implementation and assign it to the `_actionService` backing field, and subscribe to the `IPushDemoNotificationActionService.ActionTriggered` event:
+
+    ```csharp
+    public App(IPushDemoNotificationActionService service)
+    {
+        InitializeComponent();
+
+        _actionService = service;
+        _actionService.ActionTriggered += NotificationActionTriggered;
+    }
+    ```
+
+::: moniker-end
+
 1. In the `App` class, implement the event handler for the `IPushDemoNotificationActionService.ActionTriggered` event:
+
+    ::: moniker range="<=net-maui-9.0"
 
     ```csharp
     void NotificationActionTriggered(object sender, PushDemoAction e)
@@ -1240,7 +1303,7 @@ To create the app's UI:
     {
         MainThread.BeginInvokeOnMainThread(() =>
         {
-            MainPage?.DisplayAlert("Push notifications demo", $"{action} action received.", "OK")
+            Windows[0].Page?.DisplayAlert("Push notifications demo", $"{action} action received.", "OK")
                 .ContinueWith((task) =>
                 {
                     if (task.IsFaulted)
@@ -1249,6 +1312,32 @@ To create the app's UI:
         });
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void NotificationActionTriggered(object sender, PushDemoAction e)
+    {
+        ShowActionAlert(e);
+    }
+
+    void ShowActionAlert(PushDemoAction action)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Windows[0].Page?.DisplayAlertAsync("Push notifications demo", $"{action} action received.", "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
 
     The event handler for the `ActionTriggered` event demonstrates the receipt and propagation of push notification actions. These would typically be handled silently, for example navigating to a specific view or refreshing some data rather than displaying an alert.
 

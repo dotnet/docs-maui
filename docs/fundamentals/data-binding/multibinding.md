@@ -1,7 +1,7 @@
 ---
 title: "Multi-bindings"
 description: "In .NET MAUI, a collection of Binding objects can be attached to a single binding target property using the MultiBinding class."
-ms.date: 01/19/2022
+ms.date: 02/27/2025
 ---
 
 # Multi-bindings
@@ -121,7 +121,8 @@ A `IMultiValueConverter` is typically consumed by instantiating it in a resource
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.MultiBindingConverterPage"
-             Title="MultiBinding Converter demo">
+             Title="MultiBinding Converter demo"
+             x:DataType="local:GroupViewModel">
 
     <ContentPage.Resources>
         <local:AllTrueMultiConverter x:Key="AllTrueConverter" />
@@ -159,12 +160,12 @@ public class MultiBindingConverterCodePage : ContentPage
         {
             Bindings = new Collection<BindingBase>
             {
-                new Binding("Employee1.IsOver16"),
-                new Binding("Employee1.HasPassedTest"),
-                new Binding("Employee1.IsSuspended", converter: new InverterConverter())
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.IsOver16),
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.HasPassedTest),
+                Binding.Create(static (GroupViewModel vm) => vm.Employee1.IsSuspended, converter: new InverterConverter())
             },
             Converter = new AllTrueMultiConverter()
-        });
+        });        
 
         Title = "MultiBinding converter demo";
         Content = checkBox;
@@ -201,9 +202,9 @@ label.SetBinding(Label.TextProperty, new MultiBinding
 {
     Bindings = new Collection<BindingBase>
     {
-        new Binding("Employee1.Forename"),
-        new Binding("Employee1.MiddleName"),
-        new Binding("Employee1.Surname")
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.Forename),
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.MiddleName),
+        Binding.Create(static (GroupViewModel vm) => vm.Employee1.Surname)
     },
     StringFormat = "{0} {1} {2}"
 });
@@ -233,7 +234,8 @@ For more information about binding fallbacks, see [Binding fallbacks](binding-fa
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataBindingDemos"
              x:Class="DataBindingDemos.NestedMultiBindingPage"
-             Title="Nested MultiBinding demo">
+             Title="Nested MultiBinding demo"
+             x:DataType="local:GroupViewModel">
 
     <ContentPage.Resources>
         <local:AllTrueMultiConverter x:Key="AllTrueConverter" />
@@ -264,11 +266,13 @@ In this example, the `MultiBinding` object uses its `AnyTrueMultiConverter` inst
 
 ```xaml
 <ContentPage ...
-             xmlns:local="clr-namespace:DataBindingDemos">
+             xmlns:local="clr-namespace:DataBindingDemos"
+             xmlns:controls="clr-namespace:DataBindingDemos.Controls">
     <ContentPage.Resources>
         <local:AllTrueMultiConverter x:Key="AllTrueConverter" />
 
-        <ControlTemplate x:Key="CardViewExpanderControlTemplate">
+        <ControlTemplate x:Key="CardViewExpanderControlTemplate"
+                         x:DataType="controls:CardViewExpander">
             <local:Expander BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
                             IsExpanded="{Binding IsExpanded, Source={RelativeSource TemplatedParent}}"
                             BackgroundColor="{Binding CardColor}"

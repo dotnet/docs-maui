@@ -186,12 +186,12 @@ Multi-targeting can also be combined with conditional compilation so that code i
 
 ```csharp
 #if ANDROID
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
+                  handler.PlatformView.SetBackgroundColor(Colors.Red.ToPlatform());
 #elif IOS
-                  handler.NativeView.BackgroundColor = Colors.Red.ToNative();
-                  handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
+                  handler.PlatformView.BackgroundColor = Colors.Red.ToPlatform();
+                  handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
-                  handler.NativeView.Background = Colors.Red.ToNative();
+                  handler.PlatformView.Background = Colors.Red.ToPlatform();
 #endif
 ```
 
@@ -221,6 +221,8 @@ public static class MauiProgram
 
 The `App` class derives from the `Application` class:
 
+::: moniker range="=net-maui-8.0"
+
 ```csharp
 namespace MyMauiApp;
 
@@ -236,3 +238,28 @@ public class App : Application
 ```
 
 In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+```csharp
+namespace MyMauiApp;
+
+public class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }    
+}
+```
+
+In the preceding example, a new <xref:Microsoft.Maui.Controls.Window> is created whose initial content is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+
+::: moniker-end

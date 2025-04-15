@@ -1,24 +1,25 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 06/12/2024
+ms.date: 01/06/2025
+monikerRange: ">=net-maui-9.0"
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.12 or greater, or the latest Visual Studio Code with the .NET MAUI extension.
 
 <!-- markdownlint-disable MD025 -->
-# [Visual Studio](#tab/vswin)
+# [Visual Studio](#tab/visual-studio)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.8 or greater by following the [installation](#installation) steps.
+To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.12 or greater by following the [installation](#installation) steps.
 
 ## Prerequisites
 
-- Visual Studio 2022 17.8 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
+- Visual Studio 2022 17.12 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
-To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
+To build, sign, and deploy .NET MAUI apps for iOS and Mac Catalyst, you'll also need:
 
 - A Mac that is compatible with Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/).
 - A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
@@ -30,7 +31,7 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 
 ## Installation
 
-1. To create .NET MAUI apps, you'll need the latest version of Visual Studio 2022:
+1. To create .NET MAUI apps, you'll need to download the latest version of Visual Studio 2022:
 
     - [Download Visual Studio 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2305)
 
@@ -38,7 +39,7 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 
     - [Download Visual Studio 2022 Enterprise](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2305)
 
-1. Either install Visual Studio, or modify your existing installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
+1. Either install Visual Studio, or modify your existing installation through the Visual Studio installer, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
     :::image type="content" source="media/installation/vs/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
@@ -46,64 +47,121 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 # [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation steps](https://code.visualstudio.com/docs/setup/setup-overview).
+To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation](#install-visual-studio-code) steps.
 
 ## Prerequisites
 
-To build, sign, and deploy .NET MAUI apps for iOS, you'll need:
+To build, sign, and deploy .NET MAUI apps for iOS and Mac Catalyst, you'll need:
 
 - A Mac that is compatible with Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/).
 - A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
-## Installation
+## Install Visual Studio Code
 
-1. To create .NET MAUI apps you'll need to install the latest [Visual Studio Code](https://code.visualstudio.com).
-1. In Visual Studio Code, in the Extensions tab, search for ".NET MAUI" and install the [.NET MAUI extension](https://aka.ms/mauidevkit-marketplace). The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run.  
+1. To create .NET MAUI apps, you'll need to download the latest version of Visual Studio Code:
 
-    :::image type="content" source="media/installation/vscode/maui-extension-preview.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension":::
+    - [Download Visual Studio Code](https://code.visualstudio.com)
 
-> [!NOTE]
-> The .NET MAUI extension requires the C# Dev Kit and C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. For more information, see [this blog post](https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/) to learn more about C# Dev Kit and its family of extensions.
+1. Install Visual Studio Code. For detailed instructions on how to install Visual Studio Code, see [Visual Studio Code on Windows](https://code.visualstudio.com/docs/setup/windows), [Visual Studio Code on macOS](https://code.visualstudio.com/docs/setup/mac), and [Visual Studio Code on Linux](https://code.visualstudio.com/docs/setup/linux).
 
-## Install .NET and .NET MAUI workloads
+## Install the .NET MAUI extension
 
-1. Install [.NET 8](/dotnet/core/install/windows).
+Before you can create .NET MAUI apps in Visual Studio Code you'll need to install the .NET MAUI extension:
 
-    On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](installation.md?tabs=vswin).
+1. Launch Visual Studio Code.
+1. In Visual Studio Code, navigate to the **Extensions** tab and search for ".NET MAUI". Then select the [.NET MAUI](https://aka.ms/mauidevkit-marketplace) extension and install it by pressing the **Install** button:
 
-    On Linux, install using the [scripted installation instructions](/dotnet/core/install/linux-scripted-manual#scripted-install).
+    :::image type="content" source="media/installation/vscode/maui-extension.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI extension.":::
 
-1. Install the .NET MAUI workload.
+    The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run. For more information about C# Dev Kit, see [C# Dev Kit for Visual Studio Code](/visualstudio/subscriptions/vs-c-sharp-dev-kit).
 
-    On Windows, unless installed through the Visual Studio installer, run the following command in a terminal:
+## Connect your account to C# Dev Kit
+
+Using C# Dev Kit requires you to sign in with a Microsoft account that has an active Visual Studio subscription:
+
+1. In the **Welcome** tab for getting started with .NET MAUI, press the **Connect** button:
+
+    :::image type="content" source="media/installation/vscode/connect-account.png" alt-text="Screenshot of the Visual Studio Code connect account to c# dev kit button.":::
+
+    Follow the prompts to sign into your Microsoft account. For more information, see [Signing in to C# Dev Kit](https://code.visualstudio.com/docs/csharp/signing-in#_sign-in-with-a-microsoft-or-organizational-account).
+
+For more information about C# Dev Kit licensing, see [C# Dev Kit FAQ](https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq).
+
+## Set up your .NET environment
+
+You'll need the .NET SDK installed on your machine to develop .NET MAUI apps. If you don't have the .NET SDK installed on your machine, the preferred approach to installing it on Windows is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=visual-studio).
+
+Alternatively, to manually install the .NET SDK:
+
+1. Download the [.NET installer](https://aka.ms/dotnet-extensionpack-sdk).
+1. Install the .NET SDK by running the .NET installer. For more information, see [Install .NET on Windows, Linux, and macOS](/dotnet/core/install/).
+
+    > [!TIP]
+    > On Linux, you can install the .NET SDK using the [scripted installation instructions](/dotnet/core/install/linux-scripted-manual#scripted-install).
+
+To verify that the .NET SDK is installed:
+
+1. Open a terminal.
+1. In the terminal, run the following command:
+
+    ```dotnetcli
+    dotnet --version
+    ```
+
+    You should see the version of the .NET SDK that you've installed.
+
+    > [!NOTE]
+    > It may be necessary to restart your machine before verifying that the .NET SDK is installed.
+
+## Set up your .NET MAUI environment
+
+You'll need the .NET MAUI SDK installed on your machine to develop .NET MAUI apps. If you don't have the .NET MAUI SDK installed on your machine, the preferred approach to installing it on Windows is through the Visual Studio Installer. For more information, see [Installation](installation.md?tabs=visual-studio).
+
+Alternatively, to manually install the .NET MAUI SDK:
+
+1. Open a terminal.
+1. In the terminal on Windows, run the following command:
 
     ```dotnetcli
     dotnet workload install maui
     ```
 
-    On macOS, run the following command in a terminal:
+    In the terminal on macOS, run the following command:
 
-   ```dotnetcli
+    ```dotnetcli
     sudo dotnet workload install maui
     ```
 
-    On Linux, run the following command in a terminal:
+    In the terminal on Linux, run the following command:
 
     ```dotnetcli
     dotnet workload install maui-android
     ```
 
+To verify that the .NET MAUI SDK is installed:
+
+1. Open a terminal.
+1. In the terminal, run the following command:
+
+    ```dotnetcli
+    dotnet workload list
+    ```
+
+    On Windows and macOS, you should see the `maui` workload ID listed alongside the installed version. However, if you've installed it through the Visual Studio Installer on Windows the following workload IDs are listed:
+
+    ```
+    android
+    maui-windows
+    maccatalyst
+    ios
+    ```
+
+    On Linux, you should see the `maui-android` workload ID listed alongside the installed version.
+
 ## Set up target platforms
 
-To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target platform relative to your development machine's operating system. Including invalid target platforms will prevent your project from building. You can manage target platforms in your app's project file (*.csproj*):
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-```
+To build and debug a .NET MAUI app, you'll need to have a valid target platform relative to your development machine's operating system. The following table lists the supported target platforms on each operating system:
 
 | Your Operating System | Supported Target Platforms |
 |---|---|
@@ -111,93 +169,156 @@ To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target 
 | macOS | Android, iOS, macOS |
 | Linux | Android |
 
-### iOS and macOS
-
-To debug to an iOS or macOS target in Visual Studio Code:
-
-1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
-1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
-1. Open Xcode, and ensure you accept any license agreements.
+Building a .NET MAUI app for Android, and for Apple platforms, requires you to perform additional set up and configuration.
 
 ### Android
 
-To debug to an Android target in Visual Studio Code:
+To process to set up your machine for .NET MAUI development on Android with Visual Studio Code is:
 
-1. Install [Microsoft OpenJDK 17](/java/openjdk/download#openjdk-17).
-1. Install the Android SDK via one of the following approaches:
-    * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
-    * Install via Visual Studio (Windows only).
-    * Install via Android Studio.
-    * Install via your preferred package manager on Linux.
+- Download and install the Java SDK For more information, see [Download and install the Java JDK](#download-and-install-the-java-sdk).
+- Download and install the Android SDK. For more information, see [Download and install the Android SDK](#download-and-install-the-android-sdk).
+- Download and install an Android emulator. For more information, see [Download and install an Android emulator](#download-and-install-an-android-emulator).
 
-## Troubleshooting
+#### Download and install the Java SDK
 
-You might face issues when setting up the .NET MAUI extension for Visual Studio Code. To see details on errors related to the extension, navigate to the **Output** window (<kbd>CTRL/CMD + Shift + u </kbd>) and select **.NET MAUI** in the dropdown. See the below sections to help address your issue. If you're still facing issues after following the troubleshooting steps, please [report an issue](#provide-feedback).
+To download and install the Java SDK, and configure Visual Studio Code to use it:
 
-### Project creation
+1. Download and install [Microsoft OpenJDK 17](/java/openjdk/download). For information about installing the OpenJDK, see [Install the Microsoft Build of OpenJDK](/java/openjdk/install).
 
-If you try to create a new project and the file explorer keeps popping up in an infinite loop, you may not be selecting an empty folder. Check that there are no hidden files or folders, create a new folder, or create your .NET MAUI app from the command line using `dotnet new maui`.
+    Alternatively, rather than manually downloading and installing the Java SDK, you can use the `InstallAndroidDependencies` build target to install the Java SDK (and the Android SDK). For more information, see [Using the InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
 
-#### Using the InstallAndroidDependencies target
+    > [!IMPORTANT]
+    > Ensure that you note the location that the OpenJDK is installed to, as this is required in the next step.
 
-.NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
+1. Ensure that you've configured the path to OpenJDK via one of the following approaches:
+    1. Set the `JAVA_HOME` environment variable to define the Java SDK path for your machine. This is the recommended approach, which defines the Java SDK path at the machine level.
+
+        > [!NOTE]
+        > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
+
+    1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Java SDK location** to set the Java SDK path at the user/workspace level.
+    1. Configure the Java SDK path in your .csproj file by setting the `$(JavaSdkDirectory)` MSBuild property to the OpenJDK path. This will define the Java SDK path at the project level.
+
+#### Download and install the Android SDK
+
+To download and install the Android SDK, and configure Visual Studio Code to use it:
+
+1. Download and install the Android SDK via one of the following approaches:
+    1. Download and install the Android SDK by creating a new .NET MAUI project and then use the `InstallAndroidDependencies` build target, which helps set up your Android environment. This is the recommended approach. For more information, see [Using the InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
+    1. Download and install the Android SDK on Windows by [installing the .NET MAUI development workload in Visual Studio](installation.md?tabs=visual-studio), and then [creating and running a .NET MAUI app on Android](first-app.md?pivots=devices-android&tabs=visual-studio). This process will ensure that the Android SDK and an Android emulator are installed.
+    1. Download and install the Android SDK through Android Studio. For more information, see [Install Android Studio](https://developer.android.com/studio/install) on developer.android.com.
+    1. Download and install the Android SDK through your preferred package manager on Linux.
+
+1. Ensure that you've configured the path to the Android SDK via one of the following approaches:
+    1. Set the `ANDROID_HOME` environment variable to define the Android SDK path for your machine. This is the recommended approach, which defines the Android SDK path at the machine level.
+    1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Android SDK location** to set the Android SDK path at the user/workspace level.
+    1. Configure the Android SDK path in your .csproj file by setting the `$(AndroidSdkDirectory)` MSBuild property to the Android SDK path. This will define the Android SDK path at the project level.
+
+1. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed:
+    - In the command palette, select **.NET MAUI: Configure Android** followed by both **Select Android SDK location** and **Select Android SDK location** and validate that they correctly point to installations of each. On Windows, if you install the SDKs via Visual Studio, OpenJDK will be located at *C:\Program Files\Microsoft* and the Android SDK will be located at *C:\Program Files (x86)\Android\android-sdk*.
+    - Ensure that your Android SDK folder has sub-folders such as *build-tools*, *cmdline-tools*, and *platform-tools*.
+    - Ensure that your OpenJDK folder has sub-folders such as *bin*, *lib*, and more.
+    - Ensure that the `ANDROID_HOME` environment variable is set to your Android SDK path.
+    - Ensure that the `JAVA_HOME` environment variable is set to the your Java SDK path.
+    - If Android licenses haven't been accepted, in an elevated terminal navigate to your Android SDK's *cmdline-tools/{version}/bin* folder and run `sdkmanager --licenses` and then follow the CLI prompts.
+
+##### Using the InstallAndroidDependencies target
+
+The recommended approach to installing the required dependencies for your .NET MAUI project on Android is to run the [InstallAndroidDependencies](/dotnet/android/building-apps/build-targets#installandroiddependencies) MSBuild target. This target will install the Android SDK for you, if it isn't already installed.
+
+In a terminal, create a new .NET MAUI project:
 
 ```dotnetcli
-dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<AndroidSdkPath>" -p:JavaSdkDirectory="<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
+dotnet new maui -n "MyMauiApp"
 ```
+
+In a terminal, change directory to *MyMauiApp*, and build the app while specifying the `InstallAndroidDependencies` build target:
+
+```dotnetcli
+cd MyMauiApp
+dotnet build -t:InstallAndroidDependencies -f:net9.0-android -p:AndroidSdkDirectory="/path/to/sdk" -p:AcceptAndroidSDKLicenses=True
+```
+
+> [!NOTE]
+> The `InstallAndroidDependencies` MSBuild target can also install the Java SDK if the `JavaSdkDirectory` MSBuild property is provided.
 
 In the command above:
 
-* `AndroidSdkDirectory="<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
-  * Windows: the suggested AndroidSdkPath is `%LOCALAPPDATA%/Android/Sdk`.
-  * macOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
-* `JavaSdkDirectory="<JavaSdkPath>"`: installs Java to the specified absolute path.
-* `AcceptAndroidSDKLicenses=True`: accepts the required Android licenses for development.
+- `-p:AndroidSdkDirectory="/path/to/sdk"` installs or updates Android dependencies to the specified absolute path. Suggested paths are *%LOCALAPPDATA%/Android/Sdk* on Windows, and *$HOME/Library/Android/sdk* on macOS.
+- `-p:AcceptAndroidSDKLicenses=True` accepts the required Android licenses for development.
+- (optional) `-p:JavaSdkDirectory="/path/to/sdk"` installs the Java SDK to the specified absolute path.
 
-#### There's an error that the Android SDK or Java SDK wasn't found
+Try to avoid using paths that contain spaces or non-ASCII characters.
 
-* Open the command palette (Ctrl/Cmd + Shift + P) and search for the `.NET MAUI: Configure Android` command. Select both "Set Android SDK path" and "Set Android JDK path" and validate that they point to installations of each.
-  * The Android SDK folder should have sub-folders such as `build-tools`, `cmdline-tools`, and `platform-tools`.
-  * The Java OpenJDK folder should have sub-folders such as `bin`, `lib`, and more.
-  * On Windows, if you install via Visual Studio, the Java SDK will be in `C:\Program Files\Microsoft\` and Android SDK will be in `C:\Program Files (x86)\Android\android-sdk`.
-* Set the `JAVA_HOME` environment variable to a valid Java OpenJDK path.
-* Set the `ANDROID_HOME` environment variable to your Android SDK path.
-* Check your minimum versions of installed Android dependencies:
-  * build-tools >= 34.0.0
-  * cmdline-tools == 11.0
-  * platforms;android-34*
-  * .NET 8: platform-tools = 34.0.5
+#### Download and install an Android emulator
 
-#### There's an error that Android licenses aren't accepted
+To download and install an Android emulator on which to run your apps:
 
-In an **elevated** command prompt or terminal, navigate to your Android SDK's `cmdline-tools/latest/bin/` folder and run `sdkmanager --licenses` then follow the CLI prompts.
+1. In a terminal, navigate to the *{YOUR_ANDROID_SDK_FOLDER}/cmdline-tools/{version}/bin/*.
+1. In a terminal, use the `sdkmanager` command to download and install an Android emulator:
 
-#### My Android dependencies aren't loading in the Solution Explorer, but my app builds fine
+    On Windows, run the following commands:
 
-This is a known issue if you install to `%APPDATA%` on Windows and will be fixed in a future release.
+    ```console
+    sdkmanager --install emulator
+    sdkmanager --install "system-images;android-35;google_apis;x86_64"
+    ```
 
-### iOS/Xcode Setup
+    On macOS, run the following commands:
 
-* If you get an error that Xcode isn't found, run `xcode-select --install` in a terminal, then check that `xcode-select -p` points to your Xcode installation.
-* If you're still facing issues, open Xcode itself to make sure it loads correctly. Once Xcode is open, navigate to **Xcode > Settings > Locations** and check that the **Command Line Tools** field is pointing to the correct Xcode.
-* There's a known issue that sometimes you have to build your iOS/macOS app twice for it to deploy. This will be fixed in an upcoming release.
+    ```console
+    ./sdkmanager --install emulator
+    ./sdkmanager --install "system-images;android-35;google_apis;arm64-v8a"
+    ```
 
-### Debugging issues
+    > [!NOTE]
+    > The above command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
 
-* Debugging can fail to start for multiple reasons. If there isn't a clear error in the **Output** window, first double check that you're using the **C#** run configuration in Visual Studio Code.
-* If you're using an older version of .NET, the C# debugger isn't supported for .NET MAUI apps. You can use the legacy .NET MAUI debug configuration by unchecking the extension setting **MAUI > Configuration > Experimental > Use VSDbg**.
-* You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net8.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
+    For more information about the `sdkmanager` command, see [sdkmanager](https://developer.android.com/tools/sdkmanager) on developer.android.com.
 
-## Known limitations
+1. In a terminal, use the `avdmanager` command to create a new Android emulator:
 
-* Currently, you can't switch the target framework for IntelliSense (it will show syntax highlighting for only the first target framework listed in your .csproj file). This capability is in progress. To get syntax highlighting for other targets (e.g. Android instead of iOS) you can reorder the target frameworks in your project file.
-* .NET Hot Reload is currently in preview in the C# Dev Kit.
+    On Windows, run the following commands:
 
-Please [give us your feedback](#provide-feedback) on other features you'd like to see as we continue building this new experience!
+    ```console
+    avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;x86_64"
+    ```
+
+    On macOS, run the following commands:
+
+    ```console
+    ./avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;arm64-v8a"
+    ```
+
+    > [!NOTE]
+    > The above command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
+
+    For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
+
+### iOS and macOS
+
+To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual Studio Code:
+
+1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+1. In a terminal, run the following command to acquire the Xcode command line tools:
+
+    ```console
+    xcode-select --install
+    ```
+
+1. Launch Xcode and accept any license agreements. If simulators don't start installing, navigate to **Xcode > Settings > Components** and install your chosen simulator runtimes.
+1. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CMD+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed:
+    - Ensure you've ran `xcode-select --install` in a terminal.
+    - If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
+    - Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
+
+## Troubleshooting
+
+If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>CTRL+SHIFT+U</kbd> on Windows or <kbd>CMD+SHIFT+U</kbd> on macOS) and selecting **.NET MAUI** in the drop-down.
 
 ## Provide feedback
 
-Please read the [C# Dev Kit FAQs](https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq) and check existing [Known Issues](https://github.com/microsoft/vscode-dotnettools/issues) before filing a new issue or suggestion. You can file suggestions and issues from inside Visual Studio Code through through the **Help > Report Issue** dialog. Ensure you select “An extension” then the .NET MAUI extension in the drop-down.
+To provide feedback about the .NET MAUI extension from inside Visual Studio Code, navigate to the **Help > Report Issue** dialog. Then, ensure you select "Bug Report" as the value of the **This is a** drop-down, "A VS Code extension" as the value of the **For** drop-down, and ".NET MAUI" as the value of the **Extension** drop-down:
 
 :::image type="content" source="media/installation/vscode/report-issue.png" alt-text="Picture of the report issue dialog in Visual Studio Code":::
 
