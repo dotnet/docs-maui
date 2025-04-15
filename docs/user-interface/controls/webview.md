@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 01/17/2025
+ms.date: 04/15/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -24,6 +24,7 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 ::: moniker range="=net-maui-8.0"
 
 <xref:Microsoft.Maui.Controls.WebView> defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
+
 ::: moniker-end
 
 ::: moniker range=">=net-maui-9.0"
@@ -230,6 +231,40 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 - `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 :::zone pivot="devices-android"
+
+::: moniker range=">=net-maui-10.0"
+
+## Play video full screen on Android
+
+When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can be played fullscreen by including `allowfullscreen` in the `iframe`:
+
+```csharp
+myWebView.Source = new HtmlWebViewSource
+{
+  Html = @"<!DOCTYPE html>
+    <html>
+    <head>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+      <style>
+        body { margin: 0; padding: 0; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+      </style>
+    </head>
+    <body>
+      <div class='video-container'>
+        <iframe src='https://www.youtube.com/embed/YE7VzlLtp-4'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen>
+        </iframe>
+      </div>
+    </body>
+    </html>"
+};
+```
+
+::: moniker-end
 
 ## Navigate to content that opens a new Window on Android
 
