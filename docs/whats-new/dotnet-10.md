@@ -107,6 +107,8 @@ For more information, see [Switch](~/user-interface/controls/switch.md?view=net-
 
 When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can now be played fullscreen by including `allowfullscreen` in the `iframe`.
 
+For more information, see [Play video fullscreen](~/user-interface/controls/webview.md#play-video-fullscreen-on-android?view=net-maui-10.0&preserve-view=true).
+
 ## MessagingCenter
 
 <xref:Microsoft.Maui.Controls.MessagingCenter> has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
