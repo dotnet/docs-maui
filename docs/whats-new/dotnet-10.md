@@ -107,7 +107,7 @@ For more information, see [Switch](~/user-interface/controls/switch.md?view=net-
 
 When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can now be played fullscreen by including `allowfullscreen` in the `iframe`.
 
-For more information, see [Play video fullscreen](~/user-interface/controls/webview.md#play-video-fullscreen-on-android?view=net-maui-10.0&preserve-view=true).
+For more information, see [Play video fullscreen](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true#play-video-fullscreen-on-android).
 
 ## MessagingCenter
 
