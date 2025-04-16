@@ -949,6 +949,8 @@
                       href: /dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                     - name: Alternate app icons
                       href: /dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: User notifications
+                  href: /dotnet/ios/app-fundamentals/user-notifications?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Apple account management
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
@@ -985,6 +987,10 @@
               href: macios/universal-links.md
             - name: Syncing with Xcode
               href: macios/xcsync.md
+            - name: Advanced concepts
+              items:
+                - name: Exception marshaling
+                  href: /dotnet/ios/advanced-concepts/exception-marshaling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Mac Catalyst
           items:
             - name: Code signing and provisioning
