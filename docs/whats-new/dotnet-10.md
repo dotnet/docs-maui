@@ -228,12 +228,9 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 ### Android 16 (Baklava) beta 3 bindings
 
-Google has released [Beta 2](https://android-developers.googleblog.com/2025/03/the-third-beta-of-android-16.html) of the Android 16 (API-36) SDK. Support has been adding for using these preview APIs.
+Google has released [Beta 3](https://android-developers.googleblog.com/2025/03/the-third-beta-of-android-16.html) of the Android 16 (API 36) SDK. While still classed as a preview, the ABIs have been declared stable and Google's final release of Android 16 is expected this summer.
 
-To target the Android 16 preview API:
-
-- Use the Android SDK Manager to download the Android 16 (Baklava) platform.
-- Update your project's `TargetFramework` to `net10.0-android`.
+API 36 is now the default in .NET 10, which means that API 36 will be used when the `$(TargetFramework)` build property is set to `net10.0-android`.
 
 This will cause issues when using Visual Studio and Visual Studio Code with .NET 10, because they don't yet know about API 36, which will trigger an [XA5207](/dotnet/android/messages/xa5207) error. To fix this, you'll need to manually install the API36 *platform.jar* into your Android SDK directory or wait for a forthcoming update to Visual Studio.
 
