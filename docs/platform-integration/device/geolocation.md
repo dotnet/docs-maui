@@ -84,6 +84,13 @@ The `<string>` element is the reason the app is requesting access to location in
 
 An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
 
+In the _Platforms/MacCatalyst/Entitlements.plist_ file, add the following key and value to allow the app to access Location Services on macOS:
+
+```xml
+<key>com.apple.security.personal-information.location</key>
+<true/>
+```
+
 ### Full accuracy location permission
 
 If you're going to request full accuracy with the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
