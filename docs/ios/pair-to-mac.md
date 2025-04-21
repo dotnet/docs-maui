@@ -125,6 +125,16 @@ If you don't see a specific Mac listed in the **Pair to Mac** dialog, add it man
 
 1. Select **Login** to connect Visual Studio 2022 to the Mac over SSH and add it to the list of known machines.
 
+## SSH keys generation
+Pair to Mac will automatically generate SSH keys when stablishing a first connection, and the format of those depends on the macOS version your remote Mac is running.
+
+SSH keys generated when running against macOS 15.4.1+ are not compatible with Xamarin.iOS. If you are working on both .NET MAUI and Xamarin.iOS projects, and use different macOS versions depending on the project type, make sure to perform the initial connection using the a macOS version previous to 15.4.1 to ensure you have an SSH key compatible with both type of projects.
+
+To force re-generating the SSH key you can delete the following directory on Windows:
+```
+%LocalAppData%\Xamarin\MonoTouch
+```
+
 ## Enable automatic connection to known Macs
 
 By default, a connection to previously paired Macs won't be established when Visual Studio starts. However, automatic connection to known Macs can be enabled in Visual Studio by navigating to **Tools > Options > Xamarin > iOS Settings** and ensuring that **Enable auto connection to known Macs** is checked:
