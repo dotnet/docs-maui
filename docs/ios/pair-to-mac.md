@@ -1,7 +1,7 @@
 ---
 title: "Pair to Mac for iOS development"
 description: "Learn how to use Pair to Mac to connect Visual Studio 2022 to a Mac build host. This article discusses how to enable remote login on the Mac, connect to the Mac from Visual Studio 2022, and manually add a Mac build host to the Windows machine."
-ms.date: 08/30/2024
+ms.date: 04/22/2025
 ---
 
 # Pair to Mac for iOS development
@@ -126,14 +126,12 @@ If you don't see a specific Mac listed in the **Pair to Mac** dialog, add it man
 1. Select **Login** to connect Visual Studio 2022 to the Mac over SSH and add it to the list of known machines.
 
 ## SSH keys generation
-Pair to Mac will automatically generate SSH keys when stablishing a first connection, and the format of those depends on the macOS version your remote Mac is running.
 
-SSH keys generated when running against macOS 15.4.1+ are not compatible with Xamarin.iOS. If you are working on both .NET MAUI and Xamarin.iOS projects, and use different macOS versions depending on the project type, make sure to perform the initial connection using the a macOS version previous to 15.4.1 to ensure you have an SSH key compatible with both type of projects.
+Pair to Mac will automatically generate SSH keys on first connection, and the format of these depends on the macOS version your remote Mac is running.
 
-To force re-generating the SSH key you can delete the following directory on Windows:
-```
-%LocalAppData%\Xamarin\MonoTouch
-```
+SSH keys generated when running against macOS 15.4.1+ are not compatible with .NET for iOS. If you're working on both .NET MAUI and .NET for iOS projects, and use different macOS versions depending on the project type, ensure you perform the initial connection using a macOS version prior to 15.4.1 to ensure that you have an SSH key compatible with both type of projects.
+
+To force re-generate the SSH key you should delete the *%LocalAppData%\Xamarin\MonoTouch* folder on Windows.
 
 ## Enable automatic connection to known Macs
 
@@ -145,7 +143,7 @@ After restarting Visual Studio, it will automatically connect to known Macs on e
 
 ## Automatic remote Mac setup
 
-Pair to Mac automatically setup a Mac with the software necessary for building .NET MAUI iOS apps. This includes .NET and various Xcode-related tools (but not Xcode itself).
+Pair to Mac automatically sets up a Mac with the software necessary for building .NET MAUI iOS apps. This includes .NET and various Xcode-related tools (but not Xcode itself).
 
 > [!IMPORTANT]
 >
@@ -184,7 +182,7 @@ The first time Pair to Mac logs in to a Mac build host from either Visual Studio
 
 If the `ServerPassword` parameter is omitted from a command-line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
 
-> [!NOTE]
+> [!IMPORTANT]
 > The automatic remote Mac setup is not executed for command-line builds, so you have to either perform an initial connection to your Mac from Visual Studio or make sure you have all the required components installed on the Mac.
 
 For more information about building iOS apps from the Windows command-line, see [Publish an iOS app using the command line](~/ios/deployment/publish-cli.md).
