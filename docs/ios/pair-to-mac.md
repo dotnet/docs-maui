@@ -129,7 +129,7 @@ If you don't see a specific Mac listed in the **Pair to Mac** dialog, add it man
 
 Pair to Mac will automatically generate SSH keys on first connection, and the format of these depends on the macOS version your remote Mac is running.
 
-SSH keys generated when running against macOS 15.4.1+ are not compatible with .NET for iOS. If you're working on both .NET MAUI and .NET for iOS projects, and use different macOS versions depending on the project type, ensure you perform the initial connection using a macOS version prior to 15.4.1 to ensure that you have an SSH key compatible with both type of projects.
+SSH keys generated when running against macOS 15.4.1+ are not compatible with Xamarin.iOS. If you're working on both .NET MAUI and Xamarin.iOS projects, and use different macOS versions depending on the project type, ensure you perform the initial connection using a macOS version prior to 15.4.1 to ensure that you have an SSH key compatible with both type of projects.
 
 To force re-generate the SSH key you should delete the *%LocalAppData%\Xamarin\MonoTouch* folder on Windows.
 
