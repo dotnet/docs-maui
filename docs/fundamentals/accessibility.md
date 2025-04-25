@@ -157,9 +157,9 @@ Label label6 = new Label { Text = "Paragraphs of text go here." };
 Label label7 = new Label { Text = "Publish your app" };
 Label label8 = new Label { Text = "Paragraphs of text go here." };
 SemanticProperties.SetHeadingLevel(label1, SemanticHeadingLevel.Level1);
-SemanticProperties.SetHeadingLevel(label3, SemanticHeadingLevel.Level1);
-SemanticProperties.SetHeadingLevel(label5, SemanticHeadingLevel.Level1);
-SemanticProperties.SetHeadingLevel(label7, SemanticHeadingLevel.Level1);
+SemanticProperties.SetHeadingLevel(label3, SemanticHeadingLevel.Level2);
+SemanticProperties.SetHeadingLevel(label5, SemanticHeadingLevel.Level3);
+SemanticProperties.SetHeadingLevel(label7, SemanticHeadingLevel.Level4);
 ```
 
 In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the [`HeadingLevel`](xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty) attached property:
