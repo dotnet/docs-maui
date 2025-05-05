@@ -7,14 +7,14 @@ ms.topic: tutorial
 
 # Upgrade your app with MVVM concepts
 
-This tutorial is designed to continue the [Create a .NET MAUI app](../../notes-app/index.yml) tutorial, which created a note taking app. In this tutorial, you'll learn how to:
+This tutorial is designed to continue the [Create a .NET MAUI app](./notes-app.md) tutorial, which created a note taking app. In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
 > - Implement the model-view-viewmodel (MVVM) pattern.
 > - Use an additional style of query string for passing data during navigation.
 
-We suggest that you first follow the [Create a .NET MAUI app](../../notes-app/index.yml) tutorial, as the code created in that tutorial is the basis for this tutorial. If you lost the code, or want to start fresh, download [this project](https://github.com/dotnet/maui-samples/raw/main/8.0/Tutorials/ConvertToMvvm/app_before.zip).
+We suggest that you first follow the [Create a .NET MAUI app](./notes-app.md) tutorial, as the code created in that tutorial is the basis for this tutorial. If you lost the code, or want to start fresh, download [this project](https://github.com/dotnet/maui-samples/raw/main/8.0/Tutorials/ConvertToMvvm/app_before.zip).
 
 ## Understand MVVM
 
@@ -513,6 +513,6 @@ Your app is now using MVVM patterns!
 The following links provide more information related to some of the concepts you learned in this tutorial:
 
 - [Enterprise application patterns Using .NET MAUI - MVVM](/dotnet/architecture/maui/mvvm)
-- [Data binding and MVVM](../../xaml/fundamentals/mvvm.md)
-- [ApplyQueryAttributes - Process navigation data using a single method](../../fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method)
+- [Data binding and MVVM](../xaml/fundamentals/mvvm.md)
+- [ApplyQueryAttributes - Process navigation data using a single method](../fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method)
 - [ObservableObject - How it works](/dotnet/communitytoolkit/mvvm/observableobject)

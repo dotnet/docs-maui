@@ -25,7 +25,7 @@ You'll use Visual Studio 2022 to create an application with which you can enter 
 
 ## Create a project
 
-Before you can begin this tutorial, you must follow the [Build your first app article](../../../get-started/first-app.md). While creating the project, use the following settings:
+Before you can begin this tutorial, you must follow the [Build your first app article](../get-started/first-app.md). While creating the project, use the following settings:
 
 - **Project Name**
 
@@ -91,7 +91,7 @@ The first customization you'll do is adding another page to the project. This pa
 
 01. The _AboutPage.xaml_ file will open a new document tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML markup with the following markup:
 
-    :::code language="xaml" source="../snippets/notes-app/shell/AboutPage.xaml":::
+    :::code language="xaml" source="./snippets/notes-app/shell/AboutPage.xaml":::
 
 01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
 
@@ -121,7 +121,7 @@ The next step is to add the code for the button's `Clicked` event.
 
 01. Add the following `LearnMore_Clicked` event handler code, which opens the system browser to a specific URL:
 
-    :::code language="csharp" source="../snippets/notes-app/shell/AboutPage.xaml.cs" id="learn_more":::
+    :::code language="csharp" source="./snippets/notes-app/shell/AboutPage.xaml.cs" id="learn_more":::
 
     Notice that the `async` keyword has been added to the method declaration, which allows the use of the `await` keyword when opening the system browser.
 
@@ -169,7 +169,7 @@ As noted at the start of this article, the `AppShell` class defines an app's vis
 
 01. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
 
-    :::code language="xaml" source="../snippets/notes-app/shell/AppShell.xaml":::
+    :::code language="xaml" source="./snippets/notes-app/shell/AppShell.xaml":::
 
 01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
 
@@ -209,7 +209,7 @@ The note page will display the note and allow you to either save or delete it. F
 
 01. The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
 
-    :::code language="xaml" source="../snippets/notes-app/note/NotePage.xaml":::
+    :::code language="xaml" source="./snippets/notes-app/note/NotePage.xaml":::
 
 01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
 
@@ -257,17 +257,17 @@ Now that you understand a little more about code-behind files, you're going to a
 
 01. When a note is created, it's saved to the device as a text file. The name of the file is represented by the `_fileName` variable. Add the following `string` variable declaration to the `NotePage` class:
 
-    :::code language="csharp" source="../snippets/notes-app/note/NotePage.xaml.cs" id="filename_variable" highlight="3":::
+    :::code language="csharp" source="./snippets/notes-app/note/NotePage.xaml.cs" id="filename_variable" highlight="3":::
 
     The code above constructs a path to the file, storing it in the app's local data directory. The file name is _notes.txt_.
 
 01. In the constructor of the class, after the `InitializeComponent` method is called, read the file from the device and store its contents in the `TextEditor` control's `Text` property:
 
-    :::code language="csharp" source="../snippets/notes-app/note/NotePage.xaml.cs" id="load_note" highlight="5,6":::
+    :::code language="csharp" source="./snippets/notes-app/note/NotePage.xaml.cs" id="load_note" highlight="5,6":::
 
 01. Next, add the code to handle the `Clicked` events defined in the XAML:
 
-    :::code language="csharp" source="../snippets/notes-app/note/NotePage.xaml.cs" id="buttons":::
+    :::code language="csharp" source="./snippets/notes-app/note/NotePage.xaml.cs" id="buttons":::
 
     The `SaveButton_Clicked` method writes the text in the <xref:Microsoft.Maui.Controls.Editor> control, to the file represented by the `_fileName` variable.
 
@@ -277,13 +277,13 @@ Now that you understand a little more about code-behind files, you're going to a
 
 The final code for the code-behind file should look like the following:
 
-:::code language="csharp" source="../snippets/notes-app/note/NotePage.xaml.cs" id="full":::
+:::code language="csharp" source="./snippets/notes-app/note/NotePage.xaml.cs" id="full":::
 
 ### Test the note
 
 Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `NotePage` instead of `MainPage`:
 
-:::code language="xaml" source="../snippets/notes-app/note/AppShell.xaml" highlight="12":::
+:::code language="xaml" source="./snippets/notes-app/note/AppShell.xaml" highlight="12":::
 
 Save the file and run the app. Try typing into the entry box and press the **Save** button. Close the app, and reopen it. The note you entered should be loaded from the device's storage.
 
@@ -414,7 +414,7 @@ Currently the model is the data that is embedded in the note and about views. We
 01. Name the class **Note.cs** and press **Add**.
 01. Open **Note.cs** and replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/notes-app/navigation/Models/Note.cs":::
+    :::code language="csharp" source="./snippets/notes-app/navigation/Models/Note.cs":::
 
 01. Save the file.
 
@@ -424,7 +424,7 @@ Next, create the about page's model:
 01. Name the class **About.cs** and press **Add**.
 01. Open **About.cs** and replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/notes-app/navigation/Models/About.cs":::
+    :::code language="csharp" source="./snippets/notes-app/navigation/Models/About.cs":::
 
 01. Save the file.
 
@@ -435,7 +435,7 @@ The about page will be the quickest page to update and you'll be able to run the
 01. In the **Solution Explorer** pane, open the _Views\\AboutPage.xaml_ file.
 01. Replace the content with the following snippet:
 
-    :::code language="xaml" source="../snippets/notes-app/navigation/Views/AboutPage.xaml" highlight="4,6,7-9,15,16,19":::
+    :::code language="xaml" source="./snippets/notes-app/navigation/Views/AboutPage.xaml" highlight="4,6,7-9,15,16,19":::
 
 Let's look at the changed lines, which are highlighted in the previous snippet:
 
@@ -477,7 +477,7 @@ The final change to the about page is updating the button click that opens a web
 01. In the **Solution Explorer** pane, open the _Views\\AboutPage.xaml.cs_ file.
 01. Replace the `LearnMore_Clicked` method with the following code:
 
-    :::code language="csharp" source="../snippets/notes-app/navigation/Views/AboutPage.xaml.cs" id="learn_more" highlight="3,6":::
+    :::code language="csharp" source="./snippets/notes-app/navigation/Views/AboutPage.xaml.cs" id="learn_more" highlight="3,6":::
 
 If you look at the highlighted line, the code checks if the `BindingContext` is a `Models.About` type, and if it is, assigns it to the `about` variable. The next line inside of the `if` statement opens the browser to the URL provided by the `about.MoreInfoUrl` property.
 
@@ -490,7 +490,7 @@ The previous section bound the **:::no-loc text="about":::** page view to the **
 01. In the **Solution Explorer** pane, open the _Views\\NotePage.xaml_ file.
 01. Replace the content with the following snippet:
 
-    :::code language="xaml" source="../snippets/notes-app/navigation/Views/NotePage.xaml" highlight="4,7,11":::
+    :::code language="xaml" source="./snippets/notes-app/navigation/Views/NotePage.xaml" highlight="4,7,11":::
 
 Let's look at the changed lines, which are highlighted in the previous snippet:
 
@@ -529,11 +529,11 @@ Instead of loading the note in the constructor, create a new `LoadNote` method. 
 01. In the **Solution Explorer** pane, open the _Views\\NotePage.xaml.cs_ file.
 01. Add the following method to the class:
 
-    :::code language="csharp" source="../snippets/notes-app/navigation/Views/NotePage.xaml.cs" id="load_note_by_file":::
+    :::code language="csharp" source="./snippets/notes-app/navigation/Views/NotePage.xaml.cs" id="load_note_by_file":::
 
 01. Update the class constructor to call `LoadNote`. The file name for the note should be a randomly generated name to be created in the app's local data directory.
 
-    :::code language="csharp" source="../snippets/notes-app/navigation/Views/NotePage.xaml.cs" id="load_note_ctor" highlight="5-8":::
+    :::code language="csharp" source="./snippets/notes-app/navigation/Views/NotePage.xaml.cs" id="load_note_ctor" highlight="5-8":::
 
 ## Add a view and model that lists all notes
 
@@ -555,7 +555,7 @@ The new model will represent the data required to display multiple notes. This d
 01. In the **Solution Explorer** pane, open the _Models\\AllNotes.cs_ file.
 01. Replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/Models/AllNotes.cs":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/Models/AllNotes.cs":::
 
 The previous code declares a collection, named `Notes`, and uses the `LoadNotes` method to load notes from the device. This method uses LINQ extensions to load, transform, and sort the data into the `Notes` collection.
 
@@ -566,7 +566,7 @@ Next, the view needs to be designed to support the **AllNotes** model.
 01. In the **Solution Explorer** pane, open the _Views\\AllNotesPage.xaml_ file.
 01. Replace the code with the following markup:
 
-    :::code language="xaml" source="../snippets/notes-app/allnotes/Views/AllNotesPage.xaml":::
+    :::code language="xaml" source="./snippets/notes-app/allnotes/Views/AllNotesPage.xaml":::
 
 The previous XAML introduces a few new concepts:
 
@@ -585,7 +585,7 @@ The code-behind for the view needs to be written to load the notes and handle th
 01. In the **Solution Explorer** pane, open the _Views/AllNotesPage.xaml.cs_ file.
 01. Replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/Views/AllNotesPage.xaml.cs":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/Views/AllNotesPage.xaml.cs":::
 
 This code uses the constructor to set the `BindingContext` of the page to the model.
 
@@ -610,15 +610,15 @@ The **:::no-loc text="Note"::: view** needs to support the query string paramete
 01. In the **Solution Explorer** pane, open the _Views/NotePage.xaml.cs_ file.
 01. Add the `QueryProperty` attribute to the `class` keyword, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="query_prop":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="query_prop":::
 
 01. Add a new `string` property named `ItemId`. This property calls the `LoadNote` method, passing the value of the property, which in turn, should be the file name of the note:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="itemid":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="itemid":::
 
 01. Replace the `SaveButton_Clicked` and `DeleteButton_Clicked` handlers with the following code:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="buttons":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/Views/NotePage.xaml.cs" id="buttons":::
 
     The buttons are now `async`. After they're pressed, the page navigates back to the previous page by using a URI of `..`.
 
@@ -628,7 +628,7 @@ The **:::no-loc text="Note"::: view** needs to support the query string paramete
 
 The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `AllNotesPage` instead of `NotePage`:
 
-:::code language="xaml" source="../snippets/notes-app/allnotes/AppShell.xaml" highlight="12":::
+:::code language="xaml" source="./snippets/notes-app/allnotes/AppShell.xaml" highlight="12":::
 
 If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the <xref:Microsoft.Maui.Controls.TabBar>.
 
@@ -637,7 +637,7 @@ Register the `NotesPage` with the navigation system:
 01. In the **Solution Explorer** pane, open the _AppShell.xaml.cs_ file.
 01. Add a line to the constructor that registers the navigation route:
 
-    :::code language="csharp" source="../snippets/notes-app/allnotes/AppShell.xaml.cs" highlight="9":::
+    :::code language="csharp" source="./snippets/notes-app/allnotes/AppShell.xaml.cs" highlight="9":::
 
 The `Routing.RegisterRoute` method takes two parameters:
 
@@ -654,11 +654,11 @@ You've completed the Create a .NET MAUI app tutorial!
 
 In the next tutorial, you'll learn how to implement model-view-viewmodel (MVVM) patterns in your project.
 
-- [Upgrade an app with MVVM principles](../notes-mvvm/index.yml)
+- [Upgrade an app with MVVM principles](./notes-mvvm.md)
 
 The following links provide more information related to some of the concepts you learned in this tutorial:
 
-- [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
-- [.NET MAUI Shell pages](../../fundamentals/shell/pages.md)
-- [Basic bindings](../../fundamentals/data-binding/basic-bindings.md)
-- [Editor control](../../user-interface/controls/editor.md)
+- [.NET MAUI Shell overview](../fundamentals/shell/index.md)
+- [.NET MAUI Shell pages](../fundamentals/shell/pages.md)
+- [Basic bindings](../fundamentals/data-binding/basic-bindings.md)
+- [Editor control](../user-interface/controls/editor.md)
