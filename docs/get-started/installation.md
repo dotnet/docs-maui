@@ -336,6 +336,14 @@ To build, sign, and deploy .NET MAUI apps for iOS and Mac Catalyst, you'll need:
 
 To start developing native, cross-platform .NET MAUI apps on Windows, macOS, or Linux, install the latest Visual Studio Code by following the [installation](#install-visual-studio-code) steps.
 
+To build and debug a .NET MAUI app, you'll need to have a valid target platform relative to your development machine's operating system. The following table lists the supported target platforms on each operating system:
+
+| Your Operating System | Supported Target Platforms |
+|---|---|
+| Windows | Windows, Android |
+| macOS | Android, iOS, macOS |
+| Linux | Android |
+
 ## Install Visual Studio Code
 
 1. To create .NET MAUI apps, you'll need to download the latest version of Visual Studio Code:
@@ -363,6 +371,11 @@ Once you install the .NET MAUI extension, you will be welcomed by the .NET MAUI 
 > To access the improved setup experience, the **Maui > Configuration: Improved Setup Experience** setting must be turned on.
 
 Click through and follow the prompts at each step to fully configure your .NET MAUI environment and target platforms.
+
+The **Set up your Android environment** step will set up everything you need to be successful with Android as a target platform, and the **Set up your iOS and macOS environment** step will set up everything you need to be successful with iOS and Mac as target platforms.
+
+> [!NOTE]
+> As indicated by the table above, you will need a Mac to see and be able to follow the **Set up your iOS and macOS environment** step.
 
 This walkthrough can also be accessed from the command palette. Select **Welcome: Open Walkthrough...** followed by **Get Started with .NET MAUI**.
 
@@ -463,24 +476,7 @@ To verify that the .NET MAUI SDK is installed:
 
     On Linux, you should see the `maui-android` workload ID listed alongside the installed version.
 
-### Set up target platforms
-
-To build and debug a .NET MAUI app, you'll need to have a valid target platform relative to your development machine's operating system. The following table lists the supported target platforms on each operating system:
-
-| Your Operating System | Supported Target Platforms |
-|---|---|
-| Windows | Windows, Android |
-| macOS | Android, iOS, macOS |
-| Linux | Android |
-
-The **Set up your Android environment** step will set up everything you need to be successful with Android as a target platform, and the **Set up your iOS and macOS environment** step will set up everything you need to be successful with iOS and Mac as target platforms.
-
-> [!NOTE]
-> As indicated by the table above, you will need a Mac to see and be able to follow the **Set up your iOS and macOS environment** step.
-
-<!-- markdownlint-disable MD025 -->
-#### [Android](#tab/android)
-<!-- markdownlint-enable MD025 -->
+### Set up your Android environment
 
 To set up your Android development environment, simply click on the **Configure Android Environment** button from the **Set up your Android Environment** walkthrough step to enter the full Android acquisition flow.
 
@@ -512,9 +508,7 @@ When your Android environment has been properly configured, you will be notified
 
 View the Output pane for more details on your Android environment status.
 
-<!-- markdownlint-disable MD025 -->
-#### [iOS and macOS](#tab/macios)
-<!-- markdownlint-enable MD025 -->
+### Set up your iOS and macOS environment
 
 To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual Studio Code:
 
