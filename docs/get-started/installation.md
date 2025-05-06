@@ -531,9 +531,9 @@ To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual
 :::image type="content" source="media/installation/vscode/walkthrough-step-ios.png" alt-text="Screenshot of the Visual Studio Code Configure iOS and macOS Environment button.":::
 
 Any detected errors must be addressed:
-    - Ensure you've ran `xcode-select --install` in a terminal.
-    - If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
-    - Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
+- Ensure you've ran `xcode-select --install` in a terminal.
+- If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
+- Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
 
 When your Xcode environment has been properly configured, you will be notified, "Your iOS and macOS environment for .NET MAUI is all set!"
 
