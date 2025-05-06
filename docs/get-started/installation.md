@@ -368,7 +368,7 @@ This walkthrough can also be accessed from the command palette. Select **Welcome
 
 ### Access the improved setup experience
 
-1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, select **Preferences: Open Settings (UI)**.
+1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, select **Preferences: Open Settings (UI)**. 
 
     :::image type="content" source="media/installation/vscode/settings.png" alt-text="Screenshot of the Visual Studio Code settings menu option.":::
 
@@ -475,8 +475,8 @@ To build and debug a .NET MAUI app, you'll need to have a valid target platform 
 
 The **Set up your Android environment** step will set up everything you need to be successful with Android as a target platform, and the **Set up your iOS and macOS environment** step will set up everything you need to be successful with iOS and Mac as target platforms.
 
-> [!NOTE]
-> As indicated by the table above, you will need a Mac to see and be able to follow the **Set up your iOS and macOS environment** step.
+    > [!NOTE]
+    > As indicated by the table above, you will need a Mac to see and be able to follow the **Set up your iOS and macOS environment** step.
 
 <!-- markdownlint-disable MD025 -->
 #### [Android](#tab/android)
@@ -495,7 +495,7 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     - To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
 
-- **Android emulator** - Installing an Android emulator is recommended, and required in the absence of a physical device.
+- **Android emulator** - Installing an Android emulator is recommended, and required in the absence of a physical device. 
     - The Android acquisition flow will prompt you to install a default emulator directly.
 
     :::image type="content" source="media/installation/vscode/android-avd-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android Virtual Device installation popup.":::
