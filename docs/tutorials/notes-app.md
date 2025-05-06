@@ -29,7 +29,7 @@ Before you can begin this tutorial, you must follow the [Build your first app ar
 
 - **Project Name**
 
-  This must be set to `Notes`. If the project is named something different, the code you copy and paste from this tutorial may result in build errors.
+  This must be set to `Notes`. If the project is named something different, the code you copy and paste from this tutorial might result in build errors.
 
 - **Place solution and project in the same directory**
 
@@ -81,7 +81,7 @@ These files help get the .NET MAUI app configured and running. Each file serves 
 
 The first customization you'll do is adding another page to the project. This page is an "about" page, which represents information about this app, such as the author, version, and perhaps a link for more information.
 
-01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Add** > **New Item...**.
+01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Add** > **New Item**.
 
     :::image type="content" source="./media/notes-app/shell/vs-new-item.png" alt-text="Right-clicking on a project in Visual Studio and selecting New Item.":::
 
@@ -156,7 +156,7 @@ After you've downloaded the images, you can move them with File Explorer to the 
     > [!TIP]
     > You can use File Explorer to drag-and-drop the images directly into the **Solution Explorer** pane, on top of the **Images** folder. This automatically moves the files to the folder, and includes them in the project. If you choose to drag-and-drop the files, ignore the rest of this procedure.
 
-01. Right-click on **Images** and select **Add** > **Existing Item...**.
+01. Right-click on **Images** and select **Add** > **Existing Item**.
 01. Navigate to the folder that contains the downloaded images.
 01. Change the filter to file type filter to **Image Files**.
 01. Hold down <kbd>CTRL</kbd> and click on each of the images you downloaded, then press **Add**
@@ -311,9 +311,9 @@ Refactor the existing code to separate the model from the view. The next few ste
 01. Find the **NotePage.xaml** item and drag it to the **:::no-loc text="Views":::** folder. The **NotePage.xaml.cs** should move with it.
 
     > [!IMPORTANT]
-    > When you move a file, Visual Studio usually prompts you with a warning about how the move operation may take a long time. This shouldn't be a problem here, press **OK** if you see this warning.
+    > When you move a file, Visual Studio usually prompts you with a warning about how the move operation might take a long time. This shouldn't be a problem here, press **OK** if you see this warning.
     >
-    > Visual Studio may also ask you if you want to adjust the namespace of the moved file. Select **No** as the next steps will change the namespace.
+    > Visual Studio might also ask you if you want to adjust the namespace of the moved file. Select **No** as the next steps will change the namespace.
 
 01. Find the **AboutPage.xaml** item and drag it to the **:::no-loc text="Views":::** folder. The **AboutPage.xaml.cs** should move with it.
 
@@ -410,7 +410,7 @@ You should now be able to run the app without any compiler errors, and everythin
 
 Currently the model is the data that is embedded in the note and about views. We'll create new classes to represent that data. First, the model to represent a note page's data:
 
-01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**.
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class**.
 01. Name the class **Note.cs** and press **Add**.
 01. Open **Note.cs** and replace the code with the following snippet:
 
@@ -420,7 +420,7 @@ Currently the model is the data that is embedded in the note and about views. We
 
 Next, create the about page's model:
 
-01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**.
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class**.
 01. Name the class **About.cs** and press **Add**.
 01. Open **About.cs** and replace the code with the following snippet:
 
@@ -543,9 +543,9 @@ This portion of the tutorial adds the final piece of the app, a view that displa
 
 Currently the **note** view displays a single note. To display multiple notes, create a new view and model: **AllNotes**.
 
-01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Views":::** folder and select **Add** > **New Item...**
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Views":::** folder and select **Add** > **New Item**
 01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _AllNotesPage.xaml_, and then select **Add**.
-01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class**
 01. Name the class _AllNotes.cs_ and press **Add**.
 
 ### Code the AllNotes model
@@ -570,7 +570,7 @@ Next, the view needs to be designed to support the **AllNotes** model.
 
 The previous XAML introduces a few new concepts:
 
-- The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here are usually display at the top of the app, along the page title. Depending on the platform, though, it may be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
+- The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here are usually display at the top of the app, along the page title. Depending on the platform, though, it might be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
 
   The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
 
@@ -601,7 +601,7 @@ NotePage?ItemId=path\on\device\XYZ.notes.txt
 
 The `ItemId=` parameter is set to the file name on the device where the note is stored.
 
-Visual Studio may be indicating that the `NotePage.ItemId` property doesn't exist, which it doesn't. The next step is modifying the **:::no-loc text="Note"::: view** to load the model based on the `ItemId` parameter that you'll create.
+Visual Studio might be indicating that the `NotePage.ItemId` property doesn't exist, which it doesn't. The next step is modifying the **:::no-loc text="Note"::: view** to load the model based on the `ItemId` parameter that you'll create.
 
 ### Query string parameters
 

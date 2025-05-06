@@ -19,19 +19,19 @@ internal class AllNotes
         // Use Linq extensions to load the *.notes.txt files.
         IEnumerable<Note> notes = Directory
 
-                                    // Select the file names from the directory
-                                    .EnumerateFiles(appDataPath, "*.notes.txt")
+            // Select the file names from the directory
+            .EnumerateFiles(appDataPath, "*.notes.txt")
 
-                                    // Each file name is used to create a new Note
-                                    .Select(filename => new Note()
-                                    {
-                                        Filename = filename,
-                                        Text = File.ReadAllText(filename),
-                                        Date = File.GetLastWriteTime(filename)
-                                    })
+            // Each file name is used to create a new Note
+            .Select(filename => new Note()
+            {
+                Filename = filename,
+                Text = File.ReadAllText(filename),
+                Date = File.GetLastWriteTime(filename)
+            })
 
-                                    // With the final collection of notes, order them by date
-                                    .OrderBy(note => note.Date);
+            // With the final collection of notes, order them by date
+            .OrderBy(note => note.Date);
 
         // Add each note into the ObservableCollection
         foreach (Note note in notes)

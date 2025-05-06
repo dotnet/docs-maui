@@ -145,7 +145,7 @@ Now you're ready to start updating the project by adding view models.
 
 The view-to-viewmodel relationship relies heavily on the binding system provided by .NET Multi-platform App UI (.NET MAUI). The app is already using binding in the views to display a list of notes and to present the text and date of a single note. The app logic is currently provided by the view's code-behind and is directly tied to the view. For example, when a user is editing a note and presses the **Save** button, the `Clicked` event for the button is raised. Then, the code-behind for the event handler saves the note text to a file and navigates to the previous screen.
 
-Having app logic in the code-behind of a view can become an issue when the view changes. For example if the button is replaced with a different input control, or the name of a control is changed, event handlers may become invalid. Regardless of how the view is designed, the purpose of the view is to invoke some sort of app logic and to present information to the user. For this app, the `Save` button is saving the note and then navigating back to the previous screen.
+Having app logic in the code-behind of a view can become an issue when the view changes. For example, if the button is replaced with a different input control, or the name of a control is changed, event handlers might become invalid. Regardless of how the view is designed, the purpose of the view is to invoke some sort of app logic and to present information to the user. For this app, the `Save` button is saving the note and then navigating back to the previous screen.
 
 The viewmodel gives the app a specific place to put the app logic regardless of how the UI is designed or how the data is being loaded or saved. The viewmodel is the glue that represents and interacts with the data model on behalf of the view.
 
@@ -205,7 +205,7 @@ The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Click
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml.cs**.
 
     > [!TIP]
-    > You may need to expand **Views\\AboutPage.xaml** to show the file.
+    > You might need to expand **Views\\AboutPage.xaml** to show the file.
 
 01. Replace the code with the following snippet:
 
@@ -317,7 +317,7 @@ Previously, this view didn't declare a binding context, as it was supplied by th
 
 - At run time, when the page is navigated to, it displays a blank note. This is because the parameterless constructor for the binding context, the viewmodel, is invoked. If you remember correctly, the parameterless constructor for the **Note viewmodel** creates a blank note.
 
-- The intellisense in the XAML editor shows the available properties as soon as you start typing `{Binding` syntax. The syntax is also validated and alerts you of an invalid value. Try changing the binding syntax for the `SaveCommand` to `Save123Command`. If you hover the mouse cursor over the text, you'll notice that a tooltip is displayed informing you that **Save123Command** isn't found. This notification isn't considered an error because bindings are dynamic, it's really a small warning that may help you notice when you typed the wrong property.
+- The intellisense in the XAML editor shows the available properties as soon as you start typing `{Binding` syntax. The syntax is also validated and alerts you of an invalid value. Try changing the binding syntax for the `SaveCommand` to `Save123Command`. If you hover the mouse cursor over the text, you'll notice that a tooltip is displayed informing you that **Save123Command** isn't found. This notification isn't considered an error because bindings are dynamic, it's really a small warning that might help you notice when you typed the wrong property.
 
   If you changed the **SaveCommand** to a different value, restore it now.
 
@@ -328,7 +328,7 @@ Now that the interaction with the view has changed from event handlers to comman
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml.cs**.
 
     > [!TIP]
-    > You may need to expand **Views\\NotePage.xaml** to show the file.
+    > You might need to expand **Views\\NotePage.xaml** to show the file.
 
 01. Replace the code with the following snippet:
 
@@ -440,7 +440,7 @@ Now that the interaction with the view has changed from event handlers to comman
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml.cs**.
 
     > [!TIP]
-    > You may need to expand **Views\\AllNotesPage.xaml** to show the file.
+    > You might need to expand **Views\\AllNotesPage.xaml** to show the file.
 
 01. Replace the code with the following snippet:
 
@@ -485,7 +485,7 @@ In the **AllNotes view**, the `CollectionView` lists all of the notes, but doesn
 
 The problem you have to solve now is related to navigation. No matter how the **Allnotes view** is navigated to, the `NavigatedTo` event is raised for the page. This event is a perfect place to forcibly unselect the selected item in the `CollectionView`.
 
-However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem to support the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you may find that MVVM encourages overengineering.
+However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem to support the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you might find that MVVM encourages overengineering.
 
 Don't overengineer a solution for this problem, and just use the `NavigatedTo` event to clear the selected item from the `CollectionView`.
 
