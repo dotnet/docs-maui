@@ -102,11 +102,13 @@
     },
     {
       "source_path": "docs/tutorials/notes-app/index.yml",
-      "redirect_url": "/dotnet/maui/tutorials/notes-app"
+      "redirect_url": "/dotnet/maui/tutorials/notes-app",
+      "redirect_document_id": true
     },
     {
       "source_path": "docs/tutorials/notes-mvvm/index.yml",
-      "redirect_url": "/dotnet/maui/tutorials/notes-mvvm"
+      "redirect_url": "/dotnet/maui/tutorials/notes-mvvm",
+      "redirect_document_id": true
     }
   ]
 }
