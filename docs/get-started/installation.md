@@ -491,19 +491,18 @@ To set up your Android development environment, simply click on the **Configure 
 The Android acquisition flow will analyze your Android environment and offer to install all missing components:
 
 * **Android SDK and Java SDK**: Android SDK and Java SDK components are required.
-
-    * The Android acquisition flow will prompt you to install these components directly, or to select a preexisting installation you may already have.
+  * The Android acquisition flow will prompt you to install these components directly, or to select a preexisting installation you may already have.
 
     :::image type="content" source="media/installation/vscode/android-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android installation popup.":::
 
-    * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
+  * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
 
 * **Android emulator**: Installing an Android emulator is recommended, and required in the absence of a physical device.
-    * The Android acquisition flow will prompt you to install a default emulator directly.
+  * The Android acquisition flow will prompt you to install a default emulator directly.
 
     :::image type="content" source="media/installation/vscode/android-avd-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android Virtual Device installation popup.":::
 
-    * To configure emulators further, follow the instructions to [install an Android emulator manually](?tabs=visual-studio-code#download-and-install-an-android-emulator).
+  * To configure emulators further, follow the instructions to [install an Android emulator manually](?tabs=visual-studio-code#download-and-install-an-android-emulator).
 
 > [!IMPORTANT]
 > Android licenses will need to be manually reviewed and accepted in Terminal. When prompted, review each license. To accept, type 'y', and press 'Enter'.
