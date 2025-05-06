@@ -99,6 +99,14 @@
     {
       "source_path": "docs/fundamentals/windows.md",
       "redirect_url": "/dotnet/maui/user-interface/controls/window"
+    },
+    {
+      "source_path": "docs/tutorials/notes-app/index.yml",
+      "redirect_url": "/dotnet/maui/tutorials/notes-app"
+    },
+    {
+      "source_path": "docs/tutorials/notes-mvvm/index.yml",
+      "redirect_url": "/dotnet/maui/tutorials/notes-mvvm"
     }
   ]
 }

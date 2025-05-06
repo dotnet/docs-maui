@@ -107,10 +107,10 @@ conceptualContent:
               url: get-started/first-app.md
               itemType: tutorial
             - text: Create a .NET MAUI app
-              url: tutorials/notes-app/index.yml
+              url: tutorials/notes-app.md
               itemType: tutorial
             - text: Upgrade your app with MVVM
-              url: tutorials/notes-mvvm/index.yml
+              url: tutorials/notes-mvvm.md
               itemType: tutorial
             - text: Learning resources
               url: get-started/resources.md
