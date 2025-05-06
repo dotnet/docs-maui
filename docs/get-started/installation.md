@@ -363,19 +363,25 @@ Before you can create .NET MAUI apps in Visual Studio Code you'll need to instal
 
     The .NET MAUI extension automatically installs the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) and [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensions, which are required for the .NET MAUI extension to run. For more information about C# Dev Kit, see [C# Dev Kit for Visual Studio Code](/visualstudio/subscriptions/vs-c-sharp-dev-kit).
 
-## Follow the "Get Started with .NET MAUI" walkthrough
+## Follow the steps in the walkthrough
 
 Once you install the .NET MAUI extension, you will be welcomed by the .NET MAUI walkthrough, "Get Started with .NET MAUI".
 
 > [!IMPORTANT]
-> To access the improved setup experience, the **Maui > Configuration: Improved Setup Experience** setting must be turned on.
+> To access the improved setup experience, the **Maui > Configuration: Improved Setup Experience** [setting must be turned on](#access-the-improved-setup-experience).
 
-Click through and follow the prompts at each step to fully configure your .NET MAUI environment and target platforms.
+Click through and follow the prompts at each step to fully configure your .NET MAUI environment and target platforms:
 
-The **Set up your Android environment** step will set up everything you need to be successful with Android as a target platform, and the **Set up your iOS and macOS environment** step will set up everything you need to be successful with iOS and Mac as target platforms.
+1. [Connect your account to the C# Dev Kit extension](#connect-your-account-to-c-dev-kit-1)
+1. [Set up your .NET environment](#set-up-your-net-environment-1)
+1. [Set up your .NET MAUI environment](#set-up-your-net-maui-environment-1)
+1. [Set up your iOS and macOS environment](#set-up-your-ios-and-macos-environment)
+1. [Set up your Android environment](#set-up-your-android-environment)
 
 > [!NOTE]
-> As indicated by the table above, you will need a Mac to see and be able to follow the **Set up your iOS and macOS environment** step.
+> You will need to be on a Mac to see and follow the **Set up your iOS and macOS environment** step.
+
+The **Set up your Android environment** step will set up everything you need to be successful with Android as a target platform, and the **Set up your iOS and macOS environment** step will set up everything you need to be successful with iOS and Mac as target platforms.
 
 This walkthrough can also be accessed from the command palette. Select **Welcome: Open Walkthrough...** followed by **Get Started with .NET MAUI**.
 
