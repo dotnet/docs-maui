@@ -359,11 +359,26 @@ Before you can create .NET MAUI apps in Visual Studio Code you'll need to instal
 
 Once you install the .NET MAUI extension, you will be welcomed by the .NET MAUI walkthrough, "Get Started with .NET MAUI".
 
-    :::image type="content" source="media/installation/vscode/walkthrough.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI walkthrough.":::
+> [!IMPORTANT]
+> To access the improved setup experience, the **Maui > Configuration: Improved Setup Experience** setting must be turned on.
 
 Click through and follow the prompts at each step to fully configure your .NET MAUI environment and target platforms.
 
 This walkthrough can also be accessed from the command palette. Select **Welcome: Open Walkthrough...** followed by **Get Started with .NET MAUI**.
+
+### Access the improved setup experience
+
+1. In Visual Studio Code, press <kbd>CTRL+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, select **Preferences: Open Settings (UI)**. 
+
+    :::image type="content" source="media/installation/vscode/settings.png" alt-text="Screenshot of the Visual Studio Code settings menu option.":::
+
+1. Navigate to Extensions > .NET MAUI and check on the **Maui > Configuration: Improved Setup Experience** setting.
+
+    :::image type="content" source="media/installation/vscode/walkthrough.png" alt-text="Screenshot of the Visual Studio Code improved dotnet maui setup experimental setting.":::
+
+1. Return to the **Get Started with .NET MAUI** walkthrough. Ensure that you are able to see **Set up your Android environment** among other steps in the walkthrough.
+
+    :::image type="content" source="media/installation/vscode/walkthrough.png" alt-text="Screenshot of the Visual Studio Code extension pane showing the .NET MAUI walkthrough.":::
 
 ### Connect your account to C# Dev Kit
 
@@ -478,14 +493,14 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     :::image type="content" source="media/installation/vscode/android-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android installation popup.":::
 
-    - To configure SDK and JDK further, follow the instructions to [configure your installations](./android/sdk-config.md).
+    - To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
 
 - **Android emulator** - Installing an Android emulator is recommended, and required in the absence of a physical device. 
     - The Android acquisition flow will prompt you to install a default emulator directly.
 
     :::image type="content" source="media/installation/vscode/android-avd-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android Virtual Device installation popup.":::
 
-    - To configure emulators further, follow the instructions to [install an Android emulator through CLI](./android/create-emulator-cli.md).
+    - To configure emulators further, follow the instructions to [install an Android emulator manually](?tabs=visual-studio-code#download-and-install-an-android-emulator).
 
 > [!IMPORTANT]
 > Android licenses will need to be manually reviewed and accepted in Terminal. When prompted, review each license. To accept, type 'y', and press 'Enter'.
@@ -497,7 +512,7 @@ When your Android environment has been properly configured, you will be notified
 View the Output pane for more details on your Android environment status.
 
 <!-- markdownlint-disable MD025 -->
-#### [iOS/Mac Catalyst](#tab/macios)
+#### [iOS and macOS](#tab/macios)
 <!-- markdownlint-enable MD025 -->
 
 To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual Studio Code:
