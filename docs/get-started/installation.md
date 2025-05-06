@@ -488,7 +488,9 @@ To set up your Android development environment, simply click on the **Configure 
 
 The Android acquisition flow will analyze your Android environment and offer to install all missing components:
 
- * **Android SDK and Java SDK**: Android SDK and Java SDK components are required. The Android acquisition flow will prompt you to install these components directly, or to select a preexisting installation you may already have.
+* **Android SDK and Java SDK**: Android SDK and Java SDK components are required.
+
+    * The Android acquisition flow will prompt you to install these components directly, or to select a preexisting installation you may already have.
 
     :::image type="content" source="media/installation/vscode/android-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android installation popup.":::
 
