@@ -393,7 +393,7 @@ This walkthrough can also be accessed from the command palette. Select **Welcome
 
 1. Navigate to Extensions > .NET MAUI and check on the **Maui > Configuration: Improved Setup Experience** setting.
 
-    :::image type="content" source="media/installation/vscode/walkthrough.png" alt-text="Screenshot of the Visual Studio Code improved dotnet maui setup experimental setting.":::
+    :::image type="content" source="media/installation/vscode/experimental-setting-improved-setup.png" alt-text="Screenshot of the Visual Studio Code improved dotnet maui setup experimental setting.":::
 
 1. Return to the **Get Started with .NET MAUI** walkthrough. Ensure that you are able to see **Set up your Android environment** among other steps in the walkthrough.
 
