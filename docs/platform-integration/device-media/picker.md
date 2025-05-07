@@ -46,9 +46,12 @@ These permissions can be added in the following ways:
   ```xml
   <!-- Needed for Picking photo/video -->
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /> <!-- Required only if your app needs to access audio files that other apps created -->
-  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Required only if your app needs to access images or photos that other apps created -->
-  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /> <!-- Required only if your app needs to access videos that other apps created -->
+  <!-- Required only if your app needs to access audio files that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+  <!-- Required only if your app needs to access images or photos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <!-- Required only if your app needs to access videos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 
   <!-- Needed for Taking photo/video -->
   <uses-permission android:name="android.permission.CAMERA" />
