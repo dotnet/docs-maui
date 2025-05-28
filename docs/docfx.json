@@ -46,7 +46,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "author": "davidbritch",
+      "author": "davidortinau",
       "breadcrumb_path": "/dotnet/maui/breadcrumb/toc.json",
       "feedback_system": "OpenSource",
       "feedback_github_repo": "dotnet/docs-maui",
@@ -57,7 +57,7 @@
       "open_source_feedback_issueTitle": "",
       "open_source_feedback_productLogoLightUrl": "https://learn.microsoft.com/media/logos/logo_net.svg",
       "open_source_feedback_productLogoDarkUrl": "https://learn.microsoft.com/media/logos/logo_net.svg",
-      "ms.author": "dabritch",
+      "ms.author": "daortin",
       "ms.service": "dotnet-mobile",
       "ms.subservice": "dotnet-maui",
       "ms.topic": "conceptual",
