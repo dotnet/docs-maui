@@ -1,6 +1,4 @@
 ---
-author: adegeo
-ms.author: adegeo
 ms.date: 12/02/2021
 ms.topic: include
 ---
