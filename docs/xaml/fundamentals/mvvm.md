@@ -13,7 +13,7 @@ The Model-View-ViewModel (MVVM) pattern enforces a separation between three soft
 > [!IMPORTANT]
 > .NET Multi-platform App UI (.NET MAUI) marshals binding updates to the UI thread. When using MVVM this enables you to update data-bound viewmodel properties from any thread, with .NET MAUI's binding engine bringing the updates to the UI thread.
 
-There are multiple approaches to implementing the MVVM pattern, and this article focuses on a simple approach. It uses views and viewmodels, but not models, to focus on the data binding between the two layers. For a detailed explanation of using the MVVM pattern in .NET MAUI, see [Model-View-ViewModel (MVVM)](/dotnet/architecture/maui/mvvm) in [Enterprise Application Patterns using .NET MAUI](/dotnet/architecture/maui/). For a tutorial that helps you to implement the MVVM pattern, see [Upgrade your app with MVVM concepts](~/tutorials/notes-mvvm/index.yml).
+There are multiple approaches to implementing the MVVM pattern, and this article focuses on a simple approach. It uses views and viewmodels, but not models, to focus on the data binding between the two layers. For a detailed explanation of using the MVVM pattern in .NET MAUI, see [Model-View-ViewModel (MVVM)](/dotnet/architecture/maui/mvvm) in [Enterprise Application Patterns using .NET MAUI](/dotnet/architecture/maui/). For a tutorial that helps you to implement the MVVM pattern, see [Upgrade your app with MVVM concepts](../../tutorials/notes-mvvm.md).
 
 ## Simple MVVM
 

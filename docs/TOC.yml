@@ -110,9 +110,9 @@
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
-          href: tutorials/notes-app/index.yml
+          href: tutorials/notes-app.md
         - name: Upgrade an app with MVVM principles
-          href: tutorials/notes-mvvm/index.yml
+          href: tutorials/notes-mvvm.md
     - name: XAML
       items:
         - name: Overview
