@@ -18,6 +18,103 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve pro
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
+## XAML with *implicit & global* XML namespaces (Preview 5)
+
+.NET 10 Preview 5 introduces a cleaner **XML-namespace experience** for .NET MAUI that wipes out nearly all of the boiler-plate `xmlns:` lines you used to copy-paste at the top of every XAML file.
+
+| What changed                         | How it works                                                                                                                                                                 |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Project-wide “global” namespaces** | `http://schemas.microsoft.com/dotnet/maui/global` is a new xmlns that you can use to aggregate multiple xmlns together. By default, it contains the maui xmlns (sourcegenerated), {YourNamespace}, and {YourNamespace}.Pages |
+| **Backward compatible**              | Existing explicit `xmlns:` mappings still compile; add them only when you need to disambiguate duplicate type names.                                                        |
+| **Implicit default namespace** (opt-in)      | When opting in, the compiler now injects `http://schemas.microsoft.com/dotnet/2021/maui` automatically, so you can drop root `xmlns` and `xmlns:x` lines.                               |
+
+### Before vs. after
+
+```xml
+<!-- .NET 8 style -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:models="clr-namespace:MyApp.Models"
+        xmlns:controls="clr-namespace:MyApp.Controls"
+        x:Class="MyApp.MainPage">
+    <controls:TagView x:DataType="models:Tag" />
+</ContentPage>
+````
+
+```xml
+<!-- .NET 10 Preview 5 -->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.MainPage">
+    <TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+Changes:
+
+- No need to declare the `xmlns:models` or `xmlns:controls` because they are declared globally in a `GlobalXmlns.cs` file
+- No prefixes required for `TagView` or `Tag`
+
+```xml
+<!-- .NET 10 Preview 5 plus opt-in -->
+<ContentPage x:Class="MyApp.MainPage">
+    <TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+Changes:
+
+- No need to declare `xmlns` or `xmlns:x` since they are implicitly added to the global namespace
+
+### How to adopt
+
+Create a new project to see the cleaner default experience, or upgrade your existing project with the details below.
+
+1. **Upgrade** the project to `net10.0-` target frameworks.
+2. **Add** one assembly-level file (e.g. `GlobalXmlns.cs`) that maps your CLR namespaces.
+3. **Delete** redundant `xmlns:` lines and prefixes from your XAML.
+   IntelliSense and Hot Reload keep working—just with much cleaner markup.
+
+```xml
+<PropertyGroup>
+    <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+</PropertyGroup>
+```
+
+### Sample `GlobalXmlns.cs`
+
+```csharp
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Views")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Controls")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Converters")]
+```
+
+If you prefer to continue using the xmlns prefixes in your XAML, you can provide default prefixes for them in the `GlobalXmlns.cs` as well.
+
+```csharp
+using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
+
+[assembly: XmlnsPrefix("MyApp.Controls","controls")]
+```
+
+Use them as before.
+
+```xml
+<ContentPage x:Class="MyApp.MainPage">
+    <controls:TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+> ✨ **Tip:** You can register third-party libraries here too!
+
 ## .NET Aspire integration
 
 .NET MAUI for .NET 10 includes a new project template that creates a .NET Aspire service defaults project for .NET MAUI. This provides a set of extension methods that connect telemetry and service discovery to your app.
