@@ -69,7 +69,7 @@ Changes:
 
 ### How to adopt
 
-Create a new project to see the cleaner default experience, or upgrade your existing project with the details below.
+Create a new project to see the streamlined experience, or upgrade your existing project with the details below.
 
 1. **Upgrade** the project to `net10.0-` target frameworks.
 2. **Add** one assembly-level file (e.g. `GlobalXmlns.cs`) that maps your CLR namespaces.
