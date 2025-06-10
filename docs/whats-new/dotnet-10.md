@@ -8,6 +8,7 @@ ms.date: 05/13/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
+- [.NET MAUI in .NET 10 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview5/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview3/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview2/dotnetmaui.md)
@@ -114,6 +115,36 @@ Use them as before.
 ```
 
 > ✨ **Tip:** You can register third-party libraries here too!
+
+## Intercept Web Requests
+
+The `HybridWebView` now allows you to intercept when the browser requests a web resource in order to take action before it executes, such as adding a header to the request. The do this, add a listener to the `WebResourceRequested` event.
+
+```xml
+<HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
+```
+
+```csharp
+private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebResourceRequestedEventArgs e)
+{
+  // NOTES:
+  // * This method MUST be synchronous, as it is called from the WebView's thread.
+  // * This method MUST return a response (even if it is not yet complete), otherwise the 
+  //   WebView may freeze or return a error response.
+  // * The response must be set using the SetResponse method of the event args.
+
+  // Only handle requests for the specific image URL
+  if (!e.Uri.ToString().Contains("sample-image.png"))
+    return;
+
+  // Prevent the default behavior of the web view
+  e.Handled = true;
+
+  // Return the stream or task of stream that contains the content
+  // NOTE: the method is NOT awaited, the WebView will continue to load the content
+  e.SetResponse(200, "OK", "image/png", GetStreamAsync());
+  }
+```
 
 ## .NET Aspire integration
 
