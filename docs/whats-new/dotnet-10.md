@@ -504,10 +504,6 @@ var handler = new NSUrlSessionHandler(sessionConfiguration);
 
 The `NSUrlSessionHandler.BypassBackgroundSessionCheck` property exists for an old issue in the Mono runtime. This workaround is no longer required and so the property is ignored.
 
-## Xcode 17
-
-Support for Xcode 17 has been added, including many new APIs in iOS 19, tvOS 19, macOS 16, and Mac Catalyst 19.
-
 ## See also
 
 - [.NET MAUI roadmap](https://github.com/dotnet/maui/wiki/Roadmap)
