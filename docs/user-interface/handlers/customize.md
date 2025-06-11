@@ -16,7 +16,7 @@ Handlers can be customized to augment the appearance and behavior of a cross-pla
 
 Each of these methods has an identical signature that requires two arguments:
 
-- A `string`-based key. When modifying one of the mappings provided by .NET MAUI, the key used by .NET MAUI must be specified. The key values used by .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core). This is the key format that should be used if you want your handler customization to run every time a property changes. Otherwise, the key can be an arbitrary value that doesn't have to correspond to the name of a property exposed by a type. For example, `MyCustomization` can be specified as a key, with any native view modification being performed as the customization. However, a consequence of this key format is that your handler customization will only be run when the mapper for the handler is first modified.
+- A `string`-based key. When modifying one of the mappings provided by .NET MAUI, the key used by .NET MAUI must be specified. The key values used by .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. You can find the interfaces that abstract each cross-platform control in the [dotnet/maui repo](https://github.com/dotnet/maui/tree/main/src/Core/src/Core). This is the key format that should be used if you want your handler customization to run every time a property changes. Otherwise, the key can be an arbitrary value that doesn't have to correspond to the name of a property exposed by a type. For example, `MyCustomization` can be specified as a key, with any native view modification being performed as the customization. However, a consequence of this key format is that your handler customization will only be run when the mapper for the handler is first modified.
 - An <xref:System.Action> that represents the method that performs the handler customization. The <xref:System.Action> specifies two arguments:
   - A `handler` argument that provides an instance of the handler being customized.
   - A `view` argument that provides an instance of the cross-platform control that the handler implements.
@@ -204,7 +204,7 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
         }
     }
 
-#if IOS || MACCATALYST                   
+#if IOS || MACCATALYST
     void OnEditingDidBegin(object sender, EventArgs e)
     {
         var nativeView = sender as UITextField;
@@ -267,7 +267,7 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
         }
     }
 
-#if IOS || MACCATALYST                   
+#if IOS || MACCATALYST
     void OnEditingDidBegin(object sender, EventArgs e)
     {
         var nativeView = sender as UITextField;
