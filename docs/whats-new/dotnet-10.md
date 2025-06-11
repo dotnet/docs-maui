@@ -504,9 +504,9 @@ var handler = new NSUrlSessionHandler(sessionConfiguration);
 
 The `NSUrlSessionHandler.BypassBackgroundSessionCheck` property exists for an old issue in the Mono runtime. This workaround is no longer required and so the property is ignored.
 
-## Xcode 17
+## Xcode 26
 
-Support for Xcode 17 has been added, including many new APIs in iOS 19, tvOS 19, macOS 16, and Mac Catalyst 19.
+Support for Xcode 26 has been added, including many new APIs in iOS 26, tvOS 26, macOS 26, and Mac Catalyst 26.
 
 ## See also
 
