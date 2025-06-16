@@ -196,7 +196,7 @@ To download and install the Java SDK, and configure Visual Studio Code to use it
         > [!NOTE]
         > If you install the OpenJDK on Windows via MSI, you can opt into the installer setting the `JAVA_HOME` environmental variable.
 
-    1. In Visual Studio Code, press <kbd>Ctrl+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Java SDK location** to set the Java SDK path at the user/workspace level.
+    1. In Visual Studio Code, press <kbd>Ctrl+Shift+P</kbd> on Windows, or <kbd>Cmd+Shift+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Java SDK location** to set the Java SDK path at the user/workspace level.
     1. Configure the Java SDK path in your .csproj file by setting the `$(JavaSdkDirectory)` MSBuild property to the OpenJDK path. This will define the Java SDK path at the project level.
 
 #### Download and install the Android SDK
@@ -211,10 +211,10 @@ To download and install the Android SDK, and configure Visual Studio Code to use
 
 1. Ensure that you've configured the path to the Android SDK via one of the following approaches:
     1. Set the `ANDROID_HOME` environment variable to define the Android SDK path for your machine. This is the recommended approach, which defines the Android SDK path at the machine level.
-    1. In Visual Studio Code, press <kbd>Ctrl+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Android SDK location** to set the Android SDK path at the user/workspace level.
+    1. In Visual Studio Code, press <kbd>Ctrl+Shift+P</kbd> on Windows, or <kbd>Cmd+Shift+P</kbd> on macOS, and then select **.NET MAUI: Configure Android**, followed by **Select Android SDK location** to set the Android SDK path at the user/workspace level.
     1. Configure the Android SDK path in your .csproj file by setting the `$(AndroidSdkDirectory)` MSBuild property to the Android SDK path. This will define the Android SDK path at the project level.
 
-1. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>Ctrl+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed:
+1. In Visual Studio Code, verify that your Android environment is configured correctly by pressing <kbd>Ctrl+Shift+P</kbd> on Windows, or <kbd>Cmd+Shift+P</kbd> on macOS, and then selecting **.NET MAUI: Configure Android**, followed by **Refresh Android environment**. Any detected errors must be addressed:
     - In the command palette, select **.NET MAUI: Configure Android** followed by both **Select Android SDK location** and **Select Android SDK location** and validate that they correctly point to installations of each. On Windows, if you install the SDKs via Visual Studio, OpenJDK will be located at *C:\Program Files\Microsoft* and the Android SDK will be located at *C:\Program Files (x86)\Android\android-sdk*.
     - Ensure that your Android SDK folder has sub-folders such as *build-tools*, *cmdline-tools*, and *platform-tools*.
     - Ensure that your OpenJDK folder has sub-folders such as *bin*, *lib*, and more.
@@ -307,14 +307,14 @@ To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual
     ```
 
 1. Launch Xcode and accept any license agreements. If simulators don't start installing, navigate to **Xcode > Settings > Components** and install your chosen simulator runtimes.
-1. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>CMD+SHIFT+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed:
+1. In Visual Studio Code, verify that your Apple environment is configured correctly by pressing <kbd>Cmd+Shift+P</kbd> and then selecting **.NET MAUI: Configure Apple**, followed by **Refresh Apple environment**. Any detected errors must be addressed:
     - Ensure you've ran `xcode-select --install` in a terminal.
     - If you receive an error that Xcode hasn't been found, run `xcode-select -p` in a terminal and check that it returns a path to your Xcode installation.
     - Open Xcode to ensure it loads correctly, and then navigate to **Xcode > Settings > Location** and check that the **Command Line Tools** field is pointing to the correct Xcode installation.
 
 ## Troubleshooting
 
-If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>Ctrl+SHIFT+U</kbd> on Windows or <kbd>CMD+SHIFT+U</kbd> on macOS) and selecting **.NET MAUI** in the drop-down.
+If you encounter issues when installing the .NET MAUI extension in Visual Studio Code, more information about the issues can be found by navigating to the **Output** window (<kbd>Ctrl+Shift+U</kbd> on Windows or <kbd>Cmd+Shift+U</kbd> on macOS) and selecting **.NET MAUI** in the drop-down.
 
 ## Provide feedback
 
@@ -387,7 +387,7 @@ This walkthrough can also be accessed from the command palette. Select **Welcome
 
 ### Access the improved setup experience
 
-1. In Visual Studio Code, press <kbd>Ctrl+SHIFT+P</kbd> on Windows, or <kbd>CMD+SHIFT+P</kbd> on macOS, select **Preferences: Open Settings (UI)**.
+1. In Visual Studio Code, press <kbd>Ctrl+Shift+P</kbd> on Windows, or <kbd>Cmd+Shift+P</kbd> on macOS, select **Preferences: Open Settings (UI)**.
 
     :::image type="content" source="media/installation/vscode/settings.png" alt-text="Screenshot of the Visual Studio Code settings menu option.":::
 

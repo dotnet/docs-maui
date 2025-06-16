@@ -11,7 +11,7 @@ Keyboard accelerators are keyboard shortcuts that improve the usability and acce
 A keyboard accelerator is composed of two components:
 
 - Modifiers, which include Shift, Ctrl, and Alt.
-- Keys, which include alphanumeric keys, and special keys.
+- Keys, which include alphanumeric keys and special keys.
 
 In .NET MAUI, keyboard accelerators are associated with commands exposed in menus, and should be specified with the menu item. Specifically, .NET MAUI keyboard accelerators can be attached to menu items in the menu bar on Mac Catalyst and Windows, and menu items in context menus on Windows. For more information about menu bars, see [Display a menu bar in a .NET MAUI desktop app](menu-bar.md). For more information about context menus, see [Display a context menu in a .NET MAUI desktop app](context-menu.md).
 
@@ -45,8 +45,8 @@ The following table outlines the keyboard accelerator formats .NET MAUI supports
 
 | Platform | Single key | Multi-key |
 | -------- | ---------- | --------- |
-| Mac Catalyst | Keyboard accelerators without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CMD+SHIFT+S or CMD+S to invoke the action associated with a menu item. |
-| Windows | Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
+| Mac Catalyst | Keyboard accelerators without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using Cmd+Shift+S or Cmd+S to invoke the action associated with a menu item. |
+| Windows | Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using Ctrl+Shift+F or Ctrl+F to invoke the action associated with a menu item. |
 
 ## Create a keyboard accelerator
 
@@ -194,4 +194,4 @@ When a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is disabled, the associated
 </MenuFlyoutItem>
 ```
 
-In this example, because the `IsEnabled` property of the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is set to `false`, the associated CTRL+X keyboard accelerator can't be invoked.
+In this example, because the `IsEnabled` property of the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is set to `false`, the associated Ctrl+X keyboard accelerator can't be invoked.
