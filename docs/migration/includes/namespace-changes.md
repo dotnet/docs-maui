@@ -7,21 +7,20 @@ ms.date: 08/30/2023
 
 Namespaces have changed in the move from Xamarin.Forms to .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, perform a find and replace for the following namespaces:
 
-> [!div class="mx-tdBreakAll"]
-> | Xamarin.Forms namespace | .NET MAUI namespace(s) |
-> | --- | --- |
-> | `Xamarin.Forms` | <xref:Microsoft.Maui> and <xref:Microsoft.Maui.Controls> |
-> | `Xamarin.Forms.DualScreen` | <xref:Microsoft.Maui.Controls.Foldable> |
-> | `Xamarin.Forms.Maps` | <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> |
-> | `Xamarin.Forms.PlatformConfiguration` | <xref:Microsoft.Maui.Controls.PlatformConfiguration> |
-> | `Xamarin.Forms.PlatformConfiguration.AndroidSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific> |
-> | `Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat> |
-> | `Xamarin.Forms.PlatformConfiguration.TizenSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific> |
-> | `Xamarin.Forms.PlatformConfiguration.WindowsSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific> |
-> | `Xamarin.Forms.PlatformConfiguration.iOSSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> |
-> | `Xamarin.Forms.Shapes` | <xref:Microsoft.Maui.Controls.Shapes> |
-> | `Xamarin.Forms.StyleSheets` | <xref:Microsoft.Maui.Controls.StyleSheets> |
-> | `Xamarin.Forms.Xaml` | <xref:Microsoft.Maui.Controls.Xaml> |
+| Xamarin.Forms namespace    | .NET MAUI namespaces                                               |
+|----------------------------|--------------------------------------------------------------------|
+| `Xamarin.Forms`            | <xref:Microsoft.Maui> and <xref:Microsoft.Maui.Controls>           |
+| `Xamarin.Forms.DualScreen` | <xref:Microsoft.Maui.Controls.Foldable>                            |
+| `Xamarin.Forms.Maps`       | <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> |
+| `Xamarin.Forms.PlatformConfiguration` | <xref:Microsoft.Maui.Controls.PlatformConfiguration>    |
+| `Xamarin.Forms.PlatformConfiguration.AndroidSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific> |
+| `Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat> |
+| `Xamarin.Forms.PlatformConfiguration.TizenSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific> |
+| `Xamarin.Forms.PlatformConfiguration.WindowsSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific> |
+| `Xamarin.Forms.PlatformConfiguration.iOSSpecific` | <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> |
+| `Xamarin.Forms.Shapes` | <xref:Microsoft.Maui.Controls.Shapes> |
+| `Xamarin.Forms.StyleSheets` | <xref:Microsoft.Maui.Controls.StyleSheets> |
+| `Xamarin.Forms.Xaml` | <xref:Microsoft.Maui.Controls.Xaml> |
 
 .NET MAUI projects make use of implicit `global using` directives. This feature enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to replace them with the equivalent .NET MAUI namespaces.
 

@@ -174,7 +174,7 @@ If your app uses encryption, and you plan to distribute it outside the United St
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
 
 ```
-/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net8.0-maccatalyst]
+/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/JohnDoe/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net8.0-maccatalyst]
 ```
 
 While `codesign` succeeds in signing your app, the `_CodesignVerify` target fails to verify the code signature:
@@ -190,9 +190,9 @@ Therefore, it's currently necessary to add the following build target to the end
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   ...
-  <Target Name="_SkipCodesignVerify" BeforeTargets="_CodesignVerify" AfterTargets="_CodesignAppBundle">  
-    <PropertyGroup>    
-      <_RequireCodeSigning>false</_RequireCodeSigning>  
+  <Target Name="_SkipCodesignVerify" BeforeTargets="_CodesignVerify" AfterTargets="_CodesignAppBundle">
+    <PropertyGroup>
+      <_RequireCodeSigning>false</_RequireCodeSigning>
     </PropertyGroup>
   </Target>
 </Project>
