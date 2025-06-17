@@ -51,7 +51,7 @@ To connect to the Android Emulator running on a Mac from a Windows VM, by using 
 
     In this example, `127.0.0.1 5555` denotes the odd-numbered port on the loopback interface.
 
-    Provided that the `nc` command keeps running in a Terminal window, packets will be forwarded as expected. Once you've finished using the emulator, you can stop `nc` performing packet forwarding by pressing <kbd>CTRL+C</kbd> in the Terminal window.
+    Provided that the `nc` command keeps running in a Terminal window, packets will be forwarded as expected. Once you've finished using the emulator, you can stop `nc` performing packet forwarding by pressing <kbd>Ctrl+C</kbd> in the Terminal window.
 
 1. In your Windows VM, open **Command Prompt**.
 1. In **Command Prompt**, connect to the emulator:
@@ -63,7 +63,7 @@ To connect to the Android Emulator running on a Mac from a Windows VM, by using 
     Replace `ip-address-of-the-mac` in this example with the IP address of your Mac, and 5555 with the port you've used from the previous step.
 
     > [!NOTE]
-    > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.  
+    > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.
 
 When the connection is completed Visual Studio will display the emulator as a debug target under **Android Local Devices**, which you can use to deploy your app to the emulator.
 
@@ -115,6 +115,6 @@ To connect to the Android Emulator running on a Mac from a Windows virtual machi
     In this example, `localhost:15555` denotes the local port on Windows
 
     > [!NOTE]
-    > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.  
+    > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.
 
 When the connection is completed Visual Studio will display the emulator as a debug target under **Android Local Devices**, which you can use to deploy your app to the emulator.
