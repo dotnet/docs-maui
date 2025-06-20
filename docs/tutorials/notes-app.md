@@ -93,7 +93,7 @@ The first customization you'll do is adding another page to the project. This pa
 
     :::code language="xaml" source="./snippets/notes-app/shell/AboutPage.xaml":::
 
-01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
+01. Save the file by pressing <kbd>Ctrl+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
 
 Let's break down the key parts of the XAML controls placed on the page:
 
@@ -125,7 +125,7 @@ The next step is to add the code for the button's `Clicked` event.
 
     Notice that the `async` keyword has been added to the method declaration, which allows the use of the `await` keyword when opening the system browser.
 
-01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml.cs**.
+01. Save the file by pressing <kbd>Ctrl+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml.cs**.
 
 Now that the XAML and code-behind of the `AboutPage` is complete, you'll need to get it displayed in the app.
 
@@ -135,19 +135,15 @@ Some controls can use images, which enhances how users interact with your app. I
 
 Download the following images:
 
-- [Icon: About](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_about.png)\
-  This image is used as an icon for the about page you created earlier.
-
-- [Icon: Notes](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_notes.png)\
-  This image is used as an icon for the notes page you'll create in the next part of this tutorial.
-
-- [Icon: About (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_about_ios.png)
-- [Icon: Notes (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/Resources/Images/icon_notes_ios.png)
+- [Icon: About](https://github.com/dotnet/docs-maui/blob/main/docs/tutorials/snippets/notes-app/shell/Resources/Images/icon_about.png). This image is used as an icon for the about page you created earlier.
+- [Icon: Notes](https://github.com/dotnet/docs-maui/blob/main/docs/tutorials/snippets/notes-app/snippets/shell/Resources/Images/icon_notes.png). This image is used as an icon for the notes page you'll create in the next part of this tutorial.
+- [Icon: About (iOS)](https://github.com/dotnet/docs-maui/blob/main/docs/tutorials/snippets/notes-app/snippets/shell/Resources/Images/icon_about_ios.png)
+- [Icon: Notes (iOS)](https://github.com/dotnet/docs-maui/blob/main/docs/tutorials/snippets/notes-app/snippets/shell/Resources/Images/icon_notes_ios.png)
 
 After you've downloaded the images, you can move them with File Explorer to the _Resources\Images_ folder of the project. Any file in this folder is automatically included in the project as a **MauiImage** resource. You can also use Visual Studio to add the images to your project. If you move the images by hand, skip the following procedure.
 
 > [!IMPORTANT]
-> Don't skip downloading the iOS-specific images, they're required to complete this tutorial.
+> Don't skip downloading the iOS-specific images; they're required to complete this tutorial.
 
 #### Move the images with Visual Studio
 
@@ -159,7 +155,7 @@ After you've downloaded the images, you can move them with File Explorer to the 
 01. Right-click on **Images** and select **Add** > **Existing Item**.
 01. Navigate to the folder that contains the downloaded images.
 01. Change the filter to file type filter to **Image Files**.
-01. Hold down <kbd>CTRL</kbd> and click on each of the images you downloaded, then press **Add**
+01. Hold down <kbd>Ctrl</kbd> and click on each of the images you downloaded, then press **Add**
 
 :::image type="content" source="./media/notes-app/shell/vs-add-image.png" alt-text="Add four icon images to .NET MAUI project.":::
 
@@ -171,7 +167,7 @@ As noted at the start of this article, the `AppShell` class defines an app's vis
 
     :::code language="xaml" source="./snippets/notes-app/shell/AppShell.xaml":::
 
-01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
+01. Save the file by pressing <kbd>Ctrl+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
 
 Let's break down the key parts of the XAML:
 
@@ -211,7 +207,7 @@ The note page will display the note and allow you to either save or delete it. F
 
     :::code language="xaml" source="./snippets/notes-app/note/NotePage.xaml":::
 
-01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
+01. Save the file by pressing <kbd>Ctrl+S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
 
 Let's break down the key parts of the XAML controls placed on the page:
 
@@ -273,7 +269,7 @@ Now that you understand a little more about code-behind files, you're going to a
 
     The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the <xref:Microsoft.Maui.Controls.Editor> control's text is cleared.
 
-01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
+01. Save the file by pressing <kbd>Ctrl+S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
 
 The final code for the code-behind file should look like the following:
 

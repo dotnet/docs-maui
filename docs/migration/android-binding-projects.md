@@ -66,7 +66,7 @@ foo.jar
 
 `Transforms\*.xml` files are automatically included as a `@(TransformFile)` item, and `.jar`/`.aar` files are automatically included as a `@(AndroidLibrary)` item. This will bind C# types for the Java types found in `foo.jar` using the metadata fixups from `Transforms\Metadata.xml`.
 
-Default Android related file globbing behavior is defined in [AutoImport.props](https://github.com/xamarin/xamarin-android/blob/main/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/Sdk/AutoImport.props). This behavior can be disabled for Android items by setting the `$(EnableDefaultAndroidItems)` property to `false`, or all default item inclusion behavior can be disabled by setting the `$(EnableDefaultItems)` property to `false`.
+Default Android related file globbing behavior is defined in [AutoImport.props](https://github.com/dotnet/android/blob/main/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/Sdk/AutoImport.in.props). This behavior can be disabled for Android items by setting the `$(EnableDefaultAndroidItems)` property to `false`, or all default item inclusion behavior can be disabled by setting the `$(EnableDefaultItems)` property to `false`.
 
 Undesired `.jar` or `.aar` files could be included with the default wildcards. For example, the following C# compiler errors results from a `AndroidStudio\gradle\wrapper\gradle-wrapper.jar` file being unintentionally bound:
 

@@ -136,13 +136,13 @@ The following example demonstrates setting this attached property:
 <Label Text="Paragraphs of text go here." />
 <Label Text="Installation"
        SemanticProperties.HeadingLevel="Level2" />
-<Label Text="Paragraphs of text go here." />    
+<Label Text="Paragraphs of text go here." />
 <Label Text="Build your first app"
        SemanticProperties.HeadingLevel="Level3" />
-<Label Text="Paragraphs of text go here." />     
+<Label Text="Paragraphs of text go here." />
 <Label Text="Publish your app"
        SemanticProperties.HeadingLevel="Level4" />
-<Label Text="Paragraphs of text go here." />   
+<Label Text="Paragraphs of text go here." />
 ```
 
 Alternatively, it can be set in C#:
@@ -386,7 +386,7 @@ For alternative methods of enabling VoiceOver, see [Turn VoiceOver on or off on 
 
 ### Enable Narrator
 
-Narrator is the primary screen reader used on Windows. Narrator can be enabled by pressing the **Windows logo key** + **Ctrl** + **Enter** together. These keys can be pressed again to stop Narrator.
+Narrator is the primary screen reader used on Windows. Narrator can be enabled by pressing the **Windows logo key** + **Ctrl** + **Enter** together. Press these keys again to stop Narrator.
 
 For more information about Narrator, see [Complete guide to Narrator](https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1).
 
