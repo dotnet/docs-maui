@@ -17,6 +17,7 @@ To localize a .NET Multi-platform App UI (.NET MAUI) app, you should:
 1. Create resource files to store strings. For more information, see [Create resource files to store strings](#create-resource-files-to-store-strings).
 1. Specify the app's neutral language. For more information, see [Specify the app's neutral language](#specify-the-apps-neutral-language).
 1. Perform platform setup. For more information, see [Perform platform setup](#perform-platform-setup).
+1. Perform VS Code setup. For more information, see [Setup VSCode](#vscode-setup).
 1. Localize text. For more information, see [Localize text](#localize-text).
 1. Localize images. For more information, see [Localize images](#localize-images).
 1. Localize the app name. For more information, see [Localize the app name](#localize-the-app-name).
@@ -139,6 +140,41 @@ To support multiple languages in a .NET MAUI app on Windows, you must declare ea
     ```
 
 1. Save your changes.
+
+## VSCode Setup
+
+The AppResource file is generated during `DesignTimeBuild` on Visual Studio, the VSCode doesn't have it so in order to generate the AppResource files you need to add the following instructions into your `csproj`.
+
+```xml
+<ItemGroup>
+		<EmbeddedResource Update="Resources\Localization\AppResources.resx">
+			<Generator>MSBuild:Compile</Generator>
+			<StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+			<StronglyTypedNamespace>MauiApp.Resources.Localization</StronglyTypedNamespace>
+			<StronglyTypedFileName>$(IntermediateOutputPath)\Resource.Designer.cs</StronglyTypedFileName>
+			<StronglyTypedClassName>AppResources</StronglyTypedClassName>
+		</EmbeddedResource>
+
+     <Compile Include="$(IntermediateOutputPath)\Resource.Designer.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>false</DesignTime>
+        <DependentUpon>Resources\Localization\AppResources.resx</DependentUpon>
+      </Compile>
+</ItemGroup>
+```
+
+Here we have two parts that, one is responsible for generate the C# file for `resx` (`EmbeddedResource`) and the other one is resposible to add the generated file into the compilation (`Compile`), so you can consume it.
+
+From the `EmbeddedResource` part:
+
+- The `Update` property on `EmbeddedResource` must reflect the path to your `resx` file.
+- The `StronglyTypedNamespace` property must reflect the path for your `resx` file inside your solution
+- The `StronglyTypedFileName` property specify the path where the file should be generated, here it will be generated at `obj` folder
+
+From the `Compile` part:
+
+- The `Include` property must reflect the generated path for your `resx` file (the same as the `StronglyTypedFileName`)
+
 
 ## Localize text
 
