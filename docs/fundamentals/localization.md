@@ -143,7 +143,7 @@ To support multiple languages in a .NET MAUI app on Windows, you must declare ea
 
 ## VSCode Setup
 
-The AppResource file is generated during `DesignTimeBuild` on Visual Studio, the VSCode doesn't have it so in order to generate the AppResource files you need to add the following instructions into your `csproj`.
+The AppResource file is generated during `DesignTimeBuild` on Visual Studio. VS Code doesn't run that job, so in order to generate the AppResource files you can add the following instructions in your `csproj`.
 
 ```xml
 <ItemGroup>
@@ -163,13 +163,13 @@ The AppResource file is generated during `DesignTimeBuild` on Visual Studio, the
 </ItemGroup>
 ```
 
-Here we have two parts that, one is responsible for generate the C# file for `resx` (`EmbeddedResource`) and the other one is resposible to add the generated file into the compilation (`Compile`), so you can consume it.
+There are two parts to this. The first is responsible for generating a C# file for `resx` (`EmbeddedResource`) and the other one is responsible to add the generated file into the compilation (`Compile`), so the project can consume it.
 
 From the `EmbeddedResource` part:
 
-- The `Update` property on `EmbeddedResource` must reflect the path to your `resx` file.
+- The `Update` property on `EmbeddedResource` must reflect the path to your `resx` file
 - The `StronglyTypedNamespace` property must reflect the path for your `resx` file inside your solution
-- The `StronglyTypedFileName` property specify the path where the file should be generated, here it will be generated at `obj` folder
+- The `StronglyTypedFileName` property specifies the path to where the file should be generated. In our example it will be generated in the `obj` folder
 
 From the `Compile` part:
 
