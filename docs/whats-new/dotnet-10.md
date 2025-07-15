@@ -8,6 +8,7 @@ ms.date: 05/13/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
+- [.NET MAUI in .NET 10 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview6/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview5/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview3/dotnetmaui.md)
@@ -18,6 +19,18 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve pro
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
+
+## MediaPicker Enhancements (Preview 6)
+
+The `MediaPicker` has been extended with support for selecting multiple files and compressing images directly from the API using `MaximumWidth` and `MaximumHeight` parameters.
+
+```csharp
+var result = await MediaPicker.PickMultipleAsync(new MediaPickerOptions
+{
+    MaximumWidth = 1024,
+    MaximumHeight = 768
+});
+```
 
 ## XAML with *implicit & global* XML namespaces (Preview 5)
 
@@ -116,9 +129,22 @@ Use them as before.
 
 > ✨ **Tip:** You can register third-party libraries here too!
 
-## Intercept Web Requests
+## Intercept Web Requests (Preview 5 and 6)
 
-The `HybridWebView` now allows you to intercept when the browser requests a web resource in order to take action before it executes, such as adding a header to the request. The do this, add a listener to the `WebResourceRequested` event.
+You can now intercept and respond to web requests made from `BlazorWebView` and `HybridWebView`. This allows for scenarios such as modifying headers, redirecting requests, or supplying local responses.
+
+```csharp
+webView.WebResourceRequested += (s, e) =>
+{
+    if (e.Uri.ToString().Contains("api/secure"))
+    {
+        e.Handled = true;
+        e.SetResponse(200, "OK", "application/json", GetCustomStream());
+    }
+};
+```
+
+Another example from XAML:
 
 ```xml
 <HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
