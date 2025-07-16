@@ -24,7 +24,7 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 
 <xref:Microsoft.Maui.Controls.Entry> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the text content, including both the user-entered or displayed text and the placeholder text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
 - `FontAttributes`, of type `FontAttributes`, determines text style.
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
