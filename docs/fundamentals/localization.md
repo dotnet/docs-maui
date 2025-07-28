@@ -141,7 +141,7 @@ To support multiple languages in a .NET MAUI app on Windows, you must declare ea
 
 1. Save your changes.
 
-## VSCode Setup
+## VS Code Setup
 
 The AppResource file is generated during `DesignTimeBuild` on Visual Studio. VS Code doesn't run that job, so in order to generate the AppResource files you can add the following instructions in your `csproj`.
 
