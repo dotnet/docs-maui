@@ -17,7 +17,7 @@ To localize a .NET Multi-platform App UI (.NET MAUI) app, you should:
 1. Create resource files to store strings. For more information, see [Create resource files to store strings](#create-resource-files-to-store-strings).
 1. Specify the app's neutral language. For more information, see [Specify the app's neutral language](#specify-the-apps-neutral-language).
 1. Perform platform setup. For more information, see [Perform platform setup](#perform-platform-setup).
-1. Perform VS Code setup. For more information, see [Setup VSCode](#vscode-setup).
+1. Perform VS Code setup. For more information, see [Setup VSCode](#vs-code-setup).
 1. Localize text. For more information, see [Localize text](#localize-text).
 1. Localize images. For more information, see [Localize images](#localize-images).
 1. Localize the app name. For more information, see [Localize the app name](#localize-the-app-name).
