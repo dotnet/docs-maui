@@ -153,7 +153,13 @@ The AppResource file is generated during `DesignTimeBuild` on Visual Studio. VS 
 			<StronglyTypedNamespace>MauiApp.Resources.Localization</StronglyTypedNamespace>
 			<StronglyTypedFileName>$(IntermediateOutputPath)\Resource.Designer.cs</StronglyTypedFileName>
 			<StronglyTypedClassName>AppResources</StronglyTypedClassName>
-		</EmbeddedResource>
+     <EmbeddedResource Update="Resources\Localization\AppResources.resx">
+        <Generator>MSBuild:Compile</Generator>
+        <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+        <StronglyTypedNamespace>MauiApp.Resources.Localization</StronglyTypedNamespace>
+        <StronglyTypedFileName>$(IntermediateOutputPath)\Resource.Designer.cs</StronglyTypedFileName>
+        <StronglyTypedClassName>AppResources</StronglyTypedClassName>
+     </EmbeddedResource>
 
      <Compile Include="$(IntermediateOutputPath)\Resource.Designer.cs">
         <AutoGen>True</AutoGen>
