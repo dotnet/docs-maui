@@ -147,12 +147,6 @@ The AppResource file is generated during `DesignTimeBuild` on Visual Studio. VS 
 
 ```xml
 <ItemGroup>
-		<EmbeddedResource Update="Resources\Localization\AppResources.resx">
-			<Generator>MSBuild:Compile</Generator>
-			<StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
-			<StronglyTypedNamespace>MauiApp.Resources.Localization</StronglyTypedNamespace>
-			<StronglyTypedFileName>$(IntermediateOutputPath)\Resource.Designer.cs</StronglyTypedFileName>
-			<StronglyTypedClassName>AppResources</StronglyTypedClassName>
      <EmbeddedResource Update="Resources\Localization\AppResources.resx">
         <Generator>MSBuild:Compile</Generator>
         <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
@@ -180,7 +174,6 @@ From the `EmbeddedResource` part:
 From the `Compile` part:
 
 - The `Include` property must reflect the generated path for your `resx` file (the same as the `StronglyTypedFileName`)
-
 
 ## Localize text
 
