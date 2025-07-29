@@ -158,7 +158,7 @@ async void OnStartListening()
     try
     {
         Geolocation.LocationChanged += Geolocation_LocationChanged;
-        var request = new GeolocationListeningRequest((GeolocationAccuracy)Accuracy);
+        var request = new GeolocationListeningRequest(GeolocationAccuracy.Medium);
         var success = await Geolocation.StartListeningForegroundAsync(request);
 
         string status = success
