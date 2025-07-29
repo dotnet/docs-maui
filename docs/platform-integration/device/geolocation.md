@@ -158,6 +158,8 @@ async void OnStartListening()
     try
     {
         Geolocation.LocationChanged += Geolocation_LocationChanged;
+        // Using GeolocationAccuracy.Medium as a balance between accuracy and power consumption.
+        // Developers can adjust this value to High or Low based on their specific requirements.
         var request = new GeolocationListeningRequest(GeolocationAccuracy.Medium);
         var success = await Geolocation.StartListeningForegroundAsync(request);
 
