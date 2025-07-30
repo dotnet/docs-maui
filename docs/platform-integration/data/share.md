@@ -61,7 +61,7 @@ The following code example writes a text file to the device, and then requests t
 
 ## Share multiple files
 
-Sharing multiple files is slightly different from sharing a single file. To share a single file, use the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.ShareMultipleFilesRequest> type.
+Sharing multiple files is slightly different from sharing a single file. To share a single file, use the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.ShareFileRequest> type.
 
 The following code example writes two text files to the device, and then requests to share them:
 
