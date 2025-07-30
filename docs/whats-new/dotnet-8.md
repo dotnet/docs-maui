@@ -100,6 +100,7 @@ The following behavior has changed from the previous release:
 - .NET MAUI Mac Catalyst apps are no longer limited to 50 menu items on the menu bar.
 - The `PlatformImage.FromStream` method, in the `Microsoft.Maui.Graphics` namespace, can now be used to load images on Windows instead of having to use the `W2DImageLoadingService` class.
 - On Android, animations respect the system animation settings. For more information, see [Basic animation](~/user-interface/animation/basic.md).
+- The `<UseMaui>true</UseMaui>` project property no longer automatically includes required NuGet packages when [Central Package Management (CPM)](/nuget/consume-packages/central-package-management) is enabled.
 
 ## Performance
 
@@ -174,6 +175,8 @@ Explicit package references should also be added to your *.csproj* file for the 
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 </ItemGroup>
 ```
+
+When using [Central Package Management (CPM)](/nuget/consume-packages/central-package-management), .NET MAUI packages are no longer referenced automatically and must be explicitly added. For projects that only contain assets (`MauiImage`, `MauiAsset`, etc.), it is sufficient to add the `Microsoft.Maui.Resizetizer` package (instead of `Microsoft.Maui.Controls`).
 
 The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. You can override this by adding the `$(MauiVersion)` build property to your *.csproj* file:
 
