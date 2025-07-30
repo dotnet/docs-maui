@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store"
 description: "Learn how to provision, publish, and notarize a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store."
 ms.date: 03/23/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a Mac Catalyst app for distribution outside the Mac App Store

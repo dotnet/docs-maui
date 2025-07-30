@@ -2,6 +2,7 @@
 title: "Use the CLI to publish packaged apps for Windows"
 description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a packaged .NET MAUI app for Windows with the CLI

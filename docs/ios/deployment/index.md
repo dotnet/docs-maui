@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI app for iOS"
 description: "Learn about distribution approaches for .NET MAUI iOS apps."
 ms.date: 02/24/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a .NET MAUI app for iOS

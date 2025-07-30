@@ -2,6 +2,7 @@
 title: "Apple universal links"
 description: "Learn how to use deep linking functionality in a .NET MAUI iOS app."
 ms.date: 02/20/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Apple universal links

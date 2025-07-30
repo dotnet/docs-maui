@@ -2,6 +2,7 @@
 title: "Set up a device for development"
 description: "This article discusses how to enable development mode on an Android device so that you can deploy and debug a .NET MAUI application."
 ms.date: 02/13/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Set up Android device for debugging
