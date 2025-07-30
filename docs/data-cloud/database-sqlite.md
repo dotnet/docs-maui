@@ -74,7 +74,7 @@ You may need to specify different flags depending on how your database will be u
 
 ## Create TodoItem class
 
-Before the database access can be coded, the class to store needs to be created.
+Before coding the database access, create the class that will store the data.
 
 ```csharp
 public class TodoItem
