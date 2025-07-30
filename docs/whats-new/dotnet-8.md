@@ -176,7 +176,7 @@ Explicit package references should also be added to your *.csproj* file for the 
 </ItemGroup>
 ```
 
-When using [Central Package Management (CPM)](/nuget/consume-packages/central-package-management), MAUI packages are no longer referenced automatically and must be explicitly added. For projects that only contain assets (`MauiImage`, `MauiAsset`, etc.), it is sufficient to add the `Microsoft.Maui.Resizetizer` package (instead of `Microsoft.Maui.Controls`).
+When using [Central Package Management (CPM)](/nuget/consume-packages/central-package-management), .NET MAUI packages are no longer referenced automatically and must be explicitly added. For projects that only contain assets (`MauiImage`, `MauiAsset`, etc.), it is sufficient to add the `Microsoft.Maui.Resizetizer` package (instead of `Microsoft.Maui.Controls`).
 
 The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. You can override this by adding the `$(MauiVersion)` build property to your *.csproj* file:
 
