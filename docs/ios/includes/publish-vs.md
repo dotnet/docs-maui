@@ -1,6 +1,7 @@
 ---
 ms.date: 02/24/2023
 ms.topic: include
+ms.custom: sfi-image-nochange
 ---
 
 1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).

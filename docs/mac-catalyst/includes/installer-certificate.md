@@ -1,6 +1,7 @@
 ---
 ms.topic: include
 ms.date: 03/23/2023
+ms.custom: sfi-image-nochange
 ---
 
 ## Create an installer certificate

@@ -2,6 +2,7 @@
 title: "Target multiple platforms from .NET MAUI single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, Tizen, and Windows, into one shared project."
 ms.date: 05/17/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Target multiple platforms from .NET MAUI single project

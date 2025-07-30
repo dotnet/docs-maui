@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI Android app for Google Play distribution"
 description: "Learn how to publish a .NET MAUI Android app for Google Play distribution."
 ms.date: 07/18/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Publish an Android app for Google Play distribution

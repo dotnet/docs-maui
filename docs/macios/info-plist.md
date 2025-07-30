@@ -2,6 +2,7 @@
 title: "Information property list"
 description: Learn about the Apple information property list file, Info.plist, that contains configuration information for your .NET MAUI app on iOS and Mac Catalyst.
 ms.date: 08/27/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Information property list

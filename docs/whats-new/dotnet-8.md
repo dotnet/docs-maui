@@ -2,6 +2,7 @@
 title: What's new in .NET MAUI for .NET 8
 description: Learn about the new features introduced in .NET MAUI for .NET 8.
 ms.date: 11/01/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # What's new in .NET MAUI for .NET 8

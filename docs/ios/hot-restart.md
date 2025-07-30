@@ -2,6 +2,7 @@
 title: ".NET MAUI hot restart for iOS device deployment"
 description: "Hot restart enables you to quickly deploy a .NET MAUI iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
 ms.date: 12/03/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Deploy an iOS app using hot restart
