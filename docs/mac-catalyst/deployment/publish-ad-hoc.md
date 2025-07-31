@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI Mac Catalyst app for ad-hoc distribution"
 description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for ad-hoc distribution to a limited number of registered devices."
 ms.date: 03/20/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a Mac Catalyst app for ad-hoc distribution

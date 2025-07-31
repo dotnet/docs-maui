@@ -2,6 +2,7 @@
 title: "Automatic provisioning for .NET MAUI iOS apps"
 description: "Learn how to use automatic provisioning to request development certificates and profiles for .NET MAUI iOS apps."
 ms.date: 08/28/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Automatic provisioning for iOS apps

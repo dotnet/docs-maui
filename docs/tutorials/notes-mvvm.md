@@ -413,7 +413,7 @@ Update the **AllNotes view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="./snippets/notes-mvvm/viewmodel-shared/Views/AllNotesPage.xaml" id="full" highlight="3,6,8,13,18,21-22":::
+    :::code language="xaml" source="./snippets/notes-mvvm/viewmodel-shared/Views/AllNotesPage.xaml" id="full" highlight="3,6,8,13,18,21-22,30":::
 
 The toolbar no longer uses the `Clicked` event and instead uses a command.
 

@@ -3,6 +3,9 @@ title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs 
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.topic: "tutorial"
 ms.date: 08/07/2024
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 
 #customer intent: As a developer, I want to be able to send notifications to .NET MAUI apps to alert users to important information.
 ---

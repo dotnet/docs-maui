@@ -2,6 +2,9 @@
 title: "Publish a .NET MAUI iOS app using the command line"
 description: "Learn how to publish and sign a .NET MAUI iOS app using the command line."
 ms.date: 02/24/2023
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Publish an iOS app using the command line

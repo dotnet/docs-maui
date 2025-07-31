@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI app to a folder for Windows"
 description: "Learn how to package and publish a Windows .NET MAUI app to a file share in Visual Studio."
 ms.date: 10/06/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a .NET MAUI app for Windows with Visual Studio

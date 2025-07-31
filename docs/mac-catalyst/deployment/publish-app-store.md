@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI Mac Catalyst app for Mac App Store distribution"
 description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for Mac App Store distribution."
 ms.date: 03/23/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Publish a Mac Catalyst app for Mac App Store distribution
