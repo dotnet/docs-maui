@@ -2,6 +2,7 @@
 title: "Entry"
 description: "The .NET MAUI Entry allows you to enter and edit a single line of text."
 ms.date: 08/30/2024
+ms.custom: sfi-ropc-nochange
 ---
 
 # Entry

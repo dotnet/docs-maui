@@ -1,6 +1,7 @@
 ---
 ms.date: 05/12/2023
 ms.topic: include
+ms.custom: sfi-image-nochange
 ---
 
 <!-- markdownlint-disable MD029 -->

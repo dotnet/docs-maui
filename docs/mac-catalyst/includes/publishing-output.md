@@ -1,6 +1,7 @@
 ---
 ms.topic: include
 ms.date: 03/23/2023
+ms.custom: sfi-image-nochange
 ---
 
 Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net8.0-maccatalyst/{architecture}/publish/* folder.

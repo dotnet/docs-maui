@@ -2,6 +2,7 @@
 title: "Publish a .NET MAUI iOS app for ad-hoc distribution"
 description: "Learn how to provision and publish a .NET MAUI iOS app for ad-hoc distribution."
 ms.date: 08/27/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Publish an iOS app for ad-hoc distribution

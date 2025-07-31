@@ -2,6 +2,7 @@
 title: "Recognize a drag and drop gesture"
 description: "This article explains how to recognize drag and drop gestures with .NET MAUI."
 ms.date: 11/06/2024
+ms.custom: sfi-ropc-nochange
 ---
 
 # Recognize a drag and drop gesture
