@@ -1013,7 +1013,7 @@ To create your .NET MAUI app:
 
             if (string.IsNullOrWhiteSpace(cachedToken) ||
                 string.IsNullOrWhiteSpace(serializedTags) ||
-                string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
+                string.IsNullOrWhiteSpace(DeviceInstallationService.Token) ||
                 cachedToken == DeviceInstallationService.Token)
                 return;
 
