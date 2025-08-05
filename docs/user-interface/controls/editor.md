@@ -254,7 +254,7 @@ Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Contro
 
 When the user adds multiple lines in the control, the `Text` property will contain only "\r" for the line endings and not "\r\n" which is normal in Windows. There is no property to change this behavior, but the text can be altered to include this specific line ending if needed.
 
-```charp
+```csharp
 #if WINDOWS
 		if (EditorText.Text.Contains("\r"))
 		{
