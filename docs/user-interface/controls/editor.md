@@ -266,4 +266,3 @@ When the user adds multiple lines in the control, the `Text` property will conta
 ```
 > [!NOTE]
 > Do not assign the updated text to the `Text` property of the control. The original line ending ("\r") will be restored if this happens.
-> 
