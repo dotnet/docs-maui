@@ -248,3 +248,21 @@ Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Contro
 
 > [!NOTE]
 > The `IsReadonly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Editor>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Editor> to gray.
+
+## Line endings (Windows only)
+
+When the user adds multiple lines in the control, the `Text` property will contain only "\r" for the line endings and not "\r\n" which is normal in Windows. There is no property to change this behavior, but the text can be altered to include this specific line ending if needed.
+
+```csharp
+#if WINDOWS
+if (EditorText.Text.Contains("\r"))
+{
+    var textWithWindowsLineBreaks = EditorText.Text.Replace("\r", Environment.NewLine);
+
+    // Do something with the text that has Windows line breaks
+}
+#endif
+```
+
+> [!NOTE]
+> Do not assign the updated text to the `Text` property of the control. The original line ending ("\r") will be restored if this happens.
