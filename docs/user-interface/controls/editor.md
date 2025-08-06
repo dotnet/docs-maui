@@ -262,7 +262,6 @@ if (EditorText.Text.Contains("\r"))
     // Do something with the text that has Windows line breaks
 }
 #endif
-
 ```
 > [!NOTE]
 > Do not assign the updated text to the `Text` property of the control. The original line ending ("\r") will be restored if this happens.
