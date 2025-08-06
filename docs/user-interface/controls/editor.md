@@ -255,12 +255,12 @@ When the user adds multiple lines in the control, the `Text` property will conta
 
 ```csharp
 #if WINDOWS
-		if (EditorText.Text.Contains("\r"))
-		{
-			var textWithWindowsLineBreaks = EditorText.Text.Replace("\r", Environment.NewLine);
+if (EditorText.Text.Contains("\r"))
+{
+    var textWithWindowsLineBreaks = EditorText.Text.Replace("\r", Environment.NewLine);
 
-			// Do something with the text that has Windows line breaks
-		}
+    // Do something with the text that has Windows line breaks
+}
 #endif
 
 ```
