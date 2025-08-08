@@ -14,7 +14,7 @@ This tutorial is designed to continue the [Create a .NET MAUI app](./notes-app.m
 > - Implement the model-view-viewmodel (MVVM) pattern.
 > - Use an additional style of query string for passing data during navigation.
 
-We suggest that you first follow the [Create a .NET MAUI app](./notes-app.md) tutorial, as the code created in that tutorial is the basis for this tutorial. If you lost the code, or want to start fresh, download [this project](https://github.com/dotnet/maui-samples/raw/main/8.0/Tutorials/ConvertToMvvm/app_before.zip).
+We suggest that you first follow the [Create a .NET MAUI app](./notes-app.md) tutorial, as the code created in that tutorial is the basis for this tutorial. If you lost the code, or want to start fresh, download [this project](https://github.com/dotnet/maui-samples/raw/main/9.0/Tutorials/ConvertToMvvm/app_before.zip).
 
 ## Understand MVVM
 
@@ -504,7 +504,7 @@ Don't overengineer a solution for this problem, and just use the `NavigatedTo` e
 
 Now, run your app. Try to navigate to a note, press the back button, and select the same note a second time. The app behavior is fixed!
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/code). If you want to download a copy of the completed project to compare your code with, download [this project](https://github.com/dotnet/maui-samples/raw/main/8.0/Tutorials/ConvertToMvvm/app_after.zip).
+[![Explore the code.](~/media/code-sample.png) Explore the code for this tutorial.](https://github.com/dotnet/maui-samples/tree/main/9.0/Tutorials/ConvertToMvvm/code). If you want to download a copy of the completed project to compare your code with, download [this project](https://github.com/dotnet/maui-samples/raw/main/9.0/Tutorials/ConvertToMvvm/app_after.zip).
 
 Your app is now using MVVM patterns!
 
