@@ -38,6 +38,10 @@ When a `DateTime` value is specified in XAML, the XAML parser uses the `DateTime
             Date="06/21/2022" />
 ```
 
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.DatePicker> on iOS:
+
+:::image type="content" source="media/datepicker/datepicker.png" alt-text="Screenshot of a datepicker.":::
+
 If the `BindingContext` property of <xref:Microsoft.Maui.Controls.DatePicker> is set to an instance of a viewmodel containing properties of type `DateTime` named `MinDate`, `MaxDate`, and `SelectedDate` (for example), you can instantiate the <xref:Microsoft.Maui.Controls.DatePicker> like this:
 
 ```xaml
