@@ -41,6 +41,10 @@ When the `Time` property is specified in XAML, the value is converted to a `Time
 <TimePicker Time="4:15:26" />
 ```
 
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.TimePicker> on iOS:
+
+:::image type="content" source="media/timepicker/timepicker.png" alt-text="Screenshot of a timepicker.":::
+
 If the `BindingContext` property of <xref:Microsoft.Maui.Controls.TimePicker> is set to an instance of a viewmodel containing a property of type `TimeSpan` named `SelectedTime` (for example), you can instantiate the <xref:Microsoft.Maui.Controls.TimePicker> like this:
 
 ```xaml
