@@ -1,6 +1,7 @@
 ---
 title: "DatePicker"
-ms.date: 08/30/2024
+description: "The .NET MAUI DatePicker is a view that allows the user to select a date."
+ms.date: 08/11/2025
 ---
 
 # DatePicker
