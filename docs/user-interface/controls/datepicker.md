@@ -1,6 +1,7 @@
 ---
 title: "DatePicker"
-ms.date: 08/30/2024
+description: "The .NET MAUI DatePicker is a view that allows the user to select a date."
+ms.date: 08/11/2025
 ---
 
 # DatePicker
@@ -37,6 +38,10 @@ When a `DateTime` value is specified in XAML, the XAML parser uses the `DateTime
             MaximumDate="12/31/2022"
             Date="06/21/2022" />
 ```
+
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.DatePicker> on iOS:
+
+:::image type="content" source="media/datepicker/date-picker.png" alt-text="Screenshot of a DatePicker control on iOS.":::
 
 If the `BindingContext` property of <xref:Microsoft.Maui.Controls.DatePicker> is set to an instance of a viewmodel containing properties of type `DateTime` named `MinDate`, `MaxDate`, and `SelectedDate` (for example), you can instantiate the <xref:Microsoft.Maui.Controls.DatePicker> like this:
 
