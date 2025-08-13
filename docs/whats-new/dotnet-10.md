@@ -253,7 +253,7 @@ The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Pl
 - `DidFailProvisionalNavigation`
 - `DidFinishNavigation`
 
-### MediaPicker 
+### MediaPicker
 
 #### EXIF
 
@@ -357,7 +357,7 @@ iOS and macOS now support secondary toolbar items, providing better alignment wi
 
 The secondary items are grouped into a pull-down menu with the system ellipsis icon (`UIImage.GetSystemImage("ellipsis.circle")`) by default. When the menu is opened and an item's properties change, the menu automatically rebuilds and closes to reflect the updates.
 
-## XAML 
+## XAML
 
 ### Source Generator
 
