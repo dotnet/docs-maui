@@ -1,12 +1,19 @@
 ---
 title: "Recognize a tap gesture"
 description: "This article explains how to recognize a tap gesture in a .NET MAUI app."
-ms.date: 10/03/2022
+ms.date: 08/18/2025
 ---
 
 # Recognize a tap gesture
 
-A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class. This class defines the following properties:
+A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class.
+
+::: moniker range=">=net-maui-10.0"
+> [!IMPORTANT]
+> In .NET 10, <xref:Microsoft.Maui.Controls.ClickGestureRecognizer> is deprecated. Use <xref:Microsoft.Maui.Controls.TapGestureRecognizer> for tap/click interactions, and <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> for pointer hover/move/press scenarios. The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> supports primary and secondary buttons via the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Buttons> property and can be used to handle single and double tap gestures.
+:::
+
+This class defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Buttons>, of type <xref:Microsoft.Maui.Controls.ButtonsMask>, which defines whether the primary or secondary mouse button, or both, triggers the gesture on Android, Mac Catalyst, and Windows. For more information, see [Define the button masks](#define-the-button-mask).
 - <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Command>, of type <xref:System.Windows.Input.ICommand>, which is executed when a tap is recognized.
@@ -55,6 +62,53 @@ image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
 By default the <xref:Microsoft.Maui.Controls.Image> will respond to single taps. When the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired> property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
+
+::: moniker range=">=net-maui-10.0"
+
+## Migrate from ClickGestureRecognizer (>= .NET 10)
+
+In previous versions, mouse click interactions could be handled with <xref:Microsoft.Maui.Controls.ClickGestureRecognizer>. In .NET 10, this recognizer is deprecated. Migrate to <xref:Microsoft.Maui.Controls.TapGestureRecognizer> for click/tap interactions, and use <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> for pointer enter/exit/move/press/release scenarios.
+
+The following example shows how to migrate from `ClickGestureRecognizer` to `TapGestureRecognizer` while maintaining support for primary/secondary buttons:
+
+```xaml
+<!-- Before (.NET 9 and earlier) -->
+<Image Source="dotnet_bot.png">
+    <Image.GestureRecognizers>
+        <ClickGestureRecognizer Clicked="OnClicked"
+                                                        NumberOfClicksRequired="1"
+                                                        Buttons="Primary,Secondary" />
+    </Image.GestureRecognizers>
+</Image>
+
+<!-- After (.NET 10) -->
+<Image Source="dotnet_bot.png">
+    <Image.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTapped"
+                                                    NumberOfTapsRequired="1"
+                                                    Buttons="Primary,Secondary" />
+    </Image.GestureRecognizers>
+</Image>
+```
+
+In code-behind, handle the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event and inspect <xref:Microsoft.Maui.Controls.TappedEventArgs.Buttons> to distinguish the mouse button:
+
+```csharp
+void OnTapped(object sender, TappedEventArgs e)
+{
+        if (e.Buttons == ButtonsMask.Secondary)
+        {
+                // Handle secondary/right click
+        }
+        else
+        {
+                // Handle primary/left click
+        }
+}
+```
+
+If you need pointer hover or press/release details (without a completed tap), use <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> and its events such as `PointerEntered`, `PointerMoved`, `PointerPressed`, and `PointerReleased`. For more information, see [Recognize a pointer gesture](pointer.md).
+:::
 
 ## Define the button mask
 
