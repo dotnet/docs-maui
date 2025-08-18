@@ -43,6 +43,14 @@ This document captures our working agreements and checklists for staging .NET 10
   - Title/labels: “.NET 10”, “docs”, and area label.
   - Reviewers: CODEOWNERS will auto-assign; add relevant owners as needed.
 
+## Accuracy and preview drift
+- Treat the upstream `dotnet/maui` `net10.0` branch as the source of truth. Preview notes may evolve or be reverted in later previews.
+- Before merging any .NET 10 docs change, verify the target API/behavior against the current `net10.0` branch:
+  - Confirm APIs exist (and names/overloads match) using xrefs targeting `view=net-maui-10.0` and/or MAUI source.
+  - Check whether a previously announced change was modified or reverted; adjust guidance and monikers accordingly.
+  - Include links to the upstream MAUI PR(s) or commit(s) that introduced/changed the behavior in the docs PR description.
+- If behavior differs across previews, keep guidance in `<= net-maui-9.0` vs `>= net-maui-10.0` monikers accurate for GA; avoid documenting transient preview-only behavior unless explicitly called out.
+
 ## Authoring conventions
 - Use xref with wildcards for API overloads (for example, `xref:Microsoft.Maui.Controls.Page.DisplayAlertAsync%2A`).
 - Prefer small, focused includes per version (e.g., `includes/pop-ups-dotnet9.md`, `includes/pop-ups-dotnet10.md`).
