@@ -11,7 +11,7 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 ::: moniker range=">=net-maui-10.0"
 > [!IMPORTANT]
 > In .NET 10, <xref:Microsoft.Maui.Controls.ClickGestureRecognizer> is deprecated. Use <xref:Microsoft.Maui.Controls.TapGestureRecognizer> for tap/click interactions, and <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> for pointer hover/move/press scenarios. The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> supports primary and secondary buttons via the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Buttons> property and can be used to handle single and double tap gestures.
-:::
+::: moniker-end
 
 This class defines the following properties:
 
@@ -108,7 +108,7 @@ void OnTapped(object sender, TappedEventArgs e)
 ```
 
 If you need pointer hover or press/release details (without a completed tap), use <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> and its events such as `PointerEntered`, `PointerMoved`, `PointerPressed`, and `PointerReleased`. For more information, see [Recognize a pointer gesture](pointer.md).
-:::
+::: moniker-end
 
 ## Define the button mask
 
