@@ -11,13 +11,13 @@ This document captures our working agreements and checklists for staging .NET 10
 ## Branching model
 - Base: `main`
 - Staging: `net10` (long-lived)
-- Topic branches: `net10/<short-id>-<slug>`
+- Topic branches: `net10-<short-id>-<slug>` (use hyphens, not slashes, to avoid ref prefix conflicts with the `net10` branch)
   - Examples:
-    - `net10/pr01-pop-ups-async`
-    - `net10/pr02-mediapicker-multiselect`
-    - `net10/pr03-gestures-tap-click-deprecation`
-    - `net10/pr04-messagingcenter-migration`
-    - `net10/pr05-ios-safe-area`
+    - `net10-pr01-pop-ups-async`
+    - `net10-pr02-mediapicker-multiselect`
+    - `net10-pr03-gestures-tap-click-deprecation`
+    - `net10-pr04-messagingcenter-migration`
+    - `net10-pr05-ios-safe-area`
 - Keep `net10` up-to-date by periodically merging `main` into `net10` (or rebasing topic branches on latest `net10`). Resolve conflicts conservatively; prefer keeping moniker structure intact.
 
 ## Moniker guidance
