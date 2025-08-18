@@ -99,21 +99,89 @@ No setup is required.
 
 ## Using media picker
 
-The <xref:Microsoft.Maui.Media.IMediaPicker> interface has the following methods that all return a <xref:Microsoft.Maui.Storage.FileResult>, which can be used to get the file's location or read it.
+::: moniker range="<=net-maui-9.0"
 
-- <xref:Microsoft.Maui.Media.MediaPicker.PickPhotoAsync%2A>\
+The <xref:Microsoft.Maui.Media.IMediaPicker> interface has the following methods that return a <xref:Microsoft.Maui.Storage.FileResult>, which can be used to get the file's location or read it.
+
+- <xref:Microsoft.Maui.Media.MediaPicker.PickPhotoAsync%2A> \
 Opens the media browser to select a photo.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync%2A> \
 Opens the camera to take a photo.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.PickVideoAsync%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.PickVideoAsync%2A> \
 Opens the media browser to select a video.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.CaptureVideoAsync%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.CaptureVideoAsync%2A> \
 Opens the camera to take a video.
 
-Each method optionally takes in a <xref:Microsoft.Maui.Media.MediaPickerOptions> parameter type that allows the <xref:Microsoft.Maui.Media.MediaPickerOptions.Title> to be set on some operating systems, which is displayed to the user.
+Each method optionally takes a <xref:Microsoft.Maui.Media.MediaPickerOptions> parameter that allows the <xref:Microsoft.Maui.Media.MediaPickerOptions.Title> to be set on some operating systems, which is displayed to the user.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+In .NET 10, the media picker adds multi-select support and new processing options. Use the following methods:
+
+- <xref:Microsoft.Maui.Media.MediaPicker.PickPhotosAsync%2A> (returns `List<FileResult>`) \
+Opens the media browser to select one or more photos.
+
+- <xref:Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync%2A> (returns `FileResult?`) \
+Opens the camera to take a photo.
+
+- <xref:Microsoft.Maui.Media.MediaPicker.PickVideosAsync%2A> (returns `List<FileResult>`) \
+Opens the media browser to select one or more videos.
+
+- <xref:Microsoft.Maui.Media.MediaPicker.CaptureVideoAsync%2A> (returns `FileResult?`) \
+Opens the camera to take a video.
+
+The <xref:Microsoft.Maui.Media.MediaPickerOptions> parameter exposes additional fields such as <xref:Microsoft.Maui.Media.MediaPickerOptions.SelectionLimit>, <xref:Microsoft.Maui.Media.MediaPickerOptions.MaximumWidth>, <xref:Microsoft.Maui.Media.MediaPickerOptions.MaximumHeight>, <xref:Microsoft.Maui.Media.MediaPickerOptions.CompressionQuality>, <xref:Microsoft.Maui.Media.MediaPickerOptions.RotateImage>, and <xref:Microsoft.Maui.Media.MediaPickerOptions.PreserveMetaData>.
+
+> [!IMPORTANT]
+> When the user cancels a multi-select operation, the returned list is empty. On Android, some picker UIs may not enforce <xref:Microsoft.Maui.Media.MediaPickerOptions.SelectionLimit>; on Windows, `SelectionLimit` isn't supported. Implement your own logic to enforce limits or notify the user on these platforms.
+
+### Pick multiple photos
+
+```csharp
+var results = await MediaPicker.PickPhotosAsync(new MediaPickerOptions
+{
+  // Default is 1; set to 0 for no limit
+  SelectionLimit = 10,
+  // Optional processing for images
+  MaximumWidth = 1024,
+  MaximumHeight = 768,
+  CompressionQuality = 85,
+  RotateImage = true,
+  PreserveMetaData = true,
+});
+
+foreach (var file in results)
+{
+  using var stream = await file.OpenReadAsync();
+  // Process the stream
+}
+```
+
+### Pick multiple videos
+
+```csharp
+var results = await MediaPicker.PickVideosAsync(new MediaPickerOptions
+{
+  SelectionLimit = 3,
+  Title = "Select up to 3 videos",
+});
+
+foreach (var file in results)
+{
+  using var stream = await file.OpenReadAsync();
+  // Process the stream
+}
+```
+
+> [!TIP]
+> For single selection, prefer `PickPhotosAsync`/`PickVideosAsync` as well. Set `SelectionLimit = 1` (the default) and read the first item if present.
+
+::: moniker-end
 
 > [!IMPORTANT]
 > All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
