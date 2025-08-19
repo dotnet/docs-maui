@@ -106,27 +106,54 @@ On Windows, the `Format` property only affects whether the hour is formatted for
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
 
+## Nullable selected time (.NET 10)
+
+::: moniker range=">=net-maui-10.0"
+
+In .NET 10, <xref:Microsoft.Maui.Controls.TimePicker> supports a nullable selected time so you can represent “no time selected” and clear selection in bindings. The `Time` property is `TimeSpan?` with validation that any non-null value has hours < 24 and milliseconds >= 0.
+
+Binding example and a command to clear the selection:
+
+```xaml
+<VerticalStackLayout>
+  <TimePicker Time="{Binding SelectedTime}" />
+  <Button Text="Clear time" Command="{Binding ClearTimeCommand}" />
+  <Label Text="Selected: {Binding SelectedTime}" />
+  
+  <!-- Optional: display a placeholder when no time is selected -->
+  <Label IsVisible="{Binding SelectedTime, Converter={StaticResource NullToBoolConverter}}"
+         Text="No time selected" />
+</VerticalStackLayout>
+```
+
+ViewModel sketch:
+
+```csharp
+public partial class MyViewModel : ObservableObject
+{
+    [ObservableProperty]
+    private TimeSpan? selectedTime;
+
+    [RelayCommand]
+    void ClearTime() => SelectedTime = null;
+}
+```
+
+::: include ../../includes/mvvm-toolkit-note.md
+
+Set/clear in code:
+
+```csharp
+timePicker.Time = null;                 // Clear selection (no time)
+timePicker.Time = new TimeSpan(14, 30, 0); // 2:30 PM
+```
+
+::: moniker-end
+
 ## Programmatically open and close the time picker
 
 ::: moniker range=">=net-maui-10.0"
 
-To open and close the time selection UI programmatically, set focus on the <xref:Microsoft.Maui.Controls.TimePicker> and then unfocus it when you want to dismiss the UI:
-
-```csharp
-// Open the platform time picking UI
-timePicker.Focus();
-
-// ... later, close the UI
-timePicker.Unfocus();
-```
-
-Platform notes:
-
-- Android shows the time picker dialog when focused and dismisses it when unfocused.
-- iOS and Mac Catalyst present the input view picker when focused; Unfocus ends editing.
-- Windows uses a flyout; focus does not always force the drop-down to open in all contexts. Prefer user interaction to open.
-- Tizen opens a modal picker on focus; Unfocus closes it.
-
-You can observe opening/closing by handling the <xref:Microsoft.Maui.Controls.VisualElement.Focused> and <xref:Microsoft.Maui.Controls.VisualElement.Unfocused> events.
+::: include ../../includes/pickers-open-close-dotnet10.md
 
 ::: moniker-end

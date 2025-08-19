@@ -119,27 +119,71 @@ This configuration ensures that the <xref:Microsoft.Maui.Controls.DatePicker> wi
 
 For more information about localization in .NET MAUI apps, see [Localization](~/fundamentals/localization.md).
 
+## Nullable selected date (.NET 10)
+
+::: moniker range=">=net-maui-10.0"
+
+In .NET 10, <xref:Microsoft.Maui.Controls.DatePicker> supports nullable values so you can represent “no date selected” and clear selection in bindings:
+
+- `Date` is `DateTime?`
+- `MinimumDate` is `DateTime?`
+- `MaximumDate` is `DateTime?`
+
+Behavior notes:
+
+- By default, if you don’t set `Date`, the control uses today’s date for display. You can explicitly set `Date` to `null` to show an unset state and rely on user input to choose a value.
+- When a non-null `Date` is set outside the `MinimumDate`/`MaximumDate` bounds, it’s coerced into range.
+- `MinimumDate`/`MaximumDate` can be set to `null` to remove that bound.
+
+XAML example with a nullable binding and an action to clear selection:
+
+```xaml
+<VerticalStackLayout>
+    <DatePicker Date="{Binding SelectedDate}"
+                            MinimumDate="{Binding MinDate}"
+                            MaximumDate="{Binding MaxDate}" />
+
+    <Button Text="Clear date" Command="{Binding ClearDateCommand}" />
+    <Label Text="Selected: {Binding SelectedDate}" />
+</VerticalStackLayout>
+```
+
+ViewModel sketch:
+
+```csharp
+public partial class MyViewModel : ObservableObject
+{
+        [ObservableProperty]
+        private DateTime? selectedDate;
+
+        [ObservableProperty]
+        private DateTime? minDate = new DateTime(2020, 1, 1);
+
+        [ObservableProperty]
+        private DateTime? maxDate = new DateTime(2030, 12, 31);
+
+        [RelayCommand]
+        void ClearDate() => SelectedDate = null;
+}
+```
+
+::: include ../../includes/mvvm-toolkit-note.md
+
+Or set/clear in code:
+
+```csharp
+datePicker.Date = null;                 // Clear selection (no date)
+datePicker.MinimumDate = null;          // No lower bound
+datePicker.MaximumDate = null;          // No upper bound
+datePicker.Date = new DateTime(2025, 8, 19); // Set a specific date
+```
+
+::: moniker-end
+
 ## Programmatically open and close the date picker
 
 ::: moniker range=">=net-maui-10.0"
 
-You can programmatically open and close the date selection UI by controlling focus on the <xref:Microsoft.Maui.Controls.DatePicker>:
-
-```csharp
-// Open the platform date picking UI
-datePicker.Focus();
-
-// ... later, close the UI
-datePicker.Unfocus();
-```
-
-Platform notes:
-
-- Android shows the date picker dialog when focused and dismisses it when unfocused.
-- iOS and Mac Catalyst present the date picker input view when focused; Unfocus ends editing.
-- Windows uses a flyout; focus may not always open the flyout automatically depending on shell and modality. Prefer user interaction to open; Unfocus closes if open.
-- Tizen opens a modal date/time picker when focused and closes on Unfocus.
-
-To detect when the picker opens or closes, handle the <xref:Microsoft.Maui.Controls.VisualElement.Focused> and <xref:Microsoft.Maui.Controls.VisualElement.Unfocused> events.
+::: include ../../includes/pickers-open-close-dotnet10.md
 
 ::: moniker-end
