@@ -1,9 +1,8 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 12/16/2024
+ms.date: 08/19/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
----
 
 # Media picker for photos and videos
 
@@ -94,7 +93,7 @@ Each `<string>` element represents the reason the app is requesting access to th
 
 No setup is required.
 
------
+---
 <!-- markdownlint-enable MD025 -->
 
 ## Using media picker
@@ -186,6 +185,13 @@ foreach (var file in results)
 > [!IMPORTANT]
 > All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
 
+::: moniker range=">=net-maui-10.0"
+
+> [!NOTE]
+> In .NET 10, additional picking options are available for some photo/video picking APIs, including multi-select and image output controls. See [Advanced options for photo and video picking (.NET 10)](#advanced-options-for-photo-and-video-picking-net-10).
+
+::: moniker-end
+
 ## Take a photo
 
 Call the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> method to open the camera and let the user take a photo. If the user takes a photo, the return value of the method will be a non-null value. The following code sample uses the media picker to take a photo and save it to the cache directory:
@@ -193,3 +199,39 @@ Call the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> method to
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="photo_take_and_save":::
 
 [!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
+
+::: moniker range=">=net-maui-10.0"
+
+## Advanced options for photo and video picking (.NET 10)
+
+.NET 10 introduces advanced options you can use with supported pick operations on iOS and Android:
+
+- Selection limit: limit how many photos or videos a user can select in one operation (applies to multi-select pickers only).
+- Maximum width and height: request that selected photos be resized down to fit within the specified bounds while preserving aspect ratio. Smaller images are left unchanged. These options don’t affect videos.
+- Compression quality: request a compressed output for photos to reduce file size. The exact scale and effect are platform-dependent.
+
+Behavior notes:
+
+- These options are applied by the platform picker and/or platform encoders. Some platforms may ignore specific options or adjust them to supported ranges.
+- When photos are resized or recompressed, the image may be re-encoded, which can affect metadata persistence. Test your workflow on target devices.
+- On Windows, some options may not be supported by the OS picker and can be ignored.
+
+> [!TIP]
+> Combine selection limits with resizing and compression to bound both the number and size of images your app processes. This can significantly reduce memory and network usage in image-heavy workflows.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+## EXIF orientation behavior (.NET 10)
+
+On iOS and Android, .NET 10 improves image orientation handling for photos returned by the media picker:
+
+- Returned images are normalized for correct display based on their EXIF orientation, so photos appear upright without additional rotation code.
+- EXIF metadata is preserved where supported by the platform. However, if you subsequently re-encode images (for example, when resizing or compressing), some metadata may be altered by the platform encoder.
+- If your app needs to inspect or apply the original orientation itself, open the underlying file stream from the returned <xref:Microsoft.Maui.Storage.FileResult> and process the EXIF metadata before displaying or re-encoding the image.
+
+> [!NOTE]
+> When you resize or compress images, test how your target platforms handle EXIF metadata to ensure your app’s workflow preserves the data you rely on. Platform encoders may differ in what metadata they keep.
+
+::: moniker-end
