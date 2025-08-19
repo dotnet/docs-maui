@@ -554,3 +554,14 @@ await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
 ```
 
 For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).
+
+::: moniker range=">=net-maui-10.0"
+
+## Intercept web requests
+
+For hybrid scenarios that host web content and need to intercept requests (for example, to modify headers or provide local responses), see the interception guidance for:
+
+- [HybridWebView](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#intercept-web-requests)
+- [BlazorWebView](~/user-interface/controls/blazorwebview.md?view=net-maui-10.0&preserve-view=true#intercept-web-requests)
+
+::: moniker-end
