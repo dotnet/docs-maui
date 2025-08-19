@@ -716,9 +716,8 @@ private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebR
 
 private Task<Stream> GetLocalImageStreamAsync()
 {
-    // Return a stream containing PNG bytes (for example from MauiAsset)
-    Stream s = FileSystem.OpenAppPackageFileAsync("wwwroot/images/sample-image.png").Result;
-    return Task.FromResult(s);
+    // Return a stream containing PNG bytes (for example from a MauiAsset)
+    return FileSystem.OpenAppPackageFileAsync("wwwroot/images/sample-image.png");
 }
 ```
 
