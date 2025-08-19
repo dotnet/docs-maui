@@ -22,6 +22,7 @@ The Toolkit messenger uses strongly typed messages and weak references to recipi
 
 1. Add the CommunityToolkit.Mvvm package to your project.
    In your project file (`.csproj`):
+
    ```xml
    <ItemGroup>
      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
