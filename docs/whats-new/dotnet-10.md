@@ -130,7 +130,7 @@ private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebR
 
 ### Page
 
-The `IsBusy` property is marked obsolete.
+The `IsBusy` property remains supported. It sets a platform-level, framework-managed busy indicator intended for global app operations. For page-level progress or custom visuals, prefer using an in-page ActivityIndicator bound to your view model state. Note that if multiple pages set `IsBusy = true`, the global indicator remains visible until all are reset to `false`.
 
 ### Picker
 

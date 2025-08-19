@@ -1,7 +1,7 @@
 ---
 title: "ContentPage"
 description: "The .NET MAUI ContentPage displays a single view, which is often a layout, and is the most common page type."
-ms.date: 09/30/2024
+ms.date: 08/19/2025
 ---
 
 # ContentPage
@@ -36,6 +36,45 @@ In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconI
 .NET MAUI apps typically contain multiple pages that derive from <xref:Microsoft.Maui.Controls.ContentPage>, and navigation between these pages can be performed. For more information about page navigation, see [NavigationPage](navigationpage.md).
 
 A <xref:Microsoft.Maui.Controls.ContentPage> can be templated with a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
+
+## Page.IsBusy
+
+The <xref:Microsoft.Maui.Controls.Page.IsBusy> property sets a framework-managed busy state for the current page, which triggers a platform-level indicator:
+
+- Android: An overlay with an indeterminate progress indicator is shown above the current window.
+- iOS: The legacy network activity indicator on the status bar is toggled on iOS versions that still display it; on newer versions no system indicator may be visible.
+- Windows: No visual indicator is shown by default.
+
+Important behavior notes:
+
+- The busy indicator is global per window. If multiple pages set `IsBusy` to `true`, the indicator remains until all set it back to `false`.
+- The busy state is raised only while the page is visible; when a page disappears, the framework clears its busy state.
+- `IsBusy` is intended for broad, app-level work. For page-specific loading UX, prefer an in-page <xref:Microsoft.Maui.Controls.ActivityIndicator> bound to a view model property.
+
+Example with MVVM binding to a view model property:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.SamplePage"
+             IsBusy="{Binding IsBusy}">
+    <Grid>
+        <!-- Page content -->
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" />
+    </Grid>
+    
+    <!-- Alternatively, rely only on ActivityIndicator for custom visuals
+         and keep Page.IsBusy unset for full control over UX. -->
+</ContentPage>
+```
+
+::: moniker range=">=net-maui-10.0"
+> [!TIP]
+> In .NET 10, `IsBusy` continues to function as described. It uses internal messaging to coordinate with platform alert managers and may not show a visual indicator on some platforms. When you need consistent, branded UX, use <xref:Microsoft.Maui.Controls.ActivityIndicator> or custom overlays instead of relying on `IsBusy` visuals.
+::: moniker-end
+
+For more information, see [ActivityIndicator](~/user-interface/controls/activityindicator.md).
 
 ## Create a ContentPage
 
