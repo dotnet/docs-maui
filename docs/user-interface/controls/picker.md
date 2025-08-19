@@ -262,23 +262,6 @@ This method obtains the `SelectedIndex` property value, and uses the value to re
 
 ::: moniker range=">=net-maui-10.0"
 
-In .NET 10, pickers can be programmatically opened and closed by controlling focus. Calling <xref:Microsoft.Maui.Controls.VisualElement.Focus%2A> on a <xref:Microsoft.Maui.Controls.Picker> will open the platform selection UI, and calling <xref:Microsoft.Maui.Controls.VisualElement.Unfocus%2A> will close it:
-
-```csharp
-// Open the picker UI
-myPicker.Focus();
-
-// ... later, close the picker UI
-myPicker.Unfocus();
-```
-
-Notes:
-
-- On Android, focusing the picker programmatically opens the dialog; unfocusing dismisses it.
-- On iOS and Mac Catalyst, focusing shows the input view with the picker; unfocusing ends editing.
-- On Windows, the control uses a ComboBox. Focus doesn't force the drop-down open in all scenarios; users can press Alt+Up/Down or click. Consider moving logical focus and then sending an access key if needed.
-- On Tizen, focus triggers the selection popup; unfocus closes it.
-
-If you need to react when the selection UI is opened or closed, handle focus events such as <xref:Microsoft.Maui.Controls.VisualElement.Focused> and <xref:Microsoft.Maui.Controls.VisualElement.Unfocused>.
+::: include ../../includes/pickers-open-close-dotnet10.md
 
 ::: moniker-end

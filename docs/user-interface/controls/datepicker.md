@@ -8,6 +8,7 @@ ms.date: 08/19/2025
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.DatePicker> invokes the platform's date-picker control and allows you to select a date.
 
+::: moniker range="<=net-maui-9.0"
 <xref:Microsoft.Maui.Controls.DatePicker> defines eight properties:
 
 - `MinimumDate` of type [`DateTime`](xref:System.DateTime), which defaults to the first day of the year 1900.
@@ -21,6 +22,28 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.DatePic
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.DatePicker> text.
 
 All eight properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `Date` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+<xref:Microsoft.Maui.Controls.DatePicker> defines the following properties:
+
+- `MinimumDate` of type [`DateTime?`](xref:System.Nullable{System.DateTime}), the lowest selectable date (set to `null` to remove the lower bound). Defaults to 1900-01-01.
+- `MaximumDate` of type `DateTime?`, the highest selectable date (set to `null` to remove the upper bound). Defaults to 2100-12-31.
+- `Date` of type `DateTime?`, the selected date. Defaults to today if not explicitly set. Set to `null` to represent no date selected.
+- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "D", the long date pattern.
+- `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected date.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontFamily` of type `string`, which defaults to `null`.
+- `FontSize` of type `double`, which defaults to -1.0.
+- `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.DatePicker> text.
+- `IsOpen` of type `bool` (two-way), indicates whether the platform date picker UI is open.
+
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. The `Date` property has a default binding mode of `BindingMode.TwoWay`.
+
+Additional events:
+
+- `Opened` and `Closed` events indicate when the platform date picker UI is shown or dismissed.
+::: moniker-end
 
 > [!WARNING]
 > When setting `MinimumDate` and `MaximumDate`, make sure that `MinimumDate` is always less than or equal to `MaximumDate`. Otherwise, <xref:Microsoft.Maui.Controls.DatePicker> will raise an exception.

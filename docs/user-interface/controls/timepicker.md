@@ -8,10 +8,11 @@ ms.date: 08/19/2025
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePicker> invokes the platform's time-picker control and allows you to select a time.
 
+::: moniker range="<=net-maui-9.0"
 <xref:Microsoft.Maui.Controls.TimePicker> defines the following properties:
 
 - `Time` of type `TimeSpan`, the selected time, which defaults to a `TimeSpan` of 0. The `TimeSpan` type indicates a duration of time since midnight.
-- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
+- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard-base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected time.
 - `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
@@ -19,6 +20,26 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePic
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.TimePicker> text.
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+<xref:Microsoft.Maui.Controls.TimePicker> defines the following properties:
+
+- `Time` of type `TimeSpan?`, the selected time. Set to `null` to represent no time selected. Non-null values must be less than 24 hours and >= 0 milliseconds.
+- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
+- `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected time.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontFamily` of type `string`, which defaults to `null`.
+- `FontSize` of type `double`, which defaults to -1.0.
+- `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.TimePicker> text.
+- `IsOpen` of type `bool` (two-way), indicates whether the platform time picker UI is open.
+
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. The `Time` property has a default binding mode of `BindingMode.TwoWay`.
+
+Additional events:
+
+- `Opened` and `Closed` events indicate when the platform time picker UI is shown or dismissed.
+::: moniker-end
 
 ::: moniker range="=net-maui-8.0"
 
