@@ -1,7 +1,7 @@
 ---
 title: "DatePicker"
 description: "The .NET MAUI DatePicker is a view that allows the user to select a date."
-ms.date: 08/11/2025
+ms.date: 08/19/2025
 ---
 
 # DatePicker
@@ -118,3 +118,28 @@ Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> f
 This configuration ensures that the <xref:Microsoft.Maui.Controls.DatePicker> will display date formats, months, and days according to the user's locale, significantly enhancing the app's usability and accessibility across different regions.
 
 For more information about localization in .NET MAUI apps, see [Localization](~/fundamentals/localization.md).
+
+## Programmatically open and close the date picker
+
+::: moniker range=">=net-maui-10.0"
+
+You can programmatically open and close the date selection UI by controlling focus on the <xref:Microsoft.Maui.Controls.DatePicker>:
+
+```csharp
+// Open the platform date picking UI
+datePicker.Focus();
+
+// ... later, close the UI
+datePicker.Unfocus();
+```
+
+Platform notes:
+
+- Android shows the date picker dialog when focused and dismisses it when unfocused.
+- iOS and Mac Catalyst present the date picker input view when focused; Unfocus ends editing.
+- Windows uses a flyout; focus may not always open the flyout automatically depending on shell and modality. Prefer user interaction to open; Unfocus closes if open.
+- Tizen opens a modal date/time picker when focused and closes on Unfocus.
+
+To detect when the picker opens or closes, handle the <xref:Microsoft.Maui.Controls.VisualElement.Focused> and <xref:Microsoft.Maui.Controls.VisualElement.Unfocused> events.
+
+::: moniker-end

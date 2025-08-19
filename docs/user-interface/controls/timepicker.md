@@ -1,7 +1,7 @@
 ---
 title: "TimePicker"
 description: "The .NET MAUI TimePicker is a view that allows the user to select a time."
-ms.date: 08/30/2024
+ms.date: 08/19/2025
 ---
 
 # TimePicker
@@ -105,3 +105,28 @@ On Windows, the `Format` property only affects whether the hour is formatted for
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
+
+## Programmatically open and close the time picker
+
+::: moniker range=">=net-maui-10.0"
+
+To open and close the time selection UI programmatically, set focus on the <xref:Microsoft.Maui.Controls.TimePicker> and then unfocus it when you want to dismiss the UI:
+
+```csharp
+// Open the platform time picking UI
+timePicker.Focus();
+
+// ... later, close the UI
+timePicker.Unfocus();
+```
+
+Platform notes:
+
+- Android shows the time picker dialog when focused and dismisses it when unfocused.
+- iOS and Mac Catalyst present the input view picker when focused; Unfocus ends editing.
+- Windows uses a flyout; focus does not always force the drop-down to open in all contexts. Prefer user interaction to open.
+- Tizen opens a modal picker on focus; Unfocus closes it.
+
+You can observe opening/closing by handling the <xref:Microsoft.Maui.Controls.VisualElement.Focused> and <xref:Microsoft.Maui.Controls.VisualElement.Unfocused> events.
+
+::: moniker-end
