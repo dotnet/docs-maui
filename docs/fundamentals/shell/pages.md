@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell pages"
 description: "Learn how to customize the appearance of pages in .NET MAUI Shell apps, including setting page colors, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar."
-ms.date: 08/30/2024
+ms.date: 08/20/2025
 ---
 
 # .NET MAUI Shell pages
@@ -199,7 +199,7 @@ While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.She
 
 ::: moniker range=">=net-maui-10.0"
 
-## Control NavBar visibility animation (.NET 10)
+## Animate visibility of the navigation bar
 
 In .NET 10, the <xref:Microsoft.Maui.Controls.Shell> class adds the `NavBarVisibilityAnimationEnabled` attached property to control whether changes to the navigation bar's visibility are animated. By default, this property is `true`.
 
