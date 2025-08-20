@@ -1,7 +1,7 @@
 ---
 title: "Picker"
 description: "The .NET MAUI Picker displays a short list of items, from which the user can select an item."
-ms.date: 08/30/2024
+ms.date: 08/19/2025
 ---
 
 # Picker
@@ -257,3 +257,11 @@ This method obtains the `SelectedIndex` property value, and uses the value to re
 
 > [!NOTE]
 > A <xref:Microsoft.Maui.Controls.Picker> can be initialized to display a specific item by setting the `SelectedIndex` property. However, the `SelectedIndex` property must be set after initializing the `Items` collection.
+
+## Programmatically open and close the picker
+
+::: moniker range=">=net-maui-10.0"
+
+::: include ../../includes/pickers-open-close-dotnet10.md
+
+::: moniker-end
