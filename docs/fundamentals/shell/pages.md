@@ -197,6 +197,40 @@ While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.She
 </ContentPage>
 ```
 
+::: moniker range=">=net-maui-10.0"
+
+## Control NavBar visibility animation (.NET 10)
+
+In .NET 10, the <xref:Microsoft.Maui.Controls.Shell> class adds the `NavBarVisibilityAnimationEnabled` attached property to control whether changes to the navigation bar's visibility are animated. By default, this property is `true`.
+
+You can set this attached property on any <xref:Microsoft.Maui.Controls.Page> to disable or enable the animation when showing or hiding the navigation bar:
+
+```xaml
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.MyPage"
+    Shell.NavBarVisibilityAnimationEnabled="False">
+    ...
+    <!-- Later you can also toggle Shell.NavBarIsVisible to show/hide without animation -->
+    <!-- Shell.NavBarIsVisible="False" -->
+    ...
+</ContentPage>
+```
+
+In C#, use the static attached property accessors:
+
+```csharp
+// Disable animation for NavBar visibility changes on a page
+Shell.SetNavBarVisibilityAnimationEnabled(myPage, false);
+
+// Query the current setting
+bool isEnabled = Shell.GetNavBarVisibilityAnimationEnabled(myPage);
+```
+
+This setting affects the animation applied when <xref:Microsoft.Maui.Controls.Shell.NavBarIsVisibleProperty?displayProperty=nameWithType> changes on the target element.
+::: moniker-end
+
 ## Display views in the navigation bar
 
 The `Shell.TitleView` attached property, of type <xref:Microsoft.Maui.Controls.View>, enables any <xref:Microsoft.Maui.Controls.View> to be displayed in the navigation bar.
