@@ -27,9 +27,9 @@ All eight properties are backed by <xref:Microsoft.Maui.Controls.BindablePropert
 ::: moniker range=">=net-maui-10.0"
 <xref:Microsoft.Maui.Controls.DatePicker> defines the following properties:
 
-- `MinimumDate` of type [`DateTime?`](xref:System.Nullable{System.DateTime}), the lowest selectable date (set to `null` to remove the lower bound). Defaults to 1900-01-01.
-- `MaximumDate` of type [`DateTime?`](xref:System.Nullable{System.DateTime}), the highest selectable date (set to `null` to remove the upper bound). Defaults to 2100-12-31.
-- `Date` of type [`DateTime?`](xref:System.Nullable{System.DateTime}), the selected date. Defaults to today if not explicitly set. Set to `null` to represent no date selected.
+- `MinimumDate` of type `DateTime?`, the lowest selectable date (set to `null` to remove the lower bound). Defaults to 1900-01-01.
+- `MaximumDate` of type `DateTime?`, the highest selectable date (set to `null` to remove the upper bound). Defaults to 2100-12-31.
+- `Date` of type `DateTime?`, the selected date. Defaults to today if not explicitly set. Set to `null` to represent no date selected.
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "D", the long date pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected date.
 - `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
