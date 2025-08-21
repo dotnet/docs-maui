@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell search"
 description: "Learn how .NET MAUI Shell apps can use integrated search functionality that's provided by a search box that can be added to the top of each page."
-ms.date: 08/19/2025
+ms.date: 08/20/2025
 ---
 
 # .NET MAUI Shell search
@@ -254,3 +254,55 @@ The following XAML code example shows how to customize the default `Keyboard` to
     </SearchHandler.Keyboard>
 </SearchHandler>
 ```
+
+## Hide and show the soft input keyboard
+
+::: moniker range=">=net-maui-10.0"
+
+In .NET 10, <xref:Microsoft.Maui.Controls.SearchHandler> gains methods to programmatically control the soft input keyboard:
+
+- <xref:Microsoft.Maui.Controls.SearchHandler.ShowSoftInputAsync>
+- <xref:Microsoft.Maui.Controls.SearchHandler.HideSoftInputAsync>
+
+These methods let you bring up the keyboard when the user navigates to a page with search, and dismiss it once a result is chosen, without relying on focus changes.
+
+For example, you can auto-open the keyboard when the page appears:
+
+```csharp
+// In a ContentPage code-behind
+protected override void OnAppearing()
+{
+    base.OnAppearing();
+
+    var handler = Shell.GetSearchHandler(this);
+    handler?.ShowSoftInputAsync();
+}
+```
+
+And you can hide the keyboard after a selection is made in your custom SearchHandler:
+
+```csharp
+public class AnimalSearchHandler : SearchHandler
+{
+    protected override async void OnItemSelected(object item)
+    {
+        base.OnItemSelected(item);
+
+        // Dismiss the soft input keyboard
+        HideSoftInputAsync();
+
+        // Perform navigation or other actions
+        await Shell.Current.GoToAsync("monkeydetails", new Dictionary<string, object>
+        {
+            { "Monkey", item }
+        });
+    }
+}
+```
+
+Notes:
+
+- On platforms without a software keyboard (for example, desktop with a hardware keyboard), these methods may be no-ops.
+- If you need to direct focus to the search box, you can continue to use <xref:Microsoft.Maui.Controls.SearchHandler.Focus> and <xref:Microsoft.Maui.Controls.SearchHandler.Unfocus>. Showing or hiding the soft input is complementary to focus.
+
+::: moniker-end
