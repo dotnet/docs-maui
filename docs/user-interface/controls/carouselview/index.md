@@ -1,7 +1,7 @@
 ---
 title: "CarouselView"
 description: "The .NET MAUI CarouselView is a view for presenting data in a scrollable layout, where users can swipe to move through a collection of items."
-ms.date: 09/30/2024
+ms.date: 08/19/2025
 ---
 
 # CarouselView
@@ -17,3 +17,10 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items i
 By default, <xref:Microsoft.Maui.Controls.CarouselView> provides looped access to its collection of items. Therefore, swiping backwards from the first item in the collection will display the last item in the collection. Similarly, swiping forwards from the last item in the collection will return to the first item in the collection.
 
 <xref:Microsoft.Maui.Controls.CarouselView> shares much of its implementation with <xref:Microsoft.Maui.Controls.CollectionView>. However, the two controls have different use cases. <xref:Microsoft.Maui.Controls.CollectionView> is typically used to present lists of data of any length, whereas <xref:Microsoft.Maui.Controls.CarouselView> is typically used to highlight information in a list of limited length. For more information about <xref:Microsoft.Maui.Controls.CollectionView>, see [CollectionView](~/user-interface/controls/collectionview/index.md).
+
+::: moniker range=">=net-maui-10.0"
+
+> [!NOTE]
+> On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CarouselView> in .NET 10, providing improved performance and stability.
+
+::: moniker-end
