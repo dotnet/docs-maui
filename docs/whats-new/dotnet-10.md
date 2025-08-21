@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 05/13/2025
+ms.date: 08/19/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -130,7 +130,7 @@ private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebR
 
 ### Page
 
-The `IsBusy` property is marked obsolete.
+The `IsBusy` property remains supported. It sets a platform-level, framework-managed busy indicator intended for global app operations. For page-level progress or custom visuals, prefer using an in-page ActivityIndicator bound to your view model state. Note that if multiple pages set `IsBusy = true`, the global indicator remains visible until all are reset to `false`.
 
 ### Picker
 
