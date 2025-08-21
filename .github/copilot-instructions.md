@@ -63,3 +63,15 @@ Examples already verified:
 - Pop-ups: `DisplayAlertAsync` / `DisplayActionSheetAsync` (PR01).
 - Media picker: multi-select `PickPhotosAsync` / `PickVideosAsync` (PR02).
 - Gestures: deprecate `ClickGestureRecognizer`; promote `TapGestureRecognizer` and `PointerGestureRecognizer` (PR03).
+
+## Scope and note policy for conceptual docs
+
+To keep conceptual docs focused and avoid churn from low-impact API surface tweaks:
+
+- Don’t add callouts/notes in conceptual topics for minor API shape changes such as:
+  - Method/property visibility changes (for example, private → public, internal → public).
+  - Binding mode default changes (for example, TwoWay → OneWay) where usage doesn’t materially change.
+  - Handler default value changes that don’t alter how you use the API.
+- Instead, update any code samples, snippets, or embedded guidance to reflect .NET 10 behavior and build cleanly.
+- Leave full surface/shape details to the API reference. Only add migration notes when developer behavior or recommended usage changes in a meaningful way.
+- When in doubt, prefer: “update samples quietly” over “add a prominent breaking note.”
