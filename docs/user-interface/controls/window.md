@@ -1,7 +1,7 @@
 ---
 title: "Window"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 01/17/2025
+ms.date: 08/19/2025
 ---
 
 # Window
@@ -352,3 +352,37 @@ public partial class App : Application
 ```
 
 Provided that the <xref:Microsoft.Maui.Controls.IWindowCreator> interface and its concrete type have been registered with the app's service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
+
+::: moniker range=">=net-maui-10.0"
+
+## Enable or disable minimize and maximize buttons on Windows
+
+On Windows, you can enable or disable the minimize and maximize buttons on a window. This can be accomplished by retrieving the underlying WinUI window and adjusting its presenter properties.
+
+The following example disables both the minimize and maximize buttons:
+
+```csharp
+#if WINDOWS
+using Microsoft.Maui.Platform; // MauiWinUIWindow
+using Microsoft.UI.Windowing;  // AppWindow, OverlappedPresenter
+
+public static void ConfigureWindowButtons(Window window)
+{
+    var nativeWindow = (MauiWinUIWindow)window.Handler.PlatformView;
+    var appWindow = nativeWindow.AppWindow;
+
+    if (appWindow.Presenter is OverlappedPresenter presenter)
+    {
+        presenter.IsMinimizable = false;
+        presenter.IsMaximizable = false;
+    }
+}
+#endif
+```
+
+Call `ConfigureWindowButtons` during app startup (for example, after creating the `Window` in `CreateWindow`) or when showing a secondary window.
+
+> [!NOTE]
+> These properties only apply on Windows desktop. Other platforms ignore this code path. To re-enable buttons, set `IsMinimizable` and `IsMaximizable` back to `true`.
+
+::: moniker-end

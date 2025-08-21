@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 04/01/2025
+ms.date: 05/13/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -678,3 +678,56 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 
 > [!NOTE]
 > Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
+
+::: moniker range=">=net-maui-10.0"
+
+## Intercept web requests
+
+<xref:Microsoft.Maui.Controls.HybridWebView> can intercept and respond to web requests that originate from within the hosted web content. This enables scenarios such as modifying headers, redirecting requests, or supplying local responses.
+
+To intercept web requests, handle the `WebResourceRequested` event. In the event handler, set `Handled` to `true` and provide a response via `SetResponse(statusCode, statusDescription, contentType, streamOrTaskOfStream)`:
+
+```xaml
+<HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
+```
+
+```csharp
+private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebResourceRequestedEventArgs e)
+{
+    // NOTE:
+    // - This method MUST be synchronous; it's invoked on the WebView's thread.
+    // - You MUST call SetResponse (even a minimal response) if you set Handled = true.
+
+    // Example: serve a local image instead of the network resource
+    if (e.Uri.ToString().EndsWith("sample-image.png", StringComparison.OrdinalIgnoreCase))
+    {
+        e.Handled = true;
+        e.SetResponse(200, "OK", "image/png", GetLocalImageStreamAsync());
+        return;
+    }
+
+    // Example: inject an authorization header for API calls
+    if (e.Uri.Host.Equals("api.contoso.com", StringComparison.OrdinalIgnoreCase))
+    {
+        e.RequestHeaders["Authorization"] = $"Bearer {GetToken()}";
+        // Fall through without setting Handled so the request proceeds normally
+    }
+}
+
+private Task<Stream> GetLocalImageStreamAsync()
+{
+    // Return a stream containing PNG bytes (for example from a MauiAsset)
+    return FileSystem.OpenAppPackageFileAsync("wwwroot/images/sample-image.png");
+}
+```
+
+> [!CAUTION]
+> Avoid long-running work in `WebResourceRequested`. If you set `Handled = true`, you must supply a response immediately. For asynchronous content, pass a `Task<Stream>` to `SetResponse` so the WebView can continue while the stream completes.
+
+Common patterns include:
+
+- Injecting or rewriting headers for specific hosts.
+- Returning local files or in-memory content for offline or testing scenarios.
+- Redirecting to a different URI by returning a 3xx status code with an appropriate `Location` header.
+
+::: moniker-end

@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell search"
 description: "Learn how .NET MAUI Shell apps can use integrated search functionality that's provided by a search box that can be added to the top of each page."
-ms.date: 10/30/2024
+ms.date: 08/19/2025
 ---
 
 # .NET MAUI Shell search
@@ -119,6 +119,13 @@ The `AnimalSearchHandler.OnQueryChanged` method returns a `List` of `Animal` obj
 
 > [!WARNING]
 > `SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](#define-search-results-item-appearance), [Trim a .NET MAUI app](~/deployment/trimming.md) and [Native AOT deployment](~/deployment/nativeaot.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+> [!TIP]
+> In .NET 10, trimming defaults and feature switches mean `SearchHandler.DisplayMemberName` is ignored when full trimming or Native AOT is enabled. Prefer using `ItemTemplate` for results, which is trim-safe and supported across platforms. If you must use `DisplayMemberName` in partially trimmed scenarios, you can opt back in by setting the `MauiShellSearchResultsRendererDisplayMemberNameSupported` feature switch to `true` in your project file. For details and tradeoffs, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
 ::: moniker-end
 

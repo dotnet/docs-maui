@@ -27,7 +27,7 @@ The <xref:Microsoft.Maui.Controls.Switch> control defines the following properti
 ::: moniker range=">=net-maui-10.0"
 
 - `IsToggled` is a `boolean` value that indicates whether the <xref:Microsoft.Maui.Controls.Switch> is on. The default value of this property is `false`.
-- `OffColor`is a <xref:Microsoft.Maui.Graphics.Color> that determines how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the off state.
+- `OffColor` is a <xref:Microsoft.Maui.Graphics.Color> that determines how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the off state.
 - `OnColor` is a <xref:Microsoft.Maui.Graphics.Color> that determines how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
 - `ThumbColor` is the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb.
 
