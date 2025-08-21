@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePic
 <xref:Microsoft.Maui.Controls.TimePicker> defines the following properties:
 
 - `Time` of type `TimeSpan`, the selected time, which defaults to a `TimeSpan` of 0. The `TimeSpan` type indicates a duration of time since midnight.
-- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard-base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
+- `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected time.
 - `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
