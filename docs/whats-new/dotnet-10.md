@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 05/13/2025
+ms.date: 08/20/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -78,6 +78,8 @@ On Android, the <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.C
 
 By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
 
+In addition, you can customize initialization and access platform web views to tweak settings when the native view is ready (for example, use `RunAfterInitialize` on Windows or adjust `WKWebView` configuration on iOS/Mac Catalyst). For details, see [Customize initialization and access platform web views](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#customize-initialization-and-access-platform-web-views).
+
 ### Intercept Web Requests
 
 You can now intercept and respond to web requests made from `BlazorWebView` and `HybridWebView`. This allows for scenarios such as modifying headers, redirecting requests, or supplying local responses.
@@ -130,11 +132,18 @@ private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebR
 
 ### Page
 
-The `IsBusy` property is marked obsolete.
+The `IsBusy` property is marked obsolete. In .NET 10 we recommend using <xref:Microsoft.Maui.Controls.ActivityIndicator> (or a similar UX) for page or view-specific busy states and avoiding long-lived global busy indicators. For guidance, see [ContentPage](~/user-interface/pages/contentpage.md?view=net-maui-10.0&preserve-view=true).
 
 ### Picker
 
 Programmatically control picker state with new Open/Close API.
+
+In addition, <xref:Microsoft.Maui.Controls.DatePicker> and <xref:Microsoft.Maui.Controls.TimePicker> support nullable selection in .NET 10. This enables clearing values and binding to nullable types:
+
+- <xref:Microsoft.Maui.Controls.DatePicker.Date> is now <xref:System.DateTime?>; <xref:Microsoft.Maui.Controls.DatePicker.MinimumDate> and <xref:Microsoft.Maui.Controls.DatePicker.MaximumDate> are also nullable.
+- <xref:Microsoft.Maui.Controls.TimePicker.Time> is now <xref:System.TimeSpan?>.
+
+For examples and platform notes, see [DatePicker](~/user-interface/controls/datepicker.md?view=net-maui-10.0&preserve-view=true) and [TimePicker](~/user-interface/controls/timepicker.md?view=net-maui-10.0&preserve-view=true).
 
 ### SearchBar
 
@@ -149,10 +158,6 @@ Programmatically control picker state with new Open/Close API.
 
 For more information, see [SearchBar](~/user-interface/controls/searchbar.md?view=net-maui-10.0&preserve-view=true).
 
-### StackNavigationManager
-
-Made public on Android.
-
 ### Switch
 
 <xref:Microsoft.Maui.Controls.Switch> gains an `OffColor` bindable property that sets the color of the switch when it's in the off state:
@@ -163,10 +168,6 @@ Made public on Android.
 ```
 
 For more information, see [Switch](~/user-interface/controls/switch.md?view=net-maui-10.0&preserve-view=true).
-
-### TabbedPageManager
-
-Made this public for advanced customization scenarios.
 
 ### TableView
 
@@ -182,6 +183,21 @@ When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, t
 
 For more information, see [Play video fullscreen](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true#play-video-full-screen-on-android).
 
+You can also programmatically enable or disable JavaScript execution on Android with a .NET 10 platform-specific API. For details and a code example, see [WebView](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true).
+
+### SearchHandler
+
+<xref:Microsoft.Maui.Controls.SearchHandler> adds APIs to programmatically show or hide the soft keyboard, making it easier to control focus and user input flow:
+
+- `ShowSoftInputAsync`
+- `HideSoftInputAsync`
+
+For examples and platform notes, see [Search](~/fundamentals/shell/search.md?view=net-maui-10.0&preserve-view=true). If you use reflection-based properties such as `DisplayMemberName`, review the [trimming guidance](~/deployment/trimming.md?view=net-maui-10.0&preserve-view=true) for feature switches and linker configuration.
+
+## Shell
+
+.NET 10 introduces a toggle to control the shell navigation bar visibility animation. Use `Shell.NavBarVisibilityAnimationEnabled` to enable or disable the animation when the navigation bar shows or hides. See [Shell appearance and behavior](~/fundamentals/shell/index.md?view=net-maui-10.0&preserve-view=true).
+
 ## Window
 
 Added ability to enable/disable the minimize and maximize buttons on Windows.
@@ -190,11 +206,7 @@ Added ability to enable/disable the minimize and maximize buttons on Windows.
 
 <xref:Microsoft.Maui.Controls.MessagingCenter> has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
 
-## Shadows
-
-In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` namespace, is now public.
-
-For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
+<!-- Removed minor API-surface-only note per docs policy: avoid conceptual notes for visibility changes. -->
 
 ## Platform features
 
