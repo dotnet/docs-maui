@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 05/13/2025
+ms.date: 08/20/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -680,6 +680,100 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 > Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
 
 ::: moniker range=">=net-maui-10.0"
+
+## Customize initialization and access platform web views
+
+While <xref:Microsoft.Maui.Controls.HybridWebView> doesn’t expose app-facing initializing/initialized events like <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you can still customize the underlying platform web views and run code after they’re ready:
+
+- Windows (WebView2): the platform view is <xref:Microsoft.Maui.Platform.MauiHybridWebView>, which inherits `WebView2` and adds `RunAfterInitialize(Action)` so you can safely access `CoreWebView2` once it’s ready.
+- Android (android.webkit.WebView): access and configure the platform `WebView` via the handler once it’s created.
+- iOS/Mac Catalyst (WKWebView): access and configure the platform `WKWebView` after creation. Some options (such as certain `WKWebViewConfiguration` settings) must be set at creation time; .NET MAUI sets sensible defaults for these.
+
+### Access the platform view after handler creation
+
+Handle `HandlerChanged` (or override `OnHandlerChanged` in a custom control) and branch by platform:
+
+```csharp
+using Microsoft.Maui.Platform; // For MauiHybridWebView on Windows
+
+void HybridWebView_HandlerChanged(object? sender, EventArgs e)
+{
+    if (sender is not HybridWebView hv || hv.Handler?.PlatformView is null)
+        return;
+
+#if WINDOWS
+    if (hv.Handler.PlatformView is MauiHybridWebView winView)
+    {
+        winView.RunAfterInitialize(() =>
+        {
+            // CoreWebView2 is guaranteed to be initialized here
+            winView.CoreWebView2.Settings.IsZoomControlEnabled = false;
+            winView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+        });
+    }
+#elif ANDROID
+    if (hv.Handler.PlatformView is Android.Webkit.WebView androidView)
+    {
+        // Safe to tweak most settings after creation
+        androidView.Settings.BuiltInZoomControls = false;
+        androidView.Settings.DisplayZoomControls = false;
+    }
+#elif IOS || MACCATALYST
+    if (hv.Handler.PlatformView is WebKit.WKWebView wk)
+    {
+        wk.AllowsBackForwardNavigationGestures = true;
+        // Many WKWebViewConfiguration options can’t be changed now – see note below
+    }
+#endif
+}
+```
+
+Wire this up once, for example in XAML code-behind:
+
+```csharp
+public MainPage()
+{
+    InitializeComponent();
+    hybridWebView.HandlerChanged += HybridWebView_HandlerChanged;
+}
+```
+
+> [!IMPORTANT]
+> On iOS/Mac Catalyst, some `WKWebViewConfiguration` options must be set before the view is created. .NET MAUI enables common options by default (inline media playback, autoplay, JavaScript, etc.) so typical scenarios work without extra code. If you need different creation-time options, use the advanced approach below.
+
+### Advanced: provide creation-time configuration with a custom handler
+
+If you need to alter creation-time options (for example, to change `WKWebViewConfiguration` on iOS/Mac Catalyst), register a custom handler and override `CreatePlatformView`:
+
+```csharp
+// In MauiProgram.cs
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<HybridWebView, MyHybridWebViewHandler>();
+});
+
+// Custom handler (iOS/Mac Catalyst shown; similar ideas apply for other platforms)
+public class MyHybridWebViewHandler : HybridWebViewHandler
+{
+#if IOS || MACCATALYST
+    protected override WebKit.WKWebView CreatePlatformView()
+    {
+        var config = new WebKit.WKWebViewConfiguration
+        {
+            // Example: change defaults established by MAUI
+            AllowsInlineMediaPlayback = false,
+        };
+
+        // Recreate the platform view with your configuration
+        var webview = new MauiHybridWebView(this, CoreGraphics.CGRect.Empty, config);
+        return webview;
+    }
+#endif
+}
+```
+
+> [!CAUTION]
+> Creation-time configuration is an advanced scenario. Validate behavior on each platform, and prefer post-initialization tweaks when possible.
 
 ## Intercept web requests
 
