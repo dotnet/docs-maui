@@ -289,7 +289,7 @@ public class AnimalSearchHandler : SearchHandler
         base.OnItemSelected(item);
 
         // Dismiss the soft input keyboard
-        HideSoftInputAsync();
+        await HideSoftInputAsync();
 
         // Perform navigation or other actions
         await Shell.Current.GoToAsync("monkeydetails", new Dictionary<string, object>
