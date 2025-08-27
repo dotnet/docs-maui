@@ -23,4 +23,17 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> provides looped access t
 > [!NOTE]
 > On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CarouselView> in .NET 10, providing improved performance and stability.
 
+## Revert to .NET 9 behavior
+
+We recommend using the new handler for <xref:Microsoft.Maui.Controls.CarouselView>, but if you would like to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CarouselView, Microsoft.Maui.Controls.Handlers.Items.CarouselViewHandler>();
+});
+#endif
+```
+
 ::: moniker-end
