@@ -21,6 +21,19 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 > [!NOTE]
 > On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> in .NET 10, providing improved performance and stability.
 
+## Revert to .NET 9 behavior
+
+We recommend using the new handler for `CarouselView` but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler>();
+});
+#endif
+```
+
 ::: moniker-end
 
 ## CollectionView and ListView differences
