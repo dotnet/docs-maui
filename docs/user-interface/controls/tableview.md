@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TableVi
 
 ::: moniker range=">=net-maui-10.0"
 
-<xref:Microsoft.Maui.Controls.TableView> is deprecated in .NET 10. For most scenarios, you should migrate to <xref:Microsoft.Maui.Controls.CollectionView>, which uses an <xref:Microsoft.Maui.Controls.ItemTemplate> to define item appearance rather than cells.
+<xref:Microsoft.Maui.Controls.TableView> is deprecated in .NET 10. For most scenarios, you should migrate to <xref:Microsoft.Maui.Controls.CollectionView>, which uses an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define item appearance rather than cells.
 
 - TextCell/ImageCell/ViewCell → Define a DataTemplate for your item type
 - SwitchCell/EntryCell → Compose those controls inside the item template
