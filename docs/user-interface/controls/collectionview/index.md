@@ -23,7 +23,7 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 
 ## Revert to .NET 9 behavior
 
-We recommend using the new handler for `CarouselView` but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
 
 ```csharp
 #if IOS || MACCATALYST
