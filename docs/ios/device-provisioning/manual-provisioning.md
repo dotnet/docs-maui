@@ -2,6 +2,7 @@
 title: "Manual provisioning for .NET MAUI iOS apps"
 description: "Learn how to use manual provisioning to create development certificates and profiles for .NET MAUI iOS apps."
 ms.date: 11/25/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Manual provisioning for iOS apps

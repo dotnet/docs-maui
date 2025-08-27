@@ -1,7 +1,7 @@
 ---
 title: "Editor"
 description: "The .NET MAUI Editor allows you to enter and edit multiple lines of text."
-ms.date: 08/30/2024
+ms.date: 05/13/2025
 ---
 
 # Editor
@@ -43,6 +43,28 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Editor>, see [Fonts](~/user-interface/fonts.md).
+
+::: moniker range=">=net-maui-10.0"
+> [!TIP]
+> On Android, .NET 10 switches the native view for <xref:Microsoft.Maui.Controls.Editor> to `MauiAppCompatEditText`, which enables selection change tracking. As the selection changes, <xref:Microsoft.Maui.Controls.InputView.CursorPosition> and <xref:Microsoft.Maui.Controls.InputView.SelectionLength> are updated so you can react to selection moves.
+
+To observe selection updates, handle property changes for `CursorPosition` and `SelectionLength`:
+
+```csharp
+editor.PropertyChanged += (s, e) =>
+{
+    if (e.PropertyName == nameof(Editor.CursorPosition) ||
+        e.PropertyName == nameof(Editor.SelectionLength))
+    {
+        var start = editor.CursorPosition;
+        var length = editor.SelectionLength;
+        // Respond to selection change (Android .NET 10+)
+    }
+};
+```
+
+Alternatively, data bind the properties and react in your view model.
+::: moniker-end
 
 ## Create an Editor
 
@@ -248,3 +270,21 @@ Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Contro
 
 > [!NOTE]
 > The `IsReadonly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Editor>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Editor> to gray.
+
+## Line endings (Windows only)
+
+When the user adds multiple lines in the control, the `Text` property will contain only "\r" for the line endings and not "\r\n" which is normal in Windows. There is no property to change this behavior, but the text can be altered to include this specific line ending if needed.
+
+```csharp
+#if WINDOWS
+if (EditorText.Text.Contains("\r"))
+{
+    var textWithWindowsLineBreaks = EditorText.Text.Replace("\r", Environment.NewLine);
+
+    // Do something with the text that has Windows line breaks
+}
+#endif
+```
+
+> [!NOTE]
+> Do not assign the updated text to the `Text` property of the control. The original line ending ("\r") will be restored if this happens.

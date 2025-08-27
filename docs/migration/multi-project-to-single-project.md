@@ -3,6 +3,7 @@ title: "Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app"
 description: "Learn how to manually upgrade a Xamarin.Forms app to a single project .NET MAUI app."
 ms.date: 08/29/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
+ms.custom: sfi-image-nochange
 ---
 
 # Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app

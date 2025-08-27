@@ -2,6 +2,7 @@
 title: "Device provisioning for .NET MAUI apps on iOS"
 description: "Learn how to provision an iOS device so that it can be used to test a .NET MAUI iOS app."
 ms.date: 11/28/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Device provisioning for iOS

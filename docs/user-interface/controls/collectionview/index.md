@@ -1,7 +1,7 @@
 ---
 title: "CollectionView"
 description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
-ms.date: 08/30/2024
+ms.date: 08/19/2025
 ---
 
 # CollectionView
@@ -15,6 +15,26 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 :::image type="content" source="media/verticalgrid-multipleselection.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::
 
 <xref:Microsoft.Maui.Controls.CollectionView> should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
+
+::: moniker range=">=net-maui-10.0"
+
+> [!NOTE]
+> On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> in .NET 10, providing improved performance and stability.
+
+## Revert to .NET 9 behavior
+
+We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler>();
+});
+#endif
+```
+
+::: moniker-end
 
 ## CollectionView and ListView differences
 

@@ -33,7 +33,7 @@ With the <xref:Microsoft.Maui.ApplicationModel.MainThread> class, you can determ
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="runcode_test_thread":::
 
-This check isn't necessary. `BeginInvokeOnMainThread` itself tests if the current code is running on the main thread or not. If the code is running on the main thread, `BeginInvokeOnMainThread` just calls the provided method directly. If the code is running on a secondary thread, `BeginInvokeOnMainThread` invokes the provided method on the main thread. Therefore, if the code you run is the same, regardless of the main or secondary thread, simply call `BeginInvokeOnMainThread` without checking if it's required. There is negligible overhead in doing so.
+For this scenario, this check isn't necessary. `BeginInvokeOnMainThread` itself tests if the current code is running on the main thread or not. If the code is running on the main thread, `BeginInvokeOnMainThread` just calls the provided method directly. If the code is running on a secondary thread, `BeginInvokeOnMainThread` invokes the provided method on the main thread. Therefore, if the code you run is the same, regardless of the main or secondary thread, simply call `BeginInvokeOnMainThread` without checking if it's required. There is negligible overhead in doing so.
 
 The only reason you would need to check the `IsMainThread` property is if you have branching logic that does something different based on the thread.
 

@@ -1,7 +1,8 @@
 ---
 title: "Entry"
 description: "The .NET MAUI Entry allows you to enter and edit a single line of text."
-ms.date: 08/30/2024
+ms.date: 05/13/2025
+ms.custom: sfi-ropc-nochange
 ---
 
 # Entry
@@ -47,6 +48,28 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 In addition, <xref:Microsoft.Maui.Controls.InputView> defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 For information about specifying fonts on an <xref:Microsoft.Maui.Controls.Entry>, see [Fonts](~/user-interface/fonts.md).
+
+::: moniker range=">=net-maui-10.0"
+> [!TIP]
+> Android adds support for selection change notifications in .NET 10. On Android, the native control switches from `AppCompatEditText` to `MauiAppCompatEditText`, enabling selection change tracking for <xref:Microsoft.Maui.Controls.Entry>. As the selection changes, the `CursorPosition` and `SelectionLength` properties are updated so you can react to selection moves.
+
+To observe selection updates, handle property changes for `CursorPosition` and `SelectionLength`:
+
+```csharp
+entry.PropertyChanged += (s, e) =>
+{
+       if (e.PropertyName == nameof(Entry.CursorPosition) ||
+              e.PropertyName == nameof(Entry.SelectionLength))
+       {
+              var start = entry.CursorPosition;
+              var length = entry.SelectionLength;
+              // Respond to selection change (Android .NET 10+)
+       }
+};
+```
+
+Alternatively, data bind the properties and react in your view model.
+::: moniker-end
 
 ## Create an Entry
 
