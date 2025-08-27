@@ -685,7 +685,7 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 
 While <xref:Microsoft.Maui.Controls.HybridWebView> doesn’t expose app-facing initializing/initialized events like <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you can still customize the underlying platform web views and run code after they’re ready:
 
-- Windows (WebView2): the platform view is <xref:Microsoft.Maui.Platform.MauiHybridWebView>, which inherits `WebView2` and adds `RunAfterInitialize(Action)` so you can safely access `CoreWebView2` once it’s ready.
+- Windows (WebView2): the platform view is <xref:Microsoft.Maui.Controls.HybridWebView>, which inherits `WebView2` and adds `RunAfterInitialize(Action)` so you can safely access `CoreWebView2` once it’s ready.
 - Android (android.webkit.WebView): access and configure the platform `WebView` via the handler once it’s created.
 - iOS/Mac Catalyst (WKWebView): access and configure the platform `WKWebView` after creation. Some options (such as certain `WKWebViewConfiguration` settings) must be set at creation time; .NET MAUI sets sensible defaults for these.
 
