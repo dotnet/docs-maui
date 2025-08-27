@@ -23,7 +23,7 @@ In contrast, XAML that’s compiled into your app or embedded in signed resource
 
 ### Risks with `LoadFromXaml<T>()`
 
-While [LoadFromXaml<T>()](/dotnet/maui/xaml/runtime-load) is useful for dynamic view loading, it comes with potential threats:
+While [`LoadFromXaml<T>()`](/dotnet/maui/xaml/runtime-load) is useful for dynamic view loading, it comes with potential threats:
 
 - Unexpected object instantiation or behavior via markup.
 - Assigning properties or triggering side effects.
