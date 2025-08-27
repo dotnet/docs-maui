@@ -46,6 +46,7 @@ MAUI uses XML namespaces in XAML to resolve CLR types. However, trust boundaries
 ### Potential Exploits
 
 An untrusted assembly could:
+
 - Spoof a namespace mapping.
 - Hijack XAML-parsed type references.
   
