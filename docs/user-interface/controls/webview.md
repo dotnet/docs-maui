@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 04/15/2025
+ms.date: 08/19/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -233,6 +233,27 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 :::zone pivot="devices-android"
 
 ::: moniker range=">=net-maui-10.0"
+
+## Enable or disable JavaScript on Android
+
+On Android, JavaScript execution is enabled by default for <xref:Microsoft.Maui.Controls.WebView>. You can toggle this behavior at runtime using the Android-specific platform configuration APIs:
+
+```csharp
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+
+// Disable JavaScript
+webView.On<Android>().SetJavaScriptEnabled(false);
+
+// Re-enable JavaScript
+webView.On<Android>().SetJavaScriptEnabled(true);
+
+// Query current state
+bool isEnabled = webView.On<Android>().IsJavaScriptEnabled();
+```
+
+> [!NOTE]
+> Disabling JavaScript may break functionality on sites that rely on it. Additionally, calls to <xref:Microsoft.Maui.Controls.WebView.EvaluateJavaScriptAsync%2A> won't execute scripts while JavaScript is disabled.
 
 ## Play video full screen on Android
 
