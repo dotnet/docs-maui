@@ -173,7 +173,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
         </html>
         ```
 
-::: moniker range="<=net-maui-9.0"
+    ::: moniker range="<=net-maui-9.0"
     - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard <xref:Microsoft.Maui.Controls.HybridWebView> JavaScript library:
 
         ```js
@@ -323,8 +323,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
         window.HybridWebView.Init();
         ```
 
-::: moniker-end
-
+    ::: moniker-end
     Then, add any additional web content to your project.
 
     > [!WARNING]
