@@ -27,6 +27,10 @@ While [`LoadFromXaml<T>()`](/dotnet/maui/xaml/runtime-load) is useful for dynami
 
 - Unexpected object instantiation or behavior via markup.
 - Assigning properties or triggering side effects.
+- **Gadget vulnerabilities:**  
+  In security research, a *gadget* is an existing framework type that can be misused during deserialization to perform harmful actions (e.g., launching a process, reading files). Attackers can chain gadgets together for more serious exploits.  
+  - On **Windows Desktop**, more gadgets are available because trimming is not enabled by default.  
+  - On **Mobile and MacCatalyst**, the linker trims unused APIs, reducing but not eliminating gadget risks.
 
 ## Best Practices
 
