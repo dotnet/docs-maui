@@ -919,7 +919,7 @@ To intercept web requests, handle the `WebResourceRequested` event. In the event
 ```
 
 ```csharp
-private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebResourceRequestedEventArgs e)
+private void HybridWebView_WebResourceRequested(object sender, WebViewWebResourceRequestedEventArgs e)
 {
     // NOTE:
     // - This method MUST be synchronous; it's invoked on the WebView's thread.
