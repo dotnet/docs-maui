@@ -8,6 +8,13 @@ ms.date: 07/01/2025
 
 This article outlines best practices for securing .NET MAUI applications that use XAML, with a focus on dynamic loading scenarios using APIs like `LoadFromXaml<T>()`.
 
+::: moniker range=">=net-maui-9.0"
+
+> [!WARNING]
+> Loading XAML at runtime isn't trim safe and shouldn't be used with full trimming or NativeAOT. It can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In addition, loading XAML at runtime has a significant performance cost. For more information, see [Trim a .NET MAUI app](~/deployment/trimming.md) and [Native AOT deployment](~/deployment/nativeaot.md).
+
+::: moniker-end
+
 ## Untrusted XAML in .NET MAUI Applications
 
 The nature of XAML capabilities gives the XAML the right to construct objects and set their properties. These capabilities also include accessing type converters, mapping and accessing assemblies in the application domain, using markup extensions, and so on.
@@ -31,6 +38,9 @@ While [`LoadFromXaml<T>()`](/dotnet/maui/xaml/runtime-load) is useful for dynami
   In security research, a *gadget* is an existing framework type that can be misused during deserialization to perform harmful actions (e.g., launching a process, reading files). Attackers can chain gadgets together for more serious exploits.  
   - On **Windows Desktop**, more gadgets are available because trimming is not enabled by default.  
   - On **Mobile and MacCatalyst**, the linker trims unused APIs, reducing but not eliminating gadget risks.
+ 
+> [!NOTE]
+> In general, use of this API is recommended against.
 
 ## Best Practices
 
