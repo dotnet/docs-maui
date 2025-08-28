@@ -56,7 +56,12 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
             <title></title>
             <link rel="icon" href="data:,">
             <link rel="stylesheet" href="styles/app.css">
+            ::: moniker range="<=net-maui-9.0"
             <script src="scripts/HybridWebView.js"></script>
+            ::: moniker-end
+            ::: moniker range=">=net-maui-10.0"
+            <script src="_framework/hybridwebview.js"></script>
+            ::: moniker-end
             <script>
                 function LogMessage(msg) {
                     var messageLog = document.getElementById("messageLog");
