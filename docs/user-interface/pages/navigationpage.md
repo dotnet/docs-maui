@@ -29,7 +29,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 The <xref:Microsoft.Maui.Controls.NavigationPage> class also defines three events:
 
 - `Pushed` is raised when a page is pushed onto the navigation stack.
-- `Popped` is raised when when a page is popped from the navigation stack.
+- `Popped` is raised when a page is popped from the navigation stack.
 - `PoppedToRoot` is raised when the last non-root page is popped from the navigation stack.
 
 All three events receive `NavigationEventArgs` objects that define a read-only <xref:Microsoft.Maui.Controls.Page> property, which retrieves the page that was popped from the navigation stack, or the newly visible page on the stack.
