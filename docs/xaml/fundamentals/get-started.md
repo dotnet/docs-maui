@@ -52,15 +52,6 @@ public partial class MainPage : ContentPage
 
 The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a [partial class](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) definition.
 
-When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
-
-::: moniker range=">=net-maui-10.0"
-
-> [!IMPORTANT]
-> XAML source generation is a preview feature in .NET 10. To enable it, set `<EnablePreviewFeatures>true</EnablePreviewFeatures>` in your project and add `[assembly: XamlProcessing(XamlInflator.SourceGen)]` to your code. Preview features may change before GA.
-
-::: moniker-end
-
 At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `AppShell`. The `AppShell` class instantiates the first page of the app to be displayed, which is `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
 
 > [!NOTE]
@@ -88,6 +79,20 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 ```
 
 ::: moniker range=">=net-maui-10.0"
+
+## XAML Source Generation
+
+You have the option as of .NET 10 to have XAML generate C# instead of IL (intermediate language) by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+
+To enable XAML source generation for all XAML files in the project, add this to your project file.
+
+```xml
+<ItemGroup>
+    <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+</ItemGroup>
+```
+
+Reference the [source generator configuration documentation](https://learn.microsoft.com/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`. 
 
 ## Global XML namespace (preview)
 
