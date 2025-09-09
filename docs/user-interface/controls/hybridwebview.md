@@ -549,7 +549,7 @@ Your app's C# code can synchronously and asynchronously invoke JavaScript method
 
 > [!NOTE]
 > .NET 10 includes an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value).
-
+x
 ::: moniker-end
 
 ### Invoke synchronous JavaScript
@@ -812,9 +812,12 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 > [!NOTE]
 > Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
 
-::: moniker range=">=net-maui-10.0"
-
 ## Customize initialization and access platform web views
+
+::: moniker range="<=net-maui-9.0"
+
+> [!NOTE]
+> .NET 10 includes events to directly handle the initialization start (<xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitializing>) and the initialization end (<xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitialized>).
 
 While <xref:Microsoft.Maui.Controls.HybridWebView> doesn’t expose app-facing initializing/initialized events like <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you can still customize the underlying platform web views and run code after they’re ready:
 
@@ -879,6 +882,8 @@ public MainPage()
 If you need to alter creation-time options (for example, to change `WKWebViewConfiguration` on iOS/Mac Catalyst), register a custom handler and override `CreatePlatformView`:
 
 ```csharp
+using using Microsoft.Maui.Handlers; // For HybridWebViewHandler
+
 // In MauiProgram.cs
 builder.ConfigureMauiHandlers(handlers =>
 {
@@ -907,6 +912,64 @@ public class MyHybridWebViewHandler : HybridWebViewHandler
 
 > [!CAUTION]
 > Creation-time configuration is an advanced scenario. Validate behavior on each platform, and prefer post-initialization tweaks when possible.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+The <xref:Microsoft.Maui.Controls.HybridWebView> exposes app-facing initializing/initialized events so that you can customize the underlying platform web views and run code after they’re ready:
+
+In most cases, you can just add an event handler for the <xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitialized> event:
+
+```xaml
+<HybridWebView WebViewInitialized="HybridWebViewInitialized" />
+```
+
+In your code-behind, you can get access to the platform features using the <xref:Microsoft.Maui.Controls.WebViewInitializedEventArgs.PlatformArgs> property. This property will provide an instance of <xref:Microsoft.Maui.Controls.PlatformWebViewInitializedEventArgs> which gives you access to all the available settings and configuration needed to control the underlying web view:
+
+```csharp
+private void HybridWebViewInitialized(object sender, WebViewInitializedEventArgs e)
+{
+    if (e.PlatformArgs is null)
+        return;
+
+#if WINDOWS
+    e.PlatformArgs.Settings.IsZoomControlEnabled = false;
+    e.PlatformArgs.Settings.AreDefaultContextMenusEnabled = false;
+#elif ANDROID
+    e.PlatformArgs.Settings.BuiltInZoomControls = false;
+    e.PlatformArgs.Settings.DisplayZoomControls = false;
+#elif IOS || MACCATALYST
+    e.PlatformArgs.Configuration.IgnoresViewportScaleLimits = false;
+#endif
+}
+```
+
+> [!IMPORTANT]
+> On each of the platforms, some configuration may need to be set **before** the webview is even created.
+
+In most cases, you can just add an event handler for the <xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitializing> event:
+
+```xaml
+<HybridWebView WebViewInitializing="HybridWebViewInitializing" />
+```
+
+In your code-behind, you can get access to the platform features using the <xref:Microsoft.Maui.Controls.WebViewInitializingEventArgs.PlatformArgs> property. This property will provide an instance of <xref:Microsoft.Maui.Controls.PlatformWebViewInitializingEventArgs> which gives you access to all the available settings and configuration needed to control the underlying web view:
+
+```csharp
+private void HybridWebViewInitializing(object sender, WebViewInitializingEventArgs e)
+{
+    if (e.PlatformArgs is null)
+        return;
+
+#if IOS || MACCATALYST
+    // Example: override defaults established by .NET MAUI
+    e.PlatformArgs.Configuration.AllowsInlineMediaPlayback = false;
+#endif
+}
+```
+
+::: moniker-end
 
 ## Intercept web requests
 
