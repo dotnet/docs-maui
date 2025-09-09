@@ -946,7 +946,7 @@ private void HybridWebViewInitialized(object sender, WebViewInitializedEventArgs
 ```
 
 > [!IMPORTANT]
-> On each of the platforms, some sonfiguration may need to be set **before** the webview is even created.
+> On each of the platforms, some configuration may need to be set **before** the webview is even created.
 
 In most cases, you can just add an event handler for the <xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitializing> event:
 
