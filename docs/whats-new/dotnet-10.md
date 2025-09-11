@@ -8,6 +8,7 @@ ms.date: 05/13/2025
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
+- [.NET MAUI in .NET 10 Release Candidate 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/rc1/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 7](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview7/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview6/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview5/dotnetmaui.md)
@@ -78,6 +79,13 @@ On Android, the <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.C
 
 By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
 
+#### New Events
+
+Adds initialization events to `HybridWebView` following the same pattern as `BlazorWebView`, enabling platform-specific customization before and after initialization.
+
+- `WebViewInitializing` - Fired before `WebView` creation, allows configuration of platform-specific initialization parameters
+- `WebViewInitialized` - Fired after `WebView` creation, provides access to the native `WebView` instance and settings
+
 ### Intercept Web Requests
 
 You can now intercept and respond to web requests made from `BlazorWebView` and `HybridWebView`. This allows for scenarios such as modifying headers, redirecting requests, or supplying local responses.
@@ -136,6 +144,21 @@ The `IsBusy` property is marked obsolete.
 
 Programmatically control picker state with new Open/Close API.
 
+## RefreshView
+
+Added `IsRefreshEnabled` property to be distinct from `IsEnabled` and make the behavior consistent across platforms.
+
+```xml
+<RefreshView IsRefreshEnabled="false">
+    <!-- Login form remains usable -->
+    <StackLayout>
+        <Entry Placeholder="Username" />
+        <Entry Placeholder="Password" />
+        <Button Text="Login" />
+    </StackLayout>
+</RefreshView>
+```
+
 ### SearchBar
 
 <xref:Microsoft.Maui.Controls.SearchBar> gains a `SearchIconColor` bindable property that sets the color of the search icon:
@@ -181,6 +204,31 @@ Added `IsSupported` to check platform support.
 When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can now be played fullscreen by including `allowfullscreen` in the `iframe`.
 
 For more information, see [Play video fullscreen](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true#play-video-full-screen-on-android).
+
+## Diagnostics
+
+We've added comprehensive diagnostics and metrics tracking for .NET MAUI applications, focusing on layout performance monitoring with an extensible architecture for future observability needs.
+
+**Core Diagnostics Infrastructure:**
+
+- **ActivitySource**: `"Microsoft.Maui"` - Tracks layout operations with detailed timing
+- **Metrics**: `"Microsoft.Maui"` - Records counters and histograms for performance analysis
+- **Feature Switch**: `System.Diagnostics.Metrics.Meter.IsSupported` - Runtime enable/disable for AOT/trimming
+
+**Layout Performance Tracking:**
+
+- Instruments `IView.Measure()` and `IView.Arrange()` operations
+- Records timing data and operation counts with rich contextual tags
+- Zero-allocation struct-based instrumentation using `using` pattern
+
+| Metric Name | Type | Description |
+|-------------|------|-------------|
+| `maui.layout.measure_count` | Counter | Number of measure operations |
+| `maui.layout.measure_duration` | Histogram | Time spent measuring (ns) |
+| `maui.layout.arrange_count` | Counter | Number of arrange operations |
+| `maui.layout.arrange_duration` | Histogram | Time spent arranging (ns) |
+
+See [pull request #31058](https://github.com/dotnet/maui/pull/31058) for more details.
 
 ## Window
 
@@ -507,6 +555,7 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
+- [.NET for Android 10 Release Candidate 1](https://github.com/dotnet/android/releases/tag/36.0.0-rc.1.285)
 - [.NET for Android 10 Preview 7](https://github.com/dotnet/android/releases/tag/36.0.0-preview.7.229)
 - [.NET for Android 10 Preview 6](https://github.com/dotnet/android/releases/tag/36.0.0-preview.6.169)
 - [.NET for Android 10 Preview 5](https://github.com/dotnet/android/releases/tag/36.0.0-preview.5.116)
@@ -514,6 +563,21 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 - [.NET for Android 10 Preview 3](https://github.com/dotnet/android/releases/tag/36.0.0-preview.3.22)
 - [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
+
+### (Experimental) CoreCLR
+
+Enables Android apps to run on the CoreCLR runtime (instead of Mono). To use it, add the following to your project file for Android builds:
+
+```xml
+<!-- Use CoreCLR on Android -->
+<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <UseMonoRuntime>false</UseMonoRuntime>
+</PropertyGroup>
+```
+
+Please try this in your applications and report any issues; when filing feedback, state that you are using UseMonoRuntime=false. Expect that application size is currently larger than with Mono and that debugging and some runtime diagnostics are not fully functional yet; these areas are actively being improved. This is an experimental feature and not intended for production use.
+
+A detailed list of Android changes can be found on the [dotnet/android GitHub releases](https://github.com/dotnet/android/releases/).
 
 ### Android 16 (Baklava) beta 3 bindings
 
@@ -624,6 +688,7 @@ Preview 7 release includes Xcode 26 Beta 4 support for targeting .NET 9. We will
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 10.0.1xx Release Candidate 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-rc.1-10727)
 - [.NET 10.0.1xx Preview 7](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview7-10601)
 - [.NET 10.0.1xx Preview 6](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview6-10451)
 - [.NET 10.0.1xx Preview 5](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview5-10622)
