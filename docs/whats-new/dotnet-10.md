@@ -144,7 +144,7 @@ The `IsBusy` property is marked obsolete.
 
 Programmatically control picker state with new Open/Close API.
 
-## RefreshView 
+## RefreshView
 
 Added `IsRefreshEnabled` property to be distinct from `IsEnabled` and make the behavior consistent across platforms.
 
