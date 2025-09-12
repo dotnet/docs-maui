@@ -1,7 +1,7 @@
 ---
 title: "Clipboard"
 description: "Learn how to use the .NET MAUI IClipboard interface in the Microsoft.Maui.ApplicationModel.DataTransfer namespace, which lets you copy and paste text to the system clipboard."
-ms.date: 02/02/2023
+ms.date: 01/13/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 
@@ -39,3 +39,16 @@ You can clear the clipboard by passing `null` to the <xref:Microsoft.Maui.Applic
 The <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IClipboard> interface provides the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IClipboard.ClipboardContentChanged> event. When this event is raised, the clipboard content has changed. The following code example adds a handler to the event when the content page is loaded:
 
 :::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="clipboard_event":::
+
+## Platform-specific behaviors
+
+### Android notifications
+
+Starting with Android 13 (API level 33), the system automatically displays a toast notification whenever an app copies text to the clipboard. This behavior provides users with visual feedback when a copy operation occurs and cannot be disabled by apps.
+
+For apps targeting Android 12 (API level 32) and lower, you may want to provide your own toast notification to create a consistent user experience across different Android versions. The following code example demonstrates how to conditionally show a toast notification on older Android versions:
+
+:::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="clipboard_android_toast":::
+
+> [!IMPORTANT]
+> To avoid duplicate notifications, don't display custom toast messages on Android 13 and higher, as the system will automatically show its own notification.
