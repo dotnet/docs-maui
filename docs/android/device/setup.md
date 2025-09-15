@@ -106,6 +106,35 @@ Next, use adb to connect to your device, first through a USB connection:
     adb devices
     ```
 
+### Connecting over WiFi without USB cable
+
+> [!WARNING]
+> This method is only available for devices running Android 11 (API level 30).
+
+01. Follow the steps in the [Enable developer mode on the device](#enable-developer-mode-on-the-device) section.
+01. Follow the steps in the [Enable USB debugging](#enable-usb-debugging) section.
+01. Go to the **Settings** screen.
+01. Select **Developer options**.
+01. Turn on the **Wireless debugging** option.
+01. Click on the area next to the switch to enter Wireless debugging settings.
+   
+:::image type="content" source="media/setup/wireless-debugging-button.png" alt-text="Button leading to Wireless debugging settings.":::
+
+01. Select **Pair device with pairing code**. It will generate pairing code and show IP adress with appropriate port, it should look like on screenshot below:
+   
+:::image type="content" source="media/setup/pairing-via-code.png" alt-text="Pairing via pairing code.":::
+
+01. Open your **terminal with access to adb**. One of the ways to do that is to go to Visual Studio and choose **Tools > Android > Android Adb Command Prompt**.
+01. Pair your device using your IP adress and port.
+
+    ```command
+    adb pair 192.168.1.5:42219
+    ```
+
+01. When prompted, **enter the pairing code**.
+   
+After successfully pairing your device should be available as a debug target in Visual Studio. For more details on selecting debug target see [Debug an app on an Android device](#debug-an-app-on-an-Android-device).
+
 ## Configure on-device developer options
 
 The Settings app on Android includes a screen called **Developer options** where you can configure system behaviors that help you profile and debug your app performance. For more information, see [Configure on-device developer options](https://developer.android.com/studio/debug/dev-options) on developer.android.com.
