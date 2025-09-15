@@ -133,7 +133,7 @@ Next, use adb to connect to your device, first through a USB connection:
 
 01. When prompted, **enter the pairing code**.
    
-After successfully pairing your device should be available as a debug target in Visual Studio. For more details on selecting debug target see [Debug an app on an Android device](#debug-an-app-on-an-Android-device).
+After successfully pairing your device should be available as a debug target in Visual Studio. For more details on selecting debug target see [Debug an app on an Android device](#debug-an-app-on-an-android-device).
 
 ## Configure on-device developer options
 
