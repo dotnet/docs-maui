@@ -109,7 +109,7 @@ Next, use adb to connect to your device, first through a USB connection:
 ### Connecting over WiFi without USB cable
 
 > [!WARNING]
-> This method is only available for devices running Android 11 (API level 30).
+> This method is only available for devices running Android 11 (API level 30) and higher.
 
 01. Follow the steps in the [Enable developer mode on the device](#enable-developer-mode-on-the-device) section.
 01. Follow the steps in the [Enable USB debugging](#enable-usb-debugging) section.
