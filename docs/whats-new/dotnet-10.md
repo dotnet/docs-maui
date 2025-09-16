@@ -684,7 +684,7 @@ Preview 7 release includes Xcode 26 Beta 4 support for targeting .NET 9. We will
 </Project>
 ```
 
-> **Note** A current issue exists with `Shell` that prevents it from rendering on iOS 26. Other page types work.
+> **Note** Previously there was an issue with .NET MAUI `Shell` that prevents it from rendering on iOS 26. This has been fixed for .NET MAUI 9 Service Release 11 and .NET MAUI 10 RC1.
 
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
