@@ -189,7 +189,18 @@ Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentP
 
 ## Platform differences
 
-.NET MAUI apps can customize UI appearance on a per-platform basis. This can be achieved in XAML using the `OnPlatform` and `On` classes:
+.NET MAUI apps can customize UI appearance on a per-platform basis. This can be achieved in XAML using the `OnPlatform` and `On` classes.
+
+The `Platform` property of the `On` class accepts the following string values:
+
+- `iOS` - iOS devices
+- `Android` - Android devices  
+- `WinUI` - Windows devices
+- `MacCatalyst` - Mac Catalyst (macOS devices running iOS apps)
+- `Tizen` - Tizen devices
+
+> [!IMPORTANT]
+> Platform values are case-sensitive. For Windows devices, use `WinUI`, not `Windows`.
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -215,13 +226,14 @@ Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentP
         <OnPlatform x:TypeArguments="Thickness" Default="20">
             <On Platform="iOS" Value="0,20,0,0" />
             <On Platform="Android" Value="10,20,20,10" />
+            <On Platform="WinUI" Value="5,10,5,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
 </ContentPage>
 ```
 
-In this example, the `Padding` property is set to different values on iOS and Android, with the other platforms being set to the default value.
+In this example, the `Padding` property is set to different values on iOS, Android, and Windows, with the other platforms being set to the default value.
 
 > [!NOTE]  
 > When positioning controls with the `Padding` and `Margin` properties, if four values are provided the order is left, top, right, bottom. For more information, see [Position controls](~/user-interface/align-position.md#position-controls).
@@ -234,7 +246,8 @@ The `OnPlatform` class also defines a `Platforms` property, which is an `IList` 
              x:Class="...">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" Default="20">
-            <On Platform="iOS, Android" Value="10,20,20,10" />
+            <On Platform="iOS, MacCatalyst" Value="0,20,0,0" />
+            <On Platform="Android, WinUI" Value="10,20,20,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
