@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 05/13/2025
+ms.date: 09/19/2025
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -32,6 +32,18 @@ Browser developer tools can be used to inspect .NET MAUI Blazor apps. For more i
 
 > [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
+
+> [!WARNING]
+> On Windows, apps using <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> that are installed to the `Program Files` directory may fail to render content properly. This occurs because WebView2 attempts to write its cache and user data files to the app's installation directory, which has restricted write permissions in `Program Files`. To resolve this issue, set the `WEBVIEW2_USER_DATA_FOLDER` environment variable before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized:
+> 
+> ```csharp
+> #if WINDOWS
+> var userDataFolder = Path.Combine(FileSystem.AppDataDirectory, "WebView2");
+> Environment.SetEnvironmentVariable("WEBVIEW2_USER_DATA_FOLDER", userDataFolder);
+> #endif
+> ```
+> 
+> Place this code in your `App.xaml.cs` constructor or in `Platforms\Windows\App.xaml.cs` before any <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is created. This directs WebView2 to use a writable location in the user's AppData directory instead of the restricted Program Files location.
 
 For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
 

@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 08/20/2025
+ms.date: 09/19/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -33,6 +33,18 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
+
+> [!WARNING]
+> On Windows, apps using <xref:Microsoft.Maui.Controls.HybridWebView> that are installed to the `Program Files` directory may fail to render content properly. This occurs because WebView2 attempts to write its cache and user data files to the app's installation directory, which has restricted write permissions in `Program Files`. To resolve this issue, set the `WEBVIEW2_USER_DATA_FOLDER` environment variable before the <xref:Microsoft.Maui.Controls.HybridWebView> is initialized:
+> 
+> ```csharp
+> #if WINDOWS
+> var userDataFolder = Path.Combine(FileSystem.AppDataDirectory, "WebView2");
+> Environment.SetEnvironmentVariable("WEBVIEW2_USER_DATA_FOLDER", userDataFolder);
+> #endif
+> ```
+> 
+> Place this code in your `App.xaml.cs` constructor or in `Platforms\Windows\App.xaml.cs` before any <xref:Microsoft.Maui.Controls.HybridWebView> is created. This directs WebView2 to use a writable location in the user's AppData directory instead of the restricted Program Files location.
 
 ## Create a .NET MAUI HybridWebView app
 
