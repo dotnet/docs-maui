@@ -103,7 +103,7 @@ Translation is performed with the <xref:Microsoft.Maui.Controls.ViewExtensions.T
 await image.TranslateToAsync(-100, -100, 1000);
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Image> instance is translated horizontally and vertically over 1 second (1000 milliseconds). The <xref:Microsoft.Maui.Controls.ViewExtensions.TranslateToAsync%2A> method simultaneously translates the image 100 device-independent units to the left, and 100 device-independent units upwards. This is because the first and second arguments are both negative numbers. Providing positive numbers would translate the image to the right, and down.
+In this example, the <xref:Microsoft.Maui.Controls.Image> instance is translated horizontally and vertically over 1 second (1000 milliseconds). The <xref:Microsoft.Maui.Controls.ViewExtensions.TranslateToAsync%2A> method simultaneously translates the image 100 device-independent units to the left, and 100 device-independent units upwards. This is because the first and second arguments are both negative numbers. Providing positive numbers would translate the image to the right, and down. For more information about device-independent units, see [Device-independent units](../device-independent-units.md).
 
 > [!IMPORTANT]
 > If an element is initially laid out off screen and then translated onto the screen, after translation the element's input layout remains off screen and the user can't interact with it. Therefore, it's recommended that a view should be laid out in its final position, and then any required translations performed.

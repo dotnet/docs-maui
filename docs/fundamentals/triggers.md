@@ -370,6 +370,9 @@ The <xref:Microsoft.Maui.Controls.AdaptiveTrigger.MinWindowHeight> and <xref:Mic
 
 In this example, the <xref:Microsoft.Maui.Controls.AdaptiveTrigger> indicates that the corresponding <xref:Microsoft.Maui.Controls.VisualState> will be applied when the current window width is >= 800 device-independent units and the current window height is >= 1200 device-independent units.
 
+> [!NOTE]
+> For more information about device-independent units, see [Device-independent units](../user-interface/device-independent-units.md).
+
 ### Compare state trigger
 
 The <xref:Microsoft.Maui.Controls.CompareStateTrigger> triggers a <xref:Microsoft.Maui.Controls.VisualState> change when a property is equal to a specific value. This trigger has two bindable properties:
