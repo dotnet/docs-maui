@@ -197,7 +197,6 @@ The `Platform` property of the `On` class accepts the following string values:
 - `Android` - Android devices  
 - `WinUI` - Windows devices
 - `MacCatalyst` - Mac Catalyst (macOS devices running iOS apps)
-- `Tizen` - Tizen devices
 
 > [!IMPORTANT]
 > Platform values are case-sensitive. For Windows devices, use `WinUI`, not `Windows`.
