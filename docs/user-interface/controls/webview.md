@@ -40,17 +40,7 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.WebView> must specify its <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
 
-> [!WARNING]
-> On Windows, apps using <xref:Microsoft.Maui.Controls.WebView> that are installed to the `Program Files` directory may fail to render content properly. This occurs because WebView2 attempts to write its cache and user data files to the app's installation directory, which has restricted write permissions in `Program Files`. To resolve this issue, set the `WEBVIEW2_USER_DATA_FOLDER` environment variable before the <xref:Microsoft.Maui.Controls.WebView> is initialized:
-> 
-> ```csharp
-> #if WINDOWS
-> var userDataFolder = Path.Combine(FileSystem.AppDataDirectory, "WebView2");
-> Environment.SetEnvironmentVariable("WEBVIEW2_USER_DATA_FOLDER", userDataFolder);
-> #endif
-> ```
-> 
-> Place this code in your `App.xaml.cs` constructor or in `Platforms\Windows\App.xaml.cs` before any <xref:Microsoft.Maui.Controls.WebView> is created. This directs WebView2 to use a writable location in the user's AppData directory instead of the restricted Program Files location.
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
 ## Display a web page
 
