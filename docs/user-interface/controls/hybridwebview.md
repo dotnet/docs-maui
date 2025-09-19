@@ -34,6 +34,16 @@ The entire app, including the web content, is packaged and runs locally on a dev
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
+## Browser engines
+
+<xref:Microsoft.Maui.Controls.HybridWebView> uses the same browser engines as <xref:Microsoft.Maui.Controls.WebView> on each platform:
+
+- **Windows**: Uses WebView2, which is based on the Microsoft Edge (Chromium) browser engine.
+- **Android**: Uses `android.webkit.WebView`, which is based on the Chromium browser engine.
+- **iOS and Mac Catalyst**: Uses `WKWebView`, which is based on the Safari WebKit browser engine.
+
+For more information about customizing the underlying platform web views, see [Customize initialization and access platform web views](#customize-initialization-and-access-platform-web-views).
+
 ## Create a .NET MAUI HybridWebView app
 
 To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
