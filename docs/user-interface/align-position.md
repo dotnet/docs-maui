@@ -59,7 +59,7 @@ The following diagram illustrates the two concepts:
 :::image type="content" source="media/align-position/margin-padding.png" alt-text="Margin and padding concepts." border="false":::
 
 > [!NOTE]
-> `Margin` values are additive. Therefore, if two adjacent elements specify a margin of 20 device-independent units, the distance between the elements will be 40 device-independent units. In addition, margin and padding values are additive when both are applied, in that the distance between an element and any content will be the margin plus padding.
+> `Margin` values are additive. Therefore, if two adjacent elements specify a margin of 20 device-independent units, the distance between the elements will be 40 device-independent units. In addition, margin and padding values are additive when both are applied, in that the distance between an element and any content will be the margin plus padding. For more information about device-independent units, see [Device-independent units](device-independent-units.md).
 
 The `Margin` and `Padding` properties are both of type `Thickness`. There are three possibilities when creating a `Thickness` structure:
 
