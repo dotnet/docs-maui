@@ -60,9 +60,6 @@ After wirelessly pairing your device to Xcode, provisioned .NET MAUI iOS apps ca
 
     :::image type="content" source="media/wireless-deployment/vs/chosen-debug-target.png" alt-text="Visual Studio iOS device debug target choice.":::
 
-> [!NOTE]
-> An alternative approach to deploying a .NET MAUI iOS app to a device is to use hot restart. Hot restart enables you to deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio, without requiring a Mac build host. For more information, see [Deploy an iOS app using hot restart](~/ios/hot-restart.md).
-
 ## Troubleshoot
 
 - Ensure that your iOS device is connected to the same network as your Mac.
