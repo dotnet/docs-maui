@@ -10,3 +10,8 @@ _repo.*/
 
 .openpublishing.buildcore.ps1
 .DS_Store
+
+# Node.js dependencies
+node_modules/
+package.json
+package-lock.json

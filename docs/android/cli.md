@@ -9,7 +9,27 @@ no-loc: [ "MY_EMULATOR_NAME" ]
 
 In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on Android using .NET Command Line Interface (CLI):
 
-[!INCLUDE [Install .NET MAUI](~/includes/install-create.md)]
+1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET runtime.
+
+2. In a terminal, check that you have the latest .NET runtime installed:
+
+    ```dotnetcli
+    dotnet --version
+    ```
+
+3. In a terminal, install the latest public build of .NET MAUI:
+
+    ```dotnetcli
+    dotnet workload install maui --source https://api.nuget.org/v3/index.json
+    ```
+
+    This command will install the latest released version of .NET MAUI, including the required platform SDKs.
+
+4. In a terminal, create a new .NET MAUI app using .NET CLI:
+
+    ```dotnetcli
+    dotnet new maui -n "MyMauiApp"
+    ```
 
 <!-- markdownlint-disable MD029 -->
 5. In a terminal, change directory to *MyMauiApp*, and build and run the app:
