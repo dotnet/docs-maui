@@ -82,6 +82,9 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 
 ## XAML Source Generation
 
+> [!IMPORTANT]
+> This feature is in preview. To try it, opt-in by setting the XAML inflator in your project file as per the instructions below. Behavior and defaults may change. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+
 You have the option as of .NET 10 to have XAML generate C# instead of IL (intermediate language) by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
 
 To enable XAML source generation for all XAML files in the project, add this to your project file.
@@ -90,6 +93,16 @@ To enable XAML source generation for all XAML files in the project, add this to 
 <ItemGroup>
     <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
 </ItemGroup>
+```
+
+Similarly, you can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+
+To enable XAML source generation for the whole project, you can add this.
+
+```xml
+<PropertyGroup>
+   <MauiXamlInflator>SourceGen</MauiXamlInflator>
+</PropertyGroup>
 ```
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
@@ -138,6 +151,33 @@ To enable the most streamlined experience (implicit default namespaces), add:
     <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
 </PropertyGroup>
+```
+
+Now your project will implicitly include these 2 namespaces which you’ve been accustomed to seeing in every XAML file since .NET MAUI first shipped.
+
+```xml
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+```
+
+> [!NOTE]
+> Because `x:` is used by the XAML inflator, you still need to use that prefix. With this change alone, your XAML for a view gets much tighter.
+
+**Before**
+
+```xml
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
+```
+
+**After**
+
+```xml
+<ContentPage x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
 ```
 
 ::: moniker-end
