@@ -92,7 +92,7 @@ To enable XAML source generation for all XAML files in the project, add this to 
 </ItemGroup>
 ```
 
-Reference the [source generator configuration documentation](https://learn.microsoft.com/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`. 
+Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
 ## Global XML namespace (preview)
 
