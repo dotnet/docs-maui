@@ -33,18 +33,26 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
 ::: moniker range=">=net-maui-10.0"
 
 > [!IMPORTANT]
-> XAML source generation in .NET MAUI for .NET 10 is a preview feature. To try it, opt-in by enabling preview features and decorate your assembly with the `XamlProcessing` directive. Behavior and APIs can change while in preview.
+> XAML source generation in .NET MAUI for .NET 10 is a preview feature. To try it, opt-in by setting the XAML inflator to the source generation one. Behavior and APIs can change while in preview. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
 >
 > Example:
 >
+> To enable XAML source generation for all XAML files in the project, add this to your project file.
+> 
 > ```xml
-> <PropertyGroup>
->   <EnablePreviewFeatures>true</EnablePreviewFeatures>
-> </PropertyGroup>
+> <ItemGroup>
+>    <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+> </ItemGroup>
 > ```
 >
-> ```csharp
-> [assembly: XamlProcessing(XamlInflator.SourceGen)]
+> Similarly, you can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+> 
+> To enable XAML source generation for the whole project, you can add this.
+>
+> ```xml
+> <PropertyGroup>
+>    <MauiXamlInflator>SourceGen</MauiXamlInflator>
+> </PropertyGroup>
 > ```
 
 ::: moniker-end
