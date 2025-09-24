@@ -16,6 +16,3 @@ After configuring provisioning in your .NET MAUI app project, the app can be dep
 1. In the Visual Studio toolbar, press the green Start button to launch the app on your remote device:
 
     :::image type="content" source="../device-provisioning/media/automatic-provisioning/vs/chosen-debug-target.png" alt-text="Visual Studio iOS device debug target choice.":::
-
-> [!NOTE]
-> An alternative approach to deploying a .NET MAUI iOS app to a device is to use hot restart. Hot restart enables you to deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio, without requiring a Mac build host. For more information, see [Deploy an iOS app using hot restart](~/ios/hot-restart.md).
