@@ -110,9 +110,9 @@
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
-          href: tutorials/notes-app/index.yml
+          href: tutorials/notes-app.md
         - name: Upgrade an app with MVVM principles
-          href: tutorials/notes-mvvm/index.yml
+          href: tutorials/notes-mvvm.md
     - name: XAML
       items:
         - name: Overview
@@ -949,6 +949,8 @@
                       href: /dotnet/ios/app-fundamentals/images-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                     - name: Alternate app icons
                       href: /dotnet/ios/app-fundamentals/images-icons/alternate-app-icons?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: User notifications
+                  href: /dotnet/ios/app-fundamentals/user-notifications?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Apple account management
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
@@ -985,6 +987,10 @@
               href: macios/universal-links.md
             - name: Syncing with Xcode
               href: macios/xcsync.md
+            - name: Advanced concepts
+              items:
+                - name: Exception marshaling
+                  href: /dotnet/ios/advanced-concepts/exception-marshaling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Mac Catalyst
           items:
             - name: Code signing and provisioning
@@ -1116,6 +1122,8 @@
                   href: ios/platform-specifics/cell-background-color.md
                 - name: DatePicker item selection
                   href: ios/platform-specifics/datepicker-selection.md
+                - name: Display a modal page as a popover
+                  href: ios/platform-specifics/page-popover.md
                 - name: Entry cursor color
                   href: ios/platform-specifics/entry-cursor-color.md
                 - name: Entry font size

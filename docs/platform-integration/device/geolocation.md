@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 12/16/2024
+ms.date: 04/01/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -84,6 +84,13 @@ The `<string>` element is the reason the app is requesting access to location in
 
 An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
 
+In the _Platforms/MacCatalyst/Entitlements.plist_ file, add the following key and value to allow the app to access Location Services on macOS:
+
+```xml
+<key>com.apple.security.personal-information.location</key>
+<true/>
+```
+
 ### Full accuracy location permission
 
 If you're going to request full accuracy with the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
@@ -138,7 +145,7 @@ Not all location values may be available, depending on the device. For example, 
 
 In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
 
-To check to see if the app is currently listening for location changes, there's a <xref:Microsoft.Maui.Devices.Sensors.Geolocation.IsListeningForeground> property you can query. Once you're ready to start listening for location changes you should call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StartListeningForegroundAsync%2A> method. This method starts listening for location updates and raises the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> event when the location changes, provided that the app is in the foreground. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs> object that accompanies this event has a <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs.Location> property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
+To check to see if the app is currently listening for location changes, there's a <xref:Microsoft.Maui.Devices.Sensors.Geolocation.IsListeningForeground> property you can query. You can control the accuracy of the location change detection by passing one of the enum values in <xref:Microsoft.Maui.Devices.Sensors.GeolocationAccuracy> to the <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest> constructor. Once you're ready to start listening for location changes you should call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StartListeningForegroundAsync%2A> method. This method starts listening for location updates and raises the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> event when the location changes, provided that the app is in the foreground. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs> object that accompanies this event has a <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs.Location> property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
 
 > [!NOTE]
 > When necessary, the Geolocation API prompts the user for permissions.
@@ -151,7 +158,9 @@ async void OnStartListening()
     try
     {
         Geolocation.LocationChanged += Geolocation_LocationChanged;
-        var request = new GeolocationListeningRequest((GeolocationAccuracy)Accuracy);
+        // Using GeolocationAccuracy.Medium as a balance between accuracy and power consumption.
+        // Developers can adjust this value to High or Low based on their specific requirements.
+        var request = new GeolocationListeningRequest(GeolocationAccuracy.Medium);
         var success = await Geolocation.StartListeningForegroundAsync(request);
 
         string status = success
@@ -192,6 +201,14 @@ void OnStopListening()
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method has no effect when the app isn't listening for location changes.
+
+::: moniker range=">=net-maui-10.0"
+
+## Check if location services are enabled
+
+The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class has a read-only `IsEnabled` property that can be used to determine if location services have been enabled on the device.
+
+::: moniker-end
 
 ## Accuracy
 

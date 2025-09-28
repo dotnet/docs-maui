@@ -1,7 +1,8 @@
 ---
 title: "TableView"
 description: "The .NET MAUI TableView displays a table of scrollable items that can be grouped into sections."
-ms.date: 08/30/2024
+ms.date: 08/19/2025
+ms.custom: sfi-image-nochange
 ---
 
 # TableView
@@ -9,6 +10,90 @@ ms.date: 08/30/2024
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-tableview)
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TableView> displays a table of scrollable items that can be grouped into sections. A <xref:Microsoft.Maui.Controls.TableView> is typically used for displaying items where each row has a different appearance, such as presenting a table of settings.
+
+::: moniker range=">=net-maui-10.0"
+
+> [!IMPORTANT]
+> <xref:Microsoft.Maui.Controls.TableView> has been deprecated. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
+
+::: moniker-end
+
+## Migrate from TableView to CollectionView
+
+::: moniker range=">=net-maui-10.0"
+
+<xref:Microsoft.Maui.Controls.TableView> is deprecated in .NET 10. For most scenarios, you should migrate to <xref:Microsoft.Maui.Controls.CollectionView>, which uses an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define item appearance rather than cells.
+
+- TextCell/ImageCell/ViewCell → Define a DataTemplate for your item type
+- SwitchCell/EntryCell → Compose those controls inside the item template
+- Grouping → Use `IsGrouped="true"` with `GroupHeaderTemplate` / `GroupFooterTemplate`
+
+Before (TableView with TextCell):
+
+```xaml
+<TableView Intent="Menu">
+    <TableRoot>
+        <TableSection Title="Chapters">
+            <TextCell Text="1. Introduction" Detail="Overview" />
+            <TextCell Text="2. Layouts" Detail="Grids, stacks" />
+        </TableSection>
+    </TableRoot>
+ </TableView>
+```
+
+After (CollectionView with DataTemplate):
+
+```xaml
+<CollectionView ItemsSource="{Binding Chapters}">
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="*,Auto" Padding="12,8">
+                <VerticalStackLayout>
+                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                    <Label Text="{Binding Detail}" FontSize="12" TextColor="Gray" />
+                </VerticalStackLayout>
+                <Image Grid.Column="1" Source="chevron.png" VerticalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+Before (TableView with SwitchCell):
+
+```xaml
+<TableView Intent="Settings">
+    <TableRoot>
+        <TableSection>
+            <SwitchCell Text="Airplane Mode" On="False" />
+        </TableSection>
+    </TableRoot>
+</TableView>
+```
+
+After (CollectionView with composed controls):
+
+```xaml
+<CollectionView ItemsSource="{Binding Settings}">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="local:SettingItem">
+            <Grid ColumnDefinitions="*,Auto" Padding="12,8">
+                <Label Text="{Binding Name}" VerticalOptions="Center" />
+                <Switch Grid.Column="1"
+                        IsToggled="{Binding IsOn, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+For guidance on building lists, see:
+
+- [Populate a CollectionView with data](~/user-interface/controls/collectionview/populate-data.md)
+- [Define item appearance](~/user-interface/controls/collectionview/populate-data.md#define-item-appearance)
+- [Display grouped data in a CollectionView](~/user-interface/controls/collectionview/grouping.md)
+
+::: moniker-end
 
 While <xref:Microsoft.Maui.Controls.TableView> manages the appearance of the table, the appearance of each item in the table is defined by a <xref:Microsoft.Maui.Controls.Cell>. .NET MAUI includes five cell types that are used to display different combinations of data, and you can also define custom cells that display any content you want.
 

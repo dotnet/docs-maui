@@ -1,7 +1,7 @@
 ---
 title: "Share"
 description: "Learn how to use the .NET MAUI IShare interface, which can share data, such as web links, to other applications on the device."
-ms.date: 02/02/2023
+ms.date: 03/24/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 
@@ -61,11 +61,15 @@ The following code example writes a text file to the device, and then requests t
 
 ## Share multiple files
 
-Sharing multiple files is slightly different from sharing a single file. To share a single file, use the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.ShareMultipleFilesRequest> type.
+Sharing multiple files is slightly different from sharing a single file. To share a single file, use the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.ShareFileRequest> type.
 
 The following code example writes two text files to the device, and then requests to share them:
 
 :::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="share_file_multiple":::
+
+## Control file locations
+
+[!INCLUDE [android-fileproviderpaths](../includes/android-fileproviderpaths.md)]
 
 ## Presentation location
 

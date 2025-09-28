@@ -2,6 +2,7 @@
 title: "Apple universal links"
 description: "Learn how to use deep linking functionality in a .NET MAUI iOS app."
 ms.date: 02/20/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Apple universal links
@@ -199,6 +200,8 @@ When iOS opens your app as a result of a universal link, the <xref:Foundation.NS
 
 In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to receive and process the URL:
 
+::: moniker range="<=net-maui-9.0"
+
 ```csharp
 namespace MyNamespace;
 
@@ -220,6 +223,34 @@ public partial class App : Application
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+```csharp
+namespace MyNamespace;
+
+public partial class App : Application
+{
+    ...
+
+    protected override async void OnAppLinkRequestReceived(Uri uri)
+    {
+        base.OnAppLinkRequestReceived(uri);
+
+        // Show an alert to test that the app link was received.
+        await Dispatcher.DispatchAsync(async () =>
+        {
+            await Windows[0].Page!.DisplayAlertAsync("App link received", uri.ToString(), "OK");
+        });
+
+        Console.WriteLine("App link: " + uri.ToString());
+    }
+}
+```
+
+::: moniker-end
 
 In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the app link URL. In practice, the app link should take users directly to the content represented by the URL, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URL.
 

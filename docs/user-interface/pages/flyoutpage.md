@@ -163,7 +163,7 @@ In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSe
 How the <xref:Microsoft.Maui.Controls.FlyoutPage> displays the flyout and detail pages depends on the form factor of the device the app is running on, the orientation of the device, and the value of the `FlyoutLayoutBehavior` property. This property should be set to a value of the `FlyoutLayoutBehavior` enumeration, which defines the following members:
 
 - `Default` – pages are displayed using the platform default.
-- `Popover` – the detail page covers, or partially covers the flyout page.
+- `Popover` – the flyout page covers, or partially covers the detail page.
 - `Split` – the flyout page is displayed on the left and the detail page is on the right.
 - `SplitOnLandscape` – a split screen is used when the device is in landscape orientation.
 - `SplitOnPortrait` – a split screen is used when the device is in portrait orientation.

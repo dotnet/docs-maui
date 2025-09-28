@@ -3,6 +3,9 @@ title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs 
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.topic: "tutorial"
 ms.date: 08/07/2024
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 
 #customer intent: As a developer, I want to be able to send notifications to .NET MAUI apps to alert users to important information.
 ---
@@ -1010,8 +1013,8 @@ To create your .NET MAUI app:
 
             if (string.IsNullOrWhiteSpace(cachedToken) ||
                 string.IsNullOrWhiteSpace(serializedTags) ||
-                string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
-                cachedToken == DeviceInstallationService.Token)
+                string.IsNullOrWhiteSpace(DeviceInstallationService?.Token) ||
+                cachedToken == DeviceInstallationService?.Token)
                 return;
 
             var tags = JsonSerializer.Deserialize<string[]>(serializedTags);
@@ -1165,6 +1168,8 @@ To create the app's UI:
 
 1. In the `MainPage` class, implement the `OnRegisterButtonClicked` and `OnDeregisterButtonClicked` event handlers, calling the corresponding register and deregister methods on the `INotificationRegistrationService` object:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     void OnRegisterButtonClicked(object sender, EventArgs e)
     {
@@ -1197,6 +1202,45 @@ To create the app's UI:
         });
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void OnRegisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.RegisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device registered");
+            });
+    }
+
+    void OnDeregisterButtonClicked(object sender, EventArgs e)
+    {
+        _notificationRegistrationService.DeregisterDeviceAsync()
+            .ContinueWith((task) =>
+            {
+                ShowAlert(task.IsFaulted ? task.Exception.Message : $"Device deregistered");
+            });
+    }
+
+    void ShowAlert(string message)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            DisplayAlertAsync("Push notifications demo", message, "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
 
     > [!IMPORTANT]
     > In the app, registration and de-registration is performed in response to user input, to allow this functionality to be explored and tested more easily. In a production app you would typically perform the registration and de-registration actions during the appropriate point in the app lifecycle, without requiring explicit user input.
@@ -1250,6 +1294,8 @@ To create the app's UI:
 
 1. In the `App` class, implement the event handler for the `IPushDemoNotificationActionService.ActionTriggered` event:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     void NotificationActionTriggered(object sender, PushDemoAction e)
     {
@@ -1269,6 +1315,32 @@ To create the app's UI:
         });
     }
     ```
+
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    void NotificationActionTriggered(object sender, PushDemoAction e)
+    {
+        ShowActionAlert(e);
+    }
+
+    void ShowActionAlert(PushDemoAction action)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Windows[0].Page?.DisplayAlertAsync("Push notifications demo", $"{action} action received.", "OK")
+                .ContinueWith((task) =>
+                {
+                    if (task.IsFaulted)
+                        throw task.Exception;
+                });
+        });
+    }
+    ```
+
+    ::: moniker-end
 
     The event handler for the `ActionTriggered` event demonstrates the receipt and propagation of push notification actions. These would typically be handled silently, for example navigating to a specific view or refreshing some data rather than displaying an alert.
 

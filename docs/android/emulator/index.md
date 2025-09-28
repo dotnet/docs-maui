@@ -44,22 +44,22 @@ Common actions can be performed in the emulator via its panel on the right hand 
 
 The following gestures can be simulated in the emulator:
 
-| Gesture | Description |
-| ------- | ----------- |
-| Tap | Press and release the primary mouse button. |
-| Double tap | Double-click and then release the primary mouse button. |
-| Drag | Press and hold the primary mouse button, move the item, and then release. |
-| Touch and hold | Press the primary mouse button, hold, and release. |
-| Pinch | Press the CTRL key on Windows, or the Command key on macOS, to display a pinch gesture multi-touch interface. The mouse acts as the first finger, which can be moved by dragging the cursor. The second finger is across from the anchor point. Pressing the left mouse button simulates touching both points, and releasing simulates removing both points. |
-| Swipe | Press and hold the primary mouse button, swipe, and then release. |
+| Gesture        | Description                                                               |
+|----------------|---------------------------------------------------------------------------|
+| Tap            | Press and release the primary mouse button.                               |
+| Double tap     | Double-click and then release the primary mouse button.                   |
+| Drag           | Press and hold the primary mouse button, move the item, and then release. |
+| Touch and hold | Press the primary mouse button, hold, and release.                        |
+| Pinch          | Press the Ctrl key on Windows or the Command key on macOS to display a pinch gesture multi-touch interface. The mouse acts as the first finger, which can be moved by dragging the cursor. The second finger is across from the anchor point. Pressing the left mouse button simulates touching both points, and releasing simulates removing both points. |
+| Swipe          | Press and hold the primary mouse button, swipe, and then release. |
 | Vertical swipe | Open a vertical menu on the screen and use the mouse scroll wheel to scroll through the menu items. |
 
 ## Advanced emulator scenarios
 
 You might want to test your app on a virtual device using more than just basic touch gestures. For example, you might want to simulate different network conditions. The following table lists where to find more information about advanced Android emulator scenarios:
 
-| Scenarios | More information |
-| ------- | ---------------- |
+| Scenarios      | More information |
+|----------------|------------------|
 | Use the camera | [Camera support](https://developer.android.com/studio/run/emulator-use-camera) on developer.android.com |
 | Install and add files | [Install and add files](https://developer.android.com/studio/run/emulator-install-add-files) on developer.android.com |
 | Use Wi-Fi | [Wi-Fi](https://developer.android.com/studio/run/emulator-wifi) on developer.android.com |

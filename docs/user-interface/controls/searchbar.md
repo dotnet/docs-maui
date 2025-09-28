@@ -1,7 +1,7 @@
 ---
 title: "SearchBar"
 description: "The .NET MAUI SearchBar is a user input control that is used for initiating a search. The SearchBar control supports placeholder text, query input, execution, and cancellation."
-ms.date: 08/30/2024
+ms.date: 04/01/2025
 ---
 
 # SearchBar
@@ -12,11 +12,27 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 
 <xref:Microsoft.Maui.Controls.SearchBar> defines the following properties:
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 - `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
 - `HorizontalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the horizontal alignment of the query text.
 - `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `VerticalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the vertical alignment of the query text.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+- `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
+- `HorizontalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the horizontal alignment of the query text.
+- `ReturnType`, of type <xref:Microsoft.Maui.ReturnType>, specifies the appearance of the return button. The default value of this property is `Search`.
+- `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
+- `SearchIconColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the search icon.
+- `VerticalTextAlignment` is a <xref:Microsoft.Maui.TextAlignment> enum value that defines the vertical alignment of the query text.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -24,7 +40,7 @@ In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPre
 
 <xref:Microsoft.Maui.Controls.SearchBar> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the text content, including both the user-entered or displayed text and the placeholder text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
 - `FontAttributes`, of type `FontAttributes`, determines text style.
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.

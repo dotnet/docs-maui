@@ -43,7 +43,7 @@ The project file (*.csproj*) for the xUnit test project will be similar to the f
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -52,10 +52,10 @@ The project file (*.csproj*) for the xUnit test project will be similar to the f
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="xunit" Version="2.5.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,10 +81,10 @@ Each approach requires specific configuration.
 With this approach, the code you want to unit test is in a .NET MAUI class library project that's consumed by your .NET MAUI app project. To write unit tests against the .NET MAUI class library will require you to update the target frameworks used by the project. This can be achieved by adding the value of the `$(TargetFramework)` build property from the xUnit test project file (*.csproj*) to the `$(TargetFrameworks)` build property in the .NET MAUI class library project file:
 
 ```xml
-<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+<TargetFrameworks>net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
 ```
 
-In this example, a value of `net8.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI class library project file.
+In this example, a value of `net9.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI class library project file.
 
 Then, you must add a reference to your .NET MAUI class library project from your xUnit test project.
 
@@ -93,18 +93,18 @@ Then, you must add a reference to your .NET MAUI class library project from your
 With this approach, the code you want to unit test is in a .NET MAUI app project. To write unit tests against the .NET MAUI app project will require you to update the target frameworks used by the project. This can be achieved by adding the value of the `$(TargetFramework)` build property from the xUnit test project file (*.csproj*) to the `$(TargetFrameworks)` build property in the .NET MAUI app project file:
 
 ```xml
-<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+<TargetFrameworks>net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
 ```
 
-In this example, a value of `net8.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI app project file.
+In this example, a value of `net9.0` has been added to the `$(TargetFrameworks)` build property in the .NET MAUI app project file.
 
 It's also necessary to modify your .NET MAUI app project so that it doesn't output an executable for the target framework used by the xUnit test project. This can be achieved by adding a condition to the `$(OutputType)` build property in the .NET MAUI app project file:
 
 ```xml
-<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
+<OutputType Condition="'$(TargetFramework)' != 'net9.0'">Exe</OutputType>
 ```
 
-In this example, the .NET MAUI app project only produces an executable when the target framework isn't `net8.0`.
+In this example, the .NET MAUI app project only produces an executable when the target framework isn't `net9.0`.
 
 Then, you must add a reference to your .NET MAUI app project from your xUnit test project.
 
@@ -160,14 +160,14 @@ namespace MyUnitTests
 }
 ```
 
-In this example, even though there's only one test method, there are actually three tests because the theory will be ran once for each item of data.
+In this example, even though there's only one test method, there are actually three tests because the theory will be run once for each item of data.
 
 > [!TIP]
 > Test one operation with each unit test. As the complexity of a test expands, it makes verification of that test more difficult. By limiting a unit test to a single concern, you can ensure that your tests are repeatable, isolated, and have a shorter execution time. For more information, see [Unit testing best practices](/dotnet/core/testing/unit-testing-best-practices).
 
 ## Run unit tests
 
-Unit tests can be ran in Test Explorer in Visual Studio, or with the `dotnet test` command. For information about Test Explorer, see [Run unit tests with Test Explorer](/visualstudio/test/run-unit-tests-with-test-explorer). For information about the `dotnet test` command, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test) and [dotnet test](/dotnet/core/tools/dotnet-test).
+Unit tests can be run in Test Explorer in Visual Studio, or with the `dotnet test` command. For information about Test Explorer, see [Run unit tests with Test Explorer](/visualstudio/test/run-unit-tests-with-test-explorer). For information about the `dotnet test` command, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test) and [dotnet test](/dotnet/core/tools/dotnet-test).
 
 ## Run unit tests using device runners
 

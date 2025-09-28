@@ -1,7 +1,7 @@
 ---
 title: "Modal page presentation style on iOS"
 description: "This article explains how to consume the .NET MAUI iOS platform-specific that sets the presentation style of a modal page."
-ms.date: 04/05/2022
+ms.date: 03/14/2025
 ---
 
 # Modal page presentation style on iOS
@@ -34,11 +34,26 @@ public class iOSModalFormSheetPageCode : ContentPage
 
 The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetModalPresentationStyle` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to set the modal presentation style on a <xref:Microsoft.Maui.Controls.Page> by specifying one of the following `UIModalPresentationStyle` enumeration values:
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 - `FullScreen`, which sets the modal presentation style to encompass the whole screen. By default, modal pages are displayed using this presentation style.
 - `FormSheet`, which sets the modal presentation style to be centered on and smaller than the screen.
 - `Automatic`, which sets the modal presentation style to the default chosen by the system. For most view controllers, `UIKit` maps this to `UIModalPresentationStyle.PageSheet`, but some system view controllers may map it to a different style.
 - `OverFullScreen`, which sets the modal presentation style to cover the screen.
 - `PageSheet`, which sets the modal presentation style to cover the underlying content.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+- `FullScreen`, which sets the modal presentation style to encompass the whole screen. By default, modal pages are displayed using this presentation style.
+- `FormSheet`, which sets the modal presentation style to be centered on and smaller than the screen.
+- `Automatic`, which sets the modal presentation style to the default chosen by the system. For most view controllers, `UIKit` maps this to `UIModalPresentationStyle.PageSheet`, but some system view controllers may map it to a different style.
+- `OverFullScreen`, which sets the modal presentation style to cover the screen.
+- `PageSheet`, which sets the modal presentation style to cover the underlying content.
+- `Popover`, which sets the modal presentation style to display content in a popover.
+
+::: moniker-end
 
 In addition, the `GetModalPresentationStyle` method can be used to retrieve the current value of the `UIModalPresentationStyle` enumeration that's applied to the <xref:Microsoft.Maui.Controls.Page>.
 

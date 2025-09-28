@@ -1,11 +1,11 @@
 ---
-title: "Java and managed code interoperability"
+title: "Java and .NET managed code interoperability"
 description: "Learn how .NET for Android interoperates with the Java and Kotlin APIs that are provided by Android."
 ms.date: 06/21/2023
 no-loc: [ "Java", "Kotlin" ]
 ---
 
-# Java and managed code interoperability
+# Java and .NET managed code interoperability
 
 App developers expect to be able to call native Android APIs and receive calls, or react to events, from the Android APIs using code written in one of the .NET managed languages. .NET for Android employs a number of approaches, at build and at runtime, to bridge the Java VM (ART in Android OS) and the Managed VM (MonoVM).
 

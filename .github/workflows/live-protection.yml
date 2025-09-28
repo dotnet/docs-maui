@@ -1,0 +1,25 @@
+name: Base branch checker
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  live_protection_job:
+    name: Check base branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd
+        env:
+          LIVE_BASE: ${{ github.base_ref == 'live' && github.head_ref != 'main' }}
+        with:
+          script: |
+            if (process.env.LIVE_BASE == 'true') {
+              core.setFailed('PR targets live branch')
+            }

@@ -2,9 +2,13 @@
 title: ".NET MAUI hot restart for iOS device deployment"
 description: "Hot restart enables you to quickly deploy a .NET MAUI iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
 ms.date: 12/03/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Deploy an iOS app using hot restart
+
+> [!IMPORTANT]
+> Hot Restart is not supported in Visual Studio 2026: You can continue using Hot Restart in Visual Studio 2022 (version 17.14) to deploy .NET MAUI and .NET iOS apps to a local iOS device without a Mac build host. For newer versions of Visual Studio, the recommended solution is to use [Pair to Mac](~/ios/pair-to-mac.md) to build, deploy, and debug iOS apps.
 
 Typically when building an app, your code is compiled and combined with other project resources to build an app bundle that's deployed to your simulator or device. With this model, when you make a change to your app, a new app bundle has to be built and deployed. While incremental builds can help to reduce compilation time, deployments usually take the same amount of time regardless of the size of the change.
 

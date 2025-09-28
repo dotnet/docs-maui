@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 02/18/2025
+ms.date: 08/20/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -46,6 +46,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
     A simple app might have the following files and contents:
 
     - *Resources\Raw\wwwroot\index.html* with content for the main UI:
+        ::: moniker range="<=net-maui-9.0"
 
         ```html
         <!DOCTYPE html>
@@ -173,6 +174,137 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
         </html>
         ```
 
+        ::: moniker-end
+        ::: moniker range=">=net-maui-10.0"
+
+        ```html
+        <!DOCTYPE html>
+
+        <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <link rel="icon" href="data:,">
+            <link rel="stylesheet" href="styles/app.css">
+            <script src="_framework/hybridwebview.js"></script>
+            <script>
+                function LogMessage(msg) {
+                    var messageLog = document.getElementById("messageLog");
+                    messageLog.value += '\r\n' + msg;
+                }
+
+                window.addEventListener(
+                    "HybridWebViewMessageReceived",
+                    function (e) {
+                        LogMessage("Raw message: " + e.detail.message);
+                    });
+
+                function AddNumbers(a, b) {
+                    var result = {
+                        "result": a + b,
+                        "operationName": "Addition"
+                    };
+                    return result;
+                }
+
+                var count = 0;
+
+                async function EvaluateMeWithParamsAndAsyncReturn(s1, s2) {
+                    const response = await fetch("/asyncdata.txt");
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+                    var jsonData = await response.json();
+
+                    jsonData[s1] = s2;
+
+                    const msg = 'JSON data is available: ' + JSON.stringify(jsonData);
+                    window.HybridWebView.SendRawMessage(msg)
+
+                    return jsonData;
+                }
+
+                async function InvokeDoSyncWork() {
+                    LogMessage("Invoking DoSyncWork");
+                    await window.HybridWebView.InvokeDotNet('DoSyncWork');
+                    LogMessage("Invoked DoSyncWork");
+                }
+
+                async function InvokeDoSyncWorkParams() {
+                    LogMessage("Invoking DoSyncWorkParams");
+                    await window.HybridWebView.InvokeDotNet('DoSyncWorkParams', [123, 'hello']);
+                    LogMessage("Invoked DoSyncWorkParams");
+                }
+
+                async function InvokeDoSyncWorkReturn() {
+                    LogMessage("Invoking DoSyncWorkReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkReturn');
+                    LogMessage("Invoked DoSyncWorkReturn, return value: " + retValue);
+                }
+
+                async function InvokeDoSyncWorkParamsReturn() {
+                    LogMessage("Invoking DoSyncWorkParamsReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoSyncWorkParamsReturn', [123, 'hello']);
+                    LogMessage("Invoked DoSyncWorkParamsReturn, return value: message=" + retValue.Message + ", value=" + retValue.Value);
+                }
+
+                async function InvokeDoAsyncWork() {
+                    LogMessage("Invoking DoAsyncWork");
+                    await window.HybridWebView.InvokeDotNet('DoAsyncWork');
+                    LogMessage("Invoked DoAsyncWork");
+                }
+
+                async function InvokeDoAsyncWorkParams() {
+                    LogMessage("Invoking DoAsyncWorkParams");
+                    await window.HybridWebView.InvokeDotNet('DoAsyncWorkParams', [123, 'hello']);
+                    LogMessage("Invoked DoAsyncWorkParams");
+                }
+
+                async function InvokeDoAsyncWorkReturn() {
+                    LogMessage("Invoking DoAsyncWorkReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoAsyncWorkReturn');
+                    LogMessage("Invoked DoAsyncWorkReturn, return value: " + retValue);
+                }
+
+                async function InvokeDoAsyncWorkParamsReturn() {
+                    LogMessage("Invoking DoAsyncWorkParamsReturn");
+                    const retValue = await window.HybridWebView.InvokeDotNet('DoAsyncWorkParamsReturn', [123, 'hello']);
+                    LogMessage("Invoked DoAsyncWorkParamsReturn, return value: message=" + retValue.Message + ", value=" + retValue.Value);
+                }                
+
+            </script>
+        </head>
+        <body>
+            <div>
+                Hybrid sample!
+            </div>
+            <div>
+                <button onclick="window.HybridWebView.SendRawMessage('Message from JS! ' + (count++))">Send message to C#</button>
+            </div>
+            <div>
+                <button onclick="InvokeDoSyncWork()">Call C# sync method (no params)</button>
+                <button onclick="InvokeDoSyncWorkParams()">Call C# sync method (params)</button>
+                <button onclick="InvokeDoSyncWorkReturn()">Call C# method (no params) and get simple return value</button>
+                <button onclick="InvokeDoSyncWorkParamsReturn()">Call C# method (params) and get complex return value</button>
+            </div>
+            <div>
+                <button onclick="InvokeDoAsyncWork()">Call C# async method (no params)</button>
+                <button onclick="InvokeDoAsyncWorkParams()">Call C# async method (params)</button>
+                <button onclick="InvokeDoAsyncWorkReturn()">Call C# async method (no params) and get simple return value</button>
+                <button onclick="InvokeDoAsyncWorkParamsReturn()">Call C# async method (params) and get complex return value</button>
+            </div>            
+            <div>
+                Log: <textarea readonly id="messageLog" style="width: 80%; height: 10em;"></textarea>
+            </div>
+            <div>
+                Consider checking out this PDF: <a href="docs/sample.pdf">sample.pdf</a>
+            </div>
+        </body>
+        </html>
+        ```
+
+        ::: moniker-end
+    ::: moniker range="<=net-maui-9.0"
     - *Resources\Raw\wwwroot\scripts\HybridWebView.js* with the standard <xref:Microsoft.Maui.Controls.HybridWebView> JavaScript library:
 
         ```js
@@ -322,6 +454,7 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
         window.HybridWebView.Init();
         ```
 
+    ::: moniker-end
     Then, add any additional web content to your project.
 
     > [!WARNING]
@@ -371,6 +504,8 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
 
 1. Use the <xref:Microsoft.Maui.Controls.HybridWebView> APIs to send messages between the JavaScript and C# code:
 
+    ::: moniker range="<=net-maui-9.0"
+
     ```csharp
     private void OnSendMessageButtonClicked(object sender, EventArgs e)
     {
@@ -383,6 +518,24 @@ To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
     }
     ```
 
+    ::: moniker-end
+
+    ::: moniker range=">=net-maui-10.0"
+
+    ```csharp
+    private void OnSendMessageButtonClicked(object sender, EventArgs e)
+    {
+        hybridWebView.SendRawMessage($"Hello from C#!");
+    }
+
+    private async void OnHybridWebViewRawMessageReceived(object sender, HybridWebViewRawMessageReceivedEventArgs e)
+    {
+        await DisplayAlertAsync("Raw Message Received", e.Message, "OK");
+    }
+    ```
+
+    ::: moniker-end
+
     The messages above are classed as raw because no additional processing is performed. You can also encode data within the message to perform more advanced messaging.
 
 ## Invoke JavaScript from C\#
@@ -391,6 +544,13 @@ Your app's C# code can synchronously and asynchronously invoke JavaScript method
 
 - The <xref:Microsoft.Maui.Controls.HybridWebView.EvaluateJavaScriptAsync%2A> method runs the JavaScript code provided via a parameter and returns the result as a string.
 - The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method invokes a specified JavaScript method, optionally passing in parameter values, and specifies a generic argument that indicates the type of the return value. It returns an object of the generic argument type that contains the return value of the called JavaScript method. Internally, parameters and return values are JSON encoded.
+
+::: moniker range=">=net-maui-10.0"
+
+> [!NOTE]
+> .NET 10 includes an <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> overload that invokes a specified JavaScript method without specifying any information about the return type. For more information, see [Invoke JavaScript methods that don't return a value](#invoke-javascript-methods-that-dont-return-a-value).
+x
+::: moniker-end
 
 ### Invoke synchronous JavaScript
 
@@ -477,13 +637,25 @@ internal partial class HybridSampleJSContext : JsonSerializerContext
 
 ### Invoke JavaScript methods that don't return a value
 
-The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are two approaches to doing this:
+The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method can also be used to invoke JavaScript methods that don't return a value. There are alternative approaches to doing this:
+
+::: moniker range=">=net-maui-10.0"
+
+- Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A>, specifying the JavaScript method name and any optional parameters:
+
+    ```csharp
+    await hybridWebView.InvokeJavaScriptAsync("javaScriptWithVoidReturn"); // JavaScript method name
+    ```
+
+    In this example, only the JavaScript method name is specified.
+
+::: moniker-end
 
 - Invoke the <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method without specifying the generic argument:
 
     ```csharp
     await hybridWebView.InvokeJavaScriptAsync(
-         "javaScriptWithParamsAndVoidReturn", // JavaScript method name
+         "javaScriptWithParamsAndVoidReturn",  // JavaScript method name
          HybridSampleJSContext.Default.Double, // JSON serialization info for return type
          [x, y], // Parameter values
          [HybridSampleJSContext.Default.Double, HybridSampleJSContext.Default.Double]); // JSON serialization info for each parameter
@@ -505,6 +677,8 @@ The <xref:Microsoft.Maui.Controls.HybridWebView.InvokeJavaScriptAsync%2A> method
 
 ### Send JavaScript exceptions to .NET
 
+::: moniker range="<=net-maui-9.0"
+
 By default, invocation of JavaScript methods in a <xref:Microsoft.Maui.Controls.HybridWebView> can hide exceptions thrown by your JavaScript code. To opt into JavaScript exceptions being sent to .NET, where they're re-thrown as .NET exceptions, add the following code to your `MauiProgram` class:
 
 ```csharp
@@ -513,6 +687,14 @@ static MauiProgram()
     AppContext.SetSwitch("HybridWebView.InvokeJavaScriptThrowsExceptions", true);
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-9.0"
+
+By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
+
+::: moniker-end
 
 This enables scenarios where if your C# code calls JavaScript code, and the JavaScript code fails, the JavaScript failure will be sent to .NET where it's re-thrown as a .NET exception that can be caught and handled.
 
@@ -629,3 +811,213 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 
 > [!NOTE]
 > Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
+
+## Customize initialization and access platform web views
+
+::: moniker range="<=net-maui-9.0"
+
+> [!NOTE]
+> .NET 10 includes events to directly handle the initialization start (<xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitializing>) and the initialization end (<xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitialized>).
+
+While <xref:Microsoft.Maui.Controls.HybridWebView> doesn’t expose app-facing initializing/initialized events like <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, you can still customize the underlying platform web views and run code after they’re ready:
+
+- Windows (WebView2): the platform view is <xref:Microsoft.Maui.Controls.HybridWebView>, which inherits `WebView2` and adds `RunAfterInitialize(Action)` so you can safely access `CoreWebView2` once it’s ready.
+- Android (android.webkit.WebView): access and configure the platform `WebView` via the handler once it’s created.
+- iOS/Mac Catalyst (WKWebView): access and configure the platform `WKWebView` after creation. Some options (such as certain `WKWebViewConfiguration` settings) must be set at creation time; .NET MAUI sets sensible defaults for these.
+
+### Access the platform view after handler creation
+
+Handle `HandlerChanged` (or override `OnHandlerChanged` in a custom control) and branch by platform:
+
+```csharp
+using Microsoft.Maui.Platform; // For MauiHybridWebView on Windows
+
+void HybridWebView_HandlerChanged(object? sender, EventArgs e)
+{
+    if (sender is not HybridWebView hv || hv.Handler?.PlatformView is null)
+        return;
+
+#if WINDOWS
+    if (hv.Handler.PlatformView is MauiHybridWebView winView)
+    {
+        winView.RunAfterInitialize(() =>
+        {
+            // CoreWebView2 is guaranteed to be initialized here
+            winView.CoreWebView2.Settings.IsZoomControlEnabled = false;
+            winView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+        });
+    }
+#elif ANDROID
+    if (hv.Handler.PlatformView is Android.Webkit.WebView androidView)
+    {
+        // Safe to tweak most settings after creation
+        androidView.Settings.BuiltInZoomControls = false;
+        androidView.Settings.DisplayZoomControls = false;
+    }
+#elif IOS || MACCATALYST
+    if (hv.Handler.PlatformView is WebKit.WKWebView wk)
+    {
+        wk.AllowsBackForwardNavigationGestures = true;
+        // Many WKWebViewConfiguration options can’t be changed now – see note below
+    }
+#endif
+}
+```
+
+Wire this up once, for example in XAML code-behind:
+
+```csharp
+public MainPage()
+{
+    InitializeComponent();
+    hybridWebView.HandlerChanged += HybridWebView_HandlerChanged;
+}
+```
+
+> [!IMPORTANT]
+> On iOS/Mac Catalyst, some `WKWebViewConfiguration` options must be set before the view is created. .NET MAUI enables common options by default (inline media playback, autoplay, JavaScript, etc.) so typical scenarios work without extra code. If you need different creation-time options, use the advanced approach below.
+
+### Advanced: provide creation-time configuration with a custom handler
+
+If you need to alter creation-time options (for example, to change `WKWebViewConfiguration` on iOS/Mac Catalyst), register a custom handler and override `CreatePlatformView`:
+
+```csharp
+using using Microsoft.Maui.Handlers; // For HybridWebViewHandler
+
+// In MauiProgram.cs
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<HybridWebView, MyHybridWebViewHandler>();
+});
+
+// Custom handler (iOS/Mac Catalyst shown; similar ideas apply for other platforms)
+public class MyHybridWebViewHandler : HybridWebViewHandler
+{
+#if IOS || MACCATALYST
+    protected override WebKit.WKWebView CreatePlatformView()
+    {
+        var config = new WebKit.WKWebViewConfiguration
+        {
+            // Example: change defaults established by MAUI
+            AllowsInlineMediaPlayback = false,
+        };
+
+        // Recreate the platform view with your configuration
+        var webview = new MauiHybridWebView(this, CoreGraphics.CGRect.Empty, config);
+        return webview;
+    }
+#endif
+}
+```
+
+> [!CAUTION]
+> Creation-time configuration is an advanced scenario. Validate behavior on each platform, and prefer post-initialization tweaks when possible.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+The <xref:Microsoft.Maui.Controls.HybridWebView> exposes app-facing initializing/initialized events so that you can customize the underlying platform web views and run code after they’re ready:
+
+In most cases, you can just add an event handler for the <xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitialized> event:
+
+```xaml
+<HybridWebView WebViewInitialized="HybridWebViewInitialized" />
+```
+
+In your code-behind, you can get access to the platform features using the <xref:Microsoft.Maui.Controls.WebViewInitializedEventArgs.PlatformArgs> property. This property will provide an instance of <xref:Microsoft.Maui.Controls.PlatformWebViewInitializedEventArgs> which gives you access to all the available settings and configuration needed to control the underlying web view:
+
+```csharp
+private void HybridWebViewInitialized(object sender, WebViewInitializedEventArgs e)
+{
+    if (e.PlatformArgs is null)
+        return;
+
+#if WINDOWS
+    e.PlatformArgs.Settings.IsZoomControlEnabled = false;
+    e.PlatformArgs.Settings.AreDefaultContextMenusEnabled = false;
+#elif ANDROID
+    e.PlatformArgs.Settings.BuiltInZoomControls = false;
+    e.PlatformArgs.Settings.DisplayZoomControls = false;
+#elif IOS || MACCATALYST
+    e.PlatformArgs.Configuration.IgnoresViewportScaleLimits = false;
+#endif
+}
+```
+
+> [!IMPORTANT]
+> On each of the platforms, some configuration may need to be set **before** the webview is even created.
+
+In most cases, you can just add an event handler for the <xref:Microsoft.Maui.Controls.HybridWebView.WebViewInitializing> event:
+
+```xaml
+<HybridWebView WebViewInitializing="HybridWebViewInitializing" />
+```
+
+In your code-behind, you can get access to the platform features using the <xref:Microsoft.Maui.Controls.WebViewInitializingEventArgs.PlatformArgs> property. This property will provide an instance of <xref:Microsoft.Maui.Controls.PlatformWebViewInitializingEventArgs> which gives you access to all the available settings and configuration needed to control the underlying web view:
+
+```csharp
+private void HybridWebViewInitializing(object sender, WebViewInitializingEventArgs e)
+{
+    if (e.PlatformArgs is null)
+        return;
+
+#if IOS || MACCATALYST
+    // Example: override defaults established by .NET MAUI
+    e.PlatformArgs.Configuration.AllowsInlineMediaPlayback = false;
+#endif
+}
+```
+
+::: moniker-end
+
+## Intercept web requests
+
+<xref:Microsoft.Maui.Controls.HybridWebView> can intercept and respond to web requests that originate from within the hosted web content. This enables scenarios such as modifying headers, redirecting requests, or supplying local responses.
+
+To intercept web requests, handle the `WebResourceRequested` event. In the event handler, set `Handled` to `true` and provide a response via `SetResponse(statusCode, statusDescription, contentType, streamOrTaskOfStream)`:
+
+```xaml
+<HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
+```
+
+```csharp
+private void HybridWebView_WebResourceRequested(object sender, WebViewWebResourceRequestedEventArgs e)
+{
+    // NOTE:
+    // - This method MUST be synchronous; it's invoked on the WebView's thread.
+    // - You MUST call SetResponse (even a minimal response) if you set Handled = true.
+
+    // Example: serve a local image instead of the network resource
+    if (e.Uri.ToString().EndsWith("sample-image.png", StringComparison.OrdinalIgnoreCase))
+    {
+        e.Handled = true;
+        e.SetResponse(200, "OK", "image/png", GetLocalImageStreamAsync());
+        return;
+    }
+
+    // Example: inject an authorization header for API calls
+    if (e.Uri.Host.Equals("api.contoso.com", StringComparison.OrdinalIgnoreCase))
+    {
+        e.RequestHeaders["Authorization"] = $"Bearer {GetToken()}";
+        // Fall through without setting Handled so the request proceeds normally
+    }
+}
+
+private Task<Stream> GetLocalImageStreamAsync()
+{
+    // Return a stream containing PNG bytes (for example from a MauiAsset)
+    return FileSystem.OpenAppPackageFileAsync("wwwroot/images/sample-image.png");
+}
+```
+
+> [!CAUTION]
+> Avoid long-running work in `WebResourceRequested`. If you set `Handled = true`, you must supply a response immediately. For asynchronous content, pass a `Task<Stream>` to `SetResponse` so the WebView can continue while the stream completes.
+
+Common patterns include:
+
+- Injecting or rewriting headers for specific hosts.
+- Returning local files or in-memory content for offline or testing scenarios.
+- Redirecting to a different URI by returning a 3xx status code with an appropriate `Location` header.
+
+::: moniker-end

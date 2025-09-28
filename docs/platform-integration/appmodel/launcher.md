@@ -1,7 +1,7 @@
 ---
 title: "Launcher"
 description: "Learn how to use the .NET MAUI ILauncher interface in the Microsoft.Maui.ApplicationModel namespace, which can open another application by URI."
-ms.date: 02/02/2023
+ms.date: 03/24/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -83,6 +83,10 @@ The launcher can also be used to open an app with a selected file. .NET MAUI aut
 The following code example writes text to a file, and opens the text file with the launcher:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="launcher_open_file":::
+
+### Control file locations
+
+[!INCLUDE [android-fileproviderpaths](../includes/android-fileproviderpaths.md)]
 
 ## Set the launcher location
 
