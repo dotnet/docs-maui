@@ -35,51 +35,22 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     ```dotnetcli
     cd MyMauiApp
-    dotnet build -t:Run -f net10.0-android
+    dotnet build -f net10.0-android
+    dotnet run -f net10.0-android
     ```
 
-    The `dotnet build` command will restore the project dependencies, build the app, and launch it on the default Android emulator or connected device.
+    The `dotnet run` command will restore the project dependencies, build the app, and launch it on an available Android emulator or connected device.
 
 6. In the emulator or device, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     > [!NOTE]
-    > If no Android emulator is running and no device is connected, the build will fail. Make sure you have an Android emulator running or a device connected via USB debugging before running the command.
+    > If no Android emulator is running and no device is connected, the run will fail. Make sure you have an Android emulator running or a device connected via USB debugging before running the command.
 
 ## Launch the app on a specific emulator
 
-A .NET MAUI Android app can be launched on a specific Android emulator by providing its name or identifier. This is useful when you have multiple emulators running simultaneously:
+A .NET MAUI Android app can be launched on a specific Android emulator by using the `AdbTarget` MSBuild property. This is useful when you have multiple emulators running simultaneously:
 
-1. First, list all available Android Virtual Devices (AVDs) using the `emulator` command:
-
-    On Windows, run the following command:
-
-    ```console
-    %ANDROID_SDK_ROOT%\emulator\emulator -list-avds
-    ```
-
-    On macOS/Linux, run the following command:
-
-    ```console
-    $ANDROID_SDK_ROOT/emulator/emulator -list-avds
-    ```
-
-    This command displays a list of all configured AVDs, for example:
-
-    ```console
-    Pixel_7_API_35
-    Pixel_Tablet_API_35
-    MyAndroidVirtualDevice-API35
-    ```
-
-2. Alternatively, you can list running emulators with their ports:
-
-    On Windows, run the following command:
-
-    ```console
-    adb devices
-    ```
-
-    On macOS/Linux, run the following command:
+1. First, list running emulators with their identifiers:
 
     ```console
     adb devices
@@ -93,27 +64,21 @@ A .NET MAUI Android app can be launched on a specific Android emulator by provid
     emulator-5556   device
     ```
 
-3. To run your app on a specific emulator, use the `AndroidDeviceUsb` MSBuild property with the emulator's identifier. If using an AVD name, first start the emulator:
-
-    ```console
-    %ANDROID_SDK_ROOT%\emulator\emulator -avd MY_EMULATOR_NAME
-    ```
-
-    Or on macOS/Linux:
-
-    ```console
-    $ANDROID_SDK_ROOT/emulator/emulator -avd MY_EMULATOR_NAME
-    ```
-
-4. Then build and run your app targeting the specific emulator using its ADB identifier:
+2. To run your app on a specific emulator, use the `AdbTarget` property with the `-s` flag and the emulator identifier:
 
     ```dotnetcli
-    dotnet build -t:Run -f net10.0-android -p:AndroidDeviceUsb=emulator-5554
+    dotnet run -f net10.0-android -p:AdbTarget="-s emulator-5554"
     ```
 
     Replace `emulator-5554` with the actual identifier of your target emulator from the `adb devices` output.
 
-5. In your chosen emulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
+3. Alternatively, you can use the `-e` flag to run on the only running emulator:
+
+    ```dotnetcli
+    dotnet run -f net10.0-android -p:AdbTarget=-e
+    ```
+
+4. In your chosen emulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
 ## Launch the app on a device
 
@@ -134,19 +99,21 @@ A .NET MAUI Android app can be launched on a physical Android device connected v
     1A2B3C4D5E6F    device
     ```
 
-4. Build and run your app on the connected device by specifying the device identifier:
+4. Run your app on the connected device by using the `AdbTarget` property with the `-d` flag:
 
     ```dotnetcli
-    dotnet build -t:Run -f net10.0-android -p:AndroidDeviceUsb=1A2B3C4D5E6F
+    dotnet run -f net10.0-android -p:AdbTarget=-d
+    ```
+
+    This targets the only attached physical device.
+
+5. Alternatively, if you have multiple devices or emulators connected, specify the device identifier with the `-s` flag:
+
+    ```dotnetcli
+    dotnet run -f net10.0-android -p:AdbTarget="-s 1A2B3C4D5E6F"
     ```
 
     Replace `1A2B3C4D5E6F` with your device's actual identifier from the `adb devices` output.
-
-5. If you have only one device or emulator connected, you can omit the `AndroidDeviceUsb` property:
-
-    ```dotnetcli
-    dotnet build -t:Run -f net10.0-android
-    ```
 
 ## Additional CLI options
 
@@ -155,19 +122,22 @@ You can customize the build and run process with additional MSBuild properties:
 - **Debug vs Release**: Use the `-c` (configuration) parameter:
 
     ```dotnetcli
-    dotnet build -t:Run -f net10.0-android -c Release
+    dotnet run -f net10.0-android -c Release
     ```
 
 - **Specific architecture**: Use the `RuntimeIdentifier` property for device deployment:
 
     ```dotnetcli
-    dotnet build -t:Run -f net10.0-android -p:RuntimeIdentifier=android-arm64
+    dotnet run -f net10.0-android -p:RuntimeIdentifier=android-arm64
     ```
 
-- **Clean and rebuild**: Use the `Rebuild` target:
+- **Combine with AdbTarget**: You can specify both the target device and other options:
 
     ```dotnetcli
-    dotnet build -t:Rebuild -t:Run -f net10.0-android
+    dotnet run -f net10.0-android -c Release -p:AdbTarget=-d
     ```
 
 For more information about Android deployment and debugging, see [Android deployment](~/android/deployment/index.md).
+
+> [!NOTE]
+> The `$(AdbTarget)` property is passed to `adb`. For more information about adb command-line options, see [Issue shell commands](https://developer.android.com/tools/adb#shellcommands) on developer.android.com.
