@@ -39,10 +39,10 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     dotnet run -f net10.0-android
     ```
 
-    The `dotnet run` command will restore the project dependencies, build the app, and launch it on an available Android emulator or connected device.
-
     > [!NOTE]
     > The `dotnet run` command is supported for .NET for Android projects starting in .NET 10. For .NET 9 and earlier versions, use `dotnet build -t:Run -f net9.0-android` instead.
+
+    The `dotnet run` command will restore the project dependencies, build the app, and launch it on an available Android emulator or connected device.
 
 6. In the emulator or device, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
