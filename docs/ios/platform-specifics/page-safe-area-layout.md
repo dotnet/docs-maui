@@ -84,7 +84,8 @@ var insets = On<iOS>().SafeAreaInsets(); // Microsoft.Maui.Thickness
 > Safe area insets can change at runtime (for example, rotation or status bar changes). Update layout when insets change.
 
 > [!SEEALSO]
-> [Safe area enhancements in .NET 10](/dotnet/maui/whats-new/dotnet-10#safearea-enhancements)
+> - [Safe area layout](~/user-interface/safe-area.md)
+> - [Safe area enhancements in .NET 10](/dotnet/maui/whats-new/dotnet-10#safearea-enhancements)
 
 ::: moniker-end
 

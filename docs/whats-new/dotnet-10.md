@@ -380,6 +380,8 @@ public enum SafeAreaRegions
 </Grid>
 ```
 
+For more information, see [Safe area layout](~/user-interface/safe-area.md).
+
 ## Secondary Toolbar Items
 
 iOS and macOS now support secondary toolbar items, providing better alignment with platform conventions:
