@@ -20,11 +20,11 @@ The <xref:Microsoft.Maui.Controls.ContentPage.SafeAreaEdges> property, available
 - <xref:Microsoft.Maui.Controls.ContentView>
 - <xref:Microsoft.Maui.Controls.Border>
 
-The `SafeAreaEdges` property accepts values from the <xref:Microsoft.Maui.SafeAreaRegions> enum, which provides granular control over which safe area insets should be respected.
+The `SafeAreaEdges` property accepts values from the <xref:Microsoft.Maui.SafeAreaEdges> enum, which provides granular control over which safe area insets should be respected.
 
-## SafeAreaRegions enum
+## SafeAreaEdges enum
 
-The <xref:Microsoft.Maui.SafeAreaRegions> enum defines the following values:
+The <xref:Microsoft.Maui.SafeAreaEdges> enum defines the following values:
 
 | Value | Description |
 |-------|-------------|
@@ -60,7 +60,7 @@ In C#:
 ```csharp
 var page = new ContentPage
 {
-    SafeAreaEdges = SafeAreaRegions.None,
+    SafeAreaEdges = SafeAreaEdges.None,
     Content = new Grid
     {
         Children =
