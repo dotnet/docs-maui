@@ -34,6 +34,13 @@ The <xref:Microsoft.Maui.SafeAreaEdges> enum defines the following values:
 | `Default` | Platform default safe area behavior. Currently maps to edge-to-edge (`None`) behavior unless overridden by platform conventions. |
 | `All` | Respect all safe area insets including system bars, notches, rounded corners, and the keyboard. |
 
+> [!NOTE]
+> **Default values by control type:**
+>
+> - <xref:Microsoft.Maui.Controls.ContentPage> defaults to `None` (edge-to-edge)
+> - <xref:Microsoft.Maui.Controls.Layout> and derived layouts (<xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.StackLayout>, etc.) default to `Container`
+> - <xref:Microsoft.Maui.Controls.ContentView>, <xref:Microsoft.Maui.Controls.Border>, and controls deriving from `ContentView` default to `None`
+
 ## Usage examples
 
 ### Edge-to-edge content
@@ -42,7 +49,7 @@ To create edge-to-edge content that extends behind system UI elements:
 
 ```xaml
 <ContentPage SafeAreaEdges="None">
-    <Grid>
+    <Grid SafeAreaEdges="None">
         <Image Source="background.jpg" 
                Aspect="AspectFill" />
         <VerticalStackLayout Padding="20"
@@ -55,6 +62,9 @@ To create edge-to-edge content that extends behind system UI elements:
 </ContentPage>
 ```
 
+> [!NOTE]
+> The `Grid` is explicitly set to `SafeAreaEdges="None"` because layouts default to `Container`. Without this, the `Grid` would respect system bars and notches, preventing true edge-to-edge content.
+
 In C#:
 
 ```csharp
@@ -63,6 +73,7 @@ var page = new ContentPage
     SafeAreaEdges = SafeAreaEdges.None,
     Content = new Grid
     {
+        SafeAreaEdges = SafeAreaEdges.None,
         Children =
         {
             new Image { Source = "background.jpg", Aspect = Aspect.AspectFill },
