@@ -215,6 +215,16 @@ public static class MauiProgram
                             Task.Run(() => HandleAppLink(data));
                         }
                     });
+                    android.OnNewIntent((activity, intent) =>
+                    {
+                        var action = intent?.Action;
+                        var data = intent?.Data?.ToString();
+
+                        if (action == Android.Content.Intent.ActionView && data is not null)
+                        {
+                            Task.Run(() => HandleAppLink(data));
+                        }
+                    });
                 });
 #endif
             });
