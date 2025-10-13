@@ -192,28 +192,6 @@ On Android:
 - The `SoftInput` region includes the soft keyboard
 - Behavior can vary based on edge-to-edge display settings and Android version
 
-### Windows
-
-On Windows:
-
-- Safe area insets typically include the title bar
-- The `SoftInput` region includes the on-screen keyboard when visible
-- Safe areas are generally less prominent but still respected
-
-## Reading safe area insets
-
-To read the current safe area insets on iOS at runtime, use the iOS-specific configuration API:
-
-```csharp
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-
-var insets = On<iOS>().SafeAreaInsets(); // Returns Microsoft.Maui.Thickness
-```
-
-> [!TIP]
-> Safe area insets can change at runtime due to device rotation, status bar visibility changes, or keyboard appearance. Your layout should respond automatically to these changes.
-
 ## Best practices
 
 1. **Choose the right value for your scenario**:
@@ -260,7 +238,7 @@ The iOS-specific `Page.UseSafeArea` property still works but is considered legac
 **New approach (.NET 10+):**
 
 ```xaml
-<ContentPage SafeAreaEdges="All">
+<ContentPage SafeAreaEdges="Container">
     <!-- Content -->
 </ContentPage>
 ```
