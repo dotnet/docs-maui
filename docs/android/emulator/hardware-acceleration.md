@@ -31,6 +31,22 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 > [!IMPORTANT]
 > A Virtual Machine (VM) accelerated emulator can run inside another VM, including Microsoft Dev Box, provided that nested virtualization is enabled in the VM.
 
+### Windows ARM device limitations
+
+The Android emulator currently requires x64 processor architecture and is **not supported on Windows ARM devices**. This limitation affects devices such as:
+
+- Surface Pro X
+- Surface Pro 9 (5G/ARM variant)
+- Other Windows devices with ARM64 processors (Snapdragon, etc.)
+
+If you're using a Windows ARM device, consider the following alternatives:
+
+- Use a physical Android device for testing via USB debugging. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
+- Use cloud-based testing services or remote development environments with x64 architecture.
+- Consider using Windows Subsystem for Android (WSA) if available, though this has different limitations and capabilities compared to the Android emulator.
+
+For the latest information about Android emulator requirements, see [Android Emulator requirements](https://developer.android.com/studio/run/emulator#requirements) on developer.android.com.
+
 For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](debug-on-emulator.md).
 
 ## Accelerate with Hyper-V
