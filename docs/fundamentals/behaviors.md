@@ -365,7 +365,7 @@ To create a platform behavior you must first create a cross-platform partial cla
 ```csharp
 namespace BehaviorsDemos
 {
-    public partial class TintColorBehavior
+    public partial class TintColorBehavior : BindableObject
     {
         public static readonly BindableProperty TintColorProperty =
             BindableProperty.Create(nameof(TintColor), typeof(Color), typeof(TintColorBehavior));
