@@ -1475,7 +1475,7 @@ To configure your .NET MAUI app on Android to receive and process push notificat
 
     This class has an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
 
-    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/customize-messages/set-message-type) on firebase.google.com.
 
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/Android* folder and add the following `using` statements:
 
