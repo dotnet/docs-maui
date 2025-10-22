@@ -489,6 +489,8 @@
               href: user-interface/menuitem.md
             - name: Keyboard accelerators
               href: user-interface/keyboard-accelerators.md
+        - name: Safe area layout
+          href: user-interface/safe-area.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles

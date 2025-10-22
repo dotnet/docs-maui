@@ -342,7 +342,7 @@ For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net
 
 This release introduces significant improvements to SafeArea management:
 
-- **Enhanced SafeAreaEdges control**: Improved `SafeAreaEdges` property with refined `SafeAreaRegions` enum for precise safe area behavior control
+- **Enhanced SafeAreaEdges control**: Improved `SafeAreaEdges` property with refined `SafeAreaEdges` enum for precise safe area behavior control
 - **iOS SafeArea fixes**: Resolved issues with SafeArea management on iOS, including extra bottom space in ScrollView when using SafeAreaEdges
 - **Improved defaults**: Fixed safe area defaults to provide more consistent behavior across platforms
 
@@ -354,10 +354,10 @@ The `SafeAreaEdges` property is available on these controls:
 - **Border**: Border control
 - **ScrollView**: Scrollable content container
 
-The `SafeAreaRegions` enum provides granular control over safe area behavior:
+The `SafeAreaEdges` enum provides granular control over safe area behavior:
 
 ```csharp
-public enum SafeAreaRegions
+public enum SafeAreaEdges
 {
     None = 0,          // Edge-to-edge content (no safe area padding)
     SoftInput = 1,     // Always pad for keyboard/soft input
@@ -379,6 +379,8 @@ public enum SafeAreaRegions
     <!-- Grid respects keyboard but not other safe areas -->
 </Grid>
 ```
+
+For more information, see [Safe area layout](~/user-interface/safe-area.md).
 
 ## Secondary Toolbar Items
 
