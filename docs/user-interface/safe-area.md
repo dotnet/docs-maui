@@ -1,12 +1,12 @@
 ---
 title: "Safe area layout"
-description: "Learn how to control safe area behavior in .NET MAUI using SafeAreaEdges to ensure content is positioned correctly on devices with notches, rounded corners, and other screen features."
+description: "Learn how to control safe area behavior in .NET MAUI using SafeAreaEdges to ensure content is positioned correctly on devices with notches and other screen features."
 ms.date: 10/12/2025
 ---
 
 # Safe area layout
 
-The safe area is the region of the screen that is guaranteed to be visible and not obscured by device-specific features such as rounded corners, notches, sensor housings, system bars, or on-screen keyboards. .NET Multi-platform App UI (.NET MAUI) provides the `SafeAreaEdges` property to give you precise control over how your content interacts with these safe area regions.
+The safe area is the region of the screen that is guaranteed to be visible and not obscured by device-specific features such as notches, sensor housings, system bars, or on-screen keyboards. .NET Multi-platform App UI (.NET MAUI) provides the `SafeAreaEdges` property to give you precise control over how your content interacts with these safe area regions.
 
 ::: moniker range=">=net-maui-10.0"
 
@@ -30,9 +30,9 @@ The <xref:Microsoft.Maui.SafeAreaEdges> enum defines the following values:
 |-------|-------------|
 | `None` | Edge-to-edge content with no safe area padding. Content can extend behind system bars, notches, and the keyboard. |
 | `SoftInput` | Respect only the soft input (keyboard) safe area. Content flows under system bars and notches but avoids overlapping the keyboard. |
-| `Container` | Respect container safe areas (system bars, notches, rounded corners) but allow content to extend under the keyboard. |
+| `Container` | Respect container safe areas (system bars, notches) but allow content to extend under the keyboard. |
 | `Default` | Platform default safe area behavior. Currently maps to edge-to-edge (`None`) behavior unless overridden by platform conventions. |
-| `All` | Respect all safe area insets including system bars, notches, rounded corners, and the keyboard. |
+| `All` | Respect all safe area insets including system bars, notches, and the keyboard. |
 
 > [!NOTE]
 > **Default values by control type:**
@@ -191,7 +191,7 @@ You can set `SafeAreaEdges` on individual layouts within a page:
 
 On iOS and Mac Catalyst:
 
-- Safe area insets include the status bar, navigation bar, tab bar, notch/Dynamic Island, home indicator, and rounded corners
+- Safe area insets include the status bar, navigation bar, tab bar, notch/Dynamic Island, and home indicator
 - The `SoftInput` region includes the keyboard when visible
 - Safe area insets automatically adjust during device rotation and when system UI visibility changes
 
@@ -199,9 +199,22 @@ On iOS and Mac Catalyst:
 
 On Android:
 
-- Safe area insets include system bars (status bar, navigation bar), display cutouts (notches), and rounded corners
+- Safe area insets include system bars (status bar, navigation bar) and display cutouts (notches)
 - The `SoftInput` region includes the soft keyboard
 - Behavior can vary based on edge-to-edge display settings and Android version
+
+> [!IMPORTANT]
+> **Breaking change in .NET 10 for Android:**
+>
+> - In .NET 9, `ContentPage` on Android behaved similar to `Container` by default (content avoided system bars).
+> - In .NET 10, `ContentPage` defaults to `None` (edge-to-edge), providing a more immersive experience by default.
+> - If you want .NET 9 behavior in .NET 10, explicitly set `ContentPage.SafeAreaEdges="Container"`.
+
+> [!NOTE]
+> **WindowSoftInputModeAdjust changes in .NET 10:**
+>
+> - If you're using the Android platform-specific `WindowSoftInputModeAdjust.Resize`, you may need to set `ContentPage.SafeAreaEdges="All"` to maintain the same keyboard avoidance behavior.
+> - For more information, see [Soft keyboard input mode on Android](~/android/platform-specifics/soft-keyboard-input-mode.md).
 
 ## Best practices
 
@@ -211,9 +224,8 @@ On Android:
    - Use `Container` for scrollable content with fixed headers/footers
    - Use `SoftInput` for input-focused UIs like messaging apps
 
-2. **Test on multiple devices**: Safe area behavior varies significantly across devices. Test on:
+2. **Test on multiple devices**: Test on:
    - Devices with notches (iPhone X and later)
-   - Devices with rounded corners
    - Tablets in landscape orientation
    - Devices with different aspect ratios
 
