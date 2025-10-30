@@ -34,6 +34,8 @@ The entire app, including the web content, is packaged and runs locally on a dev
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
+
 ## Create a .NET MAUI HybridWebView app
 
 To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:
