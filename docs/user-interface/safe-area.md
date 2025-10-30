@@ -40,7 +40,7 @@ The <xref:Microsoft.Maui.SafeAreaEdges> enum defines the following values:
 > - <xref:Microsoft.Maui.Controls.ContentPage> defaults to `None` (edge-to-edge)
 > - <xref:Microsoft.Maui.Controls.Layout> and derived layouts (<xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.StackLayout>, etc.) default to `Container`
 > - <xref:Microsoft.Maui.Controls.ContentView>, <xref:Microsoft.Maui.Controls.Border>, and controls deriving from `ContentView` default to `None`
-> - <xref:Microsoft.Maui.Controls.ScrollView> defaults to `Default`, which uses `UIScrollViewContentInsetAdjustmentBehavior.Automatic` on iOS and has no effect on Android
+> - <xref:Microsoft.Maui.Controls.ScrollView> defaults to `Default`, which uses `UIScrollViewContentInsetAdjustmentBehavior.Automatic` on iOS and has no effect on Android. Only `Container` and `None` values have an effect on ScrollView. For keyboard avoidance with ScrollView, place it inside a container and set `SafeAreaEdges` on that container instead.
 
 ## Usage examples
 
@@ -116,22 +116,38 @@ This ensures your content is never obscured by system bars, notches, or the keyb
 
 ### Keyboard-aware layouts
 
-For forms and input-focused pages, use `SoftInput` to avoid keyboard overlap while allowing content under system bars:
+For layouts with input controls at the bottom, use `SoftInput` on a container to avoid keyboard overlap while allowing content under system bars:
 
 ```xaml
 <ContentPage>
-    <ScrollView SafeAreaEdges="SoftInput">
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Label Text="User Profile" FontSize="24" />
-            <Entry Placeholder="Name" />
-            <Entry Placeholder="Email" />
-            <Entry Placeholder="Phone" />
-            <Editor Placeholder="Bio" HeightRequest="100" />
-            <Button Text="Save" />
-        </VerticalStackLayout>
-    </ScrollView>
+    <Grid RowDefinitions="*,Auto" SafeAreaEdges="Container, Container, Container, SoftInput">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <Label Text="User Profile" FontSize="24" />
+                <Entry Placeholder="Name" />
+                <Entry Placeholder="Email" />
+                <Entry Placeholder="Phone" />
+                <Editor Placeholder="Bio" HeightRequest="100" />
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <Border Grid.Row="1" 
+                BackgroundColor="LightGray"
+                Padding="20">
+            <HorizontalStackLayout Spacing="10">
+                <Entry Placeholder="Type a message..." 
+                       HorizontalOptions="FillAndExpand" />
+                <Button Text="Send" />
+            </HorizontalStackLayout>
+        </Border>
+    </Grid>
 </ContentPage>
 ```
+
+This example sets `SafeAreaEdges` to respect system bars on the top and sides (`Container`) but avoid the keyboard at the bottom (`SoftInput`). The Grid layout controls the safe area behavior, while the ScrollView inside handles scrolling content.
+
+> [!NOTE]
+> `SoftInput` doesn't work directly on ScrollView because ScrollView is a scrollable container. To make a ScrollView avoid the keyboard, place it inside a layout (like Grid) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on that container.
 
 ### Immersive scrolling content
 
