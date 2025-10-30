@@ -154,8 +154,8 @@ This example sets `SafeAreaEdges` to respect system bars on the top and sides (`
 For scrollable content that should extend edge-to-edge but respect system UI:
 
 ```xaml
-<ContentPage SafeAreaEdges="Container">
-    <ScrollView>
+<ContentPage>
+    <ScrollView SafeAreaEdges="Container">
         <VerticalStackLayout Spacing="10">
             <Image Source="header.jpg" 
                    Aspect="AspectFill" 
