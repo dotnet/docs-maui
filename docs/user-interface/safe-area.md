@@ -31,15 +31,16 @@ The <xref:Microsoft.Maui.SafeAreaEdges> enum defines the following values:
 | `None` | Edge-to-edge content with no safe area padding. Content can extend behind system bars, notches, and the keyboard. |
 | `SoftInput` | Respect only the soft input (keyboard) safe area. Content flows under system bars and notches but avoids overlapping the keyboard. |
 | `Container` | Respect container safe areas (system bars, notches) but allow content to extend under the keyboard. |
-| `Default` | Platform default safe area behavior. Currently maps to edge-to-edge (`None`) behavior unless overridden by platform conventions. |
+| `Default` | Uses the platform-specific default behavior for the control type. See the note below for details on how this differs by control. |
 | `All` | Respect all safe area insets including system bars, notches, and the keyboard. |
 
 > [!NOTE]
-> **Default values by control type:**
+> **Default values and behavior by control type:**
 >
 > - <xref:Microsoft.Maui.Controls.ContentPage> defaults to `None` (edge-to-edge)
 > - <xref:Microsoft.Maui.Controls.Layout> and derived layouts (<xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.StackLayout>, etc.) default to `Container`
 > - <xref:Microsoft.Maui.Controls.ContentView>, <xref:Microsoft.Maui.Controls.Border>, and controls deriving from `ContentView` default to `None`
+> - <xref:Microsoft.Maui.Controls.ScrollView> defaults to `Default`, which uses `UIScrollViewContentInsetAdjustmentBehavior.Automatic` on iOS and has no effect on Android
 
 ## Usage examples
 
