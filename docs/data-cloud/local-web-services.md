@@ -10,6 +10,9 @@ ms.date: 10/07/2024
 
 Many mobile and desktop apps consume web services. During the software development phase, it's common to deploy a web service locally and consume it from an app running in the Android emulator or iOS simulator. This avoids having to deploy the web service to a hosted endpoint, and enables a straightforward debugging experience because both the app and web service are running locally.
 
+> [!TIP]
+> If you're using .NET 10 or later, consider using [.NET Aspire integration](aspire-integration.md) to simplify connecting to local web services. Aspire automatically handles platform-specific networking configuration, service discovery, and development tunnels, eliminating much of the manual configuration described in this article.
+
 .NET Multi-platform App UI (.NET MAUI) apps that run on Windows or MacCatalyst can consume ASP.NET Core web services that are running locally over HTTP or HTTPS without any additional work, provided that you've [trusted your development certificate](#trust-your-development-certificate). However, additional work is required when the app is running in the Android emulator or iOS simulator, and the process is different depending on whether the web service is running over HTTP or HTTPS.
 
 ## Local machine address
