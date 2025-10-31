@@ -140,6 +140,9 @@ builder.Build().Run();
 ```
 
 > [!NOTE]
+> You can add multiple Windows, Mac Catalyst, iOS, or Android emulators or devices for the same MAUI project. Each device configuration can target different platforms, allowing you to deploy and test your app on multiple targets simultaneously from the same App Host. For example, you could add both an iOS simulator and a physical iOS device, or multiple Android emulators with different configurations.
+
+> [!NOTE]
 > Screenshot suggestion: Show the Visual Studio Solution Explorer with the project structure including the MAUI app, Service Defaults, App Host, and Web Service projects.
 
 ### Configure your MAUI app
@@ -338,6 +341,61 @@ The Aspire dashboard provides powerful tools for monitoring and debugging your a
 
 > [!NOTE]
 > Screenshot suggestion: Show the Aspire dashboard's traces view, displaying a request flowing from the MAUI app through to a backend service.
+
+## Troubleshooting
+
+This section covers common issues you might encounter when integrating Aspire with .NET MAUI applications.
+
+### Missing metrics or traces from iOS/Android apps
+
+If you're not seeing telemetry data (metrics, traces, or logs) from your iOS or Android apps in the Aspire dashboard, verify that you've added the `WithOtlpDevTunnel()` method to your device configurations in the App Host:
+
+```csharp
+mauiapp.AddiOSSimulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
+
+mauiapp.AddAndroidEmulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
+```
+
+The `WithOtlpDevTunnel()` method creates a Dev Tunnel specifically for OpenTelemetry protocol (OTLP) traffic, which is required for telemetry data from mobile devices to reach your development machine. Without this, iOS and Android apps won't be able to send their telemetry data to the Aspire dashboard.
+
+### Service discovery not working
+
+If your MAUI app can't connect to your web services:
+
+1. Verify that you've called `AddServiceDefaults()` in your MAUI app's `MauiProgram.cs`
+2. Ensure the service name in your HTTP client configuration matches the name used in the App Host
+3. Check that you're using the `https+http://` scheme in your service URL
+4. For iOS and Android, confirm that you've configured Dev Tunnels correctly in the App Host
+
+### Dev Tunnels connection issues
+
+If Dev Tunnels aren't working for iOS or Android:
+
+1. Ensure the Dev Tunnel is configured with anonymous access: `.WithAnonymousAccess()`
+2. Verify that the device configuration includes the Dev Tunnel reference: `.WithReference(weatherApi, publicDevTunnel)`
+3. Check that your firewall or network security settings aren't blocking tunnel connections
+4. Try restarting the App Host to recreate the tunnels
+
+### App Host won't start
+
+If the App Host fails to start:
+
+1. Ensure all project paths in the App Host's `Program.cs` are correct and use relative paths
+2. Verify that all referenced projects build successfully on their own
+3. Check that the .NET 10 SDK and Aspire are properly installed
+4. Review the App Host console output for specific error messages
+
+### MAUI app can't find the service defaults
+
+If your MAUI app reports errors about missing service defaults:
+
+1. Verify that you've added a reference to the MAUI Service Defaults project in your MAUI app's project file
+2. Ensure the Service Defaults project builds successfully
+3. Check that you're calling `AddServiceDefaults()` before configuring HTTP clients
 
 ## Best practices
 
