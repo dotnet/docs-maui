@@ -174,7 +174,7 @@ public static class MauiProgram
         builder.Services.AddHttpClient<WeatherApiClient>(client =>
         {
             // Service name matches the name used in App Host
-            client.BaseAddress = new Uri("https+http://apiservice");
+            client.BaseAddress = new Uri("https+http://webapi");
         });
 
         return builder.Build();
@@ -182,7 +182,7 @@ public static class MauiProgram
 }
 ```
 
-The `https+http://` scheme is special syntax that enables both HTTPS and HTTP protocols, with preference for HTTPS. The service name (`apiservice` in this example) must match the name you used when registering the service in your App Host's `Program.cs`.
+The `https+http://` scheme is special syntax that enables both HTTPS and HTTP protocols, with preference for HTTPS. The service name (`webapi` in this example) must match the name you used when registering the service in your App Host's `Program.cs`.
 
 ### Create a service client
 
