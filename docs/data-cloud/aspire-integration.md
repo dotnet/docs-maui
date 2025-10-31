@@ -53,19 +53,13 @@ With Aspire integration, these complexities are handled automatically, allowing 
 To use Aspire with .NET MAUI, you need:
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or later
-- [Aspire workload](/dotnet/aspire/fundamentals/setup-tooling)
+- [Aspire](/dotnet/aspire/fundamentals/setup-tooling)
 - A .NET MAUI app targeting .NET 10 or later
-- One or more ASP.NET Core web services
-
-To install the Aspire workload, run:
-
-```dotnetcli
-dotnet workload install aspire
-```
+- One or more web services
 
 ## Getting started
 
-Setting up Aspire integration with your .NET MAUI application involves adding two key projects to your solution:
+Setting up the Aspire integration with your .NET MAUI application involves adding two key projects to your solution:
 
 1. **MAUI Service Defaults project**: Provides default configuration for your MAUI app
 2. **App Host project**: Orchestrates your application services and handles service discovery
@@ -114,11 +108,33 @@ In your App Host project's `Program.cs`, register your MAUI app and web services
 var builder = DistributedApplication.CreateBuilder(args);
 
 // Register your web service
-var apiService = builder.AddProject<Projects.YourWebService>("apiservice");
+var weatherApi = builder.AddProject("webapi", @"../YourWebService/YourWebService.csproj");
 
-// Register your MAUI app with a reference to the API service
-builder.AddProject<Projects.YourMauiApp>("mauiapp")
-    .WithReference(apiService);
+// Create a public dev tunnel for iOS and Android
+var publicDevTunnel = builder.AddDevTunnel("devtunnel-public")
+    .WithAnonymousAccess()
+    .WithReference(weatherApi.GetEndpoint("https"));
+
+// Register your MAUI app
+var mauiapp = builder.AddMauiProject("mauiapp", @"../YourMauiApp/YourMauiApp.csproj");
+
+// Add Windows device (uses localhost directly)
+mauiapp.AddWindowsDevice()
+    .WithReference(weatherApi);
+
+// Add Mac Catalyst device (uses localhost directly)
+mauiapp.AddMacCatalystDevice()
+    .WithReference(weatherApi);
+
+// Add iOS simulator with Dev Tunnel
+mauiapp.AddiOSSimulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
+
+// Add Android emulator with Dev Tunnel
+mauiapp.AddAndroidEmulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
 
 builder.Build().Run();
 ```
@@ -261,6 +277,22 @@ Dev Tunnels provide a secure way to expose your local web services to mobile dev
 - Handles authentication and connection management
 
 This eliminates the need for complex network configuration and makes it easy to test your app on physical devices.
+
+##### OpenTelemetry data collection
+
+When configuring iOS and Android devices in your App Host, use the `WithOtlpDevTunnel()` method to enable OpenTelemetry data collection from these platforms:
+
+```csharp
+mauiapp.AddiOSSimulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
+
+mauiapp.AddAndroidEmulator()
+    .WithOtlpDevTunnel() // Required for OpenTelemetry data collection
+    .WithReference(weatherApi, publicDevTunnel);
+```
+
+The `WithOtlpDevTunnel()` method creates a Dev Tunnel specifically for OpenTelemetry protocol (OTLP) traffic, allowing telemetry data from your iOS and Android apps to reach the Aspire dashboard on your development machine. This is essential for monitoring and debugging your mobile apps through the Aspire dashboard.
 
 For more information about Dev Tunnels, see [Dev tunnels documentation](/aspnet/core/test/dev-tunnels).
 
