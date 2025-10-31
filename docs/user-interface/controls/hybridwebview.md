@@ -36,6 +36,8 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 [!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
+
 ## Create a .NET MAUI HybridWebView app
 
 To create a .NET MAUI app with a <xref:Microsoft.Maui.Controls.HybridWebView>:

@@ -40,7 +40,7 @@ In this tutorial, you:
 
 To complete this tutorial you'll require:
 
-- An [Azure account with an active subscription](https://azure.microsoft.com/free/dotnet/).
+- An [Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A PC or Mac running the latest version of Visual Studio/Visual Studio Code with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
 
 For Android, you must have:

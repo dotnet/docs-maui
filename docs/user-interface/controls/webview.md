@@ -42,6 +42,8 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 
 [!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
+
 ## Display a web page
 
 To display a remote web page, set the `Source` property to a `string` that specifies the URI:
