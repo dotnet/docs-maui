@@ -1,7 +1,7 @@
 ---
 title: "Load XAML at runtime"
 description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
-ms.date: 10/08/2024
+ms.date: 08/19/2025
 ---
 
 # Load XAML at runtime
@@ -29,6 +29,33 @@ private void InitializeComponent()
 ```
 
 The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method to extract the XAML compiled binary (or its file) from the app package. After extraction, it initializes all of the objects defined in the XAML, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+
+::: moniker range=">=net-maui-10.0"
+
+> [!IMPORTANT]
+> XAML source generation in .NET MAUI for .NET 10 is a preview feature. To try it, opt-in by setting the XAML inflator to the source generation one. Behavior and APIs can change while in preview. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+>
+> Example:
+>
+> To enable XAML source generation for all XAML files in the project, add this to your project file.
+> 
+> ```xml
+> <ItemGroup>
+>    <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+> </ItemGroup>
+> ```
+>
+> Similarly, you can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+> 
+> To enable XAML source generation for the whole project, you can add this.
+>
+> ```xml
+> <PropertyGroup>
+>    <MauiXamlInflator>SourceGen</MauiXamlInflator>
+> </PropertyGroup>
+> ```
+
+::: moniker-end
 
 ## Load XAML at runtime
 
