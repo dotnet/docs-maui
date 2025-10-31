@@ -1236,7 +1236,7 @@
           items:
             - name: Consume a REST-based web service
               href: data-cloud/rest.md
-            - name: .NET MAUI integration with .NET Aspire
+            - name: .NET MAUI integration with Aspire
               href: data-cloud/aspire-integration.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md

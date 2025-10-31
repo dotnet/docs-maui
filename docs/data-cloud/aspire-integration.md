@@ -1,32 +1,32 @@
 ---
-title: ".NET MAUI integration with .NET Aspire"
-description: "Learn how to use .NET Aspire to simplify connecting your .NET MAUI app to local web services during development."
+title: ".NET MAUI integration with Aspire"
+description: "Learn how to use Aspire to simplify connecting your .NET MAUI app to local web services during development."
 ms.date: 10/31/2024
 ---
 
-# .NET MAUI integration with .NET Aspire
+# .NET MAUI integration with Aspire
 
 ::: moniker range=">=net-maui-10.0"
 
 > [!IMPORTANT]
 > This feature is currently in preview. Integration with Visual Studio 2026 is coming but not completely available yet.
 
-.NET Aspire is an opinionated, cloud-ready stack for building observable, production-ready, distributed applications. The .NET MAUI integration with .NET Aspire simplifies the development experience when building mobile and desktop applications that connect to local web services during development.
+Aspire is an opinionated, cloud-ready stack for building observable, production-ready, distributed applications. The .NET MAUI integration with Aspire simplifies the development experience when building mobile and desktop applications that connect to local web services during development.
 
-## What is .NET Aspire?
+## What is Aspire?
 
-.NET Aspire provides a consistent, opinionated set of tools and patterns for building and running distributed applications. It's designed to improve the experience of building cloud-native applications by providing:
+Aspire provides a consistent, opinionated set of tools and patterns for building and running distributed applications. It's designed to improve the experience of building cloud-native applications by providing:
 
 - **Orchestration**: Simplified management of multiple services and dependencies
 - **Components**: Pre-built integrations for common services and platforms
 - **Tooling**: Developer dashboard for monitoring and managing services
 - **Service discovery**: Automatic configuration for service-to-service communication
 
-For more information about .NET Aspire, see [.NET Aspire documentation](/dotnet/aspire/).
+For more information about Aspire, see [Aspire documentation](/dotnet/aspire/).
 
 ## Benefits of using Aspire with .NET MAUI
 
-Integrating .NET Aspire with your .NET MAUI applications provides several key benefits:
+Integrating Aspire with your .NET MAUI applications provides several key benefits:
 
 - **Simplified configuration**: Eliminate complex platform-specific networking configuration. No need to manually handle `10.0.2.2` for Android or deal with certificate validation issues.
 - **Automatic service discovery**: Your MAUI app automatically discovers and connects to local services without hardcoded URLs.
@@ -46,18 +46,18 @@ Traditionally, connecting a .NET MAUI app to local web services requires signifi
 
 For more information about the traditional approach, see [Connect to local web services](local-web-services.md).
 
-With .NET Aspire integration, these complexities are handled automatically, allowing you to focus on building your application instead of configuring network access.
+With Aspire integration, these complexities are handled automatically, allowing you to focus on building your application instead of configuring network access.
 
 ## Prerequisites
 
-To use .NET Aspire with .NET MAUI, you need:
+To use Aspire with .NET MAUI, you need:
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or later
-- [.NET Aspire workload](/dotnet/aspire/fundamentals/setup-tooling)
+- [Aspire workload](/dotnet/aspire/fundamentals/setup-tooling)
 - A .NET MAUI app targeting .NET 10 or later
 - One or more ASP.NET Core web services
 
-To install the .NET Aspire workload, run:
+To install the Aspire workload, run:
 
 ```dotnetcli
 dotnet workload install aspire
@@ -65,7 +65,7 @@ dotnet workload install aspire
 
 ## Getting started
 
-Setting up .NET Aspire integration with your .NET MAUI application involves adding two key projects to your solution:
+Setting up Aspire integration with your .NET MAUI application involves adding two key projects to your solution:
 
 1. **MAUI Service Defaults project**: Provides default configuration for your MAUI app
 2. **App Host project**: Orchestrates your application services and handles service discovery
@@ -319,7 +319,7 @@ When building .NET MAUI apps with Aspire integration:
 
 ## Sample application
 
-For a complete working example of .NET MAUI integration with .NET Aspire, see the [AspireWithMaui sample](https://github.com/dotnet/aspire/tree/main/playground/AspireWithMaui) in the .NET Aspire repository.
+For a complete working example of .NET MAUI integration with Aspire, see the [AspireWithMaui sample](https://github.com/dotnet/aspire/tree/main/playground/AspireWithMaui) in the Aspire repository.
 
 The sample demonstrates:
 
@@ -330,15 +330,15 @@ The sample demonstrates:
 
 ## Additional resources
 
-- [.NET Aspire documentation](/dotnet/aspire/)
-- [Service discovery in .NET Aspire](/dotnet/aspire/service-discovery/overview)
-- [.NET Aspire orchestration](/dotnet/aspire/fundamentals/app-host-overview)
+- [Aspire documentation](/dotnet/aspire/)
+- [Service discovery in Aspire](/dotnet/aspire/service-discovery/overview)
+- [Aspire orchestration](/dotnet/aspire/fundamentals/app-host-overview)
 - [Connect to local web services (traditional approach)](local-web-services.md)
 
 ::: moniker-end
 
 ::: moniker range="<net-maui-10.0"
 
-.NET MAUI integration with .NET Aspire is available in .NET MAUI 10 and later. For information about connecting to local web services in earlier versions, see [Connect to local web services](local-web-services.md).
+.NET MAUI integration with Aspire is available in .NET MAUI 10 and later. For information about connecting to local web services in earlier versions, see [Connect to local web services](local-web-services.md).
 
 ::: moniker-end
