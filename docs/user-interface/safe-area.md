@@ -149,26 +149,6 @@ This example sets `SafeAreaEdges` to respect system bars on the top and sides (`
 > [!NOTE]
 > `SoftInput` doesn't work directly on ScrollView because ScrollView is a scrollable container. To make a ScrollView avoid the keyboard, place it inside a layout (like Grid) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on that container.
 
-### Immersive scrolling content
-
-For scrollable content that should extend edge-to-edge but respect system UI:
-
-```xaml
-<ContentPage>
-    <ScrollView SafeAreaEdges="Container">
-        <VerticalStackLayout Spacing="10">
-            <Image Source="header.jpg" 
-                   Aspect="AspectFill" 
-                   HeightRequest="300" />
-            <VerticalStackLayout Padding="20">
-                <Label Text="Article Title" FontSize="28" />
-                <Label Text="Article content..." />
-            </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
-</ContentPage>
-```
-
 ### Per-layout control
 
 You can set `SafeAreaEdges` on individual layouts within a page:
