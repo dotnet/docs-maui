@@ -147,7 +147,7 @@ For layouts with input controls at the bottom, use `SoftInput` on a container to
 This example sets `SafeAreaEdges` to respect system bars on the top and sides (`Container`) but avoid the keyboard at the bottom (`SoftInput`). The Grid layout controls the safe area behavior, while the ScrollView inside handles scrolling content.
 
 > [!NOTE]
-> `SoftInput` doesn't work directly on ScrollView because ScrollView is a scrollable container. To make a ScrollView avoid the keyboard, place it inside a layout (like Grid) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on that container.
+> `SoftInput` doesn't work directly on ScrollView because ScrollView manages its own content insets. To make a ScrollView keyboard-aware, wrap it in a layout (such as Grid or VerticalStackLayout) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on the wrapping container.
 
 ### Per-layout control
 
