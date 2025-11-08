@@ -68,9 +68,9 @@ To create edge-to-edge content that extends behind system UI elements:
 
 The following screenshots show edge-to-edge content on Android and iOS:
 
-:::image type="content" source="https://github.com/user-attachments/assets/6d3a7fac-579a-4ae6-a44e-a97163b42c14" alt-text="Screenshot of edge-to-edge content on Android showing content extending behind the status bar and navigation bar.":::
+:::image type="content" source="media/safe-area/android-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on Android showing content extending behind the status bar and navigation bar.":::
 
-:::image type="content" source="https://github.com/user-attachments/assets/44356fc1-73c2-4336-93bb-8ab24d11e1c4" alt-text="Screenshot of edge-to-edge content on iOS showing content extending behind the status bar and home indicator.":::
+:::image type="content" source="media/safe-area/ios-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on iOS showing content extending behind the status bar and home indicator.":::
 
 In C#:
 
@@ -122,15 +122,15 @@ This ensures your content is never obscured by system bars, notches, or the keyb
 
 The following screenshots show content respecting all safe areas on Android and iOS:
 
-:::image type="content" source="https://github.com/user-attachments/assets/32d64187-36a1-4b4b-b776-f0b522f7a693" alt-text="Screenshot on Android showing content that respects system bars and avoids the keyboard.":::
+:::image type="content" source="media/safe-area/android-respect-all.png" alt-text="Screenshot on Android showing content that respects system bars and avoids the keyboard.":::
 
-:::image type="content" source="https://github.com/user-attachments/assets/6ca67c06-30d0-4bc9-9e75-25e52f36cfac" alt-text="Screenshot on iOS showing content that respects status bar, notch, and home indicator.":::
+:::image type="content" source="media/safe-area/ios-respect-all.png" alt-text="Screenshot on iOS showing content that respects status bar, notch, and home indicator.":::
 
 When the keyboard appears, the content adjusts to remain visible:
 
-:::image type="content" source="https://github.com/user-attachments/assets/eedd6e44-2c64-460b-82d2-cc21de64f841" alt-text="Screenshot on Android showing content avoiding the on-screen keyboard.":::
+:::image type="content" source="media/safe-area/android-respect-all-keyboard.png" alt-text="Screenshot on Android showing content avoiding the on-screen keyboard.":::
 
-:::image type="content" source="https://github.com/user-attachments/assets/c4411d1d-63f8-4d82-844c-781636022f82" alt-text="Screenshot on iOS showing content avoiding the keyboard.":::
+:::image type="content" source="media/safe-area/ios-respect-all-keyboard.png" alt-text="Screenshot on iOS showing content avoiding the keyboard.":::
 
 ### Keyboard-aware layouts
 
@@ -166,9 +166,9 @@ This example sets `SafeAreaEdges` to respect system bars on the top and sides (`
 
 The following screenshots show keyboard-aware layouts on Android and iOS:
 
-:::image type="content" source="https://github.com/user-attachments/assets/387c4969-93b7-4f9a-8a3e-71475738a689" alt-text="Screenshot on Android showing a form with input field and button at the bottom that avoids the keyboard.":::
+:::image type="content" source="media/safe-area/android-keyboard-aware.png" alt-text="Screenshot on Android showing a form with input field and button at the bottom that avoids the keyboard.":::
 
-:::image type="content" source="https://github.com/user-attachments/assets/93ff9fe9-e7ae-417c-8c49-2a1bbbeb535c" alt-text="Screenshot on iOS showing a form that respects the keyboard while allowing content under the top safe area.":::
+:::image type="content" source="media/safe-area/ios-keyboard-aware.png" alt-text="Screenshot on iOS showing a form that respects the keyboard while allowing content under the top safe area.":::
 
 > [!NOTE]
 > `SoftInput` doesn't work directly on ScrollView because ScrollView manages its own content insets. To make a ScrollView keyboard-aware, wrap it in a layout (such as Grid or VerticalStackLayout) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on the wrapping container.
@@ -208,9 +208,9 @@ You can set `SafeAreaEdges` on individual layouts within a page:
 
 The following screenshots show scrollable content with edge-to-edge elements on Android and iOS:
 
-:::image type="content" source="https://github.com/user-attachments/assets/5a0ed2d7-6598-4828-9fa5-a0b1cfd525a2" alt-text="Screenshot on Android showing scrollable article content that extends edge-to-edge.":::
+:::image type="content" source="media/safe-area/android-per-layout.png" alt-text="Screenshot on Android showing scrollable article content that extends edge-to-edge.":::
 
-:::image type="content" source="https://github.com/user-attachments/assets/e1aa0b67-7a39-4fda-8362-1d2467822974" alt-text="Screenshot on iOS showing scrollable content with immersive header.":::
+:::image type="content" source="media/safe-area/ios-per-layout.png" alt-text="Screenshot on iOS showing scrollable content with immersive header.":::
 
 ## Platform-specific behavior
 
