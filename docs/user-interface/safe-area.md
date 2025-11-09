@@ -79,6 +79,26 @@ The following screenshots show edge-to-edge content on Android and iOS:
    :::column-end:::
 :::row-end:::
 
+> [!TIP]
+> **iOS Navigation Bar Transparency**: On iOS, for content to extend behind the navigation bar (Shell or NavigationPage), the navigation bar must have a transparent or semi-transparent background color. Set `Shell.NavBarHasShadow="False"` and `Shell.BackgroundColor` to a color with transparency, or for NavigationPage, set the `BarBackgroundColor` property:
+>
+> **Shell:**
+> ```xaml
+> <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+>        Shell.NavBarHasShadow="False"
+>        Shell.BackgroundColor="#80000000">
+> ```
+>
+> **NavigationPage (in App.xaml.cs):**
+> ```csharp
+> MainPage = new NavigationPage(new MainPage)
+> {
+>     BarBackgroundColor = Color.FromArgb("#80000000") // Semi-transparent black
+> };
+> ```
+>
+> This iOS-specific requirement allows content to be visible behind the navigation bar when using `SafeAreaEdges="None"`.
+
 In C#:
 
 ```csharp
