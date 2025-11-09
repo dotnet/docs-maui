@@ -68,9 +68,16 @@ To create edge-to-edge content that extends behind system UI elements:
 
 The following screenshots show edge-to-edge content on Android and iOS:
 
-:::image type="content" source="media/safe-area/android-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on Android showing content extending behind the status bar and navigation bar.":::
-
-:::image type="content" source="media/safe-area/ios-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on iOS showing content extending behind the status bar and home indicator.":::
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/android-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on Android showing content extending behind the status bar and navigation bar." lightbox="media/safe-area/android-edge-to-edge.png":::
+      **Android**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/ios-edge-to-edge.png" alt-text="Screenshot of edge-to-edge content on iOS showing content extending behind the status bar and home indicator." lightbox="media/safe-area/ios-edge-to-edge.png":::
+      **iOS**
+   :::column-end:::
+:::row-end:::
 
 In C#:
 
@@ -122,15 +129,29 @@ This ensures your content is never obscured by system bars, notches, or the keyb
 
 The following screenshots show content respecting all safe areas on Android and iOS:
 
-:::image type="content" source="media/safe-area/android-respect-all.png" alt-text="Screenshot on Android showing content that respects system bars and avoids the keyboard.":::
-
-:::image type="content" source="media/safe-area/ios-respect-all.png" alt-text="Screenshot on iOS showing content that respects status bar, notch, and home indicator.":::
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/android-respect-all.png" alt-text="Screenshot on Android showing content that respects system bars and avoids the keyboard." lightbox="media/safe-area/android-respect-all.png":::
+      **Android**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/ios-respect-all.png" alt-text="Screenshot on iOS showing content that respects status bar, notch, and home indicator." lightbox="media/safe-area/ios-respect-all.png":::
+      **iOS**
+   :::column-end:::
+:::row-end:::
 
 When the keyboard appears, the content adjusts to remain visible:
 
-:::image type="content" source="media/safe-area/android-respect-all-keyboard.png" alt-text="Screenshot on Android showing content avoiding the on-screen keyboard.":::
-
-:::image type="content" source="media/safe-area/ios-respect-all-keyboard.png" alt-text="Screenshot on iOS showing content avoiding the keyboard.":::
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/android-respect-all-keyboard.png" alt-text="Screenshot on Android showing content avoiding the on-screen keyboard." lightbox="media/safe-area/android-respect-all-keyboard.png":::
+      **Android with keyboard**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/ios-respect-all-keyboard.png" alt-text="Screenshot on iOS showing content avoiding the keyboard." lightbox="media/safe-area/ios-respect-all-keyboard.png":::
+      **iOS with keyboard**
+   :::column-end:::
+:::row-end:::
 
 ### Keyboard-aware layouts
 
@@ -166,9 +187,16 @@ This example sets `SafeAreaEdges` to respect system bars on the top and sides (`
 
 The following screenshots show keyboard-aware layouts on Android and iOS:
 
-:::image type="content" source="media/safe-area/android-keyboard-aware.png" alt-text="Screenshot on Android showing a form with input field and button at the bottom that avoids the keyboard.":::
-
-:::image type="content" source="media/safe-area/ios-keyboard-aware.png" alt-text="Screenshot on iOS showing a form that respects the keyboard while allowing content under the top safe area.":::
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/android-keyboard-aware.png" alt-text="Screenshot on Android showing a form with input field and button at the bottom that avoids the keyboard." lightbox="media/safe-area/android-keyboard-aware.png":::
+      **Android**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/ios-keyboard-aware.png" alt-text="Screenshot on iOS showing a form that respects the keyboard while allowing content under the top safe area." lightbox="media/safe-area/ios-keyboard-aware.png":::
+      **iOS**
+   :::column-end:::
+:::row-end:::
 
 > [!NOTE]
 > `SoftInput` doesn't work directly on ScrollView because ScrollView manages its own content insets. To make a ScrollView keyboard-aware, wrap it in a layout (such as Grid or VerticalStackLayout) and set `SafeAreaEdges="SoftInput"` or `SafeAreaEdges="All"` on the wrapping container.
@@ -208,9 +236,16 @@ You can set `SafeAreaEdges` on individual layouts within a page:
 
 The following screenshots show scrollable content with edge-to-edge elements on Android and iOS:
 
-:::image type="content" source="media/safe-area/android-per-layout.png" alt-text="Screenshot on Android showing scrollable article content that extends edge-to-edge.":::
-
-:::image type="content" source="media/safe-area/ios-per-layout.png" alt-text="Screenshot on iOS showing scrollable content with immersive header.":::
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/android-per-layout.png" alt-text="Screenshot on Android showing scrollable article content that extends edge-to-edge." lightbox="media/safe-area/android-per-layout.png":::
+      **Android**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/safe-area/ios-per-layout.png" alt-text="Screenshot on iOS showing scrollable content with immersive header." lightbox="media/safe-area/ios-per-layout.png":::
+      **iOS**
+   :::column-end:::
+:::row-end:::
 
 ## Platform-specific behavior
 
