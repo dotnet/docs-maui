@@ -234,19 +234,6 @@ You can set `SafeAreaEdges` on individual layouts within a page:
 </ContentPage>
 ```
 
-The following screenshots show scrollable content with edge-to-edge elements on Android and iOS:
-
-:::row:::
-   :::column span="":::
-      :::image type="content" source="media/safe-area/android-per-layout.png" alt-text="Screenshot on Android showing scrollable article content that extends edge-to-edge." lightbox="media/safe-area/android-per-layout.png":::
-      **Android**
-   :::column-end:::
-   :::column span="":::
-      :::image type="content" source="media/safe-area/ios-per-layout.png" alt-text="Screenshot on iOS showing scrollable content with immersive header." lightbox="media/safe-area/ios-per-layout.png":::
-      **iOS**
-   :::column-end:::
-:::row-end:::
-
 ## Platform-specific behavior
 
 ### iOS and Mac Catalyst
