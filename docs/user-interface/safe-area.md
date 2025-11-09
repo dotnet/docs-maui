@@ -85,7 +85,6 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > **Shell:**
 > ```xaml
 > <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
->        Shell.NavBarHasShadow="False"
 >        Shell.BackgroundColor="#80000000">
 > ```
 >
