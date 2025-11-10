@@ -86,6 +86,7 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > 2. **Hide the navigation bar separator line** - Without this, a visible line will appear below the navigation bar
 >
 > **Shell:**
+>
 > ```xaml
 > <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 >        Shell.BackgroundColor="#80000000"
@@ -94,7 +95,7 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > ```
 >
 > **NavigationPage:**
-> 
+>
 > ```xaml
 > xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
 > 
