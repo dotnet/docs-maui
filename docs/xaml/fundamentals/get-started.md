@@ -83,11 +83,19 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 ## XAML Source Generation
 
 > [!IMPORTANT]
-> This feature is in preview. To try it, opt-in by setting the XAML inflator in your project file as per the instructions below. Behavior and defaults may change. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+> This feature is opt-in. To use it, set the XAML inflator in your project file as per the instructions below. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
 
 You have the option as of .NET 10 to have XAML generate C# instead of IL (intermediate language) by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
 
-To enable XAML source generation for all XAML files in the project, add this to your project file.
+To enable XAML source generation for the whole project, add this to your project file:
+
+```xml
+<PropertyGroup>
+   <MauiXamlInflator>SourceGen</MauiXamlInflator>
+</PropertyGroup>
+```
+
+For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
 
 ```xml
 <ItemGroup>
@@ -95,15 +103,7 @@ To enable XAML source generation for all XAML files in the project, add this to 
 </ItemGroup>
 ```
 
-Similarly, you can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
-
-To enable XAML source generation for the whole project, you can add this.
-
-```xml
-<PropertyGroup>
-   <MauiXamlInflator>SourceGen</MauiXamlInflator>
-</PropertyGroup>
-```
+You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
