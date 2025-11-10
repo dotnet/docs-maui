@@ -305,12 +305,27 @@ On Windows, local service connectivity works directly through localhost without 
 
 ## Running your application
 
-To run your MAUI app with Aspire integration:
+To run your MAUI app with Aspire integration, you can use one of the following methods:
 
-1. Set the App Host project as the startup project in Visual Studio or your preferred IDE
+**Visual Studio:**
+
+1. Set the App Host project as the startup project
 2. Run the solution (F5 or Debug > Start Debugging)
-3. The Aspire dashboard will open, showing all registered services
-4. Your MAUI app will launch and automatically connect to the configured services
+
+**Command line:**
+
+1. Navigate to the App Host project directory
+2. Run `dotnet run` or `dotnet run --project YourApp.AppHost.csproj`
+
+**VS Code:**
+
+1. Open the App Host project folder
+2. Run the project using the .NET debugger or terminal
+
+When the App Host starts:
+
+- The Aspire dashboard will open, showing all registered services
+- Your MAUI app will launch and automatically connect to the configured services
 
 > [!NOTE]
 > Screenshot suggestion: Show the Aspire dashboard with multiple services running (MAUI app, web service, database if applicable) with their status indicators and resource usage.
@@ -326,9 +341,11 @@ When you run your application through the App Host:
 
 When running through the App Host, you can select which platform to target:
 
-1. In Visual Studio, use the target framework dropdown to select your desired platform (Android, iOS, Windows, etc.)
-2. The App Host will launch your MAUI app on the selected platform
-3. Service connectivity works automatically on all platforms
+- **Visual Studio**: Use the target framework dropdown to select your desired platform (Android, iOS, Windows, etc.)
+- **Command line**: The App Host will use the default platform configuration defined in your project
+- **VS Code**: Configure launch settings to specify the target platform
+
+The App Host will launch your MAUI app on the selected platform, and service connectivity works automatically on all platforms
 
 ## Monitoring and debugging
 
