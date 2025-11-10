@@ -113,6 +113,8 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > ```
 >
 > These iOS-specific configurations allow content to extend behind the navigation bar when using `SafeAreaEdges="None"`.
+>
+> :::image type="content" source="media/safe-area/ios-transparent-navbar.png" alt-text="iOS app showing content extending behind a transparent navigation bar":::
 
 ### Respect all safe areas
 
