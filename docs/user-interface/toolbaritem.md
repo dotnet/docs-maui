@@ -126,3 +126,24 @@ Tapping the three dots reveals items in a vertical list:
 
 > [!WARNING]
 > Icon behavior in <xref:Microsoft.Maui.Controls.ToolbarItem> objects that have their <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property set to `Secondary` can be inconsistent across platforms. Avoid setting the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property on items that appear in the secondary menu.
+
+::: moniker range=">=net-maui-10.0"
+
+### Example: order secondary items by priority (iOS and Mac Catalyst)
+
+On iOS and Mac Catalyst, secondary items are shown in a pull‑down menu ordered by their `Priority` (lower values appear first):
+
+```xaml
+<ContentPage.ToolbarItems>
+    <ToolbarItem Text="Settings" Order="Secondary" Priority="0" />
+    <ToolbarItem Text="Feedback" Order="Secondary" Priority="1" />
+    <ToolbarItem Text="About" Order="Secondary" Priority="2" />
+    <ToolbarItem Text="Help" Order="Secondary" Priority="3" />
+    <ToolbarItem Text="Sign out" Order="Secondary" Priority="100" />
+</ContentPage.ToolbarItems>
+```
+
+> [!TIP]
+> Keep labels short so they fit comfortably in the pull‑down. Avoid icons for `Secondary` items due to platform inconsistency.
+
+::: moniker-end
