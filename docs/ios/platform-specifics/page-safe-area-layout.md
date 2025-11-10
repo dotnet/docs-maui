@@ -17,7 +17,7 @@ By default, .NET Multi-platform App UI (.NET MAUI) apps automatically position p
 
 ### Choose the safe area behavior with SafeAreaEdges
 
-`SafeAreaEdges` accepts the following values from <xref:Microsoft.Maui.SafeAreaRegions>: `Default`, `None`, `Container`, `SoftInput`, and `All`.
+`SafeAreaEdges` accepts the following values from <xref:Microsoft.Maui.SafeAreaEdges>: `Default`, `None`, `Container`, `SoftInput`, and `All`.
 
 - Keep content within all safe areas (avoid bars, notch, and keyboard):
 
@@ -83,8 +83,10 @@ var insets = On<iOS>().SafeAreaInsets(); // Microsoft.Maui.Thickness
 > [!TIP]
 > Safe area insets can change at runtime (for example, rotation or status bar changes). Update layout when insets change.
 
-> [!SEEALSO]
-> [Safe area enhancements in .NET 10](/dotnet/maui/whats-new/dotnet-10#safearea-enhancements)
+For more information, see:
+
+- [Safe area layout](~/user-interface/safe-area.md)
+- [Safe area enhancements in .NET 10](~/whats-new/dotnet-10.md#safearea-enhancements)
 
 ::: moniker-end
 
