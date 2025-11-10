@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI integration with Aspire"
 description: "Learn how to use Aspire to simplify connecting your .NET MAUI app to local web services during development."
-ms.date: 10/31/2024
+ms.date: 11/10/2025
 ---
 
 # .NET MAUI integration with Aspire
@@ -310,7 +310,7 @@ To run your MAUI app with Aspire integration, you can use one of the following m
 **Command line:**
 
 1. Navigate to the App Host project directory
-2. Run `dotnet run` or `dotnet run --project YourApp.AppHost.csproj`
+2. Run `dotnet run` or `dotnet run --project YourApp.AppHost.csproj`, alternatively you can use the [Aspire CLI](dotnet/aspire/cli/overview) and run `aspire run`.
 
 **VS Code:**
 
@@ -320,7 +320,7 @@ To run your MAUI app with Aspire integration, you can use one of the following m
 When the App Host starts:
 
 - The Aspire dashboard will open, showing all registered services
-- Your MAUI app will launch and automatically connect to the configured services
+- Your MAUI app _not_ will launch automatically. You can start each .NET MAUI target manually through the dashboard.
 
 :::image type="content" source="media/aspire-integration/maui-aspire-app-resources-dashboard.png" alt-text="The Aspire dashboard showing diffent .NET MAUI resources for a Blazor Hybrid app, Hybrid WebView app and regular .NET MAUI app, as well as Dev Tunnels and a backing ASP.NET Web API." lightbox="media/aspire-integration/maui-aspire-app-resources-dashboard.png":::
 
@@ -330,16 +330,6 @@ When you run your application through the App Host:
 - Service discovery is configured
 - The dashboard provides real-time monitoring
 - Logs from all services are available in one place
-
-### Selecting your platform target
-
-When running through the App Host, you can select which platform to target:
-
-- **Visual Studio**: Use the target framework dropdown to select your desired platform (Android, iOS, Windows, etc.)
-- **Command line**: The App Host will use the default platform configuration defined in your project
-- **VS Code**: Configure launch settings to specify the target platform
-
-The App Host will launch your MAUI app on the selected platform, and service connectivity works automatically on all platforms
 
 ## Monitoring and debugging
 
