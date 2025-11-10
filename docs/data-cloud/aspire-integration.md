@@ -142,8 +142,7 @@ builder.Build().Run();
 > [!NOTE]
 > You can add multiple Windows, Mac Catalyst, iOS, or Android emulators or devices for the same MAUI project. Each device configuration can target different platforms, allowing you to deploy and test your app on multiple targets simultaneously from the same App Host. For example, you could add both an iOS simulator and a physical iOS device, or multiple Android emulators with different configurations.
 
-> [!NOTE]
-> Screenshot suggestion: Show the Visual Studio Solution Explorer with the project structure including the MAUI app, Service Defaults, App Host, and Web Service projects.
+:::image type="content" source="media/aspire-integration/maui-aspire-project-structure.png" alt-text="Screenshot of the Visual Studio 2026 Solution Explorer showing a typical .NET MAUI project setup in an Aspire orchestration." lightbox="media/aspire-integration/maui-aspire-project-structure.png":::
 
 ### Configure your MAUI app
 
@@ -255,9 +254,6 @@ On iOS and Mac Catalyst, the Aspire integration works seamlessly when running th
 
 When using the iOS Simulator or running on a physical device, Dev Tunnels are automatically configured to enable connectivity to services running on your development machine.
 
-> [!NOTE]
-> Screenshot suggestion: Show the Aspire dashboard with a MAUI iOS app connected to a web service, displaying the active connections and logs.
-
 ### Android
 
 On Android, the Aspire integration handles the platform-specific networking requirements automatically. You no longer need to:
@@ -268,8 +264,7 @@ On Android, the Aspire integration handles the platform-specific networking requ
 
 The integration uses Dev Tunnels to provide secure, reliable connectivity between the Android emulator and your local services.
 
-> [!NOTE]
-> Screenshot suggestion: Show the Android emulator running a MAUI app successfully connecting to a local service through the Aspire integration.
+:::image type="content" source="media/aspire-integration/maui-aspire-windows-android.png" alt-text="The Aspire dashboard running in the browser listing all resources. In the foreground there is a running .NET MAUI app running on Windows and the Android emulator." lightbox="media/aspire-integration/maui-aspire-windows-android.png":::
 
 #### Dev Tunnels integration
 
@@ -327,8 +322,7 @@ When the App Host starts:
 - The Aspire dashboard will open, showing all registered services
 - Your MAUI app will launch and automatically connect to the configured services
 
-> [!NOTE]
-> Screenshot suggestion: Show the Aspire dashboard with multiple services running (MAUI app, web service, database if applicable) with their status indicators and resource usage.
+:::image type="content" source="media/aspire-integration/maui-aspire-app-resources-dashboard.png" alt-text="The Aspire dashboard showing diffent .NET MAUI resources for a Blazor Hybrid app, Hybrid WebView app and regular .NET MAUI app, as well as Dev Tunnels and a backing ASP.NET Web API." lightbox="media/aspire-integration/maui-aspire-app-resources-dashboard.png":::
 
 When you run your application through the App Host:
 
@@ -356,8 +350,7 @@ The Aspire dashboard provides powerful tools for monitoring and debugging your a
 - **Traces**: Distributed tracing across services
 - **Metrics**: Monitor performance and resource usage
 
-> [!NOTE]
-> Screenshot suggestion: Show the Aspire dashboard's traces view, displaying a request flowing from the MAUI app through to a backend service.
+:::image type="content" source="media/aspire-integration/maui-aspire-http-trace.pngmedia/aspire-integration/maui-aspire-http-trace.png" alt-text="The Aspire dashboard showing trace information for an HTTP request going from the .NET MAUI app to the Web API." lightbox="media/aspire-integration/maui-aspire-http-trace.png":::
 
 ## Troubleshooting
 
