@@ -80,20 +80,29 @@ The following screenshots show edge-to-edge content on Android and iOS:
 :::row-end:::
 
 > [!TIP]
-> **iOS Navigation Bar Transparency**: On iOS, for content to extend behind the navigation bar (Shell or NavigationPage), the navigation bar must have a transparent or semi-transparent background color. Set `Shell.NavBarHasShadow="False"` and `Shell.BackgroundColor` to a color with transparency, or for NavigationPage, set the `BarBackgroundColor` property:
+> **iOS Navigation Bar Transparency**: On iOS, for content to extend behind the navigation bar (Shell or NavigationPage), the navigation bar must have a transparent or semi-transparent background color. You also need to hide the navigation bar separator line.
 >
 > **Shell:**
 > ```xaml
 > <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
->        Shell.BackgroundColor="#80000000">
+>        Shell.BackgroundColor="#80000000"
+>        Shell.NavBarHasShadow="False">
 > ```
 >
-> **NavigationPage (in App.xaml.cs):**
+> **NavigationPage:**
+> ```xaml
+> xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+> 
+> <NavigationPage ios:NavigationPage.HideNavigationBarSeparator="True">
+> ```
+>
 > ```csharp
 > MainPage = new NavigationPage(new MainPage)
 > {
 >     BarBackgroundColor = Color.FromArgb("#80000000") // Semi-transparent black
 > };
+> Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.NavigationPage.SetHideNavigationBarSeparator(
+>     (NavigationPage)MainPage, true);
 > ```
 >
 > This iOS-specific requirement allows content to be visible behind the navigation bar when using `SafeAreaEdges="None"`.
