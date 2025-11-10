@@ -9,7 +9,7 @@ ms.date: 10/31/2024
 ::: moniker range=">=net-maui-10.0"
 
 > [!IMPORTANT]
-> This feature is currently in preview. Integration with Visual Studio 2026 is coming but not completely available yet.
+> This feature is currently in preview. Some features are still being implemented, and integration with Visual Studio 2026 is not completely available yet.
 
 Aspire is an opinionated, cloud-ready stack for building observable, production-ready, distributed applications. The .NET MAUI integration with Aspire simplifies the development experience when building mobile and desktop applications that connect to local web services during development.
 
@@ -53,7 +53,7 @@ With Aspire integration, these complexities are handled automatically, allowing 
 To use Aspire with .NET MAUI, you need:
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or later
-- [Aspire](/dotnet/aspire/fundamentals/setup-tooling)
+- [Aspire 13](/dotnet/aspire/fundamentals/setup-tooling) or later
 - A .NET MAUI app targeting .NET 10 or later
 - One or more web services
 
