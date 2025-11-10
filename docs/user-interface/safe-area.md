@@ -114,37 +114,6 @@ The following screenshots show edge-to-edge content on Android and iOS:
 >
 > These iOS-specific configurations allow content to extend behind the navigation bar when using `SafeAreaEdges="None"`.
 
-In C#:
-
-```csharp
-var page = new ContentPage
-{
-    SafeAreaEdges = SafeAreaEdges.None,
-    Content = new Grid
-    {
-        SafeAreaEdges = SafeAreaEdges.None,
-        Children =
-        {
-            new Image { Source = "background.jpg", Aspect = Aspect.AspectFill },
-            new VerticalStackLayout
-            {
-                Padding = new Thickness(20),
-                VerticalOptions = LayoutOptions.End,
-                Children =
-                {
-                    new Label 
-                    { 
-                        Text = "Overlay content", 
-                        TextColor = Colors.White, 
-                        FontSize = 24 
-                    }
-                }
-            }
-        }
-    }
-};
-```
-
 ### Respect all safe areas
 
 To keep content within all safe areas:
