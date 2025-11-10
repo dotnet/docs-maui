@@ -80,20 +80,26 @@ The following screenshots show edge-to-edge content on Android and iOS:
 :::row-end:::
 
 > [!TIP]
-> **iOS Navigation Bar Transparency**: On iOS, for content to extend behind the navigation bar (Shell or NavigationPage), the navigation bar must have a transparent or semi-transparent background color. You also need to hide the navigation bar separator line.
+> **iOS Navigation Bar Transparency**: On iOS, for content to extend behind the navigation bar (Shell or NavigationPage), you must configure two things:
+>
+> 1. **Set a transparent or semi-transparent background color** on the navigation bar
+> 2. **Hide the navigation bar separator line** - Without this, a visible line will appear below the navigation bar
 >
 > **Shell:**
 > ```xaml
 > <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 >        Shell.BackgroundColor="#80000000"
 >        Shell.NavBarHasShadow="False">
+>     <!-- Shell.NavBarHasShadow="False" removes the shadow/separator line -->
 > ```
 >
 > **NavigationPage:**
 > ```xaml
 > xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
 > 
-> <NavigationPage ios:NavigationPage.HideNavigationBarSeparator="True">
+> <NavigationPage BarBackgroundColor="#80000000"
+>                 ios:NavigationPage.HideNavigationBarSeparator="True">
+>     <!-- ios:NavigationPage.HideNavigationBarSeparator="True" removes the separator line -->
 > ```
 >
 > ```csharp
@@ -101,11 +107,12 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > {
 >     BarBackgroundColor = Color.FromArgb("#80000000") // Semi-transparent black
 > };
+> // Remove the separator line below the navigation bar
 > Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.NavigationPage.SetHideNavigationBarSeparator(
 >     (NavigationPage)MainPage, true);
 > ```
 >
-> This iOS-specific requirement allows content to be visible behind the navigation bar when using `SafeAreaEdges="None"`.
+> These iOS-specific configurations allow content to extend behind the navigation bar when using `SafeAreaEdges="None"`.
 
 In C#:
 
