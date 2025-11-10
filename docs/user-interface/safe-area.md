@@ -94,6 +94,7 @@ The following screenshots show edge-to-edge content on Android and iOS:
 > ```
 >
 > **NavigationPage:**
+> 
 > ```xaml
 > xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
 > 
