@@ -310,7 +310,7 @@ To run your MAUI app with Aspire integration, you can use one of the following m
 **Command line:**
 
 1. Navigate to the App Host project directory
-2. Run `dotnet run` or `dotnet run --project YourApp.AppHost.csproj`, alternatively you can use the [Aspire CLI](dotnet/aspire/cli/overview) and run `aspire run`.
+2. Run `dotnet run` or `dotnet run --project YourApp.AppHost.csproj`, alternatively you can use the [Aspire CLI](/dotnet/aspire/cli/overview) and run `aspire run`.
 
 **VS Code:**
 
@@ -340,7 +340,7 @@ The Aspire dashboard provides powerful tools for monitoring and debugging your a
 - **Traces**: Distributed tracing across services
 - **Metrics**: Monitor performance and resource usage
 
-:::image type="content" source="media/aspire-integration/maui-aspire-http-trace.pngmedia/aspire-integration/maui-aspire-http-trace.png" alt-text="The Aspire dashboard showing trace information for an HTTP request going from the .NET MAUI app to the Web API." lightbox="media/aspire-integration/maui-aspire-http-trace.png":::
+:::image type="content" source="media/aspire-integration/maui-aspire-http-trace.png" alt-text="The Aspire dashboard showing trace information for an HTTP request going from the .NET MAUI app to the Web API." lightbox="media/aspire-integration/maui-aspire-http-trace.png":::
 
 ## Troubleshooting
 
