@@ -25,6 +25,7 @@ Device-independent units in .NET MAUI correspond directly to the native unit sys
 ### iOS - Points
 
 On iOS, device-independent units map to **points** (pt):
+
 - 1 device-independent unit = 1 iOS point
 - Points automatically scale based on device pixel density
 - iPhone standard density: 1 point = 1 pixel
@@ -33,6 +34,7 @@ On iOS, device-independent units map to **points** (pt):
 ### Android - Density-independent pixels
 
 On Android, device-independent units map to **density-independent pixels** (dp or dip):
+
 - 1 device-independent unit = 1 Android dp
 - Based on 160 DPI as the baseline density
 - Automatically scales: `pixels = dp × (dpi / 160)`
@@ -41,6 +43,7 @@ On Android, device-independent units map to **density-independent pixels** (dp o
 ### Windows - Device-independent pixels
 
 On Windows, device-independent units map to **device-independent pixels**:
+
 - 1 device-independent unit = 1 Windows device-independent pixel
 - Based on 96 DPI as the baseline
 - Scales with system DPI settings and display scale factor
@@ -48,6 +51,7 @@ On Windows, device-independent units map to **device-independent pixels**:
 ### macOS - Points
 
 On macOS, device-independent units map to **points**:
+
 - 1 device-independent unit = 1 macOS point
 - Similar to iOS, points scale based on display density
 - Standard displays: 1 point = 1 pixel
@@ -121,6 +125,7 @@ await button.ScaleTo(1.5, 250);
 ```
 
 This creates 16 device-independent units of space between items, which translates to:
+
 - **iOS**: 16 points
 - **Android**: 16 dp (approximately 1/10th inch on most devices)
 - **Windows**: 16 device-independent pixels
