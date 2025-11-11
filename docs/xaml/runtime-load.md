@@ -50,7 +50,9 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
  >   <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
 ></ItemGroup>
 >```
-
+>
+> You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+> If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
 ::: moniker-end
 
 ## Load XAML at runtime
