@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 08/20/2025
+ms.date: 11/11/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
