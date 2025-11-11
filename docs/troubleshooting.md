@@ -175,7 +175,7 @@ When building an app, .NET for iOS and .NET for Mac Catalyst use the following p
 1. Use the value of `xcode-select -p`.
 1. Use `/Applications/Xcode.app`.
 
-The recommended approach to specify the location of Xcode on yoru machine is to:
+The recommended approach to specify the location of Xcode on your machine is to:
 
 1. Delete *~/Library/Preferences/Xamarin/Settings.plist* or *~/Library/Preferences/maui/Settings.plist* files (if they exist).
 2. Either use `xcode-select --switch ...` to select the system's version of Xcode, or set the `DEVELOPER_DIR` environment variable to the path of Xcode. For more information, see [Build with a specific version of Xcode](~/ios/cli.md).
