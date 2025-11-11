@@ -33,27 +33,23 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
 ::: moniker range=">=net-maui-10.0"
 
 > [!IMPORTANT]
-> XAML source generation in .NET MAUI for .NET 10 is opt-in. To use it, set the XAML inflator to the source generation one. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+> As of .NET 10 you have the option to have XAML generate C# instead of loading it at runtime by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
 >
-> Example:
+> To enable XAML source generation for the whole project, add this to your project file:
 >
-> To enable XAML source generation for all XAML files in the project, add this to your project file.
+>```xml
+><PropertyGroup>
+>   <MauiXamlInflator>SourceGen</MauiXamlInflator>
+></PropertyGroup>
+>```
 >
-> ```xml
-> <ItemGroup>
->    <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
-> </ItemGroup>
-> ```
+> For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
 >
-> Similarly, you can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
->
-> To enable XAML source generation for the whole project, you can add this.
->
-> ```xml
-> <PropertyGroup>
->    <MauiXamlInflator>SourceGen</MauiXamlInflator>
-> </PropertyGroup>
-> ```
+>```xml
+><ItemGroup>
+ >   <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+></ItemGroup>
+>```
 
 ::: moniker-end
 
