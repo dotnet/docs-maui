@@ -1,7 +1,7 @@
 ---
 title: "Load XAML at runtime"
 description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
-ms.date: 10/08/2024
+ms.date: 08/19/2025
 ---
 
 # Load XAML at runtime
@@ -29,6 +29,31 @@ private void InitializeComponent()
 ```
 
 The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method to extract the XAML compiled binary (or its file) from the app package. After extraction, it initializes all of the objects defined in the XAML, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+
+::: moniker range=">=net-maui-10.0"
+
+> [!IMPORTANT]
+> As of .NET 10 you have the option to have XAML generate C# instead of loading it at runtime by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+>
+> To enable XAML source generation for the whole project, add this to your project file:
+>
+>```xml
+><PropertyGroup>
+>   <MauiXamlInflator>SourceGen</MauiXamlInflator>
+></PropertyGroup>
+>```
+>
+> For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
+>
+>```xml
+><ItemGroup>
+ >   <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+></ItemGroup>
+>```
+>
+> You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+> If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+::: moniker-end
 
 ## Load XAML at runtime
 

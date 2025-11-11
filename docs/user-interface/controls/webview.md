@@ -40,6 +40,8 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.WebView> must specify its <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
 
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
+
 ## Display a web page
 
 To display a remote web page, set the `Source` property to a `string` that specifies the URI:
