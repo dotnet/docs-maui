@@ -16,7 +16,7 @@ jobs:
         pull-requests: write
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@0d381219ddf674d61a7572ddd19d7941e271515c # v2.9.0
+      uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
       with:
         egress-policy: audit
 

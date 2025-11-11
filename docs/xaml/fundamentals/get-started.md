@@ -1,7 +1,7 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 08/30/2024
+ms.date: 08/19/2025
 ---
 
 # Get started with XAML
@@ -52,8 +52,6 @@ public partial class MainPage : ContentPage
 
 The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a [partial class](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) definition.
 
-When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
-
 At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `AppShell`. The `AppShell` class instantiates the first page of the app to be displayed, which is `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
 
 > [!NOTE]
@@ -79,6 +77,111 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
            TextColor="Blue" />
 </ContentPage>
 ```
+
+::: moniker range=">=net-maui-10.0"
+
+## XAML Source Generation
+
+> [!IMPORTANT]
+> This feature is opt-in. To use it, set the XAML inflator in your project file as per the instructions below. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+
+You have the option as of .NET 10 to have XAML generate C# instead of IL (intermediate language) by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+
+To enable XAML source generation for the whole project, add this to your project file:
+
+```xml
+<PropertyGroup>
+   <MauiXamlInflator>SourceGen</MauiXamlInflator>
+</PropertyGroup>
+```
+
+For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
+
+```xml
+<ItemGroup>
+    <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
+</ItemGroup>
+```
+
+You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+
+Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
+
+## Global XML namespace (preview)
+
+In .NET 10, you can optionally use a global XAML namespace to reduce boilerplate `xmlns:` declarations across your pages.
+
+> [!IMPORTANT]
+> This feature is in preview. To try it, enable preview features in your project file. Behavior and defaults may change.
+
+To opt in, add a `GlobalXmlns.cs` with assembly-level `XmlnsDefinition` attributes that map the global namespace to your CLR namespaces, and reference the `http://schemas.microsoft.com/dotnet/maui/global` namespace at the root of your XAML:
+
+```csharp
+// GlobalXmlns.cs
+using Microsoft.Maui.Controls;
+
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "MyApp.Views")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "MyApp.Controls")]
+```
+
+```xml
+<!-- Root element uses the global namespace -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         x:Class="MyApp.MainPage">
+        <TagView x:DataType="Tag" />
+        <!-- No xmlns prefixes for TagView/Tag when globally mapped -->
+        <!-- Add explicit xmlns prefixes only when disambiguation is needed -->
+    
+</ContentPage>
+```
+
+Optionally, set default prefixes:
+
+```csharp
+using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
+
+[assembly: XmlnsPrefix("MyApp.Controls", "controls")]
+```
+
+To enable the most streamlined experience (implicit default namespaces), add:
+
+```xml
+<PropertyGroup>
+    <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+</PropertyGroup>
+```
+
+Now your project will implicitly include these 2 namespaces which you’ve been accustomed to seeing in every XAML file since .NET MAUI first shipped.
+
+```xml
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+```
+
+> [!NOTE]
+> Because `x:` is used by the XAML inflator, you still need to use that prefix. With this change alone, your XAML for a view gets much tighter.
+
+**Before**
+
+```xml
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
+```
+
+**After**
+
+```xml
+<ContentPage x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
+```
+
+::: moniker-end
 
 From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
 

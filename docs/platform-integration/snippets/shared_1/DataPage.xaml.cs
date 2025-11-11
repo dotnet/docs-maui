@@ -12,6 +12,24 @@ public partial class DataPage : ContentPage
         await Clipboard.Default.SetTextAsync("This text was highlighted in the UI.");
     //</clipboard_set>
 
+    //<clipboard_android_toast>
+    private async void SetClipboardWithToastButton_Clicked(object sender, EventArgs e)
+    {
+        await Clipboard.Default.SetTextAsync("TestValue");
+#if ANDROID
+        // Show toast notification only on Android 12 and lower
+        // Android 13+ automatically shows system notifications
+        if (Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.Tiramisu)
+        {
+            Android.Widget.Toast.MakeText(
+                Microsoft.Maui.ApplicationModel.Platform.CurrentActivity ?? Android.App.Application.Context,
+                "Copied to clipboard",
+                Android.Widget.ToastLength.Short)?.Show();
+        }
+#endif
+    }
+    //</clipboard_android_toast>
+
     //<clipboard_read>
     private async void ReadClipboardButton_Clicked(object sender, EventArgs e)
     {
