@@ -342,7 +342,7 @@ For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net
 
 This release introduces significant improvements to SafeArea management:
 
-- **Enhanced SafeAreaEdges control**: Improved `SafeAreaEdges` property with refined `SafeAreaRegions` enum for precise safe area behavior control
+- **Enhanced SafeAreaEdges control**: Improved `SafeAreaEdges` property with refined `SafeAreaEdges` enum for precise safe area behavior control
 - **iOS SafeArea fixes**: Resolved issues with SafeArea management on iOS, including extra bottom space in ScrollView when using SafeAreaEdges
 - **Improved defaults**: Fixed safe area defaults to provide more consistent behavior across platforms
 
@@ -354,10 +354,10 @@ The `SafeAreaEdges` property is available on these controls:
 - **Border**: Border control
 - **ScrollView**: Scrollable content container
 
-The `SafeAreaRegions` enum provides granular control over safe area behavior:
+The `SafeAreaEdges` enum provides granular control over safe area behavior:
 
 ```csharp
-public enum SafeAreaRegions
+public enum SafeAreaEdges
 {
     None = 0,          // Edge-to-edge content (no safe area padding)
     SoftInput = 1,     // Always pad for keyboard/soft input
@@ -379,6 +379,8 @@ public enum SafeAreaRegions
     <!-- Grid respects keyboard but not other safe areas -->
 </Grid>
 ```
+
+For more information, see [Safe area layout](~/user-interface/safe-area.md).
 
 ## Secondary Toolbar Items
 
@@ -409,21 +411,19 @@ The secondary items are grouped into a pull-down menu with the system ellipsis i
 
 ### Source Generator
 
+> [!NOTE]
+> The below are the instructions for .NET MAUI 10 RC1 and newer. Before RC1 enabling source generation was different. Please update to RC1 and use the below instructions. Any other code you have implemented to enable source generation can now be removed.
+
 .NET MAUI now includes a source generator for XAML that improves build performance and enables better tooling support. This generator creates strongly-typed code for your XAML files at compile time, reducing runtime overhead and providing better IntelliSense support.
 
 The source generator decorates generated types with the `[Generated]` attribute for better tooling integration and debugging support.
 
-To enable XAML source generation, opt-in to preview features and then decorate your C# with the `XamlProcessing` directive.
+To enable XAML source generation, add the below property to the project file of your .NET MAUI project. Make sure to add it in a `PropertyGroup`, which can be a new one or an existing one in your csproj file.
 
 ```xml
 <PropertyGroup>
-  <EnablePreviewFeatures>true</EnablePreviewFeatures>
+  <MauiXamlInflator>SourceGen</MauiXamlInflator>
 </PropertyGroup>
-```
-
-```csharp
-[assembly: XamlProcessing(XamlInflator.SourceGen)]
-namespace MyApp;
 ```
 
 ### Implicit and Global XML namespaces
