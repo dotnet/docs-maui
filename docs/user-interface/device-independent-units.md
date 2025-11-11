@@ -1,7 +1,7 @@
 ---
 title: "Device-independent units"
 description: "Learn about device-independent units in .NET MAUI and how they relate to platform-specific unit systems like iOS points and Android density-independent pixels."
-ms.date: 12/19/2024
+ms.date: 11/11/2025
 ---
 
 # Device-independent units
