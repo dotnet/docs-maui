@@ -104,6 +104,7 @@ For more fine-grained control over what XAML files use XAML Source Generation, y
 ```
 
 You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
+If you want to opt-out on certain files or pattern, unset (or set to "") the Inflator to ensure the correct defaults (runtime inflation on Debug, XamlC on Release)
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
