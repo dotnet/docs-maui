@@ -19,4 +19,3 @@ If you have multiple versions of Xcode installed on your Mac, it's possible to s
         ```
 
     If you want to set this environment variable permanently, you can add the `export` command to your shell profile, such as *.zprofile*.
-
