@@ -35,6 +35,8 @@ Browser developer tools can be used to inspect .NET MAUI Blazor apps. For more i
 
 For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
 
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
+
 ## Create a .NET MAUI Blazor app
 
 A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor app** template:
