@@ -277,6 +277,8 @@
               href: user-interface/controls/index.md
             - name: Align and position controls
               href: user-interface/align-position.md
+            - name: Device-independent units
+              href: user-interface/device-independent-units.md
             - name: Handlers
               items:
                 - name: Overview
