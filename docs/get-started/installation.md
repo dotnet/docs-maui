@@ -295,6 +295,9 @@ To download and install an Android emulator on which to run your apps:
 
     For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
 
+    > [!IMPORTANT]
+    > **Windows ARM devices**: The Android emulator requires x64 architecture and is not supported on Windows ARM devices (such as Surface Pro X). If you're using a Windows ARM device, consider using a physical Android device for testing instead. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
+
 ### iOS and macOS
 
 To set up your Mac for .NET MAUI development on iOS and Mac Catalyst with Visual Studio Code:

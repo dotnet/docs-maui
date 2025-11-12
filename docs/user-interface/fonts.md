@@ -173,7 +173,7 @@ Label label = new Label
 ```
 
 > [!NOTE]
-> The `FontSize` value is measured in device-independent units. <!--For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).-->
+> The `FontSize` value is measured in device-independent units. For more information, see [Device-independent units](device-independent-units.md).
 
 ## Disable font auto scaling
 
@@ -230,7 +230,7 @@ For more information about providing platform-specific values, see [Device infor
 Font icons can be displayed by .NET MAUI apps by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object. This class, which derives from the <xref:Microsoft.Maui.Controls.ImageSource> class, has the following properties:
 
 - `Glyph` – the unicode character value of the font icon, specified as a `string`.
-- `Size` – a `double` value that indicates the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
+- `Size` – a `double` value that indicates the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size. For more information about device-independent units, see [Device-independent units](device-independent-units.md).
 - `FontFamily` – a `string` representing the font family to which the font icon belongs.
 - `Color` – an optional <xref:Microsoft.Maui.Graphics.Color> value to be used when displaying the font icon.
 
