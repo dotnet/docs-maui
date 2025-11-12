@@ -250,6 +250,9 @@ conceptualContent:
               itemType: concept
         - title: Data & cloud services
           links:
+            - text: Integrate a .NET MAUI app into an Aspire orchestration
+              url: /data-cloud/aspire-integration.md
+              itemType: tutorial
             - text: Build a .NET MAUI app with Azure Mobile Apps
               url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
               itemType: tutorial
