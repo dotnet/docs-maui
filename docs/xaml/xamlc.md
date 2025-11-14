@@ -16,12 +16,15 @@ ms.date: 11/14/2024
 
 .NET MAUI provides different XAML inflators that control how XAML is processed and converted into user interface elements:
 
-- **Default inflator** - Processes XAML at build time and embeds it as resources in the assembly. XAML is inflated at runtime.
-- **Source generation inflator** - Generates C# code at build time from XAML, which is then compiled into the assembly. This provides the best performance and smallest app size.
+- **Runtime** - XAML files are embedded as resources in the assembly and inflated at runtime. This is the default for Debug builds.
+- **XamlC** - XAML is validated at build time and converted to IL that's written to the assembly. This is the default for Release builds.
+- **SourceGen** - XAML is processed at build time and C# code is generated via source generation. This provides the best performance and smallest app size.
+
+By default, .NET MAUI uses **Runtime** inflator for Debug builds (for faster builds) and **XamlC** inflator for Release builds (for better runtime performance).
 
 ## Using source generation (recommended)
 
-Source generation is the recommended approach for processing XAML in .NET MAUI applications. It generates C# code from your XAML at build time, resulting in better performance and smaller app sizes.
+Source generation is the recommended approach for processing XAML in .NET MAUI applications. It generates C# code from your XAML at build time, resulting in better performance and smaller app sizes compared to both Runtime and XamlC inflators.
 
 To enable source generation for your entire project, add the following property to your project file:
 
@@ -31,7 +34,7 @@ To enable source generation for your entire project, add the following property 
 </PropertyGroup>
 ```
 
-With source generation enabled, your XAML files are processed at build time and converted to C# code, which is then compiled into your application. This eliminates the need for runtime XAML parsing and improves application startup performance.
+With source generation enabled, your XAML files are processed at build time and converted to C# code, which is then compiled into your application. This eliminates the need for runtime XAML parsing and produces more optimized code than XamlC.
 
 > [!TIP]
 > Source generation is particularly beneficial for release builds where performance and app size are critical. We recommend trying source generation in your projects to take advantage of these benefits.
@@ -46,19 +49,25 @@ In rare cases where you need to use a different inflator for specific XAML files
 ```xml
 <ItemGroup>
   <MauiXaml Update="Views\MySpecialPage.xaml">
-    <Inflator>Default</Inflator>
+    <Inflator>Runtime</Inflator>
   </MauiXaml>
 </ItemGroup>
 ```
 
-This allows you to use the default inflator for specific files while using source generation for the rest of your project.
+This allows you to use a different inflator for specific files while using source generation for the rest of your project. Valid values are:
+
+- `Runtime` - Inflate at runtime
+- `XamlC` - Compile to IL
+- `SourceGen` - Generate C# source code
+
+You can also specify multiple inflators separated by semicolons (e.g., `Runtime;SourceGen`) for testing purposes, though this is primarily used in the .NET MAUI test suite.
 
 > [!NOTE]
 > Per-file inflator selection should only be used in exceptional cases where specific XAML files have compatibility issues with source generation.
 
 ## Legacy XamlCompilation attribute
 
-The `XamlCompilationAttribute` class was used in earlier versions to control XAML compilation behavior. This attribute is now obsolete and should not be used in new projects. Instead, rely on the default XAML processing behavior or use the `MauiXamlInflator` property to enable source generation.
+The `XamlCompilationAttribute` class was used in earlier versions to control XAML compilation behavior. This attribute is now considered legacy and should not be used in new projects. Instead, rely on the default XAML processing behavior or configure the inflator using the `MauiXamlInflator` project property.
 
 If your project contains code like this:
 
@@ -76,4 +85,4 @@ public partial class MyPage : ContentPage
 }
 ```
 
-You can safely remove these attributes and trust the default XAML processing behavior, which is optimized for .NET MAUI applications.
+You can safely remove these attributes. The default XAML processing behavior is optimized for .NET MAUI applications, using Runtime inflator for Debug builds and XamlC inflator for Release builds. If you want better performance, configure `MauiXamlInflator` property instead of using the attribute.
