@@ -5,9 +5,11 @@ ms.date: 11/14/2025
 ---
 
 # XAML Processing
+
 .NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. As of net10, default inflation is runtime for debug builds, XamlC (XamlCompilation) for Release. We encourage you to try source generation and use it if it works for you. This will become the future in new projects, then in all projects, soon.
 
-## Xaml Compilation
+## XAML Compilation
+
 XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC). XAML compilation offers a number of benefits:
 
 - It performs compile-time checking of XAML, notifying you of any errors.
@@ -19,10 +21,11 @@ XAML compilation is enabled by default in .NET MAUI apps. For apps built using t
 > [!IMPORTANT]
 > Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](~/fundamentals/data-binding/compiled-bindings.md).
 
-## Xaml runtime inflation
+## XAML runtime inflation
+
 XAML can be inflated at Runtime using reflection. It has advantages, like allowing HotReload scenario, shortening build times, allow the report of diagnostics to IDE.
 
-## Xaml Sourcegeneration
+## XAML Sourcegeneration
 
 Starting with net10, XAML can be transformed into C# code at compilaiton time. It provides the following benefits:
 
@@ -36,7 +39,7 @@ This is the recommended way going further. It will be enabled by default in the 
 
 We no longer recommend using `[XamlCompilation]` attribute to enable or disable per file compilation.
 
-You can enable XAML source generation at the project level, by setting 
+You can enable XAML source generation at the project level, by setting the `MauiXamlInflator` value to `SourceGen` in your csproj file as shown here:
 
 ```xml
 <MauiXamlInflator>SourceGen</MauiXamlInflator>
@@ -55,6 +58,7 @@ You can revert to the default per file (or use wildcards) or force another infla
 ```
 
 There other metadata you can set to instruct xaml sourcegenerator
+
 ```xml
 <ItemGroup>
     <MauiXaml Update="MyFile.xaml" Inflator="SourceGen" NoWarn="0612;0618" />   <!-- prevent the compiler to fail if the xaml use deprecated API -->
