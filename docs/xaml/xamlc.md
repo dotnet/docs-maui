@@ -64,4 +64,3 @@ There other metadata you can set to instruct xaml sourcegenerator
     <MauiXaml Update="MyFile.xaml" Inflator="SourceGen" NoWarn="0612;0618" />   <!-- prevent the compiler to fail if the xaml use deprecated API -->
 </ItemGroup>
 ```
-
