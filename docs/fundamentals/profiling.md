@@ -77,9 +77,7 @@ See the [`dotnet-trace` documentation][dotnet-trace] for further details about i
 [dotnet-dsrouter]: /dotnet/core/diagnostics/dotnet-dsrouter
 [dotnet-gcdump]: /dotnet/core/diagnostics/dotnet-gcdump
 
-## Using `dotnet-trace` on Android
-
-### Using `dotnet-trace` with the `--dsrouter` option
+## Using `dotnet-trace`
 
 Starting with version 9.0.652701, `dotnet-trace` includes a
 `--dsrouter` option that eliminates the need to run `dotnet-dsrouter`
@@ -133,6 +131,8 @@ varioous `Diagnostic` MSBuild properties:
 dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
+*NOTE: `-f net10.0-android` is needed for projects with multiple `$(TargetFrameworks)`.*
+
 For emulators, `-p:DiagnosticAddress` should specify an IP address
 of 10.0.2.2:
 
@@ -155,19 +155,10 @@ with `dotnet-trace` and other tools.
 
 [nosuspend]: /dotnet/core/diagnostics/dotnet-dsrouter#collect-a-trace-using-dotnet-trace-from-a-net-application-running-on-android
 
-### Running the .NET for Android Application
+### Running your Application and Saving a Trace
 
-`$(AndroidEnableProfiler)` must be set to `true` as it includes the
-Mono diagnostic component in the application. This component is the
-`libmono-component-diagnostics_tracing.so` native library.
-
-```sh
-dotnet build -f net9.0-android -t:Run -c Release -p:AndroidEnableProfiler=true
-```
-
-*NOTE: `-f net9.0-android` is only needed for projects with multiple `$(TargetFrameworks)`.*
-
-Once the application is installed and started, `dotnet-trace` should show something similar to:
+Once the application is installed and started, `dotnet-trace --dsrouter ...`
+should show something similar to:
 
 ```
 Process        : $HOME/.dotnet/tools/dotnet-dsrouter
@@ -192,17 +183,19 @@ directory.
 ## Running `dotnet-gcdump`
 
 To get memory information from an Android application, you need all
-the above setup for `adb shell`, `dsrouter`, etc. except you need to
-simply use `dotnet-gcdump` instead of `dotnet-trace`:
+the above setup for building your application.
+
+However, you can simply use the same `--dsrouter` switch as you would
+for `dotnet-trace`:
 
 ```sh
-dotnet-gcdump collect -p 38604
+dotnet-gcdump collect --dsrouter android
 ```
 
 This will create a `*.gcdump` file in the current directory. You can
 open this file on Windows in Visual Studio or [PerfView][perfview].
 
-Note that using `nosuspend` in the `debug.mono.profile` property is
+Note that using the `-p:DiagnosticSuspend=false` MSBuild property is
 useful, as it won't block application startup.
 
 [perfview]: https://github.com/microsoft/perfview
