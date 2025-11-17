@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 04/15/2025
+ms.date: 09/19/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -39,6 +39,10 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.WebView> must specify its <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
+
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
+
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
 
 ## Display a web page
 
@@ -234,6 +238,27 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 
 ::: moniker range=">=net-maui-10.0"
 
+## Enable or disable JavaScript on Android
+
+On Android, JavaScript execution is enabled by default for <xref:Microsoft.Maui.Controls.WebView>. You can toggle this behavior at runtime using the Android-specific platform configuration APIs:
+
+```csharp
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+
+// Disable JavaScript
+webView.On<Android>().SetJavaScriptEnabled(false);
+
+// Re-enable JavaScript
+webView.On<Android>().SetJavaScriptEnabled(true);
+
+// Query current state
+bool isEnabled = webView.On<Android>().IsJavaScriptEnabled();
+```
+
+> [!NOTE]
+> Disabling JavaScript may break functionality on sites that rely on it. Additionally, calls to <xref:Microsoft.Maui.Controls.WebView.EvaluateJavaScriptAsync%2A> won't execute scripts while JavaScript is disabled.
+
 ## Play video full screen on Android
 
 When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can be played fullscreen by including `allowfullscreen` in the `iframe`:
@@ -428,12 +453,15 @@ The `WebView.EvaluateJavaScriptAsync` method evaluates the JavaScript that's spe
 <body>
 <script type="text/javascript">
 function factorial(num) {
-        if (num === 0 || num === 1)
-            return 1;
-        for (var i = num - 1; i >= 1; i--) {
-            num *= i;
-        }
-        return num;
+    if (num === 0 || num === 1) {
+        return 1;
+    }
+    
+    for (var i = num - 1; i >= 1; i--) {
+        num *= i;
+    }
+    
+    return num;
 }
 </script>
 </body>
@@ -551,3 +579,14 @@ await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
 ```
 
 For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).
+
+::: moniker range=">=net-maui-10.0"
+
+## Intercept web requests
+
+For hybrid scenarios that host web content and need to intercept requests (for example, to modify headers or provide local responses), see the interception guidance for:
+
+- [HybridWebView](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#intercept-web-requests)
+- [BlazorWebView](~/user-interface/controls/blazorwebview.md?view=net-maui-10.0&preserve-view=true#intercept-web-requests)
+
+::: moniker-end

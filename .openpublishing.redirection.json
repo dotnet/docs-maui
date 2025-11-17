@@ -97,6 +97,18 @@
       "redirect_url": "/dotnet/maui/whats-new/dotnet-8"
     },
     {
+      "source_path": "docs/whats-new/dotnet-docs-maui-mod0.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-mod1.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/whats-new/dotnet-docs-maui-mod2.md",
+      "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
       "source_path": "docs/fundamentals/windows.md",
       "redirect_url": "/dotnet/maui/user-interface/controls/window"
     },

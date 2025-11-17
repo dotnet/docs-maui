@@ -1,13 +1,16 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 05/13/2025
+ms.date: 11/11/2025
 ---
 
 # What's new in .NET MAUI for .NET 10
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
+- [.NET MAUI in .NET 10 Release Candidate 1](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/rc1/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 7](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview7/dotnetmaui.md)
+- [.NET MAUI in .NET 10 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview6/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview5/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview4/dotnetmaui.md)
 - [.NET MAUI in .NET 10 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/10.0/preview/preview3/dotnetmaui.md)
@@ -18,133 +21,6 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 10 is to improve pro
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 10, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
-
-## XAML with *implicit & global* XML namespaces (Preview 5)
-
-.NET 10 Preview 5 introduces a cleaner **XML-namespace experience** for .NET MAUI that wipes out nearly all of the boiler-plate `xmlns:` lines you used to copy-paste at the top of every XAML file.
-
-| What changed                         | How it works                                                                                                                                                                 |
-|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Project-wide “global” namespaces** | `http://schemas.microsoft.com/dotnet/maui/global` is a new xmlns that you can use to aggregate multiple xmlns together. By default, it contains the maui xmlns (sourcegenerated), {YourNamespace}, and {YourNamespace}.Pages |
-| **Backward compatible**              | Existing explicit `xmlns:` mappings still compile; add them only when you need to disambiguate duplicate type names.                                                        |
-| **Implicit default namespace** (opt-in)      | When opting in, the compiler now injects `http://schemas.microsoft.com/dotnet/2021/maui` automatically, so you can drop root `xmlns` and `xmlns:x` lines.                               |
-
-### Before vs. after
-
-```xml
-<!-- .NET 8 style -->
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:models="clr-namespace:MyApp.Models"
-        xmlns:controls="clr-namespace:MyApp.Controls"
-        x:Class="MyApp.MainPage">
-    <controls:TagView x:DataType="models:Tag" />
-</ContentPage>
-````
-
-```xml
-<!-- .NET 10 Preview 5 -->
-<ContentPage 
-    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MyApp.MainPage">
-    <TagView x:DataType="Tag" />
-</ContentPage>
-```
-
-Changes:
-
-- No need to declare the `xmlns:models` or `xmlns:controls` because they are declared globally in a `GlobalXmlns.cs` file
-- No prefixes required for `TagView` or `Tag`
-
-```xml
-<!-- .NET 10 Preview 5 plus opt-in -->
-<ContentPage x:Class="MyApp.MainPage">
-    <TagView x:DataType="Tag" />
-</ContentPage>
-```
-
-Changes:
-
-- No need to declare `xmlns` or `xmlns:x` since they are implicitly added to the global namespace
-
-### How to adopt
-
-Create a new project to see the streamlined experience, or upgrade your existing project with the details below.
-
-1. **Upgrade** the project to `net10.0-` target frameworks.
-2. **Add** one assembly-level file (e.g. `GlobalXmlns.cs`) that maps your CLR namespaces.
-3. **Delete** redundant `xmlns:` lines and prefixes from your XAML.
-   IntelliSense and Hot Reload keep working—just with much cleaner markup.
-
-```xml
-<PropertyGroup>
-    <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
-    <EnablePreviewFeatures>true</EnablePreviewFeatures>
-</PropertyGroup>
-```
-
-### Sample `GlobalXmlns.cs`
-
-```csharp
-[assembly: XmlnsDefinition(
-    "http://schemas.microsoft.com/dotnet/maui/global",
-    "MyApp.Views")]
-[assembly: XmlnsDefinition(
-    "http://schemas.microsoft.com/dotnet/maui/global",
-    "MyApp.Controls")]
-[assembly: XmlnsDefinition(
-    "http://schemas.microsoft.com/dotnet/maui/global",
-    "MyApp.Converters")]
-```
-
-If you prefer to continue using the xmlns prefixes in your XAML, you can provide default prefixes for them in the `GlobalXmlns.cs` as well.
-
-```csharp
-using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
-
-[assembly: XmlnsPrefix("MyApp.Controls","controls")]
-```
-
-Use them as before.
-
-```xml
-<ContentPage x:Class="MyApp.MainPage">
-    <controls:TagView x:DataType="Tag" />
-</ContentPage>
-```
-
-> ✨ **Tip:** You can register third-party libraries here too!
-
-## Intercept Web Requests
-
-The `HybridWebView` now allows you to intercept when the browser requests a web resource in order to take action before it executes, such as adding a header to the request. The do this, add a listener to the `WebResourceRequested` event.
-
-```xml
-<HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
-```
-
-```csharp
-private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebResourceRequestedEventArgs e)
-{
-  // NOTES:
-  // * This method MUST be synchronous, as it is called from the WebView's thread.
-  // * This method MUST return a response (even if it is not yet complete), otherwise the 
-  //   WebView may freeze or return a error response.
-  // * The response must be set using the SetResponse method of the event args.
-
-  // Only handle requests for the specific image URL
-  if (!e.Uri.ToString().Contains("sample-image.png"))
-    return;
-
-  // Prevent the default behavior of the web view
-  e.Handled = true;
-
-  // Return the stream or task of stream that contains the content
-  // NOTE: the method is NOT awaited, the WebView will continue to load the content
-  e.SetResponse(200, "OK", "image/png", GetStreamAsync());
-  }
-```
 
 ## .NET Aspire integration
 
@@ -177,9 +53,21 @@ For more information, see [Basic animation](~/user-interface/animation/basic.md?
 
 .NET MAUI in .NET 10 includes control enhancements and deprecations.
 
+### Accelerator
+
+Removed from Microsoft.Maui.Controls. Use `KeyboardAccelerator`.
+
+### ClickGestureRecognizer
+
+Removed. Use `TapGestureRecognizer`.
+
 ### CollectionView and CarouselView
 
 .NET MAUI in .NET 9 included two optional handlers on iOS and Mac Catalyst that brought performance and stability improvements to <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>. In .NET 10, these are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.CarouselView>.
+
+### Compatibility.Layout
+
+This is now removed from templates and releases. Use .NET MAUI layouts.
 
 ### Editor and Entry on Android
 
@@ -191,12 +79,94 @@ On Android, the <xref:Microsoft.Maui.Controls.Editor> and <xref:Microsoft.Maui.C
 
 By default, any exceptions that are thrown by your JavaScript code will be sent to .NET, where they're re-thrown as .NET exceptions.
 
+In addition, you can customize initialization and access platform web views to tweak settings when the native view is ready (for example, use `RunAfterInitialize` on Windows or adjust `WKWebView` configuration on iOS/Mac Catalyst). For details, see [Customize initialization and access platform web views](~/user-interface/controls/hybridwebview.md?view=net-maui-10.0&preserve-view=true#customize-initialization-and-access-platform-web-views).
+
+#### New Events
+
+Adds initialization events to `HybridWebView` following the same pattern as `BlazorWebView`, enabling platform-specific customization before and after initialization.
+
+- `WebViewInitializing` - Fired before `WebView` creation, allows configuration of platform-specific initialization parameters
+- `WebViewInitialized` - Fired after `WebView` creation, provides access to the native `WebView` instance and settings
+
+### Intercept Web Requests
+
+You can now intercept and respond to web requests made from `BlazorWebView` and `HybridWebView`. This allows for scenarios such as modifying headers, redirecting requests, or supplying local responses.
+
+```csharp
+webView.WebResourceRequested += (s, e) =>
+{
+    if (e.Uri.ToString().Contains("api/secure"))
+    {
+        e.Handled = true;
+        e.SetResponse(200, "OK", "application/json", GetCustomStream());
+    }
+};
+```
+
+Another example from XAML:
+
+```xml
+<HybridWebView WebResourceRequested="HybridWebView_WebResourceRequested" />
+```
+
+```csharp
+private void HybridWebView_WebResourceRequested(object sender, HybridWebViewWebResourceRequestedEventArgs e)
+{
+  // NOTES:
+  // * This method MUST be synchronous, as it is called from the WebView's thread.
+  // * This method MUST return a response (even if it is not yet complete), otherwise the 
+  //   WebView may freeze or return a error response.
+  // * The response must be set using the SetResponse method of the event args.
+
+  // Only handle requests for the specific image URL
+  if (!e.Uri.ToString().Contains("sample-image.png"))
+    return;
+
+  // Prevent the default behavior of the web view
+  e.Handled = true;
+
+  // Return the stream or task of stream that contains the content
+  // NOTE: the method is NOT awaited, the WebView will continue to load the content
+  e.SetResponse(200, "OK", "image/png", GetStreamAsync());
+  }
+```
+
 ### ListView
 
 <xref:Microsoft.Maui.Controls.ListView> has been deprecated, along with <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.ImageCell>, <xref:Microsoft.Maui.Controls.SwitchCell>, <xref:Microsoft.Maui.Controls.TextCell>, and <xref:Microsoft.Maui.Controls.ViewCell>. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Controls.Cell> hasn't been deprecated because it's currently used for source generation. However, it should be considered deprecated.
+
+### Page
+
+The `IsBusy` property is marked obsolete. In .NET 10 we recommend using <xref:Microsoft.Maui.Controls.ActivityIndicator> (or a similar UX) for page or view-specific busy states and avoiding long-lived global busy indicators. For guidance, see [ContentPage](~/user-interface/pages/contentpage.md?view=net-maui-10.0&preserve-view=true).
+
+### Picker
+
+Programmatically control picker state with new Open/Close API.
+
+In addition, <xref:Microsoft.Maui.Controls.DatePicker> and <xref:Microsoft.Maui.Controls.TimePicker> support nullable selection in .NET 10. This enables clearing values and binding to nullable types:
+
+- <xref:Microsoft.Maui.Controls.DatePicker.Date> is now <xref:System.DateTime?>; <xref:Microsoft.Maui.Controls.DatePicker.MinimumDate> and <xref:Microsoft.Maui.Controls.DatePicker.MaximumDate> are also nullable.
+- <xref:Microsoft.Maui.Controls.TimePicker.Time> is now <xref:System.TimeSpan?>.
+
+For examples and platform notes, see [DatePicker](~/user-interface/controls/datepicker.md?view=net-maui-10.0&preserve-view=true) and [TimePicker](~/user-interface/controls/timepicker.md?view=net-maui-10.0&preserve-view=true).
+
+## RefreshView
+
+Added `IsRefreshEnabled` property to be distinct from `IsEnabled` and make the behavior consistent across platforms.
+
+```xml
+<RefreshView IsRefreshEnabled="false">
+    <!-- Login form remains usable -->
+    <StackLayout>
+        <Entry Placeholder="Username" />
+        <Entry Placeholder="Password" />
+        <Button Text="Login" />
+    </StackLayout>
+</RefreshView>
+```
 
 ### SearchBar
 
@@ -226,21 +196,63 @@ For more information, see [Switch](~/user-interface/controls/switch.md?view=net-
 
 <xref:Microsoft.Maui.Controls.TableView> has been deprecated. Instead, <xref:Microsoft.Maui.Controls.CollectionView> should be used.
 
+### Vibration and HapticFeedback
+
+Added `IsSupported` to check platform support.
+
 ### WebView on Android
 
 When videos are hosted in a <xref:Microsoft.Maui.Controls.WebView> on Android, they can now be played fullscreen by including `allowfullscreen` in the `iframe`.
 
 For more information, see [Play video fullscreen](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true#play-video-full-screen-on-android).
 
+You can also programmatically enable or disable JavaScript execution on Android with a .NET 10 platform-specific API. For details and a code example, see [WebView](~/user-interface/controls/webview.md?view=net-maui-10.0&preserve-view=true).
+
+### SearchHandler
+
+<xref:Microsoft.Maui.Controls.SearchHandler> adds APIs to programmatically show or hide the soft keyboard, making it easier to control focus and user input flow:
+
+- `ShowSoftInputAsync`
+- `HideSoftInputAsync`
+
+For examples and platform notes, see [Search](~/fundamentals/shell/search.md?view=net-maui-10.0&preserve-view=true). If you use reflection-based properties such as `DisplayMemberName`, review the [trimming guidance](~/deployment/trimming.md?view=net-maui-10.0&preserve-view=true) for feature switches and linker configuration.
+
+## Shell
+
+.NET 10 introduces a toggle to control the shell navigation bar visibility animation. Use `Shell.NavBarVisibilityAnimationEnabled` to enable or disable the animation when the navigation bar shows or hides. See [Shell appearance and behavior](~/fundamentals/shell/index.md?view=net-maui-10.0&preserve-view=true).
+
+## Diagnostics
+
+We've added comprehensive diagnostics and metrics tracking for .NET MAUI applications, focusing on layout performance monitoring with an extensible architecture for future observability needs.
+
+**Core Diagnostics Infrastructure:**
+
+- **ActivitySource**: `"Microsoft.Maui"` - Tracks layout operations with detailed timing
+- **Metrics**: `"Microsoft.Maui"` - Records counters and histograms for performance analysis
+- **Feature Switch**: `System.Diagnostics.Metrics.Meter.IsSupported` - Runtime enable/disable for AOT/trimming
+
+**Layout Performance Tracking:**
+
+- Instruments `IView.Measure()` and `IView.Arrange()` operations
+- Records timing data and operation counts with rich contextual tags
+- Zero-allocation struct-based instrumentation using `using` pattern
+
+| Metric Name | Type | Description |
+|-------------|------|-------------|
+| `maui.layout.measure_count` | Counter | Number of measure operations |
+| `maui.layout.measure_duration` | Histogram | Time spent measuring (ns) |
+| `maui.layout.arrange_count` | Counter | Number of arrange operations |
+| `maui.layout.arrange_duration` | Histogram | Time spent arranging (ns) |
+
+See [pull request #31058](https://github.com/dotnet/maui/pull/31058) for more details.
+
+## Window
+
+Added ability to enable/disable the minimize and maximize buttons on Windows.
+
 ## MessagingCenter
 
 <xref:Microsoft.Maui.Controls.MessagingCenter> has been made internal in .NET 10. Usage of it in your code can be replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) NuGet package. For more information, see [Messenger](/windows/communitytoolkit/mvvm/messenger).
-
-## Shadows
-
-In .NET 10, the `ShadowTypeConverter` class, in the `Microsoft.Maui.Controls` namespace, is now public.
-
-For more information about how shadows can be specified using formatted strings, see [Shadow](~/user-interface/shadow.md).
 
 ## Platform features
 
@@ -299,6 +311,29 @@ The following `MauiWebViewNavigationDelegate` methods, in the `Microsoft.Maui.Pl
 - `DidFailProvisionalNavigation`
 - `DidFinishNavigation`
 
+### MediaPicker
+
+#### EXIF
+
+The `MediaPicker` now automatically handles EXIF information when working with images:
+
+- **Auto-rotate images**: Images are automatically rotated based on their EXIF orientation data
+- **Preserve EXIF information**: Original EXIF metadata is preserved when using MediaPicker
+
+This ensures that images appear correctly oriented regardless of how they were captured or stored on the device.
+
+#### Pick by size
+
+The `MediaPicker` has been extended with support for selecting multiple files and compressing images directly from the API using `MaximumWidth` and `MaximumHeight` parameters.
+
+```csharp
+var result = await MediaPicker.PickMultipleAsync(new MediaPickerOptions
+{
+    MaximumWidth = 1024,
+    MaximumHeight = 768
+});
+```
+
 ### Text to speech
 
 The <xref:Microsoft.Maui.Media.SpeechOptions> class gains a `Rate` property that controls the speech rate when using <xref:Microsoft.Maui.Media.TextToSpeech> functionality. For more information, see [Text-to-Speech settings](~/platform-integration/device-media/text-to-speech.md?view=net-maui-10.0&preserve-view=true#settings).
@@ -312,6 +347,191 @@ The <xref:Microsoft.Maui.Authentication.WebAuthenticator> gains a <xref:Microsof
 The `DisplayAlert` and `DisplayActionSheet` methods have been deprecated and replaced with the `DisplayAlertAsync` and `DisplayActionSheetAsync` methods.
 
 For more information, see [Display pop-ups](~/user-interface/pop-ups.md?view=net-maui-10.0&preserve-view=true).
+
+## SafeArea Enhancements
+
+This release introduces significant improvements to SafeArea management:
+
+- **Enhanced SafeAreaEdges control**: Improved `SafeAreaEdges` property with refined `SafeAreaEdges` enum for precise safe area behavior control
+- **iOS SafeArea fixes**: Resolved issues with SafeArea management on iOS, including extra bottom space in ScrollView when using SafeAreaEdges
+- **Improved defaults**: Fixed safe area defaults to provide more consistent behavior across platforms
+
+The `SafeAreaEdges` property is available on these controls:
+
+- **Layout**: Base layout class (inherited by `Grid`, `StackLayout`, `AbsoluteLayout`, `FlexLayout`, etc.)
+- **ContentView**: Content view container
+- **ContentPage**: Main page type
+- **Border**: Border control
+- **ScrollView**: Scrollable content container
+
+The `SafeAreaEdges` enum provides granular control over safe area behavior:
+
+```csharp
+public enum SafeAreaEdges
+{
+    None = 0,          // Edge-to-edge content (no safe area padding)
+    SoftInput = 1,     // Always pad for keyboard/soft input
+    Container = 2,     // Flow under keyboard, stay out of bars/notch  
+    Default = 4,       // Platform default behavior
+    All = int.MaxValue // Obey all safe area insets
+}
+
+// Usage examples
+<ContentPage SafeAreaEdges="Container">
+    <!-- Content flows under keyboard but respects bars/notch -->
+</ContentPage>
+
+<ScrollView SafeAreaEdges="None">
+    <!-- Edge-to-edge scrolling content -->
+</ScrollView>
+
+<Grid SafeAreaEdges="SoftInput">
+    <!-- Grid respects keyboard but not other safe areas -->
+</Grid>
+```
+
+For more information, see [Safe area layout](~/user-interface/safe-area.md).
+
+## Secondary Toolbar Items
+
+iOS and macOS now support secondary toolbar items, providing better alignment with platform conventions:
+
+- **Modern iOS pattern**: Uses iOS 13+ APIs with pull-down menu design following iOS Human Interface Guidelines
+- **Automatic detection**: Toolbar items with `Order="Secondary"` are automatically grouped into a secondary menu
+- **Priority ordering**: Items are ordered within the secondary menu based on their `Priority` property
+- **Platform positioning**: Menu appears on the far right (or left when RTL is enabled)
+- **Customizable icon**: Developers can override the default ellipsis icon through a protected virtual method
+
+```xml
+<ContentPage.ToolbarItems>
+    <!-- Primary toolbar items appear directly in the toolbar -->
+    <ToolbarItem Text="Save" Order="Primary" Priority="0" />
+    <ToolbarItem Text="Edit" Order="Primary" Priority="1" />
+    
+    <!-- Secondary toolbar items appear in the overflow menu -->
+    <ToolbarItem Text="Share" Order="Secondary" Priority="0" />
+    <ToolbarItem Text="Delete" Order="Secondary" Priority="1" />
+    <ToolbarItem Text="Settings" Order="Secondary" Priority="2" />
+</ContentPage.ToolbarItems>
+```
+
+The secondary items are grouped into a pull-down menu with the system ellipsis icon (`UIImage.GetSystemImage("ellipsis.circle")`) by default. When the menu is opened and an item's properties change, the menu automatically rebuilds and closes to reflect the updates.
+
+## XAML
+
+### Source Generator
+
+> [!NOTE]
+> The below are the instructions for .NET MAUI 10 RC1 and newer. Before RC1 enabling source generation was different. Please update to RC1 and use the below instructions. Any other code you have implemented to enable source generation can now be removed.
+
+.NET MAUI now includes a source generator for XAML that improves build performance and enables better tooling support. This generator creates strongly-typed code for your XAML files at compile time, reducing runtime overhead and providing better IntelliSense support.
+
+The source generator decorates generated types with the `[Generated]` attribute for better tooling integration and debugging support.
+
+To enable XAML source generation, add the below property to the project file of your .NET MAUI project. Make sure to add it in a `PropertyGroup`, which can be a new one or an existing one in your csproj file.
+
+```xml
+<PropertyGroup>
+  <MauiXamlInflator>SourceGen</MauiXamlInflator>
+</PropertyGroup>
+```
+
+### Implicit and Global XML namespaces
+
+.NET 10 Preview 5 introduces a cleaner **XML-namespace experience** for .NET MAUI that wipes out nearly all of the boiler-plate `xmlns:` lines you used to copy-paste at the top of every XAML file.
+
+| What changed                         | How it works                                                                                                                                                                 |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Project-wide “global” namespaces** | `http://schemas.microsoft.com/dotnet/maui/global` is a new xmlns that you can use to aggregate multiple xmlns together. By default, it contains the maui xmlns (sourcegenerated), {YourNamespace}, and {YourNamespace}.Pages |
+| **Backward compatible**              | Existing explicit `xmlns:` mappings still compile; add them only when you need to disambiguate duplicate type names.                                                        |
+| **Implicit default namespace** (opt-in)      | When opting in, the compiler now injects `http://schemas.microsoft.com/dotnet/2021/maui` automatically, so you can drop root `xmlns` and `xmlns:x` lines.                               |
+
+#### Before vs. after
+
+```xml
+<!-- .NET 8 style -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:models="clr-namespace:MyApp.Models"
+        xmlns:controls="clr-namespace:MyApp.Controls"
+        x:Class="MyApp.MainPage">
+    <controls:TagView x:DataType="models:Tag" />
+</ContentPage>
+````
+
+```xml
+<!-- .NET 10 Preview 5 -->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.MainPage">
+    <TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+Changes:
+
+- No need to declare the `xmlns:models` or `xmlns:controls` because they are declared globally in a `GlobalXmlns.cs` file
+- No prefixes required for `TagView` or `Tag`
+
+```xml
+<!-- .NET 10 Preview 5 plus opt-in -->
+<ContentPage x:Class="MyApp.MainPage">
+    <TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+Changes:
+
+- No need to declare `xmlns` or `xmlns:x` since they are implicitly added to the global namespace
+
+#### How to adopt
+
+Create a new project to see the streamlined experience, or upgrade your existing project with the details below.
+
+1. **Upgrade** the project to `net10.0-` target frameworks.
+2. **Add** one assembly-level file (e.g. `GlobalXmlns.cs`) that maps your CLR namespaces.
+3. **Delete** redundant `xmlns:` lines and prefixes from your XAML.
+   IntelliSense and Hot Reload keep working—just with much cleaner markup.
+
+```xml
+<PropertyGroup>
+    <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+</PropertyGroup>
+```
+
+#### Sample `GlobalXmlns.cs`
+
+```csharp
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Views")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Controls")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "MyApp.Converters")]
+```
+
+If you prefer to continue using the xmlns prefixes in your XAML, you can provide default prefixes for them in the `GlobalXmlns.cs` as well.
+
+```csharp
+using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
+
+[assembly: XmlnsPrefix("MyApp.Controls","controls")]
+```
+
+Use them as before.
+
+```xml
+<ContentPage x:Class="MyApp.MainPage">
+    <controls:TagView x:DataType="Tag" />
+</ContentPage>
+```
+
+> ✨ **Tip:** You can register third-party libraries here too!
 
 ## XAML markup extensions
 
@@ -345,9 +565,29 @@ For more information, see [Display font icons](~/user-interface/fonts.md#display
 
 .NET for Android in .NET 10 adds support for API 36 and JDK 21, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
+- [.NET for Android 10 Release Candidate 1](https://github.com/dotnet/android/releases/tag/36.0.0-rc.1.285)
+- [.NET for Android 10 Preview 7](https://github.com/dotnet/android/releases/tag/36.0.0-preview.7.229)
+- [.NET for Android 10 Preview 6](https://github.com/dotnet/android/releases/tag/36.0.0-preview.6.169)
+- [.NET for Android 10 Preview 5](https://github.com/dotnet/android/releases/tag/36.0.0-preview.5.116)
+- [.NET for Android 10 Preview 4](https://github.com/dotnet/android/releases/tag/36.0.0-preview.4.80)
 - [.NET for Android 10 Preview 3](https://github.com/dotnet/android/releases/tag/36.0.0-preview.3.22)
 - [.NET for Android 10 Preview 2](https://github.com/dotnet/android/releases/tag/35.99.0-preview.2.205)
 - [.NET for Android 10 Preview 1](https://github.com/dotnet/android/releases/tag/35.99.0-preview.1.140)
+
+### (Experimental) CoreCLR
+
+Enables Android apps to run on the CoreCLR runtime (instead of Mono). To use it, add the following to your project file for Android builds:
+
+```xml
+<!-- Use CoreCLR on Android -->
+<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <UseMonoRuntime>false</UseMonoRuntime>
+</PropertyGroup>
+```
+
+Please try this in your applications and report any issues; when filing feedback, state that you are using UseMonoRuntime=false. Expect that application size is currently larger than with Mono and that debugging and some runtime diagnostics are not fully functional yet; these areas are actively being improved. This is an experimental feature and not intended for production use.
+
+A detailed list of Android changes can be found on the [dotnet/android GitHub releases](https://github.com/dotnet/android/releases/).
 
 ### Android 16 (Baklava) beta 3 bindings
 
@@ -442,8 +682,27 @@ Setting the `ApplicationAttribute.ManageSpaceActivity` property doesn't result i
 - Mac Catalyst: 18.2
 - macOS: 15.2
 
+Preview 7 release includes Xcode 26 Beta 4 support for targeting .NET 9. We will include builds for .NET 10 in a subsequent release. To use these new bindings, target `net9.0-ios26` and/or `net9.0-maccatalyst26` and include `<NoWarn>$(NoWarn);XCODE_26_0_PREVIEW</NoWarn>` in your project file.
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-ios26</TargetFramework>
+    <NoWarn>$(NoWarn);XCODE_26_0_PREVIEW</NoWarn>
+    <!-- rest of your configuration -->
+  </PropertyGroup>
+</Project>
+```
+
+> **Note** Previously there was an issue with .NET MAUI `Shell` that prevents it from rendering on iOS 26. This has been fixed for .NET MAUI 9 Service Release 11 and .NET MAUI 10 RC1.
+
 For more information about .NET 10 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
+- [.NET 10.0.1xx Release Candidate 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-rc.1-10727)
+- [.NET 10.0.1xx Preview 7](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview7-10601)
+- [.NET 10.0.1xx Preview 6](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview6-10451)
+- [.NET 10.0.1xx Preview 5](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview5-10622)
+- [.NET 10.0.1xx Preview 4](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview4-10471)
 - [.NET 10.0.1xx Preview 3](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview3-10695)
 - [.NET 10.0.1xx Preview 2](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview2-10552)
 - [.NET 10.0.1xx Preview 1](https://github.com/dotnet/macios/releases/tag/dotnet-10.0.1xx-preview1-10322)

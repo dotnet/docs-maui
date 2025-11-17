@@ -1,6 +1,7 @@
 ---
 ms.date: 05/09/2023
 ms.topic: include
+ms.custom: sfi-image-nochange
 ---
 
 To build and sign your app in Visual Studio:

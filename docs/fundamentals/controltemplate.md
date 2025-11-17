@@ -2,6 +2,9 @@
 title: "Control templates"
 description: ".NET MAUI control templates define the visual structure of ContentView derived custom controls, and ContentPage derived pages."
 ms.date: 02/18/2022
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Control templates

@@ -2,6 +2,7 @@
 title: "Apple account management"
 description: "Learn how to use Apple account management features in Visual Studio."
 ms.date: 11/08/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Apple account management

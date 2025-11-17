@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 11/13/2024
+ms.date: 09/19/2025
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -33,7 +33,11 @@ Browser developer tools can be used to inspect .NET MAUI Blazor apps. For more i
 > [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
 
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
+
 For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
+
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
 
 ## Create a .NET MAUI Blazor app
 
@@ -251,5 +255,51 @@ static MauiProgram()
     AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+## Intercept web requests
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> can intercept and respond to web requests initiated from within the embedded web view. This enables scenarios such as modifying headers, redirecting requests, or supplying local responses.
+
+To intercept web requests, handle the `WebResourceRequested` event. In the event handler, set `Handled` to `true` and provide a response via `SetResponse(statusCode, statusDescription, contentType, streamOrTaskOfStream)` when you intend to fully handle the request:
+
+```csharp
+blazorWebView.WebResourceRequested += (s, e) =>
+{
+    // Example: short-circuit a specific API call with a local JSON response
+    if (e.Uri.ToString().Contains("/api/secure", StringComparison.OrdinalIgnoreCase))
+    {
+        e.Handled = true;
+        e.SetResponse(200, "OK", "application/json", GetLocalJsonStreamAsync());
+        return;
+    }
+
+    // Example: add an auth header for a particular host and allow normal processing
+    if (e.Uri.Host.Equals("api.contoso.com", StringComparison.OrdinalIgnoreCase))
+    {
+        e.RequestHeaders["Authorization"] = $"Bearer {GetToken()}";
+        // Don't set Handled; let the request proceed
+    }
+};
+
+private Task<Stream> GetLocalJsonStreamAsync()
+{
+    // Return a stream containing JSON (for example from an embedded asset)
+    var json = Encoding.UTF8.GetBytes("{\"message\":\"Hello from local\"}");
+    return Task.FromResult<Stream>(new MemoryStream(json));
+}
+```
+
+> [!CAUTION]
+> The `WebResourceRequested` callback must execute synchronously on the WebView thread. If you set `Handled = true`, you must call `SetResponse` immediately to provide a response. For asynchronous content generation, pass a `Task<Stream>` to `SetResponse` so the WebView can continue while the stream completes.
+
+Common patterns include:
+
+- Injecting or rewriting headers for specific hosts.
+- Returning local files or in-memory content for offline or testing scenarios.
+- Redirecting to a different URI by returning a 3xx status with a `Location` header.
 
 ::: moniker-end

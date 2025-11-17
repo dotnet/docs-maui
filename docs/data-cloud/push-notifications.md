@@ -3,6 +3,9 @@ title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs 
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.topic: "tutorial"
 ms.date: 08/07/2024
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 
 #customer intent: As a developer, I want to be able to send notifications to .NET MAUI apps to alert users to important information.
 ---
@@ -37,7 +40,7 @@ In this tutorial, you:
 
 To complete this tutorial you'll require:
 
-- An [Azure account with an active subscription](https://azure.microsoft.com/free/dotnet/).
+- An [Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A PC or Mac running the latest version of Visual Studio/Visual Studio Code with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
 
 For Android, you must have:
@@ -1010,8 +1013,8 @@ To create your .NET MAUI app:
 
             if (string.IsNullOrWhiteSpace(cachedToken) ||
                 string.IsNullOrWhiteSpace(serializedTags) ||
-                string.IsNullOrWhiteSpace(_deviceInstallationService.Token) ||
-                cachedToken == DeviceInstallationService.Token)
+                string.IsNullOrWhiteSpace(DeviceInstallationService?.Token) ||
+                cachedToken == DeviceInstallationService?.Token)
                 return;
 
             var tags = JsonSerializer.Deserialize<string[]>(serializedTags);
@@ -1472,7 +1475,7 @@ To configure your .NET MAUI app on Android to receive and process push notificat
 
     This class has an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
 
-    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/customize-messages/set-message-type) on firebase.google.com.
 
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/Android* folder and add the following `using` statements:
 

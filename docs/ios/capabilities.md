@@ -2,6 +2,7 @@
 title: "iOS capabilities"
 description: "Learn how to add capabilities to your .NET MAUI iOS app's provisioning profile, to code sign your app."
 ms.date: 08/27/2024
+ms.custom: sfi-image-nochange
 ---
 
 # iOS capabilities

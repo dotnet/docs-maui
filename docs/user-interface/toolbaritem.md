@@ -1,7 +1,7 @@
 ---
 title: "Display toolbar items"
 description: "Learn how to add toolbar items, which are a special type of button, to the app's navigation bar."
-ms.date: 09/30/2024
+ms.date: 08/18/2025
 ---
 
 # Display toolbar items
@@ -100,6 +100,8 @@ The <xref:Microsoft.Maui.Controls.ToolbarItemOrder> enum has `Default`, `Primary
 
 When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Primary`, the <xref:Microsoft.Maui.Controls.ToolbarItem> object appears in the navigation bar on all platforms. <xref:Microsoft.Maui.Controls.ToolbarItem> objects are prioritized over the page title, which will be truncated to make room for the items.
 
+::: moniker range="<=net-maui-9.0"
+
 When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Secondary`, behavior varies across platforms. On iOS and Mac Catalyst, `Secondary` toolbar items appear as a horizontal list. On Android and Windows, the `Secondary` items menu appears as three dots that can be tapped:
 
 :::image type="content" source="media/toolbaritem/android-dots.png" alt-text="Screenshot of secondary toolbar ellipsis on Android.":::
@@ -108,5 +110,40 @@ Tapping the three dots reveals items in a vertical list:
 
 :::image type="content" source="media/toolbaritem/android-secondaries.png" alt-text="Screenshot of secondary toolbar items in vertical list on Android.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Secondary`, behavior varies across platforms. On iOS and Mac Catalyst, `Secondary` toolbar items are grouped into a pull‑down menu, shown under a system ellipsis icon in the navigation bar. Items within this menu are ordered by their <xref:Microsoft.Maui.Controls.ToolbarItem.Priority> value. On Android and Windows, the `Secondary` items menu appears as three dots that can be tapped:
+
+:::image type="content" source="media/toolbaritem/android-dots.png" alt-text="Screenshot of secondary toolbar ellipsis on Android.":::
+
+Tapping the three dots reveals items in a vertical list:
+
+:::image type="content" source="media/toolbaritem/android-secondaries.png" alt-text="Screenshot of secondary toolbar items in vertical list on Android.":::
+
+::: moniker-end
+
 > [!WARNING]
-> Icon behavior in <xref:Microsoft.Maui.Controls.ToolbarItem> objects that have their <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property set to `Secondary` is inconsistent across platforms. Avoid setting the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property on items that appear in the secondary menu.
+> Icon behavior in <xref:Microsoft.Maui.Controls.ToolbarItem> objects that have their <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property set to `Secondary` can be inconsistent across platforms. Avoid setting the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property on items that appear in the secondary menu.
+
+::: moniker range=">=net-maui-10.0"
+
+### Example: order secondary items by priority (iOS and Mac Catalyst)
+
+On iOS and Mac Catalyst, secondary items are shown in a pull‑down menu ordered by their `Priority` (lower values appear first):
+
+```xaml
+<ContentPage.ToolbarItems>
+    <ToolbarItem Text="Settings" Order="Secondary" Priority="0" />
+    <ToolbarItem Text="Feedback" Order="Secondary" Priority="1" />
+    <ToolbarItem Text="About" Order="Secondary" Priority="2" />
+    <ToolbarItem Text="Help" Order="Secondary" Priority="3" />
+    <ToolbarItem Text="Sign out" Order="Secondary" Priority="100" />
+</ContentPage.ToolbarItems>
+```
+
+> [!TIP]
+> Keep labels short so they fit comfortably in the pull‑down. Avoid icons for `Secondary` items due to platform inconsistency.
+
+::: moniker-end

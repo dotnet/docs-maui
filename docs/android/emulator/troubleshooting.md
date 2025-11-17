@@ -60,6 +60,7 @@ Performance issues are typically caused by one of the following problems:
 
 - The emulator is running without hardware acceleration.
 - The virtual device running in the emulator using an Arm-based image.
+- You're trying to run the emulator on a Windows ARM device (not supported).
 
 The following sections cover these scenarios in more detail.
 
@@ -70,6 +71,22 @@ When you start a virtual device, and you don't have hardware acceleration enable
 :::image type="content" source="media/troubleshooting/win/01-dev-mgr-warning-w158.png" alt-text="Android device manager warning about Hyper-V not enabled on .NET MAUI.":::
 
 To fix this error, follow the troubleshooting steps in the [Hardware acceleration issues](#hardware-acceleration-issues) section.
+
+### Windows ARM device compatibility
+
+The Android emulator is **not supported on Windows ARM devices** and will not run on devices with ARM64 processors such as:
+
+- Surface Pro X
+- Surface Pro 9 (5G/ARM variant)  
+- Other Windows devices with Snapdragon or ARM-based processors
+
+If you're using a Windows ARM device and encounter emulator startup issues or performance problems, this is likely due to the architecture incompatibility. The Android emulator requires x64 processor architecture.
+
+**Alternatives for Windows ARM devices:**
+
+- Use a physical Android device connected via USB for debugging. For setup instructions, see [Set up Android device for debugging](~/android/device/setup.md).
+- Use cloud-based development environments or remote machines with x64 architecture.
+- Consider Windows Subsystem for Android (WSA) if available in your region, though it has different capabilities and limitations.
 
 ## Hardware acceleration issues
 

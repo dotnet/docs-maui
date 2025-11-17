@@ -12,6 +12,7 @@ The SQLite database engine allows .NET Multi-platform App UI (.NET MAUI) apps to
 
 1. [Install the NuGet package](#install-the-sqlite-nuget-package).
 1. [Configure constants](#configure-app-constants).
+1. [Create TodoItem class](#create-todoitem-class).
 1. [Create a database access class](#create-a-database-access-class).
 1. [Access data](#access-data).
 1. [Advanced configuration](#advanced-configuration).
@@ -70,6 +71,23 @@ In this example, the constants file specifies default `SQLiteOpenFlag` enum valu
 - `ProtectionNone`: The database file isn't encrypted.
 
 You may need to specify different flags depending on how your database will be used. For more information about `SQLiteOpenFlags`, see [Opening A New Database Connection](https://www.sqlite.org/c3ref/open.html) on sqlite.org.
+
+## Create TodoItem class
+
+Before coding the database access, create the class that will store the data.
+
+```csharp
+public class TodoItem
+{
+    [PrimaryKey, AutoIncrement]
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public string Notes { get; set; }
+    public bool Done { get; set; }
+}
+```
+
+The ID in this class will serve as the primary key that is auto-incremented upon save. Attributes can be used to specify this behavior.
 
 ## Create a database access class
 

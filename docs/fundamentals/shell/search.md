@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell search"
 description: "Learn how .NET MAUI Shell apps can use integrated search functionality that's provided by a search box that can be added to the top of each page."
-ms.date: 10/30/2024
+ms.date: 08/20/2025
 ---
 
 # .NET MAUI Shell search
@@ -119,6 +119,13 @@ The `AnimalSearchHandler.OnQueryChanged` method returns a `List` of `Animal` obj
 
 > [!WARNING]
 > `SearchHandler.DisplayMemberName` isn't trim safe and shouldn't be used with full trimming or NativeAOT. Instead, you should provide an `ItemTemplate` to define the appearance of `SearchHandler` results. For more information, see [Define search results item appearance](#define-search-results-item-appearance), [Trim a .NET MAUI app](~/deployment/trimming.md) and [Native AOT deployment](~/deployment/nativeaot.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+> [!TIP]
+> In .NET 10, trimming defaults and feature switches mean `SearchHandler.DisplayMemberName` is ignored when full trimming or Native AOT is enabled. Prefer using `ItemTemplate` for results, which is trim-safe and supported across platforms. If you must use `DisplayMemberName` in partially trimmed scenarios, you can opt back in by setting the `MauiShellSearchResultsRendererDisplayMemberNameSupported` feature switch to `true` in your project file. For details and tradeoffs, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
 
 ::: moniker-end
 
@@ -247,3 +254,55 @@ The following XAML code example shows how to customize the default `Keyboard` to
     </SearchHandler.Keyboard>
 </SearchHandler>
 ```
+
+## Hide and show the soft input keyboard
+
+::: moniker range=">=net-maui-10.0"
+
+In .NET 10, <xref:Microsoft.Maui.Controls.SearchHandler> gains methods to programmatically control the soft input keyboard:
+
+- <xref:Microsoft.Maui.Controls.SearchHandler.ShowSoftInputAsync>
+- <xref:Microsoft.Maui.Controls.SearchHandler.HideSoftInputAsync>
+
+These methods let you bring up the keyboard when the user navigates to a page with search, and dismiss it once a result is chosen, without relying on focus changes.
+
+For example, you can auto-open the keyboard when the page appears:
+
+```csharp
+// In a ContentPage code-behind
+protected override void OnAppearing()
+{
+    base.OnAppearing();
+
+    var handler = Shell.GetSearchHandler(this);
+    handler?.ShowSoftInputAsync();
+}
+```
+
+And you can hide the keyboard after a selection is made in your custom SearchHandler:
+
+```csharp
+public class AnimalSearchHandler : SearchHandler
+{
+    protected override async void OnItemSelected(object item)
+    {
+        base.OnItemSelected(item);
+
+        // Dismiss the soft input keyboard
+        await HideSoftInputAsync();
+
+        // Perform navigation or other actions
+        await Shell.Current.GoToAsync("monkeydetails", new Dictionary<string, object>
+        {
+            { "Monkey", item }
+        });
+    }
+}
+```
+
+Notes:
+
+- On platforms without a software keyboard (for example, desktop with a hardware keyboard), these methods may be no-ops.
+- If you need to direct focus to the search box, you can continue to use <xref:Microsoft.Maui.Controls.SearchHandler.Focus> and <xref:Microsoft.Maui.Controls.SearchHandler.Unfocus>. Showing or hiding the soft input is complementary to focus.
+
+::: moniker-end
