@@ -16,8 +16,6 @@ applications, in general, are interested in:
   either through many calls or long-running operations.
 - **Memory usage**: If many allocations are made beyond reason or if
   there are memory leaks.
-- **Scrolling responsiveness**: If your application scrolls smoothly
-  and responds to user input without lag.
 
 The techniques and tools for improving these metrics are different,
 which we plan to demystify in this guide. The tools used to profile
@@ -319,7 +317,7 @@ useful, as it won't block application startup.
 
 TODO
 
-## Measuring Startup Time, CPU Usage, or Scrolling Responsiveness
+## Measuring Startup Time or CPU Usage
 
 TODO
 
