@@ -71,11 +71,16 @@ You can invoke the tool using the following command: dotnet-gcdump
 Tool 'dotnet-gcdump' was successfully installed.
 ```
 
-See the [`dotnet-trace` documentation][dotnet-trace] for further details about its usage.
+See the .NET Conf Session, [.NET Diagnostic Tooling with
+AI][dotnetconf], for a live demo of using these tools.
+
+See the [`dotnet-trace` documentation][dotnet-trace] for further
+details about its usage.
 
 [dotnet-trace]: /dotnet/core/diagnostics/dotnet-trace
 [dotnet-dsrouter]: /dotnet/core/diagnostics/dotnet-dsrouter
 [dotnet-gcdump]: /dotnet/core/diagnostics/dotnet-gcdump
+[dotnetconf]: https://youtu.be/HLNYCwgk5fU
 
 ## Using `dotnet-trace`
 
@@ -206,10 +211,6 @@ Note that using the `-p:DiagnosticSuspend=false` MSBuild property is
 useful, as it won't block application startup.
 
 [perfview]: https://github.com/microsoft/perfview
-
-## Using `dotnet-trace` on iOS
-
-TODO
 
 ## Measuring Startup Time or CPU Usage
 
