@@ -1024,4 +1024,19 @@ Common patterns include:
 - Returning local files or in-memory content for offline or testing scenarios.
 - Redirecting to a different URI by returning a 3xx status code with an appropriate `Location` header.
 
+### Implementation Restrictions
+
+* **Android**
+  * Android does not directly allow "intercept-and-continue" for requests. The implementation is to rather notify you that a request is about to happen and you can either replace the whole request or do nothing and let the webview do it.  
+  * Android does not support custom schemes.
+* **iOS/Mac Catalyst**
+  * iOS and Mac Catalyst do not allow interception of `http` and `https` requests.
+
+| Platform      | Intercept HTTPS | Intercept Custom Schemes | Request Modification |
+|---------------|------------------|---------------------------|----------------------|
+| Android       | ✅               | ❌                        | ❌                   |
+| iOS           | ❌               | ✅                        | ❌                   |
+| Mac Catalyst  | ❌               | ✅                        | ❌                   |
+| Windows       | ✅               | ✅                        | ✅                   |
+
 ::: moniker-end
