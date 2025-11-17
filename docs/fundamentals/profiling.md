@@ -117,6 +117,10 @@ dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=
 See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
 ```
 
+For iOS, you can use `--dsrouter ios-sim` for Simulators and
+`--dsrouter ios` for iOS devices. Note that `-p:DiagnosticListenMode=listen`
+is the recommended value for iOS.
+
 The `--format` argument is optional and it defaults to `nettrace`.
 However, `nettrace` files can be viewed only with Perfview or Visual
 Studio on Windows, while the speedscope JSON files can be viewed "on"
@@ -125,13 +129,13 @@ macOS or Linux by opening them with [https://speedscope.app/][speedscope].
 ### Building your Application with Diagnostics
 
 Note the log message that `dotnet-dsrouter` prints that mentions
-varioous `Diagnostic` MSBuild properties:
+various `Diagnostic` MSBuild properties:
 
-```
+```sh
 dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
-*NOTE: `-f net10.0-android` is needed for projects with multiple `$(TargetFrameworks)`.*
+*NOTE: `-f net10.0-android` or `-f net10.0-ios` is needed for projects with multiple `$(TargetFrameworks)`.*
 
 For emulators, `-p:DiagnosticAddress` should specify an IP address
 of 10.0.2.2:
@@ -139,6 +143,8 @@ of 10.0.2.2:
 ```sh
 dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
+
+*NOTE: `-p:DiagnosticListenMode=listen` is the recommended value for iOS.*
 
 `-p:DiagnosticSuspend=true` is useful as it blocks application
 startup, so you can actually `dotnet-trace` startup times of the
@@ -149,9 +155,10 @@ try `-p:DiagnosticSuspend=false` instead. See the [`dotnet-dsrouter`
 documentation][nosuspend] for further information.
 
 Building your application with these settings, will encode the values
-*into* the application. This makes the produced `.apk` or `.aab` file
-include the .NET diagnostic component(s) that will try to communicate
-with `dotnet-trace` and other tools.
+*into* the application. This makes the produced application include
+the .NET diagnostic component(s) that will try to communicate with
+`dotnet-trace` and other tools. These builds should be for
+development/testing-only and not released to production.
 
 [nosuspend]: /dotnet/core/diagnostics/dotnet-dsrouter#collect-a-trace-using-dotnet-trace-from-a-net-application-running-on-android
 
