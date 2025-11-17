@@ -214,7 +214,34 @@ useful, as it won't block application startup.
 
 ## Measuring Startup Time or CPU Usage
 
-TODO
+For measuring startup time, build your application with the setting
+mentioned: `-p:DiagnosticSuspend=true`. Upon launching your
+application, you will notice it will "pause" indefinitely on the
+splash screen waiting for a connection to `dotnet-trace` and/or
+`dotnet-dsrouter`.
+
+For measuring other operations, such as:
+
+* A long operation, triggered by a `Button` tap.
+
+* A slow navigation.
+
+* Slow scrolling.
+
+Use `-p:DiagnosticSuspend=false`, and connect `dotnet-trace` /
+`dotnet-dsrouter` *after* the application has launched. In reasonably
+quick succession:
+
+* Get to the appropriate location in your application.
+
+* Connect `dotnet-trace`
+
+* Perform the steps you want to profile
+
+* Stop `dotnet-trace`
+
+This will more successfully get a *targeted* trace that will be easier
+to read and understand what went wrong.
 
 ## Measuring Memory Usage or Leaks
 
