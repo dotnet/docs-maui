@@ -88,31 +88,35 @@ separately. This simplifies the workflow significantly.
 For Android emulators:
 
 ```sh
-$ dotnet-trace collect --dsrouter android-emu --format speedscope
-WARNING: dotnet-dsrouter is a development tool not intended for production environments.
+$ dotnet-trace collect --dsrouter android-emu
 For finer control over the dotnet-dsrouter options, run it separately and connect to it using -p
 
-No profile or providers specified, defaulting to trace profile 'cpu-sampling'
+WARNING: dotnet-dsrouter is a development tool not intended for production environments.
 
-Provider Name                           Keywords            Level               Enabled By
-Microsoft-DotNETCore-SampleProfiler     0x0000F00000000000  Informational(4)    --profile
-Microsoft-Windows-DotNETRuntime         0x00000014C14FCCBD  Informational(4)    --profile
+How to connect current dotnet-dsrouter pid=90312 with android emulator and diagnostics tooling.
+Build and run your application on android emulator such as:
+[Default Tracing]
+dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+[Startup Tracing]
+dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
 ```
 
 For Android devices:
 
 ```sh
-# `adb reverse` is still required when using hardware devices
-$ adb reverse tcp:9000 tcp:9001
 $ dotnet-trace collect --dsrouter android --format speedscope
-WARNING: dotnet-dsrouter is a development tool not intended for production environments.
 For finer control over the dotnet-dsrouter options, run it separately and connect to it using -p
 
-No profile or providers specified, defaulting to trace profile 'cpu-sampling'
+WARNING: dotnet-dsrouter is a development tool not intended for production environments.
 
-Provider Name                           Keywords            Level               Enabled By
-Microsoft-DotNETCore-SampleProfiler     0x0000F00000000000  Informational(4)    --profile
-Microsoft-Windows-DotNETRuntime         0x00000014C14FCCBD  Informational(4)    --profile
+How to connect current dotnet-dsrouter pid=76412 with android device and diagnostics tooling.
+Build and run your application on android device such as:
+[Default Tracing]
+dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+[Startup Tracing]
+dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
 ```
 
 The `--format` argument is optional and it defaults to `nettrace`.
