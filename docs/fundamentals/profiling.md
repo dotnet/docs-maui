@@ -50,7 +50,7 @@ tools/components work together to make this happen:
 * The Mono Diagnostic component, `libmono-component-diagnostics_tracing.so`,
   is included in the application and is used to collect the trace data.
 
-> **NOTE:** You need at least version 9.0.621003 of all the diagnostic
+> **NOTE:** You need at least version 9.0.652701 of all the diagnostic
 > tools to use the features described in this guide. Check
 > [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
 > [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
@@ -81,7 +81,7 @@ See the [`dotnet-trace` documentation][dotnet-trace] for further details about i
 
 ### Using `dotnet-trace` with the `--dsrouter` option
 
-Starting with version 9.0.621003, `dotnet-trace` includes a
+Starting with version 9.0.652701, `dotnet-trace` includes a
 `--dsrouter` option that eliminates the need to run `dotnet-dsrouter`
 separately. This simplifies the workflow significantly.
 
@@ -123,7 +123,7 @@ Unix by opening them with [https://speedscope.app/][speedscope].
 ### Running `dotnet-dsrouter` Separately
 
 > **NOTE:** The following section describes the approach before
-> `dotnet-trace` 9.0.621003. Running `dotnet-dsrouter` separately can
+> `dotnet-trace` 9.0.652701. Running `dotnet-dsrouter` separately can
 > be useful for viewing its log messages when troubleshooting.
 
 For profiling an Android application running on an Android *emulator*:
