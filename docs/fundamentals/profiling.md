@@ -214,34 +214,123 @@ useful, as it won't block application startup.
 
 ## Measuring Startup Time or CPU Usage
 
-For measuring startup time, build your application with the setting
-mentioned: `-p:DiagnosticSuspend=true`. Upon launching your
-application, you will notice it will "pause" indefinitely on the
-splash screen waiting for a connection to `dotnet-trace` and/or
-`dotnet-dsrouter`.
+The workflow for profiling your .NET MAUI application depends on
+whether you're measuring startup time or profiling runtime operations.
+The key difference is the `-p:DiagnosticSuspend` MSBuild property,
+which controls whether your application waits for the profiler to
+connect before starting.
 
-For measuring other operations, such as:
+### Profiling Startup Time
 
-* A long operation, triggered by a `Button` tap.
+To capture accurate startup time measurements, you need to suspend
+application startup until the profiler is ready. This ensures you
+capture the entire startup sequence from the very beginning.
 
-* A slow navigation.
+1. In one terminal, start `dotnet-trace` with the `--dsrouter` option:
 
-* Slow scrolling.
+   ```sh
+   dotnet-trace collect --dsrouter android-emu --format speedscope
+   ```
 
-Use `-p:DiagnosticSuspend=false`, and connect `dotnet-trace` /
-`dotnet-dsrouter` *after* the application has launched. In reasonably
-quick succession:
+   Or for a physical Android device:
 
-* Get to the appropriate location in your application.
+   ```sh
+   dotnet-trace collect --dsrouter android --format speedscope
+   ```
 
-* Connect `dotnet-trace`
+   For iOS devices and simulators, use `--dsrouter ios` or `--dsrouter ios-sim` respectively.
 
-* Perform the steps you want to profile
+2. In another terminal, build and deploy your application with
+   `-p:DiagnosticSuspend=true`:
 
-* Stop `dotnet-trace`
+   **For Android emulators:**
 
-This will more successfully get a *targeted* trace that will be easier
-to read and understand what went wrong.
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+   ```
+
+   **For Android devices:**
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+   ```
+
+   **For iOS (devices and simulators):**
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=listen
+   ```
+
+3. Your application will pause at the splash screen, waiting for
+   `dotnet-trace` to connect. Once connected, `dotnet-trace` will
+   begin recording, and your application will start normally.
+
+4. Allow your application to fully start and reach the initial screen.
+
+5. Press `<Enter>` in the `dotnet-trace` terminal to stop recording.
+   The trace file will be saved to the current directory.
+
+> [!TIP]
+> Use `dotnet build -t:Run` instead of `dotnet run` for better build
+> progress visibility, especially for `Release` builds which can take
+> several seconds.
+
+### Profiling Runtime Operations
+
+To profile specific operations during runtime, such as button taps,
+navigation, or scrolling performance, you should use
+`-p:DiagnosticSuspend=false` and connect the profiler after the
+application has launched.
+
+1. Build and deploy your application with `-p:DiagnosticSuspend=false`:
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+   ```
+
+2. Navigate to the area of your application you want to profile.
+
+3. Start `dotnet-trace` with the `--dsrouter` option:
+
+   ```sh
+   dotnet-trace collect --dsrouter android --format speedscope
+   ```
+
+4. Perform the operation you want to profile (such as tapping a button,
+   navigating to a page, or scrolling through a list).
+
+5. Press `<Enter>` to stop the trace.
+
+This approach produces a more focused trace file that's easier to
+analyze, as it only contains the specific operation you're
+investigating rather than the entire application lifecycle.
+
+### Understanding Diagnostic Properties
+
+The MSBuild properties used for profiling control how your application
+communicates with the diagnostic tools:
+
+- **`DiagnosticAddress`**: The IP address where `dotnet-dsrouter` is
+  listening. Use `10.0.2.2` for Android emulators (this is the host
+  machine's loopback address from the emulator's perspective), and
+  `127.0.0.1` for physical devices and iOS.
+
+- **`DiagnosticPort`**: The port number for the diagnostic connection
+  (default is `9000`).
+
+- **`DiagnosticSuspend`**: When `true`, the application waits for the
+  profiler to connect before starting. When `false`, the application
+  starts immediately and the profiler can connect later.
+
+- **`DiagnosticListenMode`**: Set to `connect` for Android (the app
+  connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
+  for `dotnet-dsrouter` to connect to it).
+
+> [!IMPORTANT]
+> Applications built with these diagnostic properties should only be
+> used for development and testing. Never release builds with
+> diagnostic components enabled to production, as they include
+> additional components and can expose diagnostic endpoints.
 
 ## Measuring Memory Usage or Leaks
 
