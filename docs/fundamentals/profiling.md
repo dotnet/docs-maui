@@ -26,38 +26,21 @@ Studio][prof-overview].
 
 [prof-overview]: /visualstudio/profiling/profiling-feature-tour?pivots=programming-language-dotnet
 
-## Diagnostic Tooling for Mobile Platforms
+## Prerequisites
 
-Attaching `dotnet-trace` to a .NET MAUI application, allows you to
-get profiling information in formats like `.nettrace` and
-`.speedscope`. These give you CPU sampling information about the time
-spent in each method in your application. This is quite useful for
-finding *where* time is spent in the startup or general performance of
-your .NET MAUI applications.
+### Installing Diagnostic Tools
 
-To use `dotnet-trace` on iOS and Android, the following
-tools/components work together to make this happen:
+To profile .NET MAUI applications on iOS and Android, you need to
+install the following .NET global tools:
 
-* [`dotnet-trace`][dotnet-trace] itself is a .NET global tool.
+- [`dotnet-trace`][dotnet-trace] - Collects CPU traces and performance
+  data
+- [`dotnet-dsrouter`][dotnet-dsrouter] - Forwards diagnostic
+  connections from remote devices to your local machine
+- [`dotnet-gcdump`][dotnet-gcdump] - Collects memory dumps for
+  analyzing managed memory usage
 
-* [`dotnet-dsrouter`][dotnet-dsrouter] is a .NET global tool that
-  forwards a connection from a remote Android or iOS device or
-  emulator to a local port on your development machine.
-
-* [`dotnet-gcdump`][dotnet-gcdump] is a .NET global tool that can be
-  used to collect memory dumps of .NET applications.
-
-* The Mono Diagnostic component, `libmono-component-diagnostics_tracing.so`,
-  is included in the application and is used to collect the trace data.
-
-> **NOTE:** You need at least version 9.0.652701 of all the diagnostic
-> tools to use the features described in this guide. Check
-> [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
-> [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
-> and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
-> on NuGet for the latest versions.
-
-Generally, you can install the required tooling such as:
+You can install these tools using the following commands:
 
 ```sh
 $ dotnet tool install -g dotnet-trace
@@ -71,160 +54,126 @@ You can invoke the tool using the following command: dotnet-gcdump
 Tool 'dotnet-gcdump' was successfully installed.
 ```
 
-See the .NET Conf Session, [.NET Diagnostic Tooling with
-AI][dotnetconf], for a live demo of using these tools.
+> [!NOTE]
+> You need at least version 9.0.652701 of all the diagnostic tools to
+> use the features described in this guide. Check
+> [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
+> [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
+> and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
+> on NuGet for the latest versions.
 
-See the [`dotnet-trace` documentation][dotnet-trace] for further
-details about its usage.
+Starting with version 9.0.652701, both `dotnet-trace` and
+`dotnet-gcdump` include a `--dsrouter` option that automatically
+launches and manages `dotnet-dsrouter` as a subprocess. This
+eliminates the need to run `dotnet-dsrouter` separately, significantly
+simplifying the profiling workflow.
+
+See the .NET Conf session, [.NET Diagnostic Tooling with
+AI][dotnetconf], for a live demo of using these tools.
 
 [dotnet-trace]: /dotnet/core/diagnostics/dotnet-trace
 [dotnet-dsrouter]: /dotnet/core/diagnostics/dotnet-dsrouter
 [dotnet-gcdump]: /dotnet/core/diagnostics/dotnet-gcdump
 [dotnetconf]: https://youtu.be/HLNYCwgk5fU
 
-## Using `dotnet-trace`
+### How the Tools Work Together
 
-Starting with version 9.0.652701, `dotnet-trace` includes a
-`--dsrouter` option that eliminates the need to run `dotnet-dsrouter`
-separately. This simplifies the workflow significantly.
+To use these diagnostic tools on iOS and Android, several components
+work together:
 
-For Android emulators:
+- The .NET global tools (`dotnet-trace`, `dotnet-gcdump`,
+  `dotnet-dsrouter`) run on your development machine
+- The Mono diagnostic component
+  (`libmono-component-diagnostics_tracing.so`) is included in your
+  application package
+- `dotnet-dsrouter` forwards the diagnostic connection from the remote
+  device or emulator to a local port on your machine
+- The diagnostic tools connect to this local port to collect profiling
+  data
 
-```sh
-$ dotnet-trace collect --dsrouter android-emu
-For finer control over the dotnet-dsrouter options, run it separately and connect to it using -p
+The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
+automatically handles the complexity of starting `dotnet-dsrouter` and
+coordinating the connection.
 
-WARNING: dotnet-dsrouter is a development tool not intended for production environments.
+## Building Your Application for Profiling
 
-How to connect current dotnet-dsrouter pid=90312 with android emulator and diagnostics tooling.
-Build and run your application on android emulator such as:
-[Default Tracing]
-dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
-[Startup Tracing]
-dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
-See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
-```
+To enable profiling, your application must be built with special
+MSBuild properties that include the diagnostic components and
+configure the connection to the profiling tools.
 
-For Android devices:
+### Understanding Diagnostic Properties
 
-```sh
-$ dotnet-trace collect --dsrouter android --format speedscope
-For finer control over the dotnet-dsrouter options, run it separately and connect to it using -p
+The following MSBuild properties control how your application
+communicates with the diagnostic tools:
 
-WARNING: dotnet-dsrouter is a development tool not intended for production environments.
+- **`DiagnosticAddress`**: The IP address where `dotnet-dsrouter` is
+  listening. Use `10.0.2.2` for Android emulators (this is the host
+  machine's loopback address from the emulator's perspective), and
+  `127.0.0.1` for physical devices and iOS.
 
-How to connect current dotnet-dsrouter pid=76412 with android device and diagnostics tooling.
-Build and run your application on android device such as:
-[Default Tracing]
-dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
-[Startup Tracing]
-dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
-See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
-```
+- **`DiagnosticPort`**: The port number for the diagnostic connection
+  (default is `9000`).
 
-For iOS, you can use `--dsrouter ios-sim` for Simulators and
-`--dsrouter ios` for iOS devices. Note that `-p:DiagnosticListenMode=listen`
-is the recommended value for iOS.
+- **`DiagnosticSuspend`**: When `true`, the application waits for the
+  profiler to connect before starting. When `false`, the application
+  starts immediately and the profiler can connect later. Use `true`
+  for startup profiling, `false` for runtime profiling and memory
+  dumps.
 
-The `--format` argument is optional and it defaults to `nettrace`.
-However, `nettrace` files can be viewed only with Perfview or Visual
-Studio on Windows, while the speedscope JSON files can be viewed "on"
-macOS or Linux by opening them with [https://speedscope.app/][speedscope].
+- **`DiagnosticListenMode`**: Set to `connect` for Android (the app
+  connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
+  for `dotnet-dsrouter` to connect to it).
 
-### Building your Application with Diagnostics
+### Build Command Examples
 
-Note the log message that `dotnet-dsrouter` prints that mentions
-various `Diagnostic` MSBuild properties:
+When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
+option, the tool displays instructions for building your application.
+For example:
 
-```sh
-dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
-```
-
-*NOTE: `-f net10.0-android` or `-f net10.0-ios` is needed for projects with multiple `$(TargetFrameworks)`.*
-
-For emulators, `-p:DiagnosticAddress` should specify an IP address
-of 10.0.2.2:
+**For Android emulators:**
 
 ```sh
-dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
-*NOTE: `-p:DiagnosticListenMode=listen` is the recommended value for iOS.*
-
-`-p:DiagnosticSuspend=true` is useful as it blocks application
-startup, so you can actually `dotnet-trace` startup times of the
-application.
-
-If you are wanting to collect a `gcdump` or just get things working,
-try `-p:DiagnosticSuspend=false` instead. See the [`dotnet-dsrouter`
-documentation][nosuspend] for further information.
-
-Building your application with these settings, will encode the values
-*into* the application. This makes the produced application include
-the .NET diagnostic component(s) that will try to communicate with
-`dotnet-trace` and other tools. These builds should be for
-development/testing-only and not released to production.
-
-[nosuspend]: /dotnet/core/diagnostics/dotnet-dsrouter#collect-a-trace-using-dotnet-trace-from-a-net-application-running-on-android
-
-### Running your Application and Saving a Trace
-
-Once the application is installed and started, `dotnet-trace --dsrouter ...`
-should show something similar to:
-
-```
-Process        : $HOME/.dotnet/tools/dotnet-dsrouter
-Output File    : /tmp/hellomaui-app-trace
-[00:00:00:35]    Recording trace 1.7997   (MB)
-Press <Enter> or <Ctrl+C> to exit...812  (KB)
-```
-
-Once `<Enter>` is pressed, you should see:
-
-```
-Stopping the trace. This may take up to minutes depending on the application being traced.
-
-Trace completed.
-Writing:    hellomaui-app-trace.speedscope.json
-```
-
-And the output files should be found in the current directory. You can
-use the `-o` switch if you would prefer to output them to a specific
-directory.
-
-## Running `dotnet-gcdump`
-
-To get memory information from an Android application, you need all
-the above setup for building your application.
-
-However, you can simply use the same `--dsrouter` switch as you would
-for `dotnet-trace`:
+**For Android devices:**
 
 ```sh
-dotnet-gcdump collect --dsrouter android
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
-This will create a `*.gcdump` file in the current directory. You can
-open this file on Windows in Visual Studio or [PerfView][perfview].
+**For iOS devices and simulators:**
 
-Note that using the `-p:DiagnosticSuspend=false` MSBuild property is
-useful, as it won't block application startup.
+```sh
+dotnet build -t:Run -c Release -f net10.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+```
 
-[perfview]: https://github.com/microsoft/perfview
+> [!NOTE]
+> Use `-f net10.0-android` or `-f net10.0-ios` for projects with
+> multiple target frameworks in `$(TargetFrameworks)`.
 
-## Measuring Startup Time or CPU Usage
+> [!IMPORTANT]
+> Applications built with these diagnostic properties should only be
+> used for development and testing. Never release builds with
+> diagnostic components enabled to production, as they can expose
+> endpoints with deeper insights into your application's code.
 
-The workflow for profiling your .NET MAUI application depends on
-whether you're measuring startup time or profiling runtime operations.
-The key difference is the `-p:DiagnosticSuspend` MSBuild property,
-which controls whether your application waits for the profiler to
-connect before starting.
+## Profiling CPU Usage
+
+The `dotnet-trace` tool collects CPU sampling information in formats
+like `.nettrace` and `.speedscope.json`. These traces show you the
+time spent in each method, helping you identify performance
+bottlenecks in your application.
+
+The workflow for CPU profiling depends on whether you're measuring
+startup time or profiling runtime operations. The key difference is
+the `-p:DiagnosticSuspend` MSBuild property.
 
 ### Profiling Startup Time
 
-To capture accurate startup time measurements, you need to suspend
-application startup until the profiler is ready. This ensures you
-capture the entire startup sequence from the very beginning.
+To capture accurate startup time measurements, suspend application
+startup until the profiler is ready. This ensures you capture the
+entire startup sequence from the very beginning.
 
 1. In one terminal, start `dotnet-trace` with the `--dsrouter` option:
 
@@ -241,7 +190,7 @@ capture the entire startup sequence from the very beginning.
    For iOS devices and simulators, use `--dsrouter ios` or `--dsrouter ios-sim` respectively.
 
 2. In another terminal, build and deploy your application with
-   `-p:DiagnosticSuspend=true`:
+   `-p:DiagnosticSuspend=true` to pause at startup:
 
    **For Android emulators:**
 
@@ -262,25 +211,21 @@ capture the entire startup sequence from the very beginning.
    ```
 
 3. Your application will pause at the splash screen, waiting for
-   `dotnet-trace` to connect. Once connected, `dotnet-trace` will
-   begin recording, and your application will start normally.
+   `dotnet-trace` to connect. Once connected, the application will
+   start and `dotnet-trace` will begin recording.
 
 4. Allow your application to fully start and reach the initial screen.
 
 5. Press `<Enter>` in the `dotnet-trace` terminal to stop recording.
-   The trace file will be saved to the current directory.
 
-> [!TIP]
-> Use `dotnet build -t:Run` instead of `dotnet run` for better build
-> progress visibility, especially for `Release` builds which can take
-> several seconds.
+The trace file will be saved to the current directory. Use the `-o`
+option to specify a different output directory.
 
 ### Profiling Runtime Operations
 
-To profile specific operations during runtime, such as button taps,
-navigation, or scrolling performance, you should use
-`-p:DiagnosticSuspend=false` and connect the profiler after the
-application has launched.
+To profile specific operations during runtime (such as button taps,
+navigation, or scrolling), use `-p:DiagnosticSuspend=false` and
+connect the profiler after the application has launched.
 
 1. Build and deploy your application with `-p:DiagnosticSuspend=false`:
 
@@ -296,77 +241,81 @@ application has launched.
    dotnet-trace collect --dsrouter android --format speedscope
    ```
 
-4. Perform the operation you want to profile (such as tapping a button,
-   navigating to a page, or scrolling through a list).
+4. Perform the operation you want to profile.
 
 5. Press `<Enter>` to stop the trace.
 
-This approach produces a more focused trace file that's easier to
-analyze, as it only contains the specific operation you're
-investigating rather than the entire application lifecycle.
+This approach produces a more focused trace file containing only the
+specific operation you're investigating.
 
-### Understanding Diagnostic Properties
+### Understanding Trace Output
 
-The MSBuild properties used for profiling control how your application
-communicates with the diagnostic tools:
+When `dotnet-trace` is collecting a trace, you'll see output similar
+to:
 
-- **`DiagnosticAddress`**: The IP address where `dotnet-dsrouter` is
-  listening. Use `10.0.2.2` for Android emulators (this is the host
-  machine's loopback address from the emulator's perspective), and
-  `127.0.0.1` for physical devices and iOS.
+```
+Process        : $HOME/.dotnet/tools/dotnet-dsrouter
+Output File    : /tmp/hellomaui-app-trace
+[00:00:00:35]    Recording trace 1.7997   (MB)
+Press <Enter> or <Ctrl+C> to exit...
+```
 
-- **`DiagnosticPort`**: The port number for the diagnostic connection
-  (default is `9000`).
+After pressing `<Enter>`, the trace is finalized:
 
-- **`DiagnosticSuspend`**: When `true`, the application waits for the
-  profiler to connect before starting. When `false`, the application
-  starts immediately and the profiler can connect later.
+```
+Stopping the trace. This may take up to minutes depending on the application being traced.
 
-- **`DiagnosticListenMode`**: Set to `connect` for Android (the app
-  connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
-  for `dotnet-dsrouter` to connect to it).
+Trace completed.
+Writing:    hellomaui-app-trace.speedscope.json
+```
 
-> [!IMPORTANT]
-> Applications built with these diagnostic properties should only be
-> used for development and testing. Never release builds with
-> diagnostic components enabled to production, as they include
-> additional components and can expose diagnostic endpoints.
+### Viewing Trace Files
 
-## Measuring Memory Usage or Leaks
+The `--format` argument controls the output format:
 
-Memory leaks in .NET MAUI applications can manifest as steadily
-increasing memory usage, especially during repeated navigation or
-interactions. On mobile platforms, this can eventually cause the OS to
-terminate your application due to excessive memory consumption.
+- **`nettrace`** (default): Can be viewed in PerfView or Visual Studio
+  on Windows
+- **`speedscope`**: JSON format that can be viewed on any platform at
+  [https://speedscope.app/][speedscope]
 
-### Collecting Memory Snapshots with `dotnet-gcdump`
+For cross-platform analysis, use `--format speedscope`:
 
-The `dotnet-gcdump` tool creates snapshots of all managed (C#) objects
-in memory at a given point in time. This allows you to inspect what
-objects exist, how many instances there are, and what's holding
-references to them.
+```sh
+dotnet-trace collect --dsrouter android --format speedscope
+```
 
-To collect a memory dump from a mobile application, use the same
-`--dsrouter` workflow as `dotnet-trace`:
+[speedscope]: https://speedscope.app/
+
+## Profiling Memory Usage
+
+Memory profiling helps you identify memory leaks and understand memory
+allocation patterns in your application. Use `dotnet-gcdump` to create
+snapshots of managed memory.
+
+### Collecting Memory Dumps
+
+To collect a memory dump, use the same `--dsrouter` workflow as
+`dotnet-trace`:
 
 ```sh
 dotnet-gcdump collect --dsrouter android
 ```
 
-For other platforms, use `--dsrouter android-emu`, `--dsrouter ios`,
-or `--dsrouter ios-sim` as appropriate.
+Use `--dsrouter android-emu`, `--dsrouter ios`, or `--dsrouter
+ios-sim` for other targets.
 
-Unlike CPU tracing, you typically want to use
-`-p:DiagnosticSuspend=false` when collecting memory dumps, as
-suspending the application startup isn't necessary:
+Unlike CPU tracing, memory dumps do not require suspending application
+startup. Build your application with `-p:DiagnosticSuspend=false`:
 
 ```sh
 dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
-Once `dotnet-gcdump` connects, it will create a `*.gcdump` file in the
+Once `dotnet-gcdump` connects, it creates a `*.gcdump` file in the
 current directory. You can open this file in Visual Studio on Windows
-or [PerfView][perfview] to explore the memory contents.
+or [PerfView][perfview].
+
+[perfview]: https://github.com/microsoft/perfview
 
 ### Analyzing Memory Dumps
 
@@ -386,16 +335,26 @@ though you should disable XAML hot reload for accurate results.
 > can be significantly different when XAML compilation, AOT
 > compilation, and trimming are enabled.
 
-### Determining if a Leak Exists
+## Diagnosing Memory Leaks
 
-The symptom of a memory leak might be:
+Memory leaks in .NET MAUI applications manifest as steadily increasing
+memory usage, especially during repeated navigation or interactions.
+On mobile platforms, this can eventually cause the OS to terminate
+your application due to excessive memory consumption.
+
+### Symptoms of Memory Leaks
+
+A typical symptom of a memory leak might be:
 
 1. Navigate from the main page to a details page
 2. Navigate back
 3. Navigate to the details page again
 4. Memory grows consistently with each cycle
 
-To determine if a page is actually leaking:
+### Determining if a Leak Exists
+
+To determine if a page is actually leaking, use finalizers with
+logging and forced garbage collection during debugging.
 
 1. Add a finalizer with logging to the page class:
 
@@ -424,6 +383,8 @@ leaking--something is holding a reference to it indefinitely.
 > [!WARNING]
 > Remove `GC.Collect()` calls after debugging. They're only for
 > diagnosing issues and should never be in production code.
+
+[adb-logcat]: /xamarin/android/deploy-test/debugging/android-debug-log
 
 ### Narrowing Down the Cause
 
@@ -508,7 +469,7 @@ class MyView : UIView
 > These circular reference issues are specific to iOS and Mac Catalyst.
 > They don't occur on Android or Windows.
 
-### Best Practices
+### Best Practices for Avoiding Leaks
 
 - **Test `Release` builds**: Memory behavior can differ significantly
   from `Debug` builds due to optimizations, trimming, and AOT
@@ -531,5 +492,4 @@ class MyView : UIView
 For more detailed information about memory leak patterns and
 techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
 
-[adb-logcat]: /xamarin/android/deploy-test/debugging/android-debug-log
 [maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
