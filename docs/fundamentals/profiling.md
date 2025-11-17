@@ -334,4 +334,202 @@ communicates with the diagnostic tools:
 
 ## Measuring Memory Usage or Leaks
 
-TODO
+Memory leaks in .NET MAUI applications can manifest as steadily
+increasing memory usage, especially during repeated navigation or
+interactions. On mobile platforms, this can eventually cause the OS to
+terminate your application due to excessive memory consumption.
+
+### Collecting Memory Snapshots with `dotnet-gcdump`
+
+The `dotnet-gcdump` tool creates snapshots of all managed (C#) objects
+in memory at a given point in time. This allows you to inspect what
+objects exist, how many instances there are, and what's holding
+references to them.
+
+To collect a memory dump from a mobile application, use the same
+`--dsrouter` workflow as `dotnet-trace`:
+
+```sh
+dotnet-gcdump collect --dsrouter android
+```
+
+For other platforms, use `--dsrouter android-emu`, `--dsrouter ios`,
+or `--dsrouter ios-sim` as appropriate.
+
+Unlike CPU tracing, you typically want to use
+`-p:DiagnosticSuspend=false` when collecting memory dumps, as
+suspending the application startup isn't necessary:
+
+```sh
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+Once `dotnet-gcdump` connects, it will create a `*.gcdump` file in the
+current directory. You can open this file in Visual Studio on Windows
+or [PerfView][perfview] to explore the memory contents.
+
+### Analyzing Memory Dumps
+
+When you open a `*.gcdump` file in Visual Studio, you can:
+
+- View every managed object in memory
+- See the total count and size of each type
+- Inspect the reference tree to understand what's keeping objects alive
+- Compare multiple snapshots to identify growing allocations
+
+Visual Studio's Memory Usage diagnostic tool (`Debug` > `Windows` >
+`Diagnostic Tools`) also allows you to take snapshots while debugging,
+though you should disable XAML hot reload for accurate results.
+
+> [!TIP]
+> Consider taking memory snapshots of `Release` builds, as code paths
+> can be significantly different when XAML compilation, AOT
+> compilation, and trimming are enabled.
+
+### Determining if a Leak Exists
+
+The symptom of a memory leak might be:
+
+1. Navigate from the main page to a details page
+2. Navigate back
+3. Navigate to the details page again
+4. Memory grows consistently with each cycle
+
+To determine if a page is actually leaking:
+
+1. Add a finalizer with logging to the page class:
+
+   ```csharp
+   ~MyDetailsPage() => System.Diagnostics.Debug.WriteLine("~MyDetailsPage() finalized");
+   ```
+
+2. Force garbage collection in strategic places (for debugging only):
+
+   ```csharp
+   public MyDetailsPage()
+   {
+       GC.Collect(); // For debugging purposes only
+       GC.WaitForPendingFinalizers();
+       InitializeComponent();
+   }
+   ```
+
+3. Test a `Release` build and watch the console output using [adb
+   logcat][adb-logcat] (Android) or device logs (iOS).
+
+If the finalizer runs when navigating away from the page, the page is
+being collected correctly. If the finalizer never runs, the page is
+leaking--something is holding a reference to it indefinitely.
+
+> [!WARNING]
+> Remove `GC.Collect()` calls after debugging. They're only for
+> diagnosing issues and should never be in production code.
+
+### Narrowing Down the Cause
+
+Once you've identified a leak, narrow down the cause:
+
+1. Comment out all XAML content. Does the leak still occur?
+2. Comment out all C# code in code-behind. Does the leak still occur?
+3. Test on multiple platforms. Does it only happen on one platform?
+
+Generally, an empty `ContentPage` should not leak. By systematically
+removing code, you can identify which control or code pattern is
+causing the problem.
+
+### Common Leak Patterns
+
+#### C# Events
+
+C# events can create circular references that prevent garbage
+collection. Consider a scenario where a child object subscribes to a
+parent's event, but the parent also holds a reference to the child.
+Both objects can end up living forever.
+
+If the event source outlives the subscriber (like a `Style` in
+`Application.Resources`), this can cause entire pages to leak.
+
+**Solution**: Use `WeakEventManager` for events in .NET MAUI controls,
+or unsubscribe from events when the object is no longer needed.
+
+#### iOS and Mac Catalyst Circular References
+
+On iOS and Mac Catalyst, circular references between C# objects and
+native objects can cause leaks because C# objects that subclass
+`NSObject` exist in both the garbage-collected .NET world and the
+reference-counted Objective-C world.
+
+Example of a problematic pattern:
+
+```csharp
+class MyView : UIView
+{
+    public MyView()
+    {
+        var picker = new UIDatePicker();
+        AddSubview(picker); // MyView -> UIDatePicker
+        picker.ValueChanged += OnValueChanged; // UIDatePicker -> MyView via event handler
+    }
+
+    void OnValueChanged(object? sender, EventArgs e) { }
+}
+```
+
+**Solutions**:
+
+1. Make event handlers `static`:
+
+   ```csharp
+   static void OnValueChanged(object? sender, EventArgs e) { }
+   ```
+
+2. Use a proxy object that doesn't inherit from `NSObject`:
+
+   ```csharp
+   class MyView : UIView
+   {
+       readonly Proxy _proxy = new();
+
+       public MyView()
+       {
+           var picker = new UIDatePicker();
+           AddSubview(picker);
+           picker.ValueChanged += _proxy.OnValueChanged;
+       }
+
+       class Proxy
+       {
+           public void OnValueChanged(object? sender, EventArgs e) { }
+       }
+   }
+   ```
+
+> [!NOTE]
+> These circular reference issues are specific to iOS and Mac Catalyst.
+> They don't occur on Android or Windows.
+
+### Best Practices
+
+- **Test `Release` builds**: Memory behavior can differ significantly
+  from `Debug` builds due to optimizations, trimming, and AOT
+  compilation.
+
+- **Use finalizers when investigating**: Add finalizers with logging to
+  key objects to quickly identify if they're being collected.
+
+- **Unsubscribe from events**: Always unsubscribe from events when
+  objects are disposed or no longer needed.
+
+- **Be cautious with events on long-lived objects**: Avoid having
+  long-lived objects (like those in `Application.Resources`) hold
+  references to short-lived objects (like pages or views).
+
+- **Profile regularly**: Make memory profiling part of your regular
+  testing process, especially after adding new features or making
+  significant changes.
+
+For more detailed information about memory leak patterns and
+techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
+
+[adb-logcat]: /xamarin/android/deploy-test/debugging/android-debug-log
+[maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
