@@ -467,7 +467,7 @@ class MyView : UIView
 
 > [!NOTE]
 > These circular reference issues are specific to iOS and Mac Catalyst.
-> They don't occur on Android or Windows.
+> They do not normally occur on Android or Windows.
 
 ### Best Practices for Avoiding Leaks
 
