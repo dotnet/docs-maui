@@ -122,148 +122,38 @@ See https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dsrouter fo
 The `--format` argument is optional and it defaults to `nettrace`.
 However, `nettrace` files can be viewed only with Perfview or Visual
 Studio on Windows, while the speedscope JSON files can be viewed "on"
-Unix by opening them with [https://speedscope.app/][speedscope].
+macOS or Linux by opening them with [https://speedscope.app/][speedscope].
 
-### Running `dotnet-dsrouter` Separately
-
-> **NOTE:** The following section describes the approach before
-> `dotnet-trace` 9.0.652701. Running `dotnet-dsrouter` separately can
-> be useful for viewing its log messages when troubleshooting.
-
-For profiling an Android application running on an Android *emulator*:
-
-```sh
-$ dotnet-dsrouter android-emu
-How to connect current dotnet-dsrouter pid=1234 with android emulator and diagnostics tooling.
-Start an application on android emulator with ONE of the following environment variables set:
-[Default Tracing]
-DOTNET_DiagnosticPorts=10.0.2.2:9000,nosuspend,connect
-[Startup Tracing]
-DOTNET_DiagnosticPorts=10.0.2.2:9000,suspend,connect
-Run diagnotic tool connecting application on android emulator through dotnet-dsrouter pid=1234:
-dotnet-trace collect -p 1234
-See https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-dsrouter for additional details and examples.
-
-info: dotnet-dsrouter-1234[0]
-      Starting dotnet-dsrouter using pid=1234
-info: dotnet-dsrouter-1234[0]
-      Starting IPC server (dotnet-diagnostic-dsrouter-1234) <--> TCP server (127.0.0.1:9000) router.
-```
-
-For profiling an Android application running on an Android *device*:
-
-```sh
-# `adb reverse` is required when using hardware devices
-$ adb reverse tcp:9000 tcp:9001
-$ dotnet-dsrouter android
-How to connect current dotnet-dsrouter pid=1234 with android device and diagnostics tooling.
-Start an application on android device with ONE of the following environment variables set:
-[Default Tracing]
-DOTNET_DiagnosticPorts=127.0.0.1:9000,nosuspend,connect
-[Startup Tracing]
-DOTNET_DiagnosticPorts=127.0.0.1:9000,suspend,connect
-Run diagnotic tool connecting application on android device through dotnet-dsrouter pid=1234:
-dotnet-trace collect -p 1234
-...
-```
-
-### Android System Properties
+### Building your Application with Diagnostics
 
 Note the log message that `dotnet-dsrouter` prints that mentions
-`$DOTNET_DiagnosticPorts`. `$DOTNET_DiagnosticPorts` is an environment
-variable that could be defined in an `@(AndroidEnvironment)` file, but
-it is simpler to use the `debug.mono.profile` Android system property.
-Android system properties can be used without rebuilding the app.
+varioous `Diagnostic` MSBuild properties:
 
-For emulators, `$DOTNET_DiagnosticPorts` should specify an IP address
+```
+dotnet build -t:Run -c Release -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+For emulators, `-p:DiagnosticAddress` should specify an IP address
 of 10.0.2.2:
 
 ```sh
-adb shell setprop debug.mono.profile '10.0.2.2:9000,suspend,connect'
+dotnet build -t:Run -c Release -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
 
-For devices, `$DOTNET_DiagnosticPorts` should specify an IP address of
-127.0.0.1, and the port number should be the port used used with adb
-reverse, e.g:
-
-```sh
-# `adb reverse` is required when using hardware devices
-$ adb reverse tcp:9000 tcp:9001
-$ adb shell setprop debug.mono.profile '127.0.0.1:9000,suspend,connect'
-```
-
-`suspend` is useful as it blocks application startup, so you can
-actually `dotnet-trace` startup times of the application.
+`-p:DiagnosticSuspend=true` is useful as it blocks application
+startup, so you can actually `dotnet-trace` startup times of the
+application.
 
 If you are wanting to collect a `gcdump` or just get things working,
-try `nosuspend` instead. See the [`dotnet-dsrouter`
+try `-p:DiagnosticSuspend=false` instead. See the [`dotnet-dsrouter`
 documentation][nosuspend] for further information.
 
+Building your application with these settings, will encode the values
+*into* the application. This makes the produced `.apk` or `.aab` file
+include the .NET diagnostic component(s) that will try to communicate
+with `dotnet-trace` and other tools.
+
 [nosuspend]: /dotnet/core/diagnostics/dotnet-dsrouter#collect-a-trace-using-dotnet-trace-from-a-net-application-running-on-android
-
-### Running `dotnet-trace` on the Host
-
-First, run `dotnet-trace ps` to find a list of processes:
-
-```sh
-> dotnet-trace ps
- 38604  dotnet-dsrouter  C:\Users\myuser\.dotnet\tools\dotnet-dsrouter.exe  "C:\Users\myuser\.dotnet\tools\dotnet-dsrouter.exe" android-emu --verbose debug
-```
-
-`dotnet-trace` knows how to tell if a process ID is `dotnet-dsrouter` and
-connect *through it* appropriately.
-
-Using the process ID from the previous step, run `dotnet-trace collect`:
-
-```sh
-$ dotnet-trace collect -p 38604 --format speedscope
-No profile or providers specified, defaulting to trace profile 'cpu-sampling'
-
-Provider Name                           Keywords            Level               Enabled By
-Microsoft-DotNETCore-SampleProfiler     0x0000F00000000000  Informational(4)    --profile 
-Microsoft-Windows-DotNETRuntime         0x00000014C14FCCBD  Informational(4)    --profile 
-
-Waiting for connection on /tmp/maui-app
-Start an application with the following environment variable: DOTNET_DiagnosticPorts=/tmp/maui-app
-```
-
-The `--format` argument is optional and it defaults to `nettrace`.
-However, `nettrace` files can be viewed only with Perfview or Visual
-Studio on Windows, while the speedscope JSON files can be viewed "on"
-Unix by opening them with [https://speedscope.app/][speedscope].
-
-[speedscope]: https://speedscope.app/
-
-### Running `dotnet-trace` on the Host
-
-First, run `dotnet-trace ps` to find a list of processes:
-
-```sh
-> dotnet-trace ps
- 38604  dotnet-dsrouter  C:\Users\myuser\.dotnet\tools\dotnet-dsrouter.exe  "C:\Users\myuser\.dotnet\tools\dotnet-dsrouter.exe" android-emu --verbose debug
-```
-
-`dotnet-trace` knows how to tell if a process ID is `dotnet-dsrouter` and
-connect *through it* appropriately.
-
-Using the process ID from the previous step, run `dotnet-trace collect`:
-
-```sh
-$ dotnet-trace collect -p 38604 --format speedscope
-No profile or providers specified, defaulting to trace profile 'cpu-sampling'
-
-Provider Name                           Keywords            Level               Enabled By
-Microsoft-DotNETCore-SampleProfiler     0x0000F00000000000  Informational(4)    --profile 
-Microsoft-Windows-DotNETRuntime         0x00000014C14FCCBD  Informational(4)    --profile 
-
-Waiting for connection on /tmp/maui-app
-Start an application with the following environment variable: DOTNET_DiagnosticPorts=/tmp/maui-app
-```
-
-The `--format` argument is optional and it defaults to `nettrace`.
-However, `nettrace` files can be viewed only with Perfview or Visual
-Studio on Windows, while the speedscope JSON files can be viewed "on"
-Unix by opening them with [https://speedscope.app/][speedscope].
 
 ### Running the .NET for Android Application
 
