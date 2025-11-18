@@ -20,11 +20,14 @@ applications, in general, are interested in:
 The techniques and tools for improving these metrics are different,
 which we plan to demystify in this guide. The tools used to profile
 .NET MAUI applications can also vary depending on the platform. This
-guide will focus heavily on Android and Apple platforms, while
-profiling on Windows is most easily done using the [tools in Visual
-Studio][prof-overview].
+guide covers Android, iOS, Mac Catalyst, and Windows profiling
+approaches.
 
-[prof-overview]: /visualstudio/profiling/profiling-feature-tour?pivots=programming-language-dotnet
+> [!IMPORTANT]
+> Always profile `Release` builds for accurate performance
+> measurements. `Debug` builds use the interpreter (`UseInterpreter=true`)
+> for C# hot reload support, which significantly impacts performance
+> and produces unrealistic results.
 
 ## Prerequisites
 
@@ -292,6 +295,142 @@ dotnet-trace collect --dsrouter android --format speedscope
 
 [speedscope]: https://speedscope.app/
 
+## Profiling on Windows
+
+While the cross-platform `dotnet-trace` tool works on Windows, the
+platform offers additional native profiling options that may be more
+convenient.
+
+### Using Visual Studio Performance Profiler
+
+The Visual Studio Performance Profiler provides integrated profiling
+for .NET applications. See the [Visual Studio profiling feature
+tour][prof-overview] for comprehensive guidance.
+
+[prof-overview]: /visualstudio/profiling/profiling-feature-tour?pivots=programming-language-dotnet
+
+### Using PerfView
+
+[PerfView][perfview] is a powerful, free performance analysis tool for
+Windows that can profile .NET MAUI applications with minimal setup.
+
+To profile with PerfView:
+
+1. Build your application for `Release` with [ReadyToRun
+   enabled][r2r]:
+
+   ```sh
+   dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true
+   ```
+
+2. Launch PerfView and select `Collect` > `Collect`.
+
+3. In the **Command** field, filter on your app's executable (for
+   example, `hellomaui.exe`).
+
+4. Click **Start Collection**, then manually launch your app.
+
+5. Click **Stop Collection** once your app has completed the operation
+   you want to profile.
+
+6. Open **CPU Stacks** to view timing information, or use the **Flame
+   Graph** tab for a graphical view.
+
+You can also save the PerfView data in SpeedScope format (`File` >
+`Save View As`) to view it at [https://speedscope.app/][speedscope]
+for cross-platform analysis.
+
+[r2r]: /dotnet/core/deploying/ready-to-run
+
+#### Measuring Windows Startup Time
+
+To measure precise startup times on Windows, you can use PerfView to
+capture [Event Tracing for Windows (ETW)][etw] events:
+
+1. In PerfView, open `Collect` > `Collect` and expand **Advanced
+   Options**.
+
+2. Configure the following:
+   - Enable **Kernel Base**
+   - Add `Microsoft-Windows-XAML:0x44:Informational` to **Additional
+     Providers**
+
+3. Click **Start Collection**, then launch and close your app 3-5
+   times.
+
+4. Click **Stop Collection**.
+
+5. Open the **Events** report and calculate startup time by finding:
+   - The `Windows Kernel/Process/Start` event for your app (note the
+     `Time MSec` value)
+   - The first `Microsoft-Windows-XAML/Frame/Stop` event for the same
+     process ID
+   - Subtract the start time from the stop time to get startup
+     duration
+
+Run the app multiple times and average the results for more accurate
+measurements.
+
+[etw]: /windows-hardware/drivers/devtest/event-tracing-for-windows--etw-
+
+### Using dotnet-trace on Windows
+
+For unpackaged Windows applications, you can use `dotnet-trace`
+directly:
+
+```sh
+dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true -p:WindowsPackageType=None
+dotnet trace collect --format speedscope -- bin\Release\net10.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
+```
+
+## Profiling on iOS and Mac Catalyst with Instruments
+
+For iOS and Mac Catalyst applications, Apple's Instruments tool
+provides native profiling with detailed insights into app launch time
+and performance.
+
+### Using Instruments for App Launch Profiling
+
+1. Build your app for `Release` with symbols preserved:
+
+   ```sh
+   dotnet build -c Release -f net10.0-ios -p:NoSymbolStrip=true
+   ```
+
+   The `NoSymbolStrip=true` property keeps native symbols in the
+   executable, making stack traces in Instruments much more helpful.
+
+2. Install the app on your device:
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-ios -p:NoSymbolStrip=true
+   ```
+
+3. Launch Instruments (from Xcode or by running `open -a Instruments`
+   in Terminal).
+
+4. Select your iOS device at the top.
+
+5. Select your app from the list of installed applications.
+
+6. Choose the **App Launch** instrument template.
+
+7. Click **Choose**, then click the **Record** button to start
+   profiling.
+
+8. The app will launch automatically. Stop the recording once the app
+   has fully started.
+
+9. In the results, select the **App Lifecycle** row to see the
+   lifecycle timeline. The last row in the bottom table shows the time
+   when the app completed launching (for example, `Currently running
+   in the foreground...`).
+
+For more information about using Instruments, see Apple's
+documentation on [Reducing Your App's Launch Time][apple-launch].
+
+[apple-launch]: https://developer.apple.com/documentation/xcode/reducing-your-app-s-launch-time
+
 ## Profiling Memory Usage
 
 Memory profiling helps you identify memory leaks and understand memory
@@ -499,3 +638,50 @@ For more detailed information about memory leak patterns and
 techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
 
 [maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
+### Logging-Based Startup Measurement
+
+For a lightweight approach to measuring startup time, you can log
+messages at specific points in your application and measure the time
+between them:
+
+1. Add a log message when your main page loads:
+
+   ```csharp
+   Loaded += (sender, e) => Dispatcher.Dispatch(() => 
+       Console.WriteLine("loaded"));
+   ```
+
+2. Use a tool like the [measure-startup][measure-startup] sample to
+   launch your app and measure the time until the log message appears.
+
+3. On Android, you can filter `adb logcat` output to watch for
+   specific messages:
+
+   ```sh
+   adb logcat | grep "loaded"
+   ```
+
+This approach works across all platforms and is useful for continuous
+integration scenarios or quick checks.
+
+[measure-startup]: https://github.com/jonathanpeppers/measure-startup
+
+## Additional Resources
+
+- [.NET MAUI Profiling Wiki][maui-profiling] - Comprehensive wiki with
+  advanced scenarios and troubleshooting
+- [Android Tracing Guide][android-tracing] - Detailed Android-specific
+  profiling instructions
+- [iOS/macOS Profiling Wiki][macios-profiling] - Platform-specific
+  guidance for Apple platforms
+- [.NET Diagnostic Tools Documentation][dotnet-diagnostics] - Official
+  documentation for `dotnet-trace`, `dotnet-dsrouter`, and
+  `dotnet-gcdump`
+- [PerfView User's Guide][perfview-guide] - In-depth guide to using
+  PerfView for Windows profiling
+
+[maui-profiling]: https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps
+[android-tracing]: https://github.com/dotnet/android/blob/main/Documentation/guides/tracing.md
+[macios-profiling]: https://github.com/dotnet/macios/wiki/Profiling
+[dotnet-diagnostics]: /dotnet/core/diagnostics/
+[perfview-guide]: https://github.com/microsoft/perfview/blob/main/documentation/Markdown/GettingStarted.md
