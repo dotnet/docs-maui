@@ -72,6 +72,12 @@ The MAUI Service Defaults project contains shared configuration that your MAUI a
 dotnet new maui-aspire-servicedefaults -n YourApp.MauiServiceDefaults
 ```
 
+Add the project to the solution:
+
+```dotnetcli
+dotnet sln add YourApp.MauiServiceDefaults/YourApp.MauiServiceDefaults.csproj
+```
+
 This project includes:
 
 - Service discovery configuration
@@ -93,12 +99,27 @@ The App Host project orchestrates all your application services, including your 
 dotnet new aspire-apphost -n YourApp.AppHost
 ```
 
+Add the project to the solution:
+
+```dotnetcli
+dotnet sln add YourApp.AppHost/YourApp.AppHost.csproj
+```
+
 Add references to your MAUI app and any web service projects:
 
 ```dotnetcli
 dotnet add YourApp.AppHost.csproj reference YourMauiApp/YourMauiApp.csproj
 dotnet add YourApp.AppHost.csproj reference YourWebService/YourWebService.csproj
 ```
+
+Add a reference to the Aspire hosting package for .NET MAUI:
+
+```dotnetcli
+dotnet add package Aspire.Hosting.Maui --version 13.0.0-preview.1.25560.3 --project .\YourApp.AppHost\YourApp.AppHost.csproj
+```
+
+> [!NOTE]
+> For now you need to use a preview version of the Aspire.Hosting.Maui package.
 
 ### Configure the App Host
 
@@ -207,7 +228,7 @@ public class WeatherApiClient
 
 public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public int TemperatureF => 32 + (int)(TemperatureC * 1.8);
 }
 ```
 
