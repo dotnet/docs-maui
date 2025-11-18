@@ -641,11 +641,36 @@ techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
 
 ## Alternative Profiling Approaches
 
+### Android ActivityManager Startup Logs
+
+Android automatically logs startup time information through the
+ActivityManager. You can view these logs using `adb logcat`:
+
+```sh
+adb logcat | grep "ActivityManager"
+```
+
+When your app starts, you'll see messages like:
+
+```
+ActivityManager: Displayed com.android.myexample/.StartupTiming: +3s534ms
+```
+
+This shows the time it took for your activity to be displayed. This is
+a quick way to measure startup time without any additional tooling or
+code changes.
+
+For more information about Android app launch time and optimization
+techniques, see the [Android documentation on app startup
+time][android-launch].
+
+[android-launch]: https://developer.android.com/topic/performance/vitals/launch-time
+
 ### Logging-Based Startup Measurement
 
-For a lightweight approach to measuring startup time, you can log
-messages at specific points in your application and measure the time
-between them:
+For a lightweight approach to measuring startup time across all
+platforms, you can log messages at specific points in your application
+and measure the time between them:
 
 1. Add a log message when your main page loads:
 
