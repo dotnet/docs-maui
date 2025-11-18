@@ -118,7 +118,7 @@ Add a reference to the Aspire hosting package for .NET MAUI:
 dotnet add package Aspire.Hosting.Maui --version 13.0.0-preview.1.25560.3 --project .\YourApp.AppHost\YourApp.AppHost.csproj
 ```
 
-For now you need the use a preview version of this package.
+For now you need to use a preview version of this package.
 
 ### Configure the App Host
 
