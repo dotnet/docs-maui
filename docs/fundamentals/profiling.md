@@ -132,6 +132,11 @@ communicates with the diagnostic tools:
   setting any of the `Diagnostic*` MSBuild properties. This property
   works on Android, iOS, and Mac Catalyst.
 
+> [!NOTE]
+> When using CoreCLR (currently experimental on Android, with iOS
+> support planned), the diagnostic component is built into the runtime
+> and `EnableDiagnostics` is not required.
+
 ### Build Command Examples
 
 When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
