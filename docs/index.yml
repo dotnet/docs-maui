@@ -219,6 +219,9 @@ conceptualContent:
             - text: Pass arguments
               url: xaml/pass-arguments.md
               itemType: concept
+            - text: Performance Profiling
+              url: fundamentals/profiling.md
+              itemType: concept
             - text: XAML hot reload
               url: xaml/hot-reload.md
               itemType: concept

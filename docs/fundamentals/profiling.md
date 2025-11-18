@@ -1,0 +1,719 @@
+---
+title: "Performance Profiling"
+description: "Learn how to profile the performance of your .NET MAUI app."
+ms.date: 06/20/2025
+---
+
+# Performance Profiling
+
+Performance profiling is the process of measuring the performance of
+an application to identify areas for improvement. .NET MAUI and client
+applications, in general, are interested in:
+
+- **Startup time**: The time it takes for the application to start and
+  display the first screen.
+- **CPU usage**: If specific methods are consuming too much CPU time:
+  either through many calls or long-running operations.
+- **Memory usage**: If many allocations are made beyond reason or if
+  there are memory leaks.
+
+The techniques and tools for improving these metrics are different,
+which we plan to demystify in this guide. The tools used to profile
+.NET MAUI applications can also vary depending on the platform. This
+guide covers Android, iOS, Mac Catalyst, and Windows profiling
+approaches.
+
+> [!IMPORTANT]
+> Always profile `Release` builds for accurate performance
+> measurements. `Debug` builds use the interpreter (`UseInterpreter=true`)
+> for C# hot reload support, which significantly impacts performance
+> and produces unrealistic results.
+
+## Prerequisites
+
+### Installing Diagnostic Tools
+
+To profile .NET MAUI applications on iOS and Android, you need to
+install the following .NET global tools:
+
+- [`dotnet-trace`][dotnet-trace] - Collects CPU traces and performance
+  data
+- [`dotnet-dsrouter`][dotnet-dsrouter] - Forwards diagnostic
+  connections from remote devices to your local machine
+- [`dotnet-gcdump`][dotnet-gcdump] - Collects memory dumps for
+  analyzing managed memory usage
+
+You can install these tools using the following commands:
+
+```sh
+$ dotnet tool install -g dotnet-trace
+You can invoke the tool using the following command: dotnet-trace
+Tool 'dotnet-trace' was successfully installed.
+$ dotnet tool install -g dotnet-dsrouter
+You can invoke the tool using the following command: dotnet-dsrouter
+Tool 'dotnet-dsrouter' was successfully installed.
+$ dotnet tool install -g dotnet-gcdump
+You can invoke the tool using the following command: dotnet-gcdump
+Tool 'dotnet-gcdump' was successfully installed.
+```
+
+> [!NOTE]
+> You need at least version 9.0.652701 of all the diagnostic tools to
+> use the features described in this guide. Check
+> [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
+> [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
+> and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
+> on NuGet for the latest versions.
+
+Starting with version 9.0.652701, both `dotnet-trace` and
+`dotnet-gcdump` include a `--dsrouter` option that automatically
+launches and manages `dotnet-dsrouter` as a subprocess. This
+eliminates the need to run `dotnet-dsrouter` separately, significantly
+simplifying the profiling workflow.
+
+See the .NET Conf session, [.NET Diagnostic Tooling with
+AI][dotnetconf], for a live demo of using these tools.
+
+[dotnet-trace]: /dotnet/core/diagnostics/dotnet-trace
+[dotnet-dsrouter]: /dotnet/core/diagnostics/dotnet-dsrouter
+[dotnet-gcdump]: /dotnet/core/diagnostics/dotnet-gcdump
+[dotnetconf]: https://youtu.be/HLNYCwgk5fU
+
+### How the Tools Work Together
+
+To use these diagnostic tools on iOS and Android, several components
+work together:
+
+- The .NET global tools (`dotnet-trace`, `dotnet-gcdump`,
+  `dotnet-dsrouter`) run on your development machine
+- The Mono diagnostic component
+  (`libmono-component-diagnostics_tracing.so`) is included in your
+  application package
+- `dotnet-dsrouter` forwards the diagnostic connection from the remote
+  device or emulator to a local port on your machine
+- The diagnostic tools connect to this local port to collect profiling
+  data
+
+The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
+automatically handles the complexity of starting `dotnet-dsrouter` and
+coordinating the connection.
+
+## Building Your Application for Profiling
+
+To enable profiling, your application must be built with special
+MSBuild properties that include the diagnostic components and
+configure the connection to the profiling tools.
+
+### Understanding Diagnostic Properties
+
+The following MSBuild properties control how your application
+communicates with the diagnostic tools:
+
+- **`DiagnosticAddress`**: The IP address where `dotnet-dsrouter` is
+  listening. Use `10.0.2.2` for Android emulators (this is the host
+  machine's loopback address from the emulator's perspective), and
+  `127.0.0.1` for physical devices and iOS.
+
+- **`DiagnosticPort`**: The port number for the diagnostic connection
+  (default is `9000`).
+
+- **`DiagnosticSuspend`**: When `true`, the application waits for the
+  profiler to connect before starting. When `false`, the application
+  starts immediately and the profiler can connect later. Use `true`
+  for startup profiling, `false` for runtime profiling and memory
+  dumps.
+
+- **`DiagnosticListenMode`**: Set to `connect` for Android (the app
+  connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
+  for `dotnet-dsrouter` to connect to it).
+
+- **`EnableDiagnostics`**: When `true`, includes the Mono diagnostic
+  component in the application package. This is implicitly set when
+  setting any of the `Diagnostic*` MSBuild properties. This property
+  works on Android, iOS, and Mac Catalyst.
+
+> [!NOTE]
+> When using CoreCLR (currently experimental on Android, with iOS
+> support planned), the diagnostic component is built into the runtime
+> and `EnableDiagnostics` is not required.
+
+### Build Command Examples
+
+When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
+option, the tool displays instructions for building your application.
+For example:
+
+**For Android emulators:**
+
+```sh
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**For Android devices:**
+
+```sh
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**For iOS devices and simulators:**
+
+```sh
+dotnet build -t:Run -c Release -f net10.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+```
+
+> [!NOTE]
+> Use `-f net10.0-android` or `-f net10.0-ios` for projects with
+> multiple target frameworks in `$(TargetFrameworks)`.
+
+> [!IMPORTANT]
+> Applications built with these diagnostic properties should only be
+> used for development and testing. Never release builds with
+> diagnostic components enabled to production, as they can expose
+> endpoints with deeper insights into your application's code.
+
+## Profiling CPU Usage
+
+The `dotnet-trace` tool collects CPU sampling information in formats
+like `.nettrace` and `.speedscope.json`. These traces show you the
+time spent in each method, helping you identify performance
+bottlenecks in your application.
+
+The workflow for CPU profiling depends on whether you're measuring
+startup time or profiling runtime operations. The key difference is
+the `-p:DiagnosticSuspend` MSBuild property.
+
+### Profiling Startup Time
+
+To capture accurate startup time measurements, suspend application
+startup until the profiler is ready. This ensures you capture the
+entire startup sequence from the very beginning.
+
+1. In one terminal, start `dotnet-trace` with the `--dsrouter` option:
+
+   ```sh
+   dotnet-trace collect --dsrouter android-emu --format speedscope
+   ```
+
+   Or for a physical Android device:
+
+   ```sh
+   dotnet-trace collect --dsrouter android --format speedscope
+   ```
+
+   For iOS devices and simulators, use `--dsrouter ios` or `--dsrouter ios-sim` respectively.
+
+2. In another terminal, build and deploy your application with
+   `-p:DiagnosticSuspend=true` to pause at startup:
+
+   **For Android emulators:**
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+   ```
+
+   **For Android devices:**
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+   ```
+
+   **For iOS (devices and simulators):**
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=listen
+   ```
+
+3. Your application will pause at the splash screen, waiting for
+   `dotnet-trace` to connect. Once connected, the application will
+   start and `dotnet-trace` will begin recording.
+
+4. Allow your application to fully start and reach the initial screen.
+
+5. Press `<Enter>` in the `dotnet-trace` terminal to stop recording.
+
+The trace file will be saved to the current directory. Use the `-o`
+option to specify a different output directory.
+
+### Profiling Runtime Operations
+
+To profile specific operations during runtime (such as button taps,
+navigation, or scrolling), use `-p:DiagnosticSuspend=false` and
+connect the profiler after the application has launched.
+
+1. Build and deploy your application with `-p:DiagnosticSuspend=false`:
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+   ```
+
+2. Navigate to the area of your application you want to profile.
+
+3. Start `dotnet-trace` with the `--dsrouter` option:
+
+   ```sh
+   dotnet-trace collect --dsrouter android --format speedscope
+   ```
+
+4. Perform the operation you want to profile.
+
+5. Press `<Enter>` to stop the trace.
+
+This approach produces a more focused trace file containing only the
+specific operation you're investigating.
+
+### Understanding Trace Output
+
+When `dotnet-trace` is collecting a trace, you'll see output similar
+to:
+
+```
+Process        : $HOME/.dotnet/tools/dotnet-dsrouter
+Output File    : /tmp/hellomaui-app-trace
+[00:00:00:35]    Recording trace 1.7997   (MB)
+Press <Enter> or <Ctrl+C> to exit...
+```
+
+After pressing `<Enter>`, the trace is finalized:
+
+```
+Stopping the trace. This may take up to minutes depending on the application being traced.
+
+Trace completed.
+Writing:    hellomaui-app-trace.speedscope.json
+```
+
+### Viewing Trace Files
+
+The `--format` argument controls the output format:
+
+- **`nettrace`** (default): Can be viewed in PerfView or Visual Studio
+  on Windows
+- **`speedscope`**: JSON format that can be viewed on any platform at
+  [https://speedscope.app/][speedscope]
+
+For cross-platform analysis, use `--format speedscope`:
+
+```sh
+dotnet-trace collect --dsrouter android --format speedscope
+```
+
+[speedscope]: https://speedscope.app/
+
+## Profiling on Windows
+
+While the cross-platform `dotnet-trace` tool works on Windows, the
+platform offers additional native profiling options that may be more
+convenient.
+
+### Using Visual Studio Performance Profiler
+
+The Visual Studio Performance Profiler provides integrated profiling
+for .NET applications. See the [Visual Studio profiling feature
+tour][prof-overview] for comprehensive guidance.
+
+[prof-overview]: /visualstudio/profiling/profiling-feature-tour?pivots=programming-language-dotnet
+
+### Using PerfView
+
+[PerfView][perfview] is a powerful, free performance analysis tool for
+Windows that can profile .NET MAUI applications with minimal setup.
+
+To profile with PerfView:
+
+1. Build your application for `Release` with [ReadyToRun
+   enabled][r2r]:
+
+   ```sh
+   dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true
+   ```
+
+2. Launch PerfView and select `Collect` > `Collect`.
+
+3. In the **Command** field, filter on your app's executable (for
+   example, `hellomaui.exe`).
+
+4. Click **Start Collection**, then manually launch your app.
+
+5. Click **Stop Collection** once your app has completed the operation
+   you want to profile.
+
+6. Open **CPU Stacks** to view timing information, or use the **Flame
+   Graph** tab for a graphical view.
+
+You can also save the PerfView data in SpeedScope format (`File` >
+`Save View As`) to view it at [https://speedscope.app/][speedscope]
+for cross-platform analysis.
+
+[r2r]: /dotnet/core/deploying/ready-to-run
+
+### Measuring Windows Startup Time with PerfView
+
+To measure precise startup times on Windows, you can use PerfView to
+capture [Event Tracing for Windows (ETW)][etw] events:
+
+1. In PerfView, open `Collect` > `Collect` and expand **Advanced
+   Options**.
+
+2. Configure the following:
+   - Enable **Kernel Base**
+   - Add `Microsoft-Windows-XAML:0x44:Informational` to **Additional
+     Providers**
+
+3. Click **Start Collection**, then launch and close your app 3-5
+   times.
+
+4. Click **Stop Collection**.
+
+5. Open the **Events** report and calculate startup time by finding:
+   - The `Windows Kernel/Process/Start` event for your app (note the
+     `Time MSec` value)
+   - The first `Microsoft-Windows-XAML/Frame/Stop` event for the same
+     process ID
+   - Subtract the start time from the stop time to get startup
+     duration
+
+Run the app multiple times and average the results for more accurate
+measurements.
+
+[etw]: /windows-hardware/drivers/devtest/event-tracing-for-windows--etw-
+
+### Using dotnet-trace on Windows
+
+For unpackaged Windows applications, you can use `dotnet-trace`
+directly:
+
+```sh
+dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true -p:WindowsPackageType=None
+dotnet trace collect --format speedscope -- bin\Release\net10.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
+```
+
+## Profiling on iOS and Mac Catalyst with Instruments
+
+For iOS and Mac Catalyst applications, Apple's Instruments tool
+provides native profiling with detailed insights into app launch time
+and performance.
+
+### Using Instruments for App Launch Profiling
+
+1. Build your app for `Release` with symbols preserved:
+
+   ```sh
+   dotnet build -c Release -f net10.0-ios -p:NoSymbolStrip=true
+   ```
+
+   The `NoSymbolStrip=true` property keeps native symbols in the
+   executable, making stack traces in Instruments much more helpful.
+
+2. Install the app on your device:
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-ios -p:NoSymbolStrip=true
+   ```
+
+3. Launch Instruments (from Xcode or by running `open -a Instruments`
+   in Terminal).
+
+4. Select your iOS device at the top.
+
+5. Select your app from the list of installed applications.
+
+6. Choose the **App Launch** instrument template.
+
+7. Click **Choose**, then click the **Record** button to start
+   profiling.
+
+8. The app will launch automatically. Stop the recording once the app
+   has fully started.
+
+9. In the results, select the **App Lifecycle** row to see the
+   lifecycle timeline. The last row in the bottom table shows the time
+   when the app completed launching (for example, `Currently running
+   in the foreground...`).
+
+For more information about using Instruments, see Apple's
+documentation on [Reducing Your App's Launch Time][apple-launch].
+
+[apple-launch]: https://developer.apple.com/documentation/xcode/reducing-your-app-s-launch-time
+
+## Profiling Memory Usage
+
+Memory profiling helps you identify memory leaks and understand memory
+allocation patterns in your application. Use `dotnet-gcdump` to create
+snapshots of managed memory.
+
+### Collecting Memory Dumps
+
+To collect a memory dump, use the same `--dsrouter` workflow as
+`dotnet-trace`:
+
+```sh
+dotnet-gcdump collect --dsrouter android
+```
+
+Use `--dsrouter android-emu`, `--dsrouter ios`, or `--dsrouter
+ios-sim` for other targets.
+
+Unlike CPU tracing, memory dumps do not require suspending application
+startup. Build your application with `-p:DiagnosticSuspend=false`:
+
+```sh
+dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+Once `dotnet-gcdump` connects, it creates a `*.gcdump` file in the
+current directory. You can open this file in Visual Studio on Windows
+or [PerfView][perfview].
+
+[perfview]: https://github.com/microsoft/perfview
+
+### Analyzing Memory Dumps
+
+When you open a `*.gcdump` file in Visual Studio, you can:
+
+- View every managed object in memory
+- See the total count and size of each type
+- Inspect the reference tree to understand what's keeping objects alive
+- Compare multiple snapshots to identify growing allocations
+
+Visual Studio's Memory Usage diagnostic tool (`Debug` > `Windows` >
+`Diagnostic Tools`) also allows you to take snapshots while debugging,
+though you should disable XAML hot reload for accurate results.
+
+> [!TIP]
+> Consider taking memory snapshots of `Release` builds, as code paths
+> can be significantly different when XAML compilation, AOT
+> compilation, and trimming are enabled.
+
+## Diagnosing Memory Leaks
+
+Memory leaks in .NET MAUI applications manifest as steadily increasing
+memory usage, especially during repeated navigation or interactions.
+On mobile platforms, this can eventually cause the OS to terminate
+your application due to excessive memory consumption.
+
+### Symptoms of Memory Leaks
+
+A typical symptom of a memory leak might be:
+
+1. Navigate from the main page to a details page
+2. Navigate back
+3. Navigate to the details page again
+4. Memory grows consistently with each cycle
+
+### Determining if a Leak Exists
+
+To determine if a page is actually leaking, use finalizers with
+logging and forced garbage collection during debugging.
+
+1. Add a finalizer with logging to the page class:
+
+   ```csharp
+   ~MyDetailsPage() => System.Diagnostics.Debug.WriteLine("~MyDetailsPage() finalized");
+   ```
+
+2. Force garbage collection in strategic places (for debugging only):
+
+   ```csharp
+   public MyDetailsPage()
+   {
+       GC.Collect(); // For debugging purposes only
+       GC.WaitForPendingFinalizers();
+       InitializeComponent();
+   }
+   ```
+
+3. Test a `Release` build and watch the console output using [adb
+   logcat][adb-logcat] (Android) or device logs (iOS).
+
+If the finalizer runs when navigating away from the page, the page is
+being collected correctly. If the finalizer never runs, the page is
+leaking--something is holding a reference to it indefinitely.
+
+> [!WARNING]
+> Remove `GC.Collect()` calls after debugging. They're only for
+> diagnosing issues and should never be in production code.
+
+[adb-logcat]: /xamarin/android/deploy-test/debugging/android-debug-log
+
+### Narrowing Down the Cause
+
+Once you've identified a leak, narrow down the cause:
+
+1. Comment out all XAML content. Does the leak still occur?
+2. Comment out all C# code in code-behind. Does the leak still occur?
+3. Test on multiple platforms. Does it only happen on one platform?
+
+Generally, an empty `ContentPage` should not leak. By systematically
+removing code, you can identify which control or code pattern is
+causing the problem.
+
+### Common Leak Patterns
+
+#### C# Events
+
+C# events can create circular references that prevent garbage
+collection. Consider a scenario where a child object subscribes to a
+parent's event, but the parent also holds a reference to the child.
+Both objects can end up living forever.
+
+If the event source outlives the subscriber (like a `Style` in
+`Application.Resources`), this can cause entire pages to leak.
+
+**Solution**: Use `WeakEventManager` for events in .NET MAUI controls,
+or unsubscribe from events when the object is no longer needed.
+
+#### iOS and Mac Catalyst Circular References
+
+On iOS and Mac Catalyst, circular references between C# objects and
+native objects can cause leaks because C# objects that subclass
+`NSObject` exist in both the garbage-collected .NET world and the
+reference-counted Objective-C world.
+
+Example of a problematic pattern:
+
+```csharp
+class MyView : UIView
+{
+    public MyView()
+    {
+        var picker = new UIDatePicker();
+        AddSubview(picker); // MyView -> UIDatePicker
+        picker.ValueChanged += OnValueChanged; // UIDatePicker -> MyView via event handler
+    }
+
+    void OnValueChanged(object? sender, EventArgs e) { }
+}
+```
+
+**Solutions**:
+
+1. Make event handlers `static`:
+
+   ```csharp
+   static void OnValueChanged(object? sender, EventArgs e) { }
+   ```
+
+2. Use a proxy object that doesn't inherit from `NSObject`:
+
+   ```csharp
+   class MyView : UIView
+   {
+       readonly Proxy _proxy = new();
+
+       public MyView()
+       {
+           var picker = new UIDatePicker();
+           AddSubview(picker);
+           picker.ValueChanged += _proxy.OnValueChanged;
+       }
+
+       class Proxy
+       {
+           public void OnValueChanged(object? sender, EventArgs e) { }
+       }
+   }
+   ```
+
+> [!NOTE]
+> These circular reference issues are specific to iOS and Mac Catalyst.
+> They do not normally occur on Android or Windows.
+
+### Best Practices for Avoiding Leaks
+
+- **Test `Release` builds**: Memory behavior can differ significantly
+  from `Debug` builds due to optimizations, trimming, and AOT
+  compilation.
+
+- **Use finalizers when investigating**: Add finalizers with logging to
+  key objects to quickly identify if they're being collected.
+
+- **Unsubscribe from events**: Always unsubscribe from events when
+  objects are disposed or no longer needed.
+
+- **Be cautious with events on long-lived objects**: Avoid having
+  long-lived objects (like those in `Application.Resources`) hold
+  references to short-lived objects (like pages or views).
+
+- **Profile regularly**: Make memory profiling part of your regular
+  testing process, especially after adding new features or making
+  significant changes.
+
+For more detailed information about memory leak patterns and
+techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
+
+[maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
+
+## Alternative Profiling Approaches
+
+### Android ActivityManager Startup Logs
+
+Android automatically logs startup time information through the
+ActivityManager. You can view these logs using `adb logcat`:
+
+```sh
+adb logcat | grep "ActivityManager"
+```
+
+When your app starts, you'll see messages like:
+
+```
+ActivityManager: Displayed com.android.myexample/.StartupTiming: +3s534ms
+```
+
+This shows the time it took for your activity to be displayed. This is
+a quick way to measure startup time without any additional tooling or
+code changes.
+
+For more information about Android app launch time and optimization
+techniques, see the [Android documentation on app startup
+time][android-launch].
+
+[android-launch]: https://developer.android.com/topic/performance/vitals/launch-time
+
+### Logging-Based Startup Measurement
+
+For a lightweight approach to measuring startup time across all
+platforms, you can log messages at specific points in your application
+and measure the time between them:
+
+1. Add a log message when your main page loads:
+
+   ```csharp
+   Loaded += (sender, e) => Dispatcher.Dispatch(() => 
+       Console.WriteLine("loaded"));
+   ```
+
+2. Use a tool like the [measure-startup][measure-startup] sample to
+   launch your app and measure the time until the log message appears.
+
+3. On Android, you can filter `adb logcat` output to watch for
+   specific messages:
+
+   ```sh
+   adb logcat | grep "loaded"
+   ```
+
+This approach works across all platforms and is useful for continuous
+integration scenarios or quick checks.
+
+[measure-startup]: https://github.com/jonathanpeppers/measure-startup
+
+## Additional Resources
+
+- [.NET MAUI Profiling Wiki][maui-profiling] - Comprehensive wiki with
+  advanced scenarios and troubleshooting
+- [Android Tracing Guide][android-tracing] - Detailed Android-specific
+  profiling instructions
+- [iOS/macOS Profiling Wiki][macios-profiling] - Platform-specific
+  guidance for Apple platforms
+- [.NET Diagnostic Tools Documentation][dotnet-diagnostics] - Official
+  documentation for `dotnet-trace`, `dotnet-dsrouter`, and
+  `dotnet-gcdump`
+- [PerfView User's Guide][perfview-guide] - In-depth guide to using
+  PerfView for Windows profiling
+
+[maui-profiling]: https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps
+[android-tracing]: https://github.com/dotnet/android/blob/main/Documentation/guides/tracing.md
+[macios-profiling]: https://github.com/dotnet/macios/wiki/Profiling
+[dotnet-diagnostics]: /dotnet/core/diagnostics/
+[perfview-guide]: https://github.com/microsoft/perfview/blob/main/documentation/Markdown/GettingStarted.md
