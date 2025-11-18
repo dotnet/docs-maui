@@ -124,6 +124,12 @@ communicates with the diagnostic tools:
   connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
   for `dotnet-dsrouter` to connect to it).
 
+- **`AndroidEnableProfiler`** (Android only): When `true`, includes
+  the Mono diagnostic component
+  (`libmono-component-diagnostics_tracing.so`) in the APK. This is
+  implicitly set when setting any of the `Diagnostic*` MSBuild
+  properties.
+
 ### Build Command Examples
 
 When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
