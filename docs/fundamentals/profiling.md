@@ -127,11 +127,10 @@ communicates with the diagnostic tools:
   connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
   for `dotnet-dsrouter` to connect to it).
 
-- **`AndroidEnableProfiler`** (Android only): When `true`, includes
-  the Mono diagnostic component
-  (`libmono-component-diagnostics_tracing.so`) in the APK. This is
-  implicitly set when setting any of the `Diagnostic*` MSBuild
-  properties.
+- **`EnableDiagnostics`**: When `true`, includes the Mono diagnostic
+  component in the application package. This is implicitly set when
+  setting any of the `Diagnostic*` MSBuild properties. This property
+  works on Android, iOS, and Mac Catalyst.
 
 ### Build Command Examples
 
