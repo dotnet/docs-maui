@@ -342,7 +342,7 @@ for cross-platform analysis.
 
 [r2r]: /dotnet/core/deploying/ready-to-run
 
-#### Measuring Windows Startup Time
+### Measuring Windows Startup Time with PerfView
 
 To measure precise startup times on Windows, you can use PerfView to
 capture [Event Tracing for Windows (ETW)][etw] events:
