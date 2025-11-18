@@ -638,6 +638,9 @@ For more detailed information about memory leak patterns and
 techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
 
 [maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
+
+## Alternative Profiling Approaches
+
 ### Logging-Based Startup Measurement
 
 For a lightweight approach to measuring startup time, you can log
