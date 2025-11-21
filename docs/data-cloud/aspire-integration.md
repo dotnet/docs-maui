@@ -188,7 +188,7 @@ public static class MauiProgram
             });
 
         // Add service defaults
-        builder.Services.AddServiceDefaults();
+        builder.AddServiceDefaults();
 
         // Configure HTTP client with service discovery
         builder.Services.AddHttpClient<WeatherApiClient>(client =>
