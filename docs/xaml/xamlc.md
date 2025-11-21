@@ -52,7 +52,7 @@ You can revert to the default per file (or use wildcards) or force another infla
 ```xml
 <ItemGroup>
     <MauiXaml Update="MyFile.xaml" Inflator="SourceGen" />        <!-- enable sourcegen on a single file. prefer setting it at project level -->
-    <MauiXaml Update="Controls\**.xaml" Inflator="" />            <!-- revert to defaults for all xaml in Controls -->
+    <MauiXaml Update="Controls\**.xaml" Inflator="default" />     <!-- revert to defaults for all xaml in Controls. as of net10, default is XamlC for Release, Rutnime for Debug -->
     <MauiXaml Update="Controls\**.xaml" Inflator="Runtime" />     <!-- force runtime inflation. if you have to do this, it probably indicates a bug in both XamlC and sourcegen, please report -->
 </ItemGroup>
 ```
