@@ -6,7 +6,7 @@ ms.date: 11/14/2025
 
 # XAML Processing
 
-.NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. As of net10, default inflation is runtime for debug builds, XamlC (XamlCompilation) for Release. We encourage you to try source generation and use it if it works for you. This will become the future in new projects, then in all projects, soon.
+.NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. As of .NET 10, default inflation is runtime for debug builds, XamlC (XamlCompilation) for Release. We encourage you to try source generation and use it if it works for you. This will become the future in new projects, then in all projects, soon.
 
 ## XAML Compilation
 
@@ -21,13 +21,13 @@ XAML compilation is enabled by default in .NET MAUI apps. For apps built using t
 > [!IMPORTANT]
 > Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](~/fundamentals/data-binding/compiled-bindings.md).
 
-## XAML runtime inflation
+## XAML Runtime Inflation
 
-XAML can be inflated at Runtime using reflection. It has advantages, like allowing HotReload scenario, shortening build times, allow the report of diagnostics to IDE.
+XAML can be inflated at Runtime using reflection. It has advantages, like allowing Hot Reload scenario, shortening build times, allow the report of diagnostics to IDE. However typically this method should be avoided because it is also the slowest and syntax errors are only caught at runtime.
 
-## XAML Sourcegeneration
+## XAML Source Generation
 
-Starting with net10, XAML can be transformed into C# code at compilaiton time. It provides the following benefits:
+Starting with .NET 10, XAML can be transformed into C# code at compilaiton time. It provides the following benefits:
 
 - Consistency: same generated code used in Debug and Release
 - Speed: inflation times on device are 10000% (100 times) faster in Debug, and 25% faster on Release. The volume of allocation is reduced in the same proportion
@@ -35,7 +35,7 @@ Starting with net10, XAML can be transformed into C# code at compilaiton time. I
 
 This is the recommended way going further. It will be enabled by default in the future.
 
-## Enable Source Generation, and per file settings
+### Enable Source Generation, and per file settings
 
 We no longer recommend using `[XamlCompilation]` attribute to enable or disable per file compilation.
 
@@ -45,7 +45,7 @@ You can enable XAML source generation at the project level, by setting the `Maui
 <MauiXamlInflator>SourceGen</MauiXamlInflator>
 ```
 
-This will use source generation for both Release and Debug configurations.
+This will use source generation for both Release and Debug configurations, for all files.
 
 You can revert to the default per file (or use wildcards) or force another inflator
 
