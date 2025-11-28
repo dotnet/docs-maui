@@ -1,7 +1,7 @@
 ---
 title: "Improve app performance"
 description: "Learn how to increase the performance of .NET MAUI apps by reducing the amount of work being performed by a CPU, and the amount of memory consumed by an app."
-ms.date: 01/07/2025
+ms.date: 11/28/2025
 no-loc: [ "Objective-C" ]
 ---
 
@@ -222,15 +222,17 @@ As an alternative, dependency injection can be made more performant by implement
 
 .NET MAUI Shell apps provide an opinionated navigation experience based on flyouts and tabs. If your app user experience can be implemented with Shell, it is beneficial to do so. Shell apps help to avoid a poor startup experience, because pages are created on demand in response to navigation rather than at app startup, which occurs with apps that use a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [Shell overview](~/fundamentals/shell/index.md).
 
-## Optimize ListView performance
+> [!NOTE]
+> Converting to Shell is not a universal solution for performance problems. Shell primarily improves startup time by deferring page creation. If your app has other performance issues such as slow rendering or inefficient data binding, those issues should be addressed separately.
 
-When using <xref:Microsoft.Maui.Controls.ListView>, there are a number of user experiences that should be optimized:
+## Use CollectionView instead of ListView
 
-- *Initialization* – the time interval starting when the control is created, and ending when items are shown on screen.
-- *Scrolling* – the ability to scroll through the list and ensure that the UI doesn't lag behind touch gestures.
-- *Interaction* for adding, deleting, and selecting items.
+<xref:Microsoft.Maui.Controls.CollectionView> is the recommended control for displaying lists of data, as it provides better performance than <xref:Microsoft.Maui.Controls.ListView>. <xref:Microsoft.Maui.Controls.CollectionView> uses a more flexible layout model with better virtualization, which results in smoother scrolling and improved memory usage, particularly for large data sets.
 
-The <xref:Microsoft.Maui.Controls.ListView> control requires an app to supply data and cell templates. How this is achieved will have a large impact on the performance of the control. For more information, see [Cache data](~/user-interface/controls/listview.md#cache-data).
+For more information about migrating from <xref:Microsoft.Maui.Controls.ListView> to <xref:Microsoft.Maui.Controls.CollectionView>, see [CollectionView](~/user-interface/controls/collectionview/index.md#move-from-listview-to-collectionview).
+
+> [!WARNING]
+> Don't place a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.ListView> inside a <xref:Microsoft.Maui.Controls.ScrollView> or a <xref:Microsoft.Maui.Controls.StackLayout>. This prevents the virtualization from working, which results in degraded performance and increased memory usage because all items are rendered at once. Instead, use the built-in header and footer capabilities of these controls if you need additional content above or below the list.
 
 ## Use asynchronous programming
 
@@ -240,10 +242,10 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
 
 The following general guidelines should be followed when using the TAP:
 
+- Always `await` asynchronous methods rather than calling them without awaiting (fire-and-forget). Unawaited tasks can hide exceptions, lead to unpredictable behavior, and make debugging difficult. If you intentionally don't need the result, store the task in a variable and use discard patterns to indicate this is intentional. For more information about async/await best practices, see [Asynchronous programming with async and await](/dotnet/csharp/asynchronous-programming/).
 - Understand the task lifecycle, which is represented by the `TaskStatus` enumeration. For more information, see [The meaning of TaskStatus](https://devblogs.microsoft.com/pfxteam/the-meaning-of-taskstatus/) and [Task status](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap#task-status).
 - Use the `Task.WhenAll` method to asynchronously wait for multiple asynchronous operations to finish, rather than individually `await` a series of asynchronous operations. For more information, see [Task.WhenAll](/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern#taskwhenall).
 - Use the `Task.WhenAny` method to asynchronously wait for one of multiple asynchronous operations to finish. For more information, see [Task.WhenAny](/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern#taskwhenall).
-- Use the `Task.Delay` method to produce a `Task` object that finishes after the specified time. This is useful for scenarios such as polling for data, and delaying handling user input for a predetermined time. For more information, see [Task.Delay](/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern#taskdelay).
 - Execute intensive synchronous CPU operations on the thread pool with the `Task.Run` method. This method is a shortcut for the `TaskFactory.StartNew` method, with the most optimal arguments set. For more information, see [Task.Run](/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern#taskrun).
 - Avoid trying to create asynchronous constructors. Instead, use lifecycle events or separate initialization logic to correctly `await` any initialization. For more information, see [Async Constructors](https://blog.stephencleary.com/2013/01/async-oop-2-constructors.html) on blog.stephencleary.com.
 - Use the lazy task pattern to avoid waiting for asynchronous operations to complete during app startup. For more information, see [AsyncLazy](https://devblogs.microsoft.com/pfxteam/asynclazyt/).
@@ -256,10 +258,13 @@ The following general guidelines should be followed when using the TAP:
 The following guidelines should be followed when using the TAP with UI controls:
 
 - Call an asynchronous version of an API, if it's available. This will keep the UI thread unblocked, which will help to improve the user's experience with the app.
-- Update UI elements with data from asynchronous operations on the UI thread, to avoid exceptions being thrown. However, updates to the `ListView.ItemsSource` property will automatically be marshaled to the UI thread. For information about determining if code is running on the UI thread, see [Create a thread on the UI thread](~/platform-integration/appmodel/main-thread.md).
+- Update UI elements with data from asynchronous operations on the UI thread, to avoid exceptions being thrown. For information about determining if code is running on the UI thread, see [Create a thread on the UI thread](~/platform-integration/appmodel/main-thread.md).
 
     > [!IMPORTANT]
     > Any control properties that are updated via data binding will be automatically marshaled to the UI thread.
+
+- <xref:Microsoft.Maui.Controls.CollectionView> will throw an exception if its `ItemsSource` is updated off the UI thread. Don't rely on auto-marshaling behavior for collection updates; instead, explicitly update collections on the UI thread.
+- For best performance with <xref:Microsoft.Maui.Controls.CollectionView>, consider using a standard `List<T>` or array when data doesn't change frequently, and only use `ObservableCollection<T>` when you need automatic UI updates for individual item changes. For large data sets, batch update a regular collection and reassign `ItemsSource` rather than making many individual `ObservableCollection<T>` changes.
 
 ### Error handling
 
@@ -323,6 +328,10 @@ Type consumers can then call the `IDisposable.Dispose` implementation to free re
 
 - By wrapping the `IDisposable` object in a `using` statement.
 - By wrapping the call to `IDisposable.Dispose` in a `try`/`finally` block.
+
+### IDisposable and dependency injection
+
+When using dependency injection, avoid registering `IDisposable` types as transient services. The dependency injection container doesn't automatically dispose of transient services, which can lead to memory leaks. Instead, register disposable types as scoped or singleton services, which the container will properly dispose. If you must use a transient service that implements `IDisposable`, consider implementing a factory pattern or manually managing the lifetime and disposal of the object. For more information, see [Dependency injection guidelines](/dotnet/core/extensions/dependency-injection-guidelines#recommendations).
 
 ### Wrap the IDisposable object in a using statement
 
