@@ -1,7 +1,7 @@
 ---
 title: "Populate a CarouselView with data"
 description: "A .NET MAUI CarouselView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 09/30/2024
+ms.date: 11/28/2025
 ---
 
 # Populate a CarouselView with data
@@ -25,6 +25,11 @@ A <xref:Microsoft.Maui.Controls.CarouselView> is populated with data by setting 
 
 > [!IMPORTANT]
 > If the <xref:Microsoft.Maui.Controls.CarouselView> is required to refresh as items are added, removed, or changed in the underlying collection, the underlying collection should be an `IEnumerable` collection that sends property change notifications, such as `ObservableCollection`.
+
+<xref:Microsoft.Maui.Controls.CarouselView> is a data-driven control, designed to display data through templates. The `ItemsSource` should contain a collection of data objects (such as models or viewmodels), not views. The <xref:Microsoft.Maui.Controls.CarouselView> generates the visual representation for each item from the data, using data templates to define the appearance. Binding a list of views directly to the `ItemsSource` isn't supported and will result in an exception being thrown on platforms other than iOS and Mac Catalyst. This is because each view in .NET MAUI can only have a single parent, and a view can't be reused as content in multiple carousel positions.
+
+> [!WARNING]
+> Don't bind a collection of views directly to the `ItemsSource` property. Instead, bind a collection of data objects and use the `ItemTemplate` property, or a <xref:Microsoft.Maui.Controls.DataTemplateSelector>, to control the appearance of items. This ensures that each carousel item is properly instantiated with its own view hierarchy, and avoids parenting and recycling issues.
 
 <xref:Microsoft.Maui.Controls.CarouselView> can be populated with data by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection. In XAML, this is achieved with the `Binding` markup extension:
 
