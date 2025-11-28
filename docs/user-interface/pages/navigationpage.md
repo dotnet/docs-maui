@@ -208,19 +208,19 @@ The <xref:Microsoft.Maui.Controls.Page> class defines `NavigatedTo`, `Navigating
 The `NavigatedToEventArgs` class defines the following properties:
 
 - `PreviousPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the page that was navigated from.
-- `NavigationType`, of type `NavigationType`, represents the type of navigation that occurred.
+- `NavigationType`, of type <xref:Microsoft.Maui.Controls.NavigationType>, represents the type of navigation that occurred.
 
 The `NavigatingFromEventArgs` class defines the following properties:
 
 - `DestinationPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the page being navigated to.
-- `NavigationType`, of type `NavigationType`, represents the type of navigation that is occurring.
+- `NavigationType`, of type <xref:Microsoft.Maui.Controls.NavigationType>, represents the type of navigation that is occurring.
 
 The `NavigatedFromEventArgs` class defines the following properties:
 
 - `DestinationPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the page that was navigated to.
-- `NavigationType`, of type `NavigationType`, represents the type of navigation that occurred.
+- `NavigationType`, of type <xref:Microsoft.Maui.Controls.NavigationType>, represents the type of navigation that occurred.
 
-The `NavigationType` enumeration defines the following members:
+The <xref:Microsoft.Maui.Controls.NavigationType> enumeration defines the following members:
 
 - `Push`, indicates that a page was pushed onto the navigation stack.
 - `Pop`, indicates that a page was popped from the navigation stack.
@@ -231,7 +231,7 @@ The `NavigationType` enumeration defines the following members:
 
 ::: moniker-end
 
-The following event handlers subscribe to the navigation events:
+The following example shows how to subscribe to the navigation events:
 
 ::: moniker range="<=net-maui-9.0"
 
