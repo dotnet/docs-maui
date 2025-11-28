@@ -267,4 +267,8 @@ The following screenshot shows several font icons being displayed:
 
 :::image type="content" source="media/fonts/font-image-source.png" alt-text="Screenshot of three font icons.":::
 
+::: moniker range=">=net-maui-8.0 <=net-maui-9.0"
+
 Alternatively, you can display a font icon with the [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
+
+::: moniker-end

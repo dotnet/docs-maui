@@ -568,7 +568,7 @@ The previous XAML introduces a few new concepts:
 
 - The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here are usually display at the top of the app, along the page title. Depending on the platform, though, it might be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
 
-  The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
+  The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImageSource` is used. A `FontImageSource` can use a single glyph from a font as an image.
 
 - The <xref:Microsoft.Maui.Controls.CollectionView> control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
 
