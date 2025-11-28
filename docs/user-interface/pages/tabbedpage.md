@@ -1,7 +1,7 @@
 ---
 title: "TabbedPage"
 description: "The .NET MAUI TabbedPage consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content."
-ms.date: 09/30/2024
+ms.date: 11/28/2025
 ---
 
 # TabbedPage
@@ -25,7 +25,7 @@ The title of a tab is defined by the <xref:Microsoft.Maui.Controls.Page.Title?di
 In a <xref:Microsoft.Maui.Controls.TabbedPage>, each <xref:Microsoft.Maui.Controls.Page> object is created when the <xref:Microsoft.Maui.Controls.TabbedPage> is constructed. This can lead to a poor user experience, particularly if the <xref:Microsoft.Maui.Controls.TabbedPage> is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 > [!WARNING]
-> <xref:Microsoft.Maui.Controls.TabbedPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.TabbedPage> in a Shell app.
+> <xref:Microsoft.Maui.Controls.TabbedPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.TabbedPage> in a Shell app. This includes registering a <xref:Microsoft.Maui.Controls.TabbedPage> as a route with `Routing.RegisterRoute` and navigating to it with `Shell.Current.GoToAsync`. If you need tab-based navigation in a Shell app, use Shell tabs instead. For more information, see [Shell tabs](~/fundamentals/shell/tabs.md).
 
 ## Create a TabbedPage
 
