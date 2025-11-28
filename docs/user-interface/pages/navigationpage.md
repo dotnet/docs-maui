@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 09/30/2024
+ms.date: 11/28/2025
 ---
 
 # NavigationPage
@@ -195,6 +195,74 @@ In this example, the current page is removed from the modal stack, with the new 
 ### Disable the back button
 
 On Android, you can always return to the previous page by pressing the standard *Back* button on the device. If the modal page requires a self-contained task to be completed before leaving the page, the app must disable the *Back* button. This can be accomplished by overriding the `Page.OnBackButtonPressed` method on the modal page.
+
+## Page navigation events
+
+The <xref:Microsoft.Maui.Controls.Page> class defines `NavigatedTo`, `NavigatingFrom`, and `NavigatedFrom` navigation events that are raised during page navigation. The `NavigatingFrom` event is raised when the current page is about to be navigated away from. The `NavigatedFrom` event is raised after the current page has been navigated away from. The `NavigatedTo` event is raised after navigating to the current page.
+
+> [!NOTE]
+> On iOS and Mac Catalyst, these events can be raised before native animation completes when navigating between pages.
+
+The following event handlers subscribe to the navigation events:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+
+        NavigatedTo += OnNavigatedTo;
+        NavigatingFrom += OnNavigatingFrom;
+        NavigatedFrom += OnNavigatedFrom;
+    }
+
+    void OnNavigatedTo(object sender, NavigatedToEventArgs args)
+    {
+        // Invoked when the page has been navigated to
+    }
+
+    void OnNavigatingFrom(object sender, NavigatingFromEventArgs args)
+    {
+        // Invoked when the page is being navigated away from
+    }
+
+    void OnNavigatedFrom(object sender, NavigatedFromEventArgs args)
+    {
+        // Invoked when the page has been navigated away from
+    }
+}
+```
+
+Rather than subscribing to the events, a <xref:Microsoft.Maui.Controls.Page>-derived class can override the <xref:Microsoft.Maui.Controls.Page.OnNavigatedTo%2A>, <xref:Microsoft.Maui.Controls.Page.OnNavigatingFrom%2A>, and <xref:Microsoft.Maui.Controls.Page.OnNavigatedFrom%2A> methods:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
+        // Invoked when the page has been navigated to
+    }
+
+    protected override void OnNavigatingFrom(NavigatingFromEventArgs args)
+    {
+        base.OnNavigatingFrom(args);
+
+        // Invoked when the page is being navigated away from
+    }
+
+    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    {
+        base.OnNavigatedFrom(args);
+
+        // Invoked when the page has been navigated away from
+    }
+}
+```
+
+These methods can be overridden to perform work immediately after navigation. For example, in the `OnNavigatedTo` method you might populate a collection of items from a database or web service.
 
 ## Pass data during navigation
 
