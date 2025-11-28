@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 09/30/2024
+ms.date: 11/28/2025
 ---
 
 # NavigationPage
@@ -105,10 +105,13 @@ public partial class App : Application
 
 ### Push pages to the navigation stack
 
-A page can be navigated to by calling the `PushAsync` method on the `Navigation` property of the current page:
+A page can be navigated to by calling the `PushAsync` method on the `Navigation` property of the current page. The `Navigation` property is available on any <xref:Microsoft.Maui.Controls.Page>-derived type. The following example shows a button click event handler in a page's code-behind file that navigates to `DetailsPage`:
 
 ```csharp
-await Navigation.PushAsync(new DetailsPage());
+async void OnNavigateButtonClicked(object sender, EventArgs e)
+{
+    await Navigation.PushAsync(new DetailsPage());
+}
 ```
 
 In this example, the `DetailsPage` object is pushed onto the navigation stack, where it becomes the active page.
@@ -123,7 +126,10 @@ The active page can be popped from the navigation stack by pressing the *Back* b
 To programmatically return to the previous page, the `PopAsync` method should be called on the `Navigation` property of the current page:
 
 ```csharp
-await Navigation.PopAsync();
+async void OnBackButtonClicked(object sender, EventArgs e)
+{
+    await Navigation.PopAsync();
+}
 ```
 
 In this example, the current page is removed from the navigation stack, with the new topmost page becoming the active page.
@@ -169,7 +175,10 @@ Modal navigation methods are exposed by the `Navigation` property on any <xref:M
 A page can be modally navigated to by calling the `PushModalAsync` method on the `Navigation` property of the current page:
 
 ```csharp
-await Navigation.PushModalAsync(new DetailsPage());
+async void OnOpenModalButtonClicked(object sender, EventArgs e)
+{
+    await Navigation.PushModalAsync(new DetailsPage());
+}
 ```
 
 In this example, the `DetailsPage` object is pushed onto the modal stack, where it becomes the active page.
@@ -184,7 +193,10 @@ The active page can be popped from the modal stack by pressing the *Back* button
 To programmatically return to the original page, the `PopModalAsync` method should be called on the `Navigation` property of the current page:
 
 ```csharp
-await Navigation.PopModalAsync();
+async void OnCloseModalButtonClicked(object sender, EventArgs e)
+{
+    await Navigation.PopModalAsync();
+}
 ```
 
 In this example, the current page is removed from the modal stack, with the new topmost page becoming the active page.
