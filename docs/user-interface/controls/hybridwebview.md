@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 08/20/2025
+ms.date: 09/19/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -33,6 +33,10 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
+
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
+
+[!INCLUDE [browser-engines](includes/browser-engines.md)]
 
 ## Create a .NET MAUI HybridWebView app
 
@@ -1019,5 +1023,20 @@ Common patterns include:
 - Injecting or rewriting headers for specific hosts.
 - Returning local files or in-memory content for offline or testing scenarios.
 - Redirecting to a different URI by returning a 3xx status code with an appropriate `Location` header.
+
+### Implementation Restrictions
+
+* **Android**
+  * Android does not directly allow "intercept-and-continue" for requests. The implementation is to rather notify you that a request is about to happen and you can either replace the whole request or do nothing and let the webview do it.  
+  * Android does not support custom schemes.
+* **iOS/Mac Catalyst**
+  * iOS and Mac Catalyst do not allow interception of `http` and `https` requests.
+
+| Platform      | Intercept HTTPS | Intercept Custom Schemes | Request Modification |
+|---------------|------------------|---------------------------|----------------------|
+| Android       | ✅               | ❌                        | ❌                   |
+| iOS           | ❌               | ✅                        | ❌                   |
+| Mac Catalyst  | ❌               | ✅                        | ❌                   |
+| Windows       | ✅               | ✅                        | ✅                   |
 
 ::: moniker-end

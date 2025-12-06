@@ -170,14 +170,15 @@ xcrun: error: unable to find utility "dsymutil", not a developer tool or in PATH
 
 When building an app, .NET for iOS and .NET for Mac Catalyst use the following process to determine which version of Xcode to use:
 
-1. If the `MD_APPLE_SDK_ROOT` environment variable is set, use its value.
-1. If the *~/Library/Preferences/Xamarin/Settings.plist* file exists, use the value defined inside it.
+1. If the `MD_APPLE_SDK_ROOT` environment variable is set, use its value. _This environment variable will be deprecated in a future release; do not use it._
+1. If the *~/Library/Preferences/Xamarin/Settings.plist* or *~/Library/Preferences/maui/Settings.plist* file exists, use the value defined inside it. _These files will be deprecated in a future release; do not use them._
 1. Use the value of `xcode-select -p`.
 1. Use `/Applications/Xcode.app`.
 
-Therefore, the recommended approach to specifying the location of Xcode on your machine is to set the `MD_APPLE_SDK_ROOT` environment variable to the path of the Xcode version. For more information, see [Build with a specific version of Xcode](~/ios/cli.md).
+The recommended approach to specify the location of Xcode on your machine is to:
 
-You can then safely delete *~/Library/Preferences/Xamarin/Settings.plist* from your machine.
+1. Delete *~/Library/Preferences/Xamarin/Settings.plist* or *~/Library/Preferences/maui/Settings.plist* files (if they exist).
+2. Either use `xcode-select --switch ...` to select the system's version of Xcode, or set the `DEVELOPER_DIR` environment variable to the path of Xcode. For more information, see [Build with a specific version of Xcode](~/ios/cli.md).
 
 ## Diagnose issues in Blazor Hybrid apps
 

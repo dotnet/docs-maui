@@ -149,7 +149,7 @@ static bool IsValidValue(BindableObject view, object value)
 }
 ```
 
-Validation callbacks are provided with a value, and should return `true` if the value is valid for the property, otherwise `false`. An exception will be raised if a validation callback returns `false`, which you should handle. A typical use of a validation callback method is constraining the values of integers or doubles when the bindable property is set. For example, the `IsValidValue` method checks that the property value is a `double` within the range 0 to 360.
+Validation callbacks are provided with a value, and should return `true` if the value is valid for the property, otherwise `false`. A typical use of a validation callback method is constraining the values of integers or doubles when the bindable property is set. For example, the `IsValidValue` method checks that the property value is a `double` within the range 0 to 360.
 
 ### Coerce value callbacks
 

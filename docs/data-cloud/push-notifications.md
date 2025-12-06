@@ -40,7 +40,7 @@ In this tutorial, you:
 
 To complete this tutorial you'll require:
 
-- An [Azure account with an active subscription](https://azure.microsoft.com/free/dotnet/).
+- An [Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A PC or Mac running the latest version of Visual Studio/Visual Studio Code with the .NET Multi-platform App UI development workload and the ASP.NET and web development workloads installed.
 
 For Android, you must have:
@@ -1475,7 +1475,7 @@ To configure your .NET MAUI app on Android to receive and process push notificat
 
     This class has an `IntentFilter` attribute that includes the `com.google.firebase.MESSAGING_EVENT` filter. This filter enables Android to pass incoming messages to this class for processing.
 
-    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options) on developer.android.com.
+    For information about the Firebase Cloud Messaging message format, see [About FCM messages](https://firebase.google.com/docs/cloud-messaging/customize-messages/set-message-type) on firebase.google.com.
 
 1. In Visual Studio, open the *MainActivity.cs* file in the *Platforms/Android* folder and add the following `using` statements:
 

@@ -277,6 +277,8 @@
               href: user-interface/controls/index.md
             - name: Align and position controls
               href: user-interface/align-position.md
+            - name: Device-independent units
+              href: user-interface/device-independent-units.md
             - name: Handlers
               items:
                 - name: Overview
@@ -489,6 +491,8 @@
               href: user-interface/menuitem.md
             - name: Keyboard accelerators
               href: user-interface/keyboard-accelerators.md
+        - name: Safe area layout
+          href: user-interface/safe-area.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -1236,6 +1240,8 @@
           items:
             - name: Consume a REST-based web service
               href: data-cloud/rest.md
+            - name: .NET MAUI integration with Aspire
+              href: data-cloud/aspire-integration.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md
     - name: Deployment & testing
