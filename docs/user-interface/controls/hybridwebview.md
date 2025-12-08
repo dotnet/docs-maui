@@ -864,7 +864,7 @@ To pass complex types from JavaScript to C#:
     console.log(result); // "Alice is 30 years old and lives in Seattle"
     ```
 
-The JavaScript object is automatically serialized to JSON when sent to C#, and the <xref:Microsoft.Maui.Controls.HybridWebView> automatically deserializes it to the expected C# type. Nested objects, arrays, and other complex structures are supported as long as the JavaScript object structure matches the C# class structure.
+The JavaScript object is automatically serialized to JSON when sent to C#, and the <xref:Microsoft.Maui.Controls.HybridWebView> automatically deserializes it to the expected C# type. Nested objects, arrays, and other complex structures are supported, as long as the JavaScript object structure matches the C# class structure.
 
 > [!IMPORTANT]
 > Property names in your JavaScript objects should match the property names in your C# classes. JSON serialization is case-sensitive by default, so `Name` in JavaScript must match `Name` in C#. You can use the `[JsonPropertyName]` attribute to specify alternative names if needed.
