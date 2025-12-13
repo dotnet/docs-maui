@@ -262,6 +262,6 @@ This method obtains the `SelectedIndex` property value, and uses the value to re
 
 ::: moniker range=">=net-maui-10.0"
 
-::: include ../../includes/pickers-open-close-dotnet10.md
+[!INCLUDE [pickers-open-close-dotnet10](../../includes/pickers-open-close-dotnet10.md)]
 
 ::: moniker-end
