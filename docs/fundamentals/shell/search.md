@@ -92,11 +92,13 @@ The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by s
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:Xaminals.Controls">
+             xmlns:controls="clr-namespace:Xaminals.Controls"
+             xmlns:data="clr-namespace:Xaminals.Data">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
-                                      DisplayMemberName="Name" />
+                                      DisplayMemberName="Name"
+                                      Animals="{x:Static data:CatData.Cats}" />
     </Shell.SearchHandler>
     ...
 </ContentPage>
@@ -109,7 +111,8 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
 {
     Placeholder = "Enter search term",
     ShowsResults = true,
-    DisplayMemberName = "Name"
+    DisplayMemberName = "Name",
+    Animals = CatData.Cats
 });
 ```
 
@@ -147,10 +150,13 @@ In addition to displaying `string` data in the search results, the appearance of
 
 ```xaml
 <ContentPage ...
-             xmlns:controls="clr-namespace:Xaminals.Controls">    
+             xmlns:controls="clr-namespace:Xaminals.Controls"
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:models="clr-namespace:Xaminals.Models">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
-                                      ShowsResults="true">
+                                      ShowsResults="true"
+                                      Animals="{x:Static data:CatData.Cats}">
             <controls:AnimalSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
