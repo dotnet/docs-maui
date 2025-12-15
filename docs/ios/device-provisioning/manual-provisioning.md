@@ -134,7 +134,6 @@ After creating a development provisioning profile in your Apple Developer Accoun
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
-<!-- markdownlint-enable MD025 -->
 
 After manually creating the development provisioning profile, and installing it in Visual Studio, your .NET MAUI app project should be configured to use manual provisioning:
 
@@ -145,9 +144,7 @@ After manually creating the development provisioning profile, and installing it 
 
 1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
-<!-- markdownlint-disable MD025 -->
 # [.NET CLI](#tab/cli)
-<!-- markdownlint-enable MD025 -->
 
 After manually creating the development provisioning profile and downloading it, your .NET MAUI app project should be configured to use manual provisioning by setting the appropriate properties in your project file.
 
@@ -171,6 +168,8 @@ By default, if the `CodesignKey` and `CodesignProvision` properties are not set 
 For more information about these properties, see [CodesignKey](/dotnet/ios/building-apps/build-properties#codesignkey) and [CodesignProvision](/dotnet/ios/building-apps/build-properties#codesignprovision).
 
 ---
+
+<!-- markdownlint-enable MD025 -->
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
 
