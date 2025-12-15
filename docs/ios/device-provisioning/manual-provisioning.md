@@ -119,6 +119,12 @@ The provisioning profiles will be downloaded on Windows, and exported to your Ma
 # [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
 
+Follow the instructions for .NET CLI.
+
+<!-- markdownlint-disable MD025 -->
+# [.NET CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
 After creating a development provisioning profile in your Apple Developer Account, you will need to download it in Xcode so that it's available for signing your app:
 
 1. Open the **Xcode** app.
@@ -147,6 +153,12 @@ After manually creating the development provisioning profile, and installing it 
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio Code](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
+
+Follow the instructions for .NET CLI.
+
+<!-- markdownlint-disable MD025 -->
+# [.NET CLI](#tab/cli)
 <!-- markdownlint-enable MD025 -->
 
 After manually creating the development provisioning profile and downloading it, your .NET MAUI app project should be configured to use manual provisioning by setting the appropriate properties in your project file.
