@@ -1,7 +1,7 @@
 ---
 title: "AbsoluteLayout"
 description: "The .NET MAUI AbsoluteLayout is used to position and size elements using explicit values, or values proportional to the size of the layout."
-ms.date: 09/30/2024
+ms.date: 11/29/2025
 ---
 
 # AbsoluteLayout
@@ -10,7 +10,7 @@ ms.date: 09/30/2024
 
 :::image type="content" source="media/absolutelayout/layouts.png" alt-text=".NET MAUI AbsoluteLayout." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.AbsoluteLayout> is used to position and size children using explicit values. The position is specified by the upper-left corner of the child relative to the upper-left corner of the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, in device-independent units. <xref:Microsoft.Maui.Controls.AbsoluteLayout> also implements a proportional positioning and sizing feature. In addition, unlike some other layout classes, <xref:Microsoft.Maui.Controls.AbsoluteLayout> is able to position children so that they overlap.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.AbsoluteLayout> is used to position and size children using explicit values. By default, the position is specified by the top-left corner of the child relative to the top-left corner of the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, in device-independent units. <xref:Microsoft.Maui.Controls.AbsoluteLayout> also implements a proportional positioning and sizing feature that positions children based on the available space within the layout. In addition, unlike some other layout classes, <xref:Microsoft.Maui.Controls.AbsoluteLayout> is able to position children so that they overlap.
 
 An <xref:Microsoft.Maui.Controls.AbsoluteLayout> should be regarded as a special-purpose layout to be used only when you can impose a size on children, or when the element's size doesn't affect the positioning of other children.
 
@@ -25,10 +25,12 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 The position and size of children in an <xref:Microsoft.Maui.Controls.AbsoluteLayout> is defined by setting the `AbsoluteLayout.LayoutBounds` attached property of each child, using absolute values or proportional values. Absolute and proportional values can be mixed for children when the position should scale, but the size should stay fixed, or vice versa. For information about absolute values, see [Absolute positioning and sizing](#absolute-positioning-and-sizing). For information about proportional values, see [Proportional positioning and sizing](#proportional-positioning-and-sizing).
 
-The `AbsoluteLayout.LayoutBounds` attached property can be set using two formats, regardless of whether absolute or proportional values are used:
+The `AbsoluteLayout.LayoutBounds` attached property can be set using two formats:
 
-- `x, y`. With this format, the `x` and `y` values indicate the position of the upper-left corner of the child relative to its parent. The child is unconstrained and sizes itself.
-- `x, y, width, height`. With this format, the `x` and `y` values indicate the position of the upper-left corner of the child relative to its parent, while the `width` and `height` values indicate the child's size.
+- `x, y`. With this format, the `x` and `y` values indicate the position of the child relative to its parent. The child is unconstrained and sizes itself.
+- `x, y, width, height`. With this format, the `x` and `y` values indicate the position of the child relative to its parent, while the `width` and `height` values indicate the child's size.
+
+When using absolute values, `x` and `y` specify the position of the top-left corner of the child in device-independent units. When using proportional values, `x` and `y` are calculated as `(parentDimension - childDimension) * proportionalValue`. This means a proportional position of (0.5, 0.5) centers the child within the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, because the child is placed at half of the remaining space after accounting for its size.
 
 To specify that a child sizes itself horizontally or vertically, or both, set the `width` and/or `height` values to the `AbsoluteLayout.AutoSize` property. However, overuse of this property can harm application performance, as it causes the layout engine to perform additional layout calculations.
 
