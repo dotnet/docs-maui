@@ -1,77 +1,83 @@
-# Working notes for .NET MAUI .NET 10 docs updates
+# Copilot working instructions: .NET 10 docs staging (docs-maui)
 
-These notes capture our lightweight process and guardrails while submitting focused pull requests against `main` for .NET 10 changes.
+This document captures our working agreements and checklists for staging .NET 10 updates in this repo.
+
+## Strategy overview
+- We develop each docs update on a short-lived topic branch based off `main`.
+- Open individual PRs targeting `main` (no long-lived net10 tracking PR).
+- Keep changes small and focused by topic.
+
+## Branching model
+- Base: `main`
+- Topic branches: `pr<nn>-<slug>` or `<area>-<slug>`
+  - Examples:
+    - `pr01-pop-ups-async-from-main`
+    - `pr02-mediapicker-multiselect`
+    - `gestures-tap-click-deprecation`
+- Keep branches up-to-date by rebasing on `main` when needed.
+
+## Moniker guidance
+- For content that differs between releases, use DocFX monikers in the top-level article and split content into include partials when it improves clarity.
+  - Typical pattern:
+    - `::: moniker range="<=net-maui-9.0"` → include `*-dotnet9.md`
+    - `::: moniker range=">=net-maui-10.0"` → include `*-dotnet10.md`
+- If behavior/API names change in .NET 10 but guidance is otherwise similar, keep <=9 and >=10 content parallel and explicit.
+- Keep phrasing and headings consistent across monikered sections to minimize diffs.
+
+## Quality gates (for each topic PR)
+- Monikers
+  - Build must not emit moniker range warnings.
+  - Verify xrefs resolve (API names must match the targeted version).
+- Samples and snippets
+  - Ensure code compiles in snippet harness where applicable.
+  - For async APIs, consistently use `await` in examples and clarify return types.
+- Links
+  - Validate markdown links (no 404s) and image paths.
+- Screenshots
+  - Only update if UI/API presentation changed. Otherwise, reuse.
+- Review metadata
+  - Title/labels: “.NET 10”, “docs”, and area label.
+  - Reviewers: CODEOWNERS will auto-assign; add relevant owners as needed.
+
+## Accuracy and preview drift
+- Treat the upstream `dotnet/maui` `net10.0` branch as the source of truth. Preview notes may evolve or be reverted in later previews.
+- Before merging any .NET 10 docs change, verify the target API/behavior against the current `net10.0` branch:
+  - Confirm APIs exist (and names/overloads match) using xrefs targeting `view=net-maui-10.0` and/or MAUI source.
+  - Check whether a previously announced change was modified or reverted; adjust guidance and monikers accordingly.
+  - Include links to the upstream MAUI PR(s) or commit(s) that introduced/changed the behavior in the docs PR description.
+- If behavior differs across previews, keep guidance in `<= net-maui-9.0` vs `>= net-maui-10.0` monikers accurate for GA; avoid documenting transient preview-only behavior unless explicitly called out.
+
+## Authoring conventions
+- Use xref with wildcards for API overloads (for example, `xref:Microsoft.Maui.Controls.Page.DisplayAlertAsync%2A`).
+- Prefer small, focused includes per version (e.g., `includes/pop-ups-dotnet9.md`, `includes/pop-ups-dotnet10.md`).
+- Keep headings, note/warning blocks, and image alt texts aligned across versions.
+- Commit messages: “Area (.NET 10): short summary; specifics”.
+
+## Known .NET 10 changes already staged / proposed
+- Pop-ups (PR01):
+  - API naming in .NET 10:
+    - `DisplayAlertAsync` (Task / Task<bool>)
+    - `DisplayActionSheetAsync` (Task<string>)
+    - `DisplayPromptAsync` (Task<string>) unchanged
+  - Docs updated in `docs/user-interface/includes/pop-ups-dotnet10.md` to use Async-suffixed APIs and `await` consistently.
+- MediaPicker (PR02):
+  - Multi-select: `PickPhotosAsync` / `PickVideosAsync` return `List<FileResult>`.
+  - `MediaPickerOptions` includes `SelectionLimit`, `MaximumWidth`, `MaximumHeight`, `CompressionQuality`, `RotateImage`, `PreserveMetaData`, `Title`.
+  - Platform notes: Android may not enforce `SelectionLimit`; Windows doesn’t support `SelectionLimit`.
+
+## Opening PRs
+- Open PRs directly against `main`.
+- PR template contents:
+  - Title: concise change summary and version (e.g., “Update pop-ups docs for .NET 10: async APIs and monikers”).
+  - Summary bullets of user-impacting changes.
+  - Docs touched (paths).
+  - Checklist: monikers, samples, links, screenshots.
+  - Notes on API changes (source links to MAUI PRs or release notes when relevant).
+
+## Maintenance
+- Keep PRs small and focused; rebase/merge frequently to avoid conflicts.
+- When conflicts arise in monikered pages, prioritize keeping both versioned includes accurate before deduplicating.
+
+---
 
 Last updated: 2025-08-18
-
-## Branching and PRs
-
-- Create small, topic-focused branches directly off `main` (for example: `pr01-pop-ups-async-from-main`, `pr02-mediapicker-multiselect-from-main`, `pr03-gestures-tap-click-deprecation`).
-- Open PRs directly to `main` with clear scope and migration context. Avoid staging branches.
-- Keep changes minimal: only the pages/includes required for the topic.
-
-## Monikers and versioning
-
-- Preserve existing content for <= .NET 9 and add >= .NET 10 content using DocFX monikers:
-
-  ```md
-  ::: moniker range="<=net-maui-9.0"
-  ... existing <= 9 content ...
-  ::: moniker-end
-
-  ::: moniker range=">=net-maui-10.0"
-  ... new .NET 10 content ...
-  ::: moniker-end
-  ```
-
-- Use includes when appropriate to keep duplication low, but don’t over-abstract if a single page change is small and clear.
-
-## Preview drift and verification
-
-Changes must be verified against the .NET MAUI source for .NET 10 to avoid preview drift:
-
-1. Check APIs on the `dotnet/maui` `net10.0` branch.
-   - Repository: https://github.com/dotnet/maui
-   - Browse `src/Controls/src/Core` and handlers/platform folders as needed.
-2. Cross-check against API docs/xrefs where available.
-3. Confirm platform notes (Android/iOS/Mac Catalyst/Windows) reflect real behavior.
-
-Examples already verified:
-
-- Pop-ups (.NET 10): `DisplayAlertAsync`, `DisplayActionSheetAsync` replace non-`Async` APIs.
-- Media picker (.NET 10): `PickPhotosAsync` / `PickVideosAsync` returning `List<FileResult>`; options like `SelectionLimit`, `MaximumWidth/Height`, `CompressionQuality`, etc.
-
-## Quality gates before submitting a PR
-
-- Lint the markdown visually in the diff for:
-  - Valid xrefs and relative links.
-  - Correct admonitions and moniker blocks are balanced.
-  - Code fences have a language hint and compile logically.
-- Keep `ms.date` current on pages you materially change.
-- Make sure headings form a sensible outline and anchors aren’t unintentionally renamed.
-
-## PR description checklist
-
-- Summarize the .NET 10 change and motivation.
-- Call out migration guidance and any breaking changes.
-- List files changed and a quick test of samples where relevant.
-- Note platform-specific behaviors/limitations.
-- Link to upstream MAUI PRs or source lines used for verification when helpful.
-
-## Known .NET 10 changes we’ve documented
-
-- Pop-ups: `DisplayAlertAsync` / `DisplayActionSheetAsync` (PR01).
-- Media picker: multi-select `PickPhotosAsync` / `PickVideosAsync` (PR02).
-- Gestures: deprecate `ClickGestureRecognizer`; promote `TapGestureRecognizer` and `PointerGestureRecognizer` (PR03).
-
-## Scope and note policy for conceptual docs
-
-To keep conceptual docs focused and avoid churn from low-impact API surface tweaks:
-
-- Don’t add callouts/notes in conceptual topics for minor API shape changes such as:
-  - Method/property visibility changes (for example, private → public, internal → public).
-  - Binding mode default changes (for example, TwoWay → OneWay) where usage doesn’t materially change.
-  - Handler default value changes that don’t alter how you use the API.
-- Instead, update any code samples, snippets, or embedded guidance to reflect .NET 10 behavior and build cleanly.
-- Leave full surface/shape details to the API reference. Only add migration notes when developer behavior or recommended usage changes in a meaningful way.
-- When in doubt, prefer: “update samples quietly” over “add a prominent breaking note.”
