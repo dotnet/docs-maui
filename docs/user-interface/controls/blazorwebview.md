@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 05/13/2025
+ms.date: 09/19/2025
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -32,6 +32,8 @@ Browser developer tools can be used to inspect .NET MAUI Blazor apps. For more i
 
 > [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
+
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
 For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
 

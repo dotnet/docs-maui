@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 08/20/2025
+ms.date: 12/08/2025
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -33,6 +33,8 @@ The entire app, including the web content, is packaged and runs locally on a dev
 
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
+
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
 [!INCLUDE [browser-engines](includes/browser-engines.md)]
 
@@ -814,6 +816,59 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 > [!NOTE]
 > Invoking the `window.HybridWebView.InvokeDotNet` JavaScript function requires your app to include the *HybridWebView.js* JavaScript library listed earlier in this article.
 
+### Pass complex types from JavaScript to C\#
+
+When invoking C# methods from JavaScript, you can pass complex types (objects, not just primitives) as parameters and receive complex types as return values. Unlike when [invoking JavaScript from C#](#invoke-javascript-from-c), you don't need to define a `JsonSerializerContext` for JavaScript-to-C# invocations. The <xref:Microsoft.Maui.Controls.HybridWebView> automatically deserializes parameters using reflection-based JSON deserialization.
+
+To pass complex types from JavaScript to C#:
+
+1. Define your C# class that will be used as a parameter or return type:
+
+    ```csharp
+    public class Person
+    {
+        public string? Name { get; set; }
+        public int Age { get; set; }
+        public Address? Address { get; set; }
+    }
+
+    public class Address
+    {
+        public string? Street { get; set; }
+        public string? City { get; set; }
+    }
+    ```
+
+1. Define a C# method that accepts the complex type:
+
+    ```csharp
+    public string ProcessPerson(Person person)
+    {
+        return $"{person.Name} is {person.Age} years old and lives in {person.Address?.City}";
+    }
+    ```
+
+1. Call the method from JavaScript, passing a JavaScript object that matches the C# class structure:
+
+    ```js
+    const person = {
+        Name: "Alice",
+        Age: 30,
+        Address: {
+            Street: "123 Main St",
+            City: "Seattle"
+        }
+    };
+
+    const result = await window.HybridWebView.InvokeDotNet('ProcessPerson', [person]);
+    console.log(result); // "Alice is 30 years old and lives in Seattle"
+    ```
+
+The JavaScript object is automatically serialized to JSON when sent to C#, and the <xref:Microsoft.Maui.Controls.HybridWebView> automatically deserializes it to the expected C# type. Nested objects, arrays, and other complex structures are supported, as long as the JavaScript object structure matches the C# class structure.
+
+> [!IMPORTANT]
+> Property names in your JavaScript objects should match the property names in your C# classes. JSON serialization is case-sensitive by default, so `Name` in JavaScript must match `Name` in C#. You can use the `[JsonPropertyName]` attribute to specify alternative names if needed.
+
 ## Customize initialization and access platform web views
 
 ::: moniker range="<=net-maui-9.0"
@@ -1021,5 +1076,20 @@ Common patterns include:
 - Injecting or rewriting headers for specific hosts.
 - Returning local files or in-memory content for offline or testing scenarios.
 - Redirecting to a different URI by returning a 3xx status code with an appropriate `Location` header.
+
+### Implementation Restrictions
+
+* **Android**
+  * Android does not directly allow "intercept-and-continue" for requests. The implementation is to rather notify you that a request is about to happen and you can either replace the whole request or do nothing and let the webview do it.  
+  * Android does not support custom schemes.
+* **iOS/Mac Catalyst**
+  * iOS and Mac Catalyst do not allow interception of `http` and `https` requests.
+
+| Platform      | Intercept HTTPS | Intercept Custom Schemes | Request Modification |
+|---------------|------------------|---------------------------|----------------------|
+| Android       | ✅               | ❌                        | ❌                   |
+| iOS           | ❌               | ✅                        | ❌                   |
+| Mac Catalyst  | ❌               | ✅                        | ❌                   |
+| Windows       | ✅               | ✅                        | ✅                   |
 
 ::: moniker-end

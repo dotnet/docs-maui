@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 08/19/2025
+ms.date: 09/19/2025
 zone_pivot_groups: devices-platforms
 ---
 
@@ -39,6 +39,8 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.WebView> must specify its <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
+
+[!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
 [!INCLUDE [browser-engines](includes/browser-engines.md)]
 

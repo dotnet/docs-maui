@@ -225,6 +225,9 @@ Image image = new Image
 
 The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension enables you to display a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. It provides the same functionality as the <xref:Microsoft.Maui.Controls.FontImageSource> class, but with a more concise representation.
 
+> [!NOTE]
+> The `FontImage` markup extension is deprecated in .NET 10 and will be removed in a future release. Use <xref:Microsoft.Maui.Controls.FontImageSource> instead.
+
 The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
 
 - `FontFamily` of type `string`, the font family to which the font icon belongs.

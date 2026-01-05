@@ -190,7 +190,7 @@ public partial class MyViewModel : ObservableObject
 }
 ```
 
-::: include ../../includes/mvvm-toolkit-note.md
+[!INCLUDE [MVVM Toolkit note](../includes/mvvm-toolkit-note.md)]
 
 Or set/clear in code:
 
@@ -207,6 +207,6 @@ datePicker.Date = new DateTime(2025, 8, 19); // Set a specific date
 
 ::: moniker range=">=net-maui-10.0"
 
-::: include ../../includes/pickers-open-close-dotnet10.md
+[!INCLUDE [Pickers open and close](../includes/pickers-open-close-dotnet10.md)]
 
 ::: moniker-end

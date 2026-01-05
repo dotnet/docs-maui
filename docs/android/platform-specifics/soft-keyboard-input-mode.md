@@ -27,6 +27,10 @@ App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindo
 
 The `Application.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method specifies that this platform-specific will only run on Android. The `Application.UseWindowSoftInputModeAdjust` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific` namespace, is used to set the soft keyboard input area operating mode, with the `WindowSoftInputModeAdjust` enumeration providing two values: `Pan` and `Resize`. The `Pan` value uses the [`AdjustPan`](xref:Android.Views.SoftInput.AdjustPan) adjustment option, which doesn't resize the window when an input control has focus. Instead, the contents of the window are panned so that the current focus isn't obscured by the soft keyboard. The `Resize` value uses the [`AdjustResize`](xref:Android.Views.SoftInput.AdjustResize) adjustment option, which resizes the window when an input control has focus, to make room for the soft keyboard.
 
+> [!IMPORTANT]
+> **.NET 10 behavior change:**
+> In .NET 10, when using `WindowSoftInputModeAdjust.Resize`, you may need to set `ContentPage.SafeAreaEdges="All"` to ensure the page content properly avoids the keyboard. This is because `ContentPage` now defaults to `SafeAreaEdges.None` (edge-to-edge) in .NET 10, whereas it behaved more like `Container` in .NET 9. For more information about safe area behavior in .NET 10, see [Safe area layout](~/user-interface/safe-area.md).
+
 This platform-specific can also be set on a <xref:Microsoft.Maui.Controls.Window>. This enables you to define a different soft keyboard input area operating mode on each `Window` that you open:
 
 ```csharp

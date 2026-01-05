@@ -219,6 +219,9 @@ conceptualContent:
             - text: Pass arguments
               url: xaml/pass-arguments.md
               itemType: concept
+            - text: Performance Profiling
+              url: fundamentals/profiling.md
+              itemType: concept
             - text: XAML hot reload
               url: xaml/hot-reload.md
               itemType: concept
@@ -262,6 +265,9 @@ conceptualContent:
             - text: Send push notifications using Azure Notification Hubs
               url: data-cloud/push-notifications.md
               itemType: tutorial
+            - text: Integrate a .NET MAUI app into an Aspire orchestration
+              url: data-cloud/aspire-integration.md
+              itemType: concept
             - text: Consume a REST-based web service
               url: data-cloud/rest.md
               itemType: concept
