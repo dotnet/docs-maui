@@ -346,8 +346,7 @@ The _AppShell.xaml_ defines two tabs, one for the `NotesPage` and another for `A
     x:Class="Notes.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Notes"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:Notes">
 
     <TabBar>
         <ShellContent
@@ -382,8 +381,7 @@ The `local` XML namespace was used by the `ShellContent.ContentTemplate` propert
     x:Class="Notes.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:Notes.Views"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:Notes.Views">
 
     <TabBar>
         <ShellContent
