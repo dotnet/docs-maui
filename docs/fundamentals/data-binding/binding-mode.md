@@ -36,7 +36,7 @@ In this example, the <xref:Microsoft.Maui.Controls.Label> is the data-binding so
 
 :::image type="content" source="media/binding-mode/reversebinding.png" alt-text="Reverse binding.":::
 
-In addition, the <xref:Microsoft.Maui.Controls.Slider> continues to work. This is because the default binding mode for the `Value` property of <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This means that when the `Value` property is a data-binding target, then the target is set from the source but the source is also set from the target. This allows the <xref:Microsoft.Maui.Controls.Slider> to be set from the initial `Opacity` value.
+In addition, the <xref:Microsoft.Maui.Controls.Slider> continues to work. This is because the default binding mode for the `Value` property of <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This means that when the `Value` property is a data-binding target, then the target is set from the source but the source is also set from the target. When a `TwoWay` binding is initialized, the target is set from the source first, which allows the <xref:Microsoft.Maui.Controls.Slider> to be set from the initial `Opacity` value.
 
 > [!NOTE]
 > Bindable properties don't signal a property change unless the property actually changes. This prevents an infinite loop.
@@ -44,7 +44,7 @@ In addition, the <xref:Microsoft.Maui.Controls.Slider> continues to work. This i
 If the default binding mode on the target property is not suitable for a particular data binding, it's possible to override it by setting the `Mode` property of `Binding` (or the `Mode` property of the `Binding` markup extension) to one of the members of the `BindingMode` enumeration:
 
 - `Default`
-- `TwoWay` — data goes both ways between source and target
+- `TwoWay` — data goes both ways between source and target. When initialized, the target is set from the source first.
 - `OneWay` — data goes from source to target
 - `OneWayToSource` — data goes from target to source
 - `OneTime` — data goes from source to target, but only when the `BindingContext` changes
@@ -63,7 +63,7 @@ Most bindable properties have a default binding mode of `OneWay` but some proper
 - `On` property of <xref:Microsoft.Maui.Controls.SwitchCell>
 - `Time` property of <xref:Microsoft.Maui.Controls.TimePicker>
 
-These properties are defined as `TwoWay` because when data bindings are used with the Model-View-ViewModel (MVVM) pattern, the viewmodel class is the data-binding source, and the view, which consists of views such as <xref:Microsoft.Maui.Controls.Slider>, are data-binding targets. MVVM bindings resemble the example above, because it's likely that you want each view on the page to be initialized with the value of the corresponding property in the viewmodel, but changes in the view should also affect the viewmodel property.
+These properties are defined as `TwoWay` because when data bindings are used with the Model-View-ViewModel (MVVM) pattern, the viewmodel class is the data-binding source, and the view, which consists of views such as <xref:Microsoft.Maui.Controls.Slider>, are data-binding targets. MVVM bindings resemble the example above, because it's likely that you want each view on the page to be initialized with the value of the corresponding property in the viewmodel, but changes in the view should also affect the viewmodel property. When initialized, a `TwoWay` binding sets the target from the source first, and then subsequent changes flow in both directions.
 
 ## One-way-to-source bindings
 
