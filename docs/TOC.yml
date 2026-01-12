@@ -507,6 +507,8 @@
               href: user-interface/theming.md
             - name: Respond to system theme changes
               href: user-interface/system-theme-changes.md
+            - name: Material 3 design on Android
+              href: user-interface/material3.md
         - name: Tooling
           items:
             - name: Inspect the visual tree
