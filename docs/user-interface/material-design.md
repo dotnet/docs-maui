@@ -81,6 +81,9 @@ The `UseMaterial3` build property is specific to the Android platform. It has no
 > [!NOTE]
 > Material 3 is only available on Android. The `UseMaterial3` property is ignored on other platforms.
 
+> [!NOTE]
+> Controls will be migrated to Material 3 in upcoming releases.
+
 ## Considerations
 
 When enabling Material 3 in your .NET MAUI Android app, consider the following:
