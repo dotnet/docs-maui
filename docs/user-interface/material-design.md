@@ -38,8 +38,8 @@ The following example shows a complete project file with the `UseMaterial3` prop
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
     
     <OutputType>Exe</OutputType>
     <RootNamespace>MyMauiApp</RootNamespace>
@@ -79,10 +79,7 @@ The following example shows a complete project file with the `UseMaterial3` prop
 The `UseMaterial3` build property is specific to the Android platform. It has no effect on other platforms such as iOS, macOS, or Windows. On these platforms, .NET MAUI apps use the native design systems and controls specific to each platform.
 
 > [!NOTE]
-> Material 3 is only available on Android. The `UseMaterial3` property is ignored on other platforms.
-
-> [!NOTE]
-> Controls will be migrated to Material 3 in upcoming releases.
+> Controls will be migrated to Material 3 in upcoming .NET 10 SR releases.
 
 ## Considerations
 
