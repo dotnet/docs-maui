@@ -180,8 +180,7 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
                     </VisualState>          
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
-                            <Setter TargetName="FlyoutItemLayout"
-                                    Property="BackgroundColor"
+                            <Setter Property="BackgroundColor"
                                     Value="{AppThemeBinding Light=#1A000000, Dark=#1AFFFFFF}" />
                         </VisualState.Setters>
                     </VisualState>
