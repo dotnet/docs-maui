@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell tabs"
 description: "Learn how to customize and control a .NET MAUI TabBar, which represents the bottom tab bar in a .NET MAUI Shell app."
-ms.date: 08/30/2024
+ms.date: 11/28/2025
 ---
 
 # .NET MAUI Shell tabs
@@ -14,6 +14,9 @@ A <xref:Microsoft.Maui.Controls.TabBar> object can contain one or more <xref:Mic
 
 > [!IMPORTANT]
 > The <xref:Microsoft.Maui.Controls.TabBar> type disables the flyout.
+
+> [!TIP]
+> Tabs can be displayed with a flyout by adding multiple <xref:Microsoft.Maui.Controls.ShellContent> objects to a <xref:Microsoft.Maui.Controls.FlyoutItem> object or <xref:Microsoft.Maui.Controls.Tab> object. For more information, see [.NET MAUI Shell flyout](flyout.md#flyout-items).
 
 ## Single page
 

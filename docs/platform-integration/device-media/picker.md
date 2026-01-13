@@ -44,15 +44,19 @@ These permissions can be added in the following ways:
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
-  <uses-permission android:name="android.permission.CAMERA" />
+  <!-- Needed for Picking photo/video -->
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />    
-  <!-- Required only if your app needs to access images or photos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
   <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-  <!-- Required only if your app needs to access videos that other apps created -->
   <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-  <!-- Required only if your app needs to access audio files that other apps created -->
-  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
+
+  <!-- Needed for Taking photo/video -->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+
+  <!-- Add these properties if you would like to filter out devices that do not have cameras, or set to false to make them optional -->
+  <uses-feature android:name="android.hardware.camera" android:required="true" />
+  <uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />
   ```
 
   \- or -
