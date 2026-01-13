@@ -667,9 +667,9 @@ VisualStateGroup visualStateGroup = new VisualStateGroup();
 VisualState checkedState = new VisualState { Name = "Checked" };
 CompareStateTrigger checkedTrigger = new CompareStateTrigger
 {
-    Property = checkBox.IsChecked,
     Value = true
 };
+checkedTrigger.SetBinding(CompareStateTrigger.PropertyProperty, new Binding("IsChecked", source: checkBox));
 checkedState.StateTriggers.Add(checkedTrigger);
 checkedState.Setters.Add(new Setter
 {
@@ -681,9 +681,9 @@ checkedState.Setters.Add(new Setter
 VisualState uncheckedState = new VisualState { Name = "Unchecked" };
 CompareStateTrigger uncheckedTrigger = new CompareStateTrigger
 {
-    Property = checkBox.IsChecked,
     Value = false
 };
+uncheckedTrigger.SetBinding(CompareStateTrigger.PropertyProperty, new Binding("IsChecked", source: checkBox));
 uncheckedState.StateTriggers.Add(uncheckedTrigger);
 uncheckedState.Setters.Add(new Setter
 {
