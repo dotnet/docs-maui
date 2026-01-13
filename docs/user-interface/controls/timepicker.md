@@ -160,7 +160,7 @@ public partial class MyViewModel : ObservableObject
 }
 ```
 
-::: include ../../includes/mvvm-toolkit-note.md
+[!INCLUDE [MVVM Toolkit note](../includes/mvvm-toolkit-note.md)]
 
 Set/clear in code:
 
@@ -175,6 +175,6 @@ timePicker.Time = new TimeSpan(14, 30, 0); // 2:30 PM
 
 ::: moniker range=">=net-maui-10.0"
 
-::: include ../../includes/pickers-open-close-dotnet10.md
+[!INCLUDE [Pickers open and close](../includes/pickers-open-close-dotnet10.md)]
 
 ::: moniker-end
