@@ -146,7 +146,7 @@ To ensure the widget displays the correct app icon:
     <string>AppIcon</string>
     ```
 
-    Replace `MyWidgetExtension.MyWidgetBundle` with your widget's module name and bundle name:
+01. Replace `MyWidgetExtension.MyWidgetBundle` with your widget's **module name** and **bundle name**:
 
     - **Module name**: Found in Xcode under **Build Settings > Product Module Name**
     - **Bundle name**: The name of your `WidgetBundle` struct
@@ -479,7 +479,18 @@ To allow users to configure your widget:
         ]
     }
     ```
+    iOS automatically generates a configuration UI based on the parameters you define in the WidgetConfigurationIntent.
+ 
+01. Update your timeline entry to include the showDate:
 
+    ```swift
+    struct SimpleEntry: TimelineEntry {
+        let date: Date
+        let displayMode: DisplayModeEnum
+        let showDate: Bool
+    }
+    ```
+ 
 01. Access the configuration in your timeline provider:
 
     ```swift
@@ -498,7 +509,36 @@ To allow users to configure your widget:
     }
     ```
 
-iOS automatically generates a configuration UI based on the parameters you define.
+01. Update your widget view to reflect the configuration:
+
+    ```swift
+    struct WidgetEntryView: View {
+        var entry: Provider.Entry
+
+        var body: some View {
+            VStack {
+                if entry.showDate {
+                    Text(entry.date, style: .date)
+                }
+ 
+                if entry.displayMode == .detailed {
+                    Text("Detailed View")
+                } else {
+                    Text("Compact View")
+                } 
+ 
+                Button(intent: IncrementCounterIntent()) {
+                    Text("Increment")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+            }
+        }
+    }
+    ```
+
 
 ## See also
 
