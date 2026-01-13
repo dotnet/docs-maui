@@ -30,7 +30,7 @@ The `AbsoluteLayout.LayoutBounds` attached property can be set using two formats
 - `x, y`. With this format, the `x` and `y` values indicate the position of the child relative to its parent. The child is unconstrained and sizes itself.
 - `x, y, width, height`. With this format, the `x` and `y` values indicate the position of the child relative to its parent, while the `width` and `height` values indicate the child's size.
 
-When using absolute values, `x` and `y` specify the position of the top-left corner of the child in device-independent units. When using proportional values, `x` and `y` are calculated as `(parentDimension - childDimension) * proportionalValue`. This means a proportional position of (0.5, 0.5) centers the child within the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, because the child is placed at half of the remaining space after accounting for its size.
+When using absolute values, `x` and `y` specify the position of the top-left corner of the child in device-independent units. When using proportional values, the resulting position is calculated as `(parentDimension - childDimension) * proportionalValue`, where `proportionalValue` is the `x` or `y` coordinate specified in `LayoutBounds`. This means a proportional position of (0.5, 0.5) centers the child within the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, because the child is placed at half of the remaining space after accounting for its size.
 
 To specify that a child sizes itself horizontally or vertically, or both, set the `width` and/or `height` values to the `AbsoluteLayout.AutoSize` property. However, overuse of this property can harm application performance, as it causes the layout engine to perform additional layout calculations.
 
