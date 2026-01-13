@@ -472,7 +472,22 @@ uncheckedState.Setters.Add(new Setter
 visualStateGroup.States.Add(checkedState);
 visualStateGroup.States.Add(uncheckedState);
 VisualStateManager.SetVisualStateGroups(grid, new VisualStateGroupList { visualStateGroup });
+
+// Event handlers (as shown above)
+void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
+{
+    StateTriggerBase stateTrigger = sender as StateTriggerBase;
+    Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
+}
+
+void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
+{
+    StateTriggerBase stateTrigger = sender as StateTriggerBase;
+    Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
+}
 ```
+
+In this example, you'll need to provide an `InverseBooleanConverter` implementation (a value converter that inverts boolean values) or use an alternative approach for the unchecked state.
 
 ### Adaptive trigger
 
