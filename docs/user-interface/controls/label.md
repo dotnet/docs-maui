@@ -104,7 +104,7 @@ Label label = new Label { Text = "First line\nSecond line" };
 
 Text wrapping and truncation can be controlled by setting the `LineBreakMode` property to a value of the `LineBreakMode` enumeration:
 
-- `NoWrap` — does not wrap text, displaying only as much text as can fit on one line. 
+- `NoWrap` — does not wrap text, displaying only as much text as can fit on one line.
 - `WordWrap` — wraps text at the word boundary. This is the default value of the `LineBreakMode` property.
 - `CharacterWrap` — wraps text onto a new line at a character boundary.
 - `HeadTruncation` — truncates the head of the text, showing the end.
