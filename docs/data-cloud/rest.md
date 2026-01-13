@@ -50,7 +50,7 @@ public class TodoItem
 }
 ```
 
-The `ID` property is used to uniquely identify each `TodoItem` object, and is used by the web service to identify data to be updated or deleted. For example, to delete the `TodoItem` whose ID is `6bb8a868-dba1-4f1a-93b7-24ebce87e243`, the .NET MAUI app sends a DELETE request to `https://hostname/api/todoitems/6bb8a868-dba1-4f1a-93b7-24ebce87e243`.
+The `ID` property is used to uniquely identify each `TodoItem` object, and is used by the web service to identify data to be updated or deleted. For example, to delete the `TodoItem` whose ID is `aaaabbbb-0000-cccc-1111-dddd2222eeee`, the .NET MAUI app sends a DELETE request to `https://hostname/api/todoitems/aaaabbbb-0000-cccc-1111-dddd2222eeee`.
 
 When the Web API framework receives a request, it routes the request to an action. These actions are public methods in the `TodoItemsController` class. The Web API framework uses routing middleware to match the URLs of incoming requests and map them to actions. REST APIs should use attribute routing to model the app's functionality as a set of resources whose operations are represented by HTTP verbs. Attribute routing uses a set of attributes to map actions directly to route templates. For more information about attribute routing, see [Attribute routing for REST APIs](/aspnet/core/mvc/controllers/routing#ar). For more information about building the REST service using ASP.NET Core, see [Creating backend services for native mobile applications](/aspnet/core/mobile/native-mobile-backend/).
 

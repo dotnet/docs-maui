@@ -74,8 +74,10 @@ This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.
 
 The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> enumeration member:
 
-- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
-- `AsMultipleItems`, indicates that the item and its direct children will be visible in the flyout as a group of items.
+- `AsSingleItem`, indicates that the <xref:Microsoft.Maui.Controls.FlyoutItem> will be visible as a single entry in the flyout, regardless of how many child <xref:Microsoft.Maui.Controls.Tab> or <xref:Microsoft.Maui.Controls.ShellContent> objects it contains. When selected, the first child content is displayed, and users can switch between children using tabs (if more than one child exists). This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
+- `AsMultipleItems`, indicates that the direct children (<xref:Microsoft.Maui.Controls.Tab> and <xref:Microsoft.Maui.Controls.ShellContent> objects) of the <xref:Microsoft.Maui.Controls.FlyoutItem> will each appear as separate entries in the flyout. This enables users to navigate directly to any child content from the flyout, rather than having to use tabs.
+
+Use `AsSingleItem` when you want to group related pages under a single flyout entry with tab navigation. Use `AsMultipleItems` when you want each page to be directly accessible from the flyout menu.
 
 A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:Microsoft.Maui.Controls.FlyoutItem> can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
 

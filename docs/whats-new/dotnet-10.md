@@ -631,7 +631,7 @@ In .NET 10, they are enabled by default. Problems with these marshal methods oft
 ```xml
 <PropertyGroup>
     <AndroidEnableMarshalMethods>false</AndroidEnableMarshalMethods>
-<PropertyGroup>
+</PropertyGroup>
 ```
 
 If this fixes the hang, please file an [issue](https://github.com/dotnet/android/issues).

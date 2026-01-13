@@ -1,7 +1,7 @@
 ---
 title: "Manual provisioning for .NET MAUI iOS apps"
 description: "Learn how to use manual provisioning to create development certificates and profiles for .NET MAUI iOS apps."
-ms.date: 11/25/2024
+ms.date: 12/12/2024
 ms.custom: sfi-image-nochange
 ---
 
@@ -119,6 +119,12 @@ The provisioning profiles will be downloaded on Windows, and exported to your Ma
 # [Visual Studio Code](#tab/visual-studio-code)
 <!-- markdownlint-enable MD025 -->
 
+Follow the instructions for .NET CLI.
+
+<!-- markdownlint-disable MD025 -->
+# [.NET CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
 After creating a development provisioning profile in your Apple Developer Account, you will need to download it in Xcode so that it's available for signing your app:
 
 1. Open the **Xcode** app.
@@ -132,6 +138,10 @@ After creating a development provisioning profile in your Apple Developer Accoun
 
 ## Enable manual provisioning
 
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
+
 After manually creating the development provisioning profile, and installing it in Visual Studio, your .NET MAUI app project should be configured to use manual provisioning:
 
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab and ensure that the value of the **Application ID** field corresponds to the format of the App ID you created earlier.
@@ -140,6 +150,39 @@ After manually creating the development provisioning profile, and installing it 
     :::image type="content" source="media/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
 1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio Code](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
+
+Follow the instructions for .NET CLI.
+
+<!-- markdownlint-disable MD025 -->
+# [.NET CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
+After manually creating the development provisioning profile and downloading it, your .NET MAUI app project should be configured to use manual provisioning by setting the appropriate properties in your project file.
+
+By default, if the `CodesignKey` and `CodesignProvision` properties are not set in your project file, the build will automatically select the appropriate certificate and provisioning profile. However, if the automatic selection is incorrect for your scenario, you can explicitly specify these properties:
+
+1. Ensure that the `<ApplicationId>` property in your project file corresponds to the format of the App ID you created earlier.
+1. Add the following properties to a `<PropertyGroup>` in your project file (*.csproj):
+
+    ```xml
+    <PropertyGroup>
+        <CodesignKey>Apple Development: Your Name (ABCDEFGH)</CodesignKey>
+        <CodesignProvision>My Provisioning Profile</CodesignProvision>
+    </PropertyGroup>
+    ```
+
+    Replace `Apple Development: Your Name (ABCDEFGH)` with the exact name of your signing certificate as it appears in Keychain Access, and `My Provisioning Profile` with the exact name of your provisioning profile.
+
+> [!TIP]
+> To find your signing certificate name, open **Keychain Access** on your Mac and look in the **My Certificates** category. To find your provisioning profile name, check the name you assigned when creating the profile in your Apple Developer Account.
+
+For more information about these properties, see [CodesignKey](/dotnet/ios/building-apps/build-properties#codesignkey) and [CodesignProvision](/dotnet/ios/building-apps/build-properties#codesignprovision).
+
+---
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
 
