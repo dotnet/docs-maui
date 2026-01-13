@@ -183,7 +183,7 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
                             <Setter Property="BackgroundColor"
-                                    Value="{AppThemeBinding Light=Black, Dark=White}" />
+                                    Value="{AppThemeBinding Light=#1A000000, Dark=#1AFFFFFF}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -211,19 +211,12 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
         <Label x:Name="FlyoutItemLabel"
                Grid.Column="1"
                Text="{Binding Title}"
+               TextColor="{OnPlatform Android={AppThemeBinding Light=#DE000000, Dark=White}}"
                FontSize="{OnPlatform Android=14, iOS=14}"
                FontAttributes="{OnPlatform iOS=Bold}"
                HorizontalOptions="{OnPlatform WinUI=Start}"
                HorizontalTextAlignment="{OnPlatform WinUI=Start}"
                VerticalTextAlignment="Center">
-            <Label.TextColor>
-                <OnPlatform x:TypeArguments="Color">
-                    <OnPlatform.Platforms>
-                        <On Platform="Android"
-                            Value="{AppThemeBinding Light=Black, Dark=White}" />
-                    </OnPlatform.Platforms>
-                </OnPlatform>
-            </Label.TextColor>
             <Label.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
                     <OnPlatform.Platforms>
@@ -244,6 +237,9 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
     </Grid>
 </DataTemplate>
 ```
+
+> [!IMPORTANT]
+> When combining `OnPlatform` with `AppThemeBinding`, avoid nesting `AppThemeBinding` inside an `<OnPlatform>` element with `x:TypeArguments="Color"`, as this can cause type cast errors at runtime on Android. Instead, use the inline markup extension syntax as shown above, or apply colors directly using style classes.
 
 This template can be used for as a basis for making alterations to the existing flyout layout, and also shows the visual states that are implemented for flyout items.
 
