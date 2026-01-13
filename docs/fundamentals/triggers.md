@@ -417,14 +417,14 @@ In addition, every time a <xref:Microsoft.Maui.Controls.VisualState> change occu
 ```csharp
 void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    StateTriggerBase stateTrigger = sender as StateTriggerBase;
-    Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
+    if (sender is StateTriggerBase stateTrigger)
+        Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
 }
 
 void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    StateTriggerBase stateTrigger = sender as StateTriggerBase;
-    Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
+    if (sender is StateTriggerBase stateTrigger)
+        Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
 }
 ```
 
@@ -476,14 +476,14 @@ VisualStateManager.SetVisualStateGroups(grid, new VisualStateGroupList { visualS
 // Event handlers (as shown above)
 void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    StateTriggerBase stateTrigger = sender as StateTriggerBase;
-    Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
+    if (sender is StateTriggerBase stateTrigger)
+        Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
 }
 
 void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    StateTriggerBase stateTrigger = sender as StateTriggerBase;
-    Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
+    if (sender is StateTriggerBase stateTrigger)
+        Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
 }
 ```
 
