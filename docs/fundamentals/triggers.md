@@ -12,6 +12,18 @@ ms.date: 01/13/2026
 
 You can assign a trigger directly to a control's <xref:Microsoft.Maui.Controls.VisualElement.Triggers> collection, or add it to a page-level or app-level resource dictionary to be applied to multiple controls.
 
+## Triggers and C#
+
+Triggers are designed for use in XAML to enable declarative styling and behavior changes without writing code-behind logic. They help reduce the amount of C# code needed by handling common UI scenarios directly in markup.
+
+When building UI with C#, you typically handle these scenarios differently using event handlers, property change notifications, or data binding with value converters. For example:
+
+- Instead of a property trigger that changes appearance based on focus, you would subscribe to the `Focused` and `Unfocused` events and update properties directly in the event handlers.
+- Instead of a data trigger that enables/disables a button based on text length, you would use data binding with the `INotifyPropertyChanged` interface or use reactive extensions to update the button's state.
+- Instead of visual state triggers, you would call `VisualStateManager.GoToState()` from your code-behind or view model.
+
+Triggers provide a declarative XAML-based approach that is particularly useful for UI-focused changes that don't require complex business logic. If you're building your UI entirely in C#, you have direct access to all control properties and events, which often provides a more straightforward approach for implementing the same behaviors.
+
 ## Property triggers
 
 A <xref:Microsoft.Maui.Controls.Trigger> represents a trigger that applies property values, or performs actions, when the specified property meets a specified condition.
@@ -41,23 +53,6 @@ The trigger's declaration specifies the following:
 
 In addition, optional <xref:Microsoft.Maui.Controls.TriggerBase.EnterActions> and <xref:Microsoft.Maui.Controls.TriggerBase.ExitActions> collections can be specified. For more information, see [EnterActions and ExitActions](#enteractions-and-exitactions).
 
-The equivalent C# code is:
-
-```csharp
-Entry entry = new Entry { Placeholder = "Enter name" };
-Trigger trigger = new Trigger(typeof(Entry))
-{
-    Property = Entry.IsFocusedProperty,
-    Value = true
-};
-trigger.Setters.Add(new Setter
-{
-    Property = Entry.BackgroundColorProperty,
-    Value = Colors.Yellow
-});
-entry.Triggers.Add(trigger);
-```
-
 ### Apply a trigger using a style
 
 Triggers can also be added to a <xref:Microsoft.Maui.Controls.Style> declaration on a control, in a page, or an application <xref:Microsoft.Maui.Controls.ResourceDictionary>. The following example declares an *implicit* style for all <xref:Microsoft.Maui.Controls.Entry> controls on the page:
@@ -76,24 +71,6 @@ Triggers can also be added to a <xref:Microsoft.Maui.Controls.Style> declaration
         </Style.Triggers>
     </Style>
 </ContentPage.Resources>
-```
-
-The equivalent C# code is:
-
-```csharp
-Style entryStyle = new Style(typeof(Entry));
-Trigger trigger = new Trigger(typeof(Entry))
-{
-    Property = Entry.IsFocusedProperty,
-    Value = true
-};
-trigger.Setters.Add(new Setter
-{
-    Property = Entry.BackgroundColorProperty,
-    Value = Colors.Yellow
-});
-entryStyle.Triggers.Add(trigger);
-Resources.Add(entryStyle);
 ```
 
 ## Data triggers
@@ -127,29 +104,6 @@ In this example, when the length of the <xref:Microsoft.Maui.Controls.Entry> is 
 > When evaluating `Path=Text.Length` always provide a default value for the target property (eg. `Text=""`) because otherwise it will be `null` and the trigger won't work like you expect.
 
 In addition, optional <xref:Microsoft.Maui.Controls.TriggerBase.EnterActions> and <xref:Microsoft.Maui.Controls.TriggerBase.ExitActions> collections can be specified. For more information, see [EnterActions and ExitActions](#enteractions-and-exitactions).
-
-The equivalent C# code is:
-
-```csharp
-Entry entry = new Entry
-{
-    Text = "",
-    Placeholder = "Enter text"
-};
-Button button = new Button { Text = "Save" };
-
-DataTrigger dataTrigger = new DataTrigger(typeof(Button))
-{
-    Binding = new Binding("Text.Length", source: entry),
-    Value = 0
-};
-dataTrigger.Setters.Add(new Setter
-{
-    Property = Button.IsEnabledProperty,
-    Value = false
-});
-button.Triggers.Add(dataTrigger);
-```
 
 ## Event triggers
 
@@ -186,18 +140,6 @@ public class NumericValidationTriggerAction : TriggerAction<Entry>
         entry.TextColor = isValid ? Colors.Black : Colors.Red;
     }
 }
-```
-
-The equivalent C# code to attach an event trigger is:
-
-```csharp
-Entry entry = new Entry();
-EventTrigger eventTrigger = new EventTrigger
-{
-    Event = "TextChanged"
-};
-eventTrigger.Actions.Add(new NumericValidationTriggerAction());
-entry.Triggers.Add(eventTrigger);
 ```
 
 > [!WARNING]
@@ -239,42 +181,6 @@ In addition, the `MultiTrigger.Conditions` collection can also contain <xref:Mic
 ```xaml
 <PropertyCondition Property="Text"
                    Value="OK" />
-```
-
-The equivalent C# code is:
-
-```csharp
-Entry email = new Entry { Text = "" };
-Entry phone = new Entry { Text = "" };
-Button button = new Button { Text = "Save" };
-
-MultiTrigger multiTrigger = new MultiTrigger(typeof(Button));
-multiTrigger.Conditions.Add(new BindingCondition
-{
-    Binding = new Binding("Text.Length", source: email),
-    Value = 0
-});
-multiTrigger.Conditions.Add(new BindingCondition
-{
-    Binding = new Binding("Text.Length", source: phone),
-    Value = 0
-});
-multiTrigger.Setters.Add(new Setter
-{
-    Property = Button.IsEnabledProperty,
-    Value = false
-});
-button.Triggers.Add(multiTrigger);
-```
-
-You can also use <xref:Microsoft.Maui.Controls.PropertyCondition> objects in C#:
-
-```csharp
-multiTrigger.Conditions.Add(new PropertyCondition
-{
-    Property = Entry.TextProperty,
-    Value = "OK"
-});
 ```
 
 ## EnterActions and ExitActions
@@ -330,20 +236,6 @@ public class FadeTriggerAction : TriggerAction<VisualElement>
         easing: Easing.Linear);
     }
 }
-```
-
-The equivalent C# code to attach EnterActions and ExitActions is:
-
-```csharp
-Entry entry = new Entry { Placeholder = "Enter job title" };
-Trigger trigger = new Trigger(typeof(Entry))
-{
-    Property = Entry.IsFocusedProperty,
-    Value = true
-};
-trigger.EnterActions.Add(new FadeTriggerAction { StartsFrom = 0 });
-trigger.ExitActions.Add(new FadeTriggerAction { StartsFrom = 1 });
-entry.Triggers.Add(trigger);
 ```
 
 > [!NOTE]
@@ -417,14 +309,14 @@ In addition, every time a <xref:Microsoft.Maui.Controls.VisualState> change occu
 ```csharp
 void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    if (sender is StateTriggerBase stateTrigger)
-        Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
+    StateTriggerBase stateTrigger = sender as StateTriggerBase;
+    Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
 }
 
 void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
 {
-    if (sender is StateTriggerBase stateTrigger)
-        Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
+    StateTriggerBase stateTrigger = sender as StateTriggerBase;
+    Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
 }
 ```
 
@@ -437,57 +329,6 @@ Unchecked state active: True
 
 > [!NOTE]
 > Custom state triggers can be created by deriving from the <xref:Microsoft.Maui.Controls.StateTriggerBase> class, and overriding the `OnAttached` and `OnDetached` methods to perform any required registrations and cleanup.
-
-The equivalent C# code is:
-
-```csharp
-Grid grid = new Grid();
-
-VisualStateGroup visualStateGroup = new VisualStateGroup();
-
-// Checked state
-VisualState checkedState = new VisualState { Name = "Checked" };
-StateTrigger checkedTrigger = new StateTrigger();
-checkedTrigger.SetBinding(StateTrigger.IsActiveProperty, new Binding("IsToggled"));
-checkedTrigger.IsActiveChanged += OnCheckedStateIsActiveChanged;
-checkedState.StateTriggers.Add(checkedTrigger);
-checkedState.Setters.Add(new Setter
-{
-    Property = Grid.BackgroundColorProperty,
-    Value = Colors.Black
-});
-
-// Unchecked state
-VisualState uncheckedState = new VisualState { Name = "Unchecked" };
-StateTrigger uncheckedTrigger = new StateTrigger();
-uncheckedTrigger.SetBinding(StateTrigger.IsActiveProperty, new Binding("IsToggled", converter: new InverseBooleanConverter()));
-uncheckedTrigger.IsActiveChanged += OnUncheckedStateIsActiveChanged;
-uncheckedState.StateTriggers.Add(uncheckedTrigger);
-uncheckedState.Setters.Add(new Setter
-{
-    Property = Grid.BackgroundColorProperty,
-    Value = Colors.White
-});
-
-visualStateGroup.States.Add(checkedState);
-visualStateGroup.States.Add(uncheckedState);
-VisualStateManager.SetVisualStateGroups(grid, new VisualStateGroupList { visualStateGroup });
-
-// Event handlers (as shown above)
-void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
-{
-    if (sender is StateTriggerBase stateTrigger)
-        Console.WriteLine($"Checked state active: {stateTrigger.IsActive}");
-}
-
-void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
-{
-    if (sender is StateTriggerBase stateTrigger)
-        Console.WriteLine($"Unchecked state active: {stateTrigger.IsActive}");
-}
-```
-
-In this example, you'll need to provide an `InverseBooleanConverter` implementation (a value converter that inverts boolean values) or use an alternative approach for the unchecked state.
 
 ### Adaptive trigger
 
@@ -543,48 +384,6 @@ In this example, the <xref:Microsoft.Maui.Controls.AdaptiveTrigger> indicates th
 
 > [!NOTE]
 > For more information about device-independent units, see [Device-independent units](../user-interface/device-independent-units.md).
-
-The equivalent C# code is:
-
-```csharp
-StackLayout stackLayout = new StackLayout();
-
-VisualStateGroup visualStateGroup = new VisualStateGroup();
-
-// Vertical state
-VisualState verticalState = new VisualState { Name = "Vertical" };
-AdaptiveTrigger verticalTrigger = new AdaptiveTrigger { MinWindowWidth = 0 };
-verticalState.StateTriggers.Add(verticalTrigger);
-verticalState.Setters.Add(new Setter
-{
-    Property = StackLayout.OrientationProperty,
-    Value = StackOrientation.Vertical
-});
-
-// Horizontal state
-VisualState horizontalState = new VisualState { Name = "Horizontal" };
-AdaptiveTrigger horizontalTrigger = new AdaptiveTrigger { MinWindowWidth = 800 };
-horizontalState.StateTriggers.Add(horizontalTrigger);
-horizontalState.Setters.Add(new Setter
-{
-    Property = StackLayout.OrientationProperty,
-    Value = StackOrientation.Horizontal
-});
-
-visualStateGroup.States.Add(verticalState);
-visualStateGroup.States.Add(horizontalState);
-VisualStateManager.SetVisualStateGroups(stackLayout, new VisualStateGroupList { visualStateGroup });
-```
-
-For combined width and height conditions:
-
-```csharp
-AdaptiveTrigger adaptiveTrigger = new AdaptiveTrigger
-{
-    MinWindowWidth = 800,
-    MinWindowHeight = 1200
-};
-```
 
 ### Compare state trigger
 
@@ -647,70 +446,6 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
 
 In this example, the implicit <xref:Microsoft.Maui.Controls.Style> targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsChecked` property of the <xref:Microsoft.Maui.Controls.CheckBox> is `false`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to white. When the `CheckBox.IsChecked` property becomes `true`, a <xref:Microsoft.Maui.Controls.VisualState> change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes black.
 
-The equivalent C# code is:
-
-```csharp
-CheckBox checkBox = new CheckBox { VerticalOptions = LayoutOptions.Center };
-Label label = new Label
-{
-    Text = "Check the CheckBox to modify the Grid background color.",
-    VerticalOptions = LayoutOptions.Center
-};
-
-StackLayout stackLayout = new StackLayout
-{
-    Orientation = StackOrientation.Horizontal,
-    Children = { checkBox, label }
-};
-
-Border border = new Border
-{
-    BackgroundColor = Colors.White,
-    StrokeShape = new RoundRectangle { CornerRadius = 12 },
-    Margin = new Thickness(24),
-    Padding = new Thickness(24),
-    HorizontalOptions = LayoutOptions.Center,
-    VerticalOptions = LayoutOptions.Center,
-    Content = stackLayout
-};
-
-Grid grid = new Grid { Children = { border } };
-
-VisualStateGroup visualStateGroup = new VisualStateGroup();
-
-// Checked state
-VisualState checkedState = new VisualState { Name = "Checked" };
-CompareStateTrigger checkedTrigger = new CompareStateTrigger
-{
-    Value = true
-};
-checkedTrigger.SetBinding(CompareStateTrigger.PropertyProperty, new Binding("IsChecked", source: checkBox));
-checkedState.StateTriggers.Add(checkedTrigger);
-checkedState.Setters.Add(new Setter
-{
-    Property = Grid.BackgroundColorProperty,
-    Value = Colors.Black
-});
-
-// Unchecked state
-VisualState uncheckedState = new VisualState { Name = "Unchecked" };
-CompareStateTrigger uncheckedTrigger = new CompareStateTrigger
-{
-    Value = false
-};
-uncheckedTrigger.SetBinding(CompareStateTrigger.PropertyProperty, new Binding("IsChecked", source: checkBox));
-uncheckedState.StateTriggers.Add(uncheckedTrigger);
-uncheckedState.Setters.Add(new Setter
-{
-    Property = Grid.BackgroundColorProperty,
-    Value = Colors.White
-});
-
-visualStateGroup.States.Add(checkedState);
-visualStateGroup.States.Add(uncheckedState);
-VisualStateManager.SetVisualStateGroups(grid, new VisualStateGroupList { visualStateGroup });
-```
-
 ### Device state trigger
 
 The <xref:Microsoft.Maui.Controls.DeviceStateTrigger> triggers a <xref:Microsoft.Maui.Controls.VisualState> change based on the device platform the app is running on. This trigger has a single bindable property:
@@ -754,38 +489,6 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
 
 In this example, the explicit <xref:Microsoft.Maui.Controls.Style> targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver on iOS, and to pale blue on Android.
 
-The equivalent C# code is:
-
-```csharp
-ContentPage page = new ContentPage();
-
-VisualStateGroup visualStateGroup = new VisualStateGroup();
-
-// iOS state
-VisualState iOSState = new VisualState { Name = "iOS" };
-DeviceStateTrigger iOSTrigger = new DeviceStateTrigger { Device = "iOS" };
-iOSState.StateTriggers.Add(iOSTrigger);
-iOSState.Setters.Add(new Setter
-{
-    Property = ContentPage.BackgroundColorProperty,
-    Value = Colors.Silver
-});
-
-// Android state
-VisualState androidState = new VisualState { Name = "Android" };
-DeviceStateTrigger androidTrigger = new DeviceStateTrigger { Device = "Android" };
-androidState.StateTriggers.Add(androidTrigger);
-androidState.Setters.Add(new Setter
-{
-    Property = ContentPage.BackgroundColorProperty,
-    Value = Color.FromArgb("#2196F3")
-});
-
-visualStateGroup.States.Add(iOSState);
-visualStateGroup.States.Add(androidState);
-VisualStateManager.SetVisualStateGroups(page, new VisualStateGroupList { visualStateGroup });
-```
-
 ### Orientation state trigger
 
 The <xref:Microsoft.Maui.Controls.OrientationStateTrigger> triggers a <xref:Microsoft.Maui.Controls.VisualState> change when the orientation of the device changes. This trigger has a single bindable property:
@@ -828,41 +531,3 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.Style> that inc
 ```
 
 In this example, the explicit <xref:Microsoft.Maui.Controls.Style> targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver when the orientation is portrait, and set their background color to white when the orientation is landscape.
-
-The equivalent C# code is:
-
-```csharp
-ContentPage page = new ContentPage();
-
-VisualStateGroup visualStateGroup = new VisualStateGroup();
-
-// Portrait state
-VisualState portraitState = new VisualState { Name = "Portrait" };
-OrientationStateTrigger portraitTrigger = new OrientationStateTrigger
-{
-    Orientation = DisplayOrientation.Portrait
-};
-portraitState.StateTriggers.Add(portraitTrigger);
-portraitState.Setters.Add(new Setter
-{
-    Property = ContentPage.BackgroundColorProperty,
-    Value = Colors.Silver
-});
-
-// Landscape state
-VisualState landscapeState = new VisualState { Name = "Landscape" };
-OrientationStateTrigger landscapeTrigger = new OrientationStateTrigger
-{
-    Orientation = DisplayOrientation.Landscape
-};
-landscapeState.StateTriggers.Add(landscapeTrigger);
-landscapeState.Setters.Add(new Setter
-{
-    Property = ContentPage.BackgroundColorProperty,
-    Value = Colors.White
-});
-
-visualStateGroup.States.Add(portraitState);
-visualStateGroup.States.Add(landscapeState);
-VisualStateManager.SetVisualStateGroups(page, new VisualStateGroupList { visualStateGroup });
-```
