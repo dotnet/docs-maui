@@ -12,7 +12,7 @@ ms.date: 01/13/2026
 
 You can assign a trigger directly to a control's <xref:Microsoft.Maui.Controls.VisualElement.Triggers> collection, or add it to a page-level or app-level resource dictionary to be applied to multiple controls.
 
-## Triggers and C#
+## Triggers and C\#
 
 Triggers are designed for use in XAML to enable declarative styling and behavior changes without writing code-behind logic. They help reduce the amount of C# code needed by handling common UI scenarios directly in markup.
 
