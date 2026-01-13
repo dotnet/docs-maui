@@ -967,6 +967,8 @@
                   href: /dotnet/ios/building-apps/build-properties?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: Build items
                   href: /dotnet/ios/building-apps/build-items?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Bundle Swift widgets with iOS apps
+              href: ios/widgets.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
