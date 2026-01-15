@@ -108,7 +108,7 @@ The second `<PropertyGroup>` in the example is required to work around a bug in 
 
 ::: moniker range="<=net-maui-9.0"
 
-To publish your app, open the **Developer Command Prompt for VS 2022** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To publish your app, open a **Developer Command Prompt for Visual Studio** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
@@ -133,7 +133,7 @@ Publishing builds and packages the app, copying the signed package to the _bin\\
 
 ::: moniker range=">=net-maui-10.0"
 
-To publish your app, open the **Developer Command Prompt for VS 2022** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To publish your app, open a **Developer Command Prompt for Visual Studio** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
