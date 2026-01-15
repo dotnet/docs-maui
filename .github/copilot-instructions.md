@@ -24,8 +24,9 @@ Last updated: 2025-08-18
   ::: moniker-end
   ```
 
-- Use includes when appropriate to keep duplication low, but don’t over-abstract if a single page change is small and clear.
-
+- Use includes when appropriate to keep duplication low, but don’t over-abstract if a single page change is small and clear.- Typical include naming pattern: `*-dotnet9.md` / `*-dotnet10.md`.
+- If behavior/API names change in .NET 10 but guidance is otherwise similar, keep <=9 and >=10 content parallel and explicit.
+- Keep phrasing and headings consistent across monikered sections to minimize diffs.
 ## Preview drift and verification
 
 Changes must be verified against the .NET MAUI source for .NET 10 to avoid preview drift:
@@ -35,6 +36,8 @@ Changes must be verified against the .NET MAUI source for .NET 10 to avoid previ
    - Browse `src/Controls/src/Core` and handlers/platform folders as needed.
 2. Cross-check against API docs/xrefs where available.
 3. Confirm platform notes (Android/iOS/Mac Catalyst/Windows) reflect real behavior.
+4. Include links to the upstream MAUI PR(s) or commit(s) that introduced/changed the behavior in the docs PR description.
+5. Avoid documenting transient preview-only behavior unless explicitly called out.
 
 Examples already verified:
 
@@ -47,8 +50,13 @@ Examples already verified:
   - Valid xrefs and relative links.
   - Correct admonitions and moniker blocks are balanced.
   - Code fences have a language hint and compile logically.
+- Build must not emit moniker range warnings.
+- Verify xrefs resolve (API names must match the targeted version).
+- For async APIs, consistently use `await` in examples and clarify return types.
 - Keep `ms.date` current on pages you materially change.
-- Make sure headings form a sensible outline and anchors aren’t unintentionally renamed.
+- Make sure headings form a sensible outline and anchors aren't unintentionally renamed.
+- Screenshots: Only update if UI/API presentation changed. Otherwise, reuse.
+- Review metadata: Title/labels should include ".NET 10", "docs", and area label. Reviewers: CODEOWNERS will auto-assign; add relevant owners as needed.
 
 ## PR description checklist
 
@@ -62,7 +70,16 @@ Examples already verified:
 
 - Pop-ups: `DisplayAlertAsync` / `DisplayActionSheetAsync` (PR01).
 - Media picker: multi-select `PickPhotosAsync` / `PickVideosAsync` (PR02).
+  - `MediaPickerOptions` includes `SelectionLimit`, `MaximumWidth`, `MaximumHeight`, `CompressionQuality`, `RotateImage`, `PreserveMetaData`, `Title`.
+  - Platform notes: Android may not enforce `SelectionLimit`; Windows doesn't support `SelectionLimit`.
 - Gestures: deprecate `ClickGestureRecognizer`; promote `TapGestureRecognizer` and `PointerGestureRecognizer` (PR03).
+
+## Authoring conventions
+
+- Use xref with wildcards for API overloads (for example, `xref:Microsoft.Maui.Controls.Page.DisplayAlertAsync%2A`).
+- Prefer small, focused includes per version (e.g., `includes/pop-ups-dotnet9.md`, `includes/pop-ups-dotnet10.md`).
+- Keep headings, note/warning blocks, and image alt texts aligned across versions.
+- Commit messages: "Area (.NET 10): short summary; specifics".
 
 ## Scope and note policy for conceptual docs
 
@@ -75,3 +92,7 @@ To keep conceptual docs focused and avoid churn from low-impact API surface twea
 - Instead, update any code samples, snippets, or embedded guidance to reflect .NET 10 behavior and build cleanly.
 - Leave full surface/shape details to the API reference. Only add migration notes when developer behavior or recommended usage changes in a meaningful way.
 - When in doubt, prefer: “update samples quietly” over “add a prominent breaking note.”
+## Maintenance
+
+- Keep PRs small and focused; rebase/merge frequently to avoid conflicts.
+- When conflicts arise in monikered pages, prioritize keeping both versioned includes accurate before deduplicating.

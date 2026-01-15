@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell flyout"
 description: "Learn how to customize and control a .NET MAUI flyout, which is the optional root menu for a .NET MAUI Shell app."
-ms.date: 08/30/2024
+ms.date: 11/28/2025
 ---
 
 # .NET MAUI Shell flyout
@@ -74,8 +74,10 @@ This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.
 
 The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> enumeration member:
 
-- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
-- `AsMultipleItems`, indicates that the item and its direct children will be visible in the flyout as a group of items.
+- `AsSingleItem`, indicates that the <xref:Microsoft.Maui.Controls.FlyoutItem> will be visible as a single entry in the flyout, regardless of how many child <xref:Microsoft.Maui.Controls.Tab> or <xref:Microsoft.Maui.Controls.ShellContent> objects it contains. When selected, the first child content is displayed, and users can switch between children using tabs (if more than one child exists). This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
+- `AsMultipleItems`, indicates that the direct children (<xref:Microsoft.Maui.Controls.Tab> and <xref:Microsoft.Maui.Controls.ShellContent> objects) of the <xref:Microsoft.Maui.Controls.FlyoutItem> will each appear as separate entries in the flyout. This enables users to navigate directly to any child content from the flyout, rather than having to use tabs.
+
+Use `AsSingleItem` when you want to group related pages under a single flyout entry with tab navigation. Use `AsMultipleItems` when you want each page to be directly accessible from the flyout menu.
 
 A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:Microsoft.Maui.Controls.FlyoutItem> can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
 
@@ -181,7 +183,7 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
                             <Setter Property="BackgroundColor"
-                                    Value="{AppThemeBinding Light=Black, Dark=White}" />
+                                    Value="{AppThemeBinding Light=#1A000000, Dark=#1AFFFFFF}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -209,19 +211,12 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
         <Label x:Name="FlyoutItemLabel"
                Grid.Column="1"
                Text="{Binding Title}"
+               TextColor="{OnPlatform Android={AppThemeBinding Light=#DE000000, Dark=White}}"
                FontSize="{OnPlatform Android=14, iOS=14}"
                FontAttributes="{OnPlatform iOS=Bold}"
                HorizontalOptions="{OnPlatform WinUI=Start}"
                HorizontalTextAlignment="{OnPlatform WinUI=Start}"
                VerticalTextAlignment="Center">
-            <Label.TextColor>
-                <OnPlatform x:TypeArguments="Color">
-                    <OnPlatform.Platforms>
-                        <On Platform="Android"
-                            Value="{AppThemeBinding Light=Black, Dark=White}" />
-                    </OnPlatform.Platforms>
-                </OnPlatform>
-            </Label.TextColor>
             <Label.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
                     <OnPlatform.Platforms>
@@ -242,6 +237,9 @@ The default <xref:Microsoft.Maui.Controls.DataTemplate> used for each <xref:Micr
     </Grid>
 </DataTemplate>
 ```
+
+> [!IMPORTANT]
+> When combining `OnPlatform` with `AppThemeBinding`, avoid nesting `AppThemeBinding` inside an `<OnPlatform>` element with `x:TypeArguments="Color"`, as this can cause type cast errors at runtime on Android. Instead, use the inline markup extension syntax as shown above, or apply colors directly using style classes.
 
 This template can be used for as a basis for making alterations to the existing flyout layout, and also shows the visual states that are implemented for flyout items.
 
