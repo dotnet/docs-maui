@@ -1,7 +1,7 @@
 ---
 title: "Triggers"
 description: "Triggers allow you to express actions declaratively in XAML that change the appearance of controls based on events or property changes."
-ms.date: 02/18/2022
+ms.date: 01/13/2026
 ---
 
 # Triggers
@@ -11,6 +11,18 @@ ms.date: 02/18/2022
 .NET Multi-platform App UI (.NET MAUI) triggers allow you to express actions declaratively in XAML that change the appearance of controls based on events or data changes. In addition, state triggers, which are a specialized group of triggers, define when a <xref:Microsoft.Maui.Controls.VisualState> should be applied.
 
 You can assign a trigger directly to a control's <xref:Microsoft.Maui.Controls.VisualElement.Triggers> collection, or add it to a page-level or app-level resource dictionary to be applied to multiple controls.
+
+## Triggers and C\#
+
+Triggers are designed for use in XAML to enable declarative styling and behavior changes without writing code-behind logic. They help reduce the amount of C# code needed by handling common UI scenarios directly in markup.
+
+When building UI with C#, you typically handle these scenarios differently using event handlers, property change notifications, or data binding with value converters. For example:
+
+- Instead of a property trigger that changes appearance based on focus, you would subscribe to the `Focused` and `Unfocused` events and update properties directly in the event handlers.
+- Instead of a data trigger that enables/disables a button based on text length, you would use data binding with the `INotifyPropertyChanged` interface or use reactive extensions to update the button's state.
+- Instead of visual state triggers, you would call `VisualStateManager.GoToState()` from your code-behind or view model.
+
+Triggers provide a declarative XAML-based approach that is particularly useful for UI-focused changes that don't require complex business logic. If you're building your UI entirely in C#, you have direct access to all control properties and events, which often provides a more straightforward approach for implementing the same behaviors.
 
 ## Property triggers
 
