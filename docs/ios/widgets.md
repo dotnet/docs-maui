@@ -482,7 +482,7 @@ To allow users to configure your widget:
     ```
 
     iOS automatically generates a configuration UI based on the parameters you define in the WidgetConfigurationIntent.
- 
+
 01. Update your timeline entry to include the showDate:
 
     ```swift
@@ -492,7 +492,7 @@ To allow users to configure your widget:
         let showDate: Bool
     }
     ```
- 
+
 01. Access the configuration in your timeline provider:
 
     ```swift
