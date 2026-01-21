@@ -316,7 +316,7 @@ The following example shows a `SwipeItemView` object in the `LeftItems` collecti
                              WidthRequest="300">
                     <Entry x:Name="resultEntry"
                            Placeholder="Enter answer"
-                           HorizontalOptions="CenterAndExpand" />
+                           HorizontalOptions="Center" />
                     <Label Text="Check"
                            FontAttributes="Bold"
                            HorizontalOptions="Center" />
