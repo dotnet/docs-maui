@@ -91,7 +91,7 @@ A <xref:Microsoft.Maui.Controls.TitleBar> is highly customizable through its <xr
     <TitleBar.Content>
         <SearchBar Placeholder="Search"
                    MaximumWidthRequest="300"
-                   HorizontalOptions="FillAndExpand"
+                   HorizontalOptions="Fill"
                    VerticalOptions="Center" />
     </TitleBar.Content>
     <TitleBar.TrailingContent>
