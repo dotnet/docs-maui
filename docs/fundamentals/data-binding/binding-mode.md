@@ -197,7 +197,7 @@ The following XAML consumes the `HslColorViewModel`:
 
     <ContentPage.Resources>
         <Style TargetType="Slider">
-            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
         </Style>
     </ContentPage.Resources>
 
@@ -238,7 +238,7 @@ However, setting the `Mode` property doesn't always produce the expected result.
 <Label Text="TEXT"
        FontSize="40"
        HorizontalOptions="Center"
-       VerticalOptions="CenterAndExpand"
+       VerticalOptions="Center"
        Scale="{Binding x:DataType='Slider',
                        Source={x:Reference slider},
                        Path=Value,
@@ -253,7 +253,7 @@ Alternatively, you can set the binding mode to `OneWayToSource`:
 <Label Text="TEXT"
        FontSize="40"
        HorizontalOptions="Center"
-       VerticalOptions="CenterAndExpand"
+       VerticalOptions="Center"
        Scale="{Binding x:DataType='Slider',
                        Source={x:Reference slider},
                        Path=Value,
