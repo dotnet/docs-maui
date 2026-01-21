@@ -266,7 +266,7 @@ The static fields can then be consumed after declaring the XML namespace:
                HeightRequest="{x:Static sys:Math.E}"
                Color="{x:Static local:AppConstants.ForegroundColor}"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"
+               VerticalOptions="Center"
                Scale="100" />
     </StackLayout>
 </ContentPage>
