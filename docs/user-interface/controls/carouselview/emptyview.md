@@ -55,8 +55,8 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
     <CarouselView ItemsSource="{Binding Monkeys}">
         <CarouselView.EmptyView>
             <ContentView>
-                <StackLayout HorizontalOptions="Center"
-                             VerticalOptions="Center">
+                <StackLayout HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
                     <Label Text="No results matched your filter."
                            Margin="10,25,10,10"
                            FontAttributes="Bold"
