@@ -1,7 +1,7 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 10/04/2024
+ms.date: 01/22/2026
 ---
 
 # Supported platforms for .NET MAUI apps
@@ -18,7 +18,7 @@ ms.date: 10/04/2024
 .NET MAUI Blazor apps have the following additional platform requirements:
 
 - Android 7.0 (API 24) or higher is required.
-- iOS 14 or higher is required.
+- iOS 16.4 or higher is required.
 - macOS 11 or higher, using Mac Catalyst.
 
 ::: moniker-end
@@ -33,7 +33,7 @@ ms.date: 10/04/2024
 .NET MAUI Blazor apps have the following additional platform requirements:
 
 - Android 7.0 (API 24) or higher is required.
-- iOS 14 or higher is required.
+- iOS 16.4 or higher is required.
 - macOS 12 or higher, using Mac Catalyst.
 
 ::: moniker-end
