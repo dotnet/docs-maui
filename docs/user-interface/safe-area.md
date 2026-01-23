@@ -183,7 +183,7 @@ For layouts with input controls at the bottom, use `SoftInput` on a container to
                 Padding="20">
             <HorizontalStackLayout Spacing="10">
                 <Entry Placeholder="Type a message..." 
-                       HorizontalOptions="FillAndExpand" />
+                       HorizontalOptions="Fill" />
                 <Button Text="Send" />
             </HorizontalStackLayout>
         </Border>
