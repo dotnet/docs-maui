@@ -18,7 +18,7 @@ ms.date: 01/22/2026
 .NET MAUI Blazor apps have the following additional platform requirements:
 
 - Android 7.0 (API 24) or higher is required.
-- iOS 16.4 or higher is required.
+- iOS 14 or higher is required.
 - macOS 11 or higher, using Mac Catalyst.
 
 ::: moniker-end
