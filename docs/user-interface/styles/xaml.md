@@ -178,7 +178,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.Style> defined at th
             <Setter Property="HorizontalOptions"
                         Value="Center" />
             <Setter Property="VerticalOptions"
-                        Value="CenterAndExpand" />
+                        Value="Center" />
             <Setter Property="BorderColor"
                         Value="Lime" />
             <Setter Property="CornerRadius"

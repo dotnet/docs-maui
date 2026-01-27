@@ -137,12 +137,12 @@ The `BindingContext` property is an important component of data bindings, but it
                Text="TEXT"
                FontSize="40"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               VerticalOptions="Center" />
 
         <Slider x:Name="slider"
                 Minimum="-2"
                 Maximum="2"
-                VerticalOptions="CenterAndExpand" />
+                VerticalOptions="Center" />
     </StackLayout>
 </ContentPage>
 ```

@@ -75,7 +75,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 > [!NOTE]
 > On Mac Catalyst, menu items are added to the system menu bar.
 
-In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an <xref:System.Windows.Input.ICommand> when selected.
+In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an <xref:System.Windows.Input.ICommand> when selected. For more information about implementing commands, see [Use the command interface](controls/button.md#use-the-command-interface).
 
 Keyboard accelerators can be added to menu items in a menu bar, so that a menu item can be invoked through a keyboard shortcut. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
 
