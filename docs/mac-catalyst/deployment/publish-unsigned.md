@@ -56,7 +56,11 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 By default, *.app* and *.pkg* files that are downloaded from the internet can't be run by double-clicking on them. For more information, see [Open a Mac app from an unidentified developer](https://support.apple.com/en-gb/guide/mac-help/mh40616/mac) on support.apple.com.
 
-To ensure that a *.pkg* installs the app to your *Applications* folder, copy the *.pkg* to outside of your build artifacts folder and delete the *bin* and *obj* folders before double-clicking on the *.pkg*.
+> [!WARNING]
+> Sometimes macOS will update any existing app when installing a *.pkg*, which might not be the app in the */Applications* directory.
+> This means that if you try to test a *.pkg* locally, macOS might update the existing app in the project's *bin* directory, instead of
+> the app in the */Applications* directory. The solution is to delete the project's *bin* directory before installing any *.pkg* files
+> (after copying the *.pkg* elsewhere).
 
 ## See also
 
