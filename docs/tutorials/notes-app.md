@@ -85,6 +85,10 @@ The first customization you'll do is adding another page to the project. This pa
 
     :::image type="content" source="./media/notes-app/shell/vs-new-item.png" alt-text="Right-clicking on a project in Visual Studio and selecting New Item.":::
 
+01. In the **Add New Item** dialog, if you see a limited set of templates, click **Show all templates** to display all available templates.
+
+    :::image type="content" source="./media/notes-app/shell/vs-show-all-templates.png" alt-text="Add New Item dialog with the Show all templates button highlighted.":::
+
 01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _AboutPage.xaml_, and then select **Add**.
 
     :::image type="content" source="./media/notes-app/shell/vs-about-page.png" alt-text="Adding a new ContentPage to the project. The ContentPage is named AboutPage.xaml.":::
@@ -201,7 +205,9 @@ The note page will display the note and allow you to either save or delete it. F
 
 01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Add** > **New Item**.
 
-01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _NotePage.xaml_, and then select **Add**.
+01. In the **Add New Item** dialog, if you see a limited set of templates, click **Show all templates** to display all available templates.
+
+01. Select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _NotePage.xaml_, and then select **Add**.
 
 01. The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
 

@@ -46,16 +46,16 @@ It may also be necessary to set privacy keys in *Info.plist*, for certain entitl
 A .NET MAUI iOS app must be configured in Visual Studio to consume the entitlements defined in the *Entitlements.plist* file:
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab.
-1. In the **Bundle Signing** settings, click the **Browse...** button for the **Custom Entitlements** field.
-1. In the **Custom Entitlements** dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
-1. In the project properties, the **Custom Entitlements** field will be populated with your entitlements file:
+1. In the **Bundle Signing** settings, click the **Browse...** button for the **Custom Resource Rules** field.
+1. In the **Custom Resource Rules** dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
+1. In the project properties, the **Custom Resource Rules** field will be populated with your entitlements file:
 
     :::image type="content" source="media/entitlements/custom-entitlements-vs.png" alt-text="Visual Studio custom entitlements field set.":::
 
 1. Close the project properties.
 
 > [!NOTE]
-> Visual Studio will set the custom entitlements field for both debug and release builds.
+> Visual Studio will set the entitlements for both debug and release builds.
 
 ---
 
