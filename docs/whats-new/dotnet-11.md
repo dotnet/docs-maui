@@ -47,6 +47,19 @@ Description...
 
 Description
 
+## `dotnet run`
+
+We have enhanced the .NET CLI with [Spectre.Console](https://spectreconsole.net/) to *prompt* when a selection is needed for `dotnet run`.
+
+So, for multi-targeted projects like .NET MAUI, it will:
+
+* Prompt for a `$(TargetFramework)`
+* Prompt for a device, emulator, simulator if there are more than one.
+
+Console output of your application should appear directly in the terminal, and Ctrl+C will terminate the application.
+
+![GIF of `dotnet run` selections on Windows for Android](media/dotnet-11/dotnet-run-android-preview1.gif)
+
 ## .NET for iOS
 
 .NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
