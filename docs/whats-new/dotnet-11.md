@@ -60,6 +60,8 @@ Console output of your application should appear directly in the terminal, and C
 
 ![GIF of `dotnet run` selections on Windows for Android](media/dotnet-11/dotnet-run-android-preview1.gif)
 
+![GIF of `dotnet run` selections on macOS for iOS](media/dotnet-11/dotnet-run-ios-preview1.gif)
+
 ## .NET for iOS
 
 .NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
