@@ -29,7 +29,7 @@ This article provides a detailed comparison of AI features available on each pla
 
 ² Android supports single image input per request via `DataContent`.
 
-³ Speech capabilities are available through other .NET MAUI APIs (see [Speech](/dotnet/maui/platform-integration/communication/text-to-speech)).
+³ Speech capabilities are available through other .NET MAUI APIs (see [Speech](/dotnet/maui/platform-integration/device-media/text-to-speech)).
 
 ## Detailed feature comparison
 
