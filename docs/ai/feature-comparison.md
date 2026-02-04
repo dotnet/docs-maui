@@ -49,6 +49,7 @@ Chat and text generation enables conversational AI interactions using natural la
 | Reproducible output (seed) | ✅ | ✅ | ❌ |
 
 **Platform implementations**:
+
 - **Apple**: Uses [Foundation Models](https://developer.apple.com/documentation/foundationmodels) framework with on-device LLM
 - **Android**: Uses [ML Kit GenAI](https://developers.google.com/ml-kit/genai) with Gemini Nano
 - **Windows**: Uses [Windows Copilot Runtime](/windows/ai/apis/phi-silica) with Phi Silica
@@ -134,6 +135,7 @@ Embeddings convert text into numerical vectors for semantic similarity, search, 
 | Cosine similarity search | ✅ | ❌ | ✅ |
 
 **Platform implementations**:
+
 - **Apple**: Uses [NLEmbedding](https://developer.apple.com/documentation/naturallanguage/nlembedding) from the Natural Language framework. Available on iOS 13+ (independent of Apple Intelligence).
 - **Windows**: Uses `LanguageModel.GenerateEmbeddingVectors()` from Windows Copilot Runtime.
 
@@ -154,6 +156,7 @@ Image input allows the model to analyze images along with text prompts.
 ¹ Android supports one image per request via `DataContent`.
 
 For dedicated vision capabilities, consider using:
+
 - [Apple Vision framework](https://developer.apple.com/documentation/vision) directly
 - [ML Kit Vision APIs](https://developers.google.com/ml-kit/vision) for Android
 - [Windows Vision Skills](/windows/ai/windows-vision-skills/) for Windows
@@ -170,6 +173,7 @@ All implementations process data **on-device**:
 | User data stored | ❌ No | ❌ No | ❌ No |
 
 On-device processing ensures:
+
 - **Privacy**: User data never leaves the device
 - **Offline support**: AI works without network connectivity
 - **Low latency**: No network round-trips
@@ -184,12 +188,14 @@ On-device processing ensures:
 | Memory usage | Model dependent | Model dependent | Model dependent |
 
 Performance varies based on:
+
 - Device hardware (Neural Engine, NPU capabilities, RAM)
 - Model complexity
 - Input/output length
 - Concurrent system load
 
 **Hardware accelerators by platform:**
+
 - **Apple**: Apple Neural Engine (ANE) on A/M-series chips
 - **Android**: Device NPU or GPU depending on SoC
 - **Windows**: NPU on Copilot+ PCs (Qualcomm, Intel, AMD)

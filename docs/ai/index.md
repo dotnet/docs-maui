@@ -112,21 +112,25 @@ For complete setup instructions and code samples, see [Getting started with MAUI
 ## External resources
 
 ### Microsoft
+
 - [Microsoft.Extensions.AI documentation](/dotnet/ai/ai-extensions)
 - [Microsoft.Extensions.AI.Abstractions NuGet](https://www.nuget.org/packages/Microsoft.Extensions.AI.Abstractions)
 - [.NET AI samples and tutorials](/dotnet/ai/)
 
 ### Apple
+
 - [Apple Intelligence overview](https://developer.apple.com/apple-intelligence/)
 - [Foundation Models framework](https://developer.apple.com/documentation/foundationmodels)
 - [Natural Language framework](https://developer.apple.com/documentation/naturallanguage)
 
 ### Google
+
 - [ML Kit for Android](https://developers.google.com/ml-kit)
 - [ML Kit GenAI APIs](https://developers.google.com/ml-kit/genai)
 - [Android AI documentation](https://developer.android.com/ai)
 
 ### Microsoft Windows
+
 - [Windows AI overview](/windows/ai/)
 - [Windows Copilot Runtime](/windows/ai/apis/)
 - [ONNX Runtime](https://onnxruntime.ai/)
