@@ -39,20 +39,24 @@ The `AppleIntelligenceChatClient` uses Apple's Foundation Models framework, whic
 Apple Intelligence requires specific hardware capabilities:
 
 **iPhone**:
+
 - iPhone 15 Pro, iPhone 15 Pro Max, or later
 - iPhone 16 series or later
 - Minimum 8GB RAM
 
 **iPad**:
+
 - iPad Pro (M1 or later)
 - iPad Air (M1 or later)
 - Minimum 8GB RAM
 
 **Mac**:
+
 - Any Mac with Apple Silicon (M1, M2, M3, M4 series)
 - macOS 26.0 or later
 
 **Apple TV**:
+
 - Apple TV 4K (3rd generation) or later with tvOS 26.0
 
 > [!NOTE]
@@ -113,12 +117,14 @@ The `GeminiNanoChatClient` uses ML Kit GenAI, which requires specific device cap
 #### Device requirements
 
 ML Kit GenAI (Gemini Nano) requires devices with:
+
 - Sufficient NPU or GPU capabilities for on-device inference
 - Google Play Services installed and updated
 - Adequate storage for on-device models (~1-2GB)
 - Minimum 4GB RAM (6GB+ recommended)
 
 **Supported devices** include:
+
 - Google Pixel 8, Pixel 8 Pro, and later
 - Samsung Galaxy S24 series and later
 - Other flagship devices with Gemini Nano support
@@ -129,6 +135,7 @@ ML Kit GenAI (Gemini Nano) requires devices with:
 #### Model availability
 
 Models are downloaded automatically through Google Play Services. Initial download requires:
+
 - Active internet connection
 - Adequate storage space
 - Automatic updates via Play Services
@@ -159,14 +166,17 @@ Both implementations use `Microsoft.Windows.AI.Text.LanguageModel` from Windows 
 Phi Silica performs best on **Copilot+ PCs** with NPU acceleration:
 
 **Qualcomm**:
+
 - Snapdragon X Elite
 - Snapdragon X Plus
 
 **Intel**:
+
 - Core Ultra (Lunar Lake)
 - Core Ultra (Arrow Lake)
 
 **AMD**:
+
 - Ryzen AI 300 series
 
 > [!NOTE]
@@ -175,11 +185,12 @@ Phi Silica performs best on **Copilot+ PCs** with NPU acceleration:
 #### Model availability
 
 The Phi Silica model is included with Windows 11 24H2 on Copilot+ PCs. On other devices:
+
 - Model may need to be downloaded via Windows Update
 - Requires adequate storage (~2-3GB)
 - First-time initialization may be slow
 
-For more information, see [Windows Copilot Runtime - Phi Silica](https://learn.microsoft.com/windows/ai/apis/phi-silica).
+For more information, see [Windows Copilot Runtime - Phi Silica](/windows/ai/apis/phi-silica).
 
 ---
 
@@ -192,6 +203,7 @@ For more information, see [Windows Copilot Runtime - Phi Silica](https://learn.m
 ```
 
 This package depends on:
+
 - `Microsoft.Extensions.AI.Abstractions` (for `IChatClient`, `IEmbeddingGenerator`)
 - .NET 9.0 or later
 
@@ -344,4 +356,4 @@ If `PhiSilicaChatClient` or `PhiSilicaEmbeddingGenerator` throws an exception:
 - [Getting started](getting-started.md)
 - [Apple Intelligence availability](https://support.apple.com/en-us/120898)
 - [ML Kit requirements](https://developers.google.com/ml-kit/migration/android)
-- [Windows Copilot Runtime](https://learn.microsoft.com/windows/ai/apis/)
+- [Windows Copilot Runtime](/windows/ai/apis/)

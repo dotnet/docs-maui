@@ -269,7 +269,7 @@ The `PhiSilicaChatClient` class implements `IChatClient` using the **Windows Cop
 
 **Namespace**: `Microsoft.Maui.Essentials.AI`
 
-**Native API**: [Windows.AI.Text.LanguageModel](https://learn.microsoft.com/windows/ai/apis/phi-silica)
+**Native API**: [Windows.AI.Text.LanguageModel](/windows/ai/apis/phi-silica)
 
 **Minimum OS**: Windows 10.0.26100.0 (Windows 11 24H2)
 
@@ -337,7 +337,7 @@ LanguageModel model = await LanguageModel.CreateAsync();
 IChatClient chatClient = model.AsIChatClient();
 ```
 
-For more information about Phi Silica, see [Windows Copilot Runtime - Phi Silica](https://learn.microsoft.com/windows/ai/apis/phi-silica).
+For more information about Phi Silica, see [Windows Copilot Runtime - Phi Silica](/windows/ai/apis/phi-silica).
 
 ### PhiSilicaEmbeddingGenerator
 
@@ -345,7 +345,7 @@ The `PhiSilicaEmbeddingGenerator` class implements `IEmbeddingGenerator<string, 
 
 **Namespace**: `Microsoft.Maui.Essentials.AI`
 
-**Native API**: [Windows.AI.Text.LanguageModel](https://learn.microsoft.com/windows/ai/apis/phi-silica)
+**Native API**: [Windows.AI.Text.LanguageModel](/windows/ai/apis/phi-silica)
 
 **Minimum OS**: Windows 10.0.26100.0 (Windows 11 24H2)
 
@@ -400,10 +400,10 @@ IEmbeddingGenerator<string, Embedding<float>> generator = model.AsIEmbeddingGene
 
 #### Related resources
 
-- [Windows AI overview](https://learn.microsoft.com/windows/ai/)
-- [Windows Copilot Runtime APIs](https://learn.microsoft.com/windows/ai/apis/)
-- [Phi Silica documentation](https://learn.microsoft.com/windows/ai/apis/phi-silica)
-- [Windows ML](https://learn.microsoft.com/windows/ai/windows-ml/)
+- [Windows AI overview](/windows/ai/)
+- [Windows Copilot Runtime APIs](/windows/ai/apis/)
+- [Phi Silica documentation](/windows/ai/apis/phi-silica)
+- [Windows ML](/windows/ai/windows-ml/)
 
 ---
 

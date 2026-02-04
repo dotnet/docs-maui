@@ -618,8 +618,8 @@ public static class AIServiceExtensions
 
 ## External resources
 
-- [Microsoft.Extensions.AI documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [Microsoft.Extensions.AI documentation](/dotnet/ai/ai-extensions)
 - [Apple Foundation Models](https://developer.apple.com/documentation/foundationmodels)
 - [Apple Natural Language framework](https://developer.apple.com/documentation/naturallanguage)
 - [Google ML Kit GenAI](https://developers.google.com/ml-kit/genai)
-- [Windows Copilot Runtime - Phi Silica](https://learn.microsoft.com/windows/ai/apis/phi-silica)
+- [Windows Copilot Runtime - Phi Silica](/windows/ai/apis/phi-silica)
