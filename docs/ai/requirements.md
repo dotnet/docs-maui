@@ -179,7 +179,7 @@ The Phi Silica model is included with Windows 11 24H2 on Copilot+ PCs. On other 
 - Requires adequate storage (~2-3GB)
 - First-time initialization may be slow
 
-For more information, see [Windows Copilot Runtime - Phi Silica](https://learn.microsoft.com/windows/ai/apis/phi-silica).
+For more information, see [Windows Copilot Runtime - Phi Silica](/windows/ai/apis/phi-silica).
 
 ---
 
@@ -344,4 +344,4 @@ If `PhiSilicaChatClient` or `PhiSilicaEmbeddingGenerator` throws an exception:
 - [Getting started](getting-started.md)
 - [Apple Intelligence availability](https://support.apple.com/en-us/120898)
 - [ML Kit requirements](https://developers.google.com/ml-kit/migration/android)
-- [Windows Copilot Runtime](https://learn.microsoft.com/windows/ai/apis/)
+- [Windows Copilot Runtime](/windows/ai/apis/)

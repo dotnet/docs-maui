@@ -548,10 +548,10 @@ public async Task<Itinerary> ExecuteWithRetryAsync(
 
 ## External resources
 
-- [Microsoft.Extensions.AI documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [Microsoft.Extensions.AI documentation](/dotnet/ai/ai-extensions)
 - [Microsoft Agents SDK](https://github.com/microsoft/agents)
 - [AutoGen for .NET](https://microsoft.github.io/autogen-for-net/)
-- [Semantic Kernel](https://learn.microsoft.com/semantic-kernel/)
+- [Semantic Kernel](/semantic-kernel/)
 
 ## See also
 

@@ -29,7 +29,7 @@ This article provides a detailed comparison of AI features available on each pla
 
 ² Android supports single image input per request via `DataContent`.
 
-³ Speech capabilities are available through other .NET MAUI APIs (see [Speech](https://learn.microsoft.com/dotnet/maui/platform-integration/communication/text-to-speech)).
+³ Speech capabilities are available through other .NET MAUI APIs (see [Speech](/dotnet/maui/platform-integration/communication/text-to-speech)).
 
 ## Detailed feature comparison
 
@@ -51,7 +51,7 @@ Chat and text generation enables conversational AI interactions using natural la
 **Platform implementations**:
 - **Apple**: Uses [Foundation Models](https://developer.apple.com/documentation/foundationmodels) framework with on-device LLM
 - **Android**: Uses [ML Kit GenAI](https://developers.google.com/ml-kit/genai) with Gemini Nano
-- **Windows**: Uses [Windows Copilot Runtime](https://learn.microsoft.com/windows/ai/apis/phi-silica) with Phi Silica
+- **Windows**: Uses [Windows Copilot Runtime](/windows/ai/apis/phi-silica) with Phi Silica
 
 ### Streaming responses
 
@@ -156,7 +156,7 @@ Image input allows the model to analyze images along with text prompts.
 For dedicated vision capabilities, consider using:
 - [Apple Vision framework](https://developer.apple.com/documentation/vision) directly
 - [ML Kit Vision APIs](https://developers.google.com/ml-kit/vision) for Android
-- [Windows Vision Skills](https://learn.microsoft.com/windows/ai/windows-vision-skills/) for Windows
+- [Windows Vision Skills](/windows/ai/windows-vision-skills/) for Windows
 
 ## Privacy and data handling
 

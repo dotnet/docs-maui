@@ -6,7 +6,7 @@ ms.date: 02/02/2026
 
 # Microsoft.Maui.Essentials.AI overview
 
-Microsoft.Maui.Essentials.AI provides native on-device AI capabilities for .NET MAUI applications through a unified API that integrates with [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions). This enables you to leverage platform-specific AI features—such as Apple Intelligence on iOS and macOS—while writing portable code using standard interfaces like `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>`.
+Microsoft.Maui.Essentials.AI provides native on-device AI capabilities for .NET MAUI applications through a unified API that integrates with [Microsoft.Extensions.AI](/dotnet/ai/ai-extensions). This enables you to leverage platform-specific AI features—such as Apple Intelligence on iOS and macOS—while writing portable code using standard interfaces like `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>`.
 
 ## Architecture
 
@@ -112,9 +112,9 @@ For complete setup instructions and code samples, see [Getting started with MAUI
 ## External resources
 
 ### Microsoft
-- [Microsoft.Extensions.AI documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [Microsoft.Extensions.AI documentation](/dotnet/ai/ai-extensions)
 - [Microsoft.Extensions.AI.Abstractions NuGet](https://www.nuget.org/packages/Microsoft.Extensions.AI.Abstractions)
-- [.NET AI samples and tutorials](https://learn.microsoft.com/dotnet/ai/)
+- [.NET AI samples and tutorials](/dotnet/ai/)
 
 ### Apple
 - [Apple Intelligence overview](https://developer.apple.com/apple-intelligence/)
@@ -127,12 +127,12 @@ For complete setup instructions and code samples, see [Getting started with MAUI
 - [Android AI documentation](https://developer.android.com/ai)
 
 ### Microsoft Windows
-- [Windows AI overview](https://learn.microsoft.com/windows/ai/)
-- [Windows Copilot Runtime](https://learn.microsoft.com/windows/ai/apis/)
+- [Windows AI overview](/windows/ai/)
+- [Windows Copilot Runtime](/windows/ai/apis/)
 - [ONNX Runtime](https://onnxruntime.ai/)
-- [DirectML](https://learn.microsoft.com/windows/ai/directml/dml)
+- [DirectML](/windows/ai/directml/dml)
 
 ## See also
 
 - [Microsoft.Extensions.AI announcement](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/)
-- [Building AI-powered .NET applications](https://learn.microsoft.com/dotnet/ai/get-started/dotnet-ai-overview)
+- [Building AI-powered .NET applications](/dotnet/ai/get-started/dotnet-ai-overview)
