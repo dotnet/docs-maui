@@ -39,13 +39,30 @@ Description...
 
 ## .NET for Android
 
-.NET for Android in .NET 11 adds support for API xx and JDK xx, and includes work to reduce build times and improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
+.NET for Android in .NET 11 makes CoreCLR the default runtime for `Release` builds, and includes work to improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
 
 - [.NET for Android 11 Preview 1](https://github.com/dotnet/android/releases/)
 
 ### Feature
 
-Description
+## CoreCLR by Default
+
+CoreCLR is now the default runtime for `Release` builds. This should
+improve compatibility with the rest of .NET as well as shorter startup
+times, with a reasonable increase to application size.
+
+We are always working to improve performance and app size, but please
+file issues with stability or concerns by filing
+[issues on GitHub](https://github.com/dotnet/android/issues).
+
+If you would like to opt out of CoreCLR, and use the Mono runtime
+instead, you can still do so via:
+
+```xml
+<PropertyGroup>
+  <UseMonoRuntime>true</UseMonoRuntime>
+</ProperyGroup>
+```
 
 ## `dotnet run`
 
