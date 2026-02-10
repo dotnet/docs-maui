@@ -1,0 +1,152 @@
+# .NET MAUI Documentation
+
+> .NET Multi-platform App UI (.NET MAUI) is a cross-platform framework for creating native mobile and desktop apps with C# and XAML. It targets Android, iOS, macOS (via Mac Catalyst), and Windows from a single shared codebase. .NET MAUI is the evolution of Xamarin.Forms, rebuilt for performance and extensibility.
+
+Important notes:
+
+- .NET MAUI uses a single-project architecture with platform-specific code organized via multi-targeting, not separate platform projects.
+- The handler architecture replaces Xamarin.Forms renderers. Handlers map cross-platform controls to native platform views and are the recommended extensibility point. Never use renderers — use handlers instead.
+- .NET MAUI integrates Xamarin.Essentials as built-in platform APIs (sensors, file pickers, geolocation, etc.) under the `Microsoft.Maui.Essentials` namespace.
+- Shell is the recommended app structure for most apps, providing URI-based navigation, a flyout menu, and tabs. Do not mix Shell with NavigationPage, TabbedPage, or FlyoutPage. Do not nest tabs in Shell.
+- .NET MAUI supports Blazor Hybrid apps via `BlazorWebView`, enabling Razor/Blazor UI components inside native apps.
+- XAML is the primary declarative UI language; C# markup is also supported via the .NET MAUI Community Toolkit.
+- Data binding, MVVM, and dependency injection are first-class patterns. Always use compiled bindings with `x:DataType` for 8-20x performance improvement over reflection-based bindings. Prefer expression-based `SetBinding` overloads over string-based ones in C#.
+
+Obsolete controls and patterns — do not use:
+
+- **ListView** is obsolete — always use CollectionView instead. ListView will be removed in a future release.
+- **TableView** is obsolete — use Grid or VerticalStackLayout with appropriate controls instead.
+- **Frame** is obsolete — use Border with `StrokeShape="RoundRectangle"` instead. Frame is only acceptable for drop shadows on older targets.
+- **AndExpand** layout options (e.g. `FillAndExpand`, `CenterAndExpand`) are obsolete — use Grid or `LayoutOptions.Fill` with proper layout containers.
+- **BackgroundColor** property is obsolete — always use the `Background` property instead.
+
+Control selection guidance:
+
+- Use **CollectionView** for lists of more than ~20 items (virtualized, high-performance). Never place CollectionView inside a StackLayout — it breaks virtualization.
+- Use **BindableLayout** (attached to StackLayout/FlexLayout) for small collections of ≤20 items where virtualization is not needed.
+- Never place **ScrollView** inside a StackLayout — it prevents proper scrolling. ScrollView must have a constrained parent (Grid, AbsoluteLayout, or root).
+- Prefer **Grid** over StackLayout for complex layouts. Use **VerticalStackLayout** / **HorizontalStackLayout** (not `StackLayout` with `Orientation`).
+- Prefer **Border** over Frame for containers with rounded corners or strokes.
+- Reference images as **PNG** in XAML/code (e.g. `<Image Source="logo.png" />`), even when the source asset is SVG. .NET MAUI converts SVGs to PNGs at build time.
+- For UI updates from background threads, prefer `BindableObject.Dispatcher` or inject `IDispatcher` via DI. Use `MainThread.BeginInvokeOnMainThread()` only as a fallback.
+
+## Getting started
+
+- [What is .NET MAUI](https://learn.microsoft.com/dotnet/maui/what-is-maui): Overview of the framework, architecture, and supported platforms
+- [Installation](https://learn.microsoft.com/dotnet/maui/get-started/installation): How to install and configure .NET MAUI workloads
+- [Build your first app](https://learn.microsoft.com/dotnet/maui/get-started/first-app): Step-by-step guide to creating a .NET MAUI app
+- [Supported platforms](https://learn.microsoft.com/dotnet/maui/supported-platforms): Minimum OS versions for Android, iOS, macOS, and Windows
+- [Tutorial: Create a .NET MAUI app](https://learn.microsoft.com/dotnet/maui/tutorials/notes-app): End-to-end tutorial building a Notes app
+- [Tutorial: Upgrade with MVVM](https://learn.microsoft.com/dotnet/maui/tutorials/notes-mvvm): Refactor the Notes app using MVVM and dependency injection
+
+## XAML
+
+- [XAML overview](https://learn.microsoft.com/dotnet/maui/xaml/): Introduction to XAML in .NET MAUI
+- [Essential XAML syntax](https://learn.microsoft.com/dotnet/maui/xaml/fundamentals/essential-syntax): Property elements, attached properties, and content properties
+- [Markup extensions](https://learn.microsoft.com/dotnet/maui/xaml/fundamentals/markup-extensions): StaticResource, Binding, x:Static, and other extensions
+- [Data binding basics](https://learn.microsoft.com/dotnet/maui/xaml/fundamentals/data-binding-basics): How data binding works in XAML
+- [XAML and MVVM](https://learn.microsoft.com/dotnet/maui/xaml/fundamentals/mvvm): Using XAML with Model-View-ViewModel pattern
+- [XAML compilation](https://learn.microsoft.com/dotnet/maui/xaml/xamlc): Compile XAML for faster startup and validation
+- [XAML Hot Reload](https://learn.microsoft.com/dotnet/maui/xaml/hot-reload): Live UI updates during debugging
+
+## Fundamentals
+
+- [App lifecycle](https://learn.microsoft.com/dotnet/maui/fundamentals/app-lifecycle): Application lifecycle events and platform-specific lifecycle mapping
+- [Single project](https://learn.microsoft.com/dotnet/maui/fundamentals/single-project): How .NET MAUI single-project architecture works with multi-targeting
+- [Dependency injection](https://learn.microsoft.com/dotnet/maui/fundamentals/dependency-injection): Register and resolve services using the built-in DI container
+- [Data binding overview](https://learn.microsoft.com/dotnet/maui/fundamentals/data-binding/): How to connect UI to data sources
+- [Compiled bindings](https://learn.microsoft.com/dotnet/maui/fundamentals/data-binding/compiled-bindings): Critical for performance — use `x:DataType` for 8-20x faster bindings with compile-time validation
+- [Shell overview](https://learn.microsoft.com/dotnet/maui/fundamentals/shell/): URI-based navigation, flyout, and tab structure
+- [Shell navigation](https://learn.microsoft.com/dotnet/maui/fundamentals/shell/navigation): Route registration, navigation with parameters, and back navigation
+- [Gestures](https://learn.microsoft.com/dotnet/maui/fundamentals/gestures/tap): Tap, pan, pinch, swipe, drag-and-drop, and pointer gesture recognizers
+- [Behaviors](https://learn.microsoft.com/dotnet/maui/fundamentals/behaviors): Attach reusable behavior to controls without subclassing
+- [Triggers](https://learn.microsoft.com/dotnet/maui/fundamentals/triggers): Respond to property changes and events declaratively in XAML
+- [Resource dictionaries](https://learn.microsoft.com/dotnet/maui/fundamentals/resource-dictionaries): Share styles, templates, and other resources
+- [Accessibility](https://learn.microsoft.com/dotnet/maui/fundamentals/accessibility): Make apps accessible with semantic properties and automation
+- [Localization](https://learn.microsoft.com/dotnet/maui/fundamentals/localization): Localize strings, images, and app names
+
+## User interface
+
+- [Controls overview](https://learn.microsoft.com/dotnet/maui/user-interface/controls/): Full list of built-in .NET MAUI controls
+- [Layouts overview](https://learn.microsoft.com/dotnet/maui/user-interface/layouts/): Grid, VerticalStackLayout, HorizontalStackLayout, FlexLayout, AbsoluteLayout, and custom layouts
+- [Grid](https://learn.microsoft.com/dotnet/maui/user-interface/layouts/grid): Row and column layout with proportional, absolute, and auto sizing — preferred for complex layouts
+- [CollectionView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/): High-performance virtualized list — the recommended control for data lists, replacing ListView
+- [Pages](https://learn.microsoft.com/dotnet/maui/user-interface/pages/contentpage): ContentPage, FlyoutPage, NavigationPage, and TabbedPage
+- [Pop-ups](https://learn.microsoft.com/dotnet/maui/user-interface/pop-ups): Display alerts, action sheets, and prompts
+- [Handlers overview](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/): Architecture for mapping cross-platform controls to native views
+- [Create custom controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/create): Build new cross-platform controls with the handler pattern
+- [Customize controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/customize): Modify existing control behavior per platform using handler mappers
+- [Styles](https://learn.microsoft.com/dotnet/maui/user-interface/styles/xaml): Define and apply XAML styles to controls
+- [Theming](https://learn.microsoft.com/dotnet/maui/user-interface/theming): Implement light/dark themes and dynamic theming
+- [Visual states](https://learn.microsoft.com/dotnet/maui/user-interface/visual-states): Change control appearance based on state (Normal, Disabled, Focused, etc.)
+- [Fonts](https://learn.microsoft.com/dotnet/maui/user-interface/fonts): Register and use custom fonts
+- [Graphics](https://learn.microsoft.com/dotnet/maui/user-interface/graphics/): Draw shapes, paths, and images using Microsoft.Maui.Graphics
+- [Animation](https://learn.microsoft.com/dotnet/maui/user-interface/animation/basic): Animate controls with built-in and custom animations
+
+## Hybrid and Blazor
+
+- [Hybrid apps overview](https://learn.microsoft.com/dotnet/maui/hybrid-apps/): Combine native and web UI in a single app
+- [BlazorWebView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/blazorwebview): Host Blazor Razor components inside a native .NET MAUI app
+- [HybridWebView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/hybridwebview): Host custom web content with JS interop in a native app
+
+## Platform integration
+
+- [Platform integration overview](https://learn.microsoft.com/dotnet/maui/platform-integration/): Access native platform APIs from shared code
+- [Invoke platform code](https://learn.microsoft.com/dotnet/maui/platform-integration/invoke-platform-code): Use partial classes and conditional compilation for platform-specific code
+- [Configure multi-targeting](https://learn.microsoft.com/dotnet/maui/platform-integration/configure-multi-targeting): Set up platform-specific compilation
+- [Permissions](https://learn.microsoft.com/dotnet/maui/platform-integration/appmodel/permissions): Request and check runtime permissions
+- [Geolocation](https://learn.microsoft.com/dotnet/maui/platform-integration/device/geolocation): Access device GPS location
+- [Device sensors](https://learn.microsoft.com/dotnet/maui/platform-integration/device/sensors): Accelerometer, barometer, compass, gyroscope, magnetometer, orientation
+- [File picker](https://learn.microsoft.com/dotnet/maui/platform-integration/storage/file-picker): Let users select files from the device
+- [Photos and videos](https://learn.microsoft.com/dotnet/maui/platform-integration/device-media/picker): Capture or pick photos and videos using the device camera and gallery
+- [Secure storage](https://learn.microsoft.com/dotnet/maui/platform-integration/storage/secure-storage): Store key-value pairs securely using platform keystores
+- [Preferences](https://learn.microsoft.com/dotnet/maui/platform-integration/storage/preferences): Simple key-value app settings stored natively
+- [Connectivity](https://learn.microsoft.com/dotnet/maui/platform-integration/communication/networking): Monitor network state and connection type
+- [Web authenticator](https://learn.microsoft.com/dotnet/maui/platform-integration/communication/authentication): Browser-based authentication flows (OAuth, OIDC)
+- [Native embedding](https://learn.microsoft.com/dotnet/maui/platform-integration/native-embedding): Embed .NET MAUI controls inside native Android, iOS, or Windows apps
+
+## Data and cloud services
+
+- [Consume REST web services](https://learn.microsoft.com/dotnet/maui/data-cloud/rest): Use HttpClient to call REST APIs
+- [Local SQLite databases](https://learn.microsoft.com/dotnet/maui/data-cloud/database-sqlite): Store data locally with SQLite
+- [.NET Aspire integration](https://learn.microsoft.com/dotnet/maui/data-cloud/aspire-integration): Connect .NET MAUI apps to .NET Aspire service defaults
+
+## Deployment and testing
+
+- [Deployment overview](https://learn.microsoft.com/dotnet/maui/deployment/): Publishing and distributing .NET MAUI apps
+- [Improve app performance](https://learn.microsoft.com/dotnet/maui/deployment/performance): Startup tracing, compiled bindings, trimming, and profiling tips
+- [Trimming](https://learn.microsoft.com/dotnet/maui/deployment/trimming): Reduce app size by removing unused code
+- [Native AOT](https://learn.microsoft.com/dotnet/maui/deployment/nativeaot): Ahead-of-time compilation for faster startup and smaller footprint
+- [Unit testing](https://learn.microsoft.com/dotnet/maui/deployment/unit-testing): Strategies for testing .NET MAUI apps
+- [Publish for Android](https://learn.microsoft.com/dotnet/maui/android/deployment/): Publish to Google Play or for ad-hoc distribution
+- [Publish for iOS](https://learn.microsoft.com/dotnet/maui/ios/deployment/): Publish to the App Store, TestFlight, or ad-hoc
+- [Publish for Mac Catalyst](https://learn.microsoft.com/dotnet/maui/mac-catalyst/deployment/): Publish for the Mac App Store or direct distribution
+- [Publish for Windows](https://learn.microsoft.com/dotnet/maui/windows/deployment/overview): Publish packaged or unpackaged Windows apps
+
+## Migration from Xamarin
+
+- [Migration overview](https://learn.microsoft.com/dotnet/maui/migration/): Guidance for upgrading Xamarin.Forms and Xamarin native projects to .NET MAUI
+- [Upgrade with .NET Upgrade Assistant](https://learn.microsoft.com/dotnet/maui/migration/upgrade-assistant): Automated migration tooling
+- [Custom renderers to handlers](https://learn.microsoft.com/dotnet/maui/migration/renderer-to-handler): Migrate Xamarin.Forms custom renderers to .NET MAUI handlers
+
+## What's new
+
+- [What's new in .NET MAUI for .NET 10](https://learn.microsoft.com/dotnet/maui/whats-new/dotnet-10): Latest features, improvements, and breaking changes in .NET 10
+- [What's new in .NET MAUI for .NET 9](https://learn.microsoft.com/dotnet/maui/whats-new/dotnet-9): Features and changes introduced in .NET 9
+
+## Optional
+
+- [Bindable properties](https://learn.microsoft.com/dotnet/maui/fundamentals/bindable-properties): Create custom bindable properties for controls
+- [Attached properties](https://learn.microsoft.com/dotnet/maui/fundamentals/attached-properties): Define properties that can be set on any object
+- [Control templates](https://learn.microsoft.com/dotnet/maui/fundamentals/controltemplate): Define reusable visual structures for custom controls
+- [Data templates](https://learn.microsoft.com/dotnet/maui/fundamentals/datatemplate): Define the visual representation of data in lists and collections
+- [XAML namespaces](https://learn.microsoft.com/dotnet/maui/xaml/namespaces/): Custom namespace schemas and prefixes
+- [XAML generics](https://learn.microsoft.com/dotnet/maui/xaml/generics): Use generic types in XAML
+- [CSS styling](https://learn.microsoft.com/dotnet/maui/user-interface/styles/css): Style .NET MAUI apps using a subset of CSS
+- [Shapes](https://learn.microsoft.com/dotnet/maui/user-interface/controls/shapes/): Draw ellipses, rectangles, polygons, paths, and polylines
+- [CarouselView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/carouselview/): Horizontally scrollable item view with snap points
+- [App icons](https://learn.microsoft.com/dotnet/maui/user-interface/images/app-icons): Configure app icons across platforms from a single SVG source
+- [Splash screen](https://learn.microsoft.com/dotnet/maui/user-interface/images/splashscreen): Configure splash screens across platforms
+- [Safe area layout](https://learn.microsoft.com/dotnet/maui/user-interface/safe-area): Handle device notches and system UI overlaps
+- [Keyboard accelerators](https://learn.microsoft.com/dotnet/maui/user-interface/keyboard-accelerators): Define keyboard shortcuts for menu items
+- [Troubleshooting](https://learn.microsoft.com/dotnet/maui/troubleshooting): Common issues and solutions
