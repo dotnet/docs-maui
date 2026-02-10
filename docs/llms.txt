@@ -67,15 +67,15 @@ Control selection guidance:
 
 ## User interface
 
+- [**Handler architecture guide**](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/handler-architecture): Comprehensive, self-contained guide to the handler architecture — what handlers are, creating custom controls, customizing existing controls via Mapper, handler lifecycle, and common recipes
 - [Controls overview](https://learn.microsoft.com/dotnet/maui/user-interface/controls/): Full list of built-in .NET MAUI controls
 - [Layouts overview](https://learn.microsoft.com/dotnet/maui/user-interface/layouts/): Grid, VerticalStackLayout, HorizontalStackLayout, FlexLayout, AbsoluteLayout, and custom layouts
 - [Grid](https://learn.microsoft.com/dotnet/maui/user-interface/layouts/grid): Row and column layout with proportional, absolute, and auto sizing — preferred for complex layouts
+- [**CollectionView guide**](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/collectionview-guide): Comprehensive, self-contained guide to CollectionView — data binding, layouts (list/grid), selection, grouping, empty views, scrolling, SwipeView, and performance tips
 - [CollectionView](https://learn.microsoft.com/dotnet/maui/user-interface/controls/collectionview/): High-performance virtualized list — the recommended control for data lists, replacing ListView
 - [Pages](https://learn.microsoft.com/dotnet/maui/user-interface/pages/contentpage): ContentPage, FlyoutPage, NavigationPage, and TabbedPage
 - [Pop-ups](https://learn.microsoft.com/dotnet/maui/user-interface/pop-ups): Display alerts, action sheets, and prompts
 - [Handlers overview](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/): Architecture for mapping cross-platform controls to native views
-- [Create custom controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/create): Build new cross-platform controls with the handler pattern
-- [Customize controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/customize): Modify existing control behavior per platform using handler mappers
 - [Styles](https://learn.microsoft.com/dotnet/maui/user-interface/styles/xaml): Define and apply XAML styles to controls
 - [Theming](https://learn.microsoft.com/dotnet/maui/user-interface/theming): Implement light/dark themes and dynamic theming
 - [Visual states](https://learn.microsoft.com/dotnet/maui/user-interface/visual-states): Change control appearance based on state (Normal, Disabled, Focused, etc.)
@@ -114,6 +114,7 @@ Control selection guidance:
 ## Deployment and testing
 
 - [Deployment overview](https://learn.microsoft.com/dotnet/maui/deployment/): Publishing and distributing .NET MAUI apps
+- [**Performance best practices guide**](https://learn.microsoft.com/dotnet/maui/deployment/performance-best-practices): Comprehensive, self-contained guide to .NET MAUI performance — compiled bindings, control selection, layout optimization, images, startup, async/threading, memory management, trimming, and AOT
 - [Improve app performance](https://learn.microsoft.com/dotnet/maui/deployment/performance): Startup tracing, compiled bindings, trimming, and profiling tips
 - [Trimming](https://learn.microsoft.com/dotnet/maui/deployment/trimming): Reduce app size by removing unused code
 - [Native AOT](https://learn.microsoft.com/dotnet/maui/deployment/nativeaot): Ahead-of-time compilation for faster startup and smaller footprint
@@ -140,6 +141,8 @@ Control selection guidance:
 - [Attached properties](https://learn.microsoft.com/dotnet/maui/fundamentals/attached-properties): Define properties that can be set on any object
 - [Control templates](https://learn.microsoft.com/dotnet/maui/fundamentals/controltemplate): Define reusable visual structures for custom controls
 - [Data templates](https://learn.microsoft.com/dotnet/maui/fundamentals/datatemplate): Define the visual representation of data in lists and collections
+- [Create custom controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/create): Step-by-step guide to building custom controls with handlers (detailed reference)
+- [Customize controls](https://learn.microsoft.com/dotnet/maui/user-interface/handlers/customize): Modify existing control behavior per platform using handler mappers (detailed reference)
 - [XAML namespaces](https://learn.microsoft.com/dotnet/maui/xaml/namespaces/): Custom namespace schemas and prefixes
 - [XAML generics](https://learn.microsoft.com/dotnet/maui/xaml/generics): Use generic types in XAML
 - [CSS styling](https://learn.microsoft.com/dotnet/maui/user-interface/styles/css): Style .NET MAUI apps using a subset of CSS
