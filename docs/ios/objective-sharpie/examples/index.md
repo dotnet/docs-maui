@@ -9,7 +9,6 @@ ms.date: 02/11/2026
 Follow these examples to better understand how Objective Sharpie works:
 
 - [**Binding a native framework (Sparkle)**](~/cross-platform/macios/binding/objective-sharpie/platform/native-frameworks.md)
-- [**Advanced (manual)**](advanced.md)
 
 The [complete walkthrough for iOS](~/ios/platform/binding-objective-c/walkthrough.md)
 provides a more detailed step-by-step set of instructions to follow.
