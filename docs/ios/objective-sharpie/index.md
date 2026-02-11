@@ -23,7 +23,7 @@ into the [binding definition](platform/apidefinitions-structsandenums.md).
 
 Objective Sharpie uses Clang to parse header files, so the binding is as exact and thorough as possible. This can greatly reduce the time and effort it takes to produce a quality binding.
 
-Objective Sharpie is distributed as a [.NET tool](https://learn.microsoft.com/dotnet/core/tools/global-tools) and is [open source](https://github.com/dotnet/macios/tree/main/tools/sharpie).
+Objective Sharpie is distributed as a [.NET tool](/dotnet/core/tools/global-tools) and is [open source](https://github.com/dotnet/macios/tree/main/tools/sharpie).
 
 > [!IMPORTANT]
 > Objective Sharpie is a tool for experienced .NET developers with
