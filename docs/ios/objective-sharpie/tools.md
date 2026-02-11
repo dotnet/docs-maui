@@ -68,20 +68,24 @@ Bind options:
 
 ### Basic usage
 
-To bind a framework, specify the umbrella header file and the target SDK:
+To bind a framework, specify the umbrella header file and the target SDK. For example, to bind the [Sparkle](https://sparkle-project.org/) framework:
 
 ```bash
 $ sharpie bind \
-    -f ./MyFramework.framework/Headers/MyFramework.h \
-    --scope ./MyFramework.framework/Headers \
+    -f ./Sparkle.framework/Headers/Sparkle.h \
+    --scope ./Sparkle.framework/Headers \
     -o Binding \
-    -sdk iphoneos18.4 \
-    -c -F .
+    -sdk macosx \
+    -c -F . -arch arm64
+
+Bindings generated successfully.
 ```
 
-The `-c` argument tells Objective Sharpie to stop processing its own options and forward all subsequent arguments directly to the Clang compiler. In the example above, `-F .` is a Clang argument that adds the current directory as a framework search path.
+The `-c` argument tells Objective Sharpie to stop processing its own options and forward all subsequent arguments directly to the Clang compiler. In the example above, `-F .` is a Clang argument that adds the current directory as a framework search path, and `-arch arm64` specifies the target architecture.
 
 The `--scope` argument restricts binding to only APIs defined in headers within the specified directory, preventing Objective Sharpie from generating bindings for system headers that are `#import`ed by the framework.
+
+For a complete framework binding walkthrough, see [Binding Native Frameworks](~/cross-platform/macios/binding/objective-sharpie/platform/native-frameworks.md).
 
 ## The `sdk-db` tool
 

@@ -1,13 +1,13 @@
 ---
 title: "ApiDefinitions &amp; StructsAndEnums Files"
-description: "This document describes the ApiDefinitions.cs and StructsAndEnums.cs files that Objective Sharpie generates. These files are then used to access the Objective-C code from C#."
+description: "This document describes the ApiDefinition.cs and StructsAndEnums.cs files that Objective Sharpie generates. These files are then used to access the Objective-C code from C#."
 ms.date: 02/11/2026
 ---
 
 # ApiDefinitions & StructsAndEnums Files
 
 When Objective Sharpie has run successfully, it generates
-`Binding/ApiDefinitions.cs` and `Binding/StructsAndEnums.cs` files.
+`Binding/ApiDefinition.cs` and `Binding/StructsAndEnums.cs` files.
 These two files are added to a binding project, which will produce the final binding assembly.
 
 In *some* cases these generated files might be all you need, however more often

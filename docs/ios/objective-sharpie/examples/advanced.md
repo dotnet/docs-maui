@@ -67,7 +67,7 @@ $ sharpie bind \
 Parsing Native Code...
 
 Binding...
-  [write] ApiDefinitions.cs
+  [write] ApiDefinition.cs
   [write] StructsAndEnums.cs
 
 Binding Analysis:
@@ -120,7 +120,7 @@ Additionally, we specified `-c -Ibuild/headers`. The `-c` argument tells Objecti
 
 ### Completing the Binding
 
-Objective Sharpie has now generated `Binding/ApiDefinitions.cs` and `Binding/StructsAndEnums.cs` files.
+Objective Sharpie has now generated `Binding/ApiDefinition.cs` and `Binding/StructsAndEnums.cs` files.
 
 These are Objective Sharpie's basic first pass at the binding, and in a few
 cases it might be all you need. As stated above however, the developer will
