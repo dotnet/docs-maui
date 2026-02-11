@@ -1,20 +1,19 @@
 ---
 title: "Creating Bindings with Objective Sharpie"
 description: "This section provides an introduction to Objective Sharpie, a command line tool used to automate the process of creating a .NET binding to an Objective-C Library"
-ms.date: 01/05/2026
+ms.date: 02/11/2026
 ---
 
 # Creating Bindings with Objective Sharpie
 
 _This section provides an introduction to Objective Sharpie, a command line tool used to automate the process of creating a .NET binding to an Objective-C Library_
 
-- [Overview](#overview) & [History](#history)
+- [Overview](#overview)
 - [Getting Started](get-started.md)
 - [Tools & Commands](tools.md)
 - [Features](platform/index.md)
 - [Examples](examples/index.md)
 - [Complete Walkthrough](~/ios/platform/binding-objective-c/walkthrough.md)
-- [Release History](releases.md)
 
 ## Overview
 
@@ -23,6 +22,8 @@ It works by parsing the header files of a native framework to map the public API
 into the [binding definition](~/cross-platform/macios/binding/objective-c-libraries.md#The_API_definition_file).
 
 Objective Sharpie uses Clang to parse header files, so the binding is as exact and thorough as possible. This can greatly reduce the time and effort it takes to produce a quality binding.
+
+Objective Sharpie is distributed as a [.NET tool](https://learn.microsoft.com/dotnet/core/tools/global-tools) and is [open source](https://github.com/dotnet/macios/tree/main/tools/sharpie).
 
 > [!IMPORTANT]
 > Objective Sharpie is a tool for experienced .NET developers with
@@ -33,9 +34,7 @@ Objective Sharpie uses Clang to parse header files, so the binding is as exact a
 
 ## Related Links
 
-- [Objective Sharpie download](https://aka.ms/objective-sharpie)
 - [Walkthrough: Binding an Objective-C Library](~/ios/platform/binding-objective-c/walkthrough.md)
 - [Binding Objective-C Libraries](~/cross-platform/macios/binding/objective-c-libraries.md)
 - [Binding Details](~/cross-platform/macios/binding/overview.md)
 - [Binding Types Reference Guide](~/cross-platform/macios/binding/binding-types-reference.md)
-- [Xamarin for Objective-C Developers](~/ios/get-started/objective-c-developers/index.md)

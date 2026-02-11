@@ -1,7 +1,7 @@
 ---
 title: "ApiDefinitions &amp; StructsAndEnums Files"
 description: "This document describes the ApiDefinitions.cs and StructsAndEnums.cs files that Objective Sharpie generates. These files are then used to access the Objective-C code from C#."
-ms.date: 01/05/2026
+ms.date: 02/11/2026
 ---
 
 # ApiDefinitions & StructsAndEnums Files

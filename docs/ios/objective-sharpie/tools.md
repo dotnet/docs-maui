@@ -1,7 +1,7 @@
 ---
 title: "Objective Sharpie Tools &amp; Commands"
 description: "This document provides an overview of the tools included with Objective Sharpie and the command-line arguments to use with them."
-ms.date: 01/05/2026
+ms.date: 02/11/2026
 ---
 
 # Objective Sharpie Tools & Commands
@@ -17,71 +17,112 @@ $ sharpie -help
 usage: sharpie [OPTIONS] TOOL [TOOL_OPTIONS]
 
 Options:
-  -h, -help                Show detailed help
-  -v, -version             Show version information
-
-Telemetry Options:
-  -tlm-about               Show a detailed overview of what usage and binding
-                             information will be submitted to Xamarin by
-                             default when using Objective Sharpie.
-  -tlm-do-not-submit       Do not submit any usage or binding information to
-                             Xamarin. Run 'sharpie -tml-about' for more
-                             information.
-  -tlm-do-not-identify     Do not submit Xamarin account information when
-                             submitting usage or binding information to Xamarin
-                             for analysis. Binding attempts and usage data will
-                             be submitted anonymously if this option is
-                             specified.
+  -h, -help        Show detailed help
+  -v, -version     Show version information
 
 Available Tools:
-  xcode              Get information about Xcode installations and available SDKs.
-  pod                Create a Xamarin C# binding to Objective-C CocoaPods
-  bind               Create a Xamarin C# binding to Objective-C APIs
-  update             Update to the latest release of Objective Sharpie
-  verify-docs        Show cross reference documentation for [Verify] attributes
-  docs               Open the Objective Sharpie online documentation
+  bind               Create a C# binding to Objective-C APIs
+  sdk-db             Generate bindings for an entire platform's SDK
 ```
 
 Objective Sharpie provides the following tools:
 
 |Tool|Description|
 |--- |--- |
-|**xcode**|Provides information about the current Xcode installation and the versions of iOS and Mac SDKs that are available. We will be using this information later when we generate our bindings.|
-|**pod**|Searches for, configures, installs (in a local directory), and binds Objective-C [CocoaPod](https://cocoapods.org/) libraries available from the master Spec repository. This tool evaluates the installed CocoaPod to automatically deduce the correct input to pass to the `bind` tool below. New in 3.0!|
-|**bind**|Parses the header files (`*.h`) in the Objective-C library into the initial [ApiDefinition.cs and StructsAndEnums.cs](~/cross-platform/macios/binding/objective-sharpie/platform/apidefinitions-structsandenums.md) files.|
-|**update**|Checks for newer versions of Objective Sharpie and downloads and launches the installer if one is available.|
-|**verify-docs**|Shows detailed information about `[Verify]` attributes.|
-|**docs**|Navigates to this document in your default web browser.|
+|**bind**|Parses a header file (`*.h`) for an Objective-C library and generates the initial [ApiDefinition.cs and StructsAndEnums.cs](~/cross-platform/macios/binding/objective-sharpie/platform/apidefinitions-structsandenums.md) files.|
+|**sdk-db**|Generates bindings for an entire Apple platform SDK (iOS, macOS, tvOS, etc.). This is used internally for .NET for iOS/macOS bindings and can also be used to bind a complete SDK.|
 
-To get help on a specific Objective Sharpie tool, enter the name of the tool and the `-help` option. For example, `sharpie xcode -help` returns the following output:
+To get help on a specific Objective Sharpie tool, enter the name of the tool and the `-help` option.
+
+## The `bind` tool
+
+The `bind` tool is the primary tool for creating bindings for 3rd party Objective-C frameworks. Run `sharpie bind -help` for the complete list of options:
 
 ```
-$ sharpie xcode -help
-usage: sharpie xcode [OPTIONS]
+$ sharpie bind -help
 
 Options:
-  -h, -help        Show detailed help
-  -v, -verbose     Be verbose with output
+  -h, --help                 Show detailed
+  -v, --verbose              Be verbose with output
+  -q, --quiet                Suppress fluffy status messages
+  @file                      Read response file for more options
 
-Xcode Options:
-  -sdks            List all available Xcode SDKs. Pass -verbose for more details.
+Parse options:
+  -s, --sdk=VALUE            Target SDK
+  -f, --header=VALUE         The input header file to bind
+      --scope=VALUE          Restrict following #include and #import
+                               directives declared in header files to
+                               within the specified DIR directory
+  -c, --clang                All arguments after this argument are not
+                               processed by Objective Sharpie and are
+                               proxied directly to Clang
+
+Bind options:
+  -o, --output=VALUE         Output directory for generated binding files
+  -n, --namespace=VALUE      Namespace under which to generate the binding
+  -m, --massage=VALUE        Register (+ prefix) or exclude (- prefix) a
+                               massager by name
+      --nosplit              Do not split the generated binding into
+                               multiple files
 ```
 
-Before we can start the binding process, we need to get information about our current installed SDKs by entering the following command into the Terminal `sharpie xcode -sdks`. Your output may differ depending on which version(s) of Xcode you have installed. Objective Sharpie looks for SDKs installed in any `Xcode*.app` under the `/Applications` directory:
+### Basic usage
+
+To bind a framework, specify the umbrella header file and the target SDK:
+
+```bash
+$ sharpie bind \
+    -f ./MyFramework.framework/Headers/MyFramework.h \
+    --scope ./MyFramework.framework/Headers \
+    -o Binding \
+    -sdk iphoneos18.4 \
+    -c -F .
+```
+
+The `-c` argument tells Objective Sharpie to stop processing its own options and forward all subsequent arguments directly to the Clang compiler. In the example above, `-F .` is a Clang argument that adds the current directory as a framework search path.
+
+The `--scope` argument restricts binding to only APIs defined in headers within the specified directory, preventing Objective Sharpie from generating bindings for system headers that are `#import`ed by the framework.
+
+## The `sdk-db` tool
+
+The `sdk-db` tool generates bindings for an entire platform SDK. This is primarily used internally, but can also be used to generate a complete set of bindings for a given SDK.
 
 ```
-$ sharpie xcode -sdks
-sdk: appletvos9.0    arch: arm64
-sdk: iphoneos9.1     arch: arm64   armv7
-sdk: iphoneos9.0     arch: arm64   armv7
-sdk: iphoneos8.4     arch: arm64   armv7
-sdk: macosx10.11     arch: x86_64  i386
-sdk: macosx10.10     arch: x86_64  i386
-sdk: watchos2.0      arch: armv7
+$ sharpie sdk-db -help
+
+Options:
+  -h, --help                 Show detailed
+  -v, --verbose              Be verbose with output
+  -q, --quiet                Suppress fluffy status messages
+  @file                      Read response file for more options
+
+Options:
+  -a, --arch=VALUE           Specify which architecture(s) to build for
+  -o, --output=VALUE         Output directory for generated binding files
+  -s, --sdk=VALUE            Target SDK
+  -x, --exclude=VALUE        Exclude a framework by name from the SDK
+  -i, --extra-hash-import=VALUE
+                               Framework-relative header for which to
+                               generate an #import
+      --modules=VALUE        Enable/use modules (-fmodules). Defaults to
+                               'true'
+  -c, --clang                All arguments after this argument are not
+                               processed by Objective Sharpie and are
+                               proxied directly to Clang
+      --nosplit              Do not split the generated binding into
+                               multiple files
 ```
 
-From the above, we can see that we have the `iphoneos9.1` SDK installed on our
-machine and it has `arm64` architecture support. We will be using this value
-for all the samples in this section. With this information in place, we are ready to
-parse an Objective-C library header files into the initial `ApiDefinition.cs`
-and `StructsAndEnums.cs` for the Binding project.
+### Basic usage
+
+To generate bindings for the iOS SDK:
+
+```bash
+$ sharpie sdk-db -s iphoneos18.4 -o output/
+```
+
+To exclude specific frameworks:
+
+```bash
+$ sharpie sdk-db -s iphoneos18.4 -o output/ -x CloudKit -x GameKit
+```

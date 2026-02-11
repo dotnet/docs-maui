@@ -1,7 +1,7 @@
 ---
 title: "Objective Sharpie Features"
 description: "This document links to various guides that help describe Objective Sharpie, how to use it, and the output that it generates."
-ms.date: 01/05/2026
+ms.date: 02/11/2026
 ---
 
 # Objective Sharpie Features
@@ -16,7 +16,8 @@ in your binding project. Learn more about them [here](apidefinitions-structsande
 ## [**Native Frameworks**](native-frameworks.md)
 
 Some libraries are distributed as frameworks rather than as source.
-Objective Sharpie lets you use these libraries with the `-framework` option.
+Objective Sharpie lets you bind these libraries by passing the umbrella header file
+and the framework's headers directory.
 
 ## [**Verify**](verify.md)
 

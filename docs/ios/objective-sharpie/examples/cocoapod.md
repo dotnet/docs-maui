@@ -1,87 +1,38 @@
 ---
 title: "Real-world example using CocoaPods"
-description: "This document demonstrates how to use Objective Sharpie to automatically generate the C# binding definitions from a CocoaPod."
-ms.date: 01/05/2026
+description: "This document describes how to bind an Objective-C CocoaPod using Objective Sharpie."
+ms.date: 02/11/2026
 ---
 
 # Real-world example using CocoaPods
 
-> [!IMPORTANT]
-> `sharpie pod` is now deprecated. For more information, see [this GitHub issue](https://github.com/xamarin/xamarin-macios/issues/8238#issuecomment-606666460).
+To bind a CocoaPod with Objective Sharpie, first install and build the pod using CocoaPods, then pass the resulting header files to the `sharpie bind` tool.
 
-New in version 3.0, Objective Sharpie supports binding CocoaPods, and even
-includes a command (`sharpie pod`) to make downloading, configuring, and
-building CocoaPods very easy. You should [familiarize yourself with
-CocoaPods](https://cocoapods.org) in general before using this feature.
+## Building a CocoaPod
 
-## Creating a binding for a CocoaPod
-
-The `sharpie pod` command has one global option and two subcommands:
+You should [familiarize yourself with CocoaPods](https://cocoapods.org) before proceeding. Create a `Podfile` for the pod you want to bind, install it, and build the resulting Xcode workspace:
 
 ```bash
-$ sharpie pod -help
-usage: sharpie pod [OPTIONS] COMMAND [COMMAND_OPTIONS]
-
-Pod Options:
-  -d, -dir DIR     Use DIR as the CocoaPods binding directory,
-                   defaulting to the current directory
-
-Available Commands:
-  init         Initialize a new Xamarin C# CocoaPods binding project
-  bind         Bind an existing Xamarin C# CocoaPods project
+$ pod init
+$ # Edit Podfile to add the desired pod, e.g. pod 'AFNetworking'
+$ pod install
+$ xcodebuild -workspace MyProject.xcworkspace -scheme MyProject -sdk iphoneos18.4 -arch arm64
 ```
 
-The `init` subcommand also has some useful help:
+## Creating the binding
+
+Once the pod is built, locate the header files for the pod (typically under the `Pods/Headers/Public` directory) and pass them to Objective Sharpie:
 
 ```bash
-$ sharpie pod init -help
-usage: sharpie pod init [INIT_OPTIONS] TARGET_SDK POD_SPEC_NAMES
-
-Init Options:
-  -f, -force       Initialize a new Podfile and run actions against
-                   it even if one already exists
+$ sharpie bind \
+    -f Pods/Headers/Public/AFNetworking/AFNetworking.h \
+    --scope Pods/Headers/Public/AFNetworking \
+    -o Binding \
+    -sdk iphoneos18.4 \
+    -c -IPods/Headers/Public -arch arm64
 ```
 
-Multiple CocoaPod names and subspec names can be provided to `init`.
-
-```bash
-$ sharpie pod init ios AFNetworking
-** Setting up CocoaPods master repo ...
-   (this may take a while the first time)
-** Searching for requested CocoaPods ...
-** Working directory:
-**   - Writing Podfile ...
-**   - Installing CocoaPods ...
-**     (running `pod install --no-integrate --no-repo-update`)
-Analyzing dependencies
-Downloading dependencies
-Installing AFNetworking (2.6.0)
-Generating Pods project
-Sending stats
-** 🍻 Success! You can now use other `sharpie podn`  commands.
-```
-
-Once your CocoaPod has been set up, you can now create the binding:
-
-```bash
-$ sharpie pod bind
-```
-
-This will result in the CocoaPod Xcode project being built and then
-evaluated and parsed by Objective Sharpie. A lot of console output will be
-generated, but should result in the binding definition at the end:
-
-```bash
-(... lots of build output ...)
-
-Parsing 19 header files...
-
-Binding...
-  [write] ApiDefinitions.cs
-  [write] StructsAndEnums.cs
-
-Done.
-```
+This will generate the **ApiDefinitions.cs** and **StructsAndEnums.cs** files.
 
 ## Next steps
 

@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With Objective Sharpie"
 description: "This document provides a high-level overview of Objective Sharpie, the tool used to automate the creation of .NET bindings to Objective-C code."
-ms.date: 01/05/2026
+ms.date: 02/11/2026
 ---
 
 # Getting Started With Objective Sharpie
@@ -17,16 +17,14 @@ ms.date: 01/05/2026
 
 ## Installing Objective Sharpie
 
-Objective Sharpie is currently a .NET command line tool for macOS, and is _not
-a fully supported product_. It should only be used by advanced developers to
-assist in creating a binding project to a 3rd party Objective-C framework.
+Objective Sharpie is a .NET command line tool for macOS (arm64 only). Install it as a global .NET tool:
 
-```
-$ dotnet tool -g install dotnet-sharpie
+```bash
+$ dotnet tool install -g dotnet-sharpie
 ```
 
 > [!TIP]
-> Use the `dotnet tool -g update dotnet-sharpie` command to update to the latest version.
+> Use the `dotnet tool update -g dotnet-sharpie` command to update to the latest version.
 
 ## Basic Walkthrough
 
