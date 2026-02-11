@@ -19,7 +19,7 @@ _This section provides an introduction to Objective Sharpie, a command line tool
 
 Objective Sharpie is a command line tool to help bootstrap the first pass of a binding.
 It works by parsing the header files of a native framework to map the public API
-into the [binding definition](platform/api-definition-structs-and-enums.md).
+into the [binding definition](platform/api-definition-structs-enums.md).
 
 Objective Sharpie uses Clang to parse header files, so the binding is as exact and thorough as possible. This can greatly reduce the time and effort it takes to produce a quality binding.
 
