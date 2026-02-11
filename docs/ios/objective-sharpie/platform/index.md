@@ -16,8 +16,8 @@ in your binding project. Learn more about them [here](apidefinitions-structsande
 ## [**Native Frameworks**](native-frameworks.md)
 
 Some libraries are distributed as frameworks rather than as source.
-Objective Sharpie lets you bind these libraries by passing the umbrella header file
-and the framework's headers directory.
+Objective Sharpie lets you bind these frameworks directly by passing the
+`.framework` directory to the `-f` option.
 
 ## [**Verify**](verify.md)
 
