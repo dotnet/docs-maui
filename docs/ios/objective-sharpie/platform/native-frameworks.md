@@ -6,7 +6,7 @@ ms.date: 02/11/2026
 
 # Binding Native Frameworks
 
-Sometimes a native library is distributed as a [framework](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html). Objective Sharpie can bind these frameworks directly — pass the `.framework` directory to `-f/--framework` and Objective Sharpie will automatically find the umbrella header (or module map), set the scope, set the namespace, and detect the target SDK from the framework's `Info.plist` if available.
+Typically a native library is distributed as a [framework](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html). Objective Sharpie can bind these frameworks directly — pass the `.framework` directory to `-f/--framework` and Objective Sharpie will automatically find the umbrella header (or module map), set the scope, set the namespace, and detect the target SDK from the framework's `Info.plist` if available.
 
 ## Walkthrough: binding the Sparkle framework
 
@@ -36,21 +36,20 @@ Pass the `.framework` directory to `sharpie bind` with `-f`:
 ```bash
 $ sharpie bind \
     -f ./Sparkle.framework \
-    -o Binding \
-    -c -F . -arch arm64
+    -o Binding
 
 Bindings generated successfully.
 ```
 
-The arguments break down as follows:
+That's it — Objective Sharpie automatically:
 
-|Argument|Purpose|
-|---|---|
-|`-f ./Sparkle.framework`|The framework to bind. Objective Sharpie automatically finds the umbrella header or module map, sets `--scope` to the framework directory, sets `--namespace` to `Sparkle`, and detects the SDK from the framework's `Info.plist`.|
-|`-o Binding`|The output directory for the generated files.|
-|`-c`|All arguments after `-c` are passed directly to the Clang compiler.|
-|`-F .`|A Clang argument that adds the current directory as a framework search path, so Clang can resolve `#import <Sparkle/Sparkle.h>`.|
-|`-arch arm64`|A Clang argument specifying the target architecture.|
+- Finds the umbrella header or module map inside the framework.
+- Sets `--scope` to the framework directory (so only the framework's own APIs are bound).
+- Sets `--namespace` to `Sparkle` (the framework's name).
+- Reads the framework's `Info.plist` and detects the target SDK (`macosx`).
+- Configures the Clang framework search path.
+
+The only required argument besides `-f` is `-o` to specify the output directory.
 
 > [!TIP]
 > If the framework doesn't include an `Info.plist` with SDK information (the `DTSDKName` key), add `-sdk` explicitly — for example, `-sdk macosx` for macOS or `-sdk iphoneos` for iOS.
@@ -104,5 +103,4 @@ to produce the final binding assembly.
 
 - **Use `-f/--framework`**: Pass the `.framework` directory directly instead of specifying the umbrella header and scope separately. Objective Sharpie handles the details automatically.
 - **SDK auto-detection**: When using `-f`, Objective Sharpie reads the framework's `Info.plist` for the `DTSDKName` key to determine the target SDK. If the framework doesn't include this, add `-sdk` explicitly.
-- **Framework search paths**: Pass `-c -F <directory>` where `<directory>` is the parent directory containing the `.framework` bundle, so that Clang can resolve framework imports.
-- **Manual header binding**: If you need to bind individual header files instead of a framework, use `--header` (without the `-f` shorthand) and `--scope` to control which headers are included.
+- **Manual header binding**: If you need to bind individual header files instead of a framework, use `--header` and `--scope` to control which headers are included.

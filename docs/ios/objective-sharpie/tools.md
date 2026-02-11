@@ -79,18 +79,15 @@ Bind options:
 
 ### Basic usage
 
-To bind a framework, pass the `.framework` directory to `-f`. Objective Sharpie will automatically find the umbrella header (or module map), set the scope and namespace, and detect the SDK from the framework's `Info.plist` if available. For example, to bind the [Sparkle](https://sparkle-project.org/) framework:
+To bind a framework, pass the `.framework` directory to `-f`. Objective Sharpie will automatically find the umbrella header (or module map), set the scope and namespace, detect the SDK from the framework's `Info.plist` if available, and configure the framework search path for Clang. For example, to bind the [Sparkle](https://sparkle-project.org/) framework:
 
 ```bash
 $ sharpie bind \
     -f ./Sparkle.framework \
-    -o Binding \
-    -c -F . -arch arm64
+    -o Binding
 
 Bindings generated successfully.
 ```
-
-The `-c` argument tells Objective Sharpie to stop processing its own options and forward all subsequent arguments directly to the Clang compiler. In the example above, `-F .` is a Clang argument that adds the current directory as a framework search path, and `-arch arm64` specifies the target architecture.
 
 If the framework doesn't include an `Info.plist` with SDK information, add `-sdk` explicitly (for example, `-sdk macosx` or `-sdk iphoneos`).
 
