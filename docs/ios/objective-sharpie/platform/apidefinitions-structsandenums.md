@@ -13,7 +13,7 @@ These two files are added to a binding project, which will produce the final bin
 In *some* cases these generated files might be all you need, however more often
 the developer will need to manually modify these generated files
 to fix any issues that could not be automatically handled by the tool
-(such as those flagged with a [`Verify` attribute](~/cross-platform/macios/binding/objective-sharpie/platform/verify.md)).
+(such as those flagged with a [`Verify` attribute](~/ios/objective-sharpie/platform/verify.md)).
 
 Some of the next steps include:
 
@@ -23,10 +23,10 @@ Some of the next steps include:
 - **Hook up Notifications**: It is not possible to extract the API contract of notifications from the pure header files, this will require a trip to the API documentation. If you want strongly typed notifications, you will need to update the result.
 - **API Curation**: At this point, you might choose to provide extra constructors, add methods (to allow for C# initialize-on-construction syntax), operator overloading and implement your own interfaces on the extra definitions file.
 
-See the [binding an API](~/cross-platform/macios/binding/objective-c-libraries.md)
-description to see how these files fit into the binding process, as shown in the diagram below:
+See [iOS binding projects](~/migration/ios-binding-projects.md)
+to see how these files fit into the binding process, as shown in the diagram below:
 
 ![The binding process is shown in this diagram](apidefinitions-structsandenums-images/binding-flowchart.png)
 
-Refer to the [binding Types reference](~/cross-platform/macios/binding/binding-types-reference.md)
-for more information on the contents of these files.
+Refer to the <xref:ObjCRuntime> namespace API reference
+for more information on binding attributes used in these files.

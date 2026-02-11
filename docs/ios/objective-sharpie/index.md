@@ -13,13 +13,13 @@ _This section provides an introduction to Objective Sharpie, a command line tool
 - [Tools & Commands](tools.md)
 - [Features](platform/index.md)
 - [Examples](examples/index.md)
-- [Complete Walkthrough](~/ios/platform/binding-objective-c/walkthrough.md)
+- [Complete Walkthrough](platform/native-frameworks.md)
 
 ## Overview
 
 Objective Sharpie is a command line tool to help bootstrap the first pass of a binding.
 It works by parsing the header files of a native framework to map the public API
-into the [binding definition](~/cross-platform/macios/binding/objective-c-libraries.md#The_API_definition_file).
+into the [binding definition](platform/apidefinitions-structsandenums.md).
 
 Objective Sharpie uses Clang to parse header files, so the binding is as exact and thorough as possible. This can greatly reduce the time and effort it takes to produce a quality binding.
 
@@ -34,7 +34,5 @@ Objective Sharpie is distributed as a [.NET tool](https://learn.microsoft.com/do
 
 ## Related Links
 
-- [Walkthrough: Binding an Objective-C Library](~/ios/platform/binding-objective-c/walkthrough.md)
-- [Binding Objective-C Libraries](~/cross-platform/macios/binding/objective-c-libraries.md)
-- [Binding Details](~/cross-platform/macios/binding/overview.md)
-- [Binding Types Reference Guide](~/cross-platform/macios/binding/binding-types-reference.md)
+- [Walkthrough: Binding a Native Framework](platform/native-frameworks.md)
+- [iOS Binding Projects](~/migration/ios-binding-projects.md)

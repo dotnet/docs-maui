@@ -96,7 +96,7 @@ Notice the `[Verify (StronglyTypedNSArray)]` attribute on the `Items` property. 
 ### 4. Create a binding project
 
 Add the generated `ApiDefinition.cs` and `StructsAndEnums.cs` files to a
-[binding project](~/cross-platform/macios/binding/objective-c-libraries.md)
+[binding project](~/migration/ios-binding-projects.md)
 to produce the final binding assembly.
 
 ## Framework binding tips

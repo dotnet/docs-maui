@@ -36,10 +36,10 @@ automatically handled by the tool.
 
 Where possible, Objective Sharpie will annotate APIs with which it has some
 doubt on how to properly bind (many constructs in the native code are ambiguous).
-These annotations will appear as [`[Verify]` attributes](~/cross-platform/macios/binding/objective-sharpie/platform/verify.md).
+These annotations will appear as [`[Verify]` attributes](~/ios/objective-sharpie/platform/verify.md).
 
 The output of Objective Sharpie is a pair of files -
-[`ApiDefinition.cs` and `StructsAndEnums.cs`](~/cross-platform/macios/binding/objective-sharpie/platform/apidefinitions-structsandenums.md) -
+[`ApiDefinition.cs` and `StructsAndEnums.cs`](~/ios/objective-sharpie/platform/apidefinitions-structsandenums.md) -
 that can be used to create a binding project which compiles into a library
 you can use in .NET projects.
 

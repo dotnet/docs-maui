@@ -8,7 +8,7 @@ ms.date: 02/11/2026
 
 _Overview of the tools included with Objective Sharpie, and the command line arguments to use them._
 
-Once Objective Sharpie is successfully [installed](~/cross-platform/macios/binding/objective-sharpie/get-started.md),
+Once Objective Sharpie is successfully [installed](~/ios/objective-sharpie/get-started.md),
 open a terminal and familiarize yourself with the *commands*
 Objective Sharpie has to offer:
 
@@ -29,7 +29,7 @@ Objective Sharpie provides the following tools:
 
 |Tool|Description|
 |--- |--- |
-|**bind**|Parses a native framework (`.framework` bundle) or a header file (`*.h`) for an Objective-C library and generates the initial [ApiDefinition.cs and StructsAndEnums.cs](~/cross-platform/macios/binding/objective-sharpie/platform/apidefinitions-structsandenums.md) files.|
+|**bind**|Parses a native framework (`.framework` bundle) or a header file (`*.h`) for an Objective-C library and generates the initial [ApiDefinition.cs and StructsAndEnums.cs](~/ios/objective-sharpie/platform/apidefinitions-structsandenums.md) files.|
 |**sdk-db**|Generates bindings for an entire Apple platform SDK (iOS, macOS, tvOS, etc.). This is used internally for .NET for iOS/macOS bindings and can also be used to bind a complete SDK.|
 
 To get help on a specific Objective Sharpie tool, enter the name of the tool and the `-help` option.
@@ -91,7 +91,7 @@ Bindings generated successfully.
 
 If the framework doesn't include an `Info.plist` with SDK information, add `-sdk` explicitly (for example, `-sdk macosx` or `-sdk iphoneos`).
 
-For a complete framework binding walkthrough, see [Binding Native Frameworks](~/cross-platform/macios/binding/objective-sharpie/platform/native-frameworks.md).
+For a complete framework binding walkthrough, see [Binding Native Frameworks](~/ios/objective-sharpie/platform/native-frameworks.md).
 
 ## The `sdk-db` tool
 
