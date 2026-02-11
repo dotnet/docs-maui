@@ -20,7 +20,7 @@ ms.date: 02/11/2026
 Objective Sharpie is a .NET command line tool for macOS (arm64 only). Install it as a global .NET tool:
 
 ```bash
-$ dotnet tool install -g dotnet-sharpie
+dotnet tool install -g dotnet-sharpie
 ```
 
 > [!TIP]
@@ -64,4 +64,3 @@ It's required to be familiar enough with the native framework to know how it's
 used in an Xcode project; and if the framework requires any special compiler
 flags in an Xcode project, those flags will have to be passed to Objective
 Sharpie.
-

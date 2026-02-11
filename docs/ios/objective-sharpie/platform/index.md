@@ -11,7 +11,7 @@ Read through these pages to better understand Objective Sharpie's features:
 ## [**ApiDefinition.cs & StructsAndEnums.cs**](apidefinitions-structsandenums.md)
 
 These two files are emitted by Objective Sharpie, to be included
-in your binding project. Learn more about them [here](apidefinitions-structsandenums.md).
+in your binding project. Learn more about them in [ApiDefinition.cs & StructsAndEnums.cs](apidefinitions-structsandenums.md).
 
 ## [**Native Frameworks**](native-frameworks.md)
 
@@ -22,4 +22,4 @@ Objective Sharpie lets you bind these frameworks directly by passing the
 ## [**Verify**](verify.md)
 
 Objective Sharpie add `Verify` attributes to signal that you need to
-manually inspect and update the generated binding. 
+manually inspect and update the generated binding.

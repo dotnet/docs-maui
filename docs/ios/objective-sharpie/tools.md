@@ -128,11 +128,11 @@ Options:
 To generate bindings for the iOS SDK:
 
 ```bash
-$ sharpie sdk-db -s iphoneos18.4 -o output/
+sharpie sdk-db -s iphoneos18.4 -o output/
 ```
 
 To exclude specific frameworks:
 
 ```bash
-$ sharpie sdk-db -s iphoneos18.4 -o output/ -x CloudKit -x GameKit
+sharpie sdk-db -s iphoneos18.4 -o output/ -x CloudKit -x GameKit
 ```
