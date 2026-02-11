@@ -29,7 +29,7 @@ Objective Sharpie provides the following tools:
 
 |Tool|Description|
 |--- |--- |
-|**bind**|Parses a native framework (`.framework` bundle) or a header file (`*.h`) for an Objective-C library and generates the initial [ApiDefinition.cs and StructsAndEnums.cs](~/ios/objective-sharpie/platform/apidefinitions-structsandenums.md) files.|
+|**bind**|Parses a native framework (`.framework` bundle) or a header file (`*.h`) for an Objective-C library and generates the initial [ApiDefinition.cs and StructsAndEnums.cs](~/ios/objective-sharpie/platform/api-definition-structs-and-enums.md) files.|
 |**sdk-db**|Generates bindings for an entire Apple platform SDK (iOS, macOS, tvOS, etc.). This is used internally for .NET for iOS/macOS bindings and can also be used to bind a complete SDK.|
 
 To get help on a specific Objective Sharpie tool, enter the name of the tool and the `-help` option.

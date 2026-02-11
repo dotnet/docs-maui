@@ -8,10 +8,10 @@ ms.date: 02/11/2026
 
 Read through these pages to better understand Objective Sharpie's features:
 
-## [**ApiDefinition.cs & StructsAndEnums.cs**](apidefinitions-structsandenums.md)
+## [**ApiDefinition.cs & StructsAndEnums.cs**](api-definition-structs-and-enums.md)
 
 These two files are emitted by Objective Sharpie, to be included
-in your binding project. Learn more about them in [ApiDefinition.cs & StructsAndEnums.cs](apidefinitions-structsandenums.md).
+in your binding project. Learn more about them in [ApiDefinition.cs & StructsAndEnums.cs](api-definition-structs-and-enums.md).
 
 ## [**Native Frameworks**](native-frameworks.md)
 

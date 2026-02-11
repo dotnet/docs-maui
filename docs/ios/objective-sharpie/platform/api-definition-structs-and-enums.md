@@ -26,7 +26,7 @@ Some of the next steps include:
 See [iOS binding projects](~/migration/ios-binding-projects.md)
 to see how these files fit into the binding process, as shown in the diagram below:
 
-![The binding process is shown in this diagram](apidefinitions-structsandenums-images/binding-flowchart.png)
+![The binding process is shown in this diagram](api-definition-structs-and-enums-images/binding-flowchart.png)
 
 Refer to the <xref:ObjCRuntime> namespace API reference
 for more information on binding attributes used in these files.
