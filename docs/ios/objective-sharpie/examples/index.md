@@ -9,7 +9,6 @@ ms.date: 02/11/2026
 Follow these examples to better understand how Objective Sharpie works:
 
 - [**Xcode Project**](xcode.md)
-- [**CocoaPod**](cocoapod.md)
 - [**Advanced (manual)**](advanced.md)
 
 The [complete walkthrough for iOS](~/ios/platform/binding-objective-c/walkthrough.md)
