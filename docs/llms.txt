@@ -67,11 +67,11 @@ Control selection guidance:
 
 ## User interface
 
-- [**Handler architecture guide**](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): Comprehensive, self-contained guide to the handler architecture — what handlers are, creating custom controls, customizing existing controls via Mapper, handler lifecycle, and common recipes
+- [Handler architecture guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): Comprehensive, self-contained guide to the handler architecture — what handlers are, creating custom controls, customizing existing controls via Mapper, handler lifecycle, and common recipes
 - [Controls overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/index.md): Full list of built-in .NET MAUI controls
 - [Layouts overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/index.md): Grid, VerticalStackLayout, HorizontalStackLayout, FlexLayout, AbsoluteLayout, and custom layouts
 - [Grid](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/grid.md): Row and column layout with proportional, absolute, and auto sizing — preferred for complex layouts
-- [**CollectionView guide**](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Comprehensive, self-contained guide to CollectionView — data binding, layouts (list/grid), selection, grouping, empty views, scrolling, SwipeView, and performance tips
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Comprehensive, self-contained guide to CollectionView — data binding, layouts (list/grid), selection, grouping, empty views, scrolling, SwipeView, and performance tips
 - [CollectionView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/index.md): High-performance virtualized list — the recommended control for data lists, replacing ListView
 - [Pages](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/pages/contentpage.md): ContentPage, FlyoutPage, NavigationPage, and TabbedPage
 - [Pop-ups](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/pop-ups.md): Display alerts, action sheets, and prompts
@@ -114,7 +114,7 @@ Control selection guidance:
 ## Deployment and testing
 
 - [Deployment overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/index.md): Publishing and distributing .NET MAUI apps
-- [**Performance best practices guide**](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Comprehensive, self-contained guide to .NET MAUI performance — compiled bindings, control selection, layout optimization, images, startup, async/threading, memory management, trimming, and AOT
+- [Performance best practices guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Comprehensive, self-contained guide to .NET MAUI performance — compiled bindings, control selection, layout optimization, images, startup, async/threading, memory management, trimming, and AOT
 - [Improve app performance](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance.md): Startup tracing, compiled bindings, trimming, and profiling tips
 - [Trimming](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/trimming.md): Reduce app size by removing unused code
 - [Native AOT](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/nativeaot.md): Ahead-of-time compilation for faster startup and smaller footprint
