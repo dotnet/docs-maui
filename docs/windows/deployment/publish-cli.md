@@ -1,7 +1,7 @@
 ---
 title: "Use the CLI to publish packaged apps for Windows"
 description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
-ms.date: 01/15/2026
+ms.date: 02/24/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -90,6 +90,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 ```xml
 <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows' and '$(Configuration)' == 'Release'">
+    <WindowsPackageType>Package</WindowsPackageType>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
     <PackageCertificateThumbprint>AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00</PackageCertificateThumbprint>
 </PropertyGroup>
@@ -99,6 +100,8 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 ```
 
 <!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
+
+The `<WindowsPackageType>` property specifies that the app should be published as a packaged MSIX app. Setting this property explicitly is important for project types such as Blazor Hybrid, where the default may not produce an MSIX package. If you instead want to publish your app without an MSIX package, see [Publish an unpackaged .NET MAUI app for Windows with the CLI](publish-unpackaged-cli.md).
 
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00`.
 
