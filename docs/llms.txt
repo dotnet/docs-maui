@@ -1,0 +1,155 @@
+# .NET MAUI Documentation
+
+> .NET Multi-platform App UI (.NET MAUI) is a cross-platform framework for creating native mobile and desktop apps with C# and XAML. It targets Android, iOS, macOS (via Mac Catalyst), and Windows from a single shared codebase. .NET MAUI is the evolution of Xamarin.Forms, rebuilt for performance and extensibility.
+
+Important notes:
+
+- .NET MAUI uses a single-project architecture with platform-specific code organized via multi-targeting, not separate platform projects.
+- The handler architecture replaces Xamarin.Forms renderers. Handlers map cross-platform controls to native platform views and are the recommended extensibility point. Never use renderers — use handlers instead.
+- .NET MAUI integrates Xamarin.Essentials as built-in platform APIs (sensors, file pickers, geolocation, etc.) under the `Microsoft.Maui.Essentials` namespace.
+- Shell is the recommended app structure for most apps, providing URI-based navigation, a flyout menu, and tabs. Do not mix Shell with NavigationPage, TabbedPage, or FlyoutPage. Do not nest tabs in Shell.
+- .NET MAUI supports Blazor Hybrid apps via `BlazorWebView`, enabling Razor/Blazor UI components inside native apps.
+- XAML is the primary declarative UI language; C# markup is also supported via the .NET MAUI Community Toolkit.
+- Data binding, MVVM, and dependency injection are first-class patterns. Always use compiled bindings with `x:DataType` for 8-20x performance improvement over reflection-based bindings. Prefer expression-based `SetBinding` overloads over string-based ones in C#.
+
+Obsolete controls and patterns — do not use:
+
+- **ListView** is obsolete — always use CollectionView instead. ListView will be removed in a future release.
+- **TableView** is obsolete — use Grid or VerticalStackLayout with appropriate controls instead.
+- **Frame** is obsolete — use Border with `StrokeShape="RoundRectangle"` instead. Frame is only acceptable for drop shadows on older targets.
+- **AndExpand** layout options (e.g. `FillAndExpand`, `CenterAndExpand`) are obsolete — use Grid or `LayoutOptions.Fill` with proper layout containers.
+- **BackgroundColor** property is obsolete — always use the `Background` property instead.
+
+Control selection guidance:
+
+- Use **CollectionView** for lists of more than ~20 items (virtualized, high-performance). Never place CollectionView inside a StackLayout — it breaks virtualization.
+- Use **BindableLayout** (attached to StackLayout/FlexLayout) for small collections of ≤20 items where virtualization is not needed.
+- Never place **ScrollView** inside a StackLayout — it prevents proper scrolling. ScrollView must have a constrained parent (Grid, AbsoluteLayout, or root).
+- Prefer **Grid** over StackLayout for complex layouts. Use **VerticalStackLayout** / **HorizontalStackLayout** (not `StackLayout` with `Orientation`).
+- Prefer **Border** over Frame for containers with rounded corners or strokes.
+- Reference images as **PNG** in XAML/code (e.g. `<Image Source="logo.png" />`), even when the source asset is SVG. .NET MAUI converts SVGs to PNGs at build time.
+- For UI updates from background threads, prefer `BindableObject.Dispatcher` or inject `IDispatcher` via DI. Use `MainThread.BeginInvokeOnMainThread()` only as a fallback.
+
+## Getting started
+
+- [What is .NET MAUI](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/what-is-maui.md): Overview of the framework, architecture, and supported platforms
+- [Installation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/installation.md): How to install and configure .NET MAUI workloads
+- [Build your first app](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/first-app.md): Step-by-step guide to creating a .NET MAUI app
+- [Supported platforms](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/supported-platforms.md): Minimum OS versions for Android, iOS, macOS, and Windows
+- [Tutorial: Create a .NET MAUI app](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/tutorials/notes-app.md): End-to-end tutorial building a Notes app
+- [Tutorial: Upgrade with MVVM](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/tutorials/notes-mvvm.md): Refactor the Notes app using MVVM and dependency injection
+
+## XAML
+
+- [XAML overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/index.md): Introduction to XAML in .NET MAUI
+- [Essential XAML syntax](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/essential-syntax.md): Property elements, attached properties, and content properties
+- [Markup extensions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/markup-extensions.md): StaticResource, Binding, x:Static, and other extensions
+- [Data binding basics](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/data-binding-basics.md): How data binding works in XAML
+- [XAML and MVVM](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/mvvm.md): Using XAML with Model-View-ViewModel pattern
+- [XAML compilation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/xamlc.md): Compile XAML for faster startup and validation
+- [XAML Hot Reload](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/hot-reload.md): Live UI updates during debugging
+
+## Fundamentals
+
+- [App lifecycle](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/app-lifecycle.md): Application lifecycle events and platform-specific lifecycle mapping
+- [Single project](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/single-project.md): How .NET MAUI single-project architecture works with multi-targeting
+- [Dependency injection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/dependency-injection.md): Register and resolve services using the built-in DI container
+- [Data binding overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/index.md): How to connect UI to data sources
+- [Compiled bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/compiled-bindings.md): Critical for performance — use `x:DataType` for 8-20x faster bindings with compile-time validation
+- [Shell overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/index.md): URI-based navigation, flyout, and tab structure
+- [Shell navigation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/navigation.md): Route registration, navigation with parameters, and back navigation
+- [Gestures](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/gestures/tap.md): Tap, pan, pinch, swipe, drag-and-drop, and pointer gesture recognizers
+- [Behaviors](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/behaviors.md): Attach reusable behavior to controls without subclassing
+- [Triggers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/triggers.md): Respond to property changes and events declaratively in XAML
+- [Resource dictionaries](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/resource-dictionaries.md): Share styles, templates, and other resources
+- [Accessibility](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/accessibility.md): Make apps accessible with semantic properties and automation
+- [Localization](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/localization.md): Localize strings, images, and app names
+
+## User interface
+
+- [Handler architecture guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): Comprehensive, self-contained guide to the handler architecture — what handlers are, creating custom controls, customizing existing controls via Mapper, handler lifecycle, and common recipes
+- [Controls overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/index.md): Full list of built-in .NET MAUI controls
+- [Layouts overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/index.md): Grid, VerticalStackLayout, HorizontalStackLayout, FlexLayout, AbsoluteLayout, and custom layouts
+- [Grid](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/grid.md): Row and column layout with proportional, absolute, and auto sizing — preferred for complex layouts
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Comprehensive, self-contained guide to CollectionView — data binding, layouts (list/grid), selection, grouping, empty views, scrolling, SwipeView, and performance tips
+- [CollectionView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/index.md): High-performance virtualized list — the recommended control for data lists, replacing ListView
+- [Pages](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/pages/contentpage.md): ContentPage, FlyoutPage, NavigationPage, and TabbedPage
+- [Pop-ups](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/pop-ups.md): Display alerts, action sheets, and prompts
+- [Handlers overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/index.md): Architecture for mapping cross-platform controls to native views
+- [Styles](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/styles/xaml.md): Define and apply XAML styles to controls
+- [Theming](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/theming.md): Implement light/dark themes and dynamic theming
+- [Visual states](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/visual-states.md): Change control appearance based on state (Normal, Disabled, Focused, etc.)
+- [Fonts](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/fonts.md): Register and use custom fonts
+- [Graphics](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/graphics/index.md): Draw shapes, paths, and images using Microsoft.Maui.Graphics
+- [Animation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/animation/basic.md): Animate controls with built-in and custom animations
+
+## Hybrid and Blazor
+
+- [Hybrid apps overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/hybrid-apps/index.md): Combine native and web UI in a single app
+- [BlazorWebView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/blazorwebview.md): Host Blazor Razor components inside a native .NET MAUI app
+- [HybridWebView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/hybridwebview.md): Host custom web content with JS interop in a native app
+
+## Platform integration
+
+- [Platform integration overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/index.md): Access native platform APIs from shared code
+- [Invoke platform code](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/invoke-platform-code.md): Use partial classes and conditional compilation for platform-specific code
+- [Configure multi-targeting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/configure-multi-targeting.md): Set up platform-specific compilation
+- [Permissions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/permissions.md): Request and check runtime permissions
+- [Geolocation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/geolocation.md): Access device GPS location
+- [Device sensors](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/sensors.md): Accelerometer, barometer, compass, gyroscope, magnetometer, orientation
+- [File picker](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/file-picker.md): Let users select files from the device
+- [Photos and videos](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device-media/picker.md): Capture or pick photos and videos using the device camera and gallery
+- [Secure storage](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/secure-storage.md): Store key-value pairs securely using platform keystores
+- [Preferences](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/preferences.md): Simple key-value app settings stored natively
+- [Connectivity](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/networking.md): Monitor network state and connection type
+- [Web authenticator](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/authentication.md): Browser-based authentication flows (OAuth, OIDC)
+- [Native embedding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/native-embedding.md): Embed .NET MAUI controls inside native Android, iOS, or Windows apps
+
+## Data and cloud services
+
+- [Consume REST web services](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/rest.md): Use HttpClient to call REST APIs
+- [Local SQLite databases](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/database-sqlite.md): Store data locally with SQLite
+- [.NET Aspire integration](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/aspire-integration.md): Connect .NET MAUI apps to .NET Aspire service defaults
+
+## Deployment and testing
+
+- [Deployment overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/index.md): Publishing and distributing .NET MAUI apps
+- [Performance best practices guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Comprehensive, self-contained guide to .NET MAUI performance — compiled bindings, control selection, layout optimization, images, startup, async/threading, memory management, trimming, and AOT
+- [Improve app performance](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance.md): Startup tracing, compiled bindings, trimming, and profiling tips
+- [Trimming](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/trimming.md): Reduce app size by removing unused code
+- [Native AOT](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/nativeaot.md): Ahead-of-time compilation for faster startup and smaller footprint
+- [Unit testing](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/unit-testing.md): Strategies for testing .NET MAUI apps
+- [Publish for Android](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/android/deployment/index.md): Publish to Google Play or for ad-hoc distribution
+- [Publish for iOS](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/ios/deployment/index.md): Publish to the App Store, TestFlight, or ad-hoc
+- [Publish for Mac Catalyst](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/mac-catalyst/deployment/index.md): Publish for the Mac App Store or direct distribution
+- [Publish for Windows](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/windows/deployment/overview.md): Publish packaged or unpackaged Windows apps
+
+## Migration from Xamarin
+
+- [Migration overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/migration/index.md): Guidance for upgrading Xamarin.Forms and Xamarin native projects to .NET MAUI
+- [Upgrade with .NET Upgrade Assistant](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/migration/upgrade-assistant.md): Automated migration tooling
+- [Custom renderers to handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/migration/renderer-to-handler.md): Migrate Xamarin.Forms custom renderers to .NET MAUI handlers
+
+## What's new
+
+- [What's new in .NET MAUI for .NET 10](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-10.md): Latest features, improvements, and breaking changes in .NET 10
+- [What's new in .NET MAUI for .NET 9](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-9.md): Features and changes introduced in .NET 9
+
+## Optional
+
+- [Bindable properties](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/bindable-properties.md): Create custom bindable properties for controls
+- [Attached properties](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/attached-properties.md): Define properties that can be set on any object
+- [Control templates](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/controltemplate.md): Define reusable visual structures for custom controls
+- [Data templates](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/datatemplate.md): Define the visual representation of data in lists and collections
+- [Create custom controls](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/create.md): Step-by-step guide to building custom controls with handlers (detailed reference)
+- [Customize controls](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/customize.md): Modify existing control behavior per platform using handler mappers (detailed reference)
+- [XAML namespaces](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/namespaces/index.md): Custom namespace schemas and prefixes
+- [XAML generics](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/generics.md): Use generic types in XAML
+- [CSS styling](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/styles/css.md): Style .NET MAUI apps using a subset of CSS
+- [Shapes](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/shapes/index.md): Draw ellipses, rectangles, polygons, paths, and polylines
+- [CarouselView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/carouselview/index.md): Horizontally scrollable item view with snap points
+- [App icons](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/images/app-icons.md): Configure app icons across platforms from a single SVG source
+- [Splash screen](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/images/splashscreen.md): Configure splash screens across platforms
+- [Safe area layout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/safe-area.md): Handle device notches and system UI overlaps
+- [Keyboard accelerators](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/keyboard-accelerators.md): Define keyboard shortcuts for menu items
+- [Troubleshooting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/troubleshooting.md): Common issues and solutions
