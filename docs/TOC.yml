@@ -975,6 +975,8 @@
                   href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
+            - name: Creating Bindings with Objective Sharpie
+              href: ios/objective-sharpie/index.md
             - name: Information property list
               href: macios/info-plist.md
             - name: Linking
