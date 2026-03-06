@@ -991,6 +991,10 @@
                   href: ios/device-provisioning/automatic-provisioning.md
                 - name: Manual provisioning
                   href: ios/device-provisioning/manual-provisioning.md
+            - name: Home screen widgets
+              href: ios/ios-widgets.md
+            - name: App Intents for Siri and Shortcuts
+              href: ios/app-intents.md
             - name: Universal links
               href: macios/universal-links.md
             - name: Syncing with Xcode
