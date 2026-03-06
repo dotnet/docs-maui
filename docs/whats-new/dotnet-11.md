@@ -8,6 +8,7 @@ ms.date: 1/27/2026
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
 
+<!-- markdownlint-disable-next-line MD042 -->
 - [.NET MAUI in .NET 11 Preview 1]()
 
 > [!IMPORTANT]
@@ -19,7 +20,6 @@ In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 This is a description of the feature and essential code snippets to adopt it.
 
-
 ## Controls
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
@@ -27,7 +27,6 @@ This is a description of the feature and essential code snippets to adopt it.
 ### A specific control
 
 What was added, removed, changed.
-
 
 ## Platform features
 
