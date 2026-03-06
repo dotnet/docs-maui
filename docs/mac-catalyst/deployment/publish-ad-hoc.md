@@ -251,6 +251,12 @@ The *.pkg* can be distributed to users on registered devices, where it can be ru
 
 For information about safely opening apps on a Mac, see [Open apps safely on your Mac](https://support.apple.com/HT202491) on support.apple.com.
 
+> [!WARNING]
+> Sometimes macOS will update any existing app when installing a *.pkg*, which might not be the app in the */Applications* directory.
+> This means that if you try to test a *.pkg* locally, macOS might update the existing app in the project's *bin* directory, instead of
+> the app in the */Applications* directory. The solution is to delete the project's *bin* directory before installing any *.pkg* files
+> (after copying the *.pkg* elsewhere).
+
 ## See also
 
 - [Distributing your app to registered devices](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices) on developer.apple.com
