@@ -176,7 +176,7 @@ The following table summarizes the platform-specific behavior of the `LongPressG
 
 ::: moniker-end
 
-::: moniker range="<net-maui-11.0"
+::: moniker range="<=net-maui-10.0"
 
 The long press gesture recognizer is available starting in .NET MAUI 11. For earlier versions, consider using a <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> with custom timing logic, or implementing a platform-specific effect.
 
