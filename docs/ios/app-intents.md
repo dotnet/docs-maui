@@ -8,7 +8,9 @@ ms.date: 03/06/2026
 
 Apple App Intents let your .NET Multi-platform App UI (.NET MAUI) app expose actions to Siri, the Shortcuts app, and Spotlight. Users can invoke these actions through voice commands ("Hey Siri, create a task in my app"), by building custom automations in the Shortcuts app, or through proactive suggestions that iOS surfaces based on usage patterns.
 
-Because iOS extracts intent metadata at compile time from Swift binaries, App Intents can't be defined purely in C#. The metadata extraction happens during the build process, before the app ever runs, so iOS needs to find intent definitions in compiled Swift code. This guide uses a three-project architecture that keeps Swift as a thin declaration layer while all business logic stays in C#.
+This guide is based on the [Maui.Apple.PlatformFeature.Samples](https://github.com/Redth/Maui.Apple.PlatformFeature.Samples) project on GitHub.
+
+Because iOS extracts intent metadata at compile time from Swift binaries, App Intents can't be defined purely in C#. Apple's App Intents framework extracts metadata (parameter definitions, descriptions, Siri phrases) from compiled Swift code at build time, before your app runs. Because .NET compiles to IL rather than native Swift binaries, intent declarations must be written in Swift. This guide uses a three-project architecture that keeps Swift as a thin declaration layer while all business logic stays in C#.
 
 ## Architecture
 
@@ -25,6 +27,9 @@ The Swift framework is deliberately lightweight. It defines *what* actions are a
 > [!NOTE]
 > This pattern is necessary because Apple's App Intents framework relies on compile-time metadata extraction from Swift binaries. The metadata tells iOS what actions are available, their parameters, and how to present them in Siri and Shortcuts — all without running the app.
 
+> [!TIP]
+> For a minimum viable implementation, you need: one Swift framework with a single AppIntent and bridge protocol, a binding library with `ApiDefinition.cs`, and the MAUI app implementing the bridge. Start with one intent and expand from there.
+
 ## Prerequisites
 
 Before you begin, make sure you have:
@@ -34,9 +39,12 @@ Before you begin, make sure you have:
 - An iOS 17+ device or simulator.
 - An Apple Developer account (required for on-device Siri voice testing).
 
+> [!NOTE]
+> Enable the 'Siri' capability for your app target in Xcode or through your provisioning profile. For more information about iOS capabilities, see [iOS capabilities](capabilities.md).
+
 ## Create the Swift framework
 
-Create an Xcode framework project that contains your intent definitions and the bridge protocol. A typical structure looks like this:
+Create an Xcode framework project that contains your intent definitions and the bridge protocol. In Xcode, create a new iOS Framework project (File > New > Project > iOS > Framework). Set the deployment target to iOS 17.0 and add the Swift source files described below. A typical structure looks like this:
 
 ```text
 YourApp/
@@ -89,6 +97,9 @@ import Foundation
 
 The `provider` property is `weak` to avoid retain cycles. Your C# code sets this property at app startup, and all Swift intent implementations call through it to reach your .NET business logic.
 
+> [!NOTE]
+> The `@objc` attribute makes Swift declarations visible to the Objective-C runtime, which is how .NET iOS bindings communicate with Swift code. Without `@objc`, these types are invisible to C#. Every method, property, and class that crosses the Swift-to-C# boundary must be marked `@objc`.
+
 ### Bridge data types
 
 Data that crosses the Swift-to-C# boundary must use `@objc`-compatible types. Define a data transfer object (DTO) class for each entity your intents work with:
@@ -123,7 +134,7 @@ import Foundation
 ```
 
 > [!IMPORTANT]
-> When passing optional integers across the bridge, use sentinel values (such as `-1` for "no value") instead of Swift optionals. The `@objc` bridge doesn't support optional value types like `Int?`. Reserve Swift optionals for reference types like `Date?` and `String?`, which map to nullable Objective-C types.
+> When passing optional integers across the bridge, use sentinel values (such as `-1` for "no value") instead of Swift optionals. The Objective-C bridge doesn't support optional value types. Use sentinel values like `-1` for "no value" because Objective-C can only represent optionals for reference types, not value types like integers. Reserve Swift optionals for reference types like `Date?` and `String?`, which map to nullable Objective-C types.
 
 ### Define App Enums
 
@@ -347,24 +358,26 @@ import AppIntents
 
 struct TaskAppShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: CreateTaskIntent(),
-            phrases: [
-                "Create a task in \(.applicationName)",
-                "Add a new task in \(.applicationName)"
-            ],
-            shortTitle: "Create Task",
-            systemImageName: "plus.circle"
-        )
-        AppShortcut(
-            intent: CompleteTaskIntent(),
-            phrases: [
-                "Complete a task in \(.applicationName)",
-                "Mark task done in \(.applicationName)"
-            ],
-            shortTitle: "Complete Task",
-            systemImageName: "checkmark.circle"
-        )
+        return [
+            AppShortcut(
+                intent: CreateTaskIntent(),
+                phrases: [
+                    "Create a task in \(.applicationName)",
+                    "Add a new task in \(.applicationName)"
+                ],
+                shortTitle: "Create Task",
+                systemImageName: "plus.circle"
+            ),
+            AppShortcut(
+                intent: CompleteTaskIntent(),
+                phrases: [
+                    "Complete a task in \(.applicationName)",
+                    "Mark task done in \(.applicationName)"
+                ],
+                shortTitle: "Complete Task",
+                systemImageName: "checkmark.circle"
+            )
+        ]
     }
 }
 ```
@@ -394,8 +407,10 @@ Create a .NET iOS binding library project with the following `.csproj`:
   </ItemGroup>
 
   <ItemGroup>
-    <XcodeProject Include="..\YourSwiftFramework\YourSwiftFramework.xcodeproj">
+    <XcodeProject Include="../YourSwiftFramework/YourSwiftFramework.xcodeproj">
       <SchemeName>YourSwiftFramework</SchemeName>
+      <!-- The scheme name must exactly match the Xcode scheme (case-sensitive).
+           By default, Xcode uses the project name as the scheme name. -->
       <ForceLoad>true</ForceLoad>
       <SmartLink>false</SmartLink>
     </XcodeProject>
@@ -409,10 +424,6 @@ Create a .NET iOS binding library project with the following `.csproj`:
       <_MetadataSrc>$(_XcArchivePath)/Metadata.appintents</_MetadataSrc>
       <_MetadataDst>$(IntermediateOutputPath)Metadata.appintents</_MetadataDst>
     </PropertyGroup>
-    <Copy
-      SourceFiles="@(_MetadataFiles)"
-      DestinationFolder="$(_MetadataDst)/%(RecursiveDir)"
-      Condition="Exists('$(_MetadataSrc)')" />
     <ItemGroup Condition="Exists('$(_MetadataSrc)')">
       <_MetadataFiles Include="$(_MetadataSrc)/**/*" />
     </ItemGroup>
@@ -424,7 +435,7 @@ Create a .NET iOS binding library project with the following `.csproj`:
 </Project>
 ```
 
-The `XcodeProject` item tells the .NET build system to compile the Swift project into an xcframework automatically. The `ForceLoad` and `SmartLink` settings ensure that all symbols from the Swift framework are available at runtime, which is required because the App Intents framework uses runtime discovery.
+The `XcodeProject` item tells the .NET build system to compile the Swift project into an xcframework automatically. The `XcodeProject` item type is provided by the .NET for iOS workload and automatically builds Swift frameworks into xcframeworks during `dotnet build`. The `ForceLoad` setting ensures all Swift symbols are loaded at runtime, and `SmartLink` is disabled to prevent the linker from stripping intent types that appear unused from the C# perspective. Both settings are required because the App Intents framework uses runtime discovery to find intent types.
 
 The `ExtractAppIntentsMetadata` target copies the `Metadata.appintents` bundle from the xcarchive output into the intermediate output path, where the MAUI app can pick it up.
 
@@ -585,7 +596,51 @@ interface IntentDonationBridge
 }
 ```
 
-## Implement the bridge in C\#
+## Implement the bridge in C# <!-- markdownlint-disable-line MD020 -->
+
+The C# side of the bridge needs domain model types and a service interface that the bridge provider delegates to.
+
+Define the enums that match the Swift `AppEnum` raw values:
+
+```csharp
+public enum TaskPriorityLevel { Low = 0, Medium = 1, High = 2, Urgent = 3 }
+public enum TaskCategoryType { Personal = 0, Work = 1, Shopping = 2, Health = 3, Other = 4 }
+```
+
+Define the domain model:
+
+```csharp
+public class TaskItem
+{
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Title { get; set; } = string.Empty;
+    public bool IsCompleted { get; set; }
+    public TaskPriorityLevel Priority { get; set; }
+    public TaskCategoryType Category { get; set; }
+    public DateTime? DueDate { get; set; }
+    public int? EstimatedMinutes { get; set; }
+    public string? Notes { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+```
+
+Define the service interface that the bridge provider delegates to:
+
+```csharp
+public interface ITaskService
+{
+    IEnumerable<TaskItem> GetAll();
+    TaskItem? GetById(string id);
+    TaskItem Create(string title, TaskPriorityLevel priority,
+        TaskCategoryType category, DateTime? dueDate,
+        int? estimatedMinutes, string? notes);
+    bool Complete(string id);
+    IEnumerable<TaskItem> Search(string query);
+    IEnumerable<TaskItem> GetFiltered(TaskCategoryType? category,
+        TaskPriorityLevel? priority, bool showCompleted);
+    bool SetDueDate(string id, DateTime date);
+}
+```
 
 ### Bridge provider
 
@@ -593,6 +648,7 @@ Create a class in your MAUI app that inherits from the generated `TaskDataProvid
 
 ```csharp
 using Foundation;
+using System.Linq;
 using YourBindingLibrary;
 
 namespace YourApp.Platforms.iOS;
@@ -625,10 +681,10 @@ public class AppIntentsBridgeProvider : TaskDataProvider
     {
         var newTask = _taskService.Create(
             title,
-            (TaskPriorityEnum)(int)priorityRawValue,
-            (TaskCategoryEnum)(int)categoryRawValue,
-            dueDate is not null
-                ? (DateTime)dueDate
+            (TaskPriorityLevel)(int)priorityRawValue,
+            (TaskCategoryType)(int)categoryRawValue,
+            dueDate is NSDate d
+                ? (DateTime)(DateTimeOffset)d
                 : null,
             (int)estimatedMinutes >= 0
                 ? (int)estimatedMinutes
@@ -671,7 +727,7 @@ public static class BridgeExtensions
             priorityRawValue: (nint)(int)task.Priority,
             categoryRawValue: (nint)(int)task.Category,
             dueDate: task.DueDate.HasValue
-                ? (NSDate)task.DueDate.Value
+                ? (NSDate)(DateTimeOffset)task.DueDate.Value
                 : null,
             estimatedMinutes: task.EstimatedMinutes.HasValue
                 ? (nint)task.EstimatedMinutes.Value
@@ -727,6 +783,15 @@ public class AppDelegate : MauiUIApplicationDelegate
 }
 ```
 
+Register `ITaskService` in your `MauiProgram.cs` so the bridge provider can resolve it:
+
+```csharp
+builder.Services.AddSingleton<ITaskService, TaskService>();
+```
+
+> [!NOTE]
+> You must implement the `TaskService` class based on the `ITaskService` interface defined earlier. This class contains your app's business logic for managing tasks (for example, backed by a database or in-memory collection).
+
 ### Donate intents from your UI
 
 When users perform actions in your app's UI, donate the corresponding intent so iOS can learn patterns and suggest shortcuts:
@@ -745,14 +810,19 @@ private void OnTaskCreated(string title, int priority, int category)
 
 The MAUI app's `.csproj` must include a target that copies the `Metadata.appintents` bundle from the binding library into the final app bundle. Without this metadata, iOS doesn't know your intents exist.
 
+Your MAUI project must also have a `<ProjectReference>` to the binding library project:
+
+```xml
+<ProjectReference Include="../YourBindingLibrary/YourBindingLibrary.csproj" />
+```
+
 Add this target to your MAUI app's `.csproj`:
 
 ```xml
 <Target Name="CopyAppIntentsMetadata" AfterTargets="_CopyResourcesToBundle"
         Condition="$(TargetFramework.Contains('-ios'))">
   <PropertyGroup>
-    <_MetadataSrc>$(MSBuildProjectDirectory)\..\YourBindingLibrary\
-$(IntermediateOutputPath)Metadata.appintents</_MetadataSrc>
+    <_MetadataSrc>$(MSBuildProjectDirectory)/../YourBindingLibrary/$(IntermediateOutputPath)Metadata.appintents</_MetadataSrc>
     <_MetadataDst>$(_AppBundlePath)/Metadata.appintents/</_MetadataDst>
   </PropertyGroup>
   <ItemGroup>
@@ -831,3 +901,5 @@ On a physical device with an Apple Developer account:
 - [Apple App Intents documentation](https://developer.apple.com/documentation/appintents)
 - [Apple Shortcuts documentation](https://developer.apple.com/documentation/appintents/app-shortcuts)
 - [Apple SiriKit documentation](https://developer.apple.com/documentation/sirikit)
+- [iOS entitlements](entitlements.md)
+- [iOS capabilities](capabilities.md)

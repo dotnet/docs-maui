@@ -8,6 +8,8 @@ ms.date: 03/06/2026
 
 iOS home screen widgets let your .NET Multi-platform App UI (.NET MAUI) app display glanceable content and interactive controls directly on the user's home screen. Because Apple's WidgetKit framework requires SwiftUI, widgets are built as a separate Xcode project that's embedded into your .NET MAUI app at build time. The .NET MAUI app and the widget extension communicate through JSON files stored in an App Group shared container.
 
+This guide is based on the [Maui.Apple.PlatformFeature.Samples](https://github.com/Redth/Maui.Apple.PlatformFeature.Samples) project on GitHub.
+
 This guide walks you through creating a widget extension, wiring up shared data, handling deep links, and configuring your project to build and embed the extension automatically.
 
 ## Architecture
@@ -31,7 +33,7 @@ Before you begin, make sure you have:
 
 - macOS with Xcode 16 or later installed.
 - .NET 10 SDK or later with the .NET MAUI workload.
-- An iOS 17+ device or simulator.
+- An iOS 14+ device or simulator. Widgets require iOS 14 or later; interactive widget buttons (AppIntents) require iOS 17 or later.
 - [xcodegen](https://github.com/yonaskolb/XcodeGen) (optional). Generates an Xcode project from a YAML specification, which avoids checking in `.xcodeproj` files.
 
 ## Create the widget extension
@@ -59,9 +61,12 @@ YourApp/
     └── SimpleWidgetExtension.entitlements
 ```
 
+> [!NOTE]
+> Creating a `project.yml` for xcodegen is optional. You can also create the Xcode project manually through Xcode (File > New > Project > iOS > Framework).
+
 The following sections describe each Swift file and its role.
 
-### Settings.swift – constants that must match C\#
+### Settings.swift – constants that must match C# <!-- markdownlint-disable-line MD020 -->
 
 Define constants for the App Group identifier, file names, widget kind, and URL scheme. These values must exactly match the corresponding C# constants in your .NET MAUI project:
 
@@ -153,7 +158,7 @@ struct SharedStorage {
 ```
 
 > [!IMPORTANT]
-> Use file-based I/O instead of `UserDefaults(suiteName:)`. Although `UserDefaults` with a suite name is commonly recommended, the suite name can resolve to different `.plist` files for the app process and the extension process on some configurations. File-based I/O through the App Group container directory is more reliable.
+> Use file-based I/O instead of `UserDefaults(suiteName:)`. Although `UserDefaults` with a suite name is commonly recommended, the suite name can resolve to different `.plist` files for the app process and the extension process on some configurations. In certain iOS configurations, `UserDefaults(suiteName:)` can resolve to different .plist paths for the app process vs. the extension process, causing data to silently not synchronize. File-based I/O through the App Group container directory is more reliable.
 
 The `getBestCounter` method compares timestamps from both files to determine which counter value is most recent. This avoids race conditions when the app and widget both update the counter.
 
@@ -241,7 +246,7 @@ struct SimpleWidgetView: View {
 ```
 
 > [!WARNING]
-> Do not wrap a `Button(intent:)` inside a `widgetURL()` modifier or a `Link`. The `widgetURL` and `Link` modifiers intercept all taps in their area, which prevents the button's intent from firing. Keep buttons outside of any link containers.
+> Do not wrap a `Button(intent:)` inside a `widgetURL()` modifier or a `Link`. Both `widgetURL` and `Link` intercept all taps in their view hierarchy, which prevents the button's intent from firing. If your layout uses `widgetURL` to make the entire widget tappable, place `Button(intent:)` controls outside that container. Similarly, do not nest a `Button(intent:)` inside a `Link` view.
 
 ### Interactive buttons with AppIntents
 
@@ -277,6 +282,9 @@ struct IncrementCounterIntent: AppIntent {
     }
 }
 ```
+
+> [!TIP]
+> For a read-only widget without interactive buttons, you can omit the AppIntents, `Button(intent:)`, and the widget-to-app file. Only implement `SharedStorage.readAppData()`, the timeline `Provider`, a `SimpleWidgetView` with `Link` for taps, and `SendDataToWidget` + `RefreshWidget` in C#.
 
 ### Widget bundle entry point
 
@@ -314,7 +322,7 @@ struct SimpleWidget: Widget {
 
 ## Set up the .NET MAUI project
 
-### Shared data contract (C\#)
+### Shared data contract (C#) <!-- markdownlint-disable-line MD020 -->
 
 Create a C# record that mirrors the Swift `WidgetData` struct. Use `JsonPropertyName` attributes to match the Swift property names exactly:
 
@@ -432,6 +440,7 @@ public class AppleWidgetDataService : IWidgetDataService
 
     public void RefreshWidget()
     {
+        // From the WidgetKit.WidgetCenterProxy NuGet package
         WidgetCenterProxy.ReloadTimelines(WidgetConstants.WidgetKind);
     }
 
@@ -523,7 +532,22 @@ public class AppDelegate : MauiUIApplicationDelegate
 }
 ```
 
-In your `App` class, expose a method that navigates or processes the URL:
+> [!NOTE]
+> The URL scheme must be registered in your app's `Info.plist` for iOS to route widget taps to your app:
+>
+> ```xml
+> <key>CFBundleURLTypes</key>
+> <array>
+>     <dict>
+>         <key>CFBundleURLSchemes</key>
+>         <array>
+>             <string>yourapp</string>
+>         </array>
+>     </dict>
+> </array>
+> ```
+
+In your `App.xaml.cs`, add the following method:
 
 ```csharp
 public void HandleWidgetUrl(string url)
@@ -542,6 +566,8 @@ public void HandleWidgetUrl(string url)
 After a user action (for example, tapping a button on `MainPage`), write data to the shared container and tell the widget to refresh:
 
 ```csharp
+private int _currentCounter = 0;
+
 private void OnSendToWidgetClicked(object sender, EventArgs e)
 {
     var service = App.Current?.Handler?.MauiContext?
@@ -589,6 +615,9 @@ private void ReadWidgetData()
 }
 ```
 
+> [!NOTE]
+> The preceding code assumes `Label` controls named `CounterLabel` and `StatusLabel` are defined in your XAML.
+
 ## Configure entitlements
 
 Both the .NET MAUI app and the widget extension must declare the same App Group in their entitlements.
@@ -627,6 +656,11 @@ Create `widget/SimpleWidgetExtension.entitlements` for the widget extension:
 
 > [!IMPORTANT]
 > The App Group identifier (for example, `group.com.yourapp`) must be identical in both entitlements files. The widget extension's bundle identifier must also be a child of the app's bundle identifier. For example, if the app is `com.yourcompany.yourapp`, the widget must be something like `com.yourcompany.yourapp.widget`.
+
+> [!NOTE]
+> You must also create the App Group identifier in the [Apple Developer portal](https://developer.apple.com/account/resources/identifiers/list/applicationGroup) and add it to the provisioning profiles for both the app and the widget extension.
+
+For more information about iOS entitlements, see [iOS entitlements](entitlements.md). For information about capabilities, see [iOS capabilities](capabilities.md).
 
 ## Configure the project file
 
@@ -713,6 +747,9 @@ Add an MSBuild target that compiles the Xcode project before the .NET MAUI build
 > [!NOTE]
 > Setting `CODE_SIGNING_ALLOWED=NO` in `xcodebuild` lets the .NET build system handle all code signing. The widget extension is re-signed as part of the .NET MAUI app's signing step.
 
+> [!NOTE]
+> On CI agents (GitHub Actions, Azure DevOps), ensure `xcodebuild` is available by installing Xcode. Optionally set `DEVELOPER_DIR` to pin the Xcode version. The `BuildWidgetExtension` target runs automatically during `dotnet build` on any macOS agent with Xcode installed.
+
 ## Build and test
 
 Build the app from the command line:
@@ -722,7 +759,7 @@ dotnet build YourApp.csproj -f net10.0-ios -r iossimulator-arm64 \
     -p:CodesignRequireProvisioningProfile=false
 ```
 
-For device builds, use `ios-arm64` as the runtime identifier and supply your provisioning profile.
+For device builds, use `ios-arm64` as the runtime identifier and supply your provisioning profile. Pass signing properties: `-p:CodesignKey="Apple Distribution: ..." -p:CodesignProvision="YourProfileName"`. For more information, see [iOS device provisioning](device-provisioning/index.md).
 
 ### Simulator testing
 
@@ -735,6 +772,9 @@ codesign -v --force --sign - \
     "$APP_PATH"
 ```
 
+> [!NOTE]
+> The ad-hoc signing identity (`-`) is for simulator builds only. Device, TestFlight, and App Store builds require a valid signing identity configured through your provisioning profile.
+
 After deploying, long-press the home screen and tap **+** to add a widget. Your widget appears in the gallery under the app name.
 
 > [!TIP]
@@ -746,7 +786,7 @@ After deploying, long-press the home screen and tap **+** to add a widget. Your 
 |---|---|
 | Widget doesn't appear in the widget gallery. | Verify the widget extension's bundle identifier is a child of the app's bundle identifier (for example, `com.yourcompany.yourapp.SimpleWidgetExtension`). |
 | Data isn't syncing between app and widget. | Confirm the App Group identifier matches exactly in both the app's and the widget extension's entitlements files. |
-| `UserDefaults(suiteName:)` returns stale or nil data. | Switch to file-based I/O through the App Group container directory. See the [SharedStorage.swift](#sharedstorageeswift--file-io-via-app-group) section. |
+| `UserDefaults(suiteName:)` returns stale or nil data. | Switch to file-based I/O through the App Group container directory. See the [SharedStorage.swift](#sharedstorageswift--file-io-via-app-group) section. |
 | Widget buttons don't respond to taps. | Don't wrap `Button(intent:)` inside a `widgetURL()` modifier or `Link`. These intercept all taps and prevent the intent from running. |
 | App Group doesn't work on simulator after build. | Re-sign the app with entitlements after building. See [Simulator testing](#simulator-testing). |
 | Build fails with entitlements parsing error. | Ensure your `Entitlements.plist` files use LF line endings, not CRLF. Some editors and source control systems convert line endings automatically. |
