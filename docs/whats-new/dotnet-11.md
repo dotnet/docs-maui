@@ -1,12 +1,12 @@
 ---
 title: What's new in .NET MAUI for .NET 11
-description: Learn about the new features introduced in .NET MAUI for .NET 10.
+description: Learn about the new features introduced in .NET MAUI for .NET 11.
 ms.date: 1/27/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
 
-The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve product quality. For information about what's new in each .NET MAUI in .NET 10 release, see the following release notes:
+The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve product quality. For information about what's new in each .NET MAUI in .NET 11 release, see the following release notes:
 
 <!-- markdownlint-disable-next-line MD042 -->
 - [.NET MAUI in .NET 11 Preview 1]()
@@ -74,9 +74,9 @@ So, for multi-targeted projects like .NET MAUI, it will:
 
 Console output of your application should appear directly in the terminal, and Ctrl+C will terminate the application.
 
-![GIF of `dotnet run` selections on Windows for Android](media/dotnet-11/dotnet-run-android-preview1.gif)
+![GIF of `dotnet run` selections on Windows for Android](media/dotnet-11/dotnet-run-android-preview-1.gif)
 
-![GIF of `dotnet run` selections on macOS for iOS](media/dotnet-11/dotnet-run-ios-preview1.gif)
+![GIF of `dotnet run` selections on macOS for iOS](media/dotnet-11/dotnet-run-ios-preview-1.gif)
 
 ## .NET for iOS
 
