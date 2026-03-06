@@ -156,14 +156,10 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following properti
 - `Pins`, of type `IList<Pin>`, represents the list of pins on the map.
 - `VisibleRegion`, of type `MapSpan`, returns the currently displayed region of the map.
 
-::: moniker range=">=net-maui-11.0"
-
 - `IsClusteringEnabled`, of type `bool`, determines whether nearby pins are automatically grouped into clusters. Default is `false`.
 - `LastUserLocation`, of type `Location`, returns the most recent user location, or `null` if not yet available. Requires `IsShowingUser` to be `true`.
 - `MapStyle`, of type `string`, accepts a JSON style string for customizing the visual appearance of the map. Android only.
 - `Region`, of type `MapSpan`, sets the initial map region declaratively. Supports XAML type conversion with the format `"latitude,longitude,latitudeDegrees,longitudeDegrees"`.
-
-::: moniker-end
 
 These properties, with the exception of the `MapElements`, `Pins`, and `VisibleRegion` properties, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which mean they can be targets of data bindings.
 
@@ -277,8 +273,6 @@ The result is that when the map is displayed, it's centered on a specific locati
 
 :::image type="content" source="media/map/map-region.png" alt-text="Screenshot of map control with specified location.":::
 
-::: moniker range=">=net-maui-11.0"
-
 In .NET 11, you can use the `Region` bindable property with XAML type converters for a more concise syntax:
 
 ```xaml
@@ -293,8 +287,6 @@ The `MapSpanTypeConverter` parses the string as `"latitude,longitude,latitudeDeg
 
 These type converters eliminate the need for verbose `x:Arguments` markup when defining map regions and pin locations in XAML.
 
-::: moniker-end
-
 ### Create a MapSpan object
 
 There are a number of approaches for creating `MapSpan` objects. A common approach is supply the required arguments to the `MapSpan` constructor. These are a latitude and longitude represented by a `Location` object, and `double` values that represent the degrees of latitude and longitude that are spanned by the `MapSpan`. For information about the `Location` class, see [Location and distance](#location-and-distance).
@@ -304,8 +296,6 @@ Alternatively, there are three methods in the `MapSpan` class that return new `M
 1. `ClampLatitude` returns a `MapSpan` with the same `LongitudeDegrees` as the method's class instance, and a radius defined by its `north` and `south` arguments.
 1. `FromCenterAndRadius` returns a `MapSpan` that is defined by its `Location` and `Distance` arguments.
 1. `WithZoom` returns a `MapSpan` with the same center as the method's class instance, but with a radius multiplied by its `double` argument.
-
-::: moniker range=">=net-maui-11.0"
 
 In .NET 11, the `MapSpan` class also includes a `FromLocations` method that creates a `MapSpan` that encompasses all the specified locations with appropriate padding:
 
@@ -321,8 +311,6 @@ map.MoveToRegion(span);
 ```
 
 This is useful for implementing "best-fit zoom" scenarios where the map should display all pins or points of interest. The method handles edge cases such as antimeridian crossing.
-
-::: moniker-end
 
 For information about the `Distance` struct, see [Location and distance](#location-and-distance).
 
@@ -348,8 +336,6 @@ MapSpan mapSpan = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(
 map.MoveToRegion(mapSpan);
 ```
 
-::: moniker range=">=net-maui-11.0"
-
 In .NET 11, an overload of `MoveToRegion` accepts a `bool animated` parameter to control whether the map transition is animated:
 
 ```csharp
@@ -361,8 +347,6 @@ map.MoveToRegion(mapSpan, animated: true);
 ```
 
 This is useful for setting an initial map region without the default fly-in animation.
-
-::: moniker-end
 
 ### Zoom the map
 
@@ -460,8 +444,6 @@ Map map = new Map
 > [!IMPORTANT]
 > Accessing the user's location requires location permissions to have been granted to the application. For more information, see [Platform configuration](#platform-configuration).
 
-::: moniker range=">=net-maui-11.0"
-
 In .NET 11, when `IsShowingUser` is `true`, the map provides additional user location capabilities:
 
 - The `UserLocationChanged` event fires whenever the user's location is updated on the map. The `UserLocationChangedEventArgs` contains a `Location` property with the updated coordinates.
@@ -482,8 +464,6 @@ map.UserLocationChanged += (sender, args) =>
 // Access the last known user location at any time
 Location? lastLocation = map.LastUserLocation;
 ```
-
-::: moniker-end
 
 #### Map clicks
 
@@ -510,8 +490,6 @@ The equivalent C# code is:
 Map map = new Map();
 map.MapClicked += OnMapClicked;
 ```
-
-::: moniker range=">=net-maui-11.0"
 
 In .NET 11, the <xref:Microsoft.Maui.Controls.Maps.Map> class defines additional interaction events:
 
@@ -542,8 +520,6 @@ map.MapElementClick += (sender, args) =>
     System.Diagnostics.Debug.WriteLine($"Tapped a {clickedElement.GetType().Name}");
 };
 ```
-
-::: moniker-end
 
 ## Location and distance
 
@@ -615,12 +591,8 @@ The `Pin` class has the following properties:
 - `Location`, of type `Location`, which represents the latitude and longitude of the pin.
 - `Type`, of type `PinType`, which represents the type of pin.
 
-::: moniker range=">=net-maui-11.0"
-
 - `ImageSource`, of type `ImageSource`, which sets a custom image for the pin marker.
 - `ClusteringIdentifier`, of type `string`, which groups pins for clustering. Default is `"maui_default_cluster"`.
-
-::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means a `Pin` can be the target of data bindings. For more information about data binding `Pin` objects, see [Display a pin collection](#display-a-pin-collection).
 
@@ -788,8 +760,6 @@ wharfPin.InfoWindowClicked += async (s, args) =>
 
 The `PinClickedEventArgs` object that accompanies both events has a single `HideInfoWindow` property, of type `bool`. When this property is set to `true` inside an event handler, the information window will be hidden.
 
-::: moniker range=">=net-maui-11.0"
-
 #### Show and hide info windows programmatically
 
 In .NET 11, the `Pin` class includes `ShowInfoWindow` and `HideInfoWindow` methods for programmatic control of pin info windows:
@@ -804,8 +774,6 @@ pin.HideInfoWindow();
 
 The pin must be added to a map before calling these methods. This is useful for scenarios where you want to automatically display a pin's info window without requiring the user to tap on it.
 
-::: moniker-end
-
 ### Pin types
 
 `Pin` objects include a `Type` property, of type `PinType`, which represents the type of pin. The `PinType` enumeration defines the following members:
@@ -816,8 +784,6 @@ The pin must be added to a map before calling these methods. This is useful for 
 - `SearchResult`, represents a pin for a search result.
 
 However, setting the `Pin.Type` property to any `PinType` member does not change the appearance of the rendered pin. Instead, you must customize the `Pin` handler to customize pin appearance. For more information about handler customization, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
-
-::: moniker range=">=net-maui-11.0"
 
 ### Custom pin icons
 
@@ -877,8 +843,6 @@ map.ClusterClicked += (sender, args) =>
 
 > [!NOTE]
 > Pin clustering is supported on iOS, Mac Catalyst, and Android.
-
-::: moniker-end
 
 ### Display a pin collection
 
@@ -997,8 +961,6 @@ The `Polygon`, `Polyline`, and `Circle` classes derive from the `MapElement` cla
 - `StrokeColor` is a <xref:Microsoft.Maui.Graphics.Color> object that determines the line color.
 - `StrokeWidth` is a `float` object that determines the line width.
 
-::: moniker range=">=net-maui-11.0"
-
 In .NET 11, the `MapElement` class includes additional properties:
 
 - `IsVisible`, of type `bool`, determines whether the map element is visible. Default is `true`. This allows hiding and showing map elements without removing them from the `MapElements` collection.
@@ -1019,8 +981,6 @@ polygon.IsVisible = false;
 // Bring to front
 polygon.ZIndex = 10;
 ```
-
-::: moniker-end
 
 The `Polygon` class defines an additional bindable property:
 
@@ -1225,8 +1185,6 @@ The location of the `Circle` on the Map is determined by the value of the `Cente
 > [!NOTE]
 > The `GeographyUtils` class has a `ToCircumferencePositions` extension method that converts a `Circle` object (that defines `Center` and `Radius` property values) to a list of `Location` objects that make up the latitude and longitude coordinates of the circle perimeter.
 
-::: moniker range=">=net-maui-11.0"
-
 ## Map styling
 
 In .NET 11, the `Map` control supports custom visual styling through the `MapStyle` property. On Android, this accepts a Google Maps JSON style string for customizing the appearance of map features such as roads, parks, water, and labels.
@@ -1255,8 +1213,6 @@ You can create custom styles using the [Google Maps Platform Styling Wizard](htt
 
 > [!IMPORTANT]
 > Custom JSON map styling is only supported on Android. On iOS, Mac Catalyst, and Windows, the `MapStyle` property has no effect. Apple MapKit does not support custom JSON map styling.
-
-::: moniker-end
 
 ## Geocoding and geolocation
 
