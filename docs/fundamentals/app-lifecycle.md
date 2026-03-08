@@ -139,7 +139,22 @@ namespace MyMauiApp
 }
 ```
 
-The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance.
+The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance:
+
+```csharp
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new MyWindow();
+    }
+}
+```
 
 ::: moniker range="=net-maui-8.0"
 

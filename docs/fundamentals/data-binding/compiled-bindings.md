@@ -196,7 +196,7 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
         <local:HslColorViewModel Color="Sienna" />
     </StackLayout.BindingContext>
     <BoxView Color="{Binding Color}"
-             VerticalOptions="FillAndExpand" />
+             VerticalOptions="Fill" />
     <StackLayout x:DataType="{x:Null}"
                  Margin="10, 0">
         <Label Text="{Binding Name}" />

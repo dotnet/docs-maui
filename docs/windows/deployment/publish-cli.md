@@ -1,7 +1,7 @@
 ---
 title: "Use the CLI to publish packaged apps for Windows"
 description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
-ms.date: 10/12/2022
+ms.date: 02/24/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -90,6 +90,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 ```xml
 <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows' and '$(Configuration)' == 'Release'">
+    <WindowsPackageType>Package</WindowsPackageType>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
     <PackageCertificateThumbprint>AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00</PackageCertificateThumbprint>
 </PropertyGroup>
@@ -100,13 +101,17 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 <!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
 
+The `<WindowsPackageType>` property specifies that the app should be published as a packaged MSIX app. Setting this property explicitly is important for project types such as Blazor Hybrid, where the default may not produce an MSIX package. If you instead want to publish your app without an MSIX package, see [Publish an unpackaged .NET MAUI app for Windows with the CLI](publish-unpackaged-cli.md).
+
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00`.
 
 The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
-To publish your app, open the **Developer Command Prompt for VS 2022** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+::: moniker range="<=net-maui-9.0"
+
+To publish your app, open a **Developer Command Prompt for Visual Studio** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
@@ -126,6 +131,36 @@ dotnet publish -f net8.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOver
 [!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
 
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net8.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+To publish your app, open a **Developer Command Prompt for Visual Studio** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+
+| Parameter                    | Value                                                                               |
+|------------------------------|-------------------------------------------------------------------------------------|
+| `-f` | The target framework, which is `net10.0-windows{version}`. This value is a Windows TFM, such as `net10.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
+| `-c`                 | The build configuration, which is `Release`.                                   |
+| `-p:RuntimeIdentifierOverride=win-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform. |
+
+> [!IMPORTANT]
+> Starting with .NET 10, version-specific Windows RuntimeIdentifiers such as `win10-x64` and `win10-x86` are no longer supported. You must use portable RuntimeIdentifiers such as `win-x64` and `win-x86`. For more information, see [.NET Runtime Identifier (RID) catalog](/dotnet/core/rid-catalog) and [NETSDK1083](/dotnet/core/tools/sdk-errors/netsdk1083).
+
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+
+For example:
+
+```console
+dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win-x64
+```
+
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
+Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net10.0-windows10.0.19041.0\\win-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+
+::: moniker-end
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

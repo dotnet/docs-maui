@@ -103,7 +103,7 @@ The following example demonstrates one common use of the `OneWayToSource` and `T
         <Label x:Name="label"
                Text="TEXT"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               VerticalOptions="Center" />
 
         <!-- Slider and identifying Label for Scale -->
         <Slider x:Name="scaleSlider"

@@ -91,7 +91,7 @@ ImageButton imageButton = new ImageButton
 {
     Source = "XamarinLogo.png",
     HorizontalOptions = LayoutOptions.Center,
-    VerticalOptions = LayoutOptions.CenterAndExpand
+    VerticalOptions = LayoutOptions.Center
 };
 imageButton.Clicked += (s, e) =>
 {
