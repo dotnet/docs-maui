@@ -1,7 +1,7 @@
 ---
 title: "ActivityIndicator"
 description: "The .NET MAUI ActivityIndicator indicates to users that the app is engaged in a lengthy activity, without giving any indication of progress."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # ActivityIndicator
@@ -26,13 +26,15 @@ To indicate a lengthy activity, create an <xref:Microsoft.Maui.Controls.Activity
 The following XAML example shows how to display an <xref:Microsoft.Maui.Controls.ActivityIndicator>:
 
 ```xaml
-<ActivityIndicator IsRunning="true" />
+<ActivityIndicator IsRunning="true"
+                   SemanticProperties.Description="Loading" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 ActivityIndicator activityIndicator = new ActivityIndicator { IsRunning = true };
+SemanticProperties.SetDescription(activityIndicator, "Loading");
 ```
 
 The following XAML example shows how to change the color of an <xref:Microsoft.Maui.Controls.ActivityIndicator>:
