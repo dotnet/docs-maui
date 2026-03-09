@@ -80,8 +80,13 @@ For more information, see [ReadyToRun compilation](/dotnet/core/deploying/ready-
 
 The Mono interpreter enables your app to interpret MSIL at runtime without generating native code dynamically. This lets your app use dynamic features such as generics instantiations and limited reflection on platforms that don't allow JIT compilation, such as iOS devices. The interpreter is used alongside Mono AOT — most code is AOT-compiled, and the interpreter handles the portions that couldn't be compiled ahead of time.
 
-- **Used by**: Mono runtime (enabled by default in debug builds on iOS and Mac Catalyst)
-- **Advantages**: Supports dynamic features that AOT can't handle, can reduce app size
+The Mono interpreter also enables .NET Hot Reload for apps running on the Mono runtime. Because the interpreter can apply code changes at runtime, it allows you to modify C# source code while the app is running and see changes immediately. For this reason, `UseInterpreter` is set to `true` by default in `Debug` mode on Android, iOS, and Mac Catalyst.
+
+> [!NOTE]
+> On CoreCLR (Windows and experimentally Android/iOS), Hot Reload is supported through [Edit and Continue](/visualstudio/debugger/edit-and-continue-visual-csharp) without needing the interpreter. CoreCLR supports Hot Reload by default when debugging.
+
+- **Used by**: Mono runtime (enabled by default in debug builds on Android, iOS, and Mac Catalyst)
+- **Advantages**: Supports dynamic features that AOT can't handle, enables .NET Hot Reload, can reduce app size
 - **Disadvantages**: Interpreted code runs slower than compiled code
 - **MSBuild property**: `<UseInterpreter>true</UseInterpreter>`
 
@@ -93,7 +98,7 @@ The following table summarizes which runtime and compilation strategy .NET MAUI 
 
 | Platform | Debug | Release |
 |---|---|---|
-| **Android** | Mono + JIT | Mono + Mono AOT |
+| **Android** | Mono + JIT + interpreter | Mono + Mono AOT |
 | **iOS** | Mono + JIT (simulator) / Mono + AOT + interpreter (device) | Mono + Mono AOT |
 | **Mac Catalyst** | Mono + JIT (x64) / Mono + AOT + interpreter (ARM64) | Mono + Mono AOT |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
