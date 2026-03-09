@@ -38,7 +38,24 @@ Before you begin, make sure you have:
 
 ## Create the widget extension
 
-Add a directory for the widget Xcode project inside your .NET MAUI solution. A typical structure looks like this:
+The widget is an Xcode project that lives inside your .NET MAUI solution. You can create it in Xcode or generate it with xcodegen.
+
+### Create the Xcode project
+
+1. Open Xcode and create a new project using the **App** template with Swift.
+1. Set the bundle identifier to match your .NET MAUI app's bundle ID. This Xcode project serves only as a development container for the widget and won't ship as a standalone app.
+1. Go to **File > New > Target** and choose the **Widget Extension** template.
+1. Enter a name for your widget extension (for example, `SimpleWidgetExtension`). The bundle identifier must be a child of your app's bundle ID (for example, `com.contoso.myapp.SimpleWidgetExtension`).
+1. Ensure all targets use the same minimum iOS deployment version by selecting the project name, navigating to each target's **General** tab, and setting **Minimum Deployments**.
+
+Build and run the widget extension on a simulator to verify the template works before customizing it.
+
+> [!TIP]
+> Alternatively, use [xcodegen](https://github.com/yonaskolb/XcodeGen) to generate the `.xcodeproj` from a `project.yml` file. This avoids checking in Xcode project files and simplifies merge conflicts.
+
+### Project structure
+
+A typical directory structure looks like this:
 
 ```text
 YourApp/
@@ -61,8 +78,15 @@ YourApp/
     └── SimpleWidgetExtension.entitlements
 ```
 
-> [!NOTE]
-> Creating a `project.yml` for xcodegen is optional. You can also create the Xcode project manually through Xcode (File > New > Project > iOS > Framework).
+### Widget components
+
+A widget extension consists of several key components:
+
+- **WidgetBundle**: The `@main` entry point that exposes one or more widgets.
+- **Widget**: The configuration object that defines the widget's view, provider, and supported sizes.
+- **AppIntentTimelineProvider**: Supplies data to the widget. It includes `placeholder` (loading state), `snapshot` (gallery preview), and `timeline` (live data) methods.
+- **TimelineEntry**: The data model structure the widget displays.
+- **View**: The SwiftUI view that renders the widget.
 
 The following sections describe each Swift file and its role.
 
@@ -794,6 +818,7 @@ After deploying, long-press the home screen and tap **+** to add a widget. Your 
 
 ## See also
 
+- [How to Build iOS Widgets with .NET MAUI](https://devblogs.microsoft.com/dotnet/how-to-build-ios-widgets-with-dotnet-maui/) — blog post with a complete working example.
 - [Maui.Apple.PlatformFeature.Samples on GitHub](https://github.com/Redth/Maui.Apple.PlatformFeature.Samples) — the sample project this guide is based on.
 - [Apple WidgetKit documentation](https://developer.apple.com/documentation/widgetkit)
 - [Apple App Groups documentation](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups)
