@@ -74,7 +74,20 @@ ReadyToRun is a form of AOT compilation for CoreCLR that pre-compiles your assem
 
 ReadyToRun is enabled by default for .NET MAUI apps on Windows in `Release` mode, and for Android apps that use CoreCLR in `Release` mode. The R2R images are packed inside your `.dll` files, which is why you'll notice assemblies increase in size.
 
+On Android, .NET MAUI uses **composite partial ReadyToRun** by default for CoreCLR release builds. *Composite* R2R compiles all assemblies together, enabling better cross-assembly optimizations. *Partial* R2R means only the methods identified by profile data are pre-compiled, while the remaining methods are left for the JIT to compile at runtime. This combination keeps app sizes smaller without sacrificing startup time.
+
 For more information, see [ReadyToRun compilation](/dotnet/core/deploying/ready-to-run).
+
+### Profile-guided optimization (PGO)
+
+Profile-guided optimization (PGO) uses profiling data to guide the compiler toward producing more efficient code. In the context of .NET MAUI, there are two forms of PGO:
+
+- **Static PGO with MIBC profiles**: .NET MAUI ships `.mibc` (Managed Intermediate Binary Code) profile files that contain data about which methods are most frequently called during typical app startup and usage. When ReadyToRun compilation is enabled, the R2R compiler uses these profiles to decide which methods to pre-compile (*partial R2R*), keeping app sizes small while still optimizing the hot paths that matter most for startup. On Android with CoreCLR, .NET MAUI includes default MIBC profiles automatically.
+- **Dynamic PGO**: On CoreCLR, the JIT compiler can instrument your code at runtime during Tier 0 compilation, collecting profile data about actual execution. When methods are recompiled at Tier 1, the JIT uses this data to produce better-optimized native code. Dynamic PGO is enabled by default starting in .NET 8.
+
+For mobile scenarios, static PGO with MIBC profiles is the key technique — it allows partial ReadyToRun to pre-compile only the methods that matter for startup, reducing the size overhead of R2R images while preserving fast startup times.
+
+For more information, see [Profile-guided optimization](/dotnet/core/runtime-config/compilation#profile-guided-optimization) and [ReadyToRun compilation](/dotnet/core/deploying/ready-to-run).
 
 ### Mono interpreter
 
