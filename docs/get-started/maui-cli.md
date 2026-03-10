@@ -99,7 +99,7 @@ The `maui apple` commands manage your Apple development environment, wrapping na
 Verify Xcode, accept the license, and install an iOS runtime:
 
 ```dotnetcli
-maui apple install --accept-license --runtime 18.5
+maui apple install --accept-license --runtime 26.2
 ```
 
 ### Xcode management
