@@ -252,9 +252,9 @@ Items are arranged in a multi-column vertical grid. Set `Span` to control the nu
     </CollectionView.ItemsLayout>
     <CollectionView.ItemTemplate>
         <DataTemplate x:DataType="model:Item">
-            <Frame Padding="10" Margin="5">
+            <Border Padding="10" Margin="5" StrokeShape="RoundRectangle 8">
                 <Label Text="{Binding Title}" />
-            </Frame>
+            </Border>
         </DataTemplate>
     </CollectionView.ItemTemplate>
 </CollectionView>
@@ -283,9 +283,9 @@ Items are arranged in a multi-row horizontal grid. Set `Span` to control the num
     </CollectionView.ItemsLayout>
     <CollectionView.ItemTemplate>
         <DataTemplate x:DataType="model:Item">
-            <Frame Padding="10" Margin="5" WidthRequest="150">
+            <Border Padding="10" Margin="5" WidthRequest="150" StrokeShape="RoundRectangle 8">
                 <Label Text="{Binding Title}" />
-            </Frame>
+            </Border>
         </DataTemplate>
     </CollectionView.ItemTemplate>
 </CollectionView>
