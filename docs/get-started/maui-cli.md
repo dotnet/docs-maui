@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI CLI reference"
 description: "Learn how to use the maui CLI tool to check your development environment, manage Android and Apple SDKs, and set up emulators and simulators for .NET MAUI development."
-ms.date: 02/28/2026
+ms.date: 03/10/2026
 monikerRange: ">=net-maui-11.0"
 ---
 
@@ -29,7 +29,7 @@ All commands support the following options:
 | `--json` | Output results as structured JSON |
 | `--verbose` | Enable verbose logging |
 | `--dry-run` | Show what would be done without making changes |
-| `--ci` | Optimize for CI environments (non-interactive) |
+| `--interactive` | Control interactive prompts (auto-detects CI) |
 
 ## Environment health check
 
@@ -68,7 +68,7 @@ maui android install --accept-licenses
 | Command | Description |
 |---------|-------------|
 | `maui android jdk check` | Check JDK installation status |
-| `maui android jdk install` | Install OpenJDK (default: 17) |
+| `maui android jdk install` | Install OpenJDK (default: 21) |
 | `maui android jdk list` | List installed JDK versions |
 
 ### SDK management
@@ -99,7 +99,7 @@ The `maui apple` commands manage your Apple development environment, wrapping na
 Verify Xcode, accept the license, and install an iOS runtime:
 
 ```dotnetcli
-maui apple install --accept-licenses --runtime 18.5
+maui apple install --accept-license --runtime 18.5
 ```
 
 ### Xcode management
@@ -109,7 +109,7 @@ maui apple install --accept-licenses --runtime 18.5
 | `maui apple xcode check` | Check Xcode installation and license |
 | `maui apple xcode list` | List Xcode installations |
 | `maui apple xcode select <path>` | Switch active Xcode |
-| `maui apple xcode accept-licenses` | Accept Xcode license |
+| `maui apple xcode accept-license` | Accept Xcode license |
 
 ### Runtime management
 
@@ -154,7 +154,7 @@ maui doctor --json
     {
       "name": "JDK",
       "status": "ok",
-      "version": "17.0.12"
+      "version": "21.0.4"
     },
     {
       "name": "Android SDK",
