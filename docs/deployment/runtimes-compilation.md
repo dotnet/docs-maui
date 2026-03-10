@@ -40,7 +40,7 @@ JIT compilation translates Microsoft Intermediate Language (MSIL) into native ma
 - **Disadvantages**: Slower startup because code is compiled on the device at runtime
 
 > [!NOTE]
-> iOS and Mac Catalyst device builds can't use JIT compilation due to Apple's security restrictions on dynamically generated code. However, JIT is used in the iOS simulator and on x64 Mac Catalyst during development.
+> iOS and Mac Catalyst ARM64 builds can't use JIT compilation due to Apple's security restrictions on dynamically generated code. However, JIT is used in the x64 iOS simulator and on x64 Mac Catalyst during development.
 
 ### Mono AOT (Ahead-of-Time) compilation
 
@@ -50,7 +50,7 @@ Mono AOT compilation pre-compiles your MSIL into native code at build time using
 - **Advantages**: Faster startup than JIT, required for platforms that restrict dynamic code generation
 - **Disadvantages**: Larger app size than JIT-only, limited support for some dynamic features
 
-Mono AOT is not the same as NativeAOT. With Mono AOT, your app still includes the Mono runtime and can optionally fall back to the Mono interpreter for code that wasn't AOT-compiled. NativeAOT compiles *all* code ahead of time and doesn't include a JIT or interpreter.
+Mono AOT is not the same as NativeAOT. With Mono AOT, your app still includes the Mono runtime and can optionally fall back to the Mono interpreter for code that wasn't AOT-compiled. NativeAOT compiles *all* code ahead of time and doesn't include a JIT or interpreter. Mono also supports a *Full AOT* mode where no interpreter or JIT is available — all code must be AOT-compiled. Full AOT is used by default for Mono release builds on iOS and Mac Catalyst.
 
 ### NativeAOT (Native Ahead-of-Time) compilation
 
@@ -74,7 +74,7 @@ ReadyToRun is a form of AOT compilation for CoreCLR that pre-compiles your assem
 
 ReadyToRun is enabled by default for .NET MAUI apps on Windows in `Release` mode, and for Android apps that use CoreCLR in `Release` mode. The R2R images are packed inside your `.dll` files, which is why you'll notice assemblies increase in size.
 
-On Android, .NET MAUI uses **composite partial ReadyToRun** by default for CoreCLR release builds. *Composite* R2R compiles all assemblies together, enabling better cross-assembly optimizations. *Partial* R2R means only the methods identified by profile data are pre-compiled, while the remaining methods are left for the JIT to compile at runtime. This combination keeps app sizes smaller without sacrificing startup time.
+On Android, .NET MAUI uses **composite partial ReadyToRun** by default for CoreCLR release builds. On iOS and Mac Catalyst, composite partial ReadyToRun is used for both debug and release builds when using CoreCLR, because there's no JIT on these platforms — CoreCLR's interpreter handles any code that isn't R2R-compiled, and relying solely on the interpreter would be too slow. *Composite* R2R compiles all assemblies together, enabling better cross-assembly optimizations. *Partial* R2R means only the methods identified by profile data are pre-compiled, while the remaining methods are left for the interpreter or JIT to handle at runtime. This combination keeps app sizes smaller without sacrificing startup time.
 
 For more information, see [ReadyToRun compilation](/dotnet/core/deploying/ready-to-run).
 
@@ -112,15 +112,15 @@ The following table summarizes which runtime and compilation strategy .NET MAUI 
 | Platform | Debug | Release |
 |---|---|---|
 | **Android** | Mono + JIT + interpreter | Mono + Mono AOT |
-| **iOS** | Mono + JIT (simulator) / Mono + AOT + interpreter (device) | Mono + Mono AOT |
+| **iOS** | Mono + JIT (x64) / Mono + AOT + interpreter (ARM64) | Mono + Mono AOT |
 | **Mac Catalyst** | Mono + JIT (x64) / Mono + AOT + interpreter (ARM64) | Mono + Mono AOT |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
 
 > [!NOTE]
-> When you opt in to CoreCLR on Android or iOS by setting `<UseMonoRuntime>false</UseMonoRuntime>` in your project file, `Release` builds also use ReadyToRun by default.
+> When you opt in to CoreCLR on Android or iOS by setting `<UseMonoRuntime>false</UseMonoRuntime>` in your project file, builds use ReadyToRun by default. On iOS and Mac Catalyst with CoreCLR, composite ReadyToRun is always enabled for both debug and release builds.
 
 > [!TIP]
-> You can opt in to NativeAOT on iOS and Mac Catalyst by setting `<PublishAot>true</PublishAot>` in your project file. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
+> You can opt in to NativeAOT on iOS and Mac Catalyst by setting `<PublishAot>true</PublishAot>` in your project file. NativeAOT only takes effect when publishing — a plain debug build doesn't use NativeAOT, because NativeAOT doesn't support debugging. For more information, see [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md).
 
 ## Comparison
 
@@ -221,11 +221,11 @@ The following table summarizes the MSBuild properties that control runtime and c
 | Property | Description | Default |
 |---|---|---|
 | `PublishAot` | Enable NativeAOT compilation. | `false` |
-| `PublishReadyToRun` | Enable ReadyToRun pre-compilation for CoreCLR. | `true` (Windows Release) |
+| `PublishReadyToRun` | Enable ReadyToRun pre-compilation for CoreCLR. | `true` (Windows Release, iOS, Mac Catalyst) |
 | `PublishTrimmed` | Enable ILLink trimming. | `true` (Release) |
 | `TrimMode` | Set trimming aggressiveness (`partial` or `full`). | `partial` |
 | `UseInterpreter` | Enable the Mono interpreter. | `true` (iOS/Mac Catalyst Debug) |
-| `UseMonoRuntime` | Use Mono instead of CoreCLR on Android. | `true` (.NET 10), `false` (.NET 11) |
+| `UseMonoRuntime` | Use Mono instead of CoreCLR. | `true` (Android .NET 10, iOS, Mac Catalyst), `false` (Android .NET 11) |
 
 ## See also
 
