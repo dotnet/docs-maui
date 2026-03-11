@@ -1,15 +1,22 @@
 ---
 title: Platform-specific AI APIs
-description: Microsoft.Maui.Essentials.AI wraps native Apple AI capabilities behind standard Microsoft.Extensions.AI interfaces. This article describes the available APIs.
+description: Learn about the AI APIs available on each platform in Microsoft.Maui.Essentials.AI, including Apple Intelligence for iOS and macOS, with planned Android and Windows support.
 ms.date: 05/14/2026
 ---
 
 # Platform-specific AI APIs
 
-`Microsoft.Maui.Essentials.AI` wraps native Apple AI capabilities behind standard `Microsoft.Extensions.AI` interfaces. This article describes the available APIs and their platform-specific behavior.
+`Microsoft.Maui.Essentials.AI` wraps native platform AI capabilities behind standard `Microsoft.Extensions.AI` interfaces. Apple platforms are currently supported; Android and Windows support are planned for future releases.
 
 > [!IMPORTANT]
 > `Microsoft.Maui.Essentials.AI` is experimental and is identified by the diagnostic ID `MAUIAI0001`. To use it, suppress the diagnostic or opt in explicitly.
+
+## Platform availability
+
+| API | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
+|-----|-----|-------|--------------|------|---------|---------|
+| Chat (`IChatClient`) | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
+| Embeddings (`IEmbeddingGenerator`) | ✅ 13.0+ | ✅ 10.15+ | ✅ 13.1+ | ✅ 13.0+ | Not available | Not available |
 
 ## Apple platforms (iOS, macOS, Mac Catalyst, tvOS)
 
@@ -262,6 +269,14 @@ var embeddings = await generator.GenerateAsync(["sample text"]);
 ```
 
 ---
+
+## Android
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available. This section will document the Android chat client and embedding generator when they become available.
+
+## Windows
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available. This section will document the Windows chat client and embedding generator when they become available.
 
 ## See also
 

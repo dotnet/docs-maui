@@ -6,16 +6,14 @@ ms.date: 05/14/2026
 
 # Requirements for Microsoft.Maui.Essentials.AI
 
-`Microsoft.Maui.Essentials.AI` surfaces native platform AI frameworks behind standard Microsoft.Extensions.AI interfaces. Because the underlying frameworks vary per platform and per feature, the requirements differ between `AppleIntelligenceChatClient` and `NLEmbeddingGenerator`. This page describes everything you need to get started.
+`Microsoft.Maui.Essentials.AI` surfaces native platform AI frameworks behind standard Microsoft.Extensions.AI interfaces. It is designed as a cross-platform library. Apple Intelligence is the first platform implementation available; Android and Windows support are planned for future releases. This page describes the requirements for the currently available platforms.
 
 ## Quick reference
 
-The following table summarizes the minimum OS version required for each feature. Additional platform columns will be added as support is introduced.
-
-| Feature | iOS | macOS | Mac Catalyst | tvOS |
-|---------|-----|-------|--------------|------|
-| `AppleIntelligenceChatClient` | 26.0+ | 26.0+ | 26.0+ | 26.0+ |
-| `NLEmbeddingGenerator` | 13.0+ | 10.15+ | 13.1+ | 13.0+ |
+| Feature | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
+|---------|-----|-------|--------------|------|---------|---------|
+| Chat client | 26.0+ | 26.0+ | 26.0+ | 26.0+ | Not available | Not available |
+| Embedding generator | 13.0+ | 10.15+ | 13.1+ | 13.0+ | Not available | Not available |
 
 ## Apple platforms
 
@@ -67,12 +65,20 @@ Unlike `AppleIntelligenceChatClient`, `NLEmbeddingGenerator` does **not** requir
 
 The following tools and packages are required to develop with `Microsoft.Maui.Essentials.AI`:
 
-| Requirement | Details |
-|-------------|---------|
-| .NET SDK | .NET 10 or later |
-| .NET MAUI workload | Install with `dotnet workload install maui` |
-| Xcode | Xcode 26 or later (required for Apple platform targets) |
-| NuGet package | `Microsoft.Maui.Essentials.AI` |
+| Requirement | Apple (iOS/macOS) | Android | Windows |
+|-------------|-------------------|---------|---------|
+| .NET SDK | .NET 10 or later | .NET 10 or later | .NET 10 or later |
+| .NET MAUI workload | `dotnet workload install maui` | `dotnet workload install maui` | `dotnet workload install maui` |
+| Platform tooling | Xcode 26 or later | Android SDK | Windows 10 SDK |
+| NuGet package | `Microsoft.Maui.Essentials.AI` | Not available | Not available |
+
+## Android
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available. This section will document requirements when Android support is added.
+
+## Windows
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available. This section will document requirements when Windows support is added.
 
 ### Experimental API
 

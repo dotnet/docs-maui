@@ -6,14 +6,29 @@ ms.date: 05/14/2026
 
 # Get started with Microsoft.Maui.Essentials.AI
 
-`Microsoft.Maui.Essentials.AI` provides on-device AI capabilities for .NET MAUI apps, including chat completions via Apple Intelligence and text embeddings via the Natural Language framework.
+`Microsoft.Maui.Essentials.AI` is a cross-platform library that provides on-device AI capabilities for .NET MAUI apps. Apple Intelligence (iOS, macOS, Mac Catalyst, tvOS) is the first platform implementation available. Android and Windows support are planned for future releases.
 
 ## Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [.NET MAUI workload](https://learn.microsoft.com/dotnet/maui/get-started/installation)
-- For Apple platforms: Xcode 26 or later
-- A supported Apple device or simulator (see [Requirements](requirements.md))
+- A device or simulator supported by a platform implementation (see [Requirements](requirements.md))
+
+# [iOS/macOS](#tab/apple)
+
+- Xcode 26 or later
+- A device or simulator running iOS 26+ or macOS 26+ (for chat)
+- A device or simulator running iOS 13+ or macOS 10.15+ (for embeddings)
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Installation
 
@@ -55,10 +70,11 @@ The recommended approach is to register AI services in a dedicated extension met
 
 ### Extension method (recommended)
 
+# [iOS/macOS](#tab/apple)
+
 Create an extension method on `MauiAppBuilder` to register all required services:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Extensions.AI;
 using Microsoft.Maui.Essentials.AI;
 
@@ -94,7 +110,6 @@ public static class MauiAppBuilderExtensions
         return builder;
     }
 }
-#endif
 ```
 
 Key registration details:
@@ -104,7 +119,19 @@ Key registration details:
 - `NLEmbeddingGenerator` is registered as a singleton and wraps the Natural Language framework. It does **not** require Apple Intelligence and is available on iOS 13.0+.
 - `IEmbeddingGenerator<string, Embedding<float>>` is registered with logging middleware for observability.
 
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
+
 ### Call from MauiProgram.cs
+
+# [iOS/macOS](#tab/apple)
 
 ```csharp
 public static class MauiProgram
@@ -116,9 +143,6 @@ public static class MauiProgram
 
 #if IOS || MACCATALYST
         builder.AddAppleIntelligenceServices();
-#else
-        throw new PlatformNotSupportedException(
-            "Apple Intelligence is only supported on iOS and macCatalyst.");
 #endif
 
         return builder.Build();
@@ -129,12 +153,23 @@ public static class MauiProgram
 > [!NOTE]
 > Apple Intelligence chat (`AppleIntelligenceChatClient`) requires iOS 26.0+, macOS 26.0+, or macCatalyst 26.0+. Text embeddings (`NLEmbeddingGenerator`) are available from iOS 13.0+ and macOS 10.15+.
 
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
+
 ## Basic chat
 
 Inject `IChatClient` and call `GetResponseAsync` for a single-turn response:
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Extensions.AI;
 
 public class MyService
@@ -152,15 +187,25 @@ public class MyService
         return response.Text;
     }
 }
-#endif
 ```
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Streaming responses
 
 Use `GetStreamingResponseAsync` to receive tokens as they are produced:
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 var client = serviceProvider.GetRequiredService<IChatClient>();
 
 await foreach (var update in client.GetStreamingResponseAsync("Tell me about the Eiffel Tower"))
@@ -168,17 +213,27 @@ await foreach (var update in client.GetStreamingResponseAsync("Tell me about the
     if (update.Text is not null)
         Console.Write(update.Text);
 }
-#endif
 ```
 
 Streaming is useful for displaying responses incrementally in a chat UI, reducing perceived latency.
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Multi-turn conversations
 
 Pass a `List<ChatMessage>` to maintain conversation history across turns:
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Extensions.AI;
 
 var messages = new List<ChatMessage>
@@ -194,17 +249,27 @@ messages.Add(response.Message); // Append assistant reply to history
 messages.Add(new ChatMessage(ChatRole.User, "What's the best time to visit?"));
 var followUp = await client.GetResponseAsync(messages);
 Console.WriteLine(followUp.Text);
-#endif
 ```
 
 The system message sets the assistant's persona and persists for the entire conversation.
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Tool calling
 
 `AppleIntelligenceChatClient` supports function calling via `AIFunction` tools. Define tool methods with `[Description]` attributes and register them with `AIFunctionFactory.Create()`:
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using System.ComponentModel;
 using Microsoft.Extensions.AI;
 
@@ -240,18 +305,28 @@ await foreach (var update in client.GetStreamingResponseAsync(messages, options,
     if (update.Text is not null)
         Console.Write(update.Text);
 }
-#endif
 ```
 
 > [!IMPORTANT]
 > Only `AIFunction` tools are supported by `AppleIntelligenceChatClient`. Other `AITool` subtypes are not supported and will be ignored or cause an error.
 
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
+
 ## Structured JSON output
 
 To receive a strongly-typed JSON response, use `ChatResponseFormat.ForJsonSchema<T>()` with a `JsonSerializerOptions` instance:
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using System.Text.Json;
 using Microsoft.Extensions.AI;
 
@@ -272,18 +347,28 @@ var response = await client.GetResponseAsync(
 
 var itinerary = JsonSerializer.Deserialize<Itinerary>(response.Text!, serializerOptions);
 Console.WriteLine($"Destination: {itinerary!.Destination}");
-#endif
 ```
 
 > [!IMPORTANT]
 > Apple Intelligence requires a JSON schema to produce structured output. Using `ChatResponseFormat.Json` without a schema is **not** supported. Always use `ChatResponseFormat.ForJsonSchema<T>(serializerOptions)`.
 
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
+
 ## Text embeddings
 
 `NLEmbeddingGenerator` converts strings into float vectors using Apple's Natural Language **sentence** embedding model (`NLEmbedding.GetSentenceEmbedding`). These vectors capture the semantic meaning of full sentences or short passages and can be used for semantic search, clustering, and retrieval-augmented generation (RAG).
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using System.Numerics.Tensors;
 using Microsoft.Extensions.AI;
 
@@ -306,11 +391,20 @@ var results = documents
 
 foreach (var (doc, score) in results)
     Console.WriteLine($"{doc.Title} ({score:P1})");
-#endif
 ```
 
 > [!NOTE]
 > `NLEmbeddingGenerator` is available on iOS 13.0+ and macOS 10.15+. It does **not** require Apple Intelligence or a minimum OS version of 26.
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Next steps
 

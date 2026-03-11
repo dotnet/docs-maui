@@ -8,7 +8,7 @@ ms.topic: conceptual
 # Microsoft Agent Framework integration
 
 > [!IMPORTANT]
-> This feature requires Apple Intelligence and is only available on iOS, macOS, Mac Catalyst, and tvOS.
+> Multi-agent workflows with `Microsoft.Maui.Essentials.AI` currently require Apple Intelligence, which is available on iOS, macOS, Mac Catalyst, and tvOS. Android and Windows support are not yet available.
 
 ## Overview
 
@@ -56,8 +56,9 @@ Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the d
 
 Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Extensions.AI` `IChatClient` abstraction. Registering a **keyed service** lets each agent in the workflow resolve its own `IChatClient` instance independently.
 
+# [iOS/macOS](#tab/apple)
+
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Maui.Essentials.AI;
 using Microsoft.Extensions.AI;
 
@@ -89,11 +90,20 @@ public static class MauiAppBuilderExtensions
         return builder;
     }
 }
-#endif
 ```
 
 > [!NOTE]
 > The `"local-model"` key is a convention used in the sample. You can use any string key that makes sense for your application.
+
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
+---
 
 ## Define workflow models
 
