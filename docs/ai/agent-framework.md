@@ -103,6 +103,7 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
