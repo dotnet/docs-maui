@@ -28,6 +28,7 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -128,6 +129,7 @@ Key registration details:
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -163,6 +165,7 @@ public static class MauiProgram
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -200,6 +203,7 @@ public class MyService
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -229,6 +233,7 @@ Streaming is useful for displaying responses incrementally in a chat UI, reducin
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -266,6 +271,7 @@ The system message sets the assistant's persona and persists for the entire conv
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -324,6 +330,7 @@ await foreach (var update in client.GetStreamingResponseAsync(messages, options,
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -367,6 +374,7 @@ Console.WriteLine($"Destination: {itinerary!.Destination}");
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -412,6 +420,7 @@ foreach (var (doc, score) in results)
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 

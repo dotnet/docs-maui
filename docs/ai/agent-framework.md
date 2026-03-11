@@ -103,6 +103,7 @@ public static class MauiAppBuilderExtensions
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 ---
 <!-- markdownlint-enable MD025 -->
 
