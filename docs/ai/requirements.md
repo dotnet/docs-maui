@@ -12,14 +12,10 @@ ms.date: 03/11/2026
 
 The `AppleIntelligenceChatClient` implements `IChatClient` using Apple's **Foundation Models** framework, which is part of Apple Intelligence.
 
+### Minimum OS versions
+
 <!-- markdownlint-disable MD025 -->
-# [Android](#tab/android)
-
-Android support for the `Microsoft.Maui.Essentials.AI` chat client is not yet available.
-
 # [iOS/Mac Catalyst](#tab/macios)
-
-#### Minimum OS versions
 
 | Platform | Minimum version | Notes |
 |----------|-----------------|-------|
@@ -28,9 +24,23 @@ Android support for the `Microsoft.Maui.Essentials.AI` chat client is not yet av
 | Mac Catalyst | 26.0 | Mac with Apple Silicon |
 | tvOS | 26.0 | Apple TV with A-series chip |
 
-#### Device requirements
+# [Android](#tab/android)
 
-Apple Intelligence requires capable hardware. The following devices are supported:
+Android support for the `Microsoft.Maui.Essentials.AI` chat client is not yet available.
+
+# [Windows](#tab/windows)
+
+Windows support for the `Microsoft.Maui.Essentials.AI` chat client is not yet available.
+
+---
+<!-- markdownlint-enable MD025 -->
+
+### Device requirements
+
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
+
+Apple Intelligence requires capable hardware:
 
 - **iPhone**: iPhone 15 Pro, iPhone 15 Pro Max, or any iPhone 16 series device or later.
 - **iPad**: iPad Pro with M1 chip or later; iPad Air with M1 chip or later.
@@ -44,6 +54,10 @@ All devices must have **Apple Intelligence enabled** in Settings. On iOS and iPa
 
 For a full list of supported devices and regions, see [Apple Intelligence availability](https://support.apple.com/en-us/120898).
 
+# [Android](#tab/android)
+
+Android support for the `Microsoft.Maui.Essentials.AI` chat client is not yet available.
+
 # [Windows](#tab/windows)
 
 Windows support for the `Microsoft.Maui.Essentials.AI` chat client is not yet available.
@@ -53,16 +67,12 @@ Windows support for the `Microsoft.Maui.Essentials.AI` chat client is not yet av
 
 ## Embedding generator
 
-The `NLEmbeddingGenerator` implements `IEmbeddingGenerator<string, Embedding<float>>` using Apple's **Natural Language** framework (`NLEmbedding`). Unlike the chat client, it does **not** require Apple Intelligence or any specific hardware; it has been available since iOS 13.
+The `NLEmbeddingGenerator` implements `IEmbeddingGenerator<string, Embedding<float>>` using Apple's **Natural Language** framework (`NLEmbedding`). Unlike the chat client, it does **not** require Apple Intelligence or any specific hardware.
+
+### Minimum OS versions
 
 <!-- markdownlint-disable MD025 -->
-# [Android](#tab/android)
-
-Android support for the `Microsoft.Maui.Essentials.AI` embedding generator is not yet available.
-
 # [iOS/Mac Catalyst](#tab/macios)
-
-#### Minimum OS versions
 
 | Platform | Minimum version |
 |----------|-----------------|
@@ -72,6 +82,10 @@ Android support for the `Microsoft.Maui.Essentials.AI` embedding generator is no
 | tvOS | 13.0 |
 
 The embedding generator uses Apple's `NLEmbedding` sentence embedding model, which is built into the OS and does not require any additional downloads or hardware.
+
+# [Android](#tab/android)
+
+Android support for the `Microsoft.Maui.Essentials.AI` embedding generator is not yet available.
 
 # [Windows](#tab/windows)
 

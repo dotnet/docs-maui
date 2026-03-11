@@ -68,11 +68,11 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 
 | Article | Description |
 |---------|-------------|
-| [Requirements](requirements.md) | Platform versions, device requirements, and development prerequisites. |
-| [Get started](getting-started.md) | Install the package, register services, and write your first AI-powered .NET MAUI app. |
-| [Platform APIs](platform-apis.md) | Detailed reference for `AppleIntelligenceChatClient`, `NLEmbeddingGenerator`, and `NLEmbeddingExtensions`. |
+| [Requirements](requirements.md) | Platform versions and device requirements for the chat client and embedding generator. |
+| [Chat client](getting-started-chat.md) | Install, register, and use `AppleIntelligenceChatClient` for streaming chat, tool calling, and structured output. |
+| [Text embeddings](getting-started-embeddings.md) | Install, register, and use `NLEmbeddingGenerator` for semantic search and similarity. |
 | [Agent framework integration](agent-framework.md) | Build multi-agent AI workflows with Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI. |
-| [Feature comparison](feature-comparison.md) | Compare supported features and `ChatOptions` across all platforms. |
+| [Feature comparison](feature-comparison.md) | API reference and feature availability across all platforms. |
 
 ## See also
 

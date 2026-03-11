@@ -4,8 +4,11 @@
   href: requirements.md
 - name: Get started
   href: getting-started.md
-- name: Platform APIs
-  href: platform-apis.md
+  items:
+  - name: Chat client
+    href: getting-started-chat.md
+  - name: Text embeddings
+    href: getting-started-embeddings.md
 - name: Agent framework
   href: agent-framework.md
 - name: Feature comparison

@@ -57,10 +57,6 @@ Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the d
 Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Extensions.AI` `IChatClient` abstraction. Registering a **keyed service** lets each agent in the workflow resolve its own `IChatClient` instance independently.
 
 <!-- markdownlint-disable MD025 -->
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -100,10 +96,13 @@ public static class MauiAppBuilderExtensions
 > [!NOTE]
 > The `"local-model"` key is a convention used in the sample. You can use any string key that makes sense for your application.
 
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -343,6 +342,6 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 ## See also
 
 - [Microsoft.Maui.Essentials.AI overview](index.md)
-- [Get started with Microsoft.Maui.Essentials.AI](getting-started.md)
-- [Platform APIs](platform-apis.md)
+- [Chat client getting started](getting-started-chat.md)
 - [Feature comparison](feature-comparison.md)
+- [Requirements](requirements.md)

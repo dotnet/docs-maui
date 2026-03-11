@@ -1,90 +1,157 @@
 ---
-title: Feature comparison
-description: Compares the AI features available across platforms supported by Microsoft.Maui.Essentials.AI.
+title: API reference and feature comparison
+description: API reference for AppleIntelligenceChatClient, NLEmbeddingGenerator, and NLEmbeddingExtensions, with feature availability across all platforms supported by Microsoft.Maui.Essentials.AI.
 ms.date: 03/11/2026
 ---
 
-# Feature comparison
+# API reference and feature comparison
 
-This page compares the AI features available across all platforms targeted by `Microsoft.Maui.Essentials.AI`.
+This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and compares feature availability across all platforms.
 
 > [!NOTE]
-> `Microsoft.Maui.Essentials.AI` is designed as a cross-platform library. Apple Intelligence is the first implementation available. Android and Windows support are not yet available.
+> Apple Intelligence is the first implementation available. Android and Windows support are planned for future releases.
 
 > [!IMPORTANT]
-> `Microsoft.Maui.Essentials.AI` is experimental and is identified by the diagnostic ID `MAUIAI0001`. To use it, suppress the diagnostic or opt in explicitly.
+> `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Requirements](requirements.md#experimental-api) for how to suppress it.
 
 ## Chat client
 
-| Platform | Minimum version | Chat client class | Notes |
-|----------|-----------------|-------------------|-------|
-| iOS | 26.0+ | `AppleIntelligenceChatClient` | Requires Apple Intelligence |
-| macOS | 26.0+ | `AppleIntelligenceChatClient` | Requires Apple Intelligence |
-| Mac Catalyst | 26.0+ | `AppleIntelligenceChatClient` | Requires Apple Intelligence |
-| tvOS | 26.0+ | `AppleIntelligenceChatClient` | Requires Apple Intelligence |
-| Android | Not available | — | Planned for a future release |
-| Windows | Not available | — | Planned for a future release |
+### Platform availability
+
+| Platform | Class | Minimum version |
+|----------|-------|-----------------|
+| iOS | `AppleIntelligenceChatClient` | 26.0 |
+| macOS | `AppleIntelligenceChatClient` | 26.0 |
+| Mac Catalyst | `AppleIntelligenceChatClient` | 26.0 |
+| tvOS | `AppleIntelligenceChatClient` | 26.0 |
+| Android | Not available | — |
+| Windows | Not available | — |
+
+### Chat capabilities
+
+| Feature | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
+|---------|-----------------------------------|---------|---------|
+| Text generation | ✅ | Not available | Not available |
+| Streaming responses | ✅ | Not available | Not available |
+| Tool / function calling | ✅ (`AIFunction` only) | Not available | Not available |
+| Structured JSON output | ✅ | Not available | Not available |
+| System prompts | ✅ | Not available | Not available |
+| Multi-turn conversations | ✅ | Not available | Not available |
+| Image input | ❌ | Not available | Not available |
+
+### Supported ChatOptions
+
+`ChatOptions` properties honored by `AppleIntelligenceChatClient`. All other properties are silently ignored.
+
+| Option | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
+|--------|-----------------------------------|---------|---------|
+| `Temperature` | ✅ | Not available | Not available |
+| `TopK` | ✅ | Not available | Not available |
+| `Seed` | ✅ | Not available | Not available |
+| `MaxOutputTokens` | ✅ | Not available | Not available |
+| `ResponseFormat` (JSON schema) | ✅ | Not available | Not available |
+| `Tools` (`AIFunction`) | ✅ | Not available | Not available |
+| `TopP` | ❌ ignored | Not available | Not available |
+| `FrequencyPenalty` | ❌ ignored | Not available | Not available |
+| `PresencePenalty` | ❌ ignored | Not available | Not available |
+
+> [!IMPORTANT]
+> Two constraints apply when using `AppleIntelligenceChatClient`:
+>
+> 1. **Tool types:** Only `AIFunction` tools are supported. Other `AITool` subtypes are not supported.
+> 2. **Structured JSON output:** Use `GetResponseAsync<T>()` or set `ChatResponseFormat.ForJsonSchema<T>(jsonSerializerOptions)` in `ChatOptions`. Plain `ChatResponseFormat.Json` without a schema is **not** supported.
+
+### Supported message content types
+
+| Content type | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
+|--------------|-----------------------------------|---------|---------|
+| `TextContent` | ✅ | Not available | Not available |
+| `FunctionCallContent` | ✅ | Not available | Not available |
+| `FunctionResultContent` | ✅ | Not available | Not available |
+| `ImageContent` | ❌ | Not available | Not available |
+
+### AppleIntelligenceChatClient constructors
+
+| Constructor | Description |
+|-------------|-------------|
+| `AppleIntelligenceChatClient()` | Creates an instance with no logging and no function-invocation services. |
+| `AppleIntelligenceChatClient(ILoggerFactory? loggerFactory, IServiceProvider? functionInvocationServices)` | Creates an instance with optional logging and optional service provider for `AIFunction` tool invocation. |
+
+```csharp
+public sealed class AppleIntelligenceChatClient : IChatClient
+```
+
+**Namespace:** `Microsoft.Maui.Essentials.AI`  
+**Native framework:** Foundation Models (Apple)
 
 ## Embedding generator
 
-| Platform | Minimum version | Embedding class | Notes |
-|----------|-----------------|-----------------|-------|
-| iOS | 13.0+ | `NLEmbeddingGenerator` | Does not require Apple Intelligence |
-| macOS | 10.15+ | `NLEmbeddingGenerator` | Does not require Apple Intelligence |
-| Mac Catalyst | 13.1+ | `NLEmbeddingGenerator` | Does not require Apple Intelligence |
-| tvOS | 13.0+ | `NLEmbeddingGenerator` | Does not require Apple Intelligence |
-| Android | Not available | — | Planned for a future release |
-| Windows | Not available | — | Planned for a future release |
+### Platform availability
 
-## Chat capabilities
+| Platform | Class | Minimum version |
+|----------|-------|-----------------|
+| iOS | `NLEmbeddingGenerator` | 13.0 |
+| macOS | `NLEmbeddingGenerator` | 10.15 |
+| Mac Catalyst | `NLEmbeddingGenerator` | 13.1 |
+| tvOS | `NLEmbeddingGenerator` | 13.0 |
+| Android | Not available | — |
+| Windows | Not available | — |
 
-| Feature | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
-|---------|-----|-------|--------------|------|---------|---------|
-| Text generation | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| Streaming responses | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| Tool/function calling | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| Structured JSON output | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| System prompts | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| Multi-turn conversations | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| Image input | ❌ | ❌ | ❌ | ❌ | Not available | Not available |
+### Embedding capabilities
 
-## Embedding capabilities
-
-| Feature | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
-|---------|-----|-------|--------------|------|---------|---------|
-| Text embeddings | ✅ 13.0+ | ✅ 10.15+ | ✅ 13.1+ | ✅ 13.0+ | Not available | Not available |
-| Multiple languages | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| Custom embedding model | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-
-## Supported ChatOptions
-
-`ChatOptions` properties honored by the Apple Intelligence chat client. Options marked ❌ are silently ignored on Apple. Android and Windows chat clients are not yet available.
-
-| Option | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
-|--------|-----|-------|--------------|------|---------|---------|
-| `Temperature` | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `TopK` | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `Seed` | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `MaxOutputTokens` | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `ResponseFormat` (JSON schema) | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `Tools` (`AIFunction`) | ✅ | ✅ | ✅ | ✅ | Not available | Not available |
-| `TopP` | ❌ | ❌ | ❌ | ❌ | Not available | Not available |
-| `FrequencyPenalty` | ❌ | ❌ | ❌ | ❌ | Not available | Not available |
-| `PresencePenalty` | ❌ | ❌ | ❌ | ❌ | Not available | Not available |
+| Feature | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
+|---------|-----------------------------------|---------|---------|
+| Sentence-level embeddings | ✅ | Not available | Not available |
+| Multiple languages | ✅ | Not available | Not available |
+| Custom `NLEmbedding` instance | ✅ | Not available | Not available |
+| Concurrent requests | ✅ (serialized per instance) | Not available | Not available |
 
 > [!NOTE]
-> `ResponseFormat` only supports `ChatResponseFormat.ForJsonSchema<T>(jsonSerializerOptions)`. Using `ChatResponseFormat.Json` (plain JSON mode without a schema) is not supported.
+> `NLEmbeddingGenerator` uses Apple's *sentence* embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences or short passages rather than individual words. This makes it well-suited for semantic similarity search over descriptive text.
 
-## Classes and interfaces
+### NLEmbeddingGenerator constructors
 
-| Class / Interface | iOS | macOS | Mac Catalyst | tvOS | Android | Windows |
-|-------------------|-----|-------|--------------|------|---------|---------|
-| `AppleIntelligenceChatClient` | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | ✅ 26.0+ | Not available | Not available |
-| `NLEmbeddingGenerator` | ✅ 13.0+ | ✅ 10.15+ | ✅ 13.1+ | ✅ 13.0+ | Not available | Not available |
-| `NLEmbeddingExtensions` | ✅ 13.0+ | ✅ 10.15+ | ✅ 13.1+ | ✅ 13.0+ | Not available | Not available |
+| Constructor | Description |
+|-------------|-------------|
+| `NLEmbeddingGenerator()` | Creates an instance using the English-language sentence embedding model. |
+| `NLEmbeddingGenerator(NLLanguage language)` | Creates an instance using the sentence embedding model for the specified language. Throws `NotSupportedException` if not available. |
+| `NLEmbeddingGenerator(NLEmbedding embedding)` | Wraps an existing `NLEmbedding` instance directly. |
+
+```csharp
+public class NLEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<float>>
+```
+
+**Namespace:** `Microsoft.Maui.Essentials.AI`  
+**Native framework:** Natural Language (Apple)
+
+> [!TIP]
+> `NLEmbeddingGenerator` serializes concurrent calls with a `SemaphoreSlim(1, 1)`. For high-throughput scenarios, create multiple instances and distribute work across them.
+
+## NLEmbeddingExtensions
+
+`NLEmbeddingExtensions` wraps a native `NLEmbedding` as an `IEmbeddingGenerator<string, Embedding<float>>`.
+
+**Namespace:** `Microsoft.Extensions.AI` *(not `Microsoft.Maui.Essentials.AI`)*
+
+> [!NOTE]
+> Add `using Microsoft.Extensions.AI;` to your file to call the `AsIEmbeddingGenerator()` extension method.
+
+| Method | Description |
+|--------|-------------|
+| `AsIEmbeddingGenerator(this NLEmbedding embedding)` | Wraps a native `NLEmbedding` as an `IEmbeddingGenerator<string, Embedding<float>>`. |
+
+```csharp
+using NaturalLanguage;
+using Microsoft.Extensions.AI;
+
+NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.English)!;
+IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
+```
 
 ## See also
 
 - [Requirements](requirements.md)
-- [Platform APIs](platform-apis.md)
-- [Getting started](getting-started.md)
+- [Chat client getting started](getting-started-chat.md)
+- [Text embeddings getting started](getting-started-embeddings.md)
+- [`IChatClient` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
+- [`IEmbeddingGenerator<TInput,TEmbedding>` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
