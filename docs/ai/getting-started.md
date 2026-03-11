@@ -280,7 +280,7 @@ Console.WriteLine($"Destination: {itinerary!.Destination}");
 
 ## Text embeddings
 
-`NLEmbeddingGenerator` converts strings into float vectors using Apple's Natural Language framework. These vectors can be used for semantic search, clustering, and retrieval-augmented generation (RAG).
+`NLEmbeddingGenerator` converts strings into float vectors using Apple's Natural Language **sentence** embedding model (`NLEmbedding.GetSentenceEmbedding`). These vectors capture the semantic meaning of full sentences or short passages and can be used for semantic search, clustering, and retrieval-augmented generation (RAG).
 
 ```csharp
 #if IOS || MACCATALYST

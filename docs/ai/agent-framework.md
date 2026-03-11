@@ -8,7 +8,7 @@ ms.topic: conceptual
 # Microsoft Agent Framework integration
 
 > [!IMPORTANT]
-> This feature requires Apple Intelligence and is only available on iOS and Mac Catalyst.
+> This feature requires Apple Intelligence and is only available on iOS, macOS, Mac Catalyst, and tvOS.
 
 ## Overview
 
@@ -39,9 +39,11 @@ Add the required NuGet packages to your `.csproj` file:
 
 ```xml
 <PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.*-*" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
 <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-rc3" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.260304.1" />
 <PackageReference Include="Microsoft.Agents.AI.Workflows" Version="1.0.0-rc3" />
+<PackageReference Include="Microsoft.Agents.AI.Workflows.Generators" Version="1.0.0-rc3" />
 ```
 
 Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the diagnostic warning to keep your build clean:
@@ -103,20 +105,23 @@ Each stage of a workflow passes a strongly typed result to the next stage. Defin
 public record TravelRequest(string UserInput);
 
 // Output of the Travel Planner agent
-public record TravelPlannerResult(string DestinationName, int DayCount, string Language);
+public record TravelPlanResult(
+    [property: DisplayName("destinationName")]
+    string DestinationName,
+    [property: DisplayName("dayCount")]
+    int DayCount,
+    [property: DisplayName("language")]
+    string Language);
 
 // Output of the Researcher agent
 public record ResearchResult(
-    string DestinationName,
-    string DestinationDescription,
+    string? DestinationName,
+    string? DestinationDescription,
     int DayCount,
     string Language);
 
-// Output of the Itinerary Planner agent
+// Output of the Itinerary Planner agent (and final output after optional translation)
 public record ItineraryResult(string ItineraryJson, string TargetLanguage);
-
-// Final output of the workflow (after optional translation)
-public record FinalItinerary(string Content);
 #endif
 ```
 
@@ -257,11 +262,12 @@ For short workflows where you only need the final result:
 
 ```csharp
 #if IOS || MACCATALYST
-var result = await workflowAgent.RunAsync<FinalItinerary>(
+var result = await workflowAgent.RunAsync<ItineraryResult>(
     input: userInput,
     cancellationToken: cancellationToken);
 
-Console.WriteLine(result.Content);
+// result.ItineraryJson contains the final JSON (translated if applicable)
+var itinerary = JsonSerializer.Deserialize<Itinerary>(result.ItineraryJson, jsonOptions);
 #endif
 ```
 
@@ -273,10 +279,22 @@ For long-running generation, use `RunStreamingAsync` to receive incremental upda
 #if IOS || MACCATALYST
 using Microsoft.Agents.AI.Workflows;
 
+// The update record emitted for each streaming chunk
+public record ItineraryStreamUpdate
+{
+    // Set when an agent transitions (e.g., "Researching destination…")
+    public string? StatusMessage { get; init; }
+
+    // Set when a new partial itinerary can be rendered (progressively decoded from streaming JSON)
+    public Itinerary? PartialItinerary { get; init; }
+}
+
 public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
     string input,
     [EnumeratorCancellation] CancellationToken cancellationToken = default)
 {
+    var deserializer = new StreamingJsonDeserializer<Itinerary>(jsonOptions);
+
     await foreach (var update in workflowAgent.RunStreamingAsync(input, cancellationToken: cancellationToken))
     {
         if (update.RawRepresentation is ExecutorStatusEvent statusEvent)
@@ -286,8 +304,9 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
         }
         else if (update.RawRepresentation is ItineraryTextChunkEvent textChunk)
         {
-            // Incremental JSON chunks that can be partially deserialized for progressive rendering
-            yield return new ItineraryStreamUpdate { PartialContent = textChunk.TextChunk };
+            // Incrementally deserialize streaming JSON for progressive rendering
+            var partial = deserializer.ProcessChunk(textChunk.TextChunk);
+            yield return new ItineraryStreamUpdate { PartialItinerary = partial };
         }
     }
 }
@@ -311,7 +330,7 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 
 ## See also
 
-- [Apple Intelligence overview](./apple-intelligence.md)
-- [Get started with AI in .NET MAUI](./get-started.md)
-- [Chat with AI](./chat.md)
-- [Summarize content with AI](./summarize.md)
+- [Microsoft.Maui.Essentials.AI overview](index.md)
+- [Get started with Microsoft.Maui.Essentials.AI](getting-started.md)
+- [Platform APIs](platform-apis.md)
+- [Feature comparison](feature-comparison.md)

@@ -181,7 +181,7 @@ The Swift layer (`EssentialsAI.xcodeproj`) is compiled into the app and called f
 
 ### NLEmbeddingGenerator
 
-`NLEmbeddingGenerator` generates text embeddings using the Apple Natural Language framework (`NLEmbedding`). Unlike `AppleIntelligenceChatClient`, it does **not** require Apple Intelligence and is available on older OS versions.
+`NLEmbeddingGenerator` generates **sentence-level** text embeddings using the Apple Natural Language framework (`NLEmbedding`). Unlike `AppleIntelligenceChatClient`, it does **not** require Apple Intelligence and is available on older OS versions.
 
 **Namespace:** `Microsoft.Maui.Essentials.AI`  
 **Implements:** `IEmbeddingGenerator<string, Embedding<float>>`  
@@ -192,12 +192,15 @@ The Swift layer (`EssentialsAI.xcodeproj`) is compiled into the app and called f
 public class NLEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<float>>
 ```
 
+> [!NOTE]
+> `NLEmbeddingGenerator` uses Apple's *sentence* embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences or short passages rather than individual words. This makes it well-suited for semantic similarity search over descriptive text.
+
 #### Constructors
 
 | Constructor | Description |
 |-------------|-------------|
-| `NLEmbeddingGenerator()` | Creates an instance using the English-language embedding model. |
-| `NLEmbeddingGenerator(NLLanguage language)` | Creates an instance for the specified language. |
+| `NLEmbeddingGenerator()` | Creates an instance using the English-language sentence embedding model. |
+| `NLEmbeddingGenerator(NLLanguage language)` | Creates an instance using the sentence embedding model for the specified language. Throws `NotSupportedException` if sentence embeddings are not available for the language. |
 | `NLEmbeddingGenerator(NLEmbedding embedding)` | Wraps an existing `NLEmbedding` instance. Use this when you need fine-grained control over the underlying embedding model. |
 
 #### Thread safety
@@ -237,7 +240,10 @@ Console.WriteLine($"Similarity: {similarity:F4}");
 
 `NLEmbeddingExtensions` provides a convenience extension method to wrap a native `NLEmbedding` instance in the standard `IEmbeddingGenerator<string, Embedding<float>>` interface.
 
-**Namespace:** `Microsoft.Maui.Essentials.AI`
+**Namespace:** `Microsoft.Extensions.AI`
+
+> [!NOTE]
+> `NLEmbeddingExtensions` lives in the `Microsoft.Extensions.AI` namespace (not `Microsoft.Maui.Essentials.AI`). Add `using Microsoft.Extensions.AI;` to your file to call the `AsIEmbeddingGenerator()` extension method.
 
 | Method | Description |
 |--------|-------------|
@@ -248,9 +254,8 @@ Console.WriteLine($"Similarity: {similarity:F4}");
 ```csharp
 using NaturalLanguage;
 using Microsoft.Extensions.AI;
-using Microsoft.Maui.Essentials.AI;
 
-NLEmbedding nativeEmbedding = NLEmbedding.GetEmbedding(NLLanguageKey.English, null)!;
+NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.English)!;
 IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
 
 var embeddings = await generator.GenerateAsync(["sample text"]);
