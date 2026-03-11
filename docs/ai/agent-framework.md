@@ -56,6 +56,8 @@ Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the d
 
 Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Extensions.AI` `IChatClient` abstraction. Registering a **keyed service** lets each agent in the workflow resolve its own `IChatClient` instance independently.
 
+In `MauiProgram.cs`:
+
 <!-- markdownlint-disable MD025 -->
 # [iOS/Mac Catalyst](#tab/macios)
 
@@ -63,34 +65,24 @@ Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Exte
 using Microsoft.Maui.Essentials.AI;
 using Microsoft.Extensions.AI;
 
-public static class MauiAppBuilderExtensions
+var builder = MauiApp.CreateBuilder();
+
+// Register the Apple Intelligence chat client
+builder.Services.AddSingleton<AppleIntelligenceChatClient>();
+
+// Register as a keyed service so agents can resolve it by name
+builder.Services.AddKeyedChatClient("local-model", sp =>
 {
-    public static MauiAppBuilder ConfigureAIServices(this MauiAppBuilder builder)
-    {
-        // Register the Apple Intelligence chat client
-        builder.Services.AddSingleton<AppleIntelligenceChatClient>();
+    var appleClient = sp.GetRequiredService<AppleIntelligenceChatClient>();
+    return appleClient.AsBuilder()
+        .UseLogging()
+        .Build(sp);
+});
 
-        // Register as the default IChatClient
-        builder.Services.AddChatClient(sp =>
-        {
-            var appleClient = sp.GetRequiredService<AppleIntelligenceChatClient>();
-            return appleClient.AsBuilder()
-                .UseLogging()
-                .Build(sp);
-        });
+// Register workflow agents and executors (cross-platform)
+builder.AddItineraryWorkflow();
 
-        // Register as a keyed service so agents can resolve it by name
-        builder.Services.AddKeyedChatClient("local-model", sp =>
-        {
-            var appleClient = sp.GetRequiredService<AppleIntelligenceChatClient>();
-            return appleClient.AsBuilder()
-                .UseLogging()
-                .Build(sp);
-        });
-
-        return builder;
-    }
-}
+var app = builder.Build();
 ```
 
 > [!NOTE]
@@ -112,7 +104,6 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Each stage of a workflow passes a strongly typed result to the next stage. Defining explicit record types makes each agent's contract clear and enables the framework to serialize results between agents.
 
 ```csharp
-#if IOS || MACCATALYST
 // Raw text request from the user — the entry point to the workflow
 public record TravelRequest(string UserInput);
 
@@ -134,7 +125,6 @@ public record ResearchResult(
 
 // Output of the Itinerary Planner agent (and final output after optional translation)
 public record ItineraryResult(string ItineraryJson, string TargetLanguage);
-#endif
 ```
 
 ## Create agents
@@ -144,7 +134,6 @@ public record ItineraryResult(string ItineraryJson, string TargetLanguage);
 The simplest form of an agent is registered with `AddAIAgent()`, supplying a name, a system prompt, and the keyed service that provides the `IChatClient`:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Agents.AI.Hosting;
 
 // In your workflow registration code:
@@ -158,7 +147,6 @@ builder.AddAIAgent(
         Respond with a JSON object containing exactly those fields and no other text.
         """,
     chatClientServiceKey: "local-model");
-#endif
 ```
 
 ### Agent with a RAG context provider
@@ -166,7 +154,6 @@ builder.AddAIAgent(
 A **context provider** retrieves relevant data at runtime and injects it into the agent's prompt. Use this pattern when an agent needs grounding information (such as landmark descriptions) that is not baked into the model:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
@@ -193,7 +180,6 @@ builder.AddAIAgent("researcher-agent", (sp, name) =>
         },
         loggerFactory: sp.GetService<ILoggerFactory>());
 });
-#endif
 ```
 
 ### Agent with tool calling
@@ -201,7 +187,6 @@ builder.AddAIAgent("researcher-agent", (sp, name) =>
 Agents can invoke tools—arbitrary .NET methods decorated with `AIFunctionFactory.Create`—to retrieve live data during generation:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
@@ -233,7 +218,6 @@ builder.AddAIAgent("itinerary-planner-agent", (sp, name) =>
         loggerFactory: sp.GetService<ILoggerFactory>(),
         services: sp);
 });
-#endif
 ```
 
 ## Build the workflow
@@ -241,7 +225,6 @@ builder.AddAIAgent("itinerary-planner-agent", (sp, name) =>
 Connect executors into a directed graph using `WorkflowBuilder`. Use `AddEdge` for unconditional transitions and `AddSwitch` for conditional branching:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Agents.AI.Workflows;
 
 // Executors are resolved from DI after all agents are registered
@@ -260,7 +243,6 @@ var workflow = new WorkflowBuilder(travelPlannerExecutor)
     // Translator → Output (always, when translation path is taken)
     .AddEdge(translatorExecutor, outputExecutor)
     .Build();
-#endif
 ```
 
 > [!TIP]
@@ -273,14 +255,12 @@ var workflow = new WorkflowBuilder(travelPlannerExecutor)
 For short workflows where you only need the final result:
 
 ```csharp
-#if IOS || MACCATALYST
 var result = await workflowAgent.RunAsync<ItineraryResult>(
     input: userInput,
     cancellationToken: cancellationToken);
 
 // result.ItineraryJson contains the final JSON (translated if applicable)
 var itinerary = JsonSerializer.Deserialize<Itinerary>(result.ItineraryJson, jsonOptions);
-#endif
 ```
 
 ### Streaming
@@ -288,7 +268,6 @@ var itinerary = JsonSerializer.Deserialize<Itinerary>(result.ItineraryJson, json
 For long-running generation, use `RunStreamingAsync` to receive incremental updates as each agent produces output. This lets you update the UI in real time instead of waiting for the entire workflow to finish:
 
 ```csharp
-#if IOS || MACCATALYST
 using Microsoft.Agents.AI.Workflows;
 
 // The update record emitted for each streaming chunk
@@ -322,7 +301,6 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
         }
     }
 }
-#endif
 ```
 
 `RunStreamingAsync` emits two kinds of events:
