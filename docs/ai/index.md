@@ -36,8 +36,8 @@ ms.date: 03/11/2026
 
 ### Currently available (Apple platforms)
 
-- **Chat client** (`IChatClient`) — uses Apple's Foundation Models framework (Apple Intelligence). Requires iOS 26.0+, macOS 26.0+, Mac Catalyst 26.0+, or tvOS 26.0+.
-- **Embedding generator** (`IEmbeddingGenerator<string, Embedding<float>>`) — uses Apple's Natural Language framework. Available from iOS 13.0+, macOS 10.15+, Mac Catalyst 13.1+, and tvOS 13.0+.
+- **Chat client** — `AppleIntelligenceChatClient` implements `IChatClient` using Apple's Foundation Models framework (Apple Intelligence). Requires iOS 26.0+, macOS 26.0+, Mac Catalyst 26.0+, or tvOS 26.0+.
+- **Embedding generator** — `NLEmbeddingGenerator` implements `IEmbeddingGenerator<string, Embedding<float>>` using Apple's Natural Language framework. Available from iOS 13.0+, macOS 10.15+, Mac Catalyst 13.1+, and tvOS 13.0+.
 
 ### Planned (not yet available)
 
