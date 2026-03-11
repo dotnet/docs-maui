@@ -30,7 +30,7 @@ Apple provides two distinct AI capabilities through different native frameworks:
 **Minimum platform version:** iOS 26.0, macOS 26.0, Mac Catalyst 26.0, tvOS 26.0
 
 ```csharp
-public class AppleIntelligenceChatClient : IChatClient
+public sealed class AppleIntelligenceChatClient : IChatClient
 ```
 
 #### Constructors
