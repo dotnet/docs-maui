@@ -12,7 +12,7 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 > Apple Intelligence is the first implementation available. Android and Windows support are planned for future releases.
 
 > [!IMPORTANT]
-> `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Requirements](requirements-apple.md#experimental-api) for how to suppress it.
+> `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Get started](getting-started.md#suppress-the-experimental-warning) for how to suppress it.
 
 ## Chat client
 
