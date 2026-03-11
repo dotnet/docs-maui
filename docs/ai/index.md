@@ -71,7 +71,7 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 | [Chat](chat.md) | Use `IChatClient` for basic chat, streaming, multi-turn conversations, tool calling, and structured output. |
 | [Text embeddings](embeddings.md) | Use `IEmbeddingGenerator` to generate on-device text embeddings for semantic search and similarity. |
 | [Agent framework integration](agent-framework.md) | Build multi-agent AI workflows with Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI. |
-| [API reference and features](feature-comparison.md) | API reference and feature availability across all platforms. |
+| [Feature comparison](feature-comparison.md) | Feature availability across all platforms. |
 | [Requirements](requirements-apple.md) | Supported OS versions and device requirements for iOS, macOS, Mac Catalyst, and tvOS. |
 
 ## See also

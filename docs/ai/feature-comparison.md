@@ -1,10 +1,10 @@
 ---
-title: API reference and feature comparison
-description: API reference for AppleIntelligenceChatClient, NLEmbeddingGenerator, and NLEmbeddingExtensions, with feature availability across all platforms supported by Microsoft.Maui.Essentials.AI.
+title: Feature comparison
+description: Feature availability comparison for AppleIntelligenceChatClient, NLEmbeddingGenerator, and NLEmbeddingExtensions across all platforms supported by Microsoft.Maui.Essentials.AI.
 ms.date: 03/11/2026
 ---
 
-# API reference and feature comparison
+# Feature comparison
 
 This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and compares feature availability across all platforms.
 

@@ -65,4 +65,4 @@ foreach (var (doc, score) in results)
 
 - [Chat client](chat.md)
 - [Agent framework integration](agent-framework.md)
-- [API reference and features](feature-comparison.md)
+- [Feature comparison](feature-comparison.md)

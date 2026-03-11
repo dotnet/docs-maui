@@ -10,7 +10,7 @@
   href: chat.md
 - name: Text embeddings
   href: embeddings.md
-- name: API reference and features
+- name: Feature comparison
   href: feature-comparison.md
 - name: Agent framework
   href: agent-framework.md

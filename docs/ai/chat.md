@@ -126,4 +126,4 @@ foreach (var day in result.Result.Days)
 
 - [Text embeddings](embeddings.md)
 - [Agent framework integration](agent-framework.md)
-- [API reference and features](feature-comparison.md)
+- [Feature comparison](feature-comparison.md)
