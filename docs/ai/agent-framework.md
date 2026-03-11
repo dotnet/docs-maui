@@ -342,6 +342,6 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 ## See also
 
 - [Microsoft.Maui.Essentials.AI overview](index.md)
-- [Chat client getting started](getting-started-chat.md)
+- [Chat client getting started](getting-started.md)
 - [Feature comparison](feature-comparison.md)
-- [Requirements](requirements.md)
+- [Requirements](requirements-apple.md)

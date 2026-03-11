@@ -1,15 +1,20 @@
 - name: Overview
   href: index.md
-- name: Requirements
-  href: requirements.md
 - name: Get started
   href: getting-started.md
+- name: Chat
+  href: chat.md
+- name: Text embeddings
+  href: embeddings.md
+- name: Requirements
   items:
-  - name: Chat client
-    href: getting-started-chat.md
-  - name: Text embeddings
-    href: getting-started-embeddings.md
+  - name: Apple (iOS/macOS)
+    href: requirements-apple.md
+  - name: Android
+    href: requirements-android.md
+  - name: Windows
+    href: requirements-windows.md
+- name: API reference and features
+  href: feature-comparison.md
 - name: Agent framework
   href: agent-framework.md
-- name: Feature comparison
-  href: feature-comparison.md

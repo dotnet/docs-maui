@@ -68,11 +68,12 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 
 | Article | Description |
 |---------|-------------|
-| [Requirements](requirements.md) | Platform versions and device requirements for the chat client and embedding generator. |
-| [Chat client](getting-started-chat.md) | Install, register, and use `AppleIntelligenceChatClient` for streaming chat, tool calling, and structured output. |
-| [Text embeddings](getting-started-embeddings.md) | Install, register, and use `NLEmbeddingGenerator` for semantic search and similarity. |
+| [Get started](getting-started.md) | Install the package and register the chat client and embedding generator services. |
+| [Chat](chat.md) | Use `IChatClient` for basic chat, streaming, multi-turn conversations, tool calling, and structured output. |
+| [Text embeddings](embeddings.md) | Use `IEmbeddingGenerator` to generate on-device text embeddings for semantic search and similarity. |
 | [Agent framework integration](agent-framework.md) | Build multi-agent AI workflows with Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI. |
-| [Feature comparison](feature-comparison.md) | API reference and feature availability across all platforms. |
+| [API reference and features](feature-comparison.md) | API reference and feature availability across all platforms. |
+| [Apple requirements](requirements-apple.md) | Supported OS versions and device requirements for iOS, macOS, Mac Catalyst, and tvOS. |
 
 ## See also
 

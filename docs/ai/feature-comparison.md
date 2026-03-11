@@ -12,7 +12,7 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 > Apple Intelligence is the first implementation available. Android and Windows support are planned for future releases.
 
 > [!IMPORTANT]
-> `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Requirements](requirements.md#experimental-api) for how to suppress it.
+> `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Requirements](requirements-apple.md#experimental-api) for how to suppress it.
 
 ## Chat client
 
@@ -150,8 +150,8 @@ IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmb
 
 ## See also
 
-- [Requirements](requirements.md)
-- [Chat client getting started](getting-started-chat.md)
-- [Text embeddings getting started](getting-started-embeddings.md)
+- [Requirements](requirements-apple.md)
+- [Chat client getting started](chat.md)
+- [Text embeddings getting started](embeddings.md)
 - [`IChatClient` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
 - [`IEmbeddingGenerator<TInput,TEmbedding>` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
