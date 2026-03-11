@@ -1,7 +1,7 @@
 ---
 title: Get started with Microsoft.Maui.Essentials.AI
 description: Learn how to install and use Microsoft.Maui.Essentials.AI to integrate on-device AI capabilities such as chat and text embeddings into your .NET MAUI app.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ---
 
 # Get started with Microsoft.Maui.Essentials.AI
@@ -11,10 +11,11 @@ ms.date: 05/14/2026
 ## Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
-- [.NET MAUI workload](https://learn.microsoft.com/dotnet/maui/get-started/installation)
+- [.NET MAUI workload](~/get-started/installation.md)
 - A device or simulator supported by a platform implementation (see [Requirements](requirements.md))
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 - Xcode 26 or later
 - A device or simulator running iOS 26+ or macOS 26+ (for chat)
@@ -29,6 +30,7 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Installation
 
@@ -70,7 +72,8 @@ The recommended approach is to register AI services in a dedicated extension met
 
 ### Extension method (recommended)
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 Create an extension method on `MauiAppBuilder` to register all required services:
 
@@ -128,10 +131,12 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ### Call from MauiProgram.cs
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 public static class MauiProgram
@@ -162,12 +167,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Basic chat
 
 Inject `IChatClient` and call `GetResponseAsync` for a single-turn response:
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -198,12 +205,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Streaming responses
 
 Use `GetStreamingResponseAsync` to receive tokens as they are produced:
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 var client = serviceProvider.GetRequiredService<IChatClient>();
@@ -226,12 +235,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Multi-turn conversations
 
 Pass a `List<ChatMessage>` to maintain conversation history across turns:
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -262,12 +273,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Tool calling
 
 `AppleIntelligenceChatClient` supports function calling via `AIFunction` tools. Define tool methods with `[Description]` attributes and register them with `AIFunctionFactory.Create()`:
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using System.ComponentModel;
@@ -319,12 +332,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Structured JSON output
 
 To receive a strongly-typed JSON response, use `ChatResponseFormat.ForJsonSchema<T>()` with a `JsonSerializerOptions` instance:
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using System.Text.Json;
@@ -361,12 +376,14 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Text embeddings
 
 `NLEmbeddingGenerator` converts strings into float vectors using Apple's Natural Language **sentence** embedding model (`NLEmbedding.GetSentenceEmbedding`). These vectors capture the semantic meaning of full sentences or short passages and can be used for semantic search, clustering, and retrieval-augmented generation (RAG).
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using System.Numerics.Tensors;
@@ -405,6 +422,7 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Next steps
 

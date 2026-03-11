@@ -1,7 +1,7 @@
 ---
 title: Microsoft.Maui.Essentials.AI overview
 description: Learn how Microsoft.Maui.Essentials.AI brings on-device AI to .NET MAUI apps through standard Microsoft.Extensions.AI interfaces backed by native Apple platform APIs.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ---
 
 # Microsoft.Maui.Essentials.AI overview

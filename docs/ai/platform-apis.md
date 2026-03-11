@@ -1,7 +1,7 @@
 ---
 title: Platform-specific AI APIs
 description: Learn about the AI APIs available on each platform in Microsoft.Maui.Essentials.AI, including Apple Intelligence for iOS and macOS, with planned Android and Windows support.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ---
 
 # Platform-specific AI APIs

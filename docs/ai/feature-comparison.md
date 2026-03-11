@@ -1,7 +1,7 @@
 ---
 title: Feature comparison
 description: Compares the AI features available across platforms supported by Microsoft.Maui.Essentials.AI.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ---
 
 # Feature comparison

@@ -1,7 +1,7 @@
 ---
 title: Microsoft Agent Framework integration
 description: Learn how to compose multiple AI agents into multi-stage workflows that run entirely on-device using Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ms.topic: conceptual
 ---
 
@@ -56,7 +56,8 @@ Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the d
 
 Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Extensions.AI` `IChatClient` abstraction. Registering a **keyed service** lets each agent in the workflow resolve its own `IChatClient` instance independently.
 
-# [iOS/macOS](#tab/apple)
+<!-- markdownlint-disable MD025 -->
+# [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
 using Microsoft.Maui.Essentials.AI;
@@ -104,6 +105,7 @@ Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
+<!-- markdownlint-enable MD025 -->
 
 ## Define workflow models
 

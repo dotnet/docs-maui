@@ -1,7 +1,7 @@
 ---
 title: Requirements for Microsoft.Maui.Essentials.AI
 description: Review the platform versions, device capabilities, and development prerequisites needed to use Microsoft.Maui.Essentials.AI in a .NET MAUI application.
-ms.date: 05/14/2026
+ms.date: 03/11/2026
 ---
 
 # Requirements for Microsoft.Maui.Essentials.AI
