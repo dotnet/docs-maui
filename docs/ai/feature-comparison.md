@@ -70,20 +70,6 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 | `FunctionResultContent` | ✅ | Not available | Not available |
 | `ImageContent` | ❌ | Not available | Not available |
 
-### AppleIntelligenceChatClient constructors
-
-| Constructor | Description |
-|-------------|-------------|
-| `AppleIntelligenceChatClient()` | Creates an instance with no logging and no function-invocation services. |
-| `AppleIntelligenceChatClient(ILoggerFactory? loggerFactory, IServiceProvider? functionInvocationServices)` | Creates an instance with optional logging and optional service provider for `AIFunction` tool invocation. |
-
-```csharp
-public sealed class AppleIntelligenceChatClient : IChatClient
-```
-
-**Namespace:** `Microsoft.Maui.Essentials.AI`  
-**Native framework:** Foundation Models (Apple)
-
 ## Embedding generator
 
 ### Platform availability
@@ -109,25 +95,14 @@ public sealed class AppleIntelligenceChatClient : IChatClient
 > [!NOTE]
 > `NLEmbeddingGenerator` uses Apple's *sentence* embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences or short passages rather than individual words. This makes it well-suited for semantic similarity search over descriptive text.
 
-### NLEmbeddingGenerator constructors
-
-| Constructor | Description |
-|-------------|-------------|
-| `NLEmbeddingGenerator()` | Creates an instance using the English-language sentence embedding model. |
-| `NLEmbeddingGenerator(NLLanguage language)` | Creates an instance using the sentence embedding model for the specified language. Throws `NotSupportedException` if not available. |
-| `NLEmbeddingGenerator(NLEmbedding embedding)` | Wraps an existing `NLEmbedding` instance directly. |
-
-```csharp
-public class NLEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<float>>
-```
-
-**Namespace:** `Microsoft.Maui.Essentials.AI`  
-**Native framework:** Natural Language (Apple)
-
 > [!TIP]
 > `NLEmbeddingGenerator` serializes concurrent calls with a `SemaphoreSlim(1, 1)`. For high-throughput scenarios, create multiple instances and distribute work across them.
 
-## NLEmbeddingExtensions
+## Platforms
+
+### Apple (iOS/Mac Catalyst)
+
+#### NLEmbeddingExtensions
 
 `NLEmbeddingExtensions` wraps a native `NLEmbedding` as an `IEmbeddingGenerator<string, Embedding<float>>`.
 
@@ -148,7 +123,7 @@ NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.Englis
 IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
 ```
 
-## Multiple languages
+#### Multiple languages
 
 `NLEmbeddingGenerator` supports multiple languages through Apple's Natural Language framework. Specify a language when constructing the generator:
 
@@ -169,7 +144,7 @@ Throws `NotSupportedException` if sentence embeddings are not available for the 
 ## See also
 
 - [Requirements](requirements-apple.md)
-- [Chat client getting started](chat.md)
-- [Text embeddings getting started](embeddings.md)
+- [Chat](chat.md)
+- [Text embeddings](embeddings.md)
 - [`IChatClient` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
 - [`IEmbeddingGenerator<TInput,TEmbedding>` (Microsoft.Extensions.AI)](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)

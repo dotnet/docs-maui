@@ -7,27 +7,23 @@ ms.topic: conceptual
 
 # Text embeddings
 
-This page shows how to use `IEmbeddingGenerator<string, Embedding<float>>` in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Apple requirements](requirements-apple.md).
+This page shows how to use `IEmbeddingGenerator<string, Embedding<float>>` in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
 
 The `IEmbeddingGenerator` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
 
-`NLEmbeddingGenerator` uses Apple's **sentence** embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences and short passages — making it well-suited for semantic search over descriptive text.
-
 ## Generate embeddings
 
-Inject `IEmbeddingGenerator<string, Embedding<float>>` and call `GenerateAsync` with a list of strings:
+Call `GenerateAsync` with a list of strings to produce embedding vectors:
 
 ```csharp
 using Microsoft.Extensions.AI;
 
-public class EmbeddingService(IEmbeddingGenerator<string, Embedding<float>> generator)
-{
-    public async Task<ReadOnlyMemory<float>> EmbedAsync(string text)
-    {
-        var embeddings = await generator.GenerateAsync([text]);
-        return embeddings[0].Vector;
-    }
-}
+IEmbeddingGenerator<string, Embedding<float>> generator = // resolved from DI
+
+string text = "Hello, world!";
+var embeddings = await generator.GenerateAsync([text]);
+ReadOnlyMemory<float> vector = embeddings[0].Vector;
+Console.WriteLine($"Dimensions: {vector.Length}");
 ```
 
 You can embed multiple strings in a single call:
@@ -36,7 +32,8 @@ You can embed multiple strings in a single call:
 var embeddings = await generator.GenerateAsync(
     ["Hello, world!", "Goodbye, world!", "Bonjour le monde"]);
 
-Console.WriteLine($"Dimensions: {embeddings[0].Vector.Length}");
+for (int i = 0; i < embeddings.Count; i++)
+    Console.WriteLine($"[{i}] dimensions: {embeddings[i].Vector.Length}");
 ```
 
 ## Semantic similarity search
@@ -47,8 +44,10 @@ Use cosine similarity to rank items by how semantically close they are to a quer
 using System.Numerics.Tensors;
 using Microsoft.Extensions.AI;
 
-// Embed the user's query
-var queryEmbeddings = await generator.GenerateAsync(["Find nearby restaurants"]);
+IEmbeddingGenerator<string, Embedding<float>> generator = // resolved from DI
+
+string query = "Find nearby restaurants";
+var queryEmbeddings = await generator.GenerateAsync([query]);
 
 // Compare against pre-embedded documents and rank by similarity
 var results = documents

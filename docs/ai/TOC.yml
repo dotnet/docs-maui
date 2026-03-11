@@ -1,7 +1,9 @@
 - name: Overview
   href: index.md
 - name: Requirements
-  href: requirements-apple.md
+  items:
+  - name: Apple (iOS/Mac Catalyst)
+    href: requirements-apple.md
 - name: Get started
   href: getting-started.md
 - name: Chat

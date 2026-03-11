@@ -33,41 +33,37 @@ Or add the `PackageReference` directly to your `.csproj`:
 </PropertyGroup>
 ```
 
-## Register services
-
-Register the AI services in your `MauiProgram.cs` using a helper extension method. The registration is platform-specific because each platform provides its own underlying implementation.
-
-### Define the extension method
+## Register the chat client
 
 <!-- markdownlint-disable MD025 -->
 # [iOS/Mac Catalyst](#tab/macios)
 
-Create an extension method on `MauiAppBuilder`. This example registers both the chat client and the embedding generator:
+Register `AppleIntelligenceChatClient` as a singleton, then expose it as `IChatClient` using `AddChatClient`:
 
 ```csharp
 using Microsoft.Extensions.AI;
 using Microsoft.Maui.Essentials.AI;
 
-public static class MauiAppBuilderExtensions
+public static class MauiProgram
 {
-    public static MauiAppBuilder AddAIServices(this MauiAppBuilder builder)
+    public static MauiApp CreateMauiApp()
     {
-        // Chat client: requires iOS 26.0+ / macOS 26.0+
+        var builder = MauiApp.CreateBuilder();
+        builder.UseMauiApp<App>();
+
+#if IOS || MACCATALYST
+        // Register the platform-specific implementation
         builder.Services.AddSingleton<AppleIntelligenceChatClient>();
+
+        // Register as IChatClient with middleware
         builder.Services.AddChatClient(sp =>
             sp.GetRequiredService<AppleIntelligenceChatClient>()
               .AsBuilder()
               .UseLogging()
               .Build(sp));
+#endif
 
-        // Embedding generator: available on iOS 13.0+ / macOS 10.15+
-        builder.Services.AddEmbeddingGenerator(sp =>
-            new NLEmbeddingGenerator()
-              .AsBuilder()
-              .UseLogging()
-              .Build(sp));
-
-        return builder;
+        return builder.Build();
     }
 }
 ```
@@ -83,12 +79,17 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 ---
 <!-- markdownlint-enable MD025 -->
 
-### Call from MauiProgram.cs
+## Register the embedding generator
 
 <!-- markdownlint-disable MD025 -->
 # [iOS/Mac Catalyst](#tab/macios)
 
+Register `NLEmbeddingGenerator` as a singleton, then expose it as `IEmbeddingGenerator` using `AddEmbeddingGenerator`:
+
 ```csharp
+using Microsoft.Extensions.AI;
+using Microsoft.Maui.Essentials.AI;
+
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -97,7 +98,15 @@ public static class MauiProgram
         builder.UseMauiApp<App>();
 
 #if IOS || MACCATALYST
-        builder.AddAIServices();
+        // Register the platform-specific implementation
+        builder.Services.AddSingleton<NLEmbeddingGenerator>();
+
+        // Register as IEmbeddingGenerator with middleware
+        builder.Services.AddEmbeddingGenerator(sp =>
+            sp.GetRequiredService<NLEmbeddingGenerator>()
+              .AsBuilder()
+              .UseLogging()
+              .Build(sp));
 #endif
 
         return builder.Build();

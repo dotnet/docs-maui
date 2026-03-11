@@ -7,25 +7,22 @@ ms.topic: conceptual
 
 # Chat client
 
-This page shows how to use `IChatClient` in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Apple requirements](requirements-apple.md).
+This page shows how to use `IChatClient` in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
 
 The `IChatClient` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
 
 ## Basic chat
 
-Inject `IChatClient` and call `GetResponseAsync` for a single-turn response:
+Call `GetResponseAsync` for a single-turn response:
 
 ```csharp
 using Microsoft.Extensions.AI;
 
-public class ChatService(IChatClient chatClient)
-{
-    public async Task<string> AskAsync(string question)
-    {
-        var response = await chatClient.GetResponseAsync(question);
-        return response.Text;
-    }
-}
+IChatClient chatClient = // resolved from DI
+
+string prompt = "What is .NET MAUI?";
+var response = await chatClient.GetResponseAsync(prompt);
+Console.WriteLine(response.Text);
 ```
 
 ## Streaming responses
@@ -35,16 +32,13 @@ Use `GetStreamingResponseAsync` to receive tokens incrementally as they are gene
 ```csharp
 using Microsoft.Extensions.AI;
 
-public class ChatService(IChatClient chatClient)
+IChatClient chatClient = // resolved from DI
+
+string prompt = "Explain dependency injection in simple terms.";
+await foreach (var update in chatClient.GetStreamingResponseAsync(prompt))
 {
-    public async Task StreamAsync(string prompt, Action<string> onToken)
-    {
-        await foreach (var update in chatClient.GetStreamingResponseAsync(prompt))
-        {
-            if (update.Text is not null)
-                onToken(update.Text);
-        }
-    }
+    if (update.Text is not null)
+        Console.Write(update.Text);
 }
 ```
 
@@ -55,6 +49,8 @@ Pass the full conversation history as a `List<ChatMessage>` to maintain context 
 ```csharp
 using Microsoft.Extensions.AI;
 
+IChatClient chatClient = // resolved from DI
+
 var messages = new List<ChatMessage>
 {
     new ChatMessage(ChatRole.System, "You are a helpful travel assistant."),
@@ -62,6 +58,7 @@ var messages = new List<ChatMessage>
 };
 
 var response = await chatClient.GetResponseAsync(messages);
+Console.WriteLine(response.Text);
 messages.Add(response.Message); // append assistant reply to history
 
 // Continue the conversation
@@ -80,6 +77,8 @@ Define functions with `[Description]` attributes, wrap them with `AIFunctionFact
 using System.ComponentModel;
 using Microsoft.Extensions.AI;
 
+IChatClient chatClient = // resolved from DI
+
 [Description("Gets the current weather for a city.")]
 static async Task<string> GetWeatherAsync(
     [Description("The city name")] string city)
@@ -88,12 +87,13 @@ static async Task<string> GetWeatherAsync(
     return $"Sunny, 22°C in {city}";
 }
 
+string prompt = "What's the weather in Paris?";
 var options = new ChatOptions
 {
     Tools = [AIFunctionFactory.Create(GetWeatherAsync)]
 };
 
-var response = await chatClient.GetResponseAsync("What's the weather in Paris?", options);
+var response = await chatClient.GetResponseAsync(prompt, options);
 Console.WriteLine(response.Text);
 ```
 
@@ -107,10 +107,12 @@ Use the generic `GetResponseAsync<T>()` method to receive a strongly-typed respo
 ```csharp
 using Microsoft.Extensions.AI;
 
+IChatClient chatClient = // resolved from DI
+
 public record Itinerary(string Destination, string[] Days, string[] Tips);
 
-var result = await chatClient.GetResponseAsync<Itinerary>(
-    "Create a 3-day Tokyo itinerary.");
+string prompt = "Create a 3-day Tokyo itinerary.";
+var result = await chatClient.GetResponseAsync<Itinerary>(prompt);
 
 Console.WriteLine($"Destination: {result.Result.Destination}");
 foreach (var day in result.Result.Days)
@@ -124,4 +126,4 @@ foreach (var day in result.Result.Days)
 
 - [Text embeddings](embeddings.md)
 - [Agent framework integration](agent-framework.md)
-- [Feature comparison](feature-comparison.md)
+- [API reference and features](feature-comparison.md)
