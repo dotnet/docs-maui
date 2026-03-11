@@ -62,37 +62,8 @@ foreach (var (doc, score) in results)
     Console.WriteLine($"{doc.Title} — {score:P1}");
 ```
 
-## Multiple languages
-
-`NLEmbeddingGenerator` supports multiple languages through Apple's Natural Language framework. Specify a language when constructing the generator directly:
-
-```csharp
-using NaturalLanguage;
-using Microsoft.Maui.Essentials.AI;
-
-var frenchGenerator = new NLEmbeddingGenerator(NLLanguage.French);
-var embeddings = await frenchGenerator.GenerateAsync(["Bonjour le monde"]);
-```
-
-Throws `NotSupportedException` if sentence embeddings are not available for the requested language.
-
-## Use an existing NLEmbedding
-
-If you already have a native `NLEmbedding` instance, wrap it with the `AsIEmbeddingGenerator()` extension method from `Microsoft.Extensions.AI`:
-
-```csharp
-using NaturalLanguage;
-using Microsoft.Extensions.AI; // required for AsIEmbeddingGenerator()
-
-NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.English)!;
-IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
-```
-
-> [!NOTE]
-> `AsIEmbeddingGenerator()` is an extension method in the `Microsoft.Extensions.AI` namespace. Add `using Microsoft.Extensions.AI;` to resolve it.
-
 ## See also
 
 - [Chat client](chat.md)
 - [Agent framework integration](agent-framework.md)
-- [Feature comparison](feature-comparison.md)
+- [API reference and features](feature-comparison.md)

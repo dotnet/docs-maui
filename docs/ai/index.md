@@ -72,7 +72,7 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 | [Text embeddings](embeddings.md) | Use `IEmbeddingGenerator` to generate on-device text embeddings for semantic search and similarity. |
 | [Agent framework integration](agent-framework.md) | Build multi-agent AI workflows with Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI. |
 | [API reference and features](feature-comparison.md) | API reference and feature availability across all platforms. |
-| [Apple requirements](requirements-apple.md) | Supported OS versions and device requirements for iOS, macOS, Mac Catalyst, and tvOS. |
+| [Requirements](requirements-apple.md) | Supported OS versions and device requirements for iOS, macOS, Mac Catalyst, and tvOS. |
 
 ## See also
 

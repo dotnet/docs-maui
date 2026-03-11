@@ -71,5 +71,3 @@ Xcode 26 or later is required to build for Apple platforms.
 - [Get started](getting-started.md) — install the package and register services
 - [Chat client](chat.md) — usage examples
 - [Text embeddings](embeddings.md) — usage examples
-- [Android requirements](requirements-android.md)
-- [Windows requirements](requirements-windows.md)

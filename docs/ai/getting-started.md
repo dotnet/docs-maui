@@ -74,11 +74,11 @@ public static class MauiAppBuilderExtensions
 
 # [Android](#tab/android)
 
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available. See [Android requirements](requirements-android.md) for details.
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 # [Windows](#tab/windows)
 
-Windows support for `Microsoft.Maui.Essentials.AI` is not yet available. See [Windows requirements](requirements-windows.md) for details.
+Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 
 ---
 <!-- markdownlint-enable MD025 -->

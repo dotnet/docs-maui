@@ -148,6 +148,24 @@ NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.Englis
 IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
 ```
 
+## Multiple languages
+
+`NLEmbeddingGenerator` supports multiple languages through Apple's Natural Language framework. Specify a language when constructing the generator:
+
+```csharp
+using NaturalLanguage;
+using Microsoft.Maui.Essentials.AI;
+
+// Default: English
+var englishGenerator = new NLEmbeddingGenerator();
+
+// Specific language
+var frenchGenerator = new NLEmbeddingGenerator(NLLanguage.French);
+var embeddings = await frenchGenerator.GenerateAsync(["Bonjour le monde"]);
+```
+
+Throws `NotSupportedException` if sentence embeddings are not available for the requested language.
+
 ## See also
 
 - [Requirements](requirements-apple.md)
