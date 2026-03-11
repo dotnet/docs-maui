@@ -47,35 +47,6 @@ ms.date: 03/11/2026
 
 Because all implementations conform to the standard Microsoft.Extensions.AI interfaces, you can substitute any `IChatClient` or `IEmbeddingGenerator` provider without changing your application logic. This makes it straightforward to switch between on-device models or cloud-backed providers.
 
-## Architecture
-
-```
-┌───────────────────────────────────────────────────────────┐
-│                  .NET MAUI Application                    │
-├───────────────────────────────────────────────────────────┤
-│          Microsoft.Extensions.AI Abstractions             │
-│        (IChatClient, IEmbeddingGenerator)                 │
-├───────────────────────────────────────────────────────────┤
-│              Microsoft.Maui.Essentials.AI                 │
-│  ┌─────────────────────┐  ┌────────────┐  ┌───────────┐  │
-│  │  Apple (available)  │  │  Android   │  │  Windows  │  │
-│  │  ─────────────────  │  │  (planned) │  │  (planned)│  │
-│  │  AppleIntelligence  │  │            │  │           │  │
-│  │  ChatClient         │  │            │  │           │  │
-│  │  NLEmbedding        │  │            │  │           │  │
-│  │  Generator          │  │            │  │           │  │
-│  └─────────────────────┘  └────────────┘  └───────────┘  │
-├───────────────────────────────────────────────────────────┤
-│                  Platform Native APIs                     │
-│  ┌─────────────────────┐  ┌────────────┐  ┌───────────┐  │
-│  │  Foundation Models  │  │  (planned) │  │  (planned)│  │
-│  │  Natural Language   │  │            │  │           │  │
-│  └─────────────────────┘  └────────────┘  └───────────┘  │
-└───────────────────────────────────────────────────────────┘
-```
-
-Your application code targets the **Microsoft.Extensions.AI abstractions** layer. `Microsoft.Maui.Essentials.AI` provides the concrete implementations per platform. Apple platforms are the first to be supported; additional platform implementations will be added in future releases.
-
 ## Key benefits
 
 - **Unified API**: Program against `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>`—the same interfaces used across the .NET AI ecosystem.
