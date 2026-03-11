@@ -61,12 +61,11 @@ public static class MauiAppBuilderExtensions
               .Build(sp));
 
         // Embedding generator: available on iOS 13.0+ / macOS 10.15+
-        builder.Services.AddSingleton<NLEmbeddingGenerator>();
-        builder.Services.AddSingleton<IEmbeddingGenerator<string, Embedding<float>>>(sp =>
-            sp.GetRequiredService<NLEmbeddingGenerator>()
+        builder.Services.AddEmbeddingGenerator(sp =>
+            new NLEmbeddingGenerator()
               .AsBuilder()
-              .UseLogging(sp.GetRequiredService<ILoggerFactory>())
-              .Build());
+              .UseLogging()
+              .Build(sp));
 
         return builder;
     }
