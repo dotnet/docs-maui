@@ -88,14 +88,6 @@ var app = builder.Build();
 > [!NOTE]
 > The `"local-model"` key is a convention used in the sample. You can use any string key that makes sense for your application.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
-# [Windows](#tab/windows)
-
-Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 

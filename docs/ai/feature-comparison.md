@@ -24,36 +24,34 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 | macOS | `AppleIntelligenceChatClient` | 26.0 |
 | Mac Catalyst | `AppleIntelligenceChatClient` | 26.0 |
 | tvOS | `AppleIntelligenceChatClient` | 26.0 |
-| Android | Not available | — |
-| Windows | Not available | — |
 
 ### Chat capabilities
 
-| Feature | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
-|---------|-----------------------------------|---------|---------|
-| Text generation | ✅ | Not available | Not available |
-| Streaming responses | ✅ | Not available | Not available |
-| Tool / function calling | ✅ (`AIFunction` only) | Not available | Not available |
-| Structured JSON output | ✅ | Not available | Not available |
-| System prompts | ✅ | Not available | Not available |
-| Multi-turn conversations | ✅ | Not available | Not available |
-| Image input | ❌ | Not available | Not available |
+| Feature | iOS / macOS / Mac Catalyst / tvOS |
+|---------|-----------------------------------|
+| Text generation | ✅ |
+| Streaming responses | ✅ |
+| Tool / function calling | ✅ (`AIFunction` only) |
+| Structured JSON output | ✅ |
+| System prompts | ✅ |
+| Multi-turn conversations | ✅ |
+| Image input | ❌ |
 
 ### Supported ChatOptions
 
 `ChatOptions` properties honored by `AppleIntelligenceChatClient`. All other properties are silently ignored.
 
-| Option | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
-|--------|-----------------------------------|---------|---------|
-| `Temperature` | ✅ | Not available | Not available |
-| `TopK` | ✅ | Not available | Not available |
-| `Seed` | ✅ | Not available | Not available |
-| `MaxOutputTokens` | ✅ | Not available | Not available |
-| `ResponseFormat` (JSON schema) | ✅ | Not available | Not available |
-| `Tools` (`AIFunction`) | ✅ | Not available | Not available |
-| `TopP` | ❌ ignored | Not available | Not available |
-| `FrequencyPenalty` | ❌ ignored | Not available | Not available |
-| `PresencePenalty` | ❌ ignored | Not available | Not available |
+| Option | iOS / macOS / Mac Catalyst / tvOS |
+|--------|-----------------------------------|
+| `Temperature` | ✅ |
+| `TopK` | ✅ |
+| `Seed` | ✅ |
+| `MaxOutputTokens` | ✅ |
+| `ResponseFormat` (JSON schema) | ✅ |
+| `Tools` (`AIFunction`) | ✅ |
+| `TopP` | ❌ ignored |
+| `FrequencyPenalty` | ❌ ignored |
+| `PresencePenalty` | ❌ ignored |
 
 > [!IMPORTANT]
 > Two constraints apply when using `AppleIntelligenceChatClient`:
@@ -63,12 +61,12 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 
 ### Supported message content types
 
-| Content type | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
-|--------------|-----------------------------------|---------|---------|
-| `TextContent` | ✅ | Not available | Not available |
-| `FunctionCallContent` | ✅ | Not available | Not available |
-| `FunctionResultContent` | ✅ | Not available | Not available |
-| `ImageContent` | ❌ | Not available | Not available |
+| Content type | iOS / macOS / Mac Catalyst / tvOS |
+|--------------|-----------------------------------|
+| `TextContent` | ✅ |
+| `FunctionCallContent` | ✅ |
+| `FunctionResultContent` | ✅ |
+| `ImageContent` | ❌ |
 
 ## Embedding generator
 
@@ -80,17 +78,15 @@ This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and comp
 | macOS | `NLEmbeddingGenerator` | 10.15 |
 | Mac Catalyst | `NLEmbeddingGenerator` | 13.1 |
 | tvOS | `NLEmbeddingGenerator` | 13.0 |
-| Android | Not available | — |
-| Windows | Not available | — |
 
 ### Embedding capabilities
 
-| Feature | iOS / macOS / Mac Catalyst / tvOS | Android | Windows |
-|---------|-----------------------------------|---------|---------|
-| Sentence-level embeddings | ✅ | Not available | Not available |
-| Multiple languages | ✅ | Not available | Not available |
-| Custom `NLEmbedding` instance | ✅ | Not available | Not available |
-| Concurrent requests | ✅ (serialized per instance) | Not available | Not available |
+| Feature | iOS / macOS / Mac Catalyst / tvOS |
+|---------|-----------------------------------|
+| Sentence-level embeddings | ✅ |
+| Multiple languages | ✅ |
+| Custom `NLEmbedding` instance | ✅ |
+| Concurrent requests | ✅ (serialized per instance) |
 
 > [!NOTE]
 > `NLEmbeddingGenerator` uses Apple's *sentence* embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences or short passages rather than individual words. This makes it well-suited for semantic similarity search over descriptive text.
