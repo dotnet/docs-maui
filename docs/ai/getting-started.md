@@ -15,20 +15,19 @@ ms.date: 03/11/2026
 - A device or simulator supported by a platform implementation (see [Requirements](requirements.md))
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 - Xcode 26 or later
 - A device or simulator running iOS 26+ or macOS 26+ (for chat)
 - A device or simulator running iOS 13+ or macOS 10.15+ (for embeddings)
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -73,6 +72,10 @@ The recommended approach is to register AI services in a dedicated extension met
 ### Extension method (recommended)
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 Create an extension method on `MauiAppBuilder` to register all required services:
@@ -122,20 +125,19 @@ Key registration details:
 - `NLEmbeddingGenerator` is registered as a singleton and wraps the Natural Language framework. It does **not** require Apple Intelligence and is available on iOS 13.0+.
 - `IEmbeddingGenerator<string, Embedding<float>>` is registered with logging middleware for observability.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
 ### Call from MauiProgram.cs
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -158,14 +160,9 @@ public static class MauiProgram
 > [!NOTE]
 > Apple Intelligence chat (`AppleIntelligenceChatClient`) requires iOS 26.0+, macOS 26.0+, or macCatalyst 26.0+. Text embeddings (`NLEmbeddingGenerator`) are available from iOS 13.0+ and macOS 10.15+.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -174,6 +171,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Inject `IChatClient` and call `GetResponseAsync` for a single-turn response:
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -196,14 +197,9 @@ public class MyService
 }
 ```
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -212,6 +208,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Use `GetStreamingResponseAsync` to receive tokens as they are produced:
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -226,14 +226,9 @@ await foreach (var update in client.GetStreamingResponseAsync("Tell me about the
 
 Streaming is useful for displaying responses incrementally in a chat UI, reducing perceived latency.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -242,6 +237,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 Pass a `List<ChatMessage>` to maintain conversation history across turns:
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -264,14 +263,9 @@ Console.WriteLine(followUp.Text);
 
 The system message sets the assistant's persona and persists for the entire conversation.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -280,6 +274,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 `AppleIntelligenceChatClient` supports function calling via `AIFunction` tools. Define tool methods with `[Description]` attributes and register them with `AIFunctionFactory.Create()`:
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -323,14 +321,9 @@ await foreach (var update in client.GetStreamingResponseAsync(messages, options,
 > [!IMPORTANT]
 > Only `AIFunction` tools are supported by `AppleIntelligenceChatClient`. Other `AITool` subtypes are not supported and will be ignored or cause an error.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -339,6 +332,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 To receive a strongly-typed JSON response, use `ChatResponseFormat.ForJsonSchema<T>()` with a `JsonSerializerOptions` instance:
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -367,14 +364,9 @@ Console.WriteLine($"Destination: {itinerary!.Destination}");
 > [!IMPORTANT]
 > Apple Intelligence requires a JSON schema to produce structured output. Using `ChatResponseFormat.Json` without a schema is **not** supported. Always use `ChatResponseFormat.ForJsonSchema<T>(serializerOptions)`.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
@@ -383,6 +375,10 @@ Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
 `NLEmbeddingGenerator` converts strings into float vectors using Apple's Natural Language **sentence** embedding model (`NLEmbedding.GetSentenceEmbedding`). These vectors capture the semantic meaning of full sentences or short passages and can be used for semantic search, clustering, and retrieval-augmented generation (RAG).
 
 <!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 ```csharp
@@ -413,14 +409,9 @@ foreach (var (doc, score) in results)
 > [!NOTE]
 > `NLEmbeddingGenerator` is available on iOS 13.0+ and macOS 10.15+. It does **not** require Apple Intelligence or a minimum OS version of 26.
 
-# [Android](#tab/android)
-
-Android support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 # [Windows](#tab/windows)
 
 Windows support for `Microsoft.Maui.Essentials.AI` is not yet available.
-
 ---
 <!-- markdownlint-enable MD025 -->
 
