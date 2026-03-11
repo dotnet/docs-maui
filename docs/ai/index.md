@@ -1,6 +1,6 @@
 ---
 title: Microsoft.Maui.Essentials.AI overview
-description: Learn how Microsoft.Maui.Essentials.AI brings on-device AI to .NET MAUI apps through standard Microsoft.Extensions.AI interfaces backed by native Apple platform APIs.
+description: Learn how Microsoft.Maui.Essentials.AI brings on-device AI to .NET MAUI apps through standard Microsoft.Extensions.AI interfaces backed by native platform AI frameworks.
 ms.date: 03/11/2026
 ---
 
@@ -36,9 +36,8 @@ ms.date: 03/11/2026
 
 ### Currently available (Apple platforms)
 
-- **`AppleIntelligenceChatClient`** — wraps Apple's Foundation Models framework (Apple Intelligence) and exposes it as an `IChatClient`. Requires iOS 26.0+, macOS 26.0+, Mac Catalyst 26.0+, or tvOS 26.0+.
-- **`NLEmbeddingGenerator`** — wraps Apple's Natural Language framework (`NLEmbedding`) and exposes it as an `IEmbeddingGenerator<string, Embedding<float>>`. Available from iOS 13.0+, macOS 10.15+, Mac Catalyst 13.1+, and tvOS 13.0+.
-- **`NLEmbeddingExtensions`** — provides the `AsIEmbeddingGenerator()` extension method on `NLEmbedding` for convenient integration.
+- **Chat client** (`IChatClient`) — uses Apple's Foundation Models framework (Apple Intelligence). Requires iOS 26.0+, macOS 26.0+, Mac Catalyst 26.0+, or tvOS 26.0+.
+- **Embedding generator** (`IEmbeddingGenerator<string, Embedding<float>>`) — uses Apple's Natural Language framework. Available from iOS 13.0+, macOS 10.15+, Mac Catalyst 13.1+, and tvOS 13.0+.
 
 ### Planned (not yet available)
 
@@ -52,7 +51,7 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 - **Unified API**: Program against `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>`—the same interfaces used across the .NET AI ecosystem.
 - **On-device processing**: AI inference runs locally on the device. No network call is required.
 - **Privacy-first**: Data never leaves the device and is never sent to external servers.
-- **Platform-optimized**: Execution is accelerated by Apple's Neural Engine and hardware-level ML accelerators.
+- **Platform-optimized**: Each platform implementation is accelerated by native hardware-level ML capabilities.
 - **Microsoft.Extensions.AI compatible**: Works out-of-the-box with logging middleware, dependency injection, telemetry, and the full breadth of the .NET AI ecosystem.
 
 ## What you can build
@@ -60,9 +59,9 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 `Microsoft.Maui.Essentials.AI` provides the primitives for a wide range of on-device AI scenarios:
 
 - **Chat assistants with tool calling** — Build conversational experiences that call application functions using the standard `IChatClient` tool-calling API.
-- **Semantic search with on-device text embeddings** — Use `NLEmbeddingGenerator` to embed strings and compare semantic similarity entirely on-device.
+- **Semantic search with on-device text embeddings** — Use `IEmbeddingGenerator` to embed strings and compare semantic similarity entirely on-device.
 - **Multi-agent AI workflows** — Compose multiple `IChatClient` instances using Microsoft.Extensions.AI middleware pipelines.
-- **Structured data extraction with JSON schema** — Request structured responses from `AppleIntelligenceChatClient` by specifying a JSON schema in the chat options.
+- **Structured data extraction with JSON schema** — Request structured, strongly-typed responses by specifying a JSON schema in the chat options.
 
 ## In this section
 
