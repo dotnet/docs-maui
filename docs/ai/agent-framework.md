@@ -316,3 +316,6 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 - [Chat client getting started](getting-started.md)
 - [Feature comparison](feature-comparison.md)
 - [Requirements](requirements-apple.md)
+- [Microsoft.Agents.AI on NuGet](https://www.nuget.org/packages/Microsoft.Agents.AI)
+- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [Use the IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient)

@@ -114,3 +114,9 @@ public static class MauiProgram
 - [Chat](chat.md) — use `IChatClient` for conversational AI, tool calling, and structured output
 - [Text embeddings](embeddings.md) — use `IEmbeddingGenerator` for semantic search and similarity
 - [Requirements](requirements-apple.md) — supported OS versions and device requirements
+
+## See also
+
+- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [`AddChatClient` API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.chatclientbuilderservicecollectionextensions.addchatclient)
+- [`AddEmbeddingGenerator` API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.embeddinggeneratorbuilderservicecollectionextensions.addembeddinggenerator)

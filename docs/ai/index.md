@@ -58,9 +58,9 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 
 `Microsoft.Maui.Essentials.AI` provides the primitives for a wide range of on-device AI scenarios:
 
-- **Chat assistants with tool calling** — Build conversational experiences that call application functions using the standard `IChatClient` tool-calling API.
+- **Chat assistants with tool calling** — Build conversational experiences that call application functions using the standard `IChatClient` [tool-calling API](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling).
 - **Semantic search with on-device text embeddings** — Use `IEmbeddingGenerator` to embed strings and compare semantic similarity entirely on-device.
-- **Multi-agent AI workflows** — Compose multiple `IChatClient` instances using Microsoft.Extensions.AI middleware pipelines.
+- **Multi-agent AI workflows** — Compose multiple `IChatClient` instances using [Microsoft.Extensions.AI middleware pipelines](https://learn.microsoft.com/dotnet/ai/ai-extensions#middleware).
 - **Structured data extraction with JSON schema** — Request structured, strongly-typed responses by specifying a JSON schema in the chat options.
 
 ## In this section
@@ -77,6 +77,8 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 ## See also
 
 - [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [IChatClient interface](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
-- [IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
+- [Use the IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient)
+- [Use the IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator)
+- [IChatClient API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
+- [IEmbeddingGenerator API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
 - [Apple Intelligence availability](https://support.apple.com/en-us/120898)

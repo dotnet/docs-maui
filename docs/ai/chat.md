@@ -7,7 +7,7 @@ ms.topic: conceptual
 
 # Chat client
 
-This page shows how to use `IChatClient` in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
+This page shows how to use [`IChatClient`](https://learn.microsoft.com/dotnet/ai/ichatclient) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
 
 The `IChatClient` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
 
@@ -71,7 +71,7 @@ The system message sets the assistant's persona and persists for the entire conv
 
 ## Tool calling
 
-Define functions with `[Description]` attributes, wrap them with `AIFunctionFactory.Create`, and pass them via `ChatOptions.Tools`. The model decides when to call each tool:
+Define functions with `[Description]` attributes, wrap them with `AIFunctionFactory.Create`, and pass them via `ChatOptions.Tools`. The model decides when to call each tool. For a deep dive into the tool-calling pattern, see [Tool calling with IChatClient](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling).
 
 ```csharp
 using System.ComponentModel;
@@ -127,3 +127,5 @@ foreach (var day in result.Result.Days)
 - [Text embeddings](embeddings.md)
 - [Agent framework integration](agent-framework.md)
 - [Feature comparison](feature-comparison.md)
+- [Use the IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient)
+- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
