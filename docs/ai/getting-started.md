@@ -14,13 +14,13 @@ This page covers installation and service registration. Once services are regist
 Add the NuGet package to your .NET MAUI project:
 
 ```dotnetcli
-dotnet add package Microsoft.Maui.Essentials.AI
+dotnet add package Microsoft.Maui.Essentials.AI --version 10.0.50-preview.1.26158.1
 ```
 
 Or add the `PackageReference` directly to your `.csproj`:
 
 ```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.*-*" />
+<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
 ```
 
 ## Suppress the experimental warning

@@ -61,7 +61,7 @@ The embedding generator uses Apple's sentence embedding model, which is built in
 Add the following package to your `.csproj`:
 
 ```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.*-*" />
+<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
 ```
 
 Xcode 26 or later is required to build for Apple platforms.

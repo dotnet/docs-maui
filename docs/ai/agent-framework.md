@@ -38,7 +38,7 @@ As a concrete example, the [LocalChatClientWithAgents](https://github.com/dotnet
 Add the required NuGet packages to your `.csproj` file:
 
 ```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.*-*" />
+<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
 <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
 <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-rc3" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.260304.1" />
