@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 ## Overview
 
-The Microsoft Agent Framework ([Microsoft.Agents.AI](https://www.nuget.org/packages/Microsoft.Agents.AI)) enables you to compose multiple AI agents into structured workflows, where each agent handles one specialized task. When combined with `Microsoft.Maui.Essentials.AI`, you can build sophisticated multi-stage AI pipelines that run entirely on-device using Apple Intelligence.
+The [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview) ([Microsoft.Agents.AI](https://www.nuget.org/packages/Microsoft.Agents.AI)) enables you to compose multiple AI agents into structured workflows, where each agent handles one specialized task. When combined with `Microsoft.Maui.Essentials.AI`, you can build sophisticated multi-stage AI pipelines that run entirely on-device using Apple Intelligence.
 
 Rather than writing a single large prompt that tries to do everything, the agent framework lets you decompose complex tasks into a graph of focused agents. The output of one agent becomes the input of the next, and conditional routing lets the workflow adapt to intermediate results.
 
@@ -316,6 +316,6 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 - [Chat client getting started](getting-started.md)
 - [Feature comparison](feature-comparison.md)
 - [Requirements](requirements-apple.md)
-- [Microsoft.Agents.AI on NuGet](https://www.nuget.org/packages/Microsoft.Agents.AI)
+- [Microsoft Agent Framework docs](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview)
 - [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Use the IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient)
