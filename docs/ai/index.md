@@ -6,7 +6,7 @@ ms.date: 03/11/2026
 
 # Microsoft.Maui.Essentials.AI overview
 
-`Microsoft.Maui.Essentials.AI` is a cross-platform library that brings on-device AI capabilities to .NET MAUI applications through seamless integration with [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions). It surfaces native platform AI frameworks behind the standard `IChatClient` and `IEmbeddingGenerator` interfaces, so you can write portable AI code that runs entirely on-device without sending data to external servers.
+`Microsoft.Maui.Essentials.AI` is a cross-platform library that brings on-device AI capabilities to .NET MAUI applications through seamless integration with [Microsoft.Extensions.AI](/dotnet/ai/ai-extensions). It surfaces native platform AI frameworks behind the standard `IChatClient` and `IEmbeddingGenerator` interfaces, so you can write portable AI code that runs entirely on-device without sending data to external servers.
 
 > [!NOTE]
 > `Microsoft.Maui.Essentials.AI` is designed for all .NET MAUI platforms. **Apple Intelligence** (iOS, macOS, Mac Catalyst, tvOS) is the first implementation available. Android and Windows support are not yet available and will be added in future releases.
@@ -32,7 +32,7 @@ ms.date: 03/11/2026
 
 ## What is Microsoft.Maui.Essentials.AI?
 
-`Microsoft.Maui.Essentials.AI` is a bridge between the [Microsoft.Extensions.AI abstractions](https://learn.microsoft.com/dotnet/ai/ai-extensions) and native on-device AI frameworks. Rather than calling platform-specific APIs directly, you interact with well-known interfaces (`IChatClient`, `IEmbeddingGenerator<string, Embedding<float>>`) that the library implements on top of the underlying OS frameworks.
+`Microsoft.Maui.Essentials.AI` is a bridge between the [Microsoft.Extensions.AI abstractions](/dotnet/ai/ai-extensions) and native on-device AI frameworks. Rather than calling platform-specific APIs directly, you interact with well-known interfaces (`IChatClient`, `IEmbeddingGenerator<string, Embedding<float>>`) that the library implements on top of the underlying OS frameworks.
 
 ### Currently available (Apple platforms)
 
@@ -58,9 +58,9 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 
 `Microsoft.Maui.Essentials.AI` provides the primitives for a wide range of on-device AI scenarios:
 
-- **Chat assistants with tool calling** — Build conversational experiences that call application functions using the standard `IChatClient` [tool-calling API](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling).
+- **Chat assistants with tool calling** — Build conversational experiences that call application functions using the standard `IChatClient` [tool-calling API](/dotnet/ai/ichatclient#tool-calling).
 - **Semantic search with on-device text embeddings** — Use `IEmbeddingGenerator` to embed strings and compare semantic similarity entirely on-device.
-- **Multi-agent AI workflows** — Compose multiple `IChatClient` instances using [Microsoft.Extensions.AI middleware pipelines](https://learn.microsoft.com/dotnet/ai/ai-extensions#middleware).
+- **Multi-agent AI workflows** — Compose multiple `IChatClient` instances using [Microsoft.Extensions.AI middleware pipelines](/dotnet/ai/ai-extensions#middleware).
 - **Structured data extraction with JSON schema** — Request structured, strongly-typed responses by specifying a JSON schema in the chat options.
 
 ## In this section
@@ -76,9 +76,9 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 
 ## See also
 
-- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Use the IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient)
-- [Use the IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator)
-- [IChatClient API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.ichatclient)
-- [IEmbeddingGenerator API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
+- [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
+- [Use the IChatClient interface](/dotnet/ai/ichatclient)
+- [Use the IEmbeddingGenerator interface](/dotnet/ai/iembeddinggenerator)
+- [IChatClient API reference](/dotnet/api/microsoft.extensions.ai.ichatclient)
+- [IEmbeddingGenerator API reference](/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
 - [Apple Intelligence availability](https://support.apple.com/en-us/120898)
