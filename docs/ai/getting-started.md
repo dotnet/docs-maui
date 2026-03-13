@@ -117,6 +117,6 @@ public static class MauiProgram
 
 ## See also
 
-- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [`AddChatClient` API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.chatclientbuilderservicecollectionextensions.addchatclient)
-- [`AddEmbeddingGenerator` API reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.embeddinggeneratorbuilderservicecollectionextensions.addembeddinggenerator)
+- [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
+- [`AddChatClient` API reference](/dotnet/api/microsoft.extensions.dependencyinjection.chatclientbuilderservicecollectionextensions.addchatclient)
+- [`AddEmbeddingGenerator` API reference](/dotnet/api/microsoft.extensions.dependencyinjection.embeddinggeneratorbuilderservicecollectionextensions.addembeddinggenerator)

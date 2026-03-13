@@ -7,7 +7,7 @@ ms.topic: conceptual
 
 # Text embeddings
 
-This page shows how to use [`IEmbeddingGenerator<string, Embedding<float>>`](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
+This page shows how to use [`IEmbeddingGenerator<string, Embedding<float>>`](/dotnet/ai/iembeddinggenerator) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
 
 The `IEmbeddingGenerator` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
 
@@ -66,5 +66,5 @@ foreach (var (doc, score) in results)
 - [Chat client](chat.md)
 - [Agent framework integration](agent-framework.md)
 - [Feature comparison](feature-comparison.md)
-- [Use the IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator)
-- [Microsoft.Extensions.AI overview](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+- [Use the IEmbeddingGenerator interface](/dotnet/ai/iembeddinggenerator)
+- [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
