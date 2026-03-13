@@ -1,0 +1,16 @@
+- name: Overview
+  href: index.md
+- name: Requirements
+  items:
+  - name: Apple (iOS/Mac Catalyst)
+    href: requirements-apple.md
+- name: Get started
+  href: getting-started.md
+- name: Chat
+  href: chat.md
+- name: Text embeddings
+  href: embeddings.md
+- name: Feature comparison
+  href: feature-comparison.md
+- name: Agent framework
+  href: agent-framework.md

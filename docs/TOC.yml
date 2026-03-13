@@ -1248,6 +1248,8 @@
               href: data-cloud/aspire-integration.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md
+    - name: Artificial intelligence
+      href: ai/TOC.yml
     - name: Deployment & testing
       items:
         - name: Overview
