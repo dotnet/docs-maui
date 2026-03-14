@@ -197,6 +197,8 @@
           items:
             - name: Drag and drop
               href: fundamentals/gestures/drag-and-drop.md
+            - name: Long press
+              href: fundamentals/gestures/long-press.md
             - name: Pan
               href: fundamentals/gestures/pan.md
             - name: Pinch
