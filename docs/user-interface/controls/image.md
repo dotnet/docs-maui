@@ -1,7 +1,7 @@
 ---
 title: "Image"
 description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, or a stream."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # Image
@@ -47,7 +47,8 @@ To comply with Android resource naming rules, all local image filenames must be 
 Adhering to these rules for file naming and placement enables the following XAML to load and display an image:
 
 ```xaml
-<Image Source="dotnet_bot.png" />
+<Image Source="dotnet_bot.png"
+       SemanticProperties.Description="The .NET Bot waving hello" />
 ```
 
 The equivalent C# code is:
@@ -57,6 +58,7 @@ Image image = new Image
 {
     Source = ImageSource.FromFile("dotnet_bot.png")
 };
+SemanticProperties.SetDescription(image, "The .NET Bot waving hello");
 ```
 
 The `ImageSource.FromFile` method requires a `string` argument, and returns a new `FileImageSource` object that reads the image from the file. There's also an implicit conversion operator that enables the filename to be specified as a `string` argument to the `Image.Source` property:
@@ -70,7 +72,8 @@ Image image = new Image { Source = "dotnet_bot.png" };
 Remote images can be downloaded and displayed by specifying a URI as the value of the `Source` property:
 
 ```xaml
-<Image Source="https://aka.ms/campus.jpg" />
+<Image Source="https://aka.ms/campus.jpg"
+       SemanticProperties.Description="Campus photograph" />
 ```
 
 The equivalent C# code is:
@@ -80,6 +83,7 @@ Image image = new Image
 {
     Source = ImageSource.FromUri(new Uri("https://aka.ms/campus.jpg"))
 };
+SemanticProperties.SetDescription(image, "Campus photograph");
 ```
 
 The `ImageSource.FromUri` method requires a `Uri` argument, and returns a new `UriImageSource` object that reads the image from the `Uri`. There's also an implicit conversion for string-based URIs:
