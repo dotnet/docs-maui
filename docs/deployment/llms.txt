@@ -1,0 +1,39 @@
+# .NET MAUI Deployment and Performance
+
+> Build, publish, trim, and optimize MAUI apps for Android, iOS, Mac Catalyst, and Windows.
+
+Use this index for shipping and performance hardening scenarios.
+
+Use this file when the question is about startup time, app size, trimming, AOT, test strategy, or packaging apps for stores and devices.
+
+## Guidance for AI assistants
+
+- Measure first when diagnosing performance; do not guess.
+- Treat compiled bindings, layout simplification, and correct control choice as the first performance levers.
+- Recommend trimming and Native AOT only when code and dependencies are compatible.
+- Verify publishing guidance against the target platform rather than assuming Android, iOS, and Windows behave the same way.
+
+## Performance and optimization
+
+- [Performance best practices](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Actionable guidance for bindings, layouts, images, startup, threading, and memory.
+- [Improve app performance](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance.md): Performance concepts and measurement strategy.
+- [Trimming](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/trimming.md): Reduce app size by removing unused code.
+- [Native AOT](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/nativeaot.md): Ahead-of-time compilation guidance and tradeoffs.
+
+## Build, test, and release
+
+- [Deployment overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/index.md): Cross-platform release flow.
+- [Unit testing](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/unit-testing.md): Testing strategy for MAUI applications.
+- [Visual Studio project properties](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/visual-studio-properties.md): Configure packaging and target settings.
+
+## Platform publishing
+
+- [Android deployment](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/android/deployment/index.md): Build and publish Android artifacts.
+- [iOS deployment](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/ios/deployment/index.md): Build and publish for iOS and TestFlight/App Store.
+- [Mac Catalyst deployment](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/mac-catalyst/deployment/index.md): Package and publish Mac Catalyst apps.
+- [Windows deployment](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/windows/deployment/overview.md): Package and distribute Windows apps.
+
+## Optional
+
+- [Troubleshooting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/troubleshooting.md): Common issues across build and publish workflows.
+- [Supported platforms](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/supported-platforms.md): Version support constraints that affect shipping decisions.

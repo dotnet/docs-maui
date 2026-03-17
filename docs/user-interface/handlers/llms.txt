@@ -1,0 +1,30 @@
+# .NET MAUI Handlers
+
+> Handlers in .NET MAUI: architecture, property mappers, lifecycle, global customization, and creating custom controls backed by native views.
+
+Use this file when the question is specifically about native control customization, renderer migration, or building custom controls with platform implementations.
+
+## Guidance for AI assistants
+
+- Use handlers instead of Xamarin.Forms renderers or effects for new code.
+- Reach for AppendToMapping, PrependToMapping, or ModifyMapping before inventing a custom handler.
+- Remember handler customizations are global unless scoped to a subclassed control.
+- Access PlatformView only after the handler lifecycle makes it available.
+
+## Core handler model
+
+- [Handler architecture guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): Most complete guide to handler concepts, lifecycle, and customization.
+- [Handlers overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/index.md): High-level model for virtual view to native view mapping.
+
+## Customizing existing controls
+
+- [Customize controls with handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/customize.md): Append, prepend, and modify existing mappings.
+
+## Creating custom controls
+
+- [Create controls with handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/create.md): Define custom controls with platform-specific native implementations.
+
+## Optional
+
+- [Invoke platform code](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/invoke-platform-code.md): Related patterns when the need is platform code beyond control customization.
+- [Controls deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/llms.txt): Pair control choice with handler customization where needed.

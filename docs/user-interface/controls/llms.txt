@@ -1,0 +1,57 @@
+# .NET MAUI Controls
+
+> Control selection and usage in .NET MAUI: lists, input controls, content containers, images, web content, and obsolete control replacements.
+
+Use this file when the question is specifically about choosing or configuring a control rather than overall layout or handler customization.
+
+## Deep dive subtopics
+
+- [CollectionView deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/llms.txt): Narrow retrieval for CollectionView behavior, templates, layout, selection, grouping, and scrolling.
+
+## Guidance for AI assistants
+
+- Prefer CollectionView over ListView for new list UI.
+- Prefer Border over Frame for new container UI.
+- Do not use ViewCell inside CollectionView templates.
+- Constrain image size explicitly in scrolling or templated UI when performance matters.
+- Use RefreshView or SwipeView as companion controls around list content when appropriate.
+
+## Lists and item presentation
+
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Highest-value guide for list UI, virtualization, grouping, empty views, and selection.
+- [CollectionView overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/index.md): Core CollectionView concepts.
+- [Populate CollectionView data](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/populate-data.md): Bind data sources and item templates.
+- [CollectionView layout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/layout.md): List and grid layout options.
+- [CollectionView selection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/selection.md): Single and multiple selection behavior.
+- [CollectionView scrolling](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/scrolling.md): Scroll behavior, snapping, and scrolling APIs.
+- [CollectionView grouping](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/grouping.md): Grouped list behavior.
+- [CollectionView empty views](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/emptyview.md): Empty-state presentation.
+
+## Input and content controls
+
+- [Entry](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/entry.md): Single-line text input.
+- [Editor](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/editor.md): Multi-line text input.
+- [Picker](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/picker.md): Select from a list of options.
+- [Button](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/button.md): Tap or click actions.
+- [Label](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/label.md): Display formatted text.
+- [ContentView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/contentview.md): Build reusable composite UI.
+- [Border](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/border.md): Preferred modern container with stroke and corner customization.
+
+## Images, web, and companion controls
+
+- [Image](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/image.md): Display local or remote images.
+- [WebView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/webview.md): Display web content.
+- [BlazorWebView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/blazorwebview.md): Host Blazor UI inside a native MAUI app.
+- [RefreshView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/refreshview.md): Pull-to-refresh behavior.
+- [SwipeView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/swipeview.md): Swipe actions for list items and content.
+
+## Obsolete or avoid-for-new-work
+
+- [ListView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/listview.md): Older list control; use CollectionView for new work.
+- [Frame](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/frame.md): Older container; use Border for new work.
+- [TableView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/tableview.md): Older settings-form style control with narrower modern use.
+
+## Optional
+
+- [Controls overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/index.md): Full catalog of built-in controls.
+- [Layouts overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/index.md): Pair control selection with the right layout container.

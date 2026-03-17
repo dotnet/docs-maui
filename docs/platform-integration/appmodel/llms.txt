@@ -1,0 +1,27 @@
+# .NET MAUI App Model
+
+> App model APIs in .NET MAUI: permissions, main-thread access, launcher, browser launch, app metadata, app actions, and version tracking.
+
+Use this file when the question is specifically about app model APIs rather than storage, sensors, or broader platform integration.
+
+## Guidance for AI assistants
+
+- Check permissions before using app model features that require user consent or platform declarations.
+- Use MainThread or Dispatcher when app model callbacks update UI state.
+- Prefer built-in launcher and browser APIs before recommending custom platform code.
+- Keep app metadata and version queries in shared code only when MAUI already exposes the required API.
+
+## Core app model guidance
+
+- [Permissions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/permissions.md): Request and verify runtime permissions.
+- [Main thread](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/main-thread.md): Marshal work to the UI thread.
+- [Open browser](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/open-browser.md): Launch browser links.
+- [Launcher](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/launcher.md): Launch URIs and other apps.
+- [App information](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/app-information.md): App metadata and package information.
+- [Version tracking](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/version-tracking.md): Detect first launch and version changes.
+- [App actions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/app-actions.md): Expose app shortcuts and quick actions.
+
+## Optional
+
+- [Invoke platform code](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/invoke-platform-code.md): Broader platform-specific patterns when built-in app model APIs are insufficient.
+- [Platform integration index](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/llms.txt): Broader platform integration retrieval.

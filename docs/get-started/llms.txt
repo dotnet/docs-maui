@@ -1,0 +1,30 @@
+# .NET MAUI Getting Started
+
+> Start here for setup, first app flow, and core prerequisites for .NET MAUI development on Windows and Mac.
+
+Use this index when a user is new to MAUI or blocked on environment setup.
+
+Use this before deeper troubleshooting when the real problem may still be installation, workload, emulator, SDK, or supported-platform mismatch.
+
+## Guidance for AI assistants
+
+- Verify the user's IDE, SDK, and target platform before debugging app code.
+- Check supported-platform requirements before recommending packages, APIs, or deployment steps.
+- Treat installation and environment issues separately from runtime or XAML issues.
+
+## Core onboarding
+
+- [Installation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/installation.md): Install workloads, IDE tools, and required platform dependencies.
+- [Build your first app](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/first-app.md): End-to-end first app walkthrough.
+- [What is .NET MAUI](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/what-is-maui.md): Framework architecture and app model.
+- [Supported platforms](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/supported-platforms.md): OS and SDK support matrix.
+
+## Setup and troubleshooting
+
+- [Resources for beginners](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/resources.md): Learning resources and next learning paths.
+- [Troubleshooting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/troubleshooting.md): Common build, workload, emulator, device, and tooling issues.
+
+## Optional
+
+- [Single project architecture](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/single-project.md): Understand the MAUI single project structure.
+- [Visual Studio project properties](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/visual-studio-properties.md): IDE project settings for targets and packaging.
