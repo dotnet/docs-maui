@@ -1248,12 +1248,16 @@
               href: data-cloud/aspire-integration.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md
+    - name: Artificial intelligence
+      href: ai/TOC.yml
     - name: Deployment & testing
       items:
         - name: Overview
           href: deployment/index.md
         - name: Improve app performance
           href: deployment/performance.md
+        - name: Runtimes and compilation
+          href: deployment/runtimes-compilation.md
         - name: iOS
           items:
             - name: Hot restart
