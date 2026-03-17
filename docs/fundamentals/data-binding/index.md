@@ -23,3 +23,25 @@ Data bindings between two <xref:Microsoft.Maui.Controls.View> derivatives are of
 
 > [!IMPORTANT]
 > .NET MAUI marshals binding updates to the UI thread. When using MVVM this enables you to update data-bound viewmodel properties from any thread, with .NET MAUI's binding engine bringing the updates to the UI thread.
+
+> [!WARNING]
+> Auto-marshaling applies only to `INotifyPropertyChanged.PropertyChanged` notifications. **`ObservableCollection<T>` mutations (Add, Remove, Clear, etc.) are not automatically marshaled to the UI thread.** Calling these methods from a background thread raises `CollectionChanged` on that thread, which can cause a UI exception or layout corruption.
+>
+> Always dispatch collection mutations to the main thread:
+>
+> ```csharp
+> // Option 1: dispatch mutations to the main thread
+> await Task.Run(async () =>
+> {
+>     var newItems = await api.FetchItemsAsync();
+>     MainThread.BeginInvokeOnMainThread(() =>
+>     {
+>         foreach (var item in newItems)
+>             Items.Add(item);
+>     });
+> });
+>
+> // Option 2: replace the whole collection (PropertyChanged is auto-marshaled)
+> var newItems = await Task.Run(() => api.FetchItemsAsync());
+> Items = new ObservableCollection<MyItem>(newItems); // safe — raises PropertyChanged
+> ```
