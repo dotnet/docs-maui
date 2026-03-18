@@ -45,7 +45,7 @@ While the <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui
 - <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells. Instead, a data template is used to define the appearance of each item of data in the list.
 - <xref:Microsoft.Maui.Controls.CollectionView> automatically utilizes the virtualization provided by the underlying native controls.
 - <xref:Microsoft.Maui.Controls.CollectionView> reduces the API surface of <xref:Microsoft.Maui.Controls.ListView>. Many properties and events from <xref:Microsoft.Maui.Controls.ListView> are not present in <xref:Microsoft.Maui.Controls.CollectionView>.
-- <xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators.
+- <xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators. These can be provided, if desired, in the item template. For more information, see [Add separators between items](populate-data.md#add-separators-between-items).
 - <xref:Microsoft.Maui.Controls.CollectionView> will throw an exception if its `ItemsSource` is updated off the UI thread.
 
 ## Move from ListView to CollectionView
@@ -57,7 +57,7 @@ While the <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui
 | Data | `ItemsSource` | A <xref:Microsoft.Maui.Controls.CollectionView> is populated with data by setting its `ItemsSource` property. For more information, see [Populate a CollectionView with data](populate-data.md#populate-a-collectionview-with-data). |
 | Item appearance | `ItemTemplate` | The appearance of each item in a <xref:Microsoft.Maui.Controls.CollectionView> can be defined by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>. For more information, see [Define item appearance](populate-data.md#define-item-appearance). |
 | Cells | <xref:Microsoft.Maui.Controls.TextCell>, <xref:Microsoft.Maui.Controls.ImageCell>, <xref:Microsoft.Maui.Controls.ViewCell> | <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells, and therefore no concept of disclosure indicators. Instead, a data template is used to define the appearance of each item of data in the list. |
-| Row separators | `SeparatorColor`, `SeparatorVisibility` | <xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators. These can be provided, if desired, in the item template. |
+| Row separators | `SeparatorColor`, `SeparatorVisibility` | <xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators. These can be provided, if desired, in the item template. For more information, see [Add separators between items](populate-data.md#add-separators-between-items). |
 | Selection | `SelectionMode`, `SelectedItem` | <xref:Microsoft.Maui.Controls.CollectionView> supports single and multiple selection. For more information, see [Configure CollectionView item selection](selection.md). |
 | Row height | `HasUnevenRows`, `RowHeight` | In a <xref:Microsoft.Maui.Controls.CollectionView>, the row height of each item is determined by the `ItemSizingStrategy` property. For more information, see [Item sizing](layout.md#item-sizing).|
 | Caching | `CachingStrategy` | <xref:Microsoft.Maui.Controls.CollectionView> automatically uses the virtualization provided by the underlying native controls. |
