@@ -125,6 +125,17 @@ The `PickOptions.PickerTitle` is displayed on the initial prompt to the user, bu
 
 When filtering files by type, use the file's MIME type. For a list of MIME types, see [Mozilla - Common MIME types](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
 
+> [!WARNING]
+> On Android, `FileResult.FullPath` may return a `content://` URI rather than a filesystem path. Passing a `content://` URI directly to `File.OpenRead()` or similar APIs will fail with a `FileNotFoundException`. Always use <xref:Microsoft.Maui.Storage.FileBase.OpenReadAsync%2A> to read the file contents:
+>
+> ```csharp
+> // Correct: works on all platforms, including Android content URIs
+> using var stream = await result.OpenReadAsync();
+>
+> // Incorrect: may fail on Android when FullPath is a content:// URI
+> using var stream = File.OpenRead(result.FullPath);
+> ```
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 When filtering by file type, use Uniform Type Identifiers (UTType) values, specifically the identifier value. For more information, see [System-Declared Uniform Type Identifiers (Apple developer archive)](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html) and [System-declared uniform type identifiers](https://developer.apple.com/documentation/uniformtypeidentifiers/system-declared_uniform_type_identifiers).
