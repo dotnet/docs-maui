@@ -1,0 +1,37 @@
+# .NET MAUI Data Binding
+
+> Data binding in .NET MAUI: compiled bindings, binding modes, paths, converters, relative bindings, multibinding, and common troubleshooting patterns.
+
+Use this file when the problem is specifically about binding correctness, performance, or how values move between a view model and UI.
+
+## Guidance for AI assistants
+
+- Prefer compiled bindings with x:DataType whenever possible.
+- Suspect BindingContext or wrong data type first when bindings do not resolve.
+- Use TwoWay only for editable scenarios; do not default everything to TwoWay.
+- Keep bindings simple in item templates because binding complexity affects scrolling performance.
+
+## Core binding model
+
+- [Compiled bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/compiled-bindings.md): Highest-value guidance for compile-time validation and better performance.
+- [Data binding overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/index.md): End-to-end overview of MAUI binding concepts.
+- [Basic bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/basic-bindings.md): Bind properties in common page scenarios.
+- [Binding path](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/binding-path.md): Property path resolution and nested bindings.
+- [Binding mode](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/binding-mode.md): OneWay, TwoWay, OneTime, and related tradeoffs.
+
+## Commands and value transformation
+
+- [Commanding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/commanding.md): Bind UI actions to ICommand implementations.
+- [Value converters](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/converters.md): Transform values between source and target.
+- [String formatting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/string-formatting.md): Format bound values in the UI.
+
+## Advanced binding scenarios
+
+- [Relative bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/relative-bindings.md): Bind to ancestors, self, and templated parents.
+- [Multibinding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/multibinding.md): Combine multiple source values into one target.
+- [Binding fallbacks](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/binding-fallbacks.md): Handle missing or null values predictably.
+
+## Optional
+
+- [Data templates](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/datatemplate.md): Template lists and repeating data with bindings.
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Binding-heavy list UI and item-template behavior.

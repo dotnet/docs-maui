@@ -1,0 +1,37 @@
+# .NET MAUI CollectionView
+
+> CollectionView in .NET MAUI: data templates, layouts, selection, grouping, empty views, scrolling, and performance-sensitive list UI behavior.
+
+Use this file when the question is specifically about CollectionView behavior rather than general control choice.
+
+## Guidance for AI assistants
+
+- Use CollectionView for new list UI instead of ListView.
+- Do not place CollectionView inside StackLayout or VerticalStackLayout when constrained scrolling or virtualization matters.
+- Do not use ViewCell in CollectionView templates.
+- Use compiled bindings and simple visual trees in item templates when performance matters.
+- Use BindableLayout instead of CollectionView only when the item count is small and virtualization is unnecessary.
+- Update bound collections on the UI thread.
+
+## Core CollectionView guidance
+
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Highest-value guide covering data, templates, layout, selection, grouping, empty views, scrolling, and performance.
+- [CollectionView overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/index.md): Core CollectionView concepts.
+- [Populate CollectionView data](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/populate-data.md): ItemsSource, templates, selectors, refresh, and incremental loading.
+- [CollectionView layout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/layout.md): Vertical lists, horizontal lists, and grids.
+- [CollectionView selection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/selection.md): Selection modes and selection change handling.
+- [CollectionView grouping](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/grouping.md): Group headers, grouped sources, and grouped templates.
+- [CollectionView empty views](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/emptyview.md): Empty-state presentation.
+- [CollectionView scrolling](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/scrolling.md): ScrollTo, snap points, and update-scroll behavior.
+
+## Related patterns
+
+- [Compiled bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/compiled-bindings.md): Improve list template binding correctness and performance.
+- [BindableLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/bindablelayout.md): Simpler alternative when the collection is small and virtualization is unnecessary.
+- [RefreshView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/refreshview.md): Add pull-to-refresh around CollectionView content.
+- [SwipeView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/swipeview.md): Add swipe actions to items.
+
+## Optional
+
+- [Controls deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/llms.txt): Broader control-selection guidance around CollectionView.
+- [Performance best practices](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Broader UI performance guidance that affects list scenarios.

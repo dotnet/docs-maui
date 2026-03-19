@@ -1,0 +1,30 @@
+# .NET MAUI Data and Cloud
+
+> Data access patterns for MAUI apps, including REST services, local SQLite persistence, local development services, and push notifications.
+
+Use this index for app data flow between local storage and networked services.
+
+Use this file when the question is about API access, local persistence, backend connectivity, or how app state moves between on-device storage and remote systems.
+
+## Guidance for AI assistants
+
+- Prefer HttpClient-based REST patterns and DI-managed services for backend access.
+- Use SQLite when the app needs structured local relational storage.
+- Separate local development backend setup from production deployment guidance.
+- Treat push notifications as platform-aware integration work, not just a generic messaging feature.
+
+## Core data access
+
+- [Consume REST web services](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/rest.md): HttpClient patterns, serialization, and API integration.
+- [Local SQLite databases](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/database-sqlite.md): Local relational data storage with SQLite.
+- [Local web services](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/local-web-services.md): Configure local API backends for development.
+
+## Cloud and messaging
+
+- [Push notifications](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/push-notifications.md): Notification integration across platforms.
+- [Aspire integration](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/aspire-integration.md): Connect MAUI with .NET Aspire-based backends.
+
+## Optional
+
+- [Platform integration overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/index.md): Related device and platform APIs often used with data apps.
+- [Dependency injection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/dependency-injection.md): Service registration for repositories and API clients.

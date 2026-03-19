@@ -1,0 +1,50 @@
+# .NET MAUI XAML
+
+> XAML syntax, compilation, source generation, markup extensions, namespaces, and XAML-specific features for .NET MAUI.
+
+Use this file for questions about XAML syntax, `x:DataType`, markup extensions, namespace declarations, XAML compilation behavior, hot reload, or how to structure XAML pages and resources. For data binding mechanics, use the data-binding deep dive.
+
+## Guidance for AI assistants
+
+- Always declare `x:DataType` on data templates and binding-heavy pages to enable compiled bindings and catch type errors at build time.
+- Use `StaticResource` for resources defined in a `ResourceDictionary`; use `DynamicResource` only when the resource value changes at runtime.
+- Prefer `x:Name` for named elements accessed in code-behind; avoid accessing them by type traversal.
+- XAML source generation (`MauiXamlInflator=SourceGen`) is the recommended path in .NET 10 — significantly faster inflation, especially in Debug.
+- Don't use XAML compilation attributes (`[XamlCompilation]`) to disable compilation; fix the underlying XAML errors instead.
+- Namespace declarations at the root element are inherited by all child elements — declare shared namespaces once at the root.
+
+## XAML fundamentals
+
+- [XAML overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/index.md): XAML basics, property elements, attached properties, and when to use XAML vs code.
+- [Essential XAML syntax](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/essential-syntax.md): Property elements, attached properties, and syntax patterns.
+- [XAML markup extensions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/markup-extensions/consume.md): StaticResource, DynamicResource, Binding, RelativeSource, and x:Static.
+- [Create markup extensions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/markup-extensions/create.md): Implement custom markup extensions.
+- [Pass arguments in XAML](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/pass-arguments.md): x:Arguments and x:FactoryMethod for non-default constructors.
+- [Generics in XAML](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/generics.md): x:TypeArguments for generic type instantiation.
+
+## Namespaces and compilation
+
+- [XAML namespaces](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/namespaces/index.md): Default namespace, x: prefix, clr-namespace declarations, and x:DataType.
+- [Custom namespace schemas](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/namespaces/custom-namespace-schemas.md): Map CLR namespaces to XAML namespace URIs.
+- [Custom namespace prefixes](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/namespaces/custom-prefix.md): Declare and use custom namespace prefixes.
+- [XAML compilation and source generation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/xamlc.md): XamlC, XAML source generation (SourceGen), and per-file inflator control.
+- [Runtime load](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/runtime-load.md): Load XAML at runtime with LoadFromXaml.
+
+## XAML authoring features
+
+- [XAML hot reload](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/hot-reload.md): Live UI editing during debug sessions.
+- [Field modifiers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/field-modifiers.md): Control access level of x:Name generated fields.
+- [Class modifiers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/class-modifiers.md): Control access level of the generated partial class.
+- [XAML security](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/xaml-security.md): Loading XAML from untrusted sources.
+
+## XAML fundamentals tutorial series
+
+- [Get started with XAML](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/get-started.md): First XAML page and code-behind connection.
+- [Data binding basics](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/data-binding-basics.md): Binding syntax and BindingContext from XAML.
+- [Markup extensions in context](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/markup-extensions.md): Using StaticResource, x:Static, and Binding together.
+- [MVVM in XAML](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/fundamentals/mvvm.md): Connecting XAML views to MVVM viewmodels.
+
+## Optional
+
+- [Data binding deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/llms.txt): Compiled bindings, binding modes, converters, and relative source — the binding runtime detail beyond XAML syntax.
+- [Fundamentals index](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/llms.txt): App architecture, MVVM patterns, resources, and triggers.

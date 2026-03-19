@@ -1,0 +1,34 @@
+# .NET MAUI Shell
+
+> Shell in .NET MAUI: route-based navigation, flyout and tabs, page hierarchy, lifecycle, and common Shell app structure decisions.
+
+Use this file when the question is specifically about Shell behavior, route registration, page flow, query parameters, or app-level navigation structure.
+
+## Guidance for AI assistants
+
+- Treat Shell as the default navigation model for new MAUI apps.
+- Register routes explicitly when navigating to detail pages outside the visual hierarchy.
+- Use Shell query parameters for simple navigation state; move to stronger patterns if state becomes complex.
+- Do not mix Shell with NavigationPage, TabbedPage, or FlyoutPage as peer app structures unless the docs explicitly require it.
+
+## Core Shell architecture
+
+- [Shell overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/index.md): App structure, route model, and key Shell concepts.
+- [Create a Shell app](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/create.md): Build the initial Shell hierarchy.
+- [Shell pages](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/pages.md): Configure page hierarchy and content presentation.
+
+## Navigation and state
+
+- [Shell navigation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/navigation.md): Route registration, URI navigation, back navigation, and parameters.
+- [Shell lifecycle](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/lifecycle.md): Page and navigation lifecycle behavior in Shell apps.
+- [Shell search](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/search.md): Add search UI and query behavior.
+
+## Flyout and tabs
+
+- [Shell tabs](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/tabs.md): Top tabs, bottom tabs, and organization of tabbed navigation.
+- [Shell flyout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/flyout.md): Flyout layout, items, header, footer, and behavior.
+
+## Optional
+
+- [App lifecycle](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/app-lifecycle.md): Broader app lifecycle behavior around Shell-hosted UI.
+- [Dependency injection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/dependency-injection.md): Resolve pages and view models used in Shell navigation flows.

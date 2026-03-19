@@ -1,0 +1,24 @@
+# .NET MAUI Storage
+
+> Storage APIs in .NET MAUI: file picker, app directories, preferences, and secure storage.
+
+Use this file when the question is specifically about storing data on device, reading and writing local files, or letting the user pick files.
+
+## Guidance for AI assistants
+
+- Use app directories and helpers for app-owned files before reaching for custom absolute paths.
+- Use preferences for simple local settings and secure storage for secrets or tokens.
+- Use file picker only when the user must choose external files.
+- Distinguish local app storage from user-selected or shared external files.
+
+## Core storage guidance
+
+- [File picker](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/file-picker.md): User file selection.
+- [File system helpers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/file-system-helpers.md): App directories and file access.
+- [Preferences](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/preferences.md): Local key-value app settings.
+- [Secure storage](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/secure-storage.md): Encrypted key-value data.
+
+## Optional
+
+- [Data and cloud index](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/llms.txt): Higher-level data architecture and backend concerns.
+- [Platform integration index](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/llms.txt): Broader platform integration retrieval.
