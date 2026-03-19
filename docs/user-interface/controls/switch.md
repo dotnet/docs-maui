@@ -1,7 +1,7 @@
 ---
 title: "Switch"
 description: "The .NET MAUI Switch is a type of button that can be manipulated by the user to toggle between on and off states."
-ms.date: 03/07/2025
+ms.date: 03/08/2026
 ---
 
 # Switch
@@ -42,13 +42,15 @@ The <xref:Microsoft.Maui.Controls.Switch> control defines a `Toggled` event that
 A <xref:Microsoft.Maui.Controls.Switch> can be instantiated in XAML. Its `IsToggled` property can be set to toggle the <xref:Microsoft.Maui.Controls.Switch>. By default, the `IsToggled` property is `false`. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with the optional `IsToggled` property set:
 
 ```xaml
-<Switch IsToggled="true"/>
+<Switch IsToggled="true"
+        SemanticProperties.Description="Toggle setting" />
 ```
 
 A <xref:Microsoft.Maui.Controls.Switch> can also be created in code:
 
 ```csharp
 Switch switchControl = new Switch { IsToggled = true };
+SemanticProperties.SetDescription(switchControl, "Toggle setting");
 ```
 
 ## Switch appearance

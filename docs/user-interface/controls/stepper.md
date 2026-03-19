@@ -1,7 +1,7 @@
 ---
 title: "Stepper"
 description: "The .NET MAUI Stepper allows you to select a numeric value from a range of values. It consists of two buttons labeled with minus and plus signs. Manipulating the two buttons changes the selected value incrementally."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # Stepper
@@ -39,6 +39,7 @@ The following example shows how to create a <xref:Microsoft.Maui.Controls.Steppe
         <Stepper Maximum="360"
                  Increment="30"
                  HorizontalOptions="Center"
+                 SemanticProperties.Description="Rotation angle"
                  ValueChanged="OnStepperValueChanged" />
         <Label x:Name="_displayLabel"
                Text="(uninitialized)"
