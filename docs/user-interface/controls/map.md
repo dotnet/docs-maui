@@ -777,6 +777,62 @@ The `MapItemTemplateSelector` class defines `DefaultTemplate` and `SanFranTempla
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
+### Pin clustering
+
+When a map displays many pins in a small area, they can overlap and become difficult to interact with. Pin clustering groups nearby pins into a single cluster marker that expands as you zoom in.
+
+To enable clustering, set the `IsClusteringEnabled` property on the <xref:Microsoft.Maui.Controls.Maps.Map> control:
+
+```xaml
+<maps:Map IsClusteringEnabled="True" />
+```
+
+When `IsClusteringEnabled` is `true`, nearby pins are automatically grouped into cluster markers at lower zoom levels. Zooming in expands clusters to reveal individual pins.
+
+#### Clustering identifiers
+
+By default, all pins share the same clustering group. To create separate clustering groups — for example, to cluster restaurants independently from parks — set the `ClusteringIdentifier` property on each <xref:Microsoft.Maui.Controls.Maps.Pin>:
+
+```csharp
+map.Pins.Add(new Pin
+{
+    Label = "Pike Place Coffee",
+    Location = new Location(47.6097, -122.3331),
+    ClusteringIdentifier = "coffee"
+});
+
+map.Pins.Add(new Pin
+{
+    Label = "Occidental Square",
+    Location = new Location(47.6064, -122.3325),
+    ClusteringIdentifier = "parks"
+});
+```
+
+Pins with the same `ClusteringIdentifier` cluster together. Pins with different identifiers form separate clusters even when they are geographically close.
+
+#### Handle cluster taps
+
+When a user taps a cluster marker, the `ClusterClicked` event fires. The <xref:Microsoft.Maui.Controls.Maps.ClusterClickedEventArgs> provides:
+
+- `Pins` — a read-only list of the <xref:Microsoft.Maui.Controls.Maps.Pin> objects in the cluster.
+- `Location` — the geographic <xref:Microsoft.Maui.Devices.Sensors.Location> of the cluster.
+- `Handled` — set to `true` to prevent the default zoom-to-cluster behavior.
+
+```csharp
+map.ClusterClicked += (sender, e) =>
+{
+    string names = string.Join(", ", e.Pins.Select(p => p.Label));
+    DisplayAlert($"Cluster ({e.Pins.Count} pins)", names, "OK");
+
+    // Suppress default zoom behavior:
+    // e.Handled = true;
+};
+```
+
+> [!NOTE]
+> Pin clustering is supported on Android and iOS/Mac Catalyst. On Android, clusters recalculate when the zoom level changes. On iOS/Mac Catalyst, the platform's native `MKClusterAnnotation` support manages cluster display.
+
 ## Polygons, polylines, and circles
 
 `Polygon`, `Polyline`, and `Circle` elements allow you to highlight specific areas on a map. A `Polygon` is a fully enclosed shape that can have a stroke and fill color. A `Polyline` is a line that does not fully enclose an area. A `Circle` highlights a circular area of the map:

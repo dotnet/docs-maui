@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 1/27/2026
+ms.date: 03/10/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -24,17 +24,36 @@ This is a description of the feature and essential code snippets to adopt it.
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
 
-### A specific control
+### Map pin clustering
 
-What was added, removed, changed.
+The <xref:Microsoft.Maui.Controls.Maps.Map> control now supports pin clustering, which automatically groups nearby pins into cluster markers at lower zoom levels. This long-requested feature is supported on Android and iOS/Mac Catalyst.
+
+New APIs:
+
+- `Map.IsClusteringEnabled` — enables or disables pin clustering.
+- `Pin.ClusteringIdentifier` — groups pins into named clusters for independent clustering.
+- `Map.ClusterClicked` — event fired when a cluster marker is tapped.
+- `ClusterClickedEventArgs` — provides the list of pins in the cluster, the cluster location, and a `Handled` property to suppress default zoom behavior.
+
+```xaml
+<maps:Map IsClusteringEnabled="True"
+          ClusterClicked="OnClusterClicked" />
+```
+
+For more information, see [Pin clustering](~/user-interface/controls/map.md?view=net-maui-11.0&preserve-view=true#pin-clustering).
+
+> [!div class="nextstepaction"]
+> [Explore the sample](/samples/dotnet/maui-samples/userinterface-map-clustering)
 
 ## Platform features
 
 .NET MAUI's platform features have received some updates in .NET 11.
 
-### Feature description
+### `maui` CLI
 
-Description...
+.NET MAUI 11 introduces the `maui` CLI, a unified command-line tool for managing your development environment. Key commands include `maui doctor`, `maui android install`, and `maui apple install`, with structured `--json` output for CI/CD and AI agent integration.
+
+For more information, see [.NET MAUI CLI reference](~/get-started/maui-cli.md?view=net-maui-11.0&preserve-view=true).
 
 ## .NET for Android
 
