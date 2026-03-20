@@ -1,7 +1,7 @@
 ---
 title: "CheckBox"
 description: "The .NET MAUI CheckBox is a type of button that can either be checked or empty. When a checkbox is checked, it's considered to be on. When a checkbox is empty, it's considered to be off."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # CheckBox
@@ -34,7 +34,8 @@ This XAML results in the appearance shown in the following screenshot:
 By default, the <xref:Microsoft.Maui.Controls.CheckBox> is empty. The <xref:Microsoft.Maui.Controls.CheckBox> can be checked by user manipulation, or by setting the `IsChecked` property to `true`:
 
 ```xaml
-<CheckBox IsChecked="true" />
+<CheckBox IsChecked="true"
+          SemanticProperties.Description="Agree to terms and conditions" />
 ```
 
 This XAML results in the appearance shown in the following screenshot:

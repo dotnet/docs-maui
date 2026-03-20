@@ -1,7 +1,7 @@
 ---
 title: "RadioButton"
 description: "The .NET MAUI RadioButton is a type of button that allows users to select one option from a set. Each option is represented by one radio button, and you can only select one radio button in a group."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # RadioButton
@@ -83,22 +83,26 @@ On iOS and Windows, a <xref:Microsoft.Maui.Controls.RadioButton> can display arb
     <Label Text="What's your favorite animal?" />
     <RadioButton>
         <RadioButton.Content>
-            <Image Source="cat.png" />
+            <Image Source="cat.png"
+                   SemanticProperties.Description="Cat" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton>
         <RadioButton.Content>
-            <Image Source="dog.png" />
+            <Image Source="dog.png"
+                   SemanticProperties.Description="Dog" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton>
         <RadioButton.Content>
-            <Image Source="elephant.png" />
+            <Image Source="elephant.png"
+                   SemanticProperties.Description="Elephant" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton>
         <RadioButton.Content>
-            <Image Source="monkey.png" />
+            <Image Source="monkey.png"
+                   SemanticProperties.Description="Monkey" />
         </RadioButton.Content>
     </RadioButton>
 </StackLayout>
@@ -124,22 +128,26 @@ The following XAML shows setting the `Content` and `Value` properties on each <x
     <Label Text="What's your favorite animal?" />
     <RadioButton Value="Cat">
         <RadioButton.Content>
-            <Image Source="cat.png" />
+            <Image Source="cat.png"
+                   SemanticProperties.Description="Cat" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton Value="Dog">
         <RadioButton.Content>
-            <Image Source="dog.png" />
+            <Image Source="dog.png"
+                   SemanticProperties.Description="Dog" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton Value="Elephant">
         <RadioButton.Content>
-            <Image Source="elephant.png" />
+            <Image Source="elephant.png"
+                   SemanticProperties.Description="Elephant" />
         </RadioButton.Content>
     </RadioButton>
     <RadioButton Value="Monkey">
         <RadioButton.Content>
-            <Image Source="monkey.png" />
+            <Image Source="monkey.png"
+                   SemanticProperties.Description="Monkey" />
         </RadioButton.Content>
     </RadioButton>
 </StackLayout>
