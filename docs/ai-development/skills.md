@@ -43,6 +43,9 @@ If you're using the GitHub Copilot CLI agent, add the .NET skills marketplace an
 /plugin install dotnet-maui
 ```
 
+> [!NOTE]
+> `dotnet-dnceng` is the marketplace organization name that hosts the official .NET skill plugins. Adding it registers the source so you can install individual plugins like `dotnet-maui` by name.
+
 To verify the plugin is installed:
 
 ```bash
@@ -78,7 +81,10 @@ You can enable skill plugins for everyone who uses Copilot in a specific reposit
 This configuration automatically enables the `dotnet-maui` skill plugin for any contributor using Copilot in the repository. Commit this file to your repository so all team members benefit from it.
 
 > [!IMPORTANT]
-> Repository-level configuration only takes effect for contributors who have the skill plugin available in their environment. It does not install the plugin automatically.
+> Repository-level configuration only *enables* a plugin — it does not install it automatically. Contributors must install the plugin in their own environment before it takes effect. Pair this configuration with onboarding documentation (such as a `README.md` or `CONTRIBUTING.md` setup guide) that lists the required plugins and installation steps.
+
+> [!TIP]
+> When contributing to an open-source repository, check whether maintainers recommend specific skills — for example in an `AGENTS.md` file or contributing guide — and install them to match the expected development environment.
 
 ### Codex CLI
 
@@ -123,6 +129,16 @@ I'm getting error XC0000 when building for iOS. What does this mean?
 ```
 
 The skill draws from known error patterns and platform-specific build requirements to suggest fixes.
+
+#### Example: Diagnosing an Android build failure
+
+A common scenario is an Android build that fails without a clear error message. Ask your AI assistant:
+
+```text
+Why is my Android build failing?
+```
+
+With the `dotnet-maui` skill active, the assistant can check for missing .NET workloads, verify your Android SDK version meets the project's target, confirm the Android emulator is configured correctly, and suggest the specific `dotnet workload install` or SDK manager commands needed to fix the issue. Without the skill, the assistant would only offer generic troubleshooting advice.
 
 ### Platform-specific troubleshooting
 
@@ -174,6 +190,10 @@ With these plugins active, your AI assistant can help across a typical developme
 > [!TIP]
 > Skills don't conflict with each other. Install as many as are relevant to your project. The AI assistant selects the most appropriate skill based on the context of your question.
 
+#### Team standardization
+
+For team projects, consider documenting your baseline set of plugins in a `CONTRIBUTING.md` or onboarding guide. This ensures every team member has a consistent AI-assisted development experience and avoids gaps when different developers have different plugins installed.
+
 ### Example: Debugging a performance issue
 
 Combine `dotnet-maui` with `dotnet-diag` to troubleshoot performance problems:
@@ -206,6 +226,6 @@ A custom skill plugin typically includes:
 
 ## See also
 
-- [Use Copilot instructions for .NET MAUI](copilot-instructions.md)
-- [AI-assisted development workflow](devflow.md)
+- [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md)
+- [AI-assisted UI debugging with MauiDevFlow](devflow.md)
 - [.NET Agent Skills marketplace (GitHub)](https://github.com/dotnet/skills)

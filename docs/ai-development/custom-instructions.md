@@ -8,7 +8,7 @@ no-loc: [".NET MAUI"]
 
 # Custom instruction files and AGENTS.md
 
-While `copilot-instructions.md` provides project-wide context, custom instruction files let you provide focused guidance for specific tasks or file types. These files live in `.github/instructions/` and are loaded automatically based on file glob patterns. For project-wide setup, see [Custom instructions for GitHub Copilot](copilot-instructions.md).
+While `copilot-instructions.md` provides project-wide context, custom instruction files let you provide focused guidance for specific tasks or file types. These files live in `.github/instructions/` and are loaded automatically based on file glob patterns. When you open or edit a file in VS Code or work with files through GitHub Copilot CLI, any instruction file whose `applyTo` glob matches is automatically included in the AI context—no manual configuration required. For project-wide setup, see [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md).
 
 This article covers how to create task-specific instruction files and how to use `AGENTS.md` for repository-level agent policies.
 
@@ -37,7 +37,13 @@ applyTo: "**/*.xaml"
 Your instructions here in Markdown format.
 ```
 
-The `applyTo` field accepts comma-separated glob patterns to match multiple file types or directories.
+The `applyTo` field accepts comma-separated glob patterns to match multiple file types or directories:
+
+```markdown
+---
+applyTo: "**/*.xaml,**/*.xaml.cs,**/Resources/Styles/**"
+---
+```
 
 > [!TIP]
 > Keep each instruction file focused on a single concern. Multiple small files are easier to maintain than one large file covering everything.
@@ -45,6 +51,9 @@ The `applyTo` field accepts comma-separated glob patterns to match multiple file
 ## .NET MAUI instruction file examples
 
 The following examples show instruction files for common .NET MAUI development scenarios. Use them as starting points and adapt them to your project's conventions.
+
+> [!TIP]
+> If you're contributing to a project, skim the `.github/instructions/` folder for any `*.instructions.md` files whose `applyTo` patterns match the files you're editing. These files describe the conventions the AI assistant follows and can help you align your changes with the project's expectations.
 
 ### iOS and Mac Catalyst safe area handling
 
@@ -174,7 +183,7 @@ applyTo: "**/Platforms/Android/**,**/*.android.cs"
 
 ## AGENTS.md
 
-`AGENTS.md` is a file placed at the root of your repository that provides high-level instructions for AI agents performing autonomous workflows. While `copilot-instructions.md` is optimized for interactive coding assistance, `AGENTS.md` targets agents that work independently, such as those that create pull requests, run builds, or perform multi-step tasks.
+`AGENTS.md` is a file placed at the root of your repository that provides high-level instructions for AI agents performing autonomous workflows. While `copilot-instructions.md` is optimized for interactive coding assistance, `AGENTS.md` targets agents that work independently, such as those that create pull requests, run builds, or perform multi-step tasks. For example, an AI agent might clone your repository, run `dotnet build` and `dotnet test`, and leave a PR comment summarizing any failures—all guided by the policies in `AGENTS.md`.
 
 ### When to use AGENTS.md
 
@@ -216,6 +225,10 @@ Use `AGENTS.md` to define repository-wide policies that autonomous agents should
 > [!NOTE]
 > `AGENTS.md` and `copilot-instructions.md` are complementary. Use both in your project — `copilot-instructions.md` for interactive coding context and `AGENTS.md` for autonomous agent policies.
 
+### For contributors
+
+If you're contributing to an open-source project, read the repository's `AGENTS.md` before opening a pull request. It describes the conventions and quality checks that AI agents enforce during PR reviews, such as required CI checks, commit message formats, and code standards. Understanding these policies helps you avoid automated review feedback and ensures your PR aligns with the project's workflow from the start.
+
 ## When to use which file
 
 Use the following table to decide where to put your AI guidance:
@@ -243,5 +256,5 @@ Follow these practices to get the most value from your instruction files:
 
 ## See also
 
-- [Custom instructions for GitHub Copilot](copilot-instructions.md)
+- [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md)
 - [Best practices for AI-assisted .NET MAUI development](best-practices.md)

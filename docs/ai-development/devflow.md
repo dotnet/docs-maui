@@ -13,6 +13,23 @@ MauiDevFlow is an experimental toolkit from maui-labs that provides an HTTP API 
 > [!WARNING]
 > MauiDevFlow is experimental and its APIs may change without notice. The source is available at [github.com/dotnet/maui-labs](https://github.com/dotnet/maui-labs).
 
+> [!IMPORTANT]
+> MauiDevFlow is intended for local development and debugging only. Never include DevFlow packages in production builds. The `#if DEBUG` guard and the `Condition="'$(Configuration)' == 'Debug'"` in the project file ensure DevFlow is excluded from release builds.
+
+## Who should use MauiDevFlow
+
+MauiDevFlow is an optional, advanced tool. Consider using it when:
+
+- You're doing **heavy UI debugging** — diagnosing layout problems, clipped elements, or unexpected rendering.
+- You're working with **complex layouts** where the visual tree is deeply nested and hard to reason about from code alone.
+- You're building **Blazor Hybrid** apps and need to inspect the WebView DOM alongside the native visual tree.
+- Standard tools like **XAML Hot Reload** and **Live Visual Tree** aren't providing enough visibility into the issue.
+
+If your debugging needs are met by the built-in Visual Studio tools, you don't need MauiDevFlow. It's designed for scenarios where deeper, programmatic access to the running app's UI state is required.
+
+> [!NOTE]
+> MauiDevFlow is strictly for interactive debugging during development. It's not designed for automated CI/CD test runs or headless environments.
+
 ## What MauiDevFlow provides
 
 MauiDevFlow exposes a rich set of capabilities for inspecting and interacting with a running .NET MAUI app:
@@ -78,7 +95,7 @@ builder.AddMauiDevFlowAgent();
 
 ### Install the CLI tool
 
-Install the DevFlow CLI as a global .NET tool:
+Install the DevFlow CLI as a global .NET tool. The `-g` flag installs the tool globally, making it available from any directory in your terminal rather than only within a specific project:
 
 ```dotnetcli
 dotnet tool install -g Microsoft.Maui.DevFlow.CLI
@@ -92,6 +109,15 @@ Build and run your app in `Debug` configuration, then confirm that the agent is 
 
 ```bash
 maui-devflow agent status
+```
+
+A successful connection produces output similar to:
+
+```
+✅ Agent is running
+   Version: 1.0.0-preview.3
+   Platform: maccatalyst
+   App: com.companyname.myapp
 ```
 
 If the connection is successful, the command reports the agent version and the platform the app is running on.
@@ -183,6 +209,8 @@ The agent can read `ILogger` output from the running app. This enables the AI to
 
 The MCP server exposes 50+ structured tools that AI agents can call directly. When configured as an MCP tool provider, DevFlow gives the AI agent the ability to autonomously inspect, interact with, and diagnose issues in your running app. This transforms the AI from a code-only assistant into one that understands your app's live runtime state.
 
+MCP is supported by a growing number of AI coding tools, including **GitHub Copilot** (in VS Code, Visual Studio, and the CLI), **Claude Code**, **Cursor**, and **Windsurf**. Any AI tool that supports the [Model Context Protocol](https://modelcontextprotocol.io) specification can use DevFlow as a tool provider.
+
 To use DevFlow as an MCP server, point your AI tool's MCP configuration at the DevFlow CLI. The exact configuration depends on your AI tool. For example, in a `.json` configuration file:
 
 ```json
@@ -217,5 +245,5 @@ If the CLI connects but returns empty or unexpected results:
 ## See also
 
 - [Best practices for AI-assisted .NET MAUI development](best-practices.md)
-- [Configure Copilot instructions for .NET MAUI projects](copilot-instructions.md)
+- [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md)
 - [MauiDevFlow source and documentation (github.com/dotnet/maui-labs)](https://github.com/dotnet/maui-labs)

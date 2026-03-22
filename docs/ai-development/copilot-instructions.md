@@ -82,7 +82,10 @@ Native MAUI pages are used for platform integration only.
 ```
 
 > [!NOTE]
-> If your project uses a specific Windows SDK version other than `10.0.19041.0`, update the TFM accordingly. Check your `.csproj` file for the exact `TargetFrameworks` value.
+> Replace `net9.0` in the examples above with your target .NET version (for example, `net10.0`). Copilot reads your `.github/copilot-instructions.md` file automatically in Visual Studio Code, Visual Studio, and the GitHub Copilot CLI — no manual configuration is required.
+
+> [!NOTE]
+> The Windows TFM requires a Windows SDK version suffix (for example, `net9.0-windows10.0.19041.0`). If your project targets a different SDK version, update the TFM to match. Check your `.csproj` file's `TargetFrameworks` value for the exact version.
 
 ### Platform-specific code organization
 
@@ -118,14 +121,14 @@ Use these preprocessor directives for platform-specific code in shared files:
 - `#if IOS || MACCATALYST` — Both Apple mobile platforms
 ```
 
-> [!IMPORTANT]
-> The `.ios.cs` and Mac Catalyst double-compilation behavior is the single most common source of AI-generated build errors in .NET MAUI projects. Always include this information in your instructions file.
+> [!WARNING]
+> Files ending in `.ios.cs` compile for **both** iOS **and** Mac Catalyst targets. Files ending in `.maccatalyst.cs` compile **only** for Mac Catalyst. This means that when you build for Mac Catalyst, both `.ios.cs` and `.maccatalyst.cs` files are compiled — there is no precedence mechanism that picks one over the other. If both files define the same partial class members, you get duplicate-definition compilation errors on Mac Catalyst. This is the single most common source of AI-generated build errors in .NET MAUI projects. Always include this information in your instructions file.
 
 ### Project structure
 
 Document your directory layout so Copilot understands where to place new files:
 
-```markdown
+````markdown
 ## Project Structure
 
 ```
@@ -146,7 +149,7 @@ src/MyApp/
 │   └── Styles/                — XAML resource dictionaries
 └── Platforms/                 — Platform-specific code
 ```
-```
+````
 
 ### Testing patterns
 
@@ -217,6 +220,25 @@ Xamarin.Forms custom renderers. When customizing native controls:
    `handlers.AddHandler<MyControl, MyHandler>()`
 2. Or use handler lifecycle methods:
    `Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(...)`
+```
+
+### Migrating from Xamarin.Forms
+
+If your project was migrated from Xamarin.Forms, document migration-specific constraints in your instructions file so AI assistants don't suggest legacy patterns:
+
+```markdown
+## Migration Constraints (Xamarin.Forms to .NET MAUI)
+
+This project was migrated from Xamarin.Forms. Do NOT use or suggest:
+- Custom renderers (use handlers instead)
+- `Device.RuntimePlatform` checks (use `DeviceInfo.Platform` or conditional compilation)
+- `DependencyService` (use Microsoft.Extensions.DependencyInjection)
+- `MessagingCenter` (use WeakReferenceMessenger from CommunityToolkit.Mvvm)
+
+### Handlers vs. renderers quick reference
+- Before (Xamarin.Forms): `[assembly: ExportRenderer(...)]` + subclass `ViewRenderer<TView, TNativeView>`
+- After (.NET MAUI): Configure handler mappings in `MauiProgram.cs`:
+  `Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) => { ... });`
 ```
 
 ### App entry point
@@ -356,6 +378,6 @@ Do not create both `.ios.cs` and `.maccatalyst.cs` for the same partial class.
 
 ## See also
 
-- [Create custom instructions for GitHub Copilot](custom-instructions.md)
+- [Custom instruction files and AGENTS.md](custom-instructions.md)
 - [Best practices for AI-assisted .NET MAUI development](best-practices.md)
-- [Use Copilot skills with .NET MAUI](skills.md)
+- [.NET Agent Skills for .NET MAUI development](skills.md)

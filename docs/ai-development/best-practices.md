@@ -64,10 +64,18 @@ Services/
 └── DeviceService.windows.cs      # Windows implementation
 ```
 
-The .NET MAUI build system automatically compiles `.android.cs` files only for Android, `.ios.cs` files only for iOS, and so on.
+The .NET MAUI build system automatically compiles `.android.cs` files only for Android, `.windows.cs` files only for Windows, and so on.
 
 > [!WARNING]
-> The `.ios.cs` and `.maccatalyst.cs` files compile independently — they do **not** share code. AI assistants frequently assume that iOS code also runs on Mac Catalyst because both use Apple frameworks. If your iOS and Mac Catalyst implementations are identical, you must duplicate the code in both files or use a shared base class.
+> **Mac Catalyst compilation overlap:** When you build for Mac Catalyst, **both** `.ios.cs` and `.maccatalyst.cs` files are compiled into the output. There is no precedence mechanism — if both files define the same type or method, you get a compiler error. AI assistants frequently get this wrong by assuming `.ios.cs` files are ignored on Mac Catalyst or that one overrides the other.
+>
+> If your iOS and Mac Catalyst implementations are identical, choose **one** approach:
+>
+> - Use only `.maccatalyst.cs` and `.ios.cs` with `#if` guards inside, **or**
+> - Use a shared base class that both platform files inherit from, **or**
+> - Use conditional compilation (`#if IOS` / `#if MACCATALYST`) in a single shared file instead of platform-suffixed files.
+>
+> **Do not** place duplicate implementations in both `.ios.cs` and `.maccatalyst.cs` — this causes duplicate type or member definition errors at build time.
 
 ### Partial classes with platform implementations
 
@@ -157,7 +165,7 @@ AI assistants read XML documentation comments to understand what a method does, 
 /// their last-modified timestamp.
 /// </param>
 /// <returns>The number of records synchronized.</returns>
-/// <exception cref="NetworkException">
+/// <exception cref="HttpRequestException">
 /// Thrown when the device is offline or the API is unreachable.
 /// </exception>
 public async Task<int> SyncDataAsync(bool force = false)
@@ -171,6 +179,9 @@ public async Task<int> SyncDataAsync(bool force = false)
 Include a `README.md` at the repository root with:
 
 - **Build instructions** for each platform (`dotnet build -f net10.0-android`, `dotnet build -f net10.0-ios`)
+
+> [!NOTE]
+> The examples in this article use `net10.0-*` target framework monikers. Substitute your project's target .NET version (for example, `net9.0-android`, `net9.0-ios`) wherever you see a TFM in build commands or project configuration.
 - **Architecture overview** describing the patterns used (MVVM, dependency injection, messaging)
 - **Key dependencies** and their purpose
 - **Platform-specific setup** requirements (Xcode version, Android SDK levels, Windows SDK)
@@ -232,7 +243,7 @@ private static string CachePath =>
 The .NET trimmer removes code that appears unused at build time. Types accessed only through reflection — such as dependency injection registrations or XAML type references — can be trimmed away:
 
 ```xml
-<!-- Preserve types that are only used via reflection -->
+<!-- In your .csproj file: preserve types that are only used via reflection -->
 <ItemGroup>
   <TrimmerRootAssembly Include="MyApp.Services" />
 </ItemGroup>
@@ -278,6 +289,9 @@ Not all XAML changes apply through Hot Reload. These changes require a full rebu
 ## Build and test configuration
 
 AI assistants need to know how to build and test your project for each platform. Document these details in your `README.md` or repository instructions file.
+
+> [!TIP]
+> Codify your build and test commands in a CI pipeline (such as GitHub Actions or Azure Pipelines) so that every pull request is validated automatically. AI assistants can also reference CI workflow files to understand which platforms and configurations your project supports.
 
 ### Build commands
 
@@ -346,6 +360,9 @@ Use `Directory.Packages.props` to centralize NuGet package versions across your 
 
 Some NuGet packages behave differently per platform or are only available on certain platforms. Document these in your instructions:
 
+> [!NOTE]
+> If your organization uses private or internal NuGet feeds, include a `NuGet.config` file at the solution root with the feed URLs. This ensures AI assistants can resolve all package references and that `dotnet restore` works without additional setup. See [NuGet.config reference](/nuget/reference/nuget-config-file) for details.
+
 ```markdown
 ## Key packages
 - **CommunityToolkit.Maui** — cross-platform, but MediaElement
@@ -359,6 +376,9 @@ Some NuGet packages behave differently per platform or are only available on cer
 ## .editorconfig and code formatting
 
 AI assistants read `.editorconfig` files and use them to match your code style. Include one in your repository root:
+
+> [!NOTE]
+> Most AI coding assistants — including GitHub Copilot — automatically detect and follow `.editorconfig` rules when generating code. This makes `.editorconfig` one of the most effective ways to enforce consistent formatting across both human-written and AI-generated code without additional prompting.
 
 ```ini
 [*.cs]
@@ -392,6 +412,6 @@ indent_size = 4
 
 ## See also
 
-- [Repository instructions for .NET MAUI](copilot-instructions.md)
-- [Custom instruction files](custom-instructions.md)
-- [.NET Agent Skills for .NET MAUI](skills.md)
+- [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md)
+- [Custom instruction files and AGENTS.md](custom-instructions.md)
+- [.NET Agent Skills for .NET MAUI development](skills.md)
