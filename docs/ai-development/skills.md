@@ -81,7 +81,7 @@ You can enable skill plugins for everyone who uses Copilot in a specific reposit
 This configuration automatically enables the `dotnet-maui` skill plugin for any contributor using Copilot in the repository. Commit this file to your repository so all team members benefit from it.
 
 > [!IMPORTANT]
-> Repository-level configuration only *enables* a plugin — it does not install it automatically. Contributors must install the plugin in their own environment before it takes effect. Pair this configuration with onboarding documentation (such as a `README.md` or `CONTRIBUTING.md` setup guide) that lists the required plugins and installation steps.
+> Repository-level configuration only *enables* a plugin — it does not install it automatically. Contributors must install the plugin in their own environment before it takes effect. Pair this configuration with onboarding documentation (such as a `README.md` or `CONTRIBUTING.md` setup guide) that lists the required plugins and installation steps. For team-wide consistency, consider using [devcontainers](https://containers.dev/) or repository setup scripts (for example, a `setup.sh` or `init.ps1`) that automate plugin installation as part of the development environment setup.
 
 > [!TIP]
 > When contributing to an open-source repository, check whether maintainers recommend specific skills — for example in an `AGENTS.md` file or contributing guide — and install them to match the expected development environment.
@@ -102,7 +102,7 @@ skill-installer install dotnet-maui dotnet-test dotnet-msbuild
 
 ## Use the dotnet-maui skill
 
-Once installed, the `dotnet-maui` skill plugin enhances your AI coding assistant with .NET MAUI-specific capabilities. You don't need to invoke the skill explicitly — your AI assistant uses it automatically when it recognizes a relevant context.
+Once installed, the `dotnet-maui` skill plugin enhances your AI coding assistant with .NET MAUI-specific capabilities. Your AI coding assistant automatically selects relevant skills based on the context of your question. You don't need to invoke skills explicitly — the assistant matches your query to available skill capabilities and activates the appropriate plugins.
 
 ### Environment setup validation
 
@@ -223,6 +223,15 @@ A custom skill plugin typically includes:
 
 > [!NOTE]
 > Custom skills follow the same plugin format as the official .NET skills. You can distribute them through your organization's internal registries or through the public marketplace.
+
+## How skills complement instruction files
+
+Skills and instruction files serve different roles in your AI-assisted development workflow and work best when used together:
+
+- **Instruction files** provide *static context* — they describe your project structure, coding conventions, architectural patterns, and platform-specific guidelines. The AI assistant reads these files to understand *how* your project is organized and *what* conventions to follow.
+- **Skills** provide *dynamic capabilities* — they enable the AI assistant to perform actions like running diagnostics, analyzing build errors, scaffolding code from templates, and profiling performance. Skills give the assistant the ability to *do* things, not just know things.
+
+For example, an instruction file might tell the AI assistant to use compiled bindings in XAML, while the `dotnet-maui` skill enables the assistant to validate your development environment and diagnose why a build targeting iOS is failing. Together, they give the AI both the knowledge and the tools to assist effectively.
 
 ## See also
 

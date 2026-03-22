@@ -8,13 +8,10 @@ no-loc: [".NET MAUI"]
 
 # AI-assisted UI debugging with MauiDevFlow
 
-MauiDevFlow is an experimental toolkit from maui-labs that provides an HTTP API and CLI for visual tree inspection, element interaction, screenshots, and more in .NET MAUI apps. It's particularly powerful when combined with AI coding assistants, enabling them to inspect your running app's UI and diagnose layout and rendering issues in real time.
+MauiDevFlow is an experimental toolkit from maui-labs that provides an HTTP API and CLI for visual tree inspection, element interaction, screenshots, and more in .NET MAUI apps. It's particularly powerful when combined with AI coding assistants, enabling them to inspect your running app's UI and diagnose layout and rendering issues in real time. If you're familiar with Xcode Instruments or Chrome DevTools, MauiDevFlow provides a similar level of runtime introspection for .NET MAUI apps, with the added benefit of AI agent integration through the Model Context Protocol.
 
 > [!WARNING]
-> MauiDevFlow is experimental and its APIs may change without notice. The source is available at [github.com/dotnet/maui-labs](https://github.com/dotnet/maui-labs).
-
-> [!IMPORTANT]
-> MauiDevFlow is intended for local development and debugging only. Never include DevFlow packages in production builds. The `#if DEBUG` guard and the `Condition="'$(Configuration)' == 'Debug'"` in the project file ensure DevFlow is excluded from release builds.
+> MauiDevFlow is experimental and its APIs may change without notice. It is intended for local development and debugging only — never include DevFlow packages in production builds. The `#if DEBUG` guard and the `Condition="'$(Configuration)' == 'Debug'"` in the project file ensure DevFlow is excluded from release builds. The source is available at [github.com/dotnet/maui-labs](https://github.com/dotnet/maui-labs).
 
 ## Who should use MauiDevFlow
 
@@ -208,6 +205,18 @@ The agent can read `ILogger` output from the running app. This enables the AI to
 ### MCP server integration
 
 The MCP server exposes 50+ structured tools that AI agents can call directly. When configured as an MCP tool provider, DevFlow gives the AI agent the ability to autonomously inspect, interact with, and diagnose issues in your running app. This transforms the AI from a code-only assistant into one that understands your app's live runtime state.
+
+The tools are organized into the following categories:
+
+- **Visual tree inspection** — query elements, layout properties, binding contexts, and rendered bounds.
+- **Element interaction** — tap, type text, scroll, and navigate within the running app.
+- **Screenshot capture** — capture the current app state as an image for visual verification.
+- **Network monitoring** — observe outgoing HTTP requests and responses.
+- **Performance profiling** — collect timing data for rendering and layout passes.
+- **Blazor WebView / CDP commands** — inspect the DOM, evaluate JavaScript, and debug Blazor Hybrid content.
+- **Application logging** — read `ILogger` output and diagnostic messages from the running app.
+
+For the full tool reference including parameters and response formats, see the [MauiDevFlow documentation in the maui-labs repository](https://github.com/dotnet/maui-labs).
 
 MCP is supported by a growing number of AI coding tools, including **GitHub Copilot** (in VS Code, Visual Studio, and the CLI), **Claude Code**, **Cursor**, and **Windsurf**. Any AI tool that supports the [Model Context Protocol](https://modelcontextprotocol.io) specification can use DevFlow as a tool provider.
 

@@ -62,7 +62,7 @@ Native MAUI pages are used for platform integration only.
 
 ### Build and run commands
 
-.NET MAUI projects use target framework monikers (TFMs) to build for specific platforms. Include the exact commands so Copilot can suggest the correct build invocation:
+.NET MAUI projects use target framework monikers (TFMs) to build for specific platforms. TFMs like `net9.0-ios` tell the .NET build system which platform to target — similar to selecting a build destination in Xcode or a build variant in Android Studio. Include the exact commands so Copilot can suggest the correct build invocation:
 
 ```markdown
 ## Build Commands
@@ -122,11 +122,11 @@ Use these preprocessor directives for platform-specific code in shared files:
 ```
 
 > [!WARNING]
-> Files ending in `.ios.cs` compile for **both** iOS **and** Mac Catalyst targets. Files ending in `.maccatalyst.cs` compile **only** for Mac Catalyst. This means that when you build for Mac Catalyst, both `.ios.cs` and `.maccatalyst.cs` files are compiled — there is no precedence mechanism that picks one over the other. If both files define the same partial class members, you get duplicate-definition compilation errors on Mac Catalyst. This is the single most common source of AI-generated build errors in .NET MAUI projects. Always include this information in your instructions file.
+> Files ending in `.ios.cs` compile for **both** iOS **and** Mac Catalyst targets, while `.maccatalyst.cs` files compile **only** for Mac Catalyst. If both define the same partial class members, you get duplicate-definition compilation errors. This is the most common source of AI-generated build errors in .NET MAUI projects. For detailed resolution strategies, see [Best practices](best-practices.md#platform-specific-code-patterns).
 
 ### Project structure
 
-Document your directory layout so Copilot understands where to place new files:
+Document your directory layout so Copilot understands where to place new files. The following example describes a typical .NET MAUI project structure with shared app entry points, MVVM folders for models, views, and view models, platform-specific code under `Platforms/`, and resources for fonts, images, and styles:
 
 ````markdown
 ## Project Structure

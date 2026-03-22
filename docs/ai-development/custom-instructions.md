@@ -223,7 +223,7 @@ Use `AGENTS.md` to define repository-wide policies that autonomous agents should
 ```
 
 > [!NOTE]
-> `AGENTS.md` and `copilot-instructions.md` are complementary. Use both in your project — `copilot-instructions.md` for interactive coding context and `AGENTS.md` for autonomous agent policies.
+> `AGENTS.md` and `copilot-instructions.md` are complementary. Use both in your project — `copilot-instructions.md` for interactive coding context and `AGENTS.md` for autonomous agent policies. The `AGENTS.md` convention is supported by GitHub Copilot, Claude Code, and other AI coding assistants.
 
 ### For contributors
 
@@ -234,7 +234,7 @@ If you're contributing to an open-source project, read the repository's `AGENTS.
 Use the following table to decide where to put your AI guidance:
 
 | Scenario | Recommended file |
-|---|---|
+|----------|------------------|
 | Project overview, build commands, architecture | `copilot-instructions.md` |
 | Platform-specific coding patterns (iOS, Android) | `.github/instructions/*.instructions.md` |
 | File-type guidance (XAML, tests) | `.github/instructions/*.instructions.md` |

@@ -12,7 +12,9 @@ AI coding assistants work best when your project follows clear, consistent patte
 
 ## Project structure
 
-A predictable folder layout helps AI assistants locate relevant code and understand the relationships between components. The standard .NET MAUI template provides a solid starting point:
+A predictable folder layout helps AI assistants locate relevant code and understand the relationships between components. The standard .NET MAUI template provides a solid starting point.
+
+The following folder structure shows a typical .NET MAUI project with platform-specific folders under `Platforms/`, shared resources, and separated concerns:
 
 ```text
 MyApp/
@@ -67,19 +69,17 @@ Services/
 The .NET MAUI build system automatically compiles `.android.cs` files only for Android, `.windows.cs` files only for Windows, and so on.
 
 > [!WARNING]
-> **Mac Catalyst compilation overlap:** When you build for Mac Catalyst, **both** `.ios.cs` and `.maccatalyst.cs` files are compiled into the output. There is no precedence mechanism — if both files define the same type or method, you get a compiler error. AI assistants frequently get this wrong by assuming `.ios.cs` files are ignored on Mac Catalyst or that one overrides the other.
->
-> If your iOS and Mac Catalyst implementations are identical, choose **one** approach:
->
-> - Use only `.maccatalyst.cs` and `.ios.cs` with `#if` guards inside, **or**
-> - Use a shared base class that both platform files inherit from, **or**
-> - Use conditional compilation (`#if IOS` / `#if MACCATALYST`) in a single shared file instead of platform-suffixed files.
->
-> **Do not** place duplicate implementations in both `.ios.cs` and `.maccatalyst.cs` — this causes duplicate type or member definition errors at build time.
+> **Mac Catalyst compilation overlap:** When you build for Mac Catalyst, **both** `.ios.cs` and `.maccatalyst.cs` files are compiled into the output. There is no precedence mechanism — if both files define the same type or method, you get a compiler error. **Do not** place duplicate implementations in both files.
+
+If your iOS and Mac Catalyst implementations are identical, choose **one** of these resolution strategies:
+
+- Use only `.maccatalyst.cs` and `.ios.cs` with `#if` guards inside.
+- Use a shared base class that both platform files inherit from.
+- Use conditional compilation (`#if IOS` / `#if MACCATALYST`) in a single shared file instead of platform-suffixed files.
 
 ### Partial classes with platform implementations
 
-Partial classes let you split a type across shared and platform-specific files:
+Unlike Swift extensions, C# partial classes are a single class definition split across multiple files that the compiler merges at compile time. Partial classes let you split a type across shared and platform-specific files:
 
 ```csharp
 // Services/DeviceService.cs (shared)
@@ -120,11 +120,14 @@ public string GetDefaultCacheSize()
 ```
 
 > [!NOTE]
+> These compilation symbols (`ANDROID`, `IOS`, `MACCATALYST`, `WINDOWS`) are defined automatically by the .NET MAUI build system based on your target framework. You don't need to configure them manually.
+
+> [!NOTE]
 > Prefer partial classes or platform-specific files over `#if` directives when the platform-specific code is more than a few lines. Large blocks of conditional compilation are harder for AI assistants to reason about because they must mentally track which branches are active for each platform.
 
 ### Dependency injection for platform services
 
-Register platform-specific implementations in `MauiProgram.cs`:
+Dependency injection (DI) is a design pattern where services are provided to classes through their constructors rather than being created directly. Register platform-specific implementations in `MauiProgram.cs`:
 
 ```csharp
 public static MauiApp CreateMauiApp()
@@ -228,11 +231,11 @@ These are mistakes AI assistants frequently make with .NET MAUI code. Document t
 Platform APIs like `FileSystem.AppDataDirectory` aren't available during type initialization. Static readonly fields are evaluated at type load time, which can happen before the .NET MAUI platform is initialized:
 
 ```csharp
-// ❌ WRONG — evaluated during type initialization, before MAUI platform is ready
+// WRONG: evaluated during type initialization, before MAUI platform is ready
 private static readonly string CachePath =
     Path.Combine(FileSystem.AppDataDirectory, "cache");
 
-// ✅ CORRECT — lazy evaluation defers the call until first access
+// CORRECT: lazy evaluation defers the call until first access
 private static string? _cachePath;
 private static string CachePath =>
     _cachePath ??= Path.Combine(FileSystem.AppDataDirectory, "cache");
@@ -240,7 +243,7 @@ private static string CachePath =>
 
 ### Linker and trimmer safety
 
-The .NET trimmer removes code that appears unused at build time. Types accessed only through reflection — such as dependency injection registrations or XAML type references — can be trimmed away:
+The .NET trimmer removes code that appears unused at build time. Types accessed only through reflection — such as dependency injection registrations or XAML type references — can be trimmed away. Add the following to your `.csproj` file (the XML-format project configuration file that defines your app's build settings, dependencies, and target frameworks in .NET):
 
 ```xml
 <!-- In your .csproj file: preserve types that are only used via reflection -->
@@ -256,11 +259,11 @@ Alternatively, use the `[DynamicallyAccessedMembers]` or `[RequiresUnreferencedC
 On iOS, `Environment.SpecialFolder.LocalApplicationData` maps to a **cache** directory that the OS can purge at any time. For persistent data, always use the .NET MAUI file system API:
 
 ```csharp
-// ❌ WRONG on iOS — this path can be purged by the OS
+// WRONG on iOS: this path can be purged by the OS
 var path = Environment.GetFolderPath(
     Environment.SpecialFolder.LocalApplicationData);
 
-// ✅ CORRECT — guaranteed persistent across app launches
+// CORRECT: guaranteed persistent across app launches
 var path = FileSystem.AppDataDirectory;
 ```
 
