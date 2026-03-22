@@ -170,7 +170,7 @@ No additional configuration is required. The agent is accessible over localhost 
 
 ### iOS Simulator
 
-No additional configuration is required. The agent is accessible over localhost once the app is running in the simulator. If you're running multiple simulators, the agent binds to the default port on each instance.
+No additional configuration is required. The agent is accessible over localhost once the app is running in the simulator. DevFlow's agent listens on port 9223 by default.
 
 ## Using with AI assistants
 
@@ -197,6 +197,16 @@ The agent can capture a screenshot of the running app to verify layout changes v
 ### Read DOM snapshots for Blazor Hybrid apps
 
 For apps using Blazor Hybrid, the agent can capture a DOM snapshot through the CDP bridge. This gives the AI full visibility into the HTML structure rendered inside the `BlazorWebView`, which is especially helpful for diagnosing CSS or component rendering issues.
+
+### Blazor Hybrid debugging workflow
+
+When debugging Razor component rendering issues in a Blazor Hybrid app, the AI agent can combine native visual tree inspection with CDP DOM snapshots:
+
+1. You describe a rendering issue (for example, "my `WeatherList` Razor component shows a blank area instead of the forecast cards").
+1. The agent calls `maui-devflow agent tree` to confirm the `BlazorWebView` is present and correctly sized in the native layout.
+1. The agent calls `maui-devflow cdp snapshot` to capture the DOM inside the WebView, revealing the rendered HTML and CSS state of the Razor component.
+1. The agent identifies the root cause in the DOM (for example, a missing CSS class, a conditional rendering block evaluating to `false`, or a failed data binding) and proposes a fix to the `.razor` or `.css` file.
+1. After you apply the fix and hot reload, the agent takes another CDP snapshot to verify the component renders correctly.
 
 ### Check logs for runtime errors
 

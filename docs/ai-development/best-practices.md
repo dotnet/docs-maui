@@ -269,13 +269,16 @@ var path = FileSystem.AppDataDirectory;
 
 ### Android edge-to-edge display
 
-Starting with .NET 10, Android apps default to edge-to-edge display with `SafeAreaEdges` set to `None`. UI elements can render behind the system status bar and navigation bar. Account for safe areas in your layouts:
+Starting with .NET 10, Android apps default to edge-to-edge display with `SafeAreaEdges` set to `None`. UI elements can render behind the system status bar and navigation bar. Account for safe areas in your layouts using platform-safe approaches rather than hardcoded padding values:
 
 ```xml
-<Grid Padding="{OnPlatform Android='0,48,0,0'}">
-    <!-- Content that needs to clear the Android status bar -->
+<!-- Use safe area properties to handle system UI overlap -->
+<Grid ios:Page.UseSafeArea="True">
+    <!-- Content automatically respects safe area insets on iOS -->
 </Grid>
 ```
+
+On Android, use `OnPlatform` with your app's safe area logic or the platform's `fitsSystemWindows` attribute. Avoid hardcoded padding values like `Padding="0,48,0,0"` because status bar height varies across Android devices and OS versions. Instead, query the actual insets at runtime or use community toolkit helpers that calculate platform-safe margins dynamically.
 
 ### XAML Hot Reload limitations
 
@@ -379,6 +382,61 @@ Some NuGet packages behave differently per platform or are only available on cer
 ## .editorconfig and code formatting
 
 AI assistants read `.editorconfig` files and use them to match your code style. Include one in your repository root:
+
+## Blazor Hybrid patterns
+
+If your app uses Blazor Hybrid, these patterns help AI assistants navigate the coexistence of native MAUI and web-based Razor content.
+
+### XAML and Razor coexistence
+
+In a Blazor Hybrid app, native MAUI pages host `BlazorWebView` controls that render Razor components. Keep these boundaries clear:
+
+- Use XAML pages for native platform integration (navigation, permissions, device features).
+- Use Razor components for the main app UI rendered inside `BlazorWebView`.
+- Don't mix XAML data bindings with Razor component parameters — they use different binding systems.
+- Document which pages are native XAML and which are Blazor-hosted so AI assistants place new code in the right location.
+
+### `wwwroot/` organization
+
+Static web assets must live in `wwwroot/` at the project root:
+
+```text
+MyApp/
+├── wwwroot/
+│   ├── index.html          # Blazor host page (required, do not rename)
+│   ├── css/
+│   │   └── app.css         # App-level styles
+│   └── js/
+│       └── interop.js      # JavaScript interop functions
+├── Components/
+│   ├── Layout/
+│   │   └── MainLayout.razor
+│   └── Pages/
+│       └── Home.razor
+└── MainPage.xaml            # Native page hosting BlazorWebView
+```
+
+### JavaScript interop safety patterns
+
+JavaScript interop in Blazor Hybrid has mobile-specific considerations:
+
+- Always use asynchronous `IJSRuntime` methods — synchronous JS interop (`IJSInProcessRuntime`) can deadlock on mobile platforms.
+- Dispose `IJSObjectReference` instances in the component's `DisposeAsync` method to avoid memory leaks.
+- Guard JS interop calls with `try-catch` — WebView initialization timing varies across platforms.
+- Test JS interop on all target platforms, as JavaScript engine behavior differs between Android WebView, iOS WKWebView, and Windows WebView2.
+
+### `BlazorWebView` configuration
+
+Configure the `BlazorWebView` in your XAML page and register Razor components in `MauiProgram.cs`:
+
+```csharp
+builder.Services.AddMauiBlazorWebView();
+#if DEBUG
+builder.Services.AddBlazorWebViewDeveloperTools();
+#endif
+```
+
+Document your `BlazorWebView` setup in your repository instructions so AI assistants know the host page location and root component configuration.
 
 > [!NOTE]
 > Most AI coding assistants — including GitHub Copilot — automatically detect and follow `.editorconfig` rules when generating code. This makes `.editorconfig` one of the most effective ways to enforce consistent formatting across both human-written and AI-generated code without additional prompting.

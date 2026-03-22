@@ -15,6 +15,9 @@ When you provide a well-written instructions file, Copilot generates code that f
 > [!TIP]
 > The `.github/copilot-instructions.md` file is automatically loaded by GitHub Copilot in Visual Studio Code, Visual Studio, and the GitHub Copilot CLI. You don't need to reference it manually.
 
+> [!TIP]
+> Want to skip ahead? Jump to the [complete template](#template) for a ready-to-use file.
+
 ## Create the file
 
 Create a file named `copilot-instructions.md` in the `.github` directory at the root of your repository:
@@ -277,6 +280,37 @@ This app uses Shell navigation. Routes are registered in AppShell.xaml.cs:
 - Navigate with: `await Shell.Current.GoToAsync(nameof(DetailPage));`
 - Pass parameters with: `await Shell.Current.GoToAsync($"{nameof(DetailPage)}?id={itemId}");`
 - Receive parameters with [QueryProperty] attribute or IQueryAttributable
+```
+
+### Blazor Hybrid
+
+If your app uses Blazor Hybrid, document the web-specific project structure and patterns so AI assistants don't confuse Razor components with XAML views:
+
+```markdown
+## Blazor Hybrid
+
+### App type
+This is a .NET MAUI Blazor Hybrid app. The main UI is built with
+Razor components hosted inside a BlazorWebView on native MAUI pages.
+
+### wwwroot folder
+Static web assets live in `wwwroot/`:
+- `wwwroot/index.html` — Blazor host page (do not rename)
+- `wwwroot/css/` — App stylesheets
+- `wwwroot/js/` — JavaScript files for interop
+
+### Razor components
+- Components live in `Components/` (or `Pages/` for routable components)
+- Use `@page "/route"` directive for routable components
+- Shared layout components go in `Components/Layout/`
+- Do NOT mix XAML data binding with Razor component parameters
+
+### JavaScript interop
+- Inject `IJSRuntime` for JavaScript calls from Razor components
+- Use `[JSInvokable]` for .NET methods called from JavaScript
+- Always use `ValueTask` return types for JS interop methods
+- Dispose `IJSObjectReference` instances in component `DisposeAsync`
+- Avoid synchronous JS interop (`IJSInProcessRuntime`) on mobile platforms
 ```
 
 ## Template
