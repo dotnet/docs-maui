@@ -8,7 +8,7 @@ no-loc: [".NET MAUI"]
 
 # Best practices for AI-assisted .NET MAUI development
 
-AI coding assistants work best when your project follows clear, consistent patterns. The way you organize files, name classes, document APIs, and configure builds directly affects the quality of AI-generated code. This article covers practical techniques to help AI assistants understand your .NET MAUI codebase and produce correct, platform-aware code.
+AI coding assistants work best when your project follows clear, consistent patterns. The way you organize files, name classes, document APIs, and configure builds directly affects the quality of AI-generated code. This article covers project structure, platform-specific code patterns, documentation practices, common pitfalls, and build and test configuration — practical techniques to help AI assistants understand your .NET MAUI codebase and produce correct, platform-aware code.
 
 ## Project structure
 
@@ -383,6 +383,39 @@ Some NuGet packages behave differently per platform or are only available on cer
 
 AI assistants read `.editorconfig` files and use them to match your code style. Include one in your repository root:
 
+> [!NOTE]
+> Most AI coding assistants — including GitHub Copilot — automatically detect and follow `.editorconfig` rules when generating code. This makes `.editorconfig` one of the most effective ways to enforce consistent formatting across both human-written and AI-generated code without additional prompting.
+
+```ini
+[*.cs]
+indent_style = space
+indent_size = 4
+charset = utf-8
+
+# Naming conventions
+dotnet_naming_rule.private_fields.symbols = private_fields
+dotnet_naming_rule.private_fields.style = prefix_underscore
+dotnet_naming_rule.private_fields.severity = suggestion
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.prefix_underscore.capitalization = camel_case
+dotnet_naming_style.prefix_underscore.required_prefix = _
+
+# Code style
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_prefer_braces = true:suggestion
+
+[*.xaml]
+indent_style = space
+indent_size = 4
+```
+
+> [!TIP]
+> If your team uses non-standard naming conventions (such as `m_` prefixes for member fields or `I` prefixes for all interfaces), document these explicitly in your `.editorconfig` and repository instructions. AI assistants default to standard .NET naming conventions and need explicit guidance to deviate.
+
 ## Blazor Hybrid patterns
 
 If your app uses Blazor Hybrid, these patterns help AI assistants navigate the coexistence of native MAUI and web-based Razor content.
@@ -437,39 +470,6 @@ builder.Services.AddBlazorWebViewDeveloperTools();
 ```
 
 Document your `BlazorWebView` setup in your repository instructions so AI assistants know the host page location and root component configuration.
-
-> [!NOTE]
-> Most AI coding assistants — including GitHub Copilot — automatically detect and follow `.editorconfig` rules when generating code. This makes `.editorconfig` one of the most effective ways to enforce consistent formatting across both human-written and AI-generated code without additional prompting.
-
-```ini
-[*.cs]
-indent_style = space
-indent_size = 4
-charset = utf-8
-
-# Naming conventions
-dotnet_naming_rule.private_fields.symbols = private_fields
-dotnet_naming_rule.private_fields.style = prefix_underscore
-dotnet_naming_rule.private_fields.severity = suggestion
-
-dotnet_naming_symbols.private_fields.applicable_kinds = field
-dotnet_naming_symbols.private_fields.applicable_accessibilities = private
-
-dotnet_naming_style.prefix_underscore.capitalization = camel_case
-dotnet_naming_style.prefix_underscore.required_prefix = _
-
-# Code style
-csharp_style_var_for_built_in_types = true:suggestion
-csharp_style_expression_bodied_methods = when_on_single_line:suggestion
-csharp_prefer_braces = true:suggestion
-
-[*.xaml]
-indent_style = space
-indent_size = 4
-```
-
-> [!TIP]
-> If your team uses non-standard naming conventions (such as `m_` prefixes for member fields or `I` prefixes for all interfaces), document these explicitly in your `.editorconfig` and repository instructions. AI assistants default to standard .NET naming conventions and need explicit guidance to deviate.
 
 ## See also
 

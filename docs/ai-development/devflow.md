@@ -172,6 +172,10 @@ No additional configuration is required. The agent is accessible over localhost 
 
 No additional configuration is required. The agent is accessible over localhost once the app is running in the simulator. DevFlow's agent listens on port 9223 by default.
 
+### Linux/GTK
+
+No additional configuration is required for Linux. Ensure your GTK dependencies are installed. For detailed setup, see the [DevFlow setup guides](https://github.com/dotnet/maui-labs/tree/main/docs/DevFlow/setup-guides).
+
 ## Using with AI assistants
 
 MauiDevFlow is designed to work with AI coding assistants such as GitHub Copilot. When an AI agent has access to DevFlow (for example, through the MCP server), it can perform the following actions against your running app.
