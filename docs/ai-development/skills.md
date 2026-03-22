@@ -1,0 +1,211 @@
+---
+title: ".NET Agent Skills for .NET MAUI development"
+description: "Learn how to install and use .NET Agent Skills plugins to extend AI coding assistants with specialized .NET MAUI knowledge."
+ms.topic: how-to
+ms.date: 03/22/2026
+no-loc: [".NET MAUI"]
+---
+
+# .NET Agent Skills for .NET MAUI development
+
+Agent skills are pre-built capabilities that extend AI coding assistants with specialized .NET knowledge. Rather than relying on general-purpose AI models alone, skills provide curated, domain-specific guidance that helps your AI assistant understand .NET MAUI project structures, platform requirements, build systems, and common troubleshooting patterns.
+
+The [.NET Agent Skills marketplace](https://github.com/dotnet/skills) is a collection of skill plugins maintained by the .NET team and community. It provides plugins for .NET MAUI development, diagnostics, builds, testing, and more. Each plugin targets a specific area of .NET development and can be installed independently.
+
+## Available skills for .NET MAUI developers
+
+The following table lists the skill plugins most relevant to .NET MAUI development:
+
+| Plugin | Description |
+|--------|-------------|
+| `dotnet-maui` | Environment setup, diagnostics, and troubleshooting for .NET MAUI |
+| `dotnet` | Core .NET development skills |
+| `dotnet-msbuild` | MSBuild and build system skills |
+| `dotnet-test` | Test execution and diagnostics |
+| `dotnet-nuget` | NuGet package management |
+| `dotnet-ai` | AI/ML integration including LLMs, RAG, and MCP |
+| `dotnet-diag` | Performance profiling, debugging, and incident analysis |
+| `dotnet-upgrade` | Migration and framework upgrading |
+
+> [!TIP]
+> Start with the `dotnet-maui` and `dotnet` plugins. These two cover the most common scenarios for .NET MAUI app development. Add other plugins as your workflow requires them.
+
+## Install a skill plugin
+
+You can install skill plugins through several methods depending on your development environment.
+
+### GitHub Copilot CLI
+
+If you're using the GitHub Copilot CLI agent, add the .NET skills marketplace and then install the desired plugin:
+
+```bash
+/plugin marketplace add dotnet-dnceng
+/plugin install dotnet-maui
+```
+
+To verify the plugin is installed:
+
+```bash
+/plugin list
+```
+
+### Visual Studio Code
+
+To install skill plugins in Visual Studio Code:
+
+1. Open the **Settings** editor (**Ctrl+,** on Windows/Linux, **Cmd+,** on macOS).
+1. Search for `chat.plugins.enabled` and enable the setting.
+1. Open the **Extensions** view and search for the desired skill plugin in the marketplace.
+1. Select **Install** on the plugin.
+
+> [!NOTE]
+> The `chat.plugins.enabled` setting must be turned on before skill plugins can be discovered and used by Copilot Chat in Visual Studio Code.
+
+### Repository-level configuration
+
+You can enable skill plugins for everyone who uses Copilot in a specific repository by adding a `.github/copilot/settings.json` file:
+
+```json
+{
+  "plugins": {
+    "dotnet-dnceng@dotnet-maui": {
+      "enabled": true
+    }
+  }
+}
+```
+
+This configuration automatically enables the `dotnet-maui` skill plugin for any contributor using Copilot in the repository. Commit this file to your repository so all team members benefit from it.
+
+> [!IMPORTANT]
+> Repository-level configuration only takes effect for contributors who have the skill plugin available in their environment. It does not install the plugin automatically.
+
+### Codex CLI
+
+If you're using the Codex CLI, install a skill plugin with the `skill-installer` command:
+
+```bash
+skill-installer install dotnet-maui
+```
+
+To install multiple plugins at once:
+
+```bash
+skill-installer install dotnet-maui dotnet-test dotnet-msbuild
+```
+
+## Use the dotnet-maui skill
+
+Once installed, the `dotnet-maui` skill plugin enhances your AI coding assistant with .NET MAUI-specific capabilities. You don't need to invoke the skill explicitly — your AI assistant uses it automatically when it recognizes a relevant context.
+
+### Environment setup validation
+
+The skill can validate your development environment, including:
+
+- .NET SDK version and installation status
+- .NET MAUI workload installation
+- Android SDK and emulator configuration
+- Xcode and iOS simulator setup (macOS)
+- Windows App SDK configuration
+
+Ask your AI assistant to check your environment:
+
+```text
+Check if my environment is set up correctly for .NET MAUI development.
+```
+
+### Build error diagnostics
+
+When you encounter build errors, the skill provides targeted guidance based on common .NET MAUI build issues:
+
+```text
+I'm getting error XC0000 when building for iOS. What does this mean?
+```
+
+The skill draws from known error patterns and platform-specific build requirements to suggest fixes.
+
+### Platform-specific troubleshooting
+
+The skill understands the differences between Android, iOS, macOS, and Windows platform targets. It can help with:
+
+- Platform-specific API usage and conditional compilation
+- Manifest and entitlement configuration
+- Signing and provisioning profiles
+- Deployment and debugging on physical devices
+
+### Project template scaffolding
+
+Use the skill to generate new project structures that follow .NET MAUI best practices:
+
+```text
+Create a new .NET MAUI app with Shell navigation and MVVM architecture.
+```
+
+### Migration assistance
+
+The skill can help with migrating from:
+
+- Xamarin.Forms to .NET MAUI
+- Older .NET MAUI versions to newer ones
+- Platform-specific legacy code to cross-platform .NET MAUI patterns
+
+## Combine multiple skills
+
+You can install multiple skill plugins to cover different aspects of your development workflow. The AI assistant draws from all installed skills as needed.
+
+### Example: Full-stack .NET MAUI workflow
+
+Install a set of complementary plugins:
+
+```bash
+/plugin install dotnet-maui
+/plugin install dotnet-test
+/plugin install dotnet-msbuild
+/plugin install dotnet-nuget
+```
+
+With these plugins active, your AI assistant can help across a typical development cycle:
+
+1. **Build issues** — The `dotnet-msbuild` skill helps diagnose MSBuild targets, property configurations, and build order problems.
+1. **Test failures** — The `dotnet-test` skill assists with test execution, diagnosing flaky tests, and improving test coverage.
+1. **Package management** — The `dotnet-nuget` skill helps resolve NuGet dependency conflicts, find appropriate packages, and manage package sources.
+1. **App-specific issues** — The `dotnet-maui` skill handles platform configuration, XAML issues, and .NET MAUI-specific patterns.
+
+> [!TIP]
+> Skills don't conflict with each other. Install as many as are relevant to your project. The AI assistant selects the most appropriate skill based on the context of your question.
+
+### Example: Debugging a performance issue
+
+Combine `dotnet-maui` with `dotnet-diag` to troubleshoot performance problems:
+
+```text
+My .NET MAUI app is slow to start on Android. Help me profile the startup
+and identify the bottleneck.
+```
+
+The `dotnet-diag` skill provides profiling and tracing guidance while the `dotnet-maui` skill offers platform-specific optimization strategies.
+
+## Create custom skills
+
+Teams can create their own skill plugins to codify internal patterns, architectural decisions, and domain-specific knowledge. Custom skills are useful when your team has:
+
+- Established coding conventions specific to your .NET MAUI projects
+- Internal libraries or frameworks that require specialized guidance
+- Domain-specific patterns that general-purpose skills don't cover
+
+To get started with creating a custom skill, see the [contributing guide in the .NET Skills repository](https://github.com/dotnet/skills/blob/main/CONTRIBUTING.md).
+
+A custom skill plugin typically includes:
+
+- A skill manifest that describes the plugin's capabilities
+- Prompt instructions that guide the AI assistant's behavior
+- Optional tools or scripts that the AI assistant can invoke
+
+> [!NOTE]
+> Custom skills follow the same plugin format as the official .NET skills. You can distribute them through your organization's internal registries or through the public marketplace.
+
+## See also
+
+- [Use Copilot instructions for .NET MAUI](copilot-instructions.md)
+- [AI-assisted development workflow](devflow.md)
+- [.NET Agent Skills marketplace (GitHub)](https://github.com/dotnet/skills)
