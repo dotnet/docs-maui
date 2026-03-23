@@ -185,6 +185,7 @@ Include a `README.md` at the repository root with:
 
 > [!NOTE]
 > The examples in this article use `net10.0-*` target framework monikers. Substitute your project's target .NET version (for example, `net9.0-android`, `net9.0-ios`) wherever you see a TFM in build commands or project configuration.
+
 - **Architecture overview** describing the patterns used (MVVM, dependency injection, messaging)
 - **Key dependencies** and their purpose
 - **Platform-specific setup** requirements (Xcode version, Android SDK levels, Windows SDK)
