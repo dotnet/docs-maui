@@ -215,7 +215,7 @@ When you work around platform-specific behavior, explain **why** the workaround 
 ```csharp
 // Android: WebView.EvaluateJavaScriptAsync can deadlock if called
 // before the page finishes loading. Wait for Navigated event first.
-// See: https://github.com/dotnet/maui/issues/12345
+// Always wait for the Navigated event before evaluating JavaScript.
 webView.Navigated += async (s, e) =>
 {
     var result = await webView.EvaluateJavaScriptAsync("getData()");
@@ -272,10 +272,14 @@ var path = FileSystem.AppDataDirectory;
 Starting with .NET 10, Android apps default to edge-to-edge display with `SafeAreaEdges` set to `None`. UI elements can render behind the system status bar and navigation bar. Account for safe areas in your layouts using platform-safe approaches rather than hardcoded padding values:
 
 ```xml
-<!-- Use safe area properties to handle system UI overlap -->
-<Grid ios:Page.UseSafeArea="True">
-    <!-- Content automatically respects safe area insets on iOS -->
-</Grid>
+<!-- Apply safe area handling at the page level on iOS -->
+<ContentPage
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="True">
+    <Grid>
+        <!-- Content automatically respects safe area insets on iOS -->
+    </Grid>
+</ContentPage>
 ```
 
 On Android, use `OnPlatform` with your app's safe area logic or the platform's `fitsSystemWindows` attribute. Avoid hardcoded padding values like `Padding="0,48,0,0"` because status bar height varies across Android devices and OS versions. Instead, query the actual insets at runtime or use community toolkit helpers that calculate platform-safe margins dynamically.
