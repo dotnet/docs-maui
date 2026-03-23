@@ -1263,7 +1263,7 @@
         - name: Agent skills
           href: ai-development/skills.md
         - name: MauiDevFlow
-          href: ai-development/devflow.md
+          href: ai-development/dev-flow.md
         - name: Best practices
           href: ai-development/best-practices.md
     - name: Deployment & testing

@@ -230,12 +230,12 @@ Skills and instruction files serve different roles in your AI-assisted developme
 
 - **Instruction files** provide *static context* — they describe your project structure, coding conventions, architectural patterns, and platform-specific guidelines. The AI assistant reads these files to understand *how* your project is organized and *what* conventions to follow.
 - **Skills** provide *dynamic capabilities* — they enable the AI assistant to perform actions like running diagnostics, analyzing build errors, scaffolding code from templates, and profiling performance. Skills give the assistant the ability to *do* things, not just know things.
-- **[MauiDevFlow](devflow.md)** provides *runtime inspection* — it connects the AI assistant to your running app so it can query the live visual tree, capture screenshots, read DOM snapshots from Blazor WebViews, and check logs. DevFlow gives the assistant visibility into actual runtime state, which neither instruction files nor skills can provide.
+- **[MauiDevFlow](dev-flow.md)** provides *runtime inspection* — it connects the AI assistant to your running app so it can query the live visual tree, capture screenshots, read DOM snapshots from Blazor WebViews, and check logs. DevFlow gives the assistant visibility into actual runtime state, which neither instruction files nor skills can provide.
 
 For example, an instruction file might tell the AI assistant to use compiled bindings in XAML, the `dotnet-maui` skill enables the assistant to validate your development environment and diagnose why a build targeting iOS is failing, and DevFlow lets the assistant inspect your running app's visual tree to identify why a layout renders differently than expected. Together, they give the AI the context, the capabilities, and the runtime visibility to assist effectively.
 
 ## See also
 
 - [Write a copilot-instructions.md file for .NET MAUI projects](copilot-instructions.md)
-- [AI-assisted UI debugging with MauiDevFlow](devflow.md)
+- [AI-assisted UI debugging with MauiDevFlow](dev-flow.md)
 - [.NET Agent Skills marketplace (GitHub)](https://github.com/dotnet/skills)

@@ -1,7 +1,7 @@
 ---
 title: "AI-assisted development"
 description: "Learn how to configure your .NET MAUI projects so AI coding assistants like GitHub Copilot and Claude Code can help you build cross-platform apps more effectively."
-ms.topic: concept
+ms.topic: overview
 ms.date: 03/22/2026
 no-loc: [".NET MAUI"]
 ---
@@ -21,7 +21,7 @@ This section covers how to configure your repository and development workflow so
 - **Want better code suggestions?** → Start with [Repository instructions](copilot-instructions.md)
 - **Need task-specific AI guidance?** → See [Custom instruction files](custom-instructions.md)
 - **Want pre-built MAUI diagnostics?** → Install [Agent skills](skills.md)
-- **Need to debug complex UI issues?** → Try [MauiDevFlow](devflow.md) (experimental)
+- **Need to debug complex UI issues?** → Try [MauiDevFlow](dev-flow.md) (experimental)
 
 ## What's available
 
@@ -41,7 +41,7 @@ A [repository instructions file](copilot-instructions.md) (`.github/copilot-inst
 
 ### MauiDevFlow
 
-[MauiDevFlow](devflow.md) is an experimental tool that connects AI coding assistants to your running app's visual tree. It enables AI-assisted UI debugging by letting the assistant inspect the live element hierarchy, identify layout issues, and suggest fixes based on actual runtime state.
+[MauiDevFlow](dev-flow.md) is an experimental tool that connects AI coding assistants to your running app's visual tree. It enables AI-assisted UI debugging by letting the assistant inspect the live element hierarchy, identify layout issues, and suggest fixes based on actual runtime state.
 
 ### Best practices
 
@@ -54,7 +54,7 @@ Follow these steps to make your .NET MAUI repository AI-ready:
 1. **[Add repository instructions.](copilot-instructions.md)** Create a `.github/copilot-instructions.md` file with your project overview, build commands (`dotnet build`, `dotnet run`), and target frameworks.
 2. **[Document platform-specific conventions.](best-practices.md#platform-specific-code-patterns)** List your file naming patterns for platform code (`.ios.cs`, `.android.cs`, `.windows.cs`) and any conditional compilation symbols you use.
 3. **[Install the `dotnet-maui` agent skill.](skills.md)** This gives AI coding assistants MAUI-specific diagnostics and API knowledge out of the box.
-4. **[Consider adding MauiDevFlow (experimental).](devflow.md)** If you frequently debug layout or visual tree issues, this tool lets AI coding assistants inspect your running UI.
+4. **[Consider adding MauiDevFlow (experimental).](dev-flow.md)** If you frequently debug layout or visual tree issues, this tool lets AI coding assistants inspect your running UI.
 5. **[Document your testing and CI setup.](best-practices.md#build-and-test-configuration)** Include instructions for running unit tests, UI tests, and any platform-specific test configurations so AI coding assistants can help you write and debug tests.
 6. **[Read existing project conventions.](custom-instructions.md)** When contributing to an existing repo, first read its `.github/copilot-instructions.md` and any `AGENTS.md` file to understand the project's conventions.
 
@@ -66,7 +66,7 @@ Follow these steps to make your .NET MAUI repository AI-ready:
 - [Repository instructions for .NET MAUI](copilot-instructions.md)
 - [Custom instruction files](custom-instructions.md)
 - [Agent skills for .NET MAUI](skills.md)
-- [MauiDevFlow](devflow.md)
+- [MauiDevFlow](dev-flow.md)
 - [Best practices for AI-assisted development](best-practices.md)
 - [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
 - [On-device AI capabilities](../ai/index.md)

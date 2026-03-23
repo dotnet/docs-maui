@@ -1,7 +1,7 @@
 ---
 title: Best practices for AI-assisted .NET MAUI development
 description: Learn how to structure your .NET MAUI projects and write code that AI coding assistants can understand, navigate, and extend effectively.
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 03/22/2026
 no-loc: [".NET MAUI"]
 ---
