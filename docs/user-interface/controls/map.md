@@ -1,7 +1,7 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
-ms.date: 08/30/2024
+ms.date: 03/23/2026
 ---
 
 # Map
@@ -44,6 +44,15 @@ public static class MauiProgram
 ```
 
 Once the NuGet package has been added and initialized, <xref:Microsoft.Maui.Controls.Maps.Map> APIs can be used in your project.
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Maps.Map> can conflict with <xref:Microsoft.Maui.ApplicationModel.Map> (which provides `Map.OpenAsync` for launching the native maps app). Both types are commonly available via implicit usings, and using `Map` in code can produce an `error CS0104: 'Map' is an ambiguous reference` compiler error. To resolve this, add a namespace alias in any C# file where the conflict occurs:
+>
+> ```csharp
+> using Map = Microsoft.Maui.Controls.Maps.Map;
+> ```
+>
+> You can then use `Map` to refer to the controls map throughout that file.
 
 ### Platform configuration
 
