@@ -1,7 +1,7 @@
 ---
 title: "Create custom controls with .NET MAUI handlers"
 description: "Learn how to create a .NET MAUI handler, to provide the platform implementations for a cross-platform video control."
-ms.date: 10/31/2024
+ms.date: 03/24/2026
 ---
 
 # Create a custom control using handlers
@@ -977,6 +977,55 @@ public partial class MyPage : ContentPage
 ```
 
 In this example, a cross-platform `Video` control named `video` is converted to its underlying native view on each platform in the <xref:Microsoft.Maui.Controls.Element.OnHandlerChanged> override. This override is called when the native view that implements the cross-platform control is available and initialized. The object returned by the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method could be cast to its exact native type, which here is a `MauiVideoPlayer`.
+
+## Subscribe to native events
+
+When consuming a cross-platform control from a page or view, you may need to subscribe to native platform events directly. Use the <xref:Microsoft.Maui.Controls.Element.HandlerChanged> event to subscribe when the native view becomes available, and the <xref:Microsoft.Maui.Controls.Element.HandlerChanging> event to unsubscribe before the handler is replaced or disconnected.
+
+```csharp
+public partial class MyPage : ContentPage
+{
+    public MyPage()
+    {
+        InitializeComponent();
+        myEntry.HandlerChanged += OnHandlerChanged;
+        myEntry.HandlerChanging += OnHandlerChanging;
+    }
+
+    void OnHandlerChanged(object? sender, EventArgs e)
+    {
+#if ANDROID
+        if (sender is Entry entry &&
+            entry.Handler?.PlatformView is Android.Widget.EditText editText)
+        {
+            editText.FocusChange += OnNativeFocusChange;
+        }
+#endif
+    }
+
+    void OnHandlerChanging(object? sender, HandlerChangingEventArgs e)
+    {
+#if ANDROID
+        if (e.OldHandler?.PlatformView is Android.Widget.EditText editText)
+        {
+            editText.FocusChange -= OnNativeFocusChange;
+        }
+#endif
+    }
+
+#if ANDROID
+    void OnNativeFocusChange(object? sender, Android.Views.View.FocusChangeEventArgs e)
+    {
+        // Handle native focus change
+    }
+#endif
+}
+```
+
+> [!IMPORTANT]
+> Always unsubscribe from native events in `HandlerChanging` using `e.OldHandler`. Failing to unsubscribe means the native view holds a reference to the managed delegate, preventing the control from being garbage collected. This leak is silent and cumulative — it does not crash immediately, but memory grows steadily in list-heavy UIs (such as controls inside a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.ListView> `DataTemplate`) until the app is terminated by the OS.
+
+The `HandlerChanging` event fires with the old handler populated in <xref:Microsoft.Maui.Controls.HandlerChangingEventArgs.OldHandler> whenever the handler is about to be replaced or disconnected. At this point the native view (`PlatformView`) is still accessible, making it the correct and only safe place to remove native event subscriptions.
 
 ## Play a video
 
