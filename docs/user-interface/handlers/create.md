@@ -994,29 +994,29 @@ public partial class MyPage : ContentPage
 
     void OnHandlerChanged(object? sender, EventArgs e)
     {
-#if ANDROID
+#if WINDOWS
         if (sender is Entry entry &&
-            entry.Handler?.PlatformView is Android.Widget.EditText editText)
+            entry.Handler?.PlatformView is Microsoft.UI.Xaml.Controls.TextBox textBox)
         {
-            editText.FocusChange += OnNativeFocusChange;
+            textBox.GotFocus += OnNativeGotFocus;
         }
 #endif
     }
 
     void OnHandlerChanging(object? sender, HandlerChangingEventArgs e)
     {
-#if ANDROID
-        if (e.OldHandler?.PlatformView is Android.Widget.EditText editText)
+#if WINDOWS
+        if (e.OldHandler?.PlatformView is Microsoft.UI.Xaml.Controls.TextBox textBox)
         {
-            editText.FocusChange -= OnNativeFocusChange;
+            textBox.GotFocus -= OnNativeGotFocus;
         }
 #endif
     }
 
-#if ANDROID
-    void OnNativeFocusChange(object? sender, Android.Views.View.FocusChangeEventArgs e)
+#if WINDOWS
+    void OnNativeGotFocus(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        // Handle native focus change
+        // Handle native focus gained
     }
 #endif
 }
