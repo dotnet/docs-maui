@@ -139,6 +139,7 @@ Depending on the needs of your app, you may need to register dependencies with d
 > In .NET MAUI (non-Blazor) apps, `AddScoped` has **no natural scope boundary**. Unlike ASP.NET Core (which scopes per HTTP request) or Blazor (which scopes per circuit), .NET MAUI does not automatically create or dispose scopes during navigation. A scoped service registered this way will resolve to the same instance for the lifetime of the app, which can lead to stale state and cross-page data contamination.
 >
 > For most .NET MAUI use cases:
+>
 > - Use [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) for pages and view models to get a fresh instance on each navigation.
 > - Use [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) for shared services such as database connections, settings, or caches.
 > - Reserve [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) for cases where you explicitly create and manage a scope with <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>:
