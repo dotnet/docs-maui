@@ -1,7 +1,7 @@
 ---
 title: "Secure storage"
 description: "Learn how to use the .NET MAUI ISecureStorage interface, which helps securely store simple key/value pairs. This article discusses how to use the ISecureStorage, platform implementation specifics, and its limitations."
-ms.date: 12/16/2024
+ms.date: 03/24/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 #acrolinx score 95
 ---
@@ -126,11 +126,41 @@ This section describes the platform-specific differences with the secure storage
 
 For more information about the Android Security library, see [Work with data more securely](https://developer.android.com/topic/security/data) on developer.android.com.
 
+> [!WARNING]
+> When Android Auto Backup restores encrypted preferences to a new device, the original encryption keys are not transferred, which means the restored values cannot be decrypted. .NET MAUI removes the affected key automatically when this occurs, but any `GetAsync` call on a still-cached corrupted value may throw an exception. Always wrap secure storage calls in a try/catch and call `RemoveAll` to clear any unreadable values:
+>
+> ```csharp
+> try
+> {
+>     var value = await SecureStorage.Default.GetAsync("auth_token");
+> }
+> catch (Exception)
+> {
+>     // Encrypted values from backup can't be decrypted on this device —
+>     // clear all secure values so they can be re-entered or re-fetched.
+>     SecureStorage.Default.RemoveAll();
+> }
+> ```
+>
+> To prevent the problem entirely, use selective backup to exclude the SecureStorage preference file — see [Selective backup](#selective-backup) in the setup section above.
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 [KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].microsoft.maui.essentials.preferences_.
 
-In some cases, KeyChain data is synchronized with iCloud, and uninstalling the application may not remove the secure values from user devices.
+> [!NOTE]
+> Unlike Android, uninstalling an iOS app does **not** remove its Keychain entries. If the app is reinstalled, previously stored values are still accessible to the new installation. To avoid exposing one user's stored data to another after a device is sold or shared, check for a first-launch flag and clear Keychain entries when the app runs for the first time:
+>
+> ```csharp
+> if (!Preferences.Default.ContainsKey("app_initialized"))
+> {
+>     SecureStorage.Default.RemoveAll();
+>     Preferences.Default.Set("app_initialized", true);
+> }
+> ```
+
+> [!NOTE]
+> If the device user has iCloud Keychain enabled, Keychain values written by `SecureStorage` may silently sync to the user's other Apple devices. This behavior is not controllable from .NET MAUI. If device-local isolation is required, consider this when deciding what data to store in `SecureStorage`.
 
 # [Windows](#tab/windows)
 
