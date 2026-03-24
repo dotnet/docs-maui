@@ -144,10 +144,23 @@ Depending on the needs of your app, you may need to register dependencies with d
 > - Reserve [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) for cases where you explicitly create and manage a scope with <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>:
 >
 > ```csharp
-> using var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-> var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-> await unitOfWork.SaveChangesAsync();
-> // scope is disposed here, releasing scoped services
+> public class MyViewModel
+> {
+>     private readonly IServiceScopeFactory _scopeFactory;
+>
+>     public MyViewModel(IServiceScopeFactory scopeFactory)
+>     {
+>         _scopeFactory = scopeFactory;
+>     }
+>
+>     public async Task DoWorkAsync()
+>     {
+>         using var scope = _scopeFactory.CreateScope();
+>         var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+>         await unitOfWork.SaveChangesAsync();
+>         // scope is disposed here, releasing scoped services
+>     }
+> }
 > ```
 
 > [!NOTE]
