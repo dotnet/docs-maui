@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 1/27/2026
+ms.date: 03/17/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -10,6 +10,8 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 
 <!-- markdownlint-disable-next-line MD042 -->
 - [.NET MAUI in .NET 11 Preview 1]()
+<!-- markdownlint-disable-next-line MD042 -->
+- [.NET MAUI in .NET 11 Preview 3]()
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -38,11 +40,24 @@ Description...
 
 ## .NET for Android
 
-.NET for Android in .NET 11 makes CoreCLR the default runtime for `Release` builds, and includes work to improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
+.NET for Android in .NET 11 makes CoreCLR the default runtime for `Release` builds, and includes work to improve performance. For more information about .NET for Android in .NET 11, see the following release notes:
 
 - [.NET for Android 11 Preview 1](https://github.com/dotnet/android/releases/)
+- [.NET for Android 11 Preview 3](https://github.com/dotnet/android/releases/)
 
-### Feature
+### Minimum supported Android API
+
+Starting in .NET 11 Preview 3, the minimum supported Android API level has been raised from 21 (Lollipop) to 23 (Marshmallow). This means that .NET MAUI apps in .NET 11 require Android 6.0 or higher.
+
+If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower than 23, you'll need to update it:
+
+```xml
+<PropertyGroup>
+  <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23</SupportedOSPlatformVersion>
+</PropertyGroup>
+```
+
+For more information, see [Supported platforms](~/supported-platforms.md).
 
 ## CoreCLR by Default
 
