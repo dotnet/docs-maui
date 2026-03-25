@@ -1,0 +1,53 @@
+# .NET MAUI Fundamentals
+
+> Core MAUI concepts: app lifecycle, MVVM and binding, dependency injection, Shell navigation, resources, and localization.
+
+Use this index for architecture and everyday app-building decisions.
+
+Use this file when the question is about app structure, view models, navigation flow, binding behavior, or shared app-wide patterns rather than a specific control.
+
+## Guidance for AI assistants
+
+- Assume BindingContext and x:DataType issues first when bindings appear broken.
+- Use Shell for new navigation flows unless the app structure requires something else.
+- Put x:DataType on every page and every DataTemplate when showing binding examples.
+- Keep DI registration in MauiProgram and keep view logic out of code-behind when MVVM is intended.
+
+## Deep dive subtopics
+
+- [Data binding deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/llms.txt): Binding modes, compiled bindings, converters, relative bindings, and troubleshooting.
+- [Shell deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/llms.txt): Route registration, tabs, flyout, lifecycle, and navigation behavior.
+
+## Data binding and MVVM
+
+- [Compiled bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/compiled-bindings.md): Use x:DataType for compile-time validation and significantly better performance.
+- [Data binding overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/index.md): Binding model, paths, modes, relative binding, and diagnostics.
+- [Commanding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/commanding.md): Bind user actions to view model logic.
+- [Value converters](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/converters.md): Adapt values between source and target.
+
+## App architecture
+
+- [Dependency injection](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/dependency-injection.md): Register and resolve services, view models, and pages.
+- [App lifecycle](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/app-lifecycle.md): App and window lifecycle events.
+- [Bindable properties](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/bindable-properties.md): Build reusable controls with bindable APIs.
+- [Data templates](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/datatemplate.md): Template data items for collection-based UI.
+
+## Shell and navigation
+
+- [Shell navigation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/navigation.md): Route registration, parameters, and navigation patterns.
+- [Shell overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/index.md): App structure using routes, flyout, and tabs.
+- [Shell tabs](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/tabs.md): Top and bottom tab organization.
+- [Shell flyout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/flyout.md): App menu behavior and customization.
+
+## Resources and UX foundations
+
+- [Resource dictionaries](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/resource-dictionaries.md): Shared styles, colors, templates, and visual resources.
+- [Localization](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/localization.md): Localize strings and assets.
+- [Accessibility](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/accessibility.md): Build accessible controls and flows.
+- [Single project](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/single-project.md): Platform assets and source layout.
+
+## Optional
+
+- [Behaviors](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/behaviors.md): Reusable interaction logic for controls.
+- [Triggers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/triggers.md): Conditional UI behavior.
+- [Control templates](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/controltemplate.md): Re-template control visuals while preserving behavior.

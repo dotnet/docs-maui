@@ -1,0 +1,58 @@
+# .NET MAUI User Interface
+
+> Controls, layouts, handlers, styling, and interaction patterns for building responsive MAUI UI across mobile and desktop.
+
+Use this file for control choice, layout performance, and platform-specific UI customization. It is the right entry point when the question is about choosing controls, fixing layout behavior, improving scrolling performance, styling visuals, or customizing native UI behavior.
+
+## Guidance for AI assistants
+
+- Prefer CollectionView over ListView for new list UI.
+- Prefer Border over Frame for new container UI.
+- Prefer Grid over deeply nested StackLayout trees for non-trivial layout.
+- Do not place CollectionView or ScrollView inside StackLayout when constrained scrolling or virtualization matters.
+- Use handlers for control customization; do not recommend effects or custom renderers for new code.
+
+## Deep dive subtopics
+
+- [Controls deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/llms.txt): Control selection, list behavior, input, web, and obsolete control replacements.
+- [CollectionView deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/llms.txt): CollectionView data, layout, selection, grouping, empty views, and scrolling.
+- [Layouts deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/llms.txt): Grid, stack layouts, FlexLayout, BindableLayout, and layout performance tradeoffs.
+- [Handlers deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/llms.txt): Handler lifecycle, customization, and custom control creation.
+
+## Controls and lists
+
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): Recommended list control patterns, virtualization, and performance.
+- [Controls overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/index.md): Catalog of built-in controls.
+- [CollectionView overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/index.md): Core CollectionView concepts.
+- [Entry](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/entry.md): Single-line text input.
+- [Editor](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/editor.md): Multi-line text input.
+- [Image](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/image.md): Local and remote image display.
+
+## Layout and visual structure
+
+- [Grid](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/grid.md): Preferred layout for complex UI.
+- [Layouts overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/index.md): Select the right layout container for sizing, scrolling, and responsiveness.
+- [VerticalStackLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/verticalstacklayout.md): Lightweight vertical layout.
+- [HorizontalStackLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/horizontalstacklayout.md): Lightweight horizontal layout.
+- [BindableLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/bindablelayout.md): Simple item rendering without virtualization.
+
+## Handlers and customization
+
+- [Handler architecture guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): Handler model, lifecycle, and customization patterns.
+- [Handlers overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/index.md): Mapping virtual views to native controls.
+- [Customize controls with handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/customize.md): Append and modify handler mappings.
+- [Create controls with handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/create.md): Build custom controls with native implementations.
+
+## Styling, theming, and interaction
+
+- [Styles](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/styles/xaml.md): Centralized style definitions.
+- [Theming](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/theming.md): Light and dark theme support.
+- [Visual states](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/visual-states.md): UI state transitions and styling.
+- [Safe area layout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/safe-area.md): Notches, insets, and system UI overlap.
+- [Pop-ups](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/pop-ups.md): Alerts, prompts, and action sheets.
+
+## Optional
+
+- [Graphics](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/graphics/index.md): Draw custom 2D graphics.
+- [Animations](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/animation/basic.md): Basic animation patterns.
+- [Fonts](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/fonts.md): Register and use custom fonts.

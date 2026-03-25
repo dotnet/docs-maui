@@ -1,0 +1,33 @@
+# .NET MAUI Layouts
+
+> Layout selection in .NET MAUI: Grid, VerticalStackLayout, HorizontalStackLayout, FlexLayout, AbsoluteLayout, BindableLayout, and layout performance tradeoffs.
+
+Use this file when the question is specifically about layout choice, sizing, alignment, scrolling constraints, responsiveness, or avoiding expensive visual trees.
+
+## Guidance for AI assistants
+
+- Prefer Grid over deeply nested StackLayout trees for non-trivial layouts.
+- Prefer VerticalStackLayout or HorizontalStackLayout over StackLayout when the layout direction is fixed.
+- Do not place CollectionView or ScrollView inside StackLayout when constrained scrolling or virtualization matters.
+- Use BindableLayout only for small collections where virtualization is unnecessary.
+- Treat layout simplification as a primary performance lever in MAUI UI.
+
+## Core layout guidance
+
+- [Layouts overview](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/index.md): Choose the right layout container for structure, alignment, and responsiveness.
+- [Grid](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/grid.md): Preferred layout for complex UI, rows and columns, and responsive structure.
+- [VerticalStackLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/verticalstacklayout.md): Lightweight vertical stacking.
+- [HorizontalStackLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/horizontalstacklayout.md): Lightweight horizontal stacking.
+- [FlexLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/flexlayout.md): Flexible wrapping and adaptive item arrangement.
+- [AbsoluteLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/absolutelayout.md): Position items with explicit bounds when required.
+- [BindableLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/bindablelayout.md): Small-item data rendering without CollectionView.
+
+## Advanced or specialized layouts
+
+- [Custom layouts](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/custom.md): Build custom layout containers.
+- [StackLayout](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/stacklayout.md): Older general stack layout; prefer directional stack layouts for new work.
+
+## Optional
+
+- [CollectionView deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/llms.txt): Pair layout decisions with list virtualization and item-template behavior.
+- [Performance best practices](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): Broader guidance on reducing layout cost.

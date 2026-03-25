@@ -1,0 +1,53 @@
+# .NET MAUI Platform Integration
+
+> Access device capabilities and platform-specific APIs: permissions, storage, sensors, networking, authentication, and native integration.
+
+Use this file for code that crosses the boundary between shared MAUI code and platform behavior. It is the right entry point when the question is about permissions, device APIs, storage locations, browser and auth flows, or how to keep platform-specific behavior out of shared UI code.
+
+## Guidance for AI assistants
+
+- Prefer MAUI platform integration APIs before recommending custom native interop.
+- Request or verify permissions before using device capabilities that require them.
+- Use MainThread or Dispatcher when a device callback updates bound UI state.
+- Keep platform-specific code behind partial classes, handlers, or targeted platform integration patterns.
+
+## Deep dive subtopics
+
+- [App model deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/llms.txt): Permissions, main thread, launcher, browser, app metadata, and version tracking.
+- [Storage deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/llms.txt): File picker, app directories, preferences, and secure storage.
+- [Communication deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/llms.txt): Networking, web authenticator, email, SMS, phone dialer, and contacts.
+
+## App model and permissions
+
+- [Invoke platform code](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/invoke-platform-code.md): Multi-targeting, partial classes, and per-platform implementations.
+- [Permissions](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/permissions.md): Request and verify runtime permissions.
+- [App information](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/app-information.md): App metadata and package information.
+- [Main thread](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/main-thread.md): Marshal work to the UI thread.
+
+## Storage and files
+
+- [File picker](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/file-picker.md): User file selection.
+- [File system helpers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/file-system-helpers.md): App directories and file access.
+- [Preferences](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/preferences.md): Local key-value app settings.
+- [Secure storage](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/secure-storage.md): Encrypted key-value data.
+
+## Device capabilities
+
+- [Device information](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/information.md): Device and platform metadata.
+- [Battery](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/battery.md): Battery state and power source.
+- [Geolocation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/geolocation.md): Current location retrieval.
+- [Sensors](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/sensors.md): Motion and environment sensor access.
+- [Haptic feedback](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/device/haptic-feedback.md): Trigger tactile feedback.
+
+## Communication and auth
+
+- [Networking](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/networking.md): Connectivity state, connection changes, and network access.
+- [Web authenticator](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/authentication.md): Browser-based OAuth and OIDC flows.
+- [Open browser](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/open-browser.md): Launch browser links.
+- [Email](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/email.md): Compose email via native apps.
+
+## Optional
+
+- [Customize UI appearance](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/customize-ui-appearance.md): Per-platform visual tuning.
+- [Native embedding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/native-embedding.md): Embed native views into MAUI.
+- [Platform helpers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/platform-helpers.md): Platform detection helpers.

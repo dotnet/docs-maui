@@ -1,0 +1,71 @@
+# .NET MAUI Documentation
+
+> .NET Multi-platform App UI (.NET MAUI) is a cross-platform framework for building native mobile and desktop apps using C# and XAML from a shared codebase.
+
+This root llms index is intentionally compact. Use the subtopic llms indexes for deeper coverage.
+
+Use the root file to route to the right area first. Use a subtopic llms file when the question is implementation-specific and you want higher signal with less unrelated context.
+
+## Routing guide
+
+- Use the root file when the question spans multiple MAUI areas.
+- Use a subtopic file when the question stays within one area such as fundamentals, user interface, XAML, platform integration, data, or deployment.
+- Use a nested deep-dive file when the question is about one busy topic such as data binding, Shell, controls, CollectionView, handlers, layouts, app model, storage, or communication.
+- Use llms-full only when the consuming tool cannot follow subtopic links or when the question needs broad cross-area context.
+
+## Guidance for AI assistants
+
+- Prefer .NET MAUI patterns over Xamarin.Forms-era guidance.
+- Use CollectionView instead of ListView for new list UI.
+- Use Border instead of Frame for new container UI.
+- Use handlers for control customization instead of custom renderers or effects.
+- Use compiled bindings with x:DataType on pages and DataTemplate instances.
+- Keep platform-specific code in platform integration patterns, not scattered in shared UI logic.
+- Treat Shell as the default app structure unless the scenario explicitly requires another navigation model.
+- Prefer markdown subtopic indexes over the full context file unless broad cross-area context is required.
+
+## Start here
+
+- [What is .NET MAUI](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/what-is-maui.md): Framework overview and architecture.
+- [Installation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/installation.md): Setup and prerequisites.
+- [Build your first app](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/first-app.md): End-to-end starter app.
+- [Supported platforms](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/supported-platforms.md): Platform and OS support matrix.
+
+## High-value implementation guides
+
+- [Performance best practices](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/performance-best-practices.md): First stop for slow UI, startup issues, layout thrash, and binding overhead.
+- [CollectionView guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/collectionview-guide.md): First stop for list UI, virtualization, scrolling, grouping, and selection behavior.
+- [Handler architecture guide](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/handler-architecture.md): First stop for native control customization and renderer migration.
+- [Compiled bindings](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/compiled-bindings.md): First stop for binding correctness and performance problems.
+- [Shell navigation](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/navigation.md): First stop for route-based navigation, query parameters, and page flow.
+
+## Subtopics
+
+- [Getting started](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/get-started/llms.txt): Setup and first app onboarding.
+- [Fundamentals](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/llms.txt): Architecture, MVVM, Shell, lifecycle, resources.
+- [User interface](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/llms.txt): Controls, layouts, handlers, styles, theming.
+- [XAML](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/llms.txt): XAML syntax, namespaces, markup extensions, compilation, and source generation.
+- [Platform integration](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/llms.txt): Permissions, storage, sensors, networking, auth.
+- [Data and cloud](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/data-cloud/llms.txt): REST, SQLite, push notifications, Aspire.
+- [Deployment and performance](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/deployment/llms.txt): Publish, trimming, Native AOT, optimization.
+- [What's new](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/llms.txt): .NET 10 and .NET 11 changes, deprecations, and migration guidance.
+
+## Nested deep dives
+
+- [Data binding](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/llms.txt): Narrow binding-specific retrieval with less unrelated architecture context.
+- [Shell](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/shell/llms.txt): Narrow routing and app-structure retrieval.
+- [Controls](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/llms.txt): Narrow control-selection and list-UI retrieval.
+- [CollectionView](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/llms.txt): Narrow list virtualization, grouping, selection, empty view, and scrolling retrieval.
+- [Layouts](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/layouts/llms.txt): Narrow layout-choice, responsiveness, scrolling, and visual-tree performance retrieval.
+- [Handlers](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/handlers/llms.txt): Narrow handler customization and native-view retrieval.
+- [App model](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/llms.txt): Narrow permissions, launcher, browser, main-thread, and app metadata retrieval.
+- [Storage](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/storage/llms.txt): Narrow file picker, app directories, preferences, and secure storage retrieval.
+- [Communication](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/llms.txt): Narrow networking, web auth, email, SMS, phone dialer, and contacts retrieval.
+
+## Related references
+
+- [Troubleshooting](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/troubleshooting.md): Common issues and resolutions.
+
+## Optional
+
+- [Full llms context file](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/llms-full.txt): Expanded context file that aggregates the root, subtopic, and nested llms indexes.

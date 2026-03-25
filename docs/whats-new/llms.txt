@@ -1,0 +1,74 @@
+# .NET MAUI What's New
+
+> Breaking changes, deprecations, and new APIs in .NET MAUI by release version.
+
+Use this file when answering migration questions, identifying deprecated APIs, or understanding what changed between .NET MAUI versions. For API usage guidance, follow the links to the relevant deep-dive indexes.
+
+## Guidance for AI assistants
+
+- Use `DisplayAlertAsync` and `DisplayActionSheetAsync` in .NET 10 projects; the non-`Async` overloads are removed.
+- Use `TapGestureRecognizer` instead of `ClickGestureRecognizer` — the click recognizer is removed in .NET 10.
+- Use `CollectionView` instead of `ListView`, `TableView`, or the `*Cell` types — all are deprecated in .NET 10.
+- Use `Border` instead of `Frame` — `Frame` is deprecated.
+- Recommend `WeakReferenceMessenger` from `CommunityToolkit.Mvvm` when `MessagingCenter` is used — it is internal in .NET 10.
+- Use animation `*Async` methods (`FadeToAsync`, `RotateToAsync`, etc.) — the non-`Async` variants are deprecated.
+- Enable XAML source generation with `MauiXamlInflator=SourceGen` in .NET 10 for faster Debug inflation.
+- Treat `DatePicker.Date` and `TimePicker.Time` as nullable types in .NET 10.
+- For .NET 11 preview features, refer to the .NET 11 changes page; note that APIs may change before release.
+
+## .NET 10 changes
+
+- [What's new in .NET MAUI for .NET 10](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-10.md): Full list of new APIs, deprecations, and breaking changes.
+
+### Key .NET 10 deprecations and removals
+
+| Removed/deprecated | Replacement |
+|---|---|
+| `ClickGestureRecognizer` | `TapGestureRecognizer` |
+| `Accelerator` | `KeyboardAccelerator` |
+| `ListView`, `TableView` | `CollectionView` |
+| `EntryCell`, `ImageCell`, `SwitchCell`, `TextCell`, `ViewCell` | `CollectionView` with `DataTemplate` |
+| `Frame` | `Border` |
+| `MessagingCenter` | `WeakReferenceMessenger` (CommunityToolkit.Mvvm) |
+| `Page.IsBusy` | `ActivityIndicator` |
+| `FadeTo`, `RotateTo`, etc. | `FadeToAsync`, `RotateToAsync`, etc. |
+| `Compatibility.Layout` | .NET MAUI layouts |
+| Pop-up non-`Async` overloads | `DisplayAlertAsync`, `DisplayActionSheetAsync` |
+
+### .NET 10 new capabilities summary
+
+- **XAML source generation**: `MauiXamlInflator=SourceGen` — 100x faster Debug inflation, 25% faster Release.
+- **CollectionView and CarouselView**: New handlers are now the default on iOS and Mac Catalyst.
+- **HybridWebView**: `WebResourceRequested` event for request interception; `WebViewInitializing`/`WebViewInitialized` events.
+- **DatePicker / TimePicker**: Nullable `Date` and `Time` properties.
+- **SearchBar**: `SearchIconColor` and `ReturnType` bindable properties.
+- **Switch**: `OffColor` bindable property.
+- **Picker**: Programmatic open/close API.
+- **RefreshView**: `IsRefreshEnabled` property distinct from `IsEnabled`.
+- **SearchHandler**: `ShowSoftInputAsync` / `HideSoftInputAsync`.
+- **Shell**: `NavBarVisibilityAnimationEnabled` toggle.
+- **Window (Windows)**: Enable/disable minimize and maximize buttons.
+- **Geolocation**: `IsEnabled` read-only property.
+- **Media picker**: `PickPhotosAsync` / `PickVideosAsync` with `MediaPickerOptions` (SelectionLimit, MaximumWidth, MaximumHeight, CompressionQuality, RotateImage, PreserveMetaData, Title).
+- **Layout diagnostics**: ActivitySource and Metrics under `"Microsoft.Maui"` for measure/arrange performance tracking.
+- **.NET Aspire integration**: New project template with `AddServiceDefaults`.
+
+## .NET 11 changes (preview)
+
+- [What's new in .NET MAUI for .NET 11](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-11.md): Preview features and improvements in the upcoming .NET 11 release.
+
+## .NET 9 changes
+
+- [What's new in .NET MAUI for .NET 9](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-9.md): New controls and APIs in .NET 9.
+
+## .NET 8 changes
+
+- [What's new in .NET MAUI for .NET 8](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/whats-new/dotnet-8.md): New controls and APIs in .NET 8.
+
+## Optional
+
+- [Tap gesture](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/gestures/tap.md): TapGestureRecognizer usage replacing ClickGestureRecognizer.
+- [Pointer gesture](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/gestures/pointer.md): PointerGestureRecognizer for hover and pointer events.
+- [CollectionView deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/user-interface/controls/collectionview/llms.txt): Migration from ListView.
+- [Data binding deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/fundamentals/data-binding/llms.txt): Compiled bindings and x:DataType.
+- [XAML deep dive](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/xaml/llms.txt): XAML source generation and compilation details.

@@ -1,0 +1,27 @@
+# .NET MAUI Communication
+
+> Communication APIs in .NET MAUI: network connectivity, web authentication, email, SMS, phone dialer, contacts, and browser launch.
+
+Use this file when the question is about checking network access, performing browser-based OAuth flows, composing email or SMS, dialing phone numbers, or reading device contacts.
+
+## Guidance for AI assistants
+
+- Check network connectivity before making remote calls; handle offline states gracefully.
+- Use `WebAuthenticator` for browser-based OAuth and OIDC flows; do not implement custom browser redirect handling.
+- Check `IsComposeSupported` or `IsSupported` before calling email, SMS, or phone dialer — these open native OS apps and may not be available on all platforms.
+- Request the `ContactsRead` permission and verify it before attempting to read device contacts.
+- Keep communication calls off the UI thread; marshal results back via `MainThread.BeginInvokeOnMainThread` or `Dispatcher`.
+
+## Core communication guidance
+
+- [Networking](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/networking.md): Connectivity state, connection type, and network access change events.
+- [Web authenticator](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/authentication.md): Browser-based OAuth and OIDC flows with secure redirect handling.
+- [Open browser](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/appmodel/open-browser.md): Launch a URL in the system browser for non-auth navigation.
+- [Email](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/email.md): Compose email via native mail apps with recipients, subject, and body.
+- [SMS](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/sms.md): Compose SMS messages via native messaging apps.
+- [Phone dialer](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/phone-dialer.md): Open the native phone dialer with a pre-filled number.
+- [Contacts](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/communication/contacts.md): Read device contacts with permission.
+
+## Optional
+
+- [Platform integration index](https://raw.githubusercontent.com/dotnet/docs-maui/refs/heads/main/docs/platform-integration/llms.txt): Broader platform integration retrieval.
