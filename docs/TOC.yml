@@ -1252,6 +1252,20 @@
               href: data-cloud/local-web-services.md
     - name: Artificial intelligence
       href: ai/TOC.yml
+    - name: AI-assisted development
+      items:
+        - name: Overview
+          href: ai-development/index.md
+        - name: Copilot instructions
+          href: ai-development/copilot-instructions.md
+        - name: Custom instruction files
+          href: ai-development/custom-instructions.md
+        - name: Agent skills
+          href: ai-development/skills.md
+        - name: MauiDevFlow
+          href: ai-development/dev-flow.md
+        - name: Best practices
+          href: ai-development/best-practices.md
     - name: Deployment & testing
       items:
         - name: Overview
