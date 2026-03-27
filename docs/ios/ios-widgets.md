@@ -723,6 +723,9 @@ Tell the build system to include the compiled `.appex` in the app bundle:
 
 Add an MSBuild target that compiles the Xcode project before the .NET MAUI build. This target detects whether you're building for the simulator or a device, optionally runs `xcodegen`, and invokes `xcodebuild`:
 
+> [!IMPORTANT]
+> This target hooks into the internal .NET for iOS SDK build target `_CompileAppManifest`, which may change in future SDK releases. If this target is renamed or removed in a future SDK update, update the `BeforeTargets` value to match the new SDK internals.
+
 ```xml
 <Target Name="BuildWidgetExtension"
         BeforeTargets="_CompileAppManifest"

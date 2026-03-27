@@ -437,7 +437,7 @@ Create a .NET iOS binding library project with the following `.csproj`:
 
 The `XcodeProject` item tells the .NET build system to compile the Swift project into an xcframework automatically. The `XcodeProject` item type is provided by the .NET for iOS workload and automatically builds Swift frameworks into xcframeworks during `dotnet build`. The `ForceLoad` setting ensures all Swift symbols are loaded at runtime, and `SmartLink` is disabled to prevent the linker from stripping intent types that appear unused from the C# perspective. Both settings are required because the App Intents framework uses runtime discovery to find intent types.
 
-The `ExtractAppIntentsMetadata` target copies the `Metadata.appintents` bundle from the xcarchive output into the intermediate output path, where the MAUI app can pick it up.
+The `ExtractAppIntentsMetadata` target copies the `Metadata.appintents` bundle from the xcarchive output into the intermediate output path, where the MAUI app can pick it up. This target hooks into the internal `_BuildXcodeProjects` SDK target, which may change in future .NET for iOS SDK releases.
 
 ### ApiDefinition.cs
 
@@ -817,6 +817,9 @@ Your MAUI project must also have a `<ProjectReference>` to the binding library p
 ```
 
 Add this target to your MAUI app's `.csproj`:
+
+> [!IMPORTANT]
+> This target hooks into internal .NET for iOS SDK build targets (`_CopyResourcesToBundle`, `_AppBundlePath`) that may change in future SDK releases. Future versions of the SDK may provide built-in support for copying App Intents metadata. If these targets change, update the `AfterTargets` value and property references to match the new SDK internals.
 
 ```xml
 <Target Name="CopyAppIntentsMetadata" AfterTargets="_CopyResourcesToBundle"
