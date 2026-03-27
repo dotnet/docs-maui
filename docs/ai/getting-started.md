@@ -2,7 +2,7 @@
 title: Get started with Microsoft.Maui.Essentials.AI
 description: Install the Microsoft.Maui.Essentials.AI package and register the chat client and embedding generator services in your .NET MAUI app.
 ms.date: 03/11/2026
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Get started with Microsoft.Maui.Essentials.AI

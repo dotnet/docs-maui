@@ -2,7 +2,7 @@
 title: Microsoft Agent Framework integration
 description: Learn how to compose multiple AI agents into multi-stage workflows that run entirely on-device using Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI.
 ms.date: 03/11/2026
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Microsoft Agent Framework integration
