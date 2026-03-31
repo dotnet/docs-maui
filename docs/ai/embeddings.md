@@ -2,7 +2,7 @@
 title: Text embeddings
 description: Use IEmbeddingGenerator from Microsoft.Maui.Essentials.AI to generate on-device text embeddings for semantic search and similarity in .NET MAUI.
 ms.date: 03/11/2026
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Text embeddings

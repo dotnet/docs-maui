@@ -2,7 +2,7 @@
 title: Apple requirements for Microsoft.Maui.Essentials.AI
 description: Platform versions, device requirements, and Apple Intelligence prerequisites for using Microsoft.Maui.Essentials.AI on iOS, macOS, Mac Catalyst, and tvOS.
 ms.date: 03/11/2026
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Apple requirements for Microsoft.Maui.Essentials.AI
