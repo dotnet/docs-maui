@@ -1,7 +1,7 @@
 ---
 title: "Recognize a pan gesture"
 description: "This article explains how to use a .NET MAUI pan gesture to horizontally and vertically pan an image, so that all of the image content can be viewed when it's being displayed in a viewport smaller than the image dimensions."
-ms.date: 06/19/2023
+ms.date: 03/24/2026
 ---
 
 # Recognize a pan gesture
@@ -98,11 +98,11 @@ The `PanContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.V
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PanGesture"
              x:Class="PanGesture.MainPage">
-    <AbsoluteLayout>
+    <Grid>
         <local:PanContainer>
-            <Image Source="monkey.jpg" WidthRequest="1024" HeightRequest="768" />
+            <Image Source="dotnet_bot.png" />
         </local:PanContainer>
-    </AbsoluteLayout>
+    </Grid>
 </ContentPage>
 ```
 
