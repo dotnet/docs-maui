@@ -723,12 +723,9 @@ Tell the build system to include the compiled `.appex` in the app bundle:
 
 Add an MSBuild target that compiles the Xcode project before the .NET MAUI build. This target detects whether you're building for the simulator or a device, optionally runs `xcodegen`, and invokes `xcodebuild`:
 
-> [!IMPORTANT]
-> This target hooks into the internal .NET for iOS SDK build target `_CompileAppManifest`, which may change in future SDK releases. If this target is renamed or removed in a future SDK update, update the `BeforeTargets` value to match the new SDK internals.
-
 ```xml
 <Target Name="BuildWidgetExtension"
-        BeforeTargets="_CompileAppManifest"
+        BeforeTargets="CollectAppManifests"
         Condition="$(TargetFramework.Contains('-ios'))">
 
     <!-- Determine SDK and architecture -->
@@ -790,18 +787,6 @@ For device builds, use `ios-arm64` as the runtime identifier and supply your pro
 
 ### Simulator testing
 
-When testing on the simulator, you may need to re-sign the app after building to apply entitlements correctly:
-
-```bash
-APP_PATH="bin/Debug/net10.0-ios/iossimulator-arm64/YourApp.app"
-codesign -v --force --sign - \
-    --entitlements Platforms/iOS/Entitlements.plist \
-    "$APP_PATH"
-```
-
-> [!NOTE]
-> The ad-hoc signing identity (`-`) is for simulator builds only. Device, TestFlight, and App Store builds require a valid signing identity configured through your provisioning profile.
-
 After deploying, long-press the home screen and tap **+** to add a widget. Your widget appears in the gallery under the app name.
 
 > [!TIP]
@@ -815,7 +800,7 @@ After deploying, long-press the home screen and tap **+** to add a widget. Your 
 | Data isn't syncing between app and widget. | Confirm the App Group identifier matches exactly in both the app's and the widget extension's entitlements files. |
 | `UserDefaults(suiteName:)` returns stale or nil data. | Switch to file-based I/O through the App Group container directory. See the [SharedStorage.swift](#sharedstorageswift--file-io-via-app-group) section. |
 | Widget buttons don't respond to taps. | Don't wrap `Button(intent:)` inside a `widgetURL()` modifier or `Link`. These intercept all taps and prevent the intent from running. |
-| App Group doesn't work on simulator after build. | Re-sign the app with entitlements after building. See [Simulator testing](#simulator-testing). |
+| App Group doesn't work on simulator after build. | Verify your `Entitlements.plist` includes the correct App Group identifier and that the entitlements are configured in your project properties. |
 | Build fails with entitlements parsing error. | Ensure your `Entitlements.plist` files use LF line endings, not CRLF. Some editors and source control systems convert line endings automatically. |
 | `xcodebuild` can't find the scheme. | If you use `xcodegen`, make sure `project.yml` defines the `SimpleWidgetExtension` scheme, or run `xcodegen generate` manually in the `widget` directory. |
 

@@ -411,8 +411,6 @@ Create a .NET iOS binding library project with the following `.csproj`:
       <SchemeName>YourSwiftFramework</SchemeName>
       <!-- The scheme name must exactly match the Xcode scheme (case-sensitive).
            By default, Xcode uses the project name as the scheme name. -->
-      <ForceLoad>true</ForceLoad>
-      <SmartLink>false</SmartLink>
     </XcodeProject>
   </ItemGroup>
 
@@ -435,9 +433,12 @@ Create a .NET iOS binding library project with the following `.csproj`:
 </Project>
 ```
 
-The `XcodeProject` item tells the .NET build system to compile the Swift project into an xcframework automatically. The `XcodeProject` item type is provided by the .NET for iOS workload and automatically builds Swift frameworks into xcframeworks during `dotnet build`. The `ForceLoad` setting ensures all Swift symbols are loaded at runtime, and `SmartLink` is disabled to prevent the linker from stripping intent types that appear unused from the C# perspective. Both settings are required because the App Intents framework uses runtime discovery to find intent types.
+The `XcodeProject` item tells the .NET build system to compile the Swift project into an xcframework automatically. The `XcodeProject` item type is provided by the .NET for iOS workload and automatically builds Swift frameworks into xcframeworks during `dotnet build`.
 
-The `ExtractAppIntentsMetadata` target copies the `Metadata.appintents` bundle from the xcarchive output into the intermediate output path, where the MAUI app can pick it up. This target hooks into the internal `_BuildXcodeProjects` SDK target, which may change in future .NET for iOS SDK releases.
+> [!NOTE]
+> The `XcodeProject` item type only works when building on a Mac. It doesn't work when building from Windows.
+
+The `ExtractAppIntentsMetadata` target copies the `Metadata.appintents` bundle from the xcarchive output into the intermediate output path, where the MAUI app can pick it up.
 
 ### ApiDefinition.cs
 
@@ -808,7 +809,7 @@ private void OnTaskCreated(string title, int priority, int category)
 
 ### Copy metadata to app bundle
 
-The MAUI app's `.csproj` must include a target that copies the `Metadata.appintents` bundle from the binding library into the final app bundle. Without this metadata, iOS doesn't know your intents exist.
+The MAUI app's `.csproj` must include the `Metadata.appintents` bundle from the binding library as a bundle resource. Without this metadata, iOS doesn't know your intents exist.
 
 Your MAUI project must also have a `<ProjectReference>` to the binding library project:
 
@@ -816,32 +817,17 @@ Your MAUI project must also have a `<ProjectReference>` to the binding library p
 <ProjectReference Include="../YourBindingLibrary/YourBindingLibrary.csproj" />
 ```
 
-Add this target to your MAUI app's `.csproj`:
-
-> [!IMPORTANT]
-> This target hooks into internal .NET for iOS SDK build targets (`_CopyResourcesToBundle`, `_AppBundlePath`) that may change in future SDK releases. Future versions of the SDK may provide built-in support for copying App Intents metadata. If these targets change, update the `AfterTargets` value and property references to match the new SDK internals.
+Add the metadata directory as a `BundleResource` in your MAUI app's `.csproj`:
 
 ```xml
-<Target Name="CopyAppIntentsMetadata" AfterTargets="_CopyResourcesToBundle"
-        Condition="$(TargetFramework.Contains('-ios'))">
-  <PropertyGroup>
-    <_MetadataSrc>$(MSBuildProjectDirectory)/../YourBindingLibrary/$(IntermediateOutputPath)Metadata.appintents</_MetadataSrc>
-    <_MetadataDst>$(_AppBundlePath)/Metadata.appintents/</_MetadataDst>
-  </PropertyGroup>
-  <ItemGroup>
-    <_MetadataFiles
-      Include="$(_MetadataSrc)/**/*"
-      Condition="Exists('$(_MetadataSrc)')" />
-  </ItemGroup>
-  <Copy
-    SourceFiles="@(_MetadataFiles)"
-    DestinationFolder="$(_MetadataDst)%(RecursiveDir)"
-    Condition="@(_MetadataFiles->Count()) > 0" />
-</Target>
+<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
+  <BundleResource
+    Include="../YourBindingLibrary/$(IntermediateOutputPath)Metadata.appintents/**/*"
+    Link="Metadata.appintents/%(RecursiveDir)%(Filename)%(Extension)" />
+</ItemGroup>
 ```
 
-> [!WARNING]
-> The destination path **must** end with `/` (note the trailing slash in `Metadata.appintents/`). Without it, MSBuild treats the path as a file name instead of a directory, and the metadata ends up outside the app bundle. When this happens, intents silently fail to register — they won't appear in Shortcuts or respond to Siri.
+The `BundleResource` item group tells the .NET build system to include these files in the app bundle. The `Link` metadata preserves the `Metadata.appintents` directory structure inside the bundle.
 
 ## Build and test
 
