@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 03/17/2026
+ms.date: 04/01/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -47,13 +47,13 @@ Description...
 
 ### Minimum supported Android API
 
-Starting in .NET 11 Preview 3, the minimum supported Android API level has been raised from 21 (Lollipop) to 23 (Marshmallow). This means that .NET MAUI apps in .NET 11 require Android 6.0 or higher.
+Starting in .NET 11 Preview 3, the minimum supported Android API level has been raised from 21 (Lollipop) to 24 (Nougat). This means that .NET MAUI apps in .NET 11 require Android 7.0 or higher.
 
-If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower than 23, you'll need to update it:
+If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower than 24, you'll need to update it:
 
 ```xml
 <PropertyGroup>
-  <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23</SupportedOSPlatformVersion>
+  <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24</SupportedOSPlatformVersion>
 </PropertyGroup>
 ```
 
