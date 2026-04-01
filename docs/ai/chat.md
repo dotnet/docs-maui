@@ -2,7 +2,7 @@
 title: Chat client
 description: Use IChatClient from Microsoft.Maui.Essentials.AI for basic chat, streaming, multi-turn conversations, tool calling, and structured JSON output in .NET MAUI.
 ms.date: 03/11/2026
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Chat client
