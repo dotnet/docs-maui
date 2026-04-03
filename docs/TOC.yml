@@ -1320,6 +1320,44 @@
           href: deployment/trimming.md
         - name: Unit testing
           href: deployment/unit-testing.md
+    - name: Developer tools (experimental)
+      items:
+        - name: Overview
+          href: developer-tools/index.md
+        - name: .NET MAUI CLI
+          items:
+            - name: Overview
+              href: developer-tools/cli/index.md
+            - name: Environment diagnostics
+              href: developer-tools/cli/environment-diagnostics.md
+            - name: Android SDK & emulator management
+              href: developer-tools/cli/android-management.md
+            - name: Device management
+              href: developer-tools/cli/device-management.md
+        - name: DevFlow
+          items:
+            - name: Overview
+              href: developer-tools/devflow/index.md
+            - name: Visual tree inspection and screenshots
+              href: developer-tools/devflow/visual-tree-screenshots.md
+            - name: Element interaction and automation
+              href: developer-tools/devflow/element-interaction.md
+            - name: Blazor WebView debugging
+              href: developer-tools/devflow/blazor-cdp.md
+            - name: MCP server for AI agents
+              href: developer-tools/devflow/mcp-server.md
+            - name: Network monitoring and profiling
+              href: developer-tools/devflow/network-profiling.md
+            - name: Broker architecture
+              href: developer-tools/devflow/broker.md
+            - name: Platform setup
+              items:
+                - name: Android
+                  href: developer-tools/devflow/setup-android.md
+                - name: Apple platforms
+                  href: developer-tools/devflow/setup-apple.md
+                - name: Windows
+                  href: developer-tools/devflow/setup-windows.md
     - name: Enterprise application patterns
       items:
         - name: Overview
