@@ -1320,7 +1320,7 @@
           href: deployment/trimming.md
         - name: Unit testing
           href: deployment/unit-testing.md
-    - name: Developer tools (experimental)
+    - name: Developer tools
       items:
         - name: Overview
           href: developer-tools/index.md

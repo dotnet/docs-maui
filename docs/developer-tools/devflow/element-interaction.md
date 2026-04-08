@@ -1,15 +1,15 @@
 ---
-title: "Element interaction and automation (experimental)"
+title: "Element interaction and automation"
 description: "Learn how to interact with UI elements in a running .NET MAUI app using DevFlow, including tapping, filling text, scrolling, navigating, and mutating properties."
 ms.date: 04/03/2026
 ---
 
-# Element interaction and automation (experimental)
+# Element interaction and automation
 
 DevFlow provides commands for interacting with UI elements in a running MAUI app, including tapping, filling text, scrolling, navigating, and mutating properties.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Tap an element
 

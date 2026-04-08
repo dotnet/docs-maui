@@ -1,15 +1,15 @@
 ---
-title: "Device management (experimental)"
+title: "Device management"
 description: "Learn how to use the .NET MAUI CLI to list connected devices and emulators across all platforms."
 ms.date: 04/03/2026
 ---
 
-# Device management (experimental)
+# Device management
 
 The `maui device list` command discovers and lists connected devices and emulators across all platforms. It provides a unified view of available deployment targets for your .NET MAUI apps.
 
 > [!IMPORTANT]
-> The .NET MAUI CLI is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. The package is provided as-is with no guarantees of support, servicing, or updates.
+> The .NET MAUI CLI is experimental and will change between releases.
 
 ## List connected devices
 

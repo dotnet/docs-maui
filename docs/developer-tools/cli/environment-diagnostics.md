@@ -1,15 +1,15 @@
 ---
-title: "Environment diagnostics with maui doctor (experimental)"
+title: "Environment diagnostics with maui doctor"
 description: "Learn how to use the maui doctor command to diagnose, troubleshoot, and auto-fix .NET MAUI development environment issues."
 ms.date: 04/03/2026
 ---
 
-# Environment diagnostics with `maui doctor` (experimental)
+# Environment diagnostics with `maui doctor`
 
 The `maui doctor` command runs a comprehensive set of checks on your .NET MAUI development environment, identifies issues, and can automatically fix common problems. Use it to verify that your machine is correctly set up for .NET MAUI development.
 
 > [!IMPORTANT]
-> The .NET MAUI CLI is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. The package is provided as-is with no guarantees of support, servicing, or updates.
+> The .NET MAUI CLI is experimental and will change between releases.
 
 ## Run diagnostics
 

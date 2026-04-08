@@ -1,15 +1,15 @@
 ---
-title: "Android SDK and emulator management (experimental)"
+title: "Android SDK and emulator management"
 description: "Learn how to use the .NET MAUI CLI to install and manage the Android SDK, JDK, and emulators for .NET MAUI development."
 ms.date: 04/03/2026
 ---
 
-# Android SDK and emulator management (experimental)
+# Android SDK and emulator management
 
 The .NET MAUI CLI provides commands for managing the Android development environment, including SDK packages, JDK installations, and emulators. These commands simplify setup and ongoing maintenance of the Android toolchain.
 
 > [!IMPORTANT]
-> The .NET MAUI CLI is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. The package is provided as-is with no guarantees of support, servicing, or updates.
+> The .NET MAUI CLI is experimental and will change between releases.
 
 ## Interactive Android setup
 

@@ -1,15 +1,15 @@
 ---
-title: ".NET MAUI CLI overview (experimental)"
-description: "Learn about the .NET MAUI CLI, an experimental command-line tool for environment setup, device management, and app automation."
+title: ".NET MAUI CLI overview"
+description: "Learn about the .NET MAUI CLI, a command-line tool for environment setup, device management, and app automation."
 ms.date: 04/03/2026
 ---
 
-# .NET MAUI CLI overview (experimental)
+# .NET MAUI CLI overview
 
 The .NET MAUI CLI (`maui`) is a command-line tool for development environment setup, device management, and app automation. It's distributed as a .NET global tool from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository.
 
 > [!IMPORTANT]
-> The .NET MAUI CLI is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. The package is provided as-is with no guarantees of support, servicing, or updates.
+> The .NET MAUI CLI is experimental and will change between releases.
 
 ## Install the CLI
 

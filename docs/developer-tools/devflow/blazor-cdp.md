@@ -1,15 +1,15 @@
 ---
-title: "Blazor WebView debugging with CDP (experimental)"
+title: "Blazor WebView debugging with CDP"
 description: "Learn how to debug Blazor Hybrid content in .NET MAUI apps using the DevFlow CDP bridge and Chrome DevTools Protocol."
 ms.date: 04/03/2026
 ---
 
-# Blazor WebView debugging with CDP (experimental)
+# Blazor WebView debugging with CDP
 
 DevFlow includes a Blazor WebView CDP (Chrome DevTools Protocol) bridge that enables browser-style debugging of Blazor Hybrid content in MAUI apps. The bridge is powered by Chobitsu and works across platforms.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## How it works
 

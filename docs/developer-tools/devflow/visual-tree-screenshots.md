@@ -1,15 +1,15 @@
 ---
-title: "Visual tree inspection and screenshots (experimental)"
+title: "Visual tree inspection and screenshots"
 description: "Learn how to inspect the .NET MAUI visual tree and capture screenshots with DevFlow using the CLI or HTTP API."
 ms.date: 04/03/2026
 ---
 
-# Visual tree inspection and screenshots (experimental)
+# Visual tree inspection and screenshots
 
 DevFlow lets you inspect the complete MAUI visual tree and capture screenshots from any supported platform, either through the CLI or the HTTP API.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Prerequisites
 

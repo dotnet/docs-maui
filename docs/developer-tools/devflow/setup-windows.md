@@ -1,15 +1,15 @@
 ---
-title: "DevFlow Windows setup (experimental)"
+title: "DevFlow Windows setup"
 description: "Learn how to configure Windows for DevFlow Blazor WebView2 debugging using Edge DevTools Protocol."
 ms.date: 04/03/2026
 ---
 
-# DevFlow Windows setup (experimental)
+# DevFlow Windows setup
 
 This guide covers how to configure Windows for DevFlow Blazor WebView2 debugging using Edge DevTools Protocol.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Prerequisites
 

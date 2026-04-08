@@ -1,15 +1,15 @@
 ---
-title: ".NET MAUI developer tools overview (experimental)"
-description: "Learn about experimental developer tools for .NET MAUI from the dotnet/maui-labs repository, including the .NET MAUI CLI and DevFlow toolkit."
+title: ".NET MAUI developer tools overview"
+description: "Learn about developer tools for improving your productivity using .NET MAUI, including the .NET MAUI CLI and DevFlow toolkit."
 ms.date: 04/03/2026
 ---
 
-# .NET MAUI developer tools overview (experimental)
+# .NET MAUI developer tools overview
 
-The [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository hosts experimental packages and tooling for .NET MAUI development. These tools extend the .NET MAUI development experience with command-line automation, device management, in-app debugging, and AI-assisted workflows.
+The .NET MAUI command line (CLI) tool and DevFlow toolkit enhance your development experience with automation, device management, in-app debugging, AI-assisted workflows, and much more. They are well suited for use with GitHub Copilot and AI assisted coding agents.
 
 > [!IMPORTANT]
-> The .NET MAUI developer tools described in this section are **experimental** packages from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. They are **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> The .NET MAUI developer tools described in this section are experimental and will change between releases.
 
 ## .NET MAUI CLI
 
@@ -45,7 +45,7 @@ For more information, see [DevFlow overview](devflow/index.md).
 
 ## Packages
 
-The following table lists the experimental packages available from the dotnet/maui-labs repository:
+The following table lists the packages available from the dotnet/maui-labs repository:
 
 | Package | Description |
 |---|---|
@@ -64,4 +64,4 @@ The source code for these tools is available in the [dotnet/maui-labs](https://g
 
 ## Support and feedback
 
-These experimental tools are community-supported. To report issues or request features, file an issue in the [dotnet/maui-labs issue tracker](https://github.com/dotnet/maui-labs/issues). For additional guidance on support options, see the repository's [SUPPORT.md](https://github.com/dotnet/maui-labs/blob/main/SUPPORT.md).
+These experimental tools are community-supported. To report issues or request features, file an issue in the [dotnet/maui-labs issue tracker](https://github.com/dotnet/maui-labs/issues).

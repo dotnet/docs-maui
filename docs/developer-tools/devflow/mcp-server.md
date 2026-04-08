@@ -1,15 +1,15 @@
 ---
-title: "MCP server for AI agents (experimental)"
+title: "MCP server for AI agents"
 description: "Learn how DevFlow exposes a Model Context Protocol (MCP) server with 50+ tools for AI agent integration with running .NET MAUI apps."
 ms.date: 04/03/2026
 ---
 
-# MCP server for AI agents (experimental)
+# MCP server for AI agents
 
 DevFlow includes a Model Context Protocol (MCP) server that exposes 50+ structured tools for AI agent integration. This allows AI assistants like Claude, GitHub Copilot, and others to inspect, interact with, and debug running MAUI applications.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## What is MCP
 

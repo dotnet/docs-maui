@@ -1,15 +1,15 @@
 ---
-title: "DevFlow broker architecture (experimental)"
+title: "DevFlow broker architecture"
 description: "Learn about the DevFlow broker daemon that coordinates port assignment and agent discovery across multiple running .NET MAUI apps."
 ms.date: 04/03/2026
 ---
 
-# DevFlow broker architecture (experimental)
+# DevFlow broker architecture
 
 The DevFlow broker is a lightweight background daemon that coordinates port assignment and agent discovery across multiple running MAUI apps. It eliminates port collisions when debugging several MAUI apps (or the same app on different platforms) simultaneously.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Overview
 

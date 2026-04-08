@@ -1,15 +1,15 @@
 ---
-title: "Network monitoring and profiling (experimental)"
+title: "Network monitoring and profiling"
 description: "Learn how to monitor HTTP network traffic and profile application performance in .NET MAUI apps with DevFlow."
 ms.date: 04/03/2026
 ---
 
-# Network monitoring and profiling (experimental)
+# Network monitoring and profiling
 
 DevFlow provides tools for monitoring HTTP network traffic and profiling application performance, including CPU usage, memory allocation, GC events, and jank detection.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Network monitoring
 

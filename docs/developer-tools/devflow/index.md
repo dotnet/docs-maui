@@ -1,15 +1,15 @@
 ---
-title: "DevFlow overview (experimental)"
-description: "Learn about DevFlow, an experimental testing, automation, and debugging toolkit for .NET MAUI applications that provides visual tree inspection, a CLI, Blazor WebView debugging, and AI agent integration."
+title: "DevFlow overview"
+description: "Learn about DevFlow, a testing, automation, and debugging toolkit for .NET MAUI applications that provides visual tree inspection, a CLI, Blazor WebView debugging, and AI agent integration."
 ms.date: 04/03/2026
 ---
 
-# DevFlow overview (experimental)
+# DevFlow overview
 
 DevFlow is a comprehensive testing, automation, and debugging toolkit for .NET MAUI applications. It provides an in-app HTTP agent for visual tree inspection and element interaction, a CLI with 50+ commands, a Blazor WebView CDP bridge, and an MCP server for AI agent integration.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Architecture
 

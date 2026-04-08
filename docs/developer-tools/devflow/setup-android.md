@@ -1,15 +1,15 @@
 ---
-title: "DevFlow Android setup (experimental)"
+title: "DevFlow Android setup"
 description: "Learn how to configure Android devices and emulators for DevFlow Blazor WebView debugging using Chrome DevTools Protocol."
 ms.date: 04/03/2026
 ---
 
-# DevFlow Android setup (experimental)
+# DevFlow Android setup
 
 This guide covers how to configure Android devices and emulators for DevFlow Blazor WebView debugging using Chrome DevTools Protocol.
 
 > [!IMPORTANT]
-> DevFlow is an **experimental** package from the [dotnet/maui-labs](https://github.com/dotnet/maui-labs) repository. It is **not** covered by the [.NET MAUI Support Policy](https://dotnet.microsoft.com/platform/support/policy/maui). APIs may change between releases. These packages are provided as-is with no guarantees of support, servicing, or updates.
+> DevFlow is experimental and will change between releases.
 
 ## Prerequisites
 
