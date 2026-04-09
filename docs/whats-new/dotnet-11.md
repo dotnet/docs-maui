@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 04/01/2026
+ms.date: 04/02/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -59,6 +59,18 @@ If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower
 
 For more information, see [Supported platforms](~/supported-platforms.md).
 
+> [!NOTE]
+> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. If you need to temporarily target API 21 while migrating your app, you can opt out of CoreCLR and revert `$(SupportedOSPlatformVersion)`:
+>
+> ```xml
+> <PropertyGroup>
+>   <UseMonoRuntime>true</UseMonoRuntime>
+>   <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21</SupportedOSPlatformVersion>
+> </PropertyGroup>
+> ```
+>
+> This is a temporary workaround. Plan to migrate to API 24 and CoreCLR for the final .NET 11 release.
+
 ## CoreCLR by Default
 
 CoreCLR is now the default runtime for `Release` builds. This should
@@ -75,7 +87,7 @@ instead, you can still do so via:
 ```xml
 <PropertyGroup>
   <UseMonoRuntime>true</UseMonoRuntime>
-</ProperyGroup>
+</PropertyGroup>
 ```
 
 ## `dotnet run`
