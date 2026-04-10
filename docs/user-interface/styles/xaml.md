@@ -444,3 +444,30 @@ In this example, the first <xref:Microsoft.Maui.Controls.BoxView> is styled to b
 
 > [!IMPORTANT]
 > Multiple style classes can be applied to a control because the `StyleClass` property is of type `IList<string>`. When this occurs, style classes are applied in ascending list order. Therefore, when multiple style classes set identical properties, the property in the style class that's in the highest list position will take precedence.
+
+::: moniker range=">=net-maui-11.0"
+
+## Invalidate and reapply a style
+
+When you modify the setter values of a <xref:Microsoft.Maui.Controls.Style> at runtime, controls that use that style don't automatically reflect the changes. The <xref:Microsoft.Maui.Controls.StyleableElement.InvalidateStyle> method forces a control to unapply and then reapply its current merged style, which causes the updated setter values to take effect.
+
+The following example modifies a style's setter value and then calls `InvalidateStyle` on each affected control:
+
+```csharp
+// Find the style defined in resources.
+var myStyle = (Style)Resources["myLabelStyle"];
+
+// Modify a setter value in-place.
+myStyle.Setters[0].Value = Colors.Red;
+
+// Force the controls to pick up the change.
+myLabel1.InvalidateStyle();
+myLabel2.InvalidateStyle();
+```
+
+> [!NOTE]
+> `InvalidateStyle` is a caller-driven API — .NET MAUI does not automatically detect when setter values change. You must call this method on each control that should reflect the updated style.
+
+The `InvalidateStyle` method is defined on <xref:Microsoft.Maui.Controls.StyleableElement> and is also available on <xref:Microsoft.Maui.Controls.Span> and <xref:Microsoft.Maui.Controls.ImageSource>.
+
+::: moniker-end
