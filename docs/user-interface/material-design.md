@@ -129,11 +129,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2_searchbar.png" alt-text="Screenshot of a SearchBar with Material 2 styling on Android." lightbox="media/material3/material2_searchbar.png":::
+      :::image type="content" source="media/material3/material2-searchbar.png" alt-text="Screenshot of a SearchBar with Material 2 styling on Android." lightbox="media/material3/material2-searchbar.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3_searchbar.png" alt-text="Screenshot of a SearchBar with Material 3 styling on Android, showing a Material 3 filled text field with a leading search icon and trailing clear button." lightbox="media/material3/material3_searchbar.png":::
+      :::image type="content" source="media/material3/material3-searchbar.png" alt-text="Screenshot of a SearchBar with Material 3 styling on Android, showing a Material 3 filled text field with a leading search icon and trailing clear button." lightbox="media/material3/material3-searchbar.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
@@ -243,11 +243,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2_datepicker.png" alt-text="Screenshot of a DatePicker with Material 2 styling on Android, showing the legacy spinner-style calendar dialog." lightbox="media/material3/material2_datepicker.png":::
+      :::image type="content" source="media/material3/material2-datepicker.png" alt-text="Screenshot of a DatePicker with Material 2 styling on Android, showing the legacy spinner-style calendar dialog." lightbox="media/material3/material2-datepicker.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3_datepicker.png" alt-text="Screenshot of a DatePicker with Material 3 styling on Android, showing the Material DatePicker calendar dialog with Material You color scheme." lightbox="media/material3/material3_datepicker.png":::
+      :::image type="content" source="media/material3/material3-datepicker.png" alt-text="Screenshot of a DatePicker with Material 3 styling on Android, showing the Material DatePicker calendar dialog with Material You color scheme." lightbox="media/material3/material3-datepicker.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
