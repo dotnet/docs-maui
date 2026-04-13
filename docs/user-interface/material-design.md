@@ -129,11 +129,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2-searchbar.png" alt-text="Screenshot of a SearchBar with Material 2 styling on Android." lightbox="media/material3/material2-searchbar.png":::
+      :::image type="content" source="media/material3/material2-search-bar.png" alt-text="Screenshot of a SearchBar with Material 2 styling on Android." lightbox="media/material3/material2-search-bar.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3-searchbar.png" alt-text="Screenshot of a SearchBar with Material 3 styling on Android, showing a Material 3 filled text field with a leading search icon and trailing clear button." lightbox="media/material3/material3-searchbar.png":::
+      :::image type="content" source="media/material3/material3-search-bar.png" alt-text="Screenshot of a SearchBar with Material 3 styling on Android, showing a Material 3 filled text field with a leading search icon and trailing clear button." lightbox="media/material3/material3-search-bar.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
@@ -148,11 +148,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2-radiobutton.png" alt-text="Screenshot of a RadioButton with Material 2 styling on Android." lightbox="media/material3/material2-radiobutton.png":::
+      :::image type="content" source="media/material3/material2-radio-button.png" alt-text="Screenshot of a RadioButton with Material 2 styling on Android." lightbox="media/material3/material2-radio-button.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3-radiobutton.png" alt-text="Screenshot of a RadioButton with Material 3 styling on Android, showing updated Material 3 color roles and visual feedback." lightbox="media/material3/material3-radiobutton.png":::
+      :::image type="content" source="media/material3/material3-radio-button.png" alt-text="Screenshot of a RadioButton with Material 3 styling on Android, showing updated Material 3 color roles and visual feedback." lightbox="media/material3/material3-radio-button.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
@@ -167,11 +167,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2-progressbar.png" alt-text="Screenshot of a ProgressBar with Material 2 styling on Android." lightbox="media/material3/material2-progressbar.png":::
+      :::image type="content" source="media/material3/material2-progress-bar.png" alt-text="Screenshot of a ProgressBar with Material 2 styling on Android." lightbox="media/material3/material2-progress-bar.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3-progressbar.png" alt-text="Screenshot of a ProgressBar with Material 3 styling on Android, showing the LinearProgressIndicator design with Material 3 color roles." lightbox="media/material3/material3-progressbar.png":::
+      :::image type="content" source="media/material3/material3-progress-bar.png" alt-text="Screenshot of a ProgressBar with Material 3 styling on Android, showing the LinearProgressIndicator design with Material 3 color roles." lightbox="media/material3/material3-progress-bar.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
@@ -224,11 +224,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2-timepicker.png" alt-text="Screenshot of a TimePicker with Material 2 styling on Android, showing the legacy clock dial time picker dialog." lightbox="media/material3/material2-timepicker.png":::
+      :::image type="content" source="media/material3/material2-time-picker.png" alt-text="Screenshot of a TimePicker with Material 2 styling on Android, showing the legacy clock dial time picker dialog." lightbox="media/material3/material2-time-picker.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3-timepicker.png" alt-text="Screenshot of a TimePicker with Material 3 styling on Android, showing a clock dial time picker dialog with Material You color scheme." lightbox="media/material3/material3-timepicker.png":::
+      :::image type="content" source="media/material3/material3-time-picker.png" alt-text="Screenshot of a TimePicker with Material 3 styling on Android, showing a clock dial time picker dialog with Material You color scheme." lightbox="media/material3/material3-time-picker.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
@@ -243,11 +243,11 @@ The following screenshot shows the difference between Material 2 and Material 3.
 
 :::row:::
    :::column span="":::
-      :::image type="content" source="media/material3/material2-datepicker.png" alt-text="Screenshot of a DatePicker with Material 2 styling on Android, showing the legacy spinner-style calendar dialog." lightbox="media/material3/material2-datepicker.png":::
+      :::image type="content" source="media/material3/material2-date-picker.png" alt-text="Screenshot of a DatePicker with Material 2 styling on Android, showing the legacy spinner-style calendar dialog." lightbox="media/material3/material2-date-picker.png":::
       **Material 2**
    :::column-end:::
    :::column span="":::
-      :::image type="content" source="media/material3/material3-datepicker.png" alt-text="Screenshot of a DatePicker with Material 3 styling on Android, showing the Material DatePicker calendar dialog with Material You color scheme." lightbox="media/material3/material3-datepicker.png":::
+      :::image type="content" source="media/material3/material3-date-picker.png" alt-text="Screenshot of a DatePicker with Material 3 styling on Android, showing the Material DatePicker calendar dialog with Material You color scheme." lightbox="media/material3/material3-date-picker.png":::
       **Material 3**
    :::column-end:::
 :::row-end:::
