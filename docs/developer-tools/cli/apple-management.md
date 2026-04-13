@@ -24,10 +24,10 @@ maui apple xcode list
 The output includes the version, build number, path, and whether each installation is the currently selected Xcode:
 
 ```
-Version | Build   | Path                          | Selected
---------+---------+-------------------------------+---------
-16.2    | 16C5032a| /Applications/Xcode.app       | ✓
-15.4    | 15F31d  | /Applications/Xcode-15.4.app  |
+Version | Build    | Path                          | Selected
+--------+----------+-------------------------------+---------
+26.4    | 17E192   | /Applications/Xcode.app       | ✓
+26.3    | 17D61a   | /Applications/Xcode-26.3.app  |
 ```
 
 ## Runtime management
@@ -53,9 +53,9 @@ The output shows each runtime's name, platform, version, availability, and wheth
 ```
 Name                | Platform | Version | Available | Bundled
 --------------------+----------+---------+-----------+--------
-iOS 18.2            | iOS      | 18.2    | ✓         | Yes
-iOS 17.5            | iOS      | 17.5    | ✓         | No
-watchOS 11.2        | watchOS  | 11.2    | ✓         | Yes
+iOS 26.4            | iOS      | 26.4    | ✓         | Yes
+iOS 26.0            | iOS      | 26.0    | ✓         | No
+watchOS 26.4        | watchOS  | 26.4    | ✓         | Yes
 ```
 
 ## Simulator management
@@ -71,10 +71,10 @@ maui apple simulator list
 The output shows each simulator's name, UDID, OS version, state, and availability:
 
 ```
-Name                  | UDID                                 | OS       | State    | Available
-----------------------+--------------------------------------+----------+----------+----------
-iPhone 16 Pro         | A1B2C3D4-E5F6-7890-ABCD-EF1234567890 | iOS 18.2 | Shutdown | ✓
-iPad Air (M2)         | B2C3D4E5-F6A7-8901-BCDE-F12345678901 | iOS 18.2 | Booted   | ✓
+Name                  | UDID                                 | OS        | State    | Available
+----------------------+--------------------------------------+-----------+----------+----------
+iPhone 17 Pro         | A1B2C3D4-E5F6-7890-ABCD-EF1234567890 | iOS 26.4  | Shutdown | ✓
+iPad Air (M4)         | B2C3D4E5-F6A7-8901-BCDE-F12345678901 | iOS 26.4  | Booted   | ✓
 ```
 
 ### Start a simulator
@@ -82,7 +82,7 @@ iPad Air (M2)         | B2C3D4E5-F6A7-8901-BCDE-F12345678901 | iOS 18.2 | Booted
 Boot a simulator by name or UDID:
 
 ```dotnetcli
-maui apple simulator start "iPhone 16 Pro"
+maui apple simulator start "iPhone 17 Pro"
 ```
 
 ```dotnetcli
@@ -96,7 +96,7 @@ The simulator launches in the background so you can continue using the terminal.
 Shut down a running simulator by name or UDID:
 
 ```dotnetcli
-maui apple simulator stop "iPhone 16 Pro"
+maui apple simulator stop "iPhone 17 Pro"
 ```
 
 To stop all running simulators:
@@ -110,7 +110,7 @@ maui apple simulator stop all
 Permanently remove a simulator and its associated data:
 
 ```dotnetcli
-maui apple simulator delete "iPhone 16 Pro"
+maui apple simulator delete "iPhone 17 Pro"
 ```
 
 ## Use in CI pipelines
