@@ -1,7 +1,7 @@
 ---
 title: "Launcher"
 description: "Learn how to use the .NET MAUI ILauncher interface in the Microsoft.Maui.ApplicationModel namespace, which can open another application by URI."
-ms.date: 03/24/2025
+ms.date: 03/08/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -91,6 +91,21 @@ The following code example writes text to a file, and opens the text file with t
 ## Set the launcher location
 
 [!INCLUDE [ios-PresentationSourceBounds](../includes/ios-PresentationSourceBounds.md)]
+
+## URI length limitations
+
+When using <xref:Microsoft.Maui.ApplicationModel.ILauncher.OpenAsync%2A> with a URI, be aware that the underlying platforms impose limits on the maximum URI length. Passing large amounts of data (such as Base64-encoded images) through a URI may fail or be silently truncated. To transfer large data between apps, consider using file-based approaches such as <xref:Microsoft.Maui.ApplicationModel.ILauncher.OpenAsync(Microsoft.Maui.ApplicationModel.OpenFileRequest)> instead.
+
+The following table summarizes the URI length constraints per platform:
+
+| Platform | Limit |
+| --- | --- |
+| Android | URI data is part of the Intent payload, which is limited to approximately 1 MB by the Android Binder transaction buffer. Exceeding this limit throws a `TransactionTooLargeException`. A practical safe maximum is approximately 500 KB for the total Intent data including the URI. |
+| iOS / Mac Catalyst | iOS doesn't impose a strict URI length limit. In practice, URIs of several hundred thousand characters have been tested successfully. |
+| Windows | There's no officially documented maximum URI length for `LaunchUriAsync`. However, any input data passed via `ValueSet` is limited to 100 KB. |
+
+> [!TIP]
+> For transferring large payloads between apps, pass a file reference (such as a `content://` URI on Android) instead of embedding the data directly in the URI string.
 
 ## Platform differences
 

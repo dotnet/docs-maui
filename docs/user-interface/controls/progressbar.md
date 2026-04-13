@@ -1,7 +1,7 @@
 ---
 title: "ProgressBar"
 description: "The .NET MAUI ProgressBar indicates to users that the app is progressing through a lengthy activity."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # ProgressBar
@@ -28,13 +28,15 @@ To indicate progress through a lengthy activity, create a <xref:Microsoft.Maui.C
 The following XAML example shows how to display a <xref:Microsoft.Maui.Controls.ProgressBar>:
 
 ```xaml
-<ProgressBar Progress="0.5" />
+<ProgressBar Progress="0.5"
+             SemanticProperties.Description="Download progress" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 ProgressBar progressBar = new ProgressBar { Progress = 0.5 };
+SemanticProperties.SetDescription(progressBar, "Download progress");
 ```
 
 > [!WARNING]

@@ -1,7 +1,7 @@
 ---
 title: "Consume a REST-based web service"
 description: "Learn how to consume a REST-based web service from a .NET MAUI app."
-ms.date: 09/30/2024
+ms.date: 03/08/2026
 ---
 
 # Consume a REST-based web service
@@ -116,7 +116,12 @@ Data is received from the web service as a [`HttpResponseMessage`](xref:System.N
 If the HTTP operation was successful, the content of the response is read. The `HttpResponseMessage.Content` property represents the content of the response, and is of type [`HttpContent`](xref:System.Net.Http.HttpContent). The `HttpContent` class represents the HTTP body and content headers, such as `Content-Type` and `Content-Encoding`. The content is then read into a `string` using the [`HttpContent.ReadAsStringAsync`](xref:System.Net.Http.HttpContent.ReadAsStringAsync) method. The `string` is then deserialized from JSON to a `List` of `TodoItem` objects.
 
 > [!WARNING]
-> Using the `ReadAsStringAsync` method to retrieve a large response can have a negative performance impact. In such circumstances the response should be directly deserialized to avoid having to fully buffer it.
+> Using the `ReadAsStringAsync` method to retrieve a large response can have a negative performance impact. In such circumstances the response should be directly deserialized from the response stream to avoid having to fully buffer it as a string:
+>
+> ```csharp
+> using Stream stream = await response.Content.ReadAsStreamAsync();
+> Items = await JsonSerializer.DeserializeAsync<List<TodoItem>>(stream, _serializerOptions);
+> ```
 
 ## Create data
 

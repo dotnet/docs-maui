@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 01/27/2025
+ms.date: 03/24/2026
 ---
 
 # Compiled bindings
@@ -343,3 +343,39 @@ Compiled bindings improve data binding performance, with the performance benefit
 - Setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a compiled binding that doesn't use property change notification (i.e. a `OneTime` binding) is approximately 7 times quicker than setting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> on a classic binding.
 
 These performance differences can be magnified on mobile devices, dependent upon the platform being used, the version of the operating system being used, and the device on which the application is running.
+
+## Common mistakes
+
+### Avoid x:DataType="x:Object"
+
+A common mistake when migrating from Xamarin.Forms, or when trying to suppress a compiler warning quickly, is to set `x:DataType="x:Object"` on an element:
+
+```xml
+<!-- Anti-pattern: silently disables compiled bindings -->
+<StackLayout x:DataType="x:Object">
+    <Label Text="{Binding Name}" />
+</StackLayout>
+
+<!-- Correct: set x:DataType to the actual binding context type -->
+<StackLayout x:DataType="viewmodels:PersonViewModel">
+    <Label Text="{Binding Name}" />
+</StackLayout>
+```
+
+> [!WARNING]
+> Setting `x:DataType="x:Object"` silently disables compiled bindings for that element and all its descendants, reverting to reflection-based binding resolution (8–20× slower). It also disables compile-time type safety, so binding errors that would be caught at build time as XC0022 warnings become silent runtime failures instead. Fix the underlying type mismatch rather than using `x:Object` as an escape hatch.
+
+### Treat XC0022 and XC0025 as errors in CI
+
+Rather than silencing XC0022 and XC0025 warnings, treat them as errors in your CI pipeline to catch misconfigured compiled bindings before they reach production:
+
+```xml
+<WarningsAsErrors>$(WarningsAsErrors);XC0022;XC0023;XC0025</WarningsAsErrors>
+```
+
+| Warning | Root cause | Recommended fix |
+|---------|-----------|-----------------|
+| `XC0022` | A binding path was not found on the declared `x:DataType`, or no `x:DataType` is set. | Check property name spelling; verify the property is `public` on the declared type; add `x:DataType` where `BindingContext` changes. |
+| `XC0025` | A binding with an explicit `Source` property was not compiled. | Enable `$(MauiEnableXamlCBindingWithSourceCompilation)` in your project file and ensure the correct `x:DataType` is set for the binding. |
+
+Silencing these warnings with `$(NoWarn)` or `x:DataType="x:Object"` hides binding configuration bugs and removes the performance benefits of compiled bindings.

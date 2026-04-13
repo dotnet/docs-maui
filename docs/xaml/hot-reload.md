@@ -1,7 +1,7 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 08/27/2024
+ms.date: 03/24/2026
 ---
 
 # XAML Hot Reload for .NET MAUI
@@ -56,3 +56,78 @@ If you make a change that the XAML Hot Reload parser sees as invalid, it will sh
 You can't add, remove, or rename files or NuGet packages during a XAML Hot Reload session. If you add or remove a file or NuGet package, rebuild and redeploy your app to continue using XAML Hot Reload.
 
 Disabling XAML compilation with `[XamlCompilation(XamlCompilationOptions.Skip)]` isn't supported and can cause issues with the Live Visual Tree. For more information about Live Visual Tree, see [Inspect the visual tree of a .NET MAUI app](~/user-interface/live-visual-tree.md).
+
+### Diagnostic environment variables
+
+When Hot Reload fails silently with no visible error, enable verbose diagnostic logging using the following environment variables before launching your app:
+
+**XAML Hot Reload logging:**
+
+# [macOS/Linux](#tab/macos)
+
+```bash
+export HOTRELOAD_XAML_LOG_MESSAGES=1
+```
+
+# [Windows (Command Prompt)](#tab/windows-cmd)
+
+```cmd
+set HOTRELOAD_XAML_LOG_MESSAGES=1
+```
+
+# [Windows (PowerShell)](#tab/windows-ps)
+
+```powershell
+$env:HOTRELOAD_XAML_LOG_MESSAGES = "1"
+```
+
+---
+
+**C# Hot Reload logging** (logs Roslyn Edit and Continue diagnostics to a directory):
+
+# [macOS/Linux](#tab/macos)
+
+```bash
+export Microsoft_CodeAnalysis_EditAndContinue_LogDir=/tmp/HotReloadLog
+```
+
+# [Windows (Command Prompt)](#tab/windows-cmd)
+
+```cmd
+set Microsoft_CodeAnalysis_EditAndContinue_LogDir=%temp%\HotReloadLog
+```
+
+# [Windows (PowerShell)](#tab/windows-ps)
+
+```powershell
+$env:Microsoft_CodeAnalysis_EditAndContinue_LogDir = "$env:TEMP\HotReloadLog"
+```
+
+---
+
+After setting these variables, reproduce the Hot Reload failure and inspect the log output for error details.
+
+### File encoding requirement
+
+All `.cs` files must be saved with **UTF-8 with BOM** encoding. Files encoded as UTF-8 without BOM — the default on Linux and macOS editors — can cause XAML Hot Reload to silently fail with no error message. This is especially common when files are created in a terminal, copied from a Linux/macOS environment, or edited in an IDE configured to use UTF-8 without BOM.
+
+To check file encoding:
+
+```bash
+# macOS/Linux — should show "UTF-8 Unicode (with BOM)" for .cs files
+file -I YourFile.cs
+```
+
+To fix in Visual Studio Code: open the file, click the encoding selector in the bottom-right status bar, select **Save with Encoding**, then choose **UTF-8 with BOM**.
+
+### Troubleshooting checklist
+
+If Hot Reload is not working, verify each of the following:
+
+- App is running in **Debug** configuration with the debugger attached.
+- XAML Hot Reload is enabled in the IDE — see [Enable XAML Hot Reload](#enable-xaml-hot-reload).
+- The file has been saved after making changes.
+- `.cs` files are encoded as **UTF-8 with BOM**.
+- No XHR errors are shown in the **Error List** — Hot Reload won't apply changes while errors exist.
+- The **Hot Reload** output panel is open (**View > Output > Hot Reload** in Visual Studio) to see status messages.
+- Set `HOTRELOAD_XAML_LOG_MESSAGES=1` to get verbose XAML Hot Reload diagnostic output.

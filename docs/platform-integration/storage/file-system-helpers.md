@@ -75,6 +75,17 @@ Returns the [Library](https://developer.apple.com/library/content/documentation/
 
   > [!IMPORTANT]
   > The Application ID, which is part of the directory name, changes on every build so you have to retrieve the correct ID each time you build your app for a Simulator or device.
+  >
+  > On iOS, the app sandbox path contains an application GUID segment that changes across clean builds and app reinstalls. Never hard-code or persist absolute sandbox paths — they will break after an update or reinstall. Always reconstruct paths at runtime using `FileSystem.Current.AppDataDirectory`:
+  >
+  > ```csharp
+  > // Correct: always construct the path at runtime
+  > string path = Path.Combine(FileSystem.Current.AppDataDirectory, "myfile.db");
+  >
+  > // Incorrect: never persist or hard-code the absolute path —
+  > // the GUID segment changes on clean builds and reinstalls
+  > // e.g. "/var/mobile/Containers/Data/Application/SOME-GUID/Library/myfile.db"
+  > ```
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.

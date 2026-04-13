@@ -123,6 +123,17 @@ To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> s
 > [!IMPORTANT]
 > When a route from the Shell visual hierarchy is navigated to, a navigation stack isn't created. However, when a page that's not in the Shell visual hierarchy is navigated to, a navigation stack is created.
 
+> [!IMPORTANT]
+> Always `await` the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. Fire-and-forget navigation causes race conditions — code that runs after the call may execute before navigation completes, leading to missing query parameters, an incorrect `CurrentPage`, or silent navigation failures:
+>
+> ```csharp
+> // Correct: always await GoToAsync
+> await Shell.Current.GoToAsync($"details?id={item.Id}");
+>
+> // Incorrect: fire-and-forget causes a race condition
+> Shell.Current.GoToAsync($"details?id={item.Id}");
+> ```
+
 The current navigation state of the <xref:Microsoft.Maui.Controls.Shell> object can be retrieved through the `Shell.Current.CurrentState` property, which includes the URI of the displayed route in the `Location` property.
 
 ### Absolute routes
@@ -230,6 +241,9 @@ In this example, the `CurrentItem` property, of type <xref:Microsoft.Maui.Contro
 ### Navigation stack
 
 The <xref:Microsoft.Maui.Controls.Tab> class defines a `Stack` property, of type `IReadOnlyList<Page>`, which represents the current navigation stack within the <xref:Microsoft.Maui.Controls.Tab>. The class also provides the following overridable navigation methods:
+
+> [!NOTE]
+> `Tab.Stack` is a read-only collection. You cannot add, remove, or reorder pages by modifying it directly. All navigation changes must go through <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A>. To reset the navigation stack, use an absolute route (for example, `//route`). To go back, use the `..` syntax.
 
 - `GetNavigationStack`, returns `IReadOnlyList<Page>`, the current navigation stack.
 - `OnInsertPageBefore`, that's called when `INavigation.InsertPageBefore` is called.
