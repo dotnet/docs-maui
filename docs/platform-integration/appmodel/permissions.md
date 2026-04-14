@@ -1,7 +1,7 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 10/28/2024
+ms.date: 07/11/2025
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -36,7 +36,7 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
 | [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
 | [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
-| [PostNotifications](xref:Microsoft.Maui.ApplicationModel.Permissions.PostNotifications) | ✔️     | ❌  | ❌      | ❌   |
+| [PostNotifications](xref:Microsoft.Maui.ApplicationModel.Permissions.PostNotifications) | ✔️     | ✔️  | ❌      | ❌   |
 | [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
 | [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
 | [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
@@ -49,6 +49,13 @@ The following table uses ✔️ to indicate that the permission is supported and
 > The [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead) and [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite) permissions will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> on Android API 33+. This is because the underlying Android `READ_EXTERNAL_STORAGE` and `WRITE_EXTERNAL_STORAGE` permissions are no longer available from API 33.
 
 If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
+
+:::moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Starting with .NET MAUI in .NET 11, `PostNotifications` is also supported on iOS and Mac Catalyst. On Apple platforms, this permission uses `UNUserNotificationCenter.RequestAuthorization` to request notification authorization from the user. Unlike most iOS permissions, `PostNotifications` does not require an `Info.plist` usage description string.
+
+:::moniker-end
 
 ## Checking permissions
 
@@ -94,6 +101,20 @@ A <xref:Microsoft.Maui.ApplicationModel.PermissionException> is thrown if the re
 
 > [!IMPORTANT]
 > On some platforms, a permission request can only be activated a single time. Further prompts must be handled by the developer to check if a permission is in the <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied> state, and then ask the user to manually turn it on.
+
+:::moniker range=">=net-maui-11.0"
+
+### Requesting notification permissions
+
+To request notification posting permissions on Android, iOS, and Mac Catalyst, use the [`PostNotifications`](xref:Microsoft.Maui.ApplicationModel.Permissions.PostNotifications) permission:
+
+```csharp
+var status = await Permissions.RequestAsync<Permissions.PostNotifications>();
+```
+
+On Android, this maps to the `POST_NOTIFICATIONS` manifest permission. On iOS and Mac Catalyst, this uses `UNUserNotificationCenter.RequestAuthorization` to request notification authorization from the user. If the user has previously denied the notification permission on iOS, the method returns <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied> and the user must enable notifications manually through the Settings app.
+
+:::moniker-end
 
 ## Explain why permission is needed
 

@@ -30,6 +30,13 @@ The *MainPage.xaml* file has the following structure:
 
 The two XML namespace (`xmlns`) declarations refer to URIs on microsoft.com. However, there's no content at these URIs, and they basically function as version identifiers.
 
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Starting in .NET 11, these two standard namespace declarations are implicit and can be omitted from your XAML files. The compiler injects them automatically. For more information, see [Implicit namespace declarations](~/xaml/namespaces/index.md#implicit-namespace-declarations).
+
+::: moniker-end
+
 The first XML namespace declaration means that tags defined within the XAML file with no prefix refer to classes in .NET MAUI, for example <xref:Microsoft.Maui.Controls.ContentPage>. The second namespace declaration defines a prefix of `x`. This is used for several elements and attributes that are intrinsic to XAML itself and which are supported by other implementations of XAML. However, these elements and attributes are slightly different depending on the year embedded in the URI. .NET MAUI supports the [2009 XAML specification](/dotnet/desktop/xaml-services/xaml-2009-language-features).
 
 At the end of the first tag, the `x` prefix is used for an attribute named `Class`. Because the use of this `x` prefix is virtually universal for the XAML namespace, XAML attributes such as `Class` are almost always referred to as `x:Class`. The `x:Class` attribute specifies a fully qualified .NET class name: the `MainPage` class in the `MyMauiApp` namespace. This means that this XAML file defines a new class named `MainPage` in the `MyMauiApp` namespace that derives from <xref:Microsoft.Maui.Controls.ContentPage> (the tag in which the `x:Class` attribute appears).
@@ -144,6 +151,37 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 
 [assembly: XmlnsPrefix("MyApp.Controls", "controls")]
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+### Implicit namespace declarations
+
+Starting in .NET 11, the standard XAML namespace declarations are implicit by default — no opt-in is required. The compiler automatically injects `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` and `xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"`, so your XAML files can omit them:
+
+**Before (.NET 10 and earlier)**
+
+```xml
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
+```
+
+**After (.NET 11)**
+
+```xml
+<ContentPage x:Class="MyApp.Pages.MyContentPage">
+</ContentPage>
+```
+
+Custom namespaces still require explicit `xmlns:` declarations. For more information, see [Implicit namespace declarations](~/xaml/namespaces/index.md#implicit-namespace-declarations).
+
+::: moniker-end
+
+::: moniker range="net-maui-10.0"
 
 To enable the most streamlined experience (implicit default namespaces), add:
 
