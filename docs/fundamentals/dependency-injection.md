@@ -1,7 +1,7 @@
 ---
 title: Dependency injection in .NET MAUI
 description: Learn how to inject dependencies in a .NET MAUI app, to decouple concrete types from the code that depends on these types.
-ms.date: 12/16/2024
+ms.date: 03/24/2026
 ---
 
 # Dependency injection
@@ -133,7 +133,36 @@ Depending on the needs of your app, you may need to register dependencies with d
 |---------|---------|
 | [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) | Creates a single instance of the object which will remain for the lifetime of the app. |
 | [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) | Creates a new instance of the object when requested during resolution. Transient objects do not have a pre-defined lifetime, but will typically follow the lifetime of their host. |
-| [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) | Creates an instance of the object that shares the lifetime of its host. When the host goes out of scope, so does its dependency. Therefore, resolving the same dependency multiple times within the same scope yields the same instance, while resolving the same dependency in different scopes will yield different instances. |
+| [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) | Creates an instance of the object that shares the lifetime of its host. When the host goes out of scope, so does its dependency. Therefore, resolving the same dependency multiple times within the same scope yields the same instance, while resolving the same dependency in different scopes will yield different instances. In .NET MAUI (non-Blazor) apps, there is no built-in scope boundary, so scoped services effectively behave like singletons for the lifetime of the app. |
+
+> [!WARNING]
+> In .NET MAUI (non-Blazor) apps, `AddScoped` has **no natural scope boundary**. Unlike ASP.NET Core (which scopes per HTTP request) or Blazor (which scopes per circuit), .NET MAUI does not automatically create or dispose scopes during navigation. A scoped service registered this way will resolve to the same instance for the lifetime of the app, which can lead to stale state and cross-page data contamination.
+>
+> For most .NET MAUI use cases:
+>
+> - Use [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) for pages and view models to get a fresh instance on each navigation.
+> - Use [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) for shared services such as database connections, settings, or caches.
+> - Reserve [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) for cases where you explicitly create and manage a scope with <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>:
+>
+> ```csharp
+> public class MyViewModel
+> {
+>     private readonly IServiceScopeFactory _scopeFactory;
+>
+>     public MyViewModel(IServiceScopeFactory scopeFactory)
+>     {
+>         _scopeFactory = scopeFactory;
+>     }
+>
+>     public async Task DoWorkAsync()
+>     {
+>         using var scope = _scopeFactory.CreateScope();
+>         var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+>         await unitOfWork.SaveChangesAsync();
+>         // scope is disposed here, releasing scoped services
+>     }
+> }
+> ```
 
 > [!NOTE]
 > If an object doesn't inherit from an interface, such as a view or view-model, only its concrete type needs to be provided to the [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) method.

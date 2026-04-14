@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 07/14/2025
+ms.date: 04/02/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -9,6 +9,7 @@ ms.date: 07/14/2025
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve product quality. For information about what's new in each .NET MAUI in .NET 11 release, see the following release notes:
 
 - [.NET MAUI in .NET 11 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview1/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
 
 > [!IMPORTANT]
@@ -164,11 +165,36 @@ if (status == PermissionStatus.Granted)
 
 ## .NET for Android
 
-.NET for Android in .NET 11 makes CoreCLR the default runtime for `Release` builds, and includes work to improve performance. For more information about .NET for Android in .NET 10, see the following release notes:
+.NET for Android in .NET 11 makes CoreCLR the default runtime for `Release` builds, and includes work to improve performance. For more information about .NET for Android in .NET 11, see the following release notes:
 
 - [.NET for Android 11 Preview 1](https://github.com/dotnet/android/releases/)
+- [.NET for Android 11 Preview 3](https://github.com/dotnet/android/releases/)
 
-### Feature
+### Minimum supported Android API
+
+Starting in .NET 11 Preview 3, the minimum supported Android API level has been raised from 21 (Lollipop) to 24 (Nougat). This means that .NET MAUI apps in .NET 11 require Android 7.0 or higher.
+
+If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower than 24, you'll need to update it:
+
+```xml
+<PropertyGroup>
+  <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24</SupportedOSPlatformVersion>
+</PropertyGroup>
+```
+
+For more information, see [Supported platforms](~/supported-platforms.md).
+
+> [!NOTE]
+> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. If you need to temporarily target API 21 while migrating your app, you can opt out of CoreCLR and revert `$(SupportedOSPlatformVersion)`:
+>
+> ```xml
+> <PropertyGroup>
+>   <UseMonoRuntime>true</UseMonoRuntime>
+>   <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21</SupportedOSPlatformVersion>
+> </PropertyGroup>
+> ```
+>
+> This is a temporary workaround. Plan to migrate to API 24 and CoreCLR for the final .NET 11 release.
 
 ## CoreCLR by Default
 
@@ -186,7 +212,7 @@ instead, you can still do so via:
 ```xml
 <PropertyGroup>
   <UseMonoRuntime>true</UseMonoRuntime>
-</ProperyGroup>
+</PropertyGroup>
 ```
 
 ## `dotnet run`

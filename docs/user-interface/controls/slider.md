@@ -1,7 +1,7 @@
 ---
 title: "Slider"
 description: "The .NET MAUI Slider is a horizontal bar that can be manipulated by a user to select a double value from a continuous range."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # Slider
@@ -51,6 +51,7 @@ The following example shows how to create a <xref:Microsoft.Maui.Controls.Slider
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Slider Maximum="360"
+                SemanticProperties.Description="Rotation angle"
                 ValueChanged="OnSliderValueChanged" />
         <Label x:Name="displayLabel"
                Text="(uninitialized)"

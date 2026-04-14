@@ -329,6 +329,20 @@ For more information about <xref:Microsoft.Maui.Controls.RefreshView>, see [Refr
 > [!WARNING]
 > Don't attempt to load data incrementally in a <xref:Microsoft.Maui.Controls.CollectionView> that's in a <xref:Microsoft.Maui.Controls.StackLayout>. This scenario will cause an infinite loop to occur where the <xref:Microsoft.Maui.Controls.CollectionView> will keep expanding.
 
+> [!WARNING]
+> Don't set `ItemsLayout` to a `StackLayout`-based layout when using incremental loading (`RemainingItemsThreshold`). Unlike `LinearItemsLayout` and `GridItemsLayout`, a `StackLayout`-based layout has no scroll-viewport concept and disables virtualization — all items are measured and rendered immediately. Because the remaining-items threshold is always considered reached, `RemainingItemsThresholdReached` fires in a continuous loop, which can exhaust APIs, drain battery, and crash the app. Always use the default <xref:Microsoft.Maui.Controls.LinearItemsLayout> or <xref:Microsoft.Maui.Controls.GridItemsLayout> with incremental loading:
+>
+> ```xaml
+> <!-- Correct: use LinearItemsLayout (default) or GridItemsLayout -->
+> <CollectionView ItemsSource="{Binding Animals}"
+>                 RemainingItemsThreshold="5"
+>                 RemainingItemsThresholdReached="OnCollectionViewRemainingItemsThresholdReached">
+>     <CollectionView.ItemsLayout>
+>         <LinearItemsLayout Orientation="Vertical" />
+>     </CollectionView.ItemsLayout>
+> </CollectionView>
+> ```
+
 <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties to control incremental loading of data:
 
 - `RemainingItemsThreshold`, of type `int`, the threshold of items not yet visible in the list at which the `RemainingItemsThresholdReached` event will be fired.

@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 04/01/2025
+ms.date: 03/23/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -285,6 +285,9 @@ Altitude is calculated differently on each platform.
 
 On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location doesn't have an altitude, `0.0` is returned.
 
+> [!NOTE]
+> Some Android devices without a barometric sensor return `0.0` for <xref:Microsoft.Maui.Devices.Sensors.Location.Altitude> when no altitude data is available. This is indistinguishable from actual sea-level elevation. Treat `0.0` as an unknown value rather than sea level, and validate `location.Altitude != 0` before using altitude data in your app.
+
 The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property is only used by iOS and returns `false` on all other platforms.
 
 # [iOS/Mac Catalyst](#tab/macios)
@@ -294,6 +297,9 @@ On iOS, [altitude](https://developer.apple.com/documentation/corelocation/clloca
 Starting with iOS 14, the user may restrict your app from detecting a location with full accuracy. The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property indicates whether or not the location is using reduced accuracy. To request full accuracy, set the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property to `true`:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_request_full":::
+
+> [!NOTE]
+> When a user grants "approximate" location, <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> is `true` and <xref:Microsoft.Maui.Devices.Sensors.Location.Accuracy> values may exceed 100 meters. Nothing fails — the location data is silently imprecise. Apps that require precise location (such as turn-by-turn navigation or delivery tracking) should check `ReducedAccuracy` and prompt for full accuracy when needed. For the `RequestFullAccuracy` prompt to appear, `NSLocationTemporaryUsageDescriptionDictionary` must be configured in your **Info.plist** — see [Full accuracy location permission](#full-accuracy-location-permission) in the setup section above.
 
 # [Windows](#tab/windows)
 

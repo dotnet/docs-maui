@@ -1,7 +1,7 @@
 ---
 title: "ImageButton"
 description: "The ImageButton displays an image and responds to a tap or click that directs an app to carry out a task."
-ms.date: 08/30/2024
+ms.date: 03/08/2026
 ---
 
 # ImageButton
@@ -49,6 +49,7 @@ The following XAML example shows how to create an <xref:Microsoft.Maui.Controls.
              Title="ImageButton Demo">
     <StackLayout>
        <ImageButton Source="image.png"
+                    SemanticProperties.Description="Click to increment counter"
                     Clicked="OnImageButtonClicked"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
@@ -93,6 +94,7 @@ ImageButton imageButton = new ImageButton
     HorizontalOptions = LayoutOptions.Center,
     VerticalOptions = LayoutOptions.Center
 };
+SemanticProperties.SetDescription(imageButton, "Click to increment counter");
 imageButton.Clicked += (s, e) =>
 {
   clickTotal += 1;
@@ -126,6 +128,7 @@ The following XAML example shows how to define a visual state for the `Pressed` 
 
 ```xaml
  <ImageButton Source="image.png"
+              SemanticProperties.Description="Image button"
               ...>
      <VisualStateManager.VisualStateGroups>
          <VisualStateGroupList>
