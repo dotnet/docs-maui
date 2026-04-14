@@ -8,10 +8,9 @@ ms.date: 04/02/2026
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve product quality. For information about what's new in each .NET MAUI in .NET 11 release, see the following release notes:
 
-<!-- markdownlint-disable-next-line MD042 -->
-- [.NET MAUI in .NET 11 Preview 1]()
-<!-- markdownlint-disable-next-line MD042 -->
-- [.NET MAUI in .NET 11 Preview 3]()
+- [.NET MAUI in .NET 11 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview1/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
