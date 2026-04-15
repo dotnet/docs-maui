@@ -313,3 +313,30 @@ When using state triggers to control visual states, .NET MAUI uses the following
 If multiple triggers are simultaneously active (for example, two custom triggers) then the first trigger declared in the markup takes precedence.
 
 For more information about state triggers, see [State triggers](~/fundamentals/triggers.md#state-triggers).
+
+::: moniker range=">=net-maui-11.0"
+
+## Invalidate and reapply visual states
+
+When you modify the setter values inside a <xref:Microsoft.Maui.Controls.VisualState> at runtime, the affected control doesn't automatically reflect the changes. The <xref:Microsoft.Maui.Controls.VisualStateManager.InvalidateVisualStates(Microsoft.Maui.Controls.VisualElement)> method forces a <xref:Microsoft.Maui.Controls.VisualElement> to unapply and then reapply the setters for the current state across all visual state groups, which causes the updated values to take effect.
+
+The following example modifies a visual state's setter value and then calls `InvalidateVisualStates` to refresh the control:
+
+```csharp
+// Locate the "Pressed" visual state defined on the button.
+var groups = VisualStateManager.GetVisualStateGroups(myButton);
+var pressedState = groups
+    .SelectMany(g => g.States)
+    .First(s => s.Name == "Pressed");
+
+// Modify a setter value in-place.
+pressedState.Setters[0].Value = Colors.Orange;
+
+// Force the control to reapply the current state's setters.
+VisualStateManager.InvalidateVisualStates(myButton);
+```
+
+> [!NOTE]
+> `InvalidateVisualStates` is a caller-driven API — .NET MAUI does not automatically detect when visual state setter values change. You must call this method on each element that should reflect the updated visual state.
+
+::: moniker-end
