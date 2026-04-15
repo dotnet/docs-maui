@@ -14,6 +14,8 @@ There are many techniques for increasing the performance, and perceived performa
 
 When it builds your app, .NET MAUI can use a linker called *ILLink* to reduce the overall size of the app with a technique known as trimming. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app. For more information, see [Trim a .NET MAUI app](trimming.md).
 
+UI testing verifies that your app's user interface behaves correctly by automating interactions such as tapping buttons, entering text, and navigating between pages. Appium is an open-source framework that automates UI testing across Android, iOS, Windows, and Mac Catalyst. For more information, see [UI testing with Appium](ui-testing.md).
+
 ## Android
 
 You can debug and test your apps on the Android emulator, which can be run in a variety of configurations to simulate different devices. Each configuration is called a *virtual device*. When you deploy and test your apps on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. For more information, see [Debug on the Android Emulator](~/android/emulator/debug-on-emulator.md).
