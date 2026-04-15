@@ -21,7 +21,7 @@ UI testing verifies that your app's user interface behaves correctly by automati
 > What you can test depends on your development machine. On **Windows**, you can test Android and Windows apps. On **macOS**, you can test Android, iOS, and Mac Catalyst apps.
 
 > [!TIP]
-> For a complete working sample, see the [Basic Appium NUnit Sample](https://github.com/dotnet/maui-samples/tree/main/9.0/UITesting/BasicAppiumNunitSample) on GitHub. The sample targets .NET 9, but the same Appium testing pattern applies to later .NET MAUI versions.
+> For a complete working sample, see the [Basic Appium NUnit Sample (.NET 9)](https://github.com/dotnet/maui-samples/tree/main/9.0/UITesting/BasicAppiumNunitSample) or [Basic Appium NUnit Sample (.NET 10)](https://github.com/dotnet/maui-samples/tree/main/10.0/UITesting/BasicAppiumNunitSample) on GitHub.
 
 ## Prerequisites
 
