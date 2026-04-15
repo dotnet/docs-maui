@@ -21,7 +21,7 @@ UI testing verifies that your app's user interface behaves correctly by automati
 > What you can test depends on your development machine. On **Windows**, you can test Android and Windows apps. On **macOS**, you can test Android, iOS, and Mac Catalyst apps.
 
 > [!TIP]
-> For a complete working sample, see the [Basic Appium NUnit Sample (.NET 9)](https://github.com/dotnet/maui-samples/tree/main/9.0/UITesting/BasicAppiumNunitSample) or [Basic Appium NUnit Sample (.NET 10)](https://github.com/dotnet/maui-samples/tree/main/10.0/UITesting/BasicAppiumNunitSample) on GitHub.
+> For a complete working sample, see the [Basic Appium NUnit Sample](https://github.com/dotnet/maui-samples/tree/main/10.0/UITesting/BasicAppiumNunitSample) on GitHub.
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ Make sure the value in the `Register` attribute matches the `ApplicationId` in y
 
 ## Create the test projects
 
-A proven project structure uses separate test projects per platform, with shared test code in a [NoTargets project](https://github.com/microsoft/MSBuildSdks/blob/main/src/NoTargets/). This is the same pattern used in the [official sample](https://github.com/dotnet/maui-samples/tree/main/9.0/UITesting/BasicAppiumNunitSample) and the .NET MAUI codebase itself:
+A proven project structure uses separate test projects per platform, with shared test code in a [NoTargets project](https://github.com/microsoft/MSBuildSdks/blob/main/src/NoTargets/). This is the same pattern used in the [official sample](https://github.com/dotnet/maui-samples/tree/main/10.0/UITesting/BasicAppiumNunitSample) and the .NET MAUI codebase itself:
 
 ```
 MySolution/
@@ -362,7 +362,7 @@ public class AppiumSetup
         {
             AutomationName = "mac2",
             PlatformName = "Mac",
-            App = "/path/to/MyApp/bin/Debug/net9.0-maccatalyst/maccatalyst-x64/MyApp.app",
+            App = "/path/to/MyApp/bin/Debug/net10.0-maccatalyst/maccatalyst-x64/MyApp.app",
         };
 
         macOptions.AddAdditionalAppiumOption(
