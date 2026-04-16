@@ -1320,6 +1320,8 @@
           href: deployment/trimming.md
         - name: Unit testing
           href: deployment/unit-testing.md
+        - name: UI testing with Appium
+          href: deployment/ui-testing.md
     - name: Developer tools
       items:
         - name: Overview
