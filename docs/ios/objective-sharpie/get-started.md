@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With Objective Sharpie"
 description: "This document provides a high-level overview of Objective Sharpie, the tool used to automate the creation of .NET bindings to Objective-C code."
-ms.date: 02/11/2026
+ms.date: 04/17/2026
 ---
 
 # Getting Started With Objective Sharpie
@@ -23,8 +23,17 @@ Objective Sharpie is a .NET command line tool for macOS (arm64 only). Install it
 dotnet tool install -g Sharpie.Bind.Tool
 ```
 
+> [!IMPORTANT]
+> Before running Objective Sharpie, install the .NET workload for the Apple platform you're targeting. Objective Sharpie uses the workload to locate the platform assemblies it needs for binding. For example:
+>
+> ```bash
+> dotnet workload install ios
+> ```
+>
+> Use the corresponding workload ID for your target (`ios`, `maccatalyst`, `tvos`, or `macos`). If Sharpie reports `NETSDK1147`, install the missing workload and then rerun the command.
+
 > [!TIP]
-> Use the `dotnet tool update -g dotnet-sharpie` command to update to the latest version.
+> Use the `dotnet tool update -g Sharpie.Bind.Tool` command to update to the latest version.
 
 ## Basic Walkthrough
 

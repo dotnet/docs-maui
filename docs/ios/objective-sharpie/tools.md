@@ -1,7 +1,7 @@
 ---
 title: "Objective Sharpie Tools &amp; Commands"
 description: "This document provides an overview of the tools included with Objective Sharpie and the command-line arguments to use with them."
-ms.date: 02/11/2026
+ms.date: 04/17/2026
 ---
 
 # Objective Sharpie Tools & Commands
@@ -11,6 +11,8 @@ _Overview of the tools included with Objective Sharpie, and the command line arg
 Once Objective Sharpie is successfully [installed](~/ios/objective-sharpie/get-started.md),
 open a terminal and familiarize yourself with the *commands*
 Objective Sharpie has to offer:
+
+Before using `bind` or `sdk-db`, make sure that you've also installed the .NET workload for the Apple platform you're targeting, such as `dotnet workload install ios` or `dotnet workload install macos`.
 
 ```
 $ sharpie -help
@@ -90,6 +92,8 @@ Bindings generated successfully.
 ```
 
 If the framework doesn't include an `Info.plist` with SDK information, add `-sdk` explicitly (for example, `-sdk macosx` or `-sdk iphoneos`).
+
+If Sharpie reports `NETSDK1147` while computing platform assemblies, install the missing Apple workload for the target platform and rerun the command.
 
 For a complete framework binding walkthrough, see [Binding Native Frameworks](~/ios/objective-sharpie/platform/native-frameworks.md).
 
