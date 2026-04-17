@@ -1,7 +1,7 @@
 ---
 title: "Binding Native Frameworks"
 description: "This document describes how to use Objective Sharpie to create a binding to a library distributed as a framework."
-ms.date: 02/11/2026
+ms.date: 04/17/2026
 ---
 
 # Binding Native Frameworks
@@ -32,6 +32,9 @@ The `Sparkle.h` file is the umbrella header — it `#import`s all the other publ
 ### 2. Run Objective Sharpie
 
 Pass the `.framework` directory to `sharpie bind` with `-f`:
+
+> [!IMPORTANT]
+> Install the .NET workload for the platform that the framework targets before running `sharpie bind`. For this macOS example, run `dotnet workload install macos`. For an iOS framework, install the `ios` workload instead.
 
 ```bash
 $ sharpie bind \
