@@ -976,7 +976,25 @@
                 - name: Entitlements
                   href: ios/entitlements.md
             - name: Creating Bindings with Objective Sharpie
-              href: ios/objective-sharpie/index.md
+              items:
+                - name: Overview
+                  href: ios/objective-sharpie/index.md
+                - name: Getting started
+                  href: ios/objective-sharpie/get-started.md
+                - name: Tools and commands
+                  href: ios/objective-sharpie/tools.md
+                - name: Features
+                  items:
+                    - name: Overview
+                      href: ios/objective-sharpie/platform/index.md
+                    - name: ApiDefinition.cs and StructsAndEnums.cs
+                      href: ios/objective-sharpie/platform/api-definition-structs-enums.md
+                    - name: Native frameworks
+                      href: ios/objective-sharpie/platform/native-frameworks.md
+                    - name: Verify attributes
+                      href: ios/objective-sharpie/platform/verify.md
+                - name: Examples
+                  href: ios/objective-sharpie/examples/index.md
             - name: Information property list
               href: macios/info-plist.md
             - name: Linking
