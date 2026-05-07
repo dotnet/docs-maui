@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI CLI overview"
 description: "Learn about the .NET MAUI CLI, a command-line tool for environment setup, device management, and app automation."
-ms.date: 04/03/2026
+ms.date: 05/07/2026
 ---
 
 # .NET MAUI CLI overview
@@ -56,6 +56,8 @@ The following table lists the available `maui` CLI commands:
 | `maui android emulator start` | Start an Android emulator |
 | `maui android emulator stop` | Stop a running emulator |
 | `maui android emulator delete` | Delete an emulator |
+| `maui profile startup` | Profile app startup by capturing a trace from launch |
+| `maui profile manual` | Launch the app and attach `dotnet-trace` on demand |
 | `maui devflow` | DevFlow app automation and debugging |
 | `maui devflow MAUI tree` | Dump the visual tree of a running MAUI app |
 | `maui devflow MAUI screenshot` | Take a screenshot of a running MAUI app |
@@ -68,6 +70,7 @@ For more information, see:
 - [Environment diagnostics](environment-diagnostics.md)
 - [Android SDK &amp; emulator management](android-management.md)
 - [Device management](device-management.md)
+- [App profiling](profile.md)
 - [DevFlow overview](../devflow/index.md)
 
 ## Global options
@@ -108,4 +111,5 @@ maui doctor --json
 - [Environment diagnostics](environment-diagnostics.md)
 - [Android SDK &amp; emulator management](android-management.md)
 - [Device management](device-management.md)
+- [App profiling](profile.md)
 - [DevFlow overview](../devflow/index.md)

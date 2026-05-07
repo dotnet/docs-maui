@@ -1354,6 +1354,8 @@
               href: developer-tools/cli/android-management.md
             - name: Device management
               href: developer-tools/cli/device-management.md
+            - name: App profiling
+              href: developer-tools/cli/profile.md
         - name: DevFlow
           items:
             - name: Overview
