@@ -206,6 +206,7 @@ maui apple simulator erase "My Test iPhone" --json
 
 > [!NOTE]
 > The simulator must be in `Shutdown` state before erasing. If it is booted, stop it first:
+>
 > ```bash
 > maui apple simulator stop (name-or-udid)
 > ```
