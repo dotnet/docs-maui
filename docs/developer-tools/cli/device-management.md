@@ -23,7 +23,7 @@ The output includes:
 
 - Physical Android devices connected via USB or Wi-Fi.
 - Running Android emulators.
-- iOS simulators (macOS).
+- Apple simulators, including booted and available devices (macOS).
 - Connected iOS devices (macOS).
 
 Each entry shows the device name, platform, identifier, and connection status.
