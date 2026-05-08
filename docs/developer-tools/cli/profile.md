@@ -99,7 +99,7 @@ maui profile manual [options]
 ### Options
 
 | Option | Description | Default |
-|--------|-------------|---------| 
+|--------|-------------|---------|
 | `--project` | Path to `.csproj` or containing directory | Current directory |
 | `--framework`, `-f` | Target framework (e.g. `net10.0-android`, `net10.0-ios`) | Inferred from project |
 | `--device`, `-d` | Device or simulator identifier | Only available device |
