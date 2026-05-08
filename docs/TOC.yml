@@ -1374,6 +1374,12 @@
               href: developer-tools/devflow/mcp-server.md
             - name: File storage access
               href: developer-tools/devflow/storage.md
+            - name: MCP tools reference
+              href: developer-tools/devflow/mcp-tools.md
+            - name: Agent HTTP API reference
+              href: developer-tools/devflow/agent-api.md
+            - name: AgentClient API reference
+              href: developer-tools/devflow/agent-client.md
             - name: Network monitoring and profiling
               href: developer-tools/devflow/network-profiling.md
             - name: Broker architecture
