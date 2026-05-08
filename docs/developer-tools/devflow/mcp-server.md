@@ -1,7 +1,7 @@
 ---
 title: "MCP server for AI agents"
 description: "Learn how DevFlow exposes a Model Context Protocol (MCP) server with 50+ tools for AI agent integration with running .NET MAUI apps."
-ms.date: 04/03/2026
+ms.date: 05/08/2026
 ---
 
 # MCP server for AI agents
@@ -41,6 +41,7 @@ The MCP server exposes tools organized into the following categories:
 | Platform | Platform and device information |
 | Preferences | App preferences read/write |
 | Property | Element property inspection and mutation |
+| Storage | File storage root discovery and sandboxed file management |
 | Query | CSS selector-based element queries |
 | Recording | Interaction recording |
 | Screenshot | App screenshot capture |
@@ -76,8 +77,62 @@ An AI agent connected to the DevFlow MCP server can perform end-to-end automatio
 
 All of these steps are performed through MCP tool calls, enabling fully automated AI-driven testing and debugging.
 
+## Storage tools
+
+The following tools enable AI agents to inspect and manage sandboxed app files on device or simulator.
+
+| Tool | Purpose |
+|------|---------|
+| `maui_storage_roots` | List file storage roots advertised by the app. Call this before specifying a non-default root. |
+| `maui_files_list` | List files and directories under an advertised app storage root. Optionally specify a subdirectory path. |
+| `maui_files_download` | Download a file from an advertised app storage root. Returns the file content as base64. |
+| `maui_files_upload` | Upload a file to an advertised app storage root. Content must be base64-encoded. Parent directories are created automatically. |
+| `maui_files_delete` | Delete a file from an advertised app storage root. |
+
+### Tool parameters
+
+**`maui_storage_roots`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `agentPort` | `int?` | Agent HTTP port (optional if only one agent connected) |
+
+**`maui_files_list`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `path` | `string?` | Subdirectory path relative to the selected storage root (optional, lists root if omitted) |
+| `root` | `string?` | Storage root id (default: `appData`; call `maui_storage_roots` to discover supported roots) |
+| `agentPort` | `int?` | Agent HTTP port (optional if only one agent connected) |
+
+**`maui_files_download`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `path` | `string` | File path relative to the selected storage root |
+| `root` | `string?` | Storage root id (default: `appData`) |
+| `agentPort` | `int?` | Agent HTTP port (optional if only one agent connected) |
+
+**`maui_files_upload`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `path` | `string` | File path relative to the selected storage root |
+| `contentBase64` | `string` | File content encoded as base64 |
+| `root` | `string?` | Storage root id (default: `appData`) |
+| `agentPort` | `int?` | Agent HTTP port (optional if only one agent connected) |
+
+**`maui_files_delete`**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `path` | `string` | File path relative to the selected storage root |
+| `root` | `string?` | Storage root id (default: `appData`) |
+| `agentPort` | `int?` | Agent HTTP port (optional if only one agent connected) |
+
 ## See also
 
 - [DevFlow overview](index.md)
 - [Visual tree inspection and screenshots](visual-tree-screenshots.md)
 - [Element interaction and automation](element-interaction.md)
+- [File storage access](storage.md)
