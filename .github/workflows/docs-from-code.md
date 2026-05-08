@@ -7,7 +7,13 @@ description: |
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue number to process"
+        required: true
+        type: string
 
 if: >-
   startsWith(github.event.issue.title, '[maui-labs docs]')
@@ -46,14 +52,15 @@ Read a `[maui-labs docs]` issue and create a draft PR with the documentation cha
 
 ## Context
 
-- **Issue Number**: `${{ github.event.issue.number }}`
-- **Issue Title**: `${{ github.event.issue.title }}`
+- **Issue Number**: `${{ github.event.issue.number || github.event.inputs.issue_number }}`
 - **Repository**: `dotnet/docs-maui`
 
 ## Step 1: Read the Issue
 
-Read the full issue body for issue #`${{ github.event.issue.number }}`. The issue
-was created by an automated workflow on `dotnet/maui-labs` and contains:
+Read the full issue body for issue #`${{ github.event.issue.number || github.event.inputs.issue_number }}`.
+If triggered via `workflow_dispatch`, use the `issue_number` input.
+
+The issue was created by an automated workflow on `dotnet/maui-labs` and contains:
 
 - **Source PR** — link to the maui-labs PR that triggered this
 - **Summary of Changes** — what user-facing changes were made
