@@ -1,7 +1,7 @@
 ---
 title: "Apple platform management"
 description: "Learn how to use the .NET MAUI CLI to manage Xcode installations, simulator runtimes, and iOS simulators for .NET MAUI development."
-ms.date: 04/13/2026
+ms.date: 05/08/2026
 ---
 
 # Apple platform management
@@ -112,6 +112,111 @@ Permanently remove a simulator and its associated data:
 ```dotnetcli
 maui apple simulator delete "iPhone 17 Pro"
 ```
+
+### Create a simulator
+
+Creates a new simulator device from a device-type identifier.
+
+**macOS only.**
+
+```dotnetcli
+maui apple simulator create (device-type) [--name (name)] [--runtime (runtime)] [--if-not-exists] [--json]
+```
+
+| Argument / Option | Required | Description |
+|---|---|---|
+| `(device-type)` | ✅ | Device type identifier, e.g. `com.apple.CoreSimulator.SimDeviceType.iPhone-15` |
+| `--name` | ❌ | Custom display name for the simulator. Defaults to a name derived from `(device-type)`. |
+| `--runtime` | ❌ | Runtime identifier, e.g. `com.apple.CoreSimulator.SimRuntime.iOS-17-2`. When specified, the derived default name includes the runtime version. |
+| `--if-not-exists` | ❌ | If a simulator with the same name already exists, return its UDID instead of failing. Useful for idempotent scripting. |
+| `--json` | ❌ | Emit machine-readable JSON output. |
+
+**Examples:**
+
+```bash
+# Create an iPhone 15 simulator with a generated name
+maui apple simulator create com.apple.CoreSimulator.SimDeviceType.iPhone-15
+
+# Create with a custom name and a specific runtime
+maui apple simulator create com.apple.CoreSimulator.SimDeviceType.iPhone-15 \
+  --name "My Test iPhone" \
+  --runtime com.apple.CoreSimulator.SimRuntime.iOS-17-2
+
+# Idempotent create (returns existing UDID if name already exists)
+maui apple simulator create com.apple.CoreSimulator.SimDeviceType.iPhone-15 \
+  --name "CI iPhone" --if-not-exists --json
+```
+
+**JSON output (`--json`):**
+
+```json
+{
+  "udid": "AABBCCDD-1234-5678-ABCD-000000000001",
+  "name": "My Test iPhone",
+  "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-15",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-17-2"
+}
+```
+
+`runtime` is omitted from the JSON when not specified.
+
+**Error codes:**
+
+| Code | Meaning |
+|---|---|
+| `E2207` | Simulator creation failed |
+| `E2204` | A named simulator already exists and `--if-not-exists` was not specified |
+
+### Erase a simulator
+
+Erases (resets) a simulator device to factory state. The simulator must be shut down before erasing.
+
+**macOS only.**
+
+```dotnetcli
+maui apple simulator erase (name-or-udid) [--json]
+```
+
+| Argument / Option | Required | Description |
+|---|---|---|
+| `(name-or-udid)` | ✅ | Simulator name or UDID |
+| `--json` | ❌ | Emit machine-readable JSON output |
+
+**Examples:**
+
+```bash
+# Erase by name
+maui apple simulator erase "My Test iPhone"
+
+# Erase by UDID
+maui apple simulator erase AABBCCDD-1234-5678-ABCD-000000000001
+
+# Erase and confirm in JSON
+maui apple simulator erase "My Test iPhone" --json
+```
+
+**JSON output (`--json`):**
+
+```json
+{
+  "target": "My Test iPhone",
+  "erased": true
+}
+```
+
+> [!NOTE]
+> The simulator must be in `Shutdown` state before erasing. If it is booted, stop it first:
+>
+> ```bash
+> maui apple simulator stop (name-or-udid)
+> ```
+
+**Error codes:**
+
+| Code | Meaning |
+|---|---|
+| `E2208` | Erase failed (check simulator state) |
+| `E2204` | Simulator not found |
 
 ## Use in CI pipelines
 
