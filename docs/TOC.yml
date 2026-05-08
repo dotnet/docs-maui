@@ -1372,6 +1372,8 @@
               href: developer-tools/devflow/blazor-cdp.md
             - name: MCP server for AI agents
               href: developer-tools/devflow/mcp-server.md
+            - name: File storage access
+              href: developer-tools/devflow/storage.md
             - name: Network monitoring and profiling
               href: developer-tools/devflow/network-profiling.md
             - name: Broker architecture
