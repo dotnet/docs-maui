@@ -25,6 +25,7 @@ The command checks for the following components and their configurations:
 - Android SDK packages and platform tools
 - Java Development Kit (JDK) version and configuration
 - Xcode version and command-line tools (macOS)
+- Apple simulator runtimes and availability (macOS)
 - Visual Studio installation and required components
 - Environment variables and path configuration
 

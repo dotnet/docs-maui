@@ -197,6 +197,8 @@
           items:
             - name: Drag and drop
               href: fundamentals/gestures/drag-and-drop.md
+            - name: Long press
+              href: fundamentals/gestures/long-press.md
             - name: Pan
               href: fundamentals/gestures/pan.md
             - name: Pinch
@@ -1352,6 +1354,8 @@
               href: developer-tools/cli/environment-diagnostics.md
             - name: Android SDK & emulator management
               href: developer-tools/cli/android-management.md
+            - name: Apple platform management
+              href: developer-tools/cli/apple-management.md
             - name: Device management
               href: developer-tools/cli/device-management.md
         - name: DevFlow
