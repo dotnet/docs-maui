@@ -135,6 +135,26 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 :::moniker-end
 
+### BoxView Fill property
+
+:::moniker range=">=net-maui-11.0"
+
+<xref:Microsoft.Maui.Controls.BoxView> now exposes a `Fill` bindable property of type <xref:Microsoft.Maui.Controls.Brush>, allowing it to be painted with any brush (including <xref:Microsoft.Maui.Controls.LinearGradientBrush> and <xref:Microsoft.Maui.Controls.RadialGradientBrush>) instead of just a solid color. When both `Fill` and `Color` are set, `Fill` takes priority; setting `Fill` back to `null` causes the <xref:Microsoft.Maui.Controls.BoxView> to render using `Color` again. For more information, see [Fill a BoxView with a brush](~/user-interface/controls/boxview.md#fill-a-boxview-with-a-brush) and [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
+
+```xaml
+<BoxView WidthRequest="160"
+         HeightRequest="160">
+    <BoxView.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="CornflowerBlue" Offset="0.0" />
+            <GradientStop Color="DarkBlue" Offset="1.0" />
+        </LinearGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+:::moniker-end
+
 ### LongPressGestureRecognizer
 
 :::moniker range=">=net-maui-11.0"
