@@ -1,7 +1,7 @@
 ---
 title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add an app icon to a .NET MAUI app project. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
-ms.date: 08/30/2024
+ms.date: 05/12/2026
 no-loc: ["MauiIcon"]
 ---
 
@@ -187,6 +187,28 @@ Adaptive launcher icons are composed icons, using a background layer and a foreg
 ```
 
 The `ForegroundScale` attribute can be optionally specified to rescale the foreground image so that it fits on the app icon. It's a percentage value so 0.65 will be translated as 65%.
+
+:::moniker range=">=net-maui-11.0"
+
+#### Themed icon monochrome layer
+
+On Android 13 and higher, the system can render a themed app icon that uses a single monochrome glyph tinted with colors derived from the user's wallpaper. By default, .NET MAUI uses the `ForegroundFile` image as the monochrome layer. To use a different glyph for the themed icon, specify the `MonochromeFile` attribute on the `<MauiIcon>` item:
+
+```xml
+<ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg"
+              ForegroundFile="Resources\AppIcon\appiconfg.svg"
+              MonochromeFile="Resources\AppIcon\appiconmono.svg"
+              ForegroundScale="0.65"
+              Color="#512BD4" />
+</ItemGroup>
+```
+
+The `MonochromeFile` image should be a single-color glyph designed to read clearly when tinted by the system. The image is included in the generated adaptive icon as the `<monochrome>` layer of the `adaptive-icon` drawable. If `MonochromeFile` isn't specified, the foreground image continues to be used as the monochrome source.
+
+For more information about themed icons on Android, see [Adaptive icons](https://developer.android.com/develop/ui/views/launch/icon_design_adaptive) and [Support themed app icons](https://developer.android.com/about/versions/13/features#themed-app-icons) on developer.android.com.
+
+:::moniker-end
 
 # [iOS/Mac Catalyst](#tab/macios)
 
