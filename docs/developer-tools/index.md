@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI developer tools overview"
 description: "Learn about developer tools for improving your productivity using .NET MAUI, including the .NET MAUI CLI and DevFlow toolkit."
-ms.date: 05/07/2026
+ms.date: 05/08/2026
 ---
 
 # .NET MAUI developer tools overview
@@ -24,6 +24,7 @@ Key capabilities include:
 - **`maui doctor`** &ndash; Diagnose and repair your .NET MAUI development environment.
 - **Device listing** &ndash; Enumerate connected physical devices and running emulators/simulators.
 - **Android SDK management** &ndash; Install and manage Android SDKs, JDKs, and emulator images.
+- **App profiling** &ndash; Capture performance traces with `maui profile startup` (full startup trace) or `maui profile manual` (on-demand trace at any point in the app lifecycle).
 - **DevFlow integration** &ndash; Launch and coordinate DevFlow sessions from the command line.
 
 For more information, see [.NET MAUI CLI overview](cli/index.md).
@@ -62,6 +63,7 @@ The following table lists the packages available from the dotnet/maui-labs repos
 | Package | Description |
 |---|---|
 | `Microsoft.Maui.Cli` | CLI global tool (`maui`) |
+| `Microsoft.Maui.ProfilingHelper` | Profiling helper and marker for .NET MAUI apps |
 | `Microsoft.Maui.DevFlow.Agent` | In-app agent for .NET MAUI automation |
 | `Microsoft.Maui.DevFlow.Agent.Core` | Platform-agnostic agent core |
 | `Microsoft.Maui.DevFlow.Agent.Gtk` | GTK/Linux agent |

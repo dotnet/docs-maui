@@ -1,7 +1,7 @@
 ---
 title: "DevFlow overview"
 description: "Learn about DevFlow, a testing, automation, and debugging toolkit for .NET MAUI applications that provides visual tree inspection, a CLI, Blazor WebView debugging, and AI agent integration."
-ms.date: 04/03/2026
+ms.date: 05/08/2026
 ---
 
 # DevFlow overview
@@ -86,6 +86,7 @@ maui devflow mcp
 - [Blazor WebView debugging](blazor-cdp.md) — Chrome DevTools Protocol bridge for Blazor Hybrid content
 - [MCP server for AI agents](mcp-server.md) — 15 tool categories for AI agent integration
 - [Network monitoring and profiling](network-profiling.md) — HTTP interception, CPU/memory/GC profiling, jank detection
+- [File storage access](storage.md) — discover file storage roots and manage sandboxed app files remotely
 - [Broker architecture](broker.md) — multi-app port assignment and agent discovery
 
 ## Packages
