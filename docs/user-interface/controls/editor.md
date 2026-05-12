@@ -1,7 +1,7 @@
 ---
 title: "Editor"
 description: "The .NET MAUI Editor allows you to enter and edit multiple lines of text."
-ms.date: 05/13/2025
+ms.date: 05/12/2026
 ---
 
 # Editor
@@ -17,6 +17,12 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Editor> with the return key.
+
+:::moniker range=">=net-maui-11.0"
+
+<xref:Microsoft.Maui.Controls.Editor> also defines `ReturnCommand` and `ReturnCommandParameter` properties, both of which are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, is executed whenever the `Completed` event is raised. `ReturnCommandParameter`, of type `object`, is passed to `ReturnCommand` when it's executed. This lets you bind a view model command directly to the editor's completion gesture without subscribing to the `Completed` event in code-behind.
+
+:::moniker-end
 
 <xref:Microsoft.Maui.Controls.Editor> derives from the <xref:Microsoft.Maui.Controls.InputView> class, from which it inherits the following properties:
 
@@ -113,6 +119,18 @@ void OnEditorCompleted(object sender, EventArgs e)
    string text = ((Editor)sender).Text;
 }
 ```
+
+:::moniker range=">=net-maui-11.0"
+
+Alternatively, you can bind a command to the editor's completion gesture by setting `ReturnCommand` and, optionally, `ReturnCommandParameter`. The command is invoked whenever the `Completed` event is raised:
+
+```xaml
+<Editor Text="{Binding Note}"
+        ReturnCommand="{Binding SaveNoteCommand}"
+        ReturnCommandParameter="{Binding Note}" />
+```
+
+:::moniker-end
 
 ## Set character spacing
 
