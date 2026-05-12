@@ -44,6 +44,18 @@ Key capabilities include:
 
 For more information, see [DevFlow overview](devflow/index.md).
 
+## Platform backends
+
+Experimental .NET MAUI backends for **macOS** (AppKit), **Linux** (GTK4), and **Windows** (WPF) enable running your .NET MAUI apps on platforms beyond the standard iOS, Android, Mac Catalyst, and WinUI targets.
+
+Key capabilities include:
+
+- **`dotnet new` templates** &ndash; Scaffold a new project for each platform with a single command.
+- **Native rendering** &ndash; Each backend maps MAUI controls to real native widgets on the target platform.
+- **Essentials** &ndash; Platform-specific implementations of MAUI Essentials services.
+
+For more information, see [Platform backends overview](platform-backends/index.md).
+
 ## Packages
 
 The following table lists the packages available from the dotnet/maui-labs repository:
@@ -59,6 +71,12 @@ The following table lists the packages available from the dotnet/maui-labs repos
 | `Microsoft.Maui.DevFlow.Blazor.Gtk` | WebKitGTK CDP bridge |
 | `Microsoft.Maui.DevFlow.Driver` | Platform driver library |
 | `Microsoft.Maui.DevFlow.Logging` | Buffered JSONL file logger |
+| `Microsoft.Maui.Platforms.MacOS` | macOS AppKit backend |
+| `Microsoft.Maui.Platforms.MacOS.Templates` | `dotnet new` template for macOS (`maui-macos`) |
+| `Microsoft.Maui.Platforms.Linux.Gtk4` | Linux GTK4 backend |
+| `Microsoft.Maui.Platforms.Linux.Gtk4.Templates` | `dotnet new` template for Linux (`maui-linux-gtk4`) |
+| `Microsoft.Maui.Platforms.Windows.WPF` | Windows WPF backend |
+| `Microsoft.Maui.Platforms.Windows.WPF.Templates` | `dotnet new` template for WPF (`maui-wpf`) |
 
 ## Source code
 

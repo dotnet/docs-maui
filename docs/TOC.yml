@@ -1392,6 +1392,16 @@
                   href: developer-tools/devflow/setup-apple.md
                 - name: Windows
                   href: developer-tools/devflow/setup-windows.md
+        - name: Platform backends
+          items:
+            - name: Overview
+              href: developer-tools/platform-backends/index.md
+            - name: macOS AppKit
+              href: developer-tools/platform-backends/macos.md
+            - name: Linux GTK4
+              href: developer-tools/platform-backends/linux-gtk4.md
+            - name: Windows WPF
+              href: developer-tools/platform-backends/windows-wpf.md
     - name: Enterprise application patterns
       items:
         - name: Overview
