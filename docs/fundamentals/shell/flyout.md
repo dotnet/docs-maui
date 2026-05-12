@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell flyout"
 description: "Learn how to customize and control a .NET MAUI flyout, which is the optional root menu for a .NET MAUI Shell app."
-ms.date: 11/28/2025
+ms.date: 05/12/2026
 ---
 
 # .NET MAUI Shell flyout
@@ -770,6 +770,44 @@ The following example shows hiding an item in the flyout:
 
 > [!NOTE]
 > There's also a `Shell.FlyoutItemIsVisible` attached property, which can be set on <xref:Microsoft.Maui.Controls.FlyoutItem>,  <xref:Microsoft.Maui.Controls.MenuItem>, <xref:Microsoft.Maui.Controls.Tab>, and <xref:Microsoft.Maui.Controls.ShellContent> objects.
+
+:::moniker range=">=net-maui-11.0"
+
+## FlyoutItem badges
+
+A badge can be displayed on a flyout item to surface unread counts or status indicators. Badges are set on the Shell navigation item by using three bindable properties inherited from `BaseShellItem`:
+
+- `BadgeText`, of type `string`, is the text displayed on the badge. Set to a non-empty value to show a text or count badge, an empty string to show a dot indicator, or `null` (the default) to hide the badge.
+- `BadgeColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the background color of the badge. When `null`, the platform default is used.
+- `BadgeTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the foreground (text) color of the badge. When `null`, the platform default is used (typically white).
+
+The following example sets a numeric badge on a flyout item:
+
+```xaml
+<Shell ...>
+    <FlyoutItem Title="Inbox"
+                Icon="inbox.png"
+                BadgeText="3"
+                BadgeColor="Red"
+                BadgeTextColor="White">
+        <ShellContent ContentTemplate="{DataTemplate views:InboxPage}" />
+    </FlyoutItem>
+</Shell>
+```
+
+To bind the badge text to a view model, use a regular data binding:
+
+```xaml
+<FlyoutItem Title="Inbox"
+            Icon="inbox.png"
+            BadgeText="{Binding UnreadCount}">
+    <ShellContent ContentTemplate="{DataTemplate views:InboxPage}" />
+</FlyoutItem>
+```
+
+For more information on how badges are rendered on each platform, see [Tab badges](tabs.md#tab-badges).
+
+:::moniker-end
 
 ## Open and close the flyout programmatically
 
