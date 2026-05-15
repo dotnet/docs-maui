@@ -67,7 +67,7 @@ The following XAML example fills a <xref:Microsoft.Maui.Controls.BoxView> with a
 <BoxView Opacity="0.5"
          WidthRequest="200"
          HeightRequest="100"
-         HasShadow="true"
+         CornerRadius="60,20,20,60"
          HorizontalOptions="Center"
          VerticalOptions="Center">
     <BoxView.Fill>
@@ -84,13 +84,16 @@ The following XAML example fills a <xref:Microsoft.Maui.Controls.BoxView> with a
 </BoxView>
 ```
 
+In this example, the <xref:Microsoft.Maui.Controls.BoxView> is painted with a purple-to-red horizontal linear gradient:
+
+:::image type="content" source="media/boxview/boxview-linear-fill.png" alt-text="Screenshot of a BoxView painted with a linear gradient brush.":::
+
 Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
 
 ```xaml
 <BoxView Opacity="0.5"
          WidthRequest="200"
          HeightRequest="100"
-         HasShadow="true"
          HorizontalOptions="Center"
          VerticalOptions="Center">
     <BoxView.Fill>

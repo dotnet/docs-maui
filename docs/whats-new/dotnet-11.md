@@ -160,6 +160,26 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 :::image type="content" source="../user-interface/controls/media/boxview/boxview-linear-fill.png" alt-text="Screenshot of a BoxView painted with a linear gradient brush.":::
 
+Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
+
+```xaml
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HasShadow="true"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
+    <BoxView.Fill>
+        <RadialGradientBrush Center="0.5,0.5" Radius="0.5">
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Green" Offset="1.0" />
+        </RadialGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+:::image type="content" source="../user-interface/controls/media/boxview/boxview-radial-fill.png" alt-text="Screenshot of a BoxView painted with a radial gradient brush.":::
+
 :::moniker-end
 
 ### LongPressGestureRecognizer
