@@ -1150,7 +1150,7 @@ jobs:
     if: startsWith(github.event.issue.title, '[maui-labs docs]') && github.repository_owner == 'dotnet'
     runs-on: ubuntu-slim
     outputs:
-      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' }}
+      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' || github.actor == 'MauiBot' }}
       matched_command: ''
     steps:
       - name: Setup Scripts
