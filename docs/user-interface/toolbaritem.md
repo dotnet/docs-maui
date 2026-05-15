@@ -1,7 +1,7 @@
 ---
 title: "Display toolbar items"
 description: "Learn how to add toolbar items, which are a special type of button, to the app's navigation bar."
-ms.date: 08/18/2025
+ms.date: 05/12/2026
 ---
 
 # Display toolbar items
@@ -147,3 +147,43 @@ On iOS and Mac Catalyst, secondary items are shown in a pull‑down menu ordered
 > Keep labels short so they fit comfortably in the pull‑down. Avoid icons for `Secondary` items due to platform inconsistency.
 
 ::: moniker-end
+
+:::moniker range=">=net-maui-11.0"
+
+## Display a badge on a ToolbarItem
+
+A badge can be displayed on a <xref:Microsoft.Maui.Controls.ToolbarItem> to surface counts or status indicators. The `ToolbarItem` class defines three bindable properties for badge support:
+
+- `BadgeText`, of type `string`, is the text displayed on the badge. Set to a non-empty value to show a text or count badge, an empty string to show a dot indicator, or `null` (the default) to hide the badge.
+- `BadgeColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the background color of the badge. When `null`, the platform default is used.
+- `BadgeTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the foreground (text) color of the badge. When `null`, the platform default is used.
+
+The following example sets a numeric badge on a toolbar item:
+
+```xaml
+<ContentPage.ToolbarItems>
+    <ToolbarItem Text="Inbox"
+                 IconImageSource="inbox.png"
+                 BadgeText="3"
+                 BadgeColor="Red"
+                 BadgeTextColor="White" />
+</ContentPage.ToolbarItems>
+```
+
+To bind the badge text to a view model, use a regular data binding:
+
+```xaml
+<ToolbarItem Text="Inbox"
+             IconImageSource="inbox.png"
+             BadgeText="{Binding UnreadCount}" />
+```
+
+Badges are only displayed on primary toolbar items — items whose <xref:Microsoft.Maui.Controls.ToolbarItem.Order> is set to <xref:Microsoft.Maui.Controls.ToolbarItemOrder.Primary> or <xref:Microsoft.Maui.Controls.ToolbarItemOrder.Default>. Secondary (overflow) items don't display badges.
+
+Badge rendering varies by platform:
+
+- **Android** uses the Material Design `BadgeDrawable`. Numeric and text badges are supported. `BadgeTextColor` maps to `BadgeDrawable.BadgeTextColor`.
+- **iOS and Mac Catalyst** use `UIBarButtonItem.Badge`, which requires iOS 26 or higher. On earlier iOS versions, the badge is silently ignored. `BadgeTextColor` maps to `UIBarButtonItemBadge.ForegroundColor`.
+- **Windows** uses the WinUI `InfoBadge` overlaid on the toolbar button. Numeric values display as counts; non-numeric text and the empty string display as a dot indicator. `BadgeTextColor` maps to `InfoBadge.Foreground`.
+
+:::moniker-end
