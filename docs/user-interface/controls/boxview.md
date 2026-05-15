@@ -64,39 +64,50 @@ Starting in .NET 11, <xref:Microsoft.Maui.Controls.BoxView> exposes a `Fill` pro
 The following XAML example fills a <xref:Microsoft.Maui.Controls.BoxView> with a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
 ```xaml
-<BoxView CornerRadius="10"
-         WidthRequest="160"
-         HeightRequest="160"
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HasShadow="true"
          HorizontalOptions="Center"
          VerticalOptions="Center">
     <BoxView.Fill>
         <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="CornflowerBlue"
+                             EndPoint="1,0">
+            <GradientStop Color="Purple"
                           Offset="0.0" />
-            <GradientStop Color="DarkBlue"
+            <GradientStop Color="Orange"
+                          Offset="0.5" />
+            <GradientStop Color="Red"
                           Offset="1.0" />
         </LinearGradientBrush>
     </BoxView.Fill>
 </BoxView>
 ```
 
-A <xref:Microsoft.Maui.Controls.RadialGradientBrush> can be used in the same way:
+Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
 
 ```xaml
-<BoxView WidthRequest="160"
-         HeightRequest="160">
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HasShadow="true"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
     <BoxView.Fill>
         <RadialGradientBrush Center="0.5,0.5"
                              Radius="0.5">
-            <GradientStop Color="White"
+            <GradientStop Color="Yellow"
                           Offset="0.0" />
-            <GradientStop Color="CornflowerBlue"
+            <GradientStop Color="Green"
                           Offset="1.0" />
         </RadialGradientBrush>
     </BoxView.Fill>
 </BoxView>
 ```
+
+In this example, the <xref:Microsoft.Maui.Controls.BoxView> is painted with a yellow-to-green radial gradient:
+
+:::image type="content" source="media/boxview/boxview-radial-fill.png" alt-text="Screenshot of a BoxView painted with a radial gradient brush.":::
 
 The `Fill` property takes priority over the `Color` property. When both are set, the brush specified by `Fill` is used to paint the <xref:Microsoft.Maui.Controls.BoxView>. If `Fill` is later cleared by setting it to `null`, the <xref:Microsoft.Maui.Controls.BoxView> reverts to rendering with `Color`:
 

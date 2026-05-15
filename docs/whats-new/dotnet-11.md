@@ -142,16 +142,23 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 <xref:Microsoft.Maui.Controls.BoxView> now exposes a `Fill` bindable property of type <xref:Microsoft.Maui.Controls.Brush>, allowing it to be painted with any brush (including <xref:Microsoft.Maui.Controls.LinearGradientBrush> and <xref:Microsoft.Maui.Controls.RadialGradientBrush>) instead of just a solid color. When both `Fill` and `Color` are set, `Fill` takes priority; setting `Fill` back to `null` causes the <xref:Microsoft.Maui.Controls.BoxView> to render using `Color` again. For more information, see [Fill a BoxView with a brush](~/user-interface/controls/boxview.md#fill-a-boxview-with-a-brush) and [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
 
 ```xaml
-<BoxView WidthRequest="160"
-         HeightRequest="160">
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HasShadow="true"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
     <BoxView.Fill>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="CornflowerBlue" Offset="0.0" />
-            <GradientStop Color="DarkBlue" Offset="1.0" />
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="Purple" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
         </LinearGradientBrush>
     </BoxView.Fill>
 </BoxView>
 ```
+
+:::image type="content" source="../user-interface/controls/media/boxview/boxview-linear-fill.png" alt-text="Screenshot of a BoxView painted with a linear gradient brush.":::
 
 :::moniker-end
 
