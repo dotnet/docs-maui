@@ -1,7 +1,7 @@
 ---
 title: "XAML compilation"
 description: ".NET MAUI XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC)."
-ms.date: 11/14/2025
+ms.date: 05/12/2026
 ---
 
 # XAML Processing
@@ -64,3 +64,49 @@ There other metadata you can set to instruct xaml sourcegenerator
     <MauiXaml Update="MyFile.xaml" Inflator="SourceGen" NoWarn="0612;0618" />   <!-- prevent the compiler to fail if the xaml use deprecated API -->
 </ItemGroup>
 ```
+
+:::moniker range=">=net-maui-11.0"
+
+### Inline C# with the `x:Code` directive
+
+When XAML source generation is enabled, you can use the `x:Code` directive to embed a small block of C# directly inside a XAML file. The XAML source generator extracts the code and emits it into the generated partial class for the page or view, so the inline members behave exactly as if they were declared in a code-behind file.
+
+`x:Code` is intended for short, view-local glue such as a single event handler or a private helper — it lets you keep that code next to the markup it serves without adding a separate code-behind partial. For anything larger, prefer a dedicated code-behind file.
+
+> [!IMPORTANT]
+> `x:Code` is a preview feature. To use it, set the `EnablePreviewFeatures` MSBuild property to `true` in your project file:
+>
+> ```xml
+> <PropertyGroup>
+>   <EnablePreviewFeatures>true</EnablePreviewFeatures>
+> </PropertyGroup>
+> ```
+
+The `x:Code` element must be a direct child of the root element, and the root element must have an `x:Class` attribute. Wrap the code in a CDATA section so XAML doesn't try to parse it as markup:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.MainPage">
+    <x:Code>
+        <![CDATA[
+        using System.Diagnostics;
+
+        void OnButtonClicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Clicked from inline x:Code.");
+        }
+        ]]>
+    </x:Code>
+
+    <Button Text="Click me"
+            Clicked="OnButtonClicked" />
+</ContentPage>
+```
+
+`using` directives in an `x:Code` block are hoisted to the top of the generated file, while everything else is emitted as members of the page's partial class. The source generator reports the following diagnostics when `x:Code` is used incorrectly:
+
+- `MAUIX2015` — the `x:Code` element isn't a direct child of the root.
+- `MAUIX2016` — the root element doesn't have an `x:Class` attribute.
+
+:::moniker-end
