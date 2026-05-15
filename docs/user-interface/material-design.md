@@ -1,7 +1,7 @@
 ---
 title: "Material 3"
 description: "Learn how to enable Material 3 design on Android in .NET MAUI apps by setting the UseMaterial3 build property to apply modern Material Design theming and components."
-ms.date: 04/13/2026
+ms.date: 05/12/2026
 ---
 
 # Material 3
@@ -256,6 +256,28 @@ The following screenshot shows the difference between Material 2 and Material 3.
 > `MinimumDate` and `MaximumDate` cannot be updated dynamically while the date picker dialog is open. Calendar constraints are immutable after the dialog is built and are re-applied fresh each time the dialog is shown.
 
 For more information about the underlying Android component, see [MaterialDatePicker](https://developer.android.com/reference/com/google/android/material/datepicker/MaterialDatePicker).
+
+:::moniker range=">=net-maui-11.0"
+
+### ImageButton
+
+The [ImageButton](controls/imagebutton.md) control on Android is rendered using the Material 3 `ShapeableImageView` when the feature is enabled, picking up Material 3 shape, ripple, and elevation behaviors that match other Material 3 buttons.
+
+For more information about the underlying Android control, see [ShapeableImageView](https://developer.android.com/reference/com/google/android/material/imageview/ShapeableImageView).
+
+### Switch
+
+The [Switch](controls/switch.md) control on Android is rendered using the Material 3 `MaterialSwitch` when the feature is enabled, replacing the legacy `SwitchCompat` track and thumb with the updated Material 3 design.
+
+For more information about the underlying Android control, see [MaterialSwitch](https://developer.android.com/reference/com/google/android/material/materialswitch/MaterialSwitch).
+
+### Shell
+
+When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `NavigationBar` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
+
+For more information about the underlying Android controls, see [NavigationBar](https://developer.android.com/reference/com/google/android/material/navigation/NavigationBar) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
+
+:::moniker-end
 
 ## Considerations
 

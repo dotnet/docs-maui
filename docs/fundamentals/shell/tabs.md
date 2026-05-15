@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell tabs"
 description: "Learn how to customize and control a .NET MAUI TabBar, which represents the bottom tab bar in a .NET MAUI Shell app."
-ms.date: 11/28/2025
+ms.date: 05/12/2026
 ---
 
 # .NET MAUI Shell tabs
@@ -282,3 +282,45 @@ In addition, <xref:Microsoft.Maui.Controls.Tab> objects can be hidden by setting
 ```
 
 In this example, the second tab is hidden.
+
+:::moniker range=">=net-maui-11.0"
+
+## Tab badges
+
+A badge can be displayed on a tab to surface unread counts or status indicators. Badges are set on the Shell navigation item (`Tab`, `ShellContent`, or `FlyoutItem`) by using three bindable properties inherited from `BaseShellItem`:
+
+- `BadgeText`, of type `string`, is the text displayed on the badge. Set to a non-empty value to show a text or count badge, an empty string to show a dot indicator, or `null` (the default) to hide the badge.
+- `BadgeColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the background color of the badge. When `null`, the platform default is used.
+- `BadgeTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the foreground (text) color of the badge. When `null`, the platform default is used (typically white).
+
+The following example sets a numeric badge on a tab:
+
+```xaml
+<TabBar>
+    <ShellContent Title="Inbox"
+                  Icon="inbox.png"
+                  BadgeText="3"
+                  BadgeColor="Red"
+                  BadgeTextColor="White"
+                  ContentTemplate="{DataTemplate views:InboxPage}" />
+    <ShellContent Title="Sent"
+                  Icon="sent.png"
+                  ContentTemplate="{DataTemplate views:SentPage}" />
+</TabBar>
+```
+
+To bind the badge text to a view model, use a regular data binding:
+
+```xaml
+<ShellContent Title="Inbox"
+              Icon="inbox.png"
+              BadgeText="{Binding UnreadCount}" />
+```
+
+Badge rendering varies by platform:
+
+- **Android** uses the Material Design `BadgeDrawable`. `BadgeTextColor` maps to `BadgeDrawable.BadgeTextColor`.
+- **iOS and Mac Catalyst** use `UITabBarItem.BadgeValue`. `BadgeTextColor` maps to `UITabBarItem.SetBadgeTextAttributes`.
+- **Windows** uses the WinUI `InfoBadge` control. Only numeric `BadgeText` values display as a count; non-numeric text and the empty string display as a dot indicator. `BadgeTextColor` maps to `InfoBadge.Foreground`.
+
+:::moniker-end

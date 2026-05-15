@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 04/02/2026
+ms.date: 05/12/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -11,11 +11,63 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview1/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
+
+## CoreCLR is the default runtime
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, CoreCLR is the default runtime on all .NET MAUI platforms for projects built with and targeting .NET 11. This unifies the runtime across .NET MAUI with benefits for debugging, profiling, Hot Reload, app size, and app performance. For a detailed overview of this transition, see the [announcement blog post](https://aka.ms/maui-coreclr).
+
+If you need to opt out of CoreCLR and use the Mono runtime instead, set `$(UseMonoRuntime)` to `true` in your project file:
+
+```xml
+<PropertyGroup>
+  <UseMonoRuntime>true</UseMonoRuntime>
+</PropertyGroup>
+```
+
+:::moniker-end
+
+## `x:Code` directive for inline C# in XAML
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.MainPage">
+    <x:Code><![CDATA[
+        void OnButtonClicked(object sender, EventArgs e)
+        {
+            // inline C# method
+        }
+    ]]></x:Code>
+    <Button Clicked="OnButtonClicked" Text="Click me" />
+</ContentPage>
+```
+
+:::moniker-end
+
+## Compiled bindings inside DataTemplates
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, compiled bindings with explicit sources defined inside a <xref:Microsoft.Maui.Controls.DataTemplate> now resolve correctly, fixing a regression that broke <xref:Microsoft.Maui.Controls.TapGestureRecognizer> bindings inside <xref:Microsoft.Maui.Controls.CollectionView> items in .NET 10. For more information, see [GitHub PR #34447](https://github.com/dotnet/maui/pull/34447).
+
+The XAML source generator now also:
+
+- Emits diagnostics when an `x:DataType` or binding is invalid. For more information, see [GitHub PR #34078](https://github.com/dotnet/maui/pull/34078).
+- Correctly distinguishes static extension classes from `enum` types when resolving XAML markup. For more information, see [GitHub PR #34446](https://github.com/dotnet/maui/pull/34446).
+
+:::moniker-end
 
 ## Implicit XAML namespace declarations
 
@@ -67,6 +119,21 @@ VisualStateManager.InvalidateVisualStates(myButton);
 ## Controls
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
+
+### Material 3 on Android
+
+:::moniker range=">=net-maui-11.0"
+
+In .NET 11 Preview 4, the Android handlers for several core controls use Material 3 styling and behaviors out of the box, bringing them in line with modern Android design and unlocking the Material 3 theming system:
+
+- <xref:Microsoft.Maui.Controls.ImageButton> — see [GitHub PR #33649](https://github.com/dotnet/maui/pull/33649).
+- <xref:Microsoft.Maui.Controls.DatePicker> — see [GitHub PR #33651](https://github.com/dotnet/maui/pull/33651).
+- <xref:Microsoft.Maui.Controls.Entry> — see [GitHub PR #33673](https://github.com/dotnet/maui/pull/33673).
+- <xref:Microsoft.Maui.Controls.Slider> — see [GitHub PR #33603](https://github.com/dotnet/maui/pull/33603).
+
+![Dark and light control samples for the Material 3 design system in .NET MAUI.](media/dotnet-11/material3.png)
+
+:::moniker-end
 
 ### LongPressGestureRecognizer
 
@@ -146,6 +213,14 @@ For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pul
 ## Platform features
 
 .NET MAUI's platform features have received some updates in .NET 11.
+
+### MonochromeFile for Android adaptive icons
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, single-project app icons can declare a dedicated monochrome layer for Android themed icons via a new `MonochromeFile` attribute on `MauiIcon`. This lets your themed icon use a different glyph than the foreground layer, instead of being a tinted reuse of it. For more information, see [GitHub PR #34569](https://github.com/dotnet/maui/pull/34569).
+
+:::moniker-end
 
 ### iOS PostNotifications permission
 
@@ -230,6 +305,41 @@ Console output of your application should appear directly in the terminal, and C
 
 ![GIF of `dotnet run` selections on macOS for iOS](media/dotnet-11/dotnet-run-ios-preview-1.gif)
 
+## `dotnet watch` for Android
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, `dotnet watch` works for Android devices and emulators. After selecting a target framework and device, `dotnet watch` deploys your app and applies Hot Reload changes as you edit — no manual rebuild required.
+
+![GIF of `dotnet watch` on Windows for Android.](media/dotnet-11/net11p4-dotnet-watch-android.gif)
+
+:::moniker-end
+
+## `dotnet watch` for iOS
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, several long-standing issues have been fixed to make `dotnet watch` usable end-to-end on a `dotnet new maui` project running in the iOS Simulator:
+
+- The Spectre.Console TFM picker no longer appears stuck because two readers were both calling `Console.ReadKey()`. Keys now flow through a single `PhysicalConsole.KeyPressed` event. For more information, see [dotnet/sdk #53675](https://github.com/dotnet/sdk/pull/53675).
+- <kbd>Ctrl+C</kbd> and <kbd>Ctrl+R</kbd> no longer surface a spurious `WebSocketException`/`ObjectDisposedException` when the WebSocket transport tears down. For more information, see [dotnet/sdk #53648](https://github.com/dotnet/sdk/pull/53648).
+- Hot Reload no longer deadlocks on iOS when `UIKitSynchronizationContext` is installed before the startup hook runs. For more information, see [dotnet/sdk #54023](https://github.com/dotnet/sdk/pull/54023).
+
+![GIF of `dotnet watch` on macOS for iOS.](media/dotnet-11/net11p4-dotnet-watch-ios.gif)
+
+> [!IMPORTANT]
+> `dotnet watch` does not work for iOS projects unless `<MtouchLink>None</MtouchLink>` is set in the `.csproj` file. For more information, see [dotnet/macios #25295](https://github.com/dotnet/macios/issues/25295).
+>
+> Add the following to your project file:
+>
+> ```xml
+> <PropertyGroup>
+>   <MtouchLink>None</MtouchLink>
+> </PropertyGroup>
+> ```
+
+:::moniker-end
+
 ## .NET for iOS
 
 .NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
@@ -245,9 +355,33 @@ For more information about .NET 11 on iOS, tvOS, Mac Catalyst, and macOS, see th
 
 For information about known issues, see [Known issues in .NET 11](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET11).
 
-### Feature
+### Xcode 26.4
 
-Description
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, Xcode 26.4 Stable is the supported Xcode version, with refreshed bindings across UIKit, AVFoundation, WebKit, Metal, Photos, PassKit, CarPlay, AuthenticationServices, and more. For more information, see [dotnet/macios #25005](https://github.com/dotnet/macios/pull/25005).
+
+One Apple-side breaking change: `HMError.QuotaExceeded` was removed by Apple and is no longer available. For more information, see [dotnet/macios #25024](https://github.com/dotnet/macios/pull/25024).
+
+:::moniker-end
+
+### HTTP digest authentication
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:Foundation.NSUrlSessionHandler>. For more information, see [dotnet/macios #25180](https://github.com/dotnet/macios/pull/25180).
+
+:::moniker-end
+
+### CoreCLR for Apple platforms
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, CoreCLR is the default runtime for .NET for iOS, Mac Catalyst, macOS, and tvOS. For more information, see [CoreCLR is the default runtime](#coreclr-is-the-default-runtime) and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
+
+Preview 4 also includes a broad reliability and packaging pass across `NSUrlSessionHandler`, MSBuild, the linker, and runtime internals. For the complete list of changes, see the [Preview 4 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview3...release/11.0.1xx-preview4).
+
+:::moniker-end
 
 ## See also
 
