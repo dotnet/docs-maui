@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell tabs"
 description: "Learn how to customize and control a .NET MAUI TabBar, which represents the bottom tab bar in a .NET MAUI Shell app."
-ms.date: 05/12/2026
+ms.date: 05/15/2026
 ---
 
 # .NET MAUI Shell tabs
@@ -86,6 +86,15 @@ The `Title` property, of type `string`, defines the tab title. The `Icon` proper
 When there are more than five tabs on a <xref:Microsoft.Maui.Controls.TabBar>, a **More** tab appears, which can be used to access the other tabs:
 
 :::image type="content" source="media/tabs/more-tabs.png" alt-text="Screenshot of a Shell app with a More tab.":::
+
+On Android, the **More** tab title is defined by the `overflow_tab_title` string resource. To localize or override this title, add an Android string resource with this name to the *Platforms\Android\Resources* folder. For example, the following resource file localizes the title to Dutch:
+
+```xml
+<!-- Platforms/Android/Resources/values-nl/strings.xml -->
+<resources>
+    <string name="overflow_tab_title">Meer</string>
+</resources>
+```
 
 In addition, Shell's implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.ShellContent> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
