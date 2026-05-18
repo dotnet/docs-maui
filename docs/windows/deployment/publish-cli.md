@@ -103,6 +103,8 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 Setting `<WindowsPackageType>` to `MSIX` specifies that the app should be published as a packaged MSIX app. Setting this property explicitly is important for project types such as Blazor Hybrid, where the default may not produce an MSIX package. If you instead want to publish your app without an MSIX package, see [Publish an unpackaged .NET MAUI app for Windows with the CLI](publish-unpackaged-cli.md).
 
+The supported `<WindowsPackageType>` values are `MSIX` for a packaged app, `None` for an unpackaged app, and `Sparse` for [packaging with external location](/windows/apps/package-and-deploy/packaging/#packaging-with-external-location-sparse-packaging). For more information about Windows App SDK packaging, see [Package your app using single-project MSIX](/windows/apps/windows-app-sdk/single-project-msix).
+
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00`.
 
 The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
