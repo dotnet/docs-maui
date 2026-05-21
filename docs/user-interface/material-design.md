@@ -287,3 +287,19 @@ When enabling Material 3 in your .NET MAUI Android app, consider the following:
 - **Dynamic theming**: Material 3 supports dynamic color schemes based on the user's wallpaper and preferences. Ensure your app's custom colors and themes work well with this feature.
 - **Backward compatibility**: Material 3 requires Android 5.0 (API level 21) or higher, which is the minimum version supported by .NET MAUI.
 - **Default behavior**: If the `UseMaterial3` property is not set or is set to `false`, your app will use Material 2 design by default.
+
+> [!NOTE]
+> When `UseMaterial3` is enabled, controls are rendered using the default .NET MAUI styles, not Material 3 styles. For example, buttons won't automatically use Material 3's rounded corner radius or color tokens. To apply Material 3 design tokens—including colors, corner shapes, and typography—refer to the [styles and colors in the .NET MAUI Material 3 demo](https://github.com/dotnet/maui-samples/tree/main/10.0/UserInterface/Material3Demo/HealthProfile/HealthProfile/Resources/Styles) to support Material 3 styling in your app.
+
+The following screenshot shows the difference between the default .NET MAUI button style and a button styled with Material 3 design tokens:
+
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/material2/button.png" alt-text="Screenshot of a Button using the default .NET MAUI style on Android, showing a button with the default corner radius and colors." lightbox="media/material2/button.png":::
+      **Default .NET MAUI style**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/material3/button.png" alt-text="Screenshot of a Button styled with Material 3 design tokens on Android, showing a fully rounded button with Material 3 color tokens." lightbox="media/material3/button.png":::
+      **Material 3 style**
+   :::column-end:::
+:::row-end:::
