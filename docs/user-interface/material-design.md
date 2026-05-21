@@ -289,7 +289,11 @@ When enabling Material 3 in your .NET MAUI Android app, consider the following:
 - **Default behavior**: If the `UseMaterial3` property is not set or is set to `false`, your app will use Material 2 design by default.
 
 > [!NOTE]
-> When `UseMaterial3` is enabled, controls are rendered using the default .NET MAUI styles, not Material 3 styles. For example, buttons won't automatically use Material 3's rounded corner radius or color tokens. To apply Material 3 design tokens—including CornerRadius and Colors—refer to the [styles and colors in the .NET MAUI Material 3 demo](https://github.com/dotnet/maui-samples/tree/main/10.0/UserInterface/Material3Demo/HealthProfile/HealthProfile/Resources/Styles) to support Material 3 styling in your app.
+> When `UseMaterial3` is enabled in a default .NET MAUI app, controls are still rendered using the default .NET MAUI styles rather than Material 3 styles. This happens because the default styles and color tokens defined in `Styles.xaml` and `Colors.xaml` override the Material 3 styles.
+>
+> For example, buttons don't automatically adopt Material 3 attributes such as a rounded corner radius or color tokens, because their styles are already customized in the default configuration.
+>
+> To apply Material 3 design tokens—including CornerRadius and colors—refer to the styles and color definitions used in the [.NET MAUI Material 3 demo](https://github.com/dotnet/maui-samples/tree/main/10.0/UserInterface/Material3Demo/HealthProfile/HealthProfile/Resources/Styles). Updating your app to use those styles ensures proper adoption of Material 3 styling.
 
 The following screenshot shows the difference between the default .NET MAUI button style and a button styled with Material 3 design tokens:
 
