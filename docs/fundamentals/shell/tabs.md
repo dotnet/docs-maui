@@ -295,6 +295,8 @@ A badge can be displayed on a tab to surface unread counts or status indicators.
 
 The following example sets a numeric badge on a tab:
 
+<!-- Screenshot placeholder: Add a Shell tab badge screenshot when final .NET 11 assets are available. -->
+
 ```xaml
 <TabBar>
     <ShellContent Title="Inbox"

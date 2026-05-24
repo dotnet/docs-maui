@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 05/12/2026
+ms.date: 05/24/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -159,6 +159,16 @@ void OnLongPressed(object sender, LongPressGestureRecognizerEventArgs e)
     }
 }
 ```
+
+:::moniker-end
+
+### Shell tab and toolbar item badges
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 4, Shell bottom tabs and <xref:Microsoft.Maui.Controls.ToolbarItem> objects support badges for surfacing counts or status indicators. Set `BadgeText` to a non-empty value to show a text or count badge, set it to an empty string to show a dot indicator, or set it to `null` to hide the badge. You can customize badge colors with `BadgeColor` and `BadgeTextColor`.
+
+For more information, see [Tab badges](~/fundamentals/shell/tabs.md#tab-badges) and [Display a badge on a ToolbarItem](~/user-interface/toolbaritem.md#display-a-badge-on-a-toolbaritem). For implementation details, see GitHub PRs [#34659](https://github.com/dotnet/maui/pull/34659) and [#34669](https://github.com/dotnet/maui/pull/34669).
 
 :::moniker-end
 
