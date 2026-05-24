@@ -177,9 +177,17 @@ builder.ConfigureEssentials(essentials =>
 });
 ```
 
-Without a valid Azure Maps subscription key, the Windows map control can't authenticate with Azure Maps.
+Without a valid Azure Maps subscription key, the Windows map control can't authenticate with Azure Maps and won't display map data.
 
-The Windows implementation supports moving the map region, street, satellite, and hybrid map types, traffic data, scrolling and zooming, and pins. Due to WinUI 3 `MapControl` limitations, the following features aren't supported on Windows and have no effect:
+The Windows implementation supports:
+
+- Moving the map region.
+- Street, satellite, and hybrid map types.
+- Traffic data.
+- Scrolling and zooming.
+- Pins.
+
+Due to WinUI 3 `MapControl` limitations, the following features aren't supported on Windows and have no effect:
 
 - Displaying the user's location with `IsShowingUser`.
 - Displaying polygons, polylines, and circles from the `MapElements` collection.
