@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Maps.Ma
 ::: moniker range=">=net-maui-10.0"
 
 > [!IMPORTANT]
-> On Windows, the <xref:Microsoft.Maui.Controls.Maps.Map> control uses the WinUI 3 `MapControl`, which is backed by Azure Maps. To display maps on Windows, configure an Azure Maps subscription key. For more information, see [Windows](#windows).
+> On Windows, the <xref:Microsoft.Maui.Controls.Maps.Map> control uses the WinUI 3 `MapControl`, which is backed by Azure Maps. To display maps on Windows, configure an Azure Maps subscription key.
 
 ::: moniker-end
 
@@ -178,6 +178,8 @@ builder.ConfigureEssentials(essentials =>
 ```
 
 Without a valid Azure Maps subscription key, the Windows map control can't authenticate with Azure Maps and won't display map data.
+
+You can retrieve the subscription key from your Azure Maps account in the Azure portal.
 
 The Windows implementation supports:
 
