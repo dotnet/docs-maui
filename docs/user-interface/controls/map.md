@@ -173,17 +173,17 @@ builder
 
 builder.ConfigureEssentials(essentials =>
 {
-    essentials.UseMapServiceToken("YOUR_AZURE_MAPS_KEY");
+    essentials.UseMapServiceToken("YOUR_AZURE_MAPS_SUBSCRIPTION_KEY");
 });
 ```
 
 Without a valid Azure Maps subscription key, the Windows map control can't authenticate with Azure Maps and won't display map data.
 
-You can retrieve the subscription key from your Azure Maps account in the Azure portal.
+You can retrieve the subscription key from your Azure Maps account in the Azure portal. For more information, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication).
 
 The Windows implementation supports:
 
-- Moving the map region.
+- Programmatically moving the map region with `MoveToRegion`.
 - Street, satellite, and hybrid map types.
 - Traffic data.
 - Scrolling and zooming.
