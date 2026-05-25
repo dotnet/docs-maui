@@ -273,9 +273,9 @@ For more information about the underlying Android control, see [MaterialSwitch](
 
 ### Shell
 
-When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `NavigationBar` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
+When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `BottomNavigationView` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
 
-For more information about the underlying Android controls, see [NavigationBar](https://developer.android.com/reference/com/google/android/material/navigation/NavigationBar) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
+For more information about the underlying Android controls, see [BottomNavigationView](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
 
 :::moniker-end
 
