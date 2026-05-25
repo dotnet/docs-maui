@@ -273,9 +273,9 @@ For more information about the underlying Android control, see [MaterialSwitch](
 
 ### Shell
 
-When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `NavigationBar` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
+When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `BottomNavigationView` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
 
-For more information about the underlying Android controls, see [NavigationBar](https://developer.android.com/reference/com/google/android/material/navigation/NavigationBar) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
+For more information about the underlying Android controls, see [BottomNavigationView](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
 
 :::moniker-end
 
@@ -287,3 +287,23 @@ When enabling Material 3 in your .NET MAUI Android app, consider the following:
 - **Dynamic theming**: Material 3 supports dynamic color schemes based on the user's wallpaper and preferences. Ensure your app's custom colors and themes work well with this feature.
 - **Backward compatibility**: Material 3 requires Android 5.0 (API level 21) or higher, which is the minimum version supported by .NET MAUI.
 - **Default behavior**: If the `UseMaterial3` property is not set or is set to `false`, your app will use Material 2 design by default.
+
+> [!NOTE]
+> When `UseMaterial3` is enabled in a default .NET MAUI app, controls are still rendered using the default .NET MAUI styles rather than Material 3 styles. This happens because the default styles and color tokens defined in `Styles.xaml` and `Colors.xaml` override the Material 3 styles.
+>
+> For example, buttons don't automatically adopt Material 3 attributes such as a rounded corner radius or color tokens, because their styles are already customized in the default configuration.
+>
+> To apply Material 3 design tokens—including CornerRadius and colors—refer to the styles and color definitions used in the [.NET MAUI Material 3 demo](https://github.com/dotnet/maui-samples/tree/main/10.0/UserInterface/Material3Demo/HealthProfile/HealthProfile/Resources/Styles). Updating your app to use those styles ensures proper adoption of Material 3 styling.
+
+The following screenshot shows the difference between the default .NET MAUI button style and a button styled with Material 3 design tokens:
+
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/material2/button.png" alt-text="Screenshot of a Button using the default .NET MAUI style on Android, showing a button with the default corner radius and colors." lightbox="media/material2/button.png":::
+      **Default .NET MAUI style**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/material3/button.png" alt-text="Screenshot of a Button styled with Material 3 design tokens on Android, showing a fully rounded button with Material 3 color tokens." lightbox="media/material3/button.png":::
+      **Material 3 style**
+   :::column-end:::
+:::row-end:::
