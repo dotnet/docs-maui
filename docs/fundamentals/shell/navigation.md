@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 01/14/2025
+ms.date: 06/05/2026
 ---
 
 # .NET MAUI Shell navigation
@@ -588,6 +588,25 @@ Back button appearance and behavior can be redefined by setting the <xref:Micros
 - `IsEnabled`, of type `boolean`, indicates whether the back button is enabled. The default value is `true`.
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.BackButtonBehavior> also defines an `AccessibilityLabel` property of type `string`, which sets the accessibility label that screen readers announce for the back button. This is independent of `TextOverride`, so the visible label can stay short while the spoken label stays descriptive. The following example sets both properties together:
+
+```xaml
+<ContentPage ...>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"
+                            IconOverride="back.png"
+                            AccessibilityLabel="Back to order list" />
+    </Shell.BackButtonBehavior>
+    ...
+</ContentPage>
+```
+
+Setting an explicit `AccessibilityLabel` is recommended whenever `IconOverride` is set or `TextOverride` is hidden, because screen readers would otherwise announce a generic value or no value at all. For more accessibility guidance, see [Accessibility](~/fundamentals/accessibility.md).
+
+:::moniker-end
 
 ::: moniker range="=net-maui-8.0"
 
