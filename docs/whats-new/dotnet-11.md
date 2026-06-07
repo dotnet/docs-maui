@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 05/12/2026
+ms.date: 06/05/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -12,6 +12,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -133,6 +134,8 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 ![Dark and light control samples for the Material 3 design system in .NET MAUI.](media/dotnet-11/material3.png)
 
+In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and <xref:Microsoft.Maui.Platform.MauiMaterialContextThemeWrapper>) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Customize Material 3 controls](~/user-interface/material-design.md#customize-material-3-controls).
+
 :::moniker-end
 
 ### LongPressGestureRecognizer
@@ -207,6 +210,51 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 `MoveToRegion` now supports animated transitions, and the new `MapSpan.FromLocations()` factory method creates a span that encompasses a collection of locations.
 
 For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pull/29101), [#33831](https://github.com/dotnet/maui/pull/33831), [#33950](https://github.com/dotnet/maui/pull/33950), [#33982](https://github.com/dotnet/maui/pull/33982), [#33985](https://github.com/dotnet/maui/pull/33985), [#33792](https://github.com/dotnet/maui/pull/33792), [#33799](https://github.com/dotnet/maui/pull/33799), [#33991](https://github.com/dotnet/maui/pull/33991), and [#33993](https://github.com/dotnet/maui/pull/33993).
+
+:::moniker-end
+
+:::moniker range=">=net-maui-11.0"
+
+In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, configure your app's `UseMapServiceToken` value in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138) and the [Map control documentation](~/user-interface/controls/map.md).
+
+:::moniker-end
+
+### BoxView Fill
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a `Fill` property of type <xref:Microsoft.Maui.Controls.Brush>. This aligns <xref:Microsoft.Maui.Controls.BoxView> with the other shape primitives and means gradients and other brushes can paint a `BoxView` without a custom handler. `BackgroundColor` still works as before. For more information, see [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
+
+```xaml
+<BoxView HeightRequest="120" CornerRadius="12">
+    <BoxView.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#512BD4" Offset="0.0" />
+            <GradientStop Color="#0099CC" Offset="1.0" />
+        </LinearGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+:::moniker-end
+
+## Animation
+
+### Cancel animations with CancellationToken
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 5, the `ViewExtensions` animation methods (`FadeToAsync`, `RotateToAsync`, `ScaleToAsync`, `TranslateToAsync`, and the relative variants) accept an optional <xref:System.Threading.CancellationToken>. Passing a token lets you cancel a specific awaited animation without calling `CancelAnimations`, which cancels every animation on the element. The non-`Async` variants (`FadeTo`, `RotateTo`, and so on) are now marked `[Obsolete]` in favor of the `Async`-suffixed equivalents. For more information, see [GitHub PR #33372](https://github.com/dotnet/maui/pull/33372) and [Basic animation](~/user-interface/animation/basic.md#cancel-an-animation-with-a-cancellationtoken).
+
+:::moniker-end
+
+## Accessibility
+
+### Back button accessibility label
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 5, you can set the accessibility label that screen readers (TalkBack, VoiceOver, Narrator) announce for the toolbar back button. <xref:Microsoft.Maui.Controls.NavigationPage> defines a `BackButtonAccessibilityLabel` attached property, and <xref:Microsoft.Maui.Controls.BackButtonBehavior> defines an `AccessibilityLabel` property for Shell apps. Both are independent of the visible back-button title, so you can keep the visible label short and still expose a descriptive spoken label. For more information, see [GitHub PR #35011](https://github.com/dotnet/maui/pull/35011), [Set the back button accessibility label](~/user-interface/pages/navigationpage.md#set-the-back-button-accessibility-label), and [Back button behavior](~/fundamentals/shell/navigation.md#back-button-behavior).
 
 :::moniker-end
 
@@ -380,6 +428,14 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime for .NET for iOS, Mac Catalyst, macOS, and tvOS. For more information, see [CoreCLR is the default runtime](#coreclr-is-the-default-runtime) and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 
 Preview 4 also includes a broad reliability and packaging pass across `NSUrlSessionHandler`, MSBuild, the linker, and runtime internals. For the complete list of changes, see the [Preview 4 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview3...release/11.0.1xx-preview4).
+
+:::moniker-end
+
+### Apple Intelligence APIs
+
+:::moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 Preview 5, the Apple Intelligence APIs are available from .NET for iOS, Mac Catalyst, macOS, and tvOS. These include the Foundation Models framework for on-device generative AI, Image Playground for system-provided image generation, Writing Tools entitlements, and the Translation framework. For more information, see [dotnet/macios #25457](https://github.com/dotnet/macios/pull/25457) and the [Preview 5 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview4...release/11.0.1xx-preview5).
 
 :::moniker-end
 
