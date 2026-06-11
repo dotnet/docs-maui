@@ -63,4 +63,4 @@ When the token is canceled, the underlying animation is aborted and the element 
 > [!NOTE]
 > The non-`Async` versions of these methods (`FadeTo`, `RotateTo`, and so on) are now marked `[Obsolete]` in favor of the `Async`-suffixed equivalents. Migrate to the new methods to take advantage of `CancellationToken` support.
 
-:::moniker-end
+::: moniker-end
