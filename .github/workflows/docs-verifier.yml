@@ -1,0 +1,28 @@
+name: MSDocs build verifier
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: MSDocs build verifier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - name: Checkout the repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Hide .github folder from validate
+        run: |
+          rm -rf "${{ github.workspace }}/.github"
+
+      - name: Validate
+        uses: dotnet/docs-actions/actions/docs-verifier@5e8bcc78465d45a7544bba56509a1a69922b6a5a # main
+        env:
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
