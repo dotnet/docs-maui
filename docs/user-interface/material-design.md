@@ -1,7 +1,7 @@
 ---
 title: "Material 3"
 description: "Learn how to enable Material 3 design on Android in .NET MAUI apps by setting the UseMaterial3 build property to apply modern Material Design theming and components."
-ms.date: 05/12/2026
+ms.date: 06/05/2026
 ---
 
 # Material 3
@@ -273,9 +273,74 @@ For more information about the underlying Android control, see [MaterialSwitch](
 
 ### Shell
 
-When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `NavigationBar` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
+When the feature is enabled, the [Shell](~/fundamentals/shell/index.md) tab bar on Android is rendered using the Material 3 navigation components. Bottom tabs use the Material 3 `BottomNavigationView` and top tabs use the Material 3 `TabLayout`, both of which adopt Material 3 color tokens, shape, and selection states. Tab badges set with `BadgeText`, `BadgeColor`, and `BadgeTextColor` are rendered through the Material 3 `BadgeDrawable`.
 
-For more information about the underlying Android controls, see [NavigationBar](https://developer.android.com/reference/com/google/android/material/navigation/NavigationBar) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
+For more information about the underlying Android controls, see [BottomNavigationView](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView) and [TabLayout](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout).
+
+:::moniker-end
+
+:::moniker range=">=net-maui-11.0"
+
+## Customize Material 3 controls
+
+Starting in .NET MAUI 11, the Material 3 helper types in the `Microsoft.Maui.Platform` namespace are public, so you can subclass them and supply your own variants from a [custom handler](handlers/index.md). Use this when the default Material 3 rendering is close to what you need but you want to override a specific behavior—for example, intercepting touch events, customizing measurement, or applying a custom theme wrapper—without re-implementing the full Material 3 integration.
+
+The following helper types are public. When `UseMaterial3` is `true`, MAUI swaps to the "`Handler2`" variant of the corresponding control's handler, whose platform view type is the Material 3 helper:
+
+| Type | Used as the platform view by |
+|---|---|
+| `Microsoft.Maui.Platform.MauiMaterialEditText` | `Microsoft.Maui.Handlers.EditorHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialPicker` | `Microsoft.Maui.Handlers.PickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialDatePicker` | `Microsoft.Maui.Handlers.DatePickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialTimePicker` | `Microsoft.Maui.Handlers.TimePickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialSearchBarTextInputLayout` | `Microsoft.Maui.Handlers.SearchBarHandler2` (wraps the search input) |
+| `Microsoft.Maui.Platform.MauiMaterialTextView` | Internal Material 3 <xref:Microsoft.Maui.Controls.Label> rendering. |
+| `Microsoft.Maui.Platform.MaterialActivityIndicator` | Internal Material 3 <xref:Microsoft.Maui.Controls.ActivityIndicator> rendering. |
+| `Microsoft.Maui.Platform.MauiMaterialContextThemeWrapper` | A Material 3 `ContextThemeWrapper` you can build with `MauiMaterialContextThemeWrapper.Create(context)` for your own custom platform views. |
+
+For the types that are direct platform views of a `Handler2` variant, you can swap them by setting the handler's `PlatformViewFactory`. The factory **replaces** the handler's default `CreatePlatformView` method, so it must apply any default Material 3 theming and control-specific setup that the handler would otherwise perform. The following example shows how to do this for <xref:Microsoft.Maui.Controls.Editor>:
+
+```csharp
+#if ANDROID
+using Android.Views;
+using Android.Views.InputMethods;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+
+internal sealed class MyMaterialEditText : MauiMaterialEditText
+{
+    public MyMaterialEditText(Android.Content.Context context) : base(context)
+    {
+    }
+
+    protected override bool OnTouchEvent(MotionEvent? e)
+    {
+        // Custom touch handling. Delegate to the base when finished.
+        return base.OnTouchEvent(e);
+    }
+}
+
+EditorHandler2.PlatformViewFactory = handler =>
+{
+    // Wrap the context in the Material 3 theme overlay, then apply the
+    // same Editor-specific setup that EditorHandler2.CreatePlatformView
+    // performs by default.
+    var view = new MyMaterialEditText(MauiMaterialContextThemeWrapper.Create(handler.Context!))
+    {
+        ImeOptions = ImeAction.Done,
+        Gravity = GravityFlags.Top,
+        TextAlignment = global::Android.Views.TextAlignment.ViewStart,
+    };
+    view.SetSingleLine(false);
+    view.SetHorizontallyScrolling(false);
+    return view;
+};
+#endif
+```
+
+When `UseMaterial3` is `true`, `EditorHandler2` creates your `MyMaterialEditText` subclass instead of the default `MauiMaterialEditText`, and the Material 3 theme overlay and multi-line behavior continue to apply.
+
+For more information about handler customization, see [Customize controls with handlers](handlers/customize.md).
 
 :::moniker-end
 
@@ -287,3 +352,23 @@ When enabling Material 3 in your .NET MAUI Android app, consider the following:
 - **Dynamic theming**: Material 3 supports dynamic color schemes based on the user's wallpaper and preferences. Ensure your app's custom colors and themes work well with this feature.
 - **Backward compatibility**: Material 3 requires Android 5.0 (API level 21) or higher, which is the minimum version supported by .NET MAUI.
 - **Default behavior**: If the `UseMaterial3` property is not set or is set to `false`, your app will use Material 2 design by default.
+
+> [!NOTE]
+> When `UseMaterial3` is enabled in a default .NET MAUI app, controls are still rendered using the default .NET MAUI styles rather than Material 3 styles. This happens because the default styles and color tokens defined in `Styles.xaml` and `Colors.xaml` override the Material 3 styles.
+>
+> For example, buttons don't automatically adopt Material 3 attributes such as a rounded corner radius or color tokens, because their styles are already customized in the default configuration.
+>
+> To apply Material 3 design tokens—including CornerRadius and colors—refer to the styles and color definitions used in the [.NET MAUI Material 3 demo](https://github.com/dotnet/maui-samples/tree/main/10.0/UserInterface/Material3Demo/HealthProfile/HealthProfile/Resources/Styles). Updating your app to use those styles ensures proper adoption of Material 3 styling.
+
+The following screenshot shows the difference between the default .NET MAUI button style and a button styled with Material 3 design tokens:
+
+:::row:::
+   :::column span="":::
+      :::image type="content" source="media/material2/button.png" alt-text="Screenshot of a Button using the default .NET MAUI style on Android, showing a button with the default corner radius and colors." lightbox="media/material2/button.png":::
+      **Default .NET MAUI style**
+   :::column-end:::
+   :::column span="":::
+      :::image type="content" source="media/material3/button.png" alt-text="Screenshot of a Button styled with Material 3 design tokens on Android, showing a fully rounded button with Material 3 color tokens." lightbox="media/material3/button.png":::
+      **Material 3 style**
+   :::column-end:::
+:::row-end:::

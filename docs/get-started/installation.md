@@ -499,7 +499,7 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     :::image type="content" source="media/installation/vscode/android-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android installation popup.":::
 
-  * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
+  * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](installation.md?tabs=visual-studio-code#android).
 
 * **Android emulator**: Installing an Android emulator is recommended, and required in the absence of a physical device.
 
@@ -507,7 +507,7 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     :::image type="content" source="media/installation/vscode/android-avd-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android Virtual Device installation popup.":::
 
-  * To configure emulators further, follow the instructions to [install an Android emulator manually](?tabs=visual-studio-code#download-and-install-an-android-emulator).
+  * To configure emulators further, follow the instructions to [install an Android emulator manually](installation.md?tabs=visual-studio-code#download-and-install-an-android-emulator).
 
 > [!IMPORTANT]
 > Android licenses will need to be manually reviewed and accepted in Terminal. When prompted, review each license. To accept, type 'y', and press 'Enter'.
