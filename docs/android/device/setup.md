@@ -16,7 +16,7 @@ While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to
 
 To debug a .NET MAUI Android app on a physical Android device, use a development computer that meets the operating system requirements for your Visual Studio version. For Visual Studio 2026, the requirements list supported versions of Windows 11 editions, including ARM64 editions, and list Windows 10 ARM64 as unsupported. For the full list of supported and unsupported operating systems, see [Visual Studio 2026 System Requirements](/visualstudio/releases/2026/vs-system-requirements).
 
-On Windows on Arm (ARM64), the Android emulator isn't supported. Use a physical Android device connected by USB for Android debugging instead. For more information, see [Android emulator troubleshooting](../emulator/troubleshooting.md#windows-arm-device-compatibility).
+On Windows on Arm (ARM64), the Android emulator isn't supported. This is an Android Emulator limitation; Google documents the supported host processors for emulator VM acceleration in [Virtualization extension requirements](https://developer.android.com/studio/run/emulator-acceleration#extensions) on developer.android.com. Use a physical Android device connected by USB for Android debugging instead. For more information, see [Android emulator troubleshooting](../emulator/troubleshooting.md#windows-arm-device-compatibility).
 
 ## Enable developer mode on the device
 
