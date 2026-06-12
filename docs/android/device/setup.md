@@ -1,7 +1,7 @@
 ---
 title: "Set up a device for development"
 description: "This article discusses how to enable development mode on an Android device so that you can deploy and debug a .NET MAUI application."
-ms.date: 02/13/2025
+ms.date: 06/12/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -11,6 +11,12 @@ While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to
 
 > [!IMPORTANT]
 > The steps in this article are written generically, to work on as many devices as possible. If you can't find these settings on your device, consult your device manufacturer's documentation.
+
+## Development computer requirements
+
+To debug a .NET MAUI Android app on a physical Android device, use a development computer that meets the operating system requirements for your Visual Studio version. For Visual Studio 2026, the requirements list supported versions of Windows 11 editions, including ARM64 editions, and list Windows 10 ARM64 as unsupported. For the full list of supported and unsupported operating systems, see [Visual Studio 2026 System Requirements](/visualstudio/releases/2026/vs-system-requirements).
+
+On Windows on Arm (ARM64), the Android emulator isn't supported. Use a physical Android device connected by USB for Android debugging instead. For more information, see [Android emulator troubleshooting](../emulator/troubleshooting.md#windows-arm-device-compatibility).
 
 ## Enable developer mode on the device
 
