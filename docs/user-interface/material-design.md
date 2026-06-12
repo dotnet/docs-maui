@@ -289,14 +289,14 @@ The following helper types are public. When `UseMaterial3` is `true`, MAUI swaps
 
 | Type | Used as the platform view by |
 |---|---|
-| <xref:Microsoft.Maui.Platform.MauiMaterialEditText> | <xref:Microsoft.Maui.Handlers.EditorHandler2> |
-| `Microsoft.Maui.Platform.MauiMaterialPicker` | <xref:Microsoft.Maui.Handlers.PickerHandler2> |
-| `Microsoft.Maui.Platform.MauiMaterialDatePicker` | <xref:Microsoft.Maui.Handlers.DatePickerHandler2> |
-| `Microsoft.Maui.Platform.MauiMaterialTimePicker` | <xref:Microsoft.Maui.Handlers.TimePickerHandler2> |
-| `Microsoft.Maui.Platform.MauiMaterialSearchBarTextInputLayout` | <xref:Microsoft.Maui.Handlers.SearchBarHandler2> (wraps the search input) |
+| `Microsoft.Maui.Platform.MauiMaterialEditText` | `Microsoft.Maui.Handlers.EditorHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialPicker` | `Microsoft.Maui.Handlers.PickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialDatePicker` | `Microsoft.Maui.Handlers.DatePickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialTimePicker` | `Microsoft.Maui.Handlers.TimePickerHandler2` |
+| `Microsoft.Maui.Platform.MauiMaterialSearchBarTextInputLayout` | `Microsoft.Maui.Handlers.SearchBarHandler2` (wraps the search input) |
 | `Microsoft.Maui.Platform.MauiMaterialTextView` | Internal Material 3 <xref:Microsoft.Maui.Controls.Label> rendering. |
 | `Microsoft.Maui.Platform.MaterialActivityIndicator` | Internal Material 3 <xref:Microsoft.Maui.Controls.ActivityIndicator> rendering. |
-| <xref:Microsoft.Maui.Platform.MauiMaterialContextThemeWrapper> | A Material 3 `ContextThemeWrapper` you can build with `MauiMaterialContextThemeWrapper.Create(context)` for your own custom platform views. |
+| `Microsoft.Maui.Platform.MauiMaterialContextThemeWrapper` | A Material 3 `ContextThemeWrapper` you can build with `MauiMaterialContextThemeWrapper.Create(context)` for your own custom platform views. |
 
 For the types that are direct platform views of a `Handler2` variant, you can swap them by setting the handler's `PlatformViewFactory`. The factory **replaces** the handler's default `CreatePlatformView` method, so it must apply any default Material 3 theming and control-specific setup that the handler would otherwise perform. The following example shows how to do this for <xref:Microsoft.Maui.Controls.Editor>:
 
