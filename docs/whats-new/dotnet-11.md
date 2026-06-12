@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 05/12/2026
+ms.date: 06/05/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -12,6 +12,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview2/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -19,8 +20,6 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
 ## CoreCLR is the default runtime
-
-:::moniker range=">=net-maui-11.0"
 
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime on all .NET MAUI platforms for projects built with and targeting .NET 11. This unifies the runtime across .NET MAUI with benefits for debugging, profiling, Hot Reload, app size, and app performance. For a detailed overview of this transition, see the [announcement blog post](https://aka.ms/maui-coreclr).
 
@@ -32,97 +31,11 @@ If you need to opt out of CoreCLR and use the Mono runtime instead, set `$(UseMo
 </PropertyGroup>
 ```
 
-:::moniker-end
-
-## `x:Code` directive for inline C# in XAML
-
-:::moniker range=">=net-maui-11.0"
-
-Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyApp.MainPage">
-    <x:Code><![CDATA[
-        void OnButtonClicked(object sender, EventArgs e)
-        {
-            // inline C# method
-        }
-    ]]></x:Code>
-    <Button Clicked="OnButtonClicked" Text="Click me" />
-</ContentPage>
-```
-
-:::moniker-end
-
-## Compiled bindings inside DataTemplates
-
-:::moniker range=">=net-maui-11.0"
-
-Starting in .NET 11 Preview 4, compiled bindings with explicit sources defined inside a <xref:Microsoft.Maui.Controls.DataTemplate> now resolve correctly, fixing a regression that broke <xref:Microsoft.Maui.Controls.TapGestureRecognizer> bindings inside <xref:Microsoft.Maui.Controls.CollectionView> items in .NET 10. For more information, see [GitHub PR #34447](https://github.com/dotnet/maui/pull/34447).
-
-The XAML source generator now also:
-
-- Emits diagnostics when an `x:DataType` or binding is invalid. For more information, see [GitHub PR #34078](https://github.com/dotnet/maui/pull/34078).
-- Correctly distinguishes static extension classes from `enum` types when resolving XAML markup. For more information, see [GitHub PR #34446](https://github.com/dotnet/maui/pull/34446).
-
-:::moniker-end
-
-## Implicit XAML namespace declarations
-
-:::moniker range=">=net-maui-11.0"
-
-Starting in .NET 11, implicit XAML namespace declarations are enabled by default. XAML files no longer need the standard `xmlns` and `xmlns:x` declarations at the root element — the compiler injects them automatically. Existing explicit declarations still compile and can be used to disambiguate duplicate type names. For more information, see [GitHub PR #33834](https://github.com/dotnet/maui/pull/33834).
-
-:::moniker-end
-
-## Lazy ResourceDictionary
-
-:::moniker range=">=net-maui-11.0"
-
-XAML Source Generation now registers resource dictionary entries as factories, inflating each resource on demand instead of eagerly loading everything at startup. This can yield up to an ~8× improvement in resource dictionary initialization time for apps with large dictionaries. The optimization is automatic when XAML source generation is enabled — no code changes are required. For more information, see [GitHub PR #33826](https://github.com/dotnet/maui/pull/33826).
-
-:::moniker-end
-
-## InvalidateStyle and InvalidateVisualStates
-
-:::moniker range=">=net-maui-11.0"
-
-Two new APIs make it easier to reapply styles and visual states that have been mutated in place:
-
-- `VisualElement.InvalidateStyle()` — forces a control to reapply its current <xref:Microsoft.Maui.Controls.Style>, picking up any property changes made directly on the style object.
-- `VisualStateManager.InvalidateVisualStates(VisualElement)` — reapplies the current visual state group setters, useful when visual state property values change at runtime.
-
-These methods are especially useful for Hot Reload scenarios and dynamic UI updates where styles or visual states are modified without replacing the entire style object. For more information, see [GitHub PR #34723](https://github.com/dotnet/maui/pull/34723).
-
-```csharp
-// Mutate a style in place and force the control to pick up the change
-var style = myButton.Style;
-style.Setters.Add(new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Red });
-myButton.InvalidateStyle();
-
-// Reapply visual states after changing a setter value
-VisualStateManager.InvalidateVisualStates(myButton);
-```
-
-:::moniker-end
-
-## Trimmable CSS
-
-:::moniker range=">=net-maui-11.0"
-
-.NET MAUI CSS support is now fully trimmable. If your app doesn't use CSS stylesheets, the CSS infrastructure is trimmed away during publish, reducing app size. No code changes are needed — the linker removes unused CSS types automatically. For more information, see [GitHub PR #33160](https://github.com/dotnet/maui/pull/33160).
-
-:::moniker-end
-
 ## Controls
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
 
 ### Material 3 on Android
-
-:::moniker range=">=net-maui-11.0"
 
 In .NET 11 Preview 4, the Android handlers for several core controls use Material 3 styling and behaviors out of the box, bringing them in line with modern Android design and unlocking the Material 3 theming system:
 
@@ -133,7 +46,7 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 ![Dark and light control samples for the Material 3 design system in .NET MAUI.](media/dotnet-11/material3.png)
 
-:::moniker-end
+In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
 ### BoxView Fill property
 
@@ -184,8 +97,6 @@ Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
 
 ### LongPressGestureRecognizer
 
-:::moniker range=">=net-maui-11.0"
-
 .NET 11 adds a built-in <xref:Microsoft.Maui.Controls.LongPressGestureRecognizer> for handling long-press gestures. It supports a configurable press duration, a movement threshold to cancel the gesture if the user's finger moves too far, state tracking via `GestureState`, and command binding with `Command` and `CommandParameter`. For more information, see [GitHub PR #33432](https://github.com/dotnet/maui/pull/33432).
 
 ```xaml
@@ -207,11 +118,7 @@ void OnLongPressed(object sender, LongPressGestureRecognizerEventArgs e)
 }
 ```
 
-:::moniker-end
-
 ### Map
-
-:::moniker range=">=net-maui-11.0"
 
 The <xref:Microsoft.Maui.Controls.Maps.Map> control receives a significant set of enhancements in .NET 11 Preview 3:
 
@@ -255,7 +162,34 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 
 For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pull/29101), [#33831](https://github.com/dotnet/maui/pull/33831), [#33950](https://github.com/dotnet/maui/pull/33950), [#33982](https://github.com/dotnet/maui/pull/33982), [#33985](https://github.com/dotnet/maui/pull/33985), [#33792](https://github.com/dotnet/maui/pull/33792), [#33799](https://github.com/dotnet/maui/pull/33799), [#33991](https://github.com/dotnet/maui/pull/33991), and [#33993](https://github.com/dotnet/maui/pull/33993).
 
-:::moniker-end
+In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, call `UseMapServiceToken(...)` in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138).
+
+### BoxView Fill
+
+Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a `Fill` property of type <xref:Microsoft.Maui.Controls.Brush>. This aligns <xref:Microsoft.Maui.Controls.BoxView> with the other shape primitives and means gradients and other brushes can paint a `BoxView` without a custom handler. `BackgroundColor` still works as before. For more information, see [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
+
+```xaml
+<BoxView HeightRequest="120" CornerRadius="12">
+    <BoxView.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#512BD4" Offset="0.0" />
+            <GradientStop Color="#0099CC" Offset="1.0" />
+        </LinearGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+## Animation
+
+### Cancel animations with CancellationToken
+
+Starting in .NET 11 Preview 5, the `ViewExtensions` animation methods (`FadeToAsync`, `RotateToAsync`, `ScaleToAsync`, `TranslateToAsync`, and the relative variants) accept an optional <xref:System.Threading.CancellationToken>. Passing a token lets you cancel a specific awaited animation without calling `CancelAnimations`, which cancels every animation on the element. The non-`Async` variants (`FadeTo`, `RotateTo`, and so on) are now marked `[Obsolete]` in favor of the `Async`-suffixed equivalents. For more information, see [GitHub PR #33372](https://github.com/dotnet/maui/pull/33372) and [Basic animation](~/user-interface/animation/basic.md#canceling-animations).
+
+## Accessibility
+
+### Back button accessibility label
+
+Starting in .NET 11 Preview 5, you can set the accessibility label that screen readers (TalkBack, VoiceOver, Narrator) announce for the toolbar back button. <xref:Microsoft.Maui.Controls.NavigationPage> defines a `BackButtonAccessibilityLabel` attached property, and <xref:Microsoft.Maui.Controls.BackButtonBehavior> defines an `AccessibilityLabel` property for Shell apps. Both are independent of the visible back-button title, so you can keep the visible label short and still expose a descriptive spoken label. For more information, see [GitHub PR #35011](https://github.com/dotnet/maui/pull/35011), [NavigationPage](~/user-interface/pages/navigationpage.md), and [Back button behavior](~/fundamentals/shell/navigation.md#back-button-behavior).
 
 ## Platform features
 
@@ -263,15 +197,9 @@ For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pul
 
 ### MonochromeFile for Android adaptive icons
 
-:::moniker range=">=net-maui-11.0"
-
 Starting in .NET 11 Preview 4, single-project app icons can declare a dedicated monochrome layer for Android themed icons via a new `MonochromeFile` attribute on `MauiIcon`. This lets your themed icon use a different glyph than the foreground layer, instead of being a tinted reuse of it. For more information, see [GitHub PR #34569](https://github.com/dotnet/maui/pull/34569).
 
-:::moniker-end
-
 ### iOS PostNotifications permission
-
-:::moniker range=">=net-maui-11.0"
 
 `Permissions.PostNotifications` is now implemented on iOS, providing a cross-platform API for requesting notification authorization. Previously this permission was only functional on Android. Use it to request authorization before scheduling local notifications on iOS. For more information, see [GitHub PR #30132](https://github.com/dotnet/maui/pull/30132).
 
@@ -283,7 +211,67 @@ if (status == PermissionStatus.Granted)
 }
 ```
 
-:::moniker-end
+### Trimmable CSS
+
+.NET MAUI CSS support is now fully trimmable. If your app doesn't use CSS stylesheets, the CSS infrastructure is trimmed away during publish, reducing app size. No code changes are needed — the linker removes unused CSS types automatically. For more information, see [GitHub PR #33160](https://github.com/dotnet/maui/pull/33160).
+
+## Visual State Manager
+
+### InvalidateStyle and InvalidateVisualStates
+
+Two new APIs make it easier to reapply styles and visual states that have been mutated in place:
+
+- `VisualElement.InvalidateStyle()` — forces a control to reapply its current <xref:Microsoft.Maui.Controls.Style>, picking up any property changes made directly on the style object.
+- `VisualStateManager.InvalidateVisualStates(VisualElement)` — reapplies the current visual state group setters, useful when visual state property values change at runtime.
+
+These methods are especially useful for Hot Reload scenarios and dynamic UI updates where styles or visual states are modified without replacing the entire style object. For more information, see [GitHub PR #34723](https://github.com/dotnet/maui/pull/34723).
+
+```csharp
+// Mutate a style in place and force the control to pick up the change
+var style = myButton.Style;
+style.Setters.Add(new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Red });
+myButton.InvalidateStyle();
+
+// Reapply visual states after changing a setter value
+VisualStateManager.InvalidateVisualStates(myButton);
+```
+
+## XAML
+
+### `x:Code` directive for inline C# in XAML
+
+Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.MainPage">
+    <x:Code><![CDATA[
+        void OnButtonClicked(object sender, EventArgs e)
+        {
+            // inline C# method
+        }
+    ]]></x:Code>
+    <Button Clicked="OnButtonClicked" Text="Click me" />
+</ContentPage>
+```
+
+### Compiled bindings inside DataTemplates
+
+Starting in .NET 11 Preview 4, compiled bindings with explicit sources defined inside a <xref:Microsoft.Maui.Controls.DataTemplate> now resolve correctly, fixing a regression that broke <xref:Microsoft.Maui.Controls.TapGestureRecognizer> bindings inside <xref:Microsoft.Maui.Controls.CollectionView> items in .NET 10. For more information, see [GitHub PR #34447](https://github.com/dotnet/maui/pull/34447).
+
+The XAML source generator now also:
+
+- Emits diagnostics when an `x:DataType` or binding is invalid. For more information, see [GitHub PR #34078](https://github.com/dotnet/maui/pull/34078).
+- Correctly distinguishes static extension classes from `enum` types when resolving XAML markup. For more information, see [GitHub PR #34446](https://github.com/dotnet/maui/pull/34446).
+
+### Implicit XAML namespace declarations
+
+Starting in .NET 11, implicit XAML namespace declarations are enabled by default. XAML files no longer need the standard `xmlns` and `xmlns:x` declarations at the root element — the compiler injects them automatically. Existing explicit declarations still compile and can be used to disambiguate duplicate type names. For more information, see [GitHub PR #33834](https://github.com/dotnet/maui/pull/33834).
+
+### Lazy ResourceDictionary
+
+XAML Source Generation now registers resource dictionary entries as factories, inflating each resource on demand instead of eagerly loading everything at startup. This can yield up to an ~8× improvement in resource dictionary initialization time for apps with large dictionaries. The optimization is automatic when XAML source generation is enabled — no code changes are required. For more information, see [GitHub PR #33826](https://github.com/dotnet/maui/pull/33826).
 
 ## .NET for Android
 
@@ -354,17 +342,11 @@ Console output of your application should appear directly in the terminal, and C
 
 ## `dotnet watch` for Android
 
-:::moniker range=">=net-maui-11.0"
-
 Starting in .NET 11 Preview 4, `dotnet watch` works for Android devices and emulators. After selecting a target framework and device, `dotnet watch` deploys your app and applies Hot Reload changes as you edit — no manual rebuild required.
 
 ![GIF of `dotnet watch` on Windows for Android.](media/dotnet-11/net11p4-dotnet-watch-android.gif)
 
-:::moniker-end
-
 ## `dotnet watch` for iOS
-
-:::moniker range=">=net-maui-11.0"
 
 Starting in .NET 11 Preview 4, several long-standing issues have been fixed to make `dotnet watch` usable end-to-end on a `dotnet new maui` project running in the iOS Simulator:
 
@@ -385,8 +367,6 @@ Starting in .NET 11 Preview 4, several long-standing issues have been fixed to m
 > </PropertyGroup>
 > ```
 
-:::moniker-end
-
 ## .NET for iOS
 
 .NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
@@ -404,31 +384,23 @@ For information about known issues, see [Known issues in .NET 11](https://github
 
 ### Xcode 26.4
 
-:::moniker range=">=net-maui-11.0"
-
 Starting in .NET 11 Preview 4, Xcode 26.4 Stable is the supported Xcode version, with refreshed bindings across UIKit, AVFoundation, WebKit, Metal, Photos, PassKit, CarPlay, AuthenticationServices, and more. For more information, see [dotnet/macios #25005](https://github.com/dotnet/macios/pull/25005).
 
 One Apple-side breaking change: `HMError.QuotaExceeded` was removed by Apple and is no longer available. For more information, see [dotnet/macios #25024](https://github.com/dotnet/macios/pull/25024).
 
-:::moniker-end
-
 ### HTTP digest authentication
-
-:::moniker range=">=net-maui-11.0"
 
 Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:Foundation.NSUrlSessionHandler>. For more information, see [dotnet/macios #25180](https://github.com/dotnet/macios/pull/25180).
 
-:::moniker-end
-
 ### CoreCLR for Apple platforms
-
-:::moniker range=">=net-maui-11.0"
 
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime for .NET for iOS, Mac Catalyst, macOS, and tvOS. For more information, see [CoreCLR is the default runtime](#coreclr-is-the-default-runtime) and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 
 Preview 4 also includes a broad reliability and packaging pass across `NSUrlSessionHandler`, MSBuild, the linker, and runtime internals. For the complete list of changes, see the [Preview 4 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview3...release/11.0.1xx-preview4).
 
-:::moniker-end
+### Apple Intelligence APIs
+
+Starting in .NET 11 Preview 5, the Apple Intelligence APIs are available from .NET for iOS, Mac Catalyst, macOS, and tvOS. These include the Foundation Models framework for on-device generative AI, Image Playground for system-provided image generation, Writing Tools entitlements, and the Translation framework. For more information, see [dotnet/macios #25457](https://github.com/dotnet/macios/pull/25457) and the [Preview 5 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview4...release/11.0.1xx-preview5).
 
 ## See also
 
