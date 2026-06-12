@@ -58,7 +58,6 @@ In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditT
 <BoxView Opacity="0.5"
          WidthRequest="200"
          HeightRequest="100"
-         HasShadow="true"
          HorizontalOptions="Center"
          VerticalOptions="Center">
     <BoxView.Fill>
@@ -79,7 +78,6 @@ Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
 <BoxView Opacity="0.5"
          WidthRequest="200"
          HeightRequest="100"
-         HasShadow="true"
          HorizontalOptions="Center"
          VerticalOptions="Center">
     <BoxView.Fill>
