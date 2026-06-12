@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 11/28/2025
+ms.date: 06/05/2026
 ---
 
 # NavigationPage
@@ -23,6 +23,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 - `RootPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the root page of the navigation stack. This is a read-only property.
 - `TitleIconImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon that represents the title on the navigation bar. This is an attached property.
 - `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.NavigationPage> also defines a `BackButtonAccessibilityLabel` attached property of type `string`, which sets the accessibility label that screen readers announce for the back button on the navigation bar. See [Set the back button accessibility label](#set-the-back-button-accessibility-label) for an example.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -207,6 +214,28 @@ In this example, the current page is removed from the modal stack, with the new 
 ### Disable the back button
 
 On Android, you can always return to the previous page by pressing the standard *Back* button on the device. If the modal page requires a self-contained task to be completed before leaving the page, the app must disable the *Back* button. This can be accomplished by overriding the `Page.OnBackButtonPressed` method on the modal page.
+
+::: moniker range=">=net-maui-11.0"
+
+### Set the back button accessibility label
+
+Starting in .NET MAUI 11, you can set the accessibility label that screen readers (TalkBack on Android, VoiceOver on iOS and Mac Catalyst, Narrator on Windows) announce for the back button on a <xref:Microsoft.Maui.Controls.NavigationPage> navigation bar. The label is set with the `NavigationPage.BackButtonAccessibilityLabel` attached property on the page whose navigation bar displays the back button:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.DetailPage"
+             Title="Order details"
+             NavigationPage.BackButtonAccessibilityLabel="Back to order list">
+    <!-- ... -->
+</ContentPage>
+```
+
+Setting an explicit label is recommended when the back button title is hidden, abbreviated, or shows only an icon, because screen readers would otherwise announce a generic value or no value at all. The label is independent of the `BackButtonTitle` attached property, so the visible title can stay short while the spoken label stays descriptive.
+
+For more accessibility guidance, see [Accessibility](~/fundamentals/accessibility.md).
+
+::: moniker-end
 
 ## Page navigation events
 
