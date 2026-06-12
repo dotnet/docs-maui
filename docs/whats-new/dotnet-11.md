@@ -46,7 +46,7 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 ![Dark and light control samples for the Material 3 design system in .NET MAUI.](media/dotnet-11/material3.png)
 
-In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and <xref:Microsoft.Maui.Platform.MauiMaterialContextThemeWrapper>) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Customize Material 3 controls](~/user-interface/material-design.md#customize-material-3-controls).
+In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
 ### LongPressGestureRecognizer
 
@@ -115,7 +115,7 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 
 For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pull/29101), [#33831](https://github.com/dotnet/maui/pull/33831), [#33950](https://github.com/dotnet/maui/pull/33950), [#33982](https://github.com/dotnet/maui/pull/33982), [#33985](https://github.com/dotnet/maui/pull/33985), [#33792](https://github.com/dotnet/maui/pull/33792), [#33799](https://github.com/dotnet/maui/pull/33799), [#33991](https://github.com/dotnet/maui/pull/33991), and [#33993](https://github.com/dotnet/maui/pull/33993).
 
-In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, configure your app's `UseMapServiceToken` value in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138) and the [Map control documentation](~/user-interface/controls/map.md).
+In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, call `UseMapServiceToken(...)` in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138).
 
 ### BoxView Fill
 
@@ -136,13 +136,13 @@ Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a 
 
 ### Cancel animations with CancellationToken
 
-Starting in .NET 11 Preview 5, the `ViewExtensions` animation methods (`FadeToAsync`, `RotateToAsync`, `ScaleToAsync`, `TranslateToAsync`, and the relative variants) accept an optional <xref:System.Threading.CancellationToken>. Passing a token lets you cancel a specific awaited animation without calling `CancelAnimations`, which cancels every animation on the element. The non-`Async` variants (`FadeTo`, `RotateTo`, and so on) are now marked `[Obsolete]` in favor of the `Async`-suffixed equivalents. For more information, see [GitHub PR #33372](https://github.com/dotnet/maui/pull/33372) and [Basic animation](~/user-interface/animation/basic.md#cancel-an-animation-with-a-cancellationtoken).
+Starting in .NET 11 Preview 5, the `ViewExtensions` animation methods (`FadeToAsync`, `RotateToAsync`, `ScaleToAsync`, `TranslateToAsync`, and the relative variants) accept an optional <xref:System.Threading.CancellationToken>. Passing a token lets you cancel a specific awaited animation without calling `CancelAnimations`, which cancels every animation on the element. The non-`Async` variants (`FadeTo`, `RotateTo`, and so on) are now marked `[Obsolete]` in favor of the `Async`-suffixed equivalents. For more information, see [GitHub PR #33372](https://github.com/dotnet/maui/pull/33372) and [Basic animation](~/user-interface/animation/basic.md#canceling-animations).
 
 ## Accessibility
 
 ### Back button accessibility label
 
-Starting in .NET 11 Preview 5, you can set the accessibility label that screen readers (TalkBack, VoiceOver, Narrator) announce for the toolbar back button. <xref:Microsoft.Maui.Controls.NavigationPage> defines a `BackButtonAccessibilityLabel` attached property, and <xref:Microsoft.Maui.Controls.BackButtonBehavior> defines an `AccessibilityLabel` property for Shell apps. Both are independent of the visible back-button title, so you can keep the visible label short and still expose a descriptive spoken label. For more information, see [GitHub PR #35011](https://github.com/dotnet/maui/pull/35011), [Set the back button accessibility label](~/user-interface/pages/navigationpage.md#set-the-back-button-accessibility-label), and [Back button behavior](~/fundamentals/shell/navigation.md#back-button-behavior).
+Starting in .NET 11 Preview 5, you can set the accessibility label that screen readers (TalkBack, VoiceOver, Narrator) announce for the toolbar back button. <xref:Microsoft.Maui.Controls.NavigationPage> defines a `BackButtonAccessibilityLabel` attached property, and <xref:Microsoft.Maui.Controls.BackButtonBehavior> defines an `AccessibilityLabel` property for Shell apps. Both are independent of the visible back-button title, so you can keep the visible label short and still expose a descriptive spoken label. For more information, see [GitHub PR #35011](https://github.com/dotnet/maui/pull/35011), [NavigationPage](~/user-interface/pages/navigationpage.md), and [Back button behavior](~/fundamentals/shell/navigation.md#back-button-behavior).
 
 ## Platform features
 
@@ -191,7 +191,7 @@ VisualStateManager.InvalidateVisualStates(myButton);
 
 ## XAML
 
-## `x:Code` directive for inline C# in XAML
+### `x:Code` directive for inline C# in XAML
 
 Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
 
@@ -209,7 +209,7 @@ Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` di
 </ContentPage>
 ```
 
-## Compiled bindings inside DataTemplates
+### Compiled bindings inside DataTemplates
 
 Starting in .NET 11 Preview 4, compiled bindings with explicit sources defined inside a <xref:Microsoft.Maui.Controls.DataTemplate> now resolve correctly, fixing a regression that broke <xref:Microsoft.Maui.Controls.TapGestureRecognizer> bindings inside <xref:Microsoft.Maui.Controls.CollectionView> items in .NET 10. For more information, see [GitHub PR #34447](https://github.com/dotnet/maui/pull/34447).
 
@@ -218,11 +218,11 @@ The XAML source generator now also:
 - Emits diagnostics when an `x:DataType` or binding is invalid. For more information, see [GitHub PR #34078](https://github.com/dotnet/maui/pull/34078).
 - Correctly distinguishes static extension classes from `enum` types when resolving XAML markup. For more information, see [GitHub PR #34446](https://github.com/dotnet/maui/pull/34446).
 
-## Implicit XAML namespace declarations
+### Implicit XAML namespace declarations
 
 Starting in .NET 11, implicit XAML namespace declarations are enabled by default. XAML files no longer need the standard `xmlns` and `xmlns:x` declarations at the root element — the compiler injects them automatically. Existing explicit declarations still compile and can be used to disambiguate duplicate type names. For more information, see [GitHub PR #33834](https://github.com/dotnet/maui/pull/33834).
 
-## Lazy ResourceDictionary
+### Lazy ResourceDictionary
 
 XAML Source Generation now registers resource dictionary entries as factories, inflating each resource on demand instead of eagerly loading everything at startup. This can yield up to an ~8× improvement in resource dictionary initialization time for apps with large dictionaries. The optimization is automatic when XAML source generation is enabled — no code changes are required. For more information, see [GitHub PR #33826](https://github.com/dotnet/maui/pull/33826).
 
