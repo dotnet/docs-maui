@@ -1,7 +1,7 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 01/06/2025
+ms.date: 06/15/2026
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -276,22 +276,36 @@ To download and install an Android emulator on which to run your apps:
 
     For more information about the `sdkmanager` command, see [sdkmanager](https://developer.android.com/tools/sdkmanager) on developer.android.com.
 
-1. In a terminal, use the `avdmanager` command to create a new Android emulator:
+1. In a terminal, use the `avdmanager list device` command to list the available device profiles:
+
+    On Windows, run the following command:
+
+    ```console
+    avdmanager list device
+    ```
+
+    On macOS, run the following command:
+
+    ```console
+    ./avdmanager list device
+    ```
+
+1. In a terminal, use the `avdmanager create avd` command to create a new Android emulator. Specify a device profile with the `-d` option so that Visual Studio Code can auto-launch the emulator when debugging:
 
     On Windows, run the following commands:
 
     ```console
-    avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;x86_64"
+    avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;x86_64" -d pixel_9
     ```
 
     On macOS, run the following commands:
 
     ```console
-    ./avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;arm64-v8a"
+    ./avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;arm64-v8a" -d pixel_9
     ```
 
     > [!NOTE]
-    > The above command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
+    > The above commands use the `pixel_9` device profile and assume an Apple Silicon Mac. If `pixel_9` isn't listed by `avdmanager list device`, replace it with a device profile from the list. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
 
     For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
 
