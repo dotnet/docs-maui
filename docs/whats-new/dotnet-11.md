@@ -48,6 +48,51 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
+### BoxView Fill property
+
+:::moniker range=">=net-maui-11.0"
+
+<xref:Microsoft.Maui.Controls.BoxView> now exposes a `Fill` bindable property of type <xref:Microsoft.Maui.Controls.Brush>, allowing it to be painted with any brush (including <xref:Microsoft.Maui.Controls.LinearGradientBrush> and <xref:Microsoft.Maui.Controls.RadialGradientBrush>) instead of just a solid color. When both `Fill` and `Color` are set, `Fill` takes priority; setting `Fill` back to `null` causes the <xref:Microsoft.Maui.Controls.BoxView> to render using `Color` again. For more information, see [Fill a BoxView with a brush](~/user-interface/controls/boxview.md#fill-a-boxview-with-a-brush) and [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
+
+```xaml
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
+    <BoxView.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="Purple" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.5" />
+            <GradientStop Color="Red" Offset="1.0" />
+        </LinearGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+:::image type="content" source="../user-interface/controls/media/boxview/boxview-linear-fill.png" alt-text="Screenshot of a BoxView painted with a linear gradient brush.":::
+
+Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
+
+```xaml
+<BoxView Opacity="0.5"
+         WidthRequest="200"
+         HeightRequest="100"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
+    <BoxView.Fill>
+        <RadialGradientBrush Center="0.5,0.5" Radius="0.5">
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Green" Offset="1.0" />
+        </RadialGradientBrush>
+    </BoxView.Fill>
+</BoxView>
+```
+
+:::image type="content" source="../user-interface/controls/media/boxview/boxview-radial-fill.png" alt-text="Screenshot of a BoxView painted with a radial gradient brush.":::
+
+:::moniker-end
+
 ### LongPressGestureRecognizer
 
 .NET 11 adds a built-in <xref:Microsoft.Maui.Controls.LongPressGestureRecognizer> for handling long-press gestures. It supports a configurable press duration, a movement threshold to cancel the gesture if the user's finger moves too far, state tracking via `GestureState`, and command binding with `Command` and `CommandParameter`. For more information, see [GitHub PR #33432](https://github.com/dotnet/maui/pull/33432).
