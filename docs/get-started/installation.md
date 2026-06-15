@@ -1,7 +1,7 @@
 ---
 title: "Install Visual Studio 2022 and Visual Studio Code to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio Code with the .NET MAUI extension to develop native, cross-platform apps using .NET MAUI."
-ms.date: 01/06/2025
+ms.date: 06/15/2026
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -276,22 +276,38 @@ To download and install an Android emulator on which to run your apps:
 
     For more information about the `sdkmanager` command, see [sdkmanager](https://developer.android.com/tools/sdkmanager) on developer.android.com.
 
-1. In a terminal, use the `avdmanager` command to create a new Android emulator:
+1. In a terminal, use the `avdmanager list device` command to list the available device profiles:
+
+    On Windows, run the following command:
+
+    ```console
+    avdmanager list device
+    ```
+
+    On macOS, run the following command:
+
+    ```console
+    ./avdmanager list device
+    ```
+
+1. In a terminal, use the `avdmanager create avd` command to create a new Android emulator. Specify a device profile with the `-d` option so that Visual Studio Code can auto-launch the emulator when debugging:
 
     On Windows, run the following commands:
 
     ```console
-    avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;x86_64"
+    avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;x86_64" -d pixel_9
     ```
 
     On macOS, run the following commands:
 
     ```console
-    ./avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;arm64-v8a"
+    ./avdmanager create avd -n MyAndroidVirtualDevice-API35 -k "system-images;android-35;google_apis;arm64-v8a" -d pixel_9
     ```
 
     > [!NOTE]
-    > The above command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
+    > The above commands use the `pixel_9` device profile. If `pixel_9` isn't listed by `avdmanager list device`, replace it with a device profile from the list.
+    >
+    > The macOS command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
 
     For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
 
@@ -499,7 +515,7 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     :::image type="content" source="media/installation/vscode/android-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android installation popup.":::
 
-  * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](?tabs=visual-studio-code#android).
+  * To configure your SDK and JDK installations further, see instructions on how to [install and configure Android manually](installation.md?tabs=visual-studio-code#android).
 
 * **Android emulator**: Installing an Android emulator is recommended, and required in the absence of a physical device.
 
@@ -507,7 +523,7 @@ The Android acquisition flow will analyze your Android environment and offer to 
 
     :::image type="content" source="media/installation/vscode/android-avd-installation-popup.png" alt-text="Screenshot of the Visual Studio Code Android Virtual Device installation popup.":::
 
-  * To configure emulators further, follow the instructions to [install an Android emulator manually](?tabs=visual-studio-code#download-and-install-an-android-emulator).
+  * To configure emulators further, follow the instructions to [install an Android emulator manually](installation.md?tabs=visual-studio-code#download-and-install-an-android-emulator).
 
 > [!IMPORTANT]
 > Android licenses will need to be manually reviewed and accepted in Terminal. When prompted, review each license. To accept, type 'y', and press 'Enter'.
