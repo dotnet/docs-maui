@@ -305,7 +305,9 @@ To download and install an Android emulator on which to run your apps:
     ```
 
     > [!NOTE]
-    > The above commands use the `pixel_9` device profile and assume an Apple Silicon Mac. If `pixel_9` isn't listed by `avdmanager list device`, replace it with a device profile from the list. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
+    > The above commands use the `pixel_9` device profile. If `pixel_9` isn't listed by `avdmanager list device`, replace it with a device profile from the list.
+    >
+    > The macOS command assumes an Apple Silicon Mac. For an Intel Mac, replace `arm64-v8a` with `x86_64`.
 
     For more information about the `avdmanager` command, see [avdmanager](https://developer.android.com/tools/avdmanager) on developer.android.com.
 
