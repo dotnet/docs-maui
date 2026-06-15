@@ -193,8 +193,8 @@ Due to WinUI 3 `MapControl` limitations, the following features aren't supported
 
 - Displaying the user's location with `IsShowingUser`.
 - Displaying polygons, polylines, and circles from the `MapElements` collection.
-- Pin labels and info windows.
-- The `MapClicked` event for taps on the map background.
+- Pin labels and info windows (the info window behavior described later in this article isn't available on Windows).
+- The `MapClicked` event for taps on the map background (the event described later in this article doesn't fire on Windows).
 
 ::: moniker-end
 
