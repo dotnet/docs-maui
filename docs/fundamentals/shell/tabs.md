@@ -92,7 +92,7 @@ When there are more than five tabs on a <xref:Microsoft.Maui.Controls.TabBar>, a
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-On Android, the **More** tab title is defined by the `overflow_tab_title` string resource. To localize or override this title, add an Android string resource with this name to the *Platforms\Android\Resources* folder. For example, the following resource file localizes the title to Dutch:
+On Android, the **More** tab title is defined by the `overflow_tab_title` string resource. To localize or override this title, add an Android string resource with this name to the *Platforms/Android/Resources* folder. For example, the following resource file localizes the title to Dutch:
 
 ```xml
 <!-- Platforms/Android/Resources/values-nl/strings.xml -->
@@ -103,9 +103,9 @@ On Android, the **More** tab title is defined by the `overflow_tab_title` string
 
 # [iOS](#tab/ios)
 
-On iOS, the **More** tab is provided by the operating system and its title isn't set by .NET MAUI. The operating system displays the localized system title for the app's selected language.
+On iOS, the **More** tab is provided by the operating system and its title isn't set by .NET MAUI. The operating system displays the localized system title based on the device/app language and the app's declared supported localizations.
 
-To ensure iOS uses the correct localization, declare your app's supported languages in *Platforms\iOS\Info.plist*. For example, to include Dutch:
+To ensure iOS uses the correct localization, declare your app's supported languages in *Platforms/iOS/Info.plist*. For example, to include Dutch:
 
 ```xml
 <key>CFBundleLocalizations</key>
@@ -118,7 +118,7 @@ To ensure iOS uses the correct localization, declare your app's supported langua
 
 For more information, see [Localization](~/fundamentals/localization.md#ios-and-mac-catalyst).
 
------
+---
 <!-- markdownlint-enable MD025 -->
 
 In addition, Shell's implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.ShellContent> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
