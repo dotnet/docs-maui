@@ -1,7 +1,7 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
-ms.date: 03/23/2026
+ms.date: 05/24/2026
 ---
 
 # Map
@@ -10,12 +10,23 @@ ms.date: 03/23/2026
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
+::: moniker range="<=net-maui-9.0"
+
 > [!IMPORTANT]
 > The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, the [CommunityToolkit.Maui.Maps](https://www.nuget.org/packages/CommunityToolkit.Maui.Maps) NuGet package provides access to Bing Maps through a `WebView` on Windows. For more information, see [Get started](/dotnet/communitytoolkit/maui/get-started?tabs=CommunityToolkitMauiMaps).
 
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+> [!IMPORTANT]
+> On Windows, the <xref:Microsoft.Maui.Controls.Maps.Map> control uses the WinUI 3 `MapControl`, which is backed by Azure Maps. To display maps on Windows, configure an Azure Maps subscription key.
+
+::: moniker-end
+
 ## Setup
 
-The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform. This provides a fast, familiar maps experience for users, but means that some configuration steps are needed to adhere to each platforms API requirements.
+The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform. This provides a fast, familiar maps experience for users, but means that some configuration steps are needed to adhere to each platform's API requirements.
 
 ### Map initialization
 
@@ -56,7 +67,7 @@ Once the NuGet package has been added and initialized, <xref:Microsoft.Maui.Cont
 
 ### Platform configuration
 
-Additional configuration is required on Android before the map will display. In addition, on iOS, Android, and Mac Catalyst, accessing the user's location requires location permissions to have been granted to your app.
+Additional configuration is required on Android and Windows before the map will display. In addition, on iOS, Android, and Mac Catalyst, accessing the user's location requires location permissions to have been granted to your app.
 
 #### iOS and Mac Catalyst
 
@@ -148,6 +159,44 @@ If your app targets API 22 or lower, it will be necessary to add the `WRITE_EXTE
 ```
 
 This is not required if your app targets API 23 or greater.
+
+#### Windows
+
+::: moniker range=">=net-maui-10.0"
+
+On Windows, the <xref:Microsoft.Maui.Controls.Maps.Map> control uses the WinUI 3 `MapControl`, which is backed by Azure Maps. To display map data, create an Azure Maps account and configure your app with an Azure Maps subscription key:
+
+```csharp
+builder
+    .UseMauiApp<App>()
+    .UseMauiMaps();
+
+builder.ConfigureEssentials(essentials =>
+{
+    essentials.UseMapServiceToken("YOUR_AZURE_MAPS_SUBSCRIPTION_KEY");
+});
+```
+
+Without a valid Azure Maps subscription key, the Windows map control can't authenticate with Azure Maps and won't display map data.
+
+You can retrieve the subscription key from your Azure Maps account in the Azure portal. For more information, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication).
+
+The Windows implementation supports:
+
+- Programmatically moving the map region with `MoveToRegion`.
+- Street, satellite, and hybrid map types.
+- Traffic data.
+- Scrolling and zooming.
+- Pins.
+
+Due to WinUI 3 `MapControl` limitations, the following features aren't supported on Windows and have no effect:
+
+- Displaying the user's location with `IsShowingUser`.
+- Displaying polygons, polylines, and circles from the `MapElements` collection.
+- Pin labels and info windows (the info window behavior described later in this article isn't available on Windows).
+- The `MapClicked` event for taps on the map background (the event described later in this article doesn't fire on Windows).
+
+::: moniker-end
 
 ## Map control
 
