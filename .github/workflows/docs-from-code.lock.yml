@@ -66,7 +66,7 @@ jobs:
       title: ${{ steps.sanitized.outputs.title }}
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@54ad1f83a833db4de127cf278b00438e19a103a0 # v0.79.9
+        uses: github/gh-aw/actions/setup@a3624368c4e7d877586ff2784b61de73405e2cdd # v0.80.9
         with:
           destination: /opt/gh-aw/actions
       - name: Generate agentic run info
@@ -285,7 +285,7 @@ jobs:
       output_types: ${{ steps.collect_output.outputs.output_types }}
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@54ad1f83a833db4de127cf278b00438e19a103a0 # v0.79.9
+        uses: github/gh-aw/actions/setup@a3624368c4e7d877586ff2784b61de73405e2cdd # v0.80.9
         with:
           destination: /opt/gh-aw/actions
       - name: Checkout repository
@@ -1048,7 +1048,7 @@ jobs:
       total_count: ${{ steps.missing_tool.outputs.total_count }}
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@54ad1f83a833db4de127cf278b00438e19a103a0 # v0.79.9
+        uses: github/gh-aw/actions/setup@a3624368c4e7d877586ff2784b61de73405e2cdd # v0.80.9
         with:
           destination: /opt/gh-aw/actions
       - name: Download agent output artifact
@@ -1154,7 +1154,7 @@ jobs:
       matched_command: ''
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@54ad1f83a833db4de127cf278b00438e19a103a0 # v0.79.9
+        uses: github/gh-aw/actions/setup@a3624368c4e7d877586ff2784b61de73405e2cdd # v0.80.9
         with:
           destination: /opt/gh-aw/actions
       - name: Check team membership for workflow
@@ -1199,7 +1199,7 @@ jobs:
       process_safe_outputs_temporary_id_map: ${{ steps.process_safe_outputs.outputs.temporary_id_map }}
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@54ad1f83a833db4de127cf278b00438e19a103a0 # v0.79.9
+        uses: github/gh-aw/actions/setup@a3624368c4e7d877586ff2784b61de73405e2cdd # v0.80.9
         with:
           destination: /opt/gh-aw/actions
       - name: Download agent output artifact
