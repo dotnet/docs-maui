@@ -22,7 +22,7 @@ SkiaSharp for .NET MAUI is packaged as a series of NuGet packages. After you've 
 
 ## Update namespaces
 
-Xamarin.Forms apps that use SkiaSharp typically use types from the <xref:SkiaSharp> namespace and the <xref:SkiaSharp.Views.Forms> namespace. In SkiaSharp for .NET MAUI, you'll continue to use the <xref:SkiaSharp> namespace but the types that were in the <xref:SkiaSharp.Views.Forms> namespace have moved into the <xref:SkiaSharp.Views.Maui> and <xref:SkiaSharp.Views.Maui.Controls> namespaces.
+Xamarin.Forms apps that use SkiaSharp typically use types from the <xref:SkiaSharp> namespace and the `SkiaSharp.Views.Forms` namespace. In SkiaSharp for .NET MAUI, you'll continue to use the <xref:SkiaSharp> namespace but the types that were in the `SkiaSharp.Views.Forms` namespace have moved into the <xref:SkiaSharp.Views.Maui> and <xref:SkiaSharp.Views.Maui.Controls> namespaces.
 
 The following table shows the namespaces you'll need to use to build your SkiaSharp code in a .NET MAUI app:
 
