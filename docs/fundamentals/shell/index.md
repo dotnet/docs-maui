@@ -18,7 +18,20 @@ ms.date: 08/30/2024
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> On Android, <xref:Microsoft.Maui.Controls.Shell> uses a handler-based implementation starting in .NET 11, providing improved performance and greater customization flexibility. In .NET 10 and earlier, <xref:Microsoft.Maui.Controls.Shell> used the `ShellRenderer`-based implementation on Android.
+> On Android, <xref:Microsoft.Maui.Controls.Shell> uses a handler-based implementation in .NET 11, aligning with the handler architecture. In .NET 10 and earlier, <xref:Microsoft.Maui.Controls.Shell> used the `ShellRenderer`-based implementation on Android.
+
+## Revert to ShellRenderer behavior
+
+We recommend using the new handler-based <xref:Microsoft.Maui.Controls.Shell> on Android, but if you want to opt out and revert to the `ShellRenderer` behavior, you can use the following code in your `MauiProgram.cs`:
+
+```csharp
+#if ANDROID
+    .ConfigureMauiHandlers(handlers =>
+    {
+        handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+    })
+#endif
+```
 
 ::: moniker-end
 
@@ -69,20 +82,3 @@ Shell uses a URI-based navigation experience that uses routes to navigate to any
 Then, when a result is selected from the search suggestions area, custom logic can be executed such as navigating to a detail page.
 
 For more information, see [.NET MAUI Shell search](search.md).
-
-::: moniker range=">=net-maui-11.0"
-
-## Revert to ShellRenderer behavior
-
-We recommend using the new handler-based <xref:Microsoft.Maui.Controls.Shell> on Android, but if you want to opt out and revert to the `ShellRenderer` behavior, you can use the following code in your `MauiProgram.cs`:
-
-```csharp
-#if ANDROID
-    .ConfigureMauiHandlers(handlers =>
-    {
-        handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
-    })
-#endif
-```
-
-::: moniker-end
