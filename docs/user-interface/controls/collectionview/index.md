@@ -21,10 +21,10 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 > [!NOTE]
 > `CollectionView` optimized handlers became default at different times per platform:
 >
-> | Platform | Default starting in | Previously optional in |
+> | Platform | Availability before default | Default starting in |
 > | --- | --- | --- |
-> | iOS / Mac Catalyst | .NET 10 | .NET 9 |
-> | Windows | .NET 11 | .NET 10 |
+> | iOS / Mac Catalyst | .NET 9 (optional) | .NET 10 |
+> | Windows | Not available before .NET 11 | .NET 11 |
 >
 > These optimized handlers provide improved stability and performance.
 
@@ -45,11 +45,11 @@ builder.ConfigureMauiHandlers(handlers =>
 
 ### Option 2 (Windows only): Disable optimized CollectionView handler in project file
 
-`UseCollectionViewHandler2` is only supported for Windows targets.
+`UseWindowsCollectionView2Handler` is only supported for Windows targets.
 
 ```xml
 <PropertyGroup>
-  <UseCollectionViewHandler2>false</UseCollectionViewHandler2>
+ <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
 </PropertyGroup>
 ```
 
