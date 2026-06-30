@@ -30,9 +30,9 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 
 ## Revert to previous behavior
 
-You can revert in either of these ways (depending on your scenario):
+We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt out and revert to the previous handler behavior, you can use the code below in your `MauiProgram.cs`.
 
-### Option 1: Configure handlers in `MauiProgram.cs`
+Configure handlers in `MauiProgram.cs`:
 
 ```csharp
 #if IOS || MACCATALYST || WINDOWS
@@ -43,9 +43,7 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
-### Option 2 (Windows only): Disable optimized CollectionView handler in project file
-
-`UseWindowsCollectionView2Handler` is only supported for Windows targets.
+On Windows, you can also use the `UseWindowsCollectionView2Handler` build property in your project file.
 
 ```xml
 <PropertyGroup>
