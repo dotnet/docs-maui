@@ -26,10 +26,10 @@ We recommend using the new handler-based <xref:Microsoft.Maui.Controls.Shell> on
 
 ```csharp
 #if ANDROID
-    .ConfigureMauiHandlers(handlers =>
-    {
-        handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
-    })
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+});
 #endif
 ```
 
