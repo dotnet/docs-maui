@@ -16,22 +16,41 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 
 <xref:Microsoft.Maui.Controls.CollectionView> should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
 
-::: moniker range=">=net-maui-10.0"
+::: moniker range="net-maui-10.0 net-maui-11.0"
 
 > [!NOTE]
-> On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> in .NET 10, providing improved performance and stability.
+> `CollectionView` optimized handlers became default at different times per platform:
+>
+> | Platform | Default starting in | Previously optional in |
+> | --- | --- | --- |
+> | iOS / Mac Catalyst | .NET 10 | .NET 9 |
+> | Windows | .NET 11 | .NET 10 |
+>
+> These optimized handlers provide improved stability and performance.
 
-## Revert to .NET 9 behavior
+## Revert to previous behavior
 
-We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+You can revert in either of these ways (depending on your scenario):
+
+### Option 1: Configure handlers in `MauiProgram.cs`
 
 ```csharp
-#if IOS || MACCATALYST
+#if IOS || MACCATALYST || WINDOWS
 builder.ConfigureMauiHandlers(handlers =>
 {
     handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler>();
 });
 #endif
+```
+
+### Option 2 (Windows only): Disable optimized CollectionView handler in project file
+
+`UseCollectionViewHandler2` is only supported for Windows targets.
+
+```xml
+<PropertyGroup>
+  <UseCollectionViewHandler2>false</UseCollectionViewHandler2>
+</PropertyGroup>
 ```
 
 ::: moniker-end
