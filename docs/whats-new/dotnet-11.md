@@ -48,6 +48,18 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
+### CollectionView v2 on Windows
+
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.CollectionView> on Windows now uses optimized default handlers, providing improved performance and stability. For more information, see [GitHub PR #34600](https://github.com/dotnet/maui/pull/34600).
+
+If you need to revert to the previous handler, you can disable the CollectionView v2 handler by setting the `UseWindowsCollectionView2Handler` build property to `false` in your project file:
+
+```xml
+<PropertyGroup>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
+```
+
 ### BoxView Fill property
 
 :::moniker range=">=net-maui-11.0"

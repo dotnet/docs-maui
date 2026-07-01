@@ -19,19 +19,36 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 ::: moniker range=">=net-maui-10.0"
 
 > [!NOTE]
-> On iOS and Mac Catalyst, the optimized handlers that were optional in .NET 9 are the default handlers for <xref:Microsoft.Maui.Controls.CollectionView> in .NET 10, providing improved performance and stability.
+> `CollectionView` optimized handlers became default at different times per platform:
+>
+> | Platform | Availability before default | Default starting in |
+> | --- | --- | --- |
+> | iOS / Mac Catalyst | .NET 9 (optional) | .NET 10 |
+> | Windows | Not available before .NET 11 | .NET 11 |
+>
+> These optimized handlers provide improved stability and performance.
 
-## Revert to .NET 9 behavior
+## Revert to previous behavior
 
-We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt-out of this behavior and revert back to the .NET 9 handler, you can use the code below in your `MauiProgram.cs`.
+We recommend using the new handler for <xref:Microsoft.Maui.Controls.CollectionView>, but if you want to opt out and revert to the previous handler behavior, you can use the code below in your `MauiProgram.cs`.
+
+Configure handlers in `MauiProgram.cs`:
 
 ```csharp
-#if IOS || MACCATALYST
+#if IOS || MACCATALYST || WINDOWS
 builder.ConfigureMauiHandlers(handlers =>
 {
     handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler>();
 });
 #endif
+```
+
+On Windows, you can also use the `UseWindowsCollectionView2Handler` build property in your project file:
+
+```xml
+<PropertyGroup>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
 ```
 
 ::: moniker-end
