@@ -48,6 +48,21 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
+### Shell handler on Android
+
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.Shell> on Android uses a handler-based implementation, aligning with the current .NET MAUI handler architecture. In .NET 10 and earlier, <xref:Microsoft.Maui.Controls.Shell> used the `ShellRenderer`-based implementation on Android. For more information, see [GitHub PR #34758](https://github.com/dotnet/maui/pull/34758) and [Shell](~/fundamentals/shell/index.md#revert-to-shellrenderer-behavior).
+
+If you need to revert to the previous `ShellRenderer` behavior, you can use the following code in your `MauiProgram.cs`:
+
+```csharp
+#if ANDROID
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+});
+#endif
+```
+
 ### BoxView Fill property
 
 :::moniker range=">=net-maui-11.0"
