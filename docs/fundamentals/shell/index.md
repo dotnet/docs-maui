@@ -15,6 +15,26 @@ ms.date: 08/30/2024
 - A URI-based navigation scheme that permits navigation to any page in the app.
 - An integrated search handler.
 
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> On Android, <xref:Microsoft.Maui.Controls.Shell> uses a handler-based implementation in .NET 11, aligning with the handler architecture. In .NET 10 and earlier, <xref:Microsoft.Maui.Controls.Shell> used the `ShellRenderer`-based implementation on Android.
+
+## Revert to ShellRenderer behavior
+
+We recommend using the new handler-based <xref:Microsoft.Maui.Controls.Shell> on Android, but if you want to opt out and revert to the `ShellRenderer` behavior, you can use the following code in your `MauiProgram.cs`:
+
+```csharp
+#if ANDROID
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+});
+#endif
+```
+
+::: moniker-end
+
 ## App visual hierarchy
 
 In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the <xref:Microsoft.Maui.Controls.Shell> class. This class can consist of three main hierarchical objects:
