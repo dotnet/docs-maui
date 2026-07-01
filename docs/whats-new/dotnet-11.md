@@ -341,8 +341,8 @@ We have enhanced the .NET CLI with [Spectre.Console](https://spectreconsole.net/
 
 So, for multi-targeted projects like .NET MAUI, it will:
 
-- Prompt for a `$(TargetFramework)`
-- Prompt for a device, emulator, simulator if there are more than one.
+* Prompt for a `$(TargetFramework)`
+* Prompt for a device, emulator, simulator if there are more than one.
 
 Console output of your application should appear directly in the terminal, and Ctrl+C will terminate the application.
 
