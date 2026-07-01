@@ -48,6 +48,18 @@ In .NET 11 Preview 4, the Android handlers for several core controls use Materia
 
 In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditText`, `MauiMaterialDatePicker`, `MauiMaterialPicker`, `MauiMaterialTimePicker`, `MauiMaterialTextView`, `MauiMaterialSearchBarTextInputLayout`, `MaterialActivityIndicator`, and `MauiMaterialContextThemeWrapper`) are public so you can subclass them from your own handler customizations. For more information, see [GitHub PR #35323](https://github.com/dotnet/maui/pull/35323) and [Material 3](~/user-interface/material-design.md).
 
+### CollectionView v2 on Windows
+
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.CollectionView> on Windows now uses optimized default handlers, providing improved performance and stability. For more information, see [GitHub PR #34600](https://github.com/dotnet/maui/pull/34600).
+
+If you need to revert to the previous handler, you can disable the CollectionView v2 handler by setting the `UseWindowsCollectionView2Handler` build property to `false` in your project file:
+
+```xml
+<PropertyGroup>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
+```
+
 ### BoxView Fill property
 
 :::moniker range=">=net-maui-11.0"
@@ -161,18 +173,6 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pull/29101), [#33831](https://github.com/dotnet/maui/pull/33831), [#33950](https://github.com/dotnet/maui/pull/33950), [#33982](https://github.com/dotnet/maui/pull/33982), [#33985](https://github.com/dotnet/maui/pull/33985), [#33792](https://github.com/dotnet/maui/pull/33792), [#33799](https://github.com/dotnet/maui/pull/33799), [#33991](https://github.com/dotnet/maui/pull/33991), and [#33993](https://github.com/dotnet/maui/pull/33993).
 
 In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, call `UseMapServiceToken(...)` in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138).
-
-### CollectionView v2 on Windows
-
-Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.CollectionView> on Windows now uses optimized default handlers, providing improved performance and stability. For more information, see [GitHub PR #34600](https://github.com/dotnet/maui/pull/34600).
-
-If you need to revert to the previous handler, you can disable the CollectionView v2 handler by setting the `UseWindowsCollectionView2Handler` build property to `false` in your project file:
-
-```xml
-<PropertyGroup>
-  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
-</PropertyGroup>
-```
 
 ### BoxView Fill
 
@@ -341,8 +341,8 @@ We have enhanced the .NET CLI with [Spectre.Console](https://spectreconsole.net/
 
 So, for multi-targeted projects like .NET MAUI, it will:
 
-* Prompt for a `$(TargetFramework)`
-* Prompt for a device, emulator, simulator if there are more than one.
+- Prompt for a `$(TargetFramework)`
+- Prompt for a device, emulator, simulator if there are more than one.
 
 Console output of your application should appear directly in the terminal, and Ctrl+C will terminate the application.
 
