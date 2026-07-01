@@ -16,7 +16,7 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 
 <xref:Microsoft.Maui.Controls.CollectionView> should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
 
-::: moniker range="net-maui-10.0 net-maui-11.0"
+::: moniker range=">=net-maui-10.0"
 
 > [!NOTE]
 > `CollectionView` optimized handlers became default at different times per platform:
@@ -43,11 +43,11 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 ```
 
-On Windows, you can also use the `UseWindowsCollectionView2Handler` build property in your project file.
+On Windows, you can also use the `UseWindowsCollectionView2Handler` build property in your project file:
 
 ```xml
 <PropertyGroup>
- <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
 </PropertyGroup>
 ```
 
