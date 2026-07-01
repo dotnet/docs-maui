@@ -162,6 +162,18 @@ For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pul
 
 In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, call `UseMapServiceToken(...)` in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138).
 
+### CollectionView v2 on Windows
+
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.CollectionView> on Windows now uses optimized default handlers, providing improved performance and stability. For more information, see [GitHub PR #34600](https://github.com/dotnet/maui/pull/34600).
+
+If you need to revert to the previous handler, you can disable the CollectionView v2 handler by setting the `UseWindowsCollectionView2Handler` build property to `false` in your project file:
+
+```xml
+<PropertyGroup>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
+```
+
 ### BoxView Fill
 
 Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a `Fill` property of type <xref:Microsoft.Maui.Controls.Brush>. This aligns <xref:Microsoft.Maui.Controls.BoxView> with the other shape primitives and means gradients and other brushes can paint a `BoxView` without a custom handler. `BackgroundColor` still works as before. For more information, see [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
