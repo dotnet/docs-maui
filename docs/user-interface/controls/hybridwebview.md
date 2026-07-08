@@ -909,9 +909,9 @@ To pass complex types from JavaScript to C#:
     }
     ```
 
-::: moniker range=">=net-maui-11.0"
+    ::: moniker range=">=net-maui-11.0"
 
-1. For .NET 11 and later apps that use full trimming or Native AOT, define JSON metadata for the method's parameter and return types and register the target object with that context:
+    For .NET 11 and later apps that use full trimming or Native AOT, define JSON metadata for the method's parameter and return types and register the target object with that context:
 
     ```csharp
     using System.Text.Json.Serialization;
@@ -929,7 +929,7 @@ To pass complex types from JavaScript to C#:
         MyJsonContext.Default);
     ```
 
-::: moniker-end
+    ::: moniker-end
 
 1. Call the method from JavaScript, passing a JavaScript object that matches the C# class structure:
 
