@@ -96,7 +96,7 @@ Starting in .NET MAUI 11, Android Shell uses handlers by default. Apps with cust
 | `ShellItemRenderer` subclass | `ShellItemHandler` subclass |
 | `ShellSectionRenderer` subclass | `ShellSectionHandler` subclass |
 | `ShellItemRenderer.OnTabReselected()` | `ShellItemHandler.OnTabReselected()` |
-| More overflow customization | `ShellItemHandler.CreateMoreBottomSheet()` |
+| Shell `More` overflow menu or bottom sheet customization | `ShellItemHandler.CreateMoreBottomSheet()` |
 | Navigation animation `SetupAnimation(...)` | `ShellSectionHandler.OnCreateNavigationAnimation(Context, bool isPopping, bool enter)` |
 
 If you need the legacy Android Shell renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
