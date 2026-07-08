@@ -1,7 +1,7 @@
 ---
 title: "Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app"
 description: "Learn how to manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app."
-ms.date: 3/02/2023
+ms.date: 07/08/2026
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
 ---
 
@@ -88,7 +88,9 @@ Before you update each platform project's entry point class, you must first enab
 
 #### Add package references
 
-In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
+::: moniker range="<=net-maui-10.0"
+
+In .NET 10 and earlier, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
 You should add the following explicit package references to an `<ItemGroup>` in each project file:
 
@@ -107,6 +109,24 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
     </PropertyGroup>
 </Project>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11 and later, .NET MAUI ships as a .NET workload and multiple NuGet packages. The optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped.
+
+You should add the following explicit package reference to an `<ItemGroup>` in each project file:
+
+```xml
+<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+```
+
+The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. If you set the `$(MauiVersion)` build property in your project file, use a .NET 11 or later version.
+
+If your migrated project explicitly references the `Microsoft.Maui.Controls.Compatibility` NuGet package, remove the package reference before targeting .NET 11. If your app depends on APIs or Xamarin.Forms compatibility renderers that were only available from that opt-in package, migrate those usages to current .NET MAUI controls or handlers before upgrading.
+
+::: moniker-end
 
 ### Android project configuration
 
