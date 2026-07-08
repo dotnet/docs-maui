@@ -21,11 +21,12 @@ body:
     validations:
       required: true
   - type: textarea
-    id: feedback
+    id: userfeedback
     validations:
       required: true
     attributes:
       label: Description
+      placeholder: Describe your problem or suggestion
   - type: markdown
     attributes:
       value: "## 🚧 Article information 🚧"
