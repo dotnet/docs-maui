@@ -114,7 +114,7 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11 and later, .NET MAUI ships as a .NET workload and multiple NuGet packages. The optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped.
+In .NET 11 and later, migrated projects still need an explicit `Microsoft.Maui.Controls` package reference. The optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped.
 
 You should add the following explicit package reference to an `<ItemGroup>` in each project file:
 
@@ -122,7 +122,7 @@ You should add the following explicit package reference to an `<ItemGroup>` in e
 <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 ```
 
-The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. If you set the `$(MauiVersion)` build property in your project file, use a .NET 11 or later version.
+The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. If you set the `$(MauiVersion)` build property in your project file, use a .NET MAUI 11 or later package version.
 
 If your migrated project explicitly references the `Microsoft.Maui.Controls.Compatibility` NuGet package, remove the package reference before targeting .NET 11. If your app depends on APIs or Xamarin.Forms compatibility renderers that were only available from that opt-in package, migrate those usages to current .NET MAUI controls or handlers before upgrading.
 
