@@ -1,7 +1,7 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 12/16/2024
+ms.date: 07/08/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
@@ -188,7 +188,47 @@ foreach (var file in results)
 ::: moniker-end
 
 > [!IMPORTANT]
-> All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
+> Media picker methods that open the camera or picker UI must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
+
+::: moniker range=">=net-maui-11.0"
+
+### Recover interrupted Android media picker operations
+
+On Android, the system can destroy and recreate your app while the camera or photo picker UI is in front. If the original media picker task is gone when your app resumes, use the Android-only recovery APIs to retrieve any accepted results.
+
+Recovery is available for AndroidX-backed media picker operations: capture photo, capture video, pick a photo, pick photos, pick a video, and pick videos. Each <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult> has an <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Id>, a <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Kind>, and a <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Files> collection containing recovered <xref:Microsoft.Maui.Storage.FileResult> objects. The <xref:Microsoft.Maui.Media.RecoveredMediaPickerResultKind> value identifies the operation as `CapturePhoto`, `CaptureVideo`, `PickPhoto`, `PickPhotos`, `PickVideo`, or `PickVideos`.
+
+```csharp
+using System.IO;
+using Microsoft.Maui.Media;
+using Microsoft.Maui.Storage;
+
+async Task RecoverMediaPickerResultsAsync()
+{
+    var results = await MediaPicker.GetRecoveredMediaPickerResultsAsync();
+
+    foreach (var result in results)
+    {
+        foreach (var file in result.Files)
+        {
+            var destination = Path.Combine(FileSystem.CacheDirectory, file.FileName);
+
+            using var source = await file.OpenReadAsync();
+            using var target = File.Create(destination);
+            await source.CopyToAsync(target);
+        }
+
+        await MediaPicker.ClearRecoveredMediaPickerResultAsync(result.Id);
+    }
+}
+```
+
+Use <xref:Microsoft.Maui.Media.MediaPicker.GetRecoveredMediaPickerResultsAsync%2A> to query already recovered results, and call <xref:Microsoft.Maui.Media.MediaPicker.ClearRecoveredMediaPickerResultAsync%2A> after your app handles each result. If your startup or resume flow needs to wait for recovery reconciliation, call <xref:Microsoft.Maui.Media.MediaPicker.WaitForRecoveredMediaPickerResultsAsync%2A> with a <xref:System.Threading.CancellationToken>. If the app should abandon a pending media picker operation instead, call <xref:Microsoft.Maui.Media.MediaPicker.DiscardPendingMediaPickerOperationAsync%2A>.
+
+> [!IMPORTANT]
+> Media picker result recovery is Android-only and doesn't change media picker behavior on iOS, Mac Catalyst, or Windows.
+
+::: moniker-end
 
 ## Take a photo
 
