@@ -1,7 +1,7 @@
 ---
 title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
-ms.date: 04/13/2023
+ms.date: 07/08/2026
 ---
 
 # Reuse custom renderers in .NET MAUI
@@ -83,6 +83,34 @@ The renderers are registered with the <xref:Microsoft.Maui.Hosting.HandlerMauiAp
 
 > [!IMPORTANT]
 > Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method.
+
+::: moniker range=">=net-maui-11.0"
+
+### Migrate Android Shell renderers
+
+Starting in .NET MAUI 11, Android Shell uses handlers by default. Apps with custom Android Shell renderer subclasses should migrate those customizations to the Android Shell handler types where possible:
+
+| Android renderer customization | Handler customization |
+| -- | -- |
+| `ShellRenderer` subclass | `ShellHandler` subclass |
+| `ShellItemRenderer` subclass | `ShellItemHandler` subclass |
+| `ShellSectionRenderer` subclass | `ShellSectionHandler` subclass |
+| `ShellItemRenderer.OnTabReselected()` | `ShellItemHandler.OnTabReselected()` |
+| More overflow customization | `ShellItemHandler.CreateMoreBottomSheet()` |
+| Navigation animation `SetupAnimation(...)` | `ShellSectionHandler.OnCreateNavigationAnimation(Context, bool isPopping, bool enter)` |
+
+If you need the legacy Android Shell renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if ANDROID
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+#endif
+});
+```
+
+::: moniker-end
 
 ### Consume the custom renderers
 
