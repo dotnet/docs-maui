@@ -181,7 +181,7 @@ void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventA
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11, `GeolocationListeningRequest.MinimumDistance` specifies the minimum distance, in meters, between foreground location updates. Combine it with <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest.MinimumTime?displayProperty=nameWithType> to limit updates by both time and distance. A value of `0` disables the distance filter:
+In .NET 11, <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest.MinimumDistance?displayProperty=nameWithType> specifies the minimum distance, in meters, between foreground location updates. Combine it with <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest.MinimumTime?displayProperty=nameWithType> to limit updates by both time and distance. A value of `0` disables the distance filter:
 
 ```csharp
 var request = new GeolocationListeningRequest(GeolocationAccuracy.Medium)
