@@ -38,7 +38,7 @@ If you need to opt out of CoreCLR and use the Mono runtime instead, set `$(UseMo
 
 ### HybridWebView JS-to-.NET invocation
 
-Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.HybridWebView> can use source-generated JSON metadata when JavaScript invokes .NET methods. Call `SetInvokeJavaScriptTarget<T>(T target, JsonSerializerContext jsonSerializerContext)` with a source-generated `JsonSerializerContext` to avoid reflection-based serialization, making JS-to-.NET invocation compatible with NativeAOT and full trimming. The legacy overload remains available, but is annotated as requiring unreferenced code and dynamic code. For more information, see [GitHub PR #35626](https://github.com/dotnet/maui/pull/35626).
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.HybridWebView> can use source-generated JSON metadata when JavaScript invokes .NET methods. Call `SetInvokeJavaScriptTarget<T>(T target, JsonSerializerContext jsonSerializerContext)` with a source-generated `JsonSerializerContext` to avoid reflection-based serialization, making JS-to-.NET invocation compatible with NativeAOT and full trimming. This overload depends on the HybridWebView source generator that's included with .NET MAUI; if analyzers are disabled or the direct call isn't intercepted, the overload throws. The legacy overload remains available, but is annotated as requiring unreferenced code and dynamic code. For more information, see [GitHub PR #35626](https://github.com/dotnet/maui/pull/35626).
 
 ### Material 3 on Android
 
