@@ -196,13 +196,16 @@ foreach (var file in results)
 
 On Android, the system can destroy and recreate your app while the camera or photo picker UI is in front. If the original media picker task is gone when your app resumes, use the Android-only recovery APIs to retrieve any accepted results.
 
-Recovery is available for AndroidX-backed media picker operations: capture photo, capture video, pick a photo, pick photos, pick a video, and pick videos. Each <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult> has an <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Id>, a <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Kind>, and a <xref:Microsoft.Maui.Media.RecoveredMediaPickerResult.Files> collection containing recovered <xref:Microsoft.Maui.Storage.FileResult> objects. The <xref:Microsoft.Maui.Media.RecoveredMediaPickerResultKind> value identifies the operation as `CapturePhoto`, `CaptureVideo`, `PickPhoto`, `PickPhotos`, `PickVideo`, or `PickVideos`.
+Recovery is available for AndroidX-backed media picker operations: capture photo, capture video, pick a photo, pick photos, pick a video, and pick videos. Each `RecoveredMediaPickerResult` has an `Id`, a `Kind`, and a `Files` collection containing recovered <xref:Microsoft.Maui.Storage.FileResult> objects. The `RecoveredMediaPickerResultKind` value identifies the operation as `CapturePhoto`, `CaptureVideo`, `PickPhoto`, `PickPhotos`, `PickVideo`, or `PickVideos`.
+
+Because the recovery APIs are Android-only, place recovery code in an Android-specific file or guard it with `#if ANDROID` in shared code.
 
 ```csharp
 using System.IO;
 using Microsoft.Maui.Media;
 using Microsoft.Maui.Storage;
 
+#if ANDROID
 async Task RecoverMediaPickerResultsAsync()
 {
     var results = await MediaPicker.GetRecoveredMediaPickerResultsAsync();
@@ -221,9 +224,10 @@ async Task RecoverMediaPickerResultsAsync()
         await MediaPicker.ClearRecoveredMediaPickerResultAsync(result.Id);
     }
 }
+#endif
 ```
 
-Use <xref:Microsoft.Maui.Media.MediaPicker.GetRecoveredMediaPickerResultsAsync%2A> to query already recovered results, and call <xref:Microsoft.Maui.Media.MediaPicker.ClearRecoveredMediaPickerResultAsync%2A> after your app handles each result. If your startup or resume flow needs to wait for recovery reconciliation, call <xref:Microsoft.Maui.Media.MediaPicker.WaitForRecoveredMediaPickerResultsAsync%2A> with a <xref:System.Threading.CancellationToken>. If the app should abandon a pending media picker operation instead, call <xref:Microsoft.Maui.Media.MediaPicker.DiscardPendingMediaPickerOperationAsync%2A>.
+Use `MediaPicker.GetRecoveredMediaPickerResultsAsync` to query already recovered results, and call `MediaPicker.ClearRecoveredMediaPickerResultAsync` after your app handles each result. If your startup or resume flow needs to wait for recovery reconciliation, call `MediaPicker.WaitForRecoveredMediaPickerResultsAsync` with a <xref:System.Threading.CancellationToken>. If the app should abandon a pending media picker operation instead, call `MediaPicker.DiscardPendingMediaPickerOperationAsync`.
 
 > [!IMPORTANT]
 > Media picker result recovery is Android-only and doesn't change media picker behavior on iOS, Mac Catalyst, or Windows.
