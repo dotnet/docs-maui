@@ -2,7 +2,7 @@
 title: HybridWebView
 description: Learn how to use a HybridWebView to host HTML/JS/CSS content in a WebView, and communicate between that content and .NET.
 ms.topic: concept-article
-ms.date: 12/08/2025
+ms.date: 07/08/2026
 monikerRange: ">=net-maui-9.0"
 
 #customer intent: As a developer, I want to host HTML/JS/CSS content in a web view so that I can publish the web app as a mobile app.
@@ -31,8 +31,19 @@ To create a .NET MAUI app with <xref:Microsoft.Maui.Controls.HybridWebView> you 
 
 The entire app, including the web content, is packaged and runs locally on a device, and can be published to applicable app stores. The web content is hosted within a native web view control and runs within the context of the app. Any part of the app can access external web services, but isn't required to.
 
+::: moniker range="<=net-maui-10.0"
+
 > [!IMPORTANT]
 > By default, the <xref:Microsoft.Maui.Controls.HybridWebView> control won't be available when full trimming or Native AOT is enabled. To change this behavior, see [Trimming feature switches](~/deployment/trimming.md#trimming-feature-switches).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> In .NET 11 and later, the <xref:Microsoft.Maui.Controls.HybridWebView> control can be used with full trimming and Native AOT when JavaScript-to-.NET invocation is registered with source-generated JSON metadata. Use the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> overload that accepts a <xref:System.Text.Json.Serialization.JsonSerializerContext>. For more information, see [Invoke C# from JavaScript](#invoke-c-from-javascript).
+
+::: moniker-end
 
 [!INCLUDE [WebView2 Program Files warning](includes/webview2-program-files-warning.md)]
 
@@ -713,10 +724,8 @@ Your app's JavaScript code within the <xref:Microsoft.Maui.Controls.HybridWebVie
 The following example defines public synchronous and asynchronous methods for invoking from JavaScript:
 
 ```csharp
-public partial class MainPage : ContentPage
+public sealed class DotNetMethods
 {
-    ...  
-
     public void DoSyncWork()
     {
         Debug.WriteLine("DoSyncWork");
@@ -777,9 +786,11 @@ public partial class MainPage : ContentPage
     {
         public string? Message { get; set; }
         public int Value { get; set; }
-    }  
+    }
 }
 ```
+
+::: moniker range="<=net-maui-10.0"
 
 You must then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method to set the object that will be the target of JavaScript calls from the <xref:Microsoft.Maui.Controls.HybridWebView>:
 
@@ -789,11 +800,48 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        hybridWebView.SetInvokeJavaScriptTarget(this);
+        hybridWebView.SetInvokeJavaScriptTarget(new DotNetMethods());
     }
     ...
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+For .NET 11 and later apps that use full trimming or Native AOT, define a <xref:System.Text.Json.Serialization.JsonSerializerContext> with <xref:System.Text.Json.Serialization.JsonSerializableAttribute> entries for each parameter and return type used by methods JavaScript can invoke:
+
+```csharp
+using System.Text.Json.Serialization;
+
+[JsonSerializable(typeof(int))]
+[JsonSerializable(typeof(string))]
+[JsonSerializable(typeof(DotNetMethods.SyncReturn))]
+internal partial class MyJsonContext : JsonSerializerContext
+{
+}
+```
+
+Then call the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> overload that accepts the target object and JSON context:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+        hybridWebView.SetInvokeJavaScriptTarget(
+            new DotNetMethods(),
+            MyJsonContext.Default);
+    }
+    ...
+}
+```
+
+The source generator intercepts this overload and creates a trim-safe and AOT-safe dispatcher for JavaScript-to-.NET calls. The `SetInvokeJavaScriptTarget<T>(T target)` overload remains available for non-trim/AOT scenarios, but it uses reflection-based dispatch and is annotated with <xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute> and <xref:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute>, so it can produce trimming and Native AOT warnings.
+
+::: moniker-end
 
 The public methods on the object set via the <xref:Microsoft.Maui.Controls.HybridWebView.SetInvokeJavaScriptTarget%2A> method can then be invoked from JavaScript with the `window.HybridWebView.InvokeDotNet` function:
 
@@ -818,7 +866,17 @@ The `window.HybridWebView.InvokeDotNet` JavaScript function invokes a specified 
 
 ### Pass complex types from JavaScript to C\#
 
+::: moniker range="<=net-maui-10.0"
+
 When invoking C# methods from JavaScript, you can pass complex types (objects, not just primitives) as parameters and receive complex types as return values. Unlike when [invoking JavaScript from C#](#invoke-javascript-from-c), you don't need to define a `JsonSerializerContext` for JavaScript-to-C# invocations. The <xref:Microsoft.Maui.Controls.HybridWebView> automatically deserializes parameters using reflection-based JSON deserialization.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+When invoking C# methods from JavaScript, you can pass complex types (objects, not just primitives) as parameters and receive complex types as return values. In apps that use full trimming or Native AOT, register the JavaScript-to-.NET target with a <xref:System.Text.Json.Serialization.JsonSerializerContext> that contains <xref:System.Text.Json.Serialization.JsonSerializableAttribute> entries for each parameter and return type used by methods JavaScript can invoke. In non-trim/AOT scenarios, the legacy overload can still use reflection-based JSON deserialization but can produce trimming and Native AOT warnings.
+
+::: moniker-end
 
 To pass complex types from JavaScript to C#:
 
@@ -839,14 +897,39 @@ To pass complex types from JavaScript to C#:
     }
     ```
 
-1. Define a C# method that accepts the complex type:
+1. Define a C# target class with a method that accepts the complex type:
 
     ```csharp
-    public string ProcessPerson(Person person)
+    public class DotNetMethods
     {
-        return $"{person.Name} is {person.Age} years old and lives in {person.Address?.City}";
+        public string ProcessPerson(Person person)
+        {
+            return $"{person.Name} is {person.Age} years old and lives in {person.Address?.City}";
+        }
     }
     ```
+
+::: moniker range=">=net-maui-11.0"
+
+1. For .NET 11 and later apps that use full trimming or Native AOT, define JSON metadata for the method's parameter and return types and register the target object with that context:
+
+    ```csharp
+    using System.Text.Json.Serialization;
+
+    [JsonSerializable(typeof(Person))]
+    [JsonSerializable(typeof(string))]
+    internal partial class MyJsonContext : JsonSerializerContext
+    {
+    }
+    ```
+
+    ```csharp
+    hybridWebView.SetInvokeJavaScriptTarget(
+        new DotNetMethods(),
+        MyJsonContext.Default);
+    ```
+
+::: moniker-end
 
 1. Call the method from JavaScript, passing a JavaScript object that matches the C# class structure:
 
@@ -1091,5 +1174,3 @@ Common patterns include:
 | iOS           | ❌               | ✅                        | ❌                   |
 | Mac Catalyst  | ❌               | ✅                        | ❌                   |
 | Windows       | ✅               | ✅                        | ✅                   |
-
-::: moniker-end
