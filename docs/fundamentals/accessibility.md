@@ -254,7 +254,7 @@ AutomationProperties.SetIsInAccessibleTree(entry, true);
 
 ### Windows layout UI Automation behavior in .NET 11
 
-Starting in .NET MAUI 11 Preview 6, Windows uses <xref:Microsoft.Maui.Platform.MauiLayoutAutomationPeer> for <xref:Microsoft.Maui.Controls.Layout> and <xref:Microsoft.Maui.Controls.ContentView> containers. This Windows-specific behavior keeps anonymous layout containers out of UI Automation views by default, while preserving `AutomationId` discovery for UI tests.
+Starting in .NET MAUI 11, Windows uses `MauiLayoutAutomationPeer` for <xref:Microsoft.Maui.Controls.Layout> and <xref:Microsoft.Maui.Controls.ContentView> containers. This Windows-specific behavior keeps anonymous layout containers out of UI Automation (UIA) views by default, while preserving `AutomationId` discovery for UI tests.
 
 | Windows setting on a <xref:Microsoft.Maui.Controls.Layout> or <xref:Microsoft.Maui.Controls.ContentView> | UIA raw view | UIA Control view | UIA Content view |
 | --- | --- | --- | --- |
@@ -262,7 +262,7 @@ Starting in .NET MAUI 11 Preview 6, Windows uses <xref:Microsoft.Maui.Platform.M
 | `AutomationId` only | Included | Included as `Custom` with no localized control type | Excluded |
 | [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) is `true` | Included | Included | Included |
 | [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) or [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) is set | Included | Included | Excluded |
-| Explicit opt-out with [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) set to `false`, or raw accessibility view | Raw only | Excluded, even when `AutomationId`, `Description`, or `Hint` is also set | Excluded |
+| Explicit opt-out with [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) set to `false` | Included in the UIA raw view only | Excluded, even when `AutomationId`, `Description`, or `Hint` is also set | Excluded |
 
 Use `AutomationId` when a layout or <xref:Microsoft.Maui.Controls.ContentView> only needs a Windows UI test hook. Use [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty), [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty), or [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) set to `true` only when the container itself should be announced by screen readers such as Narrator or NVDA. To keep a container out of the accessibility tree, set [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) to `false`; this explicit opt-out wins over `AutomationId` and semantic accessibility values.
 
