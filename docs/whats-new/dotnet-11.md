@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 06/05/2026
+ms.date: 07/08/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -13,6 +13,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 3](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview3/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview6/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -23,17 +24,13 @@ In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime on all .NET MAUI platforms for projects built with and targeting .NET 11. This unifies the runtime across .NET MAUI with benefits for debugging, profiling, Hot Reload, app size, and app performance. For a detailed overview of this transition, see the [announcement blog post](https://aka.ms/maui-coreclr).
 
-If you need to opt out of CoreCLR and use the Mono runtime instead, set `$(UseMonoRuntime)` to `true` in your project file:
-
-```xml
-<PropertyGroup>
-  <UseMonoRuntime>true</UseMonoRuntime>
-</PropertyGroup>
-```
-
 ## Controls
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
+
+### HybridWebView JS-to-.NET invocation
+
+Starting in .NET 11 Preview 6, <xref:Microsoft.Maui.Controls.HybridWebView> can use source-generated JSON metadata when JavaScript invokes .NET methods. Call `SetInvokeJavaScriptTarget<T>(T target, JsonSerializerContext jsonSerializerContext)` with a source-generated `JsonSerializerContext` to avoid reflection-based serialization, making JS-to-.NET invocation compatible with NativeAOT and full trimming. This overload depends on the HybridWebView source generator that's included with .NET MAUI; if analyzers are disabled or the direct call isn't intercepted, the overload throws. The legacy overload remains available, but is annotated as requiring unreferenced code and dynamic code. For more information, see [GitHub PR #35626](https://github.com/dotnet/maui/pull/35626).
 
 ### Material 3 on Android
 
@@ -177,6 +174,24 @@ Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a 
 </BoxView>
 ```
 
+### Windows CollectionView2 handler
+
+Starting in .NET 11 Preview 6, Windows uses the CollectionView2 handler by default for <xref:Microsoft.Maui.Controls.CollectionView>. If you need to temporarily use the previous Windows handler while validating an app, set `UseWindowsCollectionView2Handler` to `false` in your project file. For more information, see [GitHub PR #34600](https://github.com/dotnet/maui/pull/34600).
+
+```xml
+<PropertyGroup>
+  <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
+```
+
+### Android Shell handler
+
+Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Controls.Shell> apps use the handler-based Shell architecture by default. The new architecture reuses the same handler building blocks as other .NET MAUI navigation features, while the legacy `ShellRenderer` path remains available if you explicitly register it. For more information, see [GitHub PR #34758](https://github.com/dotnet/maui/pull/34758).
+
+### Compatibility package removal
+
+Starting in .NET 11 Preview 6, the optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped. Projects that explicitly referenced this package for Xamarin.Forms migration compatibility should migrate off it before moving to .NET 11. Apps that only reference `Microsoft.Maui.Controls` aren't affected. For more information, see [GitHub PR #35870](https://github.com/dotnet/maui/pull/35870).
+
 ## Animation
 
 ### Cancel animations with CancellationToken
@@ -185,6 +200,10 @@ Starting in .NET 11 Preview 5, the `ViewExtensions` animation methods (`FadeToAs
 
 ## Accessibility
 
+### Windows layout automation peers
+
+Starting in .NET 11 Preview 6, Windows layout panels create `MauiLayoutAutomationPeer` instances and participate in UI Automation when they expose automation information, such as `AutomationId`, `AutomationProperties.IsInAccessibleTree`, `SemanticProperties.Description`, or `SemanticProperties.Hint`. This keeps purely structural layouts out of the screen reader tree while making intentionally accessible layouts discoverable. For more information, see [GitHub PR #35597](https://github.com/dotnet/maui/pull/35597).
+
 ### Back button accessibility label
 
 Starting in .NET 11 Preview 5, you can set the accessibility label that screen readers (TalkBack, VoiceOver, Narrator) announce for the toolbar back button. <xref:Microsoft.Maui.Controls.NavigationPage> defines a `BackButtonAccessibilityLabel` attached property, and <xref:Microsoft.Maui.Controls.BackButtonBehavior> defines an `AccessibilityLabel` property for Shell apps. Both are independent of the visible back-button title, so you can keep the visible label short and still expose a descriptive spoken label. For more information, see [GitHub PR #35011](https://github.com/dotnet/maui/pull/35011), [NavigationPage](~/user-interface/pages/navigationpage.md), and [Back button behavior](~/fundamentals/shell/navigation.md#back-button-behavior).
@@ -192,6 +211,14 @@ Starting in .NET 11 Preview 5, you can set the accessibility label that screen r
 ## Platform features
 
 .NET MAUI's platform features have received some updates in .NET 11.
+
+### Android MediaPicker result recovery
+
+Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Media.MediaPicker> operations can recover results after the system picker or camera recreates the app process. Use `GetRecoveredMediaPickerResultsAsync`, `WaitForRecoveredMediaPickerResultsAsync`, `ClearRecoveredMediaPickerResultAsync`, and `DiscardPendingMediaPickerOperationAsync` to inspect, wait for, clear, or discard recovered results. Apps should persist their own workflow state before starting a picker or capture operation so recovered media can be matched to the right user action. For more information, see [GitHub PR #35455](https://github.com/dotnet/maui/pull/35455).
+
+### Geolocation updates
+
+Starting in .NET 11 Preview 6, `GeolocationListeningRequest.MinimumDistance` lets continuous location listeners filter updates by movement distance. On Android API 34 and later, geolocation results prefer mean sea level (MSL) altitude when available, report `AltitudeReferenceSystem.Geoid`, and use the matching MSL vertical accuracy. For more information, see [GitHub PR #35784](https://github.com/dotnet/maui/pull/35784) and [GitHub PR #35097](https://github.com/dotnet/maui/pull/35097).
 
 ### MonochromeFile for Android adaptive icons
 
@@ -208,6 +235,8 @@ if (status == PermissionStatus.Granted)
     // Schedule notifications
 }
 ```
+
+Starting in .NET 11 Preview 6, the permissions API also exposes an `IPermissions` abstraction through `Permissions.Current`, which improves testability and extensibility for code that wraps permission checks. For more information, see [GitHub PR #35987](https://github.com/dotnet/maui/pull/35987).
 
 ### Trimmable CSS
 
@@ -293,16 +322,7 @@ If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower
 For more information, see [Supported platforms](~/supported-platforms.md).
 
 > [!NOTE]
-> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. If you need to temporarily target API 21 while migrating your app, you can opt out of CoreCLR and revert `$(SupportedOSPlatformVersion)`:
->
-> ```xml
-> <PropertyGroup>
->   <UseMonoRuntime>true</UseMonoRuntime>
->   <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21</SupportedOSPlatformVersion>
-> </PropertyGroup>
-> ```
->
-> This is a temporary workaround. Plan to migrate to API 24 and CoreCLR for the final .NET 11 release.
+> Android API levels 21, 22, and 23 are only supported when using the Mono runtime.
 
 ## CoreCLR by Default
 
@@ -313,15 +333,6 @@ times, with a reasonable increase to application size.
 We are always working to improve performance and app size, but please
 file issues with stability or concerns by filing
 [issues on GitHub](https://github.com/dotnet/android/issues).
-
-If you would like to opt out of CoreCLR, and use the Mono runtime
-instead, you can still do so via:
-
-```xml
-<PropertyGroup>
-  <UseMonoRuntime>true</UseMonoRuntime>
-</PropertyGroup>
-```
 
 ## `dotnet run`
 
