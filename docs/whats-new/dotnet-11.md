@@ -322,7 +322,7 @@ If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower
 For more information, see [Supported platforms](~/supported-platforms.md).
 
 > [!NOTE]
-> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. 
+> Android API levels 21, 22, and 23 are only supported when using the Mono runtime.
 
 ## CoreCLR by Default
 
