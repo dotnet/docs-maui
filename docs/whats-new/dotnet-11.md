@@ -24,14 +24,6 @@ In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime on all .NET MAUI platforms for projects built with and targeting .NET 11. This unifies the runtime across .NET MAUI with benefits for debugging, profiling, Hot Reload, app size, and app performance. For a detailed overview of this transition, see the [announcement blog post](https://aka.ms/maui-coreclr).
 
-If you need to opt out of CoreCLR and use the Mono runtime instead, set `$(UseMonoRuntime)` to `true` in your project file:
-
-```xml
-<PropertyGroup>
-  <UseMonoRuntime>true</UseMonoRuntime>
-</PropertyGroup>
-```
-
 ## Controls
 
 .NET MAUI in .NET 11 includes control enhancements and deprecations.
@@ -330,16 +322,7 @@ If your project explicitly sets `$(SupportedOSPlatformVersion)` to a value lower
 For more information, see [Supported platforms](~/supported-platforms.md).
 
 > [!NOTE]
-> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. If you need to temporarily target API 21 while migrating your app, you can opt out of CoreCLR and revert `$(SupportedOSPlatformVersion)`:
->
-> ```xml
-> <PropertyGroup>
->   <UseMonoRuntime>true</UseMonoRuntime>
->   <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21</SupportedOSPlatformVersion>
-> </PropertyGroup>
-> ```
->
-> This is a temporary workaround. Plan to migrate to API 24 and CoreCLR for the final .NET 11 release.
+> Android API levels 21, 22, and 23 are only supported when using the Mono runtime. 
 
 ## CoreCLR by Default
 
@@ -350,15 +333,6 @@ times, with a reasonable increase to application size.
 We are always working to improve performance and app size, but please
 file issues with stability or concerns by filing
 [issues on GitHub](https://github.com/dotnet/android/issues).
-
-If you would like to opt out of CoreCLR, and use the Mono runtime
-instead, you can still do so via:
-
-```xml
-<PropertyGroup>
-  <UseMonoRuntime>true</UseMonoRuntime>
-</PropertyGroup>
-```
 
 ## `dotnet run`
 
