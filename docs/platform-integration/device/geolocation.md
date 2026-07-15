@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 03/23/2026
+ms.date: 07/08/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -179,6 +179,24 @@ void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventA
 }
 ```
 
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11, the `MinimumDistance` property on <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest?displayProperty=nameWithType> specifies the minimum distance, in meters, between foreground location updates. Combine it with <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningRequest.MinimumTime?displayProperty=nameWithType> to limit updates by both time and distance. A value of `0` disables the distance filter:
+
+```csharp
+var request = new GeolocationListeningRequest(GeolocationAccuracy.Medium)
+{
+    MinimumTime = TimeSpan.FromSeconds(10),
+    MinimumDistance = 25
+};
+
+var success = await Geolocation.StartListeningForegroundAsync(request);
+```
+
+<xref:Microsoft.Maui.Devices.Sensors.Geolocation.StartListeningForegroundAsync%2A> validates that `MinimumTime` is greater than or equal to `TimeSpan.Zero` and that `MinimumDistance` is greater than or equal to `0`. Android passes `MinimumDistance` to `LocationManager.RequestLocationUpdates`, iOS and Mac Catalyst set `CLLocationManager.DistanceFilter`, and Windows sets `Geolocator.MovementThreshold`.
+
+::: moniker-end
+
 Error handling can be implemented by registering an event handler for the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs> object that accompanies this event has an <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs.Error> property, of type <xref:Microsoft.Maui.Devices.Sensors.GeolocationError>, that indicates why listening failed. When the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event is raised, listening for further location changes stops and no further <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> events are raised.
 
 To stop listening for location changes, call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method:
@@ -283,10 +301,22 @@ Altitude is calculated differently on each platform.
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
+::: moniker range="<=net-maui-10.0"
+
 On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location doesn't have an altitude, `0.0` is returned.
 
 > [!NOTE]
 > Some Android devices without a barometric sensor return `0.0` for <xref:Microsoft.Maui.Devices.Sensors.Location.Altitude> when no altitude data is available. This is indistinguishable from actual sea-level elevation. Treat `0.0` as an unknown value rather than sea level, and validate `location.Altitude != 0` before using altitude data in your app.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+On Android 14 (API 34) and later, .NET MAUI uses [mean sea level altitude](https://developer.android.com/reference/android/location/Location#getMslAltitudeMeters()) when it's available. In this case, <xref:Microsoft.Maui.Devices.Sensors.Location.Altitude> is returned in meters above the geoid, and <xref:Microsoft.Maui.Devices.Sensors.Location.AltitudeReferenceSystem?displayProperty=nameWithType> is `AltitudeReferenceSystem.Geoid`.
+
+When mean sea level altitude isn't available, Android falls back to [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()) in meters above the WGS 84 reference ellipsoid, and `AltitudeReferenceSystem` is `AltitudeReferenceSystem.Ellipsoid`. If no altitude is available, `Altitude` is `null` and `AltitudeReferenceSystem` is `AltitudeReferenceSystem.Unspecified`.
+
+::: moniker-end
 
 The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property is only used by iOS and returns `false` on all other platforms.
 
