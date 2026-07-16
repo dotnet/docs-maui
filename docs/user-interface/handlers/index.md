@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 01/13/2025
+ms.date: 07/08/2026
 ---
 
 # Handlers
@@ -97,19 +97,38 @@ The following table lists the types that implement views in .NET MAUI:
 
 The following table lists the types that implement pages in .NET MAUI:
 
+::: moniker range="<=net-maui-10.0"
+
 | Page | Android Handler | iOS/Mac Catalyst Handler | Windows Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- | -- |
 | <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler.Mapper> | <xref:Microsoft.Maui.Handlers.PageHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
-| <xref:Microsoft.Maui.Controls.Shell> | `ShellHandler` | ShellRenderer | ShellRenderer | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.Shell> | ShellRenderer | ShellRenderer | `ShellHandler` | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+| Page | Android Handler | iOS/Mac Catalyst Handler | Windows Handler | Property Mapper | Command Mapper |
+| -- | -- | -- | -- | -- | -- |
+| <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler.Mapper> | <xref:Microsoft.Maui.Handlers.PageHandler.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.Shell> | `ShellHandler` | ShellRenderer | `ShellHandler` | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+
+> [!NOTE]
+> Starting in .NET MAUI 11, Android Shell uses the handler-based `ShellHandler`, `ShellItemHandler`, and `ShellSectionHandler` by default. iOS and Mac Catalyst Shell continue to use `ShellRenderer`.
+
+::: moniker-end
 
 <!--
 xrefs not used on:
 
 1. Mapper and CommandMapper because the properties are in different files (handlers vs compatibility renderers).
 1. Renderer classes because they are platform-specific, and the API docs only exist for the xplat layer.
-1. No API doc for ShellHandler.
+1. No API doc for ShellHandler, ShellItemHandler, or ShellSectionHandler.
 
 -->
