@@ -1113,6 +1113,65 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
 
 In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created as a shared, static instance. When this object is created, `MauiProgram.CreateMauiApp` is called which in turn calls the `UseMauiEmbedding` extension method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains your `MauiProgram` class and your .NET MAUI UI. A <xref:Microsoft.Maui.MauiContext> object is then created with the `CreateEmbeddedWindowContext` method, that's scoped to the window. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
+:::zone pivot="devices-ios, devices-maccatalyst"
+
+### Embed in an iOS app extension
+
+The window context approach described above assumes your native app has a real `UIApplication`, `AppDelegate`, and `SceneDelegate` &mdash; that is, a normal app launch sequence. This doesn't hold for an iOS app extension, such as an [`ASCredentialProviderExtension`](/dotnet/api/foundation) used to implement AutoFill password/passkey support. An app extension runs as its own short-lived process, hosted directly by the system (for example, by `PlugInKit`), and never calls `UIApplicationMain`. As a result, `UIApplication.SharedApplication.Delegate` is always `null` in an app extension process.
+
+Native embedding still works in this scenario, but two adjustments are required beyond the standard window context walkthrough:
+
+1. `UseMauiEmbeddedApp<TApp>()` internally requires a non-null `IUIApplicationDelegate` instance, which it normally obtains from `UIApplication.SharedApplication.Delegate`. Since no such delegate exists in an extension process, you must supply a stand-in instance yourself before building your `MauiApp`. This instance is used only as a DI marker &mdash; none of its members are ever invoked &mdash; so a minimal class with no overrides is sufficient:
+
+    ```csharp
+    class ExtensionPlatformApplicationDelegate : UIResponder, IUIApplicationDelegate
+    {
+    }
+    ```
+
+    In `MauiProgram.CreateMauiApp`, assign an instance of this class to `UIApplication.SharedApplication.Delegate` before calling `UseMauiEmbeddedApp<TApp>()`:
+
+    ```csharp
+    public static MauiApp CreateMauiApp()
+    {
+        UIApplication.SharedApplication.Delegate ??= new ExtensionPlatformApplicationDelegate();
+
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiEmbeddedApp<App>()
+            .ConfigureFonts(fonts => { });
+
+        return builder.Build();
+    }
+    ```
+
+1. An app extension has no `UIWindowScene`/`SceneDelegate` of its own to attach a `UINavigationController` to. Instead, present your embedded MAUI content by converting it to a native view with `ToPlatformEmbedded`, wrapping that view in a plain `UIViewController` you create yourself, and presenting it from the extension's own view controller (for example, `ASCredentialProviderViewController`) using the window it's already given by the system:
+
+    ```csharp
+    public override void PrepareCredentialList(ASCredentialServiceIdentifier[] serviceIdentifiers)
+    {
+        var platformWindow = ParentViewController?.View?.Window
+            ?? throw new InvalidOperationException("No parent window available to embed MAUI content into.");
+
+        var page = new CredentialListPage();
+        var nativeView = page.ToPlatformEmbedded(EmbeddedMauiApp.Shared, platformWindow);
+
+        var pageHostViewController = new UIViewController();
+        pageHostViewController.View!.AddSubview(nativeView);
+        nativeView.Frame = pageHostViewController.View.Bounds;
+        nativeView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+
+        PresentViewController(pageHostViewController, animated: false, completionHandler: null);
+    }
+    ```
+
+    As with the window context approach, create your `MauiApp` once as a shared, static instance for the lifetime of the extension process, rather than recreating it per request.
+
+> [!NOTE]
+> This approach has been verified for an `ASCredentialProviderExtension` (AutoFill password provider) target on iOS, running on the iOS Simulator with a full .NET MAUI page rendered inside the extension process. The same pattern is expected to apply to other iOS app extension types that provide their own root view controller, such as share extensions or action extensions.
+
+:::zone-end
+
 ::: moniker-end
 
 ## Consume .NET MAUI controls
