@@ -10,7 +10,7 @@ ms.date: 08/30/2024
 
 :::image type="content" source="media/grid/layouts.png" alt-text=".NET MAUI Grid." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Grid>, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column. In addition, a <xref:Microsoft.Maui.Controls.Grid> can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Grid> is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column. In addition, a <xref:Microsoft.Maui.Controls.Grid> can be used as a parent layout that contains other child layouts.
 
 The <xref:Microsoft.Maui.Controls.Grid> should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a <xref:Microsoft.Maui.Controls.Grid> is intended for laying out content. For displaying tabular data, consider using a [ListView](~/user-interface/controls/listview.md) or [CollectionView](~/user-interface/controls/collectionview/index.md).
 
@@ -267,9 +267,9 @@ In XAML, the row and column characteristics of a <xref:Microsoft.Maui.Controls.G
 </Grid>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Grid> has five rows and four columns. The third, forth, and fifth rows are set to absolute heights, with the second row auto-sizing to its content. The remaining height is then allocated to the first row.
+In this example, the <xref:Microsoft.Maui.Controls.Grid> has five rows and four columns. The third, fourth, and fifth rows are set to absolute heights, with the second row auto-sizing to its content. The remaining height is then allocated to the first row.
 
-The forth column is set to an absolute width, with the third column auto-sizing to its content. The remaining width is allocated proportionally between the first and second columns based on the number before the star. In this example, the width of the second column is twice that of the first column (because `*` is identical to `1*`).
+The fourth column is set to an absolute width, with the third column auto-sizing to its content. The remaining width is allocated proportionally between the first and second columns based on the number before the star. In this example, the width of the second column is twice that of the first column (because `*` is identical to `1*`).
 
 ## Space between rows and columns
 
