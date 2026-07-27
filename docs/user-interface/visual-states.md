@@ -87,7 +87,7 @@ The following example shows visual states defined on an <xref:Microsoft.Maui.Con
 
 The following screenshot shows the <xref:Microsoft.Maui.Controls.Entry> in its four defined visual states:
 
-:::image type="content" source="media/visualstates/commonstates.png" alt-text="Screenshot of the three defined visual states on the Entry.":::
+:::image type="content" source="media/visualstates/commonstates.png" alt-text="Screenshot of the four defined visual states on the Entry.":::
 
 When the <xref:Microsoft.Maui.Controls.Entry> is in the `Normal` state, its background is lime. When the <xref:Microsoft.Maui.Controls.Entry> gains input focus its font size doubles. When the <xref:Microsoft.Maui.Controls.Entry> becomes disabled, its background becomes pink. The <xref:Microsoft.Maui.Controls.Entry> doesn't retain its lime background when it gains input focus. When the mouse pointer hovers over the <xref:Microsoft.Maui.Controls.Entry>, but isn't pressed, the <xref:Microsoft.Maui.Controls.Entry> background becomes light blue. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
 

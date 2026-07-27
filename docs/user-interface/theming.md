@@ -92,7 +92,7 @@ For more information about merging resource dictionaries, see [Merged resource d
 
 When an app wants to consume a resource that's stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> that represents a theme, it should do so with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
 
-The following example shows three styles from that can be applied to all <xref:Microsoft.Maui.Controls.Label> objects in app:
+The following example shows three styles that can be applied to all <xref:Microsoft.Maui.Controls.Label> objects in app:
 
 ```xaml
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

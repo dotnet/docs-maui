@@ -32,13 +32,13 @@ The advantage of using *mappers* to update native views is that native views can
 
 All handler-based .NET MAUI controls support two handler lifecycle events:
 
-- `HandlerChanging` is raised when a new handler is about to be created for a cross-platform control, and when an existing handler is about to be removed from a cross-platform control. The `HandlerChangingEventArgs` object that accompanies this event has `NewHandler` and `OldHandler` properties, of type `IElementHandler`. When the `NewHandler` property isn't `null`, the event indicates that a new handler is about to be created for a cross-platform control. When the `OldHandler` property isn't `null`, the event indicates that the existing native control is about be removed from the cross-platform control, and therefore any native events should be unwired and other cleanup performed.
+- `HandlerChanging` is raised when a new handler is about to be created for a cross-platform control, and when an existing handler is about to be removed from a cross-platform control. The `HandlerChangingEventArgs` object that accompanies this event has `NewHandler` and `OldHandler` properties, of type `IElementHandler`. When the `NewHandler` property isn't `null`, the event indicates that a new handler is about to be created for a cross-platform control. When the `OldHandler` property isn't `null`, the event indicates that the existing native control is about to be removed from the cross-platform control, and therefore any native events should be unwired and other cleanup performed.
 - `HandlerChanged` is raised after the handler for a cross-platform control has been created. This event indicates that the native control that implements the cross-platform control is available, and all the property values set on the cross-platform control have been applied to the native control.
 
 > [!NOTE]
 > The `HandlerChanging` event is raised on a cross-platform control before the `HandlerChanged` event.
 
-In addition to these events, each cross-platform control also has an overridable `OnHandlerChanging` method that's invoked when the `HandlerChanging` event is raised, and a `OnHandlerChanged` method that's invoked when the `HandlerChanged` event is raised.
+In addition to these events, each cross-platform control also has an overridable `OnHandlerChanging` method that's invoked when the `HandlerChanging` event is raised, and an `OnHandlerChanged` method that's invoked when the `HandlerChanged` event is raised.
 
 ## View handlers
 
@@ -54,7 +54,7 @@ The following table lists the types that implement views in .NET MAUI:
 | <xref:Microsoft.Maui.Controls.CarouselView> | | <xref:Microsoft.Maui.Controls.Handlers.Items.CarouselViewHandler> | <xref:Microsoft.Maui.Controls.Handlers.Items.CarouselViewHandler.Mapper> | |
 | <xref:Microsoft.Maui.Controls.Cell> | | `CellRenderer` | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.CheckBox> | <xref:Microsoft.Maui.ICheckBox> | <xref:Microsoft.Maui.Handlers.CheckBoxHandler> | <xref:Microsoft.Maui.Handlers.CheckBoxHandler.Mapper> | <xref:Microsoft.Maui.Handlers.CheckBoxHandler.CommandMapper> |
-| <xref:Microsoft.Maui.Controls.CollectionView> |  | <xref:Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler> | <<xref:Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler.Mapper> | |
+| <xref:Microsoft.Maui.Controls.CollectionView> |  | <xref:Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler> | <xref:Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler.Mapper> | |
 | <xref:Microsoft.Maui.Controls.ContentView> | <xref:Microsoft.Maui.IContentView> | <xref:Microsoft.Maui.Handlers.ContentViewHandler> | <xref:Microsoft.Maui.Handlers.ContentViewHandler.Mapper> | <xref:Microsoft.Maui.Handlers.ContentViewHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.DatePicker> | <xref:Microsoft.Maui.IDatePicker> | <xref:Microsoft.Maui.Handlers.DatePickerHandler> | <xref:Microsoft.Maui.Handlers.DatePickerHandler.Mapper> | <xref:Microsoft.Maui.Handlers.DatePickerHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.Editor> | <xref:Microsoft.Maui.IEditor> | <xref:Microsoft.Maui.Handlers.EditorHandler> | <xref:Microsoft.Maui.Handlers.EditorHandler.Mapper> | <xref:Microsoft.Maui.Handlers.EditorHandler.CommandMapper> |

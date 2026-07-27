@@ -165,7 +165,7 @@ The non-separable blend modes conceptually perform the following steps:
 1. Create the composited object from a combination of hue, saturation, and luminosity components, from the source and destination objects.
 1. Convert the result back to the original color space.
 
-The following table lists how which HSL components are composited for each non-separable blend mode:
+The following table lists which HSL components are composited for each non-separable blend mode:
 
 | Blend mode   | Source components  | Destination components    |
 |--------------|--------------------|---------------------------|

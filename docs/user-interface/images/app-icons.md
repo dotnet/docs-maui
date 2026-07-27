@@ -59,7 +59,7 @@ On Android, a `ForegroundScale` attribute can be optionally specified to rescale
 
 ## Set the base size
 
-.NET MAUI uses your icon across multiple platforms and devices, and attempts to resize the icon according for each platform and device. The app icon is also used for different purposes, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
+.NET MAUI uses your icon across multiple platforms and devices, and attempts to resize the icon according to each platform and device. The app icon is also used for different purposes, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
 
 The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived from. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize` attribute to `false`.
 
@@ -74,7 +74,7 @@ The process shown in the previous figure follows these steps:
 - **:::no-loc text="C":::**: As different target platforms require different sizes of the image, .NET MAUI automatically scales the image from the base size to different sizes.
 
 > [!TIP]
-> Use an SVG image as your icon. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such a PNG or JPG image, look blurry when upscaled.
+> Use an SVG image as your icon. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such as a PNG or JPG image, look blurry when upscaled.
 
 The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The following example sets the base size:
 
@@ -105,7 +105,7 @@ If the background image used in composing the app icon uses transparency, it can
 Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#AARRGGBB`. The value of `RR` represents the red channel, `GG` the green channel, `BB` the blue channel, and `AA` the alpha channel. Instead of a hexadecimal value, you may use a named .NET MAUI color, such as `Red` or `PaleVioletRed`.
 
 > [!CAUTION]
-> If you don't define a background color for your app icon the background is considered to be tranparent on iOS and Mac Catalyst. This will cause an error during App Store Connect verification and you won't be able to upload your app.
+> If you don't define a background color for your app icon the background is considered to be transparent on iOS and Mac Catalyst. This will cause an error during App Store Connect verification and you won't be able to upload your app.
 
 ## Recolor the foreground
 
@@ -241,6 +241,6 @@ The transformed name, the resource without the path or extension, is `healthapp`
 
 There aren't any other settings to configure for Windows.
 
-The app icon defined by project is used to generate your app's icon assets.
+The app icon defined by the project is used to generate your app's icon assets.
 
 ---

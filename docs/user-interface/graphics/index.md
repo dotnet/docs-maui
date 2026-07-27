@@ -57,8 +57,8 @@ The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` argumen
 In XAML, the `IDrawable` object can be declared as a resource and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key as the value of the `Drawable` property:
 
 ```xaml
-<ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
-             xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:drawable="clr-namespace:MyMauiApp"
              x:Class="MyMauiApp.MainPage">
     <ContentPage.Resources>
@@ -98,7 +98,7 @@ The <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <x
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin>, of type <xref:Microsoft.Maui.Graphics.LineJoin>, specifies the type of join that is used at the vertices of a shape.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize>, of type `float`, indicates the width of an object's outline.
 
-By default, an <xref:Microsoft.Maui.Graphics.ICanvas> sets <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize> to 1, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor> to black, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin> to `LineJoin.Miter`, and <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap> to `LineJoin.Cap`.
+By default, an <xref:Microsoft.Maui.Graphics.ICanvas> sets <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize> to 1, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor> to black, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin> to `LineJoin.Miter`, and <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap> to `LineCap.Flat`.
 
 ### Drawing canvas state
 

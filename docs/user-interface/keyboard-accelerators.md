@@ -163,7 +163,7 @@ The following XAML shows an example of defining a keyboard accelerator that uses
 
 In this example the keyboard accelerator is the F1 key, which is specified via a constant on both platforms. On Windows, it could also be specified by the integer 112.
 
-## Localize a keyboard acclerator
+## Localize a keyboard accelerator
 
 Keyboard accelerator keys can be localized via a .NET resource file. The localized key can then be retrieved by using the `x:Static` markup extension:
 
