@@ -104,7 +104,7 @@ void OnTextChanged(object sender, EventArgs e)
 }
 ```
 
-In this example, a `DataService` class with a `GetSearchResults` method is used to returnitems that match a query. The <xref:Microsoft.Maui.Controls.SearchBar> control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the <xref:Microsoft.Maui.Controls.ListView> control's `ItemsSource` property. The overall effect is that search results are displayed in the <xref:Microsoft.Maui.Controls.ListView>.
+In this example, a `DataService` class with a `GetSearchResults` method is used to return items that match a query. The <xref:Microsoft.Maui.Controls.SearchBar> control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the <xref:Microsoft.Maui.Controls.ListView> control's `ItemsSource` property. The overall effect is that search results are displayed in the <xref:Microsoft.Maui.Controls.ListView>.
 
 ## Perform a search using a viewmodel
 

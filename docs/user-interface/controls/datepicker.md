@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.DatePic
 - `Date` of type `DateTime`, the selected date, which defaults to the value [`DateTime.Today`](xref:System.DateTime.Today).
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "D", the long date pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected date.
-- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAttributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.DatePicker> text.
@@ -32,7 +32,7 @@ All eight properties are backed by <xref:Microsoft.Maui.Controls.BindablePropert
 - `Date` of type `DateTime?`, the selected date. Defaults to today if not explicitly set. Set to `null` to represent no date selected.
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "D", the long date pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected date.
-- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAttributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.DatePicker> text.
@@ -100,7 +100,7 @@ It's possible to use an unconstrained horizontal layout option such as `Center`,
             HorizontalOptions="Center" />
 ```
 
-However, this is not recommended. Depending on the setting of the `Format` property, selected dates might require different display widths. For example, the "D" format string causes `DateTime` to display dates in a long format, and "Wednesday, September 12, 2018" requires a greater display width than "Friday, May 4, 2018". Depending on the platform, this difference might cause the `DateTime` view to change width in layout, or for the display to be truncated.
+However, this is not recommended. Depending on the setting of the `Format` property, selected dates might require different display widths. For example, the "D" format string causes `DateTime` to display dates in a long format, and "Wednesday, September 12, 2018" requires a greater display width than "Friday, May 4, 2018". Depending on the platform, this difference might cause the `DatePicker` view to change width in layout, or for the display to be truncated.
 
 > [!TIP]
 > It's best to use the default `HorizontalOptions` setting of `Fill` with <xref:Microsoft.Maui.Controls.DatePicker>, and not to use a width of `Auto` when putting <xref:Microsoft.Maui.Controls.DatePicker> in a <xref:Microsoft.Maui.Controls.Grid> cell.

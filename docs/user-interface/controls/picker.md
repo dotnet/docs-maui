@@ -11,7 +11,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 <xref:Microsoft.Maui.Controls.Picker> defines the following properties:
 
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the item displayed by the <xref:Microsoft.Maui.Controls.Picker>.
-- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAttributes.None`.
 - `FontAutoScalingEnabled`, of type `bool`, which determines whether the text respects scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
@@ -19,7 +19,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
-- `ItemDisplayBinding`, of type <xref:Microsoft.Maui.Controls.BindingBase>, selects the property that will be displayed for each object in the list of items, if the `ItemSource` is a complex object. For more information, see [Populate a Picker with data using data binding](#populate-a-picker-with-data-using-data-binding).
+- `ItemDisplayBinding`, of type <xref:Microsoft.Maui.Controls.BindingBase>, selects the property that will be displayed for each object in the list of items, if the `ItemsSource` is a complex object. For more information, see [Populate a Picker with data using data binding](#populate-a-picker-with-data-using-data-binding).
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
@@ -127,7 +127,7 @@ In this example, the event handler obtains the `SelectedIndex` property value, a
 
 ### Populate a Picker with data using data binding
 
-A <xref:Microsoft.Maui.Controls.Picker> can be also populated with data by using data binding to bind its `ItemsSource` property to an `IList` collection. In XAML this is achieved with the `Binding` markup extension:
+A <xref:Microsoft.Maui.Controls.Picker> can also be populated with data by using data binding to bind its `ItemsSource` property to an `IList` collection. In XAML this is achieved with the `Binding` markup extension:
 
 ```xaml
 <Picker Title="Select a monkey"
