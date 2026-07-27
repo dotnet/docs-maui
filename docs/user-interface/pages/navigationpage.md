@@ -436,7 +436,7 @@ Contact contact = new Contact
 await Navigation.PushModalAsync(new DetailsPage(contact));
 ```
 
-In this example, a `Contact` object is passed as a constructor argument to `DetailPage`. The `Contact` object can then be displayed by `DetailsPage`.
+In this example, a `Contact` object is passed as a constructor argument to `DetailsPage`. The `Contact` object can then be displayed by `DetailsPage`.
 
 ### Pass data through a BindingContext
 
