@@ -281,7 +281,7 @@ public override Size ArrangeChildren(Rect bounds)
 }
 ```
 
-The `ArrangeChildren` method enumerates through all the visible children in the layout to size and position them within the layout. It does this by invoking <xref:Microsoft.Maui.IView.Arrange%2A> on each child with appropriate bounds, that take into account the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> of the underlying layout. It then returns the actual size of the layout. The <xref:Microsoft.Maui.Layouts.LayoutExtensions.AdjustForFill%2A> method is called to ensure that the size takes into account whether the the layout has its <xref:Microsoft.Maui.IView.HorizontalLayoutAlignment> and <xref:Microsoft.Maui.IView.VerticalLayoutAlignment> properties set to <xref:Microsoft.Maui.Controls.LayoutOptions.Fill?displayProperty=nameWithType>.
+The `ArrangeChildren` method enumerates through all the visible children in the layout to size and position them within the layout. It does this by invoking <xref:Microsoft.Maui.IView.Arrange%2A> on each child with appropriate bounds, that take into account the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> of the underlying layout. It then returns the actual size of the layout. The <xref:Microsoft.Maui.Layouts.LayoutExtensions.AdjustForFill%2A> method is called to ensure that the size takes into account whether the layout has its <xref:Microsoft.Maui.IView.HorizontalLayoutAlignment> and <xref:Microsoft.Maui.IView.VerticalLayoutAlignment> properties set to <xref:Microsoft.Maui.Controls.LayoutOptions.Fill?displayProperty=nameWithType>.
 
 > [!IMPORTANT]
 > When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to <xref:Microsoft.Maui.Visibility.Collapsed>. This ensures that the custom layout won't leave space for invisible children.
@@ -379,7 +379,7 @@ public class CustomGridLayoutManager : GridLayoutManager
 }
 ```
 
-In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would need to be specified at design time.
+In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> include enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would need to be specified at design time.
 
 > [!IMPORTANT]
 > When modifying the behavior of an existing layout manager, don't forget to ensure that you call the `base.Measure` method from your <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation.

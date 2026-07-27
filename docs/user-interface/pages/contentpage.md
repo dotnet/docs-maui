@@ -8,7 +8,7 @@ ms.date: 09/30/2024
 
 :::image type="content" source="media/contentpage/pages.png" alt-text=".NET MAUI ContentPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as as <xref:Microsoft.Maui.Controls.Grid> or <xref:Microsoft.Maui.Controls.StackLayout>, and is the most common page type.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as <xref:Microsoft.Maui.Controls.Grid> or <xref:Microsoft.Maui.Controls.StackLayout>, and is the most common page type.
 
 <xref:Microsoft.Maui.Controls.ContentPage> defines the following properties:
 
