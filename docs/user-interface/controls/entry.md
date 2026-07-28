@@ -185,7 +185,7 @@ The following example shows setting the property:
 
 The following screenshot shows an <xref:Microsoft.Maui.Controls.Entry> on Android with the clear button enabled:
 
-:::image type="content" source="media/entry/entry-clearbutton.png" alt-text="Screenshot of a basic Entry with a clear buttonon Android.":::
+:::image type="content" source="media/entry/entry-clearbutton.png" alt-text="Screenshot of a basic Entry with a clear button on Android.":::
 
 ## Transform text
 
@@ -284,7 +284,7 @@ The following XAML example shows how to set the return key:
 ```
 
 > [!NOTE]
-> The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is a icon-based button.
+> The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is an icon-based button.
 
 When the <kbd>Return</kbd> key is pressed, the `Completed` event fires and any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the <xref:System.Windows.Input.ICommand> as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
@@ -333,4 +333,4 @@ Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Contro
 ```
 
 > [!NOTE]
-> The `IsReadonly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Entry>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Entry> to gray.
+> The `IsReadOnly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Entry>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Entry> to gray.

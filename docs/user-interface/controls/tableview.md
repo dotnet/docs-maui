@@ -233,7 +233,7 @@ A <xref:Microsoft.Maui.Controls.SwitchCell> displays text and a switch that can 
 
 - `Text`, of type `string`, defines the text to display next to the switch.
 - `On`, of type `bool`, represents whether the switch is on or off.
-- `OnColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the switch when in it's on position.
+- `OnColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the switch when in its on position.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

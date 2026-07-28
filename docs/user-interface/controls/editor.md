@@ -287,7 +287,7 @@ Users can be prevented from modifying the text in an <xref:Microsoft.Maui.Contro
 ```
 
 > [!NOTE]
-> The `IsReadonly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Editor>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Editor> to gray.
+> The `IsReadOnly` property does not alter the visual appearance of an <xref:Microsoft.Maui.Controls.Editor>, unlike the `IsEnabled` property that also changes the visual appearance of the <xref:Microsoft.Maui.Controls.Editor> to gray.
 
 ## Line endings (Windows only)
 

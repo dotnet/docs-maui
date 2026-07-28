@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePic
 - `Time` of type `TimeSpan`, the selected time, which defaults to a `TimeSpan` of 0. The `TimeSpan` type indicates a duration of time since midnight.
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected time.
-- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAttributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.TimePicker> text.
@@ -28,7 +28,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 - `Time` of type `TimeSpan?`, the selected time. Set to `null` to represent no time selected. Non-null values must be less than 24 hours and >= 0 milliseconds.
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "t", the short time pattern.
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected time.
-- `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
+- `FontAttributes` of type `FontAttributes`, which defaults to `FontAttributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.TimePicker> text.

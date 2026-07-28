@@ -21,7 +21,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create an ActivityIndicator
 
-To indicate a lengthy activity, create an <xref:Microsoft.Maui.Controls.ActivityIndicator> object and sets its properties to define its appearance.
+To indicate a lengthy activity, create an <xref:Microsoft.Maui.Controls.ActivityIndicator> object and set its properties to define its appearance.
 
 The following XAML example shows how to display an <xref:Microsoft.Maui.Controls.ActivityIndicator>:
 

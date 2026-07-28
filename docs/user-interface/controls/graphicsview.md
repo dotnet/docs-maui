@@ -44,8 +44,8 @@ The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` argumen
 In XAML, the `IDrawable` object can be declared as a resource and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key as the value of the `Drawable` property:
 
 ```xaml
-<ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
-             xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:drawable="clr-namespace:MyMauiApp"
              x:Class="MyMauiApp.MainPage">
     <ContentPage.Resources>

@@ -60,8 +60,8 @@ In addition, <xref:Microsoft.Maui.Controls.ListView> defines the following prope
 - `ItemSelected`, which is raised when a new item in the list is selected. The `SelectedItemChangedEventArgs` object that accompanies this event defines `SelectedItem` and `SelectedItemIndex` properties.
 - `ItemTapped`, which raised when an item in the <xref:Microsoft.Maui.Controls.ListView> is tapped. The `ItemTappedEventArgs` object that accompanies this event defines `Group`, `Item`, and `ItemIndex` properties.
 - `Refreshing`, which is raised when a pull to refresh operation is triggered on the <xref:Microsoft.Maui.Controls.ListView>.
-- `Scrolled`, . The `ScrolledEventArgs` object that accompanies this event defines `ScrollX` and `ScrollY` properties.
-- `ScrollToRequested` . The `ScrollToRequestedEventArgs` object that accompanies this event defines <xref:Microsoft.Maui.Controls.Element>, `Mode`, `Position`, `ScrollX`, `ScrollY`, and `ShouldAnimate` properties.
+- `Scrolled`, which is raised when scrolling occurs. The `ScrolledEventArgs` object that accompanies this event defines `ScrollX` and `ScrollY` properties.
+- `ScrollToRequested`, which is raised when a programmatic scroll is requested. The `ScrollToRequestedEventArgs` object that accompanies this event defines <xref:Microsoft.Maui.Controls.Element>, `Mode`, `Position`, `ScrollX`, `ScrollY`, and `ShouldAnimate` properties.
 
 ## Populate a ListView with data
 
