@@ -15,7 +15,7 @@ Once the app is ready for interaction, its splash screen is dismissed.
 > [!IMPORTANT]
 > On iOS 16.4+, simulators won't load a splash screen unless your app is signed. For more information, including a workaround, see [GitHub issue 18479](https://github.com/xamarin/xamarin-macios/issues/18469).
 
-On Android 12+ (API 31+), the splash screen shows an icon that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
+On Android 12+ (API 31+), the splash screen shows an icon that's centered on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
 
 In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be resized to the correct resolution for the target platform, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
@@ -35,7 +35,7 @@ A splash screen can be added to your app project by dragging an image into the *
 > [!NOTE]
 > A splash screen can also be added to other folders of your app project. However, in this scenario its build action must be manually set to **MauiSplashScreen** in the **Properties** window.
 
-To comply with Android resource naming rules, splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+To comply with Android resource naming rules, splash screen file names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package. For information about disabling splash screen packaging, see [Disable splash screen packaging](~/troubleshooting.md#disable-splash-screen-packaging). For information about generating a blank splash screen, see [Generate a blank splash screen](~/troubleshooting.md#generate-a-blank-splash-screen).
 
@@ -112,7 +112,7 @@ namespace MyMauiApp
 
 # [iOS](#tab/ios)
 
-On iOS, the splash screen is added to the app package as a storyboard named `MauiSplash.storyboard`, which is set as value of the `UILaunchStoryboardName` key in the app package's *Info.plist*:
+On iOS, the splash screen is added to the app package as a storyboard named `MauiSplash.storyboard`, which is set as the value of the `UILaunchStoryboardName` key in the app package's *Info.plist*:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
