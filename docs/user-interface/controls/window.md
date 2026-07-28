@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window>
 
 <xref:Microsoft.Maui.Controls.Window> defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.Window.FlowDirection>, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
+- <xref:Microsoft.Maui.Controls.Window.FlowDirection>, of type `FlowDirection`, defines the direction in which the UI elements of the window are laid out.
 - <xref:Microsoft.Maui.Controls.Window.Height>, of type `double`, specifies the height of the window on Windows.
 - <xref:Microsoft.Maui.Controls.Window.MaximumHeight>, of type `double`, represents the maximum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - <xref:Microsoft.Maui.Controls.Window.MaximumWidth>, of type `double`, represents the maximum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.

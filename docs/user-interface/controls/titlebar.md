@@ -74,9 +74,9 @@ Window window = new Window
 {
     TitleBar = new TitleBar
     {
-        Icon = "titlebar_icon.png"
+        Icon = "titlebar_icon.png",
         Title = "My App",
-        Subtitle = "Demo"
+        Subtitle = "Demo",
         Content = new SearchBar { ... }      
     }
 };

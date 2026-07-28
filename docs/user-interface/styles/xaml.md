@@ -27,7 +27,7 @@ In this example, each <xref:Microsoft.Maui.Controls.Label> object has identical 
 
 ## Introduction to styles
 
-An app can be styled by using the <xref:Microsoft.Maui.Controls.Style> class to group a collection of property values into one object that can then be applied to multiple visual elements. This helps to reduce repetitive markup, and allows an apps appearance to be more easily changed.
+An app can be styled by using the <xref:Microsoft.Maui.Controls.Style> class to group a collection of property values into one object that can then be applied to multiple visual elements. This helps to reduce repetitive markup, and allows an app's appearance to be more easily changed.
 
 Although styles are designed primarily for XAML-based apps, they can also be created in C#:
 
@@ -143,7 +143,7 @@ The following code example shows an *implicit* style in a page's <xref:Microsoft
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines a single *implicit* style that are implicitly set on the page's <xref:Microsoft.Maui.Controls.Entry> objects. The <xref:Microsoft.Maui.Controls.Style> is used to display blue text on a yellow background, while also setting other appearance options. The <xref:Microsoft.Maui.Controls.Style> is added to the page's <xref:Microsoft.Maui.Controls.ResourceDictionary> without specifying an `x:Key` attribute. Therefore, the <xref:Microsoft.Maui.Controls.Style> is applied to all the <xref:Microsoft.Maui.Controls.Entry> objects implicitly as they match the `TargetType` property of the <xref:Microsoft.Maui.Controls.Style> exactly. However, the <xref:Microsoft.Maui.Controls.Style> is not applied to the `CustomEntry` object, which is a subclassed <xref:Microsoft.Maui.Controls.Entry>. In addition, the fourth <xref:Microsoft.Maui.Controls.Entry> overrides the `BackgroundColor` and `TextColor` properties of the style to different <xref:Microsoft.Maui.Graphics.Color> values.
+In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines a single *implicit* style that is implicitly set on the page's <xref:Microsoft.Maui.Controls.Entry> objects. The <xref:Microsoft.Maui.Controls.Style> is used to display blue text on a yellow background, while also setting other appearance options. The <xref:Microsoft.Maui.Controls.Style> is added to the page's <xref:Microsoft.Maui.Controls.ResourceDictionary> without specifying an `x:Key` attribute. Therefore, the <xref:Microsoft.Maui.Controls.Style> is applied to all the <xref:Microsoft.Maui.Controls.Entry> objects implicitly as they match the `TargetType` property of the <xref:Microsoft.Maui.Controls.Style> exactly. However, the <xref:Microsoft.Maui.Controls.Style> is not applied to the `CustomEntry` object, which is a subclassed <xref:Microsoft.Maui.Controls.Entry>. In addition, the fourth <xref:Microsoft.Maui.Controls.Entry> overrides the `BackgroundColor` and `TextColor` properties of the style to different <xref:Microsoft.Maui.Graphics.Color> values.
 
 ## Apply a style to derived types
 
@@ -303,7 +303,7 @@ The following example shows *dynamic* styles:
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object use the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension to set a <xref:Microsoft.Maui.Controls.Style> named `blueSearchBarStyle`. The <xref:Microsoft.Maui.Controls.SearchBar> can then have its <xref:Microsoft.Maui.Controls.Style> definition updated in code:
+In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object uses the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension to set a <xref:Microsoft.Maui.Controls.Style> named `blueSearchBarStyle`. The <xref:Microsoft.Maui.Controls.SearchBar> can then have its <xref:Microsoft.Maui.Controls.Style> definition updated in code:
 
 ```csharp
 Resources["blueSearchBarStyle"] = Resources["greenSearchBarStyle"];

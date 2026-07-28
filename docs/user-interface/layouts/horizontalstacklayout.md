@@ -113,7 +113,7 @@ A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> can be used as a parent l
 The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.VerticalStackLayout> objects in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>:
 
 ```xaml
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StackLayoutDemos.Views.HorizontalStackLayoutPage">
     <HorizontalStackLayout Margin="20"

@@ -21,7 +21,7 @@ All controls that display text automatically use font scaling, which means that 
 
 ## Register fonts
 
-True type format (TTF) and open type font (OTF) fonts can be added to your app and referenced by filename or alias, with registration being performed in the `CreateMauiApp` method in the `MauiProgram` class. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font to your app:
+TrueType format (TTF) and open type font (OTF) fonts can be added to your app and referenced by filename or alias, with registration being performed in the `CreateMauiApp` method in the `MauiProgram` class. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font to your app:
 
 ```csharp
 namespace MyMauiApp
@@ -177,7 +177,7 @@ Label label = new Label
 
 ## Disable font auto scaling
 
-All controls that display text have font scaling enabled by default, which means that an app's UI reflects text scaling preferences set in the operating system. However, this behavior can be disabled by setting the `FontAutoScalingEnabled` property on text-based control's to `false`:
+All controls that display text have font scaling enabled by default, which means that an app's UI reflects text scaling preferences set in the operating system. However, this behavior can be disabled by setting the `FontAutoScalingEnabled` property on text-based controls to `false`:
 
 ```xaml
 <Label Text="Scaling disabled"
@@ -251,7 +251,7 @@ The following XAML example has a single font icon being displayed by an <xref:Mi
 </Image>
 ```
 
-This code displays an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image> view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
+This code displays an Xbox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image> view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
 
 ```csharp
 Image image = new Image { BackgroundColor = Color.FromArgb("#D1D1D1") };

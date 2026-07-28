@@ -111,7 +111,7 @@ void OnToggled(object sender, ToggledEventArgs e)
 }
 ```
 
-The `sender` argument in the event handler is the <xref:Microsoft.Maui.Controls.Switch> responsible for firing this event. You can use the `sender` property to access the <xref:Microsoft.Maui.Controls.Switch> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.Switch> objects sharing the same `Toggled` event handler.
+The `sender` argument in the event handler is the <xref:Microsoft.Maui.Controls.Switch> responsible for firing this event. You can use the `sender` argument to access the <xref:Microsoft.Maui.Controls.Switch> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.Switch> objects sharing the same `Toggled` event handler.
 
 The `Toggled` event handler can also be assigned in code:
 

@@ -142,7 +142,7 @@ If your app needs to access the user's location, you must request permission by 
 </manifest>
 ```
 
-The `ACCESS_COARSE_LOCATION` permission allows the API to use WiFi or mobile data, or both, to determine the device's location. The `ACCESS_FINE_LOCATION` permissions allows the API to use the Global Positioning System (GPS), WiFi, or mobile data to determine a precise a location as possible.
+The `ACCESS_COARSE_LOCATION` permission allows the API to use WiFi or mobile data, or both, to determine the device's location. The `ACCESS_FINE_LOCATION` permission allows the API to use the Global Positioning System (GPS), WiFi, or mobile data to determine as precise a location as possible.
 
 A prompt is then displayed when your app attempts to access the user's location, requesting access:
 
