@@ -238,7 +238,7 @@
             - name: Search
               href: fundamentals/shell/search.md
             - name: Custom handlers
-              href: fundamentals/shell/customhandlers.md
+              href: fundamentals/shell/custom-handlers.md
             - name: Lifecycle
               href: fundamentals/shell/lifecycle.md
         - name: Single project

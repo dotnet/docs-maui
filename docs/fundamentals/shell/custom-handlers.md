@@ -10,7 +10,10 @@ ms.date: 07/28/2026
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-.NET MAUI Shell applications are highly customizable through the properties and methods that the various Shell classes expose. However, it's also possible to create custom handlers when more extensive platform-specific customizations are required. Custom handlers can be added to just one platform project to customize appearance and behavior, while allowing the default behavior on other platforms.
+.NET MAUI Shell applications are highly customizable through the properties and methods that the various Shell classes expose. However, it's also possible to create custom handlers when more extensive platform-specific customizations are required. Custom handlers can be registered conditionally for a single platform, while allowing the default behavior on other platforms.
+
+> [!NOTE]
+> Shell custom handlers are currently supported on Android in .NET MAUI 11 and later. iOS and Mac Catalyst continue to use the legacy `ShellRenderer`.
 
 ## Android handler customization
 
@@ -34,10 +37,9 @@ The following handler classes expose overridable members on Android:
 
 ### Android example
 
-The following code example shows a subclassed `ShellHandler`, for Android, that sets a background color on the toolbar of the Shell application:
+The following code example shows a subclassed `ShellHandler`, for Android, that sets a background image on the toolbar of the Shell application and changes the title text color:
 
 ```csharp
-using AndroidX.AppCompat.Widget;
 using Microsoft.Maui.Controls.Handlers;
 using Microsoft.Maui.Controls.Platform;
 
