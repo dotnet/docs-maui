@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 03/24/2026
+ms.date: 08/06/2026
 ---
 
 # Compiled bindings
@@ -181,6 +181,23 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 > [!NOTE]
 > In cases where there's a binding with a `Source`, but it inherits the `x:DataType` from the parent, there can be a mismatch between the `x:DataType` and the type of the `Source`. In this scenario, a warning will be generated and a fallback to a reflection-based binding that resolves the binding path at runtime will occur.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+### Compile relative source ancestor bindings
+
+In .NET MAUI 11, when compilation of bindings that define the `Source` property is enabled, the XAML compiler can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The compiler uses the ancestor type as the binding source type:
+
+```xaml
+<Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
+                          Path=DeleteEmployeeCommand}" />
+```
+
+When the ancestor type and binding path can be resolved at compile time, the compiler generates a trim-safe compiled binding rather than a reflection-based binding. This makes the binding safe for full trimming and NativeAOT.
+
+Bindings use the runtime fallback when their source type can't be resolved at compile time. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`, and `x:Reference` bindings whose referenced element type can't be resolved.
 
 ::: moniker-end
 

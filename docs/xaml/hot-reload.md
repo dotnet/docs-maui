@@ -1,7 +1,7 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 03/24/2026
+ms.date: 08/06/2026
 ---
 
 # XAML Hot Reload for .NET MAUI
@@ -36,6 +36,26 @@ XAML Hot Reload is enabled by default in Visual Studio 2022. If it's been previo
 :::image type="content" source="media/hot-reload/vs-options.png" alt-text="XAML Hot Reload options for .NET MAUI in Visual Studio.":::
 
 Then, on iOS in your build settings, check that the Linker is set to "Don't Link".
+
+::: moniker range=">=net-maui-11.0"
+
+### Enable XAML Incremental Hot Reload
+
+.NET MAUI 11 Preview 7 includes a new XAML Incremental Hot Reload engine. The engine is off by default and must be explicitly enabled. To enable it only for debug builds, add the following property group to your project file:
+
+```xml
+<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <EnableMauiIncrementalHotReload>true</EnableMauiIncrementalHotReload>
+</PropertyGroup>
+```
+
+XAML Incremental Hot Reload generates patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again.
+
+Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements. Not every XAML edit can be applied incrementally to live instances. For example, changing an `x:Name` or a root element type requires you to recreate the affected page. A change that requires C# code to be reloaded, or adding, removing, or renaming files or NuGet packages, requires you to rebuild and redeploy your app.
+
+When `EnableMauiIncrementalHotReload` is `false` or omitted, the existing XAML Hot Reload engine remains active.
+
+::: moniker-end
 
 ## Reload on multiple platforms
 
