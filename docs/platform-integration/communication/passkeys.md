@@ -9,7 +9,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication", "WebAuthn", "FIDO2"]
 
 ::: moniker range=">=net-maui-11.0"
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](https://github.com/dotnet/maui-samples/tree/main/11.0/PlatformIntegration/Passkeys)
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-passkeys)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPasskeys` interface to register and sign in with *passkeys*. A passkey is a [WebAuthn/FIDO2](https://www.w3.org/TR/webauthn-3/) public-key credential that replaces a password with a key pair whose private key is managed by the platform authenticator and is never exposed to your app or to .NET MAUI. Signing in is completed by that authenticator, such as Face ID, Touch ID, Windows Hello, or an Android biometric prompt backed by the device's credential manager.
 
@@ -269,10 +269,16 @@ PasskeyAssertionResponse asserted = await Passkeys.AssertAsync(options);
 | Platform | Behavior when `true` |
 | --- | --- |
 | Android | Uses a locally available credential if one exists; otherwise fails fast instead of launching the hybrid or QR flow |
-| iOS / Mac Catalyst | Presents only when a local platform passkey exists; otherwise fails without showing the nearby-device sheet |
+| iOS / Mac Catalyst | Presents only when a local platform passkey exists; otherwise the request is cancelled without showing the nearby-device sheet |
 | Windows | Ignored. The Windows Security dialog is always shown |
 
-This setting is most useful for sign-in. On Android, iOS, and Mac Catalyst, sign-in with no immediately available credential fails with an `InvalidOperationException` rather than a cancellation. Windows ignores the setting entirely.
+This setting is most useful for sign-in, but the platforms report a missing credential differently:
+
+- On **Android**, sign-in with no immediately available credential fails with an `InvalidOperationException`, so you can distinguish it from cancellation.
+- On **iOS and Mac Catalyst**, the same situation is reported by the OS as `ASAuthorizationError.Canceled`, the *same* error Apple returns when the user dismisses the sheet. It therefore surfaces as a cancellation, and your app **can't** tell "there was no passkey to use" apart from "the user dismissed the prompt."
+- **Windows** ignores the setting entirely and always shows the Security dialog.
+
+Because of the Apple behavior, don't rely on a cancellation to mean the user made a deliberate choice. See [Handle errors](#handle-errors) for recovery guidance that works on every platform.
 
 ### Cancellation
 
@@ -288,7 +294,8 @@ try
 }
 catch (OperationCanceledException)
 {
-    // The ceremony was cancelled, either by the user or by the token.
+    // The ceremony was cancelled by the user or by the token — and on iOS and
+    // Mac Catalyst, this also covers "no passkey was available". See Handle errors.
 }
 ```
 
@@ -304,11 +311,15 @@ Failures surface as standard .NET exceptions rather than a passkey-specific exce
 | The platform or OS version doesn't support passkeys | <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException> |
 | The user dismissed the native UI, or the ceremony was cancelled by the `CancellationToken` | <xref:System.Threading.Tasks.TaskCanceledException> |
 | The `CancellationToken` was already cancelled when the method was called | <xref:System.OperationCanceledException> |
-| No matching credential was available during sign-in | <xref:System.InvalidOperationException> |
+| No matching credential was available during sign-in (**Android**) | <xref:System.InvalidOperationException> |
+| No matching credential was available during sign-in (**iOS and Mac Catalyst**) | <xref:System.Threading.Tasks.TaskCanceledException>, indistinguishable from user dismissal |
 | The options JSON was malformed or missing required members | <xref:System.ArgumentException> |
 | Domain association isn't configured, or any other native failure | <xref:System.InvalidOperationException> containing the native error message |
 
-Cancellation normalizes to <xref:System.Threading.Tasks.TaskCanceledException>, which matches the behavior of <xref:Microsoft.Maui.Authentication.WebAuthenticator>, so catch the base <xref:System.OperationCanceledException> to cover both cancellation paths. A missing credential is deliberately *not* a cancellation, so you can distinguish "the user changed their mind" from "there's nothing to sign in with":
+Cancellation normalizes to <xref:System.Threading.Tasks.TaskCanceledException>, which matches the behavior of <xref:Microsoft.Maui.Authentication.WebAuthenticator>, so catch the base <xref:System.OperationCanceledException> to cover both cancellation paths.
+
+> [!IMPORTANT]
+> Cancellation doesn't reliably mean the user made a deliberate choice. Only **Android** reports a missing credential as a distinct <xref:System.InvalidOperationException>, letting you tell "the user changed their mind" apart from "there's nothing to sign in with." On **iOS and Mac Catalyst** you can't: the OS reports both with `ASAuthorizationError.Canceled`, so both arrive as a cancellation. On **Windows** the Security dialog is always shown, so a user with no passkey typically dismisses it, which is also a cancellation. Write your cancellation handler so it's correct in either case.
 
 ```csharp
 try
@@ -322,11 +333,15 @@ catch (FeatureNotSupportedException)
 }
 catch (OperationCanceledException)
 {
-    // The user dismissed the prompt. Leave the sign-in screen as it was.
+    // The user dismissed the prompt, or — on iOS and Mac Catalyst — no passkey
+    // was available. These are indistinguishable on Apple platforms, so return
+    // to the sign-in screen with other options still reachable rather than
+    // assuming the user deliberately declined.
 }
 catch (InvalidOperationException ex)
 {
-    // No credential was available, or the ceremony failed.
+    // On Android: no credential was available, or the ceremony failed.
+    // On other platforms: the ceremony failed.
     // ex.Message carries the platform error, which is useful in logs but not to end users.
     logger.LogWarning(ex, "Passkey assertion failed.");
 }
@@ -361,10 +376,11 @@ catch (InvalidOperationException ex)
 | The ceremony succeeds but the server rejects it | The server's expected origin most likely doesn't include the app's native origin. Compare the `origin` in the returned client data with the origins your server accepts |
 | The `finish` call reports that no ceremony is in progress | The `begin` and `finish` requests weren't correlated. Reuse one `HttpClient` and preserve the session between the two calls |
 | `PreferImmediatelyAvailable` appears to be ignored | This is expected on Windows, where the native API has no equivalent |
+| Sign-in reports cancellation when the user didn't cancel | On iOS and Mac Catalyst, "no passkey available" and "user dismissed" are the same OS error, so both arrive as a cancellation. Don't treat a cancellation as a deliberate refusal on Apple platforms |
 
 ## See also
 
-- [Passkeys sample](https://github.com/dotnet/maui-samples/tree/main/11.0/PlatformIntegration/Passkeys)
+- [Passkeys sample](/samples/dotnet/maui-samples/platformintegration-passkeys)
 - [Web authenticator](authentication.md)
 - [Enable Web Authentication API (WebAuthn) passkeys](/aspnet/core/security/authentication/passkeys)
 - [Web Authentication: An API for accessing Public Key Credentials Level 3](https://www.w3.org/TR/webauthn-3/)

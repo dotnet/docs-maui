@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 08/06/2026
+ms.date: 07/08/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -237,18 +237,6 @@ if (status == PermissionStatus.Granted)
 ```
 
 Starting in .NET 11 Preview 6, the permissions API also exposes an `IPermissions` abstraction through `Permissions.Current`, which improves testability and extensibility for code that wraps permission checks. For more information, see [GitHub PR #35987](https://github.com/dotnet/maui/pull/35987).
-
-### Passkeys
-
-Starting in .NET 11 Preview 7, the `Microsoft.Maui.Authentication.Passkeys` class lets your app register and sign in with passkeys (WebAuthn/FIDO2 credentials) using the platform authenticator, such as Face ID, Touch ID, Windows Hello, or an Android biometric prompt. `Passkeys.CreateAsync` and `Passkeys.AssertAsync` accept the standard WebAuthn options JSON produced by your relying-party server and return the standard WebAuthn response JSON to send back for verification, so the API interoperates directly with existing server libraries including ASP.NET Core Identity. Passkeys are supported on Android 14 (API 34), iOS 16, Mac Catalyst 16, and Windows 10 version 1903 or later; note that the .NET 11 Mac Catalyst toolchain has a minimum deployment target of 17.0. Check `Passkeys.IsSupported` before presenting passkey UI. For more information, see [Passkeys](~/platform-integration/communication/passkeys.md) and [GitHub PR #36837](https://github.com/dotnet/maui/pull/36837).
-
-```csharp
-if (Passkeys.IsSupported)
-{
-    PasskeyAssertionResponse asserted = await Passkeys.AssertAsync(requestOptionsJson);
-    // Post asserted.ToString() to your server to verify the assertion.
-}
-```
 
 ### Trimmable CSS
 
