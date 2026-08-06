@@ -1,7 +1,7 @@
 ---
 title: "Window"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 08/19/2025
+ms.date: 08/06/2026
 ---
 
 # Window
@@ -17,6 +17,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window>
 - <xref:Microsoft.Maui.Controls.Window.MinimumHeight>, of type `double`, represents the minimum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - <xref:Microsoft.Maui.Controls.Window.MinimumWidth>, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - <xref:Microsoft.Maui.Controls.Window.Overlays>, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
+::: moniker range=">=net-maui-11.0"
+- <xref:Microsoft.Maui.Controls.Window.StatusBarTheme>, of type <xref:Microsoft.Maui.StatusBarTheme>, controls the appearance of the status bar icons on Android and iOS.
+::: moniker-end
 - <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the <xref:Microsoft.Maui.Controls.Window> class, and therefore does not need to be explicitly set.
 - <xref:Microsoft.Maui.Controls.Window.Title>, of type `string`, represents the title of the window.
 - <xref:Microsoft.Maui.Controls.Window.Width>, of type `double`, specifies the width of the window on Windows.
@@ -50,6 +53,33 @@ The <xref:Microsoft.Maui.Controls.Window> class also defines the following modal
 - <xref:Microsoft.Maui.Controls.Window.PopCanceled>, which is raised when a modal pop is cancelled.
 
 The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Window` property that exposes the parent <xref:Microsoft.Maui.Controls.Window> object. This property can be accessed from any page, layout, or view, to manipulate <xref:Microsoft.Maui.Controls.Window> objects.
+
+::: moniker range=">=net-maui-11.0"
+
+## Set the status bar theme
+
+On Android and iOS, set <xref:Microsoft.Maui.Controls.Window.StatusBarTheme> to control the appearance of the operating system-drawn status bar icons independently of the app theme. The default value, <xref:Microsoft.Maui.StatusBarTheme.Default>, follows the current app theme.
+
+Choose the value that matches the surface behind the status bar:
+
+- <xref:Microsoft.Maui.StatusBarTheme.Light> indicates a light surface and displays dark icons.
+- <xref:Microsoft.Maui.StatusBarTheme.Dark> indicates a dark surface and displays light icons.
+
+For example, if the app uses a dark header behind the status bar while the rest of the app uses a light theme, set `StatusBarTheme` to `Dark`:
+
+```csharp
+protected override Window CreateWindow(IActivationState? activationState)
+{
+    return new Window(new AppShell())
+    {
+        StatusBarTheme = StatusBarTheme.Dark
+    };
+}
+```
+
+This property has no effect on Mac Catalyst, Windows, or Tizen.
+
+::: moniker-end
 
 ## Create a Window
 

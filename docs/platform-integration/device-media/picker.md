@@ -1,7 +1,7 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 07/08/2026
+ms.date: 08/06/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
@@ -191,6 +191,20 @@ foreach (var file in results)
 > Media picker methods that open the camera or picker UI must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
 
 ::: moniker range=">=net-maui-11.0"
+
+### Save captured media to the gallery
+
+The <xref:Microsoft.Maui.Media.MediaPickerOptions.SaveToGallery> property controls whether a captured photo or video is also saved to the device's gallery. The default value is `false`, and the property only applies to <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> operations. It's ignored by media pick operations.
+
+```csharp
+FileResult? photo = await MediaPicker.Default.CapturePhotoAsync(
+    new MediaPickerOptions
+    {
+        SaveToGallery = true
+    });
+```
+
+Saving captured media to the gallery is supported on Android, iOS, and Mac Catalyst. On iOS and Mac Catalyst, the `NSPhotoLibraryAddUsageDescription` key must be present in *Info.plist*. On Android versions earlier than API 29, the `WRITE_EXTERNAL_STORAGE` permission is required. The property is ignored on Windows and Tizen.
 
 ### Recover interrupted Android media picker operations
 
