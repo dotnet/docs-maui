@@ -71,7 +71,7 @@ Call `Passkeys.IsSupported` before you present passkey UI, and fall back to your
 | Mac Catalyst | Mac Catalyst 16 | `AuthenticationServices` |
 | Windows | Windows 10 version 1903 | Windows WebAuthn API (`webauthn.dll`) |
 
-On Android, iOS, Mac Catalyst, and Windows versions below the minimum shown, `IsSupported` returns `false` and both `CreateAsync` and `AssertAsync` throw a <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException>. On targets with no passkey implementation at all, `IsSupported` returns `false` and the methods throw a not-supported exception.
+On Android, iOS, Mac Catalyst, and Windows versions below the minimum shown, `IsSupported` returns `false` and both `CreateAsync` and `AssertAsync` throw a <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException>. On targets with no passkey implementation, such as netstandard, tvOS, and Tizen, `IsSupported` returns `false` and the methods throw `NotImplementedInReferenceAssemblyException`, which derives from <xref:System.NotImplementedException>.
 
 `IsSupported` reflects only the platform and OS version. Other runtime prerequisites, such as a configured credential provider or an enrolled biometric, aren't checked by `IsSupported` and instead surface when a ceremony runs.
 
@@ -300,7 +300,7 @@ catch (OperationCanceledException)
 ```
 
 > [!NOTE]
-> Catch <xref:System.OperationCanceledException> rather than <xref:System.Threading.Tasks.TaskCanceledException>. Cancellation during a ceremony surfaces as `TaskCanceledException`, but a token that's already cancelled when you call the method short-circuits with the base `OperationCanceledException`. Because `TaskCanceledException` derives from `OperationCanceledException`, catching the base type handles both.
+> Catch <xref:System.OperationCanceledException> rather than <xref:System.Threading.Tasks.TaskCanceledException>. Cancellation usually arrives as the `TaskCanceledException` subtype, but iOS, Mac Catalyst, and Windows check the token before starting the native ceremony and throw the base `OperationCanceledException` when they observe cancellation there. Because `TaskCanceledException` derives from `OperationCanceledException`, catching the base type handles every case.
 
 ## Handle errors
 
@@ -308,15 +308,16 @@ Failures surface as standard .NET exceptions rather than a passkey-specific exce
 
 | Situation | Exception |
 | --- | --- |
-| The platform or OS version doesn't support passkeys | <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException> |
-| The user dismissed the native UI, or the ceremony was cancelled by the `CancellationToken` | <xref:System.Threading.Tasks.TaskCanceledException> |
-| The `CancellationToken` was already cancelled when the method was called | <xref:System.OperationCanceledException> |
+| Android, iOS, Mac Catalyst, or Windows is below the minimum version | <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException> |
+| The target has no passkey implementation (netstandard, tvOS, Tizen) | `NotImplementedInReferenceAssemblyException`, which derives from <xref:System.NotImplementedException> |
+| The user dismissed the native UI, or the ceremony was cancelled by the `CancellationToken` | <xref:System.OperationCanceledException>, most often the <xref:System.Threading.Tasks.TaskCanceledException> subtype |
 | No matching credential was available during sign-in (**Android**) | <xref:System.InvalidOperationException> |
-| No matching credential was available during sign-in (**iOS and Mac Catalyst**) | <xref:System.Threading.Tasks.TaskCanceledException>, indistinguishable from user dismissal |
-| The options JSON was malformed or missing required members | <xref:System.ArgumentException> |
+| No matching credential was available during sign-in (**iOS and Mac Catalyst**) | <xref:System.OperationCanceledException>, indistinguishable from user dismissal |
+| The options JSON was malformed or missing required members (**iOS, Mac Catalyst, Windows**) | <xref:System.ArgumentException> |
+| The options JSON was rejected by the Android credential provider | <xref:System.InvalidOperationException> |
 | Domain association isn't configured, or any other native failure | <xref:System.InvalidOperationException> containing the native error message |
 
-Cancellation normalizes to <xref:System.Threading.Tasks.TaskCanceledException>, which matches the behavior of <xref:Microsoft.Maui.Authentication.WebAuthenticator>, so catch the base <xref:System.OperationCanceledException> to cover both cancellation paths.
+Always catch <xref:System.OperationCanceledException> rather than <xref:System.Threading.Tasks.TaskCanceledException>. Cancellation usually surfaces as the `TaskCanceledException` subtype, which matches the behavior of <xref:Microsoft.Maui.Authentication.WebAuthenticator>, but iOS, Mac Catalyst, and Windows check the token before starting the native ceremony and throw the base `OperationCanceledException` when cancellation is observed at that point. Catching the base type covers every cancellation path on every platform.
 
 > [!IMPORTANT]
 > Cancellation doesn't reliably mean the user made a deliberate choice. Only **Android** reports a missing credential as a distinct <xref:System.InvalidOperationException>, letting you tell "the user changed their mind" apart from "there's nothing to sign in with." On **iOS and Mac Catalyst** you can't: the OS reports both with `ASAuthorizationError.Canceled`, so both arrive as a cancellation. On **Windows** the Security dialog is always shown, so a user with no passkey typically dismisses it, which is also a cancellation. Write your cancellation handler so it's correct in either case.
@@ -348,7 +349,7 @@ catch (InvalidOperationException ex)
 ```
 
 > [!NOTE]
-> On iOS, Mac Catalyst, and Windows, malformed options JSON is normalized to <xref:System.ArgumentException> because those platforms parse the JSON to build a native request. Android passes the JSON to Jetpack Credential Manager largely unchanged, so an invalid document can also surface as an <xref:System.InvalidOperationException> reported by the credential provider. Handle both when validating server output.
+> On iOS, Mac Catalyst, and Windows, malformed options JSON is normalized to <xref:System.ArgumentException> because those platforms parse the JSON to build a native request. Android passes the JSON to Jetpack Credential Manager largely unchanged, so an invalid document instead surfaces as an <xref:System.InvalidOperationException> reported by the credential provider. Handle both when validating server output.
 
 > [!TIP]
 > Don't surface the raw platform message to users. Log it for diagnostics, and show a recovery path such as signing in with a password and then registering a passkey.
