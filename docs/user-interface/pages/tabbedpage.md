@@ -1,7 +1,7 @@
 ---
 title: "TabbedPage"
 description: "The .NET MAUI TabbedPage consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content."
-ms.date: 09/30/2024
+ms.date: 11/28/2025
 ---
 
 # TabbedPage
@@ -25,7 +25,7 @@ The title of a tab is defined by the <xref:Microsoft.Maui.Controls.Page.Title?di
 In a <xref:Microsoft.Maui.Controls.TabbedPage>, each <xref:Microsoft.Maui.Controls.Page> object is created when the <xref:Microsoft.Maui.Controls.TabbedPage> is constructed. This can lead to a poor user experience, particularly if the <xref:Microsoft.Maui.Controls.TabbedPage> is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 > [!WARNING]
-> <xref:Microsoft.Maui.Controls.TabbedPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.TabbedPage> in a Shell app.
+> <xref:Microsoft.Maui.Controls.TabbedPage> is incompatible with the .NET MAUI Shell visual hierarchy, and an exception will be thrown if you attempt to add <xref:Microsoft.Maui.Controls.TabbedPage> to the Shell visual hierarchy. This includes registering a <xref:Microsoft.Maui.Controls.TabbedPage> as a route with `Routing.RegisterRoute` and navigating to it with `Shell.Current.GoToAsync`. However, it's valid to display a <xref:Microsoft.Maui.Controls.TabbedPage> as a modal page in a Shell app by using `Navigation.PushModalAsync`, because modal pages exist in a separate navigation space. If you need tab-based navigation as part of the Shell visual hierarchy, use Shell tabs instead. For more information, see [Shell tabs](~/fundamentals/shell/tabs.md) and [Perform modal navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
 
 ## Create a TabbedPage
 
