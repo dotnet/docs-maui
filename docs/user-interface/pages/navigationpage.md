@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 06/05/2026
+ms.date: 08/11/2026
 ---
 
 # NavigationPage
@@ -511,3 +511,44 @@ Alternatively, an extended navigation bar can be suggested by placing some of th
 
 > [!TIP]
 > The `BackButtonTitle`, `Title`, `TitleIconImageSource`, and `TitleView` properties can all define values that occupy space on the navigation bar. While the navigation bar size varies by platform and screen size, setting all of these properties will result in conflicts due to the limited space available. Instead of attempting to use a combination of these properties, you may find that you can better achieve your desired navigation bar design by only setting the `TitleView` property.
+
+::: moniker range=">=net-maui-11.0"
+
+## NavigationPage on iOS and Mac Catalyst
+
+Starting in .NET 11, <xref:Microsoft.Maui.Controls.NavigationPage> uses a handler on iOS and Mac Catalyst, rather than the compatibility renderer that was used in previous releases. This aligns iOS and Mac Catalyst with Android, Windows, and Tizen, which already used a handler, and means that <xref:Microsoft.Maui.Controls.NavigationPage> uses the same handler architecture as other .NET MAUI controls on every platform.
+
+This change is enabled by default and isn't gated behind a feature switch. Other platforms are unaffected, because they already used a handler for <xref:Microsoft.Maui.Controls.NavigationPage>.
+
+Existing <xref:Microsoft.Maui.Controls.NavigationPage> functionality is preserved by the handler, including the navigation bar, the back button, and pushing and popping pages.
+
+### Behavior changes
+
+The handler changes some behavior on iOS and Mac Catalyst, which aligns these platforms with Android and Windows:
+
+- The <xref:Microsoft.Maui.Controls.Page.Appearing> event is raised before the page is pushed onto the native navigation stack, rather than after the page becomes visible. Therefore, don't use this event for work that requires the page to be on screen.
+- The `NavigatedTo` event is deferred until the page appears. Use this event, rather than <xref:Microsoft.Maui.Controls.Page.Appearing>, for work that requires the page to be on screen.
+- Pushing a page that was previously popped creates a new view controller for the page, rather than reusing the previous one.
+- <xref:Microsoft.Maui.Controls.ToolbarItem> objects whose `Order` property is set to `Secondary` are displayed in an overflow menu in the navigation bar, rather than in a toolbar at the bottom of the page.
+
+However, apps that subclass the compatibility renderer are affected. A <xref:Microsoft.Maui.Controls.NavigationPage> is no longer displayed by `Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer`, and so a custom renderer that derives from it is no longer used unless you register it explicitly.
+
+### Use the compatibility renderer
+
+If your app depends on the compatibility renderer, you can continue to use it by registering it for <xref:Microsoft.Maui.Controls.NavigationPage> with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> in your `MauiProgram` class:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<NavigationPage, Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `NavigationRenderer`, register your own type instead.
+
+> [!IMPORTANT]
+> Registering the compatibility renderer is intended as a temporary migration step. You should migrate any custom renderers to the handler architecture. For more information, see [Migrate iOS NavigationPage renderers](~/migration/custom-renderers.md#migrate-ios-navigationpage-renderers).
+
+::: moniker-end
