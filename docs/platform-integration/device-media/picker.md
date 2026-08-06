@@ -194,7 +194,7 @@ foreach (var file in results)
 
 ### Save captured media to the gallery
 
-The <xref:Microsoft.Maui.Media.MediaPickerOptions.SaveToGallery> property controls whether a captured photo or video is also saved to the device's gallery. The default value is `false`, and the property only applies to <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> operations. It's ignored by media pick operations.
+The `MediaPickerOptions.SaveToGallery` property controls whether a captured photo or video is also saved to the device's gallery. The default value is `false`, and the property only applies to <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> operations. It's ignored by media pick operations.
 
 ```csharp
 FileResult? photo = await MediaPicker.Default.CapturePhotoAsync(
