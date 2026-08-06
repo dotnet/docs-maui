@@ -566,9 +566,9 @@ physical iOS device.
 Use `--dsrouter android` or `--dsrouter android-emu` to run the same
 workflow on Android.
 
-For Mac Catalyst, you can run the executable inside the app bundle as a
-macOS process and use a Unix domain socket as the diagnostic port. In
-one terminal, set `DOTNET_DiagnosticPorts` and start the app:
+For Mac Catalyst and macOS, you can run the executable inside the app
+bundle as a macOS process and use a Unix domain socket as the diagnostic
+port. In one terminal, set `DOTNET_DiagnosticPorts` and start the app:
 
 ```sh
 DOTNET_DiagnosticPorts="$TMPDIR/maui-gcdump.socket,suspend" \
@@ -588,10 +588,11 @@ the repeatable scenario. The app and `dotnet-gcdump` must use the same
 `TMPDIR`.
 
 > [!NOTE]
-> The App Sandbox can prevent a Mac Catalyst development build from
-> opening the diagnostic connection. If necessary, use a profiling-only
-> entitlements file without the `com.apple.security.app-sandbox`
-> entitlement. Don't distribute this build.
+> The App Sandbox can prevent a Mac Catalyst or macOS development build
+> from opening the diagnostic connection. If necessary, use a
+> profiling-only entitlements file without the
+> `com.apple.security.app-sandbox` entitlement. Don't distribute this
+> build.
 
 > [!WARNING]
 > Collecting a GC dump triggers a full garbage collection and can
@@ -666,10 +667,11 @@ memory:
    Use the corresponding `maccatalyst` target framework to profile a
    Mac Catalyst app.
 
-   Mac Catalyst and macOS apps must include the
-   `com.apple.security.get-task-allow` entitlement for Instruments to
-   attach to the process. Enable this entitlement only in the build
-   configuration used for profiling.
+   > [!NOTE]
+   > Mac Catalyst and macOS apps must include the
+   > `com.apple.security.get-task-allow` entitlement for Instruments to
+   > attach to the process. Enable this entitlement only in the build
+   > configuration used for profiling.
 
 2. Open Xcode, select **Xcode** > **Open Developer Tool** >
    **Instruments**, and choose the **Allocations** template.
@@ -726,10 +728,26 @@ and application code incrementally to isolate the source of the leak.
 
 ### Common Leak Patterns
 
-- **Long-lived event publishers**: A delegate retains its target. A
-  singleton, application-level resource, timer, or native notification
-  center can therefore keep a page alive. Unsubscribe, cancel, or remove
-  observer tokens when the subscriber is no longer needed.
+#### C# events
+
+An event publisher holds a strong reference to each subscribed delegate,
+and the delegate usually holds a strong reference to its target. If the
+publisher outlives the subscriber, the subscription can therefore keep
+the subscriber and its object graph alive. For example, an event
+subscription from a page to a long-lived publisher, such as a
+<xref:Microsoft.Maui.Controls.Style> stored in
+<xref:Microsoft.Maui.Controls.Application.Resources>, can retain the
+entire page.
+
+A managed reference cycle doesn't prevent collection when no root can
+reach it. The leak occurs when a rooted, long-lived publisher provides a
+path to a subscriber that should no longer be reachable.
+
+To prevent this pattern, unsubscribe when the subscriber is no longer
+needed, or use <xref:Microsoft.Maui.WeakEventManager> when weak event
+semantics are appropriate. Also cancel timers and remove native
+notification observer tokens that can retain their callbacks.
+
 - **Unbounded collections and caches**: Static collections, navigation
   history, and caches can retain otherwise unused object graphs. Bound
   their size and remove stale entries.
