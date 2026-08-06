@@ -197,7 +197,7 @@ In .NET MAUI 11, when compilation of bindings that define the `Source` property 
 
 When the ancestor type and binding path can be resolved at compile time, the compiler generates a trim-safe compiled binding rather than a reflection-based binding. This makes the binding safe for full trimming and NativeAOT.
 
-Bindings use the runtime fallback when their source type can't be resolved at compile time. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`, bindings with an unresolved `AncestorType`, and `x:Reference` bindings whose referenced element type can't be resolved.
+Bindings use the runtime fallback when their source type can't be resolved at compile time. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`, and `x:Reference` bindings whose referenced element type can't be resolved.
 
 ::: moniker-end
 
