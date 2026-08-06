@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window>
 - <xref:Microsoft.Maui.Controls.Window.MinimumWidth>, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - <xref:Microsoft.Maui.Controls.Window.Overlays>, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
 ::: moniker range=">=net-maui-11.0"
-- <xref:Microsoft.Maui.Controls.Window.StatusBarTheme>, of type <xref:Microsoft.Maui.StatusBarTheme>, controls the appearance of the status bar icons on Android and iOS.
+- <xref:Microsoft.Maui.Controls.Window.StatusBarTheme>, of type <xref:Microsoft.Maui.StatusBarTheme>, controls the appearance of the status bar icons on Android 6.0 (API 23) or later and iOS.
 ::: moniker-end
 - <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the <xref:Microsoft.Maui.Controls.Window> class, and therefore does not need to be explicitly set.
 - <xref:Microsoft.Maui.Controls.Window.Title>, of type `string`, represents the title of the window.
@@ -58,7 +58,7 @@ The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Window` property t
 
 ## Set the status bar theme
 
-On Android and iOS, set <xref:Microsoft.Maui.Controls.Window.StatusBarTheme> to control the appearance of the operating system-drawn status bar icons independently of the app theme. The default value, <xref:Microsoft.Maui.StatusBarTheme.Default>, follows the current app theme.
+On Android 6.0 (API 23) or later and iOS, set <xref:Microsoft.Maui.Controls.Window.StatusBarTheme> to control the appearance of the operating system-drawn status bar icons independently of the app theme. The default value, <xref:Microsoft.Maui.StatusBarTheme.Default>, follows the current app theme.
 
 Choose the value that matches the surface behind the status bar:
 
@@ -77,7 +77,7 @@ protected override Window CreateWindow(IActivationState? activationState)
 }
 ```
 
-This property has no effect on Mac Catalyst, Windows, or Tizen.
+This property has no effect on Android versions earlier than API 23, Mac Catalyst, Windows, or Tizen.
 
 ::: moniker-end
 
