@@ -748,6 +748,8 @@ needed, or use <xref:Microsoft.Maui.WeakEventManager> when weak event
 semantics are appropriate. Also cancel timers and remove native
 notification observer tokens that can retain their callbacks.
 
+#### Other patterns
+
 - **Unbounded collections and caches**: Static collections, navigation
   history, and caches can retain otherwise unused object graphs. Bound
   their size and remove stale entries.
