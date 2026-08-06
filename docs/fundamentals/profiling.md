@@ -1,7 +1,7 @@
 ---
 title: "Performance Profiling"
 description: "Learn how to profile the performance of your .NET MAUI app."
-ms.date: 08/05/2026
+ms.date: 08/06/2026
 ---
 
 # Performance Profiling
@@ -505,19 +505,22 @@ static WeakReference<MyDetailsPage> CreatePageReference()
 
     // Exercise the page, navigate away, and perform the same cleanup
     // that the app performs in the scenario under investigation.
-    return new(page);
+    return new WeakReference<MyDetailsPage>(page);
 }
 
-var pageReference = CreatePageReference();
+static void CheckPageCollected()
+{
+    WeakReference<MyDetailsPage> pageReference = CreatePageReference();
 
-GC.Collect();
-GC.WaitForPendingFinalizers();
-GC.Collect();
+    GC.Collect();
+    GC.WaitForPendingFinalizers();
+    GC.Collect();
 
-Debug.WriteLine(
-    pageReference.TryGetTarget(out _)
-        ? "MyDetailsPage is still alive"
-        : "MyDetailsPage was collected");
+    System.Diagnostics.Debug.WriteLine(
+        pageReference.TryGetTarget(out _)
+            ? "MyDetailsPage is still alive"
+            : "MyDetailsPage was collected");
+}
 ```
 
 Create the object in a separate method when possible. Local variables
@@ -556,6 +559,9 @@ app, and capture another dump:
 ```sh
 dotnet-gcdump collect --dsrouter ios-sim -o after.gcdump
 ```
+
+Use `--dsrouter ios` instead when capturing `after.gcdump` from a
+physical iOS device.
 
 Use `--dsrouter android` or `--dsrouter android-emu` to run the same
 workflow on Android.
@@ -652,13 +658,18 @@ memory:
    ::: moniker range=">=net-maui-11.0"
 
    ```sh
-   dotnet build -t:Run -c Release -f net11.0-ios -p:NoSymbolStrip=true
+   dotnet run -c Release -f net11.0-ios -p:NoSymbolStrip=true
    ```
 
    ::: moniker-end
 
    Use the corresponding `maccatalyst` target framework to profile a
    Mac Catalyst app.
+
+   Mac Catalyst and macOS apps must include the
+   `com.apple.security.get-task-allow` entitlement for Instruments to
+   attach to the process. Enable this entitlement only in the build
+   configuration used for profiling.
 
 2. Open Xcode, select **Xcode** > **Open Developer Tool** >
    **Instruments**, and choose the **Allocations** template.
@@ -698,11 +709,20 @@ Compare what each tool reports:
   managed root is unclear, inspect both tools. A native object can retain
   the native peer, which in turn keeps the managed object alive.
 
-Reduce the page or feature until the growth stops. First remove
-application code and subscriptions, then remove groups of controls.
-Also test the same operation on another platform. An empty
-<xref:Microsoft.Maui.Controls.ContentPage> should become collectable
-after navigation has released it.
+### Narrow down the cause
+
+Once you've identified a leak, reduce the page or feature until the
+growth stops:
+
+1. Remove the XAML content. Does the leak still occur?
+2. Remove application code and subscriptions. Does the leak still
+   occur?
+3. Test on multiple platforms. Does the leak only occur on one
+   platform?
+
+An empty <xref:Microsoft.Maui.Controls.ContentPage> should become
+collectable after navigation has released it. Restore groups of controls
+and application code incrementally to isolate the source of the leak.
 
 ### Common Leak Patterns
 
@@ -797,8 +817,7 @@ Preview 4 .NET MAUI release notes][maui-net11-preview4].
 
 ### Native AOT limitations
 
-Native AOT apps on iOS and Mac Catalyst don't support managed heap
-analysis through `dotnet-gcdump` and `dotnet-dsrouter`. Reproduce and
+Native AOT apps don't support managed heap analysis. Reproduce and
 diagnose the managed retention problem in a non-Native AOT build, then
 verify the fix in the published Native AOT app. Instruments can still
 profile supported native aspects of a Native AOT process, but it can't
