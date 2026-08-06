@@ -1083,6 +1083,8 @@
               href: platform-integration/communication/email.md
             - name: Networking
               href: platform-integration/communication/networking.md
+            - name: Passkeys
+              href: platform-integration/communication/passkeys.md
             - name: Phone dialer
               href: platform-integration/communication/phone-dialer.md
             - name: SMS (messaging)
