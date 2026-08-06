@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 06/05/2026
+ms.date: 08/06/2026
 ---
 
 # .NET MAUI Shell navigation
@@ -116,6 +116,171 @@ This example enables contextual page navigation, where navigating to the `detail
 > [!NOTE]
 > Pages whose routes have been registered with the `Routing.RegisterRoute` method can be deregistered with the `Routing.UnRegisterRoute` method, if required.
 
+::: moniker range=">=net-maui-11.0"
+
+### Route templates
+
+Starting in .NET 11, a route that's registered with the `Routing.RegisterRoute` method can include *path parameters*. A route that contains one or more path parameters is known as a *route template*. Path parameters capture part of the navigation URI and deliver it to the destination page as navigation data, which removes the need to encode every value as a query string:
+
+```csharp
+Routing.RegisterRoute("trip/{tripId}", typeof(TripDetailPage));
+```
+
+With this registration, navigating to `//routes/trip/SEA-204`, where `routes` is a route in the Shell visual hierarchy, displays `TripDetailPage` and delivers `SEA-204` to it as a navigation parameter named `tripId`.
+
+Route templates are an additive feature. Routes that don't contain a path parameter are unaffected, and no new API is required to use them.
+
+> [!NOTE]
+> For a sample that exercises each supported route template form, see the [Shell route templates sample](/samples/dotnet/maui-samples/navigation-shell-route-templates).
+
+#### Route template syntax
+
+A path parameter is written as a name surrounded by braces, and occupies a single segment of the route unless it's a catch-all parameter. The following table shows the supported forms:
+
+| Form | Description | Example route | Example URI |
+| --- | --- | --- | --- |
+| `{name}` | A required parameter that matches exactly one segment. | `trip/{tripId}` | `//routes/trip/SEA-204` |
+| `{name?}` | An optional parameter that matches zero or one segment. | `traveler/{name?}` | `//routes/traveler/Ada` or `//routes/traveler` |
+| `{name=value}` | A parameter whose default value is delivered when the segment is absent. A default value implies that the parameter is optional. | `rating/{stars=5}` | `//routes/rating/4` or `//routes/rating` |
+| `{name:constraint}` | A parameter that only matches when the segment satisfies the constraint. | `reservation/{reservationId:int}` | `//routes/reservation/42` |
+| `{*name}` | A catch-all parameter that captures all remaining segments as a single value, separated by `/`. | `files/{*path}` | `//routes/files/trips/SEA-204/receipt.pdf` |
+| `prefix{name}suffix` | A mixed segment, where a parameter is matched between literal text within a single segment. | `trip-{tripId}-summary` | `//routes/trip-SEA-204-summary` |
+
+Forms can be combined. For example, `{reservationId:int?}` declares an optional parameter that must be an integer when it's supplied, and `{stars:int=5}` declares a parameter that must be an integer and that defaults to `5`.
+
+> [!IMPORTANT]
+> A route template is validated when it's registered. If the template is invalid, the `Routing.RegisterRoute` method throws an `ArgumentException` that describes the problem. For more information, see [Route template restrictions](#route-template-restrictions).
+
+#### Route parameter constraints
+
+A constraint restricts the values that a path parameter matches, and is appended to the parameter name with a colon. The following constraints are supported:
+
+| Constraint | Description | Example route | Matches | Doesn't match |
+| --- | --- | --- | --- | --- |
+| `int` | A 32-bit integer. | `reservation/{reservationId:int}` | `42` | `abc` |
+| `long` | A 64-bit integer. | `loyalty/{points:long}` | `9000000000` | `abc` |
+| `double` | A number, parsed using the invariant culture. | `budget/{amount:double}` | `1299.50` | `abc` |
+| `bool` | `true` or `false`, in any casing. | `toggle/{enabled:bool}` | `true` | `1` |
+| `guid` | A GUID. | `booking/{reference:guid}` | `550e8400-e29b-41d4-a716-446655440000` | `12345` |
+| `alpha` | One or more letters. | `region/{name:alpha}` | `Pacific` | `Pacific2` |
+
+No other constraint names are recognized, and a parameter can have at most one constraint. Registering a route with an unrecognized constraint throws an `ArgumentException`.
+
+A constraint only controls whether a route matches a navigation URI. It doesn't convert the captured value, which is always delivered to the destination page as a `string`.
+
+> [!NOTE]
+> When a URI doesn't satisfy a constraint, the route simply doesn't match. If no other registered route matches the URI, the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method throws an `ArgumentException`, in the same way as navigating to any unknown route.
+
+#### Register route templates
+
+Route templates are registered with the `Routing.RegisterRoute` method, in the same way as literal routes:
+
+```csharp
+Routing.RegisterRoute("trip/{tripId}", typeof(RequiredResultPage));
+Routing.RegisterRoute("traveler/{name?}", typeof(TravelerResultPage));
+Routing.RegisterRoute("rating/{stars=5}", typeof(DefaultValueResultPage));
+Routing.RegisterRoute("reservation/{reservationId:int}", typeof(IntConstraintResultPage));
+Routing.RegisterRoute("booking/{reference:guid}", typeof(GuidConstraintResultPage));
+Routing.RegisterRoute("files/{*path}", typeof(CatchAllResultPage));
+Routing.RegisterRoute("trip-{tripId}-summary", typeof(MixedResultPage));
+```
+
+Pages whose routes have been registered as route templates can be deregistered with the `Routing.UnRegisterRoute` method, if required.
+
+#### Navigate to a route template
+
+Navigation to a route template is performed with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, by specifying an absolute URI. As with any global route, the URI starts with a route that's defined in the Shell visual hierarchy, followed by the route template, whose segments supply the values for the path parameters:
+
+```csharp
+await Shell.Current.GoToAsync("//routes/trip/SEA-204");
+```
+
+In this example, `routes` is the route of a <xref:Microsoft.Maui.Controls.ShellContent> object in the Shell visual hierarchy, and the `tripId` path parameter of the `trip/{tripId}` template captures the value `SEA-204`.
+
+> [!IMPORTANT]
+> Route templates only work with absolute navigation. Attempting to navigate to a route template with a relative URI, such as `await Shell.Current.GoToAsync("trip/SEA-204")`, throws an `ArgumentException`.
+
+After navigation completes, the `Shell.Current.CurrentState.Location` property contains the resolved URI, which includes the captured values rather than the template tokens.
+
+#### Receive path parameter values
+
+Path parameter values are delivered to the destination page using the same mechanisms as query parameters, so no additional API is required. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for the parameter:
+
+```csharp
+[QueryProperty(nameof(TripId), "tripId")]
+public partial class TripDetailPage : ContentPage
+{
+    string tripId;
+
+    public string TripId
+    {
+        get => tripId;
+        set
+        {
+            tripId = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public TripDetailPage()
+    {
+        InitializeComponent();
+        BindingContext = this;
+    }
+}
+```
+
+Alternatively, the receiving class can implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface, where each path parameter appears in the `query` dictionary:
+
+```csharp
+public class TripDetailViewModel : IQueryAttributable
+{
+    public string TripId { get; private set; }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.TryGetValue("tripId", out object tripId))
+            TripId = tripId.ToString();
+    }
+}
+```
+
+The following rules apply to the values that are delivered:
+
+- The key is the parameter name, without braces, and without any constraint, optional marker, or default value. For example, the key for `{reservationId:int}` is `reservationId`.
+- The value is always a `string`, regardless of any constraint that's applied to the parameter.
+- Values are URL decoded before they're delivered. For example, navigating to `//routes/trip/SEA%20204` delivers `SEA 204`. Any constraint is evaluated against the decoded value.
+- An optional parameter that's absent from the URI, and that has no default value, isn't delivered.
+- A parameter that's declared by a route template earlier in the URI is also delivered to pages that are pushed later in the same navigation.
+
+#### Route matching precedence
+
+When more than one registered route can match a navigation URI, or when a value is supplied more than once, the following precedence rules apply:
+
+- A literal route takes precedence over a route template. For example, if both `trip/{tripId}` and `trip/summary` are registered, then navigating to `//routes/trip/summary` displays the page that's registered for `trip/summary`.
+- A path parameter takes precedence over a query parameter of the same name. For example, navigating to `//routes/trip/SEA-204?tripId=ignored` delivers `SEA-204`.
+
+#### Route template restrictions
+
+The `Routing.RegisterRoute` method throws an `ArgumentException` when a route template violates any of the following rules:
+
+| Rule | Invalid example |
+| --- | --- |
+| A parameter must have a name, and the name must be a valid C# identifier. | `trip/{}` |
+| A parameter name can only appear once in a route. | `trip/{id}/{id}` |
+| A catch-all parameter must be the last segment in a route. | `files/{*path}/details` |
+| An optional parameter, or a parameter with a default value, must be the last segment in a route. | `trip/{tripId?}/summary` |
+| A constraint must be one of `int`, `long`, `double`, `bool`, `guid`, or `alpha`. | `trip/{tripId:decimal}` |
+| A default value must satisfy the constraint that's applied to its parameter. | `reservation/{id:int=abc}` |
+| A mixed segment can only contain one parameter, and its braces must be well formed. | `trip-{tripId}-{leg}` |
+
+In addition, the following limitations apply:
+
+- A route template can't consist only of a path parameter, such as `{category}`, because such a route can't be matched unambiguously. Navigating to a route that's registered in this way throws an `ArgumentException`.
+- A mixed segment supports a constraint, but doesn't support the optional, default value, or catch-all forms.
+
+::: moniker-end
+
 ## Perform navigation
 
 To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
@@ -146,8 +311,19 @@ await Shell.Current.GoToAsync("//animals/monkeys");
 
 This example navigates to the page for the `monkeys` route, with the route being defined on a <xref:Microsoft.Maui.Controls.ShellContent> object. The <xref:Microsoft.Maui.Controls.ShellContent> object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
 
+::: moniker range="<=net-maui-10.0"
+
 > [!WARNING]
 > Absolute routes don't work with pages that are registered with the `Routing.RegisterRoute` method.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> An absolute URI can't be rooted directly at a page that's registered with the `Routing.RegisterRoute` method. However, it can start with a route in the Shell visual hierarchy and continue into a registered route template. For more information, see [Route templates](#route-templates).
+
+::: moniker-end
 
 ### Relative routes
 
@@ -390,6 +566,12 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 ```
 
 This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
+
+::: moniker range=">=net-maui-11.0"
+
+Primitive data can also be passed as part of the navigation URI itself, by registering a route that declares path parameters. For more information, see [Route templates](#route-templates).
+
+::: moniker-end
 
 ### Pass multiple use object-based navigation data
 
