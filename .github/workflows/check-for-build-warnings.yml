@@ -21,5 +21,7 @@ jobs:
           egress-policy: audit
 
       - uses: dotnet/docs-tools/actions/status-checker@455480c2e1c2fa90ecb711963250f000d66d3251 # main
+        env:
+          NODE_OPTIONS: --use-system-ca
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
