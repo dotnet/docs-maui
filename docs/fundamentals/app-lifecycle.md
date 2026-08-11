@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 08/06/2026
+ms.date: 08/11/2026
 ---
 
 # App lifecycle
@@ -384,10 +384,9 @@ namespace PlatformLifecycleDemo
 
 On Windows, the `OnAppInstanceActivated` lifecycle hook receives the initial <xref:Microsoft.Windows.AppLifecycle.AppInstance> activation and subsequent file, protocol, and redirected activations. Its handler receives an <xref:Microsoft.Windows.AppLifecycle.AppActivationArguments> object and returns a `bool` that indicates whether the activation has been handled.
 
-You can use this hook to make your app single-instanced. Register an app key with <xref:Microsoft.Windows.AppLifecycle.AppInstance.FindOrRegisterForKey%2A>, and redirect activations from other instances to the registered instance:
+You can use this hook to implement a single-instance app. Register an app key with <xref:Microsoft.Windows.AppLifecycle.AppInstance.FindOrRegisterForKey%2A>, and redirect activations from other instances to the registered instance:
 
 ```csharp
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.LifecycleEvents;
@@ -423,7 +422,7 @@ public static class MauiProgram
 
         if (!keyInstance.IsCurrent)
         {
-            _ = RedirectActivationAndExitAsync(keyInstance, args);
+            _ = RedirectActivationAndExitAsync(application, keyInstance, args);
             return true;
         }
 
@@ -436,25 +435,24 @@ public static class MauiProgram
     }
 
     static async Task RedirectActivationAndExitAsync(
+        Microsoft.UI.Xaml.Application application,
         AppInstance keyInstance,
         AppActivationArguments args)
     {
         try
         {
-            await keyInstance.RedirectActivationToAsync(args)
-                .AsTask()
-                .ConfigureAwait(false);
+            await keyInstance.RedirectActivationToAsync(args).AsTask();
         }
         finally
         {
-            Process.GetCurrentProcess().Kill();
+            application.Exit();
         }
     }
 #endif
 }
 ```
 
-Returning `true` from the transient instance marks the activation as handled and prevents it from creating a window. Always await <xref:Microsoft.Windows.AppLifecycle.AppInstance.RedirectActivationToAsync%2A> before terminating that process so that the running instance can consume the activation.
+Returning `true` from the transient instance marks the activation as handled and prevents it from creating a window. Always await <xref:Microsoft.Windows.AppLifecycle.AppInstance.RedirectActivationToAsync%2A> before exiting that app instance so that the running instance can consume the activation.
 
 .NET MAUI uses this activation lifecycle to support <xref:Microsoft.Maui.Authentication.WebAuthenticator> callbacks on Windows. If your app registers its own `AppInstance` key, it owns activation routing and must redirect every external activation, including protocol activations, to the instance that started the authentication operation.
 
