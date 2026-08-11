@@ -356,14 +356,14 @@ For more information, see [Enable XAML Incremental Hot Reload](~/xaml/hot-reload
 
 ### AOT-safe compiled RelativeSource bindings
 
-Starting in .NET 11 Preview 7, when compilation of bindings that define the `Source` property is enabled, the XAML compiler compiles a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType` into a trim-safe compiled binding, rather than a string-based binding path that relies on reflection and could lose bound members during trimming in NativeAOT and full-trimming builds.
+Starting in .NET 11 Preview 7, when compilation of bindings that define the `Source` property is enabled, the XAML source generator compiles a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType` into a trim-safe compiled binding, rather than a string-based binding path that relies on reflection and could lose bound members during trimming in NativeAOT and full-trimming builds.
 
 ```xaml
 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
                           Path=DeleteEmployeeCommand}" />
 ```
 
-Bindings whose source type can't be resolved at compile time continue to use the runtime binding path. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`. For an `x:Reference` binding, the compiler resolves the referenced element's type and compiles against it, and falls back to the runtime binding path only when the binding path can't be compiled against that type. An `AncestorType` that can't be resolved causes XAML compilation to fail. For more information, see [Compile relative source ancestor bindings](~/fundamentals/data-binding/compiled-bindings.md#compile-relative-source-ancestor-bindings) and GitHub PRs [#34408](https://github.com/dotnet/maui/pull/34408) and [#36905](https://github.com/dotnet/maui/pull/36905).
+Bindings whose source type can't be resolved at compile time continue to use the runtime binding path. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`. For an `x:Reference` binding, the source generator resolves the referenced element's type and compiles against it, and falls back to the runtime binding path only when the binding path can't be compiled against that resolved type. An `x:Reference` name that can't be resolved in a name scope, like an `AncestorType` that can't be resolved, causes XAML compilation to fail. For more information, see [Compile relative source ancestor bindings](~/fundamentals/data-binding/compiled-bindings.md#compile-relative-source-ancestor-bindings) and GitHub PRs [#34408](https://github.com/dotnet/maui/pull/34408) and [#36905](https://github.com/dotnet/maui/pull/36905).
 
 ## .NET for Android
 
