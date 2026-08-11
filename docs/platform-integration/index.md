@@ -1,7 +1,7 @@
 ---
 title: "Platform features"
 description: ".NET MAUI provides cross-platform APIs to access platform functionality that includes access to sensors, storing data, and checking network connectivity."
-ms.date: 06/27/2022
+ms.date: 08/06/2026
 ---
 
 # Platform features
@@ -29,6 +29,8 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 
 .NET MAUI provides the following functionality in the `Microsoft.Maui.ApplicationModel.Communication` namespace:
 
+::: moniker range="<=net-maui-10.0"
+
 | Functionality | Description |
 | ------- | ----------- |
 | Contacts | The `Contacts` class enables an app to select a contact and read information about it. For more information, see [Contacts](communication/contacts.md). |
@@ -37,6 +39,22 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 | Phone dialer | The `PhoneDialer` class enables an app to open a phone number in the dialer. For more information, see [Phone dialer](communication/phone-dialer.md). |
 | SMS (messaging) | The `Sms` class can be used to open the default SMS app and preload it with a recipient and message. For more information, see [SMS](communication/sms.md). |
 | Web authenticator | The `WebAuthenticator` class, in the `Microsoft.Maui.Authentication` namespace, enables you to start a browser-based authentication flow, which listens for a callback to a specific URL registered to the app. For more information, see [Web authenticator](communication/authentication.md). |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+| Functionality | Description |
+| ------- | ----------- |
+| Contacts | The `Contacts` class enables an app to select a contact and read information about it. For more information, see [Contacts](communication/contacts.md). |
+| Email | The `Email` class can be used to open the default email app, and can create a new email with the specified recipients, subject, and body. For more information, see [Email](communication/email.md). |
+| Networking | The `Connectivity` class, in the `Microsoft.Maui.Networking` namespace, enables you to inspect the network accessibility of the device your app is running on. For more information, see [Connectivity](communication/networking.md). |
+| Passkeys | The `Passkeys` class, in the `Microsoft.Maui.Authentication` namespace, enables you to register and sign in with passkeys (WebAuthn/FIDO2 credentials) using the platform authenticator. For more information, see [Passkeys](communication/passkeys.md). |
+| Phone dialer | The `PhoneDialer` class enables an app to open a phone number in the dialer. For more information, see [Phone dialer](communication/phone-dialer.md). |
+| SMS (messaging) | The `Sms` class can be used to open the default SMS app and preload it with a recipient and message. For more information, see [SMS](communication/sms.md). |
+| Web authenticator | The `WebAuthenticator` class, in the `Microsoft.Maui.Authentication` namespace, enables you to start a browser-based authentication flow, which listens for a callback to a specific URL registered to the app. For more information, see [Web authenticator](communication/authentication.md). |
+
+::: moniker-end
 
 ## Device features
 
