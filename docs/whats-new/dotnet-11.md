@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 08/06/2026
+ms.date: 08/11/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -340,17 +340,19 @@ XAML Source Generation now registers resource dictionary entries as factories, i
 
 ### XAML Incremental Hot Reload
 
-Starting in .NET 11 Preview 7, .NET MAUI includes an opt-in XAML Incremental Hot Reload engine. It uses a source generator and a `MetadataUpdateHandler` to generate patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again. Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements.
+Starting in .NET 11 Preview 7, .NET MAUI includes a XAML Incremental Hot Reload engine. It uses a source generator and a `MetadataUpdateHandler` to generate patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again. Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements.
 
-The engine is off by default in Preview 7. To enable it for debug builds, set the `EnableMauiIncrementalHotReload` MSBuild property. When the property is `false` or omitted, the existing XAML Hot Reload engine remains active.
+The engine is enabled by default for `Debug` builds, and is disabled by default for `Release` and publish builds. Because it applies updates through a `MetadataUpdateHandler`, XAML edits are applied by .NET Hot Reload hosts, including `dotnet watch`. For more information, see [`dotnet watch` for Android](#dotnet-watch-for-android) and [`dotnet watch` for iOS](#dotnet-watch-for-ios).
+
+To opt out and continue to use the existing XAML Hot Reload engine, set the `EnableMauiIncrementalHotReload` MSBuild property to `false`:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <EnableMauiIncrementalHotReload>true</EnableMauiIncrementalHotReload>
+<PropertyGroup>
+    <EnableMauiIncrementalHotReload>false</EnableMauiIncrementalHotReload>
 </PropertyGroup>
 ```
 
-For more information, see [Enable XAML Incremental Hot Reload](~/xaml/hot-reload.md#enable-xaml-incremental-hot-reload) and GitHub PRs [#34338](https://github.com/dotnet/maui/pull/34338) and [#36832](https://github.com/dotnet/maui/pull/36832).
+For more information, see [Enable XAML Incremental Hot Reload](~/xaml/hot-reload.md#enable-xaml-incremental-hot-reload) and GitHub PRs [#34338](https://github.com/dotnet/maui/pull/34338) and [#37163](https://github.com/dotnet/maui/pull/37163).
 
 ### AOT-safe compiled RelativeSource bindings
 
@@ -361,7 +363,7 @@ Starting in .NET 11 Preview 7, when compilation of bindings that define the `Sou
                           Path=DeleteEmployeeCommand}" />
 ```
 
-Bindings whose source type can't be resolved at compile time continue to use the runtime binding path. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`, and `x:Reference` bindings whose referenced element type can't be resolved. An `AncestorType` that can't be resolved causes XAML compilation to fail. For more information, see [Compile relative source ancestor bindings](~/fundamentals/data-binding/compiled-bindings.md#compile-relative-source-ancestor-bindings) and GitHub PRs [#34408](https://github.com/dotnet/maui/pull/34408) and [#36905](https://github.com/dotnet/maui/pull/36905).
+Bindings whose source type can't be resolved at compile time continue to use the runtime binding path. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`. For an `x:Reference` binding, the compiler resolves the referenced element's type and compiles against it, and falls back to the runtime binding path only when the binding path can't be compiled against that type. An `AncestorType` that can't be resolved causes XAML compilation to fail. For more information, see [Compile relative source ancestor bindings](~/fundamentals/data-binding/compiled-bindings.md#compile-relative-source-ancestor-bindings) and GitHub PRs [#34408](https://github.com/dotnet/maui/pull/34408) and [#36905](https://github.com/dotnet/maui/pull/36905).
 
 ## .NET for Android
 
