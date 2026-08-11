@@ -201,6 +201,8 @@ When the ancestor type and binding path can be resolved at compile time, the sou
 
 For an `x:Reference` binding, the source generator resolves the referenced element type and compiles the binding when it can resolve the binding path. If it resolves the element type but can't compile the path, it generates a string-based runtime binding and suppresses the `MAUIG2045` warning. An `x:Reference` name that isn't found in any XAML namescope produces a `MAUIG1001` XAML compiler error.
 
+Similarly, if `AncestorType` can't be resolved, XAML compilation fails.
+
 ::: moniker-end
 
 ### Combine compiled bindings with classic bindings in XAML
