@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 08/06/2026
+ms.date: 08/11/2026
 ---
 
 # Compiled bindings
@@ -188,16 +188,18 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 ### Compile relative source ancestor bindings
 
-In .NET MAUI 11, when compilation of bindings that define the `Source` property is enabled, the XAML compiler can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The compiler uses the ancestor type as the binding source type:
+In .NET MAUI 11, when compilation of bindings that define the `Source` property is enabled, the XAML source generator can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The source generator uses the ancestor type as the binding source type, so an inline `x:DataType` isn't required:
 
 ```xaml
 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
                           Path=DeleteEmployeeCommand}" />
 ```
 
-When the ancestor type and binding path can be resolved at compile time, the compiler generates a trim-safe compiled binding rather than a reflection-based binding. This makes the binding safe for full trimming and NativeAOT.
+When the ancestor type and binding path can be resolved at compile time, the source generator generates a trim-safe compiled binding rather than a reflection-based binding. This makes the binding safe for full trimming and NativeAOT.
 
-Bindings use the runtime fallback when their source type can't be resolved at compile time. This includes `RelativeSource` bindings that use `Self` or `TemplatedParent`, and `x:Reference` bindings whose referenced element type can't be resolved.
+`RelativeSource` bindings that use `Self` or `TemplatedParent` continue to use runtime bindings.
+
+For an `x:Reference` binding, the source generator resolves the referenced element type and compiles the binding when it can resolve the binding path. If it resolves the element type but can't compile the path, it generates a string-based runtime binding and suppresses the `MAUIG2045` warning. An `x:Reference` name that isn't found in any XAML namescope produces a `MAUIG1001` XAML compiler error.
 
 ::: moniker-end
 
