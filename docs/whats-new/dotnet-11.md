@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 07/08/2026
+ms.date: 08/11/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -14,6 +14,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 4](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview6/dotnetmaui.md)
+- [.NET MAUI in .NET 11 Preview 7](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview7/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -192,6 +193,27 @@ Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Controls.Shell> apps
 
 Starting in .NET 11 Preview 6, the optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped. Projects that explicitly referenced this package for Xamarin.Forms migration compatibility should migrate off it before moving to .NET 11. Apps that only reference `Microsoft.Maui.Controls` aren't affected. For more information, see [GitHub PR #35870](https://github.com/dotnet/maui/pull/35870).
 
+### iOS and Mac Catalyst NavigationPage and TabbedPage handlers
+
+Starting in .NET 11 Preview 7, <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.TabbedPage> use `NavigationViewHandler` and `TabbedViewHandler` by default on iOS and Mac Catalyst, rather than the `NavigationRenderer` and `TabbedRenderer` compatibility renderers. This aligns Apple platforms with Android, Windows, and Tizen, which already used handlers. Neither change is gated behind a feature switch, so apps that use custom renderers or extensive navigation customizations should test against this preview. Both renderers remain available in the compatibility layer as a manual fallback.
+
+For <xref:Microsoft.Maui.Controls.NavigationPage>, the handler also aligns iOS and Mac Catalyst event timing with the other platforms. The `Appearing` event now occurs before the page is pushed, rather than after the page becomes visible, and pushing a page that was previously popped creates a new view controller instead of reusing the previous one. Use the `NavigatedTo` event rather than `Appearing` for work that assumes the page is on screen. <xref:Microsoft.Maui.Controls.ToolbarItem> objects whose `Order` property is `Secondary` also move into an overflow menu in the navigation bar, rather than a toolbar at the bottom of the page. For more information, see [NavigationPage on iOS and Mac Catalyst](~/user-interface/pages/navigationpage.md#navigationpage-on-ios-and-mac-catalyst), [Migrate iOS NavigationPage renderers](~/migration/custom-renderers.md#migrate-ios-navigationpage-renderers), and [GitHub PR #36109](https://github.com/dotnet/maui/pull/36109).
+
+For <xref:Microsoft.Maui.Controls.TabbedPage>, existing functionality is preserved, including tab titles, icons, and selection, the bar and tab color properties, the **More** tab, and the `TranslucencyMode` platform-specific. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst), [Migrate iOS TabbedPage renderers](~/migration/custom-renderers.md#migrate-ios-tabbedpage-renderers), and [GitHub PR #36507](https://github.com/dotnet/maui/pull/36507).
+
+## Navigation
+
+### Shell route templates
+
+Starting in .NET 11 Preview 7, a route that's registered with the `Routing.RegisterRoute` method can include *path parameters*, inspired by ASP.NET Core and Blazor routing. A route that contains one or more path parameters is known as a *route template*, and captured values are delivered to the destination page through the existing `QueryProperty` and `IQueryAttributable` mechanisms, without encoding every value as a query string.
+
+```csharp
+Routing.RegisterRoute("trip/{tripId}", typeof(TripDetailPage));
+await Shell.Current.GoToAsync("//routes/trip/SEA-204");
+```
+
+Templates support required, optional, defaulted, constrained, catch-all, and mixed segments. Route templates are additive, so routes that don't contain a path parameter are unaffected. Route templates currently require absolute navigation. For more information, see [Route templates](~/fundamentals/shell/navigation.md#route-templates), the [Shell route templates sample](/samples/dotnet/maui-samples/navigation-shell-route-templates), and [GitHub PR #35110](https://github.com/dotnet/maui/pull/35110).
+
 ## Animation
 
 ### Cancel animations with CancellationToken
@@ -211,6 +233,24 @@ Starting in .NET 11 Preview 5, you can set the accessibility label that screen r
 ## Platform features
 
 .NET MAUI's platform features have received some updates in .NET 11.
+
+### Passkeys
+
+Starting in .NET 11 Preview 7, the `Passkeys` class in the `Microsoft.Maui.Authentication` namespace drives the native [WebAuthn/FIDO2](https://www.w3.org/TR/webauthn-3/) ceremony through the platform authenticator, such as Face ID, Touch ID, Windows Hello, or an Android biometric prompt. Check `Passkeys.IsSupported`, then call `Passkeys.CreateAsync` to register a credential, or `Passkeys.AssertAsync` to sign in with an existing credential. The contract is standard WebAuthn options JSON in and standard WebAuthn response JSON out, so it interoperates with existing relying party server libraries, including the passkey support in ASP.NET Core Identity.
+
+Passkeys are supported on Android 14 (API 34), iOS 16, Mac Catalyst 16, and Windows 10 version 1903 or later. The .NET 11 toolchain's minimum Mac Catalyst deployment target is 17, which is the effective floor for .NET 11 apps. The client performs no verification of its own. Challenge generation, and relying party ID, origin, attestation, and assertion validation, remain the responsibility of your server. Successful registration also requires platform trust configuration, such as Digital Asset Links on Android and Associated Domains on Apple platforms. For more information, see [Passkeys](~/platform-integration/communication/passkeys.md), the [Passkeys sample](/samples/dotnet/maui-samples/platformintegration-passkeys), and [GitHub PR #36837](https://github.com/dotnet/maui/pull/36837).
+
+### Save captured media to the gallery
+
+Starting in .NET 11 Preview 7, the `MediaPickerOptions.SaveToGallery` property saves a captured photo or video to the device's gallery. The property defaults to `false`, and applies only to the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> methods. It's supported on Android, iOS, and Mac Catalyst, and is ignored on Windows and Tizen. For more information, see [Save captured media to the gallery](~/platform-integration/device-media/picker.md#save-captured-media-to-the-gallery) and [GitHub PR #34641](https://github.com/dotnet/maui/pull/34641).
+
+### Status bar theme
+
+Starting in .NET 11 Preview 7, the `Window.StatusBarTheme` property controls the appearance of the operating system-drawn status bar icons on Android 6.0 (API 23) or later, and iOS, independently of the app theme. This is useful when edge-to-edge content places a light or dark surface behind the status bar. `StatusBarTheme.Light` indicates a light surface and displays dark icons, `StatusBarTheme.Dark` indicates a dark surface and displays light icons, and the default value of `StatusBarTheme.Default` follows the current app theme. For more information, see [Set the status bar theme](~/user-interface/controls/window.md#set-the-status-bar-theme) and [GitHub PR #34903](https://github.com/dotnet/maui/pull/34903).
+
+### Windows AppInstance activation
+
+Starting in .NET 11 Preview 7, Windows apps can handle `AppInstance` activations with the `OnAppInstanceActivated` lifecycle hook, which receives the initial activation as well as subsequent file, protocol, and redirected activations. Combined with `AppInstance.FindOrRegisterForKey`, this lets you make your app single-instanced by redirecting activations from other instances to the running instance, which also enables <xref:Microsoft.Maui.Authentication.WebAuthenticator> callbacks in single-instance apps. For more information, see [Handle AppInstance activation](~/fundamentals/app-lifecycle.md#handle-appinstance-activation) and [GitHub PR #36640](https://github.com/dotnet/maui/pull/36640).
 
 ### Android MediaPicker result recovery
 
@@ -299,6 +339,33 @@ Starting in .NET 11, implicit XAML namespace declarations are enabled by default
 ### Lazy ResourceDictionary
 
 XAML Source Generation now registers resource dictionary entries as factories, inflating each resource on demand instead of eagerly loading everything at startup. This can yield up to an ~8× improvement in resource dictionary initialization time for apps with large dictionaries. The optimization is automatic when XAML source generation is enabled — no code changes are required. For more information, see [GitHub PR #33826](https://github.com/dotnet/maui/pull/33826).
+
+### XAML Incremental Hot Reload
+
+Starting in .NET 11 Preview 7, .NET MAUI includes a XAML Incremental Hot Reload engine. It uses a source generator and a `MetadataUpdateHandler` to generate patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again. Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements.
+
+The engine is enabled by default for `Debug` builds, and is disabled by default for `Release` and publish builds. Because it applies updates through a `MetadataUpdateHandler`, XAML edits are applied by .NET Hot Reload hosts, including `dotnet watch`. For more information, see [`dotnet watch` for Android](#dotnet-watch-for-android) and [`dotnet watch` for iOS](#dotnet-watch-for-ios).
+
+To opt out and continue to use the existing XAML Hot Reload engine, set the `EnableMauiIncrementalHotReload` MSBuild property to `false`:
+
+```xml
+<PropertyGroup>
+    <EnableMauiIncrementalHotReload>false</EnableMauiIncrementalHotReload>
+</PropertyGroup>
+```
+
+For more information, see [Enable XAML Incremental Hot Reload](~/xaml/hot-reload.md#enable-xaml-incremental-hot-reload) and GitHub PRs [#34338](https://github.com/dotnet/maui/pull/34338) and [#37163](https://github.com/dotnet/maui/pull/37163).
+
+### AOT-safe compiled RelativeSource bindings
+
+Starting in .NET 11 Preview 7, the XAML source generator compiles a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType` into a trim-safe compiled binding, rather than a string-based binding path that relies on reflection and could lose bound members during trimming in NativeAOT and full-trimming builds.
+
+```xaml
+<Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
+                          Path=DeleteEmployeeCommand}" />
+```
+
+`RelativeSource` bindings that use `Self` or `TemplatedParent` continue to use the runtime binding path. For an `x:Reference` binding, the source generator resolves the referenced element's type and compiles against it, and falls back to the runtime binding path only when the binding path can't be compiled against that resolved type. An `x:Reference` name that can't be resolved in a name scope, like an `AncestorType` that can't be resolved, causes XAML compilation to fail. For more information, see [Compile relative source ancestor bindings](~/fundamentals/data-binding/compiled-bindings.md#compile-relative-source-ancestor-bindings) and GitHub PRs [#34408](https://github.com/dotnet/maui/pull/34408) and [#36905](https://github.com/dotnet/maui/pull/36905).
 
 ## .NET for Android
 
