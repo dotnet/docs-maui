@@ -356,7 +356,7 @@ For more information, see [Enable XAML Incremental Hot Reload](~/xaml/hot-reload
 
 ### AOT-safe compiled RelativeSource bindings
 
-Starting in .NET 11 Preview 7, when compilation of bindings that define the `Source` property is enabled, the XAML source generator compiles a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType` into a trim-safe compiled binding, rather than a string-based binding path that relies on reflection and could lose bound members during trimming in NativeAOT and full-trimming builds.
+Starting in .NET 11 Preview 7, the XAML source generator compiles a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType` into a trim-safe compiled binding, rather than a string-based binding path that relies on reflection and could lose bound members during trimming in NativeAOT and full-trimming builds.
 
 ```xaml
 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
