@@ -188,7 +188,7 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 ### Compile relative source ancestor bindings
 
-In .NET MAUI 11, when compilation of bindings that define the `Source` property is enabled, the XAML source generator can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The source generator uses the ancestor type as the binding source type, so an inline `x:DataType` isn't required:
+In .NET MAUI 11, the XAML source generator can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The source generator uses the ancestor type as the binding source type, so an inline `x:DataType` isn't required:
 
 ```xaml
 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
