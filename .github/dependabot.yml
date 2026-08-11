@@ -8,12 +8,16 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 10
+    cooldown:
+     default-days: 7
   - package-ecosystem: "nuget"
     directory: "/docs/platform-integration/snippets/shared_1" #PlatformIntegration.sln
     schedule:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -25,6 +29,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -36,6 +42,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -47,6 +55,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -58,6 +68,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -69,6 +81,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -80,6 +94,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -91,6 +107,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -102,6 +120,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:
@@ -113,6 +133,8 @@ updates:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
     groups:
       # Group .NET updates together for solutions.
       dotnet:

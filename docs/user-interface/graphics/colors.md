@@ -34,7 +34,7 @@ You can also use the following static methods to create <xref:Microsoft.Maui.Gra
 - `Color.FromHsva` from `int` HSV values.
 - `Color.FromInt` from an `int` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
 - `Color.FromUint` from a `uint` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
-- `Color.FromArgb` from a `string`-based hexadecimal value in the form "#AARRGGBB" or "#RRGGBB" or "#ARGB" or "RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
+- `Color.FromArgb` from a `string`-based hexadecimal value in the form "#AARRGGBB" or "#RRGGBB" or "#ARGB" or "#RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
 
 > [!NOTE]
 > In addition to the methods listed above, the <xref:Microsoft.Maui.Graphics.Color> class also has <xref:Microsoft.Maui.Graphics.Color.Parse%2A> and <xref:Microsoft.Maui.Graphics.Color.TryParse%2A> methods that create <xref:Microsoft.Maui.Graphics.Color> objects from `string` arguments.

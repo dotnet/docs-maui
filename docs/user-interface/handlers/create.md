@@ -720,7 +720,7 @@ If the `Video.AreTransportControlsEnabled` property is set to `false`, the `AVPl
 
 ### Windows
 
-Video is played on Windows with the `MediaPlayerElement`. However, here, the `MediaPlayerElement` has been encapsulated in a `MauiVideoPlayer` type to keep the native view separated from its handler. The following example shows the `VideoHandler` partial class fo Windows, with its three overrides:
+Video is played on Windows with the `MediaPlayerElement`. However, here, the `MediaPlayerElement` has been encapsulated in a `MauiVideoPlayer` type to keep the native view separated from its handler. The following example shows the `VideoHandler` partial class for Windows, with its three overrides:
 
 ```csharp
 #nullable enable
@@ -1114,7 +1114,7 @@ public static void MapSource(VideoHandler handler, Video video)
 }
 ```
 
-The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
+The `MapSource` method in turn calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
 #### Android
 
@@ -1326,7 +1326,7 @@ public static void MapSource(VideoHandler handler, Video video)
 }
 ```
 
-The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
+The `MapSource` method in turn calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
 #### Android
 
@@ -1556,7 +1556,7 @@ public static void MapSource(VideoHandler handler, Video video)
 }
 ```
 
-The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
+The `MapSource` method in turn calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
 #### Android
 
@@ -2049,7 +2049,7 @@ public static void MapUpdateStatus(VideoHandler handler, Video video, object? ar
 }
 ```
 
-The `MapUpdateStatus` method in turns calls the `UpdateStatus` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, encapsulates the native views that provide the video player implementation on each platform.
+The `MapUpdateStatus` method in turn calls the `UpdateStatus` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, encapsulates the native views that provide the video player implementation on each platform.
 
 #### Android
 
@@ -2400,7 +2400,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-The `get` accessor returns the current position of the video as its playing. The `set` accessor responds to user manipulation of the positioning bar by moving the video position forwards or backwards.
+The `get` accessor returns the current position of the video as it's playing. The `set` accessor responds to user manipulation of the positioning bar by moving the video position forwards or backwards.
 
 > [!NOTE]
 > The property-changed event handler for the `Position` bindable property calls a method named `SetTimeToEnd`, which is described in [Calculating time to end](#calculating-time-to-end).
@@ -2449,7 +2449,7 @@ namespace VideoDemos.Platforms.Android
 }
 ```
 
-Every time the `Position` property is set by the `UpdateStatus` method, the `Position` property fires a `PropertyChanged` event, which causes the property mapper for the handler to call the `UpdatePosition` method. The `UpdatePosition` method should do nothing for most of the property changes. Otherwise, with every change in the video's position it would be moved to same position it just reached. To avoid this feedback loop, the `UpdatePosition` only calls the `Seek` method on the `VideoView` object when the difference between the `Position` property and the current position of the `VideoView` is greater than one second.
+Every time the `Position` property is set by the `UpdateStatus` method, the `Position` property fires a `PropertyChanged` event, which causes the property mapper for the handler to call the `UpdatePosition` method. The `UpdatePosition` method should do nothing for most of the property changes. Otherwise, with every change in the video's position it would be moved to the same position it just reached. To avoid this feedback loop, the `UpdatePosition` only calls the `Seek` method on the `VideoView` object when the difference between the `Position` property and the current position of the `VideoView` is greater than one second.
 
 ##### iOS and Mac Catalyst
 
@@ -2501,11 +2501,11 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-Every time the `Position` property is set by the `UpdateStatus` method, the `Position` property fires a `PropertyChanged` event, which causes the property mapper for the handler to call the `UpdatePosition` method. The `UpdatePosition` method should do nothing for most of the property changes. Otherwise, with every change in the video's position it would be moved to same position it just reached. To avoid this feedback loop, the `UpdatePosition` only calls the `Seek` method on the `AVPlayer` object when the difference between the `Position` property and the current position of the `AVPlayer` is greater than one second.
+Every time the `Position` property is set by the `UpdateStatus` method, the `Position` property fires a `PropertyChanged` event, which causes the property mapper for the handler to call the `UpdatePosition` method. The `UpdatePosition` method should do nothing for most of the property changes. Otherwise, with every change in the video's position it would be moved to the same position it just reached. To avoid this feedback loop, the `UpdatePosition` only calls the `Seek` method on the `AVPlayer` object when the difference between the `Position` property and the current position of the `AVPlayer` is greater than one second.
 
 ##### Windows
 
-On Windows, the `MediaPlayerElement.MedaPlayer.Position` property indicates the current position of the video. The `MauiVideoPlayer` class sets the `Position` property in the `UpdateStatus` method at the same time as it sets the `Duration` property:
+On Windows, the `MediaPlayerElement.MediaPlayer.Position` property indicates the current position of the video. The `MauiVideoPlayer` class sets the `Position` property in the `UpdateStatus` method at the same time as it sets the `Duration` property:
 
 ```csharp
 using Microsoft.UI.Xaml.Controls;

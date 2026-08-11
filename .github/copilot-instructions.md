@@ -2,7 +2,7 @@
 
 These notes capture our lightweight process and guardrails while submitting focused pull requests against `main` for .NET 10 changes.
 
-Last updated: 2025-08-18
+Last updated: 2026-05-24
 
 ## Branching and PRs
 
@@ -27,6 +27,8 @@ Last updated: 2025-08-18
 - Use includes when appropriate to keep duplication low, but don’t over-abstract if a single page change is small and clear.- Typical include naming pattern: `*-dotnet9.md` / `*-dotnet10.md`.
 - If behavior/API names change in .NET 10 but guidance is otherwise similar, keep <=9 and >=10 content parallel and explicit.
 - Keep phrasing and headings consistent across monikered sections to minimize diffs.
+- Don't wrap `docs/whats-new/dotnet-*.md` pages in same-version moniker blocks. These pages should render even when readers arrive with an older `view=` value from the version selector; use monikers in them only for content that truly differs by selected doc version.
+
 ## Preview drift and verification
 
 Changes must be verified against the .NET MAUI source for .NET 10 to avoid preview drift:

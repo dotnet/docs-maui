@@ -1,7 +1,7 @@
 ---
 title: "NavigationPage"
 description: "The .NET MAUI NavigationPage is used to perform hierarchical navigation through a stack of last-in, first-out (LIFO) pages."
-ms.date: 11/28/2025
+ms.date: 08/11/2026
 ---
 
 # NavigationPage
@@ -23,6 +23,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 - `RootPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the root page of the navigation stack. This is a read-only property.
 - `TitleIconImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon that represents the title on the navigation bar. This is an attached property.
 - `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.NavigationPage> also defines a `BackButtonAccessibilityLabel` attached property of type `string`, which sets the accessibility label that screen readers announce for the back button on the navigation bar. See [Set the back button accessibility label](#set-the-back-button-accessibility-label) for an example.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -207,6 +214,28 @@ In this example, the current page is removed from the modal stack, with the new 
 ### Disable the back button
 
 On Android, you can always return to the previous page by pressing the standard *Back* button on the device. If the modal page requires a self-contained task to be completed before leaving the page, the app must disable the *Back* button. This can be accomplished by overriding the `Page.OnBackButtonPressed` method on the modal page.
+
+::: moniker range=">=net-maui-11.0"
+
+### Set the back button accessibility label
+
+Starting in .NET MAUI 11, you can set the accessibility label that screen readers (TalkBack on Android, VoiceOver on iOS and Mac Catalyst, Narrator on Windows) announce for the back button on a <xref:Microsoft.Maui.Controls.NavigationPage> navigation bar. The label is set with the `NavigationPage.BackButtonAccessibilityLabel` attached property on the page whose navigation bar displays the back button:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.DetailPage"
+             Title="Order details"
+             NavigationPage.BackButtonAccessibilityLabel="Back to order list">
+    <!-- ... -->
+</ContentPage>
+```
+
+Setting an explicit label is recommended when the back button title is hidden, abbreviated, or shows only an icon, because screen readers would otherwise announce a generic value or no value at all. The label is independent of the `BackButtonTitle` attached property, so the visible title can stay short while the spoken label stays descriptive.
+
+For more accessibility guidance, see [Accessibility](~/fundamentals/accessibility.md).
+
+::: moniker-end
 
 ## Page navigation events
 
@@ -407,7 +436,7 @@ Contact contact = new Contact
 await Navigation.PushModalAsync(new DetailsPage(contact));
 ```
 
-In this example, a `Contact` object is passed as a constructor argument to `DetailPage`. The `Contact` object can then be displayed by `DetailsPage`.
+In this example, a `Contact` object is passed as a constructor argument to `DetailsPage`. The `Contact` object can then be displayed by `DetailsPage`.
 
 ### Pass data through a BindingContext
 
@@ -482,3 +511,44 @@ Alternatively, an extended navigation bar can be suggested by placing some of th
 
 > [!TIP]
 > The `BackButtonTitle`, `Title`, `TitleIconImageSource`, and `TitleView` properties can all define values that occupy space on the navigation bar. While the navigation bar size varies by platform and screen size, setting all of these properties will result in conflicts due to the limited space available. Instead of attempting to use a combination of these properties, you may find that you can better achieve your desired navigation bar design by only setting the `TitleView` property.
+
+::: moniker range=">=net-maui-11.0"
+
+## NavigationPage on iOS and Mac Catalyst
+
+Starting in .NET 11, <xref:Microsoft.Maui.Controls.NavigationPage> uses a handler on iOS and Mac Catalyst, rather than the compatibility renderer that was used in previous releases. This aligns iOS and Mac Catalyst with Android, Windows, and Tizen, which already used a handler, and means that <xref:Microsoft.Maui.Controls.NavigationPage> uses the same handler architecture as other .NET MAUI controls on every platform.
+
+This change is enabled by default and isn't gated behind a feature switch. Other platforms are unaffected, because they already used a handler for <xref:Microsoft.Maui.Controls.NavigationPage>.
+
+Existing <xref:Microsoft.Maui.Controls.NavigationPage> functionality is preserved by the handler, including the navigation bar, the back button, and pushing and popping pages.
+
+### Behavior changes
+
+The handler changes some behavior on iOS and Mac Catalyst, which aligns these platforms with Android and Windows:
+
+- The <xref:Microsoft.Maui.Controls.Page.Appearing> event is raised before the page is pushed onto the native navigation stack, rather than after the page becomes visible. Therefore, don't use this event for work that requires the page to be on screen.
+- The `NavigatedTo` event is deferred until the page appears. Use this event, rather than <xref:Microsoft.Maui.Controls.Page.Appearing>, for work that requires the page to be on screen.
+- Pushing a page that was previously popped creates a new view controller for the page, rather than reusing the previous one.
+- <xref:Microsoft.Maui.Controls.ToolbarItem> objects whose `Order` property is set to `Secondary` are displayed in an overflow menu in the navigation bar, rather than in a toolbar at the bottom of the page.
+
+However, apps that subclass the compatibility renderer are affected. A <xref:Microsoft.Maui.Controls.NavigationPage> is no longer displayed by `Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer`, and so a custom renderer that derives from it is no longer used unless you register it explicitly.
+
+### Use the compatibility renderer
+
+If your app depends on the compatibility renderer, you can continue to use it by registering it for <xref:Microsoft.Maui.Controls.NavigationPage> with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> in your `MauiProgram` class:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<NavigationPage, Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `NavigationRenderer`, register your own type instead.
+
+> [!IMPORTANT]
+> Registering the compatibility renderer is intended as a temporary migration step. You should migrate any custom renderers to the handler architecture. For more information, see [Migrate iOS NavigationPage renderers](~/migration/custom-renderers.md#migrate-ios-navigationpage-renderers).
+
+::: moniker-end

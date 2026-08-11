@@ -86,7 +86,7 @@ The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalS
 
 ```xaml
 <VerticalStackLayout Margin="20,35,20,25">
-    <Label Text="The VericalStackLayout has its Margin property set, to control the rendering position of the VerticalStackLayout." />
+    <Label Text="The VerticalStackLayout has its Margin property set, to control the rendering position of the VerticalStackLayout." />
     <Label Text="The Padding property can be set to specify the distance between the VerticalStackLayout and its children." />
     <Label Text="The Spacing property can be set to specify the distance between views in the VerticalStackLayout." />
 </VerticalStackLayout>

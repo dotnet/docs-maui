@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell overview"
 description: ".NET MAUI Shell provides the fundamental features that most apps require, including a common navigation user experience, a URI-based navigation scheme, and an integrated search handler."
-ms.date: 08/30/2024
+ms.date: 07/08/2026
 ---
 
 # .NET MAUI Shell overview
@@ -29,6 +29,27 @@ These objects don't represent any user interface, but rather the organization of
 > Pages are created on demand in Shell apps, in response to navigation.
 
 For more information, see [Create a .NET MAUI Shell app](create.md).
+
+::: moniker range=">=net-maui-11.0"
+
+## Android handler architecture
+
+Starting in .NET MAUI 11, Shell on Android uses a handler-based architecture by default. The Android implementation is built around `ShellHandler`, `ShellItemHandler`, and `ShellSectionHandler`, and reuses `MauiDrawerLayout`, `TabbedViewManager`, and the navigation handler infrastructure used by other .NET MAUI navigation controls. This doesn't change how you define the Shell hierarchy in XAML or C#.
+
+iOS and Mac Catalyst Shell continue to use the legacy `ShellRenderer`. If an Android app depends on legacy Shell renderer behavior or custom Android `ShellRenderer` subclasses, you can opt out of the Android handler architecture by registering the compatibility renderer explicitly:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if ANDROID
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+#endif
+});
+```
+
+For custom Android Shell renderer migration guidance, see [Reuse custom renderers in .NET MAUI](~/migration/custom-renderers.md#migrate-android-shell-renderers).
+
+::: moniker-end
 
 ## Navigation user experience
 

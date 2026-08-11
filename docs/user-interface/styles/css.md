@@ -6,9 +6,9 @@ ms.date: 03/19/2025
 
 # Style apps using Cascading Style Sheets
 
-.NET Multi-platform App UI (.NET MAUI) apps can be styled using Cascading Style Sheets (CSS). A style sheet consists of a list of rules, with each rule consisting of one or more selectors and a declaration block. A declaration block consists of a list of declarations in braces, with each declaration consisting of a property, a colon, and a value. When there are multiple declarations in  a block, a semi-colon is inserted as a separator.
+.NET Multi-platform App UI (.NET MAUI) apps can be styled using Cascading Style Sheets (CSS). A style sheet consists of a list of rules, with each rule consisting of one or more selectors and a declaration block. A declaration block consists of a list of declarations in braces, with each declaration consisting of a property, a colon, and a value. When there are multiple declarations in a block, a semi-colon is inserted as a separator.
 
-The following  example shows some .NET MAUI compliant CSS:
+The following example shows some .NET MAUI compliant CSS:
 
 ```css
 navigationpage {
@@ -196,7 +196,7 @@ Individual elements in the visual tree can be selected with the case sensitive `
 }
 ```
 
-This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the <xref:Microsoft.Maui.Controls.ListView> whose `x:Name` attribute is set to `listView`, and will set it's background color to `lightgray`.
+This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the <xref:Microsoft.Maui.Controls.ListView> whose `x:Name` attribute is set to `listView`, and will set its background color to `lightgray`.
 
 ```xaml
 <ContentPage ...>
@@ -442,7 +442,7 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 |`-maui-placeholder`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
 |`-maui-placeholder-color`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_color_ \| `initial` |`-maui-placeholder-color: green;`|
 |`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
-|`-maui-shadow`|<xref:Microsoft.Maui.Controls.VisualElement>| Valid formats are: color, offsetX, offsetY \| offset X, offsetY, radius, color \| offset X, offsetY, radius, color, opactity | `-maui-shadow: #000000 4 4;` |
+|`-maui-shadow`|<xref:Microsoft.Maui.Controls.VisualElement>| Valid formats are: color, offsetX, offsetY \| offset X, offsetY, radius, color \| offset X, offsetY, radius, color, opacity | `-maui-shadow: #000000 4 4;` |
 |`-maui-thumb-color`|<xref:Microsoft.Maui.Controls.Slider>, <xref:Microsoft.Maui.Controls.Switch>|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
 |`-maui-vertical-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
 |`-maui-vertical-text-alignment`|<xref:Microsoft.Maui.Controls.Label>| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|

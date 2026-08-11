@@ -1,7 +1,7 @@
 ---
 title: "CollectionView"
 description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
-ms.date: 08/19/2025
+ms.date: 07/08/2026
 ---
 
 # CollectionView
@@ -32,6 +32,24 @@ builder.ConfigureMauiHandlers(handlers =>
     handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler>();
 });
 #endif
+```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## Windows CollectionView handler in .NET 11
+
+In .NET MAUI 11, Windows uses the `Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2` handler for <xref:Microsoft.Maui.Controls.CollectionView> by default. The handler is controlled by the `Microsoft.Maui.RuntimeFeature.IsWindowsCollectionView2HandlerEnabled` <xref:System.AppContext> switch, which is on by default. The `UseWindowsCollectionView2Handler` MSBuild property maps to this switch.
+
+This WinUI `ItemsRepeater`-based handler improves virtualization and scrolling behavior, and aligns the Windows <xref:Microsoft.Maui.Controls.CollectionView> architecture with the optimized handlers on other platforms. Selection visuals are also different from the legacy Windows handler: selected items are highlighted with a border that wraps the item, and the multiple-selection UI differs from the previous `ListView`-based handler.
+
+If your app depends on legacy Windows <xref:Microsoft.Maui.Controls.CollectionView> behavior or custom handler assumptions, temporarily opt out while migrating by setting the `UseWindowsCollectionView2Handler` MSBuild property to `false` in your project file:
+
+```xml
+<PropertyGroup>
+    <UseWindowsCollectionView2Handler>false</UseWindowsCollectionView2Handler>
+</PropertyGroup>
 ```
 
 ::: moniker-end

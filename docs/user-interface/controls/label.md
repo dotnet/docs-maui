@@ -108,7 +108,7 @@ Text wrapping and truncation can be controlled by setting the `LineBreakMode` pr
 - `WordWrap` — wraps text at the word boundary. This is the default value of the `LineBreakMode` property.
 - `CharacterWrap` — wraps text onto a new line at a character boundary.
 - `HeadTruncation` — truncates the head of the text, showing the end.
-- `MiddleTruncation` — displays the beginning and end of the text, with the middle replace by an ellipsis.
+- `MiddleTruncation` — displays the beginning and end of the text, with the middle replaced by an ellipsis.
 - `TailTruncation` — shows the beginning of the text, truncating the end.
 
 ## Display a specific number of lines
@@ -160,7 +160,7 @@ The <xref:Microsoft.Maui.Controls.Label> class has a `TextType` property, which 
 - `Text` indicates that the <xref:Microsoft.Maui.Controls.Label> will display plain text, and is the default value of the `TextType` property.
 - `Html` indicates that the <xref:Microsoft.Maui.Controls.Label> will display HTML text.
 
-Therefore, <xref:Microsoft.Maui.Controls.Label> objects can display HTML by setting the `TextType` property to `Html`, and the `Text` property to a HTML string:
+Therefore, <xref:Microsoft.Maui.Controls.Label> objects can display HTML by setting the `TextType` property to `Html`, and the `Text` property to an HTML string:
 
 ```csharp
 Label label = new Label
@@ -329,7 +329,7 @@ A <xref:Microsoft.Maui.Controls.Span> can also respond to any gestures that are 
 
 The text displayed by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Span> instances can be turned into hyperlinks with the following approach:
 
-1. Set the `TextColor` and `TextDecoration` properties of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>.
+1. Set the `TextColor` and `TextDecorations` properties of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>.
 1. Add a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>, whose `Command` property binds to a <xref:System.Windows.Input.ICommand>, and whose `CommandParameter` property contains the URL to open.
 1. Define the <xref:System.Windows.Input.ICommand> that will be executed by the <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
 1. Write the code that will be executed by the <xref:System.Windows.Input.ICommand>.

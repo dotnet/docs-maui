@@ -1,7 +1,7 @@
 ---
 title: "TabbedPage"
 description: "The .NET MAUI TabbedPage consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content."
-ms.date: 09/30/2024
+ms.date: 08/11/2026
 ---
 
 # TabbedPage
@@ -40,7 +40,7 @@ Two approaches can be used to create a <xref:Microsoft.Maui.Controls.TabbedPage>
 Regardless of the approach taken, the location of the tab bar in a <xref:Microsoft.Maui.Controls.TabbedPage> is platform-dependent:
 
 - On iOS, the list of tabs appears at the bottom of the screen, and the page content is above. Each tab consists of a title and an icon. In portrait orientation, tab bar icons appear above tab titles. In landscape orientation, icons and titles appear side by side. In addition, a regular or compact tab bar may be displayed, depending on the device and orientation. If there are more than five tabs, a **More** tab will appear, which can be used to access the additional tabs.
-- On Android, the list of tabs appears at the top of the screen, and the page content is below. Each tab consists of a title and an icon. However, the tabs can be moved to the bottom of the screen with a platform-specific. If there are more than five tabs, and the tab list is at the bottom of the screen, a *More* tab will appear that can be used to access the additional tabs. For information about moving the tabs to the bottom of the screen, see [TabbedPage toolbar placement on Android](~/android/platform-specifics/tabbedpage-toolbar-placement.md).
+- On Android, the list of tabs appears at the top of the screen, and the page content is below. Each tab consists of a title and an icon. However, the tabs can be moved to the bottom of the screen with a platform-specific property. If there are more than five tabs, and the tab list is at the bottom of the screen, a *More* tab will appear that can be used to access the additional tabs. For information about moving the tabs to the bottom of the screen, see [TabbedPage toolbar placement on Android](~/android/platform-specifics/tabbedpage-toolbar-placement.md).
 - On Windows, the list of tabs appears at the top of the screen, and the page content is below. Each tab consists of a title. <!--However, icons can be added to each tab with a platform-specific. For more information, see [TabbedPage Icons on Windows](~/platform/windows/tabbedpage-icons.md).-->
 
 ### Populate a TabbedPage with a Page collection
@@ -132,7 +132,7 @@ Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui
 
 In this example, the <xref:Microsoft.Maui.Controls.TabbedPage> is populated with two <xref:Microsoft.Maui.Controls.Page> objects. The first child is a <xref:Microsoft.Maui.Controls.ContentPage> object, and the second child is a <xref:Microsoft.Maui.Controls.NavigationPage> object containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage>, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
+When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage>, forward page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```csharp
 await Navigation.PushAsync(new UpcomingAppointmentsPage());
@@ -142,3 +142,43 @@ For more information about performing navigation using the <xref:Microsoft.Maui.
 
 > [!WARNING]
 > While a <xref:Microsoft.Maui.Controls.NavigationPage> can be placed in a  <xref:Microsoft.Maui.Controls.TabbedPage>, it's not recommended to place a <xref:Microsoft.Maui.Controls.TabbedPage> into a <xref:Microsoft.Maui.Controls.NavigationPage>.
+
+::: moniker range=">=net-maui-11.0"
+
+## TabbedPage on iOS and Mac Catalyst
+
+Starting in .NET 11, <xref:Microsoft.Maui.Controls.TabbedPage> uses a handler on iOS and Mac Catalyst, rather than the compatibility renderer that was used in previous releases. This aligns iOS and Mac Catalyst with Android, Windows, and Tizen, which already used a handler, and means that <xref:Microsoft.Maui.Controls.TabbedPage> uses the same handler architecture as other .NET MAUI controls on every platform.
+
+This change is enabled by default and isn't gated behind a feature switch. Other platforms are unaffected, because they already used a handler for <xref:Microsoft.Maui.Controls.TabbedPage>.
+
+> [!NOTE]
+> The <xref:Microsoft.Maui.Controls.NavigationPage> control also moved from a compatibility renderer to a handler on iOS and Mac Catalyst in .NET 11. For more information, see [NavigationPage on iOS and Mac Catalyst](navigationpage.md#navigationpage-on-ios-and-mac-catalyst).
+
+Existing <xref:Microsoft.Maui.Controls.TabbedPage> functionality is preserved by the handler, including:
+
+- Tab titles, icons, and selection, and adding or removing child pages at runtime.
+- The `BarBackground`, `BarBackgroundColor`, `BarTextColor`, `SelectedTabColor`, and `UnselectedTabColor` properties.
+- The **More** tab, which appears when there are more than five tabs.
+- The `TranslucencyMode` platform-specific. For more information, see [TabbedPage translucent tab bar on iOS](~/ios/platform-specifics/tabbedpage-translucent-tabbar.md).
+
+However, apps that subclass the compatibility renderer are affected. A <xref:Microsoft.Maui.Controls.TabbedPage> is no longer displayed by `Microsoft.Maui.Controls.Handlers.Compatibility.TabbedRenderer`, and so a custom renderer that derives from it is no longer used unless you register it explicitly.
+
+### Use the compatibility renderer
+
+If your app depends on the compatibility renderer, you can continue to use it by registering it for <xref:Microsoft.Maui.Controls.TabbedPage> with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> in your `MauiProgram` class:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<TabbedPage, Microsoft.Maui.Controls.Handlers.Compatibility.TabbedRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `TabbedRenderer`, register your own type instead.
+
+> [!IMPORTANT]
+> Registering the compatibility renderer is intended as a temporary migration step. You should migrate any custom renderers to the handler architecture. For more information, see [Migrate iOS TabbedPage renderers](~/migration/custom-renderers.md#migrate-ios-tabbedpage-renderers).
+
+::: moniker-end

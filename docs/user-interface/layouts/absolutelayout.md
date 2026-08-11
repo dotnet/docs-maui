@@ -68,7 +68,7 @@ The following XAML shows an <xref:Microsoft.Maui.Controls.AbsoluteLayout> whose 
 
 ```
 
-In this example, the position of each <xref:Microsoft.Maui.Controls.BoxView> object is defined using the first two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. The size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using the third and forth values. The position of the <xref:Microsoft.Maui.Controls.Label> object is defined using the two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. Size values are not specified for the <xref:Microsoft.Maui.Controls.Label>, and so it's unconstrained and sizes itself. In all cases, the absolute values represent device-independent units.
+In this example, the position of each <xref:Microsoft.Maui.Controls.BoxView> object is defined using the first two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. The size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using the third and fourth values. The position of the <xref:Microsoft.Maui.Controls.Label> object is defined using the two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. Size values are not specified for the <xref:Microsoft.Maui.Controls.Label>, and so it's unconstrained and sizes itself. In all cases, the absolute values represent device-independent units.
 
 The following screenshot shows the resulting layout:
 
@@ -204,7 +204,7 @@ The following XAML shows an <xref:Microsoft.Maui.Controls.AbsoluteLayout> whose 
 </ContentPage>
 ```
 
-In this example, each child is positioned using proportional values but sized using absolute values. This is accomplished by setting the `AbsoluteLayout.LayoutFlags` attached property of each child to `PositionProportional`. The first two values that are specified in the `AbsoluteLayout.LayoutBounds` attached property, for each child, define the position using proportional values. The size of each child is defined with the third and forth absolute values, using device-independent units.
+In this example, each child is positioned using proportional values but sized using absolute values. This is accomplished by setting the `AbsoluteLayout.LayoutFlags` attached property of each child to `PositionProportional`. The first two values that are specified in the `AbsoluteLayout.LayoutBounds` attached property, for each child, define the position using proportional values. The size of each child is defined with the third and fourth absolute values, using device-independent units.
 
 The following screenshot shows the resulting layout:
 

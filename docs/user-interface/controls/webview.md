@@ -7,7 +7,7 @@ zone_pivot_groups: devices-platforms
 
 # WebView
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView> displays remote web pages, local HTML files, and HTML strings, in an app. The content displayed a <xref:Microsoft.Maui.Controls.WebView> includes support for Cascading Style Sheets (CSS), and JavaScript. By default, .NET MAUI projects include the platform permissions required for a <xref:Microsoft.Maui.Controls.WebView> to display a remote web page.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView> displays remote web pages, local HTML files, and HTML strings, in an app. The content displayed by a <xref:Microsoft.Maui.Controls.WebView> includes support for Cascading Style Sheets (CSS), and JavaScript. By default, .NET MAUI projects include the platform permissions required for a <xref:Microsoft.Maui.Controls.WebView> to display a remote web page.
 
 <xref:Microsoft.Maui.Controls.WebView> defines the following properties:
 
@@ -55,7 +55,7 @@ To display a remote web page, set the `Source` property to a `string` that speci
 The equivalent C# code is:
 
 ```csharp
-WebView webvView = new WebView
+WebView webView = new WebView
 {
     Source = "https://learn.microsoft.com/dotnet/maui"
 };

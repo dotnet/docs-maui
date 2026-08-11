@@ -1,7 +1,7 @@
 ---
 title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
-ms.date: 04/13/2023
+ms.date: 08/11/2026
 ---
 
 # Reuse custom renderers in .NET MAUI
@@ -9,6 +9,13 @@ ms.date: 04/13/2023
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/custom-renderers/)
 
 While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) handlers to customize and create controls, it's still possible to use Xamarin.Forms custom renderers in .NET MAUI apps. For more information about custom renderers, see [Xamarin.Forms custom renderers](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/).
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> The optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped in .NET 11 and later. This article applies to shimmed renderer base classes that are still included with `Microsoft.Maui.Controls`. If your custom renderer depends on APIs or Xamarin.Forms compatibility renderers that were only available from the opt-in compatibility package, remove the package reference and migrate those usages to .NET MAUI handlers before upgrading.
+
+::: moniker-end
 
 ## Shimmed renderers
 
@@ -83,6 +90,68 @@ The renderers are registered with the <xref:Microsoft.Maui.Hosting.HandlerMauiAp
 
 > [!IMPORTANT]
 > Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method.
+
+::: moniker range=">=net-maui-11.0"
+
+### Migrate Android Shell renderers
+
+Starting in .NET MAUI 11, Android Shell uses handlers by default. Apps with custom Android Shell renderer subclasses should migrate those customizations to the Android Shell handler types where possible:
+
+| Android renderer customization | Handler customization |
+| -- | -- |
+| `ShellRenderer` subclass | `ShellHandler` subclass |
+| `ShellItemRenderer` subclass | `ShellItemHandler` subclass |
+| `ShellSectionRenderer` subclass | `ShellSectionHandler` subclass |
+| `ShellItemRenderer.OnTabReselected()` | `ShellItemHandler.OnTabReselected()` |
+| Shell `More` overflow menu or bottom sheet customization | `ShellItemHandler.CreateMoreBottomSheet()` |
+| Navigation animation `SetupAnimation(...)` | `ShellSectionHandler.OnCreateNavigationAnimation(Context, bool isPopping, bool enter)` |
+
+If you need the legacy Android Shell renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if ANDROID
+    handlers.AddHandler<Shell, Microsoft.Maui.Controls.Handlers.Compatibility.ShellRenderer>();
+#endif
+});
+```
+
+### Migrate iOS TabbedPage renderers
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.TabbedPage> uses the `Microsoft.Maui.Handlers.TabbedViewHandler` handler by default on iOS and Mac Catalyst, instead of the `TabbedRenderer` compatibility renderer. Apps with a custom `TabbedRenderer` subclass should migrate those customizations to the handler's property mapper. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+If you need the compatibility renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<TabbedPage, Microsoft.Maui.Controls.Handlers.Compatibility.TabbedRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `TabbedRenderer`, register your own type instead. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst).
+
+### Migrate iOS NavigationPage renderers
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.NavigationPage> uses the `Microsoft.Maui.Handlers.NavigationViewHandler` handler by default on iOS and Mac Catalyst, instead of the `NavigationRenderer` compatibility renderer. Apps with a custom `NavigationRenderer` subclass should migrate those customizations to the handler's property mapper. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+If you need the compatibility renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<NavigationPage, Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `NavigationRenderer`, register your own type instead. For more information, see [NavigationPage on iOS and Mac Catalyst](~/user-interface/pages/navigationpage.md#navigationpage-on-ios-and-mac-catalyst).
+
+::: moniker-end
 
 ### Consume the custom renderers
 

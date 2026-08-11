@@ -48,7 +48,7 @@ The .NET MAUI <xref:Microsoft.Maui.Controls.Entry> view is a single-line text in
 
 ::: moniker-end
 
-The following diagrams shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the <xref:Microsoft.Maui.Handlers.EntryHandler>:
+The following diagram shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the <xref:Microsoft.Maui.Handlers.EntryHandler>:
 
 ::: moniker range="<=net-maui-9.0"
 

@@ -18,7 +18,7 @@ Images are represented by the <xref:Microsoft.Maui.Graphics.IImage> type, which 
 An optional <xref:Microsoft.Maui.Graphics.ImageFormat> argument can be specified when loading and saving images. The <xref:Microsoft.Maui.Graphics.ImageFormat> enumeration defines `Png`, `Jpeg`, `Gif`, `Tiff`, and `Bmp` members. However, this argument is only used when the image format is supported by the underlying platform.
 
 > [!NOTE]
-> .NET MAUI contains two different `IImage` interfaces. `Microsoft.Maui.Graphics.IImage` is used for image display, manipulation, and persistence in when displaying graphics in a <xref:Microsoft.Maui.Controls.GraphicsView>. `Microsoft.Maui.IImage` is the interface that abstracts the <xref:Microsoft.Maui.Controls.Image> control.
+> .NET MAUI contains two different `IImage` interfaces. `Microsoft.Maui.Graphics.IImage` is used for image display, manipulation, and persistence when displaying graphics in a <xref:Microsoft.Maui.Controls.GraphicsView>. `Microsoft.Maui.IImage` is the interface that abstracts the <xref:Microsoft.Maui.Controls.Image> control.
 
 ## Load an image
 
@@ -89,7 +89,7 @@ In this example, the image is retrieved from the assembly and loaded as a stream
 
 You can downsize images using one of the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments that represent the maximum width and maximum height of the image.
 
-The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image isn't be disposed.
+The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image isn't disposed.
 
 The following example shows how to downsize an image:
 
