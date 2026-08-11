@@ -1,7 +1,7 @@
 ---
 title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
-ms.date: 07/08/2026
+ms.date: 08/11/2026
 ---
 
 # Reuse custom renderers in .NET MAUI
@@ -116,6 +116,40 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 });
 ```
+
+### Migrate iOS TabbedPage renderers
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.TabbedPage> uses the `Microsoft.Maui.Handlers.TabbedViewHandler` handler by default on iOS and Mac Catalyst, instead of the `TabbedRenderer` compatibility renderer. Apps with a custom `TabbedRenderer` subclass should migrate those customizations to the handler's property mapper. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+If you need the compatibility renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<TabbedPage, Microsoft.Maui.Controls.Handlers.Compatibility.TabbedRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `TabbedRenderer`, register your own type instead. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst).
+
+### Migrate iOS NavigationPage renderers
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.NavigationPage> uses the `Microsoft.Maui.Handlers.NavigationViewHandler` handler by default on iOS and Mac Catalyst, instead of the `NavigationRenderer` compatibility renderer. Apps with a custom `NavigationRenderer` subclass should migrate those customizations to the handler's property mapper. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+If you need the compatibility renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<NavigationPage, Microsoft.Maui.Controls.Handlers.Compatibility.NavigationRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `NavigationRenderer`, register your own type instead. For more information, see [NavigationPage on iOS and Mac Catalyst](~/user-interface/pages/navigationpage.md#navigationpage-on-ios-and-mac-catalyst).
 
 ::: moniker-end
 

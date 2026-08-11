@@ -115,8 +115,8 @@ The following table lists the types that implement pages in .NET MAUI:
 | -- | -- | -- | -- | -- | -- |
 | <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler.Mapper> | <xref:Microsoft.Maui.Handlers.PageHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
-| <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
-| <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.Shell> | `ShellHandler` | ShellRenderer | `ShellHandler` | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 
 > [!NOTE]
