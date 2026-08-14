@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 10
 description: Learn about the new features introduced in .NET MAUI for .NET 10.
-ms.date: 11/11/2025
+ms.date: 08/14/2026
 ---
 
 # What's new in .NET MAUI for .NET 10
@@ -160,11 +160,13 @@ Added `IsRefreshEnabled` property to be distinct from `IsEnabled` and make the b
 ```xml
 <RefreshView IsRefreshEnabled="false">
     <!-- Login form remains usable -->
-    <StackLayout>
-        <Entry Placeholder="Username" />
-        <Entry Placeholder="Password" />
-        <Button Text="Login" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Entry Placeholder="Username" />
+            <Entry Placeholder="Password" IsPassword="true" />
+            <Button Text="Login" />
+        </StackLayout>
+    </ScrollView>
 </RefreshView>
 ```
 
