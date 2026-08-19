@@ -1,7 +1,7 @@
 ---
 title: "RefreshView"
 description: "The .NET MAUI RefreshView is a container control that provides pull to refresh functionality for scrollable content."
-ms.date: 08/30/2024
+ms.date: 08/14/2026
 no-loc: [RefreshView]
 ---
 
@@ -13,10 +13,24 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Refresh
 
 <xref:Microsoft.Maui.Controls.RefreshView> defines the following properties:
 
+::: moniker range="<=net-maui-9.0"
+
 - `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when a refresh is triggered.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 - `IsRefreshing`, of type `bool`, which indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>.
 - `RefreshColor`, of type <xref:Microsoft.Maui.Graphics.Color>, the color of the progress circle that appears during the refresh.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
+
+- `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when a refresh is triggered.
+- `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
+- `IsRefreshEnabled`, of type `bool`, which indicates whether pull to refresh is enabled.
+- `IsRefreshing`, of type `bool`, which indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>.
+- `RefreshColor`, of type <xref:Microsoft.Maui.Graphics.Color>, the color of the progress circle that appears during the refresh.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -99,6 +113,70 @@ In addition, the `BackgroundColor` property can be set to a <xref:Microsoft.Maui
 
 ## Disable a RefreshView
 
-An app may enter a state where pull to refresh is not a valid operation. In such cases, the <xref:Microsoft.Maui.Controls.RefreshView> can be disabled by setting its `IsEnabled` property to `false`. This will prevent users from being able to trigger pull to refresh.
+An app may enter a state where pull to refresh is not a valid operation. Choose the option that matches the behavior you want.
 
-Alternatively, when defining the `Command` property, the `CanExecute` delegate of the <xref:System.Windows.Input.ICommand> can be specified to enable or disable the command.
+::: moniker range=">=net-maui-10.0"
+
+### Use `IsRefreshEnabled` to disable only pull to refresh
+
+`IsRefreshEnabled` disables the pull to refresh gesture while keeping child content interactive:
+
+```xaml
+<RefreshView IsRefreshEnabled="{Binding CanRefresh}"
+             Command="{Binding RefreshCommand}">
+    <!-- Login form remains usable -->
+    <ScrollView>
+        <StackLayout>
+            <Entry Placeholder="Username" />
+            <Entry Placeholder="Password" IsPassword="true" />
+            <Button Text="Login" />
+        </StackLayout>
+    </ScrollView>
+</RefreshView>
+```
+
+::: moniker-end
+
+### Use `IsEnabled` to disable the entire control
+
+`IsEnabled` disables the <xref:Microsoft.Maui.Controls.RefreshView> and all child content:
+
+```xaml
+<RefreshView IsEnabled="false"
+             Command="{Binding RefreshCommand}">
+    <!-- Login form will be unusable when IsEnabled is false -->
+    <ScrollView>
+        <StackLayout>
+            <Entry Placeholder="Username" />
+            <Entry Placeholder="Password" IsPassword="true" />
+            <Button Text="Login" />
+        </StackLayout>
+    </ScrollView>
+</RefreshView>
+```
+
+### Use `Command.CanExecute` to control command execution and pull to refresh
+
+When defining the `Command` property, the `CanExecute` delegate of the <xref:System.Windows.Input.ICommand> can enable or disable command execution:
+
+::: moniker range=">=net-maui-10.0"
+In .NET 10 and later, `Command.CanExecute` also contributes to the effective `IsRefreshEnabled` value. Therefore, when `CanExecute` returns `false`, the pull to refresh gesture is disabled (even if `IsRefreshEnabled` is `true`).
+::: moniker-end
+
+```csharp
+bool canRefresh = true;
+
+RefreshView refreshView = new RefreshView();
+Command refreshCommand = new Command(
+    execute: () =>
+    {
+        // Refresh data here.
+    },
+    canExecute: () => canRefresh);
+
+refreshView.Command = refreshCommand;
+
+// Later, disable refresh command execution.
+canRefresh = false;
+refreshCommand.ChangeCanExecute();
+```
