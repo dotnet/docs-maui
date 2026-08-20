@@ -160,6 +160,8 @@ A badge can be displayed on a <xref:Microsoft.Maui.Controls.ToolbarItem> to surf
 
 The following example sets a numeric badge on a toolbar item:
 
+<!-- Screenshot placeholder: Add a ToolbarItem badge screenshot when final .NET 11 assets are available. -->
+
 ```xaml
 <ContentPage.ToolbarItems>
     <ToolbarItem Text="Inbox"

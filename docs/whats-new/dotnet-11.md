@@ -114,6 +114,12 @@ void OnLongPressed(object sender, LongPressGestureRecognizerEventArgs e)
 }
 ```
 
+### Shell tab and toolbar item badges
+
+Starting in .NET 11 Preview 4, Shell bottom tabs and <xref:Microsoft.Maui.Controls.ToolbarItem> objects support badges for surfacing counts or status indicators. Set `BadgeText` to a non-empty value to show a text or count badge, set it to an empty string to show a dot indicator, or set it to `null` to hide the badge. You can customize badge colors with `BadgeColor` and `BadgeTextColor`.
+
+For more information, see [Tab badges](~/fundamentals/shell/tabs.md#tab-badges) and [Display a badge on a ToolbarItem](~/user-interface/toolbaritem.md#display-a-badge-on-a-toolbaritem). For implementation details, see GitHub PRs [#34659](https://github.com/dotnet/maui/pull/34659) and [#34669](https://github.com/dotnet/maui/pull/34669).
+
 ### Map
 
 The <xref:Microsoft.Maui.Controls.Maps.Map> control receives a significant set of enhancements in .NET 11 Preview 3:
