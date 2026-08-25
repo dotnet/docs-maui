@@ -2,7 +2,7 @@
 title: "Send push notifications to .NET MAUI apps using Azure Notification Hubs via a backend service"
 description: "Learn how to use Azure Notification Hubs to send push notifications to a .NET MAUI app that targets Android and iOS."
 ms.topic: "tutorial"
-ms.date: 08/07/2024
+ms.date: 08/25/2026
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
@@ -1936,6 +1936,62 @@ For information about notifications in iOS, see [User Notifications](https://dev
 
 For more information about dependency injection in .NET MAUI, see [Dependency injection](~/fundamentals/dependency-injection.md).
 
+### Optional: Add a notification service extension on iOS
+
+An iOS notification service extension can modify the content of an alert notification before the system displays it. For example, an extension can decrypt content, download an image, or report that the device started to process the notification. The extension is a separate app extension that iOS can run when the .NET MAUI app is in the background or isn't running.
+
+> [!IMPORTANT]
+> A notification service extension doesn't provide a guaranteed delivery receipt. Its execution doesn't prove that the system displayed the notification or that the user saw it. The extension doesn't run for silent notifications, or when alerts are disabled for the app.
+
+To add a notification service extension to a .NET MAUI app:
+
+1. From the solution directory, create an iOS notification service extension project:
+
+    ```dotnetcli
+    dotnet new ios-notification-service-extension -n PushNotificationsDemo.NotificationServiceExtension -o PushNotificationsDemo.NotificationServiceExtension
+    ```
+
+1. In the .NET MAUI app project file, add a conditional reference to the extension project:
+
+    ```xml
+    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+      <ProjectReference Include="..\PushNotificationsDemo.NotificationServiceExtension\PushNotificationsDemo.NotificationServiceExtension.csproj">
+        <IsAppExtension>true</IsAppExtension>
+      </ProjectReference>
+    </ItemGroup>
+    ```
+
+1. In the extension project file, set the `ApplicationId` property to a bundle identifier that's prefixed with the .NET MAUI app bundle identifier. For example, if the app bundle identifier is `com.companyname.pushnotificationsdemo`, use `com.companyname.pushnotificationsdemo.notificationserviceextension` for the extension.
+
+1. Set the extension's target framework to the iOS target framework that the .NET MAUI app uses. Also, make sure that the extension's `SupportedOSPlatformVersion` value isn't higher than the value for the app.
+
+1. Create a separate app identifier and provisioning profile for the extension. Then, configure the extension project with its signing identity and provisioning profile.
+
+1. Implement the generated `UNNotificationServiceExtension` subclass. In the `DidReceiveNotificationRequest` override, modify the notification and call the provided content handler. If processing might not finish before the extension expires, preserve the best available content and return it from the `TimeWillExpire` override.
+
+For a complete C# implementation, see [User notifications in iOS](https://github.com/dotnet/macios-samples/tree/main/UserNotifications/iOS) and [Notification Service extensions](/dotnet/ios/app-fundamentals/user-notifications#working-with-notification-service-extensions).
+
+When you build or publish the .NET MAUI app, the referenced extension project is built and embedded in the app bundle.
+
+To invoke the extension, send an alert notification that contains an `alert` dictionary and sets `mutable-content` to `1`:
+
+```json
+{
+  "aps": {
+    "alert": {
+      "title": "Status update",
+      "body": "Your item is ready."
+    },
+    "mutable-content": 1
+  },
+  "notification-id": "4d5fc95c-72a5-4e3b-9822-2bb23760daf7"
+}
+```
+
+The backend and Azure portal test payloads in this tutorial don't include `mutable-content` and don't invoke the extension. To test the extension, use the extension-specific procedure in the next section.
+
+Apple gives the extension a limited amount of time to process the notification. If the extension doesn't call the content handler in time, the system displays the original notification content. For more information, see [Modifying content in newly delivered notifications](https://developer.apple.com/documentation/usernotifications/modifying-content-in-newly-delivered-notifications) on developer.apple.com.
+
 ## Test the app
 
 You can test your app by sending push notifications to the app using the backend service, or via the Azure portal.
@@ -1943,6 +1999,31 @@ You can test your app by sending push notifications to the app using the backend
 The iOS simulator supports remote notifications in iOS 16+ when running in macOS 13+ on Mac computers with Apple silicon or T2 processors. If you don't meet these hardware requirements you'll have to test your iOS app on a physical device. On Android you can test your app on a developer unlocked physical device, or an emulator.
 
 Android and iOS display push notifications on behalf of the app when it's running in the background. If the app is running in the foreground when the notification is received, the app's code determines the behavior. For example, you could update your app’s interface to reflect new information contained in the notification.
+
+### Test the notification service extension on iOS
+
+Use the [Push Notifications Console](https://developer.apple.com/notifications/push-notifications-console/) to send a notification directly through APNs:
+
+1. Set a breakpoint in the `RegisteredForRemoteNotifications` method in *AppDelegate.cs*, run the app, and copy the value returned by `deviceToken.ToHexString()`.
+1. In the Push Notifications Console, select the containing .NET MAUI app's bundle identifier, not the extension's bundle identifier. Then, select the APNs environment that matches the app's entitlement and device token.
+1. Send the extension payload from the previous section.
+1. Confirm that the notification title contains the `[modified]` prefix added by the generated extension.
+
+Repeat the test while the app is in the background and after you force-quit the app. The extension is separate from the main app process. However, iOS doesn't guarantee that an extension runs for every notification.
+
+### Understand iOS notification status limits
+
+When you send a notification through the backend in this tutorial, a successful response means that Azure Notification Hubs accepted the request. It doesn't confirm that APNs or the device received the notification. If your provider communicates directly with APNs, an APNs success response means that APNs accepted the request. It still doesn't confirm delivery to the device.
+
+This tutorial doesn't implement per-notification delivery tracking. If a notification service extension runs, you can implement a best-effort acknowledgment to your backend. Use a unique notification identifier and make the acknowledgment endpoint idempotent. However, the acknowledgment can fail if the device is offline or if the extension reaches its execution limit. Extension invocation also doesn't confirm that the user saw or opened the notification.
+
+If you implement delivery tracking, keep separate states for the notification lifecycle:
+
+- **Accepted by provider**: Azure Notification Hubs or APNs accepted the provider request.
+- **Extension invoked**: The notification service extension started to process the alert.
+- **Opened**: The app received a notification response after the user selected the notification or an action.
+
+For aggregate APNs delivery information, use [Viewing the status of push notifications using Metrics and APNs](https://developer.apple.com/documentation/usernotifications/viewing-the-status-of-push-notifications-using-metrics-and-apns) on developer.apple.com. For silent notification delivery limits, including behavior after the user force-quits an app, see [Pushing background updates to your app](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app) on developer.apple.com.
 
 ### Test using the backend service
 
