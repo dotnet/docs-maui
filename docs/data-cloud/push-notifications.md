@@ -1967,11 +1967,19 @@ To add a notification service extension to a .NET MAUI app:
 
 1. Create a separate app identifier and provisioning profile for the extension. Then, configure the extension project with its signing identity and provisioning profile.
 
+    > [!IMPORTANT]
+    > For an App Store or TestFlight build, the .NET MAUI app and the notification service extension each require an App Store provisioning profile for their own bundle identifier. The same Apple distribution certificate can sign both bundles when both profiles include that certificate. Set `CodesignProvision` in each project to its own profile. You can use the same `CodesignKey` value in both projects when the same distribution identity signs both profiles. For more information, see [Provisioning notification extensions](/dotnet/ios/app-fundamentals/user-notifications#provisioning) and [.NET for iOS build properties](/dotnet/ios/building-apps/build-properties#codesignprovision).
+    >
+    > In Azure Pipelines, use `InstallAppleCertificate@2` for the P12 certificate and run `InstallAppleProvisioningProfile@1` once for each profile. Store the certificate and profiles in Secure Files. Use a temporary keychain on Microsoft-hosted macOS agents. Don't pass only the host profile with the global `-p:CodesignProvision` command-line property. MSBuild forwards global properties to referenced projects, so that value can override the extension project's profile. For more information, see [Mobile app signing in Azure Pipelines](/azure/devops/pipelines/apps/mobile/app-signing) and [MSBuild global properties](/visualstudio/msbuild/msbuild-properties#global-properties).
+
 1. Implement the generated `UNNotificationServiceExtension` subclass. In the `DidReceiveNotificationRequest` override, modify the notification and call the provided content handler. If processing might not finish before the extension expires, preserve the best available content and return it from the `TimeWillExpire` override.
 
 For a complete C# implementation, see [User notifications in iOS](https://github.com/dotnet/macios-samples/tree/main/UserNotifications/iOS) and [Notification Service extensions](/dotnet/ios/app-fundamentals/user-notifications#working-with-notification-service-extensions).
 
 When you build or publish the .NET MAUI app, the referenced extension project is built and embedded in the app bundle.
+
+> [!IMPORTANT]
+> Before you upload an App Store or TestFlight build, inspect the exact Release archive or IPA. Confirm that the app contains `PlugIns/<extension-name>.appex`, and that the app and extension each have a valid signature and the expected embedded provisioning profile. Also confirm that the extension *Info.plist* file contains `com.apple.usernotifications.service` and the expected principal class. For the Apple commands that inspect signed entitlements and embedded profiles, see [Checking Distribution Entitlements](https://developer.apple.com/library/archive/qa/qa1798/_index.html) on developer.apple.com.
 
 To invoke the extension, send an alert notification that contains an `alert` dictionary and sets `mutable-content` to `1`:
 
@@ -1991,6 +1999,9 @@ To invoke the extension, send an alert notification that contains an `alert` dic
 The backend and Azure portal test payloads in this tutorial don't include `mutable-content` and don't invoke the extension. To test the extension, use the extension-specific procedure in the next section.
 
 Apple gives the extension a limited amount of time to process the notification. If the extension doesn't call the content handler in time, the system displays the original notification content. For more information, see [Modifying content in newly delivered notifications](https://developer.apple.com/documentation/usernotifications/modifying-content-in-newly-delivered-notifications) on developer.apple.com.
+
+> [!CAUTION]
+> Don't set `TrimMode` to `full`, or `MtouchLink` to `Full` in older projects, for a notification service extension unless you preserve the extension entry type and every dependency that code accesses dynamically. Full trimming can produce a valid IPA while removing the extension assembly or its required types. Keep the default partial trimming first. To disable trimming temporarily while you diagnose a Release-only failure, set `TrimMode` to `copy`. Don't set `PublishTrimmed` to `false`, which isn't supported for .NET for iOS. For more information, see [.NET for iOS build properties](/dotnet/ios/building-apps/build-properties#trimmode) and [dotnet/macios issue #19208](https://github.com/dotnet/macios/issues/19208).
 
 ## Test the app
 
