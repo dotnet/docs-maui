@@ -116,7 +116,7 @@ To publish your app from the command line on Windows, open a terminal and naviga
 > [!IMPORTANT]
 > Values for these parameters can also be provided in the project file as build properties. However, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons.
 
-For example, use the following command to build and sign an *.ipa* from Windows:
+For example, use the following command to build and sign an *.ipa* from Windows with Visual Studio 2026:
 
 ```dotnetcli
 dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/maui/PairToMac/SDKs/dotnet/
