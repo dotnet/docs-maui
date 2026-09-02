@@ -1,7 +1,7 @@
 ---
 title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
-ms.date: 08/11/2026
+ms.date: 09/02/2026
 ---
 
 # Reuse custom renderers in .NET MAUI
@@ -89,7 +89,7 @@ public static class MauiProgram
 The renderers are registered with the <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A> and <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method. This first argument to the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method is the cross-platform control type, with the second argument being its renderer type.
 
 > [!IMPORTANT]
-> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method.
+> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `NavigationRenderer` on iOS, `PhoneFlyoutPageRenderer` on iOS and Mac Catalyst, `ShellRenderer` on iOS and Android, `TabbedRenderer` on iOS, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the <xref:Microsoft.Maui.Hosting.MauiHandlersCollectionExtensions.AddHandler%2A> method.
 
 ::: moniker range=">=net-maui-11.0"
 
@@ -116,6 +116,23 @@ builder.ConfigureMauiHandlers(handlers =>
 #endif
 });
 ```
+
+### Migrate iOS FlyoutPage renderers
+
+Starting in .NET MAUI 11, <xref:Microsoft.Maui.Controls.FlyoutPage> uses <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> by default on iOS and Mac Catalyst, instead of the `PhoneFlyoutPageRenderer` compatibility renderer. Apps with a custom `PhoneFlyoutPageRenderer` subclass should migrate those customizations to the handler's property mapper. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+If you need the compatibility renderer while migrating, register it explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<FlyoutPage, Microsoft.Maui.Controls.Handlers.Compatibility.PhoneFlyoutPageRenderer>();
+#endif
+});
+```
+
+If you've derived a custom renderer from `PhoneFlyoutPageRenderer`, register your own type instead. For more information, see [FlyoutPage on iOS and Mac Catalyst](~/user-interface/pages/flyoutpage.md#flyoutpage-on-ios-and-mac-catalyst).
 
 ### Migrate iOS TabbedPage renderers
 
