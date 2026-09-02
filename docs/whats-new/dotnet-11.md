@@ -255,7 +255,7 @@ A `null`, empty, or whitespace return value keeps the existing `no-store` behavi
 
 ### iOS and Mac Catalyst FlyoutPage handler
 
-In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.FlyoutPage> uses `FlyoutViewHandler` by default on iOS and Mac Catalyst. The handler adds custom `FlyoutWidth` support. Apps that use a custom `PhoneFlyoutPageRenderer` must register the renderer explicitly. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md) and [GitHub PR #36676](https://github.com/dotnet/maui/pull/36676).
+In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.FlyoutPage> uses `FlyoutViewHandler` by default on iOS and Mac Catalyst. Apps that use a custom `PhoneFlyoutPageRenderer` must register the renderer explicitly. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md) and [GitHub PR #36676](https://github.com/dotnet/maui/pull/36676).
 
 ## Navigation
 
@@ -492,7 +492,7 @@ For more information, see [Supported platforms](~/supported-platforms.md).
 
 ### Faster and more reliable Android builds
 
-.NET 11 RC 1 reduces work in clean and incremental Android builds. In a Release CoreCLR .NET MAUI sample app, a managed source change improved from 68.32 seconds to 52.31 seconds, and a manifest change improved from 39.74 seconds to 10.97 seconds. Type map generation in a clean build improved from 3,204 milliseconds to 792 milliseconds. RC 1 also fixes stale JAR resources in incremental APK updates and prevents post-link processing from writing satellite assemblies to the shared NuGet package cache. For more information, see GitHub PRs [#12229](https://github.com/dotnet/android/pull/12229), [#12279](https://github.com/dotnet/android/pull/12279), and [#12463](https://github.com/dotnet/android/pull/12463).
+.NET 11 RC 1 reduces work in clean and incremental Android builds. In a Release CoreCLR .NET MAUI sample-content app using trimmable type maps, a managed source change improved from 68.32 seconds to 52.31 seconds, and a manifest change improved from 39.74 seconds to 10.97 seconds. Type map generation in a clean build improved from 3,204 milliseconds to 792 milliseconds. RC 1 also fixes stale JAR resources in incremental APK updates and prevents post-link processing from writing satellite assemblies to the shared NuGet package cache. For more information, see GitHub PRs [#12229](https://github.com/dotnet/android/pull/12229), [#12279](https://github.com/dotnet/android/pull/12279), and [#12463](https://github.com/dotnet/android/pull/12463).
 
 ### Smaller Android packages
 
