@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 09/19/2025
+ms.date: 09/02/2026
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -13,6 +13,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath>, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
+::: moniker range=">=net-maui-11.0"
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StaticContentCacheControlProvider>, of type `Func<BlazorWebViewStaticContentRequest, string?>?`, which returns a `Cache-Control` header value for local static content.
+::: moniker-end
 
 The <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent> class defines the following properties:
 
@@ -255,6 +258,33 @@ static MauiProgram()
     AppContext.SetSwitch("BlazorWebView.AppHostAddressAlways0000", true);
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## Cache local static content
+
+By default, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> serves local static content with a `Cache-Control` value that includes `no-store`. To opt selected assets into caching, set <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StaticContentCacheControlProvider>. This property is supported on Android, iOS, Mac Catalyst, Windows, and Tizen.
+
+The callback receives a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewStaticContentRequest> that contains the absolute request URI and the resolved content type. The following example makes images in the *images/catalog* path eligible for caching with a maximum age of one day:
+
+```csharp
+blazorWebView.StaticContentCacheControlProvider = request =>
+    request.Uri.AbsolutePath.StartsWith("/images/catalog/", StringComparison.Ordinal) &&
+    request.ContentType.StartsWith("image/", StringComparison.Ordinal)
+        ? "public, max-age=86400"
+        : null;
+```
+
+When the provider runs, return `null`, an empty string, or whitespace to keep the default `no-store` behavior. If the provider throws an exception, .NET MAUI logs the exception and uses the default behavior. The provider also applies to apps that you publish with `dotnet publish`.
+
+Set the provider before the first static content request, and keep its policy stable for the lifetime of the control. Changing or clearing the provider does not invalidate existing cache entries. Use a versioned URI, such as `image.png?v=2`, when an asset changes.
+
+> [!IMPORTANT]
+> Opt in only local static assets that do not contain user-specific or sensitive data. The callback can run on a background thread and must not access UI state directly.
+
+Each `BlazorWebView` has a bounded managed cache, and entries can expire or be evicted. Only successful `GET` responses that have a positive `max-age` value are eligible for the cache. Responses that specify `no-cache` or `no-store` are not eligible. Non-`GET` requests, requests that have an `Authorization` or `Range` header, and requests that specify `Cache-Control: no-store` bypass the cache. A request refresh directive, such as `Cache-Control: no-cache`, refreshes the entry before the provider runs again.
 
 ::: moniker-end
 
