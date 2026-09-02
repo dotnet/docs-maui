@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 08/11/2026
+ms.date: 09/02/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -24,6 +24,18 @@ In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The 
 ## CoreCLR is the default runtime
 
 Starting in .NET 11 Preview 4, CoreCLR is the default runtime on all .NET MAUI platforms for projects built with and targeting .NET 11. This unifies the runtime across .NET MAUI with benefits for debugging, profiling, Hot Reload, app size, and app performance. For a detailed overview of this transition, see the [announcement blog post](https://aka.ms/maui-coreclr).
+
+## Testing
+
+.NET 11 RC 1 adds test project templates for Android, iOS, tvOS, macOS, and Mac Catalyst. The template short names are `androidtest`, `iostest`, `tvostest`, `macostest`, and `maccatalysttest`. The test projects use Microsoft.Testing.Platform and run in an app process on a device, simulator, or desktop target with `dotnet test`.
+
+```console
+dotnet new androidtest -n MyTests
+cd MyTests
+dotnet test
+```
+
+For more information, see [Unit testing](~/deployment/unit-testing.md) and GitHub PRs [dotnet/android #10862](https://github.com/dotnet/android/pull/10862), [dotnet/android #11130](https://github.com/dotnet/android/pull/11130), [dotnet/macios #25195](https://github.com/dotnet/macios/pull/25195), [dotnet/macios #25320](https://github.com/dotnet/macios/pull/25320), and [dotnet/macios #25963](https://github.com/dotnet/macios/pull/25963).
 
 ## Controls
 
@@ -201,6 +213,50 @@ For <xref:Microsoft.Maui.Controls.NavigationPage>, the handler also aligns iOS a
 
 For <xref:Microsoft.Maui.Controls.TabbedPage>, existing functionality is preserved, including tab titles, icons, and selection, the bar and tab color properties, the **More** tab, and the `TranslucencyMode` platform-specific. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst), [Migrate iOS TabbedPage renderers](~/migration/custom-renderers.md#migrate-ios-tabbedpage-renderers), and [GitHub PR #36507](https://github.com/dotnet/maui/pull/36507).
 
+### TabbedPage badges
+
+In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.TabbedPage> children can show a badge. Use the `TabbedPage.BadgeText`, `TabbedPage.BadgeColor`, and `TabbedPage.BadgeTextColor` attached properties to set the text and colors:
+
+```xaml
+<ContentPage Title="Inbox"
+             TabbedPage.BadgeText="3"
+             TabbedPage.BadgeColor="Red"
+             TabbedPage.BadgeTextColor="White" />
+```
+
+Android, iOS, Mac Catalyst, and Windows support initial values and runtime updates. On iOS and Mac Catalyst 18 or later, UIKit might use system badge colors instead of the custom colors. For more information, see [TabbedPage](~/user-interface/pages/tabbedpage.md) and [GitHub PR #37755](https://github.com/dotnet/maui/pull/37755).
+
+### SwipeItem colors
+
+In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.SwipeItem> adds `IconColor` and `TextColor` properties. Both properties support `AppThemeBinding`:
+
+```xaml
+<SwipeItem Text="Delete"
+           IconImageSource="delete.svg"
+           BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+           IconColor="{AppThemeBinding Light=Black, Dark=White}"
+           TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+```
+
+If you don't set `IconColor`, non-font images now keep their original colors. In .NET 10, .NET MAUI automatically changed these images to white or black to contrast with `BackgroundColor`. Set `IconColor` if your app depends on the previous tint. For more information, see [SwipeView](~/user-interface/controls/swipeview.md) and [GitHub PR #36884](https://github.com/dotnet/maui/pull/36884).
+
+### BlazorWebView static content caching
+
+In .NET 11 RC 1, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> can cache local static content. Set `StaticContentCacheControlProvider` to return a cache control value for the content that you want to cache:
+
+```csharp
+blazorWebView.StaticContentCacheControlProvider = request =>
+    request.ContentType.StartsWith("image/", StringComparison.Ordinal)
+        ? "public, max-age=86400"
+        : null;
+```
+
+A `null`, empty, or whitespace return value keeps the existing `no-store` behavior. .NET MAUI uses a bounded cache for each web view and doesn't cache authenticated, range, non-`GET`, or `no-store` requests. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md) and [GitHub PR #35706](https://github.com/dotnet/maui/pull/35706).
+
+### iOS and Mac Catalyst FlyoutPage handler
+
+In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.FlyoutPage> uses `FlyoutViewHandler` by default on iOS and Mac Catalyst. The handler adds custom `FlyoutWidth` support. Apps that use a custom `PhoneFlyoutPageRenderer` must register the renderer explicitly. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md) and [GitHub PR #36676](https://github.com/dotnet/maui/pull/36676).
+
 ## Navigation
 
 ### Shell route templates
@@ -248,6 +304,18 @@ Starting in .NET 11 Preview 7, the `MediaPickerOptions.SaveToGallery` property s
 
 Starting in .NET 11 Preview 7, the `Window.StatusBarTheme` property controls the appearance of the operating system-drawn status bar icons on Android 6.0 (API 23) or later, and iOS, independently of the app theme. This is useful when edge-to-edge content places a light or dark surface behind the status bar. `StatusBarTheme.Light` indicates a light surface and displays dark icons, `StatusBarTheme.Dark` indicates a dark surface and displays light icons, and the default value of `StatusBarTheme.Default` follows the current app theme. For more information, see [Set the status bar theme](~/user-interface/controls/window.md#set-the-status-bar-theme) and [GitHub PR #34903](https://github.com/dotnet/maui/pull/34903).
 
+### Android system bars can use .NET MAUI chrome colors
+
+In .NET 11 RC 1, Android apps can use the effective colors of `NavigationPage`, Shell, `TabbedPage`, and modal chrome for the status bar and navigation bar backgrounds. Set the `MauiAndroidSystemBarsUseMauiChrome` project property to `true` to enable this behavior:
+
+```xml
+<PropertyGroup>
+  <MauiAndroidSystemBarsUseMauiChrome>true</MauiAndroidSystemBarsUseMauiChrome>
+</PropertyGroup>
+```
+
+The default value is `false`. This option changes the system bar backgrounds, but it doesn't change the system bar icon appearance. For more information, see [Window](~/user-interface/controls/window.md) and [GitHub PR #35463](https://github.com/dotnet/maui/pull/35463).
+
 ### Windows AppInstance activation
 
 Starting in .NET 11 Preview 7, Windows apps can handle `AppInstance` activations with the `OnAppInstanceActivated` lifecycle hook, which receives the initial activation as well as subsequent file, protocol, and redirected activations. Combined with `AppInstance.FindOrRegisterForKey`, this lets you make your app single-instanced by redirecting activations from other instances to the running instance, which also enables <xref:Microsoft.Maui.Authentication.WebAuthenticator> callbacks in single-instance apps. For more information, see [Handle AppInstance activation](~/fundamentals/app-lifecycle.md#handle-appinstance-activation) and [GitHub PR #36640](https://github.com/dotnet/maui/pull/36640).
@@ -263,6 +331,33 @@ Starting in .NET 11 Preview 6, `GeolocationListeningRequest.MinimumDistance` let
 ### MonochromeFile for Android adaptive icons
 
 Starting in .NET 11 Preview 4, single-project app icons can declare a dedicated monochrome layer for Android themed icons via a new `MonochromeFile` attribute on `MauiIcon`. This lets your themed icon use a different glyph than the foreground layer, instead of being a tinted reuse of it. For more information, see [GitHub PR #34569](https://github.com/dotnet/maui/pull/34569).
+
+### Themed splash screens
+
+In .NET 11 RC 1, `MauiSplashScreen` supports separate images, colors, and tint colors for dark mode:
+
+```xml
+<MauiSplashScreen Include="Resources\Splash\splash.svg"
+                  Color="#FFFFFF"
+                  DarkFile="Resources\Splash\splash-dark.svg"
+                  DarkColor="#000000"
+                  DarkTintColor="#FFFFFF"
+                  BaseSize="128,128" />
+```
+
+Android generates `night`-qualified resources. iOS, iPadOS, and Mac Catalyst generate asset catalog launch resources when the minimum supported OS version is 14 or later. Projects that don't use the dark-mode metadata keep the existing splash screen behavior. For more information, see [Add a splash screen](~/user-interface/images/splashscreen.md) and [GitHub PR #35710](https://github.com/dotnet/maui/pull/35710).
+
+### Image resize quality
+
+In .NET 11 RC 1, the `ResizeQuality` metadata controls image sampling during Resizetizer build tasks. `Auto` keeps the existing default. `Best` uses higher-quality sampling, and `Fastest` uses nearest-neighbor sampling without mipmaps:
+
+```xml
+<MauiImage Include="Resources\Images\photo.png" ResizeQuality="Best" />
+<MauiImage Include="Resources\Images\pixel-art.png"
+           ResizeQuality="Fastest" />
+```
+
+The setting applies to raster and SVG images, app icons, and splash screen assets. For more information, see [Add images](~/user-interface/images/images.md) and [GitHub PR #34559](https://github.com/dotnet/maui/pull/34559).
 
 ### iOS PostNotifications permission
 
@@ -346,6 +441,10 @@ Starting in .NET 11 Preview 7, .NET MAUI includes a XAML Incremental Hot Reload 
 
 The engine is enabled by default for `Debug` builds, and is disabled by default for `Release` and publish builds. Because it applies updates through a `MetadataUpdateHandler`, XAML edits are applied by .NET Hot Reload hosts, including `dotnet watch`. For more information, see [`dotnet watch` for Android](#dotnet-watch-for-android) and [`dotnet watch` for iOS](#dotnet-watch-for-ios).
 
+In .NET 11 RC 1, application resource changes update existing and new `DynamicResource` consumers. If you change a literal value or binding to a `DynamicResource`, the engine also removes the old local state so that later resource changes continue to update the property. For more information, see GitHub PRs [#37896](https://github.com/dotnet/maui/pull/37896) and [#37898](https://github.com/dotnet/maui/pull/37898).
+
+Structural updates now reconcile original `x:Name` fields and namescope entries with the new visual tree. Property changes in a direct `CollectionView.ItemTemplate` also update realized cells without replacing the template or resetting selection, focus, or scroll position. For more information, see GitHub PRs [#37897](https://github.com/dotnet/maui/pull/37897) and [#37899](https://github.com/dotnet/maui/pull/37899).
+
 To opt out and continue to use the existing XAML Hot Reload engine, set the `EnableMauiIncrementalHotReload` MSBuild property to `false`:
 
 ```xml
@@ -391,6 +490,35 @@ For more information, see [Supported platforms](~/supported-platforms.md).
 > [!NOTE]
 > Android API levels 21, 22, and 23 are only supported when using the Mono runtime.
 
+### Faster and more reliable Android builds
+
+.NET 11 RC 1 reduces work in clean and incremental Android builds. In a Release CoreCLR .NET MAUI sample app, a managed source change improved from 68.32 seconds to 52.31 seconds, and a manifest change improved from 39.74 seconds to 10.97 seconds. Type map generation in a clean build improved from 3,204 milliseconds to 792 milliseconds. RC 1 also fixes stale JAR resources in incremental APK updates and prevents post-link processing from writing satellite assemblies to the shared NuGet package cache. For more information, see GitHub PRs [#12229](https://github.com/dotnet/android/pull/12229), [#12279](https://github.com/dotnet/android/pull/12279), and [#12463](https://github.com/dotnet/android/pull/12463).
+
+### Smaller Android packages
+
+The Android trimmer now removes unused methods from user-defined `IJavaObject` types. In the tested ARM64 .NET MAUI app, the package size decreased by 664,926 bytes without R8 and by 718,174 bytes with R8. For more information, see [GitHub PR #12272](https://github.com/dotnet/android/pull/12272).
+
+### Faster Android apps
+
+Release CoreCLR builds now include most methods from the app assembly in partial ReadyToRun compilation. In tests, this improved startup by 2.4 percent for the basic .NET MAUI template and by 4.5 percent for the sample-content template. The package size increased by 65,536 bytes and 266,240 bytes, respectively. For more information, see [GitHub PR #12248](https://github.com/dotnet/android/pull/12248).
+
+You can use full ReadyToRun compilation to trade more package size for startup performance:
+
+```xml
+<PropertyGroup>
+  <MauiEnableFullReadyToRun>true</MauiEnableFullReadyToRun>
+</PropertyGroup>
+```
+
+Partial ReadyToRun compilation remains the default. For more information, see GitHub PRs [dotnet/maui #37094](https://github.com/dotnet/maui/pull/37094) and [dotnet/android #12299](https://github.com/dotnet/android/pull/12299).
+
+A single-page Shell app also defers unused tab infrastructure. In a matched 80-launch test on a Pixel 5, mean cold-start time decreased by 35.95 milliseconds, or 3.26 percent. Cached virtual JNI invocations decreased from 221.4 nanoseconds to 180.7 nanoseconds, with no change to the tested APK size. The JNI change didn't produce a statistically clear cold-start change. For more information, see GitHub PRs [dotnet/maui #37321](https://github.com/dotnet/maui/pull/37321) and [dotnet/android #12377](https://github.com/dotnet/android/pull/12377).
+
+### Android breaking changes
+
+- `Java.Lang.Object.JavaFinalize()` is obsolete. Override `Dispose(bool)` or use a C# finalizer instead. For more information, see [GitHub PR #11424](https://github.com/dotnet/android/pull/11424).
+- If an Android manifest has a partial `<uses-sdk>` element without `android:targetSdkVersion`, the build now writes the value from `$(TargetSdkVersion)`. Android previously used the minimum SDK as the target SDK in this case. Test behavior that Android gates by target SDK, or set `android:targetSdkVersion` explicitly. For more information, see [GitHub PR #12290](https://github.com/dotnet/android/pull/12290).
+
 ## CoreCLR by Default
 
 CoreCLR is now the default runtime for `Release` builds. This should
@@ -411,6 +539,8 @@ So, for multi-targeted projects like .NET MAUI, it will:
 * Prompt for a device, emulator, simulator if there are more than one.
 
 Console output of your application should appear directly in the terminal, and Ctrl+C will terminate the application.
+
+In .NET 11 RC 1, `dotnet run` wakes a sleeping Android device and dismisses a non-secure keyguard before it starts the activity. When you stop `dotnet run` with <kbd>Ctrl+C</kbd>, it waits for the Android `force-stop` operation to finish before the command exits. For more information, see GitHub PRs [dotnet/android #12322](https://github.com/dotnet/android/pull/12322) and [dotnet/android #12318](https://github.com/dotnet/android/pull/12318).
 
 ![GIF of `dotnet run` selections on Windows for Android](media/dotnet-11/dotnet-run-android-preview-1.gif)
 
@@ -477,6 +607,28 @@ Preview 4 also includes a broad reliability and packaging pass across `NSUrlSess
 ### Apple Intelligence APIs
 
 Starting in .NET 11 Preview 5, the Apple Intelligence APIs are available from .NET for iOS, Mac Catalyst, macOS, and tvOS. These include the Foundation Models framework for on-device generative AI, Image Playground for system-provided image generation, Writing Tools entitlements, and the Translation framework. For more information, see [dotnet/macios #25457](https://github.com/dotnet/macios/pull/25457) and the [Preview 5 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview4...release/11.0.1xx-preview5).
+
+### NativeAOT registrar default
+
+In .NET 11 RC 1, NativeAOT apps that target .NET 11 use the trimmable-static registrar and assembly preparation by default. Mono and CoreCLR keep their existing registrar defaults in this RC 1 release. For more information, see [dotnet/macios #26346](https://github.com/dotnet/macios/pull/26346).
+
+### NativeAOT debug symbols
+
+macOS and Mac Catalyst NativeAOT builds now generate dSYM files by default, even when `ArchiveOnBuild` isn't enabled. dSYM files from XCFrameworks are also copied next to the app dSYM for inclusion in archives. For more information, see GitHub PRs [dotnet/macios #26197](https://github.com/dotnet/macios/pull/26197) and [dotnet/macios #25979](https://github.com/dotnet/macios/pull/25979).
+
+### Failable Objective-C initializers
+
+Binding authors can combine `[FactoryMethod]` with `[return: NullAllowed]` to expose a failable Objective-C initializer as a nullable static factory method. For more information, see [dotnet/macios #26196](https://github.com/dotnet/macios/pull/26196).
+
+### Bundled framework metadata stripping
+
+Apple app builds now remove the `Headers`, `PrivateHeaders`, and `Modules` directories from bundled frameworks before code signing. Set `StripFrameworkHeaders` to `false` if your app needs these directories. For more information, see [dotnet/macios #26253](https://github.com/dotnet/macios/pull/26253).
+
+## Breaking changes
+
+### Color is sealed
+
+In .NET 11 RC 1, the <xref:Microsoft.Maui.Graphics.Color> record is sealed. Code that derives from `Color` must use composition instead. For more information, see [GitHub PR #36443](https://github.com/dotnet/maui/pull/36443).
 
 ## See also
 
