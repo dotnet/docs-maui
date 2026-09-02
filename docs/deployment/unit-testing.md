@@ -1,7 +1,7 @@
 ---
 title: Unit testing
-description:  Learn how to unit test a .NET MAUI app using xUnit, to improve your code quality.
-ms.date: 06/06/2024
+description: Learn how to test .NET MAUI app code with host-side unit tests and platform test projects.
+ms.date: 09/02/2026
 ---
 
 # Unit testing
@@ -169,9 +169,42 @@ In this example, even though there's only one test method, there are actually th
 
 Unit tests can be run in Test Explorer in Visual Studio, or with the `dotnet test` command. For information about Test Explorer, see [Run unit tests with Test Explorer](/visualstudio/test/run-unit-tests-with-test-explorer). For information about the `dotnet test` command, see [Unit testing C# in .NET using dotnet test and xUnit](/dotnet/core/testing/unit-testing-with-dotnet-test) and [dotnet test](/dotnet/core/tools/dotnet-test).
 
+::: moniker range="<=net-maui-10.0"
+
 ## Run unit tests using device runners
 
-Unit tests can also be ran on a device with a device runner. A device runner is a test runner app that provides a visual runner shell and some hooks to run from the CLI using [XHarness](https://github.com/dotnet/xharness). For more information, see the documentation at the [Test device runners wiki](https://github.com/mattleibow/DeviceRunners/wiki).
+Unit tests can also be run on a device with a device runner. A device runner is a test runner app that provides a visual runner shell and hooks to run tests from the CLI with [XHarness](https://github.com/dotnet/xharness). For more information, see the [Test device runners wiki](https://github.com/mattleibow/DeviceRunners/wiki).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## Run tests in a platform app
+
+.NET 11 includes Microsoft.Testing.Platform (MTP) test project templates for Android and Apple platforms:
+
+| Template | Platform | Test process |
+|----------|----------|--------------|
+| `androidtest` | Android | An app process on a connected device or emulator |
+| `iostest` | iOS | An app process on a connected device or simulator |
+| `tvostest` | tvOS | An app process on a connected device or simulator |
+| `macostest` | macOS | A desktop app process |
+| `maccatalysttest` | Mac Catalyst | A desktop app process |
+
+Each template creates an MSTest project that runs in a platform app. Platform test tooling reports the results to `dotnet test` through MTP. For more information about MTP, see [Microsoft.Testing.Platform (MTP) overview](/dotnet/core/testing/microsoft-testing-platform-intro).
+
+For example, use the following commands to create and run an Android test project:
+
+```dotnetcli
+dotnet new androidtest -n MyAndroidTests
+dotnet test --project ./MyAndroidTests/MyAndroidTests.csproj
+```
+
+Start an Android emulator or connect an Android device before you run the test command. The command builds and installs the test app, and then runs the tests in the app process with Android instrumentation.
+
+Platform test projects are different from the xUnit projects described earlier in this article. An ordinary xUnit project targets a host .NET runtime and tests code that doesn't require a platform app process. Use a platform test project when the test must use Android, iOS, tvOS, macOS, or Mac Catalyst APIs and behavior. For more information about the MTP form of the test command, see [`dotnet test` with Microsoft.Testing.Platform](/dotnet/core/tools/dotnet-test-mtp).
+
+::: moniker-end
 
 ## See also
 
