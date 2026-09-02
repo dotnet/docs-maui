@@ -1,7 +1,7 @@
 ---
 title: "Performance Profiling"
 description: "Learn how to profile the performance of your .NET MAUI app."
-ms.date: 06/20/2025
+ms.date: 08/06/2026
 ---
 
 # Performance Profiling
@@ -86,13 +86,26 @@ work together:
 
 - The .NET global tools (`dotnet-trace`, `dotnet-gcdump`,
   `dotnet-dsrouter`) run on your development machine
-- The Mono diagnostic component
-  (`libmono-component-diagnostics_tracing.so`) is included in your
-  application package
 - `dotnet-dsrouter` forwards the diagnostic connection from the remote
   device or emulator to a local port on your machine
 - The diagnostic tools connect to this local port to collect profiling
   data
+
+::: moniker range="<=net-maui-10.0"
+
+On Android, iOS, and Mac Catalyst, the Mono diagnostics component is
+included in the application package. The component is enabled when you
+set one of the `Diagnostic*` MSBuild properties.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11, CoreCLR is the default runtime on all .NET MAUI
+platforms. Its diagnostics support is part of the runtime, so a separate
+Mono diagnostics component isn't required.
+
+::: moniker-end
 
 The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
 automatically handles the complexity of starting `dotnet-dsrouter` and
@@ -130,12 +143,10 @@ communicates with the diagnostic tools:
 - **`EnableDiagnostics`**: When `true`, includes the Mono diagnostic
   component in the application package. This is implicitly set when
   setting any of the `Diagnostic*` MSBuild properties. This property
-  works on Android, iOS, and Mac Catalyst.
+  applies to apps that use the Mono runtime.
 
-> [!NOTE]
-> When using CoreCLR (currently experimental on Android, with iOS
-> support planned), the diagnostic component is built into the runtime
-> and `EnableDiagnostics` is not required.
+When using CoreCLR, diagnostics are built into the runtime and
+`EnableDiagnostics` isn't required.
 
 ### Build Command Examples
 
@@ -437,211 +448,418 @@ documentation on [Reducing Your App's Launch Time][apple-launch].
 
 ## Profiling Memory Usage
 
-Memory profiling helps you identify memory leaks and understand memory
-allocation patterns in your application. Use `dotnet-gcdump` to create
-snapshots of managed memory.
+Memory profiling can help you distinguish a memory leak from high
+allocation rates, deliberate caching, and temporary memory growth. A
+.NET MAUI app on iOS or Mac Catalyst uses multiple kinds of memory:
+
+- **Managed memory** contains objects controlled by the .NET garbage
+  collector (GC).
+- **Native memory** contains Objective-C objects, native buffers,
+  graphics resources, and allocations made by platform frameworks.
+- **Virtual memory** includes mapped files and other regions that
+  contribute to the app's memory footprint.
+
+No single tool shows every relationship between these kinds of memory.
+Use `dotnet-gcdump` to inspect managed objects and their roots. Use
+Xcode Instruments to inspect the process footprint, native allocations,
+and native retain cycles.
+
+> [!IMPORTANT]
+> A growing process footprint doesn't necessarily indicate a leak.
+> Garbage collection, allocator reuse, caches, image decoding, and
+> autorelease pools can all delay a reduction in the footprint. Look
+> for persistent growth after repeating the same operation and returning
+> the app to the same state.
+
+### Create a repeatable test
+
+Before collecting snapshots, define a small scenario that reliably
+causes memory to grow. For example:
+
+1. Start the app and wait for startup work to finish.
+2. Navigate to a details page and exercise the feature under test.
+3. Navigate back and wait for animations and asynchronous work to
+   finish.
+4. Repeat the same operation at least five times.
+5. Record memory after each iteration.
+
+Run one or two warm-up iterations before recording a baseline. A cache
+may grow during the first iteration and then stabilize. A leak typically
+produces a stair-step pattern where retained memory increases after
+every iteration.
+
+Profile a `Release` build, but temporarily disable trimming if it
+prevents the diagnostic code or types that you're investigating from
+being present. Restore the app's normal settings when you verify the
+fix.
+
+### Check whether an object can be collected
+
+A weak reference is a quick way to test whether a page, viewmodel, or
+handler remains alive after it should have been released:
+
+```csharp
+static WeakReference<MyDetailsPage> CreatePageReference()
+{
+    var page = new MyDetailsPage();
+
+    // Exercise the page, navigate away, and perform the same cleanup
+    // that the app performs in the scenario under investigation.
+    return new WeakReference<MyDetailsPage>(page);
+}
+
+static void CheckPageCollected()
+{
+    WeakReference<MyDetailsPage> pageReference = CreatePageReference();
+
+    GC.Collect();
+    GC.WaitForPendingFinalizers();
+    GC.Collect();
+
+    System.Diagnostics.Debug.WriteLine(
+        pageReference.TryGetTarget(out _)
+            ? "MyDetailsPage is still alive"
+            : "MyDetailsPage was collected");
+}
+```
+
+Create the object in a separate method when possible. Local variables
+can remain live until the end of a method, even after their last apparent
+use, and produce a false positive.
+
+> [!WARNING]
+> Forced garbage collections alter app behavior and can cause long
+> pauses. Use them only to make a diagnostic check deterministic, and
+> remove them from production code.
 
 ### Collecting Memory Dumps
 
-To collect a memory dump, use the same `--dsrouter` workflow as
-`dotnet-trace`:
+Use `dotnet-gcdump` to capture a graph of the managed GC heap. A GC dump
+contains managed type counts, object sizes, and references from roots.
+It doesn't contain native allocations or the complete process memory.
+
+On iOS, build and run the app with `DiagnosticSuspend=false`, as
+described in [Building Your Application for
+Profiling](#building-your-application-for-profiling). Then capture a
+baseline GC dump:
 
 ```sh
-dotnet-gcdump collect --dsrouter android
+dotnet-gcdump collect --dsrouter ios-sim -o before.gcdump
 ```
 
-Use `--dsrouter android-emu`, `--dsrouter ios`, or `--dsrouter
-ios-sim` for other targets.
-
-Unlike CPU tracing, memory dumps do not require suspending application
-startup. Build your application with `-p:DiagnosticSuspend=false`:
+For a physical iOS device, use the `ios` profile:
 
 ```sh
-dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet-gcdump collect --dsrouter ios -o before.gcdump
 ```
 
-Once `dotnet-gcdump` connects, it creates a `*.gcdump` file in the
-current directory. You can open this file in Visual Studio on Windows
-or [PerfView][perfview].
+Exercise the repeatable scenario several times without restarting the
+app, and capture another dump:
+
+```sh
+dotnet-gcdump collect --dsrouter ios-sim -o after.gcdump
+```
+
+Use `--dsrouter ios` instead when capturing `after.gcdump` from a
+physical iOS device.
+
+Use `--dsrouter android` or `--dsrouter android-emu` to run the same
+workflow on Android.
+
+For Mac Catalyst and macOS, you can run the executable inside the app
+bundle as a macOS process and use a Unix domain socket as the diagnostic
+port. In one terminal, set `DOTNET_DiagnosticPorts` and start the app:
+
+```sh
+DOTNET_DiagnosticPorts="$TMPDIR/maui-gcdump.socket,suspend" \
+  /path/to/MyApp.app/Contents/MacOS/MyApp
+```
+
+In another terminal, collect the dump:
+
+```sh
+dotnet-gcdump collect \
+  --diagnostic-port "$TMPDIR/maui-gcdump.socket" \
+  -o before.gcdump
+```
+
+Use the same diagnostic port to capture `after.gcdump` after exercising
+the repeatable scenario. The app and `dotnet-gcdump` must use the same
+`TMPDIR`.
+
+> [!NOTE]
+> The App Sandbox can prevent a Mac Catalyst or macOS development build
+> from opening the diagnostic connection. If necessary, use a
+> profiling-only entitlements file without the
+> `com.apple.security.app-sandbox` entitlement. Don't distribute this
+> build.
+
+> [!WARNING]
+> Collecting a GC dump triggers a full garbage collection and can
+> suspend the app for a significant time when the managed heap is large.
 
 [perfview]: https://github.com/microsoft/perfview
 
 ### Analyzing Memory Dumps
 
-When you open a `*.gcdump` file in Visual Studio, you can:
+Use `dotnet-gcdump report` on any supported development platform to
+compare type statistics:
 
-- View every managed object in memory
-- See the total count and size of each type
-- Inspect the reference tree to understand what's keeping objects alive
-- Compare multiple snapshots to identify growing allocations
+```sh
+dotnet-gcdump report before.gcdump
+dotnet-gcdump report after.gcdump
+```
 
-Visual Studio's Memory Usage diagnostic tool (`Debug` > `Windows` >
-`Diagnostic Tools`) also allows you to take snapshots while debugging,
-though you should disable XAML hot reload for accurate results.
+To inspect reference paths and compare snapshots graphically, open both
+`*.gcdump` files in Visual Studio on Windows or in PerfView. The
+`*.gcdump` graphical viewers aren't available on macOS, but dumps
+captured on a Mac can be copied to a Windows computer for analysis.
 
-> [!TIP]
-> Consider taking memory snapshots of `Release` builds, as code paths
-> can be significantly different when XAML compilation, AOT
-> compilation, and trimming are enabled.
+When you compare the dumps:
 
-## Diagnosing Memory Leaks
+- Sort by the increase in object count and total size.
+- Find types associated with the repeated operation, such as the page,
+  viewmodel, handler, image, or collection item.
+- Inspect paths to roots to determine why an object remains reachable.
+- Repeat the capture after more iterations to confirm that the count
+  continues to grow rather than stabilizing.
 
-Memory leaks in .NET MAUI applications manifest as steadily increasing
-memory usage, especially during repeated navigation or interactions.
-On mobile platforms, this can eventually cause the OS to terminate
-your application due to excessive memory consumption.
+Common managed roots include static fields, singleton services,
+long-running tasks, timers, event publishers, notification callbacks,
+and collections that aren't cleared. A managed reference cycle by
+itself isn't a leak: the GC can reclaim a cycle when no root can reach
+it.
 
-### Symptoms of Memory Leaks
+For more information about GC dumps, see the [`dotnet-gcdump`
+documentation][dotnet-gcdump].
 
-A typical symptom of a memory leak might be:
+## Diagnose memory leaks on iOS and Mac Catalyst
 
-1. Navigate from the main page to a details page
-2. Navigate back
-3. Navigate to the details page again
-4. Memory grows consistently with each cycle
+Managed heap analysis is only one half of an investigation on Apple
+platforms. UIKit, Foundation, Core Animation, image APIs, and third-party
+native libraries allocate outside the .NET GC heap. Objects that derive
+from <xref:Foundation.NSObject> also have both managed and native
+representations.
 
-### Determining if a Leak Exists
+### Profile native memory with Instruments
 
-To determine if a page is actually leaking, use finalizers with
-logging and forced garbage collection during debugging.
+Use the **Allocations** and **Leaks** instruments to investigate native
+memory:
 
-1. Add a finalizer with logging to the page class:
+1. Build and deploy a `Release` build with native symbols preserved:
 
-   ```csharp
-   ~MyDetailsPage() => System.Diagnostics.Debug.WriteLine("~MyDetailsPage() finalized");
+   ::: moniker range="<=net-maui-10.0"
+
+   ```sh
+   dotnet build -t:Run -c Release -f net10.0-ios -p:NoSymbolStrip=true
    ```
 
-2. Force garbage collection in strategic places (for debugging only):
+   ::: moniker-end
 
-   ```csharp
-   public MyDetailsPage()
-   {
-       GC.Collect(); // For debugging purposes only
-       GC.WaitForPendingFinalizers();
-       InitializeComponent();
-   }
+   ::: moniker range=">=net-maui-11.0"
+
+   ```sh
+   dotnet run -c Release -f net11.0-ios -p:NoSymbolStrip=true
    ```
 
-3. Test a `Release` build and watch the console output using [adb
-   logcat][adb-logcat] (Android) or device logs (iOS).
+   ::: moniker-end
 
-If the finalizer runs when navigating away from the page, the page is
-being collected correctly. If the finalizer never runs, the page is
-leaking--something is holding a reference to it indefinitely.
+   Use the corresponding `maccatalyst` target framework to profile a
+   Mac Catalyst app.
 
-> [!WARNING]
-> Remove `GC.Collect()` calls after debugging. They're only for
-> diagnosing issues and should never be in production code.
+   > [!NOTE]
+   > Mac Catalyst and macOS apps must include the
+   > `com.apple.security.get-task-allow` entitlement for Instruments to
+   > attach to the process. Enable this entitlement only in the build
+   > configuration used for profiling.
 
-[adb-logcat]: /xamarin/android/deploy-test/debugging/android-debug-log
+2. Open Xcode, select **Xcode** > **Open Developer Tool** >
+   **Instruments**, and choose the **Allocations** template.
+3. Select the app and device, and start recording.
+4. Run the warm-up iterations and select **Mark Generation**.
+5. Exercise the repeatable scenario, return to the baseline screen, and
+   mark another generation. Repeat this step several times.
+6. Stop recording. Inspect allocations that were created after each
+   generation and are still living. Sort by persistent bytes and object
+   count, and examine allocation stacks for types that grow in every
+   generation.
 
-### Narrowing Down the Cause
+Add the **Leaks** instrument to scan for unreachable native
+allocations. A clean Leaks result doesn't prove that the app has no
+memory leak. The Leaks instrument doesn't identify abandoned memory
+that is still reachable, such as objects retained by an unintended
+cache or callback. It also doesn't show managed GC reference paths.
 
-Once you've identified a leak, narrow down the cause:
+Allocation stack recording adds overhead, but it helps identify the
+native or managed-to-native call that created an allocation. For more
+information, see [Analyze heap memory][apple-heap-memory] and [Gathering
+information about memory use][apple-memory-use].
 
-1. Comment out all XAML content. Does the leak still occur?
-2. Comment out all C# code in code-behind. Does the leak still occur?
-3. Test on multiple platforms. Does it only happen on one platform?
+[apple-heap-memory]: https://developer.apple.com/videos/play/wwdc2024/10173/
+[apple-memory-use]: https://developer.apple.com/documentation/xcode/gathering-information-about-memory-use
 
-Generally, an empty `ContentPage` should not leak. By systematically
-removing code, you can identify which control or code pattern is
-causing the problem.
+### Correlate managed and native results
+
+Compare what each tool reports:
+
+- If `dotnet-gcdump` shows an increasing number of pages, viewmodels, or
+  handlers, follow their managed paths to roots.
+- If the managed heap stabilizes but Instruments shows persistent
+  growth, investigate native types, images, graphics resources, and
+  buffers.
+- If an <xref:Foundation.NSObject>-derived managed type grows and its
+  managed root is unclear, inspect both tools. A native object can retain
+  the native peer, which in turn keeps the managed object alive.
+
+### Narrow down the cause
+
+Once you've identified a leak, reduce the page or feature until the
+growth stops:
+
+1. Remove the XAML content. Does the leak still occur?
+2. Remove application code and subscriptions. Does the leak still
+   occur?
+3. Test on multiple platforms. Does the leak only occur on one
+   platform?
+
+An empty <xref:Microsoft.Maui.Controls.ContentPage> should become
+collectable after navigation has released it. Restore groups of controls
+and application code incrementally to isolate the source of the leak.
 
 ### Common Leak Patterns
 
-#### C# Events
+#### C# events
 
-C# events can create circular references that prevent garbage
-collection. Consider a scenario where a child object subscribes to a
-parent's event, but the parent also holds a reference to the child.
-Both objects can end up living forever.
+An event publisher holds a strong reference to each subscribed delegate,
+and the delegate usually holds a strong reference to its target. If the
+publisher outlives the subscriber, the subscription can therefore keep
+the subscriber and its object graph alive. For example, an event
+subscription from a page to a long-lived publisher, such as a
+<xref:Microsoft.Maui.Controls.Style> stored in
+<xref:Microsoft.Maui.Controls.Application.Resources>, can retain the
+entire page.
 
-If the event source outlives the subscriber (like a `Style` in
-`Application.Resources`), this can cause entire pages to leak.
+A managed reference cycle doesn't prevent collection when no root can
+reach it. The leak occurs when a rooted, long-lived publisher provides a
+path to a subscriber that should no longer be reachable.
 
-**Solution**: Use `WeakEventManager` for events in .NET MAUI controls,
-or unsubscribe from events when the object is no longer needed.
+To prevent this pattern, unsubscribe when the subscriber is no longer
+needed, or use <xref:Microsoft.Maui.WeakEventManager> when weak event
+semantics are appropriate. Also cancel timers and remove native
+notification observer tokens that can retain their callbacks.
 
-#### iOS and Mac Catalyst Circular References
+#### Other patterns
 
-On iOS and Mac Catalyst, circular references between C# objects and
-native objects can cause leaks because C# objects that subclass
-`NSObject` exist in both the garbage-collected .NET world and the
-reference-counted Objective-C world.
+- **Unbounded collections and caches**: Static collections, navigation
+  history, and caches can retain otherwise unused object graphs. Bound
+  their size and remove stale entries.
+- **Long-running asynchronous work**: Tasks, callbacks, and cancellation
+  registrations can capture a page or viewmodel. Cancel the operation
+  and release registrations when leaving the page.
+- **Handlers and platform views**: Custom handlers can retain controls,
+  delegates, or native views after a page is removed. Disconnect manual
+  subscriptions and dispose native resources that the handler owns.
+- **Managed/native strong-reference cycles**: Objective-C uses reference
+  counting while .NET uses tracing garbage collection. A native
+  container can retain an `NSObject` peer while the corresponding
+  managed object retains the container. Break back references, use a
+  weak reference where appropriate, remove native children from their
+  containers, and dispose objects you own.
 
-Example of a problematic pattern:
+For an example of a managed/native strong-reference cycle and ways to
+break it, see [Avoid strong circular references on iOS and Mac
+Catalyst](~/deployment/performance.md#avoid-strong-circular-references-on-ios-and-mac-catalyst).
 
-```csharp
-class MyView : UIView
-{
-    public MyView()
-    {
-        var picker = new UIDatePicker();
-        AddSubview(picker); // MyView -> UIDatePicker
-        picker.ValueChanged += OnValueChanged; // UIDatePicker -> MyView via event handler
-    }
+> [!CAUTION]
+> Don't dispose an `NSObject` merely because it implements
+> <xref:System.IDisposable>. Dispose wrappers for native resources that
+> your code owns and no longer uses. Disposing a shared or framework-owned
+> object can cause later native calls to fail.
 
-    void OnValueChanged(object? sender, EventArgs e) { }
-}
-```
+### Runtime differences in .NET 10 and .NET 11
 
-**Solutions**:
+::: moniker range="<=net-maui-10.0"
 
-1. Make event handlers `static`:
+.NET MAUI apps on Android, iOS, and Mac Catalyst use the Mono runtime by
+default in .NET 10. `dotnet-gcdump` supports the Mono managed heap and
+is the recommended snapshot workflow.
 
-   ```csharp
-   static void OnValueChanged(object? sender, EventArgs e) { }
-   ```
+Mono emits low-level GC and allocation events through the
+`Microsoft-DotNETRuntimeMonoProfiler` EventPipe provider. CoreCLR
+`Microsoft-Windows-DotNETRuntime` GC profiles don't produce equivalent
+data on Mono. The Mono profiler provider is disabled by default in
+modern .NET versions and requires explicit `MONO_DIAGNOSTICS`
+configuration for low-level allocation tracing. This configuration
+isn't required for `dotnet-gcdump`.
 
-2. Use a proxy object that doesn't inherit from `NSObject`:
+For more information, see [MonoVM diagnostics
+tracing][mono-diagnostics].
 
-   ```csharp
-   class MyView : UIView
-   {
-       readonly Proxy _proxy = new();
+::: moniker-end
 
-       public MyView()
-       {
-           var picker = new UIDatePicker();
-           AddSubview(picker);
-           picker.ValueChanged += _proxy.OnValueChanged;
-       }
+::: moniker range=">=net-maui-11.0"
 
-       class Proxy
-       {
-           public void OnValueChanged(object? sender, EventArgs e) { }
-       }
-   }
-   ```
+CoreCLR is the only supported runtime for .NET 11 mobile apps, including
+Android, iOS, Mac Catalyst, and tvOS. This unifies the runtime
+diagnostics implementation across desktop, server, and mobile .NET. The
+`dotnet-gcdump` and `dotnet-dsrouter` workflow remains the same, but:
 
-> [!NOTE]
-> These circular reference issues are specific to iOS and Mac Catalyst.
-> They do not normally occur on Android or Windows.
+- The diagnostics server and EventPipe support are built into CoreCLR,
+  so the Mono diagnostics component isn't required.
+- CoreCLR uses the standard .NET runtime EventPipe providers. Mono
+  profiler provider names, keyword masks, and `MONO_DIAGNOSTICS`
+  settings don't apply.
+- CoreCLR provides more complete runtime events and managed root
+  information than the Mono-specific event mapping.
+- CoreCLR's GC replaces Mono's SGen GC. Heap sizes, collection timing,
+  and counter values can therefore differ from the same app on .NET 10.
 
-### Best Practices for Avoiding Leaks
+If an app requires the Mono runtime, it must continue to target .NET 10.
+Setting `<UseMonoRuntime>true</UseMonoRuntime>` for a .NET 11 mobile
+target produces build error `NETSDK1242`. Establish a new memory
+baseline after moving an app to CoreCLR rather than comparing absolute
+heap values with its .NET 10 Mono baseline.
 
-- **Test `Release` builds**: Memory behavior can differ significantly
-  from `Debug` builds due to optimizations, trimming, and AOT
-  compilation.
+CoreCLR doesn't make native allocations visible in a managed GC dump:
+Instruments is still required for native heap and retain-cycle
+analysis. The CoreCLR transition also doesn't make `dotnet-dump`
+attach over the mobile `dotnet-dsrouter` transport; use
+`dotnet-gcdump` for a managed heap graph on mobile.
 
-- **Use finalizers when investigating**: Add finalizers with logging to
-  key objects to quickly identify if they're being collected.
+For more information, see [NETSDK1242][netsdk1242] and the [.NET 11
+Preview 4 .NET MAUI release notes][maui-net11-preview4].
 
-- **Unsubscribe from events**: Always unsubscribe from events when
-  objects are disposed or no longer needed.
+::: moniker-end
 
-- **Be cautious with events on long-lived objects**: Avoid having
-  long-lived objects (like those in `Application.Resources`) hold
-  references to short-lived objects (like pages or views).
+[mono-diagnostics]: https://github.com/dotnet/runtime/blob/main/docs/design/mono/diagnostics-tracing.md
+[netsdk1242]: /dotnet/core/tools/sdk-errors/netsdk1242
+[maui-net11-preview4]: https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview4/dotnetmaui.md
 
-- **Profile regularly**: Make memory profiling part of your regular
-  testing process, especially after adding new features or making
-  significant changes.
+### Native AOT limitations
 
-For more detailed information about memory leak patterns and
-techniques, see the [.NET MAUI Memory Leaks wiki][maui-memory-leaks].
+Native AOT apps don't support managed heap analysis. Reproduce and
+diagnose the managed retention problem in a non-Native AOT build, then
+verify the fix in the published Native AOT app. Instruments can still
+profile supported native aspects of a Native AOT process, but it can't
+replace a managed heap graph.
 
-[maui-memory-leaks]: https://github.com/dotnet/maui/wiki/Memory-Leaks
+For more information, see [Native AOT diagnostic support on iOS and Mac
+Catalyst](~/deployment/nativeaot.md#native-aot-diagnostic-support-on-ios-and-mac-catalyst).
+
+### Prevent regressions
+
+After fixing a leak:
+
+- Repeat the original scenario for more iterations and confirm that
+  managed object counts and native persistent bytes stabilize.
+- Add a test that creates the affected page, view, or handler, stores a
+  weak reference, releases it, waits for pending finalizers, and asserts
+  that the object is collected.
+- Test on each affected platform. A managed root may reproduce
+  everywhere, while a managed/native ownership cycle may only reproduce
+  on iOS or Mac Catalyst.
+- Keep profiling code, forced collections, and diagnostics-enabled app
+  packages out of production builds.
 
 ## Alternative Profiling Approaches
 
