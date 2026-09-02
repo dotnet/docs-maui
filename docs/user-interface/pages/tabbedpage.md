@@ -1,7 +1,7 @@
 ---
 title: "TabbedPage"
 description: "The .NET MAUI TabbedPage consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content."
-ms.date: 08/11/2026
+ms.date: 09/02/2026
 ---
 
 # TabbedPage
@@ -110,6 +110,56 @@ The following example shows generating <xref:Microsoft.Maui.Controls.TabbedPage>
 In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPage> object that uses <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> objects to display data for the tab:
 
 :::image type="content" source="media/tabbedpage/tabbedpage.png" alt-text="Screenshot of a .NET MAUI TabbedPage.":::
+
+::: moniker range=">=net-maui-11.0"
+
+## Display badges on tabs
+
+In .NET 11, a badge can be displayed on each child page of a <xref:Microsoft.Maui.Controls.TabbedPage>. Set the following attached properties on the child page:
+
+- `TabbedPage.BadgeText`, of type `string`, is the text displayed on the badge. Set it to a non-empty value to show text, an empty string to show a dot, or `null` to hide the badge. The default value is `null`.
+- `TabbedPage.BadgeColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the background color of the badge. When this property is `null`, the platform default color is used.
+- `TabbedPage.BadgeTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the text color of the badge. When this property is `null`, the platform default color is used.
+
+The following example displays a badge on the **Inbox** tab:
+
+```xaml
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="TabbedPageDemo.MainPage">
+    <ContentPage x:Name="inboxPage"
+                 Title="Inbox"
+                 IconImageSource="inbox.png"
+                 TabbedPage.BadgeText="3"
+                 TabbedPage.BadgeColor="Red"
+                 TabbedPage.BadgeTextColor="White" />
+    <ContentPage Title="Sent"
+                 IconImageSource="sent.png" />
+</TabbedPage>
+```
+
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. Therefore, they can be data-bound and updated at runtime. You can also update them with the `SetBadgeText`, `SetBadgeColor`, and `SetBadgeTextColor` methods:
+
+```csharp
+TabbedPage.SetBadgeText(inboxPage, "4");
+TabbedPage.SetBadgeColor(inboxPage, Colors.Orange);
+TabbedPage.SetBadgeTextColor(inboxPage, Colors.Black);
+```
+
+Set the badge text to `null` to remove the badge:
+
+```csharp
+TabbedPage.SetBadgeText(inboxPage, null);
+```
+
+Badge rendering varies by platform:
+
+- **Android** uses the Material Design badge APIs for top and bottom tabs. Numeric and text badges are supported. When bottom tabs use the **More** overflow item, badges aren't displayed on the **More** item or on pages in the overflow list.
+- **iOS and Mac Catalyst** use `UITabBarItem.BadgeValue`, `BadgeColor`, and `SetBadgeTextAttributes`. On iOS 18 and Mac Catalyst 18 or later, the system tab bar can retain custom badge colors but display the system red background and white text instead.
+- **Windows** uses the WinUI `InfoBadge` control. Numeric badge text displays as a count. Non-numeric text and an empty string display as a dot. When badge colors aren't set, the native theme defaults are used.
+- **Tizen** exposes the attached properties, but doesn't display badges.
+
+::: moniker-end
 
 ## Navigate within a tab
 

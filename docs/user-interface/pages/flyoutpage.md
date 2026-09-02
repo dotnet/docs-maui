@@ -1,7 +1,7 @@
 ---
 title: "FlyoutPage"
 description: "The .NET MAUI FlyoutPage is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page."
-ms.date: 09/30/2024
+ms.date: 09/02/2026
 ---
 
 # FlyoutPage
@@ -33,6 +33,30 @@ The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are
 
 > [!WARNING]
 > <xref:Microsoft.Maui.Controls.FlyoutPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.FlyoutPage> in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+
+::: moniker range=">=net-maui-11.0"
+
+## FlyoutPage on iOS and Mac Catalyst
+
+Starting in .NET 11, <xref:Microsoft.Maui.Controls.FlyoutPage> uses <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> by default on iOS and Mac Catalyst. In earlier releases, it used the `Microsoft.Maui.Controls.Handlers.Compatibility.PhoneFlyoutPageRenderer` compatibility renderer.
+
+If your app has a custom renderer that derives from `PhoneFlyoutPageRenderer`, register your renderer explicitly with <xref:Microsoft.Maui.Hosting.HandlerMauiAppBuilderExtensions.ConfigureMauiHandlers%2A>:
+
+```csharp
+builder.ConfigureMauiHandlers(handlers =>
+{
+#if IOS || MACCATALYST
+    handlers.AddHandler<FlyoutPage, MyPhoneFlyoutPageRenderer>();
+#endif
+});
+```
+
+To use the built-in compatibility renderer during migration, replace `MyPhoneFlyoutPageRenderer` with `Microsoft.Maui.Controls.Handlers.Compatibility.PhoneFlyoutPageRenderer`.
+
+> [!IMPORTANT]
+> Compatibility renderer registration is a temporary migration step. Migrate custom renderers to the handler architecture. For more information, see [Migrate iOS FlyoutPage renderers](~/migration/custom-renderers.md#migrate-ios-flyoutpage-renderers).
+
+::: moniker-end
 
 ## Create a FlyoutPage
 

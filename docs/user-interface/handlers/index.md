@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 07/08/2026
+ms.date: 09/02/2026
 ---
 
 # Handlers
@@ -114,7 +114,7 @@ The following table lists the types that implement pages in .NET MAUI:
 | Page | Android Handler | iOS/Mac Catalyst Handler | Windows Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- | -- |
 | <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler.Mapper> | <xref:Microsoft.Maui.Handlers.PageHandler.CommandMapper> |
-| <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.Shell> | `ShellHandler` | ShellRenderer | `ShellHandler` | `Mapper` | <xref:Microsoft.Maui.CommandMapper> |
