@@ -1,7 +1,7 @@
 ---
 title: "Add a splash screen to a .NET MAUI app project"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
-ms.date: 08/30/2024
+ms.date: 09/02/2026
 ---
 
 # Add a splash screen to a .NET MAUI app project
@@ -88,6 +88,38 @@ A background color for your splash screen can also be specified:
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. This may change. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
+
+::: moniker range=">=net-maui-11.0"
+
+## Add a dark theme splash screen
+
+Use the `DarkFile`, `DarkColor`, and `DarkTintColor` metadata on a `MauiSplashScreen` item to define a splash screen for dark mode:
+
+```xml
+<ItemGroup>
+  <MauiSplashScreen Include="Resources\Splash\splash.svg"
+                    Color="#FFFFFF"
+                    DarkFile="Resources\Splash\splash-dark.svg"
+                    DarkColor="#000000"
+                    DarkTintColor="#FFFFFF"
+                    BaseSize="128,128" />
+</ItemGroup>
+```
+
+The metadata has the following effects:
+
+- `DarkFile` specifies the image for dark mode. If you omit it, .NET MAUI uses the light-mode image.
+- `DarkColor` specifies the background color for dark mode. If you omit it, .NET MAUI uses the value of `Color`.
+- `DarkTintColor` specifies the image tint for dark mode. If you omit it and don't set `DarkFile`, .NET MAUI uses the value of `TintColor`. A separate `DarkFile` isn't tinted by default.
+
+On Android, .NET MAUI generates night-qualified resources. Resizetizer writes the dark image to `drawable-night-*` density folders, or to `drawable-night` when resizing is disabled. It also generates `drawable-night/maui_splash_image.xml` and `drawable-night-v31/maui_splash_image.xml`. If a background color is available, it generates `values-night/maui_colors.xml`. Android selects these resources when night mode is active.
+
+On iOS, iPadOS, and Mac Catalyst, .NET MAUI generates themed `UILaunchScreen` asset catalog resources when `SupportedOSPlatformVersion` is 14.0 or later.
+
+> [!WARNING]
+> Themed splash screens require iOS, iPadOS, or Mac Catalyst 14.0 or later. For an iOS or iPadOS target with a lower `SupportedOSPlatformVersion`, the build emits a warning and uses the existing launch storyboard splash screen. For a Mac Catalyst target with a lower version, the build emits a warning and doesn't generate themed splash screen assets.
+
+::: moniker-end
 
 ## Platform-specific configuration
 
