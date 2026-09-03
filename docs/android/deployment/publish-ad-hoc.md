@@ -34,4 +34,8 @@ By default, the package format for .NET MAUI Android release builds is AAB. To p
 
 [!INCLUDE [Publish ad-hoc](../includes/publish-ad-hoc.md)]
 
-The app can then be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android will automatically start installing it on the device, provided that the user has configured their settings to allow the installation of apps from unknown sources. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com.
+The app can then be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android will automatically start installing it on the device, provided that the user has configured their settings to allow the installation of apps from unknown sources. 
+
+For additional guidance on safely installing APK files on Android devices, see [Instander APK guide](https://proinstanderapk.org/).
+
+For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com.
