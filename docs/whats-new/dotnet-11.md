@@ -48,8 +48,6 @@ In .NET 11 Preview 5, the underlying Material 3 helper types (`MauiMaterialEditT
 
 ### BoxView Fill property
 
-:::moniker range=">=net-maui-11.0"
-
 <xref:Microsoft.Maui.Controls.BoxView> now exposes a `Fill` bindable property of type <xref:Microsoft.Maui.Controls.Brush>, allowing it to be painted with any brush (including <xref:Microsoft.Maui.Controls.LinearGradientBrush> and <xref:Microsoft.Maui.Controls.RadialGradientBrush>) instead of just a solid color. When both `Fill` and `Color` are set, `Fill` takes priority; setting `Fill` back to `null` causes the <xref:Microsoft.Maui.Controls.BoxView> to render using `Color` again. For more information, see [Fill a BoxView with a brush](~/user-interface/controls/boxview.md#fill-a-boxview-with-a-brush) and [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
 
 ```xaml
@@ -88,8 +86,6 @@ Or a <xref:Microsoft.Maui.Controls.RadialGradientBrush>:
 ```
 
 :::image type="content" source="../user-interface/controls/media/boxview/boxview-radial-fill.png" alt-text="Screenshot of a BoxView painted with a radial gradient brush.":::
-
-:::moniker-end
 
 ### LongPressGestureRecognizer
 
@@ -159,21 +155,6 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 For more information, see GitHub PRs [#29101](https://github.com/dotnet/maui/pull/29101), [#33831](https://github.com/dotnet/maui/pull/33831), [#33950](https://github.com/dotnet/maui/pull/33950), [#33982](https://github.com/dotnet/maui/pull/33982), [#33985](https://github.com/dotnet/maui/pull/33985), [#33792](https://github.com/dotnet/maui/pull/33792), [#33799](https://github.com/dotnet/maui/pull/33799), [#33991](https://github.com/dotnet/maui/pull/33991), and [#33993](https://github.com/dotnet/maui/pull/33993).
 
 In .NET 11 Preview 5, the <xref:Microsoft.Maui.Controls.Maps.Map> control gains a Windows implementation backed by Azure Maps. To use it, call `UseMapServiceToken(...)` in `MauiProgram.cs` with an Azure Maps subscription key. The Windows implementation supports `MoveToRegion`, map types, traffic, scrolling, zooming, and standard pins; some platform-only features such as user location, custom pin info windows, and map elements/shapes aren't supported on Windows. For more information, see [GitHub PR #34138](https://github.com/dotnet/maui/pull/34138).
-
-### BoxView Fill
-
-Starting in .NET 11 Preview 5, <xref:Microsoft.Maui.Controls.BoxView> exposes a `Fill` property of type <xref:Microsoft.Maui.Controls.Brush>. This aligns <xref:Microsoft.Maui.Controls.BoxView> with the other shape primitives and means gradients and other brushes can paint a `BoxView` without a custom handler. `BackgroundColor` still works as before. For more information, see [GitHub PR #31789](https://github.com/dotnet/maui/pull/31789).
-
-```xaml
-<BoxView HeightRequest="120" CornerRadius="12">
-    <BoxView.Fill>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#512BD4" Offset="0.0" />
-            <GradientStop Color="#0099CC" Offset="1.0" />
-        </LinearGradientBrush>
-    </BoxView.Fill>
-</BoxView>
-```
 
 ### Windows CollectionView2 handler
 
