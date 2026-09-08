@@ -97,9 +97,9 @@ Use the `DarkFile`, `DarkColor`, and `DarkTintColor` metadata on a `MauiSplashSc
 
 ```xml
 <ItemGroup>
-  <MauiSplashScreen Include="Resources\Splash\splash.svg"
+  <MauiSplashScreen Include="Resources\Splash\splashscreen.svg"
                     Color="#FFFFFF"
-                    DarkFile="Resources\Splash\splash-dark.svg"
+                    DarkFile="Resources\Splash\splashscreen-dark.svg"
                     DarkColor="#000000"
                     DarkTintColor="#FFFFFF"
                     BaseSize="128,128" />
@@ -112,7 +112,7 @@ The metadata has the following effects:
 - `DarkColor` specifies the background color for dark mode. If you omit it, .NET MAUI uses the value of `Color`.
 - `DarkTintColor` specifies the image tint for dark mode. If you omit it and don't set `DarkFile`, .NET MAUI uses the value of `TintColor`. A separate `DarkFile` isn't tinted by default.
 
-On Android, .NET MAUI generates night-qualified resources. Resizetizer writes the dark image to `drawable-night-*` density folders, or to `drawable-night` when resizing is disabled. It also generates `drawable-night/maui_splash_image.xml` and `drawable-night-v31/maui_splash_image.xml`. If a background color is available, it generates `values-night/maui_colors.xml`. Android selects these resources when night mode is active.
+On Android, .NET MAUI generates night-qualified resources. Resizetizer writes the dark image to density-qualified `drawable-night-{density}` folders (for example, `drawable-night-hdpi` and `drawable-night-xhdpi`), or to `drawable-night` when resizing is disabled. It also generates `drawable-night/maui_splash_image.xml` and `drawable-night-v31/maui_splash_image.xml`. If a background color is available, it generates `values-night/maui_colors.xml`. Android selects these resources when night mode is active.
 
 On iOS, iPadOS, and Mac Catalyst, .NET MAUI generates themed `UILaunchScreen` asset catalog resources when `SupportedOSPlatformVersion` is 14.0 or later.
 
