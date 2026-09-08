@@ -154,9 +154,7 @@ TabbedPage.SetBadgeText(inboxPage, null);
 
 Badge rendering varies by platform:
 
-- **Android** uses the Material Design badge APIs for top and bottom tabs. Numeric and text badges are supported. When bottom tabs use the **More** overflow item, badges aren't displayed on the **More** item or on pages in the overflow list.
-- **iOS and Mac Catalyst** use `UITabBarItem.BadgeValue`, `BadgeColor`, and `SetBadgeTextAttributes`. On iOS 18 and Mac Catalyst 18 or later, the system tab bar can retain custom badge colors but display the system red background and white text instead.
-- **Windows** uses the WinUI `InfoBadge` control. Numeric badge text displays as a count. Non-numeric text and an empty string display as a dot. When badge colors aren't set, the native theme defaults are used.
+- **iOS and Mac Catalyst** use `UITabBarItem.BadgeValue`, `BadgeColor`, and `SetBadgeTextAttributes`. On iOS 18 and Mac Catalyst 18 or later, the system tab bar may ignore custom badge colors and instead display the system red background and white text.
 - **Tizen** exposes the attached properties, but doesn't display badges.
 
 ::: moniker-end
