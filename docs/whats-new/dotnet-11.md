@@ -596,8 +596,8 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 ### CoreCLR for Apple platforms
 
 In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
-Mac Catalyst, macOS, and tvOS, while Mono remained available. Starting in
-.NET 11 Preview 7, CoreCLR is the only supported runtime for these platforms.
+Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
+Preview 7, CoreCLR is the only supported runtime for these platforms.
 Apple CoreCLR uses ReadyToRun and the CoreCLR interpreter; it doesn't use JIT.
 For more information, see [CoreCLR is the only runtime](#coreclr-is-the-only-runtime)
 and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).

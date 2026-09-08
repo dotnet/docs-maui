@@ -52,9 +52,8 @@ also available as an experimental option for Android.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11, CoreCLR is the only supported runtime for .NET MAUI apps on
-Android, iOS, Mac Catalyst, and tvOS unless the app is published with
-NativeAOT.
+In .NET 11, CoreCLR is the runtime for .NET MAUI apps on Windows, Android,
+iOS, and Mac Catalyst. NativeAOT is an opt-in alternative for publishing.
 
 ::: moniker-end
 
@@ -188,7 +187,7 @@ are packed inside the `.dll` files.
 
 ::: moniker range=">=net-maui-11.0"
 
-- **Used by**: CoreCLR on Windows, Android, iOS, Mac Catalyst, and tvOS
+- **Used by**: CoreCLR on Windows, Android, iOS, and Mac Catalyst
 - **Advantages**: Improved startup time while retaining the appropriate
   runtime compilation behavior
 - **Disadvantages**: Larger application and download sizes
@@ -301,7 +300,6 @@ The following table summarizes the runtime and compilation strategy used by
 | **Android** | CoreCLR + JIT | CoreCLR + composite partial ReadyToRun + JIT |
 | **iOS** | CoreCLR + composite ReadyToRun + interpreter | CoreCLR + composite ReadyToRun + interpreter |
 | **Mac Catalyst** | CoreCLR + composite ReadyToRun + interpreter | CoreCLR + composite ReadyToRun + interpreter |
-| **tvOS** | CoreCLR + composite ReadyToRun + interpreter | CoreCLR + composite ReadyToRun + interpreter |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
 
 > [!IMPORTANT]
@@ -391,8 +389,8 @@ for production use.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11, CoreCLR is the supported runtime for Android, iOS, Mac Catalyst,
-and tvOS apps unless NativeAOT is explicitly enabled for publishing. NativeAOT
+In .NET 11, CoreCLR is the supported runtime for Android, iOS, and Mac
+Catalyst apps unless NativeAOT is explicitly enabled for publishing. NativeAOT
 is an opt-in alternative that doesn't use CoreCLR. Don't set
 `UseMonoRuntime=true`; Mono isn't supported for .NET 11, and setting the
 property produces a build error.
@@ -454,9 +452,9 @@ Trimming is a build step that removes unused code from your app to reduce its
 size. .NET MAUI uses the ILLink trimmer, which analyzes your code and removes
 types, methods, and fields that aren't statically referenced.
 
-For non-NativeAOT builds, .NET MAUI uses `TrimMode=partial` by default, which
-trims framework assemblies but not your code or NuGet references. You can opt
-in to full trimming:
+For non-NativeAOT Release and publish builds, .NET MAUI uses
+`TrimMode=partial` by default, which trims framework assemblies but not your
+code or NuGet references. To use full trimming, set `TrimMode` to `full`:
 
 ```xml
 <PropertyGroup>
