@@ -17,9 +17,9 @@ A .NET *runtime* is the execution environment that manages your app's memory,
 type system, garbage collection, and code execution. .NET MAUI apps use one of
 the following runtimes:
 
-### Mono
-
 ::: moniker range="<=net-maui-10.0"
+
+### Mono
 
 [Mono](https://www.mono-project.com/docs/) is the cross-platform .NET runtime
 that has historically powered Xamarin apps and .NET MAUI apps on Android, iOS,
@@ -31,8 +31,7 @@ on mobile and Mac Catalyst platforms.
 
 ::: moniker range=">=net-maui-11.0"
 
-Mono isn't supported for .NET MAUI apps that target .NET 11. CoreCLR is the
-only supported runtime for .NET 11.
+Mono isn't supported for .NET MAUI apps that target .NET 11.
 
 ::: moniker-end
 
@@ -57,7 +56,7 @@ iOS, and Mac Catalyst. NativeAOT is an opt-in alternative for publishing.
 
 ::: moniker-end
 
-### NativeAOT runtime
+### NativeAOT
 
 When you publish with [Native AOT](nativeaot.md), your app doesn't run on the
 CoreCLR runtime. Instead, it runs on a minimal NativeAOT runtime that's
@@ -363,7 +362,7 @@ MAUI apps targeting .NET 11:
 | **Compilation time** | At runtime | At runtime | At build time | At build time |
 | **Startup speed** | Slower | Slower | Fast | Fastest |
 | **App size** | Smaller | Smaller | Larger | Smallest |
-| **Dynamic code** | Full support | Full support | Full support (retains CoreCLR runtime compilation) | Not supported |
+| **Dynamic code** | Full support | Full support | Full support (through either JIT or interpreter) | Not supported |
 | **Diagnostics** | Full | Full | Limited | Limited |
 
 ::: moniker-end
@@ -452,7 +451,7 @@ Trimming is a build step that removes unused code from your app to reduce its
 size. .NET MAUI uses the ILLink trimmer, which analyzes your code and removes
 types, methods, and fields that aren't statically referenced.
 
-For non-NativeAOT Release and publish builds, .NET MAUI uses
+For CoreCLR Release builds, .NET MAUI uses
 `TrimMode=partial` by default, which trims framework assemblies but not your
 code or NuGet references. To use full trimming, set `TrimMode` to `full`:
 
