@@ -1,7 +1,7 @@
 ---
 title: "Runtimes and compilation in .NET MAUI"
 description: "Learn about the runtimes and compilation strategies used by .NET MAUI apps, including CoreCLR, NativeAOT, ReadyToRun, and interpreters."
-ms.date: 09/08/2026
+ms.date: 09/10/2026
 ---
 
 # Runtimes and compilation in .NET MAUI
@@ -145,8 +145,8 @@ restrictions on the code patterns you can use.
 
 ::: moniker range=">=net-maui-11.0"
 
-- **Available on**: .NET MAUI apps targeting .NET 11 when explicitly enabled
-  for publishing
+- **Available on**: .NET MAUI iOS and Mac Catalyst apps, and experimentally
+  on Android, when explicitly enabled for publishing
 - **Advantages**: Small app size, fast startup, and a single native binary
 - **Disadvantages**: No dynamic code generation or dynamic loading; all code
   must be trim-safe and AOT-compatible
@@ -192,20 +192,21 @@ are packed inside the `.dll` files.
 - **Disadvantages**: Larger application and download sizes
 
 For Android apps, ReadyToRun is enabled by default in the `Release`
-configuration. The default is composite partial ReadyToRun. Full ReadyToRun
+configuration. The default is partial composite ReadyToRun. Full ReadyToRun
 can be enabled with `MauiEnableFullReadyToRun=true`. It can improve startup or
 runtime performance, but it increases package size, so measure the result for
 your app.
 
-For Apple apps, composite ReadyToRun is used with the CoreCLR
-interpreter for code that isn't precompiled. Apple device targets don't use
-JIT.
+For iOS and Mac Catalyst apps, full composite ReadyToRun is used. On iOS, the
+CoreCLR interpreter is always enabled and executes code where the operating
+system doesn't permit JIT compilation.
 
 ::: moniker-end
 
 *Composite* R2R compiles assemblies together, enabling cross-assembly
 optimizations. *Partial* R2R precompiles selected methods while leaving the
-remaining methods for runtime compilation.
+remaining methods for runtime compilation, while *full* R2R precompiles all
+methods.
 
 For more information, see [ReadyToRun compilation](/dotnet/core/deploying/ready-to-run).
 
@@ -255,10 +256,11 @@ For more information, see [Mono interpreter on iOS and Mac Catalyst](~/macios/in
 
 ### CoreCLR interpreter
 
-The CoreCLR interpreter is used on Apple device targets because those platforms
-don't allow JIT-generated code. Apple CoreCLR apps use ReadyToRun for most
-methods and the interpreter for code that isn't precompiled. This behavior is
-part of the runtime and doesn't require an interpreter MSBuild property.
+CoreCLR includes an interpreter on iOS and Mac Catalyst. On iOS, the
+interpreter is always enabled and executes code where the operating system
+doesn't permit JIT compilation. On Mac Catalyst, it provides a fallback when
+JIT compilation isn't permitted. This behavior is part of the runtime and
+doesn't require an interpreter MSBuild property.
 
 ::: moniker-end
 
@@ -296,9 +298,9 @@ The following table summarizes the runtime and compilation strategy used by
 
 | Platform | Debug | Release |
 |---|---|---|
-| **Android** | CoreCLR + JIT | CoreCLR + composite partial ReadyToRun + JIT |
-| **iOS** | CoreCLR + composite ReadyToRun + interpreter | CoreCLR + composite ReadyToRun + interpreter |
-| **Mac Catalyst** | CoreCLR + composite ReadyToRun + interpreter | CoreCLR + composite ReadyToRun + interpreter |
+| **Android** | CoreCLR + JIT | CoreCLR + partial composite ReadyToRun + JIT |
+| **iOS** | CoreCLR + full composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
+| **Mac Catalyst** | CoreCLR + full composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
 
 > [!IMPORTANT]
@@ -367,13 +369,12 @@ MAUI apps targeting .NET 11:
 
 ::: moniker-end
 
-## CoreCLR on Android and Apple platforms
+## CoreCLR on Android and iOS
 
 ::: moniker range="<=net-maui-10.0"
 
 Starting in .NET 10, you can opt in to running an Android app on CoreCLR
-instead of Mono. CoreCLR is also available as an experimental option for
-selected Apple targets.
+instead of Mono.
 
 ```xml
 <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
@@ -390,7 +391,8 @@ for production use.
 
 In .NET 11, CoreCLR is the supported runtime for Android, iOS, and Mac
 Catalyst apps unless NativeAOT is explicitly enabled for publishing. NativeAOT
-is an opt-in alternative that doesn't use CoreCLR. Don't set
+is an opt-in alternative that doesn't use CoreCLR and remains experimental on
+Android. Don't set
 `UseMonoRuntime=true`; Mono isn't supported for .NET 11, and setting the
 property produces a build error.
 
@@ -437,7 +439,7 @@ CoreCLR or NativeAOT:
 - `lib/arm64-v8a/libassemblies.arm64-v8a.so` — Packed MSIL with ReadyToRun
   images
 
-**NativeAOT:**
+**NativeAOT (experimental):**
 
 - `classes.dex` — Java/Kotlin code
 - `lib/arm64-v8a/libhellomaui.so` — Native library containing the runtime,
