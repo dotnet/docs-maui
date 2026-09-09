@@ -1,7 +1,7 @@
 ---
 title: "Theme an app"
 description: "Theming can be implemented in .NET MAUI apps by creating a ResourceDictionary for each theme, and then loading the resources with the DynamicResource markup extension."
-ms.date: 09/30/2024
+ms.date: 08/13/2026
 ---
 
 # Theme an app
@@ -79,9 +79,14 @@ An app requires a default theme, so that controls have values for the resources 
 ```xaml
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ThemingDemo"
              x:Class="ThemingDemo.App">
     <Application.Resources>
-        <ResourceDictionary Source="Themes/LightTheme.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:LightTheme />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
 ```
@@ -179,10 +184,12 @@ For more information about styling, see [Style apps using XAML](~/user-interface
 
 When a theme is selected at runtime, an app should:
 
-1. Remove the current theme from the app. This is achieved by clearing the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
+1. Remove the current theme from the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 2. Load the selected theme. This is achieved by adding an instance of the selected theme to the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
 Any <xref:Microsoft.Maui.Controls.VisualElement> objects that set properties with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension will then apply the new theme values. This occurs because the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the <xref:Microsoft.Maui.Controls.VisualElement> objects.
+
+Only remove the current theme dictionary. Clearing the `MergedDictionaries` collection also removes other app-level resource dictionaries, such as *Colors.xaml* and *Styles.xaml* in the .NET MAUI app template.
 
 In the sample application, a theme is selected via a modal page that contains a <xref:Microsoft.Maui.Controls.Picker>. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
 
@@ -190,9 +197,13 @@ The following example shows removing the current theme and loading a new theme:
 
 ```csharp
 ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-if (mergedDictionaries != null)
+ResourceDictionary? currentTheme = mergedDictionaries
+    .FirstOrDefault(dictionary => dictionary is LightTheme or DarkTheme);
+
+if (currentTheme != null)
 {
-    mergedDictionaries.Clear();
-    mergedDictionaries.Add(new DarkTheme());
+    mergedDictionaries.Remove(currentTheme);
 }
+
+mergedDictionaries.Add(new DarkTheme());
 ```
