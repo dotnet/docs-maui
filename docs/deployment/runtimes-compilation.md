@@ -192,13 +192,13 @@ are packed inside the `.dll` files.
 - **Disadvantages**: Larger application and download sizes
 
 For Android apps, ReadyToRun is enabled by default in the `Release`
-configuration. The default is partial composite ReadyToRun. Full ReadyToRun
+configuration. The default is composite partial ReadyToRun. Full ReadyToRun
 can be enabled with `MauiEnableFullReadyToRun=true`. It can improve startup or
 runtime performance, but it increases package size, so measure the result for
 your app.
 
-For iOS and Mac Catalyst apps, partial composite ReadyToRun is used in `Debug`
-builds and full composite ReadyToRun is used in `Release` builds. On iOS, the
+For iOS and Mac Catalyst apps, composite partial ReadyToRun is used in `Debug`
+builds and composite full ReadyToRun is used in `Release` builds. On iOS, the
 CoreCLR interpreter is always enabled and executes code where the operating
 system doesn't permit JIT compilation.
 
@@ -299,9 +299,9 @@ The following table summarizes the runtime and compilation strategy used by
 
 | Platform | Debug | Release |
 |---|---|---|
-| **Android** | CoreCLR + JIT | CoreCLR + partial composite ReadyToRun + JIT |
-| **iOS** | CoreCLR + partial composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
-| **Mac Catalyst** | CoreCLR + partial composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
+| **Android** | CoreCLR + JIT | CoreCLR + composite partial ReadyToRun + JIT |
+| **iOS** | CoreCLR + composite partial ReadyToRun + interpreter | CoreCLR + composite full ReadyToRun + interpreter |
+| **Mac Catalyst** | CoreCLR + composite partial ReadyToRun + interpreter | CoreCLR + composite full ReadyToRun + interpreter |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
 
 > [!IMPORTANT]

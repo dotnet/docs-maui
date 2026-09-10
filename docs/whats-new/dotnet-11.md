@@ -483,7 +483,7 @@ For more information, see [Supported platforms](~/supported-platforms.md).
 
 ### CoreCLR runtime
 
-In `Release` builds, the runtime uses partial composite ReadyToRun by default.
+In `Release` builds, the runtime uses composite partial ReadyToRun by default.
 `Debug` builds don't enable ReadyToRun by default.
 
 ### Faster and more reliable Android builds
@@ -599,8 +599,8 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
 Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
 Preview 7, CoreCLR is the only supported runtime for these platforms.
-On iOS and Mac Catalyst, CoreCLR uses partial composite ReadyToRun in `Debug`
-builds and full composite ReadyToRun in `Release` builds. On iOS, the CoreCLR
+On iOS and Mac Catalyst, CoreCLR uses composite partial ReadyToRun in `Debug`
+builds and composite full ReadyToRun in `Release` builds. On iOS, the CoreCLR
 interpreter is always enabled and executes code where the operating system
 doesn't permit JIT compilation.
 For more information, see [CoreCLR is the only runtime](#coreclr-is-the-only-runtime)
