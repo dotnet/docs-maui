@@ -600,9 +600,9 @@ In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
 Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
 Preview 7, CoreCLR is the only supported runtime for these platforms.
 On iOS and Mac Catalyst, CoreCLR uses composite partial ReadyToRun in `Debug`
-builds and composite full ReadyToRun in `Release` builds. On iOS, the CoreCLR
-interpreter is always enabled and executes code where the operating system
-doesn't permit JIT compilation.
+builds and composite full ReadyToRun in `Release` builds. The CoreCLR
+interpreter is always enabled and executes code that isn't precompiled because
+these platforms don't permit JIT compilation.
 For more information, see [CoreCLR is the only runtime](#coreclr-is-the-only-runtime)
 and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 

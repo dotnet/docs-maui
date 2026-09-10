@@ -198,9 +198,9 @@ runtime performance, but it increases package size, so measure the result for
 your app.
 
 For iOS and Mac Catalyst apps, composite partial ReadyToRun is used in `Debug`
-builds and composite full ReadyToRun is used in `Release` builds. On iOS, the
-CoreCLR interpreter is always enabled and executes code where the operating
-system doesn't permit JIT compilation.
+builds and composite full ReadyToRun is used in `Release` builds. The CoreCLR
+interpreter is always enabled and executes code that isn't precompiled because
+these platforms don't permit JIT compilation.
 
 ::: moniker-end
 
@@ -257,11 +257,10 @@ For more information, see [Mono interpreter on iOS and Mac Catalyst](~/macios/in
 
 ### CoreCLR interpreter
 
-CoreCLR includes an interpreter on iOS and Mac Catalyst. On iOS, the
-interpreter is always enabled and executes code where the operating system
-doesn't permit JIT compilation. On Mac Catalyst, it provides a fallback when
-JIT compilation isn't permitted. This behavior is part of the runtime and
-doesn't require an interpreter MSBuild property.
+CoreCLR includes an interpreter on iOS and Mac Catalyst. The interpreter is
+always enabled and executes code that isn't precompiled because these platforms
+don't permit JIT compilation. This behavior is part of the runtime and doesn't
+require an interpreter MSBuild property.
 
 ::: moniker-end
 
