@@ -31,7 +31,7 @@ on mobile and Mac Catalyst platforms.
 
 ::: moniker range=">=net-maui-11.0"
 
-Mono isn't supported for .NET MAUI apps that target .NET 11.
+Mono isn't supported for .NET MAUI apps that target .NET 11+.
 
 ::: moniker-end
 
@@ -51,7 +51,7 @@ also available as an experimental option for Android.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11, CoreCLR is the runtime for .NET MAUI apps on Windows, Android,
+In .NET 11+, CoreCLR is the runtime for .NET MAUI apps on Windows, Android,
 iOS, and Mac Catalyst. NativeAOT is an opt-in alternative for publishing.
 
 ::: moniker-end
@@ -137,8 +137,8 @@ restrictions on the code patterns you can use.
 - **Available on**: .NET MAUI iOS and Mac Catalyst apps when explicitly
   enabled for publishing
 - **Advantages**: Small app size, fast startup, and a single native binary
-- **Disadvantages**: No dynamic code generation or dynamic loading; all code
-  must be trim-safe and AOT-compatible
+- **Disadvantages**: Longer build times, no dynamic code generation or dynamic
+  loading, and all code must be trim-safe and AOT-compatible
 - **MSBuild property**: `<PublishAot>true</PublishAot>`
 
 ::: moniker-end
@@ -148,8 +148,8 @@ restrictions on the code patterns you can use.
 - **Available on**: .NET MAUI iOS and Mac Catalyst apps, and experimentally
   on Android, when explicitly enabled for publishing
 - **Advantages**: Small app size, fast startup, and a single native binary
-- **Disadvantages**: No dynamic code generation or dynamic loading; all code
-  must be trim-safe and AOT-compatible
+- **Disadvantages**: Longer build times, no dynamic code generation or dynamic
+  loading, and all code must be trim-safe and AOT-compatible
 - **MSBuild property**: `<PublishAot>true</PublishAot>`
 
 NativeAOT is a publish-only deployment model. Use `dotnet publish` to produce
@@ -197,7 +197,8 @@ can be enabled with `MauiEnableFullReadyToRun=true`. It can improve startup or
 runtime performance, but it increases package size, so measure the result for
 your app.
 
-For iOS and Mac Catalyst apps, full composite ReadyToRun is used. On iOS, the
+For iOS and Mac Catalyst apps, partial composite ReadyToRun is used in `Debug`
+builds and full composite ReadyToRun is used in `Release` builds. On iOS, the
 CoreCLR interpreter is always enabled and executes code where the operating
 system doesn't permit JIT compilation.
 
@@ -299,12 +300,12 @@ The following table summarizes the runtime and compilation strategy used by
 | Platform | Debug | Release |
 |---|---|---|
 | **Android** | CoreCLR + JIT | CoreCLR + partial composite ReadyToRun + JIT |
-| **iOS** | CoreCLR + full composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
-| **Mac Catalyst** | CoreCLR + full composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
+| **iOS** | CoreCLR + partial composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
+| **Mac Catalyst** | CoreCLR + partial composite ReadyToRun + interpreter | CoreCLR + full composite ReadyToRun + interpreter |
 | **Windows** | CoreCLR + JIT | CoreCLR + JIT + ReadyToRun |
 
 > [!IMPORTANT]
-> Don't set `UseMonoRuntime` to `true` when targeting .NET 11. Mono isn't
+> Don't set `UseMonoRuntime` to `true` when targeting .NET 11+. Mono isn't
 > supported, and setting this property produces a build error.
 
 > [!TIP]
@@ -389,11 +390,11 @@ for production use.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11, CoreCLR is the supported runtime for Android, iOS, and Mac
+In .NET 11+, CoreCLR is the supported runtime for Android, iOS, and Mac
 Catalyst apps unless NativeAOT is explicitly enabled for publishing. NativeAOT
 is an opt-in alternative that doesn't use CoreCLR and remains experimental on
 Android. Don't set
-`UseMonoRuntime=true`; Mono isn't supported for .NET 11, and setting the
+`UseMonoRuntime=true`; Mono isn't supported for .NET 11+, and setting the
 property produces a build error.
 
 ::: moniker-end
@@ -495,6 +496,7 @@ runtime and compilation behavior:
 |---|---|---|
 | `PublishAot` | Enable NativeAOT compilation during `dotnet publish`. | `false` |
 | `MauiEnableFullReadyToRun` | Enable full ReadyToRun for Android CoreCLR apps. | `false` |
+| `PublishTrimmed` | Enable ILLink trimming. | `true` (Release) |
 | `TrimMode` | Set trimming aggressiveness for non-NativeAOT builds. | `partial` |
 
 ::: moniker-end
