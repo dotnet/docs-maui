@@ -479,7 +479,6 @@ compilation behavior:
 |---|---|---|
 | `PublishAot` | Enable NativeAOT compilation. | `false` |
 | `PublishReadyToRun` | Enable ReadyToRun precompilation for CoreCLR. | `true` (Windows Release and applicable CoreCLR builds) |
-| `PublishTrimmed` | Enable ILLink trimming. | `true` (Release) |
 | `TrimMode` | Set trimming aggressiveness (`partial` or `full`). | `partial` |
 | `UseInterpreter` | Enable the Mono interpreter. | `true` (iOS/Mac Catalyst Debug) |
 | `UseMonoRuntime` | Use Mono instead of CoreCLR. | `true` on supported Mono targets |
