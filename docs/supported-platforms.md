@@ -1,7 +1,7 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 04/02/2026
+ms.date: 09/08/2026
 ---
 
 # Supported platforms for .NET MAUI apps
@@ -46,7 +46,8 @@ ms.date: 04/02/2026
 - Windows 11 and Windows 10 version 1809 or higher, using [Windows UI Library (WinUI) 3](/windows/apps/winui/winui3/).
 
 > [!NOTE]
-> Android API levels 21–23 are still supported when using the Mono runtime. For more information, see [Minimum supported Android API](whats-new/dotnet-11.md#minimum-supported-android-api).
+> .NET MAUI apps that target .NET 11 require Android API level 24 or higher.
+> For more information, see [Minimum supported Android API](whats-new/dotnet-11.md#minimum-supported-android-api).
 
 .NET MAUI Blazor apps have the following additional platform requirements:
 
