@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/08/2026
+ms.date: 09/10/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -456,7 +456,8 @@ Starting in .NET 11 Preview 7, the XAML source generator compiles a binding that
 ## .NET for Android
 
 .NET for Android in .NET 11 uses CoreCLR as the supported runtime for
-standard apps. NativeAOT is also available as an opt-in publishing alternative.
+standard apps. NativeAOT is also available as an experimental, opt-in
+publishing alternative.
 This release includes work to improve performance. For more information about
 .NET for Android in .NET 11, see the following release notes:
 
@@ -598,7 +599,10 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
 Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
 Preview 7, CoreCLR is the only supported runtime for these platforms.
-Apple CoreCLR uses ReadyToRun and the CoreCLR interpreter; it doesn't use JIT.
+On iOS and Mac Catalyst, CoreCLR uses composite partial ReadyToRun in `Debug`
+builds and composite full ReadyToRun in `Release` builds. The CoreCLR
+interpreter is always enabled and executes code that isn't precompiled because
+these platforms don't permit JIT compilation.
 For more information, see [CoreCLR is the only runtime](#coreclr-is-the-only-runtime)
 and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 
