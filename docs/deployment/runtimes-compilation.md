@@ -439,7 +439,7 @@ CoreCLR or NativeAOT:
 - `lib/arm64-v8a/libassemblies.arm64-v8a.so` — Packed MSIL with ReadyToRun
   images
 
-**NativeAOT (experimental):**
+**NativeAOT on Android (experimental):**
 
 - `classes.dex` — Java/Kotlin code
 - `lib/arm64-v8a/libhellomaui.so` — Native library containing the runtime,
