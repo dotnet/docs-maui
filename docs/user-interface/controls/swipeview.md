@@ -1,7 +1,7 @@
 ---
 title: "SwipeView"
 description: "The .NET MAUI SwipeView is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture."
-ms.date: 08/30/2024
+ms.date: 09/02/2026
 ---
 
 # SwipeView
@@ -172,6 +172,39 @@ When a `SwipeItem` is tapped, its `Invoked` event fires and is handled by its re
 
 > [!NOTE]
 > When the appearance of a `SwipeItem` is defined only using the `Text` or `IconImageSource` properties, the content is always centered.
+
+::: moniker range=">=net-maui-11.0"
+
+### Set SwipeItem icon and text colors
+
+In .NET 11, `SwipeItem` defines two bindable color properties:
+
+- `IconColor`, of type <xref:Microsoft.Maui.Graphics.Color>, sets an explicit tint for the icon.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, sets the label text color.
+
+Both properties support `AppThemeBinding`. The following example changes the icon, text, and background colors when the app theme changes:
+
+```xaml
+<SwipeItem Text="Delete"
+           IconImageSource="delete.svg"
+           BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+           IconColor="{AppThemeBinding Light=Black, Dark=White}"
+           TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+```
+
+In .NET 11, a non-font icon keeps its authored colors when `IconColor` isn't set. This behavior differs from .NET 10, where .NET MAUI automatically changed non-font icons to white or black to contrast with `BackgroundColor`. Set `IconColor` when your app requires an explicit tint.
+
+When `IconColor` isn't set, a font icon first uses its <xref:Microsoft.Maui.Controls.FontImageSource.Color> value. If that value isn't set, it uses `TextColor`, and then a color that contrasts with `BackgroundColor`.
+
+When `TextColor` isn't set, the label uses a color that contrasts with `BackgroundColor`. The label keeps the platform default color when there is no background color, or when a font icon defines its own color.
+
+Icon color behavior varies by platform:
+
+- **Android, iOS, and Mac Catalyst** apply `IconColor` to font icons and resolved image icons.
+- **Windows** applies `IconColor` only to font icons and packaged-file icons. Packaged-file icons use the color as a monochrome mask. URI, rooted, and stream image sources keep their authored colors.
+- **Tizen** icons keep their authored colors, even when `IconColor` is set.
+
+::: moniker-end
 
 In addition to defining swipe items as `SwipeItem` objects, it's also possible to define custom swipe item views. For more information, see [Custom swipe items](#custom-swipe-items).
 
