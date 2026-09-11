@@ -113,7 +113,6 @@ work together:
   device or emulator to a local port on your machine.
 - The diagnostic tools connect to this local port to collect profiling
   data.
-:::
 ::: moniker-end
 
 ::: moniker range=">=net-maui-11.0"
@@ -177,11 +176,14 @@ communicates with the diagnostic tools:
 ::: moniker range=">=net-maui-11.0"
 CoreCLR includes EventPipe and the diagnostic server. The MSBuild
 `EnableDiagnostics` property does not add a Mono diagnostics library
-to a CoreCLR application. The Android, iOS, and Mac Catalyst SDKs still use
+to a CoreCLR application. The Android and iOS SDKs use
 `EnableDiagnostics` and the `Diagnostic*` properties to preserve
-diagnostic providers in optimized builds and package the diagnostic
-port configuration. Setting a `Diagnostic*` property enables the SDK
-diagnostics configuration.
+diagnostic providers in optimized builds and package their configured
+diagnostic ports. Setting a `Diagnostic*` property enables the SDK
+diagnostics configuration. Mac Catalyst uses the local CoreCLR
+diagnostic endpoint, not the mobile `Diagnostic*` port configuration.
+Where applicable, `EnableDiagnostics` still preserves diagnostic
+providers in optimized builds.
 
 `DOTNET_EnableDiagnostics` is a different setting: it is a runtime
 environment variable. Setting `DOTNET_EnableDiagnostics=0` disables
@@ -208,8 +210,8 @@ runtime diagnostic-port environment variable:
   where the app listens for the router. Keep the iOS simulator and
   physical iOS device workflows separate.
 
-For example, the individual properties can represent this advanced
-runtime configuration:
+`DiagnosticConfiguration` can supply the complete runtime
+configuration directly:
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticConfiguration=10.0.2.2:9000,connect,suspend
@@ -427,11 +429,6 @@ and the trace is recorded. Allow the application to reach its initial
 screen, then press `<Enter>` in the `dotnet-trace` terminal to stop
 recording.
 
-> [!NOTE]
-> The iOS simulator and physical iOS commands use the .NET 11 SDK's
-> custom TCP `listen` topology. Validate the exact address, port,
-> launch order, and matching tool major before publishing this workflow
-> for a final .NET 11 release.
 ::: moniker-end
 
 ### Profiling Runtime Operations
@@ -1056,8 +1053,6 @@ integration scenarios or quick checks.
 
 ## Additional Resources
 
-- [Performance Profiling](~/fundamentals/profiling.md) - The
-  versioned direct-tool guidance in this article
 - [EventPipe][eventpipe] - Runtime tracing infrastructure
 - [Diagnostic ports][diagnostic-port] - Runtime endpoint configuration
 - [.NET MAUI Profiling Wiki][maui-profiling] - Additional advanced
