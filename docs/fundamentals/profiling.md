@@ -288,17 +288,26 @@ dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:
 
 **For a physical iOS device:**
 
-Use the same `net11.0-ios` settings as the iOS simulator, but run
-`dotnet-trace collect --dsrouter ios` from a macOS development host.
-The `ios` router mode uses the USB-connected physical iOS device.
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+dotnet-trace collect --dsrouter ios
+```
+
+Run these commands from a macOS development host. The `ios` router
+mode uses the USB-connected physical iOS device.
 
 **For Mac Catalyst:**
 
-Use `net11.0-maccatalyst` with the direct local CoreCLR EventPipe
-diagnostic endpoint. Use `dotnet-trace ps` to find the process, then
-run `dotnet-trace collect -p <pid>`. Do not use the iOS TCP settings or
-`dotnet-dsrouter` for Mac Catalyst. Instruments remains an alternative
-for native and system profiling.
+```sh
+dotnet build -t:Run -c Release -f net11.0-maccatalyst
+dotnet-trace ps
+dotnet-trace collect -p <pid>
+```
+
+Mac Catalyst uses the direct local CoreCLR EventPipe diagnostic
+endpoint. Do not use the iOS TCP settings or `dotnet-dsrouter` for Mac
+Catalyst. Instruments remains an alternative for native and system
+profiling.
 
 **For Windows:**
 
