@@ -389,7 +389,9 @@ option to specify a different output directory.
 ::: moniker-end
 
 ::: moniker range=">=net-maui-11.0"
-Start the collector before starting the application:
+Start the collector before starting the application. For each target,
+run the collector command in one terminal and the build command in
+another terminal.
 
 **Android emulator:**
 
@@ -397,28 +399,7 @@ Start the collector before starting the application:
 dotnet-trace collect --dsrouter android-emu --format speedscope
 ```
 
-**Physical Android device:**
-
-```sh
-dotnet-trace collect --dsrouter android --format speedscope
-```
-
-**iOS simulator:**
-
-```sh
-dotnet-trace collect --dsrouter ios-sim --format speedscope
-```
-
-**Physical iOS device:**
-
-```sh
-dotnet-trace collect --dsrouter ios --format speedscope
-```
-
-In another terminal, build and deploy the application with
-`DiagnosticSuspend=true`:
-
-**Android emulator:**
+In another terminal, run:
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
@@ -427,10 +408,22 @@ dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 
 **Physical Android device:**
 
 ```sh
+dotnet-trace collect --dsrouter android --format speedscope
+```
+
+In another terminal, run:
+
+```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
 ```
 
 **iOS simulator:**
+
+```sh
+dotnet-trace collect --dsrouter ios-sim --format speedscope
+```
+
+In another terminal, run:
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=listen
@@ -438,15 +431,43 @@ dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:
 
 **Physical iOS device:**
 
-Use the same `net11.0-ios` settings as the iOS simulator and
-`dotnet-trace collect --dsrouter ios` from a macOS development host.
-Keep the physical-device and simulator workflows separate.
+```sh
+dotnet-trace collect --dsrouter ios --format speedscope
+```
 
-The application pauses at the splash screen until the diagnostic tool
-connects. After the connection is established, the application starts
-and the trace is recorded. Allow the application to reach its initial
-screen, then press `<Enter>` in the `dotnet-trace` terminal to stop
-recording.
+In another terminal, run:
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=listen
+```
+
+Run the physical iOS workflow from a macOS development host.
+
+**Mac Catalyst:**
+
+Mac Catalyst uses the direct local CoreCLR diagnostic endpoint rather
+than the mobile TCP and `Diagnostic*` configuration. Start the
+application, then find its process and attach from another terminal:
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-maccatalyst
+```
+
+In another terminal, run:
+
+```sh
+dotnet-trace ps
+dotnet-trace collect -p <pid> --format speedscope
+```
+
+This direct-attach workflow begins after the application launches; do
+not use `dotnet-dsrouter` for Mac Catalyst.
+
+For Android and iOS, the application pauses at the splash screen until
+the diagnostic tool connects. After the connection is established, the
+application starts and the trace is recorded. Allow the application to
+reach its initial screen, then press `<Enter>` in the `dotnet-trace`
+terminal to stop recording.
 
 ::: moniker-end
 
