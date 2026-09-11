@@ -1,7 +1,7 @@
 ---
 title: "Performance Profiling"
 description: "Learn how to profile the performance of your .NET MAUI app."
-ms.date: 06/20/2025
+ms.date: 09/11/2026
 ---
 
 # Performance Profiling
@@ -25,16 +25,29 @@ approaches.
 
 > [!IMPORTANT]
 > Always profile `Release` builds for accurate performance
-> measurements. `Debug` builds use the interpreter (`UseInterpreter=true`)
-> for C# hot reload support, which significantly impacts performance
-> and produces unrealistic results.
+> measurements.
+
+::: moniker range="<=net-maui-10.0"
+> `Debug` builds use the interpreter (`UseInterpreter=true`) for C#
+> hot reload support, which significantly impacts performance and
+> produces unrealistic results.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+> .NET MAUI applications normally use CoreCLR on Android, iOS, Mac
+> Catalyst, and Windows in .NET 11 and later. NativeAOT has different
+> diagnostics limitations; see [NativeAOT deployment](~/deployment/nativeaot.md).
+> For runtime selection, see [Runtime and compilation](~/deployment/runtimes-compilation.md).
+::: moniker-end
 
 ## Prerequisites
 
 ### Installing Diagnostic Tools
 
-To profile .NET MAUI applications on iOS and Android, you need to
-install the following .NET global tools:
+To profile .NET MAUI applications with the .NET diagnostic tools, you
+need to install the following .NET global tools. The router is used
+for the Android and iOS TCP workflows; Mac Catalyst and Windows use
+their local diagnostic endpoints.
 
 - [`dotnet-trace`][dotnet-trace] - Collects CPU traces and performance
   data
@@ -58,18 +71,24 @@ Tool 'dotnet-gcdump' was successfully installed.
 ```
 
 > [!NOTE]
-> You need at least version 9.0.652701 of all the diagnostic tools to
-> use the features described in this guide. Check
+> Use current compatible versions of all three tools. When matching
+> .NET 11-major tools are available, use those versions; otherwise use
+> the latest compatible stable versions. Check
 > [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
 > [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
 > and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
 > on NuGet for the latest versions.
 
-Starting with version 9.0.652701, both `dotnet-trace` and
-`dotnet-gcdump` include a `--dsrouter` option that automatically
-launches and manages `dotnet-dsrouter` as a subprocess. This
-eliminates the need to run `dotnet-dsrouter` separately, significantly
-simplifying the profiling workflow.
+The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
+automatically launches and manages `dotnet-dsrouter` as a subprocess.
+If the integrated option cannot find the router, install
+`dotnet-dsrouter` globally or place it alongside the diagnostic tool.
+
+> [!WARNING]
+> Diagnostic TCP endpoints are development and test interfaces. Keep
+> them on loopback or use device forwarding, and never expose them to
+> an untrusted network. The endpoints are unauthenticated and
+> unencrypted.
 
 See the .NET Conf session, [.NET Diagnostic Tooling with
 AI][dotnetconf], for a live demo of using these tools.
@@ -81,31 +100,49 @@ AI][dotnetconf], for a live demo of using these tools.
 
 ### How the Tools Work Together
 
+::: moniker range="<=net-maui-10.0"
 To use these diagnostic tools on iOS and Android, several components
 work together:
 
 - The .NET global tools (`dotnet-trace`, `dotnet-gcdump`,
-  `dotnet-dsrouter`) run on your development machine
+  `dotnet-dsrouter`) run on your development machine.
 - The Mono diagnostic component
   (`libmono-component-diagnostics_tracing.so`) is included in your
-  application package
+  application package.
 - `dotnet-dsrouter` forwards the diagnostic connection from the remote
-  device or emulator to a local port on your machine
+  device or emulator to a local port on your machine.
 - The diagnostic tools connect to this local port to collect profiling
-  data
+  data.
+:::
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+The .NET global tools run on your development machine. EventPipe and
+the diagnostic server are CoreCLR runtime components, so a CoreCLR
+application does not include the Mono diagnostics component.
+
+Android and iOS applications use the configured TCP diagnostic port.
+`dotnet-dsrouter` bridges that port to the local diagnostic endpoint
+used by `dotnet-trace` or `dotnet-gcdump`. Use the `android-emu` or
+`android` router mode for Android, and the `ios-sim` or `ios` router
+mode for iOS. Mac Catalyst uses a direct local CoreCLR Unix domain
+socket endpoint and does not use the iOS TCP or `--dsrouter` workflow.
+Windows uses the normal local CoreCLR diagnostic endpoint and does not
+require `dotnet-dsrouter`.
+::: moniker-end
 
 The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
 automatically handles the complexity of starting `dotnet-dsrouter` and
-coordinating the connection.
+coordinating the connection where a router is required.
 
 ## Building Your Application for Profiling
 
-To enable profiling, your application must be built with special
-MSBuild properties that include the diagnostic components and
-configure the connection to the profiling tools.
+To enable profiling, your application must be built with the
+diagnostic-port settings required by the target platform.
 
 ### Understanding Diagnostic Properties
 
+::: moniker range="<=net-maui-10.0"
 The following MSBuild properties control how your application
 communicates with the diagnostic tools:
 
@@ -133,9 +170,54 @@ communicates with the diagnostic tools:
   works on Android, iOS, and Mac Catalyst.
 
 > [!NOTE]
-> When using CoreCLR (currently experimental on Android, with iOS
-> support planned), the diagnostic component is built into the runtime
-> and `EnableDiagnostics` is not required.
+> The diagnostic component is intended for development and testing
+> builds only.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+CoreCLR includes EventPipe and the diagnostic server. The MSBuild
+`EnableDiagnostics` property does not add a Mono diagnostics library
+to a CoreCLR application. The Android, iOS, and Mac Catalyst SDKs still use
+`EnableDiagnostics` and the `Diagnostic*` properties to preserve
+diagnostic providers in optimized builds and package the diagnostic
+port configuration. Setting a `Diagnostic*` property enables the SDK
+diagnostics configuration.
+
+`DOTNET_EnableDiagnostics` is a different setting: it is a runtime
+environment variable. Setting `DOTNET_EnableDiagnostics=0` disables
+the runtime diagnostic server and related diagnostics. Do not confuse
+this runtime variable with the `EnableDiagnostics` MSBuild property.
+
+The following properties configure `DOTNET_DiagnosticPorts`, the
+runtime diagnostic-port environment variable:
+
+- **`DiagnosticConfiguration`**: Supplies the complete
+  `DOTNET_DiagnosticPorts` value when advanced configuration is
+  required.
+- **`DiagnosticAddress`**: Supplies the address used by the
+  diagnostic-port configuration. Use `10.0.2.2` for an Android
+  emulator and `127.0.0.1` for Android device forwarding or iOS.
+- **`DiagnosticPort`**: Supplies the TCP port number, such as `9000`.
+  The app and router must use the same free port.
+- **`DiagnosticSuspend`**: When `true`, the runtime waits for the
+  diagnostic connection before startup continues. Use it for startup
+  tracing. When `false`, the application starts immediately and a
+  tool can attach later.
+- **`DiagnosticListenMode`**: Uses `connect` for Android, where the
+  app connects to the router. The .NET 11 iOS SDK uses `listen`,
+  where the app listens for the router. Keep the iOS simulator and
+  physical iOS device workflows separate.
+
+For example, the individual properties can represent this advanced
+runtime configuration:
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticConfiguration=10.0.2.2:9000,connect,suspend
+```
+
+Use the individual properties in the examples below when they make
+the platform topology easier to read.
+::: moniker-end
 
 ### Build Command Examples
 
@@ -143,6 +225,7 @@ When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
 option, the tool displays instructions for building your application.
 For example:
 
+::: moniker range="<=net-maui-10.0"
 **For Android emulators:**
 
 ```sh
@@ -170,6 +253,52 @@ dotnet build -t:Run -c Release -f net10.0-ios -p:DiagnosticAddress=127.0.0.1 -p:
 > used for development and testing. Never release builds with
 > diagnostic components enabled to production, as they can expose
 > endpoints with deeper insights into your application's code.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+**For an Android emulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**For a physical Android device:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**For an iOS simulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+```
+
+**For a physical iOS device:**
+
+Use the same `net11.0-ios` settings as the iOS simulator, but run
+`dotnet-trace collect --dsrouter ios` from a macOS development host.
+The `ios` router mode uses the USB-connected physical iOS device.
+
+**For Mac Catalyst:**
+
+Use `net11.0-maccatalyst` with the direct local CoreCLR EventPipe
+diagnostic endpoint. Use `dotnet-trace ps` to find the process, then
+run `dotnet-trace collect -p <pid>`. Do not use the iOS TCP settings or
+`dotnet-dsrouter` for Mac Catalyst. Instruments remains an alternative
+for native and system profiling.
+
+**For Windows:**
+
+Use the normal local CoreCLR diagnostic endpoint. Windows does not
+require `DiagnosticConfiguration`, the mobile `Diagnostic*` properties,
+or `dotnet-dsrouter`.
+
+> [!IMPORTANT]
+> Applications built with diagnostic-port settings should only be used
+> for development and testing. Keep diagnostic endpoints on loopback or
+> behind device forwarding. They are unauthenticated and unencrypted.
+::: moniker-end
 
 ## Profiling CPU Usage
 
@@ -187,6 +316,8 @@ the `-p:DiagnosticSuspend` MSBuild property.
 To capture accurate startup time measurements, suspend application
 startup until the profiler is ready. This ensures you capture the
 entire startup sequence from the very beginning.
+
+::: moniker range="<=net-maui-10.0"
 
 1. In one terminal, start `dotnet-trace` with the `--dsrouter` option:
 
@@ -234,11 +365,82 @@ entire startup sequence from the very beginning.
 The trace file will be saved to the current directory. Use the `-o`
 option to specify a different output directory.
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+Start the collector before starting the application:
+
+**Android emulator:**
+
+```sh
+dotnet-trace collect --dsrouter android-emu --format speedscope
+```
+
+**Physical Android device:**
+
+```sh
+dotnet-trace collect --dsrouter android --format speedscope
+```
+
+**iOS simulator:**
+
+```sh
+dotnet-trace collect --dsrouter ios-sim --format speedscope
+```
+
+**Physical iOS device:**
+
+```sh
+dotnet-trace collect --dsrouter ios --format speedscope
+```
+
+In another terminal, build and deploy the application with
+`DiagnosticSuspend=true`:
+
+**Android emulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+```
+
+**Physical Android device:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=connect
+```
+
+**iOS simulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=true -p:DiagnosticListenMode=listen
+```
+
+**Physical iOS device:**
+
+Use the same `net11.0-ios` settings as the iOS simulator and
+`dotnet-trace collect --dsrouter ios` from a macOS development host.
+Keep the physical-device and simulator workflows separate.
+
+The application pauses at the splash screen until the diagnostic tool
+connects. After the connection is established, the application starts
+and the trace is recorded. Allow the application to reach its initial
+screen, then press `<Enter>` in the `dotnet-trace` terminal to stop
+recording.
+
+> [!NOTE]
+> The iOS simulator and physical iOS commands use the .NET 11 SDK's
+> custom TCP `listen` topology. Validate the exact address, port,
+> launch order, and matching tool major before publishing this workflow
+> for a final .NET 11 release.
+::: moniker-end
+
 ### Profiling Runtime Operations
 
 To profile specific operations during runtime (such as button taps,
 navigation, or scrolling), use `-p:DiagnosticSuspend=false` and
 connect the profiler after the application has launched.
+
+::: moniker range="<=net-maui-10.0"
 
 1. Build and deploy your application with `-p:DiagnosticSuspend=false`:
 
@@ -257,6 +459,48 @@ connect the profiler after the application has launched.
 4. Perform the operation you want to profile.
 
 5. Press `<Enter>` to stop the trace.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+Build and deploy the application with `DiagnosticSuspend=false`, then
+start the appropriate collector after the application has launched.
+The app and router must use the same address, port, and listen mode.
+
+**Android emulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet-trace collect --dsrouter android-emu --format speedscope
+```
+
+**Physical Android device:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet-trace collect --dsrouter android --format speedscope
+```
+
+**iOS simulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+dotnet-trace collect --dsrouter ios-sim --format speedscope
+```
+
+**Physical iOS device:**
+
+Use the same `net11.0-ios` settings as the iOS simulator and run
+`dotnet-trace collect --dsrouter ios` from a macOS development host.
+Perform the operation you want to profile, then press `<Enter>` to
+stop the trace.
+
+For Mac Catalyst, use the direct local CoreCLR EventPipe diagnostic
+endpoint. Run `dotnet-trace ps` to find the process, then use
+`dotnet-trace collect -p <pid>`. Do not use the iOS TCP or `--dsrouter`
+commands. For Windows, use `dotnet-trace` against the normal local
+CoreCLR diagnostic endpoint.
+::: moniker-end
 
 This approach produces a more focused trace file containing only the
 specific operation you're investigating.
@@ -320,24 +564,35 @@ Windows that can profile .NET MAUI applications with minimal setup.
 
 To profile with PerfView:
 
-1. Build your application for `Release` with [ReadyToRun
-   enabled][r2r]:
+Build your application for `Release` with [ReadyToRun enabled][r2r]:
 
-   ```sh
-   dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true
-   ```
+::: moniker range="<=net-maui-10.0"
 
-2. Launch PerfView and select `Collect` > `Collect`.
+```sh
+dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true
+```
 
-3. In the **Command** field, filter on your app's executable (for
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```sh
+dotnet publish -f net11.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true
+```
+
+::: moniker-end
+
+1. Launch PerfView and select `Collect` > `Collect`.
+
+2. In the **Command** field, filter on your app's executable (for
    example, `hellomaui.exe`).
 
-4. Click **Start Collection**, then manually launch your app.
+3. Click **Start Collection**, then manually launch your app.
 
-5. Click **Stop Collection** once your app has completed the operation
+4. Click **Stop Collection** once your app has completed the operation
    you want to profile.
 
-6. Open **CPU Stacks** to view timing information, or use the **Flame
+5. Open **CPU Stacks** to view timing information, or use the **Flame
    Graph** tab for a graphical view.
 
 You can also save the PerfView data in SpeedScope format (`File` >
@@ -382,10 +637,28 @@ measurements.
 For unpackaged Windows applications, you can use `dotnet-trace`
 directly:
 
+::: moniker range="<=net-maui-10.0"
+
 ```sh
 dotnet publish -f net10.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true -p:WindowsPackageType=None
-dotnet trace collect --format speedscope -- bin\Release\net10.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
+dotnet-trace collect --format speedscope -- bin\Release\net10.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```sh
+dotnet publish -f net11.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=true -p:WindowsPackageType=None
+dotnet-trace collect --format speedscope -- bin\Release\net11.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
+```
+
+This child-process form is suitable for an unpackaged Windows
+application. For a packaged MSIX application, activate the app first
+and attach to its process instead of using the child-process command.
+Windows does not require `dotnet-dsrouter` for either workflow.
+
+::: moniker-end
 
 ## Profiling on iOS and Mac Catalyst with Instruments
 
@@ -397,18 +670,42 @@ and performance.
 
 1. Build your app for `Release` with symbols preserved:
 
+   ::: moniker range="<=net-maui-10.0"
+
    ```sh
    dotnet build -c Release -f net10.0-ios -p:NoSymbolStrip=true
    ```
+
+   ::: moniker-end
+
+   ::: moniker range=">=net-maui-11.0"
+
+   ```sh
+   dotnet build -c Release -f net11.0-ios -p:NoSymbolStrip=true
+   ```
+
+   ::: moniker-end
 
    The `NoSymbolStrip=true` property keeps native symbols in the
    executable, making stack traces in Instruments much more helpful.
 
 2. Install the app on your device:
 
+   ::: moniker range="<=net-maui-10.0"
+
    ```sh
    dotnet build -t:Run -c Release -f net10.0-ios -p:NoSymbolStrip=true
    ```
+
+   ::: moniker-end
+
+   ::: moniker range=">=net-maui-11.0"
+
+   ```sh
+   dotnet build -t:Run -c Release -f net11.0-ios -p:NoSymbolStrip=true
+   ```
+
+   ::: moniker-end
 
 3. Launch Instruments (from Xcode or by running `open -a Instruments`
    in Terminal).
@@ -435,14 +732,28 @@ documentation on [Reducing Your App's Launch Time][apple-launch].
 
 [apple-launch]: https://developer.apple.com/documentation/xcode/reducing-your-app-s-launch-time
 
+::: moniker range=">=net-maui-11.0"
+For Mac Catalyst, Instruments is an alternative for native and system
+profiling. Managed EventPipe profiling uses the direct local CoreCLR
+diagnostic endpoint for the `net11.0-maccatalyst` target. Do not use
+the iOS TCP settings or `dotnet-dsrouter` commands for Mac Catalyst.
+::: moniker-end
+
 ## Profiling Memory Usage
 
 Memory profiling helps you identify memory leaks and understand memory
 allocation patterns in your application. Use `dotnet-gcdump` to create
 snapshots of managed memory.
 
+::: moniker range=">=net-maui-11.0"
+The CoreCLR EventPipe and diagnostic-port instructions in this section
+do not apply to NativeAOT applications. See [NativeAOT
+deployment](~/deployment/nativeaot.md) for its diagnostics limitations.
+::: moniker-end
+
 ### Collecting Memory Dumps
 
+::: moniker range="<=net-maui-10.0"
 To collect a memory dump, use the same `--dsrouter` workflow as
 `dotnet-trace`:
 
@@ -459,6 +770,51 @@ startup. Build your application with `-p:DiagnosticSuspend=false`:
 ```sh
 dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+For Android and iOS, use the same `--dsrouter` workflow as
+`dotnet-trace`. Mac Catalyst uses the direct local CoreCLR endpoint.
+
+**Android emulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**Physical Android device:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+```
+
+**iOS simulator:**
+
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+```
+
+**Physical iOS device:**
+
+Use the same `net11.0-ios` diagnostic properties as the iOS
+simulator, and run the collector from a macOS development host. The
+iOS simulator and physical-device workflows use separate router modes.
+
+After the application is running, collect a dump with the matching
+router mode:
+
+```sh
+dotnet-gcdump collect --dsrouter android-emu
+dotnet-gcdump collect --dsrouter android
+dotnet-gcdump collect --dsrouter ios-sim
+dotnet-gcdump collect --dsrouter ios
+```
+
+For Mac Catalyst, use the direct local CoreCLR endpoint instead of
+`--dsrouter`: run `dotnet-trace ps` to find the process, then use
+`dotnet-gcdump collect -p <pid>`.
+::: moniker-end
 
 Once `dotnet-gcdump` connects, it creates a `*.gcdump` file in the
 current directory. You can open this file in Visual Studio on Windows
@@ -700,12 +1056,16 @@ integration scenarios or quick checks.
 
 ## Additional Resources
 
-- [.NET MAUI Profiling Wiki][maui-profiling] - Comprehensive wiki with
-  advanced scenarios and troubleshooting
+- [Performance Profiling](~/fundamentals/profiling.md) - The
+  versioned direct-tool guidance in this article
+- [EventPipe][eventpipe] - Runtime tracing infrastructure
+- [Diagnostic ports][diagnostic-port] - Runtime endpoint configuration
+- [.NET MAUI Profiling Wiki][maui-profiling] - Additional advanced
+  scenarios and troubleshooting
 - [Android Tracing Guide][android-tracing] - Detailed Android-specific
   profiling instructions
 - [iOS/macOS Profiling Wiki][macios-profiling] - Platform-specific
-  guidance for Apple platforms
+  guidance for iOS, Mac Catalyst, and macOS tooling
 - [.NET Diagnostic Tools Documentation][dotnet-diagnostics] - Official
   documentation for `dotnet-trace`, `dotnet-dsrouter`, and
   `dotnet-gcdump`
@@ -715,5 +1075,7 @@ integration scenarios or quick checks.
 [maui-profiling]: https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps
 [android-tracing]: https://github.com/dotnet/android/blob/main/Documentation/guides/tracing.md
 [macios-profiling]: https://github.com/dotnet/macios/wiki/Profiling
+[eventpipe]: /dotnet/core/diagnostics/eventpipe
+[diagnostic-port]: /dotnet/core/diagnostics/diagnostic-port
 [dotnet-diagnostics]: /dotnet/core/diagnostics/
 [perfview-guide]: https://github.com/microsoft/perfview/blob/main/documentation/Markdown/GettingStarted.md
