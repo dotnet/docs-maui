@@ -71,13 +71,24 @@ Tool 'dotnet-gcdump' was successfully installed.
 ```
 
 > [!NOTE]
-> Use current compatible versions of all three tools. When matching
-> .NET 11-major tools are available, use those versions; otherwise use
-> the latest compatible stable versions. Check
+> ::: moniker range="<=net-maui-10.0"
+> You need at least version 9.0.652701 of all the diagnostic tools to
+> use the features described in this guide. Check
 > [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
 > [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
 > and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
 > on NuGet for the latest versions.
+> ::: moniker-end
+>
+> ::: moniker range=">=net-maui-11.0"
+> You need at least version [10.0.731102](https://www.nuget.org/packages/dotnet-gcdump/10.0.731102 "10.0.731102")
+> of all the diagnostic tools to use the features described in this
+> guide. Check
+> [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
+> [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
+> and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
+> on NuGet for the latest versions.
+> ::: moniker-end
 
 The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
 automatically launches and manages `dotnet-dsrouter` as a subprocess.
@@ -117,8 +128,7 @@ work together:
 
 ::: moniker range=">=net-maui-11.0"
 The .NET global tools run on your development machine. EventPipe and
-the diagnostic server are CoreCLR runtime components, so a CoreCLR
-application does not include the Mono diagnostics component.
+the diagnostic server are CoreCLR runtime components.
 
 Android and iOS applications use the configured TCP diagnostic port.
 `dotnet-dsrouter` bridges that port to the local diagnostic endpoint
@@ -175,15 +185,15 @@ communicates with the diagnostic tools:
 
 ::: moniker range=">=net-maui-11.0"
 CoreCLR includes EventPipe and the diagnostic server. The MSBuild
-`EnableDiagnostics` property does not add a Mono diagnostics library
-to a CoreCLR application. The Android and iOS SDKs use
-`EnableDiagnostics` and the `Diagnostic*` properties to preserve
-diagnostic providers in optimized builds and package their configured
-diagnostic ports. Setting a `Diagnostic*` property enables the SDK
-diagnostics configuration. Mac Catalyst uses the local CoreCLR
-diagnostic endpoint, not the mobile `Diagnostic*` port configuration.
-Where applicable, `EnableDiagnostics` still preserves diagnostic
-providers in optimized builds.
+`EnableDiagnostics` property controls SDK diagnostics configuration.
+The Android and iOS SDKs use `EnableDiagnostics` and the
+`Diagnostic*` properties to preserve diagnostic providers in optimized
+builds and package their configured diagnostic ports. Setting a
+`Diagnostic*` property enables the SDK diagnostics configuration. Mac
+Catalyst uses the local CoreCLR diagnostic endpoint, not the mobile
+`Diagnostic*` port configuration. Where applicable,
+`EnableDiagnostics` still preserves diagnostic providers in optimized
+builds.
 
 `DOTNET_EnableDiagnostics` is a different setting: it is a runtime
 environment variable. Setting `DOTNET_EnableDiagnostics=0` disables
@@ -487,16 +497,31 @@ dotnet-trace collect --dsrouter ios-sim --format speedscope
 
 **Physical iOS device:**
 
-Use the same `net11.0-ios` settings as the iOS simulator and run
-`dotnet-trace collect --dsrouter ios` from a macOS development host.
-Perform the operation you want to profile, then press `<Enter>` to
-stop the trace.
+```sh
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+dotnet-trace collect --dsrouter ios --format speedscope
+```
 
-For Mac Catalyst, use the direct local CoreCLR EventPipe diagnostic
-endpoint. Run `dotnet-trace ps` to find the process, then use
-`dotnet-trace collect -p <pid>`. Do not use the iOS TCP or `--dsrouter`
-commands. For Windows, use `dotnet-trace` against the normal local
-CoreCLR diagnostic endpoint.
+Run this command from a macOS development host.
+
+**Mac Catalyst:**
+
+Use the direct local CoreCLR EventPipe diagnostic endpoint:
+
+```sh
+dotnet-trace ps
+dotnet-trace collect -p <pid> --format speedscope
+```
+
+Do not use the iOS TCP or `--dsrouter` commands.
+
+**Windows:**
+
+Use `dotnet-trace` against the normal local CoreCLR diagnostic endpoint.
+
+After the collector connects for any of these platforms, perform the
+operation you want to profile, then press `<Enter>` in the
+`dotnet-trace` terminal to stop the trace.
 ::: moniker-end
 
 This approach produces a more focused trace file containing only the
@@ -650,12 +675,12 @@ dotnet publish -f net11.0-windows10.0.19041.0 -c Release -p:PublishReadyToRun=tr
 dotnet-trace collect --format speedscope -- bin\Release\net11.0-windows10.0.19041.0\win10-x64\publish\YourApp.exe
 ```
 
+::: moniker-end
+
 This child-process form is suitable for an unpackaged Windows
 application. For a packaged MSIX application, activate the app first
 and attach to its process instead of using the child-process command.
 Windows does not require `dotnet-dsrouter` for either workflow.
-
-::: moniker-end
 
 ## Profiling on iOS and Mac Catalyst with Instruments
 
@@ -771,46 +796,48 @@ dotnet build -t:Run -c Release -f net10.0-android -p:DiagnosticAddress=127.0.0.1
 ::: moniker-end
 
 ::: moniker range=">=net-maui-11.0"
-For Android and iOS, use the same `--dsrouter` workflow as
-`dotnet-trace`. Mac Catalyst uses the direct local CoreCLR endpoint.
+For Android and iOS, use the `--dsrouter` workflow. Mac Catalyst uses
+the direct local CoreCLR endpoint.
 
 **Android emulator:**
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=10.0.2.2 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet-gcdump collect --dsrouter android-emu
 ```
 
 **Physical Android device:**
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=connect
+dotnet-gcdump collect --dsrouter android
 ```
 
 **iOS simulator:**
 
 ```sh
 dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
+dotnet-gcdump collect --dsrouter ios-sim
 ```
 
 **Physical iOS device:**
 
-Use the same `net11.0-ios` diagnostic properties as the iOS
-simulator, and run the collector from a macOS development host. The
-iOS simulator and physical-device workflows use separate router modes.
-
-After the application is running, collect a dump with the matching
-router mode:
-
 ```sh
-dotnet-gcdump collect --dsrouter android-emu
-dotnet-gcdump collect --dsrouter android
-dotnet-gcdump collect --dsrouter ios-sim
+dotnet build -t:Run -c Release -f net11.0-ios -p:DiagnosticAddress=127.0.0.1 -p:DiagnosticPort=9000 -p:DiagnosticSuspend=false -p:DiagnosticListenMode=listen
 dotnet-gcdump collect --dsrouter ios
 ```
 
-For Mac Catalyst, use the direct local CoreCLR endpoint instead of
-`--dsrouter`: run `dotnet-trace ps` to find the process, then use
-`dotnet-gcdump collect -p <pid>`.
+Run the physical iOS workflow from a macOS development host.
+
+**Mac Catalyst:**
+
+Use the direct local CoreCLR endpoint instead of `--dsrouter`:
+
+```sh
+dotnet-trace ps
+dotnet-gcdump collect -p <pid>
+```
+
 ::: moniker-end
 
 Once `dotnet-gcdump` connects, it creates a `*.gcdump` file in the
