@@ -21,14 +21,15 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 
 In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
-## CoreCLR is the only runtime
+## CoreCLR is the default runtime
 
 In .NET 11 Preview 4, CoreCLR became the default runtime on all .NET MAUI
 platforms for projects built with and targeting .NET 11, while Mono remained
-available. Starting in .NET 11 Preview 7, CoreCLR is the only supported
-runtime for .NET 11 applications. This unifies the runtime across .NET MAUI
-and provides benefits for debugging, profiling, Hot Reload, app size, and app
-performance. For a detailed overview of this transition, see the
+available. Starting in .NET 11 Preview 7, CoreCLR became the default runtime
+for .NET 11 applications, while NativeAOT became available as an opt-in
+publishing alternative. This unifies the runtime across .NET MAUI and provides
+benefits for debugging, profiling, Hot Reload, app size, and app performance.
+For a detailed overview of this transition, see the
 [announcement blog post](https://aka.ms/maui-coreclr).
 
 ## Testing
@@ -455,9 +456,9 @@ Starting in .NET 11 Preview 7, the XAML source generator compiles a binding that
 
 ## .NET for Android
 
-.NET for Android in .NET 11 uses CoreCLR as the supported runtime for
-standard apps. NativeAOT is also available as an experimental, opt-in
-publishing alternative.
+.NET for Android in .NET 11 uses CoreCLR as the default runtime for standard
+apps. NativeAOT is also available as an experimental, opt-in publishing
+alternative.
 This release includes work to improve performance. For more information about
 .NET for Android in .NET 11, see the following release notes:
 
@@ -598,12 +599,13 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 
 In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
 Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
-Preview 7, CoreCLR is the only supported runtime for these platforms.
+Preview 7, CoreCLR became the default runtime for these platforms, while
+NativeAOT became available as an opt-in publishing alternative.
 On iOS and Mac Catalyst, CoreCLR uses composite partial ReadyToRun in `Debug`
 builds and composite full ReadyToRun in `Release` builds. The CoreCLR
 interpreter is always enabled and executes code that isn't precompiled because
 these platforms don't permit JIT compilation.
-For more information, see [CoreCLR is the only runtime](#coreclr-is-the-only-runtime)
+For more information, see [CoreCLR is the default runtime](#coreclr-is-the-default-runtime)
 and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 
 Preview 4 also includes a broad reliability and packaging pass across `NSUrlSessionHandler`, MSBuild, the linker, and runtime internals. For the complete list of changes, see the [Preview 4 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview3...release/11.0.1xx-preview4).

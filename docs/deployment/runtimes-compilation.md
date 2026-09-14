@@ -51,8 +51,10 @@ also available as an experimental option for Android.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11+, CoreCLR is the runtime for .NET MAUI apps on Windows, Android,
-iOS, and Mac Catalyst. NativeAOT is an opt-in alternative for publishing.
+In .NET 11+, CoreCLR is the default runtime for .NET MAUI apps on Windows,
+Android, iOS, and Mac Catalyst. NativeAOT is an opt-in alternative for
+publishing on all .NET 11 targets. NativeAOT support is experimental on
+Android.
 
 ::: moniker-end
 
@@ -145,8 +147,8 @@ restrictions on the code patterns you can use.
 
 ::: moniker range=">=net-maui-11.0"
 
-- **Available on**: .NET MAUI iOS and Mac Catalyst apps, and experimentally
-  on Android, when explicitly enabled for publishing
+- **Available on**: All .NET MAUI targets when explicitly enabled for
+  publishing. NativeAOT support is experimental on Android.
 - **Advantages**: Small app size, fast startup, and a single native binary
 - **Disadvantages**: Longer build times, no dynamic code generation or dynamic
   loading, and all code must be trim-safe and AOT-compatible
@@ -179,8 +181,8 @@ frequently used methods at runtime.
 - **MSBuild property**: `<PublishReadyToRun>true</PublishReadyToRun>`
 
 ReadyToRun is enabled by default for .NET MAUI apps on Windows in `Release`
-mode and for Android apps that use CoreCLR (experimental) in `Release` mode. The R2R images
-are packed inside the `.dll` files.
+mode and for Android apps that use CoreCLR (experimental) in `Release` mode.
+The R2R images are packed inside the `.dll` files.
 
 ::: moniker-end
 
@@ -365,7 +367,7 @@ MAUI apps targeting .NET 11:
 | **Startup speed** | Slower | Slower | Fast | Fastest |
 | **App size** | Smaller | Smaller | Larger | Smallest |
 | **Dynamic code** | Full support | Full support | Full support (through either JIT or interpreter) | Not supported |
-| **Diagnostics** | Full | Full | Limited | Limited |
+| **Diagnostics** | Full | Full | Full | Limited |
 
 ::: moniker-end
 
@@ -389,10 +391,9 @@ for production use.
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11+, CoreCLR is the supported runtime for Android, iOS, and Mac
-Catalyst apps unless NativeAOT is explicitly enabled for publishing. NativeAOT
-is an opt-in alternative that doesn't use CoreCLR and remains experimental on
-Android. Don't set
+In .NET 11+, CoreCLR is the default runtime for Android, iOS, and Mac Catalyst
+apps. NativeAOT is an opt-in alternative that doesn't use CoreCLR and is
+experimental on Android. Don't set
 `UseMonoRuntime=true`; Mono isn't supported for .NET 11+, and setting the
 property produces a build error.
 
@@ -436,7 +437,7 @@ CoreCLR or NativeAOT:
 - `lib/arm64-v8a/libcoreclr.so` — CoreCLR runtime
 - `lib/arm64-v8a/libclrjit.so` — CoreCLR JIT compiler
 - `lib/arm64-v8a/libmonodroid.so` — Android-specific runtime startup glue
-- `lib/arm64-v8a/libassemblies.arm64-v8a.so` — Packed MSIL with ReadyToRun
+- `lib/arm64-v8a/libassembly-store.so` — Packed MSIL with ReadyToRun
   images
 
 **NativeAOT on Android (experimental):**
