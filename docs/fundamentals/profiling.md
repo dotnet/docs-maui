@@ -71,24 +71,11 @@ Tool 'dotnet-gcdump' was successfully installed.
 ```
 
 > [!NOTE]
-> ::: moniker range="<=net-maui-10.0"
-> You need at least version 9.0.652701 of all the diagnostic tools to
-> use the features described in this guide. Check
+> Install the latest versions of all the diagnostic tools. Check
 > [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
 > [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
 > and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
 > on NuGet for the latest versions.
-> ::: moniker-end
->
-> ::: moniker range=">=net-maui-11.0"
-> You need at least version [10.0.731102](https://www.nuget.org/packages/dotnet-gcdump/10.0.731102 "10.0.731102")
-> of all the diagnostic tools to use the features described in this
-> guide. Check
-> [dotnet-trace](https://www.nuget.org/packages/dotnet-trace/),
-> [dotnet-dsrouter](https://www.nuget.org/packages/dotnet-dsrouter/),
-> and [dotnet-gcdump](https://www.nuget.org/packages/dotnet-gcdump/)
-> on NuGet for the latest versions.
-> ::: moniker-end
 
 The `--dsrouter` option in `dotnet-trace` and `dotnet-gcdump`
 automatically launches and manages `dotnet-dsrouter` as a subprocess.
@@ -151,7 +138,6 @@ diagnostic-port settings required by the target platform.
 
 ### Understanding Diagnostic Properties
 
-::: moniker range="<=net-maui-10.0"
 The following MSBuild properties control how your application
 communicates with the diagnostic tools:
 
@@ -173,27 +159,19 @@ communicates with the diagnostic tools:
   connects to `dotnet-dsrouter`), or `listen` for iOS (the app listens
   for `dotnet-dsrouter` to connect to it).
 
-- **`EnableDiagnostics`**: When `true`, includes the Mono diagnostic
-  component in the application package. This is implicitly set when
-  setting any of the `Diagnostic*` MSBuild properties. This property
-  works on Android, iOS, and Mac Catalyst.
+- **`EnableDiagnostics`**: Controls SDK diagnostics configuration. On
+  Android and iOS, setting this property or any `Diagnostic*` property
+  preserves diagnostic providers in optimized builds and packages the
+  configured diagnostic ports. In Mono-based applications, it also
+  includes the Mono diagnostics component in the application package.
+  For CoreCLR applications, EventPipe and the diagnostic server are
+  built into the runtime, so this property does not add a Mono
+  diagnostics component. Mac Catalyst uses the local CoreCLR diagnostic
+  endpoint rather than the mobile `Diagnostic*` port configuration.
 
 > [!NOTE]
 > The diagnostic component is intended for development and testing
 > builds only.
-::: moniker-end
-
-::: moniker range=">=net-maui-11.0"
-CoreCLR includes EventPipe and the diagnostic server. The MSBuild
-`EnableDiagnostics` property controls SDK diagnostics configuration.
-The Android and iOS SDKs use `EnableDiagnostics` and the
-`Diagnostic*` properties to preserve diagnostic providers in optimized
-builds and package their configured diagnostic ports. Setting a
-`Diagnostic*` property enables the SDK diagnostics configuration. Mac
-Catalyst uses the local CoreCLR diagnostic endpoint, not the mobile
-`Diagnostic*` port configuration. Where applicable,
-`EnableDiagnostics` still preserves diagnostic providers in optimized
-builds.
 
 `DOTNET_EnableDiagnostics` is a different setting: it is a runtime
 environment variable. Setting `DOTNET_EnableDiagnostics=0` disables
@@ -223,19 +201,24 @@ runtime diagnostic-port environment variable:
 `DiagnosticConfiguration` can supply the complete runtime
 configuration directly:
 
+::: moniker range=">=net-maui-11.0"
+
 ```sh
 dotnet build -t:Run -c Release -f net11.0-android -p:DiagnosticConfiguration=10.0.2.2:9000,connect,suspend
 ```
 
+::: moniker-end
+
 Use the individual properties in the examples below when they make
 the platform topology easier to read.
-::: moniker-end
 
 ### Build Command Examples
 
 When you run `dotnet-trace` or `dotnet-gcdump` with the `--dsrouter`
 option, the tool displays instructions for building your application.
-For example:
+The diagnostic properties apply to both .NET 10 and .NET 11. The
+examples are versioned because the target frameworks and platform
+workflows differ. For example:
 
 ::: moniker range="<=net-maui-10.0"
 **For Android emulators:**
@@ -784,12 +767,10 @@ documentation on [Reducing Your App's Launch Time][apple-launch].
 
 [apple-launch]: https://developer.apple.com/documentation/xcode/reducing-your-app-s-launch-time
 
-::: moniker range=">=net-maui-11.0"
 For Mac Catalyst, Instruments is an alternative for native and system
 profiling. Managed EventPipe profiling uses the direct local CoreCLR
-diagnostic endpoint for the `net11.0-maccatalyst` target. Do not use
-the iOS TCP settings or `dotnet-dsrouter` commands for Mac Catalyst.
-::: moniker-end
+diagnostic endpoint for the Mac Catalyst target. Do not use the iOS TCP
+settings or `dotnet-dsrouter` commands for Mac Catalyst.
 
 ## Profiling Memory Usage
 
@@ -797,11 +778,9 @@ Memory profiling helps you identify memory leaks and understand memory
 allocation patterns in your application. Use `dotnet-gcdump` to create
 snapshots of managed memory.
 
-::: moniker range=">=net-maui-11.0"
 The CoreCLR EventPipe and diagnostic-port instructions in this section
 do not apply to NativeAOT applications. See [NativeAOT
 deployment](~/deployment/nativeaot.md) for its diagnostics limitations.
-::: moniker-end
 
 ### Collecting Memory Dumps
 
