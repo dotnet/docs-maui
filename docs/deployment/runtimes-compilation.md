@@ -179,7 +179,7 @@ frequently used methods at runtime.
 - **MSBuild property**: `<PublishReadyToRun>true</PublishReadyToRun>`
 
 ReadyToRun is enabled by default for .NET MAUI apps on Windows in `Release`
-mode and for Android apps that use CoreCLR in `Release` mode. The R2R images
+mode and for Android apps that use CoreCLR (experimental) in `Release` mode. The R2R images
 are packed inside the `.dll` files.
 
 ::: moniker-end
