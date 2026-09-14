@@ -367,7 +367,7 @@ MAUI apps targeting .NET 11:
 | **Startup speed** | Slower | Slower | Fast | Fastest |
 | **App size** | Smaller | Smaller | Larger | Smallest |
 | **Dynamic code** | Full support | Full support | Full support (through either JIT or interpreter) | Not supported |
-| **Diagnostics** | Full | Full | Full | Limited |
+| **Diagnostics** | Full | Full | Limited | Limited |
 
 ::: moniker-end
 
