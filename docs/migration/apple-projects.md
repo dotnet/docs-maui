@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.iOS project migration"
 description: "Learn how to migrate a Xamarin.iOS, Xamarin.Mac, or Xamarin.tvOS project to a .NET project."
-ms.date: 02/15/2023
+ms.date: 09/16/2026
 ---
 
 # Xamarin Apple project migration
@@ -44,6 +44,13 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 | `ProductDefinition` | The path to the product definition file to use when packaging. | | Copy |
 | `MtouchEnableSGenConc` | | | Rename to `EnableSGenConc`. |
 | `EnableSGenConc` | | | Copy |
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> When migrating projects for iOS, macOS, or tvOS to .NET 11, don't copy `$(MtouchEnableSGenConc)` or `$(EnableSGenConc)`. These properties configure Mono's SGen garbage collector and don't apply to CoreCLR.
+
+::: moniker-end
 
 ### Convert to RuntimeIdentifier
 

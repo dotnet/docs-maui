@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.Android project migration"
 description: "Learn how to migrate a Xamarin.Android project to a .NET for Android project."
-ms.date: 02/15/2023
+ms.date: 09/16/2026
 ---
 
 # Xamarin.Android project migration
@@ -157,6 +157,8 @@ In .NET for Android projects by default, `Debug` builds don't use the linker, an
 
 ## Ahead-of-Time compilation
 
+::: moniker range="<=net-maui-10.0"
+
 `$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET for Android projects. However, this property was deprecated in .NET 7.
 
 Release builds default to the following AOT property values:
@@ -178,6 +180,16 @@ To disable AOT, you need to explicitly set the `$(RunAOTCompilation)` and `$(And
   <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
 </PropertyGroup>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The `$(RunAOTCompilation)`, `$(AotAssemblies)`, and `$(AndroidEnableProfiledAot)` properties configure Mono AOT and shouldn't be carried into a .NET 11 CoreCLR project.
+
+Normal .NET 11 Android `Release` builds use the supported CoreCLR ReadyToRun path. Composite partial ReadyToRun is enabled by default. You can set `$(MauiEnableFullReadyToRun)` to `true` to enable full ReadyToRun, which can improve startup or runtime performance at the cost of package size. For more information, see [Runtimes and compilation in .NET MAUI](../deployment/runtimes-compilation.md#readytorun-r2r).
+
+::: moniker-end
 
 ## Supported encodings
 
