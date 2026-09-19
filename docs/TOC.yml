@@ -1282,6 +1282,8 @@
           href: deployment/index.md
         - name: Improve app performance
           href: deployment/performance.md
+        - name: Performance profiling
+          href: fundamentals/profiling.md
         - name: Runtimes and compilation
           href: deployment/runtimes-compilation.md
         - name: iOS
