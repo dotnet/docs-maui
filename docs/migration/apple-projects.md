@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.iOS project migration"
 description: "Learn how to migrate a Xamarin.iOS, Xamarin.Mac, or Xamarin.tvOS project to a .NET project."
-ms.date: 09/16/2026
+ms.date: 09/24/2026
 ---
 
 # Xamarin Apple project migration
@@ -42,8 +42,8 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 | `PackageSigningKey` | Specifies the code signing key to sign the package. | | Copy |
 | `PackagingExtraArgs` | Specifies the extra arguments to the packaging tool. | | Copy |
 | `ProductDefinition` | The path to the product definition file to use when packaging. | | Copy |
-| `MtouchEnableSGenConc` | | | Rename to `EnableSGenConc`. |
-| `EnableSGenConc` | | | Copy |
+| `MtouchEnableSGenConc` | | | For .NET 10 and earlier only, rename to `EnableSGenConc`. |
+| `EnableSGenConc` | | | For .NET 10 and earlier only, copy. |
 
 ::: moniker range=">=net-maui-11.0"
 
