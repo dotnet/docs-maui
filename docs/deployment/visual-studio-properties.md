@@ -506,7 +506,7 @@ Miscellaneous options for building an Android app.
 
 ::: moniker range=">=net-maui-11.0"
 
-The **AOT**, **LLVM**, **Startup Tracing**, and **Garbage Collection** controls configure the Mono runtime and aren't applicable to .NET 11 Android projects, which use CoreCLR. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
+The **AOT**, **LLVM**, **Startup Tracing**, and **Garbage Collection** controls configure the Mono runtime and aren't applicable to .NET 11 Android projects, which use CoreCLR by default or NativeAOT when opted in. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
 
 ::: moniker-end
 
