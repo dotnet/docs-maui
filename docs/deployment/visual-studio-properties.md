@@ -1,7 +1,7 @@
 ---
 title: "Project property settings in Visual Studio"
 description: "Describes the Visual Studio project properties available to a .NET MAUI app. The properties and settings are related to building the app, configuring debug options, and other settings related to building the application for Windows, Android, and iOS."
-ms.date: 09/17/2024
+ms.date: 09/16/2026
 ---
 
 # Project configuration for .NET MAUI apps
@@ -480,6 +480,8 @@ Miscellaneous options for building an Android app.
 
   Selects which debugger to use. The default is `.NET (Xamarin)`, which is used for managed code. The C++ debugger can be selected to debug native libraries used by the app.
 
+::: moniker range="<=net-maui-10.0"
+
 - **AOT**
 
   Enables Ahead-of-Time (AOT) compilation. This can be set for individually for both Debug and Release modes.
@@ -499,6 +501,14 @@ Miscellaneous options for building an Android app.
 - **Garbage Collection**
 
   When enabled, uses the concurrent garbage collector. Defaults to enabled.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The **AOT**, **LLVM**, **Startup Tracing**, and **Garbage Collection** controls configure the Mono runtime and aren't applicable to .NET 11 Android projects, which use CoreCLR by default or NativeAOT when opted in. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
+
+::: moniker-end
 
 - **Enable trimming**
 
@@ -548,6 +558,8 @@ Settings related to building the iOS app.
   - `Link Framework SDKs only` (default)
   - `Link All`
 
+::: moniker range="<=net-maui-10.0"
+
 - **LLVM**
 
   When enabled, uses the LLVM optimized compiler. This can be set for individually for both Debug and Release modes.
@@ -558,13 +570,25 @@ Settings related to building the iOS app.
 
   Performs all 32-bit float operations as 64-bit float operations.
 
+::: moniker-end
+
 - **Symbols**
 
   When enabled, strips native debugging symbols from the output. This is enabled by default.
 
+::: moniker range="<=net-maui-10.0"
+
 - **Garbage collector**
 
   When enabled, uses the concurrent garbage collector. This is disabled by default.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The **LLVM**, **Float operations**, and **Garbage collector** controls configure the Mono runtime and aren't applicable to .NET 11 iOS projects, which use CoreCLR. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
+
+::: moniker-end
 
 - **Additional arguments**
 
