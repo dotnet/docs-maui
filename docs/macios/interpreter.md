@@ -1,19 +1,23 @@
 ---
-title: "Mono interpreter on iOS and Mac Catalyst"
-description: Learn how to enable the Mono interpreter, which lets you use dynamic code generation in your .NET MAUI iOS and ARM64-based Mac Catalyst release builds.
-ms.date: 10/23/2024
+title: "Interpreters on iOS and Mac Catalyst"
+description: Learn how .NET MAUI apps on iOS and Mac Catalyst use the Mono and CoreCLR interpreters.
+ms.date: 09/25/2026
 ---
 
-# Mono interpreter on iOS and Mac Catalyst
+# Interpreters on iOS and Mac Catalyst
+
+::: moniker range="<=net-maui-10.0"
+
+## Mono interpreter
 
 When you compile a .NET Multi-Platform App UI (.NET MAUI) app for iOS or Mac Catalyst, the compiler turns your app code into Microsoft Intermediate Language (MSIL). When you run the iOS app in the simulator, or the Mac Catalyst app, the .NET Common Language Runtime (CLR) compiles the MSIL using a Just in Time (JIT) compiler. At runtime the MSIL is compiled into native code, which can run on the correct architecture for your app.
 
-However, there is a security restriction on iOS, set by Apple, which disallows the execution of dynamically generated code on a device. Similarly, the execution of dynamically generated code is disallowed in iOS apps running on the ARM64 architecture in the simulator, and on Mac Catalyst apps running on the ARM64 architecture. To meet this restriction, iOS and Mac Catalyst apps use an Ahead of Time (AOT) compiler to compile the managed code. This produces a native iOS binary that can be deployed to Apple devices, or a native Mac Catalyst binary.
+However, there is a security restriction on iOS, set by Apple, which disallows the execution of dynamically generated code on a device. Similarly, the execution of dynamically generated code is disallowed in iOS apps running on the ARM64 architecture in the simulator, and on Mac Catalyst apps running on the ARM64 architecture. To meet this restriction, iOS and Mac Catalyst apps use an Ahead of Time (AOT) compiler to compile the managed code. This produces a native iOS binary that can be deployed to iOS devices, or a native Mac Catalyst binary.
 
 AOT provides benefits through a reduction in startup time, and various other performance optimizations. However, it also restricts certain features from being used in your app:
 
 - There's limited generics support. Not every possible generic instantiation can be determined at compile time. Many of the iOS-specific issues encountered in .NET MAUI release builds are due to this limitation.
-- Dynamic code generation isn't allowed. This means that `System.Relection.Emit` is unavailable, there's no support for `System.Runtime.Remoting`, and some uses of the C# [dynamic](/dotnet/csharp/advanced-topics/interop/using-type-dynamic) type aren't permitted.
+- Dynamic code generation isn't allowed. This means that `System.Reflection.Emit` is unavailable, there's no support for `System.Runtime.Remoting`, and some uses of the C# [dynamic](/dotnet/csharp/advanced-topics/interop/using-type-dynamic) type aren't permitted.
 
 When an AOT restriction occurs, a `System.ExecutionEngineException` will be thrown with a message of "Attempting to JIT compile method while running in aot-only mode".
 
@@ -79,7 +83,7 @@ The following example shows how to AOT compile all assemblies except **System.Nu
 > [!IMPORTANT]
 > A stack frame executed by the interpreter won't provide useful information. However, because the interpreter can be disabled on a per-assembly basis, it's possible to have stack frames from some assemblies accurately depicted in crash reports.
 
-Alternatively, use the following example to AOT compile all assemblies, while still allowing the interpreter to perform dynamic code generation:
+Alternatively, use the following example to AOT compile all assemblies, while still allowing the interpreter to execute selected IL:
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -94,3 +98,21 @@ Another common scenario where the interpreter is sometimes required is a .NET MA
     <MtouchInterpreter>-all,MyAssembly</MtouchInterpreter>
 </PropertyGroup>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## CoreCLR interpreter
+
+In .NET 11+, CoreCLR is the runtime for .NET MAUI apps on iOS and Mac Catalyst. .NET 10 doesn't provide CoreCLR for iOS or Mac Catalyst.
+
+For iOS and Mac Catalyst apps, composite partial ReadyToRun is used in `Debug` builds and composite full ReadyToRun is used in `Release` builds. The CoreCLR interpreter is always enabled and executes code that isn't precompiled because these platforms don't permit JIT compilation.
+
+The `partial` and `full` terms describe the ReadyToRun compilation mode. Full ReadyToRun doesn't guarantee that every method is precompiled; the CoreCLR interpreter executes methods that aren't precompiled. This behavior is part of the runtime and doesn't require an interpreter MSBuild property.
+
+`UseInterpreter` and `MtouchInterpreter` are Mono controls for .NET 10 and earlier. They don't configure the CoreCLR interpreter and shouldn't be added to .NET 11+ iOS or Mac Catalyst project files to try to enable or disable it.
+
+NativeAOT remains a separate publish model. It has no JIT compiler or interpreter, and `UseInterpreter` and `MtouchInterpreter` have no effect when NativeAOT is used. For more information, see [Native AOT deployment](~/deployment/nativeaot.md).
+
+::: moniker-end
