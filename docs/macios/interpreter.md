@@ -105,7 +105,7 @@ Another common scenario where the interpreter is sometimes required is a .NET MA
 
 ## CoreCLR interpreter
 
-In .NET 11+, CoreCLR is the runtime for .NET MAUI apps on iOS and Mac Catalyst. .NET 10 doesn't provide CoreCLR for iOS or Mac Catalyst.
+In .NET 11+, CoreCLR is the runtime for .NET MAUI apps on iOS and Mac Catalyst. In .NET 10, Mono is the default runtime on these platforms; experimental CoreCLR opt-in configurations are documented separately.
 
 For iOS and Mac Catalyst apps, composite partial ReadyToRun is used in `Debug` builds and composite full ReadyToRun is used in `Release` builds. The CoreCLR interpreter is always enabled and executes code that isn't precompiled because these platforms don't permit JIT compilation.
 
