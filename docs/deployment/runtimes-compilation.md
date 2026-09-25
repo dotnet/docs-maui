@@ -1,7 +1,7 @@
 ---
 title: "Runtimes and compilation in .NET MAUI"
 description: "Learn about the runtimes and compilation strategies used by .NET MAUI apps, including CoreCLR, NativeAOT, ReadyToRun, and interpreters."
-ms.date: 09/10/2026
+ms.date: 09/25/2026
 ---
 
 # Runtimes and compilation in .NET MAUI
@@ -208,8 +208,10 @@ these platforms don't permit JIT compilation.
 
 *Composite* R2R compiles assemblies together, enabling cross-assembly
 optimizations. *Partial* R2R precompiles selected methods while leaving the
-remaining methods for runtime compilation, while *full* R2R precompiles all
-methods.
+remaining methods for runtime compilation, while *full* R2R precompiles more
+methods but doesn't guarantee that every method is precompiled. Methods that
+aren't precompiled are compiled at runtime by the JIT or interpreter, depending
+on the platform.
 
 For more information, see [ReadyToRun compilation](/dotnet/core/deploying/ready-to-run).
 
@@ -251,7 +253,7 @@ Android, iOS, and Mac Catalyst.
 - **Disadvantages**: Interpreted code runs slower than compiled code
 - **MSBuild property**: `<UseInterpreter>true</UseInterpreter>`
 
-For more information, see [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md).
+For more information, see [Interpreters on iOS and Mac Catalyst](~/macios/interpreter.md).
 
 ::: moniker-end
 
@@ -503,7 +505,7 @@ runtime and compilation behavior:
 ## See also
 
 - [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md)
-- [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md)
+- [Interpreters on iOS and Mac Catalyst](~/macios/interpreter.md)
 - [Trim a .NET MAUI app](trimming.md)
 - [Improve app performance](performance.md)
 - [Native AOT deployment overview](/dotnet/core/deploying/native-aot)
