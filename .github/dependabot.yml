@@ -1,18 +1,21 @@
 version: 2
 updates:
-  # Update GitHub Actions dependencies
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
-    cooldown:
-     default-days: 7
-  - package-ecosystem: "nuget"
-    directories:
-      - "docs/**/snippets/**"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
-    cooldown:
-      default-days: 7
+# Update GitHub action commit SHAs
+- package-ecosystem: "github-actions"
+  directory: "/"
+  groups:
+    github-actions:
+      patterns: ["*"]
+  schedule:
+    interval: "weekly"
+  cooldown:
+   default-days: 7
+# Update NuGet dependencies
+- package-ecosystem: "nuget"
+  directories:
+    - "docs/**/snippets/**"
+  schedule:
+    interval: "weekly"
+  open-pull-requests-limit: 5
+  cooldown:
+    default-days: 7
