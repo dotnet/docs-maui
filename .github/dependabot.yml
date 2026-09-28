@@ -13,9 +13,13 @@ updates:
 # Update NuGet dependencies
 - package-ecosystem: "nuget"
   directories:
-    - "docs/**/snippets/**"
+    - "/docs/**/snippets/**"
   schedule:
     interval: "weekly"
   open-pull-requests-limit: 5
   cooldown:
-    default-days: 7
+    default-days: 7 
+    groups:
+      nuget:
+        patterns: ["*"]
+        group-by: dependency-name
