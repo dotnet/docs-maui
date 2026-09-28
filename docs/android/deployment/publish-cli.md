@@ -1,7 +1,7 @@
 ---
 title: "Publish an Android app using the command line"
 description: "Learn how to publish and sign a .NET MAUI Android app using the command line."
-ms.date: 09/30/2024
+ms.date: 09/28/2026
 ---
 
 # Publish an Android app using the command line
@@ -128,6 +128,8 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 > [!NOTE]
 > For Android apps, `dotnet build` can also be used to build and sign your app. However, AAB and APK files will be created in the *bin\\Release\\net8.0-android* folder rather than the *publish* subfolder. `dotnet build` also defaults to a `Debug` configuration, so the `-c` parameter is required to specify the `Release` configuration.
+>
+> This describes running `dotnet build` from a terminal, not selecting **Build Solution** in Visual Studio. For the Visual Studio workflow to publish a signed APK, see [Publish an Android app for ad-hoc distribution](publish-ad-hoc.md).
 
 ## Define build properties in your project file
 
