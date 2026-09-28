@@ -613,6 +613,8 @@
                 href: /dotnet/android/binding-libs/customizing-bindings/troubleshooting-bindings?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Build apps
               items:
+              - name: .NET MAUI Android build settings
+                href: android/build-configuration.md
               - name: Build process
                 href: /dotnet/android/building-apps/build-process?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: Build targets

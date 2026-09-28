@@ -1,7 +1,7 @@
 ---
 title: "Runtimes and compilation in .NET MAUI"
 description: "Learn about the runtimes and compilation strategies used by .NET MAUI apps, including CoreCLR, NativeAOT, ReadyToRun, and interpreters."
-ms.date: 09/10/2026
+ms.date: 09/28/2026
 ---
 
 # Runtimes and compilation in .NET MAUI
@@ -502,6 +502,7 @@ runtime and compilation behavior:
 
 ## See also
 
+- [Android build settings and diagnostics](~/android/build-configuration.md)
 - [Native AOT deployment on iOS and Mac Catalyst](nativeaot.md)
 - [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md)
 - [Trim a .NET MAUI app](trimming.md)

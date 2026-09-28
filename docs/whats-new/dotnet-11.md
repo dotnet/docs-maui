@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/10/2026
+ms.date: 09/28/2026
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -464,6 +464,11 @@ This release includes work to improve performance. For more information about
 
 - [.NET for Android 11 Preview 1](https://github.com/dotnet/android/releases/)
 - [.NET for Android 11 Preview 3](https://github.com/dotnet/android/releases/)
+
+If you're migrating an Android app from Mono, remove Mono-only AOT and
+assembly-packaging settings rather than treating them as CoreCLR or NativeAOT
+options. For the property and diagnostic changes, see
+[Android build settings and diagnostics](~/android/build-configuration.md).
 
 ### Minimum supported Android API
 
