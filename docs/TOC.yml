@@ -841,6 +841,16 @@
                   href: /dotnet/android/messages/xa1037?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA1038
                   href: /dotnet/android/messages/xa1038?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1042
+                  href: /dotnet/android/messages/xa1042?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1043
+                  href: /dotnet/android/messages/xa1043?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1048
+                  href: /dotnet/android/messages/xa1048?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1049
+                  href: /dotnet/android/messages/xa1049?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA1050
+                  href: /dotnet/android/messages/xa1050?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: "XA2xxx: Linker"
                 items:
                 - name: Overview
@@ -879,6 +889,8 @@
                   href: /dotnet/android/messages/xa4237?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4239
                   href: /dotnet/android/messages/xa4239?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4240
+                  href: /dotnet/android/messages/xa4240?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4241
                   href: /dotnet/android/messages/xa4241?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4242
@@ -897,6 +909,28 @@
                   href: /dotnet/android/messages/xa4248?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4249
                   href: /dotnet/android/messages/xa4249?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4256
+                  href: /dotnet/android/messages/xa4256?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4257
+                  href: /dotnet/android/messages/xa4257?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4258
+                  href: /dotnet/android/messages/xa4258?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4259
+                  href: /dotnet/android/messages/xa4259?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4260
+                  href: /dotnet/android/messages/xa4260?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4261
+                  href: /dotnet/android/messages/xa4261?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4262
+                  href: /dotnet/android/messages/xa4262?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4263
+                  href: /dotnet/android/messages/xa4263?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4264
+                  href: /dotnet/android/messages/xa4264?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4265
+                  href: /dotnet/android/messages/xa4265?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4266
+                  href: /dotnet/android/messages/xa4266?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4301
                   href: /dotnet/android/messages/xa4301?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4302
@@ -925,6 +959,14 @@
                   href: /dotnet/android/messages/xa4314?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
                 - name: XA4315
                   href: /dotnet/android/messages/xa4315?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4323
+                  href: /dotnet/android/messages/xa4323?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4324
+                  href: /dotnet/android/messages/xa4324?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4327
+                  href: /dotnet/android/messages/xa4327?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: XA4328
+                  href: /dotnet/android/messages/xa4328?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
               - name: "XA5xxx: GCC and toolchain"
                 items:
                 - name: Overview
