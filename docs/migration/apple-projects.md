@@ -48,7 +48,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> When migrating projects for iOS, macOS, or tvOS to .NET 11, don't copy `$(MtouchEnableSGenConc)` or `$(EnableSGenConc)`. These properties configure Mono's SGen garbage collector and don't apply to CoreCLR.
+> When migrating projects for iOS, macOS, Mac Catalyst or tvOS to .NET 11, don't copy `$(MtouchEnableSGenConc)` or `$(EnableSGenConc)`. These properties configure Mono's SGen garbage collector and don't apply to CoreCLR.
 
 ::: moniker-end
 
