@@ -586,7 +586,7 @@ Settings related to building the iOS app.
 
 ::: moniker range=">=net-maui-11.0"
 
-The **LLVM**, **Float operations**, and **Garbage collector** controls configure the Mono runtime and aren't applicable to .NET 11 iOS projects, which use CoreCLR. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
+The **LLVM**, **Float operations**, and **Garbage collector** controls configure the Mono runtime and aren't applicable to .NET 11 iOS or Mac Catalyst projects, which use CoreCLR. For supported runtime and compilation options, see [Runtimes and compilation in .NET MAUI](runtimes-compilation.md).
 
 ::: moniker-end
 
