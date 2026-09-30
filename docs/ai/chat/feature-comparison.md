@@ -18,7 +18,7 @@ ms.topic: concept-article
 | System instructions | Can represent system messages | Appends system messages as native instructions |
 | Tools | Can represent tools and function calls; execution semantics depend on provider and middleware | Supports `AIFunction` tools only; native adapter executes them |
 | Structured output | Can request response formats, subject to provider support | Requires a JSON schema; schema-free `ChatResponseFormat.Json` throws |
-| Image input | Can represent image-bearing content; provider support varies | Not in the released package; proposed in the draft Apple 27+ adapter change |
+| Image input | Can represent image-bearing content; provider support varies | Supports images on Apple 27+ with an available vision-capable model; requires a package version containing [dotnet/maui-labs#405](https://github.com/dotnet/maui-labs/pull/405) |
 
 For examples, see [Chat client](../chat.md). For supported input types, options, and availability behavior, see [Chat on Apple platforms](apple.md).
 
@@ -39,7 +39,7 @@ When `TopK` is absent, the native adapter uses greedy sampling. Don't rely on un
 
 ## Message content
 
-`TextContent` and function call/result content are supported. Other unsupported content types fail explicitly. Image input is under development in [dotnet/maui-labs#405](https://github.com/dotnet/maui-labs/pull/405), which is not a released `Microsoft.Maui.Essentials.AI` capability. The draft accepts image `DataContent` and local-file `UriContent` on Apple 27+ with a vision-capable model; HTTP URLs aren't accepted. Do not assume that the currently published package supports images or image generation.
+`TextContent` and function call/result content are supported. Other unsupported content types fail explicitly. On Apple 27+ with an available vision-capable model, the adapter accepts image `DataContent` and local-file `UriContent`. Remote HTTP image URLs aren't accepted, and the adapter doesn't generate images. Use a package version that includes [the image-input implementation](https://github.com/dotnet/maui-labs/pull/405); merging source changes alone doesn't update an older NuGet package.
 
 ## Platform availability
 

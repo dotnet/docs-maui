@@ -31,13 +31,7 @@ The native *word* and *sentence* embedding APIs have different introduction vers
 
 ## NuGet package
 
-Add the following package to your `.csproj`:
-
-```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
-```
-
-Xcode 26 or later is required to build for Apple platforms.
+See [Get started](getting-started.md#install-the-package) to install `Microsoft.Maui.Essentials.AI`. Choose a package version containing the capabilities described in these guides. Xcode 26 or later is required for Apple chat; building with Apple 27 image-input target frameworks requires Xcode 27.
 
 ## See also
 

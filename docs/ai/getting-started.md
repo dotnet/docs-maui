@@ -14,14 +14,10 @@ This page covers installation and service registration. Once services are regist
 Add the NuGet package to your .NET MAUI project:
 
 ```dotnetcli
-dotnet add package Microsoft.Maui.Essentials.AI --version 10.0.50-preview.1.26158.1
+dotnet add package Microsoft.Maui.Essentials.AI --prerelease
 ```
 
-Or add the `PackageReference` directly to your `.csproj`:
-
-```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
-```
+Use a package version that includes the Apple capabilities your app needs. In particular, older previews don't contain [Apple 27 image input](https://github.com/dotnet/maui-labs/pull/405) or the [structured-streaming correction](https://github.com/dotnet/maui-labs/pull/606). A source PR merge alone doesn't update a previously published package.
 
 ## Suppress the experimental warning
 

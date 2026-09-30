@@ -1,6 +1,6 @@
 ---
 title: Chat on Apple platforms
-description: Plan on-device chat with AppleIntelligenceChatClient, including model availability, privacy, and preview image input.
+description: Plan on-device chat with AppleIntelligenceChatClient, including model availability, privacy, and Apple 27 image input.
 ms.date: 09/30/2026
 ms.topic: concept-article
 ---
@@ -27,22 +27,22 @@ Keep representative prompt and output fixtures, and reevaluate behavior when the
 
 Treat schema-valid output as structured text, not as proof that the answer is supported by the input. Validate extracted facts against your source data and allow an explicit unknown or unavailable state instead of trusting the model to fill gaps. Handle malformed structured responses as errors, not successful extractions.
 
-In one small local run on macOS 26.7, six source-grounded reservation extractions (three prompts in streaming and non-streaming modes) and a supplied-history recall succeeded. In the final two-run evaluation **after the adapter's streaming fix**, 18/18 structured outputs parsed, and two oversized prompts produced the expected context errors. However, only 16/20 ground-truth assertions passed: two departure fields were wrong, and two missing-fact answers were invented. These small fixtures aren't a general accuracy benchmark. Neither JSON validity nor a successful first run establishes repeatable factual grounding; evaluate both modes with your own data. See the [retained chat grounding tests](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/Microsoft.Maui.Essentials.AI.DeviceTests/Tests/MaciOS/AppleIntelligenceChatClientGroundingTests.cs) and [post-fix results](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleChatEvaluation/results-after-stream-fix.json).
+In one small local run on macOS 26.7, six source-grounded reservation extractions (three prompts in streaming and non-streaming modes) and a supplied-history recall succeeded. In the final two-run evaluation with the [streaming correction](https://github.com/dotnet/maui-labs/pull/606), 18/18 structured outputs parsed, and two oversized prompts produced the expected context errors. However, only 16/20 ground-truth assertions passed: two departure fields were wrong, and two missing-fact answers were invented. These small fixtures aren't a general accuracy benchmark. Neither JSON validity nor a successful first run establishes repeatable factual grounding; evaluate both modes with your own data. See the [retained chat grounding tests](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/Microsoft.Maui.Essentials.AI.DeviceTests/Tests/MaciOS/AppleIntelligenceChatClientGroundingTests.cs) and [post-fix results](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleChatEvaluation/results-after-stream-fix.json).
 
-An earlier adapter build produced malformed streamed JSON because its managed chunker inserted primitive syntax inside an open string. The managed chunker correction is in [dotnet/maui-labs#606](https://github.com/dotnet/maui-labs/pull/606); this doesn't mean the fix is in the published NuGet package. It wasn't evidence that Apple's native guided generation couldn't produce valid JSON. See the [retained pre-fix results](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleChatEvaluation/results-before-stream-fix.json).
+Use a package version containing that correction; merging the source change doesn't update an already published package. The [pre-fix results](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleChatEvaluation/results-before-stream-fix.json) document a managed chunker defect, not a limitation of Apple's native guided generation.
 
 ## Tools and structured responses
 
 Use `AIFunction` tools for actions the model can call; require user approval *inside the tool implementation* before executing side effects. The native adapter executes supported tools and can return `FunctionCallContent` for information; don't assume function-invocation middleware intercepts every execution. For structured output, use a JSON schema, for example via `GetResponseAsync<T>()`, rather than relying on schema-free JSON formatting. See [Tool calling](../chat.md#tool-calling) and [Structured JSON output](../chat.md#structured-json-output).
 
-## Image input in development
+## Image input on Apple 27+
 
 > [!IMPORTANT]
-> Apple's [image attachment API](https://developer.apple.com/documentation/foundationmodels/attachment) is available in OS 27. Image input through `Microsoft.Maui.Essentials.AI` is being developed in the [draft adapter change in dotnet/maui-labs#405](https://github.com/dotnet/maui-labs/pull/405). It isn't a released capability of the package and hasn't been validated here with live image inference. Building that proposed change requires opt-in Apple 27 target frameworks and Xcode 27. Apple's released OS API, the draft adapter, and published NuGet support are distinct.
+> Image input requires Apple 27 or later, an available vision-capable Apple Intelligence model, and a `Microsoft.Maui.Essentials.AI` package version containing [the image-input adapter](https://github.com/dotnet/maui-labs/pull/405). Building for Apple 27 requires Apple 27 target frameworks and Xcode 27. Apple's [image attachment API](https://developer.apple.com/documentation/foundationmodels/attachment), the adapter source, and a released NuGet package are separate availability milestones. The image conversion tests don't establish live vision inference quality; no live OS 27 vision result was measured here.
 
-The draft change proposes image *input* through `DataContent` (`image/*`) or local-file `UriContent`, including images in message history. It does not add image generation or a cloud fallback. Don't use the draft API with the published package or treat remote image URLs as supported inputs. The adapter also accepts native `CGImage`, `UIImage`, or `NSImage` through `RawRepresentation` for apps that already hold a platform image; portable encoded bytes should still be retained for persistence.
+The adapter accepts image *input* through `DataContent` (`image/*`) or local-file `UriContent`, including images in message history. It doesn't add image generation or a cloud fallback; remote image URLs aren't supported. Apps that already hold a platform image can also pass a native `CGImage`, `UIImage`, or `NSImage` through `RawRepresentation`. Retain portable encoded bytes for persistence and cross-platform consumers; the adapter preserves image orientation and can round-trip images in conversation history.
 
-The following sample is **for a build from the draft PR**, with Apple 27 target frameworks and Xcode 27. Check OS and model vision availability in the app before sending image input; the example isn't supported by the released package:
+The following sample requires a package version with image-input support. Check OS and model vision availability in the app before sending an image:
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -68,7 +68,7 @@ var response = await chatClient.GetResponseAsync([message]);
 Console.WriteLine(response.Text);
 ```
 
-For image questions, ask for a specific extraction or classification, provide a schema when structured data helps, and consider cropping to the relevant region. These are [Apple's native multimodal prompting recommendations](https://developer.apple.com/documentation/foundationmodels/analyzing-images-with-multimodal-prompting), not additional APIs in the Essentials.AI adapter. The draft's model-free image conversion tests do not establish live image recognition quality.
+For image questions, ask for a specific extraction or classification, provide a schema when structured data helps, and consider cropping to the relevant region. These are [Apple's native multimodal prompting recommendations](https://developer.apple.com/documentation/foundationmodels/analyzing-images-with-multimodal-prompting), not additional APIs in the Essentials.AI adapter.
 
 ## See also
 
