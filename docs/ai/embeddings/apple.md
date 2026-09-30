@@ -57,7 +57,20 @@ Also reject non-finite and all-zero vectors, and check dimensions before compari
 
 Use labeled queries and passages from your own domain to compare chunking choices and rank the expected results. Try meaningful sentence or passage boundaries, relevant headings, and overlap where context spans boundaries; don't treat a playground's fixed chunk size as an Apple limit or a universal optimum.
 
-In a **small synthetic local evaluation** on macOS 26.7 (Apple Silicon), an English sentence model (revision 1, 512 dimensions) ranked the intended result first for 20 of 24 fixed query/document pairs and in the top three for 23 of 24. Categories were paraphrase 6/6, app intent 5/6, technical 3/4, and adversarial opposites 6/8 at rank one. For example, the unpaid-invoice query ranked its intended document fourth. These fixtures illustrate what can go wrong, **not** a general accuracy or production-quality benchmark. A native-versus-.NET-wrapper parity check matched vectors on 5/5 dedicated cases on the same host; it doesn't establish behavior on every device, model, or input. The word model there was revision 1 with 300 dimensions and must not share the sentence index. See the [retained corpus, runner, and results](https://github.com/dotnet/maui-labs/tree/mattleibow-apple-ai-guidance/tests/AI/AppleEmbeddingEvaluation) for test inputs and ranks.
+In a **small synthetic local evaluation** on macOS 26.7 (Apple Silicon), an English sentence model (revision 1, 512 dimensions) ranked the intended result first for 20 of 24 fixed query/document pairs and in the top three for 23 of 24. Categories were paraphrase 6/6, app intent 5/6, technical 3/4, and adversarial opposites 6/8 at rank one. For example, the unpaid-invoice query ranked its intended document fourth. These fixtures illustrate what can go wrong, **not** a general accuracy or production-quality benchmark. A native-versus-.NET-wrapper parity check matched vectors on 5/5 dedicated cases on the same host; it doesn't establish behavior on every device, model, or input. The word model there was revision 1 with 300 dimensions and must not share the sentence index. See the [retained corpus, runner, and results](https://github.com/dotnet/maui-labs/tree/d3b6be534a4a09e7804c8762a1d3f52f73a6ff9b/tests/AI/AppleEmbeddingEvaluation) for test inputs and ranks.
+
+In a separate, matched position test, the **same six** synthetic queries were run against nine deliberately repetitive documents with the relevant detail placed early, in the middle, or late. The figures below show top-one retrievals out of six *per placement*, not 18 independent test cases:
+
+| Chunking strategy | Early | Middle | Late |
+|-------------------|-------|--------|------|
+| Whole document | 4/6 | 5/6 | 2/6 |
+| Fixed 180 characters | 5/6 | 6/6 | 6/6 |
+| Playground 360 characters | 2/6 | 1/6 | 5/6 |
+| Fixed 720 characters | 1/6 | 2/6 | 2/6 |
+| One sentence | 5/6 | 5/6 | 5/6 |
+| Three sentences, one overlapping | 4/6 | 4/6 | 4/6 |
+
+This limited corpus favors some splits over others but cannot establish a universal best chunk size or a model token limit. Use [the retained inputs, ranks, and results](https://github.com/dotnet/maui-labs/blob/d3b6be534a4a09e7804c8762a1d3f52f73a6ff9b/tests/AI/AppleEmbeddingEvaluation/README.md) to reproduce the example, then measure your own content.
 
 ## Search locally
 
