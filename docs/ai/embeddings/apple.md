@@ -19,24 +19,21 @@ Apple positions *sentence* models for comparing phrases and passages (including 
 using Microsoft.Maui.Essentials.AI;
 using NaturalLanguage;
 
-using NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.German)
-    ?? throw new NotSupportedException("A German sentence embedding isn't available.");
-using var germanGenerator = new NLEmbeddingGenerator(nativeEmbedding);
+using var germanGenerator = new NLEmbeddingGenerator(NLLanguage.German);
 var embeddings = await germanGenerator.GenerateAsync(["Guten Morgen"]);
 ```
 
-The language constructor (`new NLEmbeddingGenerator(NLLanguage.German)`) also requests a sentence model, but probing first lets the app provide its own unavailable-model message. Language availability isn't universal: on one tested macOS 26.7 host, English, German, and Italian sentence/word models were available, while several other languages returned no model. Check the actual device rather than hard-coding that observation as a support list.
+The language constructor requests a sentence model. Language availability isn't universal: on one tested macOS 26.7 host, English, German, and Italian sentence/word models were available, while several other languages returned no model. Check the actual device and provide an unavailable-model state rather than hard-coding that observation as a support list.
 
 ### Use a native embedding
 
-You can supply an existing native `NLEmbedding` (including a word embedding) to the generator, or adapt it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace. The generator borrows the native instance; it doesn't take ownership. Dispose the generator before disposing the native embedding:
+You can supply an existing native `NLEmbedding` (including a word embedding) to the generator, or adapt it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace. The following example assumes an English word model is available; `GetWordEmbedding` can return `null`, so check availability in your app before using it. The generator borrows the native instance; it doesn't take ownership. Dispose the generator before disposing the native embedding:
 
 ```csharp
 using Microsoft.Extensions.AI;
 using NaturalLanguage;
 
-using NLEmbedding nativeEmbedding = NLEmbedding.GetWordEmbedding(NLLanguage.English)
-    ?? throw new NotSupportedException("An English word embedding isn't available.");
+using NLEmbedding nativeEmbedding = NLEmbedding.GetWordEmbedding(NLLanguage.English)!;
 using IEmbeddingGenerator<string, Embedding<float>> generator =
     nativeEmbedding.AsIEmbeddingGenerator();
 ```

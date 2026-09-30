@@ -49,42 +49,19 @@ IEmbeddingGenerator<string, Embedding<float>> generator = // resolved from DI
 string query = "Find nearby restaurants";
 var queryEmbeddings = await generator.GenerateAsync([query]);
 
-// Compare against pre-embedded documents and rank by similarity
-var queryVector = queryEmbeddings[0].Vector;
-if (!IsUsable(queryVector.Span))
-    throw new InvalidOperationException("No usable embedding was available for the query.");
-
-foreach (var document in documents)
-{
-    if (document.Embedding.Length != queryVector.Length ||
-        !IsUsable(document.Embedding.Span))
-        throw new InvalidOperationException("The search index contains an invalid embedding.");
-}
-
+// Compare against validated, pre-embedded documents and rank by similarity
 var results = documents
     .Select(doc => (doc, score: TensorPrimitives.CosineSimilarity(
-        queryVector.Span,
+        queryEmbeddings[0].Vector.Span,
         doc.Embedding.Span)))
     .OrderByDescending(x => x.score)
     .Take(5);
 
 foreach (var (doc, score) in results)
     Console.WriteLine($"{doc.Title} — similarity: {score:F3}");
-
-static bool IsUsable(ReadOnlySpan<float> vector)
-{
-    bool hasNonZeroValue = false;
-    foreach (float value in vector)
-    {
-        if (!float.IsFinite(value))
-            return false;
-        hasNonZeroValue |= value != 0;
-    }
-    return hasNonZeroValue;
-}
 ```
 
-The example rejects empty, non-finite, zero, or mismatched-dimension vectors, but the index must also record and validate the same language, model, and revision as the query. The score ranks comparable vectors; it isn't a probability. See [Embeddings on Apple platforms](embeddings/apple.md#keep-indexes-compatible) before building a persistent search index.
+The example assumes a usable query vector and an index that was validated when built or loaded. Before comparing vectors, reject empty, non-finite, zero, or mismatched-dimension vectors, and confirm the index uses the same language, model, and revision as the query. Don't silently rank incompatible vectors. The score ranks comparable vectors; it isn't a probability. See [Embeddings on Apple platforms](embeddings/apple.md#keep-indexes-compatible) before building a persistent search index.
 
 ## See also
 
