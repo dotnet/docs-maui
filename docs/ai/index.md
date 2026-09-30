@@ -81,4 +81,4 @@ The standard Microsoft.Extensions.AI interfaces let applications choose another 
 - [Use the IEmbeddingGenerator interface](/dotnet/ai/iembeddinggenerator)
 - [IChatClient API reference](/dotnet/api/microsoft.extensions.ai.ichatclient)
 - [IEmbeddingGenerator API reference](/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
-- [Apple Intelligence availability](https://support.apple.com/en-us/120898)
+- [Apple Intelligence device requirements](https://support.apple.com/en-us/121115)

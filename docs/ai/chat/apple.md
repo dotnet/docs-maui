@@ -74,4 +74,4 @@ For image questions, ask for a specific extraction or classification, provide a 
 
 - [Chat client](../chat.md)
 - [Chat feature comparison](feature-comparison.md)
-- [Apple Intelligence availability](https://support.apple.com/en-us/120898)
+- [Apple Intelligence device requirements](https://support.apple.com/en-us/121115)

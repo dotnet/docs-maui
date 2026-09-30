@@ -19,9 +19,9 @@ Apple positions *sentence* models for comparing phrases and passages (including 
 using Microsoft.Maui.Essentials.AI;
 using NaturalLanguage;
 
-NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.German)
+using NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.German)
     ?? throw new NotSupportedException("A German sentence embedding isn't available.");
-var germanGenerator = new NLEmbeddingGenerator(nativeEmbedding);
+using var germanGenerator = new NLEmbeddingGenerator(nativeEmbedding);
 var embeddings = await germanGenerator.GenerateAsync(["Guten Morgen"]);
 ```
 
@@ -29,27 +29,25 @@ The language constructor (`new NLEmbeddingGenerator(NLLanguage.German)`) also re
 
 ### Use a native embedding
 
-You can supply an existing native `NLEmbedding` (including a word embedding) to the generator, or adapt it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace:
+You can supply an existing native `NLEmbedding` (including a word embedding) to the generator, or adapt it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace. The generator borrows the native instance; it doesn't take ownership. Dispose the generator before disposing the native embedding:
 
 ```csharp
 using Microsoft.Extensions.AI;
 using NaturalLanguage;
 
-NLEmbedding? nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.English);
-if (nativeEmbedding is not null)
-{
-    IEmbeddingGenerator<string, Embedding<float>> generator =
-        nativeEmbedding.AsIEmbeddingGenerator();
-}
+using NLEmbedding nativeEmbedding = NLEmbedding.GetWordEmbedding(NLLanguage.English)
+    ?? throw new NotSupportedException("An English word embedding isn't available.");
+using IEmbeddingGenerator<string, Embedding<float>> generator =
+    nativeEmbedding.AsIEmbeddingGenerator();
 ```
 
 Choose a model appropriate for the text you're comparing. Don't switch between sentence and word models merely because a query is short: the indexed text and query must use compatible embeddings. `NLContextualEmbedding` is a separate Apple API for feature extraction in tasks such as classification and tagging; it isn't exposed by `NLEmbeddingGenerator` or an automatic semantic-search upgrade. Its [subword-token sequence limit](https://developer.apple.com/documentation/naturallanguage/nlcontextualembedding/maximumsequencelength) must not be applied to `NLEmbedding` sentence models.
 
 ## Keep indexes compatible
 
-Create each index with a consistent model, language, and revision, and embed search queries using the same configuration. Record the native model's language, revision, and vector dimension with your index and rebuild the index when its model changes. A general provider identifier such as `natural-language` does not identify an interchangeable vector space. Don't compare vectors from different languages, sentence/word models, or model revisions as if they were in one shared space.
+Create each index with a consistent model, language, and revision, and embed search queries using the same configuration. Persist the *configured* language and model type (word or sentence) alongside the native model's reported language, revision, and vector dimension; a native embedding can report no language even when one was requested. Rebuild the index when its model changes. A general provider identifier such as `natural-language` does not identify an interchangeable vector space. Don't compare vectors from different languages, sentence/word models, or model revisions as if they were in one shared space.
 
-The generator does not automatically chunk or normalize input. Split app content into meaningful, consistent records for the selected model, and store the source text or identifier alongside each vector. If a generated vector is empty, don't insert it into the index or pass it to cosine similarity; report or handle the missing embedding explicitly.
+The generator does not automatically chunk or normalize input. Split app content into meaningful, consistent records for the selected model, and store the source text or identifier alongside each vector. Run bulk indexing off the UI thread: the async wrapper can perform native generation synchronously when its per-instance semaphore is uncontended. If a generated vector is empty, don't insert it into the index or pass it to cosine similarity; report or handle the missing embedding explicitly.
 
 Also reject non-finite and all-zero vectors, and check dimensions before comparing vectors. On the tested host, native sentence embeddings returned no vector for empty or whitespace input; the current wrapper converts a missing native vector into an empty vector. A nonempty vector doesn't prove that all details of a long passage were preserved. No `NLEmbedding` length/token cutoff was established by the local probes; the separate `NLContextualEmbedding` token limit isn't applicable here.
 
