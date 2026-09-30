@@ -48,13 +48,6 @@ The following sample requires a package version with image-input support. Check 
 using Microsoft.Extensions.AI;
 using Microsoft.Maui.Essentials.AI;
 
-if (!OperatingSystem.IsIOSVersionAtLeast(27) &&
-    !OperatingSystem.IsMacCatalystVersionAtLeast(27) &&
-    !OperatingSystem.IsMacOSVersionAtLeast(27))
-{
-    throw new PlatformNotSupportedException("Image input requires Apple 27 or later.");
-}
-
 IChatClient chatClient = new AppleIntelligenceChatClient();
 string imagePath = "/path/to/local-image.png";
 byte[] pngBytes = await File.ReadAllBytesAsync(imagePath);
