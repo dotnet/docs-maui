@@ -1,148 +1,72 @@
 ---
 title: Feature comparison
-description: Feature availability comparison for AppleIntelligenceChatClient, NLEmbeddingGenerator, and NLEmbeddingExtensions across all platforms supported by Microsoft.Maui.Essentials.AI.
-ms.date: 03/11/2026
+description: Find platform and capability comparisons for chat and text embeddings in Microsoft.Maui.Essentials.AI.
+ms.date: 09/30/2026
 ---
 
 # Feature comparison
 
-This page documents the APIs provided by `Microsoft.Maui.Essentials.AI` and compares feature availability across all platforms.
+`Microsoft.Maui.Essentials.AI` exposes on-device AI through the `Microsoft.Extensions.AI` interfaces. Each feature comparison contrasts what the abstraction can represent (including features a hosted provider might implement) with what the current Apple implementation actually supports. It isn't an iOS-versus-macOS comparison. Chat and embeddings use different Apple frameworks and have different requirements:
 
-> [!NOTE]
-> Apple Intelligence is the first implementation available. Android and Windows support are planned for future releases.
+| Feature | Implementation | Compare capabilities | Apple guidance |
+|---------|----------------|----------------------|----------------|
+| [Chat](chat.md) | `AppleIntelligenceChatClient` (Foundation Models) | [Chat feature comparison](chat/feature-comparison.md) | [Chat on Apple platforms](chat/apple.md) |
+| [Text embeddings](embeddings.md) | `NLEmbeddingGenerator` (Natural Language) | [Embeddings feature comparison](embeddings/feature-comparison.md) | [Embeddings on Apple platforms](embeddings/apple.md) |
+
+Apple Intelligence availability for chat does not determine Natural Language embedding availability. Check the [Apple requirements](requirements-apple.md) for setup and device prerequisites.
 
 > [!IMPORTANT]
 > `Microsoft.Maui.Essentials.AI` is experimental and identified by diagnostic `MAUIAI0001`. See [Get started](getting-started.md#suppress-the-experimental-warning) for how to suppress it.
 
 ## Chat client
 
+See [chat feature comparison](chat/feature-comparison.md) for platform availability, supported content, and options.
+
 ### Platform availability
 
-| Platform | Class | Minimum version |
-|----------|-------|-----------------|
-| iOS | `AppleIntelligenceChatClient` | 26.0 |
-| macOS | `AppleIntelligenceChatClient` | 26.0 |
-| Mac Catalyst | `AppleIntelligenceChatClient` | 26.0 |
-| tvOS | `AppleIntelligenceChatClient` | 26.0 |
+See [chat on Apple platforms](chat/apple.md) for device and model availability guidance.
 
 ### Chat capabilities
 
-| Feature | iOS / macOS / Mac Catalyst / tvOS |
-|---------|-----------------------------------|
-| Text generation | ✅ |
-| Streaming responses | ✅ |
-| Tool / function calling | ✅ (`AIFunction` only) |
-| Structured JSON output | ✅ |
-| System prompts | ✅ |
-| Multi-turn conversations | ✅ |
-| Image input | ❌ |
+See [chat feature comparison](chat/feature-comparison.md#abstraction-versus-apple-implementation).
 
 ### Supported ChatOptions
 
-`ChatOptions` properties honored by `AppleIntelligenceChatClient`. All other properties are silently ignored.
-
-| Option | iOS / macOS / Mac Catalyst / tvOS |
-|--------|-----------------------------------|
-| `Temperature` | ✅ |
-| `TopK` | ✅ |
-| `Seed` | ✅ |
-| `MaxOutputTokens` | ✅ |
-| `ResponseFormat` (JSON schema) | ✅ |
-| `Tools` (`AIFunction`) | ✅ |
-| `TopP` | ❌ ignored |
-| `FrequencyPenalty` | ❌ ignored |
-| `PresencePenalty` | ❌ ignored |
-
-> [!IMPORTANT]
-> Two constraints apply when using `AppleIntelligenceChatClient`:
->
-> 1. **Tool types:** Only `AIFunction` tools are supported. Other `AITool` subtypes are not supported.
-> 2. **Structured JSON output:** Use `GetResponseAsync<T>()` or set `ChatResponseFormat.ForJsonSchema<T>(jsonSerializerOptions)` in `ChatOptions`. Plain `ChatResponseFormat.Json` without a schema is **not** supported.
+See [chat feature comparison](chat/feature-comparison.md#chat-options).
 
 ### Supported message content types
 
-| Content type | iOS / macOS / Mac Catalyst / tvOS |
-|--------------|-----------------------------------|
-| `TextContent` | ✅ |
-| `FunctionCallContent` | ✅ |
-| `FunctionResultContent` | ✅ |
-| `ImageContent` | ❌ |
+See [chat feature comparison](chat/feature-comparison.md#message-content).
 
 ## Embedding generator
 
+See [embeddings feature comparison](embeddings/feature-comparison.md) for platform and model availability.
+
 ### Platform availability
 
-| Platform | Class | Minimum version |
-|----------|-------|-----------------|
-| iOS | `NLEmbeddingGenerator` | 13.0 |
-| macOS | `NLEmbeddingGenerator` | 10.15 |
-| Mac Catalyst | `NLEmbeddingGenerator` | 13.1 |
-| tvOS | `NLEmbeddingGenerator` | 13.0 |
+See [embeddings feature comparison](embeddings/feature-comparison.md#platform-and-model-availability).
 
 ### Embedding capabilities
 
-| Feature | iOS / macOS / Mac Catalyst / tvOS |
-|---------|-----------------------------------|
-| Sentence-level embeddings | ✅ |
-| Multiple languages | ✅ |
-| Custom `NLEmbedding` instance | ✅ |
-| Concurrent requests | ✅ (serialized per instance) |
-
-> [!NOTE]
-> `NLEmbeddingGenerator` uses Apple's *sentence* embedding model (`NLEmbedding.GetSentenceEmbedding`), which is optimized for comparing full sentences or short passages rather than individual words. This makes it well-suited for semantic similarity search over descriptive text.
-
-> [!TIP]
-> `NLEmbeddingGenerator` serializes concurrent calls with a `SemaphoreSlim(1, 1)`. For high-throughput scenarios, create multiple instances and distribute work across them.
+See [embeddings feature comparison](embeddings/feature-comparison.md#abstraction-versus-apple-implementation).
 
 ## Platforms
 
 ### Apple (iOS/Mac Catalyst)
 
+See [chat on Apple platforms](chat/apple.md) and [embeddings on Apple platforms](embeddings/apple.md) for feature-specific guidance.
+
 #### NLEmbeddingExtensions
 
-`NLEmbeddingExtensions` wraps a native `NLEmbedding` as an `IEmbeddingGenerator<string, Embedding<float>>`.
-
-**Namespace:** `Microsoft.Extensions.AI` *(not `Microsoft.Maui.Essentials.AI`)*
-
-> [!NOTE]
-> Add `using Microsoft.Extensions.AI;` to your file to call the `AsIEmbeddingGenerator()` extension method.
-
-| Method | Description |
-|--------|-------------|
-| `AsIEmbeddingGenerator(this NLEmbedding embedding)` | Wraps a native `NLEmbedding` as an `IEmbeddingGenerator<string, Embedding<float>>`. |
-
-```csharp
-using NaturalLanguage;
-using Microsoft.Extensions.AI;
-
-NLEmbedding nativeEmbedding = NLEmbedding.GetSentenceEmbedding(NLLanguage.English)!;
-IEmbeddingGenerator<string, Embedding<float>> generator = nativeEmbedding.AsIEmbeddingGenerator();
-```
+See [using a native embedding](embeddings/apple.md#use-a-native-embedding).
 
 #### Multiple languages
 
-`NLEmbeddingGenerator` supports multiple languages through Apple's Natural Language framework. Specify a language when constructing the generator:
-
-```csharp
-using NaturalLanguage;
-using Microsoft.Maui.Essentials.AI;
-
-// Default: English
-var englishGenerator = new NLEmbeddingGenerator();
-
-// Specific language
-var frenchGenerator = new NLEmbeddingGenerator(NLLanguage.French);
-var embeddings = await frenchGenerator.GenerateAsync(["Bonjour le monde"]);
-```
-
-Throws `NotSupportedException` if sentence embeddings are not available for the requested language.
+See [choose-a-language-and-model](embeddings/apple.md#choose-a-language-and-model).
 
 ## See also
 
+- [Get started](getting-started.md)
 - [Requirements](requirements-apple.md)
-- [Chat](chat.md)
-- [Text embeddings](embeddings.md)
 - [Use the IChatClient interface](/dotnet/ai/ichatclient)
 - [Use the IEmbeddingGenerator interface](/dotnet/ai/iembeddinggenerator)
-- [`IChatClient` API reference](/dotnet/api/microsoft.extensions.ai.ichatclient)
-- [`IEmbeddingGenerator<TInput,TEmbedding>` API reference](/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
