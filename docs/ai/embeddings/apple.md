@@ -7,13 +7,15 @@ ms.topic: concept-article
 
 # Text embeddings on Apple platforms
 
-`NLEmbeddingGenerator` wraps Apple's Natural Language `NLEmbedding` behind `Microsoft.Extensions.AI.IEmbeddingGenerator<string, Embedding<float>>`. It does not use Apple Intelligence or Foundation Models. The availability of the `NLEmbedding` API and of a particular model are different; consult the [embedding feature comparison](feature-comparison.md) before choosing a deployment target.
+Use `NLEmbeddingGenerator` to build on-device semantic search over content such as notes, help articles, and product descriptions. It implements `Microsoft.Extensions.AI.IEmbeddingGenerator<string, Embedding<float>>` using Apple's Natural Language framework. Unlike chat, it doesn't use Foundation Models or require Apple Intelligence.
+
+This article explains how to choose an embedding model and prepare a search index. For the basic API, see [Text embeddings](../embeddings.md).
 
 ## Choose a language and model
 
-The default constructor requests an English *sentence* embedding. To request another language, construct the generator with an `NLLanguage`; check that a sentence model is available for that language and OS before depending on it. The generator does not detect the input language or switch models automatically.
+The default constructor uses an English *sentence* embedding. Sentence models are a good starting point for matching a search query to a phrase or short passage, such as a help article's description.
 
-Apple positions *sentence* models for comparing phrases and passages (including FAQ matching and text retrieval), and *word* models for individual-word similarity and query expansion with a fixed vocabulary. For sentence-level search, store and search your own text/vector index rather than relying on native nearest-neighbor vocabulary enumeration. See [Apple's guidance on choosing embeddings](https://developer.apple.com/documentation/naturallanguage/finding-similarities-between-pieces-of-text).
+To use another language, pass an `NLLanguage` to the constructor:
 
 ```csharp
 using Microsoft.Maui.Essentials.AI;
@@ -23,11 +25,13 @@ using var germanGenerator = new NLEmbeddingGenerator(NLLanguage.German);
 var embeddings = await germanGenerator.GenerateAsync(["Guten Morgen"]);
 ```
 
-The language constructor requests a sentence model. Language availability isn't universal: on one tested macOS 26.7 host, English, German, and Italian sentence/word models were available, while several other languages returned no model. Check the actual device and provide an unavailable-model state rather than hard-coding that observation as a support list.
+The generator doesn't detect the input language or change models automatically. Available languages depend on the device and OS; check that the requested sentence model is available before enabling search for that language. See [Apple's embedding guidance](https://developer.apple.com/documentation/naturallanguage/finding-similarities-between-pieces-of-text).
 
 ### Use a native embedding
 
-You can supply an existing native `NLEmbedding` (including a word embedding) to the generator, or adapt it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace. The following example assumes an English word model is available; `GetWordEmbedding` can return `null`, so check availability in your app before using it. The generator borrows the native instance; it doesn't take ownership. Dispose the generator before disposing the native embedding:
+For individual-word similarity or query expansion, use a *word* embedding. Word models have a fixed vocabulary and aren't a substitute for sentence models when searching passages.
+
+You can pass a native `NLEmbedding` to the generator or wrap it with `AsIEmbeddingGenerator()` in the `Microsoft.Extensions.AI` namespace. This example assumes an English word model is available:
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -36,40 +40,42 @@ using NaturalLanguage;
 using NLEmbedding nativeEmbedding = NLEmbedding.GetWordEmbedding(NLLanguage.English)!;
 using IEmbeddingGenerator<string, Embedding<float>> generator =
     nativeEmbedding.AsIEmbeddingGenerator();
+var embeddings = await generator.GenerateAsync(["coffee", "tea"]);
 ```
 
-Choose a model appropriate for the text you're comparing. Don't switch between sentence and word models merely because a query is short: the indexed text and query must use compatible embeddings. `NLContextualEmbedding` is a separate Apple API for feature extraction in tasks such as classification and tagging; it isn't exposed by `NLEmbeddingGenerator` or an automatic semantic-search upgrade. Its [subword-token sequence limit](https://developer.apple.com/documentation/naturallanguage/nlcontextualembedding/maximumsequencelength) must not be applied to `NLEmbedding` sentence models.
+Native model lookup can return `null` when the model isn't available. The generator borrows the native instance, so keep it alive until the generator is disposed. The `using` declarations dispose the generator first.
+
+Use the same kind of model for your indexed content and queries. A short query doesn't mean you should switch a sentence index to a word model.
 
 ## Keep indexes compatible
 
-Create each index with a consistent model, language, and revision, and embed search queries using the same configuration. Persist the *configured* language and model type (word or sentence) alongside the native model's reported language, revision, and vector dimension; a native embedding can report no language even when one was requested. Rebuild the index when its model changes. A general provider identifier such as `natural-language` does not identify an interchangeable vector space. Don't compare vectors from different languages, sentence/word models, or model revisions as if they were in one shared space.
+An embedding is useful for search only when it's compared with vectors from the same embedding space. Generate indexed content and search queries with the same language, model type, and revision. Equal vector lengths alone don't make two models compatible.
 
-The generator does not automatically chunk or normalize input. Split app content into meaningful, consistent records for the selected model, and store the source text or identifier alongside each vector. Run bulk indexing off the UI thread: the async wrapper can perform native generation synchronously when its per-instance semaphore is uncontended. If a generated vector is empty, don't insert it into the index or pass it to cosine similarity; report or handle the missing embedding explicitly.
+Store the configured language, word-or-sentence model type, model revision, and vector dimensions with your index. Keep the configured language even if the native model doesn't report one. The provider ID `natural-language` isn't a complete model identifier. Rebuild the index when you change the model, rather than comparing new query vectors with old document vectors.
 
-Also reject non-finite and all-zero vectors, and check dimensions before comparing vectors. On the tested host, native sentence embeddings returned no vector for empty or whitespace input; the current wrapper converts a missing native vector into an empty vector. A nonempty vector doesn't prove that all details of a long passage were preserved. No `NLEmbedding` length/token cutoff was established by the local probes; the separate `NLContextualEmbedding` token limit isn't applicable here.
+For multilingual content, keep separate indexes for language-specific models and route each query to the appropriate one. Don't assume that different language models produce directly comparable vectors.
 
-### Evaluate retrieval with your app's content
+## Prepare content for search
 
-Use labeled queries and passages from your own domain to compare chunking choices and rank the expected results. Try meaningful sentence or passage boundaries, relevant headings, and overlap where context spans boundaries; don't treat a playground's fixed chunk size as an Apple limit or a universal optimum.
+Split long content into records that each cover one useful idea. For example, a help article about account settings might have separate records for changing an email address and resetting a password. This lets a query match the relevant passage instead of an entire article.
 
-In a **small synthetic local evaluation** on macOS 26.7 (Apple Silicon), an English sentence model (revision 1, 512 dimensions) ranked the intended result first for 20 of 24 fixed query/document pairs and in the top three for 23 of 24. Categories were paraphrase 6/6, app intent 5/6, technical 3/4, and adversarial opposites 6/8 at rank one. For example, the unpaid-invoice query ranked its intended document fourth. These fixtures illustrate what can go wrong, **not** a general accuracy or production-quality benchmark. A native-versus-.NET-wrapper parity check matched vectors on 5/5 dedicated cases on the same host; it doesn't establish behavior on every device, model, or input. The word model there was revision 1 with 300 dimensions and must not share the sentence index. All 30 run rankings and metrics were identical in a repeated local run. See the [retained corpus, runner, and results](https://github.com/dotnet/maui-labs/tree/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleEmbeddingEvaluation) for test inputs and ranks.
+Start with sentence or paragraph boundaries. Include a heading when a passage needs context, and overlap neighboring passages when an idea spans a boundary. There isn't one chunk size that works best for all content; compare a few approaches with realistic queries and the results you expect them to find.
 
-In a separate, matched position test, the **same six** synthetic queries were run against nine deliberately repetitive documents with the relevant detail placed early, in the middle, or late. The figures below show top-one retrievals out of six *per placement*, not 18 independent test cases:
+Store each vector with its source text and a stable record ID so you can display the result and open the original content. Generate embeddings when content is added or changed, not every time a user searches.
 
-| Chunking strategy | Early | Middle | Late |
-|-------------------|-------|--------|------|
-| Whole document | 4/6 | 5/6 | 2/6 |
-| Fixed 180 characters | 5/6 | 6/6 | 6/6 |
-| Playground 360 characters | 2/6 | 1/6 | 5/6 |
-| Fixed 720 characters | 1/6 | 2/6 | 2/6 |
-| One sentence | 5/6 | 5/6 | 5/6 |
-| Three sentences, one overlapping | 4/6 | 4/6 | 4/6 |
+The generator doesn't split text or normalize it for you. Keep bulk indexing off the UI thread: calling an async method doesn't guarantee that all native work runs in the background.
 
-This limited corpus favors some splits over others but cannot establish a universal best chunk size or a model token limit. Use [the retained inputs, ranks, and results](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/tests/AI/AppleEmbeddingEvaluation/README.md) to reproduce the example, then measure your own content. The [evaluation methodology and limitations](https://github.com/dotnet/maui-labs/blob/69e0e28e6219f9f5ac7f100a60e50844d6b45e17/docs/ai/apple-ai-evaluation.md) distinguish these local fixtures from product guarantees.
+### Check generated vectors
+
+A model can return no vector for an input, and the generator represents that result as an empty vector. Handle it before adding the record to your index or calculating similarity. Also reject non-finite or all-zero vectors and mismatched dimensions.
+
+A valid vector doesn't establish that every detail of a long document is represented. Check search quality using queries for details in different parts of your content, not just its title or opening sentence.
 
 ## Search locally
 
-Generate document embeddings when records are ingested or changed, and use the same generator to embed a query. Rank comparable, nonempty vectors using cosine similarity. The similarity score is a ranking measure, **not a probability or percentage of correctness**. See the [semantic similarity search example](../embeddings.md#semantic-similarity-search).
+Embed the user's query with the same model used to build the index, then rank the stored vectors by cosine similarity. The score helps order results; it isn't a probability or a percentage of correctness. See the [semantic similarity search example](../embeddings.md#semantic-similarity-search).
+
+Review the returned passages for common queries, ambiguous wording, and queries with no relevant answer. If your app uses a score threshold, choose it from those examples rather than treating a fixed score as universally meaningful.
 
 ## See also
 

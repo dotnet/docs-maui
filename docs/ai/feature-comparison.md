@@ -1,12 +1,12 @@
 ---
 title: Feature comparison
-description: Find platform and capability comparisons for chat and text embeddings in Microsoft.Maui.Essentials.AI.
+description: Compare Microsoft.Extensions.AI capabilities with the chat and embedding implementations in Microsoft.Maui.Essentials.AI.
 ms.date: 09/30/2026
 ---
 
 # Feature comparison
 
-`Microsoft.Maui.Essentials.AI` exposes on-device AI through the `Microsoft.Extensions.AI` interfaces. Each feature comparison contrasts what the abstraction can represent (including features a hosted provider might implement) with what the current Apple implementation actually supports. It isn't an iOS-versus-macOS comparison. Chat and embeddings use different Apple frameworks and have different requirements:
+Use the feature comparisons to see which `Microsoft.Extensions.AI` capabilities are supported by the on-device implementations in `Microsoft.Maui.Essentials.AI`. Chat and embeddings use different Apple frameworks, so choose the guide for the feature you're building:
 
 | Feature | Implementation | Compare capabilities | Apple guidance |
 |---------|----------------|----------------------|----------------|
@@ -62,7 +62,7 @@ See [using a native embedding](embeddings/apple.md#use-a-native-embedding).
 
 #### Multiple languages
 
-See [choose-a-language-and-model](embeddings/apple.md#choose-a-language-and-model).
+See [choosing a language and model](embeddings/apple.md#choose-a-language-and-model).
 
 ## See also
 

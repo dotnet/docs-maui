@@ -7,43 +7,47 @@ ms.topic: concept-article
 
 # Chat feature comparison
 
-`Microsoft.Extensions.AI.IChatClient` offers a common chat API across providers. `AppleIntelligenceChatClient` is the `Microsoft.Maui.Essentials.AI` implementation using Apple's Foundation Models framework. The comparison below starts with capabilities expressed by the abstraction, then describes the Apple implementation; other providers may handle the same capabilities differently. This isn't an iOS-versus-macOS capability matrix.
+When you use `IChatClient`, your app has a common API for sending messages, streaming responses, and calling tools. The provider determines which capabilities and options are supported. The following tables show how `AppleIntelligenceChatClient` implements that API using Apple's on-device Foundation Models framework.
 
 ## Abstraction versus Apple implementation
 
-| Capability | `IChatClient` abstraction | Apple `AppleIntelligenceChatClient` |
+| Capability | `IChatClient` | `AppleIntelligenceChatClient` |
 |------------|---------------------------|------------------------------------|
 | Text generation and streaming | Provides response and streaming methods | Supports both on device |
-| Conversation history | Accepts message history; session persistence is provider-dependent | Reconstructs a native session from supplied history for each request; the app retains and trims turns |
-| System instructions | Can represent system messages | Appends system messages as native instructions |
-| Tools | Can represent tools and function calls; execution semantics depend on provider and middleware | Supports `AIFunction` tools only; native adapter executes them |
-| Structured output | Can request response formats, subject to provider support | Requires a JSON schema; schema-free `ChatResponseFormat.Json` throws |
-| Image input | Can represent image-bearing content; provider support varies | Supports images on Apple 27+ with an available vision-capable model; requires a package version containing [dotnet/maui-labs#405](https://github.com/dotnet/maui-labs/pull/405) |
+| Conversation history | Accepts a sequence of messages | Uses the history supplied with each request; your app retains the conversation |
+| System instructions | Accepts system messages | Uses them as native instructions |
+| Tools | Accepts tool definitions and represents function calls | Supports `AIFunction` tools, executed by the native framework |
+| Structured output | Accepts a response format | Requires a JSON schema |
+| Image input | Accepts image content | Supported on Apple 27+ with an available vision-capable model |
 
 For examples, see [Chat client](../chat.md). For supported input types, options, and availability behavior, see [Chat on Apple platforms](apple.md).
 
 ## Chat options
 
-| `ChatOptions` capability | Can be expressed through `IChatClient` | Apple adapter behavior |
-|--------------------------|----------------------------------|------------------------|
-| `Temperature` | Yes | Mapped to native generation options |
-| `TopK` | Yes | Mapped to native sampling options |
-| `Seed` | Yes | Used with `TopK` random sampling; not applied to greedy sampling |
-| `MaxOutputTokens` | Yes | Mapped when greater than zero; not the total context budget |
-| `ResponseFormat` | Yes | JSON schema supported; schema-free `ChatResponseFormat.Json` throws |
-| `Tools` | Yes | Supports `AIFunction` tools only |
-| `ToolMode` | Yes | `None` suppresses tools; other modes aren't explicitly guaranteed |
-| `TopP`, `FrequencyPenalty`, `PresencePenalty`, `StopSequences`, `ModelId` | Yes | Not mapped to native options |
+The following `ChatOptions` properties are available through the abstraction. Their effect depends on the provider:
 
-When `TopK` is absent, the native adapter uses greedy sampling. Don't rely on unmapped options to constrain output. See [Chat on Apple platforms](apple.md) for the context budget and tool-execution guidance.
+| `ChatOptions` property | Apple implementation |
+|------------------------|----------------------|
+| `Temperature` | Supported |
+| `TopK` | Supported |
+| `Seed` | Used with `TopK` random sampling |
+| `MaxOutputTokens` | Limits output when greater than zero; doesn't increase the context window |
+| `ResponseFormat` | JSON schema supported; schema-free `ChatResponseFormat.Json` isn't supported |
+| `Tools` | Supports `AIFunction` tools |
+| `ToolMode` | `None` disables tools; required-tool modes aren't enforced |
+| `TopP`, `FrequencyPenalty`, `PresencePenalty`, `StopSequences`, `ModelId` | Not supported |
+
+Without `TopK`, the client uses greedy sampling and doesn't apply `Seed`. Unsupported options aren't applied to generation. See [Chat on Apple platforms](apple.md) for guidance on prompts, conversation history, and tool execution.
 
 ## Message content
 
-`TextContent` and function call/result content are supported. Other unsupported content types fail explicitly. On Apple 27+ with an available vision-capable model, the adapter accepts image `DataContent` and local-file `UriContent`. Remote HTTP image URLs aren't accepted, and the adapter doesn't generate images. Use a package version that includes [the image-input implementation](https://github.com/dotnet/maui-labs/pull/405); merging source changes alone doesn't update an older NuGet package.
+The client supports `TextContent`, `FunctionCallContent`, and `FunctionResultContent`. For images on Apple 27+, use `DataContent` with an image media type or `UriContent` pointing to a local file. Remote image URLs and other content types aren't supported. See the [image-input example](apple.md#image-input-on-apple-27).
 
 ## Platform availability
 
-The current package targets iOS, macOS, and Mac Catalyst. Chat requires version 26 or later on those platforms. OS version alone does not guarantee an available model: the device must support Apple Intelligence and its model must be ready. The package doesn't ship tvOS or visionOS targets, even if Apple's native framework supports other platforms. Android and Windows chat implementations aren't available in `Microsoft.Maui.Essentials.AI`. See [Chat on Apple platforms](apple.md) and [Apple requirements](../requirements-apple.md).
+Chat is available on supported iOS, macOS, and Mac Catalyst devices running version 26 or later. Image input requires version 27 or later and a vision-capable model. The device must have Apple Intelligence enabled and the model ready to use.
+
+The package doesn't provide chat implementations for Android, Windows, tvOS, or visionOS. See [Apple requirements](../requirements-apple.md) for setup.
 
 ## See also
 

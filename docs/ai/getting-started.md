@@ -17,7 +17,7 @@ Add the NuGet package to your .NET MAUI project:
 dotnet add package Microsoft.Maui.Essentials.AI --prerelease
 ```
 
-Use a package version that includes the Apple capabilities your app needs. In particular, older previews don't contain [Apple 27 image input](https://github.com/dotnet/maui-labs/pull/405) or the [structured-streaming correction](https://github.com/dotnet/maui-labs/pull/606). A source PR merge alone doesn't update a previously published package.
+Use the latest compatible package version for the features your app needs. For image input, also build with Apple 27 target frameworks and Xcode 27. See [Apple requirements](requirements-apple.md).
 
 ## Suppress the experimental warning
 

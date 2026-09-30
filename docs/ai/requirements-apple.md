@@ -27,11 +27,13 @@ The device must also support Apple Intelligence, have it enabled, and have an av
 
 `NLEmbeddingGenerator` uses Apple's **Natural Language** framework (`NLEmbedding`). It does **not** require Apple Intelligence.
 
-The native *word* and *sentence* embedding APIs have different introduction versions. The default generator requests an English sentence model, not the older word model. The managed project and native bridge have separate deployment settings; native API introduction alone doesn't prove the complete package works on an older OS. See the [embedding feature comparison](embeddings/feature-comparison.md#platform-and-model-availability) for native API floors and package caveats, and [Embeddings on Apple platforms](embeddings/apple.md) for model selection and indexing guidance.
+The generator uses an English sentence model by default. Check that a model is available for the language your app needs; support can vary by device and OS. See [Embeddings on Apple platforms](embeddings/apple.md) for model selection and indexing guidance.
+
+Although Apple's native word and sentence embedding APIs are available on older OS versions, the package's native bridge targets Apple 26. Use the package's deployment requirements when configuring your app, not the introduction version of the underlying Natural Language API.
 
 ## NuGet package
 
-See [Get started](getting-started.md#install-the-package) to install `Microsoft.Maui.Essentials.AI`. Choose a package version containing the capabilities described in these guides. Xcode 26 or later is required for Apple chat; building with Apple 27 image-input target frameworks requires Xcode 27.
+See [Get started](getting-started.md#install-the-package) to install `Microsoft.Maui.Essentials.AI`. Build with Xcode 26 or later for text chat. Image input requires a package version with image support, Apple 27 target frameworks, and Xcode 27.
 
 ## See also
 
