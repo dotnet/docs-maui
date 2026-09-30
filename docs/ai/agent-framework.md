@@ -1,14 +1,14 @@
 ---
 title: Microsoft Agent Framework integration
 description: Learn how to compose multiple AI agents into multi-stage workflows that run entirely on-device using Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI.
-ms.date: 03/11/2026
+ms.date: 09/30/2026
 ms.topic: concept-article
 ---
 
 # Microsoft Agent Framework integration
 
 > [!IMPORTANT]
-> Multi-agent workflows with `Microsoft.Maui.Essentials.AI` currently require Apple Intelligence, which is available on iOS, macOS, Mac Catalyst, and tvOS. Android and Windows support are not yet available.
+> Multi-agent workflows with `Microsoft.Maui.Essentials.AI` require Apple Intelligence on a supported iOS, macOS, or Mac Catalyst device. The package has no tvOS implementation. Android and Windows support are not yet available.
 
 ## Overview
 
@@ -35,10 +35,9 @@ As a concrete example, the [LocalChatClientWithAgents](https://github.com/dotnet
 
 ## Installation
 
-Add the required NuGet packages to your `.csproj` file:
+Install a compatible `Microsoft.Maui.Essentials.AI` package as described in [Get started](getting-started.md#install-the-package), then add the Agent Framework packages to your `.csproj` file:
 
 ```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
 <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
 <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-rc3" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.260304.1" />

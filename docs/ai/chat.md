@@ -1,15 +1,15 @@
 ---
 title: Chat client
 description: Use IChatClient from Microsoft.Maui.Essentials.AI for basic chat, streaming, multi-turn conversations, tool calling, and structured JSON output in .NET MAUI.
-ms.date: 03/11/2026
+ms.date: 09/30/2026
 ms.topic: concept-article
 ---
 
 # Chat client
 
-This page shows how to use [`IChatClient`](/dotnet/ai/ichatclient) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform requirements, see [Requirements](requirements-apple.md).
+This page shows how to use [`IChatClient`](/dotnet/ai/ichatclient) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform support and capabilities, see the [chat feature comparison](chat/feature-comparison.md). For model availability and best practices, see [Chat on Apple platforms](chat/apple.md).
 
-The `IChatClient` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
+The `IChatClient` interface is part of `Microsoft.Extensions.AI`. The examples use the interface directly, but supported content, options, and response behavior depend on the underlying provider. See the [chat feature comparison](chat/feature-comparison.md).
 
 ## Basic chat
 
@@ -126,6 +126,7 @@ foreach (var day in result.Result.Days)
 
 - [Text embeddings](embeddings.md)
 - [Agent framework integration](agent-framework.md)
-- [Feature comparison](feature-comparison.md)
+- [Chat feature comparison](chat/feature-comparison.md)
+- [Chat on Apple platforms](chat/apple.md)
 - [Use the IChatClient interface](/dotnet/ai/ichatclient)
 - [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
