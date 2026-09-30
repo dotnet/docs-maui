@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 This page shows how to use [`IChatClient`](/dotnet/ai/ichatclient) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform support and capabilities, see the [chat feature comparison](chat/feature-comparison.md). For model availability and best practices, see [Chat on Apple platforms](chat/apple.md).
 
-The `IChatClient` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
+The `IChatClient` interface is part of `Microsoft.Extensions.AI`. The examples use the interface directly, but supported content, options, and response behavior depend on the underlying provider. See the [chat feature comparison](chat/feature-comparison.md).
 
 ## Basic chat
 

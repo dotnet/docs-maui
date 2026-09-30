@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 This page shows how to use [`IEmbeddingGenerator<string, Embedding<float>>`](/dotnet/ai/iembeddinggenerator) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform and model availability, see the [embedding feature comparison](embeddings/feature-comparison.md). For model selection and search practices, see [Embeddings on Apple platforms](embeddings/apple.md).
 
-The `IEmbeddingGenerator` interface is part of `Microsoft.Extensions.AI`. All examples on this page use the interface directly and work regardless of the underlying platform implementation.
+The `IEmbeddingGenerator` interface is part of `Microsoft.Extensions.AI`. The examples use the interface directly, but available models, languages, and vector compatibility depend on the provider. See the [embedding feature comparison](embeddings/feature-comparison.md).
 
 ## Generate embeddings
 
@@ -30,7 +30,7 @@ You can embed multiple strings in a single call:
 
 ```csharp
 var embeddings = await generator.GenerateAsync(
-    ["Hello, world!", "Goodbye, world!", "Bonjour le monde"]);
+    ["Hello, world!", "Goodbye, world!", "Good morning!"]);
 
 for (int i = 0; i < embeddings.Count; i++)
     Console.WriteLine($"[{i}] dimensions: {embeddings[i].Vector.Length}");
