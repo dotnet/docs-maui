@@ -114,7 +114,7 @@ In .NET MAUI app this means that:
 - Customizing UI appearance with the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
 
 > [!IMPORTANT]
-> The Mono interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT. For more information about the Mono interpreter, see [Mono interpreter on iOS and Mac Catalyst](~/macios/interpreter.md).
+> The Mono interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT. For more information, see [Interpreters on iOS and Mac Catalyst](~/macios/interpreter.md).
 
 For more information about trim warnings, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings). For more information about AOT warnings, see [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 

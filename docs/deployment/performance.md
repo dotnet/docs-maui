@@ -1,7 +1,7 @@
 ---
 title: "Improve app performance"
 description: "Learn how to increase the performance of .NET MAUI apps by reducing the amount of work being performed by a CPU, and the amount of memory consumed by an app."
-ms.date: 01/07/2025
+ms.date: 09/11/2026
 no-loc: [ "Objective-C" ]
 ---
 
@@ -15,7 +15,10 @@ There are many techniques for increasing the performance, and perceived performa
 
 When developing an app, it's important to only attempt to optimize code once it has been profiled. Profiling is a technique for determining where code optimizations will have the greatest effect in reducing performance problems. The profiler tracks the app's memory usage, and records the running time of methods in the app. This data helps to navigate through the execution paths of the app, and the execution cost of the code, so that the best opportunities for optimization can be discovered.
 
-.NET MAUI apps can be profiled using `dotnet-trace` on Android, iOS, and Mac, and Windows, and with PerfView on Windows. For more information, see [Profiling .NET MAUI apps](https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps).
+.NET MAUI apps can be profiled using `dotnet-trace` on Android, iOS,
+and Mac Catalyst, and with `dotnet-trace` or PerfView on Windows. For
+platform-specific setup, see [Performance
+Profiling](~/fundamentals/profiling.md).
 
 The following best practices are recommended when profiling an app:
 

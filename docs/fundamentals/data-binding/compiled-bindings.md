@@ -1,7 +1,7 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 03/24/2026
+ms.date: 08/11/2026
 ---
 
 # Compiled bindings
@@ -181,6 +181,27 @@ Then, ensure that all your bindings are annotated with the correct `x:DataType` 
 
 > [!NOTE]
 > In cases where there's a binding with a `Source`, but it inherits the `x:DataType` from the parent, there can be a mismatch between the `x:DataType` and the type of the `Source`. In this scenario, a warning will be generated and a fallback to a reflection-based binding that resolves the binding path at runtime will occur.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+### Compile relative source ancestor bindings
+
+In .NET MAUI 11, the XAML source generator can compile a binding that uses [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) with a resolvable `AncestorType`. The source generator uses the ancestor type as the binding source type, so an inline `x:DataType` isn't required:
+
+```xaml
+<Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}},
+                          Path=DeleteEmployeeCommand}" />
+```
+
+When the ancestor type and binding path can be resolved at compile time, the source generator generates a trim-safe compiled binding rather than a reflection-based binding. This makes the binding safe for full trimming and NativeAOT.
+
+`RelativeSource` bindings that use `Self` or `TemplatedParent` continue to use runtime bindings.
+
+For an `x:Reference` binding, the source generator resolves the referenced element type and compiles the binding when it can resolve the binding path. If it resolves the element type but can't compile the path, it generates a string-based runtime binding and suppresses the `MAUIG2045` warning. An `x:Reference` name that isn't found in any XAML namescope produces a `MAUIG1001` XAML compiler error.
+
+Similarly, if `AncestorType` can't be resolved, XAML compilation fails.
 
 ::: moniker-end
 

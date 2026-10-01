@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI app for Android"
 description: "Learn how to package and publish an Android .NET MAUI app."
-ms.date: 04/05/2023
+ms.date: 09/28/2026
 ---
 
 # Publish a .NET MAUI app for Android
@@ -20,6 +20,8 @@ The final step in the development of a .NET Multi-platform App UI (.NET MAUI) ap
 The following diagram illustrates the steps involved with publishing a .NET MAUI Android app:
 
 :::image type="content" source="media/build-and-deploy-steps.png" alt-text="Build and deploy flowchart for .NET MAUI Android apps.":::
+
+The diagram shows the overall publishing process, not the result of selecting **Build Solution** with the **Release** configuration in Visual Studio. A Visual Studio Release **Build Solution** isn't the publishing workflow documented here for a distributable, signed APK. To create one for ad-hoc distribution, [set the Release package format to apk](publish-ad-hoc.md#ensure-correct-package-format), then follow [Distribute your app through Visual Studio](publish-ad-hoc.md#distribute-your-app-through-visual-studio) to publish, sign, and save the package.
 
 > [!IMPORTANT]
 > When publishing your .NET MAUI app for Android, you generate an Android Package (APK) or an Android App Bundle (AAB) file. The APK is used for installing your app to an Android device, and the AAB is used to publish your app to Google Play.

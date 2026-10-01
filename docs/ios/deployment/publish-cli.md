@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI iOS app using the command line"
 description: "Learn how to publish and sign a .NET MAUI iOS app using the command line."
-ms.date: 02/24/2023
+ms.date: 08/25/2026
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
@@ -98,10 +98,10 @@ If either of these conditions fail, the settings aren't processed. More importan
 
 ## Publish an iOS app from Windows
 
-Building native iOS apps using .NET MAUI requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio 2022 must connect to a network-accessible Mac to build .NET MAUI iOS apps. For more information, see [Pair to Mac for iOS development](../pair-to-mac.md).
+Building native iOS apps using .NET MAUI requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio must connect to a network-accessible Mac to build .NET MAUI iOS apps. For more information, see [Pair to Mac for iOS development](../pair-to-mac.md).
 
 > [!NOTE]
-> The first time Pair to Mac logs into a Mac build host from Visual Studio 2022, it sets up SSH keys. With these keys, future logins will not require a username or password.
+> The first time Pair to Mac logs into a Mac build host from Visual Studio, it sets up SSH keys. With these keys, future logins will not require a username or password.
 
 To publish your app from the command line on Windows, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the same command line parameters, or build properties in your project file, that you'd provide when publishing from a Mac. In addition, you must provide the following command line parameters:
 
@@ -111,15 +111,15 @@ To publish your app from the command line on Windows, open a terminal and naviga
 | `-p:ServerUser` | The username to use when logging into your Mac build host. Use your system username rather than your full name. |
 | `-p:ServerPassword` | The password for the username used to log into your Mac build host. |
 | `-p:TcpPort` | The TCP port to use to communicate with your Mac build host, which is 58181. |
-| `-p:_DotNetRootRemoteDirectory` | The folder on your Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
+| `-p:_DotNetRootRemoteDirectory` | The folder on your Mac build host that contains the .NET SDK. For Visual Studio 2026, use `/Users/{macOS username}/Library/Caches/maui/PairToMac/SDKs/dotnet/`. For Visual Studio 2022, use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
 
 > [!IMPORTANT]
 > Values for these parameters can also be provided in the project file as build properties. However, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons.
 
-For example, use the following command to build and sign an *.ipa* from Windows:
+For example, use the following command to build and sign an *.ipa* from Windows with Visual Studio 2026:
 
 ```dotnetcli
-dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/maui/PairToMac/SDKs/dotnet/
 ```
 
 [!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
