@@ -1,7 +1,7 @@
 ---
 title: "DevFlow overview"
 description: "Learn about DevFlow, a testing, automation, and debugging toolkit for .NET MAUI applications that provides visual tree inspection, a CLI, Blazor WebView debugging, and AI agent integration."
-ms.date: 05/08/2026
+ms.date: 09/29/2026
 ---
 
 # DevFlow overview
@@ -95,11 +95,13 @@ maui devflow mcp
 |---------|-------------|
 | `Microsoft.Maui.DevFlow.Agent` | In-app agent for .NET MAUI apps. Exposes visual tree, element interactions, screenshots, and profiling via HTTP/JSON API. |
 | `Microsoft.Maui.DevFlow.Agent.Core` | Platform-agnostic core: HTTP server, visual tree walker, CSS selector engine, network capture, profiling. |
-| `Microsoft.Maui.DevFlow.Agent.Gtk` | GTK/Linux agent for Maui.Gtk apps. |
+| `Microsoft.Maui.DevFlow.Agent.Gtk` | GTK/Linux agent for apps using the current Linux GTK4 backend. |
 | `Microsoft.Maui.DevFlow.Blazor` | Blazor WebView CDP bridge. Enables Chrome DevTools Protocol access for Blazor Hybrid content. |
 | `Microsoft.Maui.DevFlow.Blazor.Gtk` | Blazor CDP bridge for WebKitGTK on Linux. |
 | `Microsoft.Maui.DevFlow.Driver` | Platform-aware app driver for iOS, Android, Mac Catalyst, Windows, and Linux. |
 | `Microsoft.Maui.DevFlow.Logging` | Buffered rotating JSONL file logger. No MAUI dependency. |
+
+For GTK/Linux apps, use `Microsoft.Maui.DevFlow.Agent.Gtk` with the current `Microsoft.Maui.Platforms.Linux.Gtk4` backend. See the [Linux GTK4 backend guide](../platform-backends/linux-gtk4.md) for package setup and automatic agent startup. Don't mix it with the superseded `Platform.Maui.Linux.Gtk4*` backend packages.
 
 ## Platform support
 
@@ -116,6 +118,7 @@ maui devflow mcp
 - [Android setup](setup-android.md)
 - [Apple platforms setup](setup-apple.md)
 - [Windows setup](setup-windows.md)
+- [Linux GTK4 backend and DevFlow setup](../platform-backends/linux-gtk4.md)
 
 ## See also
 
