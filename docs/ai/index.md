@@ -1,7 +1,7 @@
 ---
 title: Microsoft.Maui.Essentials.AI overview
 description: Learn how Microsoft.Maui.Essentials.AI brings on-device AI to .NET MAUI apps through standard Microsoft.Extensions.AI interfaces backed by native platform AI frameworks.
-ms.date: 03/11/2026
+ms.date: 09/30/2026
 ---
 
 # Microsoft.Maui.Essentials.AI overview
@@ -9,7 +9,7 @@ ms.date: 03/11/2026
 `Microsoft.Maui.Essentials.AI` is a cross-platform library that brings on-device AI capabilities to .NET MAUI applications through seamless integration with [Microsoft.Extensions.AI](/dotnet/ai/ai-extensions). It surfaces native platform AI frameworks behind the standard `IChatClient` and `IEmbeddingGenerator` interfaces, so you can write portable AI code that runs entirely on-device without sending data to external servers.
 
 > [!NOTE]
-> `Microsoft.Maui.Essentials.AI` is designed for all .NET MAUI platforms. **Apple Intelligence** (iOS, macOS, Mac Catalyst, tvOS) is the first implementation available. Android and Windows support are not yet available and will be added in future releases.
+> `Microsoft.Maui.Essentials.AI` currently provides chat through Apple Intelligence and embeddings through Apple's separate Natural Language framework. Android and Windows implementations are not yet available. See the [feature comparisons](feature-comparison.md) for per-feature support.
 
 > [!IMPORTANT]
 > This API is experimental and is subject to change. Using it produces diagnostic warning **MAUIAI0001**. You must suppress this warning to use the library.
@@ -36,21 +36,21 @@ ms.date: 03/11/2026
 
 ### Currently available (Apple platforms)
 
-- **Chat client** — `AppleIntelligenceChatClient` implements `IChatClient` using Apple's Foundation Models framework (Apple Intelligence). Requires iOS 26.0+, macOS 26.0+, Mac Catalyst 26.0+, or tvOS 26.0+.
-- **Embedding generator** — `NLEmbeddingGenerator` implements `IEmbeddingGenerator<string, Embedding<float>>` using Apple's Natural Language framework. Available from iOS 13.0+, macOS 10.15+, Mac Catalyst 13.1+, and tvOS 13.0+.
+- **Chat client** — `AppleIntelligenceChatClient` implements `IChatClient` using Apple's Foundation Models framework (Apple Intelligence). Supports eligible devices on iOS 26.0+, macOS 26.0+, and Mac Catalyst 26.0+. See the [chat feature comparison](chat/feature-comparison.md).
+- **Embedding generator** — `NLEmbeddingGenerator` implements `IEmbeddingGenerator<string, Embedding<float>>` using Apple's Natural Language framework, independently of Apple Intelligence. The API and individual models have different availability; see the [embedding feature comparison](embeddings/feature-comparison.md).
 
 ### Planned (not yet available)
 
 - **Android** — on-device AI support for Android is planned for a future release.
 - **Windows** — on-device AI support for Windows is planned for a future release.
 
-Because all implementations conform to the standard Microsoft.Extensions.AI interfaces, you can substitute any `IChatClient` or `IEmbeddingGenerator` provider without changing your application logic. This makes it straightforward to switch between on-device models or cloud-backed providers.
+The standard Microsoft.Extensions.AI interfaces let applications choose another `IChatClient` or `IEmbeddingGenerator` provider. Changing an embedding provider or model also requires rebuilding stored vector indexes; different models don't necessarily share a vector space.
 
 ## Key benefits
 
 - **Unified API**: Program against `IChatClient` and `IEmbeddingGenerator<string, Embedding<float>>`—the same interfaces used across the .NET AI ecosystem.
 - **On-device processing**: AI inference runs locally on the device. No network call is required.
-- **Privacy-first**: Data never leaves the device and is never sent to external servers.
+- **Privacy-first**: The Apple implementations process prompts and embeddings on device; an app using other providers must account for their data handling separately.
 - **Platform-optimized**: Each platform implementation is accelerated by native hardware-level ML capabilities.
 - **Microsoft.Extensions.AI compatible**: Works out-of-the-box with logging middleware, dependency injection, telemetry, and the full breadth of the .NET AI ecosystem.
 
@@ -68,11 +68,11 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 | Article | Description |
 |---------|-------------|
 | [Get started](getting-started.md) | Install the package and register the chat client and embedding generator services. |
-| [Chat](chat.md) | Use `IChatClient` for basic chat, streaming, multi-turn conversations, tool calling, and structured output. |
-| [Text embeddings](embeddings.md) | Use `IEmbeddingGenerator` to generate on-device text embeddings for semantic search and similarity. |
+| [Chat](chat.md) | Use `IChatClient` for basic chat, streaming, multi-turn conversations, tool calling, and structured output. See the [chat feature comparison](chat/feature-comparison.md) and [Apple chat guidance](chat/apple.md). |
+| [Text embeddings](embeddings.md) | Use `IEmbeddingGenerator` to generate on-device text embeddings for semantic search and similarity. See the [embedding feature comparison](embeddings/feature-comparison.md) and [Apple embedding guidance](embeddings/apple.md). |
 | [Agent framework integration](agent-framework.md) | Build multi-agent AI workflows with Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI. |
-| [Feature comparison](feature-comparison.md) | Feature availability across all platforms. |
-| [Requirements](requirements-apple.md) | Supported OS versions and device requirements for iOS, macOS, Mac Catalyst, and tvOS. |
+| [Feature comparison](feature-comparison.md) | Navigate to feature-specific support and capabilities. |
+| [Requirements](requirements-apple.md) | Apple OS and model prerequisites for chat and text embeddings. |
 
 ## See also
 
@@ -81,4 +81,4 @@ Because all implementations conform to the standard Microsoft.Extensions.AI inte
 - [Use the IEmbeddingGenerator interface](/dotnet/ai/iembeddinggenerator)
 - [IChatClient API reference](/dotnet/api/microsoft.extensions.ai.ichatclient)
 - [IEmbeddingGenerator API reference](/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2)
-- [Apple Intelligence availability](https://support.apple.com/en-us/120898)
+- [Apple Intelligence device requirements](https://support.apple.com/en-us/121115)
