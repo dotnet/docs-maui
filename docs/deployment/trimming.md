@@ -1,7 +1,8 @@
 ---
 title: "Trim a .NET MAUI app"
 description: "Learn about the .NET trimmer, which eliminates unused code from a .NET MAUI app to reduce its size."
-ms.date: 12/20/2024
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 no-loc: [ ILLink ]
 monikerRange: ">=net-maui-9.0"
 ---
@@ -37,14 +38,31 @@ This is equivalent to setting `[AssemblyMetadata("IsTrimmable", "True")]` when b
 
 Full trimming shouldn't be conditioned by build configuration. This is because features switches are enabled or disabled based on the value of the `$(TrimMode)` build property, and the same features should be enabled or disabled in all build configurations so that your code behaves identically.
 
+::: moniker range="<=net-maui-10.0"
+
 > [!NOTE]
 > Don't set the `$(PublishTrimmed)` build property in your app's project file, because this is set by default when required.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The SDK sets `$(PublishTrimmed)` by default when required. Android CoreCLR ReadyToRun, including composite ReadyToRun, requires `PublishTrimmed=true`. If you disable trimming while ReadyToRun is enabled, the SDK disables ReadyToRun and reports warning `XA0119`. For more information, see [ReadyToRun compilation](runtimes-compilation.md#readytorun-r2r).
+
+::: moniker-end
 
 For more trimming options, see [Trimming options](/dotnet/core/deploying/trimming/trimming-options).
 
 ## Trimming defaults
 
 By default, Android and Mac Catalyst builds use partial trimming when the build configuration is set to a release build. iOS uses partial trimming for any device builds, regardless of the build configuration, and doesn't use trimming for simulator builds.
+
+::: moniker range=">=net-maui-11.0"
+
+CoreCLR apps on iOS, tvOS, and Mac Catalyst default to `DynamicCodeSupport=true`. This retains `System.Reflection.Emit` in trimmed output and can increase app size. Only set `DynamicCodeSupport=false` if your app and its dependencies don't require dynamic code. NativeAOT continues to default to `false`. For feature detection and configuration details, see [Dynamic code support on Apple platforms](runtimes-compilation.md#dynamic-code-support-on-apple-platforms).
+
+::: moniker-end
 
 ## Trimming incompatibilities
 
