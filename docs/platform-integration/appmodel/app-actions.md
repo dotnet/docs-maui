@@ -1,7 +1,8 @@
 ---
 title: "App actions (shortcuts)"
 description: "Describes the IAppActions interface in the Microsoft.Maui.ApplicationModel namespace, which lets you create and respond to app shortcuts from the app icon."
-ms.date: 02/02/2023
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", "AppActions", "Platforms/Android/MainActivity.cs", "Platforms/iOS/AppDelegate.cs", "Platforms/Windows/App.xaml.cs", "Id", "Title", "Subtitle", "Icon"]
 ---
 
@@ -27,7 +28,17 @@ In the _Platforms/Android/MainActivity.cs_ file, add the `OnResume` and `OnNewIn
 
 # [iOS/Mac Catalyst](#tab/macios)
 
+::: moniker range="<=net-maui-10.0"
+
 No setup is required.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+No AppActions-specific setup is required when you use the .NET MAUI app templates. When you upgrade an existing app for the Xcode 27 SDKs, add the scene manifest and registered scene delegate to both Apple platform folders. See [Upgrade to the scene lifecycle](../../fundamentals/app-lifecycle.md#upgrade-to-the-scene-lifecycle).
+
+::: moniker-end
 
 # [Windows](#tab/windows)
 
@@ -58,6 +69,38 @@ The following code demonstrates how to configure the app actions at app startup:
 After app actions [have been configured](#create-actions), the `OnAppAction` method is called for all app actions invoked by the user. Use the `Id` property to differentiate them. The following code demonstrates handling an app action:
 
 :::code language="csharp" source="../snippets/shared_1/App.xaml.cs" id="appaction_handle":::
+
+::: moniker range=">=net-maui-11.0"
+
+### iOS and Mac Catalyst scene dispatch
+
+.NET MAUI dispatches app actions through the existing `PerformActionForShortcutItem` lifecycle registrations for both application and scene lifecycles. With the default MAUI builder, the framework forwards these actions to AppActions. Continue to use `OnAppAction` to respond to them. Do not add manual `Platform.PerformActionForShortcutItem` forwarding to `AppDelegate`, `SceneDelegate`, or another lifecycle registration.
+
+A warm shortcut selection reaches an existing scene through its native shortcut callback. A shortcut in `UISceneConnectionOptions.ShortcutItem` is dispatched after that window's scene activation callbacks, at most once per connection. This cold scene delivery requires no manual forwarding.
+
+If you register a custom `PerformActionForShortcutItem` handler, invoke its completion callback exactly once. Each registration receives its own callback. Pass `true` if your handler handles the action, or `false` otherwise. A handler that only observes or logs the action must also call its callback with `false`, as in this registration in `MauiProgram.cs`:
+
+```csharp
+using Microsoft.Maui.LifecycleEvents;
+
+builder.ConfigureLifecycleEvents(events =>
+{
+#if IOS || MACCATALYST
+    events.AddiOS(ios => ios
+        .PerformActionForShortcutItem((application, shortcutItem, completionHandler) =>
+        {
+            System.Diagnostics.Debug.WriteLine($"Shortcut: {shortcutItem.Type}");
+            completionHandler(false);
+        }));
+#endif
+});
+```
+
+A handler can defer its acknowledgement until asynchronous work finishes. Returning from the handler does not acknowledge the action. When dispatch does not throw, native completion waits until all handler invocations have returned and either one registration reports `true` or every registration reports `false`. If none reports `true`, a handler that never acknowledges can leave native warm-action completion pending. There is no automatic timeout.
+
+A cold scene connection has no native completion callback, but each lifecycle registration must still acknowledge its own callback.
+
+::: moniker-end
 
 ### Check if app actions are supported
 

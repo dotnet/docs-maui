@@ -1,7 +1,8 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 08/11/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # App lifecycle
@@ -33,6 +34,8 @@ The `Window` class defines the following cross-platform lifecycle events:
 
 These cross-platform events map to different platform events, and the following table shows this mapping:
 
+::: moniker range="<=net-maui-10.0"
+
 | Event | Android | iOS | Windows |
 | -- | -- | -- | -- |
 | `Created` | `OnPostCreate` | `FinishedLaunching` | `Created` |
@@ -41,6 +44,23 @@ These cross-platform events map to different platform events, and the following 
 | `Stopped` | `OnStop` | `DidEnterBackground` | `VisibilityChanged` |
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+| Event | Android | iOS and Mac Catalyst (scene lifecycle) | Windows |
+| -- | -- | -- | -- |
+| `Created` | `OnPostCreate` | `SceneWillConnect` (after the native window is created) | `Created` |
+| `Activated` | `OnResume` | `SceneOnActivated` | `Activated` (`CodeActivated` and `PointerActivated`) |
+| `Deactivated` | `OnPause` | `SceneOnResignActivation` | `Activated` (`Deactivated`) |
+| `Stopped` | `OnStop` | `SceneDidEnterBackground` | `VisibilityChanged` |
+| `Resumed` | `OnRestart` | `SceneWillEnterForeground` | `Resumed` |
+| `Destroying` | `OnDestroy` | `SceneDidDisconnect` | `Closed` |
+
+.NET MAUI forwards scene events to the corresponding cross-platform `Window` events. You do not need to add this forwarding to your scene delegate.
+
+::: moniker-end
 
 In addition, the `Window` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
 
@@ -272,10 +292,18 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
 | `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
 
+::: moniker range=">=net-maui-11.0"
+
+The `SceneOpenUrl` and `SceneContinueUserActivity` handlers return a `bool`. Return `true` if your handler processes the delivery, or `false` otherwise. For initial scene connection data, see [Handle scene activation data](#handle-scene-activation-data). For the completion callback requirements of `PerformActionForShortcutItem`, see [iOS and Mac Catalyst scene dispatch](../platform-integration/appmodel/app-actions.md#ios-and-mac-catalyst-scene-dispatch).
+
+::: moniker-end
+
 > [!IMPORTANT]
 > Each delegate, with the exception of `PerformFetch`, has a corresponding identically named extension method that can be called to register a handler for the delegate.
 
 To respond to an iOS and Mac Catalyst lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -311,7 +339,111 @@ namespace PlatformLifecycleDemo
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+using Microsoft.Maui.LifecycleEvents;
+
+namespace PlatformLifecycleDemo;
+
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureLifecycleEvents(events =>
+            {
+#if IOS || MACCATALYST
+                events.AddiOS(ios => ios
+                    .SceneOnActivated(scene => LogEvent(nameof(iOSLifecycle.SceneOnActivated)))
+                    .SceneOnResignActivation(scene => LogEvent(nameof(iOSLifecycle.SceneOnResignActivation)))
+                    .SceneDidEnterBackground(scene => LogEvent(nameof(iOSLifecycle.SceneDidEnterBackground)))
+                    .SceneWillEnterForeground(scene => LogEvent(nameof(iOSLifecycle.SceneWillEnterForeground)))
+                    .SceneDidDisconnect(scene => LogEvent(nameof(iOSLifecycle.SceneDidDisconnect))));
+#endif
+            });
+
+        return builder.Build();
+    }
+
+    static void LogEvent(string eventName) =>
+        System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}");
+}
+```
+
+::: moniker-end
+
 For more information about the iOS app lifecycle, see [Managing Your App's Life Cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle?language=objc) on developer.apple.com.
+
+::: moniker range=">=net-maui-11.0"
+
+#### Upgrade to the scene lifecycle
+
+iOS and Mac Catalyst apps built with the Xcode 27 SDKs must use the UIKit scene lifecycle. New .NET MAUI 11 app templates include the required configuration. When you upgrade an existing app, update both Apple platform folders:
+
+1. Add the following `UIApplicationSceneManifest` entry inside the top-level `<dict>` in `Platforms/iOS/Info.plist` and `Platforms/MacCatalyst/Info.plist`. If a manifest already exists, update it instead of adding a second entry.
+
+   ```xml
+   <key>UIApplicationSceneManifest</key>
+   <dict>
+       <key>UIApplicationSupportsMultipleScenes</key>
+       <false/>
+       <key>UISceneConfigurations</key>
+       <dict>
+           <key>UIWindowSceneSessionRoleApplication</key>
+           <array>
+               <dict>
+                   <key>UISceneConfigurationName</key>
+                   <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+                   <key>UISceneDelegateClassName</key>
+                   <string>SceneDelegate</string>
+               </dict>
+           </array>
+       </dict>
+   </dict>
+   ```
+
+   Keep `__MAUI_DEFAULT_SCENE_CONFIGURATION__` unchanged. .NET MAUI uses this exact name to create the scene's window. `UIApplicationSupportsMultipleScenes` is explicitly `false` to keep the single-window default. Scene adoption does not require multiple windows.
+
+1. Add `SceneDelegate.cs` to each of the `Platforms/iOS` and `Platforms/MacCatalyst` folders, with the following code. Replace `MyMauiApp` with your app's namespace. If a scene delegate already exists, update that class instead of adding another.
+
+   ```csharp
+   using Foundation;
+   using Microsoft.Maui;
+
+   namespace MyMauiApp;
+
+   [Register("SceneDelegate")]
+   public class SceneDelegate : MauiUISceneDelegate
+   {
+   }
+   ```
+
+   The `[Register]` name must match the `UISceneDelegateClassName` value in `Info.plist`. .NET MAUI creates the window in code. Do not add `UISceneStoryboardFile`, or change your existing `MauiSplashScreen` or `UILaunchStoryboardName` configuration.
+
+1. Move custom window activation and background handlers from application callbacks to the corresponding scene callbacks. Use `SceneOnActivated`, `SceneOnResignActivation`, `SceneDidEnterBackground`, and `SceneWillEnterForeground` instead of `OnActivated`, `OnResignActivation`, `DidEnterBackground`, and `WillEnterForeground`. Use `SceneDidDisconnect` for window cleanup. `WillTerminate` remains an application termination callback.
+
+For more information, see [Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle) on developer.apple.com.
+
+##### Handle scene activation data
+
+UIKit still calls `FinishedLaunching`, and .NET MAUI passes through any application launch options that UIKit supplies. With the scene lifecycle, do not rely on that dictionary for scene activation data such as URLs, user activities, or shortcut items.
+
+For a scene that is already connected, use `SceneOpenUrl` for URL contexts and `SceneContinueUserActivity` for user activities, including universal links and Handoff. These callbacks apply even when `UIApplicationSupportsMultipleScenes` is `false`.
+
+For a cold scene connection, inspect `connectionOptions.UrlContexts`, `connectionOptions.UserActivities`, and `connectionOptions.ShortcutItem` in `SceneWillConnect`. .NET MAUI does not automatically replay those URLs or user activities through `SceneOpenUrl` or `SceneContinueUserActivity`. UIKit can also deliver a Handoff activity separately through `SceneContinueUserActivity` after connection.
+
+`SceneWillConnect` runs before .NET MAUI creates the scene's window. If your link handler needs to navigate, retain the activation data and process it after the window is created or activated.
+
+.NET MAUI forwards warm scene URL contexts and user activities with a `WebPageUrl` to `WebAuthenticator` callback handling. This bridge is not general app deep-link navigation and does not process URLs or user activities from a cold scene connection. Configure your own scene handlers for app links. The built-in `ASWebAuthenticationSession` flow receives its result through its own completion handler.
+
+For shortcut items, .NET MAUI provides both warm and cold scene dispatch. See [iOS and Mac Catalyst scene dispatch](../platform-integration/appmodel/app-actions.md#ios-and-mac-catalyst-scene-dispatch).
+
+::: moniker-end
 
 ### Windows
 
