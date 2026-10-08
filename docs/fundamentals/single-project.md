@@ -1,7 +1,7 @@
 ---
 title: "Target multiple platforms from .NET MAUI single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, Tizen, and Windows, into one shared project."
-ms.date: 05/17/2022
+ms.date: 10/08/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -26,8 +26,19 @@ Resource management for cross-platform app development has traditionally been pr
 
 .NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, raw assets, and CSS files for styling .NET MAUI apps. Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform at build time.
 
+::: moniker range="<=net-maui-10.0"
+
 > [!NOTE]
 > iOS Asset Catalogs are currently unsupported in .NET MAUI single projects.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Support for Apple Icon Composer `.icon` app icon bundles doesn't add general support for arbitrary iOS asset catalogs in .NET MAUI single projects.
+
+::: moniker-end
 
 Resource files should typically be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 
@@ -86,6 +97,12 @@ An app icon can be added to your app project by dragging an image into the _Reso
 ```
 
 At build time, the app icon will be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
+
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11 RC 2, an iOS or Mac Catalyst `MauiIcon` can reference an Apple Icon Composer `.icon` bundle. The Apple asset compiler processes this bundle instead of Resizetizer generating resized images. See [Use an Apple Icon Composer bundle](~/user-interface/images/app-icons.md#use-an-apple-icon-composer-bundle) for requirements and platform-specific configuration.
+
+::: moniker-end
 
 For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
 
