@@ -1,7 +1,8 @@
 ---
 title: "Publish a .NET MAUI Mac Catalyst app for ad-hoc distribution"
 description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for ad-hoc distribution to a limited number of registered devices."
-ms.date: 03/20/2023
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ms.custom: sfi-image-nochange
 ---
 
@@ -168,10 +169,43 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 | `-p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
 | `-p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
 | `-p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
-| `-p:RuntimeIdentifier`       | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:RuntimeIdentifier`       | The runtime identifier (RID) for a single-architecture app. Specify `maccatalyst-x64` or `maccatalyst-arm64`. |
 | `-p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
 [!INCLUDE [Additional build parameters](../includes/additional-build-parameters.md)]
+
+::: moniker range="<=net-maui-10.0"
+
+Release builds of .NET MAUI Mac Catalyst apps default to using
+`maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support
+universal apps.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11+, `Release` builds with `SupportedOSPlatformVersion` set to `27.0`
+or later default to the host architecture when neither `RuntimeIdentifier`
+nor `RuntimeIdentifiers` is specified. Earlier deployment targets retain the
+universal-app default.
+
+The SDK selects this default during SDK props evaluation. If
+`SupportedOSPlatformVersion` isn't available then, it uses
+`TargetPlatformVersion`. Set `SupportedOSPlatformVersion` in
+`Directory.Build.props` or on the command line if it must control this default.
+
+To build a universal app, set the plural `RuntimeIdentifiers` property in
+`Directory.Build.props`:
+
+```xml
+<Project>
+  <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
+    <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>
+  </PropertyGroup>
+</Project>
+```
+
+::: moniker-end
 
 For example, use the following command to build and sign a *.pkg* on a Mac, for ad-hoc distribution to users on registered devices:
 
@@ -207,7 +241,8 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<CreatePackage>`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
 | `<EnableCodeSigning>`       | Set to `true` so that code signing is enabled.                                                  |
 | `<MtouchLink>`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
-| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for a single-architecture app. Specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `<RuntimeIdentifiers>` | The runtime identifiers for a universal app. Set to `maccatalyst-x64;maccatalyst-arm64` in `Directory.Build.props`. |
 | `<UseHardenedRuntime>`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).

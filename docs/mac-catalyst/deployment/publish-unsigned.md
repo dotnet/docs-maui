@@ -1,7 +1,8 @@
 ---
 title: "Publish an unsigned .NET MAUI Mac Catalyst app"
 description: "Learn how to package and publish an unsigned .NET MAUI Mac Catalyst app."
-ms.date: 03/23/2023
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # Publish an unsigned .NET MAUI Mac Catalyst app
@@ -32,7 +33,41 @@ Additional build parameters can be specified on the command line. The following 
 | `-p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
 | `-p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
 | `-p:ApplicationDisplayVersion` | The version number of the app. |
-| `-p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:RuntimeIdentifier` | The runtime identifier (RID) for a single-architecture app. Specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:RuntimeIdentifiers` | The runtime identifiers for a universal app. Specify both `maccatalyst-x64` and `maccatalyst-arm64`. |
+
+::: moniker range="<=net-maui-10.0"
+
+Release builds of .NET MAUI Mac Catalyst apps default to using
+`maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support
+universal apps.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11+, `Release` builds with `SupportedOSPlatformVersion` set to `27.0`
+or later default to the host architecture when neither `RuntimeIdentifier`
+nor `RuntimeIdentifiers` is specified. Earlier deployment targets retain the
+universal-app default.
+
+The SDK selects this default during SDK props evaluation. If
+`SupportedOSPlatformVersion` isn't available then, it uses
+`TargetPlatformVersion`. Set `SupportedOSPlatformVersion` in
+`Directory.Build.props` or on the command line if it must control this default.
+
+To build a universal app, set the plural `RuntimeIdentifiers` property in
+`Directory.Build.props`:
+
+```xml
+<Project>
+  <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
+    <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>
+  </PropertyGroup>
+</Project>
+```
+
+::: moniker-end
 
 For example, use the following command to create an *.app*:
 

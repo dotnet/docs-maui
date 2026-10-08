@@ -1,7 +1,8 @@
 ---
 title: "Runtimes and compilation in .NET MAUI"
 description: "Learn about the runtimes and compilation strategies used by .NET MAUI apps, including CoreCLR, NativeAOT, ReadyToRun, and interpreters."
-ms.date: 09/25/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # Runtimes and compilation in .NET MAUI
@@ -99,7 +100,8 @@ and Continue.
   ReadyToRun
 
 Apple CoreCLR device targets don't use JIT because Apple platform restrictions
-prevent dynamically generated code. They use the CoreCLR interpreter instead.
+prevent dynamically generated native code. They use the CoreCLR interpreter
+instead.
 
 ::: moniker-end
 
@@ -199,6 +201,12 @@ can be enabled with `MauiEnableFullReadyToRun=true`. It can improve startup or
 runtime performance, but it increases package size, so measure the result for
 your app.
 
+ReadyToRun, including composite ReadyToRun, requires `PublishTrimmed=true` on
+Android. If ReadyToRun is enabled but `PublishTrimmed` isn't `true`, the Android
+SDK disables both `PublishReadyToRun` and `PublishReadyToRunComposite` and
+reports warning `XA0119`. Leave trimming enabled to use either partial or full
+ReadyToRun.
+
 For iOS and Mac Catalyst apps, composite partial ReadyToRun is used in `Debug`
 builds and composite full ReadyToRun is used in `Release` builds. The CoreCLR
 interpreter is always enabled and executes code that isn't precompiled because
@@ -265,6 +273,31 @@ CoreCLR includes an interpreter on iOS and Mac Catalyst. The interpreter is
 always enabled and executes code that isn't precompiled because these platforms
 don't permit JIT compilation. This behavior is part of the runtime and doesn't
 require an interpreter MSBuild property.
+
+### Dynamic code support on Apple platforms
+
+In .NET 11+, CoreCLR apps on iOS, tvOS, and Mac Catalyst default to
+`DynamicCodeSupport=true`.
+<xref:System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported%2A>
+reports `true` with this default. The CoreCLR interpreter can execute
+dynamically generated MSIL without a JIT compiler. This lets libraries such as
+Entity Framework Core create models at runtime instead of incorrectly
+selecting their NativeAOT code path.
+
+Keeping dynamic code support enabled retains `System.Reflection.Emit` in
+trimmed output and can increase app size. Only disable it if your app and its
+dependencies don't require dynamic code:
+
+```xml
+<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tvos' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
+    <DynamicCodeSupport>false</DynamicCodeSupport>
+</PropertyGroup>
+```
+
+This setting changes feature detection and allows dynamic-code support to be
+trimmed. It doesn't remove the need to make your dependencies trim-compatible.
+NativeAOT continues to default to `DynamicCodeSupport=false` and doesn't
+support dynamic code.
 
 ::: moniker-end
 
@@ -497,7 +530,11 @@ runtime and compilation behavior:
 | Property | Description | Default |
 |---|---|---|
 | `PublishAot` | Enable NativeAOT compilation during `dotnet publish`. | `false` |
+| `DynamicCodeSupport` | Retain dynamic-code support and report it through `RuntimeFeature.IsDynamicCodeSupported`. | `true` for CoreCLR on iOS, tvOS, and Mac Catalyst; `false` for NativeAOT |
 | `MauiEnableFullReadyToRun` | Enable full ReadyToRun for Android CoreCLR apps. | `false` |
+| `PublishReadyToRun` | Enable ReadyToRun precompilation for CoreCLR. Requires trimming on Android. | `true` for Android Release builds when `PublishTrimmed=true` |
+| `PublishReadyToRunComposite` | Compile assemblies together into a composite ReadyToRun image. Requires trimming on Android. | `true` on Android when `PublishReadyToRun=true` |
+| `PublishTrimmed` | Enable ILLink trimming. Required for Android ReadyToRun. | `true` for Android Release builds |
 | `TrimMode` | Set trimming aggressiveness for non-NativeAOT builds. | `partial` |
 
 ::: moniker-end
