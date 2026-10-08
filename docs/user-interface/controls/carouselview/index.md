@@ -1,7 +1,8 @@
 ---
 title: "CarouselView"
 description: "The .NET MAUI CarouselView is a view for presenting data in a scrollable layout, where users can swipe to move through a collection of items."
-ms.date: 08/19/2025
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # CarouselView
@@ -35,5 +36,28 @@ builder.ConfigureMauiHandlers(handlers =>
 });
 #endif
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## Migrate custom handlers on iOS and Mac Catalyst
+
+In .NET MAUI 11, legacy Apple handler APIs in the `Microsoft.Maui.Controls.Handlers.Items` namespace, including `CarouselViewHandler`, produce obsolete warnings on iOS and Mac Catalyst. The <xref:Microsoft.Maui.Controls.CarouselView> control itself is not obsolete. The warnings don't apply to the `CarouselViewHandler` on Android or Windows.
+
+If you registered the legacy handler only to restore .NET 9 behavior, remove that registration to use the default optimized handler. To change an explicit registration to the optimized handler, use:
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CarouselView, Microsoft.Maui.Controls.Handlers.Items2.CarouselViewHandler2>();
+});
+#endif
+```
+
+For a custom handler, derive from `Microsoft.Maui.Controls.Handlers.Items2.CarouselViewHandler2` instead of the legacy `CarouselViewHandler`, and register your subclass in place of `CarouselViewHandler2`. Update mapper customizations to use the optimized handler's mappers. For guidance on legacy controller, cell, and layout customizations, see [Migrate custom CollectionView handlers on iOS and Mac Catalyst](~/user-interface/controls/collectionview/index.md#migrate-custom-handlers-on-ios-and-mac-catalyst).
+
+The [legacy handler registration](#revert-to-net-9-behavior) remains available as a temporary compatibility opt-out while you migrate. In .NET MAUI 11, this registration produces obsolete warnings on iOS and Mac Catalyst.
 
 ::: moniker-end

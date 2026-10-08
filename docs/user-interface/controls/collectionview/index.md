@@ -1,7 +1,8 @@
 ---
 title: "CollectionView"
 description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
-ms.date: 07/08/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # CollectionView
@@ -38,11 +39,32 @@ builder.ConfigureMauiHandlers(handlers =>
 
 ::: moniker range=">=net-maui-11.0"
 
+## Migrate custom handlers on iOS and Mac Catalyst
+
+In .NET MAUI 11, legacy Apple handler APIs in the `Microsoft.Maui.Controls.Handlers.Items` namespace, including `CollectionViewHandler`, produce obsolete warnings on iOS and Mac Catalyst. The <xref:Microsoft.Maui.Controls.CollectionView> control itself is not obsolete. The warnings apply to the legacy handler APIs, not to every type in the `Items` namespace or to the handlers on other platforms.
+
+If you registered the legacy handler only to restore .NET 9 behavior, remove that registration to use the default optimized handler. To change an explicit registration to the optimized handler, use:
+
+```csharp
+#if IOS || MACCATALYST
+builder.ConfigureMauiHandlers(handlers =>
+{
+    handlers.AddHandler<Microsoft.Maui.Controls.CollectionView, Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2>();
+});
+#endif
+```
+
+For a custom handler, derive from `Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2` instead of the legacy `CollectionViewHandler`, and register your subclass in place of `CollectionViewHandler2`. Update mapper customizations to use the optimized handler's mappers. Legacy controller, cell, and layout extension points don't all have a one-to-one replacement. Adapt those customizations to the `Items2` handler and native `UICollectionViewLayout` extension points.
+
+The [legacy handler registration](#revert-to-net-9-behavior) remains available as a temporary compatibility opt-out while you migrate. In .NET MAUI 11, this registration produces obsolete warnings on iOS and Mac Catalyst.
+
 ## Windows CollectionView handler in .NET 11
 
 In .NET MAUI 11, Windows uses the `Microsoft.Maui.Controls.Handlers.Items2.CollectionViewHandler2` handler for <xref:Microsoft.Maui.Controls.CollectionView> by default. The handler is controlled by the `Microsoft.Maui.RuntimeFeature.IsWindowsCollectionView2HandlerEnabled` <xref:System.AppContext> switch, which is on by default. The `UseWindowsCollectionView2Handler` MSBuild property maps to this switch.
 
 This WinUI `ItemsRepeater`-based handler improves virtualization and scrolling behavior, and aligns the Windows <xref:Microsoft.Maui.Controls.CollectionView> architecture with the optimized handlers on other platforms. Selection visuals are also different from the legacy Windows handler: selected items are highlighted with a border that wraps the item, and the multiple-selection UI differs from the previous `ListView`-based handler.
+
+The legacy Windows `CollectionViewHandler` and its handler APIs remain supported and are not obsolete in .NET MAUI 11.
 
 If your app depends on legacy Windows <xref:Microsoft.Maui.Controls.CollectionView> behavior or custom handler assumptions, temporarily opt out while migrating by setting the `UseWindowsCollectionView2Handler` MSBuild property to `false` in your project file:
 
