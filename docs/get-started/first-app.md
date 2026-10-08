@@ -1,7 +1,8 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio Code with the .NET MAUI extension"
-ms.date: 01/06/2025
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 zone_pivot_groups: devices-platforms
 monikerRange: ">=net-maui-9.0"
 ---
@@ -384,6 +385,36 @@ To debug the app on an iOS device:
 If your app fails to build and deploy, review [Troubleshooting known issues](~/troubleshooting.md), which may have a solution to your problem.
 
 ---
+
+::: moniker range=">=net-maui-11.0"
+
+## Create an app from the command line
+
+In .NET 11 and later, you can also create an app from the command line. First, [install the .NET 11 SDK and .NET MAUI workload](installation.md).
+
+### Create a C# UI
+
+To create the app UI in C# instead of XAML, run:
+
+```console
+dotnet new maui -n MyApp --ui csharp
+```
+
+The template generates `App.cs`, `AppShell.cs`, and `MainPage.cs` with built-in .NET MAUI APIs. You do not need an additional C# UI library. The Shell and page UI are defined in C#, but `App.xaml` and the XAML resource dictionaries remain for app resources. XAML remains the default when you omit `--ui csharp`.
+
+The `--sample-content` option is XAML-only. If you combine it with `--ui csharp`, the template creates the C# UI without sample content and displays a warning.
+
+### Add an Avalonia desktop project
+
+As a separate alternative, create a multi-project solution with an optional Avalonia desktop project:
+
+```console
+dotnet new maui-multiproject -n MyApp --avalonia
+```
+
+This command creates a shared .NET MAUI project and a `MyApp.Desktop` project for Windows, macOS, and Linux. Avalonia is not included by default, and this option does not add a WebAssembly project. To include native app projects as well, combine `--avalonia` with `--android`, `--ios`, `--macos`, or `--windows`.
+
+::: moniker-end
 
 ## Next steps
 
