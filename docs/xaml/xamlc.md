@@ -67,6 +67,8 @@ There other metadata you can set to instruct xaml sourcegenerator
 
 :::moniker range=">=net-maui-11.0"
 
+For short computed values and event actions, see [C# expressions in XAML](csharp-expressions.md). Expressions require the `SourceGen` inflator and preview features.
+
 ### Inline C# with the `x:Code` directive
 
 When XAML source generation is enabled, you can use the `x:Code` directive to embed a small block of C# directly inside a XAML file. The XAML source generator extracts the code and emits it into the generated partial class for the page or view, so the inline members behave exactly as if they were declared in a code-behind file.
