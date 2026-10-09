@@ -33,8 +33,10 @@ configuration:
                     user: dotnet-policy-service[bot]
                 - isActivitySender:
                     user: github-actions[bot]
+                - isActivitySender:
+                    user: learn-build-service-prod[bot]
         then:
           - addReply:
               reply: >-
-                  @${issueAuthor} - This PR edits a file in the .github folder, which is not allowed. CC @dotnet/docs.
+                  ${issueAuthor} - This PR edits a file in the .github folder, which is not allowed. CC @dotnet/docs.
           - closePullRequest
