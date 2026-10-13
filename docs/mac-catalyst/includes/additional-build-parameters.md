@@ -1,6 +1,7 @@
 ---
 ms.topic: include
-ms.date: 03/23/2023
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 > [!WARNING]
@@ -14,7 +15,8 @@ Additional build parameters can be specified on the command line, if they aren't
 | `-p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
 | `-p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
 | `-p:ApplicationDisplayVersion` | The version number of the app. |
-| `-p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:RuntimeIdentifier` | The runtime identifier (RID) for a single-architecture app. Specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:RuntimeIdentifiers` | The runtime identifiers for a universal app. Specify both `maccatalyst-x64` and `maccatalyst-arm64`. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
