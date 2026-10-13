@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Linux GTK4 backend"
 description: "Learn how to build native Linux apps using .NET MAUI with the experimental GTK4 backend from the dotnet/maui-labs repository."
-ms.date: 05/07/2026
+ms.date: 09/29/2026
 ---
 
 # .NET MAUI Linux GTK4 backend
@@ -40,6 +40,9 @@ sudo dnf install gtk4-devel webkitgtk6.0-devel \
 |---------|-------------|
 | `Microsoft.Maui.Platforms.Linux.Gtk4` | Core handlers, hosting, and platform services |
 | `Microsoft.Maui.Platforms.Linux.Gtk4.Essentials` | MAUI Essentials implementations |
+| `Microsoft.Maui.DevFlow.Agent.Gtk` | DevFlow agent for GTK/Linux apps |
+
+Use the current `Microsoft.Maui.Platforms.Linux.Gtk4` and `Microsoft.Maui.DevFlow.Agent.Gtk` packages. The superseded `Platform.Maui.Linux.Gtk4*` packages are no longer recommended. Don't mix the two backends in the same project.
 
 ## Quick start
 
@@ -62,6 +65,7 @@ Add the NuGet packages:
 ```bash
 dotnet add package Microsoft.Maui.Platforms.Linux.Gtk4 --prerelease
 dotnet add package Microsoft.Maui.Platforms.Linux.Gtk4.Essentials --prerelease   # optional
+dotnet add package Microsoft.Maui.DevFlow.Agent.Gtk --prerelease                # optional, for DevFlow
 ```
 
 Then set up your entry point:
@@ -87,6 +91,7 @@ public class Program : GtkMauiApplication
 **MauiProgram.cs**
 
 ```csharp
+using Microsoft.Maui.DevFlow.Agent;
 using Microsoft.Maui.Platforms.Linux.Gtk4.Hosting;
 using Microsoft.Maui.Hosting;
 
@@ -98,10 +103,32 @@ public static class MauiProgram
             .CreateBuilder()
             .UseMauiAppLinuxGtk4<App>();
 
+#if DEBUG
+        builder.AddMauiDevFlowAgent();
+#endif
+
         return builder.Build();
     }
 }
 ```
+
+## DevFlow agent startup
+
+With the current GTK4 backend, registering the agent with `AddMauiDevFlowAgent()` is all that's needed. The agent starts automatically after the first GTK window is created; you don't need to call `StartDevFlowAgent()` manually.
+
+For advanced scenarios that require an explicit startup hook, override `OnStarted()` in your `GtkMauiApplication`:
+
+```csharp
+protected override void OnStarted()
+{
+    base.OnStarted();
+#if DEBUG
+    this.StartDevFlowAgent();
+#endif
+}
+```
+
+If the agent doesn't start, verify that `builder.AddMauiDevFlowAgent()` is called during `MauiAppBuilder` setup and that the app uses `UseMauiAppLinuxGtk4<App>()` or the equivalent current GTK backend setup. If using the explicit hook, call `this.StartDevFlowAgent()` from `GtkMauiApplication.OnStarted()`, not from `CreateMauiApp()`.
 
 ## Source code
 

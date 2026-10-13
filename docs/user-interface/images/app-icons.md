@@ -1,7 +1,8 @@
 ---
 title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add an app icon to a .NET MAUI app project. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
-ms.date: 05/12/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 no-loc: ["MauiIcon"]
 ---
 
@@ -18,7 +19,14 @@ A .NET MAUI app icon can use any of the standard platform image formats, includi
 
 ## Change the icon
 
-In your .NET MAUI project, the image with the **MauiIcon** build action designates the icon to use for your app. This is represented in your project file as the `<MauiIcon>` item. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
+In your .NET MAUI project, the image with the **MauiIcon** build action designates the icon to use for your app. This is represented in your project file as the `<MauiIcon>` item. For image-based icons, such as SVG or PNG files, only the first `<MauiIcon>` item is processed. Any subsequent image-based `<MauiIcon>` items are ignored.
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> An Apple Icon Composer `.icon` bundle must be the only `<MauiIcon>` item for its iOS or Mac Catalyst target. Combining it with another icon produces a build error, rather than selecting the first icon. For more information, see [Use an Apple Icon Composer bundle](#use-an-apple-icon-composer-bundle).
+
+::: moniker-end
 
 The icon defined by your app can be composed of a single image, by specifying the file as the `Include` attribute:
 
@@ -28,17 +36,17 @@ The icon defined by your app can be composed of a single image, by specifying th
 </ItemGroup>
 ```
 
-Only the first `<MauiIcon>` item defined in the project file is processed by .NET MAUI. If you want to use a different file as the icon, first delete the existing icon from your project, and then add the new icon by dragging it to the *Resources\AppIcon* folder of your project. Visual Studio will automatically set its build action to **MauiIcon** and will create a corresponding `<MauiIcon>` item in your project file.
+To use a different image file as the icon, replace the existing `<MauiIcon>` item. If you add the new image by dragging it to the *Resources\AppIcon* folder of your project, Visual Studio will automatically set its build action to **MauiIcon** and will create a corresponding `<MauiIcon>` item in your project file.
 
 > [!NOTE]
 > An app icon can also be added to other folders of your app project. However, in this scenario its build action must be manually set to **MauiIcon** in the **Properties** window.
 
 To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
-After changing the icon file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
+After changing the icon file, you might need to clean the project in Visual Studio, rebuild it, and deploy it again. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**.
 
 > [!CAUTION]
-> If you don't clean the project and uninstall the app from the target platform, you may not see your new icon.
+> Uninstalling an app deletes its locally stored data. Don't uninstall or reset an app as a routine step to refresh its icon.
 
 After changing the icon, review the [Platform specific configuration](#platform-specific-configuration) information.
 
@@ -56,6 +64,63 @@ On Android, a `ForegroundScale` attribute can be optionally specified to rescale
 
 > [!IMPORTANT]
 > The background image (`Include` attribute) must be specified for the `<MauiIcon>` item. The foreground image (`ForegroundFile` attribute) is optional.
+
+::: moniker range=">=net-maui-11.0"
+
+## Use an Apple Icon Composer bundle
+
+Starting in .NET 11 RC 2, you can use an [Apple Icon Composer](https://developer.apple.com/icon-composer/) `.icon` bundle as a `MauiIcon` on iOS and Mac Catalyst. The Apple asset compiler (`actool`) compiles the bundle into the app's asset catalog. .NET MAUI doesn't rasterize the bundle through Resizetizer. Existing SVG and PNG icon processing is unchanged.
+
+This feature requires the .NET Apple workload version `26.5.11720-net11-p6` or later. The .NET 11 RC 2 Apple workload version is `27.0.12211-net11-rc.2`. Use the Xcode version required by your Apple workload.
+
+Save the complete bundle in your project, for example at `Resources\AppIcon\appicon.icon`. A `.icon` bundle is a directory, not a single image file. Keep its root `icon.json` file and its `Assets` directory, including nested asset folders:
+
+```text
+Resources/
+  AppIcon/
+    appicon.icon/
+      icon.json
+      Assets/
+        background.png
+        foreground.png
+```
+
+Reference the bundle directory in the `Include` attribute, not `icon.json` or an individual asset. .NET MAUI includes the bundle's files recursively. Configure layers, colors, and effects in Icon Composer. The image resizing, tinting, and composition settings in this article apply to image-based icons, not native `.icon` bundles.
+
+Replace the existing `<MauiIcon>` item with mutually exclusive conditions. Select the `.icon` bundle for iOS and Mac Catalyst, and keep an SVG or PNG fallback for other platforms:
+
+```xml
+<ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.icon"
+              Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg"
+              ForegroundFile="Resources\AppIcon\appiconfg.svg"
+              Color="#512BD4"
+              Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'ios' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'" />
+</ItemGroup>
+```
+
+Each Apple target must select exactly one icon. Don't keep an unconditional SVG or PNG `<MauiIcon>` item alongside the `.icon` item. An Android or Windows target must use an image-based icon, not the `.icon` bundle.
+
+The build derives the `AppIcon` property from the bundle directory name without the `.icon` extension. In this example, the name is `appicon`. You don't need to set `AppIcon` yourself. If you already set it, remove the property or make its value match the bundle name. The build uses this name instead of the template's legacy `XSAppIconAssets` selection, without changing your `Info.plist` file.
+
+After you save changes in Icon Composer, build the project again. .NET MAUI tracks additions, deletions, renames, and content changes to files inside the bundle, including nested folders, for incremental asset compilation.
+
+### Resolve bundle validation errors
+
+The build reports errors for the following conditions:
+
+| Condition | Action |
+|-----------|--------|
+| The Apple workload doesn't support `.icon` bundles. | Use Apple workload `26.5.11720-net11-p6` or later. |
+| The bundle directory doesn't exist. | Correct the `MauiIcon` path and include the complete bundle in your project. |
+| The bundle has no root `icon.json` file. | Save or copy the complete bundle from Icon Composer. |
+| The `Assets` directory has no asset files. | Include the assets referenced by `icon.json`. A `.DS_Store` file doesn't count as an asset. |
+| More than one `.icon` bundle is selected. | Select only one bundle for each iOS or Mac Catalyst target. |
+| A `.icon` bundle and another `MauiIcon` are selected for the same Apple target. | Remove the additional icon item or correct its platform condition. |
+| An explicit `AppIcon` value doesn't match the bundle name. | Remove `AppIcon` or set it to the bundle directory name without the extension. |
+
+::: moniker-end
 
 ## Set the base size
 
@@ -121,7 +186,14 @@ Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#A
 
 ## Use a different icon per platform
 
-If you want to use different icon resources or settings per platform, add the `Condition` attribute to the `<MauiIcon>` item, and query for the specific platform. If the condition is met, the `<MauiIcon>` item is processed. Only the first valid `<MauiIcon>` item is used by .NET MAUI, so all conditional items should be declared first, followed by a default `<MauiIcon>` item without a condition. The following XML demonstrates declaring a specific icon for Windows and a fallback icon for all other platforms:
+For image-based icons, such as SVG or PNG files, you can use different resources or settings per platform. Add the `Condition` attribute to the `<MauiIcon>` item, and query for the specific platform. If the condition is met, the `<MauiIcon>` item is processed. Only the first valid image-based `<MauiIcon>` item is used by .NET MAUI, so all conditional items should be declared first, followed by a default `<MauiIcon>` item without a condition. The following XML demonstrates declaring a specific icon for Windows and a fallback icon for all other platforms:
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> The unconditional fallback in the following example is for image-based icons only. If you use a native `.icon` bundle, make the Apple and non-Apple conditions mutually exclusive, as shown in [Use an Apple Icon Composer bundle](#use-an-apple-icon-composer-bundle).
+
+::: moniker-end
 
 ```xml
 <ItemGroup>
@@ -211,6 +283,13 @@ For more information about themed icons on Android, see [Adaptive icons](https:/
 :::moniker-end
 
 # [iOS/Mac Catalyst](#tab/macios)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The following asset catalog configuration applies to image-based icons, such as SVG or PNG files. For native `.icon` bundles, the build selects the icon from the bundle name automatically. For more information, see [Use an Apple Icon Composer bundle](#use-an-apple-icon-composer-bundle).
+
+::: moniker-end
 
 The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set for both iOS and macOS platforms. The name of the icon set is defined in the _Info.plist_ file, which on iOS is located at _Platforms\\iOS\\Info.plist_. For macOS, the _Info.plist_ file is located at _Platforms\\MacCatalyst\\Info.plist_.
 

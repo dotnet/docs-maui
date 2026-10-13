@@ -1,7 +1,8 @@
 ---
 title: ".NET MAUI Shell custom handlers"
 description: "Learn how to customize the appearance and behavior of a .NET MAUI Shell app using platform-specific handlers."
-ms.date: 07/28/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell custom handlers
@@ -13,7 +14,7 @@ ms.date: 07/28/2026
 .NET MAUI Shell applications are highly customizable through the properties and methods that the various Shell classes expose. However, it's also possible to create custom handlers when more extensive platform-specific customizations are required. Custom handlers can be registered conditionally for a single platform, while allowing the default behavior on other platforms.
 
 > [!NOTE]
-> Shell custom handlers are currently supported on Android in .NET MAUI 11 and later. iOS and Mac Catalyst continue to use the legacy `ShellRenderer`.
+> Shell uses handlers by default on Android in .NET MAUI 11 and later. On iOS and Mac Catalyst, the compatibility `ShellRenderer` remains the default, but you can opt in to the Shell handler implementation.
 
 ## Android handler customization
 
@@ -24,8 +25,8 @@ Starting in .NET MAUI 11, Shell on Android uses a handler-based architecture by 
 The process for creating a custom Shell handler on Android is:
 
 1. Create a subclass of `ShellHandler`, `ShellItemHandler`, or `ShellSectionHandler`.
-2. Override the required methods to perform the customization.
-3. Register the handler in `MauiProgram.cs`.
+1. Override the required methods to perform the customization.
+1. Register the handler in `MauiProgram.cs`.
 
 The following handler classes expose overridable members on Android:
 
@@ -111,5 +112,101 @@ builder
 #endif
     });
 ```
+
+## iOS and Mac Catalyst handler customization
+
+In .NET MAUI 11, enable the Shell handler implementation on iOS and Mac Catalyst by setting the `UseiOSShellHandler` MSBuild property to `true` in your app's project file:
+
+```xml
+<PropertyGroup>
+    <UseiOSShellHandler>true</UseiOSShellHandler>
+</PropertyGroup>
+```
+
+This property sets the `Microsoft.Maui.RuntimeFeature.IsiOSShellHandlerEnabled` <xref:System.AppContext> switch, which defaults to `false`. When enabled, the built-in registration adds the complete Shell handler hierarchy:
+
+| Control | Handler | Responsibility |
+| --- | --- | --- |
+| `Shell` | `ShellHandler` | Root view controller, flyout presentation, and item transitions. |
+| `ShellItem` | `ShellItemHandler` | Tab-bar controller and section selection. |
+| `ShellSection` | `ShellSectionHandler` | Navigation controller and navigation stack. |
+| `ShellContent` | `ShellContentHandler` | Forward content changes to the owning section handler. |
+
+All four handler types are in the `Microsoft.Maui.Controls.Handlers` namespace. You don't need to register them manually when you use the project property.
+
+To return to the compatibility renderer with the default registrations, remove the property or set it to `false`. Existing custom `ShellRenderer`, `ShellItemRenderer`, and `ShellSectionRenderer` implementations remain supported. If you manually register custom handlers, also remove or replace those registrations when returning to the renderer.
+
+### Create a custom Apple Shell handler
+
+Subclass `ShellHandler` and override its protected virtual factory methods to customize appearance trackers or other Shell components:
+
+| Factory method | Customization |
+| --- | --- |
+| `CreateNavBarAppearanceTracker` | Navigation-bar appearance. |
+| `CreateTabBarAppearanceTracker` | Tab-bar appearance. |
+| `CreatePageRendererTracker` | Page navigation-bar and toolbar tracking. |
+| `CreateShellFlyoutContentRenderer` | Flyout content. |
+| `CreateShellItemRenderer` | Item handler integration. |
+| `CreateShellSectionRenderer` | Section handler integration. |
+| `CreateShellItemTransition` | Transitions between Shell items. |
+| `CreateShellSearchResultsRenderer` | Search results presentation. |
+
+Some factory names and return types retain renderer terminology for compatibility. The default item and section factories resolve `ShellItemHandler` and `ShellSectionHandler` from the handler registry and adapt them to the compatibility interfaces. Register a subclass for `ShellItem` or `ShellSection` to customize a child handler.
+
+Unlike the compatibility renderers, `ShellHandler`, `ShellItemHandler`, and `ShellSectionHandler` own native view controllers instead of inheriting from them. When migrating a renderer customization, move tracker factory overrides to `ShellHandler`, and adapt code that depends on native view-controller overrides.
+
+For example, the following classes add a border to the tab bar. Compile this code only for iOS and Mac Catalyst:
+
+```csharp
+#if IOS || MACCATALYST
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Handlers;
+using Microsoft.Maui.Controls.Platform.Compatibility;
+using UIKit;
+
+namespace MyApp.Platforms.Apple;
+
+public class MyShellHandler : ShellHandler
+{
+    protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
+    {
+        return new MyShellTabBarAppearanceTracker();
+    }
+}
+
+public class MyShellTabBarAppearanceTracker : ShellTabBarAppearanceTracker
+{
+    public override void SetAppearance(
+        UITabBarController controller,
+        ShellAppearance appearance)
+    {
+        base.SetAppearance(controller, appearance);
+
+        controller.TabBar.Layer.BorderColor = UIColor.Red.CGColor;
+        controller.TabBar.Layer.BorderWidth = 1;
+    }
+}
+#endif
+```
+
+### Register the Apple handler
+
+After enabling `UseiOSShellHandler`, register your custom handler after `UseMauiApp` in `MauiProgram.cs`:
+
+```csharp
+using Microsoft.Maui.Controls;
+
+var builder = MauiApp.CreateBuilder();
+builder
+    .UseMauiApp<App>()
+    .ConfigureMauiHandlers(handlers =>
+    {
+#if IOS || MACCATALYST
+        handlers.AddHandler<Shell, MyApp.Platforms.Apple.MyShellHandler>();
+#endif
+    });
+```
+
+This replaces only the root Shell handler registration. The project property supplies the other three built-in registrations.
 
 ::: moniker-end
