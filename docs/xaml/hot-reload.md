@@ -1,7 +1,8 @@
 ---
 title: "XAML Hot Reload for .NET MAUI"
 description: "Learn how to reload changes to your .NET MAUI XAML file instantly on your running app, so you don't have to rebuild your .NET MAUI project after every XAML change."
-ms.date: 08/11/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # XAML Hot Reload for .NET MAUI
@@ -43,6 +44,9 @@ Then, on iOS in your build settings, check that the Linker is set to "Don't Link
 
 .NET MAUI 11 Preview 7 includes a new XAML Incremental Hot Reload engine. The engine is enabled by default for `Debug` builds and disabled by default for `Release` and publish builds. It generates patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again. This engine also enables XAML updates when you use `dotnet watch`.
 
+> [!IMPORTANT]
+> XAML Incremental Hot Reload is a preview feature in .NET MAUI 11.
+
 To opt out of XAML Incremental Hot Reload for debug builds, add the following property group to your project file:
 
 ```xml
@@ -51,9 +55,49 @@ To opt out of XAML Incremental Hot Reload for debug builds, add the following pr
 </PropertyGroup>
 ```
 
-Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements. Not every XAML edit can be applied incrementally to live instances. For example, changing an `x:Name` or a root element type requires you to recreate the affected page. A change that requires C# code to be reloaded, or adding, removing, or renaming files or NuGet packages, requires you to rebuild and redeploy your app.
+Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements. When a structural edit replaces a named element, the engine updates its namescope registration. It also updates the original generated field if the replacement has the same `x:Name` and a type compatible with that field. Existing code-behind can then access the visible element through that field, including when an original name is removed and later added again.
+
+Not every XAML edit can be applied incrementally to live instances. A newly introduced `x:Name` can't add a field to an already loaded type. Rebuild and redeploy if you need that field in C#, rename a field used by code-behind, or change the root element type. Adding, removing, or renaming files or NuGet packages also requires a rebuild and redeploy. Don't assume that every name or type change is supported.
 
 When `EnableMauiIncrementalHotReload` is `false`, the existing XAML Hot Reload engine remains active.
+
+#### Binding sources and application resources in RC 2
+
+With source-generated XAML in .NET MAUI 11 RC 2, changing only a binding's `StringFormat` preserves its `x:Reference` source in each live page instance:
+
+```xaml
+<Label x:Name="CaptionLabel" Text="Current caption" />
+<Label Text="{Binding Source={x:Reference CaptionLabel}, Path=Text, StringFormat='Caption: {0}'}" />
+```
+
+Change `StringFormat` to `'Updated: {0}'` to change the displayed format. The replacement binding resolves `CaptionLabel` from the live namescope and continues to track its `Text`. If the name can't be resolved, for example because the target is detached or a renamed name hasn't been registered, the update retains the existing binding instead of clearing its source. This doesn't make arbitrary name changes supported.
+
+RC 2 also supports resource updates from a classless external dictionary merged through `App.xaml`. For example, add this dictionary to `Application.Resources`:
+
+```xaml
+<ResourceDictionary>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="AppResources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
+```
+
+Define `AppResources.xaml` without `x:Class`:
+
+```xaml
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <x:String x:Key="AppCaption">Original caption</x:String>
+</ResourceDictionary>
+```
+
+Consume the resource with a dynamic resource reference:
+
+```xaml
+<Label Text="{DynamicResource AppCaption}" />
+```
+
+Editing `AppCaption` in `AppResources.xaml` generates a patch for the dictionary. The `Source` wrapper forwards resource-change notifications through the application resources to existing `DynamicResource` consumers. Consumers created after the edit also use the updated value. This doesn't change `StaticResource` into a dynamic resource.
 
 ::: moniker-end
 
