@@ -77,12 +77,14 @@ Browse the documentation in this repository to understand the current state.
 The developer-tools documentation lives under `docs/developer-tools/`:
 
 **CLI documentation** (`docs/developer-tools/cli/`):
+
 - `index.md` — .NET MAUI CLI overview
 - `environment-diagnostics.md` — Environment diagnostics with `maui doctor`
 - `android-management.md` — Android SDK and emulator management
 - `device-management.md` — Device management
 
 **DevFlow documentation** (`docs/developer-tools/devflow/`):
+
 - `index.md` — DevFlow overview
 - `visual-tree-screenshots.md` — Visual tree inspection and screenshots
 - `element-interaction.md` — Element interaction and automation
@@ -95,6 +97,7 @@ The developer-tools documentation lives under `docs/developer-tools/`:
 - `setup-apple.md` — DevFlow Apple platforms setup
 
 Also check:
+
 - `docs/developer-tools/index.md` — Landing page
 - `docs/TOC.yml` — Table of contents
 
@@ -109,6 +112,7 @@ Based on the issue's "Suggested Changes" section, make the actual file changes:
 - **For new pages**: Create new `.md` files in the appropriate directory
 
 Follow these MS Learn documentation conventions:
+
 - **Frontmatter**: Every page needs `title`, `description`, and `ms.date` (format: `MM/DD/YYYY`)
 - **Headings**: Use `#` for the page title (must match frontmatter `title`), `##` for sections
 - **Code blocks**: Use triple backticks with language identifier (e.g., `csharp`, `bash`, `xml`)
@@ -127,6 +131,7 @@ Create a draft pull request with:
 (the `[maui-labs docs]` prefix will be added automatically)
 
 **Description** that includes:
+
 - `Closes #<issue-number>` to auto-close the issue when merged
 - A link to the source maui-labs PR (from the issue body)
 - A summary of what documentation was added or changed
@@ -135,6 +140,7 @@ Create a draft pull request with:
 ## Step 5: Comment on the Issue
 
 Comment on the issue with:
+
 - A message that a draft PR has been created
 - A link to the draft PR
 - A note that it needs human review before merging

@@ -1,7 +1,7 @@
 ---
 title: "Remote iOS Simulator for Windows"
 description: "Learn how the remote iOS Simulator for Windows allows you to test your apps on an iOS simulator displayed in Windows alongside Visual Studio 2022."
-ms.date: 08/30/2024
+ms.date: 10/02/2026
 ---
 
 # Remote iOS Simulator for Windows
@@ -76,7 +76,7 @@ Sounds played by the simulator will come from the host Mac's speakers. iOS sound
 
 In some circumstances, an Xcode configuration problem can result in the remote iOS Simulator for Windows getting stuck in a Connecting to Mac...Checking Server...Connected... loop. When this occurs, you need to remove and reset the Simulators on your Mac build host:
 
-- Ensure that Xamarin Mac Agent (XMA) and Xcode aren't running.
+- Stop debugging, close the remote iOS Simulator on Windows, and disconnect Visual Studio from your Mac build host using **Pair to Mac**. Ensure that Xcode and Simulator aren't running on the Mac.
 - Delete your *~/Library/Developer/CoreSimulator/Devices* folder.
 - Run `killall -9 com.apple.CoreSimulator.CoreSimulatorService`.
 - Run `xcrun simctl list devices`.
@@ -85,7 +85,7 @@ In some cases, Xcode may have generated simulator devices that can also cause th
 
 You can work around this by removing and creating new simulators which you can deploy to:
 
-- Ensure that Xamarin Mac Agent (XMA) and Xcode aren't running.
+- Stop debugging, close the remote iOS Simulator on Windows, and disconnect Visual Studio from your Mac build host using **Pair to Mac**. Ensure that Xcode and Simulator aren't running on the Mac.
 - Run `xcrun simctl list | grep -w "Shutdown"  | grep -o "([-A-Z0-9]*)" | sed 's/[\(\)]//g' | xargs -I uuid xcrun simctl delete  uuid`.
 - Run `xcrun simctl list devices`. You should see no devices listed.
 - Open Xcode on your connected Mac.
@@ -97,5 +97,8 @@ You can work around this by removing and creating new simulators which you can d
 
 If you experience issues with the remote iOS Simulator, you can view the logs in the following locations:
 
-- **Mac** – `~/Library/Logs/Xamarin/Simulator.Server`
-- **Windows** – `%LOCALAPPDATA%\Xamarin\Logs\Xamarin.Simulator`
+- **Mac** – `~/Library/Logs/Microsoft/Simulator.Server`
+- **Windows** – `%LOCALAPPDATA%\maui\Logs\Microsoft.Simulator`
+
+> [!NOTE]
+> Older versions of Visual Studio tooling use `~/Library/Logs/Xamarin/Simulator.Server` on the Mac and `%LOCALAPPDATA%\Xamarin\Logs\Xamarin.Simulator` on Windows.

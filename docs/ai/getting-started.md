@@ -1,7 +1,7 @@
 ---
 title: Get started with Microsoft.Maui.Essentials.AI
 description: Install the Microsoft.Maui.Essentials.AI package and register the chat client and embedding generator services in your .NET MAUI app.
-ms.date: 03/11/2026
+ms.date: 09/30/2026
 ms.topic: concept-article
 ---
 
@@ -14,14 +14,10 @@ This page covers installation and service registration. Once services are regist
 Add the NuGet package to your .NET MAUI project:
 
 ```dotnetcli
-dotnet add package Microsoft.Maui.Essentials.AI --version 10.0.50-preview.1.26158.1
+dotnet add package Microsoft.Maui.Essentials.AI --prerelease
 ```
 
-Or add the `PackageReference` directly to your `.csproj`:
-
-```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
-```
+Use the latest compatible package version for the features your app needs. For image input, also build with Apple 27 target frameworks and Xcode 27. See [Apple requirements](requirements-apple.md).
 
 ## Suppress the experimental warning
 
@@ -112,8 +108,10 @@ public static class MauiProgram
 ## Next steps
 
 - [Chat](chat.md) — use `IChatClient` for conversational AI, tool calling, and structured output
+- [Chat feature comparison](chat/feature-comparison.md) and [Apple chat guidance](chat/apple.md) — supported capabilities and model availability
 - [Text embeddings](embeddings.md) — use `IEmbeddingGenerator` for semantic search and similarity
-- [Requirements](requirements-apple.md) — supported OS versions and device requirements
+- [Embedding feature comparison](embeddings/feature-comparison.md) and [Apple embedding guidance](embeddings/apple.md) — model availability and index compatibility
+- [Requirements](requirements-apple.md) — Apple OS and model prerequisites
 
 ## See also
 

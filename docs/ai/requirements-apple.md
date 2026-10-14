@@ -1,13 +1,13 @@
 ---
 title: Apple requirements for Microsoft.Maui.Essentials.AI
-description: Platform versions, device requirements, and Apple Intelligence prerequisites for using Microsoft.Maui.Essentials.AI on iOS, macOS, Mac Catalyst, and tvOS.
-ms.date: 03/11/2026
+description: Apple platform and model prerequisites for chat and text embeddings in Microsoft.Maui.Essentials.AI.
+ms.date: 09/30/2026
 ms.topic: concept-article
 ---
 
 # Apple requirements for Microsoft.Maui.Essentials.AI
 
-This page covers the requirements for using `Microsoft.Maui.Essentials.AI` on Apple platforms (iOS, macOS, Mac Catalyst, and tvOS).
+`Microsoft.Maui.Essentials.AI` has different requirements for [chat](chat/apple.md) and [text embeddings](embeddings/apple.md). Check the feature-specific availability before enabling either service in an app.
 
 ## Chat client
 
@@ -20,54 +20,25 @@ This page covers the requirements for using `Microsoft.Maui.Essentials.AI` on Ap
 | iOS | 26.0 |
 | macOS | 26.0 |
 | Mac Catalyst | 26.0 |
-| tvOS | 26.0 |
 
-### Device requirements
-
-Apple Intelligence requires capable hardware:
-
-- **iPhone**: iPhone 15 Pro, iPhone 15 Pro Max, or any iPhone 16 series or later.
-- **iPad**: iPad Pro with M1 chip or later; iPad Air with M1 chip or later.
-- **Mac**: Any Mac with Apple Silicon (M1, M2, M3, or M4 series).
-- **Apple TV**: Apple TV 4K (3rd generation) or later.
-
-All devices must have **Apple Intelligence enabled** in Settings:
-
-- **iOS / iPadOS**: Settings → Apple Intelligence & Siri
-- **macOS**: System Settings → Apple Intelligence & Siri
-
-> [!NOTE]
-> Required language models are downloaded automatically by the OS once Apple Intelligence is enabled. No manual download step is needed in your app.
-
-For a full list of supported devices and regions, see [Apple Intelligence availability](https://support.apple.com/en-us/120898).
+The device must also support Apple Intelligence, have it enabled, and have an available model. OS version alone isn't sufficient. See [Chat on Apple platforms](chat/apple.md) for app guidance and [current Apple Intelligence device requirements](https://support.apple.com/en-us/121115) for supported hardware.
 
 ## Embedding generator
 
-`NLEmbeddingGenerator` uses Apple's **Natural Language** framework (`NLEmbedding`). It does **not** require Apple Intelligence or any specific hardware.
+`NLEmbeddingGenerator` uses Apple's **Natural Language** framework (`NLEmbedding`). It does **not** require Apple Intelligence.
 
-### Minimum OS versions
+The generator uses an English sentence model by default. Check that a model is available for the language your app needs; support can vary by device and OS. See [Embeddings on Apple platforms](embeddings/apple.md) for model selection and indexing guidance.
 
-| Platform | Minimum version |
-|----------|-----------------|
-| iOS | 13.0 |
-| macOS | 10.15 |
-| Mac Catalyst | 13.1 |
-| tvOS | 13.0 |
-
-The embedding generator uses Apple's sentence embedding model, which is built into the OS and requires no additional downloads.
+Although Apple's native word and sentence embedding APIs are available on older OS versions, the package's native bridge targets Apple 26. Use the package's deployment requirements when configuring your app, not the introduction version of the underlying Natural Language API.
 
 ## NuGet package
 
-Add the following package to your `.csproj`:
-
-```xml
-<PackageReference Include="Microsoft.Maui.Essentials.AI" Version="10.0.50-preview.1.26158.1" />
-```
-
-Xcode 26 or later is required to build for Apple platforms.
+See [Get started](getting-started.md#install-the-package) to install `Microsoft.Maui.Essentials.AI`. Build with Xcode 26 or later for text chat. Image input requires a package version with image support, Apple 27 target frameworks, and Xcode 27.
 
 ## See also
 
 - [Get started](getting-started.md) — install the package and register services
 - [Chat client](chat.md) — usage examples
+- [Chat feature comparison](chat/feature-comparison.md) — chat support and capabilities
 - [Text embeddings](embeddings.md) — usage examples
+- [Embedding feature comparison](embeddings/feature-comparison.md) — API and model availability

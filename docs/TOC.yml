@@ -131,6 +131,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: C# expressions
+          href: xaml/csharp-expressions.md
         - name: Class modifiers
           href: xaml/class-modifiers.md
         - name: Field modifiers

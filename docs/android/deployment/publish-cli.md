@@ -1,7 +1,8 @@
 ---
 title: "Publish an Android app using the command line"
 description: "Learn how to publish and sign a .NET MAUI Android app using the command line."
-ms.date: 09/28/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # Publish an Android app using the command line
@@ -194,6 +195,32 @@ Alternatively, to use a file located at *C:\Users\user1\AndroidSigningPassword.t
     <AndroidSigningStorePass>file:C:\Users\user1\AndroidSigningPassword.txt</AndroidSigningStorePass>
 </PropertyGroup>
 ```
+
+::: moniker range=">=net-maui-11.0"
+
+## Control R8 optimization and obfuscation
+
+In .NET 11+, when R8 is enabled with `AndroidLinkTool=r8`, the
+`AndroidR8ObfuscationMode` property defaults to `private-members`. This policy
+enables R8 optimization and allows private and package-private Java members to
+be renamed. Java class names and public and protected member names are
+preserved for Java Native Interface (JNI) interoperability.
+
+Test Java code that uses reflection or looks up private members by name. If
+your app requires the previous R8 policy, set `AndroidR8ObfuscationMode` to
+`disabled`:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidR8ObfuscationMode>disabled</AndroidR8ObfuscationMode>
+</PropertyGroup>
+```
+
+The `disabled` mode preserves all Java names and uses the previous
+non-optimizing configuration. Both modes still shrink unused Java code. This
+property doesn't enable or disable R8 itself.
+
+::: moniker-end
 
 ## Distribute the app
 

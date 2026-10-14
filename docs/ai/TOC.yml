@@ -2,14 +2,24 @@
   href: index.md
 - name: Requirements
   items:
-  - name: Apple (iOS/Mac Catalyst)
+  - name: Apple platforms
     href: requirements-apple.md
 - name: Get started
   href: getting-started.md
 - name: Chat
   href: chat.md
+  items:
+  - name: Feature comparison
+    href: chat/feature-comparison.md
+  - name: Apple guidance
+    href: chat/apple.md
 - name: Text embeddings
   href: embeddings.md
+  items:
+  - name: Feature comparison
+    href: embeddings/feature-comparison.md
+  - name: Apple guidance
+    href: embeddings/apple.md
 - name: Feature comparison
   href: feature-comparison.md
 - name: Agent framework
