@@ -1,7 +1,8 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/10/2026
+ms.date: 10/08/2026
+ai-usage: ai-assisted
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -15,6 +16,8 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 - [.NET MAUI in .NET 11 Preview 5](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview5/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 6](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview6/dotnetmaui.md)
 - [.NET MAUI in .NET 11 Preview 7](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/preview7/dotnetmaui.md)
+- [.NET MAUI in .NET 11 RC 1](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/rc1/dotnetmaui.md)
+- [.NET MAUI in .NET 11 RC 2](https://github.com/dotnet/core/blob/main/release-notes/11.0/preview/rc2/dotnetmaui.md)
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -31,6 +34,24 @@ publishing alternative. This unifies the runtime across .NET MAUI and provides
 benefits for debugging, profiling, Hot Reload, app size, and app performance.
 For a detailed overview of this transition, see the
 [announcement blog post](https://aka.ms/maui-coreclr).
+
+## Project templates
+
+In .NET 11 RC 2, the `maui` template can create an app whose Shell and page UI are authored in C#:
+
+```console
+dotnet new maui -n MyApp --ui csharp
+```
+
+This option generates `App.cs`, `AppShell.cs`, and `MainPage.cs` with built-in .NET MAUI APIs. It doesn't require an additional C# UI library. The app keeps `App.xaml` and the `Resources/Styles/Colors.xaml` and `Resources/Styles/Styles.xaml` resource dictionaries. `App.cs` calls `InitializeComponent()` to load the application resources. XAML UI remains the default, and `--sample-content` remains XAML-only.
+
+The multi-project template also supports an optional Avalonia desktop project:
+
+```console
+dotnet new maui-multiproject -n MyApp --avalonia
+```
+
+This command creates a shared app project and an Avalonia desktop project. Add explicit platform options such as `--android`, `--ios`, `--maccatalyst`, or `--winui` to include native app projects. The template doesn't add a WebAssembly project. For more information about .NET MAUI projects, see [Create your first app](~/get-started/first-app.md) and [.NET MAUI single project](~/fundamentals/single-project.md).
 
 ## Testing
 
@@ -189,6 +210,18 @@ Starting in .NET 11 Preview 6, Windows uses the CollectionView2 handler by defau
 
 Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Controls.Shell> apps use the handler-based Shell architecture by default. The new architecture reuses the same handler building blocks as other .NET MAUI navigation features, while the legacy `ShellRenderer` path remains available if you explicitly register it. For more information, see [GitHub PR #34758](https://github.com/dotnet/maui/pull/34758).
 
+### Opt-in iOS and Mac Catalyst Shell handler
+
+In .NET 11 RC 2, iOS and Mac Catalyst apps can opt in to a handler-based <xref:Microsoft.Maui.Controls.Shell> implementation. It uses shared navigation, tab-bar, and flyout managers and exposes handler factory hooks for customization. Set `UseiOSShellHandler` to `true` in your project file:
+
+```xml
+<PropertyGroup>
+  <UseiOSShellHandler>true</UseiOSShellHandler>
+</PropertyGroup>
+```
+
+The compatibility `ShellRenderer` remains the default on these platforms. Remove the property or set it to `false` to keep the renderer. The property registers the complete Shell handler hierarchy, so you don't need additional manual handler registration. For more information, see [.NET MAUI Shell](~/fundamentals/shell/index.md) and [Customize Shell](~/fundamentals/shell/custom-handlers.md).
+
 ### Compatibility package removal
 
 Starting in .NET 11 Preview 6, the optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped. Projects that explicitly referenced this package for Xamarin.Forms migration compatibility should migrate off it before moving to .NET 11. Apps that only reference `Microsoft.Maui.Controls` aren't affected. For more information, see [GitHub PR #35870](https://github.com/dotnet/maui/pull/35870).
@@ -320,6 +353,25 @@ Starting in .NET 11 Preview 6, `GeolocationListeningRequest.MinimumDistance` let
 
 Starting in .NET 11 Preview 4, single-project app icons can declare a dedicated monochrome layer for Android themed icons via a new `MonochromeFile` attribute on `MauiIcon`. This lets your themed icon use a different glyph than the foreground layer, instead of being a tinted reuse of it. For more information, see [GitHub PR #34569](https://github.com/dotnet/maui/pull/34569).
 
+### Apple Icon Composer
+
+In .NET 11 RC 2, `MauiIcon` accepts Apple Icon Composer `.icon` bundles on iOS and Mac Catalyst. The Apple asset compiler processes these bundles instead of Resizetizer converting them to raster images.
+
+Replace the existing `MauiIcon` item with platform-specific items. Keep an SVG or PNG icon for Android and Windows:
+
+```xml
+<ItemGroup>
+  <MauiIcon Include="Resources\AppIcon\appicon.icon"
+            Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'" />
+  <MauiIcon Include="Resources\AppIcon\appicon.svg"
+            ForegroundFile="Resources\AppIcon\appiconfg.svg"
+            Color="#512BD4"
+            Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'ios' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'" />
+</ItemGroup>
+```
+
+Use only one icon for each target platform. .NET MAUI tracks changes inside the `.icon` directory for incremental builds and derives the app icon name from the directory name. Existing SVG and PNG processing is unchanged. For more information, see [App icons](~/user-interface/images/app-icons.md).
+
 ### Themed splash screens
 
 In .NET 11 RC 1, `MauiSplashScreen` supports separate images, colors, and tint colors for dark mode:
@@ -388,6 +440,32 @@ VisualStateManager.InvalidateVisualStates(myButton);
 
 ## XAML
 
+### C# expressions
+
+In .NET 11 RC 2, C# expressions in source-generated XAML support type references through XML namespace prefixes and attached bindable property access. For example, `{local:Helper.GetValue()}` resolves `Helper` through the `local` namespace prefix. The following expression reads the button's attached `Grid.Row` property:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.MainPage">
+    <Grid RowDefinitions="Auto,Auto,Auto">
+        <Button x:Name="myButton" Grid.Row="2" />
+        <Label Text="{$'Row {myButton.(Grid.Row)}'}" />
+    </Grid>
+</ContentPage>
+```
+
+The generator converts `target.(Type.Property)` to the attached property getter. These expressions require the `SourceGen` XAML inflator and `EnablePreviewFeatures` set to `true`; XamlC and runtime inflation don't support them. Set these properties in your project file:
+
+```xml
+<PropertyGroup>
+  <MauiXamlInflator>SourceGen</MauiXamlInflator>
+  <EnablePreviewFeatures>true</EnablePreviewFeatures>
+</PropertyGroup>
+```
+
+RC 2 also fixes generated bindings that assign a struct sub-property, improves diagnostics for interpolated strings and lambda method groups, and resolves `x:Reference` bindings in lazily created data templates. For more information, see [XAML compilation](~/xaml/xamlc.md) and [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+
 ### `x:Code` directive for inline C# in XAML
 
 Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
@@ -425,6 +503,9 @@ XAML Source Generation now registers resource dictionary entries as factories, i
 
 ### XAML Incremental Hot Reload
 
+> [!NOTE]
+> XAML Incremental Hot Reload is a preview feature in .NET 11.
+
 Starting in .NET 11 Preview 7, .NET MAUI includes a XAML Incremental Hot Reload engine. It uses a source generator and a `MetadataUpdateHandler` to generate patches for edits to existing `x:Class`-backed XAML pages and controls, and applies them to every live instance of the affected type. Therefore, pages that have already been instantiated can be updated without being recreated or navigated to again. Supported edits include changing properties and bindings, editing resources declared in a page or control, and adding, removing, or reordering child elements.
 
 The engine is enabled by default for `Debug` builds, and is disabled by default for `Release` and publish builds. Because it applies updates through a `MetadataUpdateHandler`, XAML edits are applied by .NET Hot Reload hosts, including `dotnet watch`. For more information, see [`dotnet watch` for Android](#dotnet-watch-for-android) and [`dotnet watch` for iOS](#dotnet-watch-for-ios).
@@ -432,6 +513,8 @@ The engine is enabled by default for `Debug` builds, and is disabled by default 
 In .NET 11 RC 1, application resource changes update existing and new `DynamicResource` consumers. If you change a literal value or binding to a `DynamicResource`, the engine also removes the old local state so that later resource changes continue to update the property. For more information, see GitHub PRs [#37896](https://github.com/dotnet/maui/pull/37896) and [#37898](https://github.com/dotnet/maui/pull/37898).
 
 Structural updates now reconcile original `x:Name` fields and namescope entries with the new visual tree. Property changes in a direct `CollectionView.ItemTemplate` also update realized cells without replacing the template or resetting selection, focus, or scroll position. For more information, see GitHub PRs [#37897](https://github.com/dotnet/maui/pull/37897) and [#37899](https://github.com/dotnet/maui/pull/37899).
+
+In .NET 11 RC 2, changing a binding's `StringFormat` preserves its `x:Reference` source during incremental Hot Reload. Resource dictionaries without `x:Class` that are merged through `App.xaml` also propagate resource edits to existing and new `DynamicResource` consumers.
 
 To opt out and continue to use the existing XAML Hot Reload engine, set the `EnableMauiIncrementalHotReload` MSBuild property to `false`:
 
@@ -465,6 +548,12 @@ This release includes work to improve performance. For more information about
 - [.NET for Android 11 Preview 1](https://github.com/dotnet/android/releases/)
 - [.NET for Android 11 Preview 3](https://github.com/dotnet/android/releases/)
 
+### Android API 37.2 and JDK support
+
+.NET 11 RC 2 includes Android API 37.2 bindings. Target `net11.0-android37.2` to use these APIs. This API binding version doesn't change the minimum supported Android API level of 24.
+
+Android projects support JDK 21 and JDK 25. The minimum supported JDK is 21. Projects that invoke Gradle with JDK 25 require Gradle 9.1 or later. Keep JDK 21 for projects that use an older Gradle version.
+
 ### Minimum supported Android API
 
 Starting in .NET 11 Preview 3, the minimum supported Android API level has been raised from 21 (Lollipop) to 24 (Nougat). This means that .NET MAUI apps in .NET 11 require Android 7.0 or higher.
@@ -491,9 +580,27 @@ In `Release` builds, the runtime uses composite partial ReadyToRun by default.
 
 .NET 11 RC 1 reduces work in clean and incremental Android builds. In a Release CoreCLR .NET MAUI sample-content app using trimmable type maps, a managed source change improved from 68.32 seconds to 52.31 seconds, and a manifest change improved from 39.74 seconds to 10.97 seconds. Type map generation in a clean build improved from 3,204 milliseconds to 792 milliseconds. RC 1 also fixes stale JAR resources in incremental APK updates and prevents post-link processing from writing satellite assemblies to the shared NuGet package cache. For more information, see GitHub PRs [#12229](https://github.com/dotnet/android/pull/12229), [#12279](https://github.com/dotnet/android/pull/12279), and [#12463](https://github.com/dotnet/android/pull/12463).
 
+In .NET 11 RC 2, unchanged Release builds with default signing and no extra bundletool arguments skip universal APK generation after the first build. Custom-keystore signing and custom bundletool arguments retain the previous always-run behavior. In the tested Release CoreCLR .NET MAUI sample-content app with trimmable type maps, repeated no-op `dotnet build --no-restore` runs decreased from 6.72 seconds to 4.58 seconds, a 31.8 percent reduction. This result measures unchanged builds, not clean builds or app startup.
+
 ### Smaller Android packages
 
 The Android trimmer now removes unused methods from user-defined `IJavaObject` types. In the tested ARM64 .NET MAUI app, the package size decreased by 664,926 bytes without R8 and by 718,174 bytes with R8. For more information, see [GitHub PR #12272](https://github.com/dotnet/android/pull/12272).
+
+In .NET 11 RC 2, optimized builds use a higher Zstandard compression level for the assembly store. In a CoreCLR `android-arm64` Release build of `dotnet new maui --sample-content`, the APK decreased from 22,547,511 bytes to 21,494,839 bytes, a reduction of 1,052,672 bytes, or 4.67 percent. The startup comparison used an Android 16 ARM64 emulator and didn't establish a statistically significant startup change.
+
+### R8 optimization and private-member obfuscation
+
+In .NET 11 RC 2, when R8 is enabled, `AndroidR8ObfuscationMode` defaults to `private-members`. R8 optimization is enabled, and private and package-private Java members can be renamed. Java class names and public and protected member names remain preserved for managed-to-Java interoperability.
+
+Test code that finds Java members by name. If your app requires the previous R8 policy, set the compatibility option:
+
+```xml
+<PropertyGroup>
+  <AndroidR8ObfuscationMode>disabled</AndroidR8ObfuscationMode>
+</PropertyGroup>
+```
+
+This setting retains shrinking but disables obfuscation and uses the previous non-optimizing configuration. For more information, see [.NET for Android build properties](/dotnet/android/building-apps/build-properties).
 
 ### Faster Android apps
 
@@ -515,6 +622,10 @@ A single-page Shell app also defers unused tab infrastructure. In a matched 80-l
 
 - `Java.Lang.Object.JavaFinalize()` is obsolete. Override `Dispose(bool)` or use a C# finalizer instead. For more information, see [GitHub PR #11424](https://github.com/dotnet/android/pull/11424).
 - If an Android manifest has a partial `<uses-sdk>` element without `android:targetSdkVersion`, the build now writes the value from `$(TargetSdkVersion)`. Android previously used the minimum SDK as the target SDK in this case. Test behavior that Android gates by target SDK, or set `android:targetSdkVersion` explicitly. For more information, see [GitHub PR #12290](https://github.com/dotnet/android/pull/12290).
+- In RC 2, CoreCLR builds that request ReadyToRun without trimming disable ReadyToRun and composite ReadyToRun and report warning `XA0119`. Set `PublishTrimmed` to `true` to use ReadyToRun.
+- In RC 2, generated Android bindings use API 24 as the minimum for platform attribute emission. APIs deprecated at or below that level can produce ordinary obsolete warnings instead of platform obsoletion diagnostics. Review deprecated API use if your build treats warnings as errors.
+
+For R8 configuration, see [.NET for Android build properties](/dotnet/android/building-apps/build-properties). For trimming guidance, see [Trim a .NET MAUI app](~/deployment/trimming.md).
 
 ### CoreCLR by Default
 
@@ -572,12 +683,7 @@ Starting in .NET 11 Preview 4, several long-standing issues have been fixed to m
 
 ## .NET for iOS
 
-.NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
-
-- iOS: 18.2
-- tvOS: 18.2
-- Mac Catalyst: 18.2
-- macOS: 15.2
+.NET 11 RC 2 requires Xcode 27.0 and includes updated Apple SDK bindings for iOS, tvOS, Mac Catalyst, and macOS. SDK binding versions aren't minimum OS deployment versions. Use `SupportedOSPlatformVersion` to set your app's minimum OS version. The .NET MAUI app templates use `15.0` for iOS and `17.0` for Mac Catalyst. For platform SDK guidance, see [.NET for iOS, Mac Catalyst, macOS, and tvOS](/dotnet/ios/) and [Supported platforms](~/supported-platforms.md).
 
 For more information about .NET 11 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
@@ -594,6 +700,14 @@ One Apple-side breaking change: `HMError.QuotaExceeded` was removed by Apple and
 ### HTTP digest authentication
 
 Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:Foundation.NSUrlSessionHandler>. For more information, see [dotnet/macios #25180](https://github.com/dotnet/macios/pull/25180).
+
+### Custom HTTP proxies
+
+In .NET 11 RC 2, <xref:Foundation.NSUrlSessionHandler> supports custom HTTP proxies. Set `Proxy` to an `IWebProxy`, or set `UseProxy` to `false` to bypass the system proxy configuration. Proxy selection is evaluated for the first request and applies to the entire session, not separately to each request. Proxy credentials are supported for HTTPS destinations through CONNECT tunnels, but not for plain HTTP destinations. For more information, see [Consume a REST web service](~/data-cloud/rest.md).
+
+### Info.plist entries from MSBuild
+
+In .NET 11 RC 2, typed `AppManifestEntry` MSBuild items can add, override, or remove `Info.plist` entries. Boolean, string, and string-array values are supported. For more information, see [.NET for iOS, Mac Catalyst, macOS, and tvOS build items](/dotnet/ios/building-apps/build-items).
 
 ### CoreCLR for Apple platforms
 
@@ -618,6 +732,14 @@ Starting in .NET 11 Preview 5, the Apple Intelligence APIs are available from .N
 
 In .NET 11 RC 1, NativeAOT apps that target .NET 11 use the trimmable-static registrar and assembly preparation by default. Mono and CoreCLR keep their existing registrar defaults in this RC 1 release. For more information, see [dotnet/macios #26346](https://github.com/dotnet/macios/pull/26346).
 
+In .NET 11 RC 2, CoreCLR apps also default to the trimmable-static registrar and assembly preparation. Untrimmed simulator builds use the partial-static registrar when managed exception marshalling uses its default mode. This extends the NativeAOT default introduced in RC 1; it doesn't change Mono's registrar default. For more information, see [.NET for iOS, Mac Catalyst, macOS, and tvOS build properties](/dotnet/ios/building-apps/build-properties).
+
+### CoreCLR dynamic code support
+
+In .NET 11 RC 2, CoreCLR apps on iOS, tvOS, and Mac Catalyst inherit `DynamicCodeSupport=true` from the SDK instead of defaulting to `false`. Dynamic code detection therefore reports support, so libraries such as Entity Framework Core can create models at runtime instead of selecting their NativeAOT code path.
+
+This default keeps `System.Reflection.Emit` in trimmed output and can increase app size. If your dependencies don't require dynamic code, set `DynamicCodeSupport` to `false`. NativeAOT retains `false`. For more information, see [Runtime feature switches](~/deployment/trimming.md) and [.NET for iOS, Mac Catalyst, macOS, and tvOS build properties](/dotnet/ios/building-apps/build-properties).
+
 ### NativeAOT debug symbols
 
 macOS and Mac Catalyst NativeAOT builds now generate dSYM files by default, even when `ArchiveOnBuild` isn't enabled. dSYM files from XCFrameworks are also copied next to the app dSYM for inclusion in archives. For more information, see GitHub PRs [dotnet/macios #26197](https://github.com/dotnet/macios/pull/26197) and [dotnet/macios #25979](https://github.com/dotnet/macios/pull/25979).
@@ -635,6 +757,26 @@ Apple app builds now remove the `Headers`, `PrivateHeaders`, and `Modules` direc
 ### Color is sealed
 
 In .NET 11 RC 1, the <xref:Microsoft.Maui.Graphics.Color> record is sealed. Code that derives from `Color` must use composition instead. For more information, see [GitHub PR #36443](https://github.com/dotnet/maui/pull/36443).
+
+### Apple scene lifecycle
+
+iOS and Mac Catalyst apps built with the Xcode 27 SDKs must use the UIKit scene lifecycle. .NET 11 RC 2 app templates include a `UIApplicationSceneManifest` and a registered `MauiUISceneDelegate` subclass. The templates keep the single-window default with `UIApplicationSupportsMultipleScenes` set to `false`; scene adoption doesn't require multiple-window support.
+
+Existing apps must add the scene configuration and move custom lifecycle and launch-option handling to scene callbacks. Each `PerformActionForShortcutItem` lifecycle registration must call its completion callback. An observer that doesn't handle the action must pass `false`. For more information, see [App lifecycle](~/fundamentals/app-lifecycle.md) and [App actions](~/platform-integration/appmodel/app-actions.md).
+
+### Mac Catalyst template minimum
+
+In .NET 11 RC 2, new .NET MAUI app templates set `SupportedOSPlatformVersion` to `17.0` for Mac Catalyst, the minimum accepted by the .NET Mac Catalyst 27 SDK. The iOS template minimum remains `15.0`. Update an existing Mac Catalyst project if it sets a lower deployment target. These deployment targets are distinct from the SDK binding versions. For more information, see [Supported platforms](~/supported-platforms.md).
+
+### Legacy Apple item handlers
+
+In .NET 11 RC 2, legacy `CollectionView` and `CarouselView` handler APIs on iOS and Mac Catalyst produce obsolete warnings. Migrate custom handlers to the `Microsoft.Maui.Controls.Handlers.Items2` implementations. The `CollectionView` and `CarouselView` controls aren't obsolete, and Windows legacy CollectionView handler APIs remain supported and aren't obsolete. For more information, see [CollectionView](~/user-interface/controls/collectionview/index.md), [CarouselView](~/user-interface/controls/carouselview/index.md), and [Customize controls with handlers](~/user-interface/handlers/customize.md).
+
+### Apple desktop architecture defaults
+
+In .NET 11 RC 2, Release builds for macOS and Mac Catalyst default to the host architecture when the effective `SupportedOSPlatformVersion` is `27.0` or later and no runtime identifier is specified. Earlier effective deployment targets retain the universal default.
+
+The SDK reads this property during SDK props evaluation. Set it in `Directory.Build.props` or on the command line if it must control the default architecture. If it isn't available at that point, the SDK uses `TargetPlatformVersion`. Set `RuntimeIdentifiers` explicitly if you need both architectures. For more information, see [.NET for iOS, Mac Catalyst, macOS, and tvOS build properties](/dotnet/ios/building-apps/build-properties).
 
 ## See also
 
