@@ -107,7 +107,7 @@ If your app already customizes startup, don't overwrite it blindly.
     ```
 
 - **Cold-start deep links and activities**: URLs and user activities that launch the app arrive in the connection options of `SceneWillConnect`, not through the warm scene URL/activity callbacks. Handle these connection options in addition to the warm callbacks. Review notification-tap and authentication handling separately, preserving the relevant notification delegate and authentication-session completion callbacks.
-- **Dynamic scene configuration**: Apple also supports returning a configuration from `UIApplicationDelegate.application(_:configurationForConnecting:options:)` instead of declaring it in `Info.plist`. This is valid. The build-time check described below accepts an empty `UIApplicationSceneManifest` dictionary for this case, so add an empty one (or opt out of the check) if you configure scenes dynamically.
+- **Dynamic scene configuration**: Apple also supports providing a configuration by overriding `UIApplicationDelegate.GetConfiguration` (`UIApplicationDelegate.application(_:configurationForConnecting:options:)` in Objective-C and Swift) instead of declaring it in `Info.plist`. This is valid. The build-time check described below accepts an empty `UIApplicationSceneManifest` dictionary for this case, so add an empty one (or opt out of the check) if you configure scenes dynamically.
 
 ## Build-time check
 
