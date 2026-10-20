@@ -7,7 +7,7 @@ no-loc: [ "UIScene", "SceneDelegate", "AppDelegate" ]
 
 # Migrate to the UIKit scene lifecycle
 
-Apps built against the iOS 27 and Mac Catalyst 27 SDK (Xcode 27) must use the UIKit scene-based lifecycle. An app that still uses the legacy `UIApplicationDelegate`-only lifecycle crashes at launch when it's built with Xcode 27 and run on iOS 27 or Mac Catalyst 27. For more information, see [TN3187: Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle) on developer.apple.com.
+Apps built against the iOS 27 and Mac Catalyst 27 SDK (Xcode 27) must use the UIKit scene-based lifecycle. An app that still uses the legacy `UIApplicationDelegate`-only lifecycle crashes at launch when it's built with Xcode 27 and run on iOS 27 or Mac Catalyst 27. The device log contains the message `UIScene life cycle is required for apps built with this SDK.` For more information, see [TN3187: Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle) on developer.apple.com.
 
 Apps created from .NET MAUI project templates before the fix don't contain the required scene configuration, and updating the .NET MAUI NuGet packages doesn't add it to existing `Platforms/iOS` and `Platforms/MacCatalyst` files. You have to make the change in your project.
 
@@ -135,6 +135,10 @@ If you're an AI agent resolving error MT7198 in a .NET MAUI app:
 1. Search the app for application-level lifecycle registrations and `AppDelegate` overrides (`OpenUrl`, `ContinueUserActivity`, `DidEnterBackground`, and so on) and migrate them as described in [Preserve existing customizations](#preserve-existing-customizations).
 1. Don't change `SupportedOSPlatformVersion` merely to fix scene adoption, don't silently drop support for older operating systems, and don't downgrade .NET MAUI. Check the selected workload's independent deployment-target requirements.
 1. Only set `ValidateSceneManifest` to `false` (or add an empty manifest dictionary) if scenes are configured dynamically, and tell the developer.
+
+## Let an AI agent do the migration
+
+The blog post [Get Your .NET MAUI App Ready for Xcode 27](https://devblogs.microsoft.com/dotnet/migrate-dotnet-maui-apps-uikit-scene-lifecycle/) describes an experimental `maui-xcode27-migration` agent skill, installed with the preview .NET MAUI CLI, that guides a coding agent through this migration. It's preview tooling that isn't covered by the Microsoft Support Policy, and you should review the resulting changes. The manual steps on this page work without it.
 
 ## Test the migration
 
