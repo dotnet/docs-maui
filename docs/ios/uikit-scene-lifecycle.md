@@ -111,7 +111,7 @@ If your app already customizes startup, don't overwrite it blindly.
 
 ## Build-time check
 
-When building for iOS or Mac Catalyst against SDK 27 or later, the build checks that the app's final merged `Info.plist` contains a `UIApplicationSceneManifest` dictionary, and reports error **MT7198** if it's missing or isn't a dictionary. An empty dictionary is accepted, which supports dynamic scene configuration. App extensions, frameworks, and libraries are skipped.
+When building for iOS or Mac Catalyst against SDK 27 or later, the build checks that the app's final merged `Info.plist` contains a `UIApplicationSceneManifest` dictionary, and reports error **MT7199** if it's missing or isn't a dictionary. An empty dictionary is accepted, which supports dynamic scene configuration. App extensions, frameworks, and libraries are skipped.
 
 The error message reads: "The app's Info.plist does not contain a UIApplicationSceneManifest dictionary. Apps built with the iOS or Mac Catalyst 27.0 SDK or later must use the UIKit scene lifecycle or they will crash at launch on iOS or macOS 27.0 or later. Add a scene manifest and scene delegate, and migrate custom lifecycle handlers as described at https://aka.ms/uiscene. To skip this build-time validation, set the MSBuild property ValidateSceneManifest to false; this does not disable the operating system's requirement."
 
@@ -127,7 +127,7 @@ or on the command line: `-p:ValidateSceneManifest=false`. Opting out doesn't pre
 
 ## Instructions for AI agents
 
-If you're an AI agent resolving error MT7198 in a .NET MAUI app:
+If you're an AI agent resolving error MT7199 in a .NET MAUI app:
 
 1. Find the `Platforms/iOS/Info.plist` and `Platforms/MacCatalyst/Info.plist` files for each platform the project targets (check `TargetFrameworks`).
 1. If `UIApplicationSceneManifest` is missing, add it as shown in [Quick fix for most apps](#quick-fix-for-most-apps). If it exists, reconcile it with the registered delegate and window-creation code rather than replacing custom configurations or adding duplicate keys.
