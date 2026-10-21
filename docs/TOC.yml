@@ -967,6 +967,8 @@
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
               href: ios/privacy-manifest.md
+            - name: Migrate to the UIKit scene lifecycle
+              href: ios/uikit-scene-lifecycle.md
             - name: Build apps
               items:
                 - name: Build targets
