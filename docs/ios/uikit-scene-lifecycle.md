@@ -1,7 +1,8 @@
 ---
 title: "Migrate to the UIKit scene lifecycle"
 description: Learn how to migrate a .NET MAUI app on iOS and Mac Catalyst to the UIKit scene-based lifecycle, which is required when building with the iOS 27 / Mac Catalyst 27 SDK (Xcode 27).
-ms.date: 10/20/2026
+ms.date: 10/21/2026
+ai-usage: ai-assisted
 no-loc: [ "UIScene", "SceneDelegate", "AppDelegate" ]
 ---
 
@@ -101,13 +102,13 @@ If your app already customizes startup, don't overwrite it blindly.
     #if IOS || MACCATALYST
         events.AddiOS(ios => ios
             .SceneOnActivated((scene) => { /* ... */ })
-            .SceneOpenUrl((scene, urlContexts) => { /* ... */ }));
+            .SceneOpenUrl((scene, urlContexts) => { /* ... */ return false; }));
     #endif
     });
     ```
 
 - **Cold-start deep links and activities**: URLs and user activities that launch the app arrive in the connection options of `SceneWillConnect`, not through the warm scene URL/activity callbacks. Handle these connection options in addition to the warm callbacks. Review notification-tap and authentication handling separately, preserving the relevant notification delegate and authentication-session completion callbacks.
-- **Dynamic scene configuration**: Apple also supports providing a configuration by overriding `UIApplicationDelegate.GetConfiguration` (`UIApplicationDelegate.application(_:configurationForConnecting:options:)` in Objective-C and Swift) instead of declaring it in `Info.plist`. This is valid. The build-time check described below accepts an empty `UIApplicationSceneManifest` dictionary for this case, so add an empty one (or opt out of the check) if you configure scenes dynamically.
+- **Dynamic scene configuration**: Apple also supports providing a configuration by overriding `UIApplicationDelegate.GetConfiguration` (`UIApplicationDelegate.application(_:configurationForConnecting:options:)` in Objective-C and Swift) instead of declaring scene configurations in `Info.plist`. In a standard .NET MAUI app, you still need at least an empty `UIApplicationSceneManifest` dictionary in `Info.plist`. Without the key, `MauiUIApplicationDelegate` hides that callback and creates a legacy window. The build-time check described below accepts an empty dictionary.
 
 ## Build-time check
 
@@ -115,7 +116,7 @@ When building for iOS or Mac Catalyst against SDK 27 or later, the build checks 
 
 The error message reads: "The app's Info.plist does not contain a UIApplicationSceneManifest dictionary. Apps built with the iOS or Mac Catalyst 27.0 SDK or later must use the UIKit scene lifecycle or they will crash at launch on iOS or macOS 27.0 or later. Add a scene manifest and scene delegate, and migrate custom lifecycle handlers as described at https://aka.ms/uiscene. To skip this build-time validation, set the MSBuild property ValidateSceneManifest to false; this does not disable the operating system's requirement."
 
-The check is a heuristic on the manifest. It doesn't prove that your scene delegate or window is wired up correctly. To skip the check, opt out in the project file:
+The check is a heuristic on the manifest. It doesn't prove that your scene delegate or window is wired up correctly. Opting out only disables this build-time validation; it isn't a substitute for the manifest in a standard .NET MAUI app, even if you configure scenes dynamically. To skip the check, opt out in the project file:
 
 ```xml
 <PropertyGroup>
@@ -134,7 +135,7 @@ If you're an AI agent resolving error MT7199 in a .NET MAUI app:
 1. Add `SceneDelegate.cs` (derived from `MauiUISceneDelegate`, `[Register("SceneDelegate")]`, public) to each platform folder unless a suitable registered scene delegate already exists. Preserve existing custom delegate names and behavior, and match the manifest to the registered name. Keep `AppDelegate`.
 1. Search the app for application-level lifecycle registrations and `AppDelegate` overrides (`OpenUrl`, `ContinueUserActivity`, `DidEnterBackground`, and so on) and migrate them as described in [Preserve existing customizations](#preserve-existing-customizations).
 1. Don't change `SupportedOSPlatformVersion` merely to fix scene adoption, don't silently drop support for older operating systems, and don't downgrade .NET MAUI. Check the selected workload's independent deployment-target requirements.
-1. Only set `ValidateSceneManifest` to `false` (or add an empty manifest dictionary) if scenes are configured dynamically, and tell the developer.
+1. If scenes are configured dynamically, still make sure `UIApplicationSceneManifest` exists, at least as an empty dictionary. Only set `ValidateSceneManifest` to `false` if the developer explicitly wants to skip the validation, and tell them it only disables the build-time check.
 
 ## Let an AI agent do the migration
 
