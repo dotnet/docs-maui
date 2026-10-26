@@ -1,7 +1,7 @@
 ---
 title: "App actions (shortcuts)"
 description: "Describes the IAppActions interface in the Microsoft.Maui.ApplicationModel namespace, which lets you create and respond to app shortcuts from the app icon."
-ms.date: 10/08/2026
+ms.date: 10/26/2026
 ai-usage: ai-assisted
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", "AppActions", "Platforms/Android/MainActivity.cs", "Platforms/iOS/AppDelegate.cs", "Platforms/Windows/App.xaml.cs", "Id", "Title", "Subtitle", "Icon"]
 ---
@@ -28,15 +28,15 @@ In the _Platforms/Android/MainActivity.cs_ file, add the `OnResume` and `OnNewIn
 
 # [iOS/Mac Catalyst](#tab/macios)
 
-::: moniker range="<=net-maui-10.0"
+::: moniker range="<=net-maui-9.0"
 
 No setup is required.
 
 ::: moniker-end
 
-::: moniker range=">=net-maui-11.0"
+::: moniker range=">=net-maui-10.0"
 
-No AppActions-specific setup is required when you use the .NET MAUI app templates. When you upgrade an existing app for the Xcode 27 SDKs, add the scene manifest and registered scene delegate to both Apple platform folders. See [Upgrade to the scene lifecycle](../../fundamentals/app-lifecycle.md#upgrade-to-the-scene-lifecycle).
+No AppActions-specific setup is required when you use the .NET MAUI app templates. When you upgrade an existing app for the Xcode 27 SDKs, use .NET MAUI 10.0.110 or a later compatible release and add the scene manifest and registered scene delegate for each Apple platform you target. See [Migrate to the UIKit scene lifecycle](../../macios/scene-lifecycle.md).
 
 ::: moniker-end
 
@@ -70,11 +70,11 @@ After app actions [have been configured](#create-actions), the `OnAppAction` met
 
 :::code language="csharp" source="../snippets/shared_1/App.xaml.cs" id="appaction_handle":::
 
-::: moniker range=">=net-maui-11.0"
+::: moniker range=">=net-maui-10.0"
 
 ### iOS and Mac Catalyst scene dispatch
 
-.NET MAUI dispatches app actions through the existing `PerformActionForShortcutItem` lifecycle registrations for both application and scene lifecycles. With the default MAUI builder, the framework forwards these actions to AppActions. Continue to use `OnAppAction` to respond to them. Do not add manual `Platform.PerformActionForShortcutItem` forwarding to `AppDelegate`, `SceneDelegate`, or another lifecycle registration.
+.NET MAUI 10.0.110 and later compatible releases dispatch app actions through the existing `PerformActionForShortcutItem` lifecycle registrations for both application and scene lifecycles. With the default MAUI builder, the framework forwards these actions to AppActions. Continue to use `OnAppAction` to respond to them. Do not add manual `Platform.PerformActionForShortcutItem` forwarding to `AppDelegate`, `SceneDelegate`, or another lifecycle registration.
 
 A warm shortcut selection reaches an existing scene through its native shortcut callback. A shortcut in `UISceneConnectionOptions.ShortcutItem` is dispatched after that window's scene activation callbacks, at most once per connection. This cold scene delivery requires no manual forwarding.
 

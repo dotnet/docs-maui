@@ -967,6 +967,8 @@
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
               href: ios/privacy-manifest.md
+            - name: Migrate to the UIKit scene lifecycle
+              href: macios/scene-lifecycle.md
             - name: Build apps
               items:
                 - name: Build targets
@@ -1025,6 +1027,8 @@
                   href: /dotnet/ios/advanced-concepts/exception-marshaling?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Mac Catalyst
           items:
+            - name: Migrate to the UIKit scene lifecycle
+              href: macios/scene-lifecycle.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities

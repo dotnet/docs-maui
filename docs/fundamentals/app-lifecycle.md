@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 10/08/2026
+ms.date: 10/26/2026
 ai-usage: ai-assisted
 ---
 
@@ -379,55 +379,13 @@ public static class MauiProgram
 
 For more information about the iOS app lifecycle, see [Managing Your App's Life Cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle?language=objc) on developer.apple.com.
 
-::: moniker range=">=net-maui-11.0"
+::: moniker range=">=net-maui-10.0"
 
 #### Upgrade to the scene lifecycle
 
-iOS and Mac Catalyst apps built with the Xcode 27 SDKs must use the UIKit scene lifecycle. New .NET MAUI 11 app templates include the required configuration. When you upgrade an existing app, update both Apple platform folders:
+iOS and Mac Catalyst apps built with the Xcode 27 SDKs must use the UIKit scene lifecycle. For the required platform files, package versions, custom lifecycle changes, and verification steps, see [Migrate to the UIKit scene lifecycle](../macios/scene-lifecycle.md). The guide also explains scene-manifest build diagnostics and the `ValidateSceneManifest` property.
 
-1. Add the following `UIApplicationSceneManifest` entry inside the top-level `<dict>` in `Platforms/iOS/Info.plist` and `Platforms/MacCatalyst/Info.plist`. If a manifest already exists, update it instead of adding a second entry.
-
-   ```xml
-   <key>UIApplicationSceneManifest</key>
-   <dict>
-       <key>UIApplicationSupportsMultipleScenes</key>
-       <false/>
-       <key>UISceneConfigurations</key>
-       <dict>
-           <key>UIWindowSceneSessionRoleApplication</key>
-           <array>
-               <dict>
-                   <key>UISceneConfigurationName</key>
-                   <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
-                   <key>UISceneDelegateClassName</key>
-                   <string>SceneDelegate</string>
-               </dict>
-           </array>
-       </dict>
-   </dict>
-   ```
-
-   Keep `__MAUI_DEFAULT_SCENE_CONFIGURATION__` unchanged. .NET MAUI uses this exact name to create the scene's window. `UIApplicationSupportsMultipleScenes` is explicitly `false` to keep the single-window default. Scene adoption does not require multiple windows.
-
-1. Add `SceneDelegate.cs` to each of the `Platforms/iOS` and `Platforms/MacCatalyst` folders, with the following code. Replace `MyMauiApp` with your app's namespace. If a scene delegate already exists, update that class instead of adding another.
-
-   ```csharp
-   using Foundation;
-   using Microsoft.Maui;
-
-   namespace MyMauiApp;
-
-   [Register("SceneDelegate")]
-   public class SceneDelegate : MauiUISceneDelegate
-   {
-   }
-   ```
-
-   The `[Register]` name must match the `UISceneDelegateClassName` value in `Info.plist`. .NET MAUI creates the window in code. Do not add `UISceneStoryboardFile`, or change your existing `MauiSplashScreen` or `UILaunchStoryboardName` configuration.
-
-1. Move custom window activation and background handlers from application callbacks to the corresponding scene callbacks. Use `SceneOnActivated`, `SceneOnResignActivation`, `SceneDidEnterBackground`, and `SceneWillEnterForeground` instead of `OnActivated`, `OnResignActivation`, `DidEnterBackground`, and `WillEnterForeground`. Use `SceneDidDisconnect` for window cleanup. `WillTerminate` remains an application termination callback.
-
-For more information, see [Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle) on developer.apple.com.
+If your app still registers application activation and background callbacks, migrate those registrations to the corresponding scene callbacks.
 
 ##### Handle scene activation data
 
@@ -439,9 +397,9 @@ For a cold scene connection, inspect `connectionOptions.UrlContexts`, `connectio
 
 `SceneWillConnect` runs before .NET MAUI creates the scene's window. If your link handler needs to navigate, retain the activation data and process it after the window is created or activated.
 
-.NET MAUI forwards warm scene URL contexts and user activities with a `WebPageUrl` to `WebAuthenticator` callback handling. This bridge is not general app deep-link navigation and does not process URLs or user activities from a cold scene connection. Configure your own scene handlers for app links. The built-in `ASWebAuthenticationSession` flow receives its result through its own completion handler.
+.NET MAUI 10.0.110 and later compatible releases forward warm scene URL contexts and user activities with a `WebPageUrl` to `WebAuthenticator` callback handling. This bridge is not general app deep-link navigation and does not process URLs or user activities from a cold scene connection. Configure your own scene handlers for app links. The built-in `ASWebAuthenticationSession` flow receives its result through its own completion handler.
 
-For shortcut items, .NET MAUI provides both warm and cold scene dispatch. See [iOS and Mac Catalyst scene dispatch](../platform-integration/appmodel/app-actions.md#ios-and-mac-catalyst-scene-dispatch).
+For shortcut items, .NET MAUI 10.0.110 and later compatible releases provide both warm and cold scene dispatch. See [iOS and Mac Catalyst scene dispatch](../platform-integration/appmodel/app-actions.md#ios-and-mac-catalyst-scene-dispatch).
 
 ::: moniker-end
 
