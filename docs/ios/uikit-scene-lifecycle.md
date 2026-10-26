@@ -19,7 +19,7 @@ Apps created from .NET MAUI project templates before the fix don't contain the r
 
 Use a .NET for iOS and Mac Catalyst workload that supports your selected Xcode version. Independently of scene adoption, the .NET 27 SDKs require a minimum deployment target of iOS 15.0 and Mac Catalyst 17.0 (macOS 14). Keep a higher deployment target if your app already requires one. If you must support older operating systems, use a compatible older SDK rather than silently dropping those users.
 
-Check the project's `global.json`, .NET MAUI package versions, and any configuration-specific `Info.plist` paths before editing. Apply the migration to every configuration that can produce a shipping app, including separate iOS and Mac Catalyst app projects.
+Check the project's `global.json`, .NET MAUI package versions, and any configuration-specific `Info.plist` paths before editing. For a .NET 10 app, update to .NET MAUI 10.0.110 or a later compatible servicing release before enabling scenes; it includes the scene-based App Actions dispatch and relevant `WebAuthenticator` forwarding. Don't downgrade a newer compatible version. Apply the migration to every configuration that can produce a shipping app, including separate iOS and Mac Catalyst app projects.
 
 ## Quick fix for most apps
 
@@ -73,10 +73,6 @@ Do the following for **both** `Platforms/iOS` and `Platforms/MacCatalyst` (skip 
 
 When `UIApplicationSceneManifest` is present, `MauiUIApplicationDelegate` selects scene-based startup and returns the `__MAUI_DEFAULT_SCENE_CONFIGURATION__` scene configuration. `MauiUISceneDelegate` then creates the scene-backed window for your app. For details, see the [.NET MAUI pull request that updated the templates to use scenes](https://github.com/dotnet/maui/pull/38601).
 
-## Update .NET MAUI
-
-Use .NET MAUI 10.0.110 or later. It includes scene forwarding for features such as app actions and `WebAuthenticator`. If you're already on a newer version, don't downgrade. See [Migrate .NET MAUI apps to the UIKit scene lifecycle](https://devblogs.microsoft.com/dotnet/migrate-dotnet-maui-apps-uikit-scene-lifecycle/) for details.
-
 ## Preserve existing customizations
 
 If your app already customizes startup, don't overwrite it blindly.
@@ -107,12 +103,13 @@ If your app already customizes startup, don't overwrite it blindly.
     });
     ```
 
-- **Cold-start deep links and activities**: URLs and user activities that launch the app arrive in the connection options of `SceneWillConnect`, not through the warm scene URL/activity callbacks. Handle these connection options in addition to the warm callbacks. Review notification-tap and authentication handling separately, preserving the relevant notification delegate and authentication-session completion callbacks.
+- **Cold-start deep links and activities**: URLs and user activities that launch the app arrive in the connection options of `SceneWillConnect`, not through the warm scene URL/activity callbacks. Handle these connection options in addition to the warm callbacks. `SceneWillConnect` runs before .NET MAUI creates the scene's window, so retain activation data and defer navigation until that window is created or activated. In the standard scene startup path, `AppDelegate.Window` remains `null`, including after `base.FinishedLaunching`; move startup code that needs a window to the owning scene's window when it's ready. Review notification-tap and authentication handling separately, preserving the relevant notification delegate and authentication-session completion callbacks.
+- **App Actions**: if you override `AppDelegate.PerformActionForShortcutItem`, move that logic to a `ConfigureLifecycleEvents` registration. .NET MAUI 10.0.110 already forwards warm and cold scene shortcuts, so don't add duplicate `Platform.PerformActionForShortcutItem` forwarding. Each custom registration, including one that only logs, must call its completion callback exactly once. An app can launch successfully while shortcuts stop working, so test them. For more information, see [App actions](../platform-integration/appmodel/app-actions.md).
 - **Dynamic scene configuration**: Apple also supports providing a configuration by overriding `UIApplicationDelegate.GetConfiguration` (`UIApplicationDelegate.application(_:configurationForConnecting:options:)` in Objective-C and Swift) instead of declaring scene configurations in `Info.plist`. In a standard .NET MAUI app, you still need at least an empty `UIApplicationSceneManifest` dictionary in `Info.plist`. Without the key, `MauiUIApplicationDelegate` hides that callback and creates a legacy window. The build-time check described below accepts an empty dictionary.
 
 ## Build-time check
 
-When building for iOS or Mac Catalyst against SDK 27 or later, the build checks that the app's final merged `Info.plist` contains a `UIApplicationSceneManifest` dictionary, and reports error **MT7199** if it's missing or isn't a dictionary. An empty dictionary is accepted, which supports dynamic scene configuration. App extensions, frameworks, and libraries are skipped.
+In .NET for iOS and Mac Catalyst workloads that include scene-manifest validation, building against SDK 27 or later checks that the app's final merged `Info.plist` contains a `UIApplicationSceneManifest` dictionary, and reports error **MT7199** if it's missing or isn't a dictionary. Check your workload's release notes for availability; a successful build with an older workload doesn't prove scene adoption. An empty dictionary is accepted, which supports dynamic scene configuration. App extensions, frameworks, and libraries are skipped. Earlier drafts of this check used MT7198, which is now a different error (an extended-attributes signing error).
 
 The error message reads: "The app's Info.plist does not contain a UIApplicationSceneManifest dictionary. Apps built with the iOS or Mac Catalyst 27.0 SDK or later must use the UIKit scene lifecycle or they will crash at launch on iOS or macOS 27.0 or later. Add a scene manifest and scene delegate, and migrate custom lifecycle handlers as described at https://aka.ms/uiscene. To skip this build-time validation, set the MSBuild property ValidateSceneManifest to false; this does not disable the operating system's requirement."
 
@@ -126,20 +123,8 @@ The check is a heuristic on the manifest. It doesn't prove that your scene deleg
 
 or on the command line: `-p:ValidateSceneManifest=false`. Opting out doesn't prevent the launch crash on iOS 27 / Mac Catalyst 27.
 
-## Instructions for AI agents
-
-If you're an AI agent resolving error MT7199 in a .NET MAUI app:
-
-1. Find the `Platforms/iOS/Info.plist` and `Platforms/MacCatalyst/Info.plist` files for each platform the project targets (check `TargetFrameworks`).
-1. If `UIApplicationSceneManifest` is missing, add it as shown in [Quick fix for most apps](#quick-fix-for-most-apps). If it exists, reconcile it with the registered delegate and window-creation code rather than replacing custom configurations or adding duplicate keys.
-1. Add `SceneDelegate.cs` (derived from `MauiUISceneDelegate`, `[Register("SceneDelegate")]`, public) to each platform folder unless a suitable registered scene delegate already exists. Preserve existing custom delegate names and behavior, and match the manifest to the registered name. Keep `AppDelegate`.
-1. Search the app for application-level lifecycle registrations and `AppDelegate` overrides (`OpenUrl`, `ContinueUserActivity`, `DidEnterBackground`, and so on) and migrate them as described in [Preserve existing customizations](#preserve-existing-customizations).
-1. Don't change `SupportedOSPlatformVersion` merely to fix scene adoption, don't silently drop support for older operating systems, and don't downgrade .NET MAUI. Check the selected workload's independent deployment-target requirements.
-1. If scenes are configured dynamically, still make sure `UIApplicationSceneManifest` exists, at least as an empty dictionary. Only set `ValidateSceneManifest` to `false` if the developer explicitly wants to skip the validation, and tell them it only disables the build-time check.
-
-## Let an AI agent do the migration
-
-The blog post [Get Your .NET MAUI App Ready for Xcode 27](https://devblogs.microsoft.com/dotnet/migrate-dotnet-maui-apps-uikit-scene-lifecycle/) describes an experimental `maui-xcode27-migration` agent skill, installed with the preview .NET MAUI CLI, that guides a coding agent through this migration. It's preview tooling that isn't covered by the Microsoft Support Policy, and you should review the resulting changes. The manual steps on this page work without it.
+> [!NOTE]
+> You can use the experimental [`maui-xcode27-migration` agent skill](https://github.com/dotnet/maui-labs/tree/main/plugins/dotnet-maui/skills/maui-xcode27-migration) to help inspect and migrate your project. Install or update the [.NET MAUI CLI](../developer-tools/cli/index.md) to version `0.1.0-preview.13.26512.5` or later, then run `maui ai add skill maui-xcode27-migration --env CopilotCli --yes` from your app's repository. Reload your agent session and ask it to use the skill. For other agent environments, see `maui ai add skill --help`. This preview tooling isn't covered by the Microsoft Support Policy. Installing the skill doesn't migrate your app; review the agent's changes and complete the same verification steps as for a manual migration.
 
 ## Test the migration
 
