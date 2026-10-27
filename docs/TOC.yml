@@ -967,6 +967,8 @@
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
               href: ios/privacy-manifest.md
+            - name: Migrate to the UIKit scene lifecycle
+              href: ios/uikit-scene-lifecycle.md
             - name: Build apps
               items:
                 - name: Build targets
@@ -1031,6 +1033,8 @@
                   href: mac-catalyst/capabilities.md
                 - name: Entitlements
                   href: mac-catalyst/entitlements.md
+            - name: Migrate to the UIKit scene lifecycle
+              href: ios/uikit-scene-lifecycle.md
             - name: Information property list
               href: macios/info-plist.md
             - name: Linking
