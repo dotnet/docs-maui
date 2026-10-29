@@ -969,6 +969,12 @@
               href: ios/privacy-manifest.md
             - name: Migrate to the UIKit scene lifecycle
               href: ios/uikit-scene-lifecycle.md
+            - name: Bind Objective-C libraries
+              items:
+                - name: Overview
+                  href: /dotnet/ios/binding-libs?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+                - name: Bind an XCFramework
+                  href: /dotnet/ios/binding-libs/xcframeworks?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Build apps
               items:
                 - name: Build targets

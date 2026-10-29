@@ -1,7 +1,9 @@
 ---
 title: "Xamarin.iOS binding project migration"
 description: "Learn how to upgrade a Xamarin.iOS binding project to a .NET for iOS project."
-ms.date: 08/21/2023
+ms.date: 10/29/2026
+ai-usage: ai-assisted
+no-loc: [ "xcframework" ]
 ---
 
 # Xamarin.iOS binding project migration
@@ -33,7 +35,9 @@ To migrate a Xamarin.iOS binding library to a .NET for iOS binding library:
     > [!NOTE]
     > The project file for an iOS binding library is similar to the project file for an iOS class library.
 
-1. Add your native library, or native framework, to the project as a native reference. Then update the binding project file with the `<NativeReference>` item from your Xamarin.iOS binding project:
+1. Add your native library, or native framework, to the project as a native reference. Then update the binding project file with the `<NativeReference>` item from your Xamarin.iOS binding project.
+
+    For a static library (`.a`):
 
     ```xml
     <ItemGroup>
@@ -44,9 +48,49 @@ To migrate a Xamarin.iOS binding library to a .NET for iOS binding library:
     </ItemGroup>
     ```
 
+    For an `.xcframework` bundle (recommended when migrating fat `.framework` or universal `.a` binaries to support both device and Apple silicon simulator architectures), reference the top-level `.xcframework` directory or `.xcframework.zip` archive with `Kind` set to `Framework`:
+
+    ```xml
+    <ItemGroup>
+        <NativeReference Include="XMBindingLibrary.xcframework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
+        </NativeReference>
+    </ItemGroup>
+    ```
+
+    If the native SDK includes multiple `.xcframework` bundles (such as a main framework and its native dependency frameworks), add a separate `<NativeReference>` item for each `.xcframework`:
+
+    ```xml
+    <ItemGroup>
+        <NativeReference Include="XMBindingLibrary.xcframework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
+        </NativeReference>
+        <NativeReference Include="XMBindingDependency.xcframework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
+        </NativeReference>
+    </ItemGroup>
+    ```
+
 1. Copy the API definition from your Xamarin.iOS binding project to your .NET for iOS binding project.
 1. Copy any additional required code from your Xamarin.iOS binding project to your .NET for iOS binding project.
 1. In your .NET for iOS binding project, replace any unsupported APIs with their .NET for iOS equivalents. For more information, see [Unsupported APIs](#unsupported-apis).
+
+For complete guidance on creating and packaging binding libraries in .NET for iOS, see [Binding Objective-C libraries](/dotnet/ios/binding-libs/) and [Binding an XCFramework](/dotnet/ios/binding-libs/xcframeworks).
+
+## `NoBindingEmbedding` and binding resource packages (`.resources`)
+
+In .NET for iOS, the `NoBindingEmbedding` MSBuild property is `true` by default. Instead of embedding native libraries or frameworks directly inside the managed binding `.dll` as manifest resources, the build places all `<NativeReference>` items into a sidecar binding resource package (`<AssemblyName>.resources.zip`, or an `<AssemblyName>.resources` directory when `CompressBindingResourcePackage` is `false`) next to the compiled `.dll`.
+
+When you distribute a binding library:
+
+- **Using `dotnet pack` (recommended)**: `dotnet pack` automatically packs both the managed `.dll` and the `<AssemblyName>.resources.zip` sidecar into the `lib/<TargetFramework>/` folder of the NuGet package. No custom `.nuspec` file is required.
+- **Copying build output manually**: If you distribute the compiled `.dll` directly instead of using a NuGet package, you must also distribute the `<AssemblyName>.resources.zip` file (or `<AssemblyName>.resources` folder) alongside the `.dll`.
+
+> [!WARNING]
+> Setting `<NoBindingEmbedding>false</NoBindingEmbedding>` is deprecated and is no longer supported starting with .NET 12, where setting it to `false` causes a build error. If your migrated binding project explicitly sets `<NoBindingEmbedding>false</NoBindingEmbedding>` (for example, to work around a legacy packaging layout or because of `.xcframework` embedding limitations), remove that property and distribute the sidecar `.resources.zip` file or pack the project with `dotnet pack`. See [Binding an XCFramework](/dotnet/ios/binding-libs/xcframeworks) for details.
 
 ## Unsupported APIs
 
