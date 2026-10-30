@@ -1,8 +1,9 @@
 ---
 title: "Publish a .NET MAUI Android app for Google Play distribution"
 description: "Learn how to publish a .NET MAUI Android app for Google Play distribution."
-ms.date: 07/18/2024
+ms.date: 10/30/2026
 ms.custom: sfi-image-nochange
+ai-usage: ai-assisted
 ---
 
 # Publish an Android app for Google Play distribution
@@ -24,6 +25,7 @@ The process for distributing a .NET MAUI Android app through Google Play is as f
 1. Create your app in Google Play Console. For more information, see [Create your app in Google Play Console](#create-your-app-in-google-play-console).
 1. Setup your app in Google Play Console. For more information, see [Setup your app in Google Play Console](#setup-your-app-in-google-play-console).
 1. Ensure your app uses the correct package format. For more information, see [Ensure correct package format](#ensure-correct-package-format).
+1. Prepare your app to meet Google Play's code optimization requirements. For more information, see [Google Play code optimization requirements](#google-play-code-optimization-requirements).
 1. Build and sign your app in Visual Studio, and then distribute it through Google Play Console. For more information, see [Distribute your app through Google Play Console](#distribute-your-app-through-google-play-console).
 
 Then, subsequent versions of your app can be published through Visual Studio. For more information, see [Distribute your app through Visual Studio](#distribute-your-app-through-visual-studio).
@@ -73,6 +75,36 @@ To publish a .NET MAUI Android app for Google Play distribution requires that yo
 1. In Visual Studio's **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
 
     :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of changing the package format of a .NET MAUI Android app to APK.":::Publish
+
+## Google Play code optimization requirements
+
+Starting in February 2027, Google Play requires at least 25% coverage for each of code optimization, shrinking, and obfuscation. This requirement applies to apps with more than 10 MB of DEX code and games with more than 50 MB of DEX code, across all form factors. R8 is recommended, but you can use another tool to meet the thresholds. For details, see [Google Play technical quality requirements](https://support.google.com/googleplay/android-developer/answer/17492799#dex_code_optimization) and the [original announcement](https://android-developers.googleblog.com/2026/08/app-quality-memory-optimization-secure-onboarding.html).
+
+> [!NOTE]
+> Google's [announcement](https://android-developers.googleblog.com/2026/08/app-quality-memory-optimization-secure-onboarding.html) states: "Apps and games that do not meet these thresholds may see reduced app visibility and publishing capabilities on Google Play. Additional details will be provided later this year."
+
+To use the R8 settings below, install .NET for Android [36.1.118](https://github.com/dotnet/android/releases/tag/36.1.118) or later on .NET 10, or use .NET 11.
+
+::: moniker range=">=net-maui-10.0"
+
+Add these settings to your `.csproj` file to enable R8 optimization, shrinking, and private-member obfuscation for Android Release builds:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+  <AndroidLinkTool>r8</AndroidLinkTool>
+  <AndroidR8ObfuscationMode>private-members</AndroidR8ObfuscationMode>
+</PropertyGroup>
+```
+
+On .NET 10, `AndroidR8ObfuscationMode` defaults to `disabled`, so you must set it explicitly. On .NET 11, it defaults to `private-members` when R8 is enabled. You can omit the property on .NET 11 unless your project overrides it.
+
+The `private-members` mode allows R8 to optimize Java code and rename private and package-private Java members. It preserves Java class names and public and protected member names for Java Native Interface (JNI) interoperability. These settings apply to Java bytecode (DEX), not managed .NET assemblies.
+
+Test your Android Release build, especially Java code that uses reflection or looks up private members by name. After you upload the signed AAB, check its DEX size and its optimization, shrinking, and obfuscation percentages in Google Play Console's **App bundle explorer**. Enabling these settings doesn't guarantee that your app meets all three thresholds. Keep rules and dependencies can limit how much code R8 can optimize.
+
+For more information about measuring the scores and finding keep rules that limit optimization, see [R8 Configuration Analyzer](https://developer.android.com/topic/performance/app-optimization/r8-configuration-analyzer) on developer.android.com.
+
+::: moniker-end
 
 ## Distribute your app through Google Play Console
 
