@@ -1,7 +1,7 @@
 ---
 title: "Window"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 08/06/2026
+ms.date: 09/02/2026
 ---
 
 # Window
@@ -78,6 +78,24 @@ protected override Window CreateWindow(IActivationState? activationState)
 ```
 
 This property has no effect on Android versions earlier than API 23, Mac Catalyst, Windows, or Tizen.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+## Match Android system bar backgrounds to app chrome
+
+Set the `MauiAndroidSystemBarsUseMauiChrome` MSBuild property to opt in to matching Android system bar backgrounds to .NET MAUI app chrome:
+
+```xml
+<PropertyGroup>
+  <MauiAndroidSystemBarsUseMauiChrome>true</MauiAndroidSystemBarsUseMauiChrome>
+</PropertyGroup>
+```
+
+The default value is `false`. When the property is `true`, .NET MAUI matches the Android status bar and navigation bar background colors to the effective chrome colors for <xref:Microsoft.Maui.Controls.NavigationPage>, <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.TabbedPage>, and modal windows. When the property is omitted or set to `false`, the Android theme and platform continue to control the system bar backgrounds.
+
+This property changes background colors only and doesn't select the system bar icon appearance. Modal windows inherit the current system bar icon appearance from the main window. To select the status bar icon appearance, use `Window.StatusBarTheme`. For more information, see [Set the status bar theme](#set-the-status-bar-theme).
 
 ::: moniker-end
 
