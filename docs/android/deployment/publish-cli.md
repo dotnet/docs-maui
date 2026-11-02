@@ -224,6 +224,8 @@ property doesn't enable or disable R8 itself.
 
 ## Distribute the app
 
+Before you publish to Google Play, review the [Google Play code optimization requirements](publish-google-play.md#google-play-code-optimization-requirements), including the required .NET for Android version and R8 settings for Release builds.
+
 The signed APK or AAB file can be distributed with one of the following approaches:
 
 - The most common approach to distributing Android apps to users is through Google Play. Google Play requires that you submit your app as an *Android App Bundle* (AAB). For more information, see [Upload your app to the Play Console](https://developer.android.com/studio/publish/upload-bundle) on developer.android.com
