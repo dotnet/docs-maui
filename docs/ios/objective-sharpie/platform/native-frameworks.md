@@ -1,7 +1,9 @@
 ---
 title: "Binding Native Frameworks"
-description: "This document describes how to use Objective Sharpie to create a binding to a library distributed as a framework."
-ms.date: 04/17/2026
+description: "This document describes how to use Objective Sharpie to create a binding to a library distributed as a framework or XCFramework."
+ms.date: 10/29/2026
+ai-usage: ai-assisted
+no-loc: [ "xcframework" ]
 ---
 
 # Binding Native Frameworks
@@ -98,9 +100,117 @@ Notice the `[Verify (StronglyTypedNSArray)]` attribute on the `Items` property. 
 
 ### 4. Create a binding project
 
-Add the generated `ApiDefinition.cs` and `StructsAndEnums.cs` files to a
-[binding project](~/migration/ios-binding-projects.md)
-to produce the final binding assembly.
+Add the generated `ApiDefinition.cs` and `StructsAndEnums.cs` files, along with a `<NativeReference>` to the framework or `.xcframework`, to an SDK-style binding project (`.csproj`) to produce the final binding assembly:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-macos</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <NativeReference Include="Sparkle.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+</Project>
+```
+
+For complete guidance on configuring binding projects, packaging bindings with `dotnet pack`, and integrating `.xcframework` bundles, see [Binding Objective-C libraries](/dotnet/ios/binding-libs/) and [Binding an XCFramework](/dotnet/ios/binding-libs/xcframeworks). If you're upgrading an existing Xamarin.iOS binding project, see [Xamarin.iOS binding project migration](~/migration/ios-binding-projects.md).
+
+<a name="binding-an-xcframework"></a>
+
+## Bind an XCFramework
+
+Apple distributes multi-platform and multi-architecture native libraries as `.xcframework` bundles. An `.xcframework` directory contains an `Info.plist` manifest at the root and separate subdirectories (slices) for each target platform and architecture, such as `ios-arm64` for devices and `ios-arm64_x86_64-simulator` for the simulator:
+
+```text
+MyLibrary.xcframework/
+├── Info.plist
+├── ios-arm64/
+│   └── MyLibrary.framework/
+│       ├── Headers/
+│       │   └── MyLibrary.h
+│       ├── Info.plist
+│       └── MyLibrary
+└── ios-arm64_x86_64-simulator/
+    └── MyLibrary.framework/
+        ├── Headers/
+        │   └── MyLibrary.h
+        ├── Info.plist
+        └── MyLibrary
+```
+
+### Generate C# definitions from a framework slice
+
+Objective Sharpie's `-f/--framework` option expects a `.framework` bundle rather than the top-level `.xcframework` directory. To generate `ApiDefinition.cs` and `StructsAndEnums.cs`, pass the `.framework` directory from one of the platform slices inside the `.xcframework` (typically the device slice, such as `ios-arm64`):
+
+```bash
+$ sharpie bind \
+    -f ./MyLibrary.xcframework/ios-arm64/MyLibrary.framework \
+    -o Binding
+
+Bindings generated successfully.
+```
+
+If the slice's `Info.plist` doesn't include the `DTSDKName` key, specify the target SDK explicitly with `-sdk iphoneos` (or `-sdk macosx` for macOS).
+
+### Reference the top-level XCFramework in the binding project
+
+Although you point `sharpie bind` at a single `.framework` slice to parse the headers, your binding project (`.csproj`) must reference the top-level `.xcframework` directory (or a compressed `.xcframework.zip` archive) in `<NativeReference>`—**not** the inner `.framework` slice subfolder:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <NativeReference Include="MyLibrary.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+</Project>
+```
+
+Referencing the top-level `.xcframework` allows the .NET SDK to automatically resolve the appropriate platform and architecture slice when building for a physical device, simulator, or Mac Catalyst.
+
+### Bind multiple XCFrameworks and native dependencies
+
+If a native SDK distributes multiple `.xcframework` bundles (for example, a primary framework and one or more native dependency `.xcframework` bundles), add a `<NativeReference>` item for each `.xcframework` in the binding project:
+
+```xml
+<ItemGroup>
+  <NativeReference Include="MyLibrary.xcframework">
+    <Kind>Framework</Kind>
+    <SmartLink>False</SmartLink>
+  </NativeReference>
+  <NativeReference Include="MyLibraryCore.xcframework">
+    <Kind>Framework</Kind>
+    <SmartLink>False</SmartLink>
+  </NativeReference>
+</ItemGroup>
+```
+
+When you build or pack the binding project (`dotnet pack`), the .NET SDK bundles all `<NativeReference>` items into a sidecar `<AssemblyName>.resources.zip` file (or `<AssemblyName>.resources` directory) alongside the managed binding assembly because `NoBindingEmbedding` is `true` by default. Setting `<NoBindingEmbedding>false</NoBindingEmbedding>` is deprecated and is no longer supported starting with .NET 12. For details on multi-framework bindings, `dotnet pack`, and binding resource packages, see [Binding an XCFramework](/dotnet/ios/binding-libs/xcframeworks).
 
 ## Framework binding tips
 
