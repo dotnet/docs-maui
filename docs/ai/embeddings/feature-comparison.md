@@ -1,32 +1,40 @@
 ---
 title: Text embedding feature comparison
-description: Compare the Microsoft.Extensions.AI embedding abstraction with the Apple NLEmbeddingGenerator implementation.
-ms.date: 09/30/2026
+description: Compare the Microsoft.Extensions.AI embedding abstraction with the Apple NLEmbeddingGenerator implementation in Microsoft.Maui.Essentials.AI.
+ms.date: 11/17/2026
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Text embedding feature comparison
 
-`IEmbeddingGenerator<string, Embedding<float>>` provides a common API for turning text into vectors. `NLEmbeddingGenerator` implements it using Apple's on-device Natural Language framework. The following table shows how this implementation handles the abstraction's capabilities.
+`IEmbeddingGenerator<string, Embedding<float>>` gives your app one API for turning text into vectors. On-device text embeddings are currently available only on Apple platforms. On Windows and Android, use another `IEmbeddingGenerator` provider.
 
-## Abstraction versus Apple implementation
+| Platform | Generator | Model |
+|----------|-----------|-------|
+| iOS 13+, Mac Catalyst 13.1+, and macOS 10.15+ | `NLEmbeddingGenerator` | Apple Natural Language (`NLEmbedding`) |
+| Windows | Not supported | Not applicable |
+| Android | Not supported | Not applicable |
 
-| Capability | `IEmbeddingGenerator` | `NLEmbeddingGenerator` |
-|------------|-----------------------------------|------------------------------|
-| Generate vectors | `GenerateAsync` returns embeddings for supplied strings | Uses the selected native `NLEmbedding` |
-| Batch inputs | Accepts multiple inputs per request | Supports multiple strings; requests on one generator run sequentially |
-| Model selection | Generation options can specify a model ID | Select the model in the constructor, not per request |
-| Vector output | Returns float vectors | Dimensions depend on the selected native model |
+`NLEmbeddingGenerator` doesn't require Apple Intelligence. For device and project requirements, see [Requirements](../requirements.md).
 
-Changing providers doesn't make their vectors interchangeable. Generate your queries and indexed content with the same model. See [Embeddings on Apple platforms](apple.md) for model selection and indexing guidance.
+## Capabilities
 
-## Platform and model availability
+| Capability | Apple | Windows | Android |
+|------------|-------|---------|---------|
+| Generate vectors | Supported | Not supported | Not supported |
+| Batch inputs | Multiple strings per request; requests on one generator run sequentially | Not supported | Not supported |
+| Model selection | Language or native model, set in the constructor rather than per request | Not supported | Not supported |
+| Vector dimensions | Depend on the selected model | Not supported | Not supported |
 
-The package provides this implementation for iOS, macOS, and Mac Catalyst, not Android, Windows, or tvOS. Natural Language embeddings don't require Apple Intelligence.
+Vectors from different providers or models aren't interchangeable. Generate queries and indexed content with the same model.
 
-The default generator uses an English sentence model. Other languages depend on the models available on the device. You can also supply a native word model. See [Apple requirements](../requirements-apple.md) for deployment requirements and [Embeddings on Apple platforms](apple.md#choose-a-language-and-model) for model selection.
+## Models and languages
+
+The default generator uses an English sentence model. Other languages depend on the models installed on the device. You can also supply a native word model. See [Choose a language and model](apple.md#choose-a-language-and-model).
 
 ## See also
 
-- [Apple requirements](../requirements-apple.md)
-- [AI feature comparison](../feature-comparison.md)
+- [Text embeddings](../embeddings.md)
+- [Text embeddings on Apple platforms](apple.md)
+- [Requirements](../requirements.md)

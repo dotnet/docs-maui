@@ -1,9 +1,7 @@
 - name: Overview
   href: index.md
 - name: Requirements
-  items:
-  - name: Apple platforms
-    href: requirements-apple.md
+  href: requirements.md
 - name: Get started
   href: getting-started.md
 - name: Chat
@@ -13,6 +11,8 @@
     href: chat/feature-comparison.md
   - name: Apple guidance
     href: chat/apple.md
+  - name: Android guidance
+    href: chat/android.md
 - name: Text embeddings
   href: embeddings.md
   items:
@@ -20,7 +20,13 @@
     href: embeddings/feature-comparison.md
   - name: Apple guidance
     href: embeddings/apple.md
-- name: Feature comparison
-  href: feature-comparison.md
-- name: Agent framework
-  href: agent-framework.md
+- name: Agents
+  items:
+  - name: Overview
+    href: agents/index.md
+  - name: Tools, context, and structured output
+    href: agents/tools-and-context.md
+  - name: Multi-agent workflows
+    href: agents/workflows.md
+  - name: Custom workflow graphs
+    href: agents/custom-workflows.md
