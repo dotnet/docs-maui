@@ -49,6 +49,9 @@
       tocHref: /dotnet/android/binding-libs/advanced-concepts
       topicHref: /dotnet/maui/index
     - name: .NET MAUI
+      tocHref: /dotnet/ios/binding-libs
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
       tocHref: /dotnet/ios/building-apps
       topicHref: /dotnet/maui/index
     - name: .NET MAUI
