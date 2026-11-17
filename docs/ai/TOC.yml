@@ -20,5 +20,13 @@
     href: embeddings/feature-comparison.md
   - name: Apple guidance
     href: embeddings/apple.md
-- name: Agent framework
-  href: agent-framework.md
+- name: Agents
+  items:
+  - name: Overview
+    href: agents/index.md
+  - name: Tools, context, and structured output
+    href: agents/tools-and-context.md
+  - name: Multi-agent workflows
+    href: agents/workflows.md
+  - name: Custom workflow graphs
+    href: agents/custom-workflows.md

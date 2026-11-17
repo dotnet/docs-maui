@@ -22,13 +22,14 @@ ai-usage: ai-assisted
 
 Each platform also has hardware and model requirements. See [Requirements](requirements.md).
 
-Because the library uses the standard Microsoft.Extensions.AI interfaces, the same code works with middleware such as logging, telemetry, and function invocation, and with libraries built on those interfaces, such as the [Microsoft Agent Framework](agent-framework.md). You can also substitute another `IChatClient` or `IEmbeddingGenerator` provider. If your app falls back to a cloud provider, make that choice and its data handling clear to users.
+Because the library uses the standard Microsoft.Extensions.AI interfaces, the same code works with middleware such as logging, telemetry, and function invocation, and with libraries built on those interfaces, such as the [Microsoft Agent Framework](agents/index.md). You can also substitute another `IChatClient` or `IEmbeddingGenerator` provider. If your app falls back to a cloud provider, make that choice and its data handling clear to users.
 
 ## Next steps
 
 - [Get started](getting-started.md): Install the package, register services, and check model readiness.
 - [Chat](chat.md): Use `IChatClient` for chat, streaming, tool calling, and structured output.
 - [Text embeddings](embeddings.md): Use `IEmbeddingGenerator` for on-device semantic search.
+- [Agents](agents/index.md): Build on-device agents and multi-agent workflows with Microsoft Agent Framework.
 
 ## See also
 

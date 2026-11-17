@@ -1,6 +1,10 @@
 {
   "redirections": [
     {
+      "source_path": "docs/ai/agent-framework.md",
+      "redirect_url": "/dotnet/maui/ai/agents"
+    },
+    {
       "source_path": "docs/ai/feature-comparison.md",
       "redirect_url": "/dotnet/maui/ai/chat/feature-comparison"
     },
