@@ -8,20 +8,28 @@ ai-usage: ai-assisted
 
 # Text embedding feature comparison
 
-`IEmbeddingGenerator<string, Embedding<float>>` provides a common API for turning text into vectors. `NLEmbeddingGenerator` implements it using Apple's on-device Natural Language framework. Windows and Android don't have an on-device embedding generator.
+`IEmbeddingGenerator<string, Embedding<float>>` gives your app one API for turning text into vectors. On-device text embeddings are currently available only on Apple platforms. On Windows and Android, use another `IEmbeddingGenerator` provider.
 
-| Capability | `IEmbeddingGenerator` | `NLEmbeddingGenerator` |
-|------------|-----------------------|------------------------|
-| Generate vectors | `GenerateAsync` returns embeddings for supplied strings | Uses the selected native `NLEmbedding` |
-| Batch inputs | Accepts multiple inputs per request | Supports multiple strings; requests on one generator run sequentially |
-| Model selection | Generation options can specify a model ID | Select the language or model in the constructor, not per request |
-| Vector output | Returns float vectors | Dimensions depend on the selected native model |
+| Platform | Generator | Model |
+|----------|-----------|-------|
+| iOS 13+, Mac Catalyst 13.1+, and macOS 10.15+ | `NLEmbeddingGenerator` | Apple Natural Language (`NLEmbedding`) |
+| Windows | Not supported | Not applicable |
+| Android | Not supported | Not applicable |
+
+`NLEmbeddingGenerator` doesn't require Apple Intelligence. For device and project requirements, see [Requirements](../requirements.md).
+
+## Capabilities
+
+| Capability | Apple | Windows | Android |
+|------------|-------|---------|---------|
+| Generate vectors | Supported | Not supported | Not supported |
+| Batch inputs | Multiple strings per request; requests on one generator run sequentially | Not supported | Not supported |
+| Model selection | Language or native model, set in the constructor rather than per request | Not supported | Not supported |
+| Vector dimensions | Depend on the selected model | Not supported | Not supported |
 
 Vectors from different providers or models aren't interchangeable. Generate queries and indexed content with the same model.
 
-## Platform and model availability
-
-`NLEmbeddingGenerator` is available on iOS 13, Mac Catalyst 13.1, and macOS 10.15 or later. It doesn't require Apple Intelligence.
+## Models and languages
 
 The default generator uses an English sentence model. Other languages depend on the models installed on the device. You can also supply a native word model. See [Choose a language and model](apple.md#choose-a-language-and-model).
 
