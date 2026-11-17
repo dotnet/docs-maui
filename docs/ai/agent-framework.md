@@ -57,17 +57,23 @@ using Microsoft.Maui.Essentials.AI;
 var builder = MauiApp.CreateBuilder();
 
 #if IOS || MACCATALYST
-builder.Services.AddKeyedChatClient("local-model", new AppleIntelligenceChatClient())
-    .UseLogging();
+if (OperatingSystem.IsIOSVersionAtLeast(26) || OperatingSystem.IsMacCatalystVersionAtLeast(26))
+{
+    builder.Services.AddKeyedChatClient("local-model", new AppleIntelligenceChatClient())
+        .UseLogging();
+}
 #elif ANDROID
-builder.Services.AddKeyedChatClient("local-model", new GeminiNanoChatClient())
-    .ConfigureOptions(options =>
-    {
-        options.ModelId ??= "gemini-nano-preview-fast";
-        options.MaxOutputTokens ??= 1024;
-    })
-    .UseFunctionInvocation()
-    .UseLogging();
+if (OperatingSystem.IsAndroidVersionAtLeast(26))
+{
+    builder.Services.AddKeyedChatClient("local-model", new GeminiNanoChatClient())
+        .ConfigureOptions(options =>
+        {
+            options.ModelId ??= "gemini-nano-preview-fast";
+            options.MaxOutputTokens ??= 1024;
+        })
+        .UseFunctionInvocation()
+        .UseLogging();
+}
 #endif
 
 // Register workflow agents and executors (cross-platform)

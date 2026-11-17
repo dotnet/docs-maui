@@ -58,9 +58,12 @@ public static class MauiProgram
                 .UseLogging();
         }
 #elif ANDROID
-        builder.Services.AddChatClient(new GeminiNanoChatClient())
-            .UseFunctionInvocation()
-            .UseLogging();
+        if (OperatingSystem.IsAndroidVersionAtLeast(26))
+        {
+            builder.Services.AddChatClient(new GeminiNanoChatClient())
+                .UseFunctionInvocation()
+                .UseLogging();
+        }
 #endif
 
         return builder.Build();
