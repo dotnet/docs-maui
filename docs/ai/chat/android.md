@@ -119,7 +119,7 @@ static string GetWeather([Description("The city name.")] string city) => $"Sunny
 
 `ChatToolMode.Auto` and `ChatToolMode.None` are supported. `ChatToolMode.RequireAny` and `ChatToolMode.RequireSpecific` aren't supported and throw an exception. Tool parameter schemas can't use `$ref`, `const`, or dictionary types.
 
-When a streaming request includes tools, text arrives at the end of each model turn rather than incrementally, so raw function-call tokens never reach your UI. Reasoning still streams.
+When a streaming request includes tools and no response schema, text arrives at the end of each model turn rather than incrementally, so raw function-call tokens never reach your UI. With a response schema, the final JSON still streams incrementally. Reasoning streams in both cases.
 
 ## Structured output
 

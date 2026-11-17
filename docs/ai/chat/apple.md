@@ -56,7 +56,7 @@ Expose app functions as `AIFunction` tools when the model needs to look up data 
 
 On version 26, `ChatToolMode.RequireAny` and `ChatToolMode.RequireSpecific` throw an exception. On version 27 or later, they're supported: the model must call a tool first, and can then finish with text.
 
-To return a typed result, use `GetResponseAsync<T>` or set a JSON schema in `ChatOptions.ResponseFormat`. Schemas can use enums, constants, numeric bounds, array bounds, and simple patterns. References and dictionaries aren't supported. See [Tool calling](../chat.md#tool-calling) and [Structured output](../chat.md#structured-output).
+To return a typed result, use `GetResponseAsync<T>` or set a JSON schema in `ChatOptions.ResponseFormat`. Schemas can use enums, constants, numeric bounds, array bounds, and simple patterns. References and dictionaries aren't supported. Response and tool schemas that allow null values, such as nullable properties that produce `"type": ["string", "null"]`, require iOS, Mac Catalyst, or macOS 26.4 or later; earlier versions reject those schemas. See [Tool calling](../chat.md#tool-calling) and [Structured output](../chat.md#structured-output).
 
 ## Token usage
 
