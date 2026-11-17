@@ -1,18 +1,19 @@
 ---
 title: Microsoft Agent Framework integration
 description: Learn how to compose multiple AI agents into multi-stage workflows that run entirely on-device using Microsoft.Agents.AI and Microsoft.Maui.Essentials.AI.
-ms.date: 09/30/2026
+ms.date: 11/17/2026
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Microsoft Agent Framework integration
 
 > [!IMPORTANT]
-> Multi-agent workflows with `Microsoft.Maui.Essentials.AI` require Apple Intelligence on a supported iOS, macOS, or Mac Catalyst device. The package has no tvOS implementation. Android and Windows support are not yet available.
+> Each agent can only use the features that the platform's chat client supports. The workflow in this article uses tool calling and structured output, which Apple Intelligence supports and Gemini Nano supports on capable models, such as `gemini-nano-preview-fast`. Windows AI doesn't support tool calling. See the [chat feature comparison](chat/feature-comparison.md).
 
 ## Overview
 
-The [Microsoft Agent Framework](/agent-framework/overview/agent-framework-overview) ([Microsoft.Agents.AI](https://www.nuget.org/packages/Microsoft.Agents.AI)) enables you to compose multiple AI agents into structured workflows, where each agent handles one specialized task. When combined with `Microsoft.Maui.Essentials.AI`, you can build sophisticated multi-stage AI pipelines that run entirely on-device using Apple Intelligence.
+The [Microsoft Agent Framework](/agent-framework/overview/agent-framework-overview) ([Microsoft.Agents.AI](https://www.nuget.org/packages/Microsoft.Agents.AI)) enables you to compose multiple AI agents into structured workflows, where each agent handles one specialized task. When combined with `Microsoft.Maui.Essentials.AI`, you can build multi-stage AI pipelines that run entirely on-device.
 
 Rather than writing a single large prompt that tries to do everything, the agent framework lets you decompose complex tasks into a graph of focused agents. The output of one agent becomes the input of the next, and conditional routing lets the workflow adapt to intermediate results.
 
@@ -35,7 +36,7 @@ As a concrete example, the [LocalChatClientWithAgents](https://github.com/dotnet
 
 ## Installation
 
-Install a compatible `Microsoft.Maui.Essentials.AI` package as described in [Get started](getting-started.md#install-the-package), then add the Agent Framework packages to your `.csproj` file:
+Install `Microsoft.Maui.Essentials.AI` and suppress its experimental warning as described in [Get started](getting-started.md), then add the Agent Framework packages to your `.csproj` file:
 
 ```xml
 <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
@@ -45,38 +46,29 @@ Install a compatible `Microsoft.Maui.Essentials.AI` package as described in [Get
 <PackageReference Include="Microsoft.Agents.AI.Workflows.Generators" Version="1.0.0-rc3" />
 ```
 
-Because `Microsoft.Maui.Essentials.AI` is currently experimental, suppress the diagnostic warning to keep your build clean:
-
-```xml
-<NoWarn>$(NoWarn);MAUIAI0001</NoWarn>
-```
-
 ## Register AI services
 
-Register `AppleIntelligenceChatClient` and expose it through the `Microsoft.Extensions.AI` `IChatClient` abstraction. Registering a **keyed service** lets each agent in the workflow resolve its own `IChatClient` instance independently.
-
-In `MauiProgram.cs`:
-
-<!-- markdownlint-disable MD025 -->
-# [iOS/Mac Catalyst](#tab/macios)
+Register the platform's chat client as a **keyed service**, so each agent in the workflow can resolve it by name. In `MauiProgram.cs`:
 
 ```csharp
-using Microsoft.Maui.Essentials.AI;
 using Microsoft.Extensions.AI;
+using Microsoft.Maui.Essentials.AI;
 
 var builder = MauiApp.CreateBuilder();
 
-// Register the Apple Intelligence chat client
-builder.Services.AddSingleton<AppleIntelligenceChatClient>();
-
-// Register as a keyed service so agents can resolve it by name
-builder.Services.AddKeyedChatClient("local-model", sp =>
-{
-    var appleClient = sp.GetRequiredService<AppleIntelligenceChatClient>();
-    return appleClient.AsBuilder()
-        .UseLogging()
-        .Build(sp);
-});
+#if IOS || MACCATALYST
+builder.Services.AddKeyedChatClient("local-model", new AppleIntelligenceChatClient())
+    .UseLogging();
+#elif ANDROID
+builder.Services.AddKeyedChatClient("local-model", new GeminiNanoChatClient())
+    .ConfigureOptions(options =>
+    {
+        options.ModelId ??= "gemini-nano-preview-fast";
+        options.MaxOutputTokens ??= 1024;
+    })
+    .UseFunctionInvocation()
+    .UseLogging();
+#endif
 
 // Register workflow agents and executors (cross-platform)
 builder.AddItineraryWorkflow();
@@ -84,11 +76,7 @@ builder.AddItineraryWorkflow();
 var app = builder.Build();
 ```
 
-> [!NOTE]
-> The `"local-model"` key is a convention used in the sample. You can use any string key that makes sense for your application.
-
----
-<!-- markdownlint-enable MD025 -->
+On Android, `ConfigureOptions` selects a model that supports tool calling and sets an output limit for every agent. `UseFunctionInvocation` runs the tool calls that Gemini Nano returns. The `"local-model"` key is a convention used in the sample; you can use any key.
 
 ## Define workflow models
 
@@ -312,9 +300,8 @@ public async IAsyncEnumerable<ItineraryStreamUpdate> StreamItineraryAsync(
 ## See also
 
 - [Microsoft.Maui.Essentials.AI overview](index.md)
-- [Chat client getting started](getting-started.md)
-- [Feature comparison](feature-comparison.md)
-- [Requirements](requirements-apple.md)
+- [Get started](getting-started.md)
+- [Chat feature comparison](chat/feature-comparison.md)
+- [Requirements](requirements.md)
 - [Microsoft Agent Framework docs](/agent-framework/overview/agent-framework-overview)
-- [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)
 - [Use the IChatClient interface](/dotnet/ai/ichatclient)

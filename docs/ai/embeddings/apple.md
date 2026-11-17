@@ -81,4 +81,4 @@ Review the returned passages for common queries, ambiguous wording, and queries 
 
 - [Text embeddings](../embeddings.md)
 - [Embedding feature comparison](feature-comparison.md)
-- [Apple requirements](../requirements-apple.md)
+- [Requirements](../requirements.md#apple-platforms)
