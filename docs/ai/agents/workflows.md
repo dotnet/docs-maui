@@ -8,13 +8,17 @@ ai-usage: ai-assisted
 
 # Multi-agent workflows
 
-A workflow runs several agents in an order that you define. Each agent does one small task, which suits on-device models better than one agent with a long prompt. `AgentWorkflowBuilder` in the `Microsoft.Agents.AI.Workflows` package builds the common patterns:
+A workflow runs several agents in an order that you define. Each agent does one small task, which suits on-device models better than one agent with a long prompt. Agent Framework provides five built-in orchestration patterns. Three of them work with the on-device chat clients:
 
-| Pattern | Builder method | Use it to |
-|---------|----------------|-----------|
-| Sequential | `BuildSequential` | Pass the conversation from one agent to the next, such as research and then write. |
-| Concurrent | `BuildConcurrent` | Run agents on the same input in parallel and collect all their answers. |
-| Group chat | `CreateGroupChatBuilderWith` | Let agents take turns in a shared conversation, such as a panel discussion. |
+| Pattern | Builder method | Use it to | On device |
+|---------|----------------|-----------|-----------|
+| Sequential | `BuildSequential` | Pass the conversation from one agent to the next, such as research and then write. | Supported |
+| Concurrent | `BuildConcurrent` | Run agents on the same input in parallel and collect all their answers. | Supported |
+| Group chat | `CreateGroupChatBuilderWith` | Let agents take turns in a shared conversation, such as a panel discussion. | Supported |
+| Handoff | `CreateHandoffBuilderWith` | Let an agent transfer the conversation to a specialist. | Not supported. [Route requests](#route-requests-instead-of-handing-off) instead. |
+| Magentic | `MagenticWorkflowBuilder` | Let a manager agent plan and assign work dynamically. | Not recommended. See [Magentic](#magentic). |
+
+To connect agents and your own code with typed messages and branches, build a [custom workflow graph](custom-workflows.md).
 
 The examples in this article create agents with a helper method. Every agent uses the registered `IChatClient` with `UseProvidedChatClientAsIs = true`, as described in [Create an agent](index.md#create-an-agent):
 
@@ -113,6 +117,35 @@ Workflow workflow = AgentWorkflowBuilder
 ```
 
 Every turn adds to the shared conversation, so keep the number of agents and turns small to stay within the model's context window. To pause for user input, for example to confirm the user's topics before the panel runs, pass a termination function to the `RoundRobinGroupChatManager` constructor that ends the run after the first agent's turn.
+
+## Route requests instead of handing off
+
+In a handoff workflow, agents transfer the conversation by calling special handoff tools. Agent Framework creates these as tool declarations, which the on-device clients can't use: Apple Intelligence rejects them with `NotSupportedException`, and the Android and Windows clients don't register them, so the agent never hands off.
+
+To send each request to the right specialist, choose the agent before the model runs instead:
+
+- **Route by meaning.** `SemanticRoutingChatClient` in Microsoft.Extensions.AI compares the request with example phrases for each client and picks the closest match. It needs an `IEmbeddingGenerator`, such as [on-device text embeddings](../embeddings.md) on Apple platforms. Convert each agent or workflow to an `IChatClient` first, as shown in [Use a workflow as a chat client](#use-a-workflow-as-a-chat-client):
+
+  ```csharp
+  IChatClient router = new SemanticRoutingChatClient(
+      embeddingGenerator,
+      new Dictionary<IChatClient, IReadOnlyList<string>>
+      {
+          [deepDiveClient] = ["Give me a deep dive on this session", "What are the key takeaways?"],
+          [recommendationClient] = ["Which talks should I attend?", "Plan my day"],
+      },
+      defaultClient: assistantClient);
+  ```
+
+- **Route with code.** In a [custom workflow graph](custom-workflows.md), let a small classifier agent return a category with structured output, and then use `AddSwitch` to send the message to the matching agent.
+
+Chat routing is experimental in Microsoft.Extensions.AI. For more information, see [Chat routing](/dotnet/ai/ichatclient#chat-routing-experimental).
+
+## Magentic
+
+In a Magentic workflow, a manager agent creates a plan, picks the next agent, and tracks progress over many model calls. Each call carries the task, the plan, and the conversation so far, which quickly exceeds an on-device model's small context window, and the manager needs strong reasoning to stay on track. Magentic is also experimental in Agent Framework.
+
+On device, use fixed roles instead: a [sequential](#sequential-workflows) workflow when the steps are known, or a [group chat](#group-chat-workflows) when agents need to build on each other's answers.
 
 ## Run a workflow
 
