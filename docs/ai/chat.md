@@ -1,132 +1,123 @@
 ---
 title: Chat client
-description: Use IChatClient from Microsoft.Maui.Essentials.AI for basic chat, streaming, multi-turn conversations, tool calling, and structured JSON output in .NET MAUI.
-ms.date: 09/30/2026
+description: Use IChatClient from Microsoft.Maui.Essentials.AI for on-device chat, streaming, multi-turn conversations, tool calling, and structured output in .NET MAUI.
+ms.date: 11/17/2026
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Chat client
 
-This page shows how to use [`IChatClient`](/dotnet/ai/ichatclient) in a .NET MAUI app once services are registered. For setup and registration, see [Get started](getting-started.md). For platform support and capabilities, see the [chat feature comparison](chat/feature-comparison.md). For model availability and best practices, see [Chat on Apple platforms](chat/apple.md).
-
-The `IChatClient` interface is part of `Microsoft.Extensions.AI`. The examples use the interface directly, but supported content, options, and response behavior depend on the underlying provider. See the [chat feature comparison](chat/feature-comparison.md).
+This article shows how to use [`IChatClient`](/dotnet/ai/ichatclient) in a .NET MAUI app after you [register the chat client](getting-started.md#register-the-chat-client). The same code runs on every platform, but supported options and content depend on the platform's model. See the [chat feature comparison](chat/feature-comparison.md), and the [Apple](chat/apple.md) and [Android](chat/android.md) guidance.
 
 ## Basic chat
 
-Call `GetResponseAsync` for a single-turn response:
+Call `GetResponseAsync` for a single response:
 
 ```csharp
 using Microsoft.Extensions.AI;
 
 IChatClient chatClient = // resolved from DI
 
-string prompt = "What is .NET MAUI?";
-var response = await chatClient.GetResponseAsync(prompt);
+var response = await chatClient.GetResponseAsync("What is .NET MAUI?");
 Console.WriteLine(response.Text);
 ```
 
+> [!TIP]
+> On Android, set `ChatOptions.MaxOutputTokens`. Otherwise, the default Gemini Nano model stops after about 40 tokens. See [Set the output length](chat/android.md#set-the-output-length).
+
 ## Streaming responses
 
-Use `GetStreamingResponseAsync` to receive tokens incrementally as they are generated. This reduces perceived latency in chat UIs:
+Use `GetStreamingResponseAsync` to display text as it's generated:
 
 ```csharp
-using Microsoft.Extensions.AI;
-
-IChatClient chatClient = // resolved from DI
-
-string prompt = "Explain dependency injection in simple terms.";
-await foreach (var update in chatClient.GetStreamingResponseAsync(prompt))
+await foreach (var update in chatClient.GetStreamingResponseAsync("Explain dependency injection in simple terms."))
 {
-    if (update.Text is not null)
-        Console.Write(update.Text);
+    Console.Write(update.Text);
 }
 ```
 
 ## Multi-turn conversations
 
-Pass the full conversation history as a `List<ChatMessage>` to maintain context across turns:
+The on-device clients don't store conversation state. Pass the conversation history with each request:
 
 ```csharp
-using Microsoft.Extensions.AI;
-
-IChatClient chatClient = // resolved from DI
-
-var messages = new List<ChatMessage>
-{
-    new ChatMessage(ChatRole.System, "You are a helpful travel assistant."),
-    new ChatMessage(ChatRole.User, "What's special about Tokyo?"),
-};
+List<ChatMessage> messages =
+[
+    new(ChatRole.System, "You are a helpful travel assistant."),
+    new(ChatRole.User, "What's special about Tokyo?"),
+];
 
 var response = await chatClient.GetResponseAsync(messages);
 Console.WriteLine(response.Text);
-messages.Add(response.Message); // append assistant reply to history
+messages.AddMessages(response);
 
-// Continue the conversation
-messages.Add(new ChatMessage(ChatRole.User, "What's the best time to visit?"));
+messages.Add(new(ChatRole.User, "What's the best time to visit?"));
 var followUp = await chatClient.GetResponseAsync(messages);
 Console.WriteLine(followUp.Text);
 ```
 
-The system message sets the assistant's persona and persists for the entire conversation.
+On-device models have small context windows. Keep only the history the current task needs. A request that exceeds the context window fails rather than being truncated.
 
 ## Tool calling
 
-Define functions with `[Description]` attributes, wrap them with `AIFunctionFactory.Create`, and pass them via `ChatOptions.Tools`. The model decides when to call each tool. For a deep dive into the tool-calling pattern, see [Tool calling with IChatClient](/dotnet/ai/ichatclient#tool-calling).
+Define functions with `[Description]` attributes, wrap them with `AIFunctionFactory.Create`, and pass them in `ChatOptions.Tools`. The model decides when to call each tool. For more information, see [Tool calling](/dotnet/ai/ichatclient#tool-calling).
 
 ```csharp
 using System.ComponentModel;
 using Microsoft.Extensions.AI;
 
-IChatClient chatClient = // resolved from DI
-
-[Description("Gets the current weather for a city.")]
-static async Task<string> GetWeatherAsync(
-    [Description("The city name")] string city)
-{
-    // call your weather service here
-    return $"Sunny, 22°C in {city}";
-}
-
-string prompt = "What's the weather in Paris?";
 var options = new ChatOptions
 {
-    Tools = [AIFunctionFactory.Create(GetWeatherAsync)]
+    Tools = [AIFunctionFactory.Create(GetWeather)],
 };
 
-var response = await chatClient.GetResponseAsync(prompt, options);
+var response = await chatClient.GetResponseAsync("What's the weather in Paris?", options);
 Console.WriteLine(response.Text);
+
+[Description("Gets the current weather for a city.")]
+static string GetWeather([Description("The city name.")] string city) => $"Sunny, 22°C in {city}";
 ```
 
-> [!IMPORTANT]
-> Only `AIFunction` tools are supported. Other `AITool` subtypes are not supported.
+Tool support differs by platform:
 
-## Structured JSON output
+- **Apple**: Apple Intelligence runs `AIFunction` tools itself.
+- **Android**: Gemini Nano returns tool calls, and `UseFunctionInvocation` runs them. Tools require a model that supports them, such as `gemini-nano-preview-fast`. See [Tool calling on Android](chat/android.md#tool-calling).
+- **Windows**: Tools aren't supported.
 
-Use the generic `GetResponseAsync<T>()` method to receive a strongly-typed response. The method automatically applies the required JSON schema and deserializes the result:
+Only `AIFunction` tools are supported. Set `ChatOptions.ToolMode` to `ChatToolMode.None` to turn off tools for a request.
+
+## Structured output
+
+Use `GetResponseAsync<T>` to generate a JSON schema from a type and deserialize the response. For trimmed and Native AOT apps, pass source-generated `JsonSerializerOptions`:
 
 ```csharp
+using System.Text.Json.Serialization;
 using Microsoft.Extensions.AI;
 
-IChatClient chatClient = // resolved from DI
+var response = await chatClient.GetResponseAsync<Itinerary>(
+    "Create a 3-day Tokyo itinerary.",
+    AppJsonContext.Default.Options);
 
-public record Itinerary(string Destination, string[] Days, string[] Tips);
-
-string prompt = "Create a 3-day Tokyo itinerary.";
-var result = await chatClient.GetResponseAsync<Itinerary>(prompt);
-
-Console.WriteLine($"Destination: {result.Result.Destination}");
-foreach (var day in result.Result.Days)
+Console.WriteLine(response.Result.Destination);
+foreach (var day in response.Result.Days)
+{
     Console.WriteLine(day);
+}
+
+public sealed record Itinerary(string Destination, string[] Days, string[] Tips);
+
+[JsonSerializable(typeof(Itinerary))]
+internal partial class AppJsonContext : JsonSerializerContext;
 ```
 
-> [!IMPORTANT]
-> Apple Intelligence requires a JSON schema to produce structured output. The `GetResponseAsync<T>()` method provides this automatically. If you construct `ChatOptions` manually, use `ChatResponseFormat.ForJsonSchema<T>(jsonSerializerOptions)`. Plain `ChatResponseFormat.Json` without a schema is **not** supported.
+The on-device models constrain generation to the schema, so a JSON schema is required. If you set `ChatOptions.ResponseFormat` yourself, use `ChatResponseFormat.ForJsonSchema<T>()`. Schema-free `ChatResponseFormat.Json` isn't supported. Each platform supports a different subset of JSON Schema and rejects schemas it can't represent.
+
+A structured response can match the schema and still contain incorrect values. Validate important fields before your app acts on them.
 
 ## See also
 
-- [Text embeddings](embeddings.md)
-- [Agent framework integration](agent-framework.md)
 - [Chat feature comparison](chat/feature-comparison.md)
 - [Chat on Apple platforms](chat/apple.md)
+- [Chat on Android](chat/android.md)
 - [Use the IChatClient interface](/dotnet/ai/ichatclient)
-- [Microsoft.Extensions.AI overview](/dotnet/ai/ai-extensions)

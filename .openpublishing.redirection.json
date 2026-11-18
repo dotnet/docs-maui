@@ -1,6 +1,18 @@
 {
   "redirections": [
     {
+      "source_path": "docs/ai/agent-framework.md",
+      "redirect_url": "/dotnet/maui/ai"
+    },
+    {
+      "source_path": "docs/ai/feature-comparison.md",
+      "redirect_url": "/dotnet/maui/ai/chat/feature-comparison"
+    },
+    {
+      "source_path": "docs/ai/requirements-apple.md",
+      "redirect_url": "/dotnet/maui/ai/chat/apple"
+    },
+    {
       "source_path": "docs/user-interface/layouts/gridlayout.md",
       "redirect_url": "/dotnet/maui/user-interface/layouts/grid"
     },

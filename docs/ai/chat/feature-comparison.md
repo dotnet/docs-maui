@@ -1,56 +1,72 @@
 ---
 title: Chat feature comparison
-description: Compare the Microsoft.Extensions.AI chat abstraction with the AppleIntelligenceChatClient implementation.
-ms.date: 09/30/2026
+description: Compare the AppleIntelligenceChatClient, WindowsAIChatClient, and GeminiNanoChatClient implementations of IChatClient in Microsoft.Maui.Essentials.AI.
+ms.date: 11/17/2026
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Chat feature comparison
 
-When you use `IChatClient`, your app has a common API for sending messages, streaming responses, and calling tools. The provider determines which capabilities and options are supported. The following tables show how `AppleIntelligenceChatClient` implements that API using Apple's on-device Foundation Models framework.
+`IChatClient` gives your app one API for chat on every platform. Each platform's on-device model determines which capabilities, options, and content are supported. Unsupported features either throw an exception or, for optional settings, are ignored. No client switches to a cloud model.
 
-## Abstraction versus Apple implementation
+| Platform | Client | Model |
+|----------|--------|-------|
+| iOS, Mac Catalyst, and macOS | `AppleIntelligenceChatClient` | Apple Intelligence (Foundation Models) |
+| Windows | `WindowsAIChatClient` | Phi Silica (Windows AI `LanguageModel`) |
+| Android | `GeminiNanoChatClient` | Gemini Nano (ML Kit GenAI Prompt API) |
 
-| Capability | `IChatClient` | `AppleIntelligenceChatClient` |
-|------------|---------------------------|------------------------------------|
-| Text generation and streaming | Provides response and streaming methods | Supports both on device |
-| Conversation history | Accepts a sequence of messages | Uses the history supplied with each request; your app retains the conversation |
-| System instructions | Accepts system messages | Uses them as native instructions |
-| Tools | Accepts tool definitions and represents function calls | Supports `AIFunction` tools, executed by the native framework |
-| Structured output | Accepts a response format | Requires a JSON schema |
-| Image input | Accepts image content | Supported on Apple 27+ with an available vision-capable model |
+For device and project requirements, see [Requirements](../requirements.md).
 
-For examples, see [Chat client](../chat.md). For supported input types, options, and availability behavior, see [Chat on Apple platforms](apple.md).
+## Capabilities
+
+| Capability | Apple | Windows | Android |
+|------------|-------|---------|---------|
+| Text and streaming | Supported | Supported | Supported |
+| Conversation history | Supplied with each request | Supplied with each request | Supplied with each request |
+| Tool calling | `AIFunction` tools, run by Apple Intelligence | Not supported | `AIFunction` tools on capable models, run by `UseFunctionInvocation` |
+| Tool modes | `Auto` and `None`; `RequireAny` and `RequireSpecific` on version 27+ | `Auto` and `None` | `Auto` and `None` |
+| Structured output | JSON schema | JSON schema | JSON schema with an object root, on capable models |
+| Image input | Version 27+ with a vision-capable model | Not supported | In-memory images |
+| Reasoning output | Not supported | Not supported | Full output, on capable models |
+| Token usage | Input, output, total, cached, and reasoning counts on version 27+ | Not reported | Input count only |
+| Model selection | Single system model | Single system model | Five Gemini Nano model IDs |
+| Model readiness | `GetModelStatusAsync` | `GetModelStatusAsync` and `EnsureReadyAsync` | `GetModelStatusAsync`, `PrepareModelAsync`, and `DownloadModelAsync` |
+
+Each client's `GetModelStatusAsync` method reports the capabilities that the current model supports. `ConversationId`, `ContinuationToken`, and `AllowBackgroundResponses` aren't supported and throw an exception.
+
+On Windows, a structured response can arrive as one final streaming update. On Android, when a request includes tools, text arrives at the end of each model turn rather than incrementally.
 
 ## Chat options
 
-The following `ChatOptions` properties are available through the abstraction. Their effect depends on the provider:
+| `ChatOptions` property | Apple | Windows | Android |
+|------------------------|-------|---------|---------|
+| `Temperature` | Supported | Supported | Supported |
+| `TopK` | Supported | Supported | Supported |
+| `TopP` | Supported; `TopK` takes precedence | Supported | Ignored |
+| `Seed` | Supported with `TopK` or `TopP` | Ignored | Supported |
+| `MaxOutputTokens` | Supported | Ignored | Supported; set it for longer responses |
+| `ResponseFormat` | JSON schema only | JSON schema only | JSON schema only |
+| `Tools` and `ToolMode` | See [Capabilities](#capabilities) | `None` and `Auto`; no tools are registered | See [Capabilities](#capabilities) |
+| `Reasoning` | Ignored | Ignored | `Output = ReasoningOutput.Full` |
+| `ModelId` | Ignored | Ignored | Selects a model |
 
-| `ChatOptions` property | Apple implementation |
-|------------------------|----------------------|
-| `Temperature` | Supported |
-| `TopK` | Supported |
-| `Seed` | Used with `TopK` random sampling |
-| `MaxOutputTokens` | Limits output when greater than zero; doesn't increase the context window |
-| `ResponseFormat` | JSON schema supported; schema-free `ChatResponseFormat.Json` isn't supported |
-| `Tools` | Supports `AIFunction` tools |
-| `ToolMode` | `None` disables tools; required-tool modes aren't enforced |
-| `TopP`, `FrequencyPenalty`, `PresencePenalty`, `StopSequences`, `ModelId` | Not supported |
-
-Without `TopK`, the client uses greedy sampling and doesn't apply `Seed`. Unsupported options aren't applied to generation. See [Chat on Apple platforms](apple.md) for guidance on prompts, conversation history, and tool execution.
+Without `TopK` or `TopP`, Apple Intelligence uses greedy sampling. `FrequencyPenalty`, `PresencePenalty`, and `StopSequences` are ignored on every platform.
 
 ## Message content
 
-The client supports `TextContent`, `FunctionCallContent`, and `FunctionResultContent`. For images on Apple 27+, use `DataContent` with an image media type or `UriContent` pointing to a local file. Remote image URLs and other content types aren't supported. See the [image-input example](apple.md#image-input-on-apple-27).
+| Content | Apple | Windows | Android |
+|---------|-------|---------|---------|
+| `TextContent` | Supported | Supported | Supported |
+| `FunctionCallContent` and `FunctionResultContent` | Supported | Supported in history | Supported |
+| `DataContent` with an image | Version 27+ | Not supported | Supported |
+| `UriContent` with an image | Local files on version 27+ | Not supported | Not supported |
 
-## Platform availability
-
-Chat is available on supported iOS, macOS, and Mac Catalyst devices running version 26 or later. Image input requires version 27 or later and a vision-capable model. The device must have Apple Intelligence enabled and the model ready to use.
-
-The package doesn't provide chat implementations for Android, Windows, tvOS, or visionOS. See [Apple requirements](../requirements-apple.md) for setup.
+Unsupported standard content, such as audio, PDF files, or remote image URLs, throws `NotSupportedException`. Custom `AIContent` types are skipped.
 
 ## See also
 
 - [Chat client](../chat.md)
 - [Chat on Apple platforms](apple.md)
-- [AI feature comparison](../feature-comparison.md)
+- [Chat on Android](android.md)
+- [Requirements](../requirements.md)
