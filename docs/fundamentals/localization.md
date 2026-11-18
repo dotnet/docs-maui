@@ -1,7 +1,7 @@
 ---
 title: "Localization"
 description: "Learn how to localize .NET MAUI app strings, images, and app names."
-ms.date: 11/11/2024
+ms.date: 03/24/2026
 ---
 
 # Localization
@@ -77,7 +77,7 @@ Alternatively, add the `<NeutralLanguage>` element to the first `<PropertyGroup>
 ```
 
 > [!WARNING]
-> If you don'y specify a neutral language, the <xref:System.Resources.ResourceManager> class returns `null` values for any languages without a resource file. When a neutral language is specified, the <xref:System.Resources.ResourceManager> class returns results from the neutral language resource file for unsupported languages. Therefore, it's recommended that you always specify a neutral language so that text is displayed for unsupported languages.
+> If you don't specify a neutral language, the <xref:System.Resources.ResourceManager> class returns `null` values for any languages without a resource file. When a neutral language is specified, the <xref:System.Resources.ResourceManager> class returns results from the neutral language resource file for unsupported languages. Therefore, it's recommended that you always specify a neutral language so that text is displayed for unsupported languages.
 
 ## Perform platform setup
 
@@ -662,6 +662,74 @@ The required language resources should be specified in the `<Resources>` node of
 ```
 
 Right-to-left localization can then be tested by changing the language and region on the device to the appropriate right-to-left locale.
+
+## Switch language at runtime
+
+By default, XAML bindings that use `x:Static` to reference generated resource classes (such as `AppResources`) are resolved once at page load and do not update when the culture changes. To support in-app language switching without restarting the app, use a `LocalizationResourceManager` class that implements <xref:System.ComponentModel.INotifyPropertyChanged> and exposes resources as an indexer.
+
+### Create LocalizationResourceManager
+
+Add the following class to your project:
+
+```csharp
+using System.ComponentModel;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+
+namespace MyApp;
+
+public class LocalizationResourceManager : INotifyPropertyChanged
+{
+    public static readonly LocalizationResourceManager Instance = new();
+
+    private LocalizationResourceManager() { }
+
+    public string? this[string resourceKey]
+        => AppResources.ResourceManager.GetString(resourceKey, CurrentCulture);
+
+    public CultureInfo CurrentCulture { get; private set; } = CultureInfo.CurrentUICulture;
+
+    public void SetCulture(CultureInfo culture)
+    {
+        CurrentCulture = culture;
+        AppResources.Culture = culture;
+        OnPropertyChanged(null); // notify all indexer bindings
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+}
+```
+
+Passing `null` to `OnPropertyChanged` notifies all bound properties simultaneously, which causes XAML bindings to the indexer to re-evaluate with the new culture.
+
+### Bind XAML to LocalizationResourceManager
+
+Instead of using `x:Static` to reference resource class properties directly, bind to the indexer on `LocalizationResourceManager.Instance`:
+
+```xaml
+xmlns:local="clr-namespace:MyApp"
+
+<!-- Instead of: Text="{x:Static local:AppResources.WelcomeTitle}" -->
+<Label Text="{Binding [WelcomeTitle], Source={x:Static local:LocalizationResourceManager.Instance}}" />
+<Button Text="{Binding [SignInButton], Source={x:Static local:LocalizationResourceManager.Instance}}" />
+```
+
+The string key in `[...]` must match a resource name in your *.resx* file.
+
+### Switch the language
+
+To change the language at runtime, call `SetCulture` with the desired <xref:System.Globalization.CultureInfo>. All XAML elements bound to `LocalizationResourceManager.Instance` update immediately:
+
+```csharp
+// Switch to French
+LocalizationResourceManager.Instance.SetCulture(new CultureInfo("fr-FR"));
+```
+
+> [!NOTE]
+> Runtime culture switching updates XAML bindings immediately, but platform controls rendered by handlers (such as `Picker` items or `DatePicker` formats) may require additional handling per platform. Controls that cache their native text will need to be refreshed manually after the culture changes.
 
 ## Test localization
 
