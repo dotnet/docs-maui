@@ -14,10 +14,10 @@ The `AgentClient` class in the `Microsoft.Maui.DevFlow.Driver` namespace provide
 
 ## Package
 
-Add the driver package to your test or automation project:
+Add the driver package to your test or automation project. The package is currently available only as a prerelease, and it requires .NET 9 or later:
 
-```xml
-<PackageReference Include="Microsoft.Maui.DevFlow.Driver" />
+```dotnetcli
+dotnet add package Microsoft.Maui.DevFlow.Driver --prerelease
 ```
 
 `AgentClient` ships in the `Microsoft.Maui.DevFlow.Client` package, which `Microsoft.Maui.DevFlow.Driver` references. If you only need `AgentClient` and its protocol types, for example in a .NET Framework test harness, you can reference `Microsoft.Maui.DevFlow.Client` directly. It targets `netstandard2.0` and `net8.0`. In both packages, the namespace is `Microsoft.Maui.DevFlow.Driver`.
@@ -28,12 +28,15 @@ Add the driver package to your test or automation project:
 public AgentClient(string host = "localhost", int port = 9223)
 ```
 
-Creates a client for the DevFlow agent at the specified host and HTTP port. `AgentClient` implements `IDisposable`, so dispose it when you're done:
+Creates a client for the DevFlow agent at the specified host and HTTP port. When the DevFlow broker is running, it assigns each agent a port from the 10223–10899 range, and `9223` is used only as a fallback. Run `maui devflow list` to find the port of your app's agent. For more information, see [DevFlow broker](broker.md).
+
+`AgentClient` implements `IDisposable`, so dispose it when you're done:
 
 ```csharp
 using Microsoft.Maui.DevFlow.Driver;
 
-using var client = new AgentClient("localhost", 9223);
+int agentPort = 10223; // The port reported by `maui devflow list`.
+using var client = new AgentClient("localhost", agentPort);
 ```
 
 ## Transient retry configuration
@@ -52,7 +55,7 @@ On unstable transports such as Android ADB port forwards, `AgentClient` can retr
 - On .NET Framework, a `WebException` with a connection-level status such as `ConnectFailure`, `ConnectionClosed`, `ReceiveFailure`, or `SendFailure`.
 - A `TaskCanceledException` that wraps an inner exception other than `TimeoutException`.
 
-These settings don't retry HTTP error responses. A plain `HttpClient` timeout or a cancellation that you request also isn't retried.
+These settings don't retry HTTP error responses or request timeouts.
 
 > [!WARNING]
 > Retrying a request that changes app state can duplicate its side effect if the agent receives the request but the response is lost. For example, a tap might fire twice or a Shell navigation might push the same route twice. Unless your scenario tolerates this, set `RetryMutatingRequests` to `false` when you enable retries.
@@ -69,6 +72,8 @@ using var client = new AgentClient("localhost", agentPort)
 ```
 
 ## Check the agent status
+
+Use the following methods to confirm that the agent is reachable and to find out which features it supports.
 
 ### GetStatusAsync
 
@@ -148,11 +153,13 @@ public Task<List<ElementInfo>> QueryAsync(
     string? text = null)
 ```
 
-Returns the elements that match the specified type, `AutomationId`, or text. If the agent can't be reached, the method returns an empty list. To query with a CSS selector, use `QueryCssAsync(string selector)` instead.
+Returns the elements that match all of the criteria that you specify. `type` matches the element's short or full type name, and `automationId` matches the element's `AutomationId`. Both are exact, case-insensitive matches. `text` matches elements whose text contains the specified value, ignoring case. If you don't specify any criteria, or the agent can't be reached, the method returns an empty list. To query with a CSS selector, use `QueryCssAsync(string selector)` instead.
 
 The `ElementInfo` class includes properties such as `Id`, `Type`, `AutomationId`, `Text`, `IsVisible`, `IsEnabled`, `Bounds`, and `Children`.
 
 ## Capture screenshots
+
+Use the following methods to capture the app's window or a single element as a PNG image.
 
 ### ScreenshotAsync
 
@@ -178,7 +185,7 @@ public Task<ScreenshotResult> ScreenshotResultAsync(
     string? scale = null)
 ```
 
-Captures a PNG screenshot and returns a `ScreenshotResult` that describes success or failure. It takes the same parameters as `ScreenshotAsync`. Unlike `ScreenshotAsync`, it doesn't collapse every failure into `null`, and it doesn't throw when the agent doesn't support screenshots. Instead, it returns a failed result with `Reason` set to `not_supported`.
+Captures a PNG screenshot and returns a `ScreenshotResult` that describes success or failure. It takes the same parameters as `ScreenshotAsync`, but instead of collapsing every failure into `null`, it reports the cause of the failure. For example, when the agent doesn't support screenshots, it returns a failed result with `Reason` set to `not_supported`.
 
 Other overloads also accept capture epoch, registry generation, and `ScreenshotResolutionOptions` arguments.
 
@@ -215,11 +222,16 @@ else
 ```
 
 > [!NOTE]
-> On macOS (AppKit), DevFlow captures the app window without activating it or changing keyboard focus, so screenshots work when the app isn't frontmost or is covered by other windows. If a capture fails because the window is hidden or minimized, the result has `Reason` set to `window-not-visible` and `Retryable` set to `true`. Restore the window and retry. If native window capture is required, make sure the **Screen & System Audio Recording** permission is granted in **System Settings** > **Privacy & Security**.
+> On macOS (AppKit), DevFlow captures the app window without activating it or changing keyboard focus, so screenshots work when the app isn't frontmost or is covered by other windows. If a capture fails because the window is hidden or minimized, the result has `Reason` set to `window-not-visible` and `Retryable` set to `true`. Restore the window and retry. If native window capture is required, grant the **Screen & System Audio Recording** permission in **System Settings** > **Privacy & Security**.
 
 ## Interact with the app
 
-The following methods return `true` if the agent reports that the action succeeded. They return `false` if the agent reports a failure, returns an HTTP error, or can't be reached, rather than throwing an exception.
+The following methods return `true` if the agent reports that the action succeeded. They return `false` if the agent reports a failure, returns an HTTP error, or can't be reached. To find out why an action failed, use `TapResultAsync` or `FillResultAsync`, which return an `ActionResult` with `Success`, `Reason`, `Error`, and `Retryable` properties.
+
+Because these methods change app state, they can throw the following exceptions, both of which derive from `InvalidOperationException`:
+
+- `MutationLeaseException`, when `AutoAcquireMutationLease` is `true` (the default) and another client holds the agent's mutation lease.
+- `NotSupportedByAgentException`, when the agent doesn't support the action on the current platform.
 
 ### TapAsync
 
@@ -263,6 +275,8 @@ if (!await client.TapAsync(login.Id))
 
 ## Read logs and network traffic
 
+Use the following methods to read the app's logs and the HTTP requests that it makes.
+
 ### GetLogsAsync
 
 ```csharp
@@ -283,6 +297,8 @@ public Task<List<NetworkRequest>> GetNetworkRequestsAsync(
 Returns captured HTTP requests, optionally filtered by host and HTTP method. Each `NetworkRequest` includes properties such as `Id`, `Method`, `Url`, `StatusCode`, `DurationMs`, and `Error`. If the agent can't be reached, the method returns an empty list. To get the headers and bodies of a specific request, call `GetNetworkRequestDetailAsync(string id)`. To clear captured requests, call `ClearNetworkRequestsAsync()`.
 
 ## Run background jobs
+
+Use the following methods to inspect and trigger the app's platform background jobs.
 
 ### GetJobsAsync
 
