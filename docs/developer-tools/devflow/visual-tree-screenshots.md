@@ -47,17 +47,17 @@ DevFlow includes a CSS selector engine that lets you query specific elements in 
 For example, to find all buttons:
 
 ```console
-maui devflow MAUI tree --query "Button"
+maui devflow ui query --selector "Button"
 ```
 
-CSS selectors are also used by the [element interaction](element-interaction.md) commands to identify target elements.
+You can use the element IDs that `ui query` returns with the [element interaction](element-interaction.md) commands.
 
 ## Take a screenshot
 
 Use the `maui devflow MAUI screenshot` command to capture a PNG screenshot of the running app:
 
 ```console
-maui devflow MAUI screenshot -o screenshot.png
+maui devflow MAUI screenshot --output screenshot.png
 ```
 
 The screenshot is saved to the specified output path. This works on all supported platforms (Android, iOS, Mac Catalyst, and Windows).
