@@ -1,7 +1,8 @@
 ---
 title: ".NET MAUI CLI overview"
 description: "Learn about the .NET MAUI CLI, a command-line tool for environment setup, device management, and app automation."
-ms.date: 05/07/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI CLI overview
@@ -21,11 +22,13 @@ dotnet tool install -g Microsoft.Maui.Cli --prerelease
 
 The CLI is currently in pre-release, so the `--prerelease` flag is required.
 
-To update to the latest pre-release version:
+To update the CLI to the latest version:
 
 ```bash
-dotnet tool update -g Microsoft.Maui.Cli --prerelease
+maui update --self
 ```
+
+If your installed CLI doesn't include the `update` command, run `dotnet tool update -g Microsoft.Maui.Cli --prerelease` instead. For more information, see [Update the .NET MAUI CLI](update.md).
 
 ## Verify installation
 
@@ -48,6 +51,8 @@ The following table lists the available `maui` CLI commands:
 | `maui doctor` | Run environment diagnostics and auto-fix issues |
 | `maui device list` | List connected devices and emulators |
 | `maui version` | Display version information |
+| `maui update --self` | Update the .NET MAUI CLI |
+| `maui port check` | Check which process is listening on a TCP port |
 | `maui android install` | Full interactive Android environment setup |
 | `maui android sdk list` | List available and installed Android SDK packages |
 | `maui android sdk install` | Install Android SDK packages |
@@ -78,6 +83,8 @@ For more information, see:
 - [Apple platform management](apple-management.md)
 - [Device management](device-management.md)
 - [App profiling](profile.md)
+- [TCP port diagnostics](port-diagnostics.md)
+- [Update the .NET MAUI CLI](update.md)
 - [DevFlow overview](../devflow/index.md)
 
 ## Global options
@@ -120,4 +127,6 @@ maui doctor --json
 - [Apple platform management](apple-management.md)
 - [Device management](device-management.md)
 - [App profiling](profile.md)
+- [TCP port diagnostics](port-diagnostics.md)
+- [Update the .NET MAUI CLI](update.md)
 - [DevFlow overview](../devflow/index.md)
