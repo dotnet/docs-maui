@@ -137,10 +137,11 @@ Captures a screenshot of the target WebView.
 
 Returns WebView console log entries. This endpoint is an alias of `GET /api/v1/logs` filtered to WebView logs, and it ignores the `webview` and `contextId` parameters.
 
-The following example reads the HTML source of the WebView whose `AutomationId` is `Right`:
+The following example looks up the agent port for an app named `MyApp` and then reads the HTML source of the WebView whose `AutomationId` is `Right`. The [DevFlow broker](broker.md) usually assigns the agent port, so use `maui devflow list` to find it instead of assuming the default port 9223:
 
 ```bash
-curl "http://localhost:9223/api/v1/webview/source?webview=Right"
+PORT=$(maui devflow list --json | jq -r '.[] | select(.appName == "MyApp") | .port')
+curl "http://localhost:$PORT/api/v1/webview/source?webview=Right"
 ```
 
 ## Preferences endpoints

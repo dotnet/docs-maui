@@ -123,10 +123,13 @@ The `maui_cdp_evaluate` and `maui_cdp_source` MCP tools report the same failures
 
 ### Agent HTTP API
 
-The CLI sends the selected WebView to the agent as the `webview` query parameter. WebView endpoints under `/api/v1/webview/` accept this parameter. Most of them also accept `contextId` as an alias, but `POST /api/v1/webview/evaluate` accepts only `webview`. When you supply both, `webview` takes precedence. For example:
+The CLI sends the selected WebView to the agent as the `webview` query parameter. WebView endpoints under `/api/v1/webview/` accept this parameter. Most of them also accept `contextId` as an alias, but `POST /api/v1/webview/evaluate` accepts only `webview`. When you supply both, `webview` takes precedence.
 
-```console
-curl "http://localhost:9223/api/v1/webview/source?webview=Right"
+The agent's port is usually assigned by the [DevFlow broker](broker.md), so don't assume the default port 9223. Run `maui devflow list` to see each connected agent and its port. The following example looks up the port for an app named `MyApp` and then reads the HTML source of the WebView whose `AutomationId` is `Right`:
+
+```bash
+PORT=$(maui devflow list --json | jq -r '.[] | select(.appName == "MyApp") | .port')
+curl "http://localhost:$PORT/api/v1/webview/source?webview=Right"
 ```
 
 For the list of WebView endpoints, see [DevFlow agent HTTP API reference](agent-api.md#webview-endpoints).
