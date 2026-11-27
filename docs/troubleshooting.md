@@ -2,6 +2,7 @@
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Troubleshooting known issues
