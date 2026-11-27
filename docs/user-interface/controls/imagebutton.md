@@ -1,7 +1,7 @@
 ---
 title: "ImageButton"
 description: "The ImageButton displays an image and responds to a tap or click that directs an app to carry out a task."
-ms.date: 03/08/2026
+ms.date: 11/27/2026
 ---
 
 # ImageButton
@@ -42,6 +42,8 @@ To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> 
 
 The following XAML example shows how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -53,9 +55,37 @@ The following XAML example shows how to create an <xref:Microsoft.Maui.Controls.
                     Clicked="OnImageButtonClicked"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
+       <Label x:Name="label"
+              Text="0 ImageButton clicks"
+              HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlGallery.Views.XAML.ImageButtonDemoPage"
+             Title="ImageButton">
+    <VerticalStackLayout Spacing="20"
+                         VerticalOptions="Center">
+        <ImageButton Source="dotnet_bot.png"
+                     HeightRequest="160"
+                     HorizontalOptions="Center"
+                     Clicked="OnImageButtonClicked"
+                     SemanticProperties.Description="Click to increment counter" />
+        <Label x:Name="label"
+               Text="0 ImageButton clicks"
+               HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
+```
+
+::: moniker-end
 
 The `Source` property specifies the image that appears in the <xref:Microsoft.Maui.Controls.ImageButton>. The `Clicked` event is set to an event handler named `OnImageButtonClicked`. This handler is located in the code-behind file:
 
@@ -77,11 +107,23 @@ public partial class ImageButtonDemoPage : ContentPage
 }
 ```
 
-In this example, when the <xref:Microsoft.Maui.Controls.ImageButton> is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.ImageButton> responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.ImageButton> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.ImageButton> objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in a <xref:Microsoft.Maui.Controls.Label>:
+In this example, when the <xref:Microsoft.Maui.Controls.ImageButton> is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.ImageButton> responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.ImageButton> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.ImageButton> objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in the <xref:Microsoft.Maui.Controls.Label> named `label`:
 
-:::image type="content" source="media/imagebutton/imagebutton.png" alt-text="Screenshot of an ImageButton.":::
+::: moniker range="<=net-maui-10.0"
+
+:::image type="content" source="media/imagebutton/imagebutton.png" alt-text="Screenshot of an ImageButton showing the .NET bot, with the label 5 ImageButton clicks below it.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/imagebutton/imagebutton-net11.png" alt-text="Screenshot of an ImageButton showing two .NET bots riding a rocket, with the label 5 ImageButton clicks below it.":::
+
+::: moniker-end
 
 The equivalent C# code to create an <xref:Microsoft.Maui.Controls.ImageButton> is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 Label label;
@@ -101,6 +143,31 @@ imageButton.Clicked += (s, e) =>
   label.Text = $"{clickTotal} ImageButton click{(clickTotal == 1 ? "" : "s")}";
 };
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+Label label;
+int clickTotal = 0;
+...
+
+ImageButton imageButton = new ImageButton
+{
+    Source = "dotnet_bot.png",
+    HeightRequest = 160,
+    HorizontalOptions = LayoutOptions.Center
+};
+SemanticProperties.SetDescription(imageButton, "Click to increment counter");
+imageButton.Clicked += (s, e) =>
+{
+  clickTotal += 1;
+  label.Text = $"{clickTotal} ImageButton click{(clickTotal == 1 ? "" : "s")}";
+};
+```
+
+::: moniker-end
 
 <!-- > [!NOTE]
 > While an <xref:Microsoft.Maui.Controls.ImageButton> can load an animated GIF, it will only display the first frame of the GIF. -->
