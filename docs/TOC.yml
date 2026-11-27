@@ -15,7 +15,7 @@
           href: get-started/resources.md
         - name: Android
           items:
-            - name: Build an Android app with .NET CLI
+            - name: Build an Android app with the .NET CLI
               href: android/cli.md
             - name: Emulator
               items:
