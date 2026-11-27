@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI local databases"
 description: ".NET MAUI supports database-driven applications using the SQLite database engine, which makes it possible to load and save objects in shared code. This article describes how .NET MAUI applications can read and write data to a local SQLite database using SQLite-net"
-ms.date: 08/30/2024
+ms.date: 11/27/2026
 ---
 
 # .NET MAUI local databases
@@ -71,6 +71,9 @@ In this example, the constants file specifies default `SQLiteOpenFlag` enum valu
 - `ProtectionNone`: The database file isn't encrypted.
 
 You may need to specify different flags depending on how your database will be used. For more information about `SQLiteOpenFlags`, see [Opening A New Database Connection](https://www.sqlite.org/c3ref/open.html) on sqlite.org.
+
+> [!NOTE]
+> `FileSystem.AppDataDirectory` is app-specific storage. It isn't synced across devices, but on some platforms its contents are included in device backups by default. If your database shouldn't be included in backups, for example because it's large or your app can download it again, see [Backup and restore](~/platform-integration/storage/file-system-helpers.md#backup-and-restore). To exclude the database, change `DatabasePath` to a path in a subfolder of `FileSystem.AppDataDirectory`, and call `Directory.CreateDirectory` for that subfolder before you open the connection.
 
 ## Create TodoItem class
 
