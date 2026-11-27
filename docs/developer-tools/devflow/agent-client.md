@@ -1,7 +1,8 @@
 ---
 title: "AgentClient API reference"
 description: "Reference for the AgentClient class in Microsoft.Maui.DevFlow.Driver for programmatic interaction with DevFlow agents from .NET code."
-ms.date: 05/08/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # AgentClient API reference
@@ -132,8 +133,48 @@ Triggers a background job by identifier.
 
 **Platform support:** iOS, Mac Catalyst. (Android returns `success: false`.)
 
+## WebView methods
+
+The following methods interact with Blazor WebViews that are registered with the DevFlow Blazor bridge. The `webviewId` and `contextId` parameters target a WebView by index, `AutomationId`, or element ID. A numeric value is matched against the registry index before `AutomationId`. When you pass `null`, the agent selects a default WebView, preferring WebViews on the current page and then the most recently registered one. The default can change as pages and WebViews load. For the full matching and default-selection order, see [Target a WebView](blazor-cdp.md#target-a-webview). When your app has more than one WebView, specify the target explicitly.
+
+```csharp
+public Task<JsonElement> GetCdpWebViewsAsync()
+public Task<JsonElement> SendCdpCommandAsync(string method, JsonNode? @params = null, string? webviewId = null)
+public Task<string> GetCdpSourceAsync(string? webviewId = null)
+public Task<bool> NavigateWebViewAsync(string url, string? contextId = null)
+public Task<bool> ClickWebViewAsync(string selector, string? contextId = null)
+public Task<bool> FillWebViewAsync(string selector, string text, string? contextId = null)
+public Task<bool> InsertWebViewTextAsync(string text, string? contextId = null)
+```
+
+`GetCdpWebViewsAsync` lists the registered WebViews. `SendCdpCommandAsync` sends a Chrome DevTools Protocol command, such as `Runtime.evaluate`, to the target WebView.
+
+Except for `GetCdpWebViewsAsync`, these methods throw an exception when a WebView command fails, instead of returning an unsuccessful result:
+
+- HTTP failures throw `HttpRequestException`, and the exception message includes the response body.
+- CDP, protocol, and JavaScript failures throw `InvalidOperationException`. JavaScript exceptions include the original error description.
+- Invalid JSON responses throw `JsonException`.
+
+`GetCdpWebViewsAsync` doesn't throw on failure. Instead, it returns a `JsonElement` whose `ValueKind` is `JsonValueKind.Undefined`, so check `ValueKind` before you read the result.
+
+`NavigateWebViewAsync`, `ClickWebViewAsync`, `FillWebViewAsync`, and `InsertWebViewTextAsync` return `true` on success. They throw instead of returning `false` when the command fails or the response doesn't report success.
+
+The following example fills an input in the WebView whose `AutomationId` is `Right` by using a connected `AgentClient` instance named `client`, and handles a failure:
+
+```csharp
+try
+{
+    await client.FillWebViewAsync("#name", "Hello", contextId: "Right");
+}
+catch (Exception ex) when (ex is HttpRequestException or InvalidOperationException)
+{
+    Console.WriteLine($"WebView command failed: {ex.Message}");
+}
+```
+
 ## See also
 
 - [DevFlow overview](index.md)
 - [Agent HTTP API reference](agent-api.md)
 - [MCP tools reference](mcp-tools.md)
+- [Blazor WebView debugging](blazor-cdp.md)
