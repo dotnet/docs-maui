@@ -1,7 +1,8 @@
 ---
 title: "DevFlow broker architecture"
 description: "Learn about the DevFlow broker daemon that coordinates port assignment and agent discovery across multiple running .NET MAUI apps."
-ms.date: 04/03/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # DevFlow broker architecture
@@ -113,16 +114,16 @@ The broker is optional. When it's unavailable, both the agent and the CLI fall b
 | Windows | `localhost:19223` direct | `localhost:{port}` direct |
 | Linux/GTK | `localhost:19223` direct | `localhost:{port}` direct |
 | iOS Simulator | Shares host network | `localhost:{port}` direct |
-| Android Emulator | Requires `adb reverse` | Requires `adb reverse` |
+| Android | Requires `adb reverse` | Requires `adb forward` |
 
-For Android emulators, configure port forwarding for both the broker and the agent:
+For Android, the two mappings go in opposite directions. The agent in the app reaches the broker on the host through a reverse mapping, and the CLI on the host reaches the agent in the app through a forward mapping:
 
 ```bash
 adb reverse tcp:19223 tcp:19223
-adb reverse tcp:{port} tcp:{port}
+adb forward tcp:{port} tcp:{port}
 ```
 
-Replace `{port}` with the assigned agent port.
+Replace `{port}` with the assigned agent port. When exactly one Android device or emulator is online, `maui devflow list` and `maui devflow wait` add missing mappings automatically. If more than one device is online, pass `--device <serial>` to `maui devflow wait`, `list`, or `diagnose`, or set the `ANDROID_SERIAL` environment variable. For more information, see [ADB port forwarding](setup-android.md#adb-port-forwarding).
 
 ## Troubleshooting
 
@@ -130,7 +131,7 @@ Replace `{port}` with the assigned agent port.
 |-------|---------------|------------|
 | Broker won't start | Port 19223 is already in use | Stop the process using port 19223, or remove the stale `~/.mauidevflow/broker.json` state file and retry. |
 | Agent not appearing | Broker not running, app not started, or firewall blocking the connection | Verify the broker is running with `maui devflow broker status`. Ensure the app includes `AddMauiDevFlowAgent()` and is running. Check firewall rules for the assigned port. |
-| CLI can't connect to agent | Port mismatch, agent crashed, or missing ADB reverse on Android | Confirm the agent is listed in `maui devflow list`. For Android emulators, run the `adb reverse` commands. |
+| CLI can't connect to agent | Port mismatch, agent crashed, or missing ADB forward on Android | Confirm the agent is listed in `maui devflow list`. For Android, run `maui devflow diagnose` to check the forwarding state, then run `maui devflow list` or `adb forward tcp:{port} tcp:{port}` to add a missing agent forward. |
 | Broker exits unexpectedly | Idle timeout (normal behavior) | The broker auto-exits after 5 minutes with no agents and no CLI requests. Check `maui devflow broker log` for details. |
 
 ## See also

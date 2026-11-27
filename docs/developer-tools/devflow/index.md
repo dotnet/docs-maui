@@ -110,7 +110,7 @@ For GTK/Linux apps, use `Microsoft.Maui.DevFlow.Agent.Gtk` with the current `Mic
 | Mac Catalyst | ✅ Supported | Direct localhost connectivity |
 | iOS Simulator | ✅ Supported | Shares host network |
 | Linux/GTK | ✅ Supported | Direct localhost connectivity |
-| Android | 🔄 In progress | Requires `adb reverse` for port forwarding |
+| Android | 🔄 In progress | Uses `adb reverse` for the broker and `adb forward` for the agent |
 | Windows | 🔄 In progress | — |
 
 ## Platform setup
