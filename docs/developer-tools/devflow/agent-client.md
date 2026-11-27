@@ -68,35 +68,91 @@ using var client = new AgentClient("localhost", agentPort)
 };
 ```
 
-## AgentCapabilities
+## Check the agent status
 
-The `AgentCapabilities` class describes which features the current connected platform supports.
+### GetStatusAsync
+
+```csharp
+public Task<AgentStatus?> GetStatusAsync(int? window = null)
+```
+
+Returns the status of the connected agent, or `null` if the agent can't be reached. Use it to confirm that the agent is running before you send other requests.
+
+The `AgentStatus` class includes the following properties:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `Screenshots` | `bool` | `true` if the platform supports screenshot capture. |
-| `Sensors` | `bool` | `true` if the platform supports device sensor data. |
-| `Network` | `bool` | `true` if the platform supports network request capture. |
-| `Profiling` | `bool` | `true` if the platform supports CPU/memory/GC profiling. |
-| `Jobs` | `bool` | `true` if the platform supports background job inspection (Android, iOS, Mac Catalyst). |
+| `Running` | `bool` | `true` if the agent reports that it's running. |
+| `Platform` | `string?` | The device platform, for example `Android` or `iOS`. |
+| `AppName` | `string?` | The name of the app that hosts the agent. |
+| `Version` | `string?` | The agent version. |
+| `Route` | `string?` | The current Shell route, when available. |
+| `Capabilities` | `AgentCapabilities?` | The features that the agent supports on the current platform. |
 
-## AgentClient methods
+### AgentCapabilities
+
+The `AgentCapabilities` class, returned by `AgentStatus.Capabilities`, describes which features the agent supports on the current platform. Each property is a `bool` that's `true` when the feature is available.
+
+| Property | Description |
+|----------|-------------|
+| `Ui` | Visual tree inspection and UI interaction. |
+| `Screenshots` | Screenshot capture. |
+| `WebView` | WebView inspection through the Chrome DevTools Protocol. |
+| `Network` | HTTP request capture. |
+| `Logs` | App log retrieval. |
+| `Sensors` | Device sensor data. |
+| `Storage` | App storage inspection, such as preferences. |
+| `Profiler` | Performance profiling. |
+| `Jobs` | Background job inspection (Android, iOS, Mac Catalyst). |
+| `Menus` | App menu inspection. |
+| `Theme` | App theme inspection and switching. |
+| `SyntheticTouch` | Gestures delivered as synthesized touches to views that handle raw touches, such as `GraphicsView`. Only available on iOS and Mac Catalyst when the app enables it. |
+| `PointerStream` | Continuous pointer sessions. |
+
+The following example checks whether screenshots are supported before capturing one:
+
+```csharp
+var status = await client.GetStatusAsync();
+if (status?.Capabilities?.Screenshots == true)
+{
+    var png = await client.ScreenshotAsync();
+}
+```
 
 ### GetCapabilitiesAsync
 
 ```csharp
-public Task<AgentCapabilities> GetCapabilitiesAsync()
+public Task<JsonElement> GetCapabilitiesAsync()
 ```
 
-Returns the capabilities of the connected agent for the current platform.
+Returns the agent's raw capabilities document as a `JsonElement`, including details about registered extensions. If the agent can't be reached, it returns a default `JsonElement` whose `ValueKind` is `JsonValueKind.Undefined`. For typed feature flags, use `GetStatusAsync` and read `AgentStatus.Capabilities`.
 
-### GetVisualTreeAsync
+## Find elements
+
+UI actions such as `TapAsync` and `FillAsync` target elements by their DevFlow element ID, which is the `Id` property of an `ElementInfo`. For an element that sets an `AutomationId`, the element ID is usually the `AutomationId`. However, the agent adds a suffix when several elements share an `AutomationId`, and adds a window scope in secondary windows. Elements without an `AutomationId` get generated IDs. To act on an element reliably, query for it first and pass its `Id`.
+
+### GetTreeAsync
 
 ```csharp
-public Task<JsonElement> GetVisualTreeAsync()
+public Task<List<ElementInfo>> GetTreeAsync(int maxDepth = 0, int? window = null)
 ```
 
-Returns the visual tree of the running app.
+Returns the visual tree of the running app as a list of root elements. Each `ElementInfo` exposes its descendants through its `Children` property. Pass a `maxDepth` greater than `0` to limit the depth of the tree. Another overload accepts an `includeNative` argument that controls whether native view details are included. If the agent can't be reached, the method returns an empty list.
+
+### QueryAsync
+
+```csharp
+public Task<List<ElementInfo>> QueryAsync(
+    string? type = null,
+    string? automationId = null,
+    string? text = null)
+```
+
+Returns the elements that match the specified type, `AutomationId`, or text. If the agent can't be reached, the method returns an empty list. To query with a CSS selector, use `QueryCssAsync(string selector)` instead.
+
+The `ElementInfo` class includes properties such as `Id`, `Type`, `AutomationId`, `Text`, `IsVisible`, `IsEnabled`, `Bounds`, and `Children`.
+
+## Capture screenshots
 
 ### ScreenshotAsync
 
@@ -161,45 +217,72 @@ else
 > [!NOTE]
 > On macOS (AppKit), DevFlow captures the app window without activating it or changing keyboard focus, so screenshots work when the app isn't frontmost or is covered by other windows. If a capture fails because the window is hidden or minimized, the result has `Reason` set to `window-not-visible` and `Retryable` set to `true`. Restore the window and retry. If native window capture is required, make sure the **Screen & System Audio Recording** permission is granted in **System Settings** > **Privacy & Security**.
 
+## Interact with the app
+
+The following methods return `true` if the agent reports that the action succeeded. They return `false` if the agent reports a failure, returns an HTTP error, or can't be reached, rather than throwing an exception.
+
 ### TapAsync
 
 ```csharp
-public Task TapAsync(string automationId)
+public Task<bool> TapAsync(string elementId)
 ```
 
-Simulates a tap on the element with the specified `AutomationId`.
+Taps the element with the specified DevFlow element ID.
 
 ### FillAsync
 
 ```csharp
-public Task FillAsync(string automationId, string text)
+public Task<bool> FillAsync(string elementId, string text)
 ```
 
-Fills text into the `Entry` or `Editor` with the specified `AutomationId`.
+Fills text into the element, such as an `Entry` or `Editor`, with the specified DevFlow element ID.
 
 ### NavigateAsync
 
 ```csharp
-public Task NavigateAsync(string route)
+public Task<bool> NavigateAsync(string route)
 ```
 
-Navigates to the specified Shell route or page.
+Navigates to the specified Shell route.
+
+The following example finds elements by `AutomationId`, fills in a form, and submits it:
+
+```csharp
+var username = (await client.QueryAsync(automationId: "UsernameEntry")).FirstOrDefault();
+var login = (await client.QueryAsync(automationId: "LoginButton")).FirstOrDefault();
+
+if (username is null || login is null)
+    throw new InvalidOperationException("Login form not found.");
+
+if (!await client.FillAsync(username.Id, "testuser"))
+    throw new InvalidOperationException("Couldn't fill the username.");
+
+if (!await client.TapAsync(login.Id))
+    throw new InvalidOperationException("Couldn't tap the login button.");
+```
+
+## Read logs and network traffic
 
 ### GetLogsAsync
 
 ```csharp
-public Task<JsonElement> GetLogsAsync()
+public Task<string> GetLogsAsync(int limit = 100, int skip = 0, string? source = null)
 ```
 
-Retrieves application log entries from the agent.
+Retrieves app log entries from the agent and returns the agent's JSON response as a string. Use `limit` and `skip` to page through entries, and `source` to filter by log source, such as `native` or `webview`. Unlike most `AgentClient` read methods, it throws an exception, such as `HttpRequestException`, if the agent can't be reached or returns an HTTP error.
 
 ### GetNetworkRequestsAsync
 
 ```csharp
-public Task<JsonElement> GetNetworkRequestsAsync()
+public Task<List<NetworkRequest>> GetNetworkRequestsAsync(
+    int limit = 100,
+    string? host = null,
+    string? method = null)
 ```
 
-Returns captured HTTP request/response pairs.
+Returns captured HTTP requests, optionally filtered by host and HTTP method. Each `NetworkRequest` includes properties such as `Id`, `Method`, `Url`, `StatusCode`, `DurationMs`, and `Error`. If the agent can't be reached, the method returns an empty list. To get the headers and bodies of a specific request, call `GetNetworkRequestDetailAsync(string id)`. To clear captured requests, call `ClearNetworkRequestsAsync()`.
+
+## Run background jobs
 
 ### GetJobsAsync
 
@@ -211,20 +294,18 @@ Returns a JSON representation of the platform's background jobs. See [`maui_jobs
 
 **Platform support:** Android, iOS, Mac Catalyst.
 
----
-
 ### RunJobAsync
 
 ```csharp
 public Task<JsonElement> RunJobAsync(string identifier, string? type = null)
 ```
 
-Triggers a background job by identifier.
+Triggers a background job by identifier and returns the agent's JSON response. If the agent can't be reached, it returns a default `JsonElement`.
 
 | Parameter | Description |
 |-----------|-------------|
-| `identifier` | Platform job identifier from `GetJobsAsync()` |
-| `type` | iOS only — `"processing"` or `"refresh"`. Optional; agent resolves from pending requests when omitted. |
+| `identifier` | The platform job identifier from `GetJobsAsync()`. |
+| `type` | iOS only. Either `"processing"` or `"refresh"`. Optional. When omitted, the agent resolves the type from pending requests. |
 
 **Platform support:** iOS, Mac Catalyst. (Android returns `success: false`.)
 
