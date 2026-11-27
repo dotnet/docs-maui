@@ -62,7 +62,22 @@ maui devflow webview webviews
 
 Each entry includes its registry `index`, `automationId`, and `elementId`. The `id` value is the AutomationId when one is set, otherwise the element ID, otherwise the index.
 
-Use the `--webview` option, or its `-w` short form, to choose which WebView a command targets. The option accepts the WebView's index, AutomationId, or element ID. If you omit it, the agent selects a default WebView: a ready WebView on the current page if there is one, otherwise the most recently registered ready WebView. When your app has more than one WebView, specify the target explicitly.
+Use the `--webview` option, or its `-w` short form, to choose which WebView a command targets. The option accepts the WebView's index, AutomationId, or element ID, and the agent checks them in that order:
+
+1. If the value is a number, the agent looks for the WebView with that registry index. If no WebView has that index, it continues with the next checks. As a result, a numeric AutomationId such as `1` matches the WebView at index 1 first.
+1. The agent looks for a WebView whose AutomationId matches the value, ignoring case.
+1. The agent looks for a WebView whose element ID matches the value, ignoring case.
+
+If more than one WebView has a matching AutomationId or element ID, the agent uses the most recently registered one. If nothing matches, the command fails with a `WebView '<value>' not found` error.
+
+If you omit `--webview`, the agent selects a default WebView in this order:
+
+1. A ready WebView on the current page.
+1. Any WebView on the current page, even if it isn't ready yet.
+1. The most recently registered ready WebView.
+1. The most recently registered WebView.
+
+The agent identifies WebViews on the current page by their AutomationId, so the first two steps only apply to WebViews that have an AutomationId. Because the default can change as pages and WebViews load, specify the target explicitly when your app has more than one WebView, especially in scripts.
 
 ```console
 maui devflow webview --webview Right DOM querySelector "#name"
@@ -71,7 +86,7 @@ maui devflow cdp -w Right Runtime evaluate "document.title"
 ```
 
 > [!TIP]
-> Set the `AutomationId` property on each `BlazorWebView` so that you can target it by a stable name instead of its registry index.
+> Set the `AutomationId` property on each `BlazorWebView` so that you can target it by a stable name instead of its registry index. Registry indexes follow the order in which WebViews register, which can differ between app launches. An AutomationId is also required for the agent to recognize a WebView as being on the current page when it selects a default. Avoid purely numeric AutomationIds, because numeric values are matched as indexes first.
 
 ### WebView commands
 

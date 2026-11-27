@@ -135,7 +135,7 @@ Triggers a background job by identifier.
 
 ## WebView methods
 
-The following methods interact with Blazor WebViews that are registered with the DevFlow Blazor bridge. The `webviewId` and `contextId` parameters target a WebView by index, `AutomationId`, or element ID. When you pass `null`, the agent selects a default WebView: a ready WebView on the current page if there is one, otherwise the most recently registered ready WebView. When your app has more than one WebView, specify the target explicitly.
+The following methods interact with Blazor WebViews that are registered with the DevFlow Blazor bridge. The `webviewId` and `contextId` parameters target a WebView by index, `AutomationId`, or element ID. A numeric value is matched against the registry index before `AutomationId`. When you pass `null`, the agent selects a default WebView, preferring WebViews on the current page and then the most recently registered one. The default can change as pages and WebViews load. For the full matching and default-selection order, see [Target a WebView](blazor-cdp.md#target-a-webview). When your app has more than one WebView, specify the target explicitly.
 
 ```csharp
 public Task<JsonElement> GetCdpWebViewsAsync()

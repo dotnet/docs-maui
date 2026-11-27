@@ -95,7 +95,7 @@ Network endpoints capture HTTP traffic from the app's .NET code, such as request
 
 ## WebView endpoints
 
-WebView endpoints interact with Blazor WebViews that are registered with the DevFlow Blazor bridge. Most WebView endpoints accept an optional `webview` query parameter that targets a WebView by index, `AutomationId`, or element ID. When you omit it, the agent selects a default WebView: a ready WebView on the current page if there is one, otherwise the most recently registered ready WebView. When your app has more than one WebView, specify the target explicitly. Except for `POST /api/v1/webview/evaluate`, these endpoints also accept `contextId` as an alias of `webview`. If you specify both, `webview` takes precedence.
+WebView endpoints interact with Blazor WebViews that are registered with the DevFlow Blazor bridge. Most WebView endpoints accept an optional `webview` query parameter that targets a WebView by index, `AutomationId`, or element ID. A numeric value is matched against the registry index before `AutomationId`. When you omit it, the agent selects a default WebView, preferring WebViews on the current page and then the most recently registered one. The default can change as pages and WebViews load. For the full matching and default-selection order, see [Target a WebView](blazor-cdp.md#target-a-webview). When your app has more than one WebView, specify the target explicitly. Except for `POST /api/v1/webview/evaluate`, these endpoints also accept `contextId` as an alias of `webview`. If you specify both, `webview` takes precedence.
 
 ### GET /api/v1/webview/contexts
 
