@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 07/08/2026
+ms.date: 11/27/2026
 monikerRange: ">=net-maui-9.0"
 ---
 
@@ -8,7 +8,7 @@ The following .NET MAUI features are incompatible with full trimming and will be
 
 - Binding expressions where that binding path is set to a string. Instead, use compiled bindings. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 - Implicit conversion operators, when assigning a value of an incompatible type to a property in XAML, or when two properties of different types use a data binding. Instead, you should define a <xref:System.ComponentModel.TypeConverter> for your type and attach it to the type using the <xref:System.ComponentModel.TypeConverterAttribute>. For more information, see [Define a TypeConverter to replace an implicit conversion operator](~/deployment/trimming.md#define-a-typeconverter-to-replace-an-implicit-conversion-operator).
-- Loading XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension method. This XAML can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended.
+- Loading XAML at runtime with the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension method. This XAML can be made trim safe by annotating all types that could be loaded at runtime with the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute or the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. However, this is very error prone and isn't recommended. In .NET 11 and later, the `Microsoft.Maui.Controls.Xaml` assembly is trimmable and isn't implicitly preserved. Apps that load or parse XAML at runtime, including through indirect calls, might need to explicitly preserve the assembly or the required runtime XAML entry points. Direct calls to APIs annotated with `RequiresUnreferencedCode` can produce `IL2026` warnings, but indirect use might not surface a warning at the call site. Don't treat the absence of a warning as proof that runtime XAML loading is trim safe. For more information, see [Fix trim warnings](/dotnet/core/deploying/trimming/fixing-warnings).
 - Receiving navigation data using the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute>. Instead, you should implement the <xref:Microsoft.Maui.Controls.IQueryAttributable> interface on types that need to accept query parameters. For more information, see [Process navigation data using a single method](~/fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method).
 - The `SearchHandler.DisplayMemberName` property. Instead, you should provide an <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> to define the appearance of <xref:Microsoft.Maui.Controls.SearchHandler> results. For more information, see [Define search results item appearance](~/fundamentals/shell/search.md#define-search-results-item-appearance).
 

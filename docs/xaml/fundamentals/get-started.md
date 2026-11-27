@@ -1,7 +1,7 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 08/19/2025
+ms.date: 11/27/2026
 ---
 
 # Get started with XAML
@@ -89,18 +89,34 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 
 ## XAML Source Generation
 
+You can use Roslyn source generation to generate C# from XAML. This improves your ability to debug XAML by emitting the source files and setting breakpoints in them directly, speeds up page rendering in Debug builds, and improves consistency between Debug and Release builds.
+
+::: moniker range="=net-maui-10.0"
+
 > [!IMPORTANT]
-> This feature is opt-in. To use it, set the XAML inflator in your project file as per the instructions below. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
+> In .NET 10, XAML source generation is opt-in. To use it, set the XAML inflator in your project file as shown below.
 
-You have the option as of .NET 10 to have XAML generate C# instead of IL (intermediate language) by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+::: moniker-end
 
-To enable XAML source generation for the whole project, add this to your project file:
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11 and later, SourceGen is the default XAML inflator. Setting the `Runtime` or `XamlC` inflator is deprecated and produces warning `MAUI1001`. To use the default, omit the `MauiXamlInflator` property or set per-file `Inflator` metadata to `Default`.
+
+::: moniker-end
+
+To explicitly select SourceGen for the whole project, add this to your project file:
 
 ```xml
 <PropertyGroup>
    <MauiXamlInflator>SourceGen</MauiXamlInflator>
 </PropertyGroup>
 ```
+
+::: moniker range=">=net-maui-11.0"
+
+You don't need to set this property in .NET 11 and later unless you want to make the default explicit.
+
+::: moniker-end
 
 For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
 
@@ -110,8 +126,7 @@ For more fine-grained control over what XAML files use XAML Source Generation, y
 </ItemGroup>
 ```
 
-You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
-If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute. To use the default inflator for a file or pattern, set `Inflator` to `Default`. In .NET 11 and later, the default is SourceGen.
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
@@ -158,7 +173,7 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 
 ### Implicit namespace declarations
 
-Starting in .NET 11, the standard XAML namespace declarations are implicit by default — no opt-in is required. The compiler automatically injects `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` and `xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"`, so your XAML files can omit them:
+In .NET 11 and later, the standard XAML namespace declarations are always implicit; no opt-in or preview setting is required. The compiler automatically injects `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` and `xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"`, so your XAML files can omit them:
 
 **Before (.NET 10 and earlier)**
 
@@ -178,46 +193,6 @@ Starting in .NET 11, the standard XAML namespace declarations are implicit by de
 ```
 
 Custom namespaces still require explicit `xmlns:` declarations. For more information, see [Implicit namespace declarations](~/xaml/namespaces/index.md#implicit-namespace-declarations).
-
-::: moniker-end
-
-::: moniker range="net-maui-10.0"
-
-To enable the most streamlined experience (implicit default namespaces), add:
-
-```xml
-<PropertyGroup>
-    <DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
-    <EnablePreviewFeatures>true</EnablePreviewFeatures>
-</PropertyGroup>
-```
-
-Now your project will implicitly include these 2 namespaces which you’ve been accustomed to seeing in every XAML file since .NET MAUI first shipped.
-
-```xml
-xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-```
-
-> [!NOTE]
-> Because `x:` is used by the XAML inflator, you still need to use that prefix. With this change alone, your XAML for a view gets much tighter.
-
-**Before**
-
-```xml
-<ContentPage 
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MyApp.Pages.MyContentPage">
-</ContentPage>
-```
-
-**After**
-
-```xml
-<ContentPage x:Class="MyApp.Pages.MyContentPage">
-</ContentPage>
-```
 
 ::: moniker-end
 

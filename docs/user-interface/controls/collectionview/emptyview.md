@@ -1,7 +1,7 @@
 ---
 title: "Define an EmptyView for a CollectionView"
 description: "In .NET MAUI CollectionView, an empty view can be specified that provides feedback to the user when no data is available for display. The empty view can be a string, a view, or multiple views."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
 ---
 
 # Define an EmptyView for a CollectionView
@@ -10,12 +10,12 @@ ms.date: 09/30/2024
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that can be used to provide user feedback when there's no data to display:
 
-- `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
+- `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. When `GroupableItemsView.IsGrouped` is `true`, `EmptyView` is displayed only when there are no groups. An existing group suppresses `EmptyView`, even if the group contains no items. The default value is `null`.
 - `EmptyViewTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template to use to format the specified `EmptyView`. The default value is `null`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
-The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a <xref:Microsoft.Maui.Controls.CollectionView> yields no data, and displaying user feedback while data is being retrieved from a web service.
+The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a <xref:Microsoft.Maui.Controls.CollectionView> yields no data, and displaying user feedback while data is being retrieved from a web service. With grouped data, an empty result displays `EmptyView` only if filtering removes all groups; an empty group still suppresses it.
 
 > [!NOTE]
 > The `EmptyView` property can be set to a view that includes interactive content if required.
@@ -84,7 +84,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
 </Grid>
 ```
 
-In this example, what looks like a redundant has been added as the root element of the `EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
+In this example, what looks like a redundant <xref:Microsoft.Maui.Controls.ContentView> has been added as the root element of the `EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
 
 The equivalent C# code is:
 

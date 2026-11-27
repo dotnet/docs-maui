@@ -52,7 +52,7 @@ Resource files should typically be placed in the _Resources_ folder of your .NET
 | CSS files     | MauiCss          |
 
 > [!NOTE]
-> XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, only XAML resource dictionaries will typically be placed in the _Resources_ folder of the app project.
+> XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, only XAML resource dictionaries will typically be placed in the _Resources_ folder of the app project. Platform-specific XAML files are processed according to the target platform, as described in [Platform-specific code](#platform-specific-code).
 
 When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project file, with the exception of CSS files. The following screenshot shows a typical *Resources* folder containing child-folders for each resource type:
 
@@ -197,6 +197,12 @@ The folders for each platform contain platform-specific resources, and code that
 :::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
 
 At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the *Platforms\Android* folder will be built into the app package, but the files in the other *Platforms* folders won't be. This approach uses multi-targeting to target multiple platforms from a single project. Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](~/platform-integration/invoke-platform-code.md).
+
+::: moniker range=">=net-maui-11.0"
+
+For XAML files under `Platforms/<Platform>/**/*.xaml`, Android, iOS, Mac Catalyst, and Tizen inner builds exclude XAML files for other platforms from XAML SourceGen and XamlC, based on `$(TargetPlatformIdentifier)`. Windows builds don't apply this exclusion and might process XAML files in other platform folders. If your app targets Windows, give platform-specific XAML files unique `x:Class` values to avoid duplicate generated code and attribute conflicts.
+
+::: moniker-end
 
 In addition to this default multi-targeting approach, .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into child-folders of the *Platforms* folder. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 
