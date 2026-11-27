@@ -1,7 +1,7 @@
 ---
 title: Microsoft.Maui.Essentials.AI overview
 description: Learn how Microsoft.Maui.Essentials.AI brings on-device chat and text embeddings to .NET MAUI apps through Microsoft.Extensions.AI, using Apple Intelligence, Windows AI, and Gemini Nano.
-ms.date: 11/17/2026
+ms.date: 11/27/2026
 ai-usage: ai-assisted
 ---
 
@@ -29,6 +29,7 @@ Because the library uses the standard Microsoft.Extensions.AI interfaces, the sa
 - [Get started](getting-started.md): Install the package, register services, and check model readiness.
 - [Chat](chat.md): Use `IChatClient` for chat, streaming, tool calling, and structured output.
 - [Text embeddings](embeddings.md): Use `IEmbeddingGenerator` for on-device semantic search.
+- [Source-generated AI tools](tool-attributes.md): Turn app methods and properties into tools at compile time with `Microsoft.Maui.AI.Attributes`.
 - [Agents](agents/index.md): Build on-device agents and multi-agent workflows with Microsoft Agent Framework.
 
 ## See also

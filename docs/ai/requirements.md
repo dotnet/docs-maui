@@ -1,14 +1,14 @@
 ---
 title: Requirements for Microsoft.Maui.Essentials.AI
 description: Platform, device, and project requirements for on-device chat and text embeddings with Microsoft.Maui.Essentials.AI on Apple platforms, Windows, and Android.
-ms.date: 11/17/2026
+ms.date: 11/27/2026
 ms.topic: concept-article
 ai-usage: ai-assisted
 ---
 
 # Requirements for Microsoft.Maui.Essentials.AI
 
-`Microsoft.Maui.Essentials.AI` requires .NET 10 and the matching .NET MAUI workloads. Each platform also has its own OS, hardware, and model requirements. A supported OS version alone doesn't mean a model is available, so always [check the model status](getting-started.md#check-model-readiness) before you enable chat.
+`Microsoft.Maui.Essentials.AI` requires .NET 11 for iOS, Mac Catalyst, and macOS, and .NET 10 or later for Android and Windows. Install the matching .NET MAUI workloads. Each platform also has its own OS, hardware, and model requirements. A supported OS version alone doesn't mean a model is available, so always [check the model status](getting-started.md#check-model-readiness) before you enable chat.
 
 | Platform | Chat | Text embeddings |
 |----------|------|-----------------|
@@ -22,7 +22,7 @@ The package also supports native macOS 26 or later for chat, and macOS 10.15 or 
 
 Chat uses Apple's Foundation Models framework, which is part of Apple Intelligence. The device must support Apple Intelligence, and the user must enable it. For supported hardware, see [Apple Intelligence device requirements](https://support.apple.com/en-us/121115).
 
-Build with Xcode 26 or later. Image input, token usage, and explicit tool modes also require version 27 or later at runtime, Apple 27 target frameworks, and Xcode 27.
+Target .NET 11 Apple platforms, such as `net11.0-ios` and `net11.0-maccatalyst`. The package doesn't include .NET 10 Apple target frameworks. Its Apple assets are built against the version 27.2 platform SDKs, which are the default for .NET 11 Apple target frameworks and require [Xcode 27.2](https://github.com/dotnet/macios/releases/tag/dotnet-11.0.1xx-xcode27.2.11039). Apps still run on version 26 or later. Image input, token usage, and explicit tool modes require version 27 or later at runtime.
 
 Text embeddings use Apple's Natural Language framework and don't require Apple Intelligence. The embedding model for the requested language must be installed on the device. See [Text embeddings on Apple platforms](embeddings/apple.md).
 

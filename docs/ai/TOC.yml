@@ -13,6 +13,8 @@
     href: chat/apple.md
   - name: Android guidance
     href: chat/android.md
+  - name: Source-generated tools
+    href: tool-attributes.md
 - name: Text embeddings
   href: embeddings.md
   items:

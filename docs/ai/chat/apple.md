@@ -1,7 +1,7 @@
 ---
 title: Chat on Apple platforms
 description: Plan on-device chat with AppleIntelligenceChatClient, including model availability, prompt design, tools, and image input on Apple platforms.
-ms.date: 11/17/2026
+ms.date: 11/27/2026
 ms.topic: concept-article
 ai-usage: ai-assisted
 ---
@@ -65,7 +65,7 @@ On version 27 or later, `ChatResponse.Usage` reports input, output, total, cache
 ## Image input on Apple 27+
 
 > [!IMPORTANT]
-> Image input requires iOS, macOS, or Mac Catalyst 27 or later and a vision-capable Apple Intelligence model. Build with Apple 27 target frameworks and Xcode 27. On version 26, image requests throw an exception.
+> Image input requires iOS, macOS, or Mac Catalyst 27 or later and a vision-capable Apple Intelligence model. Build for .NET 11 Apple target frameworks with Xcode 27.2. See [Requirements](../requirements.md#apple-platforms). On version 26, image requests throw an exception.
 
 Attach encoded image bytes with `DataContent` and an `image/*` media type, or refer to a local image file with `UriContent`. Remote image URLs aren't supported. The client accepts images as input; it doesn't generate images.
 
