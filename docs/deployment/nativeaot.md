@@ -1,19 +1,30 @@
 ---
 title: "Native AOT deployment on iOS and Mac Catalyst"
 description: "Learn how to reduce your app size and achieve faster startup time with native AOT deployment on iOS and Mac Catalyst."
-ms.date: 12/03/2024
+ms.date: 11/27/2026
 monikerRange: ">=net-maui-9.0"
+ai-usage: ai-assisted
 ---
 
 # Native AOT deployment on iOS and Mac Catalyst
 
 Native AOT deployment produces a .NET Multi-platform App UI (.NET MAUI) app on iOS and Mac Catalyst that's been ahead-of-time (AOT) compiled to native code. Native AOT performs static program analysis, full trimming of your app, which is aggressive in removing code that's not statically referenced, and ahead-of-time code generation.
 
+::: moniker range="<=net-maui-10.0"
+
 Publishing and deploying a Native AOT app produces the following benefits:
 
 - Reduced app package size.
 - Faster startup time.
 - Faster build time.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Publishing and deploying a Native AOT app can reduce app package size and improve startup time.
+
+::: moniker-end
 
 Native AOT will introduce limitations on usage of certain aspects of the .NET runtime, and should only be used in scenarios where app size and performance are important. It'll require you to adapt your apps to Native AOT requirements, which means ensuring that they are fully trimming and AOT compatible. For more information about Native AOT limitations, see [Native AOT limitations](#native-aot-limitations).
 
@@ -23,6 +34,8 @@ When Native AOT deployment is enabled, the build system analyzes your code, and 
 > There may be cases where fixing trimming and AOT warnings isn't possible, such as when they occur for third-party libraries. In such cases, third-party libraries will need to be updated to become fully compatible.
 
 ## Native AOT performance benefits
+
+::: moniker range="<=net-maui-10.0"
 
 Publishing and deployment a Native AOT app produces an app that's typically up to 2.5x smaller, and an app that starts up typically up to 2x faster. However, the exact performance benefits are dependent upon multiple factors which include the platform being used, the device on which the app is running, and the app itself.
 
@@ -46,6 +59,14 @@ The following chart shows the average build time, on specific hardware, for a `d
 :::image type="content" source="media/nativeaot/average-build-time.png" alt-text="Chart showing average app build time on Mono and Native AOT." border="false":::
 
 The preceding chart shows that typically Native AOT has up to 2.8x faster build times on iOS devices compared to the default deployment model. For Mac Catalyst, build times are comparable for arm64 single RID apps, but are slightly slower for universal apps when compared to Mono deployment.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The size and startup benefits of Native AOT deployment depend on multiple factors, which include the platform being used, the device on which the app is running, and the app itself. Measure your app with both CoreCLR and Native AOT to determine the result for your scenario.
+
+::: moniker-end
 
 > [!IMPORTANT]
 > In many scenarios Native AOT will produce smaller and faster apps. However, in some scenarios Native AOT might not produce smaller and faster apps. Therefore, it's important to test and profile your app to determine the result of enabling Native AOT deployment.
@@ -113,8 +134,19 @@ In .NET MAUI app this means that:
 - Customizing UI appearance with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnPlatform`1> class. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 - Customizing UI appearance with the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) XAML markup extension isn't possible. Instead, you should use the <xref:Microsoft.Maui.Controls.OnIdiom`1> class. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
 
+::: moniker range="<=net-maui-10.0"
+
 > [!IMPORTANT]
 > The Mono interpreter isn't compatible with Native AOT deployment, and therefore the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties have no effect when using Native AOT. For more information, see [Interpreters on iOS and Mac Catalyst](~/macios/interpreter.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> Native AOT doesn't include an interpreter. In .NET 11, the `$(UseInterpreter)` and `$(MtouchInterpreter)` MSBuild properties apply only to the Mono runtime, which isn't supported, so they have no effect with CoreCLR or Native AOT. For more information, see [Interpreters on iOS and Mac Catalyst](~/macios/interpreter.md).
+
+::: moniker-end
 
 For more information about trim warnings, see [Introduction to trim warnings](/dotnet/core/deploying/trimming/fixing-warnings). For more information about AOT warnings, see [Introduction to AOT warnings](/dotnet/core/deploying/native-aot/fixing-warnings).
 
@@ -145,7 +177,17 @@ Use the following checklist to help you adapt your app to Native AOT deployment 
 
 ## Native AOT diagnostic support on iOS and Mac Catalyst
 
+::: moniker range="<=net-maui-10.0"
+
 Native AOT and Mono share a subset of diagnostics and instrumentation capabilities. Due to Mono's range of diagnostic tools, it can be beneficial to diagnose and debug issues within Mono instead of Native AOT. Apps that are trim and AOT-compatible shouldn't have behavioral differences, so investigations often apply to both runtimes.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Native AOT supports a subset of .NET diagnostics and instrumentation capabilities. Apps that are trim and AOT-compatible shouldn't have behavioral differences between CoreCLR, which is the default runtime, and Native AOT, so you can often investigate issues while your app runs on CoreCLR during development.
+
+::: moniker-end
 
 The following table shows the diagnostics support with Native AOT on iOS and Mac Catalyst:
 
@@ -165,16 +207,38 @@ Tracing of .NET MAUI applications on mobile platforms is enabled through [dotnet
 
 ### Development-time diagnostics
 
+::: moniker range="<=net-maui-10.0"
+
 .NET CLI tooling provides separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in Visual Studio Code), uses Mono by default when building or launching .NET MAUI iOS or Mac Catalyst applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot).
 
 Not all diagnostic tools will work seamlessly with published Native AOT applications. However, all applications that are trim and AOT-compatible (that is, those that don't produce any trim and AOT warnings at build time) shouldn't have behavioral differences between Mono and Native AOT. Therefore, all .NET development-time diagnostic tools, such as Hot Reload, are still available for developers during the mobile application development cycle.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+.NET CLI tooling provides separate commands for `build` and `publish`. `dotnet build` (or `Start Debugging (F5)` in Visual Studio Code), uses CoreCLR by default when building or launching .NET MAUI iOS or Mac Catalyst applications. Only `dotnet publish` will create a Native AOT application, if this deployment model is [enabled in the project file](#publish-using-native-aot).
+
+Not all diagnostic tools will work seamlessly with published Native AOT applications. However, all applications that are trim and AOT-compatible (that is, those that don't produce any trim and AOT warnings at build time) shouldn't have behavioral differences between CoreCLR and Native AOT. Therefore, all .NET development-time diagnostic tools, such as Hot Reload, are still available for developers during the mobile application development cycle.
+
+::: moniker-end
 
 > [!TIP]
 > You should develop, debug, and test your application as usual and publish your final app with Native AOT as one of the last steps.
 
 ### Native debugging
 
+::: moniker range="<=net-maui-10.0"
+
 When you run your .NET MAUI iOS or Mac Catalyst application during development it runs on Mono by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between Mono and Native AOT when the application isn't producing any trim and AOT warnings at build time. Provided that your application fulfils this requirement, you can use the standard Visual Studio Code managed debugging engine for development and testing,
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+When you run your .NET MAUI iOS or Mac Catalyst application during development it runs on CoreCLR by default. However, if Native AOT deployment is enabled in the project file, the behavior is expected to be the same between CoreCLR and Native AOT when the application isn't producing any trim and AOT warnings at build time. Provided that your application fulfils this requirement, you can use the standard Visual Studio Code managed debugging engine for development and testing,
+
+::: moniker-end
 
 After publishing, Native AOT applications are true native binaries and so the managed debugger won't work on them. However, the Native AOT compiler generates fully native executable files that you can debug with `lldb`. Debugging a Mac Catalyst app with `lldb` is straight forward, as it is executed on the same system. However, debugging NativeAOT iOS applications requires additional effort.
 
