@@ -1,7 +1,8 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 08/06/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
@@ -20,7 +21,7 @@ To access the media picker functionality, the following platform-specific setup 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `CAMERA` permission is required and must be configured in the Android project. In addition:
+To capture a photo or video, you must declare the `CAMERA` permission in your Android project. .NET MAUI requests it if needed before opening the camera app. In addition:
 
 - If your app targets Android 12 or lower, you must request the `READ_EXTERNAL_STORAGE` and `WRITE_EXTERNAL_STORAGE` permissions.
 - If your app targets Android 13 or higher and needs access to media files that other apps have created, you must request one or more of the following granular media permissions instead of the `READ_EXTERNAL_STORAGE` permission:
@@ -29,7 +30,10 @@ The `CAMERA` permission is required and must be configured in the Android projec
   - `READ_MEDIA_VIDEO`
   - `READ_MEDIA_AUDIO`
 
-These permissions can be added in the following ways:
+> [!NOTE]
+> Declaring `CAMERA` can cause [Google Play to filter your app](https://developer.android.com/guide/topics/manifest/uses-feature-element#permissions) from devices without certain camera features, even without feature declarations. The examples mark the back camera and autofocus as optional. Set `Required` or `android:required` to `true` if your app requires either feature. Check <xref:Microsoft.Maui.Media.MediaPicker.IsCaptureSupported> before capture. On Android, it checks whether the device reports a camera, not whether a camera app is available.
+
+Configure these permissions and camera features in one of the following ways:
 
 - Add the assembly-based permissions:
 
@@ -54,9 +58,9 @@ These permissions can be added in the following ways:
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
 
-  <!-- Add these properties if you would like to filter out devices that do not have cameras, or set to false to make them optional -->
-  <uses-feature android:name="android.hardware.camera" android:required="true" />
-  <uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />
+  <!-- Mark the back camera and autofocus as optional. -->
+  <uses-feature android:name="android.hardware.camera" android:required="false" />
+  <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
   ```
 
   \- or -
@@ -64,6 +68,8 @@ These permissions can be added in the following ways:
 - Update the Android Manifest in the manifest editor:
 
   In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
+
+  Also add the `<uses-feature>` elements from the previous example to the manifest XML.
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
