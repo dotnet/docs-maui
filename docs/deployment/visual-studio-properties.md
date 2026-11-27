@@ -1,7 +1,7 @@
 ---
 title: "Project property settings in Visual Studio"
 description: "Describes the Visual Studio project properties available to a .NET MAUI app. The properties and settings are related to building the app, configuring debug options, and other settings related to building the application for Windows, Android, and iOS."
-ms.date: 09/16/2026
+ms.date: 11/27/2026
 ---
 
 # Project configuration for .NET MAUI apps
@@ -355,7 +355,19 @@ General settings related to .NET MAUI.
 
 - **Application Title**
 
-  The display name of the application.
+  The display name of the application. This setting corresponds to the `ApplicationTitle` build property. On iOS and Mac Catalyst, a `CFBundleDisplayName` value set in *Info.plist* takes precedence over this setting.
+
+  ::: moniker range="<=net-maui-9.0"
+
+  On Mac Catalyst, this setting doesn't change the name of the app bundle. The app bundle (`.app`) and its executable are named after the `AssemblyName` build property, which defaults to the project name. To change the name of the app bundle, change **Assembly name** in **Application > General**, or set `AssemblyName` in your project file. Changing `AssemblyName` also changes the name of the output assembly and executable.
+
+  ::: moniker-end
+
+  ::: moniker range=">=net-maui-10.0"
+
+  On Mac Catalyst, this setting also names the app bundle (`.app`), so use a value that's valid as a folder name. For example, if **Application Title** is `My App`, the app bundle is `My App.app`. The executable inside the app bundle is still named after the `AssemblyName` build property. If you don't set **Application Title**, the app bundle is named after `AssemblyName`, which defaults to the project name.
+
+  ::: moniker-end
 
 - **Application ID**
 
