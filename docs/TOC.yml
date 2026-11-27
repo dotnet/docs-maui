@@ -1356,6 +1356,8 @@
       items:
         - name: Overview
           href: developer-tools/index.md
+        - name: Agent skills marketplace
+          href: developer-tools/agent-skills.md
         - name: .NET MAUI CLI
           items:
             - name: Overview
