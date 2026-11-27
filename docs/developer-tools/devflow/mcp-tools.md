@@ -18,7 +18,7 @@ Most tools that target an app accept an optional `agentPort`. If no explicit por
 
 Call `maui_list_agents` to find the port of the app you want to use. Then either pass that port as `agentPort` on each call or call `maui_select_agent` with `{"agentPort": 7000}` to set the default for the current MCP session. An explicit `agentPort` on a later call overrides the session default.
 
-If the broker can resolve the current project to one agent, or a `.mauidevflow` file supplies a `port`, you don't need to select a port separately. `maui_wait` also sets the session default to the first agent it matches. For CLI commands, use `--agent-port` to select a target explicitly.
+Without an explicit or session port, the broker first tries to resolve an agent for the current project or select the only connected agent. Only if that fails does the server use a `port` from `.mauidevflow`. `maui_wait` also sets the session default to the first agent it matches. You can filter by app name with its `app` parameter, but select a port explicitly when more than one agent might match. For CLI commands, use `--agent-port` to select a target explicitly.
 
 ## Tools
 
@@ -110,6 +110,8 @@ Use `force=true` with `maui_take_control` only after the user approves interrupt
 | `maui_cdp_source` | Get the HTML source of a Blazor WebView. |
 | `maui_cdp_evaluate` | Evaluate JavaScript in a Blazor WebView. |
 | `maui_cdp_screenshot` | Capture a Blazor WebView screenshot. |
+
+`maui_cdp_evaluate`, `maui_cdp_source`, and `maui_cdp_screenshot` accept a string `webviewId` to target a WebView by its index, `AutomationId`, or registered element ID. Call `maui_cdp_webviews` to list the available WebViews. If you omit `webviewId`, the default can change as pages and WebViews load, so specify a target when the app has more than one. A numeric `webviewId` matches an index before an `AutomationId`. If evaluation fails or the selected WebView returns no HTML source, the corresponding tool returns an error.
 
 ### Log tools
 
@@ -222,7 +224,7 @@ The following sections describe behavior and limits for selected tools.
 
 ### Native dialogs and screenshots
 
-`maui_native_dialog_detect` supports app-owned and system permission dialogs on macOS AppKit and Mac Catalyst, Windows, Android, iOS Simulator, and Linux when safe platform automation is available. Detection doesn't change host focus or send host keyboard or pointer input. Physical iOS devices aren't supported for native dialog automation.
+`maui_native_dialog_detect` supports app-owned dialogs and some system permission dialogs on macOS AppKit and Mac Catalyst, Windows, Android, iOS Simulator, and Linux when safe platform automation is available. On Linux, detection is limited to the app's visual tree; external system prompts require manual handling. Detection doesn't change host focus or send host keyboard or pointer input. Physical iOS devices aren't supported for native dialog automation.
 
 | Tool | Parameter | Required | Description |
 |------|-----------|----------|-------------|
@@ -235,21 +237,23 @@ The following sections describe behavior and limits for selected tools.
 
 To respond to a dialog:
 
-1. Call `maui_native_dialog_detect` and inspect `detected`, `canRespond`, `title`, and `buttons`. If `userActionRequired` is true and the dialog can't be safely automated, follow the returned instruction and ask the user to respond manually.
+1. Call `maui_native_dialog_detect` and inspect `detected`, `canRespond`, `userActionRequired`, `title`, and `buttons`. If `userActionRequired` is true and `canRespond` is false, follow the returned instruction and ask the user to respond manually. This can happen even when `detected` is false.
 1. Ask the user which exact button to press. If `canRespond` is true, call `maui_native_dialog_respond` with that label and the returned `promptId`.
 1. The MCP host requests separate confirmation for that exact prompt and button. Check the response's `success` and `userActionRequired` fields before continuing.
 
-The prompt token expires after two minutes and can be used once. If it expires, has already been used, or the dialog changes, detect the dialog again. A host without form-elicitation support can't confirm the action, so the user must respond manually.
+The prompt token expires after two minutes and can be used once. A response attempt can consume it even if the attempt fails or confirmation is declined. If the dialog changes or the user wants to retry, detect the dialog again. A host without form-elicitation support can't confirm the action, so the user must respond manually.
 
-On macOS, grant Accessibility access to the terminal or host running `maui`. Android and iOS Simulator actions are scoped to the connected device; a supplied device identifier must match it. Some surfaces aren't safely automatable, including the iOS 18 and later contact-selection surface after the initial permission sheet.
+The confirmation gate applies to the MCP tool. The CLI command `maui devflow ui alert dismiss` doesn't use this gate; obtain the user's approval for the exact button before using it.
 
-`maui_screenshot` returns a PNG image to the MCP client. On macOS AppKit, full-window capture uses ScreenCaptureKit when available to include native chrome without activating the app or changing keyboard focus. Fallback captures can differ or omit layer-backed controls. On failure, the tool reports the agent's error message when available and any suggestions, such as restoring a hidden or minimized window before retrying.
+On macOS, grant Accessibility access to the terminal or host running `maui`. Android detection requires `adb`. iOS Simulator detection uses the `apple` CLI; if it isn't available or fails, a dialog might not be reported. Android and iOS Simulator actions are scoped to the connected device; a supplied device identifier must match it. Some surfaces aren't safely automatable, including the iOS 18 and later contact-selection surface after the initial permission sheet.
+
+`maui_screenshot` returns a PNG image to the MCP client. On macOS AppKit, full-window capture uses ScreenCaptureKit on macOS 14 or later when available to include native chrome without activating the app or changing keyboard focus. Native window capture might require **Screen & System Audio Recording** permission, but the agent doesn't trigger a permission prompt. Fallback captures can differ or omit layer-backed controls. On failure, the tool reports the agent's error message when available and any suggestions, such as restoring a hidden or minimized window before retrying.
 
 The tool's optional arguments include `agentPort`, `window`, `elementId`, `selector` for a Blazor WebView, `maxWidth`, and `scale`. You can also pass `captureEpoch` and `registryGeneration` from `maui_tree` to require a matching snapshot.
 
 ### List preferences
 
-`maui_preferences_list` accepts optional `agentPort` and `sharedName` arguments. It enumerates the native preference store where supported, including keys written directly by the app. Native enumeration is supported for macOS, iOS, Mac Catalyst, Android, Windows, Linux, and WPF stores.
+`maui_preferences_list` accepts optional `agentPort` and `sharedName` arguments. It enumerates the native preference store where supported, including keys written directly by the app. Native enumeration is supported for macOS, iOS, tvOS, Mac Catalyst, Android, Windows, Linux, and WPF stores.
 
 The response includes:
 
@@ -275,7 +279,7 @@ For example:
 }
 ```
 
-Check `complete` before treating the list as exhaustive. When it is `false`, keys written directly by the app might be missing.
+Check `complete` before treating the list of keys as exhaustive. When it is `false`, keys written directly by the app might be missing. Completeness applies to keys, not value accuracy. Values and types are inferred and can be incorrect, including on Linux. If you know a value's type, use `maui_preferences_get` with the appropriate `type`.
 
 ### Batch actions and commands
 
@@ -285,14 +289,15 @@ For example, the following MCP tool arguments fill an entry and then tap a butto
 
 ```json
 {
-  "actionsJson": "[{\"action\":\"fill\",\"elementId\":\"entry1\",\"text\":\"hello\"},{\"action\":\"tap\",\"elementId\":\"button1\"}]",
-  "continueOnError": true
+  "actionsJson": "[{\"action\":\"fill\",\"elementId\":\"entry1\",\"text\":\"hello\"},{\"action\":\"tap\",\"elementId\":\"button1\"}]"
 }
 ```
 
-The response includes an overall `success` and per-action `results`. Inspect them even when the tool call returns a response. Optional `captureEpoch` and `registryGeneration` bind the actions to a tree snapshot; a stale snapshot can stop the batch.
+When actions run, the response includes an overall `success` and per-action `results`. Request validation or transport failures can return a plain-text error, and a rejected batch can omit `results`. Inspect the response before assuming actions ran.
 
-The CLI command `maui devflow batch` is separate from the MCP tool. It reads UI or WebView commands from standard input and emits a JSON Lines result for each command by default. It stops on the first failure unless you pass `--continue-on-error`. In either case, it exits with code `1` if any command fails, even when later commands succeed.
+Optional `captureEpoch` and `registryGeneration` bind the actions to a tree snapshot. The agent validates the referenced element IDs before running a capture-bound batch and can reject the entire batch if an ID is stale or unknown. After a batch, call `maui_tree` again before another capture-bound action.
+
+The CLI command `maui devflow batch` is separate from the MCP tool. It reads UI or WebView command lines, such as `ui tap button1`, from standard input and emits a JSON Lines result for each command by default. It stops on the first failure unless you pass `--continue-on-error`. In either case, it exits with code `1` if any command fails, even when later commands succeed.
 
 ### maui_jobs_list
 
