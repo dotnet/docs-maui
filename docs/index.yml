@@ -338,12 +338,12 @@ additionalContent:
       items:
         - title: .NET MAUI API reference
           summary: API reference documentation for .NET MAUI.
-          url: /dotnet/api/?view=net-maui-9.0&preserve-view=true
+          url: /dotnet/api/?view=net-maui-10.0&preserve-view=true
         - title: .NET API reference
           summary: API reference documentation for .NET.
-          url: /dotnet/api?view=net-8.0&preserve-view=true
-        - title: .NET Platform Extensions API reference
-          summary: API reference documentation for .NET Platform Extensions.
-          url: /dotnet/api?view=dotnet-plat-ext-8.0&preserve-view=true
+          url: /dotnet/api?view=net-11.0&preserve-view=true
+        - title: .NET package-provided API reference
+          summary: API reference documentation for .NET APIs that ship in NuGet packages.
+          url: /dotnet/api?view=net-11.0-pp&preserve-view=true
 
   footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247/dotnet-maui) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"
