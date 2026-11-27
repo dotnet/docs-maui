@@ -1,7 +1,8 @@
 ---
 title: Unit testing
 description: Learn how to test .NET MAUI app code with host-side unit tests and platform test projects.
-ms.date: 09/02/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Unit testing
@@ -25,7 +26,7 @@ Unit testing has the most significant effect on code quality when it's an integr
 > [!IMPORTANT]
 > Unit tests are very effective against regression. That is, functionality that used to work, but has been disturbed by a faulty update.
 
-[xUnit](https://xunit.net/) is the recommended test framework for .NET MAUI apps.
+[xUnit](https://xunit.net/) is the recommended test framework for host-side tests of .NET MAUI apps.
 
 ## Add xUnit tests to a .NET MAUI solution
 
@@ -203,6 +204,30 @@ dotnet test --project ./MyAndroidTests/MyAndroidTests.csproj
 Start an Android emulator or connect an Android device before you run the test command. The command builds and installs the test app, and then runs the tests in the app process with Android instrumentation.
 
 Platform test projects are different from the xUnit projects described earlier in this article. An ordinary xUnit project targets a host .NET runtime and tests code that doesn't require a platform app process. Use a platform test project when the test must use Android, iOS, tvOS, macOS, or Mac Catalyst APIs and behavior. For more information about the MTP form of the test command, see [`dotnet test` with Microsoft.Testing.Platform](/dotnet/core/tools/dotnet-test-mtp).
+
+### Test .NET MAUI controls and services
+
+The experimental `Microsoft.Maui.Testing` package runs tests in a native .NET MAUI test app on Android, iOS, or Mac Catalyst. The `mauitest` template creates a project with .NET MAUI Controls and MSTest configured, so tests can exercise controls and platform behavior. It requires the .NET 11 SDK and .NET MAUI workload. Apple targets require macOS and Xcode.
+
+Install the template, then create a test project:
+
+```dotnetcli
+dotnet new install Microsoft.Maui.Testing.Templates --prerelease
+dotnet new mauitest -n MyApp.Tests
+cd MyApp.Tests
+```
+
+The generated project references `Microsoft.Maui.Testing` and contains an example test. Replace or add tests for your app, and add project references to the code under test as needed. Configure test services in `MauiProgram.cs`.
+
+The template attempts to create or update a `global.json` file to select the Microsoft.Testing.Platform runner. If this action fails, set `runner` to `Microsoft.Testing.Platform` under `test` in `global.json`. If you're adding the project to an existing repository, check the change to `global.json` because it can affect other test projects.
+
+Start an Android emulator or connect a device, then run:
+
+```dotnetcli
+dotnet test -f net11.0-android
+```
+
+To run on Apple platforms, select `net11.0-ios` or `net11.0-maccatalyst` instead. For more information about setup, selecting devices, and using NUnit, see the [Microsoft.Maui.Testing documentation](https://github.com/dotnet/maui-labs/tree/main/src/Testing).
 
 ::: moniker-end
 
