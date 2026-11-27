@@ -1,6 +1,6 @@
 ---
 title: "AgentClient API reference"
-description: "Reference for the AgentClient class in the Microsoft.Maui.DevFlow.Driver namespace for programmatic interaction with DevFlow agents from .NET code."
+description: "Reference for the AgentClient class in Microsoft.Maui.DevFlow.Driver for programmatic interaction with DevFlow agents from .NET code."
 ms.date: 11/27/2026
 ai-usage: ai-assisted
 ---
