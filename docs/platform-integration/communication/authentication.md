@@ -1,7 +1,8 @@
 ---
 title: "Web Authenticator"
 description: "Learn how to use the .NET MAUI IWebAuthenticator interface, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 04/02/2025
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 
@@ -76,8 +77,8 @@ Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ and _Platf
 
 # [Windows](#tab/windows)
 
-> [!CAUTION]
-> At the moment, <xref:Microsoft.Maui.Authentication.WebAuthenticator> isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+> [!NOTE]
+> <xref:Microsoft.Maui.Authentication.WebAuthenticator> is supported on Windows. Register the callback protocol in the app manifest and route app-instance activations to the authenticator as shown below.
 
 For WinUI 3, you'll need to declare your callback URI protocol in your _Package.appxmanifest_ file:
 
@@ -94,6 +95,27 @@ For WinUI 3, you'll need to declare your callback URI protocol in your _Package.
     </Application>
 </Applications>
 ```
+
+::: moniker range=">=net-maui-11.0"
+
+In `MauiProgram.CreateMauiApp`, forward Windows app-instance activations to <xref:Microsoft.Maui.ApplicationModel.Platform.OnAppInstanceActivated%2A> so the authenticator can handle the callback:
+
+```csharp
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.LifecycleEvents;
+
+var builder = MauiApp.CreateBuilder();
+builder.ConfigureLifecycleEvents(events =>
+{
+#if WINDOWS
+    events.AddWindows(windows => windows
+        .OnAppInstanceActivated((app, args) =>
+            Platform.OnAppInstanceActivated(app, args)));
+#endif
+});
+```
+
+::: moniker-end
 
 -----
 
@@ -186,10 +208,7 @@ Depending on the iOS version, the behavior is slightly different:
 
 # [Windows](#tab/windows)
 
-> [!CAUTION]
-> At the moment, <xref:Microsoft.Maui.Authentication.WebAuthenticator> isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
-
-On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the system browser is used.
+On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the system browser is used. On .NET 11 and later, route app-instance activations to <xref:Microsoft.Maui.ApplicationModel.Platform.OnAppInstanceActivated%2A> so the callback reaches <xref:Microsoft.Maui.Authentication.WebAuthenticator>. For setup instructions, see [Get started](#get-started).
 
 -----
 <!-- markdownlint-enable MD024 -->

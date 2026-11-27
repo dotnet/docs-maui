@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell tabs"
 description: "Learn how to customize and control a .NET MAUI TabBar, which represents the bottom tab bar in a .NET MAUI Shell app."
-ms.date: 05/15/2026
+ms.date: 11/27/2026
 ---
 
 # .NET MAUI Shell tabs
@@ -203,11 +203,23 @@ This implicit conversion automatically wraps the third <xref:Microsoft.Maui.Cont
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that control the appearance of tabs:
 
-- `TabBarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
+- `TabBarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color for the tab bar.
 - `TabBarDisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
 - `TabBarForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
 - `TabBarTitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value is used.
 - `TabBarUnselectedColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
+
+::: moniker range="<=net-maui-10.0"
+
+If `TabBarBackgroundColor` is unset, the `Shell.BackgroundColor` value is used for the bottom tab bar.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+For the bottom tab bar, the background precedence is `Shell.TabBarBackgroundColor`, a supported `Shell.Background` brush, `Shell.BackgroundColor`, and then the platform default. Solid and gradient `Shell.Background` brushes are supported on Android and on iOS and Mac Catalyst 15 or later. On other platforms and versions, unsupported brushes fall back to `Shell.BackgroundColor` or the platform default.
+
+::: moniker-end
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings, and styled.
 

@@ -1,7 +1,7 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
-ms.date: 05/24/2026
+ms.date: 11/27/2026
 ---
 
 # Map
@@ -399,7 +399,7 @@ The following code shows an example of moving the displayed region on a map:
 
 ```csharp
 using Microsoft.Maui.Maps;
-using Microsoft.Maui.Controls.Maps.Map;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 ...
 
 MapSpan mapSpan = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(0.444));
@@ -591,14 +591,15 @@ map.MapLongClicked += (sender, args) =>
 
 ##### Map element click
 
-The `MapElementClick` event is fired when a user taps on a `Circle`, `Polygon`, or `Polyline` on the map. The `MapElementClickEventArgs` provides the tapped `MapElement`:
+Each map shape exposes its own click event. Subscribe to `Circle.CircleClicked`, `Polygon.PolygonClicked`, or `Polyline.PolylineClicked` to respond when the user taps the corresponding shape:
 
 ```csharp
-map.MapElementClick += (sender, args) =>
-{
-    MapElement clickedElement = args.MapElement;
-    System.Diagnostics.Debug.WriteLine($"Tapped a {clickedElement.GetType().Name}");
-};
+circle.CircleClicked += (sender, args) =>
+    System.Diagnostics.Debug.WriteLine("Tapped the circle");
+polygon.PolygonClicked += (sender, args) =>
+    System.Diagnostics.Debug.WriteLine("Tapped the polygon");
+polyline.PolylineClicked += (sender, args) =>
+    System.Diagnostics.Debug.WriteLine("Tapped the polyline");
 ```
 
 ::: moniker-end
@@ -766,7 +767,7 @@ The `Pin` class defines a `MarkerClicked` event, which is fired when a `Pin` is 
 
 The `Pin` class also defines a `InfoWindowClicked` event that's fired when an information window is tapped. This event should be handled when there's a requirement to be notified that a specific information window has been tapped.
 
-The following code shows an example of handling these events:
+In a <xref:Microsoft.Maui.Controls.ContentPage> code-behind, handle these events through the page instance:
 
 ::: moniker range="<=net-maui-9.0"
 
@@ -787,7 +788,7 @@ boardwalkPin.MarkerClicked += async (s, args) =>
 {
     args.HideInfoWindow = true;
     string pinName = ((Pin)s).Label;
-    await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+    await this.DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
 };
 
 Pin wharfPin = new Pin
@@ -800,7 +801,7 @@ Pin wharfPin = new Pin
 wharfPin.InfoWindowClicked += async (s, args) =>
 {
     string pinName = ((Pin)s).Label;
-    await DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
+    await this.DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
 };
 ```
 
@@ -825,7 +826,7 @@ boardwalkPin.MarkerClicked += async (s, args) =>
 {
     args.HideInfoWindow = true;
     string pinName = ((Pin)s).Label;
-    await DisplayAlertAsync("Pin Clicked", $"{pinName} was clicked.", "Ok");
+    await this.DisplayAlertAsync("Pin Clicked", $"{pinName} was clicked.", "Ok");
 };
 
 Pin wharfPin = new Pin
@@ -838,7 +839,7 @@ Pin wharfPin = new Pin
 wharfPin.InfoWindowClicked += async (s, args) =>
 {
     string pinName = ((Pin)s).Label;
-    await DisplayAlertAsync("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
+    await this.DisplayAlertAsync("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
 };
 ```
 

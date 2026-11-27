@@ -1,59 +1,77 @@
 ---
 title: "XAML compilation"
 description: ".NET MAUI XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC)."
-ms.date: 05/12/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # XAML Processing
 
-.NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. As of .NET 10, default inflation is runtime for debug builds, XamlC (XamlCompilation) for Release. We encourage you to try source generation and use it if it works for you. This will become the future in new projects, then in all projects, soon.
+.NET Multi-platform App UI (.NET MAUI) XAML can be processed and inflated into a tree of objects in different ways. SourceGen is the default inflator in .NET 11 and later. The `Runtime` and `XamlC` inflators are deprecated and produce warning `MAUI1001` when selected. For more information, see [XAML Source Generation](#xaml-source-generation).
+
+::: moniker range="<=net-maui-10.0"
+
+In .NET 10 and earlier, default inflation is Runtime for Debug builds and XamlC for Release builds.
+
+::: moniker-end
 
 ## XAML Compilation
 
-XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC). XAML compilation offers a number of benefits:
+When you select the XamlC inflator, XAML is compiled into intermediate language (IL) with the XAML compiler (XAMLC). XAML compilation offers the following benefits:
 
 - It performs compile-time checking of XAML, notifying you of any errors.
 - It removes some of the load and instantiation time for XAML elements.
 - It helps to reduce the file size of the final assembly by no longer including .xaml files.
 
-XAML compilation is enabled by default in .NET MAUI apps. For apps built using the debug configuration, XAML compilation provides compile-time validation of XAML, but does not convert the XAML to IL in the assembly. Instead, XAML files are included as embedded resources in the app package, and evaluated at runtime. For apps built using the release configuration, XAML compilation provides compile-time validation of XAML, and converts the XAML to IL that's written to the assembly. However, XAML compilation behavior can be overridden in both configurations with the <xref:Microsoft.Maui.Controls.Xaml.XamlCompilationAttribute> class.
+::: moniker range="<=net-maui-10.0"
+
+XAML compilation is enabled by default in .NET MAUI apps. For apps built using the Debug configuration, XAML compilation provides compile-time validation but doesn't convert XAML to IL. Instead, XAML files are included as embedded resources in the app package and evaluated at runtime. For apps built using the Release configuration, XAML compilation validates XAML and converts it to IL in the assembly. You can override XAML compilation behavior in both configurations with the <xref:Microsoft.Maui.Controls.Xaml.XamlCompilationAttribute> class.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In .NET 11 and later, SourceGen is the default instead of XamlC. If you explicitly select XamlC, it is deprecated and produces warning `MAUI1001`.
+
+::: moniker-end
 
 > [!IMPORTANT]
 > Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](~/fundamentals/data-binding/compiled-bindings.md).
 
 ## XAML Runtime Inflation
 
-XAML can be inflated at Runtime using reflection. It has advantages, like allowing Hot Reload scenario, shortening build times, allow the report of diagnostics to IDE. However typically this method should be avoided because it is also the slowest and syntax errors are only caught at runtime.
+XAML can be inflated at runtime using reflection. This can support existing Hot Reload workflows, shorten build times, and report diagnostics to the IDE, but it's the slowest inflator and catches syntax errors only at runtime. Runtime inflation is deprecated in .NET 11 and later and produces warning `MAUI1001`; don't select it solely for Hot Reload, because Debug builds use SourceGen with incremental Hot Reload by default.
 
 ## XAML Source Generation
 
-Starting with .NET 10, XAML can be transformed into C# code at compilaiton time. It provides the following benefits:
+Starting with .NET 10, XAML can be transformed into C# code at compilation time. SourceGen provides the following benefits:
 
 - Consistency: same generated code used in Debug and Release
 - Speed: inflation times on device are 10000% (100 times) faster in Debug, and 25% faster on Release. The volume of allocation is reduced in the same proportion
 - Debug: you can see the generated code, you can break and debug it.
 
-This is the recommended way going further. It will be enabled by default in the future.
+SourceGen is the default inflator in .NET 11 and later.
 
 ### Enable Source Generation, and per file settings
 
 We no longer recommend using `[XamlCompilation]` attribute to enable or disable per file compilation.
 
-You can enable XAML source generation at the project level, by setting the `MauiXamlInflator` value to `SourceGen` in your csproj file as shown here:
+To explicitly select XAML source generation at the project level, set the `MauiXamlInflator` value to `SourceGen` in your project file:
 
 ```xml
 <MauiXamlInflator>SourceGen</MauiXamlInflator>
 ```
 
-This will use source generation for both Release and Debug configurations, for all files.
+This uses SourceGen for all XAML files in both Release and Debug configurations.
 
-You can revert to the default per file (or use wildcards) or force another inflator
+You can set an individual file or pattern to use the project default with `Inflator="Default"`, or explicitly select an inflator:
 
 ```xml
 <ItemGroup>
     <MauiXaml Update="MyFile.xaml" Inflator="SourceGen" />        <!-- enable sourcegen on a single file. prefer setting it at project level -->
-    <MauiXaml Update="Controls\**.xaml" Inflator="Default" />     <!-- revert to defaults for all XAML in Controls. as of .NET 10, default is XamlC for Release, Runtime for Debug -->
-    <MauiXaml Update="Controls\**.xaml" Inflator="Runtime" />     <!-- force runtime inflation. if you have to do this, it probably indicates a bug in both XamlC and sourcegen, please report -->
+    <MauiXaml Update="Controls\**.xaml" Inflator="Default" />     <!-- use the project default inflator for files in Controls -->
+    <MauiXaml Update="Controls\**.xaml" Inflator="Runtime" />     <!-- deprecated in .NET 11 and later; produces warning MAUI1001 -->
+    <MauiXaml Update="Controls\**.xaml" Inflator="XamlC" />       <!-- deprecated in .NET 11 and later; produces warning MAUI1001 -->
 </ItemGroup>
 ```
 

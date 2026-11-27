@@ -1,7 +1,8 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/10/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -162,7 +163,7 @@ Apply a custom JSON style to the map on Android using the `MapStyle` property. T
 #### Map events and element properties
 
 - `MapLongClicked` — fires when the user long-presses on the map.
-- `Circle`, `Polygon`, and `Polyline` now raise click events (`MapElementClick`).
+- Shapes have their own click events: `Circle.CircleClicked`, `Polygon.PolygonClicked`, and `Polyline.PolylineClicked`.
 - `MapElement.IsVisible` and `MapElement.ZIndex` — control element visibility and draw order.
 - `Pin.ShowInfoWindow()` / `Pin.HideInfoWindow()` — programmatically show or hide a pin's info window.
 - `UserLocationChanged` event and `LastUserLocation` property — track the user's location in real time.
@@ -187,19 +188,19 @@ Starting in .NET 11 Preview 6, Windows uses the CollectionView2 handler by defau
 
 ### Android Shell handler
 
-Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Controls.Shell> apps use the handler-based Shell architecture by default. The new architecture reuses the same handler building blocks as other .NET MAUI navigation features, while the legacy `ShellRenderer` path remains available if you explicitly register it. For more information, see [GitHub PR #34758](https://github.com/dotnet/maui/pull/34758).
+Starting in .NET 11 Preview 6, Android <xref:Microsoft.Maui.Controls.Shell> apps use the handler-based Shell architecture. The legacy `ShellRenderer` compatibility path isn't available in .NET MAUI 11. Migrate custom renderer code to supported handler and mapper APIs. For more information, see [GitHub PR #34758](https://github.com/dotnet/maui/pull/34758).
 
 ### Compatibility package removal
 
-Starting in .NET 11 Preview 6, the optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped. Projects that explicitly referenced this package for Xamarin.Forms migration compatibility should migrate off it before moving to .NET 11. Apps that only reference `Microsoft.Maui.Controls` aren't affected. For more information, see [GitHub PR #35870](https://github.com/dotnet/maui/pull/35870).
+Starting in .NET 11 Preview 6, the Xamarin.Forms compatibility layer is no longer included in the .NET MAUI distribution. This includes the optional `Microsoft.Maui.Controls.Compatibility` NuGet package, `UseMauiCompatibility`, renderer registration and export APIs, and compatibility controls and types. Migrate renderer customizations to supported handlers and mappers, and replace compatibility types with supported .NET MAUI APIs before upgrading. Apps that use only APIs in `Microsoft.Maui.Controls` aren't affected. For more information, see [GitHub PR #35870](https://github.com/dotnet/maui/pull/35870).
 
 ### iOS and Mac Catalyst NavigationPage and TabbedPage handlers
 
-Starting in .NET 11 Preview 7, <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.TabbedPage> use `NavigationViewHandler` and `TabbedViewHandler` by default on iOS and Mac Catalyst, rather than the `NavigationRenderer` and `TabbedRenderer` compatibility renderers. This aligns Apple platforms with Android, Windows, and Tizen, which already used handlers. Neither change is gated behind a feature switch, so apps that use custom renderers or extensive navigation customizations should test against this preview. Both renderers remain available in the compatibility layer as a manual fallback.
+Starting in .NET 11 Preview 7, <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.TabbedPage> use `NavigationViewHandler` and `TabbedViewHandler` on iOS and Mac Catalyst, rather than the `NavigationRenderer` and `TabbedRenderer` compatibility renderers. The compatibility renderers aren't included in .NET MAUI 11 and can't be registered as a fallback. Migrate customizations to supported handlers and test navigation behavior when upgrading.
 
-For <xref:Microsoft.Maui.Controls.NavigationPage>, the handler also aligns iOS and Mac Catalyst event timing with the other platforms. The `Appearing` event now occurs before the page is pushed, rather than after the page becomes visible, and pushing a page that was previously popped creates a new view controller instead of reusing the previous one. Use the `NavigatedTo` event rather than `Appearing` for work that assumes the page is on screen. <xref:Microsoft.Maui.Controls.ToolbarItem> objects whose `Order` property is `Secondary` also move into an overflow menu in the navigation bar, rather than a toolbar at the bottom of the page. For more information, see [NavigationPage on iOS and Mac Catalyst](~/user-interface/pages/navigationpage.md#navigationpage-on-ios-and-mac-catalyst), [Migrate iOS NavigationPage renderers](~/migration/custom-renderers.md#migrate-ios-navigationpage-renderers), and [GitHub PR #36109](https://github.com/dotnet/maui/pull/36109).
+For <xref:Microsoft.Maui.Controls.NavigationPage>, the handler also aligns iOS and Mac Catalyst event timing with the other platforms. The `Appearing` event now occurs before the page is pushed, rather than after the page becomes visible, and pushing a page that was previously popped creates a new view controller instead of reusing the previous one. Use the `NavigatedTo` event rather than `Appearing` for work that assumes the page is on screen. <xref:Microsoft.Maui.Controls.ToolbarItem> objects whose `Order` property is `Secondary` also move into an overflow menu in the navigation bar, rather than a toolbar at the bottom of the page. For more information, see [NavigationPage on iOS and Mac Catalyst](~/user-interface/pages/navigationpage.md#navigationpage-on-ios-and-mac-catalyst) and [GitHub PR #36109](https://github.com/dotnet/maui/pull/36109).
 
-For <xref:Microsoft.Maui.Controls.TabbedPage>, existing functionality is preserved, including tab titles, icons, and selection, the bar and tab color properties, the **More** tab, and the `TranslucencyMode` platform-specific. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst), [Migrate iOS TabbedPage renderers](~/migration/custom-renderers.md#migrate-ios-tabbedpage-renderers), and [GitHub PR #36507](https://github.com/dotnet/maui/pull/36507).
+For <xref:Microsoft.Maui.Controls.TabbedPage>, existing functionality is preserved, including tab titles, icons, and selection, the bar and tab color properties, the **More** tab, and the `TranslucencyMode` platform-specific. For more information, see [TabbedPage on iOS and Mac Catalyst](~/user-interface/pages/tabbedpage.md#tabbedpage-on-ios-and-mac-catalyst) and [GitHub PR #36507](https://github.com/dotnet/maui/pull/36507).
 
 ### TabbedPage badges
 
@@ -239,11 +240,11 @@ blazorWebView.StaticContentCacheControlProvider = request =>
         : null;
 ```
 
-A `null`, empty, or whitespace return value keeps the existing `no-store` behavior. .NET MAUI uses a bounded cache for each web view and doesn't cache authenticated, range, non-`GET`, or `no-store` requests. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md) and [GitHub PR #35706](https://github.com/dotnet/maui/pull/35706).
+`StaticContentCacheControlProvider` is an instance property on each `BlazorWebView`. A `null`, empty, or whitespace return value uses the default `no-cache, max-age=0, must-revalidate, no-store` policy; caching occurs only when the provider returns a cacheable `Cache-Control` value. .NET MAUI uses a bounded cache for each web view and doesn't cache authenticated, range, non-`GET`, or `no-store` requests. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md) and [GitHub PR #35706](https://github.com/dotnet/maui/pull/35706).
 
 ### iOS and Mac Catalyst FlyoutPage handler
 
-In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.FlyoutPage> uses `FlyoutViewHandler` by default on iOS and Mac Catalyst. Apps that use a custom `PhoneFlyoutPageRenderer` must register the renderer explicitly. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md) and [GitHub PR #36676](https://github.com/dotnet/maui/pull/36676).
+In .NET 11 RC 1, <xref:Microsoft.Maui.Controls.FlyoutPage> uses `FlyoutViewHandler` on iOS and Mac Catalyst. The `PhoneFlyoutPageRenderer` compatibility renderer isn't included in .NET MAUI 11. Migrate customizations to supported handler APIs. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md) and [GitHub PR #36676](https://github.com/dotnet/maui/pull/36676).
 
 ## Navigation
 
@@ -286,7 +287,7 @@ Passkeys are supported on Android 14 (API 34), iOS 16, Mac Catalyst 16, and Wind
 
 ### Save captured media to the gallery
 
-Starting in .NET 11 Preview 7, the `MediaPickerOptions.SaveToGallery` property saves a captured photo or video to the device's gallery. The property defaults to `false`, and applies only to the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> methods. It's supported on Android, iOS, and Mac Catalyst, and is ignored on Windows and Tizen. For more information, see [Save captured media to the gallery](~/platform-integration/device-media/picker.md#save-captured-media-to-the-gallery) and [GitHub PR #34641](https://github.com/dotnet/maui/pull/34641).
+Starting in .NET 11 Preview 7, the `MediaPickerOptions.SaveToGallery` property saves a captured photo or video to the device's gallery. The property defaults to `false`, and applies only to the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> and <xref:Microsoft.Maui.Media.IMediaPicker.CaptureVideoAsync%2A> methods. It's supported on Android, iOS, and Mac Catalyst, and is ignored on Windows. For more information, see [Save captured media to the gallery](~/platform-integration/device-media/picker.md#save-captured-media-to-the-gallery) and [GitHub PR #34641](https://github.com/dotnet/maui/pull/34641).
 
 ### Status bar theme
 
@@ -369,22 +370,12 @@ Starting in .NET 11 Preview 6, the permissions API also exposes an `IPermissions
 
 ### InvalidateStyle and InvalidateVisualStates
 
-Two new APIs make it easier to reapply styles and visual states that have been mutated in place:
+These APIs support framework and Hot Reload scenarios that reapply styles and visual states after in-place changes:
 
 - `VisualElement.InvalidateStyle()` — forces a control to reapply its current <xref:Microsoft.Maui.Controls.Style>, picking up any property changes made directly on the style object.
-- `VisualStateManager.InvalidateVisualStates(VisualElement)` — reapplies the current visual state group setters, useful when visual state property values change at runtime.
+- `VisualStateManager.InvalidateVisualStates(VisualElement)` — reapplies the current visual state group setters. This infrastructure-oriented API is hidden from IntelliSense with `EditorBrowsable.Never` and isn't intended for general app-level UI updates.
 
-These methods are especially useful for Hot Reload scenarios and dynamic UI updates where styles or visual states are modified without replacing the entire style object. For more information, see [GitHub PR #34723](https://github.com/dotnet/maui/pull/34723).
-
-```csharp
-// Mutate a style in place and force the control to pick up the change
-var style = myButton.Style;
-style.Setters.Add(new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Red });
-myButton.InvalidateStyle();
-
-// Reapply visual states after changing a setter value
-VisualStateManager.InvalidateVisualStates(myButton);
-```
+For more information, see [GitHub PR #34723](https://github.com/dotnet/maui/pull/34723).
 
 ## XAML
 
@@ -572,12 +563,12 @@ Starting in .NET 11 Preview 4, several long-standing issues have been fixed to m
 
 ## .NET for iOS
 
-.NET 11 on iOS, tvOS, Mac Catalyst, and macOS supports the following platform versions:
+.NET 11 Apple target frameworks use platform version 27.0 by default:
 
-- iOS: 18.2
-- tvOS: 18.2
-- Mac Catalyst: 18.2
-- macOS: 15.2
+- iOS: 27.0
+- tvOS: 27.0
+- Mac Catalyst: 27.0
+- macOS: 27.0
 
 For more information about .NET 11 on iOS, tvOS, Mac Catalyst, and macOS, see the following release notes:
 
@@ -585,9 +576,9 @@ For more information about .NET 11 on iOS, tvOS, Mac Catalyst, and macOS, see th
 
 For information about known issues, see [Known issues in .NET 11](https://github.com/dotnet/macios/wiki/Known-issues-in-.NET11).
 
-### Xcode 26.4
+### Xcode 27
 
-Starting in .NET 11 Preview 4, Xcode 26.4 Stable is the supported Xcode version, with refreshed bindings across UIKit, AVFoundation, WebKit, Metal, Photos, PassKit, CarPlay, AuthenticationServices, and more. For more information, see [dotnet/macios #25005](https://github.com/dotnet/macios/pull/25005).
+The .NET 11 MAUI toolchain supports Xcode 27. Use Xcode 27 when building for Apple platforms with this .NET 11 release line. For more information about supported toolchain versions, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 
 One Apple-side breaking change: `HMError.QuotaExceeded` was removed by Apple and is no longer available. For more information, see [dotnet/macios #25024](https://github.com/dotnet/macios/pull/25024).
 
@@ -634,7 +625,11 @@ Apple app builds now remove the `Headers`, `PrivateHeaders`, and `Modules` direc
 
 ### Color is sealed
 
-In .NET 11 RC 1, the <xref:Microsoft.Maui.Graphics.Color> record is sealed. Code that derives from `Color` must use composition instead. For more information, see [GitHub PR #36443](https://github.com/dotnet/maui/pull/36443).
+In .NET 11 RC 1, <xref:Microsoft.Maui.Graphics.Color> is a sealed record class, so code that derives from `Color` must use composition instead. Its equality and hash code are value-based, using the byte-precision ARGB representation returned by `ToInt()`. Code that relies on reference identity or on the previous equality behavior should be updated, including comparisons and use of colors as dictionary or set keys. For more information, see [GitHub PR #36443](https://github.com/dotnet/maui/pull/36443).
+
+### Tizen support removed
+
+.NET MAUI 11 no longer includes an in-box Tizen backend, `net11.0-tizen*` target frameworks, or the `maui-tizen` workload. Any remaining Tizen identifiers or hooks are for external or backported Tizen backends; they don't indicate built-in Tizen support.
 
 ## See also
 

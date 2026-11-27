@@ -1,7 +1,8 @@
 ---
 title: "Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app"
 description: "Learn how to manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app."
-ms.date: 07/08/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
 ---
 
@@ -43,7 +44,7 @@ In Visual Studio, create a new .NET MAUI class library project of the same name 
     <PropertyGroup>
         <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+        <!-- This .NET 8 Tizen target isn't available in the .NET 11 MAUI workload; see the note below. -->
         <!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
         <UseMaui>true</UseMaui>
         <SingleProject>true</SingleProject>
@@ -54,11 +55,18 @@ In Visual Studio, create a new .NET MAUI class library project of the same name 
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+        <!-- Applies only when an external backend supplies a Tizen target framework. -->
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     </PropertyGroup>
 
 </Project>
 ```
+
+::: moniker range=">=net-maui-11.0"
+
+The commented `net8.0-tizen` target is for an older .NET MAUI version. .NET MAUI 11 doesn't include an in-box Tizen backend, `net11.0-tizen*` target frameworks, or the `maui-tizen` workload. Tizen builds require an external backend; the `SupportedOSPlatformVersion` condition applies only when that backend supplies a Tizen target framework.
+
+::: moniker-end
 
 In your platform projects, add a reference to this new library project. Then copy your Xamarin.Forms library files into the .NET MAUI library project.
 
@@ -114,7 +122,7 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
 
 ::: moniker range=">=net-maui-11.0"
 
-In .NET 11 and later, migrated projects still need an explicit `Microsoft.Maui.Controls` package reference. The optional `Microsoft.Maui.Controls.Compatibility` NuGet package is no longer built or shipped.
+In .NET 11 and later, migrated projects still need an explicit `Microsoft.Maui.Controls` package reference. The Xamarin.Forms compatibility layer, including the optional `Microsoft.Maui.Controls.Compatibility` package, `UseMauiCompatibility`, renderer registration and export APIs, and compatibility controls and types, is no longer included.
 
 You should add the following explicit package reference to an `<ItemGroup>` in each project file:
 
@@ -124,7 +132,7 @@ You should add the following explicit package reference to an `<ItemGroup>` in e
 
 The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. If you set the `$(MauiVersion)` build property in your project file, use a .NET MAUI 11 or later package version.
 
-If your migrated project explicitly references the `Microsoft.Maui.Controls.Compatibility` NuGet package, remove the package reference before targeting .NET 11. If your app depends on APIs or Xamarin.Forms compatibility renderers that were only available from that opt-in package, migrate those usages to current .NET MAUI controls or handlers before upgrading.
+Remove compatibility package references and migrate compatibility API usage before targeting .NET 11. Reimplement renderer customizations with supported handlers and mappers, and replace compatibility controls with current .NET MAUI APIs.
 
 ::: moniker-end
 

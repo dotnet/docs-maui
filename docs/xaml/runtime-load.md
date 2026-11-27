@@ -1,12 +1,13 @@
 ---
 title: "Load XAML at runtime"
 description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
-ms.date: 08/19/2025
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Load XAML at runtime
 
-When a .NET Multi-platform App UI (.NET MAUI) XAML class is constructed, a <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
+When a .NET Multi-platform App UI (.NET MAUI) XAML class uses the `Runtime` inflator, constructing the class indirectly calls <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A>. This occurs because the code-behind file calls the `InitializeComponent` method from its constructor:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -18,7 +19,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-When a project containing a XAML file is built, a source generator generates new C# source that contains the definition of the `InitializeComponent` method and adds it to the compilation object. The following example shows the generated `InitializeComponent` method for the `MainPage` class:
+When a project containing a XAML file is built, generated C# source contains the definition of the `InitializeComponent` method. With the `Runtime` inflator, that method calls `LoadFromXaml` to load and initialize the XAML. The following example shows this runtime-inflation implementation:
 
 ```csharp
 private void InitializeComponent()
@@ -28,14 +29,14 @@ private void InitializeComponent()
 }
 ```
 
-The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> method to extract the XAML compiled binary (or its file) from the app package. After extraction, it initializes all of the objects defined in the XAML, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+The `InitializeComponent` method calls <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> to extract the XAML compiled binary (or its file) from the app package. After extraction, it initializes the objects defined in the XAML, connects them in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant object tree as the content of the page.
 
-::: moniker range=">=net-maui-10.0"
+::: moniker range=">=net-maui-11.0"
 
 > [!IMPORTANT]
-> As of .NET 10 you have the option to have XAML generate C# instead of loading it at runtime by using Roslyn source generation. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+> SourceGen is the default XAML inflator in .NET 11 and later. It generates C# that initializes the XAML directly instead of calling `LoadFromXaml`. Setting the `Runtime` or `XamlC` inflator is deprecated and produces warning `MAUI1001`.
 >
-> To enable XAML source generation for the whole project, add this to your project file:
+> To explicitly set SourceGen for the whole project, add this to your project file:
 >
 >```xml
 ><PropertyGroup>
@@ -43,21 +44,19 @@ The `InitializeComponent` method calls the <xref:Microsoft.Maui.Controls.Xaml.Ex
 ></PropertyGroup>
 >```
 >
-> For more fine-grained control over what XAML files use XAML Source Generation, you can configure individual files or patterns:
->
->```xml
-><ItemGroup>
- >   <MauiXaml Update="**/*.xaml" Inflator="SourceGen" />
-></ItemGroup>
->```
->
-> You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
-> If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+> You don't need to set this property to use the default. For individual files or patterns, configure the `Inflator` attribute. Set it to `Default` to use the default SourceGen inflator.
+::: moniker-end
+
+::: moniker range="=net-maui-10.0"
+
+> [!NOTE]
+> In .NET 10, SourceGen is opt-in. If you use the `Runtime` inflator, `InitializeComponent` calls `LoadFromXaml`; the default inflator is Runtime in Debug and XamlC in Release.
+
 ::: moniker-end
 
 ## Load XAML at runtime
 
-The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension methods that can be used to load and parse XAML at runtime. The <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
+The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes public <xref:Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml%2A> extension methods for loading and parsing XAML at runtime. This API is separate from the default SourceGen path in .NET 11 and later. It enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
 
 ::: moniker range="=net-maui-8.0"
 
