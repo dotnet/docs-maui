@@ -16,9 +16,9 @@ using Android.Runtime;
 [assembly: UsesPermission(Android.Manifest.Permission.Camera)]
 [assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage, MaxSdkVersion = 32)]
 
-// Add these properties if you would like to filter out devices that do not have cameras, or set to false to make them optional
-[assembly: UsesFeature("android.hardware.camera", Required = true)]
-[assembly: UsesFeature("android.hardware.camera.autofocus", Required = true)]
+// Mark the back camera and autofocus as optional.
+[assembly: UsesFeature("android.hardware.camera", Required = false)]
+[assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 //</media_picker>
 
 namespace PlatformIntegration;
