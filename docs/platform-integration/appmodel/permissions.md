@@ -1,7 +1,8 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 07/11/2025
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -17,6 +18,8 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
+:::moniker range="<=net-maui-9.0"
+
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
 | [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
@@ -24,11 +27,11 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
 | [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
 | [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ✔️     | ❌    |
+| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ✔️     | ❌    |
 | [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
-| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ❌      | ✔️   |
-| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
+| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ✔️     | ✔️   |
+| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ✔️     | ❌    |
 | [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
 | [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
 | [NearbyWifiDevices](xref:Microsoft.Maui.ApplicationModel.Permissions.NearbyWifiDevices) | ✔️     | ❌  | ❌     | ❌    |
@@ -38,17 +41,51 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
 | [PostNotifications](xref:Microsoft.Maui.ApplicationModel.Permissions.PostNotifications) | ✔️     | ✔️  | ❌      | ❌   |
 | [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
-| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
+| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ✔️     | ❌    |
 | [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
 | [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
 | [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
 | [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
 | [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
 
+:::moniker-end
+
+:::moniker range=">=net-maui-10.0"
+
+| Permission                                                                              | Android | iOS | Windows | tvOS |
+|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
+| [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
+| [Bluetooth](xref:Microsoft.Maui.ApplicationModel.Permissions.Bluetooth)                 | ✔️     | ❌  | ❌     | ❌    |
+| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ✔️     | ❌    |
+| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ✔️     | ❌    |
+| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
+| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ✔️     | ✔️   |
+| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ✔️     | ❌    |
+| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
+| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ✔️     | ❌    |
+| [NearbyWifiDevices](xref:Microsoft.Maui.ApplicationModel.Permissions.NearbyWifiDevices) | ✔️     | ❌  | ❌     | ❌    |
+| [NetworkState](xref:Microsoft.Maui.ApplicationModel.Permissions.NetworkState)           | ✔️     | ❌  | ❌      | ❌   |
+| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
+| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
+| [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
+| [PostNotifications](xref:Microsoft.Maui.ApplicationModel.Permissions.PostNotifications) | ✔️     | ✔️  | ❌      | ❌   |
+| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
+| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ✔️     | ❌    |
+| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
+| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
+| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
+| [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
+
+:::moniker-end
+
 > [!IMPORTANT]
 > The [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead) and [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite) permissions will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> on Android API 33+. This is because the underlying Android `READ_EXTERNAL_STORAGE` and `WRITE_EXTERNAL_STORAGE` permissions are no longer available from API 33.
 
-If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
+If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested. Permissions marked as ✔️ can return other statuses. For Windows-specific behavior, see the **Windows** tab in [Platform differences](#platform-differences).
 
 :::moniker range=">=net-maui-11.0"
 
@@ -212,7 +249,27 @@ Permissions must have a matching string in the _Info.plist_ file. Once a permiss
 
 # [Windows](#tab/windows)
 
-No platform differences.
+On Windows, the following permissions check Windows access and can return statuses other than <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted>. All other permissions always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted>.
+
+- [`ContactsRead`](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead) and [`ContactsWrite`](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite) behave the same. Both <xref:Microsoft.Maui.ApplicationModel.Permissions.CheckStatusAsync%2A> and <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A> request read/write access to contacts that belong to your app, not to all contacts on the device. They return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied> if Windows doesn't grant access.
+- [`LocationWhenInUse`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) and [`LocationAlways`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways) behave the same. Both <xref:Microsoft.Maui.ApplicationModel.Permissions.CheckStatusAsync%2A> and <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A> request location access from Windows, so checking the status can show the Windows location prompt the first time. Call these methods on the main thread while your app is in the foreground. Otherwise, they throw a <xref:Microsoft.Maui.ApplicationModel.PermissionException>. They return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted>, <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied>, or <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown>.
+- [`Sensors`](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors) returns the current Windows access status for activity sensors. Requesting this permission doesn't show a prompt and returns the same status as checking it.
+:::moniker range=">=net-maui-10.0"
+- [`Microphone`](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone) checks the current Windows microphone access status without showing a prompt. Requesting this permission initializes audio capture, which can show the Windows microphone consent prompt, so request it on the main thread. In a packaged app, declare the `microphone` device capability in your app manifest. Otherwise, the permission methods can throw a <xref:Microsoft.Maui.ApplicationModel.PermissionException>. Before .NET MAUI 10.0.60, this manifest check also ran in unpackaged apps.
+:::moniker-end
+
+Windows requires the `location` capability for location access in a packaged app. .NET MAUI doesn't check your app manifest for this capability, and a missing capability doesn't throw an exception. Instead, Windows doesn't grant location access, so the location permissions don't return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted>. The default .NET MAUI project template doesn't declare this capability. To declare it, add it to the `<Capabilities>` element in `Platforms/Windows/Package.appxmanifest`:
+
+```xml
+<Capabilities>
+  <rescap:Capability Name="runFullTrust" />
+  <DeviceCapability Name="location" />
+</Capabilities>
+```
+
+For more information about Windows capabilities, see [App capability declarations](/windows/uwp/packaging/app-capability-declarations).
+
+After the user grants or denies location access, Windows doesn't prompt again. If the user denies access to a permission, ask them to turn it on in the Windows privacy settings. For example, to open the location privacy settings, call `await Launcher.OpenAsync("ms-settings:privacy-location");`.
 
 -----
 <!-- markdownlint-enable MD025 -->
