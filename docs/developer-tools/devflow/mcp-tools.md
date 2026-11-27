@@ -111,7 +111,7 @@ Use `force=true` with `maui_take_control` only after the user approves interrupt
 | `maui_cdp_evaluate` | Evaluate JavaScript in a Blazor WebView. |
 | `maui_cdp_screenshot` | Capture a Blazor WebView screenshot. |
 
-`maui_cdp_evaluate`, `maui_cdp_source`, and `maui_cdp_screenshot` accept a string `webviewId` to target a WebView by its index, `AutomationId`, or registered element ID. Call `maui_cdp_webviews` to list the available WebViews. If you omit `webviewId`, the default can change as pages and WebViews load, so specify a target when the app has more than one. A numeric `webviewId` matches an index before an `AutomationId`. If evaluation fails or the selected WebView returns no HTML source, the corresponding tool returns an error.
+`maui_cdp_evaluate`, `maui_cdp_source`, and `maui_cdp_screenshot` accept a string `webviewId` to target a WebView by its index, `AutomationId`, or registered element ID. Call `maui_cdp_webviews` to list the available WebViews. If you omit `webviewId`, the default can change as pages and WebViews load, so specify a target when the app has more than one. A numeric `webviewId` matches an index before an `AutomationId`. If evaluation fails or the selected WebView returns no HTML source, the corresponding tool returns an error. For more information, see [Blazor WebView debugging](blazor-cdp.md).
 
 ### Log tools
 
