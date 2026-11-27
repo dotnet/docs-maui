@@ -14,7 +14,7 @@ The macOS AppKit backend lets .NET MAUI applications run as true native macOS ap
 
 ## Prerequisites
 
-- .NET 10 SDK
+- .NET 10 SDK with the `macos` and `maui` workloads (`dotnet workload install macos maui`)
 - macOS 14 (Sonoma) or later
 - Xcode command line tools (the app icon build step uses `sips` and `iconutil`)
 
@@ -163,6 +163,8 @@ Keep these behaviors in mind:
 ### App icon
 
 When your project contains a `MauiIcon` item, the build uses `sips` to create the required icon sizes from 16×16 to 1024×1024 pixels. It then uses `iconutil` to create `AppIcon.icns` and sets `CFBundleIconFile` in the app manifest. Use a single square PNG of at least 1024×1024 pixels as the icon source.
+
+If you add a `MauiIcon` item to a project you've already built, delete the `bin` and `obj` folders before you build again. Otherwise, the existing app manifest is reused and `CFBundleIconFile` isn't added.
 
 ### Use custom resource mappings
 
