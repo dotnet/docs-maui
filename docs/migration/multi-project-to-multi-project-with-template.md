@@ -1,7 +1,8 @@
 ---
 title: "Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app with the project template"
 description: "Learn how to manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app using the Visual Studio project template."
-ms.date: 05/31/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
 ---
 
@@ -82,9 +83,19 @@ Opening a specific platform project should also confirm that you have similar pr
 
 All of the cross-platform code from your Xamarin.Forms library project should be copied into your .NET MAUI library project in identically named folders and files.
 
+::: moniker range="<=net-maui-10.0"
+
 Custom renderers can either be reused in a .NET MAUI app, or migrated to a .NET MAUI handler. For more information, see [Reuse custom renderers in .NET MAUI](custom-renderers.md) and [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](renderer-to-handler.md).
 
 Effects can be reused in a .NET MAUI app. For more information, see [Reuse effects](effects.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The Xamarin.Forms renderer compatibility layer isn't included in .NET MAUI 11. Migrate custom renderers to supported handlers and mappers instead of reusing renderer registration or export APIs. Migrate effects that depend on removed compatibility APIs to supported handler customization.
+
+::: moniker-end
 
 If there are platform specific services that need to be migrated to .NET MAUI, use the <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)> method to add a transient service of the specified type to the specified <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.
 

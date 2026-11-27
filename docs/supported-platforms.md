@@ -1,7 +1,8 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 09/08/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Supported platforms for .NET MAUI apps
@@ -68,7 +69,17 @@ On Windows, .NET MAUI apps for Android, iOS, and Windows can also be built with 
 
 ## Additional platform support
 
-.NET MAUI also includes Tizen support, which is provided by Samsung.
+::: moniker range="<=net-maui-10.0"
+
+.NET MAUI includes Tizen support, which is provided by Samsung.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+.NET MAUI 11 and later doesn't include an in-box Tizen backend, workload, or target framework. Tizen targeting, if available, requires an external Samsung-provided backend.
+
+::: moniker-end
 
 <!-- ## Android platform support
 

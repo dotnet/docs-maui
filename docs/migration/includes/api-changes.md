@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/30/2023
+ms.date: 11/27/2026
 ---
 
 ## API changes
@@ -42,7 +42,7 @@ The following table lists the layout APIs that have been removed in the move fro
 | `Xamarin.Forms.AbsoluteLayout.IAbsoluteList<T>.Add` |               | The `Add` overload that accepts three arguments isn't present in .NET MAUI. |
 | `Xamarin.Forms.Grid.IGridList<T>.AddHorizontal`     |               | No .NET MAUI equivalent. |
 | `Xamarin.Forms.Grid.IGridList<T>.AddVertical`       |               | No .NET MAUI equivalent. |
-| `Xamarin.Forms.RelativeLayout` | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
+| `Xamarin.Forms.RelativeLayout` | `Microsoft.Maui.Controls.Compatibility.RelativeLayout` (through .NET 10 only) | In .NET 10 and earlier, use the compatibility namespace for this control. The compatibility control isn't included in .NET 11 and later; use <xref:Microsoft.Maui.Controls.Grid> instead. |
 
 In addition, adding children to a layout in code in Xamarin.Forms is accomplished by adding the children to the layout's `Children` collection:
 

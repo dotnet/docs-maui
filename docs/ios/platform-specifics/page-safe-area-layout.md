@@ -1,7 +1,8 @@
 ---
 title: "Enable the safe area layout guide on iOS"
 description: "How to control the iOS safe area layout guide in .NET MAUI, and .NET 10 guidance for modern safe area behavior."
-ms.date: 08/18/2025
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Enable the safe area layout guide on iOS
@@ -51,7 +52,17 @@ By default, .NET Multi-platform App UI (.NET MAUI) apps automatically position p
     </Grid>
     ```
 
+::: moniker range="<=net-maui-10.0"
+
 The default value is `Default`, which maps to edge-to-edge behavior (equivalent to `None`) unless overridden by platform conventions.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Layout-derived containers default to `SafeAreaEdges.Container`, which keeps their content within the container safe-area insets. Set `SafeAreaEdges` explicitly, such as to `None` for edge-to-edge content, to override this behavior.
+
+::: moniker-end
 
 You can set `SafeAreaEdges` in C# as well:
 

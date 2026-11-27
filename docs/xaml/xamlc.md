@@ -2,6 +2,7 @@
 title: "XAML compilation"
 description: ".NET MAUI XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC)."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # XAML Processing

@@ -1,6 +1,7 @@
 ---
 ms.topic: include
-ms.date: 10/06/2023
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 ## Compile and troubleshoot
@@ -26,8 +27,8 @@ The following table provides guidance for overcoming common build or runtime iss
 | <xref:Microsoft.Maui.Controls.BoxView> not appearing. | The default size of a <xref:Microsoft.Maui.Controls.BoxView> in Xamarin.Forms is 40x40. The default size of a <xref:Microsoft.Maui.Controls.BoxView> in .NET MAUI is 0x0. Set `WidthRequest` and `HeightRequest` to 40. |
 | Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](../layouts.md#default-layout-value-changes-from-xamarinforms). |
 | Custom layout doesn't work. | Custom layout code needs updating to work in .NET MAUI. For more information, see [Custom layout changes](#custom-layout-changes). |
-| Custom renderer doesn't work. | Renderer code needs updating to work in .NET MAUI. For more information, see [Use custom renderers in .NET MAUI](../custom-renderers.md). |
-| Effect doesn't work. | Effect code needs updating to work in .NET MAUI. For more information, see [Use effects in .NET MAUI](../effects.md). |
+| Custom renderer doesn't work. | Renderer code needs updating to work in .NET MAUI. In .NET 11 and later, migrate custom renderers to handlers and mappers because compatibility renderer registration APIs aren't shipped. For more information, see [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](../renderer-to-handler.md). |
+| Effect doesn't work. | Update effect code to work in .NET MAUI. In .NET 11 and later, migrate effects that depend on removed compatibility APIs to supported handler customization. For more information, see [Use effects in .NET MAUI](../effects.md). |
 | SkiaSharp code doesn't work. | SkiaSharp code needs minor updates to work in .NET MAUI. For more information, see [Reuse SkiaSharp code in .NET MAUI](../skiasharp.md). |
 | Can't access previously created app properties data. | Migrate the app properties data to .NET MAUI preferences. For more information, see [Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences](../app-properties.md). |
 | Can't access previously created secure storage data. | Migrate the secure storage data to .NET MAUI. For more information, see [Migrate from Xamarin.Essentials secure storage to .NET MAUI secure storage](../secure-storage.md). |

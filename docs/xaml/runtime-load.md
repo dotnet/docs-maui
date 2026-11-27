@@ -2,6 +2,7 @@
 title: "Load XAML at runtime"
 description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Load XAML at runtime

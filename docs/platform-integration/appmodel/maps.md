@@ -1,7 +1,7 @@
 ---
 title: "Open the map app"
 description: "Learn how to use the .NET MAUI IMap interface in the Microsoft.Maui.ApplicationModel namespace. This interface enables an application to open the installed map application to a specific location or place mark."
-ms.date: 02/02/2023
+ms.date: 11/27/2026
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -91,7 +91,7 @@ This section describes the platform-specific differences with the maps API.
 
 # [iOS/Mac Catalyst](#tab/macios)
 
-`NavigationMode` supports Driving, Transit, and Walking.
+`NavigationMode` supports Driving, Transit, and Walking. On iOS 14 and later and Mac Catalyst 14 and later, it also supports Bicycling. On iOS 13, a bicycling request uses the platform's default directions mode.
 
 # [Windows](#tab/windows)
 

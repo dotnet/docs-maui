@@ -1,7 +1,7 @@
 ---
 title: "Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app"
 description: "Learn how to manually upgrade a Xamarin.Forms app to a single project .NET MAUI app."
-ms.date: 08/29/2023
+ms.date: 11/27/2026
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net8.0-android", "net8.0-ios" ]
 ms.custom: sfi-image-nochange
 ---
@@ -43,9 +43,19 @@ Opening the project file will confirm that you have a .NET SDK-style project.
 
 All of the cross-platform code from your Xamarin.Forms library project should be copied into your .NET MAUI app project in identically named folders and files.
 
+::: moniker range="<=net-maui-10.0"
+
 Custom renderers can either be reused in a .NET MAUI app, or migrated to a .NET MAUI handler. For more information, see [Reuse custom renderers in .NET MAUI](custom-renderers.md) and [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](renderer-to-handler.md).
 
 Effects can be reused in a .NET MAUI app. For more information, see [Reuse effects](effects.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The Xamarin.Forms renderer compatibility layer isn't included in .NET MAUI 11. Migrate custom renderers to supported handlers and mappers instead of reusing renderer registration or export APIs. Migrate effects that depend on removed compatibility APIs to supported handler customization.
+
+::: moniker-end
 
 > [!NOTE]
 > You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](upgrade-assistant.md) installed.
