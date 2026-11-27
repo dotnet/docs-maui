@@ -1,7 +1,7 @@
 ---
 title: "Populate a CollectionView with Data"
 description: "A .NET MAUI CollectionView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 09/30/2024
+ms.date: 03/18/2026
 ---
 
 # Populate a CollectionView with data
@@ -138,6 +138,85 @@ The following screenshot shows the result of templating each item in the list:
 [!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
 
 For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
+
+## Add separators between items
+
+<xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators between items. However, you can add a separator appearance in the item template. The following examples show two approaches, but you can implement separators any way that suits your app's design.
+
+### Line separator
+
+To display a line between items, add a <xref:Microsoft.Maui.Controls.BoxView> with a small height at the bottom of your item template:
+
+```xaml
+<CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <VerticalStackLayout>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="2"
+                           Source="{Binding ImageUrl}"
+                           Aspect="AspectFill"
+                           HeightRequest="60"
+                           WidthRequest="60" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Name}"
+                           FontAttributes="Bold" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Location}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                </Grid>
+                <BoxView HeightRequest="1"
+                         Color="LightGray"
+                         HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+The <xref:Microsoft.Maui.Controls.BoxView> renders a horizontal line between each item, similar to the separator behavior provided by <xref:Microsoft.Maui.Controls.ListView>.
+
+### Card-style separator
+
+Alternatively, you can wrap the item content in a <xref:Microsoft.Maui.Controls.Border> to create a card-style appearance that visually separates each item:
+
+```xaml
+<CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView.ItemsLayout>
+        <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="5" />
+    </CollectionView.ItemsLayout>
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <Border Margin="10,0"
+                    Padding="10"
+                    StrokeThickness="1"
+                    Stroke="LightGray">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <!-- Item content here -->
+                <Label Text="{Binding Name}" />
+            </Border>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+This approach uses a <xref:Microsoft.Maui.Controls.Border> with a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> stroke shape to create rounded card outlines, and sets `ItemSpacing` on the layout to add space between cards.
+
+> [!TIP]
+> You can combine either approach with `ItemSpacing` on the items layout to control the amount of space between items. For more information, see [Item spacing](layout.md#item-spacing).
 
 ## Choose item appearance at runtime
 
