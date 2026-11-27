@@ -1,7 +1,7 @@
 ---
 title: Agent tools, context, and structured output
 description: Give on-device Microsoft Agent Framework agents tools, app context, retrieval-augmented generation, and typed results in .NET MAUI.
-ms.date: 11/17/2026
+ms.date: 11/27/2026
 ms.topic: concept-article
 ai-usage: ai-assisted
 ---
@@ -55,6 +55,8 @@ Tool support depends on the platform:
 - **Apple**: Apple Intelligence runs the tools itself.
 - **Android**: The registered client runs tools with `UseFunctionInvocation`. Tools require a model that reports `ChatModelCapability.ToolCalling`, such as `gemini-nano-preview-fast`. See [Tool calling on Android](../chat/android.md#tool-calling).
 - **Windows**: Tools aren't supported. Use [context providers](#add-context) to supply data instead.
+
+To generate tools from attributed methods at compile time instead of calling `AIFunctionFactory.Create`, see [Source-generated AI tools](../tool-attributes.md).
 
 Small models choose tools more reliably when you:
 

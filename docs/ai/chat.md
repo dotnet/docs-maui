@@ -1,7 +1,7 @@
 ---
 title: Chat client
 description: Use IChatClient from Microsoft.Maui.Essentials.AI for on-device chat, streaming, multi-turn conversations, tool calling, and structured output in .NET MAUI.
-ms.date: 11/17/2026
+ms.date: 11/27/2026
 ms.topic: concept-article
 ai-usage: ai-assisted
 ---
@@ -84,6 +84,8 @@ Tool support differs by platform:
 - **Apple**: Apple Intelligence runs `AIFunction` tools itself.
 - **Android**: Gemini Nano returns tool calls, and `UseFunctionInvocation` runs them. Tools require a model that supports them, such as `gemini-nano-preview-fast`. See [Tool calling on Android](chat/android.md#tool-calling).
 - **Windows**: Tools aren't supported.
+
+To generate tools from attributed methods and properties at compile time instead of calling `AIFunctionFactory.Create`, see [Source-generated AI tools](tool-attributes.md).
 
 Only `AIFunction` tools are supported. Set `ChatOptions.ToolMode` to `ChatToolMode.None` to turn off tools for a request.
 
