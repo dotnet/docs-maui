@@ -67,13 +67,13 @@ With your app running, use the CLI to inspect and interact with it:
 
 ```bash
 # View the visual tree
-maui devflow MAUI tree
+maui devflow ui tree
 
 # Take a screenshot
-maui devflow MAUI screenshot -o screenshot.png
+maui devflow ui screenshot --output screenshot.png
 
 # Tap an element
-maui devflow agent interact tap --automationid "MyButton"
+maui devflow ui tap --automationId "MyButton"
 
 # Start MCP server for AI agents
 maui devflow mcp
@@ -82,7 +82,7 @@ maui devflow mcp
 ## Features
 
 - [Visual tree inspection and screenshots](visual-tree-screenshots.md) — query the visual tree and capture PNG screenshots
-- [Element interaction and automation](element-interaction.md) — tap, fill, scroll, navigate, and mutate element properties
+- [Element interaction and automation](element-interaction.md) — tap, fill, scroll, navigate, and set element properties
 - [Blazor WebView debugging](blazor-cdp.md) — Chrome DevTools Protocol bridge for Blazor Hybrid content
 - [MCP server for AI agents](mcp-server.md) — 15 tool categories for AI agent integration
 - [Network monitoring and profiling](network-profiling.md) — HTTP interception, CPU/memory/GC profiling, jank detection
