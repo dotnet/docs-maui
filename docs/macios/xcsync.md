@@ -2,7 +2,7 @@
 title: xcsync
 description: Learn how to use xcsync, to provide .NET developers with improved support for editing Apple specific files.
 author: haritha-mohan
-ms.author: harithamohan
+ms.author: wiwagn
 ms.date: 12/20/2024
 monikerRange: ">=net-maui-9.0"
 no-loc: [ "xcsync" ]
