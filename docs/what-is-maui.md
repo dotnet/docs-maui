@@ -1,7 +1,8 @@
 ---
 title: "What is .NET MAUI?"
 description: ".NET Multi-platform App UI (.NET MAUI) is a cross-platform framework for creating native mobile and desktop apps with C# and XAML."
-ms.date: 11/26/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # What is .NET MAUI?
@@ -26,7 +27,17 @@ Using .NET MAUI, you can develop apps that can run on Android, iOS, macOS, and W
 
 .NET MAUI unifies Android, iOS, macOS, and Windows APIs into a single API that allows a write-once run-anywhere developer experience, while additionally providing deep access to every aspect of each native platform.
 
-.NET 6 or greater provides a series of platform-specific frameworks for creating apps: .NET for Android, .NET for iOS, .NET for Mac Catalyst, and Windows UI 3 (WinUI 3) library. These frameworks all have access to the same .NET Base Class Library (BCL). This library abstracts the details of the underlying platform away from your code. The BCL depends on the .NET runtime to provide the execution environment for your code. For Android, iOS, and macOS, the environment is implemented by CoreCLR in .NET 11 and later, and by Mono, another implementation of the .NET runtime, in .NET 10 and earlier. On Windows, the .NET Core [Common Language Runtime](/dotnet/standard/clr) (CLR) provides the execution environment. For more information, see [Runtimes and compilation in .NET MAUI](deployment/runtimes-compilation.md).
+::: moniker range="<=net-maui-10.0"
+
+.NET 6 or greater provides a series of platform-specific frameworks for creating apps: .NET for Android, .NET for iOS, .NET for Mac Catalyst, and Windows UI 3 (WinUI 3) library. These frameworks all have access to the same .NET Base Class Library (BCL). This library abstracts the details of the underlying platform away from your code. The BCL depends on the .NET runtime to provide the execution environment for your code. For Android, iOS, and macOS, the environment is implemented by Mono, an implementation of the .NET runtime. On Windows, the .NET Core [Common Language Runtime](/dotnet/standard/clr) (CLR) provides the execution environment.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+.NET 6 or greater provides a series of platform-specific frameworks for creating apps: .NET for Android, .NET for iOS, .NET for Mac Catalyst, and Windows UI 3 (WinUI 3) library. These frameworks all have access to the same .NET Base Class Library (BCL). This library abstracts the details of the underlying platform away from your code. The BCL depends on the .NET runtime to provide the execution environment for your code. On Android, iOS, Mac Catalyst, and Windows, CoreCLR, the .NET implementation of the [common language runtime](/dotnet/standard/clr) (CLR), provides the execution environment by default. Native AOT is an opt-in publishing alternative on supported platforms. Mono isn't supported for .NET MAUI apps that target .NET 11 or later. For more information, see [Runtimes and compilation in .NET MAUI](deployment/runtimes-compilation.md).
+
+::: moniker-end
 
 While the BCL enables apps running on different platforms to share common business logic, the various platforms have different ways of defining the user interface for an app, and they provide varying models for specifying how the elements of a user interface communicate and interoperate. You can craft the UI for each platform separately using the appropriate platform-specific framework (.NET for Android, .NET for iOS, .NET for Mac Catalyst, or WinUI 3), but this approach then requires you to maintain a code-base for each individual family of devices.
 
@@ -38,10 +49,23 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI c
 
 .NET MAUI apps can be written on PC or Mac, and compile into native app packages:
 
+::: moniker range="<=net-maui-10.0"
+
 - Android apps built using .NET MAUI compile from C# into an intermediate language (IL) which is then just-in-time (JIT) compiled to a native assembly when the app launches.
 - iOS apps built using .NET MAUI are fully ahead-of-time (AOT) compiled from C# into native ARM assembly code.
 - macOS apps built using .NET MAUI use Mac Catalyst, a solution from Apple that brings your iOS app built with UIKit to the desktop, and augments it with additional AppKit and platform APIs as required.
 - Windows apps built using .NET MAUI use Windows UI 3 (WinUI 3) library to create native apps that target the Windows desktop. For more information about WinUI 3, see [Windows UI Library](/windows/apps/winui/).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+- Android apps built using .NET MAUI compile from C# into intermediate language (IL). In `Release` builds, ReadyToRun precompiles part of the app to native code by default, and CoreCLR just-in-time (JIT) compiles the remaining IL at runtime.
+- iOS apps built using .NET MAUI compile from C# into IL that's precompiled to native ARM code with ReadyToRun. Because iOS doesn't permit JIT compilation, the CoreCLR interpreter runs any code that isn't precompiled.
+- macOS apps built using .NET MAUI use Mac Catalyst, a solution from Apple that brings your iOS app built with UIKit to the desktop, and augments it with additional AppKit and platform APIs as required.
+- Windows apps built using .NET MAUI use Windows UI 3 (WinUI 3) library to create native apps that target the Windows desktop. For more information about WinUI 3, see [Windows UI Library](/windows/apps/winui/).
+
+::: moniker-end
 
 > [!NOTE]
 > Building apps for iOS and macOS requires a Mac.

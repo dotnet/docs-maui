@@ -1,7 +1,8 @@
 ---
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
-ms.date: 01/02/2025
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Troubleshooting known issues
@@ -126,6 +127,18 @@ Visual Studio may not be resolving the required workloads if you try to compile 
 > Platform version is not present for one or more target frameworks, even though they have specified a platform: net8.0-android, net8.0-ios, net8.0-maccatalyst
 
 This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
+
+::: moniker range=">=net-maui-11.0"
+
+## Mono runtime isn't supported
+
+If a .NET 11 Android, iOS, tvOS, or Mac Catalyst project sets the `UseMonoRuntime` build property to `true`, the build fails with an error similar to the following text:
+
+> NETSDK1242: Building android projects with the Mono runtime is not supported in .NET 11.0 and later. Use the CoreCLR runtime or target .NET 10.0.
+
+To fix this error, remove `UseMonoRuntime` from settings that apply to .NET 11 targets, including imported `.props` or `.targets` files such as `Directory.Build.props`. If you share these settings with .NET 10 targets, keep the property only for those targets. .NET 11 apps use CoreCLR on these platforms. If your app must keep using Mono, keep it on .NET 10. For more information, see [NETSDK1242](/dotnet/core/tools/sdk-errors/netsdk1242) and [Breaking change: CoreCLR replaces Mono runtime for .NET mobile apps](/dotnet/core/compatibility/maui/11/mobile-runtime-replacement).
+
+::: moniker-end
 
 ## Type or namespace 'Default' doesn't exist
 

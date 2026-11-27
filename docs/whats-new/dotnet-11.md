@@ -1,7 +1,8 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/10/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -21,16 +22,35 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 11 is to improve pro
 
 In .NET 11, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
-## CoreCLR is the default runtime
+## CoreCLR replaces Mono
 
-In .NET 11 Preview 4, CoreCLR became the default runtime on all .NET MAUI
-platforms for projects built with and targeting .NET 11, while Mono remained
-available. Starting in .NET 11 Preview 7, CoreCLR became the default runtime
-for .NET 11 applications, while NativeAOT became available as an opt-in
-publishing alternative. This unifies the runtime across .NET MAUI and provides
-benefits for debugging, profiling, Hot Reload, app size, and app performance.
-For a detailed overview of this transition, see the
-[announcement blog post](https://aka.ms/maui-coreclr).
+In .NET 11, CoreCLR is the runtime for .NET MAUI apps on Android, iOS, Mac
+Catalyst, and Windows, in both `Debug` and `Release` builds. Mono isn't
+supported for .NET 11 Android, iOS, tvOS, or Mac Catalyst projects. NativeAOT
+remains an opt-in publishing alternative. This unifies the runtime across .NET
+MAUI and provides benefits for debugging, profiling, Hot Reload, app size, and
+app performance.
+
+If a .NET 11 project sets `UseMonoRuntime` to `true`, the build fails with
+error [NETSDK1242](/dotnet/core/tools/sdk-errors/netsdk1242). To migrate a
+project from .NET 10:
+
+- Remove the `UseMonoRuntime` property from settings that apply to .NET 11
+  targets, including imported `.props` or `.targets` files such as
+  `Directory.Build.props`. If you share these settings with .NET 10 targets,
+  keep the property only for those targets.
+- Remove Mono-only properties that no longer apply to .NET 11 targets, such as
+  `UseInterpreter` and `MtouchInterpreter` on iOS and Mac Catalyst, and
+  `RunAOTCompilation`, `EnableLLVM`, and `AndroidEnableProfiledAot` on Android.
+- Update tools or scripts that look for Mono package files, such as
+  `libmonosgen-2.0`, or for Mono names in stack traces, symbols, and diagnostic
+  events.
+- If your app must keep using Mono, keep it on .NET 10.
+
+For more information, see [Breaking change: CoreCLR replaces Mono runtime for
+.NET mobile apps](/dotnet/core/compatibility/maui/11/mobile-runtime-replacement),
+[Runtimes and compilation in .NET MAUI](~/deployment/runtimes-compilation.md),
+and the [announcement blog post](https://aka.ms/maui-coreclr).
 
 ## Testing
 
@@ -456,7 +476,7 @@ Starting in .NET 11 Preview 7, the XAML source generator compiles a binding that
 
 ## .NET for Android
 
-.NET for Android in .NET 11 uses CoreCLR as the default runtime for standard
+.NET for Android in .NET 11 uses CoreCLR as the runtime for standard
 apps. NativeAOT is also available as an experimental, opt-in publishing
 alternative.
 This release includes work to improve performance. For more information about
@@ -484,8 +504,14 @@ For more information, see [Supported platforms](~/supported-platforms.md).
 
 ### CoreCLR runtime
 
-In `Release` builds, the runtime uses composite partial ReadyToRun by default.
-`Debug` builds don't enable ReadyToRun by default.
+Android apps use CoreCLR in both `Debug` and `Release` builds. In `Release`
+builds, the runtime uses composite partial ReadyToRun by default. `Debug` builds
+don't enable ReadyToRun by default. Android packages that use CoreCLR contain
+CoreCLR files instead of `libmonosgen-2.0`. For migration steps, see
+[CoreCLR replaces Mono](#coreclr-replaces-mono).
+
+To report stability, performance, or app size issues, file
+[issues on GitHub](https://github.com/dotnet/android/issues).
 
 ### Faster and more reliable Android builds
 
@@ -515,16 +541,6 @@ A single-page Shell app also defers unused tab infrastructure. In a matched 80-l
 
 - `Java.Lang.Object.JavaFinalize()` is obsolete. Override `Dispose(bool)` or use a C# finalizer instead. For more information, see [GitHub PR #11424](https://github.com/dotnet/android/pull/11424).
 - If an Android manifest has a partial `<uses-sdk>` element without `android:targetSdkVersion`, the build now writes the value from `$(TargetSdkVersion)`. Android previously used the minimum SDK as the target SDK in this case. Test behavior that Android gates by target SDK, or set `android:targetSdkVersion` explicitly. For more information, see [GitHub PR #12290](https://github.com/dotnet/android/pull/12290).
-
-### CoreCLR by Default
-
-CoreCLR is now the default runtime for `Release` builds. This should
-improve compatibility with the rest of .NET as well as shorter startup
-times, with a reasonable increase to application size.
-
-We are always working to improve performance and app size, but please
-file issues with stability or concerns by filing
-[issues on GitHub](https://github.com/dotnet/android/issues).
 
 ## `dotnet run`
 
@@ -597,15 +613,14 @@ Starting in .NET 11 Preview 4, HTTP digest authentication is supported in <xref:
 
 ### CoreCLR for Apple platforms
 
-In .NET 11 Preview 4, CoreCLR became the default runtime for .NET for iOS,
-Mac Catalyst, and macOS, while Mono remained available. Starting in .NET 11
-Preview 7, CoreCLR became the default runtime for these platforms, while
-NativeAOT became available as an opt-in publishing alternative.
+In .NET 11, CoreCLR is the runtime for .NET for iOS, tvOS, Mac Catalyst, and
+macOS apps. Mono isn't supported for .NET 11 iOS, tvOS, or Mac Catalyst
+projects. NativeAOT remains an opt-in publishing alternative.
 On iOS and Mac Catalyst, CoreCLR uses composite partial ReadyToRun in `Debug`
 builds and composite full ReadyToRun in `Release` builds. The CoreCLR
 interpreter is always enabled and executes code that isn't precompiled because
 these platforms don't permit JIT compilation.
-For more information, see [CoreCLR is the default runtime](#coreclr-is-the-default-runtime)
+For more information, see [CoreCLR replaces Mono](#coreclr-replaces-mono)
 and [dotnet/macios #25050](https://github.com/dotnet/macios/pull/25050).
 
 Preview 4 also includes a broad reliability and packaging pass across `NSUrlSessionHandler`, MSBuild, the linker, and runtime internals. For the complete list of changes, see the [Preview 4 changelog](https://github.com/dotnet/macios/compare/release/11.0.1xx-preview3...release/11.0.1xx-preview4).
@@ -616,7 +631,7 @@ Starting in .NET 11 Preview 5, the Apple Intelligence APIs are available from .N
 
 ### NativeAOT registrar default
 
-In .NET 11 RC 1, NativeAOT apps that target .NET 11 use the trimmable-static registrar and assembly preparation by default. Mono and CoreCLR keep their existing registrar defaults in this RC 1 release. For more information, see [dotnet/macios #26346](https://github.com/dotnet/macios/pull/26346).
+In .NET 11 RC 1, NativeAOT apps that target .NET 11 use the trimmable-static registrar and assembly preparation by default. For more information, see [dotnet/macios #26346](https://github.com/dotnet/macios/pull/26346).
 
 ### NativeAOT debug symbols
 

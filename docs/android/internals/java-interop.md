@@ -1,13 +1,20 @@
 ---
 title: "Java and .NET managed code interoperability"
 description: "Learn how .NET for Android interoperates with the Java and Kotlin APIs that are provided by Android."
-ms.date: 06/21/2023
+ms.date: 11/27/2026
 no-loc: [ "Java", "Kotlin" ]
 ---
 
 # Java and .NET managed code interoperability
 
 App developers expect to be able to call native Android APIs and receive calls, or react to events, from the Android APIs using code written in one of the .NET managed languages. .NET for Android employs a number of approaches, at build and at runtime, to bridge the Java VM (ART in Android OS) and the Managed VM (MonoVM).
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> This article describes the implementation that .NET for Android used with the Mono runtime. In .NET 11, .NET for Android apps use CoreCLR instead of Mono, so internal details in this article that refer to the Mono VM, such as `MonoImage*` and `MonoClass*` lookup tables, don't describe CoreCLR apps. Names such as the `Mono.Android` assembly are unchanged. For more information, see [Runtimes and compilation in .NET MAUI](~/deployment/runtimes-compilation.md).
+
+::: moniker-end
 
 The Java VM and the Managed VM co-exist in the same process or app as separate entities. Despite sharing the same process resources, there's no direct way to call Java/Kotlin APIs from .NET, and there's no direct way for Java/Kotlin code to invoke managed code APIs. To enable this communication, .NET for Android uses the [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html). This is an approach that enables native code (.NET managed code being native in this context) to register implementations of Java methods, which are written outside the Java VM and in languages other than Java or Kotlin. These methods need to be declared in Java code, for example:
 
