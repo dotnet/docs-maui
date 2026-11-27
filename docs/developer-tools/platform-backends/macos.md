@@ -1,7 +1,8 @@
 ---
 title: ".NET MAUI macOS AppKit backend"
 description: "Learn how to build native macOS apps using .NET MAUI with the experimental AppKit backend from the dotnet/maui-labs repository."
-ms.date: 05/07/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI macOS AppKit backend
@@ -13,9 +14,9 @@ The macOS AppKit backend lets .NET MAUI applications run as true native macOS ap
 
 ## Prerequisites
 
-- .NET 10 SDK
+- .NET 10 SDK with the `macos` and `maui` workloads (`dotnet workload install macos maui`)
 - macOS 14 (Sonoma) or later
-- Xcode command line tools
+- Xcode command line tools (the app icon build step uses `sips` and `iconutil`)
 
 ## Packages
 
@@ -130,6 +131,52 @@ public class App : Application
         => new Window(new MainPage());
 }
 ```
+
+## App resources
+
+The `Microsoft.Maui.Platforms.MacOS` package includes build targets that copy .NET MAUI resource items into the app bundle's `Contents/Resources` folder:
+
+| Item type | Location in the app bundle |
+|-----------|----------------------------|
+| `MauiImage` | `Images/<file name>` |
+| `MauiFont` | `Fonts/<file name>` |
+| `MauiAsset` | The item's `LogicalName`, or the file name when `LogicalName` isn't set |
+| `MauiIcon` | `AppIcon.icns` |
+
+Add the resource items to your app's project file:
+
+```xml
+<ItemGroup>
+  <MauiIcon Include="Resources\AppIcon\appicon.png" />
+  <MauiImage Include="Resources\Images\*" />
+  <MauiFont Include="Resources\Fonts\*" />
+  <MauiAsset Include="Resources\Raw\**\*" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+</ItemGroup>
+```
+
+Keep these behaviors in mind:
+
+- Images are bundled as-is. The macOS backend doesn't resize images or convert SVG files to PNG, so add images in the format and sizes your app uses.
+- Image file names must be unique, and font file names must be unique, because each type is copied into a single folder.
+- Set `LogicalName` on `MauiAsset` items to keep their folder structure. Use the same relative path with `FileSystem.OpenAppPackageFileAsync`.
+
+### App icon
+
+When your project contains a `MauiIcon` item, the build uses `sips` to create the required icon sizes from 16×16 to 1024×1024 pixels. It then uses `iconutil` to create `AppIcon.icns` and sets `CFBundleIconFile` in the app manifest. Use a single square PNG of at least 1024×1024 pixels as the icon source.
+
+If you add a `MauiIcon` item to a project you've already built, delete the `bin` and `obj` folders before you build again. Otherwise, the existing app manifest is reused and `CFBundleIconFile` isn't added.
+
+### Use custom resource mappings
+
+If your app already adds these files with its own `BundleResource` items, turn off the automatic mapping in your project file:
+
+```xml
+<PropertyGroup>
+  <EnableMacOSMauiResourceMapping>false</EnableMacOSMauiResourceMapping>
+</PropertyGroup>
+```
+
+This property only affects `MauiImage`, `MauiFont`, and `MauiAsset` items. Icon generation still runs when the project contains a `MauiIcon` item.
 
 ## Source code
 
