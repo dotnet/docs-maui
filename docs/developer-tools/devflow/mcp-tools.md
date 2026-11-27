@@ -1,7 +1,7 @@
 ---
 title: "MCP tools reference"
 description: "Reference for all MCP tools exposed by the DevFlow MCP server for AI agent integration with running .NET MAUI apps."
-ms.date: 05/08/2026
+ms.date: 11/27/2026
 ---
 
 # MCP tools reference
@@ -103,7 +103,9 @@ The DevFlow MCP server exposes structured tools that AI agents can call to inspe
 
 | Tool | Description | Platforms |
 |------|-------------|-----------|
-| `maui_screenshot_capture` | Capture a PNG screenshot of the running app. | All |
+| `maui_screenshot` | Capture a PNG screenshot of the running app. | All |
+
+When a capture fails, `maui_screenshot` reports an error that includes the agent's error message and any suggestions, such as restoring a hidden or minimized macOS window before you retry.
 
 ### Sensor tools
 
