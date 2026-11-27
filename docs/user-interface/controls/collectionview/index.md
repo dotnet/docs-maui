@@ -1,7 +1,7 @@
 ---
 title: "CollectionView"
 description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
-ms.date: 10/08/2026
+ms.date: 11/27/2026
 ai-usage: ai-assisted
 ---
 
@@ -13,7 +13,17 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Collect
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> that uses a two-column vertical grid and allows multiple selections:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/verticalgrid-multipleselection.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/verticalgrid-multipleselection-net11.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::
+
+::: moniker-end
 
 <xref:Microsoft.Maui.Controls.CollectionView> should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
 

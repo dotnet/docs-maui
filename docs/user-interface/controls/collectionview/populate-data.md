@@ -1,12 +1,19 @@
 ---
 title: "Populate a CollectionView with Data"
 description: "A .NET MAUI CollectionView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
 ---
 
 # Populate a CollectionView with data
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CollectionViewDemos sample, which adds its own styling, such as cards, icons, and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CollectionView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> includes the following properties that define the data to be displayed, and its appearance:
 
@@ -133,7 +140,17 @@ public class Monkey
 
 The following screenshot shows the result of templating each item in the list:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/datatemplate.png" alt-text="Screenshot of CollectionView where each item is templated.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/datatemplate-net11.png" alt-text="Screenshot of CollectionView where each item is templated.":::
+
+::: moniker-end
 
 [!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
 
@@ -195,9 +212,31 @@ public class MonkeyDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template, which displays the monkey name and location in teal, when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays the monkey name and location in silver:
+The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template when the monkey location contains "America", and the `OtherMonkey` template when it doesn't.
+
+::: moniker range="<=net-maui-10.0"
+
+The `AmericanMonkey` template displays the monkey name and location in teal, and the `OtherMonkey` template displays them in silver:
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The `AmericanMonkey` template displays the monkey name and location in teal, and the `OtherMonkey` template displays them dimmed, in a muted gray:
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/populate-data/datatemplateselector.png" alt-text="Screenshot of CollectionView runtime item template selection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/datatemplateselector-net11.png" alt-text="Screenshot of CollectionView runtime item template selection.":::
+
+::: moniker-end
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
@@ -207,6 +246,8 @@ For more information about data template selectors, see [Create a DataTemplateSe
 ## Context menus
 
 <xref:Microsoft.Maui.Controls.CollectionView> supports context menus for items of data through the <xref:Microsoft.Maui.Controls.SwipeView>, which reveals the context menu with a swipe gesture. The <xref:Microsoft.Maui.Controls.SwipeView> is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by creating a <xref:Microsoft.Maui.Controls.SwipeView> that defines the content that the <xref:Microsoft.Maui.Controls.SwipeView> wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by setting the <xref:Microsoft.Maui.Controls.SwipeView> as the root view in the <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CollectionView>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CollectionView x:Name="collectionView"
@@ -238,7 +279,45 @@ For more information about data template selectors, see [Create a DataTemplateSe
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView x:Name="collectionView"
+                ItemsSource="{Binding Monkeys}">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Favorite"
+                                   IconImageSource="favorite.png"
+                                   BackgroundColor="#5B21B6"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
+                                   CommandParameter="{Binding}" />
+                        <SwipeItem Text="Delete"
+                                   IconImageSource="delete.png"
+                                   BackgroundColor="#BE123C"
+                                   Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
+                                   CommandParameter="{Binding}" />
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <Grid BackgroundColor="White"
+                      Padding="10">
+                    <!-- Define item appearance -->
+                </Grid>
+            </SwipeView>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 CollectionView collectionView = new CollectionView();
@@ -275,9 +354,70 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+CollectionView collectionView = new CollectionView();
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+
+collectionView.ItemTemplate = new DataTemplate(() =>
+{
+    // Define item appearance
+    Grid grid = new Grid { Padding = 10, BackgroundColor = Colors.White };
+    // ...
+
+    SwipeView swipeView = new SwipeView();
+    SwipeItem favoriteSwipeItem = new SwipeItem
+    {
+        Text = "Favorite",
+        IconImageSource = "favorite.png",
+        BackgroundColor = Color.FromArgb("#5B21B6")
+    };
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: collectionView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
+
+    SwipeItem deleteSwipeItem = new SwipeItem
+    {
+        Text = "Delete",
+        IconImageSource = "delete.png",
+        BackgroundColor = Color.FromArgb("#BE123C")
+    };
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: collectionView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CollectionView cv) => cv.SelectedItem, source: collectionView);
+
+    swipeView.RightItems = new SwipeItems { favoriteSwipeItem, deleteSwipeItem };
+    swipeView.Content = grid;    
+    return swipeView;
+});
+```
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the left side:
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the right side:
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/swipeview.png" alt-text="Screenshot of CollectionView context menu items.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/swipeview-net11.png" alt-text="Screenshot of CollectionView context menu items.":::
+
+::: moniker-end
 
 <xref:Microsoft.Maui.Controls.SwipeView> supports four different swipe directions, with the swipe direction being defined by the directional `SwipeItems` collection the `SwipeItems` objects are added to. By default, a swipe item is executed when it's tapped by the user. In addition, once a swipe item has been executed the swipe items are hidden and the <xref:Microsoft.Maui.Controls.SwipeView> content is re-displayed. However, these behaviors can be changed.
 
@@ -316,7 +456,17 @@ refreshView.Content = collectionView;
 
 When the user initiates a refresh, the <xref:System.Windows.Input.ICommand> defined by the `Command` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/pull-to-refresh.png" alt-text="Screenshot of CollectionView pull-to-refresh.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/pull-to-refresh-net11.png" alt-text="Screenshot of CollectionView pull-to-refresh.":::
+
+::: moniker-end
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
