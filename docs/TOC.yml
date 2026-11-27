@@ -1370,6 +1370,10 @@
               href: developer-tools/cli/device-management.md
             - name: App profiling
               href: developer-tools/cli/profile.md
+            - name: TCP port diagnostics
+              href: developer-tools/cli/port-diagnostics.md
+            - name: Update the CLI
+              href: developer-tools/cli/update.md
         - name: DevFlow
           items:
             - name: Overview

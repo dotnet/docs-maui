@@ -1,7 +1,8 @@
 ---
 title: ".NET MAUI developer tools overview"
 description: "Learn about developer tools for improving your productivity using .NET MAUI, including the .NET MAUI CLI and DevFlow toolkit."
-ms.date: 05/08/2026
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI developer tools overview
@@ -25,6 +26,8 @@ Key capabilities include:
 - **Device listing** &ndash; Enumerate connected physical devices and running emulators/simulators.
 - **Android SDK management** &ndash; Install and manage Android SDKs, JDKs, and emulator images.
 - **App profiling** &ndash; Capture performance traces with `maui profile startup` (full startup trace) or `maui profile manual` (on-demand trace at any point in the app lifecycle).
+- **Port diagnostics** &ndash; Find which process is listening on a TCP port with `maui port check`.
+- **Self-update** &ndash; Update the CLI with `maui update --self`, and get notified when a newer version is available.
 - **DevFlow integration** &ndash; Launch and coordinate DevFlow sessions from the command line.
 
 For more information, see [.NET MAUI CLI overview](cli/index.md).
