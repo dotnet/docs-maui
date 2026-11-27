@@ -2,6 +2,7 @@
 title: ".NET MAUI Linux GTK4 backend"
 description: "Learn how to build native Linux apps using .NET MAUI with the experimental GTK4 backend from the dotnet/maui-labs repository."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Linux GTK4 backend
@@ -16,8 +17,10 @@ The Linux GTK4 backend lets .NET MAUI applications run natively on Linux desktop
 | Requirement | Version |
 |-------------|---------|
 | .NET SDK | 10.0+ |
-| GTK 4 libraries | 4.x (system package) |
-| WebKitGTK *(Blazor only)* | 6.x (system package) |
+| GTK 4 libraries | 4.12+ (system package) |
+| WebKitGTK *(`WebView` and Blazor Hybrid only)* | 6.x (system package) |
+
+The backend checks the GTK version at startup and throws `PlatformNotSupportedException` if GTK 4.12 or later isn't installed.
 
 ### Install GTK4 on Debian / Ubuntu
 
@@ -28,6 +31,8 @@ sudo apt install libgtk-4-dev libwebkitgtk-6.0-dev \
 ```
 
 ### Install GTK4 on Fedora
+
+Fedora package names can differ between releases. If a package isn't found, search your release's repositories for the GTK 4, WebKitGTK 6.0, and GObject Introspection development packages.
 
 ```bash
 sudo dnf install gtk4-devel webkitgtk6.0-devel \
@@ -40,6 +45,7 @@ sudo dnf install gtk4-devel webkitgtk6.0-devel \
 |---------|-------------|
 | `Microsoft.Maui.Platforms.Linux.Gtk4` | Core handlers, hosting, and platform services |
 | `Microsoft.Maui.Platforms.Linux.Gtk4.Essentials` | MAUI Essentials implementations |
+| `Microsoft.Maui.Platforms.Linux.Gtk4.BlazorWebView` | Blazor Hybrid (`BlazorWebView`) support through WebKitGTK |
 | `Microsoft.Maui.DevFlow.Agent.Gtk` | DevFlow agent for GTK/Linux apps |
 
 Use the current `Microsoft.Maui.Platforms.Linux.Gtk4` and `Microsoft.Maui.DevFlow.Agent.Gtk` packages. The superseded `Platform.Maui.Linux.Gtk4*` packages are no longer recommended. Don't mix the two backends in the same project.
@@ -112,6 +118,45 @@ public static class MauiProgram
 }
 ```
 
+If you added the `Microsoft.Maui.Platforms.Linux.Gtk4.Essentials` package, register its services before calling `builder.Build()`. Adding the package alone doesn't replace the default MAUI Essentials implementations.
+
+```csharp
+using Microsoft.Maui.Platforms.Linux.Gtk4.Essentials.Hosting;
+
+// In CreateMauiApp, before builder.Build():
+builder.AddLinuxGtk4Essentials();
+```
+
+The project template includes the Essentials package and this registration by default.
+
+## Supported features
+
+Each .NET MAUI control maps to a native GTK4 widget. The backend includes handlers for:
+
+| Category | Controls |
+|----------|----------|
+| Basic controls | `Label`, `Button`, `Entry`, `Editor`, `CheckBox`, `Switch`, `Slider`, `Stepper`, `ProgressBar`, `ActivityIndicator`, `Image`, `ImageButton`, `BoxView`, and `RadioButton` |
+| Input and selection | `Picker`, `DatePicker`, `TimePicker`, and `SearchBar` |
+| Collections | `CollectionView`, `ListView`, `TableView`, `CarouselView`, `SwipeView`, `RefreshView`, and `IndicatorView` |
+| Layouts | `StackLayout`, `Grid`, `FlexLayout`, `AbsoluteLayout`, `ScrollView`, `ContentView`, `Border`, and `Frame` |
+| Pages and navigation | `ContentPage`, `NavigationPage`, `TabbedPage`, `FlyoutPage`, and `Shell` |
+| Shapes | `Rectangle`, `Ellipse`, `Line`, `Path`, `Polygon`, and `Polyline` |
+| Other | `GraphicsView` and `WebView` (WebKitGTK) |
+
+The backend also supports gestures, animations, transforms, visual states, control templates, formatted text, alerts and modal pages, menu bars, context menus, Blazor Hybrid, and automatic light and dark theme detection.
+
+## Styling with GTK CSS
+
+The backend styles native widgets with GTK CSS. Font sizes use logical pixels (`px`), which match .NET MAUI device-independent font sizes.
+
+Each handler mapper updates its own CSS fragment for a widget. Font, color, spacing, background, and border updates don't overwrite one another. If you write a custom handler that derives from `GtkViewHandler`, follow these rules:
+
+- Pass the complete CSS fragment to `UpdateCss` or `UpdateCssWithSelector` on every update. Pass `null` or an empty string to remove that fragment's styles.
+- The optional `property` parameter defaults to the calling method name. If a shared helper updates independent properties, pass a distinct `property` value for each property.
+- When fragments set the same CSS property with the same specificity, the most recently updated fragment wins.
+
+The older `ApplyCss` and `ApplyCssWithSelector` methods remain available for existing custom handlers. They share one fragment per widget and selector, so use `UpdateCss` or `UpdateCssWithSelector` for new code.
+
 ## DevFlow agent startup
 
 With the current GTK4 backend, registering the agent with `AddMauiDevFlowAgent()` is all that's needed. The agent starts automatically after the first GTK window is created; you don't need to call `StartDevFlowAgent()` manually.
@@ -133,6 +178,20 @@ If the agent doesn't start, verify that `builder.AddMauiDevFlowAgent()` is calle
 ## Limitations
 
 SecureStorage isn't supported on Linux GTK4. All storage operations (`GetAsync`, `SetAsync`, `Remove`, and `RemoveAll`) throw `PlatformNotSupportedException`. If your app needs secure storage on Linux, implement your own `Microsoft.Maui.Storage.ISecureStorage` and register it in `MauiProgram.cs`.
+
+Register your implementation before you call `AddLinuxGtk4Essentials()`:
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Platforms.Linux.Gtk4.Essentials.Hosting;
+using Microsoft.Maui.Storage;
+
+// MySecureStorage is your app's ISecureStorage implementation.
+builder.Services.AddSingleton<ISecureStorage, MySecureStorage>();
+builder.AddLinuxGtk4Essentials();
+```
+
+`AddLinuxGtk4Essentials()` keeps an existing `ISecureStorage` registration. After `builder.Build()`, both injected `ISecureStorage` instances and static calls such as `SecureStorage.Default.GetAsync("api_token")` use your implementation. Store secrets with a secure system service. Don't store secrets as plain text, and don't store an encryption key next to the encrypted data.
 
 ## Source code
 
