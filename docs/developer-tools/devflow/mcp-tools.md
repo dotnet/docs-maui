@@ -1,8 +1,7 @@
 ---
 title: "MCP tools reference"
 description: "Reference for all MCP tools exposed by the DevFlow MCP server for AI agent integration with running .NET MAUI apps."
-ms.date: 11/27/2026
-ai-usage: ai-assisted
+ms.date: 05/08/2026
 ---
 
 # MCP tools reference
@@ -34,11 +33,7 @@ The DevFlow MCP server exposes structured tools that AI agents can call to inspe
 | Tool | Description | Platforms |
 |------|-------------|-----------|
 | `maui_cdp_evaluate` | Evaluate JavaScript in a Blazor WebView using Chrome DevTools Protocol. | All |
-| `maui_cdp_screenshot` | Capture a screenshot of a Blazor WebView. | All |
-| `maui_cdp_source` | Get the HTML source of a Blazor WebView. | All |
-| `maui_cdp_webviews` | List the Blazor WebViews registered in the running app. | All |
-
-`maui_cdp_evaluate`, `maui_cdp_screenshot`, and `maui_cdp_source` accept an optional `webviewId` parameter that targets a WebView by index, `AutomationId`, or element ID. A numeric value is matched against the registry index before `AutomationId`. When you omit `webviewId`, the agent selects a default WebView that can change as pages and WebViews load, so specify it explicitly when your app has more than one WebView. For the full matching and default-selection order, see [Target a WebView](blazor-cdp.md#target-a-webview). Use `maui_cdp_webviews` to list the available WebViews. When `maui_cdp_evaluate` or `maui_cdp_source` fails, for example because the JavaScript throws or the WebView returns no HTML source, the tool returns an error result instead of a successful result.
+| `maui_cdp_navigate` | Navigate to a URL in a Blazor WebView. | All |
 
 ### Interaction tools
 
