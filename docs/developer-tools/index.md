@@ -29,6 +29,10 @@ Key capabilities include:
 
 For more information, see [.NET MAUI CLI overview](cli/index.md).
 
+## Agent skills
+
+Install [agent skills](agent-skills.md) for .NET MAUI app development and DevFlow tooling.
+
 ## DevFlow
 
 DevFlow is a comprehensive testing, automation, and debugging toolkit for .NET MAUI apps. It consists of three components: an in-app agent that runs inside your app, a CLI that provides 50+ commands for interacting with the agent, and an MCP server that enables AI integration.

@@ -45,6 +45,7 @@ The following table lists the available `maui` CLI commands:
 
 | Command | Description |
 |---|---|
+| `maui ai` | Manage skills, agents, and MCP configuration |
 | `maui doctor` | Run environment diagnostics and auto-fix issues |
 | `maui device list` | List connected devices and emulators |
 | `maui version` | Display version information |
@@ -73,6 +74,7 @@ The following table lists the available `maui` CLI commands:
 
 For more information, see:
 
+- [Agent skills marketplace](../agent-skills.md)
 - [Environment diagnostics](environment-diagnostics.md)
 - [Android SDK &amp; emulator management](android-management.md)
 - [Apple platform management](apple-management.md)

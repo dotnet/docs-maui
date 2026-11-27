@@ -123,3 +123,4 @@ For GTK/Linux apps, use `Microsoft.Maui.DevFlow.Agent.Gtk` with the current `Mic
 ## See also
 
 - [.NET MAUI CLI overview](../cli/index.md)
+- [Agent skills marketplace](../agent-skills.md)
