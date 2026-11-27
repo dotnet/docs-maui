@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Linux GTK4 backend"
 description: "Learn how to build native Linux apps using .NET MAUI with the experimental GTK4 backend from the dotnet/maui-labs repository."
-ms.date: 09/29/2026
+ms.date: 11/27/2026
 ---
 
 # .NET MAUI Linux GTK4 backend
@@ -129,6 +129,10 @@ protected override void OnStarted()
 ```
 
 If the agent doesn't start, verify that `builder.AddMauiDevFlowAgent()` is called during `MauiAppBuilder` setup and that the app uses `UseMauiAppLinuxGtk4<App>()` or the equivalent current GTK backend setup. If using the explicit hook, call `this.StartDevFlowAgent()` from `GtkMauiApplication.OnStarted()`, not from `CreateMauiApp()`.
+
+## Limitations
+
+SecureStorage isn't supported on Linux GTK4. All storage operations (`GetAsync`, `SetAsync`, `Remove`, and `RemoveAll`) throw `PlatformNotSupportedException`. If your app needs secure storage on Linux, implement your own `Microsoft.Maui.Storage.ISecureStorage` and register it in `MauiProgram.cs`.
 
 ## Source code
 
