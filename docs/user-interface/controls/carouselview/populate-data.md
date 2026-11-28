@@ -472,7 +472,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         BackgroundColor = Colors.LightGreen
     };
     favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, new Binding(Binding.SelfPath));
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -481,7 +481,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         BackgroundColor = Colors.LightPink
     };
     deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, new Binding(Binding.SelfPath));
 
     swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
     swipeView.BottomItems = new SwipeItems { deleteSwipeItem };
@@ -516,7 +516,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         BackgroundColor = Color.FromArgb("#5B21B6")
     };
     favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext));
-    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, new Binding(Binding.SelfPath));
 
     SwipeItem deleteSwipeItem = new SwipeItem
     {
@@ -525,7 +525,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         BackgroundColor = Color.FromArgb("#BE123C")
     };
     deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext));
-    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, new Binding(Binding.SelfPath));
 
     swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
     swipeView.BottomItems = new SwipeItems { deleteSwipeItem };
