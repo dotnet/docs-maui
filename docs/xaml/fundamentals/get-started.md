@@ -1,12 +1,20 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 08/19/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Get started with XAML
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots in this article come from the XamlSamples sample, which applies app-wide styles, such as fonts and button colors. The page XAML in this article matches the sample, but your pages look different unless you add the same styles.
+
+::: moniker-end
 
 In a .NET Multi-platform App UI (.NET MAUI) app, XAML is mostly used to define the visual contents of a page and works together with a C# code-behind file. The code-behind file provides code support for the markup. Together, these two files contribute to a new class definition that includes child views and property initialization. Within the XAML file, classes and properties are referenced with XML elements and attributes, and links between the markup and code are established.
 
@@ -70,6 +78,8 @@ A <xref:Microsoft.Maui.Controls.ContentPage> should contain a single child, that
 
 The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a <xref:Microsoft.Maui.Controls.Label>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -84,6 +94,27 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
            TextColor="Blue" />
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlSamples.HelloXamlPage"
+             Title="Hello XAML Page">
+    <Label Text="Hello, XAML!"
+           VerticalOptions="Center"
+           HorizontalTextAlignment="Center"
+           Rotation="-15"
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="MediumSlateBlue" />
+</ContentPage>
+```
+
+::: moniker-end
 
 ::: moniker range=">=net-maui-10.0"
 
@@ -259,7 +290,17 @@ public MainPage()
 
 When you compile and deploy the new version of this app, a button appears on the screen. Pressing it navigates to `HelloXamlPage`:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/helloxaml1.png" alt-text="Screenshot of rotated Label text.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/helloxaml1-net11.png" alt-text="Screenshot of rotated Label text.":::
+
+::: moniker-end
 
 You can navigate back to `MainPage` using the navigation bar that appears on each platform.
 
@@ -290,7 +331,17 @@ The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a la
 
 This XAML file is syntactically complete, and produces the following UI:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/xamlpluscode1.png" alt-text="Screenshot of multiple controls on a page.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/xamlpluscode1-net11.png" alt-text="Screenshot of multiple controls on a page.":::
+
+::: moniker-end
 
 However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button>, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the <xref:Microsoft.Maui.Controls.Button> should do something.
 
@@ -397,7 +448,17 @@ void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
 
 The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider> causes its value to be displayed in the <xref:Microsoft.Maui.Controls.Label>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/xamlpluscode2.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/xamlpluscode2-net11.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
+
+::: moniker-end
 
 In the example above the <xref:Microsoft.Maui.Controls.Button> simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a <xref:Microsoft.Maui.Controls.Button> and then access its properties:
 

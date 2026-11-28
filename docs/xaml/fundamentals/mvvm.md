@@ -1,12 +1,20 @@
 ---
 title: "Data binding and MVVM"
 description: "The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel."
-ms.date: 08/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Data binding and MVVM
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots in this article come from the XamlSamples sample, which applies app-wide styles, such as fonts and button colors. The page XAML in this article matches the sample, but your pages look different unless you add the same styles.
+
+::: moniker-end
 
 The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel. The view and the viewmodel are often connected through data bindings defined in XAML. The `BindingContext` for the view is usually an instance of the viewmodel.
 
@@ -43,7 +51,17 @@ In [XAML markup extensions](markup-extensions.md) you saw how to define a new XM
 
 In this example, the retrieved `DateTime` value is set as the `BindingContext` on a <xref:Microsoft.Maui.Controls.StackLayout>. When you set the `BindingContext` on an element, it is inherited by all the children of that element. This means that all the children of the <xref:Microsoft.Maui.Controls.StackLayout> have the same `BindingContext`, and they can contain bindings to properties of that object:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/mvvm/oneshotdatetime.png" alt-text="Screenshot of a page displaying the date and time.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/mvvm/oneshotdatetime-net11.png" alt-text="Screenshot of a page displaying the date and time.":::
+
+::: moniker-end
 
 However, the problem is that the date and time are set once when the page is constructed and initialized, and never change.
 
@@ -126,7 +144,17 @@ In this example, `ClockViewModel` is set to the `BindingContext` of the <xref:Mi
 
 The `Binding` markup extension on the `Text` property of the <xref:Microsoft.Maui.Controls.Label> formats the `DateTime` property. The following screenshot shows the result:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/mvvm/clock.png" alt-text="Screenshot of a page displaying the date and time via a viewmodel.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/mvvm/clock-net11.png" alt-text="Screenshot of a page displaying the date and time via a viewmodel.":::
+
+::: moniker-end
 
 In addition, it’s possible to access individual properties of the `DateTime` property of the viewmodel by separating the properties with periods:
 
@@ -246,7 +274,17 @@ The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> who
 
 The binding on each <xref:Microsoft.Maui.Controls.Label> is the default `OneWay`. It only needs to display the value. However, the default binding on each <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This allows the <xref:Microsoft.Maui.Controls.Slider> to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a <xref:Microsoft.Maui.Controls.Slider> sets a new value for the property in the viewmodel, which then calculates a new color:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/mvvm/hslcolorscroll.png" alt-text="MVVM using two-way data bindings.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/mvvm/hslcolorscroll-net11.png" alt-text="MVVM using two-way data bindings.":::
+
+::: moniker-end
 
 ## Commanding
 
@@ -424,4 +462,14 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
 
 In this example, the `Command` property of the first <xref:Microsoft.Maui.Controls.Button> that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the <xref:Microsoft.Maui.Controls.Button>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/mvvm/keypad.png" alt-text="Screenshot of a calculator using MVVM and commands.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/mvvm/keypad-net11.png" alt-text="Screenshot of a calculator using MVVM and commands.":::
+
+::: moniker-end
