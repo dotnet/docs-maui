@@ -1,12 +1,20 @@
 ---
 title: "String formatting"
 description: ".NET MAUI apps can use data bindings to format and display objects as strings. This is achieved by setting the StringFormat of the Binding to a standard .NET formatting string with a placeholder."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # String formatting
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 In a .NET Multi-platform App UI (.NET MAUI) app, it's sometimes convenient to use data bindings to display the string representation of an object or value. For example, you might want to use a <xref:Microsoft.Maui.Controls.Label> to display the current value of a <xref:Microsoft.Maui.Controls.Slider>. In this data binding, the <xref:Microsoft.Maui.Controls.Slider> is the source, and the target is the `Text` property of the <xref:Microsoft.Maui.Controls.Label>.
 
@@ -100,7 +108,17 @@ This simply displays the `DateTime` value of the `BindingContext` with default f
 
 The last section sets the `BindingContext` to the value of `Math.PI` and displays it with default formatting and two different types of numeric formatting:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/string-formatting/stringformatting.png" alt-text="String formatting.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/string-formatting/stringformatting-net11.png" alt-text="String formatting.":::
+
+::: moniker-end
 
 ## ViewModels and string formatting
 
@@ -151,4 +169,14 @@ This approach is shown in the following example:
 
 In this example, there are three pairs of <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Label> elements that are bound to the same source property in the `HslColorViewModel` object. Each <xref:Microsoft.Maui.Controls.Label> that accompanies a <xref:Microsoft.Maui.Controls.Slider> has a `StringFormat` property to display each <xref:Microsoft.Maui.Controls.Slider> value:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/string-formatting/bettercolorselector.png" alt-text="Better color selector.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/string-formatting/bettercolorselector-net11.png" alt-text="Better color selector.":::
+
+::: moniker-end

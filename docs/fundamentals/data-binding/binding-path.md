@@ -1,12 +1,20 @@
 ---
 title: "Binding path"
 description: ".NET MAUI data bindings can be used to access sub-properties and collection members with the Path property of the Binding class."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Binding path
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 In .NET Multi-platform App UI (.NET MAUI), the `Path` property of the `Binding` class (or the `Path` property of the `Binding` markup extension) can be set to a single property, to a *sub-property* (a property of a property), or to a member of a collection.
 
@@ -31,6 +39,8 @@ The `Time` and `TotalSeconds` properties are simply connected with a period.
 
 The following XAML shows multiple examples of binding to sub-properties:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -46,14 +56,17 @@ The following XAML shows multiple examples of binding to sub-properties:
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout Margin="10, 0">
+    <StackLayout x:Name="stackLayout"
+                 Margin="10, 0">
+        <Label Text="Select a time:" />
         <TimePicker x:Name="timePicker" />
-        <Label Text="{Binding x:DataType='TimePicker',
+        <Label x:Name="label"
+               Text="{Binding x:DataType='TimePicker',
                               Source={x:Reference timePicker},
                               Path=Time.TotalSeconds,
                               StringFormat='{0} total seconds'}" />
         <Label Text="{Binding x:DataType='StackLayout',
-                              Source={x:Reference page},
+                              Source={x:Reference stackLayout},
                               Path=Children.Count,
                               StringFormat='There are {0} children in this StackLayout'}" />
         <Label Text="{Binding x:DataType='globe:CultureInfo',
@@ -64,7 +77,7 @@ The following XAML shows multiple examples of binding to sub-properties:
             <Label.Text>
                 <Binding x:DataType="globe:CultureInfo"
                          Path="DateTimeFormat.DayNames[3]"
-                         StringFormat="The middle day of the week in France is {0}">
+                         StringFormat="The middle day of the week in French is {0}">
                     <Binding.Source>
                         <globe:CultureInfo>
                             <x:Arguments>
@@ -83,11 +96,82 @@ The following XAML shows multiple examples of binding to sub-properties:
 </ContentPage>
 ```
 
-In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the page itself. The `Content` property is of type <xref:Microsoft.Maui.Controls.StackLayout>, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:globe="clr-namespace:System.Globalization;assembly=netstandard"
+             x:Class="DataBindingDemos.PathVariationsPage"
+             Title="Path Variations"
+             x:Name="page">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout x:Name="stackLayout"
+                         Margin="10, 0">
+        <Label Text="Select a time:" />
+        <TimePicker x:Name="timePicker" />
+        <Label x:Name="label"
+               Text="{Binding x:DataType='TimePicker',
+                              Source={x:Reference timePicker},
+                              Path=Time.TotalSeconds,
+                              StringFormat='{0} total seconds'}" />
+        <Label Text="{Binding x:DataType='VerticalStackLayout',
+                              Source={x:Reference stackLayout},
+                              Path=Children.Count,
+                              StringFormat='There are {0} children in this VerticalStackLayout'}" />
+        <Label Text="{Binding x:DataType='globe:CultureInfo',
+                              Source={x:Static globe:CultureInfo.CurrentCulture},
+                              Path=DateTimeFormat.DayNames[3],
+                              StringFormat='The middle day of the week is {0}'}" />
+        <Label>
+            <Label.Text>
+                <Binding x:DataType="globe:CultureInfo"
+                         Path="DateTimeFormat.DayNames[3]"
+                         StringFormat="The middle day of the week in French is {0}">
+                    <Binding.Source>
+                        <globe:CultureInfo>
+                            <x:Arguments>
+                                <x:String>fr-FR</x:String>
+                            </x:Arguments>
+                        </globe:CultureInfo>
+                    </Binding.Source>
+                </Binding>
+            </Label.Text>
+        </Label>
+        <Label Text="{Binding x:DataType='Label',
+                              Source={x:Reference label},
+                              Path=Text.Length,
+                              StringFormat='The second Label has {0} characters'}" />
+    </VerticalStackLayout>
+</ContentPage>
+```
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
+In the third <xref:Microsoft.Maui.Controls.Label>, the binding source is the <xref:Microsoft.Maui.Controls.StackLayout> named `stackLayout`, which has a `Children` property of type `IList<IView>`, which has a `Count` property indicating the number of children.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In the third <xref:Microsoft.Maui.Controls.Label>, the binding source is the <xref:Microsoft.Maui.Controls.VerticalStackLayout> named `stackLayout`, which has a `Children` property of type `IList<IView>`, which has a `Count` property indicating the number of children. The `Children` collection doesn't raise property change notifications for `Count`, so the binding shows the number of children when it was first evaluated, while the page was still being built. In this example, the <xref:Microsoft.Maui.Controls.Label> reports 3 children, the ones added before it, rather than the 7 children that the layout eventually contains.
+
+::: moniker-end
 
 ## Paths with indexers
 
-In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Label> references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
+In the example above, the binding in the <xref:Microsoft.Maui.Controls.Label> that displays the middle day of the week references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
 
 ```xaml
 <Label Text="{Binding x:DataType='globe:CultureInfo',
@@ -98,14 +182,14 @@ In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Lab
 
 The source is set to the static `CultureInfo.CurrentCulture` property, which is an object of type `CultureInfo`. That class defines a property named `DateTimeFormat` of type [`DateTimeFormatInfo`](xref:System.Globalization.DateTimeFormatInfo) that contains a `DayNames` collection. The index selects the fourth item.
 
-The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
+The next <xref:Microsoft.Maui.Controls.Label> does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
 
 ```xaml
 <Label>
     <Label.Text>
-        <Binding x:DataType="globe:CultureInfo",
+        <Binding x:DataType="globe:CultureInfo"
                  Path="DateTimeFormat.DayNames[3]"
-                 StringFormat="The middle day of the week in France is {0}">
+                 StringFormat="The middle day of the week in French is {0}">
             <Binding.Source>
                 <globe:CultureInfo>
                     <x:Arguments>
@@ -131,7 +215,17 @@ The last <xref:Microsoft.Maui.Controls.Label> references the second <xref:Micros
 
 <xref:Microsoft.Maui.Controls.Label> has a `Text` property of type `String`, which has a `Length` property. The second <xref:Microsoft.Maui.Controls.Label> reports the `TimeSpan` set in the <xref:Microsoft.Maui.Controls.TimePicker>, so when that text changes, the final <xref:Microsoft.Maui.Controls.Label> changes as well:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/binding-path/pathvariations-net11.png" alt-text="Path variations.":::
+
+::: moniker-end
 
 ## Debug complex paths
 
@@ -151,6 +245,16 @@ That displays the type of the binding source, or `DataBindingDemos.PathVariation
                       StringFormat='{0}'}" />
 ```
 
+::: moniker range="<=net-maui-10.0"
+
 The type of the `Content` property is now revealed to be `Microsoft.Maui.Controls.StackLayout`. Add the `Children` property to the `Path` and the type is also `Microsoft.Maui.Controls.StackLayout`. Add an index to that and the type is `Microsoft.Maui.Controls.Label`. Continue in this way.
 
-As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the first <xref:Microsoft.Maui.Controls.Label> because the `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The type of the `Content` property is now revealed to be `Microsoft.Maui.Controls.VerticalStackLayout`. Add the `Children` property and an index to the `Path`, such as `Content.Children[0]`, and the type is `Microsoft.Maui.Controls.Label`. Continue in this way.
+
+::: moniker-end
+
+As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the <xref:Microsoft.Maui.Controls.Label> that displays the total seconds, because its `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.

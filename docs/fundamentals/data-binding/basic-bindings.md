@@ -1,12 +1,20 @@
 ---
 title: "Basic bindings"
 description: ".NET MAUI data binding links a pair of properties between two objects, at least one of which is usually a user-interface object. These two objects are called the target and the source."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Basic bindings
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 A .NET Multi-platform App UI (.NET MAUI) data binding links a pair of properties between two objects, at least one of which is usually a user-interface object. These two objects are called the *target* and the *source*:
 
@@ -74,7 +82,17 @@ In the example above the binding source is specified using a `Func`, which ensur
 
 As you manipulate the <xref:Microsoft.Maui.Controls.Slider>, the <xref:Microsoft.Maui.Controls.Label> rotates accordingly:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/basic-bindings/basiccodebinding.png" alt-text="Basic code binding.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/basic-bindings/basiccodebinding-net11.png" alt-text="Basic code binding.":::
+
+::: moniker-end
 
 Alternatively, the data binding can be specified in XAML:
 
@@ -279,4 +297,14 @@ The following XAML example demonstrates binding context inheritance:
 
 In this example, the `BindingContext` property of the <xref:Microsoft.Maui.Controls.StackLayout> is set to the `slider` object. This binding context is inherited by both the <xref:Microsoft.Maui.Controls.Label> and the <xref:Microsoft.Maui.Controls.BoxView>, both of which have their `Rotation` properties set to the `Value` property of the <xref:Microsoft.Maui.Controls.Slider>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/basic-bindings/bindingcontextinheritance.png" alt-text="Binding context inheritance.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/basic-bindings/bindingcontextinheritance-net11.png" alt-text="Binding context inheritance.":::
+
+::: moniker-end

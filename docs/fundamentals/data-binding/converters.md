@@ -1,12 +1,20 @@
 ---
 title: "Binding value converters"
 description: "Learn how how to cast or convert values within a .NET MAUI data binding by implementing a value converter (which is also known as a binding converter, or binding value converter)."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Binding value converters
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 .NET Multi-platform App UI (.NET MAUI) data bindings usually transfer data from a source property to a target property, and in some cases from the target property to the source property. This transfer is straightforward when the source and target properties are of the same type, or when one type can be converted to the other type through an implicit conversion. When that is not the case, a type conversion must take place.
 
@@ -83,7 +91,17 @@ In this example, the `IntToBoolConverter` is instantiated in the page's resource
 
 This example demonstrates a common need when a <xref:Microsoft.Maui.Controls.Button> performs an operation based on text that the user types into an <xref:Microsoft.Maui.Controls.Entry> view. The `Text` property of each <xref:Microsoft.Maui.Controls.Entry> is initialized to an empty string, because the `Text` property is `null` by default, and the data binding will not work in that case. If nothing has been typed into the <xref:Microsoft.Maui.Controls.Entry>, the <xref:Microsoft.Maui.Controls.Button> should be disabled. Each <xref:Microsoft.Maui.Controls.Button> contains a data binding on its `IsEnabled` property. The data-binding source is the `Length` property of the `Text` property of the corresponding <xref:Microsoft.Maui.Controls.Entry>. If that `Length` property is not 0, the value converter returns `true` and the <xref:Microsoft.Maui.Controls.Button> is enabled:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/converters/enablebuttons.png" alt-text="Enable buttons.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/converters/enablebuttons-net11.png" alt-text="Enable buttons.":::
+
+::: moniker-end
 
 > [!NOTE]
 > If you know that a value converter will only be used in `OneWay` bindings, then the `ConvertBack` method can simply return `null`.
@@ -117,6 +135,8 @@ public class BoolToObjectConverter<T> : IValueConverter
 ```
 
 The following example demonstrates how this converter can be used to display the value of a <xref:Microsoft.Maui.Controls.Switch> view. Although it's common to instantiate value converters as resources in a resource dictionary, this example demonstrates an alternative. Here, each value converter is instantiated between `Binding.Converter` property-element tags. The `x:TypeArguments` indicates the generic argument, and `TrueObject` and `FalseObject` are both set to objects of that type:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -222,9 +242,129 @@ The following example demonstrates how this converter can be used to display the
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DataBindingDemos"
+             x:Class="DataBindingDemos.SwitchIndicatorsPage"
+             Title="Switch Indicators">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style TargetType="Switch">
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="10, 0">
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Center">
+            <Label Text="Subscribe?" />
+            <Switch x:Name="switch1" />
+            <Label>
+                <Label.Text>
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch1}"
+                             Path="IsToggled">
+                        <Binding.Converter>
+                            <local:BoolToObjectConverter x:TypeArguments="x:String"
+                                                         TrueObject="Of course!"
+                                                         FalseObject="No way!" />
+                        </Binding.Converter>
+                    </Binding>
+                </Label.Text>
+            </Label>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Center">
+            <Label Text="Allow popups?" />
+            <Switch x:Name="switch2" />
+            <Label>
+                <Label.Text>
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch2}"
+                             Path="IsToggled">
+                        <Binding.Converter>
+                            <local:BoolToObjectConverter x:TypeArguments="x:String"
+                                                         TrueObject="Yes"
+                                                         FalseObject="No" />
+                        </Binding.Converter>
+                    </Binding>
+                </Label.Text>
+                <Label.TextColor>
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch2}"
+                             Path="IsToggled">
+                        <Binding.Converter>
+                            <local:BoolToObjectConverter x:TypeArguments="Color"
+                                                         TrueObject="#15803D"
+                                                         FalseObject="#E11D48" />
+                        </Binding.Converter>
+                    </Binding>
+                </Label.TextColor>
+            </Label>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="Center">
+            <Label Text="Learn more?" />
+            <Switch x:Name="switch3" />
+            <Label FontSize="18"
+                   VerticalOptions="Center">
+                <Label.Style>
+                    <Binding x:DataType="Switch"
+                             Source="{x:Reference switch3}"
+                             Path="IsToggled">
+                        <Binding.Converter>
+                            <local:BoolToObjectConverter x:TypeArguments="Style">
+                                <local:BoolToObjectConverter.TrueObject>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Text" Value="Indubitably!" />
+                                        <Setter Property="FontAttributes" Value="Italic, Bold" />
+                                        <Setter Property="TextColor" Value="#15803D" />
+                                    </Style>
+                                </local:BoolToObjectConverter.TrueObject>
+
+                                <local:BoolToObjectConverter.FalseObject>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Text" Value="Maybe later" />
+                                        <Setter Property="FontAttributes" Value="None" />
+                                        <Setter Property="TextColor" Value="#E11D48" />
+                                    </Style>
+                                </local:BoolToObjectConverter.FalseObject>
+                            </local:BoolToObjectConverter>
+                        </Binding.Converter>
+                    </Binding>
+                </Label.Style>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
+```
+
+::: moniker-end
+
 In this example, in the last of the three <xref:Microsoft.Maui.Controls.Switch> and <xref:Microsoft.Maui.Controls.Label> pairs, the generic argument is set to a <xref:Microsoft.Maui.Controls.Style>, and entire <xref:Microsoft.Maui.Controls.Style> objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for <xref:Microsoft.Maui.Controls.Label> set in the resource dictionary, so the properties in that style are explicitly assigned to the <xref:Microsoft.Maui.Controls.Label>. Toggling the <xref:Microsoft.Maui.Controls.Switch> causes the corresponding <xref:Microsoft.Maui.Controls.Label> to reflect the change:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/converters/switchindicators-net11.png" alt-text="Switch indicators.":::
+
+::: moniker-end
 
 > [!NOTE]
 > It's also possible to use triggers to implement changes in the user-interface based on other views. For more information, see [Triggers](~/fundamentals/triggers.md).
@@ -422,4 +562,14 @@ The following XAML example instantiates `FloatToIntConverter` in its resource di
 
 The values of the `Red` and `Green` properties are displayed with a `Binding` markup extension. The `Blue` property, however, instantiates the `Binding` class to demonstrate how an explicit `float` value can be set to `ConverterParameter` property:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/converters/rgbcolorselector.png" alt-text="RGB color selector.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/converters/rgbcolorselector-net11.png" alt-text="RGB color selector.":::
+
+::: moniker-end

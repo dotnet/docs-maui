@@ -1,12 +1,20 @@
 ---
 title: "Relative bindings"
 description: ".NET MAUI relative bindings are created with the RelativeSource markup extension, which sets the binding source relative to the position of the binding target."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Relative bindings
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 .NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, and set as the `Source` property of a binding expression.
 
@@ -34,17 +42,43 @@ For more information about .NET MAUI markup extensions, see [Consume XAML markup
 
 The `Self` relative binding mode is used bind a property of an element to another property on the same element:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
-<BoxView x:DataType="ContentPage"
+<BoxView x:DataType="BoxView"
          Color="Red"
          WidthRequest="200"
          HeightRequest="{Binding Source={RelativeSource Self}, Path=WidthRequest}"
          HorizontalOptions="Center" />
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<BoxView x:DataType="BoxView"
+         Color="#F43F5E"
+         WidthRequest="200"
+         HeightRequest="{Binding Source={RelativeSource Self}, Path=WidthRequest}"
+         HorizontalOptions="Center" />
+```
+
+::: moniker-end
+
 In this example, the <xref:Microsoft.Maui.Controls.BoxView> sets its <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property to a fixed size, and the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property binds to the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property. Therefore, both properties are equal and so a square is drawn:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/relative-bindings/self-relative-binding.png" alt-text="Screenshot of a Self mode relative binding.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/relative-bindings/self-relative-binding-net11.png" alt-text="Screenshot of a Self mode relative binding.":::
+
+::: moniker-end
 
 > [!IMPORTANT]
 > When binding a property of an element to another property on the same element, the properties must be the same type. Alternatively, you can specify a converter on the binding to convert the value.
@@ -108,7 +142,17 @@ The following XAML shows an example where the `Mode` property will be implicitly
 
 In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The <xref:Microsoft.Maui.Controls.DataTemplate>, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a <xref:Microsoft.Maui.Controls.Button>. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a <xref:Microsoft.Maui.Controls.Button> deletes an employee:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/relative-bindings/findancestor-relative-binding.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/relative-bindings/findancestor-relative-binding-net11.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
+
+::: moniker-end
 
 In addition, the optional `AncestorLevel` property can help disambiguate ancestor lookup in scenarios where there is possibly more than one ancestor of that type in the visual tree:
 
@@ -126,6 +170,8 @@ In this example, the `Label.Text` property binds to the `Text` property of the s
 The `TemplatedParent` relative binding mode is used to bind from within a control template to the runtime object instance to which the template is applied (known as the templated parent). This mode is only applicable if the relative binding is within a control template, and is similar to setting a `TemplateBinding`.
 
 The following XAML shows an example of the `TemplatedParent` relative binding mode:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <ContentPage ...
@@ -172,8 +218,69 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage ...
+             xmlns:controls="clr-namespace:DataBindingDemos.Controls">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="CardViewControlTemplate"
+                         x:DataType="controls:CardView">
+            <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                    BackgroundColor="{Binding CardColor}"
+                    Stroke="{Binding BorderColor}"
+                   ...>
+                <Grid>
+                    ...
+                    <Label Text="{Binding CardTitle}"
+                           ... />
+                    <BoxView BackgroundColor="{Binding BorderColor}"
+                             ... />
+                    <Label Text="{Binding CardDescription}"
+                           ... />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <StackLayout>        
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="John Doe"
+                           CardDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, convallis non interdum."
+                           IconBackgroundColor="#7C5CFF"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="Jane Doe"
+                           CardDescription="Phasellus eu convallis mi. In tempus augue eu dignissim fermentum. Morbi ut lacus vitae eros lacinia."
+                           IconBackgroundColor="#0D9488"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="Xamarin Monkey"
+                           CardDescription="Aliquam sagittis, odio lacinia fermentum dictum, mi erat scelerisque erat, quis aliquet arcu."
+                           IconBackgroundColor="#EA580C"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+    </StackLayout>
+</ContentPage>
+```
+
+::: moniker-end
+
 In this example, the <xref:Microsoft.Maui.Controls.Border>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Border> and its children resolve their binding expressions against the properties of each `CardView` object:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/relative-bindings/templatedparent-relative-binding-net11.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
+
+::: moniker-end
 
 For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).
