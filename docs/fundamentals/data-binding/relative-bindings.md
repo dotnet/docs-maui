@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
 
 ::: moniker-end
 
@@ -171,6 +171,8 @@ The `TemplatedParent` relative binding mode is used to bind from within a contro
 
 The following XAML shows an example of the `TemplatedParent` relative binding mode:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:DataBindingDemos.Controls">
@@ -215,6 +217,57 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
     </StackLayout>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage ...
+             xmlns:controls="clr-namespace:DataBindingDemos.Controls">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="CardViewControlTemplate"
+                         x:DataType="controls:CardView">
+            <Border BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                    BackgroundColor="{Binding CardColor}"
+                    Stroke="{Binding BorderColor}"
+                   ...>
+                <Grid>
+                    ...
+                    <Label Text="{Binding CardTitle}"
+                           ... />
+                    <BoxView BackgroundColor="{Binding BorderColor}"
+                             ... />
+                    <Label Text="{Binding CardDescription}"
+                           ... />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <StackLayout>        
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="John Doe"
+                           CardDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, convallis non interdum."
+                           IconBackgroundColor="#7C5CFF"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="Jane Doe"
+                           CardDescription="Phasellus eu convallis mi. In tempus augue eu dignissim fermentum. Morbi ut lacus vitae eros lacinia."
+                           IconBackgroundColor="#0D9488"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+        <controls:CardView BorderColor="DarkGray"
+                           CardTitle="Xamarin Monkey"
+                           CardDescription="Aliquam sagittis, odio lacinia fermentum dictum, mi erat scelerisque erat, quis aliquet arcu."
+                           IconBackgroundColor="#EA580C"
+                           IconImageSource="user.png"
+                           ControlTemplate="{StaticResource CardViewControlTemplate}" />
+    </StackLayout>
+</ContentPage>
+```
+
+::: moniker-end
 
 In this example, the <xref:Microsoft.Maui.Controls.Border>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Border> and its children resolve their binding expressions against the properties of each `CardView` object:
 

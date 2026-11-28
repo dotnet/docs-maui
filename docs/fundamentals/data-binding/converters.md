@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
 
 ::: moniker-end
 

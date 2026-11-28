@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, colors, icons, and layout. The examples on this page omit that styling to focus on the data binding features.
 
 ::: moniker-end
 
@@ -114,6 +114,7 @@ The following XAML shows multiple examples of binding to sub-properties:
 
     <VerticalStackLayout x:Name="stackLayout"
                          Margin="10, 0">
+        <Label Text="Select a time:" />
         <TimePicker x:Name="timePicker" />
         <Label x:Name="label"
                Text="{Binding x:DataType='TimePicker',
@@ -161,13 +162,13 @@ In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the pa
 
 ::: moniker range=">=net-maui-11.0"
 
-In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the <xref:Microsoft.Maui.Controls.VerticalStackLayout> named `stackLayout`, which has a `Children` property of type `IList<IView>`, which has a `Count` property indicating the number of children. The `Children` collection doesn't raise property change notifications for `Count`, so the binding shows the number of children when it was first evaluated, while the page was still being built, rather than the final number.
+In the third <xref:Microsoft.Maui.Controls.Label>, the binding source is the <xref:Microsoft.Maui.Controls.VerticalStackLayout> named `stackLayout`, which has a `Children` property of type `IList<IView>`, which has a `Count` property indicating the number of children. The `Children` collection doesn't raise property change notifications for `Count`, so the binding shows the number of children when it was first evaluated, while the page was still being built. In this example, the <xref:Microsoft.Maui.Controls.Label> reports 3 children, the ones added before it, rather than the 7 children that the layout eventually contains.
 
 ::: moniker-end
 
 ## Paths with indexers
 
-In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Label> references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
+In the example above, the binding in the <xref:Microsoft.Maui.Controls.Label> that displays the middle day of the week references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
 
 ```xaml
 <Label Text="{Binding x:DataType='globe:CultureInfo',
@@ -178,7 +179,7 @@ In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Lab
 
 The source is set to the static `CultureInfo.CurrentCulture` property, which is an object of type `CultureInfo`. That class defines a property named `DateTimeFormat` of type [`DateTimeFormatInfo`](xref:System.Globalization.DateTimeFormatInfo) that contains a `DayNames` collection. The index selects the fourth item.
 
-The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
+The next <xref:Microsoft.Maui.Controls.Label> does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
 
 ```xaml
 <Label>
@@ -241,6 +242,16 @@ That displays the type of the binding source, or `DataBindingDemos.PathVariation
                       StringFormat='{0}'}" />
 ```
 
+::: moniker range="<=net-maui-10.0"
+
 The type of the `Content` property is now revealed to be `Microsoft.Maui.Controls.StackLayout`. Add the `Children` property to the `Path` and the type is also `Microsoft.Maui.Controls.StackLayout`. Add an index to that and the type is `Microsoft.Maui.Controls.Label`. Continue in this way.
 
-As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the first <xref:Microsoft.Maui.Controls.Label> because the `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The type of the `Content` property is now revealed to be `Microsoft.Maui.Controls.VerticalStackLayout`. Add the `Children` property and an index to the `Path`, such as `Content.Children[0]`, and the type is `Microsoft.Maui.Controls.Label`. Continue in this way.
+
+::: moniker-end
+
+As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the <xref:Microsoft.Maui.Controls.Label> that displays the total seconds, because its `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.
