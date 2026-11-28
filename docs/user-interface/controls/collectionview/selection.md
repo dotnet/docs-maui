@@ -1,7 +1,8 @@
 ---
 title: "Configure CollectionView item selection"
 description: "By default, CollectionView selection is disabled. However, single and multiple selection can be enabled."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Configure CollectionView item selection
@@ -72,7 +73,17 @@ void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e
 
 The following screenshot shows single item selection in a <xref:Microsoft.Maui.Controls.CollectionView>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/selection/single-selection.png" alt-text="Screenshot of a CollectionView vertical list with single selection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/selection/single-selection-net11.png" alt-text="Screenshot of a CollectionView vertical list with single selection.":::
+
+::: moniker-end
 
 ## Multiple selection
 
@@ -115,7 +126,17 @@ void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e
 
 The following screenshot shows multiple item selection in a <xref:Microsoft.Maui.Controls.CollectionView>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/selection/multiple-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple selection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/selection/multiple-selection-net11.png" alt-text="Screenshot of a CollectionView vertical list with multiple selection.":::
+
+::: moniker-end
 
 ## Single preselection
 
@@ -178,7 +199,17 @@ public class MonkeysViewModel : INotifyPropertyChanged
 
 Therefore, when the <xref:Microsoft.Maui.Controls.CollectionView> appears, the fourth item in the list is preselected:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/selection/single-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with single preselection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/selection/single-pre-selection-net11.png" alt-text="Screenshot of a CollectionView vertical list with single preselection.":::
+
+::: moniker-end
 
 ## Multiple preselection
 
@@ -246,7 +277,17 @@ namespace CollectionViewDemos.ViewModels
 
 Therefore, when the <xref:Microsoft.Maui.Controls.CollectionView> appears, the second, fourth, and fifth items in the list are preselected:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/selection/multiple-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple preselection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/selection/multiple-pre-selection-net11.png" alt-text="Screenshot of a CollectionView vertical list with multiple preselection.":::
+
+::: moniker-end
 
 ## Clear selections
 
@@ -342,7 +383,17 @@ Resources.Add(style);
 
 In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` <xref:Microsoft.Maui.Controls.VisualState> specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item is set to `LightSkyBlue`:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/selection/single-selection-color-net11.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
+
+::: moniker-end
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 

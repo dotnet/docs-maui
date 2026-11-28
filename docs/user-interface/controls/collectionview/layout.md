@@ -1,12 +1,20 @@
 ---
 title: "Specify CollectionView layout"
 description: "By default, a CollectionView will display its items in a vertical list. However, vertical and horizontal lists and grids can be specified."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Specify CollectionView layout
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CollectionViewDemos sample, which adds its own styling, such as cards, icons, and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CollectionView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that control layout:
 
@@ -116,7 +124,17 @@ CollectionView collectionView = new CollectionView
 
 This results in a single column list, which grows vertically as new items are added:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/vertical-list.png" alt-text="Screenshot of CollectionView vertical list layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/vertical-list-net11.png" alt-text="Screenshot of CollectionView vertical list layout.":::
+
+::: moniker-end
 
 [!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
 
@@ -182,11 +200,23 @@ CollectionView collectionView = new CollectionView
 
 This results in a single row list, which grows horizontally as new items are added:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/horizontal-list.png" alt-text="Screenshot of CollectionView horizontal list layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/horizontal-list-net11.png" alt-text="Screenshot of CollectionView horizontal list layout.":::
+
+::: moniker-end
 
 ## Vertical grid
 
 In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a vertical grid by setting its `ItemsLayout` property to `VerticalGrid`:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -223,6 +253,39 @@ In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items i
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView ItemsSource="{Binding Monkeys}"
+                ItemsLayout="VerticalGrid, 2">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <Grid Padding="10"
+                  RowDefinitions="Auto,Auto,Auto"
+                  RowSpacing="2">
+                <Image Source="{Binding ImageUrl}"
+                       HeightRequest="60"
+                       WidthRequest="60" />
+                <Label Grid.Row="1"
+                       Text="{Binding Name}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="TailTruncation" />
+                <Label Grid.Row="2"
+                       Text="{Binding Location}"
+                       FontSize="12"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="TailTruncation" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+::: moniker-end
+
 Alternatively, this layout can also be accomplished by setting the `ItemsLayout` property to a `GridItemsLayout` object whose `Orientation` property is set to `Vertical`:
 
 ```xaml
@@ -247,7 +310,17 @@ CollectionView collectionView = new CollectionView
 
 By default, a vertical `GridItemsLayout` will display items in a single column. However, this example sets the `GridItemsLayout.Span` property to 2. This results in a two-column grid, which grows vertically as new items are added:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/vertical-grid.png" alt-text="Screenshot of CollectionView vertical grid layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/vertical-grid-net11.png" alt-text="Screenshot of CollectionView vertical grid layout.":::
+
+::: moniker-end
 
 ## Horizontal grid
 
@@ -312,7 +385,17 @@ CollectionView collectionView = new CollectionView
 
 By default, a horizontal `GridItemsLayout` will display items in a single row. However, this example sets the `GridItemsLayout.Span` property to 4. This results in a four-row grid, which grows horizontally as new items are added:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/horizontal-grid.png" alt-text="Screenshot of CollectionView horizontal grid layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/horizontal-grid-net11.png" alt-text="Screenshot of CollectionView horizontal grid layout.":::
+
+::: moniker-end
 
 ## Headers and footers
 
@@ -354,11 +437,33 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewMod
 
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/header-footer-string.png" alt-text="Screenshot of a CollectionView string header and footer.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/header-footer-string-net11.png" alt-text="Screenshot of a CollectionView string header and footer.":::
+
+::: moniker-end
 
 ### Display views in the header and footer
 
+::: moniker range="<=net-maui-10.0"
+
 The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.Grid> object that contains an <xref:Microsoft.Maui.Controls.Image> object and a <xref:Microsoft.Maui.Controls.Label> object:
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -382,7 +487,51 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView.Header>
+        <Grid Padding="16,14"
+              ColumnDefinitions="Auto,*"
+              ColumnSpacing="12"
+              BackgroundColor="#ECE7FF">
+            <Image Source="monkey_face.png"
+                   HeightRequest="32"
+                   WidthRequest="32" />
+            <Label Grid.Column="1"
+                   Text="Monkeys"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#2A1077"
+                   VerticalOptions="Center" />
+        </Grid>
+    </CollectionView.Header>
+    <CollectionView.Footer>
+        <Grid Padding="16,12"
+              ColumnDefinitions="Auto,*"
+              ColumnSpacing="12"
+              BackgroundColor="#EFEDF6">
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="32"
+                   WidthRequest="52" />
+            <Label Grid.Column="1"
+                   Text="Friends of Xamarin Monkey"
+                   FontSize="13"
+                   VerticalOptions="Center" />
+        </Grid>
+    </CollectionView.Footer>
+    ...
+</CollectionView>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 StackLayout headerStackLayout = new StackLayout();
@@ -398,13 +547,47 @@ CollectionView collectionView = new CollectionView
 collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+Grid headerGrid = new Grid { ... };
+headerGrid.Add(new Image { Source = "monkey_face.png", ... });
+headerGrid.Add(new Label { Text = "Monkeys", ... }, 1, 0);
+Grid footerGrid = new Grid { ... };
+footerGrid.Add(new Image { Source = "dotnet_bot.png", ... });
+footerGrid.Add(new Label { Text = "Friends of Xamarin Monkey", ... }, 1, 0);
+
+CollectionView collectionView = new CollectionView
+{
+    Header = headerGrid,
+    Footer = footerGrid
+};
+collectionView.SetBinding(ItemsView.ItemsSourceProperty,  static (MonkeysViewModel vm) => vm.Monkeys);
+```
+
+::: moniker-end
+
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/header-footer-view.png" alt-text="Screenshot of CollectionView header and footer using views.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/header-footer-view-net11.png" alt-text="Screenshot of CollectionView header and footer using views.":::
+
+::: moniker-end
 
 ### Display a templated header and footer
 
 The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -432,7 +615,55 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microso
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView.HeaderTemplate>
+        <DataTemplate>
+            <Grid Padding="16,14"
+                  ColumnDefinitions="Auto,*"
+                  ColumnSpacing="12"
+                  BackgroundColor="#ECE7FF">
+                <Image Source="monkey_face.png"
+                       HeightRequest="32"
+                       WidthRequest="32" />
+                <Label Grid.Column="1"
+                       Text="Monkeys"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#2A1077"
+                       VerticalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.HeaderTemplate>
+    <CollectionView.FooterTemplate>
+        <DataTemplate>
+            <Grid Padding="16,12"
+                  ColumnDefinitions="Auto,*"
+                  ColumnSpacing="12"
+                  BackgroundColor="#EFEDF6">
+                <Image Source="dotnet_bot.png"
+                       HeightRequest="32"
+                       WidthRequest="52" />
+                <Label Grid.Column="1"
+                       Text="Friends of Xamarin Monkey"
+                       FontSize="13"
+                       VerticalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.FooterTemplate>
+    ...
+</CollectionView>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 CollectionView collectionView = new CollectionView
@@ -449,9 +680,40 @@ CollectionView collectionView = new CollectionView
 collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+CollectionView collectionView = new CollectionView
+{
+    HeaderTemplate = new DataTemplate(() =>
+    {
+        return new Grid { ... };
+    }),
+    FooterTemplate = new DataTemplate(() =>
+    {
+        return new Grid { ... };
+    })
+};
+collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+```
+
+::: moniker-end
+
 This code results in the following screenshots, with the header shown in the iOS screenshot, and the footer shown in the Android screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/header-footer-template.png" alt-text="Screenshot of a CollectionView header and footer using templates.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/header-footer-template-net11.png" alt-text="Screenshot of a CollectionView header and footer using templates.":::
+
+::: moniker-end
 
 ## Item spacing
 
@@ -487,7 +749,17 @@ CollectionView collectionView = new CollectionView
 
 This code results in a vertical single column list that has a spacing of 20 between items:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/vertical-list-spacing.png" alt-text="Screenshot of CollectionView with item spacing.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/vertical-list-spacing-net11.png" alt-text="Screenshot of CollectionView with item spacing.":::
+
+::: moniker-end
 
 When a <xref:Microsoft.Maui.Controls.CollectionView> sets its `ItemsLayout` property to a `GridItemsLayout` object, the `GridItemsLayout.VerticalItemSpacing` and `GridItemsLayout.HorizontalItemSpacing` properties can be set to `double` values that represent the empty space vertically and horizontally between items:
 
@@ -522,7 +794,17 @@ CollectionView collectionView = new CollectionView
 
 This code results in a vertical two-column grid that has a vertical spacing of 20 between items and a horizontal spacing of 30 between items:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/vertical-grid-spacing.png" alt-text="Screenshot of a CollectionView with grid item spacing.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/vertical-grid-spacing-net11.png" alt-text="Screenshot of a CollectionView with grid item spacing.":::
+
+::: moniker-end
 
 ## Item sizing
 
@@ -567,7 +849,17 @@ void OnImageTapped(object sender, EventArgs e)
 
 The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image so that it's more easily viewed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CollectionView with dynamic item sizing.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/runtime-resizing-net11.png" alt-text="Screenshot of a CollectionView with dynamic item sizing.":::
+
+::: moniker-end
 
 ## Right-to-left layout
 
@@ -591,6 +883,16 @@ The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.
 
 The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the <xref:Microsoft.Maui.Controls.CollectionView> inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.Grid>, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>. This results in the right-to-left layout shown in the following screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/vertical-list-rtl.png" alt-text="Screenshot of a CollectionView right-to-left vertical list layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/vertical-list-rtl-net11.png" alt-text="Screenshot of a CollectionView right-to-left vertical list layout.":::
+
+::: moniker-end
 
 For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).

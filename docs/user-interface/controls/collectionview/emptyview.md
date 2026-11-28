@@ -1,12 +1,20 @@
 ---
 title: "Define an EmptyView for a CollectionView"
 description: "In .NET MAUI CollectionView, an empty view can be specified that provides feedback to the user when no data is available for display. The empty view can be a string, a view, or multiple views."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Define an EmptyView for a CollectionView
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CollectionViewDemos sample, which adds its own styling, such as cards, icons, and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CollectionView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties that can be used to provide user feedback when there's no data to display:
 
@@ -43,7 +51,17 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewMode
 
 The result is that, because the data bound collection is `null`, the string set as the `EmptyView` property value is displayed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/emptyview/null-itemssource.png" alt-text="Screenshot of a CollectionView vertical list with a text empty view.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/emptyview/null-itemssource-net11.png" alt-text="Screenshot of a CollectionView vertical list with a text empty view.":::
+
+::: moniker-end
 
 ## Display views when data is unavailable
 
@@ -106,7 +124,17 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewMode
 
 When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.StackLayout> set as the `EmptyView` property value is displayed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/emptyview/filter-multiple-views.png" alt-text="Screenshot of a CollectionView vertical list with a custom empty view.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/emptyview/filter-multiple-views-net11.png" alt-text="Screenshot of a CollectionView vertical list with a custom empty view.":::
+
+::: moniker-end
 
 ## Display a templated custom type when data is unavailable
 
@@ -175,7 +203,17 @@ public class FilterData : BindableObject
 
 The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.Label> defined in the <xref:Microsoft.Maui.Controls.DataTemplate>, that's set as the `EmptyViewTemplate` property value, is displayed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/emptyview/emptyviewtemplate.png" alt-text="Screenshot of a CollectionView vertical list with an empty view template.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/emptyview/emptyviewtemplate-net11.png" alt-text="Screenshot of a CollectionView vertical list with an empty view template.":::
+
+::: moniker-end
 
 > [!NOTE]
 > When displaying a templated custom type when data is unavailable, the `EmptyViewTemplate` property can be set to a view that contains multiple child views.
@@ -253,7 +291,17 @@ void ToggleEmptyView(bool isToggled)
 
 The `ToggleEmptyView` method sets the `EmptyView` property of the <xref:Microsoft.Maui.Controls.CollectionView> object to one of the two <xref:Microsoft.Maui.Controls.ContentView> objects stored in the <xref:Microsoft.Maui.Controls.ResourceDictionary>, based on the value of the `Switch.IsToggled` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.ContentView> object set as the `EmptyView` property is displayed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/emptyview/swap.png" alt-text="Screenshot of a CollectionView vertical list with swapped empty views.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/emptyview/swap-net11.png" alt-text="Screenshot of a CollectionView vertical list with swapped empty views.":::
+
+::: moniker-end
 
 For more information about resource dictionaries, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
 
@@ -327,6 +375,16 @@ public class SearchTermDataTemplateSelector : DataTemplateSelector
 
 The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/emptyview/datatemplateselector.png" alt-text="Screenshot of a CollectionView runtime empty view template selection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/emptyview/datatemplateselector-net11.png" alt-text="Screenshot of a CollectionView runtime empty view template selection.":::
+
+::: moniker-end
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).

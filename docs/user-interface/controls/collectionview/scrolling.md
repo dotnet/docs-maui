@@ -1,7 +1,8 @@
 ---
 title: "Control scrolling in a CollectionView"
 description: "When a user swipes to initiate a scroll, the end position of the scroll can be controlled so that items are fully displayed. In addition, the .NET MAUI CollectionView defines two ScrollTo methods, that programmatically scroll items into view."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Control scrolling in a CollectionView
@@ -123,7 +124,19 @@ collectionView.ScrollTo(monkey, position: ScrollToPosition.MakeVisible);
 
 This example code results in the minimal scrolling required to scroll the item into view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/scrolltoposition-makevisible.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.MakeVisible.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/scrolltoposition-makevisible-net11.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.MakeVisible.":::
+
+::: moniker-end
+
+In this example, the list scrolls down from the top, so the item stops as soon as it reaches the bottom of the view.
 
 > [!NOTE]
 > The `ScrollToPosition.MakeVisible` member is used by default, if the `position` argument is not specified when calling the <xref:Microsoft.Maui.Controls.ItemsView.ScrollTo%2A> method.
@@ -138,7 +151,17 @@ collectionView.ScrollTo(monkey, position: ScrollToPosition.Start);
 
 This example code results in the item being scrolled to the start of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/scrolltoposition-start.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.Start.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/scrolltoposition-start-net11.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.Start.":::
+
+::: moniker-end
 
 ### Center
 
@@ -150,7 +173,17 @@ collectionView.ScrollTo(monkey, position: ScrollToPosition.Center);
 
 This example code results in the item being scrolled to the center of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/scrolltoposition-center.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.Center.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/scrolltoposition-center-net11.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.Center.":::
+
+::: moniker-end
 
 ### End
 
@@ -162,7 +195,17 @@ collectionView.ScrollTo(monkey, position: ScrollToPosition.End);
 
 This example code results in the item being scrolled to the end of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/scrolltoposition-end.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.End.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/scrolltoposition-end-net11.png" alt-text="Screenshot of a CollectionView vertical list with ScrollToPosition.End.":::
+
+::: moniker-end
 
 ## Control scroll position when new items are added
 
@@ -219,7 +262,17 @@ The <xref:Microsoft.Maui.Controls.SnapPointsType> enumeration defines the follow
 
 By default, the `SnapPointsType` property is set to `SnapPointsType.None`, which ensures that scrolling does not snap items, as shown in the following screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-none.png" alt-text="Screenshot of a CollectionView vertical list without snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-none-net11.png" alt-text="Screenshot of a CollectionView vertical list without snap points.":::
+
+::: moniker-end
 
 ### Snap points alignment
 
@@ -261,7 +314,17 @@ CollectionView collectionView = new CollectionView
 
 When a user swipes to initiate a scroll, the top item will be aligned with the top of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-start.png" alt-text="Screenshot of a CollectionView vertical list with start snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-start-net11.png" alt-text="Screenshot of a CollectionView vertical list with start snap points.":::
+
+::: moniker-end
 
 #### Center
 
@@ -292,9 +355,19 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-When a user swipes to initiate a scroll, the top item will be center aligned at the top of the view:
+When a user swipes to initiate a scroll, the item nearest the center of the view will be aligned with the center of the view:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/scrolling/snappoints-center.png" alt-text="Screenshot of a CollectionView vertical list with center snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-center-net11.png" alt-text="Screenshot of a CollectionView vertical list with center snap points.":::
+
+::: moniker-end
 
 #### End
 
@@ -327,4 +400,14 @@ CollectionView collectionView = new CollectionView
 
 When a user swipes to initiate a scroll, the bottom item will be aligned with the bottom of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-end.png" alt-text="Screenshot of a CollectionView vertical list with end snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-end-net11.png" alt-text="Screenshot of a CollectionView vertical list with end snap points.":::
+
+::: moniker-end

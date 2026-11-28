@@ -1,12 +1,20 @@
 ---
 title: "Display grouped data in a CollectionView"
 description: "CollectionView can display correctly grouped data by setting its IsGrouped property to true."
-ms.date: 09/30/2024
+ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Display grouped data in a CollectionView
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CollectionViewDemos sample, which adds its own styling, such as cards, icons, and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CollectionView> features.
+
+::: moniker-end
 
 Large data sets can often become unwieldy when presented in a continually scrolling list. In this scenario, organizing the data into groups can improve the user experience by making it easier to navigate the data.
 
@@ -20,7 +28,17 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> displaying grouped data:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/grouping/grouped-data.png" alt-text="Screenshot of grouped data in a CollectionView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/grouping/grouped-data-net11.png" alt-text="Screenshot of grouped data in a CollectionView.":::
+
+::: moniker-end
 
 For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
@@ -78,6 +96,8 @@ This code defines a collection named `Animals`, where each item in the collectio
 
 Grouped data can then be added to the `Animals` collection:
 
+::: moniker range="<=net-maui-10.0"
+
 ```csharp
 Animals.Add(new AnimalGroup("Bears", new List<Animal>
 {
@@ -124,6 +144,59 @@ Animals.Add(new AnimalGroup("Monkeys", new List<Animal>
     // ...
 }));
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+Animals.Add(new AnimalGroup("Bears", new List<Animal>
+{
+    new Animal
+    {
+        Name = "American Black Bear",
+        Location = "North America",
+        Details = "Details about the bear go here.",
+        ImageUrl = "bear.png"
+    },
+    new Animal
+    {
+        Name = "Asian Black Bear",
+        Location = "Asia",
+        Details = "Details about the bear go here.",
+        ImageUrl = "bear.png"
+    },
+    // ...
+}));
+
+Animals.Add(new AnimalGroup("Monkeys", new List<Animal>
+{
+    new Animal
+    {
+        Name = "Baboon",
+        Location = "Africa & Asia",
+        Details = "Details about the monkey go here.",
+        ImageUrl = "monkey_face.png"
+    },
+    new Animal
+    {
+        Name = "Capuchin Monkey",
+        Location = "Central & South America",
+        Details = "Details about the monkey go here.",
+        ImageUrl = "monkey.png"
+    },
+    new Animal
+    {
+        Name = "Blue Monkey",
+        Location = "Central and East Africa",
+        Details = "Details about the monkey go here.",
+        ImageUrl = "see_no_evil_monkey.png"
+    },
+    // ...
+}));
+```
+
+::: moniker-end
 
 This code creates two groups in the `Animals` collection. The first `AnimalGroup` is named `Bears`, and contains a `List<Animal>` collection of bear details. The second `AnimalGroup` is named `Monkeys`, and contains a `List<Animal>` collection of monkey details.
 
@@ -177,6 +250,8 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>
 
 The appearance of each group header can be customized by setting the `CollectionView.GroupHeaderTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"
                 IsGrouped="true">
@@ -192,13 +267,48 @@ The appearance of each group header can be customized by setting the `Collection
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView ItemsSource="{Binding Animals}"
+                IsGrouped="true">
+    ...
+    <CollectionView.GroupHeaderTemplate>
+        <DataTemplate x:DataType="models:AnimalGroup">
+            <Label Text="{Binding Name}"
+                   BackgroundColor="#ECE7FF"
+                   TextColor="#2A1077"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   Padding="16,10" />
+        </DataTemplate>
+    </CollectionView.GroupHeaderTemplate>
+</CollectionView>
+```
+
+::: moniker-end
+
 In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Label> that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/grouping/customized-header.png" alt-text="Screenshot of a customized group header in a CollectionView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/grouping/customized-header-net11.png" alt-text="Screenshot of a customized group header in a CollectionView.":::
+
+::: moniker-end
 
 ## Customize the group footer
 
 The appearance of each group footer can be customized by setting the `CollectionView.GroupFooterTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"
@@ -213,15 +323,54 @@ The appearance of each group footer can be customized by setting the `Collection
 </CollectionView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CollectionView ItemsSource="{Binding Animals}"
+                IsGrouped="true">
+    ...
+    <CollectionView.GroupFooterTemplate>
+        <DataTemplate x:DataType="models:AnimalGroup">
+            <Label Text="{Binding Count, StringFormat='Total animals: {0:D}'}"
+                   Padding="16,4,16,12" />
+        </DataTemplate>
+    </CollectionView.GroupFooterTemplate>
+</CollectionView>
+```
+
+::: moniker-end
+
 In this example, each group footer is set to a <xref:Microsoft.Maui.Controls.Label> that displays the number of items in the group. The following screenshot shows the customized group footer:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/grouping/customized-footer.png" alt-text="Screenshot of customized group footer in a CollectionView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/grouping/customized-footer-net11.png" alt-text="Screenshot of customized group footer in a CollectionView.":::
+
+::: moniker-end
 
 ## Empty groups
 
 When a <xref:Microsoft.Maui.Controls.CollectionView> displays grouped data, it will display any groups that are empty. Such groups will be displayed with a group header and footer, indicating that the group is empty. The following screenshot shows an empty group:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/grouping/empty-group.png" alt-text="Screenshot of an empty group in a CollectionView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/grouping/empty-group-net11.png" alt-text="Screenshot of an empty group in a CollectionView.":::
+
+::: moniker-end
 
 > [!NOTE]
 > On iOS 10, group headers and footers for empty groups may all be displayed at the top of the <xref:Microsoft.Maui.Controls.CollectionView>.
