@@ -45,7 +45,7 @@ The `Self` relative binding mode is used bind a property of an element to anothe
 ::: moniker range="<=net-maui-10.0"
 
 ```xaml
-<BoxView x:DataType="ContentPage"
+<BoxView x:DataType="BoxView"
          Color="Red"
          WidthRequest="200"
          HeightRequest="{Binding Source={RelativeSource Self}, Path=WidthRequest}"

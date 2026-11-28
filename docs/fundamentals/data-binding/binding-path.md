@@ -56,14 +56,17 @@ The following XAML shows multiple examples of binding to sub-properties:
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout Margin="10, 0">
+    <StackLayout x:Name="stackLayout"
+                 Margin="10, 0">
+        <Label Text="Select a time:" />
         <TimePicker x:Name="timePicker" />
-        <Label Text="{Binding x:DataType='TimePicker',
+        <Label x:Name="label"
+               Text="{Binding x:DataType='TimePicker',
                               Source={x:Reference timePicker},
                               Path=Time.TotalSeconds,
                               StringFormat='{0} total seconds'}" />
         <Label Text="{Binding x:DataType='StackLayout',
-                              Source={x:Reference page},
+                              Source={x:Reference stackLayout},
                               Path=Children.Count,
                               StringFormat='There are {0} children in this StackLayout'}" />
         <Label Text="{Binding x:DataType='globe:CultureInfo',
@@ -156,7 +159,7 @@ The following XAML shows multiple examples of binding to sub-properties:
 
 ::: moniker range="<=net-maui-10.0"
 
-In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the page itself. The `Content` property is of type <xref:Microsoft.Maui.Controls.StackLayout>, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
+In the third <xref:Microsoft.Maui.Controls.Label>, the binding source is the <xref:Microsoft.Maui.Controls.StackLayout> named `stackLayout`, which has a `Children` property of type `IList<IView>`, which has a `Count` property indicating the number of children.
 
 ::: moniker-end
 
