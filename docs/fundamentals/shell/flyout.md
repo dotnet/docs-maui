@@ -222,7 +222,7 @@ The appearance of each <xref:Microsoft.Maui.Controls.FlyoutItem> can be customiz
        x:DataType="local:AppShell">
     ...
     <Shell.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="BaseShellItem">
             <Grid ColumnDefinitions="0.2*,0.8*">
                 <Image Source="{Binding FlyoutIcon}"
                        Margin="5"
@@ -502,13 +502,13 @@ The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized
        xmlns:local="clr-namespace:Xaminals"
        x:DataType="local:AppShell">
     <Shell.MenuItemTemplate>
-        <DataTemplate x:DataType="MenuItem">
+        <DataTemplate x:DataType="BaseShellItem">
             <Grid ColumnDefinitions="0.2*,0.8*">
-                <Image Source="{Binding IconImageSource}"
+                <Image Source="{Binding FlyoutIcon}"
                        Margin="5"
                        HeightRequest="45" />
                 <Label Grid.Column="1"
-                       Text="{Binding Text}"
+                       Text="{Binding Title}"
                        FontAttributes="Italic"
                        VerticalTextAlignment="Center" />
             </Grid>
@@ -518,7 +518,7 @@ The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized
     <MenuItem Text="Help"
               IconImageSource="help.png"
               Command="{Binding HelpCommand}"
-              CommandParameter="https://learn.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />  
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />
 </Shell>
 ```
 
@@ -569,21 +569,11 @@ This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each <x
 
 Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific <xref:Microsoft.Maui.Controls.MenuItem> objects.
 
-::: moniker range="<=net-maui-10.0"
-
-> [!NOTE]
-> Shell provides the `Text` and `IconImageSource` properties to the `BindingContext` of the `MenuItemTemplate`. You can also use `Title` in place of `Text` and `Icon` in place of `IconImageSource` which will let you reuse the same template for menu items and flyout items.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-11.0"
-
 > [!NOTE]
 > Shell wraps each <xref:Microsoft.Maui.Controls.MenuItem> that's a direct child of the <xref:Microsoft.Maui.Controls.Shell> object in a `BaseShellItem` object, which becomes the `BindingContext` of the `MenuItemTemplate`. Therefore, set `x:DataType` to `BaseShellItem` and bind to its `Title` and `FlyoutIcon` properties, which are populated from the `Text` and `IconImageSource` properties of the <xref:Microsoft.Maui.Controls.MenuItem>. This also lets you reuse the same template for menu items and flyout items.
 >
 > Menu items in the `MenuItems` collection of a <xref:Microsoft.Maui.Controls.ShellContent> object aren't wrapped, so their `BindingContext` is the <xref:Microsoft.Maui.Controls.MenuItem> itself. For these items, use a template with `x:DataType` set to <xref:Microsoft.Maui.Controls.MenuItem> that binds to its `Text` and `IconImageSource` properties.
 
-::: moniker-end
 
 The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
 
@@ -643,7 +633,7 @@ The `FlyoutHeader` type is shown in the following example:
              HeightRequest="200">
     <Grid BackgroundColor="Black">
         <Image Aspect="AspectFill"
-               Source="store.jpg"
+               Source="xamarinstore.jpg"
                Opacity="0.6" />
         <Label Text="Animals"
                TextColor="White"
@@ -736,7 +726,7 @@ Alternatively, the flyout header appearance can be defined by setting the `Shell
             <Grid BackgroundColor="Black"
                   HeightRequest="200">
                 <Image Aspect="AspectFill"
-                       Source="store.jpg"
+                       Source="xamarinstore.jpg"
                        Opacity="0.6" />
                 <Label Text="Animals"
                        TextColor="White"

@@ -123,12 +123,14 @@ The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by s
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
-             xmlns:data="clr-namespace:Xaminals.Data">
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
                                       DisplayMemberName="Name"
-                                      Animals="{x:Static data:MonkeyData.Monkeys}" />
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}" />
     </Shell.SearchHandler>
     ...
 </ContentPage>
@@ -141,12 +143,14 @@ The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by s
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
-             xmlns:data="clr-namespace:Xaminals.Data">
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Search monkeys"
                                       ShowsResults="true"
                                       DisplayMemberName="Name"
-                                      Animals="{x:Static data:MonkeyData.Monkeys}" />
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}" />
     </Shell.SearchHandler>
     ...
 </ContentPage>
@@ -164,7 +168,8 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
     Placeholder = "Enter search term",
     ShowsResults = true,
     DisplayMemberName = "Name",
-    Animals = MonkeyData.Monkeys
+    Animals = MonkeyData.Monkeys,
+    SelectedItemNavigationTarget = typeof(MonkeyDetailPage)
 });
 ```
 
@@ -178,7 +183,8 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
     Placeholder = "Search monkeys",
     ShowsResults = true,
     DisplayMemberName = "Name",
-    Animals = MonkeyData.Monkeys
+    Animals = MonkeyData.Monkeys,
+    SelectedItemNavigationTarget = typeof(MonkeyDetailPage)
 });
 ```
 
@@ -252,11 +258,13 @@ In addition to displaying `string` data in the search results, the appearance of
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
              xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views"
              xmlns:models="clr-namespace:Xaminals.Models">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
-                                      Animals="{x:Static data:MonkeyData.Monkeys}">
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}">
             <controls:AnimalSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
@@ -285,11 +293,13 @@ In addition to displaying `string` data in the search results, the appearance of
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
              xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views"
              xmlns:models="clr-namespace:Xaminals.Models">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Search monkeys"
                                       ShowsResults="true"
-                                      Animals="{x:Static data:MonkeyData.Monkeys}">
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}">
             <controls:AnimalSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
@@ -319,7 +329,7 @@ The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define
 
 ::: moniker range="<=net-maui-10.0"
 
-The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
+The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Animal` object.
 
 ::: moniker-end
 

@@ -343,7 +343,7 @@ The following example navigates to the page for the `monkeydetails` route:
 await Shell.Current.GoToAsync("monkeydetails");
 ```
 
-In this example, the `monkeyDetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
+In this example, the `monkeydetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
 
 > [!WARNING]
 > Relative routes don't work with pages that are defined in a subclassed <xref:Microsoft.Maui.Controls.Shell> class, which is typically *AppShell.xaml*. Instead, only pages registered with the `Routing.RegisterRoute` method can be pushed onto the navigation stack using relative routes. For more information, see [Register detail page routes](#register-detail-page-routes).
