@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts. The examples on this page omit that styling to focus on the Shell features.
+> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts.
 
 ::: moniker-end
 

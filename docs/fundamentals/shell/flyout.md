@@ -553,7 +553,7 @@ The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized
 
 ::: moniker-end
 
-This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics:
+This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics. In the following screenshot, the <xref:Microsoft.Maui.Controls.FlyoutItem> objects also use the `Shell.ItemTemplate` from [Define FlyoutItem appearance](#define-flyoutitem-appearance):
 
 ::: moniker range="<=net-maui-10.0"
 
@@ -579,7 +579,9 @@ Because `Shell.MenuItemTemplate` is an attached property, different templates ca
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> Shell wraps each <xref:Microsoft.Maui.Controls.MenuItem> in a `BaseShellItem` object, which becomes the `BindingContext` of the `MenuItemTemplate`. Therefore, set `x:DataType` to `BaseShellItem` and bind to its `Title` and `FlyoutIcon` properties, which are populated from the `Text` and `IconImageSource` properties of the <xref:Microsoft.Maui.Controls.MenuItem>. This also lets you reuse the same template for menu items and flyout items.
+> Shell wraps each <xref:Microsoft.Maui.Controls.MenuItem> that's a direct child of the <xref:Microsoft.Maui.Controls.Shell> object in a `BaseShellItem` object, which becomes the `BindingContext` of the `MenuItemTemplate`. Therefore, set `x:DataType` to `BaseShellItem` and bind to its `Title` and `FlyoutIcon` properties, which are populated from the `Text` and `IconImageSource` properties of the <xref:Microsoft.Maui.Controls.MenuItem>. This also lets you reuse the same template for menu items and flyout items.
+>
+> Menu items in the `MenuItems` collection of a <xref:Microsoft.Maui.Controls.ShellContent> object aren't wrapped, so their `BindingContext` is the <xref:Microsoft.Maui.Controls.MenuItem> itself. For these items, use a template with `x:DataType` set to <xref:Microsoft.Maui.Controls.MenuItem> that binds to its `Text` and `IconImageSource` properties.
 
 ::: moniker-end
 
@@ -1114,6 +1116,8 @@ The following example shows how to disable vertical scrolling:
 
 When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` property will be set to the first <xref:Microsoft.Maui.Controls.FlyoutItem> object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another <xref:Microsoft.Maui.Controls.FlyoutItem>, as shown in the following example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell ...
        CurrentItem="{x:Reference aboutItem}">
@@ -1126,6 +1130,25 @@ When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` proper
                   ContentTemplate="{DataTemplate views:AboutPage}" />
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       CurrentItem="{x:Reference aboutItem}">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        ...
+    </FlyoutItem>
+    <ShellContent x:Name="aboutItem"
+                  Title="About"
+                  Icon="information.png"
+                  ContentTemplate="{DataTemplate views:AboutPage}" />
+</Shell>
+```
+
+::: moniker-end
 
 This example sets the `CurrentItem` property to the <xref:Microsoft.Maui.Controls.ShellContent> object named `aboutItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 

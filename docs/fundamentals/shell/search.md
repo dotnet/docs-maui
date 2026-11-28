@@ -297,10 +297,13 @@ In addition to displaying `string` data in the search results, the appearance of
                         <Image Source="{Binding ImageUrl}"
                                HeightRequest="40"
                                WidthRequest="40" />
-                        <Label Grid.Column="1"
-                               Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Location}"
+                                   FontSize="13" />
+                        </VerticalStackLayout>
                     </Grid>
                 </DataTemplate>
             </controls:AnimalSearchHandler.ItemTemplate>
@@ -312,7 +315,19 @@ In addition to displaying `string` data in the search results, the appearance of
 
 ::: moniker-end
 
-The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the suggestions area. In this example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the suggestions area. In this example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>.
+
+::: moniker range="<=net-maui-10.0"
+
+The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object and a <xref:Microsoft.Maui.Controls.VerticalStackLayout> with two <xref:Microsoft.Maui.Controls.Label> objects, which bind to the `ImageUrl`, `Name`, and `Location` properties of each `Animal` object.
+
+::: moniker-end
 
 The following screenshot shows the result of templating each item in the suggestions area:
 
