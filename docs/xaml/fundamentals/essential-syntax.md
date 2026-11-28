@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> The screenshots in this article come from the XamlSamples sample, which applies app-wide styles, such as fonts and button colors. The page XAML in this article matches the sample, but your pages look different unless you add the same styles.
+> The screenshots in this article come from the XamlSamples sample. The page XAML in this article matches the sample, but the sample's *App.xaml* also merges app-wide styles from its *Resources/Styles* folder. These styles set the Inter font, lavender buttons with a border, and purple sliders. In a new project, your pages show the same controls with different fonts, colors, and spacing.
 
 ::: moniker-end
 
