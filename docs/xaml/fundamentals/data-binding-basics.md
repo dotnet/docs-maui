@@ -317,6 +317,9 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 ::: moniker range="<=net-maui-10.0"
 
+> [!NOTE]
+> Starting in .NET 10, <xref:Microsoft.Maui.Controls.ListView> is deprecated. For new apps, use <xref:Microsoft.Maui.Controls.CollectionView> instead. For more information, see [CollectionView](~/user-interface/controls/collectionview/index.md).
+
 <xref:Microsoft.Maui.Controls.ListView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.ListView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
 
 However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from <xref:Microsoft.Maui.Controls.Cell>. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the <xref:Microsoft.Maui.Controls.ViewCell> class.

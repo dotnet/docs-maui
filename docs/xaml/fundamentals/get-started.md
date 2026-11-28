@@ -41,7 +41,7 @@ The two XML namespace (`xmlns`) declarations refer to URIs on microsoft.com. How
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> Starting in .NET 11, these two standard namespace declarations are implicit and can be omitted from your XAML files. The compiler injects them automatically. For more information, see [Implicit namespace declarations](~/xaml/namespaces/index.md#implicit-namespace-declarations).
+> Starting in .NET 11, these two standard namespace declarations are implicit and can be omitted from your XAML files. For more information, see [Implicit namespace declarations](#implicit-namespace-declarations).
 
 ::: moniker-end
 
@@ -116,9 +116,22 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 
 ::: moniker-end
 
+From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
+
+Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type <xref:Microsoft.Maui.TextAlignment>, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
+
+For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
+
+- `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
+- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
+
 ::: moniker range=">=net-maui-10.0"
 
 ## XAML Source Generation
+
+::: moniker-end
+
+::: moniker range="net-maui-10.0"
 
 > [!IMPORTANT]
 > This feature is opt-in. To use it, set the XAML inflator in your project file as per the instructions below. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
@@ -143,6 +156,18 @@ For more fine-grained control over what XAML files use XAML Source Generation, y
 
 You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
 If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+XAML source generation uses Roslyn source generators to generate C# instead of IL (intermediate language) from your XAML. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+
+Starting in .NET 11, XAML source generation is the default XAML inflator for Debug and Release builds, so you don't need to change your project file to use it. For more information about inflators and per-file settings, see [XAML processing](~/xaml/xamlc.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
@@ -187,7 +212,7 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 
 ::: moniker range=">=net-maui-11.0"
 
-### Implicit namespace declarations
+## Implicit namespace declarations
 
 Starting in .NET 11, the standard XAML namespace declarations are implicit by default — no opt-in is required. The compiler automatically injects `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` and `xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"`, so your XAML files can omit them:
 
@@ -251,15 +276,6 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 ```
 
 ::: moniker-end
-
-From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
-
-Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type <xref:Microsoft.Maui.TextAlignment>, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
-
-For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
-
-- `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
-- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
 
 ## Page navigation
 
