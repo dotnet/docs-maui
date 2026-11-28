@@ -2,6 +2,7 @@
 title: "Binding value converters"
 description: "Learn how how to cast or convert values within a .NET MAUI data binding by implementing a value converter (which is also known as a binding converter, or binding value converter)."
 ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Binding value converters
