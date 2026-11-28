@@ -45,6 +45,12 @@ Starting in .NET 11, XAML source generation is the default inflator instead of X
 
 XAML can be inflated at Runtime using reflection. It has advantages, like allowing Hot Reload scenario, shortening build times, allow the report of diagnostics to IDE. However typically this method should be avoided because it is also the slowest and syntax errors are only caught at runtime.
 
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11, the `Runtime` inflator is deprecated. For more information, see [Enable Source Generation, and per file settings](#enable-source-generation-and-per-file-settings).
+
+::: moniker-end
+
 ## XAML Source Generation
 
 Starting with .NET 10, XAML can be transformed into C# code at compilaiton time. It provides the following benefits:
