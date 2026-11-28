@@ -74,7 +74,8 @@ Sounds played by the simulator will come from the host Mac's speakers. iOS sound
 
 ## Troubleshooting
 
-Xcode 27 requires Visual Studio 2026 version 18.11 (October 2026 update) or later. Apple moved `SimulatorKit.framework` in Xcode 27 from `Contents/Developer/Library/PrivateFrameworks/` to `Contents/SharedFrameworks/`, and older Simulator.Server builds can't find it. On older Visual Studio versions the simulator gets stuck in a Connecting to Mac...Checking Server...Connected... loop, and the Simulator.Server logs (`~/Library/Logs/Microsoft/Simulator.Server/`) show a `FileNotFoundException` for `SimulatorKit.framework`. The steps below don't resolve this; update Visual Studio on Windows to version 18.11 or later.
+> [!NOTE]
+> Xcode 27 requires Visual Studio 2026 version 18.11 (October 2026 update) or later. Apple moved `SimulatorKit.framework` in Xcode 27 from `Contents/Developer/Library/PrivateFrameworks/` to `Contents/SharedFrameworks/`, and older Simulator.Server builds can't find it. On older Visual Studio versions the simulator gets stuck in a Connecting to Mac...Checking Server...Connected... loop, and the Simulator.Server logs (`~/Library/Logs/Microsoft/Simulator.Server/`) show a `FileNotFoundException` for `SimulatorKit.framework`. The steps below don't resolve this; update Visual Studio on Windows to version 18.11 or later.
 
 In some circumstances, an Xcode configuration problem can result in the remote iOS Simulator for Windows getting stuck in a Connecting to Mac...Checking Server...Connected... loop. When this occurs, you need to remove and reset the Simulators on your Mac build host:
 
