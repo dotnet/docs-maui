@@ -1,12 +1,20 @@
 ---
 title: "Control scrolling in a CarouselView"
 description: "When a user swipes to initiate a scroll, the end position of the scroll can be controlled so that items are fully displayed. In addition, the .NET MAUI CarouselView defines two ScrollTo methods, that programmatically scroll items into view."
-ms.date: 09/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Control scrolling in a CarouselView
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CarouselViewDemos sample, which adds its own styling, such as card backgrounds and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CarouselView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following scroll related properties:
 
@@ -93,6 +101,13 @@ carouselView.ScrollTo(monkey);
 > [!NOTE]
 > The `ScrollToRequested` event is fired when the `ScrollTo` method is invoked.
 
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> On iOS and Android, scrolling to an item doesn't reach the item while the `Loop` property is `true`, which is the default. Scroll to the item's index instead, or set `Loop` to `false`. For more information, see [dotnet/maui#40761](https://github.com/dotnet/maui/issues/40761).
+
+::: moniker-end
+
 ## Disable scroll animation
 
 A scrolling animation is displayed when moving between items in a <xref:Microsoft.Maui.Controls.CarouselView>. This animation occurs both for user initiated scrolls, and for programmatic scrolls. Setting the `IsScrollAnimated` property to `false` will disable the animation for both scrolling categories.
@@ -135,7 +150,7 @@ This example code results in the item being scrolled to the start of the view.
 The `ScrollToPosition.Center` member indicates that the item should be scrolled to the center of the view:
 
 ```csharp
-carouselViewView.ScrollTo(monkey, position: ScrollToPosition.Center);
+carouselView.ScrollTo(monkey, position: ScrollToPosition.Center);
 ```
 
 This example code results in the item being scrolled to the center of the view.
@@ -145,7 +160,7 @@ This example code results in the item being scrolled to the center of the view.
 The `ScrollToPosition.End` member indicates that the item should be scrolled to the end of the view:
 
 ```csharp
-carouselViewView.ScrollTo(monkey, position: ScrollToPosition.End);
+carouselView.ScrollTo(monkey, position: ScrollToPosition.End);
 ```
 
 This example code results in the item being scrolled to the end of the view.
@@ -207,7 +222,17 @@ By default on a <xref:Microsoft.Maui.Controls.CarouselView>, the `SnapPointsType
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.CarouselView> with snapping turned off:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-none.png" alt-text="Screenshot of a CarouselView without snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-none-net11.png" alt-text="Screenshot of a CarouselView without snap points.":::
+
+::: moniker-end
 
 ### Snap points alignment
 
@@ -248,7 +273,17 @@ CarouselView carouselView = new CarouselView
 
 When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the left item will be aligned with the left of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-start.png" alt-text="Screenshot of a CarouselView with start snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-start-net11.png" alt-text="Screenshot of a CarouselView with start snap points.":::
+
+::: moniker-end
 
 #### Center
 
@@ -284,7 +319,17 @@ CarouselView carouselView = new CarouselView
 
 When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the center item will be aligned with the center of the view:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-center.png" alt-text="Screenshot of a CarouselView with center snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-center-net11.png" alt-text="Screenshot of a CarouselView with center snap points.":::
+
+::: moniker-end
 
 #### End
 
@@ -318,4 +363,14 @@ CarouselView carouselView = new CarouselView
 
 When a user swipes to initiate a scroll in a horizontally scrolling <xref:Microsoft.Maui.Controls.CarouselView>, the right item will be aligned with the right of the view.
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/scrolling/snappoints-end.png" alt-text="Screenshot of a CarouselView with end snap points.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/scrolling/snappoints-end-net11.png" alt-text="Screenshot of a CarouselView with end snap points.":::
+
+::: moniker-end

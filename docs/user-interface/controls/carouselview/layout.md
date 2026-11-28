@@ -1,12 +1,20 @@
 ---
 title: "Specify CarouselView layout"
 description: "By default, a .NET MAUI CarouselView will display its items horizontally. However, a vertical orientation is also possible."
-ms.date: 09/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Specify CarouselView layout
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CarouselViewDemos sample, which adds its own styling, such as card backgrounds and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CarouselView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties that control layout:
 
@@ -159,6 +167,8 @@ This results in a layout that grows vertically as new items are added.
 
 By default, <xref:Microsoft.Maui.Controls.CarouselView> displays full items at once. However, this behavior can be changed by setting the `PeekAreaInsets` property to a `Thickness` value that specifies how much to make adjacent items partially visible by. This can be useful to indicate to users that there are additional items to view. The following XAML shows an example of setting this property:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}"
               PeekAreaInsets="100">
@@ -166,7 +176,22 @@ By default, <xref:Microsoft.Maui.Controls.CarouselView> displays full items at o
 </CarouselView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CarouselView ItemsSource="{Binding Monkeys}"
+              PeekAreaInsets="60">
+    ...
+</CarouselView>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 CarouselView carouselView = new CarouselView
@@ -176,9 +201,33 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+CarouselView carouselView = new CarouselView
+{
+    ...
+    PeekAreaInsets = new Thickness(60)
+};
+```
+
+::: moniker-end
+
 The result is that adjacent items are partially exposed on screen:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/peek-items.png" alt-text="Screenshot of a CarouselView with partially visible adjacent items.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/peek-items-net11.png" alt-text="Screenshot of a CarouselView with partially visible adjacent items.":::
+
+::: moniker-end
 
 ## Item spacing
 
@@ -230,7 +279,17 @@ void OnImageTapped(object sender, EventArgs e)
 
 The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Border>), so that it's more easily viewed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/layout/runtime-resizing-net11.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
+
+::: moniker-end
 
 ## Right-to-left layout
 

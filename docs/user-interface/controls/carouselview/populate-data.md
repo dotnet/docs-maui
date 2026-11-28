@@ -1,12 +1,20 @@
 ---
 title: "Populate a CarouselView with data"
 description: "A .NET MAUI CarouselView is populated with data by setting its ItemsSource property to any collection that implements IEnumerable."
-ms.date: 11/28/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Populate a CarouselView with data
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CarouselViewDemos sample, which adds its own styling, such as card backgrounds and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CarouselView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> includes the following properties that define the data to be displayed, and its appearance:
 
@@ -57,6 +65,8 @@ For information on how to change the <xref:Microsoft.Maui.Controls.CarouselView>
 
 The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be defined by setting the `CarouselView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
     <CarouselView.ItemTemplate>
@@ -94,6 +104,46 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> c
     </CarouselView.ItemTemplate>
 </CarouselView>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CarouselView ItemsSource="{Binding Monkeys}">
+    <CarouselView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <StackLayout>
+                <Border Stroke="#E3E0EC"
+                        StrokeShape="RoundRectangle 24"
+                        Padding="20"
+                        HeightRequest="360"
+                        VerticalOptions="Start">
+                    <StackLayout Spacing="10">
+                        <Label Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               FontSize="22"
+                               HorizontalOptions="Center" />
+                        <Image Source="{Binding ImageUrl}"
+                               HeightRequest="150"
+                               WidthRequest="150"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Location}"
+                               FontSize="13"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Details}"
+                               HorizontalTextAlignment="Center"
+                               MaxLines="3"
+                               LineBreakMode="TailTruncation" />
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </DataTemplate>
+    </CarouselView.ItemTemplate>
+</CarouselView>
+```
+
+::: moniker-end
 
 The equivalent C# code is:
 
@@ -143,7 +193,17 @@ public class Monkey
 
 The following screenshot shows an example of templating each item:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/datatemplate.png" alt-text="Screenshot of a CarouselView where each item is templated.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/datatemplate-net11.png" alt-text="Screenshot of a CarouselView where each item is templated.":::
+
+::: moniker-end
 
 For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
@@ -203,9 +263,19 @@ public class MonkeyDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays its data grayed out:
+The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template when the monkey location contains "America". When the monkey location doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays its data grayed out:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/populate-data/datatemplateselector.png" alt-text="Screenshot of a CarouselView runtime item template selection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/datatemplateselector-net11.png" alt-text="Screenshot of a CarouselView runtime item template selection.":::
+
+::: moniker-end
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
@@ -215,6 +285,8 @@ For more information about data template selectors, see [Create a DataTemplateSe
 ## Display indicators
 
 Indicators, that represent the number of items and current position in a <xref:Microsoft.Maui.Controls.CarouselView>, can be displayed next to the <xref:Microsoft.Maui.Controls.CarouselView>. This can be accomplished with the <xref:Microsoft.Maui.Controls.IndicatorView> control:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <StackLayout>
@@ -231,9 +303,53 @@ Indicators, that represent the number of items and current position in a <xref:M
 </StackLayout>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Grid RowDefinitions="Auto,Auto">
+    <CarouselView ItemsSource="{Binding Monkeys}"
+                  IndicatorView="indicatorView"
+                  HeightRequest="360">
+        <CarouselView.ItemTemplate>
+            <!-- DataTemplate that defines item appearance -->
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+    <IndicatorView x:Name="indicatorView"
+                   Grid.Row="1"
+                   IndicatorColor="#6B6682"
+                   SelectedIndicatorColor="#512BD4"
+                   IndicatorSize="10"
+                   HorizontalOptions="Center" />
+</Grid>
+```
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 In this example, the <xref:Microsoft.Maui.Controls.IndicatorView> is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The <xref:Microsoft.Maui.Controls.IndicatorView> is populated with data by setting the `CarouselView.IndicatorView` property to the <xref:Microsoft.Maui.Controls.IndicatorView> object. Each indicator is a light gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is dark gray:
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+In this example, the <xref:Microsoft.Maui.Controls.IndicatorView> is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The <xref:Microsoft.Maui.Controls.IndicatorView> is populated with data by setting the `CarouselView.IndicatorView` property to the <xref:Microsoft.Maui.Controls.IndicatorView> object. Each indicator is a gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is purple:
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/indicators.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/indicators-net11.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
+
+::: moniker-end
 
 > [!IMPORTANT]
 > Setting the `CarouselView.IndicatorView` property results in the `IndicatorView.Position` property binding to the `CarouselView.Position` property, and the `IndicatorView.ItemsSource` property binding to the `CarouselView.ItemsSource` property.
@@ -243,6 +359,8 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
 ## Context menus
 
 <xref:Microsoft.Maui.Controls.CarouselView> supports context menus for items of data through the <xref:Microsoft.Maui.Controls.SwipeView>, which reveals the context menu with a swipe gesture. The <xref:Microsoft.Maui.Controls.SwipeView> is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CarouselView> by creating a <xref:Microsoft.Maui.Controls.SwipeView> that defines the content that the <xref:Microsoft.Maui.Controls.SwipeView> wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by adding a <xref:Microsoft.Maui.Controls.SwipeView> to the <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CarouselView>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CarouselView x:Name="carouselView"
@@ -287,7 +405,55 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
 </CarouselView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CarouselView x:Name="carouselView"
+              ItemsSource="{Binding Monkeys}">
+    <CarouselView.ItemTemplate>
+        <DataTemplate x:DataType="models:Monkey">
+            <StackLayout>
+                    <Border Stroke="#E3E0EC"
+                            StrokeShape="RoundRectangle 24"
+                            HeightRequest="360"
+                            VerticalOptions="Start">
+                        <SwipeView>
+                            <SwipeView.TopItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Favorite"
+                                               IconImageSource="favorite.png"
+                                               BackgroundColor="#5B21B6"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=FavoriteCommand}"
+                                               CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.TopItems>
+                            <SwipeView.BottomItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               IconImageSource="delete.png"
+                                               BackgroundColor="#BE123C"
+                                               Command="{Binding x:DataType='viewmodels:MonkeysViewModel', Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=DeleteCommand}"
+                                               CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.BottomItems>
+                            <StackLayout>
+                                <!-- Define item appearance -->
+                            </StackLayout>
+                        </SwipeView>
+                    </Border>
+            </StackLayout>
+        </DataTemplate>
+    </CarouselView.ItemTemplate>
+</CarouselView>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 CarouselView carouselView = new CarouselView();
@@ -305,7 +471,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "favorite.png",
         BackgroundColor = Colors.LightGreen
     };
-    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext);
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext));
     favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     SwipeItem deleteSwipeItem = new SwipeItem
@@ -314,7 +480,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
         IconImageSource = "delete.png",
         BackgroundColor = Colors.LightPink
     };
-    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext);
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext));
     deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
 
     swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
@@ -329,10 +495,67 @@ carouselView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+CarouselView carouselView = new CarouselView();
+carouselView.SetBinding(ItemsView.ItemsSourceProperty, static (MonkeysViewModel vm) => vm.Monkeys);
+
+carouselView.ItemTemplate = new DataTemplate(() =>
+{
+    StackLayout stackLayout = new StackLayout();
+    Border border = new Border { ... };
+
+    SwipeView swipeView = new SwipeView();
+    SwipeItem favoriteSwipeItem = new SwipeItem
+    {
+        Text = "Favorite",
+        IconImageSource = "favorite.png",
+        BackgroundColor = Color.FromArgb("#5B21B6")
+    };
+    favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.FavoriteCommand, source: carouselView.BindingContext));
+    favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+
+    SwipeItem deleteSwipeItem = new SwipeItem
+    {
+        Text = "Delete",
+        IconImageSource = "delete.png",
+        BackgroundColor = Color.FromArgb("#BE123C")
+    };
+    deleteSwipeItem.SetBinding(MenuItem.CommandProperty, Binding.Create(static (MonkeysViewModel vm) => vm.DeleteCommand, source: carouselView.BindingContext));
+    deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, static (CarouselView cv) => cv.CurrentItem, source: carouselView);
+
+    swipeView.TopItems = new SwipeItems { favoriteSwipeItem };
+    swipeView.BottomItems = new SwipeItems { deleteSwipeItem };
+
+    StackLayout swipeViewStackLayout = new StackLayout { ... };
+    swipeView.Content = swipeViewStackLayout;
+    border.Content = swipeView;
+    stackLayout.Add(border);
+
+    return stackLayout;
+});
+```
+
+::: moniker-end
+
 In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Border> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the bottom and from the top:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/populate-data/swipeview-bottom.png" alt-text="Screenshot of a CarouselView bottom context menu item.":::
 :::image type="content" source="media/populate-data/swipeview-top.png" alt-text="Screenshot of a CarouselView top context menu item.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/swipeview-bottom-net11.png" alt-text="Screenshot of a CarouselView bottom context menu item.":::
+:::image type="content" source="media/populate-data/swipeview-top-net11.png" alt-text="Screenshot of a CarouselView top context menu item.":::
+
+::: moniker-end
 
 <xref:Microsoft.Maui.Controls.SwipeView> supports four different swipe directions, with the swipe direction being defined by the directional `SwipeItems` collection the `SwipeItems` objects are added to. By default, a swipe item is executed when it's tapped by the user. In addition, once a swipe item has been executed the swipe items are hidden and the <xref:Microsoft.Maui.Controls.SwipeView> content is re-displayed. However, these behaviors can be changed.
 
@@ -371,7 +594,24 @@ refreshView.Content = carouselView;
 
 When the user initiates a refresh, the <xref:System.Windows.Input.ICommand> defined by the `Command` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/pull-to-refresh.png" alt-text="Screenshot of CarouselView pull-to-refresh.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/pull-to-refresh-net11.png" alt-text="Screenshot of CarouselView pull-to-refresh.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> On Android, in a vertical <xref:Microsoft.Maui.Controls.CarouselView> whose `Loop` property is `true` (the default), pulling down on the first item scrolls to the last item instead of starting a refresh. To use pull to refresh with a vertical <xref:Microsoft.Maui.Controls.CarouselView>, set `Loop` to `false`. For more information, see the related observations in [dotnet/maui#40761](https://github.com/dotnet/maui/issues/40761).
+
+::: moniker-end
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
@@ -393,6 +633,13 @@ The default value of the `RemainingItemsThreshold` property is -1, which indicat
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Controls.CarouselView> validates the `RemainingItemsThreshold` property so that its value is always greater than or equal to -1.
+
+::: moniker range=">=net-maui-11.0"
+
+> [!IMPORTANT]
+> On Android, swiping through a <xref:Microsoft.Maui.Controls.CarouselView> whose `Loop` property is `true` (the default) might not raise the `RemainingItemsThresholdReached` event or execute the `RemainingItemsThresholdReachedCommand`. To load data incrementally, set `Loop` to `false`. For more information, see the related observations in [dotnet/maui#40761](https://github.com/dotnet/maui/issues/40761).
+
+::: moniker-end
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.CarouselView> that loads data incrementally:
 

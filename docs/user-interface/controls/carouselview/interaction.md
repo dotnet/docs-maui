@@ -1,12 +1,20 @@
 ---
 title: "Configure CarouselView interaction"
 description: "The currently displayed item in a .NET MAUI CarouselView can be accessed through the CurrentItem and Position properties."
-ms.date: 09/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Configure CarouselView interaction
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the CarouselViewDemos sample, which adds its own styling, such as card backgrounds and fonts. The examples on this page omit that styling to focus on the <xref:Microsoft.Maui.Controls.CarouselView> features.
+
+::: moniker-end
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties that control user interaction:
 
@@ -71,7 +79,17 @@ void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
 
 In this example, the `OnCurrentItemChanged` event handler exposes the previous and current items:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/interaction/current-item-events.png" alt-text="Screenshot of a CarouselView with previous and current items.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/interaction/current-item-events-net11.png" alt-text="Screenshot of a CarouselView with previous and current items.":::
+
+::: moniker-end
 
 ### Command
 
@@ -144,7 +162,17 @@ void OnPositionChanged(object sender, PositionChangedEventArgs e)
 
 In this example, the `OnCurrentItemChanged` event handler exposes the previous and current positions:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/interaction/current-position-events.png" alt-text="Screenshot of a CarouselView with previous and current positions.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/interaction/current-position-events-net11.png" alt-text="Screenshot of a CarouselView with previous and current positions.":::
+
+::: moniker-end
 
 ### Command
 
@@ -222,7 +250,17 @@ public class MonkeysViewModel : INotifyPropertyChanged
 
 In this example, the `CurrentItem` property is set to the fourth item in the `Monkeys` collection:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/interaction/preset-item.png" alt-text="Screenshot of a CarouselView with preset item.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/interaction/preset-item-net11.png" alt-text="Screenshot of a CarouselView with preset item.":::
+
+::: moniker-end
 
 ## Preset the position
 
@@ -265,7 +303,17 @@ public class MonkeysViewModel : INotifyPropertyChanged
 
 In this example, the `Position` property is set to the fourth item in the `Monkeys` collection:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/interaction/preset-position.png" alt-text="Screenshot of a CarouselView with preset position.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/interaction/preset-position-net11.png" alt-text="Screenshot of a CarouselView with preset position.":::
+
+::: moniker-end
 
 ## Define visual states
 
@@ -279,6 +327,8 @@ In this example, the `Position` property is set to the fourth item in the `Monke
 These visual states can be used to initiate visual changes to the items displayed by the <xref:Microsoft.Maui.Controls.CarouselView>.
 
 The following XAML example shows how to define the `CurrentItem`, `PreviousItem`, `NextItem`, and `DefaultItem` visual states:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}"
@@ -325,6 +375,57 @@ The following XAML example shows how to define the `CurrentItem`, `PreviousItem`
 </CarouselView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<CarouselView ItemsSource="{Binding Monkeys}"
+              PeekAreaInsets="60">
+    <CarouselView.ItemTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="CurrentItem">
+                            <VisualState.Setters>
+                                <Setter Property="Scale"
+                                        Value="1.1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="PreviousItem">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity"
+                                        Value="0.5" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="NextItem">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity"
+                                        Value="0.5" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="DefaultItem">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity"
+                                        Value="0.25" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <!-- Item template content -->
+                <Border>
+                    ...
+                </Border>
+            </StackLayout>
+        </DataTemplate>
+    </CarouselView.ItemTemplate>
+</CarouselView>
+```
+
+::: moniker-end
+
 In this example, the `CurrentItem` visual state specifies that the current item displayed by the <xref:Microsoft.Maui.Controls.CarouselView> will have its `Scale` property changed from its default value of 1 to 1.1. The `PreviousItem` and `NextItem` visual states specify that the items surrounding the current item will be displayed with an `Opacity` value of 0.5. The `DefaultItem` visual state specifies that the remainder of the items displayed by the <xref:Microsoft.Maui.Controls.CarouselView> will be displayed with an `Opacity` value of 0.25.
 
 > [!NOTE]
@@ -332,7 +433,17 @@ In this example, the `CurrentItem` visual state specifies that the current item 
 
 The following screenshot shows the `CurrentItem`, `PreviousItem`, and `NextItem` visual states:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/interaction/visual-states.png" alt-text="Screenshot of a CarouselView using visual states.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/interaction/visual-states-net11.png" alt-text="Screenshot of a CarouselView using visual states.":::
+
+::: moniker-end
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
