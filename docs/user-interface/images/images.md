@@ -1,7 +1,7 @@
 ---
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
-ms.date: 12/03/2024
+ms.date: 09/02/2026
 ---
 
 # Add images to a .NET MAUI app project
@@ -64,6 +64,33 @@ To stop vector images being resized, set the `Resize` attribute to `false`:
 ```xml
 <MauiImage Include="Resources\Images\logo.svg" Resize="false" />
 ```
+
+::: moniker range=">=net-maui-11.0"
+
+## Set resize quality
+
+Use the `ResizeQuality` metadata to select the resampling quality that Resizetizer uses when it scales an image. This metadata works with `MauiImage`, `MauiIcon`, and `MauiSplashScreen` items, and with bitmap and SVG source files. It also applies to adaptive and monochrome icon layers and dark splash screen variants.
+
+`ResizeQuality` supports the following values:
+
+- `Auto` is the default. It preserves the existing output and uses bilinear interpolation with mipmaps.
+- `Best` uses the Mitchell cubic resampler for raster images and downscaling. When it upscales an SVG image, Resizetizer renders the vector directly.
+- `Fastest` uses nearest-neighbor sampling without mipmaps. This option can decrease build time and can preserve pixel art, but scaled images can appear pixelated.
+
+The following example uses high-quality resizing for a photo and nearest-neighbor resizing for pixel art:
+
+```xml
+<ItemGroup>
+  <MauiImage Include="Resources\Images\photo.png"
+             BaseSize="800,600"
+             ResizeQuality="Best" />
+  <MauiImage Include="Resources\Images\pixelart.png"
+             BaseSize="128,128"
+             ResizeQuality="Fastest" />
+</ItemGroup>
+```
+
+::: moniker-end
 
 ## Add tint and background color
 
