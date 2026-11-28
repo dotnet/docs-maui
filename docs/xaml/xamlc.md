@@ -6,7 +6,17 @@ ms.date: 11/28/2026
 
 # XAML Processing
 
+::: moniker range="<=net-maui-10.0"
+
 .NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. As of .NET 10, default inflation is runtime for debug builds, XamlC (XamlCompilation) for Release. We encourage you to try source generation and use it if it works for you. This will become the future in new projects, then in all projects, soon.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+.NET Multi-platform App UI (.NET MAUI) XAML can be processed, and inflated into a tree of objects in different ways explained here. Starting in .NET 11, XAML source generation is the default for Debug and Release builds.
+
+::: moniker-end
 
 ## XAML Compilation
 
@@ -16,7 +26,17 @@ XAML is compiled directly into intermediate language (IL) with the XAML compiler
 - It removes some of the load and instantiation time for XAML elements.
 - It helps to reduce the file size of the final assembly by no longer including .xaml files.
 
+::: moniker range="<=net-maui-10.0"
+
 XAML compilation is enabled by default in .NET MAUI apps. For apps built using the debug configuration, XAML compilation provides compile-time validation of XAML, but does not convert the XAML to IL in the assembly. Instead, XAML files are included as embedded resources in the app package, and evaluated at runtime. For apps built using the release configuration, XAML compilation provides compile-time validation of XAML, and converts the XAML to IL that's written to the assembly. However, XAML compilation behavior can be overridden in both configurations with the <xref:Microsoft.Maui.Controls.Xaml.XamlCompilationAttribute> class.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11, XAML source generation is the default inflator instead of XAML compilation, and the `XamlC` and `Runtime` inflators are deprecated. For more information, see [Enable Source Generation, and per file settings](#enable-source-generation-and-per-file-settings).
+
+::: moniker-end
 
 > [!IMPORTANT]
 > Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](~/fundamentals/data-binding/compiled-bindings.md).
@@ -33,11 +53,23 @@ Starting with .NET 10, XAML can be transformed into C# code at compilaiton time.
 - Speed: inflation times on device are 10000% (100 times) faster in Debug, and 25% faster on Release. The volume of allocation is reduced in the same proportion
 - Debug: you can see the generated code, you can break and debug it.
 
+::: moniker range="<=net-maui-10.0"
+
 This is the recommended way going further. It will be enabled by default in the future.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11, XAML source generation is the default.
+
+::: moniker-end
 
 ### Enable Source Generation, and per file settings
 
 We no longer recommend using `[XamlCompilation]` attribute to enable or disable per file compilation.
+
+::: moniker range="<=net-maui-10.0"
 
 You can enable XAML source generation at the project level, by setting the `MauiXamlInflator` value to `SourceGen` in your csproj file as shown here:
 
@@ -56,6 +88,23 @@ You can revert to the default per file (or use wildcards) or force another infla
     <MauiXaml Update="Controls\**.xaml" Inflator="Runtime" />     <!-- force runtime inflation. if you have to do this, it probably indicates a bug in both XamlC and sourcegen, please report -->
 </ItemGroup>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Starting in .NET 11, XAML source generation is used for all XAML files in Debug and Release builds by default, so you don't need to set `MauiXamlInflator`. The `XamlC` and `Runtime` inflators are deprecated. If your project sets `MauiXamlInflator` to `XamlC` or `Runtime`, the build reports warning `MAUI1001`. Remove the property to use source generation.
+
+You can still force another inflator for specific files, for example while you report a source generation issue:
+
+```xml
+<ItemGroup>
+    <MauiXaml Update="Controls\**.xaml" Inflator="XamlC" />       <!-- force XAML compilation -->
+    <MauiXaml Update="Controls\**.xaml" Inflator="Runtime" />     <!-- force runtime inflation. if you have to do this, it probably indicates a bug in sourcegen, please report -->
+</ItemGroup>
+```
+
+::: moniker-end
 
 There other metadata you can set to instruct xaml sourcegenerator
 
