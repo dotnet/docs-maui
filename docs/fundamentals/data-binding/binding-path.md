@@ -64,7 +64,7 @@ The following XAML shows multiple examples of binding to sub-properties:
             <Label.Text>
                 <Binding x:DataType="globe:CultureInfo"
                          Path="DateTimeFormat.DayNames[3]"
-                         StringFormat="The middle day of the week in France is {0}">
+                         StringFormat="The middle day of the week in French is {0}">
                     <Binding.Source>
                         <globe:CultureInfo>
                             <x:Arguments>
@@ -103,9 +103,9 @@ The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for t
 ```xaml
 <Label>
     <Label.Text>
-        <Binding x:DataType="globe:CultureInfo",
+        <Binding x:DataType="globe:CultureInfo"
                  Path="DateTimeFormat.DayNames[3]"
-                 StringFormat="The middle day of the week in France is {0}">
+                 StringFormat="The middle day of the week in French is {0}">
             <Binding.Source>
                 <globe:CultureInfo>
                     <x:Arguments>
