@@ -1,7 +1,7 @@
 ---
 title: "Binding value converters"
 description: "Learn how how to cast or convert values within a .NET MAUI data binding by implementing a value converter (which is also known as a binding converter, or binding value converter)."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
 ---
 
 # Binding value converters
@@ -93,6 +93,19 @@ The `Convert` method shown above assumes that the `value` argument is of type `i
 You can write value converters to be more generalized and to accept several different types of data. The `Convert` and `ConvertBack` methods can use the `as` or `is` operators with the `value` parameter, or can call `GetType` on that parameter to determine its type, and then do something appropriate. The expected type of each method's return value is given by the `targetType` parameter. Sometimes, value converters are used with data bindings of different target types. In this case the value converter can use the `targetType` argument to perform a conversion for the correct type.
 
 If the conversion being performed is different for different cultures, use the `culture` parameter for this purpose.
+
+::: moniker range=">=net-maui-11.0"
+
+By default, the `culture` argument is `CultureInfo.CurrentUICulture`. To pass a specific culture to the converter, set the `ConverterCulture` property of the <xref:Microsoft.Maui.Controls.Binding> or <xref:Microsoft.Maui.Controls.MultiBinding>:
+
+```xaml
+<Label Text="{Binding Amount,
+                      Converter={StaticResource formatConverter},
+                      ConverterParameter=C,
+                      ConverterCulture=nl-NL}" />
+```
+
+::: moniker-end
 
 ## Binding converter properties
 

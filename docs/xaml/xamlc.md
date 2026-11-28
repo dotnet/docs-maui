@@ -1,7 +1,7 @@
 ---
 title: "XAML compilation"
 description: ".NET MAUI XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC)."
-ms.date: 05/12/2026
+ms.date: 11/28/2026
 ---
 
 # XAML Processing
@@ -67,7 +67,7 @@ There other metadata you can set to instruct xaml sourcegenerator
 
 :::moniker range=">=net-maui-11.0"
 
-For short computed values and event actions, see [C# expressions in XAML](csharp-expressions.md). Expressions require the `SourceGen` inflator and preview features.
+For short computed values and event actions, see [C# expressions in XAML](csharp-expressions.md). Expressions require the `SourceGen` inflator.
 
 ### Inline C# with the `x:Code` directive
 
@@ -83,6 +83,8 @@ When XAML source generation is enabled, you can use the `x:Code` directive to em
 >   <EnablePreviewFeatures>true</EnablePreviewFeatures>
 > </PropertyGroup>
 > ```
+>
+> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET 11 SR2. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328).
 
 The `x:Code` element must be a direct child of the root element, and the root element must have an `x:Class` attribute. Wrap the code in a CDATA section so XAML doesn't try to parse it as markup:
 

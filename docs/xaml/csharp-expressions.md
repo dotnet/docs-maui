@@ -1,7 +1,7 @@
 ---
 title: "C# expressions in XAML"
 description: "Use C# expressions with .NET MAUI XAML source generation to bind values, compute display text, and handle events."
-ms.date: 10/08/2026
+ms.date: 11/28/2026
 monikerRange: ">=net-maui-11.0"
 ai-usage: ai-generated
 ---
@@ -11,18 +11,9 @@ ai-usage: ai-generated
 In .NET MAUI 11, you can write short C# expressions in XAML property values and event attributes. Use them for computed display values or a short event action. Keep larger operations in your view model or code-behind.
 
 > [!IMPORTANT]
-> XAML C# expressions are a preview feature. They require XAML source generation and `EnablePreviewFeatures`. XamlC and runtime inflation don't support this syntax.
+> XAML C# expressions require XAML source generation, which is the default XAML inflator in .NET 11. XamlC and runtime inflation don't support this syntax.
 
-Set these properties in your project file:
-
-```xml
-<PropertyGroup>
-    <MauiXamlInflator>SourceGen</MauiXamlInflator>
-    <EnablePreviewFeatures>true</EnablePreviewFeatures>
-</PropertyGroup>
-```
-
-These settings apply to Debug and Release builds. Don't override the inflator with `Runtime` or `XamlC` for a file that uses expressions. Without `EnablePreviewFeatures`, the generator reports `MAUIX2012`. For more information about inflators and per-file settings, see [XAML processing](xamlc.md).
+You don't need to change your project file to use expressions. Don't override the inflator with `Runtime` or `XamlC`, either in the `MauiXamlInflator` MSBuild property or for a file that uses expressions. For more information about inflators and per-file settings, see [XAML processing](xamlc.md).
 
 ## Bind values and handle events
 

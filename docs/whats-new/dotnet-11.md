@@ -1,7 +1,8 @@
 ---
 title: What's new in .NET MAUI for .NET 11
 description: Learn about the new features introduced in .NET MAUI for .NET 11.
-ms.date: 09/10/2026
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # What's new in .NET MAUI for .NET 11
@@ -390,7 +391,10 @@ VisualStateManager.InvalidateVisualStates(myButton);
 
 ### `x:Code` directive for inline C# in XAML
 
-Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. The `EnablePreviewFeatures` flag is required for this. For more information, see [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
+The XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. `x:Code` is a preview feature, so you must set the `EnablePreviewFeatures` MSBuild property to `true` to use it. For more information, see [Inline C# with the `x:Code` directive](~/xaml/xamlc.md#inline-c-with-the-xcode-directive) and [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
+
+> [!IMPORTANT]
+> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET 11 SR2. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328) and [GitHub PR #40392](https://github.com/dotnet/maui/pull/40392).
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -405,6 +409,38 @@ Starting in .NET 11 Preview 4, the XAML source generator supports an `x:Code` di
     <Button Clicked="OnButtonClicked" Text="Click me" />
 </ContentPage>
 ```
+
+### C# expressions in XAML
+
+In .NET 11, you can write short C# expressions in XAML property values and event attributes. Expressions can bind to properties of the binding context declared by `x:DataType`, compute display values with interpolated strings and operators, and handle events with lambdas. They require XAML source generation, which is the default XAML inflator in .NET 11, and no longer require `EnablePreviewFeatures`:
+
+```xaml
+<ContentPage ...
+             x:DataType="local:OrderViewModel">
+    <VerticalStackLayout>
+        <Entry Text="{FirstName}" />
+        <Label Text="{$'Hello, {FirstName}!'}" />
+        <Label Text="{$'Total: {Quantity * Price:C2}'}" />
+        <Button Text="Add a ticket"
+                Clicked="{(sender, e) => Order.Quantity++}" />
+    </VerticalStackLayout>
+</ContentPage>
+```
+
+In this example, `{FirstName}` is a two-way compiled binding on the <xref:Microsoft.Maui.Controls.Entry>, the interpolated strings update when the properties they use change, and the lambda runs in the page class, where `Order` is a property of the page. For more information, see [C# expressions in XAML](~/xaml/csharp-expressions.md) and GitHub PRs [#33693](https://github.com/dotnet/maui/pull/33693) and [#39384](https://github.com/dotnet/maui/pull/39384).
+
+### Binding converter culture
+
+<xref:Microsoft.Maui.Controls.Binding> and <xref:Microsoft.Maui.Controls.MultiBinding> have a `ConverterCulture` property that sets the culture passed to the converter's `Convert` and `ConvertBack` methods. When it isn't set, the converter receives `CultureInfo.CurrentUICulture`, as before:
+
+```xaml
+<Label Text="{Binding Amount,
+                      Converter={StaticResource formatConverter},
+                      ConverterParameter=C,
+                      ConverterCulture=nl-NL}" />
+```
+
+In this example, the converter formats `Amount` as a currency value in the `nl-NL` culture, regardless of the device culture. For more information, see [Binding value converters](~/fundamentals/data-binding/converters.md) and [GitHub PR #35821](https://github.com/dotnet/maui/pull/35821).
 
 ### Compiled bindings inside DataTemplates
 
