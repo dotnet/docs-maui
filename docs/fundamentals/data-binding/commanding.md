@@ -1,12 +1,20 @@
 ---
 title: "Commanding"
 description: "Learn how to implement the Command property with .NET MAUI data bindings. The commanding interface provides an alternative approach to implementing commands that is suited to the MVVM architecture."
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Commanding
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 In a .NET Multi-platform App UI (.NET MAUI) app that uses the Model-View-ViewModel (MVVM) pattern, data bindings are defined between properties in the viewmodel, which is typically a class that derives from `INotifyPropertyChanged`, and properties in the view, which is typically the XAML file. Sometimes an app has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button> or the `Tapped` event of a <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
 
@@ -253,7 +261,17 @@ In this example, the page's `BindingContext` property is set to the `PersonColle
 
 The following screenshot shows the **Submit** button enabled after an age has been set:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/commanding/personentry.png" alt-text="Person Entry.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/commanding/personentry-net11.png" alt-text="Person Entry.":::
+
+::: moniker-end
 
 When the user first presses the **New** button, this enables the entry form but disables the **New** button. The user then enters a name, age, and skills. At any time during the editing, the user can press the **Cancel** button to start over. Only when a name and a valid age have been entered is the **Submit** button enabled. Pressing this **Submit** button transfers the person to the collection displayed by the <xref:Microsoft.Maui.Controls.ListView>. After either the **Cancel** or **Submit** button is pressed, the entry form is cleared and the **New** button is enabled again.
 
@@ -466,7 +484,17 @@ The following example demonstrates a keyboard for entering decimal numbers:
 
 In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The <xref:Microsoft.Maui.Controls.Entry> property of this viewmodel is bound to the `Text` property of a <xref:Microsoft.Maui.Controls.Label>. All the <xref:Microsoft.Maui.Controls.Button> objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/commanding/decimalkeyboard.png" alt-text="Decimal keyboard.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/commanding/decimalkeyboard-net11.png" alt-text="Decimal keyboard.":::
+
+::: moniker-end
 
 The `DecimalKeypadViewModel` defines an <xref:Microsoft.Maui.Controls.Entry> property of type `string` and three properties of type <xref:System.Windows.Input.ICommand>:
 

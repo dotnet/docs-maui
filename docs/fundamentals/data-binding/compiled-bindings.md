@@ -1,12 +1,20 @@
 ---
 title: "Compiled bindings"
 description: "Compiled bindings can be used to improve data binding performance in .NET MAUI applications."
-ms.date: 08/11/2026
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Compiled bindings
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 .NET Multi-platform App UI (.NET MAUI) data bindings have two main issues:
 
@@ -94,7 +102,17 @@ The <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Label>
 
 When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Label> elements, and <xref:Microsoft.Maui.Controls.Slider> elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> elements are updated accordingly:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/compiled-bindings/compiledcolorselector.png" alt-text="Compiled color selector.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/compiled-bindings/compiledcolorselector-net11.png" alt-text="Compiled color selector.":::
+
+::: moniker-end
 
 For more information about this color selector, see [ViewModels and property-change notifications](binding-mode.md#viewmodels-and-property-change-notifications).
 

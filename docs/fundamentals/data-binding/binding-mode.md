@@ -1,12 +1,20 @@
 ---
 title: "Binding mode"
 description: "In .NET MAUI, every bindable property has a default binding mode, which indicates the binding mode in effect when that property is a data-binding target. The binding mode controls the flow of information between source and target, and is specified with a member of the BindingMode enumeration. "
-ms.date: 02/27/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Binding mode
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the DataBindingDemos sample, which adds its own styling, such as cards, fonts, and colors. The examples on this page omit that styling to focus on the data binding features.
+
+::: moniker-end
 
 Every .NET Multi-platform App UI (.NET MAUI) bindable property has a default binding mode that is set when the bindable property is created, and which is available from the `DefaultBindingMode` property of the <xref:Microsoft.Maui.Controls.BindableProperty> object. This default binding mode indicates the mode in effect when that property is a data-binding target. The default binding mode for most properties such as `Rotation`, `Scale`, and `Opacity` is `OneWay`. When these properties are data-binding targets, then the target property is set from the source.
 
@@ -34,7 +42,17 @@ The following example shows a data binding defined on a <xref:Microsoft.Maui.Con
 
 In this example, the <xref:Microsoft.Maui.Controls.Label> is the data-binding source, and the <xref:Microsoft.Maui.Controls.Slider> is the target. The binding references the `Opacity` property of the <xref:Microsoft.Maui.Controls.Label>, which has a default value of 1. Therefore, the <xref:Microsoft.Maui.Controls.Slider> is initialized to the value 1 from the initial `Opacity` value of <xref:Microsoft.Maui.Controls.Label>. This is shown in the following screenshot:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/binding-mode/reversebinding.png" alt-text="Reverse binding.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/binding-mode/reversebinding-net11.png" alt-text="Reverse binding.":::
+
+::: moniker-end
 
 In addition, the <xref:Microsoft.Maui.Controls.Slider> continues to work. This is because the default binding mode for the `Value` property of <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This means that when the `Value` property is a data-binding target, then the target is set from the source but the source is also set from the target. When a `TwoWay` binding is initialized, the target is set from the source first, which allows the <xref:Microsoft.Maui.Controls.Slider> to be set from the initial `Opacity` value.
 
@@ -224,7 +242,17 @@ In this example, the `HslColorViewModel` is instantiated, and `Color` property s
 
 When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Label>, and three <xref:Microsoft.Maui.Controls.Slider> elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/binding-mode/simplecolorselector.png" alt-text="Simple color selector.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/binding-mode/simplecolorselector-net11.png" alt-text="Simple color selector.":::
+
+::: moniker-end
 
 As you manipulate the sliders, the <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> are updated accordingly.
 
