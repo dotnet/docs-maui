@@ -2,6 +2,7 @@
 title: "Define an EmptyView for a CollectionView"
 description: "In .NET MAUI CollectionView, an empty view can be specified that provides feedback to the user when no data is available for display. The empty view can be a string, a view, or multiple views."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Define an EmptyView for a CollectionView

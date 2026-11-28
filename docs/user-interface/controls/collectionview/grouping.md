@@ -2,6 +2,7 @@
 title: "Display grouped data in a CollectionView"
 description: "CollectionView can display correctly grouped data by setting its IsGrouped property to true."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Display grouped data in a CollectionView

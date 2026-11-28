@@ -2,6 +2,7 @@
 title: "ImageButton"
 description: "The ImageButton displays an image and responds to a tap or click that directs an app to carry out a task."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # ImageButton

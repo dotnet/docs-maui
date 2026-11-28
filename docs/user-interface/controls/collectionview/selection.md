@@ -2,6 +2,7 @@
 title: "Configure CollectionView item selection"
 description: "By default, CollectionView selection is disabled. However, single and multiple selection can be enabled."
 ms.date: 11/27/2026
+ai-usage: ai-assisted
 ---
 
 # Configure CollectionView item selection
