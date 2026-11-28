@@ -409,6 +409,8 @@ In this example, the `Execute` and `CanExecute` methods for the commands are def
 
 The following example shows the XAML that consumes the `KeypadViewModel`:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -459,6 +461,63 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
     </Grid>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamlSamples"
+             x:Class="XamlSamples.KeypadPage"
+             Title="Keypad Page"
+             x:DataType="local:KeypadViewModel">
+    <ContentPage.BindingContext>
+        <local:KeypadViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="80" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="{Binding DisplayText}"
+               Margin="0,0,10,0" FontSize="20" LineBreakMode="HeadTruncation"
+               VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+               Grid.ColumnSpan="2" />
+
+        <Button Text="&#x2190;" Command="{Binding DeleteCharCommand}" Grid.Column="2"/>
+
+        <Button Text="1" Command="{Binding AddCharCommand}" CommandParameter="1" Grid.Row="1" />
+        <Button Text="2" Command="{Binding AddCharCommand}" CommandParameter="2" Grid.Row="1" Grid.Column="1" />
+        <Button Text="3" Command="{Binding AddCharCommand}" CommandParameter="3" Grid.Row="1" Grid.Column="2" />
+
+        <Button Text="4" Command="{Binding AddCharCommand}" CommandParameter="4" Grid.Row="2" />
+        <Button Text="5" Command="{Binding AddCharCommand}" CommandParameter="5" Grid.Row="2" Grid.Column="1" />
+        <Button Text="6" Command="{Binding AddCharCommand}" CommandParameter="6" Grid.Row="2" Grid.Column="2" />
+
+        <Button Text="7" Command="{Binding AddCharCommand}" CommandParameter="7" Grid.Row="3" />
+        <Button Text="8" Command="{Binding AddCharCommand}" CommandParameter="8" Grid.Row="3" Grid.Column="1" />
+        <Button Text="9" Command="{Binding AddCharCommand}" CommandParameter="9" Grid.Row="3" Grid.Column="2" />
+
+        <Button Text="*" Command="{Binding AddCharCommand}" CommandParameter="*" Grid.Row="4" />
+        <Button Text="0" Command="{Binding AddCharCommand}" CommandParameter="0" Grid.Row="4" Grid.Column="1" />
+        <Button Text="#" Command="{Binding AddCharCommand}" CommandParameter="#" Grid.Row="4" Grid.Column="2" />
+    </Grid>
+</ContentPage>
+```
+
+::: moniker-end
 
 In this example, the `Command` property of the first <xref:Microsoft.Maui.Controls.Button> that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the <xref:Microsoft.Maui.Controls.Button>:
 
