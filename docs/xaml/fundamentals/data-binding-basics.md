@@ -1,7 +1,8 @@
 ---
 title: "Data binding basics"
 description: ".NET MAUI data bindings allow properties of two objects to be linked so that a change in one causes a change in the other."
-ms.date: 08/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Data binding basics
@@ -173,11 +174,26 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 ## Bindings and collections
 
+::: moniker range="<=net-maui-10.0"
+
 <xref:Microsoft.Maui.Controls.ListView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.ListView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
 
 However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from <xref:Microsoft.Maui.Controls.Cell>. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the <xref:Microsoft.Maui.Controls.ViewCell> class.
 
 <xref:Microsoft.Maui.Controls.ListView> can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
+
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+<xref:Microsoft.Maui.Controls.CollectionView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.CollectionView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
+
+However, the items in the <xref:Microsoft.Maui.Controls.CollectionView> can be displayed any way you want through the use of a *template*. The template is a <xref:Microsoft.Maui.Controls.DataTemplate> whose content is a view, or a layout of views, that's created for every item in the <xref:Microsoft.Maui.Controls.CollectionView>. Data bindings that have been set on the template are transferred to the individual items.
+
+<xref:Microsoft.Maui.Controls.CollectionView> can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
+
+::: moniker-end
 
 ```csharp
 using System.Reflection;
@@ -246,6 +262,8 @@ namespace XamlSamples
 
 Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type <xref:Microsoft.Maui.Graphics.Color>, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type <xref:Microsoft.Maui.Graphics.Color> in the <xref:Microsoft.Maui.Graphics.Colors> class, and assigns it to its public static `All` property.
 
+::: moniker range="<=net-maui-10.0"
+
 Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Microsoft.Maui.Controls.ListView> can be achieved using the `x:Static` markup extension:
 
 ```xaml
@@ -261,6 +279,30 @@ Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Mic
 The result establishes that the items are of type `XamlSamples.NamedColor`:
 
 :::image type="content" source="media/data-binding-basics/listview1.png" alt-text="Binding to a collection.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Microsoft.Maui.Controls.CollectionView> can be achieved using the `x:Static` markup extension:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamlSamples;assembly=XamlSamples"
+             x:Class="XamlSamples.CollectionViewDemoPage"
+             Title="CollectionView Demo Page">
+    <CollectionView ItemsSource="{x:Static local:NamedColor.All}" />
+</ContentPage>
+```
+
+The result establishes that the items are of type `XamlSamples.NamedColor`:
+
+:::image type="content" source="media/data-binding-basics/listview1-net11.png" alt-text="Binding to a collection.":::
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
 
 To define a template for the items, the `ItemTemplate` should be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
 
@@ -282,6 +324,33 @@ To define a template for the items, the `ItemTemplate` should be set to a <xref:
 In this example, the <xref:Microsoft.Maui.Controls.Label> element is set to the <xref:Microsoft.Maui.Controls.View> property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the <xref:Microsoft.Maui.Controls.View> property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
 
 :::image type="content" source="media/data-binding-basics/listview2.png" alt-text="Binding to a collection with a DataTemplate.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+To define a template for the items, set the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>. The <xref:Microsoft.Maui.Controls.DataTemplate> should define a view, or a layout of one or more views, to display each item:
+
+```xaml
+<CollectionView ItemsSource="{x:Static local:NamedColor.All}">
+    <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="local:NamedColor">
+            <Label Text="{Binding FriendlyName}" />
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+```
+
+> [!NOTE]
+> The binding source for each item in the template is the corresponding item in the `CollectionView.ItemsSource` collection.
+
+In this example, the <xref:Microsoft.Maui.Controls.Label> element is the content of the <xref:Microsoft.Maui.Controls.DataTemplate>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
+
+:::image type="content" source="media/data-binding-basics/listview2-net11.png" alt-text="Binding to a collection with a DataTemplate.":::
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
 
 The item template can be expanded to display more information and the actual color:
 
@@ -336,6 +405,63 @@ The item template can be expanded to display more information and the actual col
     </ListView>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The item template can be expanded to display more information and the actual color. Setting `SelectionMode` to `Single` also lets you select an item:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamlSamples"
+             x:Class="XamlSamples.CollectionViewDemoPage"
+             Title="CollectionView Demo Page">
+    <ContentPage.Resources>
+        <x:Double x:Key="boxSize">50</x:Double>
+        <local:FloatToIntConverter x:Key="intConverter" />
+    </ContentPage.Resources>
+
+    <CollectionView SelectionMode="Single"
+                    ItemsSource="{x:Static local:NamedColor.All}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:NamedColor">
+                <StackLayout Padding="5, 5, 0, 5"
+                             Orientation="Horizontal"
+                             Spacing="15">
+                    <BoxView WidthRequest="{StaticResource boxSize}"
+                             HeightRequest="{StaticResource boxSize}"
+                             Color="{Binding Color}" />
+                    <StackLayout Padding="5, 0, 0, 0"
+                                 VerticalOptions="Center">
+                        <Label Text="{Binding FriendlyName}"
+                               FontAttributes="Bold"
+                               FontSize="14" />
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0">
+                            <Label Text="{Binding Red,
+                                                  Converter={StaticResource intConverter},
+                                                  ConverterParameter=255,
+                                                  StringFormat='R={0:X2}'}" />                                
+                            <Label Text="{Binding Green,
+                                                  Converter={StaticResource intConverter},
+                                                  ConverterParameter=255,
+                                                  StringFormat=', G={0:X2}'}" />                                
+                            <Label Text="{Binding Blue,
+                                                  Converter={StaticResource intConverter},
+                                                  ConverterParameter=255,
+                                                  StringFormat=', B={0:X2}'}" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
+```
+
+::: moniker-end
 
 ## Binding value converters
 
@@ -393,11 +519,31 @@ Three data bindings reference this single instance:
                       StringFormat='R={0:X2}'}" />
 ```
 
-The item template dsplays the color, its friendly name, and its RGB values:
+The item template displays the color, its friendly name, and its RGB values:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/data-binding-basics/listview3.png" alt-text="Binding to a collection with a DataTemplate and a converter.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/data-binding-basics/listview3-net11.png" alt-text="Binding to a collection with a DataTemplate and a converter.":::
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an <xref:System.Collections.ObjectModel.ObservableCollection`1> class for these items. <xref:System.Collections.ObjectModel.ObservableCollection`1> implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The <xref:Microsoft.Maui.Controls.CollectionView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.CollectionView> changes during runtime, use an <xref:System.Collections.ObjectModel.ObservableCollection`1> class for these items. <xref:System.Collections.ObjectModel.ObservableCollection`1> implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.CollectionView> installs a handler for the `CollectionChanged` event.
+
+::: moniker-end
 
 If properties of the items themselves change during runtime, then the items in the collection should implement the `INotifyPropertyChanged` interface and signal changes to property values using the `PropertyChanged` event.
 
