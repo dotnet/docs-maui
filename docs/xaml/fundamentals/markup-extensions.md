@@ -1,12 +1,20 @@
 ---
 title: "XAML markup extensions"
 description: ".NET MAUI XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources."
-ms.date: 08/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # XAML markup extensions
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots in this article come from the XamlSamples sample. The page XAML in this article matches the sample, but the sample's *App.xaml* also merges app-wide styles from its *Resources/Styles* folder. These styles set the Inter font, lavender buttons with a border, and purple sliders. In a new project, your pages show the same controls with different fonts, colors, and spacing.
+
+::: moniker-end
 
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources. XAML markup extensions are particularly important for sharing objects, and referencing constants used throughout an app, but they find their greatest utility in data bindings.
 
@@ -122,6 +130,8 @@ These additional three resources can be referenced in the same way as the `Layou
 
 For resources of type <xref:Microsoft.Maui.Graphics.Color>, you can use the same string representations that you use when directly assigning attributes of these types. Type converters included in .NET MAUI are invoked when the resource is created. It's also possible to use the `OnPlatform` class within the resource dictionary to define different values for the platforms. The following example uses this class for setting different text colors:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <OnPlatform x:Key="textColor"
             x:TypeArguments="Color">
@@ -130,9 +140,36 @@ For resources of type <xref:Microsoft.Maui.Graphics.Color>, you can use the same
 </OnPlatform>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<OnPlatform x:Key="textColor"
+            x:TypeArguments="Color">
+    <On Platform="iOS, MacCatalyst" Value="IndianRed" />
+    <On Platform="Android" Value="SeaGreen" />
+    <On Platform="WinUI" Value="SteelBlue" />
+</OnPlatform>
+```
+
+::: moniker-end
+
+::: moniker range="<=net-maui-10.0"
+
 The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. The `iOS`, and `Android` attributes are converted to <xref:Microsoft.Maui.Graphics.Color> values when the object is initialized.
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. Each `On` element sets the value for one or more platforms, separated by commas, and its `Value` attribute is converted to a <xref:Microsoft.Maui.Graphics.Color> value when the object is initialized.
+
+::: moniker-end
+
 The following example shows the three buttons accessing six shared values:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -181,9 +218,75 @@ The following example shows the three buttons accessing six shared values:
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlSamples.SharedResourcesPage"
+             Title="Shared Resources Page">
+    <ContentPage.Resources>
+        <LayoutOptions x:Key="horzOptions"
+                       Alignment="Center" />
+        <LayoutOptions x:Key="vertOptions"
+                       Alignment="Center" />
+        <x:Double x:Key="borderWidth">3</x:Double>
+        <x:Double x:Key="rotationAngle">-15</x:Double>
+        <x:Double x:Key="fontSize">24</x:Double>
+        <OnPlatform x:Key="textColor"
+                    x:TypeArguments="Color">
+            <On Platform="iOS, MacCatalyst" Value="IndianRed" />
+            <On Platform="Android" Value="SeaGreen" />
+            <On Platform="WinUI" Value="SteelBlue" />
+        </OnPlatform>
+    </ContentPage.Resources>
+
+    <!-- Spacing leaves room for the rotated buttons. -->
+    <StackLayout Spacing="40">
+        <Button Text="Do this!"
+                HorizontalOptions="{StaticResource horzOptions}"
+                VerticalOptions="{StaticResource vertOptions}"
+                BorderWidth="{StaticResource borderWidth}"
+                Rotation="{StaticResource rotationAngle}"
+                TextColor="{StaticResource textColor}"
+                FontSize="{StaticResource fontSize}" />
+        <Button Text="Do that!"
+                HorizontalOptions="{StaticResource horzOptions}"
+                VerticalOptions="{StaticResource vertOptions}"
+                BorderWidth="{StaticResource borderWidth}"
+                Rotation="{StaticResource rotationAngle}"
+                TextColor="{StaticResource textColor}"
+                FontSize="{StaticResource fontSize}" />
+        <Button Text="Do the other thing!"
+                HorizontalOptions="{StaticResource horzOptions}"
+                VerticalOptions="{StaticResource vertOptions}"
+                BorderWidth="{StaticResource borderWidth}"
+                Rotation="{StaticResource rotationAngle}"
+                TextColor="{StaticResource textColor}"
+                FontSize="{StaticResource fontSize}" />
+    </StackLayout>
+</ContentPage>
+```
+
+::: moniker-end
+
 The following screenshot verifies the consistent styling:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/markup-extensions/sharedresources.png" alt-text="Screenshot of styled controls.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/markup-extensions/sharedresources-net11.png" alt-text="Screenshot of styled controls.":::
+
+This screenshot was captured on Android, so the button text uses the Android color, `SeaGreen`.
+
+::: moniker-end
 
 Although it's common to define the `Resources` collection at the top of the page, you can have `Resources` collections on other elements on the page. For example, the following example shows resources added to a <xref:Microsoft.Maui.Controls.StackLayout>:
 
@@ -219,6 +322,8 @@ The following example demonstrates how `x:Static` can explicitly reference stati
 
 The main use of the `x:Static` markup extension is in referencing static fields or properties from your own code. For example, here’s an `AppConstants` class that contains some static fields that you might want to use on multiple pages throughout an app:
 
+::: moniker range="<=net-maui-10.0"
+
 ```csharp
 namespace XamlSamples
 {
@@ -229,6 +334,23 @@ namespace XamlSamples
     }
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+namespace XamlSamples
+{
+    static class AppConstants
+    {
+        public static readonly Color BackgroundColor = Color.FromArgb("#ECE7FF");
+        public static readonly Color ForegroundColor = Color.FromArgb("#7C5CFF");
+    }
+}
+```
+
+::: moniker-end
 
 To reference the static fields of this class in a XAML file, you need to use an XML namespace declaration to indicate where this file is located. Each additional XML namespace declaration defines a new prefix. To access classes local to the root app namespace, such as `AppConstants`, you could use the prefix `local`. The namespace declaration must indicate the CLR (Common Language Runtime) namespace name, also known as the .NET namespace name, which is the name that appears in a C# `namespace` definition or in a `using` directive:
 
@@ -246,6 +368,8 @@ xmlns:sys="clr-namespace:System;assembly=netstandard"
 > The keyword `clr-namespace` is followed by a colon and then the .NET namespace name, followed by a semicolon, the keyword `assembly`, an equal sign, and the assembly name.
 
 The static fields can then be consumed after declaring the XML namespace:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -272,9 +396,51 @@ The static fields can then be consumed after declaring the XML namespace:
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamlSamples"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="XamlSamples.StaticConstantsPage"
+             Title="Static Constants Page">
+    <StackLayout>
+        <Label Text="Hello, XAML!"
+               TextColor="{x:Static local:AppConstants.BackgroundColor}"
+               BackgroundColor="{x:Static local:AppConstants.ForegroundColor}"
+               FontAttributes="Bold"
+               FontSize="30"
+               HorizontalOptions="Center" />
+        <!-- Scale doesn't change the size that layout reserves, so the margin makes room for the scaled BoxView. -->
+        <BoxView WidthRequest="{x:Static sys:Math.PI}"
+                 HeightRequest="{x:Static sys:Math.E}"
+                 Color="{x:Static local:AppConstants.ForegroundColor}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Margin="0,150"
+                 Scale="100" />
+    </StackLayout>
+</ContentPage>
+```
+
+::: moniker-end
+
 In this example, the <xref:Microsoft.Maui.Controls.BoxView> dimensions are set to `Math.PI` and `Math.E`, but scaled by a factor of 100:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/markup-extensions/staticconstants.png" alt-text="Screenshot of controls using the x:Static markup extension.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/markup-extensions/staticconstants-net11.png" alt-text="Screenshot of controls using the x:Static markup extension.":::
+
+::: moniker-end
 
 ## Other markup extensions
 

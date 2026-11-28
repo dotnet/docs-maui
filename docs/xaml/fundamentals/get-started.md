@@ -1,12 +1,20 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 08/19/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Get started with XAML
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots in this article come from the XamlSamples sample. The page XAML in this article matches the sample, but the sample's *App.xaml* also merges app-wide styles from its *Resources/Styles* folder. These styles set the Inter font, lavender buttons with a border, and purple sliders. In a new project, your pages show the same controls with different fonts, colors, and spacing.
+
+::: moniker-end
 
 In a .NET Multi-platform App UI (.NET MAUI) app, XAML is mostly used to define the visual contents of a page and works together with a C# code-behind file. The code-behind file provides code support for the markup. Together, these two files contribute to a new class definition that includes child views and property initialization. Within the XAML file, classes and properties are referenced with XML elements and attributes, and links between the markup and code are established.
 
@@ -33,7 +41,7 @@ The two XML namespace (`xmlns`) declarations refer to URIs on microsoft.com. How
 ::: moniker range=">=net-maui-11.0"
 
 > [!NOTE]
-> Starting in .NET 11, these two standard namespace declarations are implicit and can be omitted from your XAML files. The compiler injects them automatically. For more information, see [Implicit namespace declarations](~/xaml/namespaces/index.md#implicit-namespace-declarations).
+> Starting in .NET 11, these two standard namespace declarations are implicit and can be omitted from your XAML files. For more information, see [Implicit namespace declarations](#implicit-namespace-declarations).
 
 ::: moniker-end
 
@@ -70,6 +78,8 @@ A <xref:Microsoft.Maui.Controls.ContentPage> should contain a single child, that
 
 The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a <xref:Microsoft.Maui.Controls.Label>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -85,9 +95,43 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlSamples.HelloXamlPage"
+             Title="Hello XAML Page">
+    <Label Text="Hello, XAML!"
+           VerticalOptions="Center"
+           HorizontalTextAlignment="Center"
+           Rotation="-15"
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="MediumSlateBlue" />
+</ContentPage>
+```
+
+::: moniker-end
+
+From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
+
+Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type <xref:Microsoft.Maui.TextAlignment>, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
+
+For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
+
+- `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
+- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
+
 ::: moniker range=">=net-maui-10.0"
 
 ## XAML Source Generation
+
+::: moniker-end
+
+::: moniker range="net-maui-10.0"
 
 > [!IMPORTANT]
 > This feature is opt-in. To use it, set the XAML inflator in your project file as per the instructions below. Please let us know your experience with this (good or bad) in the .NET MAUI repository.
@@ -112,6 +156,18 @@ For more fine-grained control over what XAML files use XAML Source Generation, y
 
 You can include or exclude certain XAML files by configuring the pattern in the `Inflator` attribute.
 If you want to opt-out on certain files or pattern, unset (or set to "") the `Inflator` to ensure the correct defaults (the default is runtime inflation on Debug, XamlC on Release)
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+XAML source generation uses Roslyn source generators to generate C# instead of IL (intermediate language) from your XAML. This improves your ability to debug XAML by emitting the source files and setting break points in them directly, speeds up the debug performance of page rendering, and improves your app behavior consistency between debug and release build modes.
+
+Starting in .NET 11, XAML source generation is the default XAML inflator for Debug and Release builds, so you don't need to change your project file to use it. For more information about inflators and per-file settings, see [XAML processing](~/xaml/xamlc.md).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-10.0"
 
 Reference the [source generator configuration documentation](/dotnet/core/extensions/configuration-generator) for using options like `EmitCompilerGeneratedFiles`.
 
@@ -156,7 +212,7 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 
 ::: moniker range=">=net-maui-11.0"
 
-### Implicit namespace declarations
+## Implicit namespace declarations
 
 Starting in .NET 11, the standard XAML namespace declarations are implicit by default — no opt-in is required. The compiler automatically injects `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` and `xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"`, so your XAML files can omit them:
 
@@ -221,15 +277,6 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
 ::: moniker-end
 
-From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
-
-Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type <xref:Microsoft.Maui.TextAlignment>, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
-
-For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
-
-- `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
-- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
-
 ## Page navigation
 
 When you run a .NET MAUI app, the `MainPage` is typically displayed. To see a different page you can either set that as the new startup page in the *AppShell.xaml* file, or navigate to the new page from `MainPage`.
@@ -259,7 +306,17 @@ public MainPage()
 
 When you compile and deploy the new version of this app, a button appears on the screen. Pressing it navigates to `HelloXamlPage`:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/helloxaml1.png" alt-text="Screenshot of rotated Label text.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/helloxaml1-net11.png" alt-text="Screenshot of rotated Label text.":::
+
+::: moniker-end
 
 You can navigate back to `MainPage` using the navigation bar that appears on each platform.
 
@@ -290,7 +347,17 @@ The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a la
 
 This XAML file is syntactically complete, and produces the following UI:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/xamlpluscode1.png" alt-text="Screenshot of multiple controls on a page.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/xamlpluscode1-net11.png" alt-text="Screenshot of multiple controls on a page.":::
+
+::: moniker-end
 
 However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button>, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the <xref:Microsoft.Maui.Controls.Button> should do something.
 
@@ -397,7 +464,17 @@ void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
 
 The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider> causes its value to be displayed in the <xref:Microsoft.Maui.Controls.Label>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/get-started/xamlpluscode2.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/get-started/xamlpluscode2-net11.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
+
+::: moniker-end
 
 In the example above the <xref:Microsoft.Maui.Controls.Button> simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a <xref:Microsoft.Maui.Controls.Button> and then access its properties:
 

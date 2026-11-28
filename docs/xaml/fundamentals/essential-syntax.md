@@ -1,12 +1,20 @@
 ---
 title: "Essential .NET MAUI XAML syntax"
 description: "This article explains the essential XAML syntax features of property elements and attached properties."
-ms.date: 08/30/2024
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # Essential XAML syntax
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-fundamentals)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots in this article come from the XamlSamples sample. The page XAML in this article matches the sample, but the sample's *App.xaml* also merges app-wide styles from its *Resources/Styles* folder. These styles set the Inter font, lavender buttons with a border, and purple sliders. In a new project, your pages show the same controls with different fonts, colors, and spacing.
+
+::: moniker-end
 
 XAML is mostly designed for instantiating and initializing objects. But often, properties must be set to complex objects that cannot easily be represented as XML strings, and sometimes properties defined by one class must be set on a child class. These two needs require the essential XAML syntax features of *property elements* and *attached properties*.
 
@@ -92,6 +100,8 @@ Within the tag for each child of the <xref:Microsoft.Maui.Controls.Grid> you spe
 
 The following example demonstrates placing children within a <xref:Microsoft.Maui.Controls.Grid>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -145,9 +155,77 @@ The following example demonstrates placing children within a <xref:Microsoft.Mau
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlSamples.GridDemoPage"
+             Title="Grid Demo Page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Autosized cell"
+               TextColor="White"
+               BackgroundColor="RoyalBlue" />
+        <BoxView Color="LightSteelBlue"
+                 Grid.Column="1" />
+        <BoxView Color="Teal"
+                 Grid.Row="1" />
+        <Label Text="Leftover space"
+               Grid.Row="1" Grid.Column="1"
+               TextColor="Indigo"
+               BackgroundColor="Lavender"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+        <Label Text="Span two rows (or more if you want)"
+               Grid.Column="2" Grid.RowSpan="2"
+               TextColor="White"
+               BackgroundColor="SlateBlue"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+        <Label Text="Span two columns"
+               Grid.Row="2" Grid.ColumnSpan="2"
+               TextColor="MidnightBlue"
+               BackgroundColor="Gold"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+        <Label Text="Fixed 100x100"
+               Grid.Row="2" Grid.Column="2"
+               TextColor="White"
+               BackgroundColor="Crimson"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+    </Grid>
+</ContentPage>
+```
+
+::: moniker-end
+
 This XAML results in the following layout:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/essential-syntax/grid.png" alt-text=".NET MAUI Grid layout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/essential-syntax/grid-net11.png" alt-text=".NET MAUI Grid layout.":::
+
+::: moniker-end
 
 The `Grid.Row`, `Grid.Column`, `Grid.RowSpan`, and `Grid.ColumnSpan` attributes appear to be properties of the <xref:Microsoft.Maui.Controls.Grid> class, but this class doesn't define anything named `Row`, `Column`, `RowSpan`, or `ColumnSpan`. Instead, the <xref:Microsoft.Maui.Controls.Grid> class defines four bindable properties named `RowProperty`, `ColumnProperty`, `RowSpanProperty`, and `ColumnSpanProperty`, that are special types of bindable properties known as *attached properties*. They are defined by the <xref:Microsoft.Maui.Controls.Grid> class but set on children of the <xref:Microsoft.Maui.Controls.Grid>.
 
