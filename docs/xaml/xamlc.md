@@ -67,11 +67,11 @@ There other metadata you can set to instruct xaml sourcegenerator
 
 :::moniker range=">=net-maui-11.0"
 
-For short computed values and event actions, see [C# expressions in XAML](csharp-expressions.md). Expressions require the `SourceGen` inflator.
+For short computed values and event actions, see [C# expressions in XAML](csharp-expressions.md). Expressions require the `SourceGen` inflator, which is the default in .NET 11.
 
 ### Inline C# with the `x:Code` directive
 
-When XAML source generation is enabled, you can use the `x:Code` directive to embed a small block of C# directly inside a XAML file. The XAML source generator extracts the code and emits it into the generated partial class for the page or view, so the inline members behave exactly as if they were declared in a code-behind file.
+When XAML source generation is enabled, which is the default in .NET 11, you can use the `x:Code` directive to embed a small block of C# directly inside a XAML file. The XAML source generator extracts the code and emits it into the generated partial class for the page or view, so the inline members behave exactly as if they were declared in a code-behind file.
 
 `x:Code` is intended for short, view-local glue such as a single event handler or a private helper — it lets you keep that code next to the markup it serves without adding a separate code-behind partial. For anything larger, prefer a dedicated code-behind file.
 
@@ -84,7 +84,7 @@ When XAML source generation is enabled, you can use the `x:Code` directive to em
 > </PropertyGroup>
 > ```
 >
-> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET 11 SR2. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328).
+> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET MAUI 11 SR2. Until you can update, keep the code in your code-behind file. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328).
 
 The `x:Code` element must be a direct child of the root element, and the root element must have an `x:Class` attribute. Wrap the code in a CDATA section so XAML doesn't try to parse it as markup:
 

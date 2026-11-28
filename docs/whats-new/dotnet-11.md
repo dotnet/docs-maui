@@ -391,10 +391,10 @@ VisualStateManager.InvalidateVisualStates(myButton);
 
 ### `x:Code` directive for inline C# in XAML
 
-The XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. `x:Code` is a preview feature, so you must set the `EnablePreviewFeatures` MSBuild property to `true` to use it. For more information, see [Inline C# with the `x:Code` directive](~/xaml/xamlc.md#inline-c-with-the-xcode-directive) and [GitHub PR #34715](https://github.com/dotnet/maui/pull/34715).
+The XAML source generator supports an `x:Code` directive that lets you inline a small block of C# directly inside a XAML file. This makes it easier to keep view-local glue code next to the markup it serves without creating a code-behind partial just for a single helper. `x:Code` is a preview feature, so you must set the `EnablePreviewFeatures` MSBuild property to `true` to use it.
 
 > [!IMPORTANT]
-> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET 11 SR2. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328) and [GitHub PR #40392](https://github.com/dotnet/maui/pull/40392).
+> In .NET MAUI 11.0.0 and 11.0.10, any `x:Code` block causes the XAML source generator to fail with error `MAUIG1001`. The fix ships in .NET MAUI 11 SR2. Until you can update, keep the code in your code-behind file. For more information, see [GitHub issue #40328](https://github.com/dotnet/maui/issues/40328).
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -409,6 +409,8 @@ The XAML source generator supports an `x:Code` directive that lets you inline a 
     <Button Clicked="OnButtonClicked" Text="Click me" />
 </ContentPage>
 ```
+
+For more information, see [Inline C# with the `x:Code` directive](~/xaml/xamlc.md#inline-c-with-the-xcode-directive) and GitHub PRs [#34715](https://github.com/dotnet/maui/pull/34715) and [#40392](https://github.com/dotnet/maui/pull/40392).
 
 ### C# expressions in XAML
 
@@ -440,7 +442,7 @@ In this example, `{FirstName}` is a two-way compiled binding on the <xref:Micros
                       ConverterCulture=nl-NL}" />
 ```
 
-In this example, the converter formats `Amount` as a currency value in the `nl-NL` culture, regardless of the device culture. For more information, see [Binding value converters](~/fundamentals/data-binding/converters.md) and [GitHub PR #35821](https://github.com/dotnet/maui/pull/35821).
+In this example, `formatConverter` is a custom value converter that formats `Amount` with the `C` (currency) format string in the culture that it's passed, so an `Amount` of `1234567.89` displays as `€ 1.234.567,89`, regardless of the device culture. For more information, see [Binding converter culture](~/fundamentals/data-binding/converters.md#binding-converter-culture) and [GitHub PR #35821](https://github.com/dotnet/maui/pull/35821).
 
 ### Compiled bindings inside DataTemplates
 

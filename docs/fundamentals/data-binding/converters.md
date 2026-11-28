@@ -96,14 +96,7 @@ If the conversion being performed is different for different cultures, use the `
 
 ::: moniker range=">=net-maui-11.0"
 
-By default, the `culture` argument is `CultureInfo.CurrentUICulture`. To pass a specific culture to the converter, set the `ConverterCulture` property of the <xref:Microsoft.Maui.Controls.Binding> or <xref:Microsoft.Maui.Controls.MultiBinding>:
-
-```xaml
-<Label Text="{Binding Amount,
-                      Converter={StaticResource formatConverter},
-                      ConverterParameter=C,
-                      ConverterCulture=nl-NL}" />
-```
+To pass a specific culture to the converter, set the `ConverterCulture` property of the binding. For more information, see [Binding converter culture](#binding-converter-culture).
 
 ::: moniker-end
 
@@ -436,3 +429,41 @@ The following XAML example instantiates `FloatToIntConverter` in its resource di
 The values of the `Red` and `Green` properties are displayed with a `Binding` markup extension. The `Blue` property, however, instantiates the `Binding` class to demonstrate how an explicit `float` value can be set to `ConverterParameter` property:
 
 :::image type="content" source="media/converters/rgbcolorselector.png" alt-text="RGB color selector.":::
+
+::: moniker range=">=net-maui-11.0"
+
+## Binding converter culture
+
+By default, the `culture` argument that's passed to the `Convert` and `ConvertBack` methods is `CultureInfo.CurrentUICulture`. To pass a specific culture instead, set the `ConverterCulture` property of the <xref:Microsoft.Maui.Controls.Binding> or <xref:Microsoft.Maui.Controls.MultiBinding>. In XAML, you can set it to a culture name, such as `nl-NL`.
+
+The following value converter formats a value with the format string that's passed as the converter parameter, in the culture that's passed to the converter:
+
+```csharp
+using System.Globalization;
+
+public class FormatConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+        string.Format(culture, "{0:" + parameter + "}", value);
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+}
+```
+
+The following example binds a `double` property named `Amount` through this converter, with the `C` (currency) format string and the `nl-NL` culture:
+
+```xaml
+<ContentPage.Resources>
+    <local:FormatConverter x:Key="formatConverter" />
+</ContentPage.Resources>
+...
+<Label Text="{Binding Amount,
+                      Converter={StaticResource formatConverter},
+                      ConverterParameter=C,
+                      ConverterCulture=nl-NL}" />
+```
+
+If `Amount` is `1234567.89`, the <xref:Microsoft.Maui.Controls.Label> displays `€ 1.234.567,89`, regardless of the culture of the device.
+
+::: moniker-end

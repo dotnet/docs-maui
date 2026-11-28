@@ -13,7 +13,7 @@ In .NET MAUI 11, you can write short C# expressions in XAML property values and 
 > [!IMPORTANT]
 > XAML C# expressions require XAML source generation, which is the default XAML inflator in .NET 11. XamlC and runtime inflation don't support this syntax.
 
-You don't need to change your project file to use expressions. Don't override the inflator with `Runtime` or `XamlC`, either in the `MauiXamlInflator` MSBuild property or for a file that uses expressions. For more information about inflators and per-file settings, see [XAML processing](xamlc.md).
+You don't need to set `EnablePreviewFeatures` or change your project file in any other way to use expressions. Don't override the inflator with `Runtime` or `XamlC`, either in the `MauiXamlInflator` MSBuild property or for a file that uses expressions. For more information about inflators and per-file settings, see [XAML processing](xamlc.md).
 
 ## Bind values and handle events
 
