@@ -1,7 +1,7 @@
 ---
 title: "CarouselView"
 description: "The .NET MAUI CarouselView is a view for presenting data in a scrollable layout, where users can swipe to move through a collection of items."
-ms.date: 10/08/2026
+ms.date: 11/28/2026
 ai-usage: ai-assisted
 ---
 
@@ -13,7 +13,17 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Carouse
 
 By default, <xref:Microsoft.Maui.Controls.CarouselView> will display its items in a horizontal orientation. A single item will be displayed on screen, with swipe gestures resulting in forwards and backwards navigation through the collection of items. In addition, indicators can be displayed that represent each item in the <xref:Microsoft.Maui.Controls.CarouselView>:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/populate-data/indicators.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/populate-data/indicators-net11.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
+
+::: moniker-end
 
 By default, <xref:Microsoft.Maui.Controls.CarouselView> provides looped access to its collection of items. Therefore, swiping backwards from the first item in the collection will display the last item in the collection. Similarly, swiping forwards from the last item in the collection will return to the first item in the collection.
 
