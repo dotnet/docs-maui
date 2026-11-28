@@ -574,7 +574,6 @@ Because `Shell.MenuItemTemplate` is an attached property, different templates ca
 >
 > Menu items in the `MenuItems` collection of a <xref:Microsoft.Maui.Controls.ShellContent> object aren't wrapped, so their `BindingContext` is the <xref:Microsoft.Maui.Controls.MenuItem> itself. For these items, use a template with `x:DataType` set to <xref:Microsoft.Maui.Controls.MenuItem> that binds to its `Text` and `IconImageSource` properties.
 
-
 The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
 
 ## Style FlyoutItem and MenuItem objects
