@@ -1,12 +1,20 @@
 ---
 title: ".NET MAUI Shell pages"
 description: "Learn how to customize the appearance of pages in .NET MAUI Shell apps, including setting page colors, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar."
-ms.date: 08/20/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell pages
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts. The examples on this page omit that styling to focus on the Shell features.
+
+::: moniker-end
 
 A <xref:Microsoft.Maui.Controls.ShellContent> object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.Tab>. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a page, you can navigate to additional <xref:Microsoft.Maui.Controls.ContentPage> objects known as detail pages.
 
@@ -15,6 +23,8 @@ In addition, the <xref:Microsoft.Maui.Controls.Shell> class defines attached pro
 ## Display pages
 
 In .NET MAUI Shell apps, pages are typically created on demand in response to navigation. This creation is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -35,9 +45,44 @@ In .NET MAUI Shell apps, pages are typically created on demand in response to na
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+       <ShellContent Title="Cats"
+                     Icon="icon_cat.png"
+                     ContentTemplate="{DataTemplate views:CatsPage}" />
+       <ShellContent Title="Dogs"
+                     Icon="icon_dog.png"
+                     ContentTemplate="{DataTemplate views:DogsPage}" />
+       <ShellContent Title="Monkeys"
+                     Icon="icon_monkey.png"
+                     ContentTemplate="{DataTemplate views:MonkeysPage}" />
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
+
 In this example, Shell's implicit conversion operators are used to remove the <xref:Microsoft.Maui.Controls.Tab> objects from the visual hierarchy. However, each <xref:Microsoft.Maui.Controls.ShellContent> object is rendered in a tab:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/pages/three-pages.png" alt-text="Screenshot of a Shell app with three pages.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/pages/three-pages-net11.png" alt-text="Screenshot of a Shell app with three pages.":::
+
+::: moniker-end
 
 > [!NOTE]
 > The `BindingContext` of each <xref:Microsoft.Maui.Controls.ShellContent> object is inherited from the parent <xref:Microsoft.Maui.Controls.Tab> object.
@@ -52,6 +97,8 @@ In a Shell app, each <xref:Microsoft.Maui.Controls.ContentPage> object is typica
 > <xref:Microsoft.Maui.Controls.ContentPage> objects that are created at app startup can lead to a poor startup experience.
 
 <xref:Microsoft.Maui.Controls.ContentPage> objects can be created at app startup by setting the `ShellContent.Content` properties to <xref:Microsoft.Maui.Controls.ContentPage> objects:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -74,6 +121,34 @@ In a Shell app, each <xref:Microsoft.Maui.Controls.ContentPage> object is typica
     </TabBar>
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+     <ShellContent Title="Cats"
+                   Icon="icon_cat.png">
+         <views:CatsPage />
+     </ShellContent>
+     <ShellContent Title="Dogs"
+                   Icon="icon_dog.png">
+         <views:DogsPage />
+     </ShellContent>
+     <ShellContent Title="Monkeys"
+                   Icon="icon_monkey.png">
+         <views:MonkeysPage />
+     </ShellContent>
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
 
 In this example, `CatsPage`, `DogsPage`, and `MonkeysPage` are all created at app startup, rather than on demand in response to navigation.
 

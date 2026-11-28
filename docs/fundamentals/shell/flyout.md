@@ -1,16 +1,34 @@
 ---
 title: ".NET MAUI Shell flyout"
 description: "Learn how to customize and control a .NET MAUI flyout, which is the optional root menu for a .NET MAUI Shell app."
-ms.date: 05/12/2026
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell flyout
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts. The examples on this page omit that styling to focus on the Shell features.
+
+::: moniker-end
+
 The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. A flyout is the optional root menu for a Shell app, and is fully customizable. It's accessible through an icon or by swiping from the side of the screen. The flyout consists of an optional header, flyout items, optional menu items, and an optional footer:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyout-annotated.png" alt-text="Screenshot of a Shell annotated flyout.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-annotated-net11.png" alt-text="Screenshot of a Shell annotated flyout.":::
+
+::: moniker-end
 
 ## Flyout items
 
@@ -41,7 +59,17 @@ The following example creates a flyout containing two flyout items:
 
 The `FlyoutItem.Title` property, of type `string`, defines the title of the flyout item. The `FlyoutItem.Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon of the flyout item:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/two-page-app-flyout.png" alt-text="Screenshot of a Shell two page app with flyout items.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/two-page-app-flyout-net11.png" alt-text="Screenshot of a Shell two page app with flyout items.":::
+
+::: moniker-end
 
 In this example, each <xref:Microsoft.Maui.Controls.ShellContent> object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
 
@@ -81,6 +109,8 @@ Use `AsSingleItem` when you want to group related pages under a single flyout en
 
 A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:Microsoft.Maui.Controls.FlyoutItem> can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -116,6 +146,51 @@ A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:controls="clr-namespace:Xaminals.Controls"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       x:Class="Xaminals.AppShell">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Domestic"
+             Icon="icon_domestic.png"
+             FlyoutIcon="house_with_garden.png">
+            <ShellContent Title="Cats"
+                          Icon="icon_cat.png"
+                          ContentTemplate="{DataTemplate views:CatsPage}" />
+            <ShellContent Title="Dogs"
+                          Icon="icon_dog.png"
+                          ContentTemplate="{DataTemplate views:DogsPage}" />
+        </Tab>
+        <ShellContent Title="Monkeys"
+                      Icon="icon_monkey.png"
+                      FlyoutIcon="monkey.png"
+                      ContentTemplate="{DataTemplate views:MonkeysPage}" />
+        <ShellContent Title="Elephants"
+                      Icon="icon_elephant.png"
+                      FlyoutIcon="elephant.png"
+                      ContentTemplate="{DataTemplate views:ElephantsPage}" />  
+        <ShellContent Title="Bears"
+                      Icon="icon_bear.png"
+                      FlyoutIcon="bear.png"
+                      ContentTemplate="{DataTemplate views:BearsPage}" />
+    </FlyoutItem>
+
+    <ShellContent Title="About"
+                  Icon="information.png"
+                  ContentTemplate="{DataTemplate views:AboutPage}" />    
+</Shell>
+```
+
+::: moniker-end
+
 In this example, flyout items are created for the <xref:Microsoft.Maui.Controls.Tab> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object, and the <xref:Microsoft.Maui.Controls.ShellContent> objects that are children of the <xref:Microsoft.Maui.Controls.FlyoutItem> object. This occurs because each <xref:Microsoft.Maui.Controls.ShellContent> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object. In addition, a flyout item is created for the final <xref:Microsoft.Maui.Controls.ShellContent> object, which is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object, and then in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 
 > [!NOTE]
@@ -123,11 +198,23 @@ In this example, flyout items are created for the <xref:Microsoft.Maui.Controls.
 
 This results in the following flyout items:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyout-reduced.png" alt-text="Screenshot of flyout containing FlyoutItem objects.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-reduced-net11.png" alt-text="Screenshot of flyout containing FlyoutItem objects.":::
+
+::: moniker-end
 
 ### Define FlyoutItem appearance
 
 The appearance of each <xref:Microsoft.Maui.Controls.FlyoutItem> can be customized by setting the `Shell.ItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell ...
@@ -150,9 +237,46 @@ The appearance of each <xref:Microsoft.Maui.Controls.FlyoutItem> can be customiz
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
+    ...
+    <Shell.ItemTemplate>
+        <DataTemplate x:DataType="BaseShellItem">
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+</Shell>
+```
+
+::: moniker-end
+
 This example displays the title of each <xref:Microsoft.Maui.Controls.FlyoutItem> object in italics:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyoutitem-templated.png" alt-text="Screenshot of templated FlyoutItem objects.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyoutitem-templated-net11.png" alt-text="Screenshot of templated FlyoutItem objects.":::
+
+::: moniker-end
 
 Because `Shell.ItemTemplate` is an attached property, different templates can be attached to specific <xref:Microsoft.Maui.Controls.FlyoutItem> objects.
 
@@ -316,6 +440,8 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> class has a `Clicked` event, and a 
 
  <xref:Microsoft.Maui.Controls.MenuItem> objects can be added to the flyout as shown in the following example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell ...
        xmlns:local="clr-namespace:Xaminals"
@@ -328,9 +454,37 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> class has a `Clicked` event, and a 
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
+    ...            
+    <MenuItem Text="Help"
+              IconImageSource="red_question_mark.png"
+              Command="{Binding HelpCommand}"
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />    
+</Shell>
+```
+
+::: moniker-end
+
 This example adds a  <xref:Microsoft.Maui.Controls.MenuItem> object to the flyout, beneath all the flyout items:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyout.png" alt-text="Screenshot of flyout containing a MenuItem object.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-net11.png" alt-text="Screenshot of flyout containing a MenuItem object.":::
+
+::: moniker-end
 
 The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Windows.Input.ICommand> named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
 
@@ -340,6 +494,8 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Win
 ### Define MenuItem appearance
 
 The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized by setting the `Shell.MenuItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell ...
@@ -366,14 +522,66 @@ The appearance of each <xref:Microsoft.Maui.Controls.MenuItem> can be customized
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       xmlns:local="clr-namespace:Xaminals"
+       x:DataType="local:AppShell">
+    <Shell.MenuItemTemplate>
+        <DataTemplate x:DataType="BaseShellItem">
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+    ...
+    <MenuItem Text="Help"
+              IconImageSource="red_question_mark.png"
+              Command="{Binding HelpCommand}"
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />  
+</Shell>
+```
+
+::: moniker-end
+
 This example attaches the <xref:Microsoft.Maui.Controls.DataTemplate> to each <xref:Microsoft.Maui.Controls.MenuItem> object, displaying the title of the  <xref:Microsoft.Maui.Controls.MenuItem> object in italics:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/flyout/menuitem-templated.png" alt-text="Screenshot of templated MenuItem objects.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/menuitem-templated-net11.png" alt-text="Screenshot of templated MenuItem objects.":::
+
+::: moniker-end
+
 Because `Shell.MenuItemTemplate` is an attached property, different templates can be attached to specific <xref:Microsoft.Maui.Controls.MenuItem> objects.
+
+::: moniker range="<=net-maui-10.0"
 
 > [!NOTE]
 > Shell provides the `Text` and `IconImageSource` properties to the `BindingContext` of the `MenuItemTemplate`. You can also use `Title` in place of `Text` and `Icon` in place of `IconImageSource` which will let you reuse the same template for menu items and flyout items.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> Shell wraps each <xref:Microsoft.Maui.Controls.MenuItem> in a `BaseShellItem` object, which becomes the `BindingContext` of the `MenuItemTemplate`. Therefore, set `x:DataType` to `BaseShellItem` and bind to its `Title` and `FlyoutIcon` properties, which are populated from the `Text` and `IconImageSource` properties of the <xref:Microsoft.Maui.Controls.MenuItem>. This also lets you reuse the same template for menu items and flyout items.
+
+::: moniker-end
 
 The default template for <xref:Microsoft.Maui.Controls.FlyoutItem> objects can also be used for <xref:Microsoft.Maui.Controls.MenuItem> objects. For more information, see [Default template for FlyoutItems](#default-template-for-flyoutitems).
 
@@ -424,6 +632,8 @@ The flyout header is the content that optionally appears at the top of the flyou
 
 The `FlyoutHeader` type is shown in the following example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -442,11 +652,80 @@ The `FlyoutHeader` type is shown in the following example:
 </ContentView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xaminals.Controls.FlyoutHeader"
+             HeightRequest="200">
+    <Border Margin="12,8,12,12"
+            Padding="20,0,20,18"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 24">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,1">
+                <GradientStop Color="#B53D20"
+                              Offset="0" />
+                <GradientStop Color="#B3541C"
+                              Offset="1" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid RowDefinitions="*,Auto,Auto">
+            <HorizontalStackLayout Spacing="2"
+                                   VerticalOptions="End"
+                                   Margin="0,0,0,8">
+                <Image Source="cat.png"
+                       WidthRequest="40"
+                       HeightRequest="40" />
+                <Image Source="dog.png"
+                       WidthRequest="40"
+                       HeightRequest="40" />
+                <Image Source="monkey.png"
+                       WidthRequest="40"
+                       HeightRequest="40" />
+                <Image Source="elephant.png"
+                       WidthRequest="40"
+                       HeightRequest="40" />
+                <Image Source="bear.png"
+                       WidthRequest="40"
+                       HeightRequest="40" />
+            </HorizontalStackLayout>
+            <Label Grid.Row="1"
+                   Text="Xaminals"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White" />
+            <Label Grid.Row="2"
+                   Text="A .NET MAUI Shell sample"
+                   TextColor="White" />
+        </Grid>
+    </Border>
+</ContentView>
+```
+
+::: moniker-end
+
 This results in the following flyout header:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/flyout/flyout-header.png" alt-text="Screenshot of the flyout header.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-header-net11.png" alt-text="Screenshot of the flyout header.":::
+
+::: moniker-end
+
 Alternatively, the flyout header appearance can be defined by setting the `Shell.FlyoutHeaderTemplate` bindable property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell ...>
@@ -467,6 +746,31 @@ Alternatively, the flyout header appearance can be defined by setting the `Shell
     </Shell.FlyoutHeaderTemplate>
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...>
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="#B53D20"
+                  HeightRequest="200">
+                <Image Source="monkey.png"
+                       Opacity="0.3" />
+                <Label Text="Animals"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </Grid>            
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+</Shell>
+```
+
+::: moniker-end
 
 By default, the flyout header will be fixed in the flyout while the content below will scroll if there are enough items. However, this behavior can be changed by setting the `Shell.FlyoutHeaderBehavior` bindable property to one of the `FlyoutHeaderBehavior` enumeration members:
 
@@ -498,6 +802,8 @@ The flyout footer is the content that optionally appears at the bottom of the fl
 
 The `FlyoutFooter` type is shown in the following example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -516,14 +822,50 @@ The `FlyoutFooter` type is shown in the following example:
 </ContentView>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="Xaminals.Controls.FlyoutFooter">
+    <Grid RowDefinitions="Auto,Auto"
+          Padding="20">
+        <Label Text="Xaminals"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+        <Label Grid.Row="1"
+               x:DataType="sys:DateTime"
+               Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+               HorizontalOptions="Center" />
+    </Grid>
+</ContentView>
+```
+
+::: moniker-end
+
 > [!IMPORTANT]
 > The previous XAML example defined a new XAML namespace named `sys`: `xmlns:sys="clr-namespace:System;assembly=netstandard"`. This XAML namespace maps `sys` to the .NET `System` namespace. The mapping allows you to use the .NET types defined in that namespace, such as `DateTime`, in the XAML. For more information, see [XAML Namespaces](../../xaml/namespaces/index.md).
 
 This results in the following flyout footer:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyout-footer.png" alt-text="Screenshot of the flyout footer.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-footer-net11.png" alt-text="Screenshot of the flyout footer.":::
+
+::: moniker-end
+
 Alternatively, the flyout footer appearance can be defined by setting the `Shell.FlyoutFooterTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell ...
@@ -544,6 +886,32 @@ Alternatively, the flyout footer appearance can be defined by setting the `Shell
     </Shell.FlyoutFooterTemplate>
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       xmlns:sys="clr-namespace:System;assembly=netstandard">
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="Auto,Auto"
+                  Padding="20">
+                <Label Text="Xaminals"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label Grid.Row="1"
+                       x:DataType="sys:DateTime"
+                       Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                       HorizontalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+</Shell>
+```
+
+::: moniker-end
 
 The flyout footer is fixed to the bottom of the flyout, and can be any height. In addition, the footer never obscures any menu items.
 
@@ -630,6 +998,8 @@ The aspect ratio of the background image can be configured by setting the `Flyou
 
 The following example shows setting these properties:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell ...
        FlyoutBackgroundImage="photo.jpg"
@@ -638,9 +1008,33 @@ The following example shows setting these properties:
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       FlyoutBackgroundImage="flyout_pattern.png"
+       FlyoutBackgroundImageAspect="AspectFill">
+    ...
+</Shell>
+```
+
+::: moniker-end
+
 This results in a background image appearing in the flyout, below the flyout header:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/flyout/flyout-backgroundimage.png" alt-text="Screenshot of a flyout background image.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/flyout/flyout-backgroundimage-net11.png" alt-text="Screenshot of a flyout background image.":::
+
+::: moniker-end
 
 ## Flyout backdrop
 
