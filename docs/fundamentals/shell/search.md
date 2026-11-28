@@ -34,13 +34,13 @@ When a query is entered into the search box, the `Query` property is updated, an
 
 ::: moniker range="<=net-maui-10.0"
 
-:::image type="content" source="media/search/search-suggestions.png" alt-text="Screenshot of a search results in a Shell SearchHandler.":::
+:::image type="content" source="media/search/search-suggestions.png" alt-text="Screenshot of search results in a Shell SearchHandler.":::
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-11.0"
 
-:::image type="content" source="media/search/search-suggestions-net11.png" alt-text="Screenshot of a search results in a Shell SearchHandler.":::
+:::image type="content" source="media/search/search-suggestions-net11.png" alt-text="Screenshot of search results in a Shell SearchHandler.":::
 
 ::: moniker-end
 
