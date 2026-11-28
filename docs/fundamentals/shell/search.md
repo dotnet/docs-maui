@@ -128,7 +128,7 @@ The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by s
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
                                       DisplayMemberName="Name"
-                                      Animals="{x:Static data:CatData.Cats}" />
+                                      Animals="{x:Static data:MonkeyData.Monkeys}" />
     </Shell.SearchHandler>
     ...
 </ContentPage>
@@ -164,7 +164,7 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
     Placeholder = "Enter search term",
     ShowsResults = true,
     DisplayMemberName = "Name",
-    Animals = CatData.Cats
+    Animals = MonkeyData.Monkeys
 });
 ```
 
@@ -256,7 +256,7 @@ In addition to displaying `string` data in the search results, the appearance of
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
-                                      Animals="{x:Static data:CatData.Cats}">
+                                      Animals="{x:Static data:MonkeyData.Monkeys}">
             <controls:AnimalSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
