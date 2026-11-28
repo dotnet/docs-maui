@@ -1,12 +1,20 @@
 ---
 title: ".NET MAUI Shell tabs"
 description: "Learn how to customize and control a .NET MAUI TabBar, which represents the bottom tab bar in a .NET MAUI Shell app."
-ms.date: 05/15/2026
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell tabs
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts. The examples on this page omit that styling to focus on the Shell features.
+
+::: moniker-end
 
 The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object should be a <xref:Microsoft.Maui.Controls.TabBar> object, which represents the bottom tab bar.
 
@@ -37,7 +45,17 @@ A single page Shell app can be created by adding a <xref:Microsoft.Maui.Controls
 
 This example results in the following single page app:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/tabs/single-page-app-net11.png" alt-text="Screenshot of a Shell single page app.":::
+
+::: moniker-end
 
 Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified without introducing more views into the visual tree. This simplification is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain <xref:Microsoft.Maui.Controls.Tab> objects, which can only ever contain <xref:Microsoft.Maui.Controls.ShellContent> objects. These implicit-conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
@@ -61,6 +79,8 @@ This implicit conversion automatically wraps the <xref:Microsoft.Maui.Controls.S
 
 If there are multiple <xref:Microsoft.Maui.Controls.Tab> objects in a single <xref:Microsoft.Maui.Controls.TabBar> object, <xref:Microsoft.Maui.Controls.Tab> objects are rendered as bottom tabs:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -79,13 +99,57 @@ If there are multiple <xref:Microsoft.Maui.Controls.Tab> objects in a single <xr
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+       <Tab Title="Cats"
+            Icon="icon_cat.png">
+           <ShellContent ContentTemplate="{DataTemplate views:CatsPage}" />
+       </Tab>
+       <Tab Title="Dogs"
+            Icon="icon_dog.png">
+           <ShellContent ContentTemplate="{DataTemplate views:DogsPage}" />
+       </Tab>
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
+
 The `Title` property, of type `string`, defines the tab title. The `Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the tab icon:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/tabs/two-page-app-bottom-tabs.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/tabs/two-page-app-bottom-tabs-net11.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
+
+::: moniker-end
+
 When there are more than five tabs on a <xref:Microsoft.Maui.Controls.TabBar>, a **More** tab appears, which can be used to access the other tabs:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/tabs/more-tabs.png" alt-text="Screenshot of a Shell app with a More tab.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/tabs/more-tabs-net11.png" alt-text="Screenshot of a Shell app with a More tab.":::
+
+::: moniker-end
 
 ### Localize the More tab
 
@@ -123,6 +187,8 @@ For more information, see [Localization](~/fundamentals/localization.md#ios-and-
 
 In addition, Shell's implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.ShellContent> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -139,6 +205,28 @@ In addition, Shell's implicit conversion operators can be used to remove the <xr
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+       <ShellContent Title="Cats"
+                     Icon="icon_cat.png"
+                     ContentTemplate="{DataTemplate views:CatsPage}" />
+       <ShellContent Title="Dogs"
+                     Icon="icon_dog.png"
+                     ContentTemplate="{DataTemplate views:DogsPage}" />
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
+
 This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
 > [!IMPORTANT]
@@ -147,6 +235,8 @@ This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.
 ## Bottom and top tabs
 
 When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, a top tab bar is added to the bottom tab, through which the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -169,11 +259,50 @@ When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present
 </Shell>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+       <Tab Title="Domestic"
+            Icon="icon_domestic.png">
+           <ShellContent Title="Cats"
+                         ContentTemplate="{DataTemplate views:CatsPage}" />
+           <ShellContent Title="Dogs"
+                         ContentTemplate="{DataTemplate views:DogsPage}" />
+       </Tab>
+       <Tab Title="Monkeys"
+            Icon="icon_monkey.png">
+           <ShellContent ContentTemplate="{DataTemplate views:MonkeysPage}" />
+       </Tab>
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
+
 This code results in the layout shown in the following screenshot:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/tabs/two-page-app-top-tabs.png" alt-text="Screenshot of a Shell two page app with top and bottom tabs.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/tabs/two-page-app-top-tabs-net11.png" alt-text="Screenshot of a Shell two page app with top and bottom tabs.":::
+
+::: moniker-end
+
 In addition, Shell's implicit conversion operators can be used to remove the second <xref:Microsoft.Maui.Controls.Tab> object from the previous example:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -196,6 +325,34 @@ In addition, Shell's implicit conversion operators can be used to remove the sec
     </TabBar>
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Xaminals.Views"
+       x:Class="Xaminals.AppShell">
+    <TabBar>
+       <Tab Title="Domestic"
+            Icon="icon_domestic.png">
+           <ShellContent Title="Cats"
+                         Icon="icon_cat.png"
+                         ContentTemplate="{DataTemplate views:CatsPage}" />
+           <ShellContent Title="Dogs"
+                         Icon="icon_dog.png"
+                         ContentTemplate="{DataTemplate views:DogsPage}" />
+       </Tab>
+       <ShellContent Title="Monkeys"
+                     Icon="icon_monkey.png"
+                     ContentTemplate="{DataTemplate views:MonkeysPage}" />
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
 
 This implicit conversion automatically wraps the third <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
@@ -244,6 +401,8 @@ In addition, tabs can also be styled using Cascading Style Sheets (CSS). For mor
 
 When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` property is set to the first <xref:Microsoft.Maui.Controls.Tab> object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another <xref:Microsoft.Maui.Controls.Tab>, as shown in the following example:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <Shell ...
        CurrentItem="{x:Reference dogsItem}">
@@ -258,6 +417,27 @@ When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` prope
     </TabBar>
 </Shell>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<Shell ...
+       CurrentItem="{x:Reference dogsItem}">
+    <TabBar>
+        <ShellContent Title="Cats"
+                      Icon="icon_cat.png"
+                      ContentTemplate="{DataTemplate views:CatsPage}" />
+        <ShellContent x:Name="dogsItem"
+                      Title="Dogs"
+                      Icon="icon_dog.png"
+                      ContentTemplate="{DataTemplate views:DogsPage}" />
+    </TabBar>
+</Shell>
+```
+
+::: moniker-end
 
 This example sets the `CurrentItem` property to the <xref:Microsoft.Maui.Controls.ShellContent> object named `dogsItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
@@ -279,6 +459,8 @@ The tab bar and tabs are visible in Shell apps by default. However, the tab bar 
 
 While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it's typically set on any <xref:Microsoft.Maui.Controls.ShellContent> or <xref:Microsoft.Maui.Controls.ContentPage> objects that want to make the tab bar invisible:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <TabBar>
    <Tab Title="Domestic"
@@ -296,9 +478,34 @@ While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.She
 </TabBar>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<TabBar>
+   <Tab Title="Domestic"
+        Icon="icon_domestic.png">
+       <ShellContent Title="Cats"
+                     ContentTemplate="{DataTemplate views:CatsPage}" />
+       <ShellContent Shell.TabBarIsVisible="false"
+                     Title="Dogs"
+                     ContentTemplate="{DataTemplate views:DogsPage}" />
+   </Tab>
+   <Tab Title="Monkeys"
+        Icon="icon_monkey.png">
+       <ShellContent ContentTemplate="{DataTemplate views:MonkeysPage}" />
+   </Tab>
+</TabBar>
+```
+
+::: moniker-end
+
 In this example, the tab bar is hidden when the upper **Dogs** tab is selected.
 
 In addition, <xref:Microsoft.Maui.Controls.Tab> objects can be hidden by setting the `IsVisible` bindable property to `false`:
+
+::: moniker range="<=net-maui-10.0"
 
 ```xaml
 <TabBar>
@@ -314,6 +521,27 @@ In addition, <xref:Microsoft.Maui.Controls.Tab> objects can be hidden by setting
                   ContentTemplate="{DataTemplate views:MonkeysPage}" />
 </TabBar>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<TabBar>
+    <ShellContent Title="Cats"
+                  Icon="icon_cat.png"
+                  ContentTemplate="{DataTemplate views:CatsPage}" />
+    <ShellContent Title="Dogs"
+                  Icon="icon_dog.png"
+                  ContentTemplate="{DataTemplate views:DogsPage}"
+                  IsVisible="False" />
+    <ShellContent Title="Monkeys"
+                  Icon="icon_monkey.png"
+                  ContentTemplate="{DataTemplate views:MonkeysPage}" />
+</TabBar>
+```
+
+::: moniker-end
 
 In this example, the second tab is hidden.
 

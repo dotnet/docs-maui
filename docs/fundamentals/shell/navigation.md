@@ -1,12 +1,20 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 08/11/2026
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell navigation
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The app screenshot on this page comes from the Xaminals sample, which adds its own styling, such as colors and fonts. The examples on this page omit that styling to focus on the Shell features.
+
+::: moniker-end
 
 .NET Multi-platform App UI (.NET MAUI) Shell includes a URI-based navigation experience that uses routes to navigate to any page in the app, without having to follow a set navigation hierarchy. In addition, it also provides the ability to navigate backwards without having to visit all of the pages on the navigation stack.
 
@@ -335,7 +343,7 @@ The following example navigates to the page for the `monkeydetails` route:
 await Shell.Current.GoToAsync("monkeydetails");
 ```
 
-In this example, the `monkeyDetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
+In this example, the `monkeydetails` route is searched for until the matching page is found. When the page is found, it's pushed to the navigation stack.
 
 > [!WARNING]
 > Relative routes don't work with pages that are defined in a subclassed <xref:Microsoft.Maui.Controls.Shell> class, which is typically *AppShell.xaml*. Instead, only pages registered with the `Routing.RegisterRoute` method can be pushed onto the navigation stack using relative routes. For more information, see [Register detail page routes](#register-detail-page-routes).
@@ -816,4 +824,14 @@ The following code shows an example of redefining back button appearance and beh
 
 The `Command` property is set to an <xref:System.Windows.Input.ICommand> to be executed when the back button is pressed, and the `IconOverride` property is set to the icon that's used for the back button:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/navigation/back-button.png" alt-text="Screenshot of a Shell back button icon override.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/navigation/back-button-net11.png" alt-text="Screenshot of a Shell back button icon override.":::
+
+::: moniker-end

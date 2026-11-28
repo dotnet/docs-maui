@@ -1,20 +1,48 @@
 ---
 title: ".NET MAUI Shell search"
 description: "Learn how .NET MAUI Shell apps can use integrated search functionality that's provided by a search box that can be added to the top of each page."
-ms.date: 08/20/2025
+ms.date: 11/28/2026
+ai-usage: ai-assisted
 ---
 
 # .NET MAUI Shell search
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
+::: moniker range=">=net-maui-11.0"
+
+> [!NOTE]
+> The screenshots on this page come from the Xaminals sample, which adds its own styling, such as colors, fonts, and page layouts. The examples on this page omit that styling to focus on the Shell features.
+
+::: moniker-end
+
 .NET Multi-platform App UI (.NET MAUI) Shell includes integrated search functionality that's provided by the <xref:Microsoft.Maui.Controls.SearchHandler> class. Search capability can be added to a page by setting the `Shell.SearchHandler` attached property to a subclassed <xref:Microsoft.Maui.Controls.SearchHandler> object. This results in a search box being added at the top of the page:
+
+::: moniker range="<=net-maui-10.0"
 
 :::image type="content" source="media/search/searchhandler.png" alt-text="Screenshot of a Shell SearchHandler.":::
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/searchhandler-net11.png" alt-text="Screenshot of a Shell SearchHandler.":::
+
+::: moniker-end
+
 When a query is entered into the search box, the `Query` property is updated, and on each update the `OnQueryChanged` method is executed. This method can be overridden to populate the search suggestions area with data:
 
-:::image type="content" source="media/search/search-suggestions.png" alt-text="Screenshot of a search results in a Shell SearchHandler.":::
+::: moniker range="<=net-maui-10.0"
+
+:::image type="content" source="media/search/search-suggestions.png" alt-text="Screenshot of search results in a Shell SearchHandler.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/search-suggestions-net11.png" alt-text="Screenshot of search results in a Shell SearchHandler.":::
+
+::: moniker-end
 
 Then, when a result is selected from the search suggestions area, the `OnItemSelected` method is executed. This method can be overridden to respond appropriately, such as by navigating to a detail page.
 
@@ -90,21 +118,49 @@ When a search result is selected by the user, the `OnItemSelected` override is e
 
 The subclassed <xref:Microsoft.Maui.Controls.SearchHandler> can be consumed by setting the `Shell.SearchHandler` attached property to an object of the subclassed type, on the consuming page:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
-             xmlns:data="clr-namespace:Xaminals.Data">
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
                                       DisplayMemberName="Name"
-                                      Animals="{x:Static data:CatData.Cats}" />
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}" />
     </Shell.SearchHandler>
     ...
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage ...
+             xmlns:controls="clr-namespace:Xaminals.Controls"
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views">
+    <Shell.SearchHandler>
+        <controls:AnimalSearchHandler Placeholder="Search monkeys"
+                                      ShowsResults="true"
+                                      DisplayMemberName="Name"
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}" />
+    </Shell.SearchHandler>
+    ...
+</ContentPage>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
+
+::: moniker range="<=net-maui-10.0"
 
 ```csharp
 Shell.SetSearchHandler(this, new AnimalSearchHandler
@@ -112,9 +168,27 @@ Shell.SetSearchHandler(this, new AnimalSearchHandler
     Placeholder = "Enter search term",
     ShowsResults = true,
     DisplayMemberName = "Name",
-    Animals = CatData.Cats
+    Animals = MonkeyData.Monkeys,
+    SelectedItemNavigationTarget = typeof(MonkeyDetailPage)
 });
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```csharp
+Shell.SetSearchHandler(this, new AnimalSearchHandler
+{
+    Placeholder = "Search monkeys",
+    ShowsResults = true,
+    DisplayMemberName = "Name",
+    Animals = MonkeyData.Monkeys,
+    SelectedItemNavigationTarget = typeof(MonkeyDetailPage)
+});
+```
+
+::: moniker-end
 
 The `AnimalSearchHandler.OnQueryChanged` method returns a `List` of `Animal` objects. The `DisplayMemberName` property is set to the `Name` property of each `Animal` object, and so the data displayed in the suggestions area will be each animal name.
 
@@ -134,29 +208,63 @@ The `AnimalSearchHandler.OnQueryChanged` method returns a `List` of `Animal` obj
 
 The `ShowsResults` property is set to `true`, so that search suggestions are displayed as the user enters a search query:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/search/search-results.png" alt-text="Screenshot of search results in a Shell SearchHandler, with results for the partial string M.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/search-results-net11.png" alt-text="Screenshot of search results in a Shell SearchHandler, with results for the partial string M.":::
+
+::: moniker-end
 
 As the search query changes, the search suggestions area is updated:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/search/search-results-change.png" alt-text="Screenshot of search results in a Shell SearchHandler with results for the partial string M o n.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/search-results-change-net11.png" alt-text="Screenshot of search results in a Shell SearchHandler with results for the partial string M o n.":::
+
+::: moniker-end
 
 When a search result is selected, the `MonkeyDetailPage` is navigated to, and a detail page about the selected monkey is displayed:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/search/detailpage.png" alt-text="Screenshot of monkey details.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/detailpage-net11.png" alt-text="Screenshot of monkey details.":::
+
+::: moniker-end
 
 ## Define search results item appearance
 
 In addition to displaying `string` data in the search results, the appearance of each search result item can be defined by setting the `SearchHandler.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
+::: moniker range="<=net-maui-10.0"
+
 ```xaml
 <ContentPage ...
              xmlns:controls="clr-namespace:Xaminals.Controls"
              xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views"
              xmlns:models="clr-namespace:Xaminals.Models">
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
-                                      Animals="{x:Static data:CatData.Cats}">
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}">
             <controls:AnimalSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Animal">
                     <Grid Padding="10"
@@ -177,11 +285,73 @@ In addition to displaying `string` data in the search results, the appearance of
 </ContentPage>
 ```
 
-The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the suggestions area. In this example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+```xaml
+<ContentPage ...
+             xmlns:controls="clr-namespace:Xaminals.Controls"
+             xmlns:data="clr-namespace:Xaminals.Data"
+             xmlns:views="clr-namespace:Xaminals.Views"
+             xmlns:models="clr-namespace:Xaminals.Models">
+    <Shell.SearchHandler>
+        <controls:AnimalSearchHandler Placeholder="Search monkeys"
+                                      ShowsResults="true"
+                                      Animals="{x:Static data:MonkeyData.Monkeys}"
+                                      SelectedItemNavigationTarget="{x:Type views:MonkeyDetailPage}">
+            <controls:AnimalSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:Animal">
+                    <Grid Padding="10"
+                          ColumnDefinitions="0.15*,0.85*">
+                        <Image Source="{Binding ImageUrl}"
+                               HeightRequest="40"
+                               WidthRequest="40" />
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Location}"
+                                   FontSize="13" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </controls:AnimalSearchHandler.ItemTemplate>
+       </controls:AnimalSearchHandler>
+    </Shell.SearchHandler>
+    ...
+</ContentPage>
+```
+
+::: moniker-end
+
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the suggestions area. In this example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>.
+
+::: moniker range="<=net-maui-10.0"
+
+The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Animal` object.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object and a <xref:Microsoft.Maui.Controls.VerticalStackLayout> with two <xref:Microsoft.Maui.Controls.Label> objects, which bind to the `ImageUrl`, `Name`, and `Location` properties of each `Animal` object.
+
+::: moniker-end
 
 The following screenshot shows the result of templating each item in the suggestions area:
 
+::: moniker range="<=net-maui-10.0"
+
 :::image type="content" source="media/search/search-results-template.png" alt-text="Screenshot of templated search results in a Shell SearchHandler.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-11.0"
+
+:::image type="content" source="media/search/search-results-template-net11.png" alt-text="Screenshot of templated search results in a Shell SearchHandler.":::
+
+::: moniker-end
 
 For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
